@@ -39,14 +39,14 @@ const withDataFetcher = (url, dataHandler) => (Comp) =>
 
         setTimeout(() => {
           that.setState({ data, isLoading: false })
-        }, 500);
+        }, 255);
       })
       .catch((error) => {
         const that = this;
 
         setTimeout(() => {
           that.setState({ error, isLoading: false })
-        }, 500);
+        }, 255);
       });
     }
 
