@@ -20,13 +20,45 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Blog for sabertazimi</title>
+    <style media="screen">
+      .loading-container {
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+      }
 
+      .spinner {
+        display: inline-block;
+        width: 3em;
+        height: 3em;
+        background-color: white;
+        border: 0.5em solid #3ac0ff;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: rotate-spinner 0.5s infinite linear;
+      }
+
+      @keyframes rotate-spinner {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to visit my blog
     </noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading-container">
+        <div class="spinner"></div>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
