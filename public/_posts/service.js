@@ -121,6 +121,7 @@ const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
 
   if (data) {
     let mdFileData = yamlFrontMatter.loadFront(data.toString());
+    mdFileData.id = fileName;
     mdFileData.fileName = fileName;
     return mdFileData;
   }
@@ -142,6 +143,14 @@ const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
       accum.postsJSON = [];
     }
 
+    // check integrity of yaml-front
+    const yamlFrontFields = ['title', 'subtitle', 'date', 'author', 'tags', 'header-img', '__content'];
+    yamlFrontFields.forEach((field) => {
+      if (!mdFileData[field]) {
+        console.log(`[WARN] missing '${field}' field in ${mdFileData.fileName}`);
+      }
+    });
+
     // generate single markdown file json data
     fs.writeFile(path.resolve(jsonPath, `${mdFileData.fileName}.json`), JSON.stringify(mdFileData), (err) => {
       if (err) {
@@ -149,6 +158,7 @@ const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
       }
     });
 
+    // generate tags metadata
     if (mdFileData.tags) {
       mdFileData.tags.forEach((tag) => {
         if (!accum.tagsJSON[tag]) {
@@ -170,12 +180,14 @@ const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
 }, (accum) => {
   // resolver
   if (accum) {
+    // write tags metadata
     fs.writeFile(path.resolve(jsonPath, 'tags.json'), JSON.stringify(accum.tagsJSON), (err) => {
       if (err) {
         console.error(err);
       }
     });
 
+    // write posts metadata
     fs.writeFile(path.resolve(jsonPath, 'posts.json'), JSON.stringify(accum.postsJSON), (err) => {
       if (err) {
         console.error(err);
