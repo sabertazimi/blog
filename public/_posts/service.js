@@ -37,12 +37,12 @@ class BlogService {
   /**
   * defaultVisitor
   *
-  * @param  {string} fileName
   * @param  {Error}  err  markdown file access error
   * @param  {Buffer} data markdown file data
+  * @param  {string} fileName
   * @return {object}      processed markdown file data
   */
-  defaultVisitor(fileName, err, data) {
+  defaultVisitor(err, data, fileName) {
     if (err) {
       console.error(err);
       return null;
@@ -75,9 +75,10 @@ class BlogService {
   * defaultResolver
   *
   * @param  {object} accum accumulated result of all visitors
+  * @param  {array}  files array of file name
   * @return {object}       resolved result to return
   */
-  defaultResolver(accum) {
+  defaultResolver(accum, files) {
     return accum;
   }
 
@@ -90,7 +91,7 @@ class BlogService {
     const files = fs.readdirSync(mdPath);
     let accum = {};
 
-    if (!files) {
+    if (!files || !files.length) {
       return JSONData;
     }
 
@@ -101,18 +102,18 @@ class BlogService {
       const mdData = fs.readFileSync(filePath);
 
       if (mdData) {
-        const processedData = this.visitor(fileName, null, mdData);
+        const processedData = this.visitor(null, mdData, fileName);
         accum = this.accumulator(accum, processedData);
       } else {
-        this.visitor(fileName, new Error(`[ERR] ${filePath} read failed.`), null);
+        this.visitor(new Error(`[ERR] ${filePath} read failed.`), null, fileName);
       }
     });
 
-    return this.resolver(accum);
+    return this.resolver(accum, files);
   }
 }
 
-const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
+const getPostsMetadata = new BlogService(null, (err, data, fileName) => {
   // visitor
   if (err) {
     console.error(err);
@@ -177,7 +178,7 @@ const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
   }
 
   return accum;
-}, (accum) => {
+}, (accum, files) => {
   // resolver
   if (accum) {
     // write tags metadata
@@ -189,6 +190,26 @@ const getPostsMetadata = new BlogService(null, (fileName, err, data) => {
 
     // write posts metadata
     fs.writeFile(path.resolve(jsonPath, 'posts.json'), JSON.stringify(accum.postsJSON), (err) => {
+      if (err) {
+        console.error(err);
+      }
+    });
+
+    // write links metadata
+    let linksJSON = [];
+
+    for (let i = 0, len = files.length; i < len; ++i) {
+      const linkMetadata = {
+        id: files[i],
+        fileName: files[i],
+        prev: (i + 1 < len) ? files[i + 1] : null,
+        next: (i - 1 >= 0) ? files[i - 1] : null
+      }
+
+      linksJSON.push(linkMetadata);
+    }
+
+    fs.writeFile(path.resolve(jsonPath, 'links.json'), JSON.stringify(linksJSON), (err) => {
       if (err) {
         console.error(err);
       }
