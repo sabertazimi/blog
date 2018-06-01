@@ -6,10 +6,8 @@ import App from './App.js';
 
 import 'semantic-ui-css/semantic.min.css';
 
-setTimeout(() => {
-  ReactDOM.render((
-    <Router>
-      <App />
-    </Router>
-  ), document.getElementById('root'));
-}, 2000);
+ReactDOM.render((
+  <Router>
+    <App />
+  </Router>
+), document.getElementById('root'));
