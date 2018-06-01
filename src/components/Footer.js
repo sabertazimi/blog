@@ -19,7 +19,7 @@ class Footer extends Component {
         style={{ padding: '5em 0em' }}
         vertical
         >
-        <Container textAlign='center'>
+        <Container textAlign='center' className='blog-footer'>
           <Grid columns={4} stackable inverted>
             <Grid.Row>
               <Grid.Column>
