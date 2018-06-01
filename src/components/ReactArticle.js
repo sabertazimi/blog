@@ -19,6 +19,16 @@ import { PRIMARY_COLOR } from '../constants';
 import './ReactArticle.css';
 import headingPNG from '../heading.png';
 
+// Button uses refs inside it and this means that it currently can't accept stateless components as `as`
+// to purge warning message from `react`, wrap `NavLink` into a class component `NavLinkComp`
+class NavLinkComp extends Component {
+  render() {
+    return (
+      <NavLink { ...this.props } />
+    );
+  }
+}
+
 class ReactArticle extends Component {
   constructor(props) {
     super(props);
@@ -98,7 +108,7 @@ class ReactArticle extends Component {
             { mdFile.subtitle || 'Blog' }
           </Divider>
           <Button
-            as={NavLink}
+            as={NavLinkComp}
             to={ mdFile.prevPost ? `/posts/${mdFile.prevPost}` : '/' }
             animated='fade'
             color={PRIMARY_COLOR}
@@ -112,7 +122,7 @@ class ReactArticle extends Component {
             </Button.Content>
           </Button>
           <Button
-            as={NavLink}
+            as={NavLinkComp}
             to={ mdFile.nextPost ? `/posts/${mdFile.nextPost}` : '/' }
             animated='fade'
             color={PRIMARY_COLOR}
