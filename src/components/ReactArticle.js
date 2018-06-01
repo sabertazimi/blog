@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Segment,
   Container,
@@ -96,12 +97,33 @@ class ReactArticle extends Component {
             >
             { mdFile.subtitle || 'Blog' }
           </Divider>
-          <Button animated='fade' color={PRIMARY_COLOR} inverted size='large' onClick={this.props.history.goBack}>
+          <Button
+            as={NavLink}
+            to={ mdFile.prevPost ? `/posts/${mdFile.prevPost}` : '/' }
+            animated='fade'
+            color={PRIMARY_COLOR}
+            size='large'
+            inverted>
             <Button.Content visible>
-              Back
+              Prev Post
             </Button.Content>
             <Button.Content hidden>
               <Icon name='left arrow'/>
+            </Button.Content>
+          </Button>
+          <Button
+            as={NavLink}
+            to={ mdFile.nextPost ? `/posts/${mdFile.nextPost}` : '/' }
+            animated='fade'
+            color={PRIMARY_COLOR}
+            size='large'
+            floated='right'
+            inverted>
+            <Button.Content visible>
+              Next Post
+            </Button.Content>
+            <Button.Content hidden>
+              <Icon name='right arrow'/>
             </Button.Content>
           </Button>
           <Divider
