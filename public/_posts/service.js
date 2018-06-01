@@ -40,9 +40,10 @@ class BlogService {
   * @param  {Error}  err  markdown file access error
   * @param  {Buffer} data markdown file data
   * @param  {string} fileName
+  * @param  {array}  files
   * @return {object}      processed markdown file data
   */
-  defaultVisitor(err, data, fileName) {
+  defaultVisitor(err, data, fileName, files) {
     if (err) {
       console.error(err);
       return null;
@@ -75,10 +76,9 @@ class BlogService {
   * defaultResolver
   *
   * @param  {object} accum accumulated result of all visitors
-  * @param  {array}  files array of file name
   * @return {object}       resolved result to return
   */
-  defaultResolver(accum, files) {
+  defaultResolver(accum) {
     return accum;
   }
 
@@ -102,18 +102,18 @@ class BlogService {
       const mdData = fs.readFileSync(filePath);
 
       if (mdData) {
-        const processedData = this.visitor(null, mdData, fileName);
+        const processedData = this.visitor(null, mdData, fileName, files);
         accum = this.accumulator(accum, processedData);
       } else {
-        this.visitor(new Error(`[ERR] ${filePath} read failed.`), null, fileName);
+        this.visitor(new Error(`[ERR] ${filePath} read failed.`), null, fileName, files);
       }
     });
 
-    return this.resolver(accum, files);
+    return this.resolver(accum);
   }
 }
 
-const getPostsMetadata = new BlogService(null, (err, data, fileName) => {
+const getPostsMetadata = new BlogService(null, (err, data, fileName, files) => {
   // visitor
   if (err) {
     console.error(err);
@@ -124,6 +124,14 @@ const getPostsMetadata = new BlogService(null, (err, data, fileName) => {
     let mdFileData = yamlFrontMatter.loadFront(data.toString());
     mdFileData.id = fileName;
     mdFileData.fileName = fileName;
+
+    files.forEach((fileName, index, files) => {
+      if (fileName == mdFileData.fileName) {
+        mdFileData.prevPost = (index + 1 < files.length) ? files[index + 1] : null;
+        mdFileData.nextPost = (index - 1 >= 0) ? files[index - 1] : null;
+      }
+    });
+
     return mdFileData;
   }
 
@@ -178,7 +186,7 @@ const getPostsMetadata = new BlogService(null, (err, data, fileName) => {
   }
 
   return accum;
-}, (accum, files) => {
+}, (accum) => {
   // resolver
   if (accum) {
     // write tags metadata
@@ -190,26 +198,6 @@ const getPostsMetadata = new BlogService(null, (err, data, fileName) => {
 
     // write posts metadata
     fs.writeFile(path.resolve(jsonPath, 'posts.json'), JSON.stringify(accum.postsJSON), (err) => {
-      if (err) {
-        console.error(err);
-      }
-    });
-
-    // write links metadata
-    let linksJSON = [];
-
-    for (let i = 0, len = files.length; i < len; ++i) {
-      const linkMetadata = {
-        id: files[i],
-        fileName: files[i],
-        prev: (i + 1 < len) ? files[i + 1] : null,
-        next: (i - 1 >= 0) ? files[i - 1] : null
-      }
-
-      linksJSON.push(linkMetadata);
-    }
-
-    fs.writeFile(path.resolve(jsonPath, 'links.json'), JSON.stringify(linksJSON), (err) => {
       if (err) {
         console.error(err);
       }
