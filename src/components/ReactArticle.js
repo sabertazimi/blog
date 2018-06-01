@@ -16,6 +16,7 @@ import ScrollToTopButton from './ScrollToTopButton.js';
 import { PRIMARY_COLOR } from '../constants';
 
 import './ReactArticle.css';
+import headingPNG from '../heading.png';
 
 class ReactArticle extends Component {
   constructor(props) {
@@ -64,8 +65,9 @@ class ReactArticle extends Component {
     const mdFile = data;
 
     return (
-      <Segment style={{ padding: '8em 0em' }} vertical>
-        <Container text>
+      <Segment style={{ padding: '0em 0em' }} vertical>
+        <div className='jumbotron' style={{ backgroundImage: `url(${headingPNG})` }}></div>
+        <div style={{ padding: '8em 8em' }}>
           {
             mdFile.tags ? mdFile.tags.map((tag, index) => {
               return <Label key={index} as='a' href={ `/tags/${tag}` } color={this.getRandomColor()} tag>{tag}</Label>
@@ -73,6 +75,8 @@ class ReactArticle extends Component {
           }
           <Header as='h1' color={this.getRandomColor()} style={{ fontSize: '4em' }}>{ mdFile.title || 'Article' }</Header>
           <Label color='black'>Posted on { (new Date(mdFile.date)).toDateString() || 'Nowadays' } </Label>
+        </div>
+        <Container text>
           <Divider
             as='h4'
             className='header'
