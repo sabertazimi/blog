@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Container,
   Message,
@@ -10,6 +11,11 @@ import {
 import { PRIMARY_COLOR } from '../constants';
 
 class Error extends Component {
+  static propTypes = {
+    message: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+
   render() {
     const { message, history } = this.props;
 

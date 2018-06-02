@@ -26,7 +26,7 @@ class TagsCloud extends Component {
 
     if (error) {
       return (
-        <Error message={ { header:'Bad Request' } } history={ this.props.history }/>
+        <Error message={{ header:'Bad Request' }} history={ this.props.history }/>
       );
     }
 
