@@ -17,7 +17,10 @@ class Error extends Component {
   };
 
   render() {
-    const { message, history } = this.props;
+    let { message, history } = this.props;
+
+    if (typeof message === 'undefined') message = {};
+    if (typeof history === 'undefined') history = {};
 
     return (
       <Segment style={{ padding: '8em 0em' }} vertical>
