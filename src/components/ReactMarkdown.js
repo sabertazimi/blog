@@ -2,8 +2,8 @@ import React, { Component} from 'react';
 import marked from 'marked';
 import hljs from 'highlight.js';
 
-import './ReactMarkdown.css';
 import 'highlight.js/styles/atom-one-dark.css';
+import './ReactMarkdown.css';
 
 class ReactMarkdown extends Component {
   constructor(props) {
