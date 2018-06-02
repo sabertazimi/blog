@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
-import PaginatedPostPreviews from '../components/PaginatedPostPreviews.js';
-import withDataFetcher from '../components/withDataFetcher.js';
+import {
+  Header,
+  Footer,
+  PaginatedPostPreviews,
+  withDataFetcher
+} from '../components';
 
 class Home extends Component {
   render() {

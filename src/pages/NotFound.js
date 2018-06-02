@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
-import Error from '../components/Error.js';
+import {
+  Header,
+  Footer,
+  Error
+} from '../components';
 
 class NotFound extends Component {
   render() {

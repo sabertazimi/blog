@@ -6,10 +6,12 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import Home from './pages/Home.js';
-import Tags from './pages/Tags.js';
-import Post from './pages/Post.js';
-import NotFound from './pages/NotFound.js';
+import {
+  Home,
+  Tags,
+  Post,
+  NotFound
+} from './pages';
 
 class App extends Component {
   render() {
