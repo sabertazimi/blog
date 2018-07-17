@@ -5,7 +5,7 @@ import {
   Card
 } from 'semantic-ui-react';
 
-class BookGrid extends Component {
+class BookCard extends Component {
   render() {
     const { title, url, author, description } = this.props;
 
