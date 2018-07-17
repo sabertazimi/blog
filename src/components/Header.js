@@ -78,6 +78,13 @@ class Header extends Component {
                 Tags
               </Menu.Item>
               <Menu.Item
+                as={NavLink}
+                to='/book'
+                activeClassName='active'
+                >
+                Book
+              </Menu.Item>
+              <Menu.Item
                 as={Button}
                 animated='fade'
                 position='right'

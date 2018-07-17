@@ -10,6 +10,7 @@ import {
   Home,
   Tags,
   Post,
+  Book,
   NotFound
 } from './pages';
 
@@ -22,6 +23,7 @@ class App extends Component {
           <Route exact path='/tags' render={ () => { return <Redirect to='/tags/all'/> } }/>
           <Route path='/tags/:tagName' component={Tags}/>
           <Route path='/posts/:mdFile' component={Post}/>
+          <Route path='/book' component={Book}/>
           <Route component={NotFound}/>
         </Switch>
       </Router>
