@@ -4,6 +4,7 @@ import Error from './Error.js';
 import PaginatedPostPreviews from './PaginatedPostPreviews.js';
 import ReactArticle from './ReactArticle.js';
 import TagsCloud from './TagsCloud.js';
+import BookGrid from './BookGrid.js';
 import withDataFetcher from './withDataFetcher.js';
 
 export {
@@ -13,5 +14,6 @@ export {
   PaginatedPostPreviews,
   ReactArticle,
   TagsCloud,
+  BookGrid,
   withDataFetcher
 };
