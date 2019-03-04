@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Error from './Error.js';
+import Error from './Error';
 
 describe('Componentes Rendering', () => {
   it('Error.js renders without crashing', () => {
