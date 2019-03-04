@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Error, PageLoader, PostPreviews } from '../components';
+import { Error, PageLoader } from '../components';
+import PostPreviews from '../components/GridPostPreviews';
 
 class PostPreviewsContainer extends Component {
   state = {

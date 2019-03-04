@@ -4,7 +4,8 @@ import Error from './Error';
 import PageLoader from './PageLoader';
 import GithubCard from './GithubCard';
 import PreviewMarkdown from './PreviewMarkdown';
-import PostPreviews from './PostPreviews';
+import GridPostPreviews from './GridPostPreviews';
+import PaginatedPostPreviews from './PaginatedPostPreviews';
 import Article from './Article';
 import TagsCloud from './TagsCloud';
 import BookGrid from './BookGrid';
@@ -17,7 +18,8 @@ export {
   PageLoader,
   GithubCard,
   PreviewMarkdown,
-  PostPreviews,
+  GridPostPreviews,
+  PaginatedPostPreviews,
   Article,
   TagsCloud,
   BookGrid,

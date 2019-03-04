@@ -8,10 +8,10 @@ import {
   Segment
 } from 'semantic-ui-react';
 
-import { PostPreview } from '../containers';
+import PostPreview from './PostPreview';
 import { PRIMARY_COLOR } from '../constants';
 
-const PostPreviews = ({ activePage, history, data, onPageChange }) => {
+const PaginatedPostPreviews = ({ activePage, history, data, onPageChange }) => {
   const mdFiles = data;
   const totalPages = mdFiles[mdFiles.length - 1].pageId;
 
@@ -72,4 +72,4 @@ const PostPreviews = ({ activePage, history, data, onPageChange }) => {
   );
 };
 
-export default PostPreviews;
+export default PaginatedPostPreviews;

@@ -6,7 +6,7 @@ const rootPath = path.resolve(__dirname);
 const mdPath = path.resolve(rootPath, './md');
 const jsonPath = path.resolve(rootPath, './json');
 const PREVIEW_PER_PAGE = 5; // be same with src/constants/index.js
-const PREVIEW_CHARS = 360;  // be same with src/constants/index.js
+const PREVIEW_CHARS = 200;  // be same with src/constants/index.js
 
 class BlogService {
   constructor(comparator, visitor, accumulator, resolver) {
