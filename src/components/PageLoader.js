@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Dimmer,
   Loader,
-  Progress
 } from 'semantic-ui-react';
 
 class PageLoader extends Component {

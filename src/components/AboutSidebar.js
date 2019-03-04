@@ -4,7 +4,7 @@ import {
   Segment
 } from 'semantic-ui-react';
 
-import GithubCard from './GithubCard.js';
+import { GithubCard } from '../containers';
 
 const AboutSidebar = ({ width, visible }) => (
   <Sidebar

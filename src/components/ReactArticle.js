@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Spring, animated } from 'react-spring/renderprops'
 import {
   Segment,
   Container,
