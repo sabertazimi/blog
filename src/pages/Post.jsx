@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {
   Footer,
-  ReactArticle,
+  Article,
   withDataFetcher
 } from '../components';
 
@@ -12,12 +12,12 @@ import {
 
 class Post extends Component {
   render() {
-    const ReactArticleComp = withDataFetcher(`/_posts/json/${this.props.match.params.mdFile}.json`)(ReactArticle);
+    const ArticleComp = withDataFetcher(`/_posts/json/${this.props.match.params.mdFile}.json`)(Article);
 
     return (
       <div>
         <Header headingHidden={true} />
-        <ReactArticleComp history={ this.props.history } />
+        <ArticleComp history={ this.props.history } />
         <Footer />
       </div>
     )

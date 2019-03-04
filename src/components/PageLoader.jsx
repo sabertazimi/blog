@@ -2,7 +2,12 @@ import React from 'react';
 import { Dimmer, Loader } from 'semantic-ui-react';
 
 const PageLoader = ({ message }) => (
-  <Dimmer active>
+  <Dimmer
+    active
+    style={{
+      paddingTop: '100px',
+    }}
+  >
     <Loader>{message || 'Loading'}</Loader>
   </Dimmer>
 );

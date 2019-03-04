@@ -1,72 +1,66 @@
-import React, { Component } from 'react';
-import {
-  Button,
-  Icon
-} from 'semantic-ui-react';
+import React from 'react';
+import { Button, Icon } from 'semantic-ui-react';
 
 import { PRIMARY_COLOR } from '../constants';
 
 import './ScrollToTopButton.css';
 
-class ScrollToTopButton extends Component {
-  scrollTo = (event, data) => {
+const ScrollToTopButton = () => {
+  const scrollTo = (event, data) => {
     if (event && event.preventDefault) {
-      event.preventDefault()
+      event.preventDefault();
     }
 
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
 
-    const element = document.getElementsByClassName((data.direction === 'up') ? 'blog-header' : 'blog-footer')[0];
+    const element = document.getElementsByClassName(
+      data.direction === 'up' ? 'blog-header' : 'blog-footer'
+    )[0];
 
     if (element) {
       element.scrollIntoView({
-        'behavior': 'smooth',
-        'blcok': 'start'
+        behavior: 'smooth',
+        blcok: 'start'
       });
     }
-  }
+  };
 
-
-  render() {
-    return (
-      <div>
+  return (
+    <div>
       <Button
-        animated='fade'
+        animated="fade"
         color={PRIMARY_COLOR}
         inverted
-        size='large'
-        className='scroll-button'
-        direction='up'
-        onClick={this.scrollTo}
-        >
+        size="large"
+        className="scroll-button"
+        direction="up"
+        onClick={scrollTo}
+      >
         <Button.Content visible>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Top&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </Button.Content>
         <Button.Content hidden>
-          <Icon name='up arrow'/>
+          <Icon name="up arrow" />
         </Button.Content>
       </Button>
       <Button
-        animated='fade'
+        animated="fade"
         color={PRIMARY_COLOR}
         inverted
-        size='large'
-        className='scroll-button scroll-button-bottom'
-        direction='down'
-        onClick={this.scrollTo}
-        >
-        <Button.Content visible>
-          Bottom
-        </Button.Content>
+        size="large"
+        className="scroll-button scroll-button-bottom"
+        direction="down"
+        onClick={scrollTo}
+      >
+        <Button.Content visible>Bottom</Button.Content>
         <Button.Content hidden>
-          <Icon name='down arrow'/>
+          <Icon name="down arrow" />
         </Button.Content>
       </Button>
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default ScrollToTopButton;

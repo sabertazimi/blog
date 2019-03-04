@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React from 'react';
 import { Spring } from 'react-spring/renderprops';
 import marked from 'marked';
 import hljs from 'highlight.js';
@@ -6,40 +6,29 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 import './ReactMarkdown.css';
 
-class ReactMarkdown extends Component {
-  constructor(props) {
-    super(props);
+const ReactMarkdown = ({ markedOptions = {}, value }) => {
+  const options = {
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false,
+    langPrefix: 'hljs ',
+    ...markedOptions,
+  };
 
-    let options = {};
-    if (this.props.markedOptions) {
-      options = this.props.markedOptions;
-    }
+  marked.setOptions(options);
 
-    options = {
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false,
-      langPrefix: 'hljs ',
-      ...options,
-    };
+  const renderer = new marked.Renderer();
 
-    marked.setOptions(options);
-  }
+  renderer.link = (href, title, text) => {
+    title = title || 'link';
 
-  render() {
-    const { value } = this.props;
-    const renderer = new marked.Renderer();
-
-    renderer.link = (href, title, text) => {
-      title = title || 'link';
-
-      if (href.startsWith('#') || href.startsWith('./#')) {
-        const id = href.replace('#', '');
-        const scrollToFunc = (`
+    if (href.startsWith('#') || href.startsWith('./#')) {
+      const id = href.replace('#', '');
+      const scrollToFunc = `
           if (event && event.preventDefault) {
             event.preventDefault()
           }
@@ -57,45 +46,38 @@ class ReactMarkdown extends Component {
             }
 
           return false;
-        `);
+        `;
 
-        return (
-          `<a href="javascript:void(0)" title="${title}" onclick="return (function(event) {${scrollToFunc}})();">${text}</a>`
-        );
-      } else {
-        return (
-          `<a href="${href}" title="${title}">${text}</a>`
-        );
-      }
-    };
+      return `<a href="javascript:void(0)" title="${title}" onclick="return (function(event) {${scrollToFunc}})();">${text}</a>`;
+    } else {
+      return `<a href="${href}" title="${title}">${text}</a>`;
+    }
+  };
 
-    renderer.heading = (text, level) => {
-      // slugify
-      const escapedText = text.toLowerCase()
-                          .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')  // remove html tag
-                          .replace(/&([^;]+);/g, '')                    // remove special encode chars
-                          .replace(/[^\u4e00-\u9fa5\w- ]+/g, '')
-                          .replace(/[^\u4e00-\u9fa5\w]+/g, '-');
+  renderer.heading = (text, level) => {
+    // slugify
+    const escapedText = text
+      .toLowerCase()
+      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '') // remove html tag
+      .replace(/&([^;]+);/g, '') // remove special encode chars
+      .replace(/[^\u4e00-\u9fa5\w- ]+/g, '')
+      .replace(/[^\u4e00-\u9fa5\w]+/g, '-');
 
-      return (
-        `<h${level}>
+    return `<h${level}>
         <a id="${escapedText}" name="${escapedText}" class="anchor" href="#${escapedText}">
           <span class="header-link"></span>
         </a>
         ${text}
-      </h${level}>`
-    );
+      </h${level}>`;
   };
 
   renderer.code = (code, language) => {
     if (language && hljs.getLanguage(language)) {
-      return (
-        `<pre style="background: black"><code class="hljs ${language}" >${hljs.highlight(language, code).value}</code></pre>`
-      );
+      return `<pre style="background: black"><code class="hljs ${language}" >${
+        hljs.highlight(language, code).value
+      }</code></pre>`;
     } else {
-      return (
-        `<pre><code>${hljs.highlightAuto(code).value}</code></pre>`
-      );
+      return `<pre><code>${hljs.highlightAuto(code).value}</code></pre>`;
     }
   };
 
@@ -111,12 +93,11 @@ class ReactMarkdown extends Component {
         <div
           style={props}
           dangerouslySetInnerHTML={{ __html: html }}
-          className='markdown-body'
+          className="markdown-body"
         />
       )}
     </Spring>
   );
-}
-}
+};
 
 export default ReactMarkdown;
