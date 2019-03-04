@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 
-import {
-  Footer,
-  TagsCloud,
-  withDataFetcher
-} from '../components';
-
-import {
-  Header,
-  PostPreviews,
-} from '../containers';
+import { TagsCloud, withDataFetcher } from '../components';
+import { PostPreviews } from '../containers';
+import { SimpleLayout } from '../layouts';
 
 import { PREVIEW_PER_PAGE } from '../constants';
 
 class Tags extends Component {
-  postsDataHandler = (data) => {
+  postsDataHandler = data => {
     let pageCnt = 0;
 
-    data = data.filter((mdFile) => {
-      if (mdFile.tags && mdFile.tags.includes(this.props.match.params.tagName)) {
+    data = data.filter(mdFile => {
+      if (
+        mdFile.tags &&
+        mdFile.tags.includes(this.props.match.params.tagName)
+      ) {
         mdFile.pageId = Math.floor(pageCnt / PREVIEW_PER_PAGE) + 1;
         pageCnt += 1;
         return true;
@@ -28,38 +24,40 @@ class Tags extends Component {
     });
 
     if (pageCnt === 0) {
-      return null
+      return null;
     }
 
     return data;
-  }
+  };
 
-  tagsDataHandler = (data) => {
+  tagsDataHandler = data => {
     return data;
-  }
+  };
 
   render() {
     const tagName = this.props.match.params.tagName;
 
     if (tagName === 'all') {
-      const TagsCloudComp = withDataFetcher(`/_posts/json/tags.json`, this.tagsDataHandler)(TagsCloud);
+      const TagsCloudComp = withDataFetcher(
+        `/_posts/json/tags.json`,
+        this.tagsDataHandler
+      )(TagsCloud);
 
       return (
-        <div>
-          <Header headingHidden={true} />
-          <TagsCloudComp history={ this.props.history } />
-          <Footer />
-        </div>
+        <SimpleLayout>
+          <TagsCloudComp history={this.props.history} />
+        </SimpleLayout>
       );
     } else {
-      const PostPreviewsComp = withDataFetcher(`/_posts/json/posts.json`, this.postsDataHandler)(PostPreviews);
+      const PostPreviewsComp = withDataFetcher(
+        `/_posts/json/posts.json`,
+        this.postsDataHandler
+      )(PostPreviews);
 
       return (
-        <div>
-          <Header headingHidden={true} />
-          <PostPreviewsComp history={ this.props.history } />
-          <Footer />
-        </div>
+        <SimpleLayout>
+          <PostPreviewsComp history={this.props.history} />
+        </SimpleLayout>
       );
     }
   }

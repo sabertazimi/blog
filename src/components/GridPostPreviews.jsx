@@ -30,7 +30,7 @@ const leftFlexStyle = {
   ...flexStyle,
   flexDirection: 'column',
   alignItems: 'center',
-  maxWidth: '60%',
+  maxWidth: '55%',
 };
 
 const rightFlexStyle = {
@@ -44,8 +44,8 @@ const GridPostPreviews = ({ data }) => {
   const rightFiles = mdFiles.slice(Math.ceil(mdFiles.length / 2));
 
   return (
-    <Segment style={{ padding: '8em 0em' }} vertical>
-      <Responsive minWidth={1024}>
+    <Segment style={{ width: '100%', padding: '8em 0em', overflow: 'hidden' }} vertical>
+      <Responsive minWidth={1280}>
         <div style={rowFlexStyle}>
           <div style={leftFlexStyle}>
             {leftFiles.map((mdFile, index) => {
@@ -59,7 +59,7 @@ const GridPostPreviews = ({ data }) => {
           </div>
         </div>
       </Responsive>
-      <Responsive maxWidth={1023}>
+      <Responsive maxWidth={1279}>
         <div style={columnStyle}>
           {mdFiles.map((mdFile, index) => {
             return <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />;

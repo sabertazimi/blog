@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 
-import {
-  Header,
-  Footer,
-  withDataFetcher
-} from '../components';
-
-import {
-  PostPreviews,
-} from '../containers';
+import { withDataFetcher } from '../components';
+import { PostPreviews } from '../containers';
+import { LandingLayout } from '../layouts';
 
 class Home extends Component {
   render() {
     const PostPreviewsComp = withDataFetcher(`/_posts/json/posts.json`)(PostPreviews);
 
     return (
-      <div>
-        <Header />
+      <LandingLayout>
         <PostPreviewsComp history={ this.props.history } />
-        <Footer />
-      </div>
+      </LandingLayout>
     );
   }
 }

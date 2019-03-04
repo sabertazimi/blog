@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
 
-import {
-  Footer,
-  Error
-} from '../components';
-
-import {
-  Header,
-} from '../containers';
+import { Error } from '../components';
+import { SimpleLayout } from '../layouts';
 
 class NotFound extends Component {
   render() {
     return (
-      <div>
-        <Header headingHidden={true} />
+      <SimpleLayout>
         <Error message={{ header:'Not Found' }} history={ this.props.history }/>
-        <Footer />
-      </div>
+      </SimpleLayout>
     );
   }
 }

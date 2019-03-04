@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 
-import {
-  Footer,
-  BookGrid
-} from '../components';
-
-import {
-  Header,
-} from '../containers';
+import { BookGrid } from '../components';
+import { SimpleLayout } from '../layouts';
 
 class Book extends Component {
   state = {
@@ -25,11 +19,9 @@ class Book extends Component {
     const { booklist } = this.state;
 
     return (
-      <div>
-        <Header headingHidden={true} />
+      <SimpleLayout>
         <BookGrid booklist={booklist} />
-        <Footer />
-      </div>
+      </SimpleLayout>
     );
   }
 }
