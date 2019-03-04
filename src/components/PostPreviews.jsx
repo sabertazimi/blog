@@ -8,7 +8,7 @@ import {
   Segment
 } from 'semantic-ui-react';
 
-import PostPreview from './PostPreview';
+import { PostPreview } from '../containers';
 import { PRIMARY_COLOR } from '../constants';
 
 const PostPreviews = ({ activePage, history, data, onPageChange }) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Error, PageLoader, PostPreviews } from '../components';
 
-class PaginatedPostPreviews extends Component {
+class PostPreviewsContainer extends Component {
   state = {
     activePage: 1
   };
@@ -36,4 +36,4 @@ class PaginatedPostPreviews extends Component {
   }
 }
 
-export default PaginatedPostPreviews;
+export default PostPreviewsContainer;

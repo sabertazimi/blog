@@ -11,10 +11,10 @@ import {
   Segment
 } from 'semantic-ui-react';
 
+import Heading from './Heading';
 import AboutSidebar from './AboutSidebar';
 import { PRIMARY_COLOR } from '../constants';
 
-import headingPNG from '../heading.png';
 import logoSVG from '../logo.svg';
 
 const Header = ({
@@ -79,11 +79,7 @@ const Header = ({
           </Menu>
         )}
       </Spring>
-      <Image
-        src={headingPNG}
-        fluid={!headingHidden && true}
-        hidden={headingHidden || false}
-      />
+      <Heading headingHidden={headingHidden} />
     </Segment>
     <AboutSidebar visible={sidebarVisible} />
   </Visibility>

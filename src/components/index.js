@@ -3,6 +3,7 @@ import Footer from './Footer';
 import Error from './Error';
 import PageLoader from './PageLoader';
 import GithubCard from './GithubCard';
+import PreviewMarkdown from './PreviewMarkdown';
 import PostPreviews from './PostPreviews';
 import ReactArticle from './ReactArticle';
 import TagsCloud from './TagsCloud';
@@ -15,6 +16,7 @@ export {
   Error,
   PageLoader,
   GithubCard,
+  PreviewMarkdown,
   PostPreviews,
   ReactArticle,
   TagsCloud,
