@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import {
   Footer,
-  PaginatedPostPreviews,
   TagsCloud,
   withDataFetcher
 } from '../components';
 
 import {
   Header,
+  PostPreviews,
 } from '../containers';
 
 import { PREVIEW_PER_PAGE } from '../constants';
@@ -52,12 +52,12 @@ class Tags extends Component {
         </div>
       );
     } else {
-      const PaginatedPostPreviewsComp = withDataFetcher(`/_posts/json/posts.json`, this.postsDataHandler)(PaginatedPostPreviews);
+      const PostPreviewsComp = withDataFetcher(`/_posts/json/posts.json`, this.postsDataHandler)(PostPreviews);
 
       return (
         <div>
           <Header headingHidden={true} />
-          <PaginatedPostPreviewsComp history={ this.props.history } />
+          <PostPreviewsComp history={ this.props.history } />
           <Footer />
         </div>
       );

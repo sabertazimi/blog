@@ -1,8 +1,8 @@
-import Home from './Home.js';
-import Tags from './Tags.js';
-import Post from './Post.js';
-import Book from './Book.js';
-import NotFound from './NotFound.js';
+import Home from './Home';
+import Tags from './Tags';
+import Post from './Post';
+import Book from './Book';
+import NotFound from './NotFound';
 
 export {
   Home,

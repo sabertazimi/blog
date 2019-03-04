@@ -9,7 +9,7 @@ import {
   Button
 } from 'semantic-ui-react';
 
-import ReactMarkdown from './ReactMarkdown.js';
+import ReactMarkdown from './ReactMarkdown';
 import { PREVIEW_CHARS, PRIMARY_COLOR } from '../constants';
 
 class BlurringMarkdown extends Component {

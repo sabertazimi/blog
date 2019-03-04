@@ -7,8 +7,8 @@ import {
   Segment
 } from 'semantic-ui-react';
 
-import Error from './Error.js';
-import PageLoader from './PageLoader.js';
+import Error from './Error';
+import PageLoader from './PageLoader';
 
 class TagsCloud extends Component {
   constructor(props) {

@@ -3,18 +3,21 @@ import React, { Component } from 'react';
 import {
   Header,
   Footer,
-  PaginatedPostPreviews,
   withDataFetcher
 } from '../components';
 
+import {
+  PostPreviews,
+} from '../containers';
+
 class Home extends Component {
   render() {
-    const PaginatedPostPreviewsComp = withDataFetcher(`/_posts/json/posts.json`)(PaginatedPostPreviews);
+    const PostPreviewsComp = withDataFetcher(`/_posts/json/posts.json`)(PostPreviews);
 
     return (
       <div>
         <Header />
-        <PaginatedPostPreviewsComp history={ this.props.history } />
+        <PostPreviewsComp history={ this.props.history } />
         <Footer />
       </div>
     );

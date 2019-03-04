@@ -1,19 +1,21 @@
-import Header from './Header.js';
-import Footer from './Footer.js';
-import Error from './Error.js';
+import Header from './Header';
+import Footer from './Footer';
+import Error from './Error';
+import PageLoader from './PageLoader';
 import GithubCard from './GithubCard';
-import PaginatedPostPreviews from './PaginatedPostPreviews.js';
-import ReactArticle from './ReactArticle.js';
-import TagsCloud from './TagsCloud.js';
-import BookGrid from './BookGrid.js';
-import withDataFetcher from './withDataFetcher.js';
+import PostPreviews from './PostPreviews';
+import ReactArticle from './ReactArticle';
+import TagsCloud from './TagsCloud';
+import BookGrid from './BookGrid';
+import withDataFetcher from './withDataFetcher';
 
 export {
   Header,
   Footer,
   Error,
+  PageLoader,
   GithubCard,
-  PaginatedPostPreviews,
+  PostPreviews,
   ReactArticle,
   TagsCloud,
   BookGrid,

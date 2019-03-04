@@ -10,10 +10,10 @@ import {
   Label
 } from 'semantic-ui-react';
 
-import Error from './Error.js';
-import PageLoader from './PageLoader.js';
-import ReactMarkdown from './ReactMarkdown.js';
-import ScrollToTopButton from './ScrollToTopButton.js';
+import Error from './Error';
+import PageLoader from './PageLoader';
+import ReactMarkdown from './ReactMarkdown';
+import ScrollToTopButton from './ScrollToTopButton';
 import { PRIMARY_COLOR } from '../constants';
 
 import './ReactArticle.css';

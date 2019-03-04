@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Segment, Container, Divider, Card } from 'semantic-ui-react';
 
-import BookCard from './BookCard.js';
+import BookCard from './BookCard';
 
 const BookGrid = ({ booklist }) => (
   <Segment style={{ padding: '3em 0em' }} vertical>

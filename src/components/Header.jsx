@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Spring } from 'react-spring/renderprops';
 import {
   Menu,
   Button,
@@ -10,12 +11,11 @@ import {
   Segment
 } from 'semantic-ui-react';
 
-import AboutSidebar from './AboutSidebar.js';
+import AboutSidebar from './AboutSidebar';
 import { PRIMARY_COLOR } from '../constants';
 
 import headingPNG from '../heading.png';
 import logoSVG from '../logo.svg';
-import { Spring } from 'react-spring/renderprops';
 
 const Header = ({
   headingHidden,
