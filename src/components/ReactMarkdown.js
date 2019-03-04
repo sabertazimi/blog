@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { Spring } from 'react-spring/renderprops';
 import marked from 'marked';
 import hljs from 'highlight.js';
 
@@ -101,10 +102,19 @@ class ReactMarkdown extends Component {
   const html = marked(value || '', { renderer: renderer });
 
   return (
-    <div
-      dangerouslySetInnerHTML={{ __html: html }}
-      className='markdown-body'
-      />
+    <Spring
+      from={{ opacity: 0, transform: 'translateX(200px)' }}
+      to={{ opacity: 1, transform: 'translateX(0)' }}
+      config={{ delay: 500 }}
+    >
+      {(props) => (
+        <div
+          style={props}
+          dangerouslySetInnerHTML={{ __html: html }}
+          className='markdown-body'
+        />
+      )}
+    </Spring>
   );
 }
 }

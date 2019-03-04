@@ -15,6 +15,7 @@ import { PRIMARY_COLOR } from '../constants';
 
 import headingPNG from '../heading.png';
 import logoSVG from '../logo.svg';
+import { Spring } from 'react-spring/renderprops';
 
 class Header extends Component {
   constructor(props) {
@@ -45,64 +46,71 @@ class Header extends Component {
         once={false}
         >
         <Segment inverted textAlign='center' vertical>
-          <Menu
-            className='blog-header'
-            style={{ zIndex: 99999 }}
-            fixed={ menuFixed ? 'top' : null }
-            inverted={ !menuFixed }
-            pointing={ !menuFixed }
-            secondary={ !menuFixed }
-            size='large'
-            >
-            <Container text>
-              <Menu.Item>
-                <Image
-                  size='mini'
-                  src={logoSVG}
-                  style={{ marginRight: '3em' }}
-                  />
-              </Menu.Item>
-              <Menu.Item
-                as={NavLink}
-                exact
-                to='/'
-                activeClassName='active'
-                >
-                Home
-              </Menu.Item>
-              <Menu.Item
-                as={NavLink}
-                to='/tags/all'
-                activeClassName='active'
-                >
-                Tags
-              </Menu.Item>
-              <Menu.Item
-                as={NavLink}
-                to='/book'
-                activeClassName='active'
-                >
-                Book
-              </Menu.Item>
-              <Menu.Item
-                as={Button}
-                animated='fade'
-                position='right'
+          <Spring
+            from={{ opacity: 0, transform: 'translateX(-300px)' }}
+            to={{ opacity: 1, transform: 'translateX(0)' }}
+          >
+            {(props) => (
+              <Menu
+                className='blog-header'
+                style={{ ...props, zIndex: 99999 }}
+                fixed={ menuFixed ? 'top' : null }
                 inverted={ !menuFixed }
-                color={ PRIMARY_COLOR }
-                onClick={ this.toggleSidebar}
+                pointing={ !menuFixed }
+                secondary={ !menuFixed }
+                size='large'
                 >
-                <Button.Content
-                  visible
+                <Container text>
+                  <Menu.Item>
+                    <Image
+                      size='mini'
+                      src={logoSVG}
+                      style={{ marginRight: '3em' }}
+                    />
+                  </Menu.Item>
+                  <Menu.Item
+                    as={NavLink}
+                    exact
+                    to='/'
+                    activeClassName='active'
                   >
-                  About
-                </Button.Content>
-                <Button.Content hidden>
-                  <Icon name='github'/>
-                </Button.Content>
-              </Menu.Item>
-            </Container>
-          </Menu>
+                    Home
+                  </Menu.Item>
+                  <Menu.Item
+                    as={NavLink}
+                    to='/tags/all'
+                    activeClassName='active'
+                  >
+                    Tags
+                  </Menu.Item>
+                  <Menu.Item
+                    as={NavLink}
+                    to='/book'
+                    activeClassName='active'
+                  >
+                    Book
+                  </Menu.Item>
+                  <Menu.Item
+                    as={Button}
+                    animated='fade'
+                    position='right'
+                    inverted={ !menuFixed }
+                    color={ PRIMARY_COLOR }
+                    onClick={ this.toggleSidebar}
+                    >
+                    <Button.Content
+                      visible
+                    >
+                      About
+                    </Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='github'/>
+                    </Button.Content>
+                  </Menu.Item>
+                </Container>
+              </Menu>
+            )}
+          </Spring>
           <Image src={ headingPNG } fluid={ !headingHidden && true }  hidden={ headingHidden || false }/>
         </Segment>
         <AboutSidebar visible={this.state.sidebarVisible}/>

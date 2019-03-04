@@ -20,12 +20,6 @@ class BookGrid extends Component {
           'url': 'https://sabertazimi.github.io/awesome-notes',
           'description': 'Daily I Learned Notes'
         },
-        {
-          'title': 'awesome-thesisi-notes',
-          'author': 'sabertazimi',
-          'url': 'https://sabertazimi.github.io/awesome-thesis-notes',
-          'description': 'Paper Reading Notes'
-        }
       ]
     }
   }

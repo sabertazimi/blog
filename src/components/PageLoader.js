@@ -11,7 +11,6 @@ class PageLoader extends Component {
 
     return (
       <Dimmer active>
-        <Progress percent={100} color='blue' attached='top' inverted />
         <Loader>{ message || 'Loading' }</Loader>
       </Dimmer>
     );

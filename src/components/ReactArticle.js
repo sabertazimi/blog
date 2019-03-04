@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Spring, animated } from 'react-spring/renderprops'
 import {
   Segment,
   Container,
@@ -32,12 +33,13 @@ class NavLinkComp extends Component {
 class ReactArticle extends Component {
   constructor(props) {
     super(props);
-    this.colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'blue', 'violet', 'purple', 'pink', 'brown', 'grey'];
+    this.headerColor = this.getRandomColor();
   }
 
   getRandomColor = () => {
+    const colors = ['red', 'orange', 'yellow', 'olive', 'green', 'teal', 'blue', 'violet', 'purple', 'pink', 'brown', 'grey'];
     const colorIdx = Math.floor(Math.random() * 11);
-    return this.colors[colorIdx];
+    return colors[colorIdx];
   }
 
   loadDisqus = () => {
@@ -81,10 +83,10 @@ class ReactArticle extends Component {
         <div style={{ padding: '8em 8em' }}>
           {
             mdFile.tags ? mdFile.tags.map((tag, index) => {
-              return <Label key={index} as='a' href={ `/tags/${tag}` } color={this.getRandomColor()} tag>{tag}</Label>
-            }) : <Label as='a' href='/tags/all' color={this.getRandomColor()} tag>CS</Label>
+              return <Label key={index} as='a' href={ `/tags/${tag}` } color={PRIMARY_COLOR} tag>{tag}</Label>
+            }) : <Label as='a' href='/tags/all' color={PRIMARY_COLOR} tag>CS</Label>
           }
-          <Header as='h1' color={this.getRandomColor()} style={{ fontSize: '4em' }}>{ mdFile.title || 'Article' }</Header>
+          <Header as='h1' color={this.headerColor} style={{ fontSize: '4em' }}>{ mdFile.title || 'Article' }</Header>
           <Label color='black'>Posted on { (new Date(mdFile.date)).toDateString() || 'Nowadays' } </Label>
         </div>
         <Container text>
