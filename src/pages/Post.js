@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 import {
-  Header,
   Footer,
   ReactArticle,
   withDataFetcher
 } from '../components';
+
+import {
+  Header,
+} from '../containers';
 
 class Post extends Component {
   render() {

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
 import {
-  Header,
   Footer,
   BookGrid
 } from '../components';
+
+import {
+  Header,
+} from '../containers';
 
 class Book extends Component {
   state = {

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
 import {
-  Header,
   Footer,
   PaginatedPostPreviews,
   TagsCloud,
   withDataFetcher
 } from '../components';
+
+import {
+  Header,
+} from '../containers';
 
 import { PREVIEW_PER_PAGE } from '../constants';
 

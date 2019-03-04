@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
 import {
-  Header,
   Footer,
   Error
 } from '../components';
+
+import {
+  Header,
+} from '../containers';
 
 class NotFound extends Component {
   render() {
