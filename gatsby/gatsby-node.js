@@ -209,6 +209,33 @@ exports.createPages = ({ actions: { createPage } }) => {
   });
 
   createPage({
+    path: '/tags',
+    component: require.resolve('./src/templates/Tags.jsx'),
+    context: { tags },
+  });
+
+  createPage({
+    path: '/tags/all',
+    component: require.resolve('./src/templates/Tags.jsx'),
+    context: { tags },
+  });
+
+  Object.keys(tags).forEach(tag => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: require.resolve('./src/templates/Tags.jsx'),
+      context: {
+        posts: posts.filter(post => post.tags && post.tags.includes(tag)),
+      },
+    });
+  });
+
+  createPage({
+    path: '/books',
+    component: require.resolve('./src/templates/Books.jsx'),
+  });
+
+  createPage({
     path: '/about',
     component: require.resolve('./src/templates/About.jsx'),
   });
@@ -219,7 +246,7 @@ exports.createPages = ({ actions: { createPage } }) => {
     context: { post: posts[0] },
   });
 
-  posts.forEach((post) => {
+  posts.forEach(post => {
     createPage({
       path: `/posts/${post.title}/`,
       component: require.resolve('./src/templates/Post.jsx'),

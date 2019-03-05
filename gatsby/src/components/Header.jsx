@@ -22,6 +22,12 @@ const Header = ({ menuFixed, onBottomPassed, onBottomPassedReverse }) => (
           <Menu.Item as={Link} to="/" activeClassName="active">
             Home
           </Menu.Item>
+          <Menu.Item as={Link} to="/tags" activeClassName="active">
+            Tags
+          </Menu.Item>
+          <Menu.Item as={Link} to="/books" activeClassName="active">
+            Books
+          </Menu.Item>
           <Menu.Item as={Link} to="/about" activeClassName="active">
             About
           </Menu.Item>
