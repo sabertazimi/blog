@@ -9,9 +9,10 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: `${__dirname}/_posts/`,
+        path: `${__dirname}/src/_posts/`,
       },
     },
+    'gatsby-transformer-remark',
     'gatsby-plugin-offline',
   ],
 };

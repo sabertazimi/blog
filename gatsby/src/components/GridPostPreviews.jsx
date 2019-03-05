@@ -49,14 +49,14 @@ const GridPostPreviews = ({ posts }) => {
           <div style={leftFlexStyle}>
             {leftPosts.map((post, index) => {
               return (
-                <PostPreview key={post.fileName || index} post={post} />
+                <PostPreview key={post.title || index} post={post} />
               );
             })}
           </div>
           <div style={rightFlexStyle}>
             {rightPosts.map((post, index) => {
               return (
-                <PostPreview key={post.fileName || index} post={post} />
+                <PostPreview key={post.title || index} post={post} />
               );
             })}
           </div>
@@ -66,7 +66,7 @@ const GridPostPreviews = ({ posts }) => {
         <div style={columnStyle}>
           {posts.map((post, index) => {
             return (
-              <PostPreview key={post.fileName || index} post={post} />
+              <PostPreview key={post.title || index} post={post} />
             );
           })}
         </div>
