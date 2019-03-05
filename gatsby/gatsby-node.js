@@ -201,7 +201,10 @@ const PostsDataService = new BlogService({
       // generate posts data
       mdFileData.pageId = Math.floor(accum.fileCnt / PREVIEW_PER_PAGE) + 1;
       mdFileData.__content = mdFileData.__content;
-      mdFileData.url = mdFileData.fileName.split('.').slice(0, -1).join('.');
+      mdFileData.url = mdFileData.fileName
+        .split('.')
+        .slice(0, -1)
+        .join('.');
       accum.posts.push(Object.assign({}, mdFileData));
       accum.fileCnt += 1;
     }
@@ -210,7 +213,32 @@ const PostsDataService = new BlogService({
   },
 });
 
-exports.createPages = ({ actions: { createPage } }) => {
+const { createFilePath } = require(`gatsby-source-filesystem`);
+
+exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
+  switch (node.internal.type) {
+    case 'MarkdownRemark': {
+      const slug = createFilePath({ node, getNode, basePath: 'pages' });
+      createNodeField({
+        node,
+        name: 'slug',
+        value: slug,
+      });
+      break;
+    }
+    case 'SitePage':
+      break;
+    case 'SitePlugin':
+      break;
+    default:
+      break;
+  }
+};
+
+exports.createPages = ({
+  graphql,
+  actions: { createPage, createNodeField },
+}) => {
   const postsData = PostsDataService.generateJSON();
   const { posts, tags } = postsData;
 
@@ -263,6 +291,31 @@ exports.createPages = ({ actions: { createPage } }) => {
       path: `/posts/${post.url}`,
       component: require.resolve('./src/templates/Post.jsx'),
       context: { post },
+    });
+  });
+
+  return graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      createPage({
+        path: node.fields.slug,
+        component: path.resolve('./src/templates/Post.jsx'),
+        context: {
+          slug: node.fields.slug,
+          post: posts[0],
+        },
+      });
     });
   });
 };
