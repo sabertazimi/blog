@@ -11,6 +11,18 @@ export default () => (
             author
           }
         }
+        allFile(filter: { sourceInstanceName: { eq: "posts" } }) {
+          edges {
+            node {
+              base
+              prettySize
+              internal {
+                mediaType
+              }
+              publicURL
+            }
+          }
+        }
       }
     `}
     render={data => (
@@ -21,6 +33,26 @@ export default () => (
             I'm {data.site.siteMetadata.author}, please mail to{' '}
             <a href="mailto:sabertazimi@gmail.com">sabertazimi@gmail.com</a>
           </p>
+          <table>
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.allFile.edges.map(({ node }, index) => (
+                <tr key={index}>
+                  <td>{node.base}</td>
+                  <td>{node.prettySize}</td>
+                  <td>{node.internal.mediaType}</td>
+                  <td>{node.publicURL}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </SimpleLayout>
     )}

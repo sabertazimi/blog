@@ -5,6 +5,13 @@ module.exports = {
   },
   pathPrefix: '/react-blog',
   plugins: [
-    'gatsby-plugin-offline'
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/_posts/`,
+      },
+    },
+    'gatsby-plugin-offline',
   ],
 };
