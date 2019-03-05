@@ -4,8 +4,7 @@ import { PRIMARY_COLOR } from '../constants';
 
 const ArticleHeader = ({ color, post }) => (
   <div>
-    <div className="jumbotron" />
-    <div style={{ padding: '8em 8em' }}>
+    <div style={{ padding: '8em 8em' }} className="jumbotron">
       {post.tags ? (
         post.tags.map((tag, index) => {
           return (
@@ -31,6 +30,7 @@ const ArticleHeader = ({ color, post }) => (
       <Label color="black">
         Posted on {new Date(post.date).toDateString() || 'Nowadays'}
       </Label>
+      <Label color="black">({post.timeToRead} minutes)</Label>
     </div>
   </div>
 );

@@ -28,7 +28,7 @@ const PreviewMarkdown = ({
         color={PRIMARY_COLOR}
         inverted
         size="large"
-        href={`/posts/${post.url}`}
+        href={`${post.slug}`}
       >
         <Button.Content visible>Read More</Button.Content>
         <Button.Content hidden>
@@ -37,6 +37,7 @@ const PreviewMarkdown = ({
       </Button>
     </Dimmer>
     <Container style={{ opacity: '0.5' }}>
+        <div>{post.excerpt}</div>
     </Container>
   </Dimmer.Dimmable>
 );

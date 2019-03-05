@@ -426,14 +426,9 @@
 }
 
 .jumbotron {
-    position: absolute; /* not in element layout */
-    width: 100%;
-    height: 42vh;
-    z-index: -255;
-    background-color: #000;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    filter: blur(8px);
-    transform: scale(1.1);  /* remove blurry edges */
+  width: 100%;
+  background-color: #000;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
