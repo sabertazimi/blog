@@ -280,40 +280,47 @@ exports.createPages = ({
     component: require.resolve('./src/templates/About.jsx'),
   });
 
-  createPage({
-    path: '/post',
-    component: require.resolve('./src/templates/Post.jsx'),
-    context: { post: posts[0] },
-  });
-
-  posts.forEach(post => {
-    createPage({
-      path: `/posts/${post.url}`,
-      component: require.resolve('./src/templates/Post.jsx'),
-      context: { post },
-    });
-  });
-
   return graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             fields {
               slug
+            }
+            frontmatter {
+              title
             }
           }
         }
       }
     }
   `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const posts = result.data.allMarkdownRemark.edges;
+
+    posts.forEach(({ node }, index) => {
+      const prev =
+        index === posts.length - 1
+          ? null
+          : {
+              slug: posts[index + 1].node.fields.slug,
+              title: posts[index + 1].node.frontmatter.title,
+            };
+      const next =
+        index === 0
+          ? null
+          : {
+              slug: posts[index - 1].node.fields.slug,
+              title: posts[index - 1].node.frontmatter.title,
+            };
+
       createPage({
         path: node.fields.slug,
         component: path.resolve('./src/templates/Post.jsx'),
         context: {
           slug: node.fields.slug,
-          post: posts[0],
+          prev,
+          next,
         },
       });
     });

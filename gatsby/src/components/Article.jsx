@@ -3,7 +3,6 @@ import { Segment, Container, Icon } from 'semantic-ui-react';
 
 import ArticleDivider from './ArticleDivider';
 import ArticleHeader from './ArticleHeader';
-import ReactMarkdown from './ReactMarkdown';
 import ArticleFooter from './ArticleFooter';
 import ArticleComments from './ArticleComments';
 import ScrollToTopButton from './ScrollToTopButton';
@@ -37,7 +36,7 @@ const Article = ({ post }) => {
     <Segment style={{ padding: '0em 0em' }} vertical>
       <ArticleHeader color={headerColor} post={post} />
       <Container text>
-        <ReactMarkdown value={post.__content} />
+        <div dangerouslySetInnerHTML={{ __html: post.html }} className="markdown-body" />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={post} />
         <ArticleDivider>

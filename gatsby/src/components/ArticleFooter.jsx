@@ -16,14 +16,14 @@ const ArticleFooter = ({ post }) => (
   <div>
     <Button
       as={NavLink}
-      to={post.prevPost ? `/posts/${post.prevPost}` : '/'}
+      to={post.prevPost ? `${post.prevPost.slug}` : '/'}
       animated="fade"
       color={PRIMARY_COLOR}
       size="large"
       inverted
     >
       <Button.Content visible>
-        {post.prevPost ? 'Prev Post' : 'Back to Home'}
+        {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
       </Button.Content>
       {post.prevPost ? (
         <Button.Content hidden>
@@ -37,7 +37,7 @@ const ArticleFooter = ({ post }) => (
     </Button>
     <Button
       as={NavLink}
-      to={post.nextPost ? `/posts/${post.nextPost}` : '/'}
+      to={post.nextPost ? `${post.nextPost.slug}` : '/'}
       animated="fade"
       color={PRIMARY_COLOR}
       size="large"
@@ -45,7 +45,7 @@ const ArticleFooter = ({ post }) => (
       inverted
     >
       <Button.Content visible>
-        {post.nextPost ? 'Next Post' : 'Back to Home'}
+        {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}
       </Button.Content>
       {post.nextPost ? (
         <Button.Content hidden>

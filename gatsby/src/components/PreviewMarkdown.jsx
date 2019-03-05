@@ -1,8 +1,7 @@
 import React from 'react';
 import { Container, Dimmer, Icon, Button } from 'semantic-ui-react';
 
-import ReactMarkdown from './ReactMarkdown';
-import { PREVIEW_CHARS, PRIMARY_COLOR } from '../constants';
+import { PRIMARY_COLOR } from '../constants';
 
 const PreviewMarkdown = ({
   dimmerActive,
@@ -38,14 +37,6 @@ const PreviewMarkdown = ({
       </Button>
     </Dimmer>
     <Container style={{ opacity: '0.5' }}>
-      <ReactMarkdown
-        value={post.__content.substring(
-          0,
-          post.__content.length > PREVIEW_CHARS
-            ? PREVIEW_CHARS
-            : post.__content.length
-        )}
-      />
     </Container>
   </Dimmer.Dimmable>
 );
