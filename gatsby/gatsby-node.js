@@ -200,26 +200,26 @@ const PostsDataService = new BlogService({
 
 exports.createPages = ({ actions: { createPage } }) => {
   const postsData = PostsDataService.generateJSON();
+  const { posts, tags } = postsData;
 
   createPage({
-    path: `/`,
+    path: '/',
     component: require.resolve('./src/templates/Home.jsx'),
-    context: { posts: postsData.posts },
+    context: { posts },
   });
 
   createPage({
-    path: `/about`,
+    path: '/about',
     component: require.resolve('./src/templates/About.jsx'),
   });
 
   createPage({
-    path: `/post`,
+    path: '/post',
     component: require.resolve('./src/templates/Post.jsx'),
-    context: { post: postsData.posts[0] },
+    context: { post: posts[0] },
   });
 
-  // Create a page for each Pokémon.
-  postsData.posts.forEach((post) => {
+  posts.forEach((post) => {
     createPage({
       path: `/posts/${post.title}/`,
       component: require.resolve('./src/templates/Post.jsx'),
