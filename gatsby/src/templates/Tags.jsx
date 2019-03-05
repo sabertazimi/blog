@@ -6,10 +6,10 @@ import { GridPostPreviews } from '../components';
 export default ({ pageContext: { posts, tags } }) =>
   tags ? (
     <SimpleLayout>
-      <TagsCloud data={tags} />
+      <TagsCloud tags={tags} />
     </SimpleLayout>
   ) : (
     <SimpleLayout>
-      <GridPostPreviews data={posts} />
+      <GridPostPreviews posts={posts} />
     </SimpleLayout>
   );

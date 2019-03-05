@@ -11,7 +11,7 @@ import { PRIMARY_COLOR } from '../constants';
 
 import './Article.css';
 
-const Article = ({ data }) => {
+const Article = ({ post }) => {
   const getRandomColor = () => {
     const colors = [
       'red',
@@ -33,15 +33,13 @@ const Article = ({ data }) => {
 
   const headerColor = getRandomColor();
 
-  const mdFile = data;
-
   return (
     <Segment style={{ padding: '0em 0em' }} vertical>
-      <ArticleHeader color={headerColor} mdFile={mdFile} />
+      <ArticleHeader color={headerColor} post={post} />
       <Container text>
-        <ReactMarkdown value={mdFile.__content} />
-        <ArticleDivider>{mdFile.subtitle || 'Blog'}</ArticleDivider>
-        <ArticleFooter mdFile={mdFile} />
+        <ReactMarkdown value={post.__content} />
+        <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
+        <ArticleFooter post={post} />
         <ArticleDivider>
           <Icon color={PRIMARY_COLOR} name="comments outline" />
         </ArticleDivider>

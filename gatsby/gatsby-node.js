@@ -132,8 +132,19 @@ const PostsDataService = new BlogService({
       files.forEach((fileName, index, files) => {
         if (fileName == mdFileData.fileName) {
           mdFileData.prevPost =
-            index + 1 < files.length ? files[index + 1] : null;
-          mdFileData.nextPost = index - 1 >= 0 ? files[index - 1] : null;
+            index + 1 < files.length
+              ? files[index + 1]
+                  .split('.')
+                  .slice(0, -1)
+                  .join('.')
+              : null;
+          mdFileData.nextPost =
+            index - 1 >= 0
+              ? files[index - 1]
+                  .split('.')
+                  .slice(0, -1)
+                  .join('.')
+              : null;
         }
       });
 
@@ -190,6 +201,7 @@ const PostsDataService = new BlogService({
       // generate posts data
       mdFileData.pageId = Math.floor(accum.fileCnt / PREVIEW_PER_PAGE) + 1;
       mdFileData.__content = mdFileData.__content;
+      mdFileData.url = mdFileData.fileName.split('.').slice(0, -1).join('.');
       accum.posts.push(Object.assign({}, mdFileData));
       accum.fileCnt += 1;
     }
@@ -248,7 +260,7 @@ exports.createPages = ({ actions: { createPage } }) => {
 
   posts.forEach(post => {
     createPage({
-      path: `/posts/${post.title}/`,
+      path: `/posts/${post.url}`,
       component: require.resolve('./src/templates/Post.jsx'),
       context: { post },
     });

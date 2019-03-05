@@ -37,9 +37,9 @@ class PostPreview extends Component {
   };
 
   render() {
-    const { mdFile } = this.props;
+    const { post } = this.props;
     const { dimmerActive } = this.state;
-    const tagName = mdFile.tags ? mdFile.tags[0] : 'Computer Science';
+    const tagName = post.tags ? post.tags[0] : 'Computer Science';
 
     return (
       <Container
@@ -60,13 +60,13 @@ class PostPreview extends Component {
           {tagName}
         </Label>
         <h2 style={{ paddingTop: '1rem' }}>
-          {mdFile.title || 'Article'}
+          {post.title || 'Article'}
         </h2>
         <Label color="black" style={{ marginBottom: '3rem' }}>
-          Posted on {new Date(mdFile.date).toDateString() || 'Nowadays'}{' '}
+          Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
         </Label>
         <PreviewMarkdown
-          mdFile={mdFile}
+          post={post}
           dimmerActive={dimmerActive}
           onMouseEnter={this.handleShow}
           onMouseLeave={this.handleHide}

@@ -35,10 +35,9 @@ const rightFlexStyle = {
   maxWidth: '35%',
 };
 
-const GridPostPreviews = ({ data }) => {
-  const mdFiles = data;
-  const leftFiles = mdFiles.slice(0, Math.ceil(mdFiles.length / 2));
-  const rightFiles = mdFiles.slice(Math.ceil(mdFiles.length / 2));
+const GridPostPreviews = ({ posts }) => {
+  const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
+  const rightPosts = posts.slice(Math.ceil(posts.length / 2));
 
   return (
     <Segment
@@ -48,16 +47,16 @@ const GridPostPreviews = ({ data }) => {
       <Responsive minWidth={1280}>
         <div style={rowFlexStyle}>
           <div style={leftFlexStyle}>
-            {leftFiles.map((mdFile, index) => {
+            {leftPosts.map((post, index) => {
               return (
-                <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />
+                <PostPreview key={post.fileName || index} post={post} />
               );
             })}
           </div>
           <div style={rightFlexStyle}>
-            {rightFiles.map((mdFile, index) => {
+            {rightPosts.map((post, index) => {
               return (
-                <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />
+                <PostPreview key={post.fileName || index} post={post} />
               );
             })}
           </div>
@@ -65,9 +64,9 @@ const GridPostPreviews = ({ data }) => {
       </Responsive>
       <Responsive maxWidth={1279}>
         <div style={columnStyle}>
-          {mdFiles.map((mdFile, index) => {
+          {posts.map((post, index) => {
             return (
-              <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />
+              <PostPreview key={post.fileName || index} post={post} />
             );
           })}
         </div>

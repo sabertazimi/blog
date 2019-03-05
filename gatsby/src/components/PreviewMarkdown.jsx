@@ -8,7 +8,7 @@ const PreviewMarkdown = ({
   dimmerActive,
   onMouseEnter,
   onMouseLeave,
-  mdFile,
+  post,
 }) => (
   <Dimmer.Dimmable
     dimmed={dimmerActive}
@@ -29,7 +29,7 @@ const PreviewMarkdown = ({
         color={PRIMARY_COLOR}
         inverted
         size="large"
-        href={`/posts/${mdFile.title}`}
+        href={`/posts/${post.url}`}
       >
         <Button.Content visible>Read More</Button.Content>
         <Button.Content hidden>
@@ -39,11 +39,11 @@ const PreviewMarkdown = ({
     </Dimmer>
     <Container style={{ opacity: '0.5' }}>
       <ReactMarkdown
-        value={mdFile.__content.substring(
+        value={post.__content.substring(
           0,
-          mdFile.__content.length > PREVIEW_CHARS
+          post.__content.length > PREVIEW_CHARS
             ? PREVIEW_CHARS
-            : mdFile.__content.length
+            : post.__content.length
         )}
       />
     </Container>

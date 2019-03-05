@@ -4,6 +4,6 @@ import { GridPostPreviews } from '../components';
 
 export default ({ pageContext: { posts }}) => (
   <SimpleLayout>
-    <GridPostPreviews data={posts} />
+    <GridPostPreviews posts={posts} />
   </SimpleLayout>
 );

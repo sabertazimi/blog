@@ -4,6 +4,6 @@ import { Article } from '../components';
 
 export default ({ pageContext: { post }}) => (
   <SimpleLayout>
-    <Article data={post} />
+    <Article post={post} />
   </SimpleLayout>
 );

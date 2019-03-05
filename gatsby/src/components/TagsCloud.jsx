@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Label, Divider, Container, Segment } from 'semantic-ui-react';
 
-const TagsCloud = ({ data }) => {
+const TagsCloud = ({ tags }) => {
   const colors = [
     'red',
     'orange',
@@ -23,8 +23,8 @@ const TagsCloud = ({ data }) => {
     return colors[colorIdx];
   };
 
-  const tags = Object.keys(data).sort((a, b) => {
-    return data[b] - data[a];
+  const tagsList = Object.keys(tags).sort((a, b) => {
+    return tags[b] - tags[a];
   });
 
   return (
@@ -39,7 +39,7 @@ const TagsCloud = ({ data }) => {
           Tags
         </Divider>
         <Label.Group tag>
-          {tags.map(tag => {
+          {tagsList.map(tag => {
             return (
               <Label
                 key={tag}
@@ -47,7 +47,7 @@ const TagsCloud = ({ data }) => {
                 as={Link}
                 to={`/tags/${tag}`}
               >
-                {tag} &nbsp;&nbsp; {data[tag]}
+                {tag} &nbsp;&nbsp; {tags[tag]}
               </Label>
             );
           })}
