@@ -19,7 +19,6 @@ export default () => (
               internal {
                 mediaType
               }
-              publicURL
             }
           }
         }
@@ -39,7 +38,6 @@ export default () => (
                 <th>File</th>
                 <th>Size</th>
                 <th>Type</th>
-                <th>URL</th>
               </tr>
             </thead>
             <tbody>
@@ -48,7 +46,6 @@ export default () => (
                   <td>{node.base}</td>
                   <td>{node.prettySize}</td>
                   <td>{node.internal.mediaType}</td>
-                  <td>{node.publicURL}</td>
                 </tr>
               ))}
             </tbody>

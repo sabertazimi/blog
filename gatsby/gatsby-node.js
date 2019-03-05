@@ -27,16 +27,6 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 };
 
 exports.createPages = ({ graphql, actions: { createPage } }) => {
-  createPage({
-    path: '/books',
-    component: require.resolve('./src/templates/Books.jsx'),
-  });
-
-  createPage({
-    path: '/about',
-    component: require.resolve('./src/templates/About.jsx'),
-  });
-
   return graphql(`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -52,7 +42,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
               tags
               date
             }
-            excerpt
+            excerpt(pruneLength: 200)
             timeToRead
             html
           }
@@ -60,20 +50,20 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
       }
     }
   `).then(result => {
-    const posts = result.data.allMarkdownRemark.edges.map(({ node }, index) => {
+    const posts = result.data.allMarkdownRemark.edges.map(({ node }, index, array) => {
       const prevPost =
-        index === posts.length - 1
+        index === array.length - 1
           ? null
           : {
-              slug: posts[index + 1].node.fields.slug,
-              title: posts[index + 1].node.frontmatter.title,
+              slug: array[index + 1].node.fields.slug,
+              title: array[index + 1].node.frontmatter.title,
             };
       const nextPost =
         index === 0
           ? null
           : {
-              slug: posts[index - 1].node.fields.slug,
-              title: posts[index - 1].node.frontmatter.title,
+              slug: array[index - 1].node.fields.slug,
+              title: array[index - 1].node.frontmatter.title,
             };
 
       return {
@@ -118,11 +108,19 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
         path: `/tags/${tag}`,
         component: require.resolve('./src/templates/Tags.jsx'),
         context: {
-          posts: posts.filter(
-            post => post.tags && post.tags.includes(tag)
-          ),
+          posts: posts.filter(post => post.tags && post.tags.includes(tag)),
         },
       });
+    });
+
+    createPage({
+      path: '/books',
+      component: require.resolve('./src/templates/Books.jsx'),
+    });
+
+    createPage({
+      path: '/about',
+      component: require.resolve('./src/templates/About.jsx'),
     });
 
     posts.forEach(post => {
