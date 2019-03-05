@@ -20,7 +20,7 @@ const Header = ({ menuFixed, onBottomPassed, onBottomPassedReverse }) => (
         size="large"
       >
         <Container text>
-          <Menu.Item as={Link} exact to="/" activeClassName="active">
+          <Menu.Item as={Link} to="/" activeClassName="active">
             Home
           </Menu.Item>
           <Menu.Item as={Link} to="/about" activeClassName="active">

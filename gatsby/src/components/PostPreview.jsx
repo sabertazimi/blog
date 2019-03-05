@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Label, Header, Divider } from 'semantic-ui-react';
+import { Container, Label } from 'semantic-ui-react';
 import PreviewMarkdown from './PreviewMarkdown';
 import './PostPreview.css';
 
@@ -59,20 +59,12 @@ class PostPreview extends Component {
         >
           {tagName}
         </Label>
-        <Header as="h2" style={{ fontSize: '1.5em' }}>
+        <h2 style={{ paddingTop: '1rem' }}>
           {mdFile.title || 'Article'}
-        </Header>
-        <Label color="black">
+        </h2>
+        <Label color="black" style={{ marginBottom: '3rem' }}>
           Posted on {new Date(mdFile.date).toDateString() || 'Nowadays'}{' '}
         </Label>
-        <Divider
-          as="h4"
-          className="header"
-          horizontal
-          style={{ margin: '3em 0em' }}
-        >
-          {mdFile.subtitle || 'CS Learner'}
-        </Divider>
         <PreviewMarkdown
           mdFile={mdFile}
           dimmerActive={dimmerActive}
