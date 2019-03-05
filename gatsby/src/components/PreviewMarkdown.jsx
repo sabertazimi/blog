@@ -8,7 +8,7 @@ const PreviewMarkdown = ({
   dimmerActive,
   onMouseEnter,
   onMouseLeave,
-  mdFile
+  mdFile,
 }) => (
   <Dimmer.Dimmable
     dimmed={dimmerActive}
@@ -23,7 +23,7 @@ const PreviewMarkdown = ({
           position: 'absolute',
           top: '50%',
           left: '50%',
-          transform: 'translate(-50%, -50%)'
+          transform: 'translate(-50%, -50%)',
         }}
         animated="fade"
         color={PRIMARY_COLOR}

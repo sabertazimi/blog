@@ -1,9 +1,9 @@
-import React from "react"
-import marked from "marked"
-import hljs from "highlight.js"
+import React from 'react';
+import marked from 'marked';
+import hljs from 'highlight.js';
 
-import "highlight.js/styles/atom-one-dark.css"
-import "./ReactMarkdown.css"
+import 'highlight.js/styles/atom-one-dark.css';
+import './ReactMarkdown.css';
 
 const ReactMarkdown = ({ markedOptions = {}, value }) => {
   const options = {
@@ -14,19 +14,19 @@ const ReactMarkdown = ({ markedOptions = {}, value }) => {
     sanitize: true,
     smartLists: true,
     smartypants: false,
-    langPrefix: "hljs ",
+    langPrefix: 'hljs ',
     ...markedOptions,
-  }
+  };
 
-  marked.setOptions(options)
+  marked.setOptions(options);
 
-  const renderer = new marked.Renderer()
+  const renderer = new marked.Renderer();
 
   renderer.link = (href, title, text) => {
-    title = title || "link"
+    title = title || 'link';
 
-    if (href.startsWith("#") || href.startsWith("./#")) {
-      const id = href.replace("#", "")
+    if (href.startsWith('#') || href.startsWith('./#')) {
+      const id = href.replace('#', '');
       const scrollToFunc = `
           if (event && event.preventDefault) {
             event.preventDefault()
@@ -45,46 +45,46 @@ const ReactMarkdown = ({ markedOptions = {}, value }) => {
             }
 
           return false;
-        `
+        `;
 
-      return `<a href="javascript:void(0)" title="${title}" onclick="return (function(event) {${scrollToFunc}})();">${text}</a>`
+      return `<a href="javascript:void(0)" title="${title}" onclick="return (function(event) {${scrollToFunc}})();">${text}</a>`;
     } else {
-      return `<a href="${href}" title="${title}">${text}</a>`
+      return `<a href="${href}" title="${title}">${text}</a>`;
     }
-  }
+  };
 
   renderer.heading = (text, level) => {
     // slugify
     const escapedText = text
       .toLowerCase()
-      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "") // remove html tag
-      .replace(/&([^;]+);/g, "") // remove special encode chars
-      .replace(/[^\u4e00-\u9fa5\w- ]+/g, "")
-      .replace(/[^\u4e00-\u9fa5\w]+/g, "-")
+      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '') // remove html tag
+      .replace(/&([^;]+);/g, '') // remove special encode chars
+      .replace(/[^\u4e00-\u9fa5\w- ]+/g, '')
+      .replace(/[^\u4e00-\u9fa5\w]+/g, '-');
 
     return `<h${level}>
         <a id="${escapedText}" name="${escapedText}" class="anchor" href="#${escapedText}">
           <span class="header-link"></span>
         </a>
         ${text}
-      </h${level}>`
-  }
+      </h${level}>`;
+  };
 
   renderer.code = (code, language) => {
     if (language && hljs.getLanguage(language)) {
       return `<pre style="background: black"><code class="hljs ${language}" >${
         hljs.highlight(language, code).value
-      }</code></pre>`
+      }</code></pre>`;
     } else {
-      return `<pre><code>${hljs.highlightAuto(code).value}</code></pre>`
+      return `<pre><code>${hljs.highlightAuto(code).value}</code></pre>`;
     }
-  }
+  };
 
-  const html = marked(value || "", { renderer: renderer })
+  const html = marked(value || '', { renderer: renderer });
 
   return (
     <div dangerouslySetInnerHTML={{ __html: html }} className="markdown-body" />
-  )
-}
+  );
+};
 
-export default ReactMarkdown
+export default ReactMarkdown;

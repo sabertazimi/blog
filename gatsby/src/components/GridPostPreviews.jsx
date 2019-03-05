@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Divider,
-  Segment,
-} from 'semantic-ui-react';
+import { Divider, Segment } from 'semantic-ui-react';
 
 import Responsive from './Responsive';
 import PostPreview from './PostPreview';
@@ -44,17 +41,24 @@ const GridPostPreviews = ({ data }) => {
   const rightFiles = mdFiles.slice(Math.ceil(mdFiles.length / 2));
 
   return (
-    <Segment style={{ width: '100%', padding: '8em 0em', overflow: 'hidden' }} vertical>
+    <Segment
+      style={{ width: '100%', padding: '8em 0em', overflow: 'hidden' }}
+      vertical
+    >
       <Responsive minWidth={1280}>
         <div style={rowFlexStyle}>
           <div style={leftFlexStyle}>
             {leftFiles.map((mdFile, index) => {
-              return <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />;
+              return (
+                <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />
+              );
             })}
           </div>
           <div style={rightFlexStyle}>
             {rightFiles.map((mdFile, index) => {
-              return <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />;
+              return (
+                <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />
+              );
             })}
           </div>
         </div>
@@ -62,7 +66,9 @@ const GridPostPreviews = ({ data }) => {
       <Responsive maxWidth={1279}>
         <div style={columnStyle}>
           {mdFiles.map((mdFile, index) => {
-            return <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />;
+            return (
+              <PostPreview key={mdFile.fileName || index} mdFile={mdFile} />
+            );
           })}
         </div>
       </Responsive>

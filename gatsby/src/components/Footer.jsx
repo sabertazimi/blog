@@ -6,7 +6,7 @@ import {
   Button,
   Divider,
   Container,
-  Segment
+  Segment,
 } from 'semantic-ui-react';
 
 import { PRIMARY_COLOR } from '../constants';

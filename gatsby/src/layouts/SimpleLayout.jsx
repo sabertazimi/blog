@@ -6,7 +6,7 @@ import { Footer } from '../components';
 const LandingLayout = ({ children }) => (
   <div>
     <Header />
-    { children }
+    {children}
     <Footer />
   </div>
 );
