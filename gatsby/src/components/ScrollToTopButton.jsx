@@ -15,9 +15,11 @@ const ScrollToTopButton = () => {
       event.stopPropagation();
     }
 
-    const element = document.getElementsByClassName(
-      data.direction === 'up' ? 'blog-header' : 'blog-footer'
-    )[0];
+    const element = document.querySelector(
+      data.direction === 'up' ? '.jumbotron' : '.blog-footer'
+    );
+
+    console.log(element);
 
     if (element) {
       element.scrollIntoView({

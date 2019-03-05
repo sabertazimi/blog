@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import { Menu, Visibility, Container, Segment } from 'semantic-ui-react';
 
@@ -32,10 +31,27 @@ const Header = ({ menuFixed, onBottomPassed, onBottomPassedReverse }) => (
   </Visibility>
 );
 
-Header.propTypes = {
-  menuFixed: PropTypes.bool.isRequired,
-  onBottomPassed: PropTypes.func.isRequired,
-  onBottomPassedReverse: PropTypes.func.isRequired,
-};
+class HeaderContainer extends Component {
+  state = {
+    menuFixed: false,
+    sidebarVisible: false,
+  };
 
-export default Header;
+  hideFixedMenu = () => this.setState({ menuFixed: false });
+
+  showFixedMenu = () => this.setState({ menuFixed: true });
+
+  render() {
+    const { menuFixed } = this.state;
+
+    return (
+      <Header
+        menuFixed={menuFixed}
+        onBottomPassed={this.showFixedMenu}
+        onBottomPassedReverse={this.hideFixedMenu}
+      />
+    );
+  }
+}
+
+export default HeaderContainer;

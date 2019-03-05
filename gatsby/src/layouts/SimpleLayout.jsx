@@ -1,9 +1,7 @@
 import React from 'react';
+import { Header, Footer } from '../components';
 
-import Header from '../containers/Header';
-import { Footer } from '../components';
-
-const LandingLayout = ({ children }) => (
+const SimpleLayout = ({ children }) => (
   <div>
     <Header />
     {children}
@@ -11,4 +9,4 @@ const LandingLayout = ({ children }) => (
   </div>
 );
 
-export default LandingLayout;
+export default SimpleLayout;

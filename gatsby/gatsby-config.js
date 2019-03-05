@@ -1,11 +1,6 @@
 module.exports = {
+  pathPrefix: '/react-blog',
   plugins: [
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
-    },
-    'gatsby-plugin-offline',
+    'gatsby-plugin-offline'
   ],
 };
