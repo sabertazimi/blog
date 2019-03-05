@@ -29,7 +29,7 @@ const PreviewMarkdown = ({
         color={PRIMARY_COLOR}
         inverted
         size="large"
-        href={`/posts/${mdFile.fileName}`}
+        href={`/posts/${mdFile.title}`}
       >
         <Button.Content visible>Read More</Button.Content>
         <Button.Content hidden>
