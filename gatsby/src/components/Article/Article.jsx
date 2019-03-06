@@ -5,8 +5,8 @@ import ArticleDivider from './ArticleDivider';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleComments from './ArticleComments';
-import ScrollToTopButton from './ScrollToTopButton';
-import { PRIMARY_COLOR } from '../constants';
+import ScrollToTopButton from '../ScrollButton';
+import { PRIMARY_COLOR } from '../../constants';
 
 import './Article.css';
 

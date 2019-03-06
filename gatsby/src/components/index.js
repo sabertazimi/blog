@@ -1,5 +1,3 @@
-import Error from './Error';
-import PageLoader from './PageLoader';
 import Header from './Header';
 import Footer from './Footer';
 import GridPostPreviews from './GridPostPreviews';
@@ -8,8 +6,6 @@ import TagsCloud from './TagsCloud';
 import BookGrid from './BookGrid';
 
 export {
-  Error,
-  PageLoader,
   Header,
   Footer,
   GridPostPreviews,

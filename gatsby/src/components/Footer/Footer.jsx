@@ -10,7 +10,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-import { PRIMARY_COLOR } from '../constants';
+import { PRIMARY_COLOR } from '../../constants';
 
 const Footer = () => (
   <StaticQuery

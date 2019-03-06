@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import { Button, Icon } from 'semantic-ui-react';
 
-import { PRIMARY_COLOR } from '../constants';
+import { PRIMARY_COLOR } from '../../constants';
 
 // Button uses refs inside it and this means that it currently can't accept stateless components as `as`
 // to purge warning message from `react`, wrap `Link` into a class component `NavLink`

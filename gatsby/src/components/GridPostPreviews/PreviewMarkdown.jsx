@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Container, Dimmer, Icon, Button } from 'semantic-ui-react';
 
-import { PRIMARY_COLOR } from '../constants';
+import { PRIMARY_COLOR } from '../../constants';
 
 const PreviewMarkdown = ({
   dimmerActive,

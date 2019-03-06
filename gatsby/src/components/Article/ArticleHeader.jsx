@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Header, Label } from 'semantic-ui-react';
-import { PRIMARY_COLOR } from '../constants';
+import { PRIMARY_COLOR } from '../../constants';
 
 const ArticleHeader = ({ color, post }) => (
   <div>
