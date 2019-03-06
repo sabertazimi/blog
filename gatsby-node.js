@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const fetch = require('node-fetch');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
@@ -26,7 +27,38 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions: { createPage } }) => {
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  const profilePromise = fetch('https://api.github.com/users/sabertazimi');
+  const reposPromise = fetch('https://api.github.com/users/sabertazimi/repos');
+  const profileResponse = await profilePromise;
+  const reposResponse = await reposPromise;
+  const profileJSON = await profileResponse.json();
+  const reposJSON = await reposResponse.json();
+  const githubProfile = {
+    username: profileJSON.login,
+    avatar: profileJSON.avatar_url,
+    bio: profileJSON.bio,
+    location: profileJSON.location,
+    url: profileJSON.html_url,
+    followers: profileJSON.followers,
+    followersUrl: profileJSON.html_url + '/followers',
+    following: profileJSON.following,
+    followingUrl: profileJSON.html_url + '/following',
+    createDate: new Date(profileJSON.created_at).toDateString(),
+  };
+  const githubRepos = reposJSON
+    .filter(repo => repo.stargazers_count > 0)
+    .sort((repo1, repo2) =>
+      repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
+    )
+    .map(repo => ({
+      name: repo.name,
+      stars: repo.stargazers_count,
+      language: repo.language,
+      repoUrl: repo.html_url,
+    }))
+    .slice(0, 3);
+
   return graphql(`
     query {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -50,32 +82,34 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
       }
     }
   `).then(result => {
-    const posts = result.data.allMarkdownRemark.edges.map(({ node }, index, array) => {
-      const prevPost =
-        index === array.length - 1
-          ? null
-          : {
-              slug: array[index + 1].node.fields.slug,
-              title: array[index + 1].node.frontmatter.title,
-            };
-      const nextPost =
-        index === 0
-          ? null
-          : {
-              slug: array[index - 1].node.fields.slug,
-              title: array[index - 1].node.frontmatter.title,
-            };
+    const posts = result.data.allMarkdownRemark.edges.map(
+      ({ node }, index, array) => {
+        const prevPost =
+          index === array.length - 1
+            ? null
+            : {
+                slug: array[index + 1].node.fields.slug,
+                title: array[index + 1].node.frontmatter.title,
+              };
+        const nextPost =
+          index === 0
+            ? null
+            : {
+                slug: array[index - 1].node.fields.slug,
+                title: array[index - 1].node.frontmatter.title,
+              };
 
-      return {
-        slug: node.fields.slug,
-        ...node.frontmatter,
-        excerpt: node.excerpt,
-        timeToRead: node.timeToRead,
-        html: node.html,
-        prevPost,
-        nextPost,
-      };
-    });
+        return {
+          slug: node.fields.slug,
+          ...node.frontmatter,
+          excerpt: node.excerpt,
+          timeToRead: node.timeToRead,
+          html: node.html,
+          prevPost,
+          nextPost,
+        };
+      }
+    );
 
     const tags = [].concat
       .apply([], posts.map(post => post.tags || []))
@@ -121,6 +155,10 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
     createPage({
       path: '/about',
       component: require.resolve('./src/templates/About.jsx'),
+      context: {
+        githubProfile,
+        githubRepos,
+      },
     });
 
     posts.forEach(post => {

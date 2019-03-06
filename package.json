@@ -1,45 +1,42 @@
 {
-  "name": "blog",
-  "version": "0.1.0",
+  "name": "react-blog",
   "private": true,
-  "homepage": "http://blog.hust.cf",
-  "dependencies": {
-    "highlight.js": "^9.12.0",
-    "marked": "^0.3.19",
-    "prop-types": "^15.6.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.7.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "^2.1.5",
-    "react-spring": "^8.0.10",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.0"
-  },
+  "description": "A blog system based on React, Semantic UI and Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
-    "metadata": "node ./public/_posts/service.js",
-    "start": "npm run metadata && react-scripts start",
-    "build": "npm run metadata && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "watch": "./node_modules/npm-watch/cli.js"
+    "build": "gatsby build --prefix-paths",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
-  "watch": {
-    "build": {
-      "patterns": "src",
-      "extensions": "js, css"
-    }
+  "dependencies": {
+    "gatsby": "^2.1.22",
+    "gatsby-plugin-manifest": "^2.0.22",
+    "gatsby-plugin-offline": "^2.0.24",
+    "gatsby-plugin-react-helmet": "^3.0.8",
+    "gatsby-remark-copy-linked-files": "^2.0.9",
+    "gatsby-remark-prismjs": "^3.2.4",
+    "gatsby-source-filesystem": "^2.0.23",
+    "gatsby-transformer-remark": "^2.3.0",
+    "prismjs": "^1.15.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-helmet": "^5.2.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.85.0"
   },
   "devDependencies": {
-    "npm-watch": "^0.3.0",
-    "yaml-front-matter": "^4.0.0"
+    "node-fetch": "^2.3.0",
+    "prettier": "^1.16.4"
   },
-  "engines": {
-    "node": ">=9.x"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
 }

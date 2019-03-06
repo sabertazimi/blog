@@ -12,9 +12,8 @@ before_install:
 
 script:
   - npm install
-  - npm test -- --coverage
   - npm run build
-  - cd gatsby && npm install && npm run build && mv ./public ./build && cd ../
+  - mv ./public ./build
   - sshpass -p "$DEPLOY_PASSWORD" scp -o StrictHostKeyChecking=no -P $DEPLOY_PORT -r ./build $DEPLOY_USER@$DEPLOY_ADDR:/var/www/blog/html
 
 addons:
@@ -29,6 +28,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: gatsby/build
+  local_dir: build
   on:
     branch: master
