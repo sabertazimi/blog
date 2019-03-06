@@ -28,36 +28,44 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 };
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  const profilePromise = fetch('https://api.github.com/users/sabertazimi');
-  const reposPromise = fetch('https://api.github.com/users/sabertazimi/repos');
-  const profileResponse = await profilePromise;
-  const reposResponse = await reposPromise;
-  const profileJSON = await profileResponse.json();
-  const reposJSON = await reposResponse.json();
-  const githubProfile = {
-    username: profileJSON.login,
-    avatar: profileJSON.avatar_url,
-    bio: profileJSON.bio,
-    location: profileJSON.location,
-    url: profileJSON.html_url,
-    followers: profileJSON.followers,
-    followersUrl: profileJSON.html_url + '/followers',
-    following: profileJSON.following,
-    followingUrl: profileJSON.html_url + '/following',
-    createDate: new Date(profileJSON.created_at).toDateString(),
-  };
-  const githubRepos = reposJSON
-    .filter(repo => repo.stargazers_count > 0)
-    .sort((repo1, repo2) =>
-      repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
-    )
-    .map(repo => ({
-      name: repo.name,
-      stars: repo.stargazers_count,
-      language: repo.language,
-      repoUrl: repo.html_url,
-    }))
-    .slice(0, 3);
+  let githubProfile, githubRepos;
+
+  try {
+    const profilePromise = fetch('https://api.github.com/users/sabertazimi');
+    const reposPromise = fetch(
+      'https://api.github.com/users/sabertazimi/repos'
+    );
+    const profileResponse = await profilePromise;
+    const reposResponse = await reposPromise;
+    const profileJSON = await profileResponse.json();
+    const reposJSON = await reposResponse.json();
+    githubProfile = {
+      username: profileJSON.login,
+      avatar: profileJSON.avatar_url,
+      bio: profileJSON.bio,
+      location: profileJSON.location,
+      url: profileJSON.html_url,
+      followers: profileJSON.followers,
+      followersUrl: profileJSON.html_url + '/followers',
+      following: profileJSON.following,
+      followingUrl: profileJSON.html_url + '/following',
+      createDate: new Date(profileJSON.created_at).toDateString(),
+    };
+    githubRepos = reposJSON
+      .filter(repo => repo.stargazers_count > 0)
+      .sort((repo1, repo2) =>
+        repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
+      )
+      .map(repo => ({
+        name: repo.name,
+        stars: repo.stargazers_count,
+        language: repo.language,
+        repoUrl: repo.html_url,
+      }))
+      .slice(0, 3);
+  } catch (err) {
+    console.error(err.message);
+  }
 
   return graphql(`
     query {
