@@ -42,7 +42,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
               tags
               date
             }
-            excerpt(pruneLength: 200)
+            excerpt(pruneLength: 300)
             timeToRead
             html
           }

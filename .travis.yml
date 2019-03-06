@@ -1,16 +1,34 @@
 language: node_js
+
 node_js:
   - "stable"
+
 cache:
   directories:
   - node_modules
+
 before_install:
   - sudo apt-get install -y sshpass
+
 script:
   - npm install
   - npm test -- --coverage
   - npm run build
+  - cd gatsby && npm install && npm run build && mv ./public ./build && cd ../
   - sshpass -p "$DEPLOY_PASSWORD" scp -o StrictHostKeyChecking=no -P $DEPLOY_PORT -r ./build $DEPLOY_USER@$DEPLOY_ADDR:/var/www/blog/html
+
 addons:
   ssh_known_hosts:
     - $DEPLOY_ADDR:$DEPLOY_PORT
+
+branches:
+  only:
+    - master
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: gatsby/build
+  on:
+    branch: master
