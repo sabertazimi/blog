@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Dimmer, Icon, Button, Label } from 'semantic-ui-react';
+import { Link } from 'gatsby';
+import { Container, Dimmer, Icon, Button } from 'semantic-ui-react';
 
 import { PRIMARY_COLOR } from '../constants';
 
@@ -16,24 +17,26 @@ const PreviewMarkdown = ({
     style={{ marginTop: '-1em', marginBottom: '3em' }}
   >
     <Dimmer active={dimmerActive}>
-      <Label
-        as="a"
+      <Button
+        as={Link}
         style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
-          padding: 0,
+          margin: 0,
           transform: 'translate(-50%, -50%)',
         }}
-        href={`${post.slug}`}
+        animated="fade"
+        inverted
+        color={PRIMARY_COLOR}
+        size="large"
+        to={`${post.slug}`}
       >
-        <Button style={{ margin: 0 }} animated="fade" color={PRIMARY_COLOR} size="large">
-          <Button.Content visible>Read More</Button.Content>
-          <Button.Content hidden>
-            <Icon inverted name="right arrow" />
-          </Button.Content>
-        </Button>
-      </Label>
+        <Button.Content visible>Read More</Button.Content>
+        <Button.Content hidden>
+          <Icon inverted name="right arrow" />
+        </Button.Content>
+      </Button>
     </Dimmer>
     <Container style={{ opacity: '0.5' }}>
       <div>{post.excerpt}</div>

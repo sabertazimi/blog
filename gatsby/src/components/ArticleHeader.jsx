@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { Header, Label } from 'semantic-ui-react';
 import { PRIMARY_COLOR } from '../constants';
 
@@ -10,8 +11,8 @@ const ArticleHeader = ({ color, post }) => (
           return (
             <Label
               key={index}
-              as="a"
-              href={`/tags/${tag}`}
+              as={Link}
+              to={`/tags/${tag}`}
               color={PRIMARY_COLOR}
               tag
             >
@@ -20,7 +21,7 @@ const ArticleHeader = ({ color, post }) => (
           );
         })
       ) : (
-        <Label as="a" href="/tags/all" color={PRIMARY_COLOR} tag>
+        <Label as={Link} to="/tags/all" color={PRIMARY_COLOR} tag>
           CS
         </Label>
       )}

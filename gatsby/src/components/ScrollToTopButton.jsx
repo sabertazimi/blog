@@ -24,7 +24,7 @@ const ScrollToTopButton = () => {
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
-        blcok: 'start'
+        blcok: 'start',
       });
     }
   };
@@ -32,6 +32,7 @@ const ScrollToTopButton = () => {
   return (
     <div>
       <Button
+        style={{ width: '100px' }}
         animated="fade"
         color={PRIMARY_COLOR}
         inverted
@@ -40,14 +41,15 @@ const ScrollToTopButton = () => {
         direction="up"
         onClick={scrollTo}
       >
-        <Button.Content visible>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Top&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Button.Content visible textAlign="center">
+          Top
         </Button.Content>
         <Button.Content hidden>
           <Icon name="up arrow" />
         </Button.Content>
       </Button>
       <Button
+        style={{ width: '100px' }}
         animated="fade"
         color={PRIMARY_COLOR}
         inverted
@@ -56,7 +58,9 @@ const ScrollToTopButton = () => {
         direction="down"
         onClick={scrollTo}
       >
-        <Button.Content visible>Bottom</Button.Content>
+        <Button.Content visible textAlign="center">
+          Bottom
+        </Button.Content>
         <Button.Content hidden>
           <Icon name="down arrow" />
         </Button.Content>

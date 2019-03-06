@@ -11,12 +11,11 @@ const BookCard = ({
   author,
   description,
 }) => (
-  <Card>
-    <Card.Content>
+  <Card fluid raised>
+    <Card.Content textAlign="center">
       <Card.Header>
         <a href={url}>
-          <Icon name='book' />
-          { title }
+          <h3>{ title }</h3>
         </a>
       </Card.Header>
       <Card.Meta>

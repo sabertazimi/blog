@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'gatsby';
 import { Container, Label } from 'semantic-ui-react';
 import PreviewMarkdown from './PreviewMarkdown';
 import './PostPreview.css';
@@ -52,9 +53,9 @@ class PostPreview extends Component {
         className="cell"
       >
         <Label
-          as="a"
+          as={Link}
           color={this.getRandomColor()}
-          href={`/tags/${tagName}`}
+          to={`/tags/${tagName}`}
           ribbon
         >
           {tagName}
