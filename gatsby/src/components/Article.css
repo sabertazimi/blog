@@ -5,12 +5,14 @@
   color: #24292e;
   font-size: 16px;
   word-wrap: break-word;
+  font-family: 'Spectral', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
 }
 
 .markdown-body *,
 .markdown-body *::before,
 .markdown-body *::after {
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 .markdown-body::before {
@@ -22,10 +24,6 @@
   display: table;
   clear: both;
   content: '';
-}
-
-.markdown-body > *:first-child {
-  margin-top: 0;
 }
 
 .markdown-body a {
@@ -71,10 +69,9 @@
 .markdown-body h5,
 .markdown-body h6 {
   position: relative;
-  margin-top: 0;
+  margin-top: 1em;
   margin-bottom: 1em;
-  padding-left: 0.3em;
-  border-left: 5px solid #54c8ff;
+  font-weight: 800;
   line-height: 1.8;
 }
 
@@ -90,10 +87,9 @@
   left: -0.8em;
   top: -2px;
   transform: scale(0);
-  font-weight: bold;
+  font-weight: 800;
   transition: transform 0.2s ease-in-out;
 }
-
 
 .markdown-body h1:hover::before,
 .markdown-body h2:hover::before,
@@ -105,38 +101,34 @@
 }
 
 .markdown-body h1 {
-  font-size: 2.8em;
-  font-weight: 600;
+  font-size: 3em;
 }
 
 .markdown-body h2 {
-  font-size: 2.3em;
-  font-weight: 500;
+  font-size: 2.5em;
 }
 
 .markdown-body h3 {
-  font-size: 2.05em;
-  font-weight: 400;
+  font-size: 2.25em;
 }
 
 .markdown-body h4 {
-  font-size: 1.8em;
-  font-weight: 300;
+  font-size: 2em;
 }
 
 .markdown-body h5 {
-  font-size: 1.675em;
-  font-weight: 200;
+  font-size: 1.875em;
 }
 
 .markdown-body h6 {
-  font-size: 1.45em;
-  font-weight: 100;
+  font-size: 1.65em;
 }
 
 .markdown-body p {
   margin-top: 0;
   margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 1.8;
 }
 
@@ -164,6 +156,9 @@
 }
 
 .markdown-body li {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.8;
   word-wrap: break-all;
 }
 
@@ -210,6 +205,9 @@
 
 .markdown-body table th,
 .markdown-body table td {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.8;
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
@@ -233,6 +231,7 @@
 }
 
 .markdown-body blockquote {
+  margin: 0;
   padding: 0 1em;
   color: #6a737d;
   border-left: 0.25em solid #54c8ff;
@@ -276,7 +275,7 @@
 }
 
 #disqus_thread:after {
-  content: "";
+  content: '';
   display: block;
   height: 55px;
   width: 100%;
