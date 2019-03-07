@@ -1,28 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Label } from 'semantic-ui-react';
+import { randomColor } from '../../utils';
 
 const TagsCloud = ({ tags }) => {
-  const colors = [
-    'red',
-    'orange',
-    'yellow',
-    'olive',
-    'green',
-    'teal',
-    'blue',
-    'violet',
-    'purple',
-    'pink',
-    'brown',
-    'grey',
-  ];
-
-  const getRandomColor = () => {
-    const colorIdx = Math.floor(Math.random() * 11);
-    return colors[colorIdx];
-  };
-
   const tagsList = Object.keys(tags).sort((a, b) => {
     return tags[b] - tags[a];
   });
@@ -33,7 +14,7 @@ const TagsCloud = ({ tags }) => {
         return (
           <Label
             key={tag}
-            color={getRandomColor()}
+            color={randomColor()}
             as={Link}
             to={`/tags/${tag}`}
           >

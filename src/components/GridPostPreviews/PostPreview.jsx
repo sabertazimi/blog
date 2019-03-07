@@ -3,38 +3,13 @@ import { Link } from 'gatsby';
 import { Spring } from 'react-spring/renderprops';
 import { Container, Label } from 'semantic-ui-react';
 import PreviewMarkdown from './PreviewMarkdown';
+import { randomColor } from '../../utils';
 import './PostPreview.css';
 
 const PostPreview = ({ post }) => {
   const [dimmerActive, setActive] = useState(false);
-  const colors = [
-    'red',
-    'orange',
-    'yellow',
-    'olive',
-    'green',
-    'teal',
-    'blue',
-    'violet',
-    'purple',
-    'pink',
-    'brown',
-    'grey',
-  ];
-
-  const handleShow = () => {
-    setActive(true);
-  };
-
-  const handleHide = () => {
-    setActive(false);
-  };
-
-  const getRandomColor = () => {
-    const colorIdx = Math.floor(Math.random() * 11);
-    return colors[colorIdx];
-  };
-
+  const handleShow = () => setActive(true);
+  const handleHide = () => setActive(false);
   const tagName = post.tags ? post.tags[0] : 'Computer Science';
 
   return (
@@ -55,7 +30,7 @@ const PostPreview = ({ post }) => {
         >
           <Label
             as={Link}
-            color={getRandomColor()}
+            color={randomColor()}
             to={`/tags/${tagName}`}
             ribbon
           >
