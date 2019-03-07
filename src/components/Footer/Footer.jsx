@@ -22,13 +22,10 @@ const Footer = () => (
           <SocialButton type="github" url="https://github.com/sabertazimi" />
           <SocialButton type="twitter" url="https://twitter.com/sabertazimi" />
           <SocialButton
-            type="google"
-            url="https://plus.google.com/110832319520817806130"
-          />
-          <SocialButton
             type="facebook"
-            url="https://www.facebook.com/sabertazimi"
+            url="https://facebook.com/sabertazimi"
           />
+          <SocialButton type="weibo" url="https://weibo.com/sabertazimi" />
           <Divider inverted section />
           <List horizontal inverted divided link>
             <List.Item>
