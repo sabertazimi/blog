@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 import { PRIMARY_COLOR } from '../../constants';
 import './ScrollButton.css';
@@ -9,7 +9,7 @@ const ScrollButton = () => {
     event.stopPropagation();
 
     const element = document.querySelector(
-      data.direction === 'up' ? '.jumbotron' : '.blog-footer'
+      data.direction === 'up' ? '#scroll-top-anchor' : '.blog-footer'
     );
 
     if (element) {
@@ -19,6 +19,18 @@ const ScrollButton = () => {
       });
     }
   };
+
+  useEffect(() => {
+    const topAnchor  = document.createElement('div');
+    topAnchor.id = 'scroll-top-anchor';
+    topAnchor.style.position = 'absolute';
+    topAnchor.style.top = 0;
+    document.body.appendChild(topAnchor);
+
+    return () => {
+      topAnchor.remove();
+    };
+  });
 
   return (
     <div>

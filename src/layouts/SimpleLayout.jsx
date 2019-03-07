@@ -1,6 +1,6 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
-import { Header, Footer } from '../components';
+import { Header, Footer, ScrollButton } from '../components';
 
 const SimpleLayout = ({ children }) => (
   <div>
@@ -10,6 +10,7 @@ const SimpleLayout = ({ children }) => (
       vertical
     >
       {children}
+      <ScrollButton />
     </Segment>
     <Footer />
   </div>
