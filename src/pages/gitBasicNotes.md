@@ -4,7 +4,6 @@ title:      "Git Basic Notes"
 subtitle:   "Be a stupid learner"
 date:       2018-03-05
 author:     "sabertazimi"
-header-img: "img/home-bg.jpg"
 tags:
     - Computer Science
     - GNU

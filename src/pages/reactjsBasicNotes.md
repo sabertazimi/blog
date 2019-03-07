@@ -4,7 +4,6 @@ title:      "React Basic Notes"
 subtitle:   "Be a stupid learner"
 date:       2017-03-05
 author:     "sabertazimi"
-header-img: "img/home-bg.jpg"
 tags:
     - Web
     - Front End

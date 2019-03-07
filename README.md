@@ -16,6 +16,24 @@ A [blog](https://blog.hust.cf) system based on React, Semantic UI and Gatsby.
 - Nice animation
 - Typing effect for title
 
+## Post Template
+
+```markdown
+---
+layout:     post
+title:      "JavaScript Basic Notes"
+subtitle:   "Daily I learned"
+author:     "sabertazimi"
+date:       2019-02-29
+tags:
+    - Web
+    - Front End
+    - JavaScript
+---
+
+...
+```
+
 ## Installation
 
 ```bash
