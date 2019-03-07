@@ -39,7 +39,7 @@ const ScrollButton = () => {
         direction="up"
         onClick={scrollTo}
       >
-        <Button.Content visible textAlign="center">
+        <Button.Content visible>
           Top
         </Button.Content>
         <Button.Content hidden>
@@ -56,7 +56,7 @@ const ScrollButton = () => {
         direction="down"
         onClick={scrollTo}
       >
-        <Button.Content visible textAlign="center">Bottom</Button.Content>
+        <Button.Content visible>Bottom</Button.Content>
         <Button.Content hidden>
           <Icon name="down arrow" />
         </Button.Content>
