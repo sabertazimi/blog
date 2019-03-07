@@ -26,6 +26,14 @@ const BookGrid = ({ booklist }) => (
               return <BookCard key={index} {...book} />;
             })}
           </Card.Group>
+          <Divider
+            as="h4"
+            className="header"
+            horizontal
+            style={{ margin: '3em 0em' }}
+          >
+            Book List
+          </Divider>
         </Container>
       )}
     </Spring>

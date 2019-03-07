@@ -29,7 +29,7 @@ const TagsCloud = ({ tags }) => {
   });
 
   return (
-    <Segment style={{ padding: '8em 0em' }} vertical>
+    <Segment style={{ padding: '3em 0em' }} vertical>
       <Spring
         from={{ opacity: 0, transform: 'translateX(-200px)' }}
         to={{ opacity: 1, transform: 'translateX(0)' }}

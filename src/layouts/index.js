@@ -1,3 +1,4 @@
+import LandingLayout from './LandingLayout';
 import SimpleLayout from './SimpleLayout';
 
-export { SimpleLayout };
+export { LandingLayout, SimpleLayout };

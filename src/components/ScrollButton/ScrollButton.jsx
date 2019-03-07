@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
-
 import { PRIMARY_COLOR } from '../../constants';
-
 import './ScrollButton.css';
 
 const ScrollButton = () => {
