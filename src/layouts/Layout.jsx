@@ -13,7 +13,7 @@ const Layout = ({ banner, children }) => {
     <div>
       <Header />
       <Segment style={{ padding: '3em 0em' }} vertical>
-        <animated.div style={props} className="slideIn">
+        <animated.div style={props}>
           <Container text style={{ maxWidth: 960 }}>
             <Divider
               as="h4"

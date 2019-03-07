@@ -5,13 +5,8 @@ import './ScrollButton.css';
 
 const ScrollButton = () => {
   const scrollTo = (event, data) => {
-    if (event && event.preventDefault) {
-      event.preventDefault();
-    }
-
-    if (event && event.stopPropagation) {
-      event.stopPropagation();
-    }
+    event.preventDefault();
+    event.stopPropagation();
 
     const element = document.querySelector(
       data.direction === 'up' ? '.jumbotron' : '.blog-footer'
@@ -20,7 +15,7 @@ const ScrollButton = () => {
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
-        blcok: 'start'
+        blcok: 'start',
       });
     }
   };
@@ -28,7 +23,7 @@ const ScrollButton = () => {
   return (
     <div>
       <Button
-      style={{ width: '100px' }}
+        style={{ width: '100px' }}
         animated="fade"
         color={PRIMARY_COLOR}
         inverted
@@ -37,15 +32,13 @@ const ScrollButton = () => {
         direction="up"
         onClick={scrollTo}
       >
-        <Button.Content visible>
-          Top
-        </Button.Content>
+        <Button.Content visible>Top</Button.Content>
         <Button.Content hidden>
           <Icon name="up arrow" />
         </Button.Content>
       </Button>
       <Button
-      style={{ width: '100px' }}
+        style={{ width: '100px' }}
         animated="fade"
         color={PRIMARY_COLOR}
         inverted

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Spring } from 'react-spring/renderprops';
+import { useSpring, animated } from 'react-spring';
 import { Link } from 'gatsby';
 import { Container, Dimmer, Button } from 'semantic-ui-react';
-
 import { PRIMARY_COLOR } from '../../constants';
 
 const PreviewMarkdown = ({
@@ -10,22 +9,23 @@ const PreviewMarkdown = ({
   onMouseEnter,
   onMouseLeave,
   post,
-}) => (
-  <Dimmer.Dimmable
-    dimmed={dimmerActive}
-    onMouseEnter={onMouseEnter}
-    onMouseLeave={onMouseLeave}
-    style={{ marginTop: '-1em', marginBottom: '3em' }}
-  >
-    <Dimmer active={dimmerActive}>
-      <Spring
-        to={{ opacity: dimmerActive ? 1 : 0 }}
-      >
-        {props => (
+}) => {
+  const props = useSpring({
+    opacity: dimmerActive ? 1 : 0,
+  });
+
+  return (
+    <Dimmer.Dimmable
+      dimmed={dimmerActive}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      style={{ marginTop: '-1em', marginBottom: '3em' }}
+    >
+      <Dimmer active={dimmerActive}>
+        <animated.div style={props}>
           <Button
             as={Link}
             style={{
-              ...props,
               position: 'absolute',
               top: '50%',
               left: '50%',
@@ -39,13 +39,13 @@ const PreviewMarkdown = ({
           >
             Read More
           </Button>
-        )}
-      </Spring>
-    </Dimmer>
-    <Container style={{ opacity: '0.5' }}>
-      <div>{post.excerpt}</div>
-    </Container>
-  </Dimmer.Dimmable>
-);
+        </animated.div>
+      </Dimmer>
+      <Container style={{ opacity: '0.5' }}>
+        <div>{post.excerpt}</div>
+      </Container>
+    </Dimmer.Dimmable>
+  );
+};
 
 export default PreviewMarkdown;
