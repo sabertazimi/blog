@@ -17,7 +17,7 @@ const PostPreview = ({ post }) => {
   });
 
   return (
-    <animated.div style={props}>
+    <animated.div style={{...props, width: '100%'}}>
       <Container
         text
         style={{

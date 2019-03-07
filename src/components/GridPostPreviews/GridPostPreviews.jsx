@@ -25,12 +25,12 @@ const leftFlexStyle = {
   ...flexStyle,
   flexDirection: 'column',
   alignItems: 'center',
-  maxWidth: '55%',
+  maxWidth: 960,
 };
 
 const rightFlexStyle = {
   ...leftFlexStyle,
-  maxWidth: '35%',
+  maxWidth: 480,
 };
 
 const GridPostPreviews = ({ posts }) => {
