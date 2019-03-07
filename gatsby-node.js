@@ -28,7 +28,8 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 };
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  let githubProfile, githubRepos;
+  let githubProfile;
+  let githubRepos;
 
   try {
     const profilePromise = fetch('https://api.github.com/users/sabertazimi');
