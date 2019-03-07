@@ -5,6 +5,7 @@ import Article from './Article';
 import TagsCloud from './TagsCloud';
 import BookGrid from './BookGrid';
 import GithubCard from './GithubCard';
+import ScrollButton from './ScrollButton';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   TagsCloud,
   BookGrid,
   GithubCard,
+  ScrollButton,
 };

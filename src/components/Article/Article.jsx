@@ -5,7 +5,6 @@ import ArticleDivider from './ArticleDivider';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleComments from './ArticleComments';
-import ScrollToTopButton from '../ScrollButton';
 import { randomColor } from '../../utils';
 import { PRIMARY_COLOR } from '../../constants';
 
@@ -34,7 +33,6 @@ const Article = ({ post }) => {
         </ArticleDivider>
         <ArticleComments />
       </Container>
-      <ScrollToTopButton />
     </div>
   );
 };
