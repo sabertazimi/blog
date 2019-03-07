@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
 import { Menu, Visibility, Container, Segment } from 'semantic-ui-react';
 
@@ -18,20 +19,27 @@ const Header = ({ menuFixed, onBottomPassed, onBottomPassedReverse }) => (
         secondary={!menuFixed}
         size="large"
       >
-        <Container text>
-          <Menu.Item as={Link} to="/" activeClassName="active">
-            Home
-          </Menu.Item>
-          <Menu.Item as={Link} to="/tags" activeClassName="active">
-            Tags
-          </Menu.Item>
-          <Menu.Item as={Link} to="/books" activeClassName="active">
-            Books
-          </Menu.Item>
-          <Menu.Item as={Link} to="/about" activeClassName="active">
-            About
-          </Menu.Item>
-        </Container>
+        <Spring
+          from={{ opacity: 0, transform: 'translateX(200px)' }}
+          to={{ opacity: 1, transform: 'translateX(0)' }}
+        >
+          {props => (
+            <Container text style={{ ...props }}>
+              <Menu.Item as={Link} to="/" activeClassName="active">
+                Home
+              </Menu.Item>
+              <Menu.Item as={Link} to="/tags" activeClassName="active">
+                Tags
+              </Menu.Item>
+              <Menu.Item as={Link} to="/books" activeClassName="active">
+                Books
+              </Menu.Item>
+              <Menu.Item as={Link} to="/about" activeClassName="active">
+                About
+              </Menu.Item>
+            </Container>
+          )}
+        </Spring>
       </Menu>
     </Segment>
   </Visibility>
