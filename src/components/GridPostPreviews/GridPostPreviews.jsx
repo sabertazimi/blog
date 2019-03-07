@@ -1,5 +1,4 @@
 import React from 'react';
-import { Divider, Segment } from 'semantic-ui-react';
 import PostPreview from './PostPreview';
 import { useResponsive } from '../../hooks';
 
@@ -40,10 +39,7 @@ const GridPostPreviews = ({ posts }) => {
   const desktopVisible = useResponsive({ minWidth: 1280 });
 
   return (
-    <Segment
-      style={{ width: '100%', padding: '8em 0em', overflow: 'hidden' }}
-      vertical
-    >
+    <div>
       {desktopVisible ? (
         <div style={rowFlexStyle}>
           <div style={leftFlexStyle}>
@@ -64,8 +60,7 @@ const GridPostPreviews = ({ posts }) => {
           })}
         </div>
       )}
-      <Divider as="h4" className="header" style={{ margin: '3em 0em' }} />
-    </Segment>
+    </div>
   );
 };
 

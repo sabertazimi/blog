@@ -1,4 +1,4 @@
-import LandingLayout from './LandingLayout';
+import Layout from './Layout';
 import SimpleLayout from './SimpleLayout';
 
-export { LandingLayout, SimpleLayout };
+export { Layout, SimpleLayout };

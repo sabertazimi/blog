@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleLayout } from '../layouts';
+import { Layout } from '../layouts';
 import { BookGrid } from '../components';
 
 const Books = () => {
@@ -13,9 +13,9 @@ const Books = () => {
   ];
 
   return (
-    <SimpleLayout>
+    <Layout banner="Books">
       <BookGrid booklist={booklist} />
-    </SimpleLayout>
+    </Layout>
   );
 };
 

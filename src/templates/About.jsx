@@ -1,9 +1,9 @@
 import React from 'react';
-import { SimpleLayout } from '../layouts';
+import { Layout } from '../layouts';
 import { GithubCard } from '../components';
 
 export default ({ pageContext: { githubProfile, githubRepos } }) => (
-  <SimpleLayout>
+  <Layout banner="About Me">
     <GithubCard githubProfile={githubProfile} githubRepos={githubRepos} />
-  </SimpleLayout>
+  </Layout>
 );
