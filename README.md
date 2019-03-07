@@ -2,24 +2,41 @@
 
 [![Build Status](https://travis-ci.org/sabertazimi/react-blog.svg?branch=master)](https://travis-ci.org/sabertazimi/react-blog)
 
-A [blog](http://blog.hust.cf) based on React and React-Router
+A [blog](https://blog.hust.cf) system based on React, Semantic UI and Gatsby.
+
+## Features
+
+- Add posts to `src/pages`
+- Tags cloud page
+- Books page
+- Github information card
+- Beautiful footer
+- Scroll to top/bottom fixed buttons
+- Social share fixed buttons
+- Nice animation
+- Typing effect for title
 
 ## Installation
 
-```sh
-$ npm install
+```bash
+npm install
 ```
 
 ## Development
 
-```sh
-# http://localhost:3000
-$ npm start
+```bash
+# http://localhost:8000
+npm start
 ```
 
 ## Deployment
 
-```sh
-# deploy build/ directory with nginx server etc.
-$ npm run build
+```bash
+# deploy public/ directory with nginx server etc.
+npm run build
 ```
+
+## Todos
+
+- Search support
+- Archives page
