@@ -19,8 +19,6 @@ const ScrollButton = () => {
       data.direction === 'up' ? '.jumbotron' : '.blog-footer'
     );
 
-    console.log(element);
-
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
