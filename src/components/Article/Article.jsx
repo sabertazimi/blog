@@ -5,6 +5,7 @@ import ArticleDivider from './ArticleDivider';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleComments from './ArticleComments';
+import SocialGroup from '../SocialGroup';
 import { randomColor } from '../../utils';
 import { PRIMARY_COLOR } from '../../constants';
 
@@ -32,6 +33,7 @@ const Article = ({ post }) => {
           <Icon color={PRIMARY_COLOR} name="comments outline" />
         </ArticleDivider>
         <ArticleComments />
+        <SocialGroup />
       </Container>
     </div>
   );

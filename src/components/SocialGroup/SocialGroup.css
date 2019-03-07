@@ -1,0 +1,8 @@
+.social-group {
+  transform: translate(-40px, -50%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-group:hover {
+  transform: translate(0, -50%);
+};
