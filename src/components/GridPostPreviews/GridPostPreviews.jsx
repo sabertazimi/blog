@@ -1,8 +1,7 @@
 import React from 'react';
 import { Divider, Segment } from 'semantic-ui-react';
-
-import Responsive from './Responsive';
 import PostPreview from './PostPreview';
+import { useResponsive } from '../../hooks';
 
 const flexStyle = {
   display: 'flex',
@@ -38,39 +37,33 @@ const rightFlexStyle = {
 const GridPostPreviews = ({ posts }) => {
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
+  const desktopVisible = useResponsive({ minWidth: 1280 });
 
   return (
     <Segment
       style={{ width: '100%', padding: '8em 0em', overflow: 'hidden' }}
       vertical
     >
-      <Responsive minWidth={1280}>
+      {desktopVisible ? (
         <div style={rowFlexStyle}>
           <div style={leftFlexStyle}>
             {leftPosts.map((post, index) => {
-              return (
-                <PostPreview key={post.title || index} post={post} />
-              );
+              return <PostPreview key={post.title || index} post={post} />;
             })}
           </div>
           <div style={rightFlexStyle}>
             {rightPosts.map((post, index) => {
-              return (
-                <PostPreview key={post.title || index} post={post} />
-              );
+              return <PostPreview key={post.title || index} post={post} />;
             })}
           </div>
         </div>
-      </Responsive>
-      <Responsive maxWidth={1279}>
+      ) : (
         <div style={columnStyle}>
           {posts.map((post, index) => {
-            return (
-              <PostPreview key={post.title || index} post={post} />
-            );
+            return <PostPreview key={post.title || index} post={post} />;
           })}
         </div>
-      </Responsive>
+      )}
       <Divider as="h4" className="header" style={{ margin: '3em 0em' }} />
     </Segment>
   );
