@@ -19,9 +19,9 @@ const PostPreview = ({ post }) => {
   return (
     <animated.div style={{...props, width: '100%'}}>
       <Container
-        text
         style={{
-          width: '100%',
+          maxWidth: 960,
+          marginTop: 0,
           marginBottom: '2em',
           padding: '1em 1.2em',
         }}

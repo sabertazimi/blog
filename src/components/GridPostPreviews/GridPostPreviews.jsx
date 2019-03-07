@@ -25,12 +25,12 @@ const leftFlexStyle = {
   ...flexStyle,
   flexDirection: 'column',
   alignItems: 'center',
-  maxWidth: 960,
+  maxWidth: '60%',
 };
 
 const rightFlexStyle = {
   ...leftFlexStyle,
-  maxWidth: 480,
+  maxWidth: '35%',
 };
 
 const GridPostPreviews = ({ posts }) => {
@@ -42,7 +42,7 @@ const GridPostPreviews = ({ posts }) => {
     <div>
       {desktopVisible ? (
         <div style={rowFlexStyle}>
-          <div style={leftFlexStyle}>
+          <div style={{ ...leftFlexStyle, marginRight: '2em' }}>
             {leftPosts.map((post, index) => {
               return <PostPreview key={post.title || index} post={post} />;
             })}
