@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../layouts';
+import { Layout, PostLayout } from '../layouts';
 import { TagsCloud } from '../components';
 import { GridPostPreviews } from '../components';
 
@@ -9,7 +9,7 @@ export default ({ pageContext: { posts, tags } }) =>
       <TagsCloud tags={tags} />
     </Layout>
   ) : (
-    <Layout banner="Tags">
+    <PostLayout>
       <GridPostPreviews posts={posts} />
-    </Layout>
+    </PostLayout>
   );
