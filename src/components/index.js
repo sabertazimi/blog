@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import IconBanner from './IconBanner';
 import TypingTitle from './TypingTitle';
 import GridPostPreviews from './GridPostPreviews';
 import Article from './Article';
@@ -11,6 +12,7 @@ import ScrollButton from './ScrollButton';
 export {
   Header,
   Footer,
+  IconBanner,
   TypingTitle,
   GridPostPreviews,
   Article,

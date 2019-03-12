@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 
-const TypingTitle = ({ titles = [], speed = 50, loop = true, style = {}} = {}) => {
+const TypingTitle = ({
+  titles = [],
+  speed = 50,
+  loop = true,
+  style = {},
+} = {}) => {
   useEffect(() => {
     const options = {
       strings: [...titles],
@@ -16,7 +21,17 @@ const TypingTitle = ({ titles = [], speed = 50, loop = true, style = {}} = {}) =
   }, [titles, speed, loop]);
 
   return (
-    <div className="typing-title-container" style={{ width: '100%', height: '100%', fontSize: '5em', fontWeight: 800, textAlign: 'center', ...style }} >
+    <div
+      className="typing-title-container"
+      style={{
+        width: '100%',
+        height: '100%',
+        fontSize: '5em',
+        fontWeight: 800,
+        textAlign: 'center',
+        ...style,
+      }}
+    >
       <span className="typing-title" />
     </div>
   );

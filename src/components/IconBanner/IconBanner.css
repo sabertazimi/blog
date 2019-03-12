@@ -1,0 +1,15 @@
+.icon-banner > * {
+  margin: 0 1em;
+}
+
+.icon-banner-link {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-banner-link:hover {
+  color: #fff;
+  opacity: 0.85;
+  transform: scale(1.2);
+}
