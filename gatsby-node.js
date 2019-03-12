@@ -131,6 +131,11 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     createPage({
       path: '/',
       component: require.resolve('./src/templates/Home.jsx'),
+    });
+
+    createPage({
+      path: '/posts',
+      component: require.resolve('./src/templates/Posts.jsx'),
       context: { posts },
     });
 

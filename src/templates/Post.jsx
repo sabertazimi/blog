@@ -1,9 +1,9 @@
 import React from 'react';
-import { SimpleLayout } from '../layouts';
+import { PostLayout } from '../layouts';
 import { Article } from '../components';
 
 export default ({ pageContext: { post }}) => (
-  <SimpleLayout>
+  <PostLayout>
     <Article post={post} />
-  </SimpleLayout>
+  </PostLayout>
 );

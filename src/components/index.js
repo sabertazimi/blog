@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import TypingTitle from './TypingTitle';
 import GridPostPreviews from './GridPostPreviews';
 import Article from './Article';
 import TagsCloud from './TagsCloud';
@@ -10,6 +11,7 @@ import ScrollButton from './ScrollButton';
 export {
   Header,
   Footer,
+  TypingTitle,
   GridPostPreviews,
   Article,
   TagsCloud,

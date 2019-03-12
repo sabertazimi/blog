@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Header, Footer, ScrollButton } from '../components';
 
-const SimpleLayout = ({ children }) => (
+const PostLayout = ({ children }) => (
   <div>
     <Header />
     <Segment
@@ -16,4 +16,4 @@ const SimpleLayout = ({ children }) => (
   </div>
 );
 
-export default SimpleLayout;
+export default PostLayout;
