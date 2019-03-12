@@ -1,9 +1,25 @@
 import React, { useEffect } from 'react';
+import { useResponsive } from '../../hooks';
 import { Button, Icon } from 'semantic-ui-react';
 import { PRIMARY_COLOR } from '../../constants';
-import './ScrollButton.css';
 
 const ScrollButton = () => {
+  const isDesktop = useResponsive({ minWidth: 960 });
+  const baseStyle = {
+    position: 'fixed',
+    fontSize: isDesktop ? '16px': '12px',
+    width: isDesktop ? '100px' : '75px',
+    right: isDesktop ? '50px': '10px',
+    bottom: isDesktop ? '15%' : '8%',
+  };
+  const topStyle = {
+    ...baseStyle,
+  };
+  const bottomStyle = {
+    ...baseStyle,
+    bottom: isDesktop ? '7%' : '2%',
+  };
+
   const scrollTo = (event, data) => {
     event.preventDefault();
     event.stopPropagation();
@@ -35,12 +51,11 @@ const ScrollButton = () => {
   return (
     <div>
       <Button
-        style={{ width: '100px' }}
+        style={topStyle}
         animated="fade"
         color={PRIMARY_COLOR}
         inverted
         size="large"
-        className="scroll-button"
         direction="up"
         onClick={scrollTo}
       >
@@ -50,12 +65,11 @@ const ScrollButton = () => {
         </Button.Content>
       </Button>
       <Button
-        style={{ width: '100px' }}
+        style={bottomStyle}
         animated="fade"
         color={PRIMARY_COLOR}
         inverted
         size="large"
-        className="scroll-button scroll-button-bottom"
         direction="down"
         onClick={scrollTo}
       >
