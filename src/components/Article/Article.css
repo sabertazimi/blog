@@ -68,6 +68,7 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
+  display: flex;
   position: relative;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -87,9 +88,10 @@
   position: absolute;
   left: -0.8em;
   top: -2px;
-  transform: scale(0);
   font-weight: 800;
-  transition: transform 0.2s ease-in-out;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .markdown-body h1:hover::before,
@@ -98,7 +100,23 @@
 .markdown-body h4:hover::before,
 .markdown-body h5:hover::before,
 .markdown-body h6:hover::before {
+  opacity: 1;
   transform: scale(1);
+}
+
+.markdown-body h2::after {
+  position: relative;
+  flex-grow: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 1em 2px 0 3px;
+  border-radius: 2px;
+  width: auto;
+  height: 3px;
+  background: linear-gradient(to right, #3b5998, #54c8ff);
+  content: '';
 }
 
 .markdown-body h1 {
