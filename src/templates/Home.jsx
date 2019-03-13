@@ -12,7 +12,7 @@ export default () => (
     </Helmet>
     <LandingLayout>
       <TypingTitle
-        titles={["I'm a CS student.", "I'm a coder.", "I'm a learner"]}
+        titles={["I'm a CS student.", "I'm a coder.", "I'm a learner."]}
         style={{ padding: '3em', height: 'auto' }}
       />
       <IconBanner />
