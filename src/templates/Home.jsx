@@ -8,7 +8,7 @@ export default () => (
     <Helmet>
       <meta charSet="utf-8" />
       <title>Sabertazimi's Blog</title>
-      <link rel="canonical" href="http://sabertazimi.github.io" />
+      <link rel="canonical" href="https://tazimi.dev" />
     </Helmet>
     <LandingLayout>
       <TypingTitle

@@ -37,7 +37,7 @@ const Footer = () => (
             </List.Item>
             <List.Item>
               Built with <a href="https://reactjs.org">React</a> and{' '}
-              <a href="http://www.semantic-ui.com">Semantic UI</a>
+              <a href="https://www.semantic-ui.com">Semantic UI</a>
             </List.Item>
             <List.Item>
               Last Updated at{' '}
