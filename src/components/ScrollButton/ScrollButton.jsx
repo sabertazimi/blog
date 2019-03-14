@@ -36,6 +36,7 @@ const ScrollButton = () => {
     }
   };
 
+  // only run when mounting
   useEffect(() => {
     const topAnchor  = document.createElement('div');
     topAnchor.id = 'scroll-top-anchor';
@@ -46,7 +47,7 @@ const ScrollButton = () => {
     return () => {
       topAnchor.remove();
     };
-  });
+  }, []);
 
   return (
     <div>

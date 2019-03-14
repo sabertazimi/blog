@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
+import { useResponsive } from '../../hooks';
 
 const TypingTitle = ({
   titles = [],
@@ -7,6 +8,9 @@ const TypingTitle = ({
   loop = true,
   style = {},
 } = {}) => {
+  const desktopVisible = useResponsive({ minWidth: 540 });
+  const fontSize = desktopVisible ? '5em' : '2em';
+
   useEffect(() => {
     const options = {
       strings: [...titles],
@@ -17,7 +21,11 @@ const TypingTitle = ({
       loop,
     };
 
-    new Typed('.typing-title', options);
+    const typed = new Typed('.typing-title', options);
+
+    return () => {
+      typed.destroy();
+    };
   }, [titles, speed, loop]);
 
   return (
@@ -26,7 +34,7 @@ const TypingTitle = ({
       style={{
         width: '100%',
         height: '100%',
-        fontSize: '5em',
+        fontSize,
         fontWeight: 800,
         textAlign: 'center',
         ...style,
