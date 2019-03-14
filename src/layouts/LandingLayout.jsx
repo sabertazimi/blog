@@ -13,6 +13,7 @@ const LandingLayout = ({ children }) => {
     <Segment
       style={{
         width: '100%',
+        padding: 0,
         overflow: 'hidden',
         background:
           'linear-gradient(135deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%)',
