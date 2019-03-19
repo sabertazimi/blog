@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
-  let frameId;
-  let ticking;
+  let frameId = 0;
+  let ticking = false;
   const [visible, setVisible] = useState(true);
 
   const fitsMaxWidth = (width, maxWidth) => !maxWidth || width <= maxWidth;
@@ -27,7 +27,6 @@ const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
   };
 
   const handleUpdate = event => {
-    ticking = false;
     const width = _getWidth();
     const nextVisible = isVisible(width, { maxWidth, minWidth });
 
@@ -38,6 +37,8 @@ const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
     if (onUpdate) {
       onUpdate(event, { maxWidth, minWidth, width });
     }
+
+    ticking = false;
   };
 
   useEffect(() => {
