@@ -13,12 +13,10 @@ before_install:
 script:
   - npm install
   - npm run build
-  - mv ./public ./build
   - sshpass -p "$DEPLOY_PASSWORD" scp -o StrictHostKeyChecking=no -P $DEPLOY_PORT -r ./build $DEPLOY_USER@$DEPLOY_ADDR:/var/www/html
   - sshpass -p "$DEPLOY_PASSWORD" scp -o StrictHostKeyChecking=no -P $DEPLOY_PORT -r ./build $DEPLOY_USER@$DEPLOY_ADDR:/var/www/blog/html
   - rm -fr build
   - npm run build:gh-pages
-  - mv ./public ./build
 
 addons:
   ssh_known_hosts:
