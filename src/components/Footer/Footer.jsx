@@ -19,6 +19,7 @@ const Footer = () => (
           className="blog-footer"
           style={{ maxWidth: 960 }}
         >
+          <SocialButton type="rocket" url="https://tazimi.dev" />
           <SocialButton type="github" url="https://github.com/sabertazimi" />
           <SocialButton type="twitter" url="https://twitter.com/sabertazimi" />
           <SocialButton

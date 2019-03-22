@@ -22,9 +22,6 @@ const Header = () => {
           size="large"
         >
           <Container text>
-            <Menu.Item as={Link} to="/" activeClassName="active">
-              Home
-            </Menu.Item>
             <Menu.Item as={Link} to="/posts" activeClassName="active">
               Posts
             </Menu.Item>
