@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "build:gh-pages": "gatsby build --prefix-paths",
+    "build:gh-pages": "gatsby build --prefix-paths && npm run postbuild",
     "postbuild": "rm -fr ./build && mv ./public ./build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",

@@ -13,10 +13,9 @@ const LandingLayout = ({ children }) => {
     <Segment
       style={{
         width: '100%',
+        margin: 0,
         padding: 0,
         overflow: 'hidden',
-        background:
-          'linear-gradient(135deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%)',
         color: '#fff',
       }}
       vertical
@@ -27,11 +26,10 @@ const LandingLayout = ({ children }) => {
           display: 'flex',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          flexDirection: 'column',
+          flexDirection: 'row',
           width: '100%',
           height: '100vh',
           overflow: 'hidden',
-          color: '#fff',
         }}
       >
         {children}

@@ -10,16 +10,16 @@ const IconBanner = () => {
 
   return (
     <div className="icon-banner">
-      <Link to="/posts" activeClassName="active">
+      <Link to="/posts">
         <Icon name="list ul" size={size} className="icon-banner-link" />
       </Link>
-      <Link to="/tags" activeClassName="active">
+      <Link to="/tags">
         <Icon name="tags" size={size} className="icon-banner-link" />
       </Link>
-      <Link to="/books" activeClassName="active">
+      <Link to="/books">
         <Icon name="book" size={size} className="icon-banner-link" />
       </Link>
-      <Link to="/about" activeClassName="active">
+      <Link to="/about">
         <Icon name="user" size={size} className="icon-banner-link" />
       </Link>
     </div>

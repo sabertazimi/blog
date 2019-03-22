@@ -8,7 +8,7 @@ const TypingTitle = ({
   loop = true,
   style = {},
 } = {}) => {
-  const desktopVisible = useResponsive({ minWidth: 540 });
+  const desktopVisible = useResponsive({ minWidth: 1080});
   const fontSize = desktopVisible ? '5em' : '2em';
 
   useEffect(() => {
@@ -34,6 +34,8 @@ const TypingTitle = ({
       style={{
         width: '100%',
         height: '100%',
+        marginTop: 0,
+        paddingTop: 0,
         fontSize,
         fontWeight: 800,
         textAlign: 'center',
