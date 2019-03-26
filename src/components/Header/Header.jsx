@@ -6,20 +6,20 @@ const Header = () => {
   const [menuFixed, setMenuFixed] = useState(false);
   const hideFixedMenu = () => setMenuFixed(false);
   const showFixedMenu = () => setMenuFixed(true);
+
   return (
     <Visibility
       onBottomPassed={showFixedMenu}
       onBottomPassedReverse={hideFixedMenu}
       once={false}
     >
-      <Segment style={{ paddingBottom: 0 }} textAlign="center" vertical>
+      <Segment style={{ padding: 0 }} textAlign="center" vertical>
         <Menu
           className="blog-header"
           style={{ zIndex: 99999 }}
           fixed={menuFixed ? 'top' : null}
-          pointing
-          secondary
-          size="large"
+          inverted={menuFixed}
+          size="massive"
         >
           <Container text>
             <Menu.Item as={Link} to="/posts" activeClassName="active">
