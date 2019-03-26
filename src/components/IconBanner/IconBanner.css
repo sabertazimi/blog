@@ -1,8 +1,17 @@
+.icon-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .icon-banner > * {
   margin: 0 1em;
+  padding: 2em;
 }
 
 .icon-banner-link {
+  margin: 1em auto;
   opacity: 1;
   transform: scale(1);
   transition: all 0.2s ease-in-out;

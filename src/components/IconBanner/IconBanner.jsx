@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Popup } from 'semantic-ui-react';
 import { useResponsive } from '../../hooks';
 import './IconBanner.css';
 
@@ -10,18 +10,46 @@ const IconBanner = () => {
 
   return (
     <div className="icon-banner">
-      <Link to="/posts">
-        <Icon name="list ul" size={size} className="icon-banner-link" />
-      </Link>
-      <Link to="/tags">
-        <Icon name="tags" size={size} className="icon-banner-link" />
-      </Link>
-      <Link to="/books">
-        <Icon name="book" size={size} className="icon-banner-link" />
-      </Link>
-      <Link to="/about">
-        <Icon name="user" size={size} className="icon-banner-link" />
-      </Link>
+      <Popup
+        position="left center"
+        inverted
+        content="Posts"
+        trigger={
+          <Link to="/posts">
+            <Icon name="list ul" size={size} className="icon-banner-link" />
+          </Link>
+        }
+      />
+      <Popup
+        position="left center"
+        inverted
+        content="Tags"
+        trigger={
+          <Link to="/tags">
+            <Icon name="tags" size={size} className="icon-banner-link" />
+          </Link>
+        }
+      />
+      <Popup
+        position="left center"
+        inverted
+        content="Books"
+        trigger={
+          <Link to="/books">
+            <Icon name="book" size={size} className="icon-banner-link" />
+          </Link>
+        }
+      />
+      <Popup
+        position="left center"
+        inverted
+        content="About"
+        trigger={
+          <Link to="/about">
+            <Icon name="user" size={size} className="icon-banner-link" />
+          </Link>
+        }
+      />
     </div>
   );
 };
