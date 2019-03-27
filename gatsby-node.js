@@ -142,13 +142,13 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     createPage({
       path: '/tags',
       component: require.resolve('./src/templates/Tags.jsx'),
-      context: { tags },
+      context: { tags, posts },
     });
 
     createPage({
       path: '/tags/all',
       component: require.resolve('./src/templates/Tags.jsx'),
-      context: { tags },
+      context: { tags, posts },
     });
 
     Object.keys(tags).forEach(tag => {
