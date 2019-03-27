@@ -19,6 +19,8 @@ A [blog](https://blog.tazimi.dev) system based on React, Semantic UI and Gatsby.
 
 ## Post Template
 
+yaml front + markdown body
+
 ```markdown
 ---
 layout:     post
@@ -32,7 +34,7 @@ tags:
     - JavaScript
 ---
 
-...
+content ...
 ```
 
 ## Installation
