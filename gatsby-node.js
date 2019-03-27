@@ -156,6 +156,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         path: `/tags/${tag}`,
         component: require.resolve('./src/templates/Tags.jsx'),
         context: {
+          tags,
+          activeTag: tag,
           posts: posts.filter(post => post.tags && post.tags.includes(tag)),
         },
       });
