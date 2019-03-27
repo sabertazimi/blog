@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Icon, Popup } from 'semantic-ui-react';
-import { useResponsive } from '../../hooks';
+import { Image, Icon, Popup } from 'semantic-ui-react';
 import './IconBanner.css';
+import banner from '../../images/banner.png';
 
-const IconBanner = () => {
-  const desktopVisible = useResponsive({ minWidth: 540 });
-  const size = desktopVisible ? 'huge' : 'big';
-
-  return (
+const IconBanner = () => (
+  <React.Fragment>
+    <Image src={banner} size="small" alt="banner" />
     <div className="icon-banner">
       <Popup
         position="left center"
@@ -16,7 +14,7 @@ const IconBanner = () => {
         content="Posts"
         trigger={
           <Link to="/posts">
-            <Icon name="list ul" size={size} className="icon-banner-link" />
+            <Icon name="list ul" size="big" className="icon-banner-link" />
           </Link>
         }
       />
@@ -26,7 +24,7 @@ const IconBanner = () => {
         content="Tags"
         trigger={
           <Link to="/tags">
-            <Icon name="tags" size={size} className="icon-banner-link" />
+            <Icon name="tags" size="big" className="icon-banner-link" />
           </Link>
         }
       />
@@ -36,7 +34,7 @@ const IconBanner = () => {
         content="Books"
         trigger={
           <Link to="/books">
-            <Icon name="book" size={size} className="icon-banner-link" />
+            <Icon name="book" size="big" className="icon-banner-link" />
           </Link>
         }
       />
@@ -46,12 +44,12 @@ const IconBanner = () => {
         content="About"
         trigger={
           <Link to="/about">
-            <Icon name="user" size={size} className="icon-banner-link" />
+            <Icon name="user" size="big" className="icon-banner-link" />
           </Link>
         }
       />
     </div>
-  );
-};
+  </React.Fragment>
+);
 
 export default IconBanner;
