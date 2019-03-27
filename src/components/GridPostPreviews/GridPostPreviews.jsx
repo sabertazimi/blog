@@ -4,12 +4,14 @@ import { useResponsive } from '../../hooks';
 
 const flexStyle = {
   display: 'flex',
-  width: '100%',
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'flex-start',
   flexWrap: 'wrap',
   flex: 1,
+  width: '100%',
+  maxWidth: '1280px',
+  margin: '0 auto',
 };
 
 const columnStyle = {
