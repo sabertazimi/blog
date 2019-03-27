@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import { Visibility, Segment, Container, Menu, Input } from 'semantic-ui-react';
+import {
+  Visibility,
+  Segment,
+  Container,
+  Menu,
+  Image,
+  Input,
+} from 'semantic-ui-react';
 import { PRIMARY_COLOR } from '../../constants';
-import logo from '../../images/logo.png';
-import logoFull from '../../images/logo-full.png';
-import banner from '../../images/banner.png';
-import bannerLight from '../../images/banner-light.png';
+import logo from '../../images/logo-full.png';
 
 const Header = () => {
   const [menuFixed, setMenuFixed] = useState(false);
@@ -25,10 +29,21 @@ const Header = () => {
           style={{ zIndex: 99999 }}
           fixed={menuFixed ? 'top' : null}
           inverted={menuFixed}
-          size="massive"
+          secondary
           stackable
+          size="massive"
         >
           <Container style={{ maxWidth: '960px' }}>
+            <Menu.Item style={{ paddingTop: 0, paddingBottom: 0 }}>
+              <Image
+                as={Link}
+                to="/"
+                src={logo}
+                alt="logo"
+                size="tiny"
+                centered
+              />
+            </Menu.Item>
             <Menu.Item as={Link} to="/posts" activeClassName="active">
               Posts
             </Menu.Item>
@@ -44,6 +59,7 @@ const Header = () => {
             <Menu.Item activeClassName="active" position="right">
               <Input
                 transparent
+                inverted={menuFixed}
                 action={{ color: PRIMARY_COLOR, icon: 'search' }}
                 placeholder="Search..."
               />
