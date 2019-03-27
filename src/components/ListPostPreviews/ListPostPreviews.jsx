@@ -5,9 +5,10 @@ import { List } from 'semantic-ui-react';
 const ListPostPreviews = ({ posts }) => (
   <List
     divided
+    animated
     relaxed="very"
-    verticalAlign="middle"
     size="massive"
+    verticalAlign="middle"
     style={{ marginTop: '2em' }}
   >
     {posts.map(post => (
