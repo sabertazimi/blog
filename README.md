@@ -60,7 +60,6 @@ npm run build
 ## Todos
 
 - Search support
-- Archives page
 
 ## Reference
 
