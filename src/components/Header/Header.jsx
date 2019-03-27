@@ -30,7 +30,7 @@ const Header = () => {
         <Menu
           color={PRIMARY_COLOR}
           className="blog-header"
-          style={{ zIndex: 99999 }}
+          style={{ zIndex: 99999, transition: 'all 0.2s ease-in-out' }}
           fixed={(menuFixed && direction === 'up') ? 'top' : null}
           inverted={menuFixed}
           secondary
