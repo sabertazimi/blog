@@ -3,6 +3,7 @@ import Footer from './Footer';
 import IconBanner from './IconBanner';
 import TypingTitle from './TypingTitle';
 import GridPostPreviews from './GridPostPreviews';
+import ListPostPreviews from './ListPostPreviews';
 import Article from './Article';
 import TagsCloud from './TagsCloud';
 import BookGrid from './BookGrid';
@@ -15,6 +16,7 @@ export {
   IconBanner,
   TypingTitle,
   GridPostPreviews,
+  ListPostPreviews,
   Article,
   TagsCloud,
   BookGrid,
