@@ -64,4 +64,4 @@ npm run build
 
 ## Reference
 
-- [Bungee](https://fonts.google.com/specimen/Bungee)
+- [Bungee Font](https://fonts.google.com/specimen/Bungee)
