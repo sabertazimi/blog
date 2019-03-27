@@ -13,13 +13,17 @@ import logo from '../../images/logo-full.png';
 
 const Header = () => {
   const [menuFixed, setMenuFixed] = useState(false);
+  const [direction, setDirection] = useState('down');
+
   const hideFixedMenu = () => setMenuFixed(false);
   const showFixedMenu = () => setMenuFixed(true);
+  const setScrollDirection = (e, { calculations }) => setDirection(calculations.direction);
 
   return (
     <Visibility
       onBottomPassed={showFixedMenu}
       onBottomPassedReverse={hideFixedMenu}
+      onUpdate={setScrollDirection}
       once={false}
     >
       <Segment style={{ padding: 0 }} textAlign="center" vertical>
@@ -27,7 +31,7 @@ const Header = () => {
           color={PRIMARY_COLOR}
           className="blog-header"
           style={{ zIndex: 99999 }}
-          fixed={menuFixed ? 'top' : null}
+          fixed={(menuFixed && direction === 'up') ? 'top' : null}
           inverted={menuFixed}
           secondary
           stackable
