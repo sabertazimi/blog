@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
 import { useResponsive } from '../../hooks';
 import { Button, Icon } from 'semantic-ui-react';
-import { PRIMARY_COLOR } from '../../constants';
+import { BreakPoints, PRIMARY_COLOR } from '../../constants';
 
 const ScrollButton = () => {
-  const isDesktop = useResponsive({ minWidth: 960 });
+  const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });
   const baseStyle = {
     position: 'fixed',
-    fontSize: isDesktop ? '16px': '12px',
-    width: isDesktop ? '100px' : '75px',
-    right: isDesktop ? '50px': '10px',
-    bottom: isDesktop ? '15%' : '8%',
+    fontSize: isnotMobile ? '16px' : '12px',
+    width: isnotMobile ? '100px' : '75px',
+    right: isnotMobile ? '50px' : '10px',
+    bottom: isnotMobile ? '15%' : '8%',
   };
   const topStyle = {
     ...baseStyle,
   };
   const bottomStyle = {
     ...baseStyle,
-    bottom: isDesktop ? '7%' : '2%',
+    bottom: isnotMobile ? '7%' : '2%',
   };
 
   const scrollTo = (event, data) => {
@@ -38,7 +38,7 @@ const ScrollButton = () => {
 
   // only run when mounting
   useEffect(() => {
-    const topAnchor  = document.createElement('div');
+    const topAnchor = document.createElement('div');
     topAnchor.id = 'scroll-top-anchor';
     topAnchor.style.position = 'absolute';
     topAnchor.style.top = 0;

@@ -3,11 +3,12 @@ import { Helmet } from 'react-helmet';
 import { LandingLayout, LandingPanel } from '../layouts';
 import { IconBanner, TypingTitle } from '../components';
 import { useResponsive } from '../hooks';
+import { BreakPoints } from '../constants';
 import landingImage from '../images/landing.jpg';
 
 export default () => {
-  const desktopVisible = useResponsive({ minWidth: 960 });
-  const bannerWidth = desktopVisible ? '300px' : '150px';
+  const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });
+  const bannerWidth = isnotMobile ? '300px' : '150px';
 
   return (
     <div>

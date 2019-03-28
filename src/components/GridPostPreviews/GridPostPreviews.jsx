@@ -1,6 +1,7 @@
 import React from 'react';
 import PostPreview from './PostPreview';
 import { useResponsive } from '../../hooks';
+import { BreakPoints } from '../../constants';
 
 const flexStyle = {
   display: 'flex',
@@ -38,11 +39,11 @@ const rightFlexStyle = {
 const GridPostPreviews = ({ posts }) => {
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
-  const desktopVisible = useResponsive({ minWidth: 1280 });
+  const isnotMobile = useResponsive({ minWidth: BreakPoints.desktop });
 
   return (
     <div>
-      {desktopVisible ? (
+      {isnotMobile ? (
         <div style={rowFlexStyle}>
           <div style={{ ...leftFlexStyle, marginRight: '2em' }}>
             {leftPosts.map((post, index) => {

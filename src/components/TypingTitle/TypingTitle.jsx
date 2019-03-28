@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 import { useResponsive } from '../../hooks';
+import { BreakPoints } from '../../constants';
 
 const TypingTitle = ({
   titles = [],
@@ -8,8 +9,8 @@ const TypingTitle = ({
   loop = true,
   style = {},
 } = {}) => {
-  const desktopVisible = useResponsive({ minWidth: 1080});
-  const fontSize = desktopVisible ? '5em' : '2em';
+  const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });
+  const fontSize = isnotMobile ? '5em' : '2em';
 
   useEffect(() => {
     const options = {
