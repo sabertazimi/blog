@@ -22,7 +22,7 @@ const Header = () => {
 
   const hideFixedMenu = () => setMenuFixed(false);
   const showFixedMenu = () => setMenuFixed(true);
-  const setScrollDirection = (e, { calculations }) =>
+  const onScroll = (e, { calculations }) =>
     setDirection(calculations.direction);
   const toggleBar = () => setCollapsed(!collapsed);
 
@@ -30,14 +30,19 @@ const Header = () => {
     <Visibility
       onBottomPassed={showFixedMenu}
       onBottomPassedReverse={hideFixedMenu}
-      onUpdate={setScrollDirection}
+      onUpdate={onScroll}
       once={false}
     >
       <Segment style={{ padding: 0 }} textAlign="center" vertical>
         <Menu
           color={PRIMARY_COLOR}
           className="blog-header"
-          style={{ zIndex: 99999, transition: 'all 0.2s ease-in-out' }}
+          style={{
+            zIndex: 99999,
+            marginLeft: 0,
+            marginRight: 0,
+            transition: 'all 0.2s ease-in-out',
+          }}
           fixed={menuFixed && direction === 'up' ? 'top' : null}
           inverted={menuFixed}
           secondary
@@ -80,7 +85,7 @@ const Header = () => {
               </React.Fragment>
             )}
             {!isnotMobile && (
-              <Menu.Item position="right" style={{ textAlign: 'right' }}>
+              <Menu.Item position="right">
                 <Button fluid color={PRIMARY_COLOR} icon onClick={toggleBar}>
                   <Icon name="bars" />
                 </Button>
