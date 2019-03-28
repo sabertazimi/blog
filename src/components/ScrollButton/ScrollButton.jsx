@@ -13,6 +13,7 @@ const ScrollButton = () => {
     right: isnotMobile ? '30px' : '10px',
     bottom: isnotMobile ? '4%' : '2%',
     margin: 0,
+    zIndex: 999,
   };
 
   const onScroll = (e, { calculations }) =>
@@ -49,7 +50,7 @@ const ScrollButton = () => {
 
   return (
     <Visibility onUpdate={onScroll} once={false}>
-      {direction === 'up' ? (
+      {direction === 'down' ? (
         <Button
           style={buttonStyle}
           color={PRIMARY_COLOR}
