@@ -7,12 +7,12 @@ const ScrollButton = () => {
   const [direction, setDirection] = useState('down');
   const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });
 
+  const buttonSize = isnotMobile ? 'large' : 'small';
   const buttonStyle = {
     position: 'fixed',
-    fontSize: isnotMobile ? '16px' : '12px',
-    width: isnotMobile ? '100px' : '75px',
-    right: isnotMobile ? '50px' : '10px',
-    bottom: isnotMobile ? '5%' : '2%',
+    right: isnotMobile ? '30px' : '10px',
+    bottom: isnotMobile ? '4%' : '2%',
+    margin: 0,
   };
 
   const onScroll = (e, { calculations }) =>
@@ -52,34 +52,22 @@ const ScrollButton = () => {
       {direction === 'up' ? (
         <Button
           style={buttonStyle}
-          animated="fade"
           color={PRIMARY_COLOR}
-          size="large"
+          size={buttonSize}
           direction="up"
           onClick={scrollTo}
         >
-          <Button.Content visible>
-            <Icon name="anchor" />
-          </Button.Content>
-          <Button.Content hidden>
-            <Icon name="up arrow" />
-          </Button.Content>
+          <Icon name="up arrow" style={{margin: 0}}/>
         </Button>
       ) : (
         <Button
           style={buttonStyle}
-          animated="fade"
           color={PRIMARY_COLOR}
-          size="large"
+          size={buttonSize}
           direction="down"
           onClick={scrollTo}
         >
-          <Button.Content visible>
-            <Icon name="anchor" />
-          </Button.Content>
-          <Button.Content hidden>
-            <Icon name="down arrow" />
-          </Button.Content>
+          <Icon name="down arrow" style={{margin: 0}}/>
         </Button>
       )}
     </Visibility>
