@@ -2,10 +2,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { LandingLayout, LandingPanel } from '../layouts';
 import { IconBanner, TypingTitle } from '../components';
+import { useResponsive } from '../hooks';
 import landingImage from '../images/landing.jpg';
 
 export default () => {
-  console.log(landingImage);
+  const desktopVisible = useResponsive({ minWidth: 960 });
+  const bannerWidth = desktopVisible ? '300px' : '150px';
+
   return (
     <div>
       <Helmet>
@@ -29,8 +32,8 @@ export default () => {
         <LandingPanel
           style={{
             flexShrink: '0',
-            width: '300px',
-            minWidth: '300px',
+            width: bannerWidth,
+            minWidth: bannerWidth,
             boxShadow: '-20px 0 60px 0 rgba(0, 0, 0, 0.3)',
           }}
         >

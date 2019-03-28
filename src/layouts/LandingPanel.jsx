@@ -11,7 +11,7 @@ const LandingPanel = ({ children, style }) => (
       alignItems: 'center',
       flexDirection: 'column',
       width: '50%',
-      height: '100vh',
+      height: '100%',
       margin: 0,
       padding: 0,
       overflow: 'hidden',

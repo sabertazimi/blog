@@ -2,7 +2,7 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Segment } from 'semantic-ui-react';
 
-const LandingLayout = ({ children }) => {
+const LandingLayout = ({ children, column = false }) => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateY(-200px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
@@ -13,6 +13,7 @@ const LandingLayout = ({ children }) => {
     <Segment
       style={{
         width: '100%',
+        height: '100vh',
         margin: 0,
         padding: 0,
         overflow: 'hidden',
@@ -26,9 +27,9 @@ const LandingLayout = ({ children }) => {
           display: 'flex',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          flexDirection: 'row',
+          flexDirection: column ? 'column' : 'row',
           width: '100%',
-          height: '100vh',
+          height: '100%',
           overflow: 'hidden',
         }}
       >
