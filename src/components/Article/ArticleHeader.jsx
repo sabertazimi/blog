@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Header, Label } from 'semantic-ui-react';
 import { PRIMARY_COLOR } from '../../constants';
-import './ArticleHeader.css';
 
 const ArticleHeader = ({ color, post }) => {
   const props = useSpring({
@@ -40,7 +39,6 @@ const ArticleHeader = ({ color, post }) => {
           as="h1"
           color={color}
           style={{ fontSize: '4em' }}
-          className="typing"
         >
           {post.title || 'Article'}
         </Header>

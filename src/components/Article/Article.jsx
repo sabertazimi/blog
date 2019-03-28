@@ -15,11 +15,11 @@ const Article = ({ post }) => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateY(-200px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
-    delay: 800,
+    delay: 1000,
   });
 
   return (
-    <div>
+    <div style={{ marginTop: '-3em' }}>
       <ArticleHeader color={randomColor()} post={post} />
       <Container style={{ padding: '1em' }}>
         <animated.div

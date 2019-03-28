@@ -43,7 +43,7 @@ const Header = () => {
             marginRight: 0,
             transition: 'all 0.2s ease-in-out',
           }}
-          fixed={menuFixed && direction === 'up' ? 'top' : null}
+          fixed={(menuFixed && direction === 'up') ? 'top' : null}
           inverted={menuFixed}
           secondary
           stackable
@@ -85,8 +85,14 @@ const Header = () => {
               </React.Fragment>
             )}
             {!isnotMobile && (
-              <Menu.Item position="right">
-                <Button fluid color={PRIMARY_COLOR} icon onClick={toggleBar}>
+              <Menu.Item position="right" style={{ margin: 0, padding: 0 }}>
+                <Button
+                  fluid
+                  icon
+                  color={PRIMARY_COLOR}
+                  onClick={toggleBar}
+                  style={{ margin: 0, borderRadius: 0 }}
+                >
                   <Icon name="bars" />
                 </Button>
               </Menu.Item>
