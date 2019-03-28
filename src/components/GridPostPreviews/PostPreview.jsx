@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Container, Label } from 'semantic-ui-react';
@@ -7,9 +7,6 @@ import { randomColor } from '../../utils';
 import './PostPreview.css';
 
 const PostPreview = ({ post }) => {
-  const [dimmerActive, setActive] = useState(false);
-  const handleShow = () => setActive(true);
-  const handleHide = () => setActive(false);
   const tagName = post.tags ? post.tags[0] : 'Computer Science';
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
@@ -17,7 +14,7 @@ const PostPreview = ({ post }) => {
   });
 
   return (
-    <animated.div style={{...props, width: '100%'}}>
+    <animated.div style={{ ...props, width: '100%' }}>
       <Container
         style={{
           maxWidth: 960,
@@ -34,12 +31,7 @@ const PostPreview = ({ post }) => {
         <Label color="black" style={{ marginBottom: '3rem' }}>
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
         </Label>
-        <PreviewMarkdown
-          post={post}
-          dimmerActive={dimmerActive}
-          onMouseEnter={handleShow}
-          onMouseLeave={handleHide}
-        />
+        <PreviewMarkdown post={post} />
       </Container>
     </animated.div>
   );
