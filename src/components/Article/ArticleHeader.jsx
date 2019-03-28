@@ -23,6 +23,9 @@ const ArticleHeader = ({ color, post }) => {
                 to={`/tags/${tag}`}
                 color={PRIMARY_COLOR}
                 tag
+                style={{
+                  marginBottom: '1em',
+                }}
               >
                 {tag}
               </Label>
@@ -33,10 +36,20 @@ const ArticleHeader = ({ color, post }) => {
             CS
           </Label>
         )}
-        <Header as="h1" color={color} style={{ fontSize: '4em' }} className="typing">
+        <Header
+          as="h1"
+          color={color}
+          style={{ fontSize: '4em' }}
+          className="typing"
+        >
           {post.title || 'Article'}
         </Header>
-        <Label color="black">
+        <Label
+          color="black"
+          style={{
+            marginBottom: '1em',
+          }}
+        >
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}
         </Label>
         <Label color="black">({post.timeToRead} minutes)</Label>
