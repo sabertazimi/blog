@@ -17,6 +17,7 @@ const SocialShareButton = ({ color, type, url }) => {
         borderRadius: 0,
         width: '50px',
         height: '50px',
+        zIndex: 999,
       }}
       size="huge"
       onClick={handleShare}
