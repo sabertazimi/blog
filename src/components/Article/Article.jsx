@@ -21,7 +21,7 @@ const Article = ({ post }) => {
   return (
     <div>
       <ArticleHeader color={randomColor()} post={post} />
-      <Container style={{ maxWidth: 960, padding: '1em' }}>
+      <Container style={{ padding: '1em' }}>
         <animated.div
           style={props}
           dangerouslySetInnerHTML={{ __html: post.html }}

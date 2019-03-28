@@ -11,7 +11,6 @@ const ArticleFooter = ({ post }) => (
       animated="fade"
       color={PRIMARY_COLOR}
       size="large"
-      inverted
     >
       <Button.Content visible>
         {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
@@ -33,7 +32,6 @@ const ArticleFooter = ({ post }) => (
       color={PRIMARY_COLOR}
       size="large"
       floated="right"
-      inverted
     >
       <Button.Content visible>
         {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}

@@ -55,7 +55,6 @@ const ScrollButton = () => {
         style={topStyle}
         animated="fade"
         color={PRIMARY_COLOR}
-        inverted
         size="large"
         direction="up"
         onClick={scrollTo}
@@ -69,7 +68,6 @@ const ScrollButton = () => {
         style={bottomStyle}
         animated="fade"
         color={PRIMARY_COLOR}
-        inverted
         size="large"
         direction="down"
         onClick={scrollTo}
