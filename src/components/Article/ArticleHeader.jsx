@@ -15,10 +15,10 @@ const ArticleHeader = ({ color, post }) => {
     <div style={{ padding: '8em 8em' }} className="jumbotron">
       <animated.div style={props}>
         {post.tags ? (
-          post.tags.map((tag, index) => {
+          post.tags.map(tag => {
             return (
               <Label
-                key={index}
+                key={tag}
                 as={Link}
                 to={`/tags/${tag}`}
                 color={PRIMARY_COLOR}

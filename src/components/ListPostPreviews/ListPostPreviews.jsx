@@ -11,11 +11,11 @@ const ListPostPreviews = ({ posts }) => (
     verticalAlign="middle"
     style={{ marginTop: '2em' }}
   >
-    {posts.map(post => (
-      <List.Item>
+    {posts.map((post, index) => (
+      <List.Item key={post.title || index}>
         <List.Content floated="right">{post.author}</List.Content>
         <List.Content>
-          <List.Header key={post.title} as={Link} to={`${post.slug}`}>
+          <List.Header as={Link} to={`${post.slug}`}>
             {post.title}
           </List.Header>
         </List.Content>
