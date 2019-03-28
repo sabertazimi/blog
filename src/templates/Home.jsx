@@ -1,9 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { LandingLayout, LandingPanel } from '../layouts';
-import { IconBanner, TypingTitle } from '../components';
+import { IconBanner, TypingTitle, ErrorBoundary } from '../components';
 import { useResponsive } from '../hooks';
-import { BreakPoints } from '../constants';
+import { BreakPoints, MetaData } from '../constants';
 import landingImage from '../images/landing.jpg';
 
 export default () => {
@@ -12,11 +12,13 @@ export default () => {
 
   return (
     <div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Sabertazimi's Blog</title>
-        <link rel="canonical" href="https://tazimi.dev" />
-      </Helmet>
+      <ErrorBoundary>
+        <Helmet key={MetaData.url}>
+          <meta charSet="utf-8" />
+          <title>{MetaData.title}</title>
+          <link rel="canonical" href={MetaData.url} />
+        </Helmet>
+      </ErrorBoundary>
       <LandingLayout>
         <LandingPanel
           style={{
