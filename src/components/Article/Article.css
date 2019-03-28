@@ -70,8 +70,8 @@
 .markdown-body h6 {
   display: flex;
   position: relative;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0;
+  margin-bottom: 20px;
   font-weight: 800;
   line-height: 1.8;
   color: #2e2e2e;
@@ -84,7 +84,7 @@
 .markdown-body h5::before,
 .markdown-body h6::before {
   content: '#';
-  color: #54c8ff;
+  color: #2185d0;
   position: absolute;
   left: -0.8em;
   top: -2px;
@@ -120,32 +120,33 @@
 }
 
 .markdown-body h1 {
-  font-size: 3em;
+  display: none;
+  font-size: 4em;
 }
 
 .markdown-body h2 {
-  font-size: 2.5em;
+  font-size: 3em;
 }
 
 .markdown-body h3 {
-  font-size: 2.25em;
-}
-
-.markdown-body h4 {
   font-size: 2em;
 }
 
+.markdown-body h4 {
+  font-size: 1.8em;
+}
+
 .markdown-body h5 {
-  font-size: 1.875em;
+  font-size: 1.6em;
 }
 
 .markdown-body h6 {
-  font-size: 1.65em;
+  font-size: 1.4em;
 }
 
 .markdown-body p {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.8;
@@ -154,7 +155,7 @@
 .markdown-body ul,
 .markdown-body ol {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   padding-left: 2em;
 }
 
@@ -182,7 +183,7 @@
 }
 
 .markdown-body li > p {
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .markdown-body li + li {
@@ -194,12 +195,14 @@
 }
 
 .markdown-body dl {
+  margin-top: 0;
+  margin-bottom: 20px;
   padding: 0;
 }
 
 .markdown-body dl dt {
   padding: 0;
-  margin-top: 16px;
+  margin-top: 20px;
   font-size: 1em;
   font-style: italic;
   font-weight: 600;
@@ -207,12 +210,14 @@
 
 .markdown-body dl dd {
   padding: 0 16px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .markdown-body table {
   display: block;
   width: 100%;
+  margin-top: 0;
+  margin-bottom: 20px;
   border-spacing: 0;
   border-collapse: collapse;
   overflow: auto;
@@ -240,17 +245,9 @@
   background-color: #f6f8fa;
 }
 
-.markdown-body blockquote,
-.markdown-body ul,
-.markdown-body ol,
-.markdown-body dl,
-.markdown-body table {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
 .markdown-body blockquote {
   margin: 0;
+  margin-bottom: 20px;
   padding: 0 1em;
   color: #6a737d;
   border-left: 0.25em solid #54c8ff;
@@ -287,6 +284,11 @@
 
 .markdown-body strong {
   font-weight: 600;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 #disqus_thread {
