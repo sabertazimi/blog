@@ -1,101 +1,104 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import {
-  Visibility,
-  Segment,
-  Container,
-  Menu,
-  Image,
-  Button,
-  Icon,
-} from 'semantic-ui-react';
-import { useResponsive } from '../../hooks';
+import { Row, Col, Menu, Popover, Icon } from 'antd';
+import { Visibility, Segment, Image } from 'semantic-ui-react';
 import PostsSearchBar from '../PostsSearchBar';
-import { BreakPoints, PRIMARY_COLOR } from '../../constants';
+import { useResponsive } from '../../hooks';
+import { BreakPoints, Colors } from '../../constants';
 import logo from '../../images/logo-full.png';
+import './Header.css';
 
 const Header = ({ posts }) => {
-  const [collapsed, setCollapsed] = useState(true);
   const [menuFixed, setMenuFixed] = useState(false);
-  const [direction, setDirection] = useState('down');
   const isnotMobile = useResponsive({ minWidth: BreakPoints.mobile });
 
   const hideFixedMenu = () => setMenuFixed(false);
   const showFixedMenu = () => setMenuFixed(true);
-  const onScroll = (e, { calculations }) =>
-    setDirection(calculations.direction);
-  const toggleBar = () => setCollapsed(!collapsed);
+
+  const renderMobileMenu = () => (
+    <Row type="flex" justify="space-around" align="middle">
+      <Col span={12} offset={6}>
+        <Image as={Link} to="/" src={logo} alt="logo" size="tiny" />
+      </Col>
+      <Col span={6}>
+        <Popover
+          placement="bottomRight"
+          content={
+            <Menu
+              mode="vertical"
+              style={{ width: '100%', minWidth: '400px', textAlign: 'center' }}
+            >
+              <Menu.Item>
+                <Link to="/posts">Posts</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to="/tags">Tags</Link>
+              </Menu.Item>
+              <Menu.Item as={Link} to="/books">
+                <Link to="/books">Books</Link>
+              </Menu.Item>
+              <Menu.Item as={Link} to="/about">
+                <Link to="/about">About</Link>
+              </Menu.Item>
+            </Menu>
+          }
+          trigger="click"
+        >
+          <Icon
+            type="bars"
+            style={{ fontSize: '2em', color: Colors.primary }}
+          />
+        </Popover>
+      </Col>
+    </Row>
+  );
+
+  const renderDesktopMenu = () => (
+    <Menu
+      mode="horizontal"
+      style={{
+        width: '100%',
+        marginLeft: 0,
+        marginRight: 0,
+        zIndex: 99999,
+        lineHeight: '64px',
+        transition: 'all 0.2s ease-in-out',
+        transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
+        position: 'fixed',
+      }}
+      className="blog-header"
+    >
+      <Menu.Item>
+        <Image as={Link} to="/" src={logo} alt="logo" size="tiny" centered />
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/posts">Posts</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/tags">Tags</Link>
+      </Menu.Item>
+      <Menu.Item as={Link} to="/books">
+        <Link to="/books">Books</Link>
+      </Menu.Item>
+      <Menu.Item as={Link} to="/about">
+        <Link to="/about">About</Link>
+      </Menu.Item>
+      {posts && (
+        <Menu.Item>
+          <PostsSearchBar posts={posts} />
+        </Menu.Item>
+      )}
+    </Menu>
+  );
 
   return (
     <Visibility
       onBottomPassed={showFixedMenu}
       onBottomPassedReverse={hideFixedMenu}
-      onUpdate={onScroll}
       once={false}
     >
       <Segment style={{ padding: 0 }} textAlign="center" vertical>
-        <Menu
-          color={PRIMARY_COLOR}
-          className="blog-header"
-          style={{
-            zIndex: 99999,
-            marginLeft: 0,
-            marginRight: 0,
-            transition: 'all 0.2s ease-in-out',
-          }}
-          fixed={menuFixed && direction === 'up' ? 'top' : null}
-          inverted={menuFixed}
-          secondary
-          stackable
-          size="massive"
-        >
-          <Container>
-            {(isnotMobile || !collapsed) && (
-              <React.Fragment>
-                <Menu.Item style={{ paddingTop: 0, paddingBottom: 0 }}>
-                  <Image
-                    as={Link}
-                    to="/"
-                    src={logo}
-                    alt="logo"
-                    size="tiny"
-                    centered
-                  />
-                </Menu.Item>
-                <Menu.Item as={Link} to="/posts" activeClassName="active">
-                  Posts
-                </Menu.Item>
-                <Menu.Item as={Link} to="/tags" activeClassName="active">
-                  Tags
-                </Menu.Item>
-                <Menu.Item as={Link} to="/books" activeClassName="active">
-                  Books
-                </Menu.Item>
-                <Menu.Item as={Link} to="/about" activeClassName="active">
-                  About
-                </Menu.Item>
-                {posts && (
-                  <Menu.Item position="right">
-                    <PostsSearchBar posts={posts} />
-                  </Menu.Item>
-                )}
-              </React.Fragment>
-            )}
-            {!isnotMobile && (
-              <Menu.Item position="right" style={{ margin: 0, padding: 0 }}>
-                <Button
-                  fluid
-                  icon
-                  color={PRIMARY_COLOR}
-                  onClick={toggleBar}
-                  style={{ margin: 0, borderRadius: 0 }}
-                >
-                  <Icon name="bars" />
-                </Button>
-              </Menu.Item>
-            )}
-          </Container>
-        </Menu>
+        {isnotMobile ? renderDesktopMenu() : renderMobileMenu()}
       </Segment>
     </Visibility>
   );

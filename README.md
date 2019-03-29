@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/sabertazimi/react-blog.svg?branch=master)](https://travis-ci.org/sabertazimi/react-blog)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a182a53a-297d-425b-88d6-323ce7039495/deploy-status)](https://app.netlify.com/sites/tazimi/deploys)
 
-A [blog](https://blog.tazimi.dev) system based on React, Semantic UI and Gatsby.
+A [blog](https://blog.tazimi.dev) system based on React and Gatsby.
 
 ## Features
 

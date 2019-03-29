@@ -6,7 +6,7 @@ const PostLayout = ({ posts, children }) => (
   <div>
     <Header posts={posts} />
     <Segment
-      style={{ width: '100%', padding: '3em 0', overflow: 'hidden' }}
+      style={{ width: '100%', padding: '0 0 3em 0', overflow: 'hidden' }}
       vertical
     >
       {children}

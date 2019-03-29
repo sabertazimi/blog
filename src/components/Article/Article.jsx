@@ -12,7 +12,7 @@ import { PRIMARY_COLOR } from '../../constants';
 
 const Article = ({ post }) => {
   return (
-    <div style={{ marginTop: '-3em' }}>
+    <div>
       <ArticleHeader color={randomColor()} post={post} />
       <Container style={{ padding: '1em' }}>
         <ArticleNavigation toc={post.toc} />

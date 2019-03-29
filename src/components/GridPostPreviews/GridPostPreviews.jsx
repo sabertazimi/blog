@@ -39,10 +39,11 @@ const rightFlexStyle = {
 const GridPostPreviews = ({ posts }) => {
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
+  const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
   const isnotMobile = useResponsive({ minWidth: BreakPoints.desktop });
 
   return (
-    <div>
+    <div style={{ paddingTop: isMobile ? 0 : '11em' }}>
       {isnotMobile ? (
         <div style={rowFlexStyle}>
           <div style={{ ...leftFlexStyle, marginRight: '2em' }}>

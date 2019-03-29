@@ -10,3 +10,8 @@ export const MetaData = {
   title: 'Sabertazimi \' Blog',
   url: 'https://tazimi.dev',
 };
+
+export const Colors = {
+  primary: '#2185d0',
+  blue: '#1890ff',
+};
