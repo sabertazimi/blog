@@ -25,6 +25,12 @@ module.exports = {
         },
         plugins: [
           'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-smartypants',
+            options: {
+              dashes: 'oldschool',
+            },
+          },
           'gatsby-remark-autolink-headers',
           {
             resolve: 'gatsby-remark-prismjs',
@@ -54,5 +60,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-catch-links',
   ],
 };

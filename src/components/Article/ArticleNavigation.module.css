@@ -1,0 +1,28 @@
+.toc-container {
+  position: fixed;
+  top: 3%;
+  right: 30px;
+  max-height: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.toc {
+  display: none;
+  transform: scale(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.toc a {
+  color: black;
+}
+
+.toc-container:hover i {
+  display: none;
+}
+
+.toc-container:hover .toc {
+  display: block;
+  transform: scale(1);
+}
