@@ -2,9 +2,9 @@ import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Header, Footer, ScrollButton } from '../components';
 
-const PostLayout = ({ children }) => (
+const PostLayout = ({ posts, children }) => (
   <div>
-    <Header />
+    <Header posts={posts} />
     <Segment
       style={{ width: '100%', padding: '3em 0', overflow: 'hidden' }}
       vertical

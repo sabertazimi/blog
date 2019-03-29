@@ -8,13 +8,13 @@ import {
   Image,
   Button,
   Icon,
-  Input,
 } from 'semantic-ui-react';
 import { useResponsive } from '../../hooks';
+import PostsSearchBar from '../PostsSearchBar';
 import { BreakPoints, PRIMARY_COLOR } from '../../constants';
 import logo from '../../images/logo-full.png';
 
-const Header = () => {
+const Header = ({ posts }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [menuFixed, setMenuFixed] = useState(false);
   const [direction, setDirection] = useState('down');
@@ -74,14 +74,11 @@ const Header = () => {
                 <Menu.Item as={Link} to="/about" activeClassName="active">
                   About
                 </Menu.Item>
-                <Menu.Item position="right">
-                  <Input
-                    transparent
-                    inverted={menuFixed}
-                    action={{ color: PRIMARY_COLOR, icon: 'search' }}
-                    placeholder="Search..."
-                  />
-                </Menu.Item>
+                {posts && (
+                  <Menu.Item position="right">
+                    <PostsSearchBar posts={posts} />
+                  </Menu.Item>
+                )}
               </React.Fragment>
             )}
             {!isnotMobile && (

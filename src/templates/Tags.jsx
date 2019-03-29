@@ -5,7 +5,7 @@ import { ListPostPreviews } from '../components';
 
 export default ({ pageContext: { tags, activeTag, posts } }) => (
   <React.Fragment>
-    <Layout banner="Tags">
+    <Layout banner="Tags" posts={posts}>
       <TagsCloud tags={tags} activeTag={activeTag} />
       {posts ? <ListPostPreviews posts={posts} /> : null}
     </Layout>
