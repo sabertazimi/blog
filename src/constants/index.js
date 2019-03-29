@@ -12,6 +12,6 @@ export const MetaData = {
 };
 
 export const Colors = {
-  primary: '#2185d0',
-  blue: '#1890ff',
+  primary: '#1890ff',
+  blue: '#2185d0',
 };
