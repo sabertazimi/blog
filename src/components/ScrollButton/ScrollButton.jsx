@@ -11,7 +11,7 @@ const ScrollButton = () => {
   const buttonStyle = {
     position: 'fixed',
     right: isnotMobile ? '30px' : '10px',
-    bottom: isnotMobile ? '4%' : '2%',
+    bottom: isnotMobile ? '3%' : '2%',
     margin: 0,
     zIndex: 999,
   };
