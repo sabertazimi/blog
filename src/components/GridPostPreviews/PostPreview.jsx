@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring';
 import { Container, Label } from 'semantic-ui-react';
 import PreviewMarkdown from './PreviewMarkdown';
 import { randomColor } from '../../utils';
-import './PostPreview.css';
+import styles from './PostPreview.module.css';
 
 const PostPreview = ({ post }) => {
   const tagName = post.tags ? post.tags[0] : 'Computer Science';
@@ -22,7 +22,7 @@ const PostPreview = ({ post }) => {
           marginBottom: '2em',
           padding: '1em 1.2em',
         }}
-        className="cell"
+        className={styles.cell}
       >
         <Label as={Link} color={randomColor()} to={`/tags/${tagName}`} ribbon>
           {tagName}

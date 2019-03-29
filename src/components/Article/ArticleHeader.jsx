@@ -11,7 +11,16 @@ const ArticleHeader = ({ color, post }) => {
   });
 
   return (
-    <div style={{ padding: '8em 8em' }} className="jumbotron">
+    <div
+      style={{
+        width: '100%',
+        padding: '8em 8em',
+        backgroundColor: '#000',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <animated.div style={props}>
         {post.tags ? (
           post.tags.map(tag => {
@@ -35,11 +44,7 @@ const ArticleHeader = ({ color, post }) => {
             CS
           </Label>
         )}
-        <Header
-          as="h1"
-          color={color}
-          style={{ fontSize: '4em' }}
-        >
+        <Header as="h1" color={color} style={{ fontSize: '4em' }}>
           {post.title || 'Article'}
         </Header>
         <Label

@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Container, Icon } from 'semantic-ui-react';
-import ArticleDivider from './ArticleDivider';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
+import ArticleNavigation from './ArticleNavigation';
+import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
 import SocialGroup from '../SocialGroup';
 import { randomColor } from '../../utils';
 import { PRIMARY_COLOR } from '../../constants';
-
-import './Article.css';
+import styles from './Article.module.css';
 
 const Article = ({ post }) => {
   const props = useSpring({
@@ -22,14 +22,11 @@ const Article = ({ post }) => {
     <div style={{ marginTop: '-3em' }}>
       <ArticleHeader color={randomColor()} post={post} />
       <Container style={{ padding: '1em' }}>
-        <animated.div
-          style={props}
-          dangerouslySetInnerHTML={{ __html: post.toc }}
-        />
+        <ArticleNavigation toc={post.toc} />
         <animated.div
           style={props}
           dangerouslySetInnerHTML={{ __html: post.html }}
-          className="markdown-body"
+          className={styles.markdownBody}
         />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={post} />

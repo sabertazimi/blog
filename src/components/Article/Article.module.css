@@ -300,25 +300,3 @@
   margin-top: 0;
   margin-bottom: 20px;
 }
-
-#disqus_thread {
-  position: relative;
-}
-
-#disqus_thread:after {
-  content: '';
-  display: block;
-  height: 55px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background: white;
-}
-
-.jumbotron {
-  width: 100%;
-  background-color: #000;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SocialShareButton from './SocialShareButton';
-import './SocialGroup.css';
+import styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
   const [url, setUrl] = useState('');
@@ -14,7 +14,7 @@ const SocialGroup = () => {
       top: '50%',
       left: 0,
     }}
-    className="social-group"
+    className={styles.socialGroup}
     >
       <SocialShareButton color="red" type="weibo" url={`https://service.weibo.com/share/share.php?url=${url}`} />
       <SocialShareButton color="facebook" type="facebook" url={`https://www.facebook.com/sharer.php?u=${url}`}/>
