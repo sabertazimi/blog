@@ -60,10 +60,11 @@ const Header = ({ posts }) => {
         position: 'fixed',
         zIndex: 9999,
         width: '100%',
+        borderBottomColor: 'transparent',
         transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
+        transition: 'all 0.2s ease-in-out',
         backgroundColor: menuFixed ? 'white' : 'transparent',
         lineHeight: '64px',
-        transition: 'all 0.2s ease-in-out',
       }}
       className="blog-header"
     >

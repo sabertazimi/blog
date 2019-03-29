@@ -14,8 +14,9 @@ const ArticleHeader = ({ color, post }) => {
     <div
       style={{
         width: '100%',
-        padding: '8em 8em',
-        backgroundColor: '#000',
+        padding: '10em 8em',
+        background:
+          'linear-gradient(135deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
