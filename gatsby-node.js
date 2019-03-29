@@ -86,6 +86,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             excerpt(pruneLength: 500)
             timeToRead
             html
+            tableOfContents
           }
         }
       }
@@ -108,12 +109,18 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
                 title: array[index - 1].node.frontmatter.title,
               };
 
+        // post data details
         return {
           slug: node.fields.slug,
-          ...node.frontmatter,
+          title: node.frontmatter.title,
+          subtitle: node.frontmatter.subtitle,
+          author: node.frontmatter.author,
+          tags: node.frontmatter.tags,
+          date: node.frontmatter.date,
           excerpt: node.excerpt,
           timeToRead: node.timeToRead,
           html: node.html,
+          toc: node.tableOfContents,
           prevPost,
           nextPost,
         };

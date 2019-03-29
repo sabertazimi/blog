@@ -86,7 +86,7 @@
   content: '#';
   color: #2185d0;
   position: absolute;
-  left: -0.8em;
+  left: -1.2em;
   top: -2px;
   font-weight: 800;
   opacity: 0;
@@ -102,6 +102,16 @@
 .markdown-body h6:hover::before {
   opacity: 1;
   transform: scale(1);
+}
+
+/* remove anchor added by gatsby-autolink-headers */
+.markdown-body h1 svg,
+.markdown-body h2 svg,
+.markdown-body h3 svg,
+.markdown-body h4 svg,
+.markdown-body h5 svg,
+.markdown-body h6 svg {
+  display: none;
 }
 
 .markdown-body h2::after {

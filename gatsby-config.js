@@ -24,9 +24,8 @@ module.exports = {
           maxDepth: 6,
         },
         plugins: [
-          {
-            resolve: 'gatsby-remark-copy-linked-files',
-          },
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-autolink-headers',
           {
             resolve: 'gatsby-remark-prismjs',
             options: {

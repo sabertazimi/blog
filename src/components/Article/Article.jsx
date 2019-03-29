@@ -24,6 +24,10 @@ const Article = ({ post }) => {
       <Container style={{ padding: '1em' }}>
         <animated.div
           style={props}
+          dangerouslySetInnerHTML={{ __html: post.toc }}
+        />
+        <animated.div
+          style={props}
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="markdown-body"
         />
