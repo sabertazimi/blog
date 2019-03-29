@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Tooltip, Icon } from 'antd';
-import { Image, Popup } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
 import styles from './IconBanner.module.css';
 import banner from '../../images/banner.png';
 
