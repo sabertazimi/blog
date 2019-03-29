@@ -10,6 +10,7 @@ const ArticleNavigation = ({ toc }) => {
 
   return isnotMobile ? (
     <Button
+      as='div'
       className={styles.tocContainer}
       size={buttonSize}
       color={PRIMARY_COLOR}
@@ -17,7 +18,7 @@ const ArticleNavigation = ({ toc }) => {
         margin: 0,
       }}
     >
-      <Icon name="bars" style={{ margin: 0 }} />
+      <Icon name="list ul" style={{ margin: 0 }} />
       <div className={styles.toc} dangerouslySetInnerHTML={{ __html: toc }} />
     </Button>
   ) : null;
