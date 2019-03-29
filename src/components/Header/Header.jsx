@@ -57,14 +57,13 @@ const Header = ({ posts }) => {
     <Menu
       mode="horizontal"
       style={{
+        position: 'fixed',
+        zIndex: 9999,
         width: '100%',
-        marginLeft: 0,
-        marginRight: 0,
-        zIndex: 99999,
+        transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
+        backgroundColor: menuFixed ? 'white' : 'transparent',
         lineHeight: '64px',
         transition: 'all 0.2s ease-in-out',
-        transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
-        position: 'fixed',
       }}
       className="blog-header"
     >
