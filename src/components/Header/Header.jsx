@@ -43,7 +43,7 @@ const Header = () => {
             marginRight: 0,
             transition: 'all 0.2s ease-in-out',
           }}
-          fixed={(menuFixed && direction === 'up') ? 'top' : null}
+          fixed={menuFixed && direction === 'up' ? 'top' : null}
           inverted={menuFixed}
           secondary
           stackable

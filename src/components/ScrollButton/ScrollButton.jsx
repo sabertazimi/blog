@@ -58,7 +58,7 @@ const ScrollButton = () => {
           direction="up"
           onClick={scrollTo}
         >
-          <Icon name="up arrow" style={{margin: 0}}/>
+          <Icon name="up arrow" style={{ margin: 0 }} />
         </Button>
       ) : (
         <Button
@@ -68,7 +68,7 @@ const ScrollButton = () => {
           direction="down"
           onClick={scrollTo}
         >
-          <Icon name="down arrow" style={{margin: 0}}/>
+          <Icon name="down arrow" style={{ margin: 0 }} />
         </Button>
       )}
     </Visibility>

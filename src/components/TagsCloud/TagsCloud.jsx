@@ -37,17 +37,10 @@ const TagsCloud = ({ tags, activeTag }) => {
         );
       })}
       {activeTag ? (
-        <Label
-          key='all'
-          color={randomColor()}
-          as={Link}
-          to='/tags'
-        >
+        <Label key="all" color={randomColor()} as={Link} to="/tags">
           All
         </Label>
-      ) : (
-        null
-      )}
+      ) : null}
     </Label.Group>
   );
 };
