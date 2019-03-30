@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
+import Container from './Container';
 import Icons from './Icons';
 import IconBanner from './IconBanner';
 import TypingTitle from './TypingTitle';
@@ -16,6 +17,7 @@ import ErrorBoundary from './ErrorBoundary';
 export {
   Header,
   Footer,
+  Container,
   Icons,
   IconBanner,
   TypingTitle,
