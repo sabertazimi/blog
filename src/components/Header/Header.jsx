@@ -6,7 +6,6 @@ import PostsSearchBar from 'components/PostsSearchBar';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
 import logo from 'images/logo-full.png';
-import './Header.css';
 
 const Header = ({ posts }) => {
   const [menuFixed, setMenuFixed] = useState(false);
