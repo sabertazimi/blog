@@ -20,6 +20,7 @@ const ArticleNavigation = ({ toc }) => {
         shape="circle"
         icon={tocVisible ? 'close' : 'menu-fold'}
         size="large"
+        style={{ color: Colors.light }}
         onClick={handleClick}
       />
       <Drawer

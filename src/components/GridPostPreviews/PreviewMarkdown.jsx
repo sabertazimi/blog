@@ -20,7 +20,7 @@ const PreviewMarkdown = ({ post }) => (
         color: Colors.primary,
       }}
     >
-      <Link to={`${post.slug}`} style={{ color: 'white' }}>
+      <Link to={`${post.slug}`} style={{ color: Colors.light }}>
         <Icon type="read" />
       </Link>
     </Button>

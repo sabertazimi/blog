@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
+import { Colors } from 'config';
 
 const LandingLayout = ({ children, column = false }) => {
   const props = useSpring({
@@ -16,7 +17,7 @@ const LandingLayout = ({ children, column = false }) => {
         margin: 0,
         padding: 0,
         overflow: 'hidden',
-        color: '#fff',
+        color: Colors.light,
       }}
       vertical
     >

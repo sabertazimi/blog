@@ -41,13 +41,19 @@ const ArticleHeader = ({ post }) => {
             <Link to="/tags/all">CS</Link>
           </Tag>
         )}
-        <h1 style={{ color: Colors.white, fontSize: '4em', margin: '0.2em 0' }}>
+        <h1 style={{ color: Colors.light, fontSize: '4em', margin: '0.2em 0' }}>
           {post.title || 'Article'}
         </h1>
-        <Tag color="black" style={{ marginBottom: '1em', fontWeight: 800 }}>
+        <Tag
+          color={Colors.black}
+          style={{ marginBottom: '1em', color: Colors.light, fontWeight: 800 }}
+        >
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}
         </Tag>
-        <Tag color="black" style={{ fontWeight: 800 }}>
+        <Tag
+          color={Colors.black}
+          style={{ color: Colors.light, fontWeight: 800 }}
+        >
           ({post.timeToRead} minutes)
         </Tag>
       </animated.div>

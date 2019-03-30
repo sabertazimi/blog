@@ -67,14 +67,12 @@ const Header = ({ posts }) => {
         zIndex: 9999,
         width: '100%',
         borderBottomColor: 'transparent',
-        transition:
-          'transform 0.2s ease-in-out, background 0.5s ease-in-out',
+        transition: 'transform 0.2s ease-in-out, background 0.5s ease-in-out',
         transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
-        background:
-          menuFixed
-            ? 'white'
-            : 'linear-gradient(120deg,#2b488a,#ca3749)',
-        color: menuFixed ? 'rgba(0, 0, 0, 0.65)' : '#fff',
+        background: menuFixed
+          ? Colors.white
+          : 'linear-gradient(120deg,#2b488a,#ca3749)',
+        color: menuFixed ? Colors.dark : Colors.light,
         fontWeight: 800,
         lineHeight: '64px',
       }}

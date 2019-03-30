@@ -13,8 +13,12 @@ const MetaData = {
 
 const Colors = {
   primary: '#1890ff',
-  white: '#fff',
   blue: '#2185d0',
+  red: '#f03e3e',
+  light: '#f8f9fa',
+  white: '#fff',
+  dark: '#343a40',
+  black: '#000',
 };
 
 export { PRIMARY_COLOR, BreakPoints, MetaData, Colors };

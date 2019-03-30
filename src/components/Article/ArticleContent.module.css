@@ -2,7 +2,7 @@
 .markdown-body {
   text-size-adjust: 100%;
   line-height: 1.5;
-  color: #24292e;
+  color: #212529;
   font-size: 16px;
   word-wrap: break-word;
   font-family: 'Spectral', 'Noto Serif SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
@@ -28,7 +28,7 @@
 
 .markdown-body a {
   background-color: transparent;
-  color: #c30000;
+  color: #f03e3e;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
@@ -39,7 +39,7 @@
 }
 
 .markdown-body a:hover {
-  color: #54c8ff;
+  color: #1890ff;
 }
 
 .markdown-body a:not([href]) {
@@ -74,7 +74,7 @@
   margin-bottom: 20px;
   font-weight: 800;
   line-height: 1.8;
-  color: #2e2e2e;
+  color: #343a40;
 }
 
 .markdown-body h1::before,
@@ -84,7 +84,7 @@
 .markdown-body h5::before,
 .markdown-body h6::before {
   content: '#';
-  color: #2185d0;
+  color: #1890ff;
   position: absolute;
   left: -1.2em;
   top: -2px;
@@ -260,7 +260,7 @@
   margin-bottom: 20px;
   padding: 0 1em;
   color: #6a737d;
-  border-left: 0.25em solid #54c8ff;
+  border-left: 0.25em solid #1890ff;
 }
 
 .markdown-body blockquote > :first-child {

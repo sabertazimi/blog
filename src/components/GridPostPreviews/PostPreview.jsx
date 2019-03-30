@@ -4,6 +4,7 @@ import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
 import { Container } from 'components';
 import PreviewMarkdown from './PreviewMarkdown';
+import { Colors } from 'config';
 import { randomColor } from 'utils';
 import styles from './PostPreview.module.css';
 
@@ -34,7 +35,10 @@ const PostPreview = ({ post }) => {
           </Link>
         </Tag>
         <h2 style={{ paddingTop: '1rem' }}>{post.title || 'Article'}</h2>
-        <Tag color="black" style={{ marginBottom: '1rem', fontWeight: 800 }}>
+        <Tag
+          color={Colors.black}
+          style={{ marginBottom: '1rem', color: Colors.light, fontWeight: 800 }}
+        >
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
         </Tag>
         <PreviewMarkdown post={post} />

@@ -2,25 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { Visibility } from 'semantic-ui-react';
 import { useResponsive } from 'hooks';
-import { BreakPoints } from 'config';
+import { BreakPoints, Colors } from 'config';
 
 const ScrollButton = () => {
   const [direction, setDirection] = useState('down');
-  const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });
-
-  const buttonSize = isnotMobile ? 'large' : 'small';
-  const buttonStyle = {
-    position: 'fixed',
-    right: isnotMobile ? '30px' : '10px',
-    bottom: isnotMobile ? '3%' : '2%',
-    margin: 0,
-    zIndex: 999,
-  };
+  const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
 
   const onScroll = (e, { calculations }) =>
     setDirection(calculations.direction);
 
-  const scrollTo = (event) => {
+  const scrollTo = event => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -55,8 +46,15 @@ const ScrollButton = () => {
         type="primary"
         shape="circle"
         icon={direction === 'down' ? 'arrow-up' : 'arrow-down'}
-        size={buttonSize}
-        style={buttonStyle}
+        size={isMobile ? 'small' : 'large'}
+        style={{
+          position: 'fixed',
+          right: isMobile ? '10px' : '30px',
+          bottom: isMobile ? '2%' : '3%',
+          margin: 0,
+          zIndex: 999,
+          color: Colors.light,
+        }}
         onClick={scrollTo}
       />
     </Visibility>
