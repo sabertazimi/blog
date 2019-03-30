@@ -1,26 +1,40 @@
-import React from 'react';
-import { Button, Icon } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Drawer } from 'antd';
 import { useResponsive } from 'hooks';
-import { BreakPoints, PRIMARY_COLOR } from 'config';
+import { BreakPoints, Colors } from 'config';
 import styles from './ArticleNavigation.module.css';
 
 const ArticleNavigation = ({ toc }) => {
+  const [tocVisible, setTocVisible] = useState(false);
   const isnotMobile = useResponsive({ minWidth: BreakPoints.mobile });
-  const buttonSize = isnotMobile ? 'large' : 'small';
+
+  const handleClick = () => setTocVisible(!tocVisible);
 
   return isnotMobile ? (
-    <Button
-      as="div"
+    <div
       className={styles.tocContainer}
-      size={buttonSize}
-      color={PRIMARY_COLOR}
-      style={{
-        margin: 0,
-      }}
+      style={{ margin: 0, backgroundColor: Colors.primary }}
     >
-      <Icon name="list ul" style={{ margin: 0 }} />
-      <div className={styles.toc} dangerouslySetInnerHTML={{ __html: toc }} />
-    </Button>
+      <Button
+        type="primary"
+        shape="circle"
+        icon={tocVisible ? 'close' : 'menu-fold'}
+        size="large"
+        onClick={handleClick}
+      />
+      <Drawer
+        title="Table of Contents"
+        placement="right"
+        closable={false}
+        onClose={handleClick}
+        visible={tocVisible}
+      >
+        <div
+          className={`${styles.toc} ${tocVisible ? styles.tocExpanded : ''}`}
+          dangerouslySetInnerHTML={{ __html: toc }}
+        />
+      </Drawer>
+    </div>
   ) : null;
 };
 

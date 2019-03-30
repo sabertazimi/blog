@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
-import { Header, Label } from 'semantic-ui-react';
-import { PRIMARY_COLOR } from 'config';
+import { Tag } from 'antd';
+import { Colors } from 'config';
 
 const ArticleHeader = ({ color, post }) => {
   const props = useSpring({
@@ -26,37 +26,31 @@ const ArticleHeader = ({ color, post }) => {
         {post.tags ? (
           post.tags.map(tag => {
             return (
-              <Label
+              <Tag
                 key={tag}
-                as={Link}
-                to={`/tags/${tag}`}
-                color={PRIMARY_COLOR}
-                tag
-                style={{
-                  marginBottom: '1em',
-                }}
+                color={Colors.primary}
+                style={{ marginBottom: '1em' }}
               >
-                {tag}
-              </Label>
+                <Link to={`/tags/${tag}`} style={{ fontWeight: 800 }}>
+                  {tag}
+                </Link>
+              </Tag>
             );
           })
         ) : (
-          <Label as={Link} to="/tags/all" color={PRIMARY_COLOR} tag>
-            CS
-          </Label>
+          <Tag color={Colors.primary}>
+            <Link to="/tags/all">CS</Link>
+          </Tag>
         )}
-        <Header as="h1" color={color} style={{ fontSize: '4em' }}>
+        <h1 style={{ color, fontSize: '4em', marginTop: '0.3em 0 0.2em 0' }}>
           {post.title || 'Article'}
-        </Header>
-        <Label
-          color="black"
-          style={{
-            marginBottom: '1em',
-          }}
-        >
+        </h1>
+        <Tag color="black" style={{ marginBottom: '1em', fontWeight: 800 }}>
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}
-        </Label>
-        <Label color="black">({post.timeToRead} minutes)</Label>
+        </Tag>
+        <Tag color="black" style={{ fontWeight: 800 }}>
+          ({post.timeToRead} minutes)
+        </Tag>
       </animated.div>
     </div>
   );

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Divider } from 'semantic-ui-react';
+import { Divider } from 'antd';
 
 const ArticleDivider = ({ children }) => (
-  <Divider as="h4" className="header" horizontal style={{ margin: '3em 0em' }}>
-    {children}
-  </Divider>
+  <Divider style={{ margin: '2em 0', fontWeight: 800 }}>{children}</Divider>
 );
 
 export default ArticleDivider;

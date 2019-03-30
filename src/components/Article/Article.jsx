@@ -1,26 +1,25 @@
 import React from 'react';
-import { Container, Icon } from 'semantic-ui-react';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleContent from './ArticleContent';
 import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
-import SocialGroup from 'components/SocialGroup';
+import { Container, Icons, SocialGroup } from 'components';
 import { randomColor } from 'utils';
-import { PRIMARY_COLOR } from 'config';
+import { Colors } from 'config';
 
 const Article = ({ post }) => {
   return (
     <div>
       <ArticleHeader color={randomColor()} post={post} />
-      <Container style={{ padding: '1em' }}>
+      <Container>
         <ArticleNavigation toc={post.toc} />
         <ArticleContent content={post.html} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={post} />
         <ArticleDivider>
-          <Icon color={PRIMARY_COLOR} name="comments outline" />
+          <Icons.Comment style={{ color: Colors.primary }} />
         </ArticleDivider>
         <ArticleComments />
         <SocialGroup />

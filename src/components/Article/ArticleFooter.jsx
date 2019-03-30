@@ -1,50 +1,52 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Button, Icon } from 'semantic-ui-react';
-import { PRIMARY_COLOR } from 'config';
+import { Button, Icon } from 'antd';
+import { Colors } from 'config';
+import styles from './ArticleFooter.module.css';
 
 const ArticleFooter = ({ post }) => (
-  <div>
+  <div className={styles.clearfix}>
     <Button
-      as={Link}
-      to={post.prevPost ? `${post.prevPost.slug}` : '/'}
-      animated="fade"
-      color={PRIMARY_COLOR}
       size="large"
+      style={{
+        float: 'left',
+        height: '100%',
+        padding: '0.3em 1em',
+        fontSize: '1.5em',
+        color: Colors.primary,
+      }}
     >
-      <Button.Content visible>
+      <Icon
+        type={post.prevPost ? 'arrow-left' : 'home'}
+        style={{ marginRight: '10px' }}
+      />
+      <Link
+        to={post.prevPost ? `${post.prevPost.slug}` : '/posts'}
+        style={{ fontWeight: 800 }}
+      >
         {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
-      </Button.Content>
-      {post.prevPost ? (
-        <Button.Content hidden>
-          <Icon name="left arrow" />
-        </Button.Content>
-      ) : (
-        <Button.Content hidden>
-          <Icon name="home" />
-        </Button.Content>
-      )}
+      </Link>
     </Button>
     <Button
-      as={Link}
-      to={post.nextPost ? `${post.nextPost.slug}` : '/'}
-      animated="fade"
-      color={PRIMARY_COLOR}
       size="large"
-      floated="right"
+      style={{
+        float: 'right',
+        height: '100%',
+        padding: '0.3em 1em',
+        fontSize: '1.5em',
+        color: Colors.primary,
+      }}
     >
-      <Button.Content visible>
+      <Link
+        to={post.nextPost ? `${post.nextPost.slug}` : '/posts'}
+        style={{ fontWeight: 800 }}
+      >
         {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}
-      </Button.Content>
-      {post.nextPost ? (
-        <Button.Content hidden>
-          <Icon name="right arrow" />
-        </Button.Content>
-      ) : (
-        <Button.Content hidden>
-          <Icon name="home" />
-        </Button.Content>
-      )}
+      </Link>
+      <Icon
+        type={post.nextPost ? 'arrow-right' : 'home'}
+        style={{ marginLeft: '10px' }}
+      />
     </Button>
   </div>
 );

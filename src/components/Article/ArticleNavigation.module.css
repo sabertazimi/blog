@@ -2,14 +2,11 @@
   position: fixed;
   top: 3%;
   right: 30px;
-  max-height: 70%;
-  overflow-x: hidden;
-  overflow-y: auto;
   z-index: 99999;
+  background-color: transparent !important;
 }
 
 .toc {
-  display: none;
   transform: scale(0);
   transition: transform 0.5s ease-in-out;
 }
@@ -35,18 +32,18 @@
 }
 
 .toc a {
-  color: white;
+  color: black;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.8;
   word-wrap: break-all;
+  transition: color 0.2 ease-in-out;
 }
 
-.toc-container:hover i {
-  display: none;
-}
-
-.toc-container:hover .toc {
-  display: block;
+.toc-expanded {
   transform: scale(1);
+}
+
+.toc a:hover {
+  color: #1890ff;
 }
