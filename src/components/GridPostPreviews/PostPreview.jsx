@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Container, Label } from 'semantic-ui-react';
 import PreviewMarkdown from './PreviewMarkdown';
-import { randomColor } from '../../utils';
+import { randomColor } from 'utils';
 import styles from './PostPreview.module.css';
 
 const PostPreview = ({ post }) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useResponsive } from '../../hooks';
 import { Button, Icon, Visibility } from 'semantic-ui-react';
-import { BreakPoints, PRIMARY_COLOR } from '../../constants';
+import { useResponsive } from 'hooks';
+import { BreakPoints, PRIMARY_COLOR } from 'config';
 
 const ScrollButton = () => {
   const [direction, setDirection] = useState('down');

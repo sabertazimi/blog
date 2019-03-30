@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { Row, Col, Menu, Popover, Icon } from 'antd';
 import { Visibility, Segment, Image } from 'semantic-ui-react';
-import PostsSearchBar from '../PostsSearchBar';
-import { useResponsive } from '../../hooks';
-import { BreakPoints, Colors } from '../../constants';
-import logo from '../../images/logo-full.png';
+import PostsSearchBar from 'components/PostsSearchBar';
+import { useResponsive } from 'hooks';
+import { BreakPoints, Colors } from 'config';
+import logo from 'images/logo-full.png';
 import './Header.css';
 
 const Header = ({ posts }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout } from '../layouts';
-import { BookGrid } from '../components';
+import { Layout } from 'layouts';
+import { BookGrid } from 'components';
 
 const Books = () => {
   const booklist = [

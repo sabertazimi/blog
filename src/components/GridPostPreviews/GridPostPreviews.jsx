@@ -1,7 +1,7 @@
 import React from 'react';
 import PostPreview from './PostPreview';
-import { useResponsive } from '../../hooks';
-import { BreakPoints } from '../../constants';
+import { useResponsive } from 'hooks';
+import { BreakPoints } from 'config';
 
 const flexStyle = {
   display: 'flex',

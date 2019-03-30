@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Tooltip, Icon } from 'antd';
 import { Image } from 'semantic-ui-react';
+import banner from 'images/banner.png';
 import styles from './IconBanner.module.css';
-import banner from '../../images/banner.png';
 
 const IconBanner = () => (
   <React.Fragment>

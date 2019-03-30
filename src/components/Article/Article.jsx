@@ -6,9 +6,9 @@ import ArticleContent from './ArticleContent';
 import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
-import SocialGroup from '../SocialGroup';
-import { randomColor } from '../../utils';
-import { PRIMARY_COLOR } from '../../constants';
+import SocialGroup from 'components/SocialGroup';
+import { randomColor } from 'utils';
+import { PRIMARY_COLOR } from 'config';
 
 const Article = ({ post }) => {
   return (

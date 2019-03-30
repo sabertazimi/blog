@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
-import { useResponsive } from '../../hooks';
-import { BreakPoints, PRIMARY_COLOR } from '../../constants';
+import { useResponsive } from 'hooks';
+import { BreakPoints, PRIMARY_COLOR } from 'config';
 import styles from './ArticleNavigation.module.css';
 
 const ArticleNavigation = ({ toc }) => {
@@ -10,7 +10,7 @@ const ArticleNavigation = ({ toc }) => {
 
   return isnotMobile ? (
     <Button
-      as='div'
+      as="div"
       className={styles.tocContainer}
       size={buttonSize}
       color={PRIMARY_COLOR}

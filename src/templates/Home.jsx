@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { LandingLayout, LandingPanel } from '../layouts';
-import { IconBanner, TypingTitle, ErrorBoundary } from '../components';
-import { useResponsive } from '../hooks';
-import { BreakPoints, MetaData } from '../constants';
-import landingImage from '../images/landing.jpg';
+import { LandingLayout, LandingPanel } from 'layouts';
+import { IconBanner, TypingTitle, ErrorBoundary } from 'components';
+import { useResponsive } from 'hooks';
+import { BreakPoints, MetaData } from 'config';
+import landingImage from 'images/landing.jpg';
 
 export default () => {
   const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });

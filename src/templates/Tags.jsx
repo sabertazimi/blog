@@ -1,7 +1,6 @@
 import React from 'react';
-import { Layout } from '../layouts';
-import { TagsCloud } from '../components';
-import { ListPostPreviews } from '../components';
+import { Layout } from 'layouts';
+import { TagsCloud, ListPostPreviews } from 'components';
 
 export default ({ pageContext: { tags, activeTag, posts } }) => (
   <React.Fragment>

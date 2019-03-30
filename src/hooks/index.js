@@ -3,9 +3,4 @@ import useForm from './useForm';
 import useResponsive from './useResponsive';
 import useGithub from './useGithub';
 
-export {
-  useDisqus,
-  useForm,
-  useResponsive,
-  useGithub,
-};
+export { useDisqus, useForm, useResponsive, useGithub };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Label } from 'semantic-ui-react';
-import { randomColor } from '../../utils';
+import { randomColor } from 'utils';
 
 const TagsCloud = ({ tags, activeTag }) => {
   let tagsList = Object.keys(tags).sort((a, b) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
-import { Header, Footer, ScrollButton } from '../components';
+import { Header, Footer, ScrollButton } from 'components';
 
 const PostLayout = ({ posts, children }) => (
   <div>

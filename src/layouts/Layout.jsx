@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Divider, Container, Segment } from 'semantic-ui-react';
-import { Header, Footer } from '../components';
-import { useResponsive } from '../hooks';
-import { BreakPoints } from '../constants';
+import { Header, Footer } from 'components';
+import { useResponsive } from 'hooks';
+import { BreakPoints } from 'config';
 
 const Layout = ({ banner, posts, children }) => {
   const isnotMobile = useResponsive({ minWidth: BreakPoints.mobile });

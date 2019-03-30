@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Container, Dimmer, Button, Icon } from 'semantic-ui-react';
-import { PRIMARY_COLOR } from '../../constants';
+import { PRIMARY_COLOR } from 'config';
 
 const PreviewMarkdown = ({ post }) => (
   <Dimmer.Dimmable

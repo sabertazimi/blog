@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const path = require('path');
 const fetch = require('node-fetch');
 const { createFilePath } = require('gatsby-source-filesystem');
 
@@ -191,5 +192,13 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         context: { post },
       });
     });
+  });
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
   });
 };

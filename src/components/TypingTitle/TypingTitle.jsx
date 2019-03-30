@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
-import { useResponsive } from '../../hooks';
-import { BreakPoints } from '../../constants';
+import { useResponsive } from 'hooks';
+import { BreakPoints } from 'config';
 
 const TypingTitle = ({
   titles = [],
