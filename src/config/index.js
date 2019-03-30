@@ -13,6 +13,7 @@ const MetaData = {
 
 const Colors = {
   primary: '#1890ff',
+  white: '#fff',
   blue: '#2185d0',
 };
 

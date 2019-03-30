@@ -5,6 +5,7 @@ import { Visibility, Segment, Image } from 'semantic-ui-react';
 import PostsSearchBar from 'components/PostsSearchBar';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
+import styles from './Header.module.css';
 import logo from 'images/logo-full.png';
 
 const Header = ({ posts }) => {
@@ -59,15 +60,21 @@ const Header = ({ posts }) => {
 
   const renderDesktopMenu = () => (
     <Menu
+      className={styles.headerMenu}
       mode="horizontal"
       style={{
         position: 'fixed',
         zIndex: 9999,
         width: '100%',
         borderBottomColor: 'transparent',
-        transition: 'all 0.2s ease-in-out',
+        transition:
+          'transform 0.2s ease-in-out, background 0.5s ease-in-out',
         transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
-        backgroundColor: menuFixed ? 'white' : 'transparent',
+        background:
+          menuFixed
+            ? 'white'
+            : 'linear-gradient(120deg,#2b488a,#ca3749)',
+        color: menuFixed ? 'rgba(0, 0, 0, 0.65)' : '#fff',
         fontWeight: 800,
         lineHeight: '64px',
       }}

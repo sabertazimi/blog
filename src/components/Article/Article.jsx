@@ -6,13 +6,12 @@ import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
 import { Container, Icons, SocialGroup } from 'components';
-import { randomColor } from 'utils';
 import { Colors } from 'config';
 
 const Article = ({ post }) => {
   return (
     <div>
-      <ArticleHeader color={randomColor()} post={post} />
+      <ArticleHeader post={post} />
       <Container>
         <ArticleNavigation toc={post.toc} />
         <ArticleContent content={post.html} />

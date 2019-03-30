@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
 import { Colors } from 'config';
 
-const ArticleHeader = ({ color, post }) => {
+const ArticleHeader = ({ post }) => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },
@@ -15,8 +15,7 @@ const ArticleHeader = ({ color, post }) => {
       style={{
         width: '100%',
         padding: '10em 8em',
-        background:
-          'linear-gradient(135deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%)',
+        background: 'linear-gradient(120deg,#2b488a,#ca3749)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
@@ -42,7 +41,7 @@ const ArticleHeader = ({ color, post }) => {
             <Link to="/tags/all">CS</Link>
           </Tag>
         )}
-        <h1 style={{ color, fontSize: '4em', marginTop: '0.3em 0 0.2em 0' }}>
+        <h1 style={{ color: Colors.white, fontSize: '4em', margin: '0.2em 0' }}>
           {post.title || 'Article'}
         </h1>
         <Tag color="black" style={{ marginBottom: '1em', fontWeight: 800 }}>
