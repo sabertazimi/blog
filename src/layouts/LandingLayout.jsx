@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Segment } from 'semantic-ui-react';
 
 const LandingLayout = ({ children, column = false }) => {
   const props = useSpring({
@@ -10,7 +9,7 @@ const LandingLayout = ({ children, column = false }) => {
   });
 
   return (
-    <Segment
+    <div
       style={{
         width: '100%',
         height: '100vh',
@@ -35,7 +34,7 @@ const LandingLayout = ({ children, column = false }) => {
       >
         {children}
       </animated.div>
-    </Segment>
+    </div>
   );
 };
 

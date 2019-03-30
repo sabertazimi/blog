@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Icon, Visibility } from 'semantic-ui-react';
+import { Button } from 'antd';
+import { Visibility } from 'semantic-ui-react';
 import { useResponsive } from 'hooks';
-import { BreakPoints, PRIMARY_COLOR } from 'config';
+import { BreakPoints } from 'config';
 
 const ScrollButton = () => {
   const [direction, setDirection] = useState('down');
@@ -19,12 +20,12 @@ const ScrollButton = () => {
   const onScroll = (e, { calculations }) =>
     setDirection(calculations.direction);
 
-  const scrollTo = (event, data) => {
+  const scrollTo = (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     const element = document.querySelector(
-      data.direction === 'up' ? '#scroll-top-anchor' : '.blog-footer'
+      direction === 'down' ? '#scroll-top-anchor' : '.blog-footer'
     );
 
     if (element) {
@@ -50,27 +51,14 @@ const ScrollButton = () => {
 
   return (
     <Visibility onUpdate={onScroll} once={false}>
-      {direction === 'down' ? (
-        <Button
-          style={buttonStyle}
-          color={PRIMARY_COLOR}
-          size={buttonSize}
-          direction="up"
-          onClick={scrollTo}
-        >
-          <Icon name="up arrow" style={{ margin: 0 }} />
-        </Button>
-      ) : (
-        <Button
-          style={buttonStyle}
-          color={PRIMARY_COLOR}
-          size={buttonSize}
-          direction="down"
-          onClick={scrollTo}
-        >
-          <Icon name="down arrow" style={{ margin: 0 }} />
-        </Button>
-      )}
+      <Button
+        type="primary"
+        shape="circle"
+        icon={direction === 'down' ? 'arrow-up' : 'arrow-down'}
+        size={buttonSize}
+        style={buttonStyle}
+        onClick={scrollTo}
+      />
     </Visibility>
   );
 };

@@ -1,39 +1,30 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Container, Dimmer, Button, Icon } from 'semantic-ui-react';
-import { PRIMARY_COLOR } from 'config';
+import { Button, Icon, Skeleton } from 'antd';
+import { Container } from 'components';
+import { Colors } from 'config';
 
 const PreviewMarkdown = ({ post }) => (
-  <Dimmer.Dimmable
-    dimmed={true}
-    blurring={false}
-    style={{ marginTop: '-1em', marginBottom: '3em' }}
-  >
-    <Dimmer active={true}>
-      <Button
-        as={Link}
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          margin: 0,
-          transform: 'translate(-50%, -50%)',
-        }}
-        animated="fade"
-        color={PRIMARY_COLOR}
-        size="large"
-        to={`${post.slug}`}
-      >
-        <Button.Content visible>Read More</Button.Content>
-        <Button.Content hidden>
-          <Icon name="right arrow" />
-        </Button.Content>
-      </Button>
-    </Dimmer>
-    <Container style={{ opacity: '0.5' }}>
-      <div>{post.excerpt}</div>
-    </Container>
-  </Dimmer.Dimmable>
+  <Container>
+    <Skeleton
+      paragraph={{ rows: Math.min(Math.floor(post.timeToRead / 2), 10) }}
+    />
+    <Button
+      type="primary"
+      shape="circle"
+      size="large"
+      style={{
+        float: 'right',
+        margin: 0,
+        fontSize: '1.5em',
+        color: Colors.primary,
+      }}
+    >
+      <Link to={`${post.slug}`} style={{ color: 'white' }}>
+        <Icon type="read" />
+      </Link>
+    </Button>
+  </Container>
 );
 
 export default PreviewMarkdown;
