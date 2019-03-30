@@ -26,7 +26,12 @@ const Header = ({ posts }) => {
           content={
             <Menu
               mode="vertical"
-              style={{ width: '100%', minWidth: '400px', textAlign: 'center' }}
+              style={{
+                width: '100%',
+                minWidth: '400px',
+                textAlign: 'center',
+                fontWeight: 800,
+              }}
             >
               <Menu.Item>
                 <Link to="/posts">Posts</Link>
@@ -61,12 +66,12 @@ const Header = ({ posts }) => {
         zIndex: 9999,
         width: '100%',
         borderBottomColor: 'transparent',
-        transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
         transition: 'all 0.2s ease-in-out',
+        transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
         backgroundColor: menuFixed ? 'white' : 'transparent',
+        fontWeight: 800,
         lineHeight: '64px',
       }}
-      className="blog-header"
     >
       <Menu.Item>
         <Image as={Link} to="/" src={logo} alt="logo" size="tiny" centered />
@@ -84,7 +89,7 @@ const Header = ({ posts }) => {
         <Link to="/about">About</Link>
       </Menu.Item>
       {posts && (
-        <Menu.Item>
+        <Menu.Item style={{ borderBottomColor: 'transparent' }}>
           <PostsSearchBar posts={posts} />
         </Menu.Item>
       )}
