@@ -1,54 +1,66 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Button, Icon } from 'antd';
-import { Colors } from 'config';
+import { useResponsive } from 'hooks';
+import { BreakPoints, Colors } from 'config';
 import styles from './ArticleFooter.module.css';
 
-const ArticleFooter = ({ post }) => (
-  <div className={styles.clearfix}>
-    <Button
-      size="large"
-      style={{
-        float: 'left',
-        height: '100%',
-        padding: '0.3em 1em',
-        fontSize: '1.5em',
-        color: Colors.primary,
-      }}
-    >
-      <Icon
-        type={post.prevPost ? 'arrow-left' : 'home'}
-        style={{ marginRight: '10px' }}
-      />
-      <Link
-        to={post.prevPost ? `${post.prevPost.slug}` : '/posts'}
-        style={{ fontWeight: 800 }}
+const ArticleFooter = ({ post }) => {
+  const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
+
+  return (
+    <div className={styles.clearfix}>
+      <Button
+        type="primary"
+        size="large"
+        style={{
+          float: 'left',
+          width: isMobile ? '100%' : '47%',
+          height: '4em',
+          marginBottom: isMobile ? '1em' : 0,
+          padding: '0.3em 1em',
+          borderRadius: 0,
+          fontSize: '1.5em',
+          color: Colors.light,
+        }}
       >
-        {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
-      </Link>
-    </Button>
-    <Button
-      size="large"
-      style={{
-        float: 'right',
-        height: '100%',
-        padding: '0.3em 1em',
-        fontSize: '1.5em',
-        color: Colors.primary,
-      }}
-    >
-      <Link
-        to={post.nextPost ? `${post.nextPost.slug}` : '/posts'}
-        style={{ fontWeight: 800 }}
+        <Icon
+          type={post.prevPost ? 'arrow-left' : 'home'}
+          style={{ marginRight: '10px' }}
+        />
+        <Link
+          to={post.prevPost ? `${post.prevPost.slug}` : '/posts'}
+          style={{ fontWeight: 800, color: Colors.light }}
+        >
+          {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
+        </Link>
+      </Button>
+      <Button
+        size="large"
+        type="primary"
+        style={{
+          float: 'right',
+          width: isMobile ? '100%' : '47%',
+          height: '4em',
+          padding: '0.3em 1em',
+          borderRadius: 0,
+          fontSize: '1.5em',
+          color: Colors.light,
+        }}
       >
-        {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}
-      </Link>
-      <Icon
-        type={post.nextPost ? 'arrow-right' : 'home'}
-        style={{ marginLeft: '10px' }}
-      />
-    </Button>
-  </div>
-);
+        <Link
+          to={post.nextPost ? `${post.nextPost.slug}` : '/posts'}
+          style={{ fontWeight: 800, color: Colors.light }}
+        >
+          {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}
+        </Link>
+        <Icon
+          type={post.nextPost ? 'arrow-right' : 'home'}
+          style={{ marginLeft: '10px' }}
+        />
+      </Button>
+    </div>
+  );
+};
 
 export default ArticleFooter;
