@@ -15,6 +15,8 @@ const Colors = {
   primary: '#1890ff',
   blue: '#2185d0',
   red: '#f03e3e',
+  yellow: '#f59f00',
+  green: '#37b24d',
   light: '#f8f9fa',
   white: '#fff',
   dark: '#343a40',
