@@ -19,7 +19,6 @@ const LandingLayout = ({ children, column = false }) => {
         overflow: 'hidden',
         color: Colors.light,
       }}
-      vertical
     >
       <animated.div
         style={{
