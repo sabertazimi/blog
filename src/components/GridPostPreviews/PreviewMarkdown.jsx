@@ -15,9 +15,10 @@ const PreviewMarkdown = ({ post }) => (
       size="large"
       style={{
         float: 'right',
+        width: '2.5em',
+        height: '2.5em',
         margin: 0,
         fontSize: '1.5em',
-        color: Colors.primary,
       }}
     >
       <Link to={`${post.slug}`} style={{ color: Colors.light }}>

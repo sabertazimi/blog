@@ -20,7 +20,7 @@ const PostPreview = ({ post }) => {
       <Container
         style={{
           marginTop: 0,
-          marginBottom: '5em',
+          marginBottom: '3em',
           padding: '1em 1.2em',
         }}
         className={styles.cell}
@@ -28,13 +28,15 @@ const PostPreview = ({ post }) => {
         <Tag
           key={tagName}
           color={randomColor()}
-          style={{ marginBottom: '0.5em' }}
+          style={{ marginBottom: '1rem' }}
         >
           <Link to={`/tags/${tagName}`} style={{ fontWeight: 800 }}>
             {tagName}
           </Link>
         </Tag>
-        <h2 style={{ paddingTop: '1rem' }}>{post.title || 'Article'}</h2>
+        <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>
+          {post.title || 'Article'}
+        </h2>
         <Tag
           color={Colors.black}
           style={{ marginBottom: '1rem', color: Colors.light, fontWeight: 800 }}
