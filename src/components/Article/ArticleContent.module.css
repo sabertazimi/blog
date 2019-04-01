@@ -29,12 +29,21 @@
 }
 
 .markdown-body a {
-  display: inline-block;
-  border-bottom: 2px #1890ff solid;
+  position: relative;
+  border-bottom: none;
   background-color: transparent;
   text-decoration: none;
-  transform: translateY(0);
-  transition: transform 0.2s ease-in-out;
+}
+
+.markdown-body a::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #1890ff;
+  content: '';
+  transition: all 0.2s ease-in-out;
 }
 
 .markdown-body a:active,
@@ -42,8 +51,10 @@
   outline-width: 0;
 }
 
-.markdown-body a:hover {
-  transform: translateY(-3px);
+.markdown-body a:active::before,
+.markdown-body a:hover::before {
+  left: 0;
+  width: 100%;
 }
 
 .markdown-body a:not([href]) {
@@ -90,8 +101,8 @@
   content: '#';
   color: inherit;
   position: absolute;
-  left: -1.2em;
   top: -2px;
+  left: -1.3em;
   font-weight: 800;
   opacity: 0;
   transform: scale(0);
