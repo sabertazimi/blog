@@ -29,10 +29,12 @@
 }
 
 .markdown-body a {
+  display: inline-block;
+  border-bottom: 2px #1890ff solid;
   background-color: transparent;
-  color: #f03e3e;
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transform: translateY(0);
+  transition: transform 0.2s ease-in-out;
 }
 
 .markdown-body a:active,
@@ -41,7 +43,7 @@
 }
 
 .markdown-body a:hover {
-  color: #1890ff;
+  transform: translateY(-3px);
 }
 
 .markdown-body a:not([href]) {
@@ -86,7 +88,7 @@
 .markdown-body h5::before,
 .markdown-body h6::before {
   content: '#';
-  color: #1890ff;
+  color: inherit;
   position: absolute;
   left: -1.2em;
   top: -2px;
@@ -137,23 +139,26 @@
 }
 
 .markdown-body h2 {
+  color: #2185d0;
   font-size: 3em;
 }
 
 .markdown-body h3 {
+  color: #f76707;
   font-size: 2em;
 }
 
 .markdown-body h4 {
-  font-size: 1.8em;
+  color: #7048e8;
+  font-size: 1.5em;
 }
 
 .markdown-body h5 {
-  font-size: 1.6em;
+  font-size: 1.2em;
 }
 
 .markdown-body h6 {
-  font-size: 1.4em;
+  font-size: 1em;
 }
 
 .markdown-body p {

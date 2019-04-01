@@ -17,6 +17,8 @@ const Colors = {
   red: '#f03e3e',
   yellow: '#f59f00',
   green: '#37b24d',
+  orange: '#f76707',
+  violet: '#7048e8',
   light: '#f8f9fa',
   white: '#fff',
   dark: '#343a40',
