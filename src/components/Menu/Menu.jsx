@@ -43,6 +43,7 @@ const Menu = ({ onExpand }) => {
             style={{
               fontWeight: 800,
               fontSize: isMobile ? '1rem' : '2rem',
+              color: Colors.white,
             }}
           />
         ) : (
@@ -50,6 +51,7 @@ const Menu = ({ onExpand }) => {
             style={{
               fontWeight: 800,
               fontSize: isMobile ? '1rem' : '2rem',
+              color: Colors.white,
             }}
           />
         )}
