@@ -23,7 +23,7 @@ const Colors = {
   white: '#fff',
   dark: '#343a40',
   black: '#000',
-  overlay: 'rgba(0, 0, 0, 0.5)',
+  overlay: 'rgba(0, 0, 0, 0.8)',
   transparent: 'transparent',
 };
 
