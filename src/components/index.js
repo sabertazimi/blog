@@ -2,7 +2,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Container from './Container';
 import Icons from './Icons';
-import IconBanner from './IconBanner';
+import Menu from './Menu';
 import TypingTitle from './TypingTitle';
 import GridPostPreviews from './GridPostPreviews';
 import ListPostPreviews from './ListPostPreviews';
@@ -19,7 +19,7 @@ export {
   Footer,
   Container,
   Icons,
-  IconBanner,
+  Menu,
   TypingTitle,
   GridPostPreviews,
   ListPostPreviews,

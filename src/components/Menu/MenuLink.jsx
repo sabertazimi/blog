@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { Tooltip } from 'antd';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
-import styles from './IconBanner.module.css';
+import styles from './Menu.module.css';
 
 const IconBannerLink = ({ title, to, children }) => {
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });

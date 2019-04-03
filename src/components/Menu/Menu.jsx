@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
-import { Tooltip, Icon } from 'antd';
 import { Icons } from 'components';
-import IconBannerLink from './IconBannerLink';
+import IconBannerLink from './MenuLink';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
-import styles from './IconBanner.module.css';
+import styles from './Menu.module.css';
 
 const IconBanner = ({ onExpand }) => {
   const [expanded, setExpanded] = useState(false);
@@ -29,15 +27,12 @@ const IconBanner = ({ onExpand }) => {
         <IconBannerLink title="View Posts" to="/posts">
           Posts
         </IconBannerLink>
-
         <IconBannerLink title="View Tags" to="/tags">
           Tags
         </IconBannerLink>
-
         <IconBannerLink title="View Books" to="/books">
           Books
         </IconBannerLink>
-
         <IconBannerLink title="About Me" to="/about">
           About
         </IconBannerLink>

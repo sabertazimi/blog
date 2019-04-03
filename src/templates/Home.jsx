@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { LandingLayout } from 'layouts';
-import { IconBanner, TypingTitle, ErrorBoundary } from 'components';
+import { Menu, TypingTitle, ErrorBoundary } from 'components';
 import { MetaData } from 'config';
 
 export default () => (
@@ -18,7 +18,7 @@ export default () => (
         titles={["I'm a CS student.", "I'm a coder.", "I'm a learner."]}
         style={{ padding: '3em 0', height: 'auto' }}
       />
-      <IconBanner />
+      <Menu />
     </LandingLayout>
   </div>
 );
