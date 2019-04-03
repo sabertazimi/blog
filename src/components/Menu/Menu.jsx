@@ -38,12 +38,21 @@ const Menu = ({ onExpand }) => {
         </MenuLink>
       </nav>
       <div className={styles.hamburger} onClick={handleClick}>
-        <Icons.Hamburger
-          style={{
-            fontWeight: 800,
-            fontSize: isMobile ? '1rem' : '2rem',
-          }}
-        />
+        {expanded ? (
+          <Icons.Close
+            style={{
+              fontWeight: 800,
+              fontSize: isMobile ? '1rem' : '2rem',
+            }}
+          />
+        ) : (
+          <Icons.Hamburger
+            style={{
+              fontWeight: 800,
+              fontSize: isMobile ? '1rem' : '2rem',
+            }}
+          />
+        )}
       </div>
       <div
         className={styles.overlay}
