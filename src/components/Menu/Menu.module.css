@@ -1,4 +1,4 @@
-.icon-banner {
+.menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,12 +12,12 @@
   transition: all 0.5s ease-in-out;
 }
 
-.icon-banner > * {
+.menu > * {
   margin: 0 1em;
   padding: 1.2em;
 }
 
-.icon-banner-link {
+.menu-link {
   display: block;
   margin: 0.25em auto;
   padding: 0;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.icon-banner-link:hover {
+.menu-link:hover {
   opacity: 1;
   transform: scale(1.1);
 }

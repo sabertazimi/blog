@@ -5,14 +5,14 @@ import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
 import styles from './Menu.module.css';
 
-const IconBannerLink = ({ title, to, children }) => {
+const MenuLink = ({ title, to, children }) => {
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
 
   return (
     <Tooltip placement="left" title={title}>
       <Link to={to}>
         <span
-          className={styles.iconBannerLink}
+          className={styles.menuLink}
           style={{
             borderBottom: `5px solid ${Colors.light}`,
             fontSize: isMobile ? '2rem' : '4rem',
@@ -26,4 +26,4 @@ const IconBannerLink = ({ title, to, children }) => {
   );
 };
 
-export default IconBannerLink;
+export default MenuLink;

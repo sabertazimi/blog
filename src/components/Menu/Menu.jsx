@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Icons } from 'components';
-import IconBannerLink from './MenuLink';
+import MenuLink from './MenuLink';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
 import styles from './Menu.module.css';
 
-const IconBanner = ({ onExpand }) => {
+const Menu = ({ onExpand }) => {
   const [expanded, setExpanded] = useState(false);
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
   const handleClick = () => {
@@ -19,23 +19,23 @@ const IconBanner = ({ onExpand }) => {
   return (
     <React.Fragment>
       <nav
-        className={styles.iconBanner}
+        className={styles.menu}
         style={{
           transform: expanded ? 'translateX(0)' : 'translateX(-100%)',
         }}
       >
-        <IconBannerLink title="View Posts" to="/posts">
+        <MenuLink title="View Posts" to="/posts">
           Posts
-        </IconBannerLink>
-        <IconBannerLink title="View Tags" to="/tags">
+        </MenuLink>
+        <MenuLink title="View Tags" to="/tags">
           Tags
-        </IconBannerLink>
-        <IconBannerLink title="View Books" to="/books">
+        </MenuLink>
+        <MenuLink title="View Books" to="/books">
           Books
-        </IconBannerLink>
-        <IconBannerLink title="About Me" to="/about">
+        </MenuLink>
+        <MenuLink title="About Me" to="/about">
           About
-        </IconBannerLink>
+        </MenuLink>
       </nav>
       <div className={styles.hamburger} onClick={handleClick}>
         <Icons.Hamburger
@@ -51,9 +51,8 @@ const IconBanner = ({ onExpand }) => {
           backgroundColor: expanded ? Colors.overlay : Colors.transparent,
         }}
       />
-      <canvas id="bubble" />
     </React.Fragment>
   );
 };
 
-export default IconBanner;
+export default Menu;
