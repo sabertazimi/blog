@@ -66,7 +66,7 @@ const Header = ({ posts }) => {
         position: 'fixed',
         zIndex: 9999,
         width: '100%',
-        borderBottomColor: 'transparent',
+        borderBottomColor: Colors.transparent,
         transition: 'transform 0.2s ease-in-out, background 0.5s ease-in-out',
         transform: menuFixed ? 'scale(1)' : 'scale(1.1)',
         background: menuFixed
@@ -93,7 +93,7 @@ const Header = ({ posts }) => {
         <Link to="/about">About</Link>
       </Menu.Item>
       {posts && (
-        <Menu.Item style={{ borderBottomColor: 'transparent' }}>
+        <Menu.Item style={{ borderBottomColor: Colors.transparent }}>
           <PostsSearchBar posts={posts} />
         </Menu.Item>
       )}
