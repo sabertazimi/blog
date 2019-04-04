@@ -18,7 +18,7 @@ const Layout = ({ banner, posts, children }) => {
       <Header posts={posts} />
       <div style={{ padding: `${isnotMobile ? '7em' : '0'} 0em 3em 0` }}>
         <animated.div style={props}>
-          <Container text style={{ maxWidth: 960 }}>
+          <Container style={{ maxWidth: 960 }}>
             <Divider style={{ margin: '3em 0em', fontWeight: 800 }}>
               {banner || 'Life'}
             </Divider>
