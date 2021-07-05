@@ -21,7 +21,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     runs-on: ${{ matrix.os }}
-    name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
+    name: Node ${{ matrix.node-version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
 
     steps:
     - name: Checkout
