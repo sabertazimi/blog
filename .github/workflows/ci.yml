@@ -10,46 +10,70 @@ on:
 
 jobs:
   build:
+    name: Node ${{ matrix.node-version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os:
         - ubuntu-latest
         node-version:
-        - 10.14.1
+        - 10
         architecture:
         - x64
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    runs-on: ${{ matrix.os }}
-    name: Node ${{ matrix.node-version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
-
     steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v2
       with:
         submodules: true
         fetch-depth: 1
-
-    - name: Setup
+    - name: Setup Node environment
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         architecture: ${{ matrix.architecture }}
         registry-url: https://registry.npmjs.org/
         cache: 'npm'
-
-    - name: Installation and Building Work
-      run: |
-          npm ci
-          npm run build:gh-pages
-    # - run: npm run build --if-present
-    # - run: npm test
-
+    - name: Installation
+      run: npm ci
+    - name: Building work
+      run: npm run build:gh-pages
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: dist
+        path: build
+    # - name: NPM audit
+    #   uses: oke-py/npm-audit-action@v1
+    #   with:
+    #     audit_level: moderate
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     issue_assignees: sabertazimi
+    #     issue_labels: vulnerability,test
+    #     dedupe_issues: true
+  
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deployment
+    needs: build
+    steps:
+    - name: Download production artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: dist
+        path: build
+    - name: List production artifacts
+      run: ls -R
+      working-directory: .
     - name: Deploy to Github Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
+        force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: ${{ github.event.head_commit.message }}
     # - run: npm publish
     #   env:
     #     NODE_AUTH_TOKEN: ${{secrets.npm_token}}
