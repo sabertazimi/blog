@@ -3,7 +3,7 @@ module.exports = {
     title: 'React Blog',
     author: 'sabertazimi',
   },
-  pathPrefix: '/react-blog',
+  pathPrefix: '/blog',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
