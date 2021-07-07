@@ -57,7 +57,7 @@ npm start
 ## Deployment
 
 ```bash
-# deploy public/ directory with nginx server etc.
+# deploy build/ directory with nginx server etc.
 npm run build
 ```
 
