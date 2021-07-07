@@ -4,7 +4,7 @@
 [![LICENSE](https://img.shields.io/github/license/sabertazimi/blog?style=for-the-badge)](https://raw.githubusercontent.com/sabertazimi/blog/master/LICENSE)
 
 [![Continuous Integration](https://img.shields.io/github/workflow/status/sabertazimi/blog/Continuous%20Integration/master?style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
-[![Netlify Status](https://img.shields.io/netlify/a182a53a-297d-425b-88d6-323ce7039495?logo=netlify&style=for-the-badge)](https://app.netlify.com/sites/tazimi/deploys)
+[![Netlify Status](https://img.shields.io/netlify/a182a53a-297d-425b-88d6-323ce7039495?logo=netlify&style=for-the-badge)](https://app.netlify.com/sites/sabertaz/deploys)
 
 A [blog](https://sabertazimi.github.io/blog) system based on React and Gatsby.
 
