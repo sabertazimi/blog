@@ -56,9 +56,17 @@ npm start
 
 ## Deployment
 
+Build for `/` path:
+
 ```bash
 # deploy build/ directory with nginx server etc.
 npm run build
+```
+
+Build for `/xxx` prefix path:
+
+```bash
+npm run build:gh-pages
 ```
 
 ## Todos
