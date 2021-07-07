@@ -7,7 +7,7 @@ const Books = () => {
     {
       title: 'awesome-notes',
       author: 'sabertazimi',
-      url: 'https://sabertazimi.github.io/awesome-notes',
+      url: 'https://notes.tazimi.dev',
       description: 'Daily I Learned Notes',
     },
   ];
