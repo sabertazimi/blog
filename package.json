@@ -6,13 +6,12 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "build:gh-pages": "gatsby build --prefix-paths && npm run postbuild",
     "postbuild": "rm -fr ./build && mv ./public ./build",
+    "build:gh-pages": "gatsby build --prefix-paths && npm run postbuild",
     "develop": "gatsby develop --open",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "serve": "gatsby serve"
   },
   "dependencies": {
     "antd": "^3.15.2",
