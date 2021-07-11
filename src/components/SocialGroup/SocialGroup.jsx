@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useLocation } from '@reach/router';
 import SocialShareButton from './SocialShareButton';
 import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
-  const [url, setUrl] = useState('');
-  const currentUrl = document.location.href;
-
-  useEffect(() => setUrl(currentUrl), [currentUrl]);
+  const location = useLocation();
+  const url = location.href;
 
   return (
     <div
