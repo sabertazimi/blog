@@ -52,7 +52,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "Sabertaz Blog",
+        name: 'Sabertaz Blog',
         short_name: 'Blog',
         start_url: '/',
         display: 'standalone',
@@ -63,5 +63,6 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-antd',
+    'gatsby-disable-404',
   ],
 };
