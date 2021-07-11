@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
+import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
 import * as styles from './ArticleNavigation.module.css';
@@ -18,7 +19,7 @@ const ArticleNavigation = ({ toc }) => {
       <Button
         type="primary"
         shape="circle"
-        icon={tocVisible ? 'close' : 'menu-fold'}
+        icon={tocVisible ? <CloseOutlined /> : <MenuFoldOutlined />}
         size="large"
         style={{ color: Colors.light }}
         onClick={handleClick}

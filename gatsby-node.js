@@ -34,12 +34,10 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   try {
     const profilePromise = fetch('https://api.github.com/users/sabertazimi');
-    const reposPromise = fetch(
-      'https://api.github.com/users/sabertazimi/repos'
-    );
     const profileResponse = await profilePromise;
-    const reposResponse = await reposPromise;
     const profileJSON = await profileResponse.json();
+    const reposPromise = fetch('https://api.github.com/users/sabertazimi/repos');
+    const reposResponse = await reposPromise;
     const reposJSON = await reposResponse.json();
     githubProfile = {
       username: profileJSON.login,
@@ -199,6 +197,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+      },
     },
   });
 };

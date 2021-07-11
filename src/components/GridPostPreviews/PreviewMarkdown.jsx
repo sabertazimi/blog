@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Button, Icon, Skeleton } from 'antd';
+import { Button, Skeleton } from 'antd';
+import { ReadOutlined } from '@ant-design/icons';
 import { Container } from 'components';
 import { Colors } from 'config';
 
@@ -22,7 +23,7 @@ const PreviewMarkdown = ({ post }) => (
       }}
     >
       <Link to={`${post.slug}`} style={{ color: Colors.light }}>
-        <Icon type="read" />
+        <ReadOutlined />
       </Link>
     </Button>
   </Container>

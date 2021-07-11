@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icons } from 'components';
+import { Icons } from '@/components';
 import MenuLink from './MenuLink';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
@@ -41,7 +41,6 @@ const Menu = ({ onExpand }) => {
       <div
         role="button"
         tabIndex="0"
-        aria-pressed="false"
         className={styles.hamburger}
         onClick={handleClick}
         onKeyDown={() => {}}
