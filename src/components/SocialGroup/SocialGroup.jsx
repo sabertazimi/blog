@@ -4,7 +4,9 @@ import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
   const [url, setUrl] = useState('');
-  useEffect(() => setUrl(document.location.href));
+  const currentUrl = document.location.href;
+
+  useEffect(() => setUrl(currentUrl), []);
 
   return (
     <div
