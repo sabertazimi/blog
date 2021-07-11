@@ -59,7 +59,7 @@ npm start
 Build for `/` path:
 
 ```bash
-# deploy build/ directory with nginx server etc.
+# deploy public/ directory with nginx server etc.
 npm run build
 ```
 

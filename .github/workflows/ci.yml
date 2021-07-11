@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: dist
-        path: build
+        path: public
     # - name: NPM audit
     #   uses: oke-py/npm-audit-action@v1
     #   with:
@@ -61,7 +61,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: dist
-        path: build
+        path: public
     - name: List production artifacts
       run: ls -R
       working-directory: .
@@ -69,7 +69,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: ./public
         force_orphan: true
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'

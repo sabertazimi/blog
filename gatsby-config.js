@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'React Blog',
-    author: 'sabertazimi',
+    title: 'Sabertaz Blog',
+    author: 'Sabertaz',
+    siteUrl: `https://tazimi.dev`,
   },
   pathPrefix: '/blog',
   plugins: [
@@ -51,11 +52,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "Sabertazimi' Blog",
+        name: "Sabertaz Blog",
         short_name: 'Blog',
         start_url: '/',
         display: 'standalone',
-        icon: 'static/favicon.ico',
+        icon: 'src/images/favicon.ico',
         include_favicon: true,
       },
     },
