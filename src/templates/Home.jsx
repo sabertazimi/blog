@@ -4,7 +4,7 @@ import { LandingLayout } from 'layouts';
 import { Menu, TypingTitle, ErrorBoundary } from 'components';
 import { MetaData } from 'config';
 
-export default () => (
+const Home = () => (
   <div>
     <ErrorBoundary>
       <Helmet key={MetaData.url}>
@@ -22,3 +22,5 @@ export default () => (
     </LandingLayout>
   </div>
 );
+
+export default Home;

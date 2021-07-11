@@ -2,8 +2,10 @@ import React from 'react';
 import { PostLayout } from 'layouts';
 import { Article } from 'components';
 
-export default ({ pageContext: { post } }) => (
+const Post = ({ pageContext: { post } }) => (
   <PostLayout>
     <Article post={post} />
   </PostLayout>
 );
+
+export default Post;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from 'layouts';
 import { TagsCloud, ListPostPreviews } from 'components';
 
-export default ({ pageContext: { tags, activeTag, posts } }) => (
+const Tags = ({ pageContext: { tags, activeTag, posts } }) => (
   <React.Fragment>
     <Layout banner="Tags" posts={posts}>
       <TagsCloud tags={tags} activeTag={activeTag} />
@@ -10,3 +10,5 @@ export default ({ pageContext: { tags, activeTag, posts } }) => (
     </Layout>
   </React.Fragment>
 );
+
+export default Tags;
