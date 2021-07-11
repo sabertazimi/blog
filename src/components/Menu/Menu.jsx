@@ -8,6 +8,7 @@ import * as styles from './Menu.module.css';
 const Menu = ({ onExpand }) => {
   const [expanded, setExpanded] = useState(false);
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
+
   const handleClick = () => {
     if (onExpand) {
       onExpand(!expanded);
@@ -38,9 +39,12 @@ const Menu = ({ onExpand }) => {
         </MenuLink>
       </nav>
       <div
+        role="button"
+        tabIndex="0"
+        aria-pressed="false"
         className={styles.hamburger}
-        onClick={() => {}}
-        onKeyDown={handleClick}
+        onClick={handleClick}
+        onKeyDown={() => {}}
       >
         {expanded ? (
           <Icons.Close

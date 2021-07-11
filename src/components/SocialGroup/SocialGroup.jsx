@@ -6,7 +6,7 @@ const SocialGroup = () => {
   const [url, setUrl] = useState('');
   const currentUrl = document.location.href;
 
-  useEffect(() => setUrl(currentUrl), []);
+  useEffect(() => setUrl(currentUrl), [currentUrl]);
 
   return (
     <div
