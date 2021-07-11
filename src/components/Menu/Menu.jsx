@@ -37,7 +37,11 @@ const Menu = ({ onExpand }) => {
           About
         </MenuLink>
       </nav>
-      <div className={styles.hamburger} onClick={handleClick}>
+      <div
+        className={styles.hamburger}
+        onClick={() => {}}
+        onKeyDown={handleClick}
+      >
         {expanded ? (
           <Icons.Close
             style={{
