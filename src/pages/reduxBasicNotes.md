@@ -15,8 +15,6 @@ tags:
 
 # Redux Basic Notes
 
-[React Redux Style Guide](https://github.com/iraycd/React-Redux-Styleguide)
-
 ## Basic Concepts
 
 - 单一数据源: 整个应用程序的状态存储在单个对象树中 (容易跟踪/调试)
