@@ -6,7 +6,7 @@ import { Container } from 'components';
 import PreviewMarkdown from './PreviewMarkdown';
 import { Colors } from 'config';
 import { randomColor } from 'utils';
-import styles from './PostPreview.module.css';
+import * as styles from './PostPreview.module.css';
 
 const PostPreview = ({ post }) => {
   const tagName = post.tags ? post.tags[0] : 'Computer Science';

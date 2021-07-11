@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SocialShareButton from './SocialShareButton';
-import styles from './SocialGroup.module.css';
+import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
   const [url, setUrl] = useState('');

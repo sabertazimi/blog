@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
-import styles from './ArticleNavigation.module.css';
+import * as styles from './ArticleNavigation.module.css';
 
 const ArticleNavigation = ({ toc }) => {
   const [tocVisible, setTocVisible] = useState(false);
-  const isnotMobile = useResponsive({ minWidth: BreakPoints.mobile });
+  const isNotMobile = useResponsive({ minWidth: BreakPoints.mobile });
 
   const handleClick = () => setTocVisible(!tocVisible);
 
-  return isnotMobile ? (
+  return isNotMobile ? (
     <div
       className={styles.tocContainer}
       style={{ margin: 0, backgroundColor: Colors.primary }}

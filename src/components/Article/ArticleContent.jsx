@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import styles from './ArticleContent.module.css';
+import * as styles from './ArticleContent.module.css';
 
 const ArticleContent = ({ content }) => {
   const props = useSpring({

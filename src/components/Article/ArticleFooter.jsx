@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { Button, Icon } from 'antd';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
-import styles from './ArticleFooter.module.css';
+import * as styles from './ArticleFooter.module.css';
 
 const ArticleFooter = ({ post }) => {
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });

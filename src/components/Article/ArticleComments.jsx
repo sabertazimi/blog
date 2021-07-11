@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDisqus } from 'hooks';
-import styles from './ArticleComments.module.css';
+import * as styles from './ArticleComments.module.css';
 
 const ArticleComments = () => {
   useDisqus('https://http-blog-hust-cf.disqus.com');

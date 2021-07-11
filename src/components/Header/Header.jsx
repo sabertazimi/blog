@@ -5,12 +5,12 @@ import { Visibility, Segment, Image } from 'semantic-ui-react';
 import PostsSearchBar from 'components/PostsSearchBar';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
-import styles from './Header.module.css';
+import * as styles from './Header.module.css';
 import logo from 'images/logo-full.png';
 
 const Header = ({ posts }) => {
   const [menuFixed, setMenuFixed] = useState(false);
-  const isnotMobile = useResponsive({ minWidth: BreakPoints.mobile });
+  const isNotMobile = useResponsive({ minWidth: BreakPoints.mobile });
 
   const hideFixedMenu = () => setMenuFixed(false);
   const showFixedMenu = () => setMenuFixed(true);
@@ -107,7 +107,7 @@ const Header = ({ posts }) => {
       once={false}
     >
       <Segment style={{ padding: 0 }} textAlign="center" vertical>
-        {isnotMobile ? renderDesktopMenu() : renderMobileMenu()}
+        {isNotMobile ? renderDesktopMenu() : renderMobileMenu()}
       </Segment>
     </Visibility>
   );

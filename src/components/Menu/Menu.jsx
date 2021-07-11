@@ -3,7 +3,7 @@ import { Icons } from 'components';
 import MenuLink from './MenuLink';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
-import styles from './Menu.module.css';
+import * as styles from './Menu.module.css';
 
 const Menu = ({ onExpand }) => {
   const [expanded, setExpanded] = useState(false);
