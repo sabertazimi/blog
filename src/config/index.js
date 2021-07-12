@@ -20,14 +20,27 @@ const Colors = {
   black: '#1b1c1d',
   overlay: 'rgba(0, 0, 0, 0.8)',
   transparent: 'transparent',
+  github: '#181717',
+  twitter: '#1da1f2',
+  facebook: '#1877f2',
+  linkedin: '#0a66c2',
+  weibo: '#e6162d',
 };
 
 const SocialType = {
-  Website: 'website',
-  GitHub: 'github',
-  Twitter: 'twitter',
-  Facebook: 'facebook',
-  Weibo: 'weibo',
+  website: 'website',
+  github: 'github',
+  twitter: 'twitter',
+  facebook: 'facebook',
+  linkedin: 'linkedin',
+  weibo: 'weibo',
 };
 
-export { PRIMARY_COLOR, BreakPoints, Colors, SocialType };
+const SocialShare = {
+  twitter: 'https://twitter.com/intent/tweet?url=',
+  facebook: 'https://www.facebook.com/sharer.php?u=',
+  linkedin: 'https://www.linkedin.com/shareArticle?mini=true&url=',
+  weibo: 'https://service.weibo.com/share/share.php?url=',
+};
+
+export { PRIMARY_COLOR, BreakPoints, Colors, SocialType, SocialShare };

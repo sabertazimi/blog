@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
-import SocialShareButton from './SocialShareButton';
+import { Space } from 'antd';
+import SocialButton from '@/components/SocialButton';
+import { Colors, SocialType, SocialShare } from '@/config';
 import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
@@ -8,37 +10,44 @@ const SocialGroup = () => {
   const url = location.href;
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        display: 'flex',
-        flexDirection: 'column',
-        top: '50%',
-        left: 0,
-      }}
+    <Space
+      direction="vertical"
+      align="center"
+      size={0}
       className={styles.socialGroup}
     >
-      <SocialShareButton
-        color="red"
-        type="weibo"
-        url={`https://service.weibo.com/share/share.php?url=${url}`}
+      <SocialButton
+        type={SocialType.twitter}
+        url={`${SocialShare.twitter}${url}`}
+        style={{
+          backgroundColor: Colors.twitter,
+        }}
       />
-      <SocialShareButton
-        color="facebook"
-        type="facebook"
-        url={`https://www.facebook.com/sharer.php?u=${url}`}
+      <SocialButton
+        color={Colors.facebook}
+        type={SocialType.facebook}
+        url={`${SocialShare.facebook}${url}`}
+        style={{
+          backgroundColor: Colors.facebook,
+        }}
       />
-      <SocialShareButton
-        color="twitter"
-        type="twitter"
-        url={`https://twitter.com/intent/tweet?url=${url}`}
+      <SocialButton
+        color={Colors.weibo}
+        type={SocialType.weibo}
+        url={`${SocialShare.weibo}${url}`}
+        style={{
+          backgroundColor: Colors.weibo,
+        }}
       />
-      <SocialShareButton
-        color="linkedin"
-        type="linkedin"
-        url={`https://www.linkedin.com/shareArticle?mini=true&url=${url}`}
+      <SocialButton
+        color={Colors.linkedin}
+        type={SocialType.linkedin}
+        url={`${SocialShare.linkedin}${url}`}
+        style={{
+          backgroundColor: Colors.linkedin,
+        }}
       />
-    </div>
+    </Space>
   );
 };
 

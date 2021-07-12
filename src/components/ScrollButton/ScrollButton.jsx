@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import { Visibility } from 'semantic-ui-react';
-import { useResponsive } from 'hooks';
-import { BreakPoints, Colors } from 'config';
+import { useResponsive } from '@/hooks';
+import { BreakPoints, Colors } from '@/config';
 
 const ScrollButton = () => {
   const [direction, setDirection] = useState('down');

@@ -1,5 +1,8 @@
 .social-group {
-  transform: translate(-40px, -50%);
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translate(-80%, -50%);
   transition: transform 0.3s ease-in-out;
 }
 

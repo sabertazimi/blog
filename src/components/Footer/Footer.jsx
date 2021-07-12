@@ -1,12 +1,13 @@
 import React from 'react';
 import { List, Divider, Container, Segment } from 'semantic-ui-react';
-import SocialButton from './SocialButton';
+import SocialButton from '@/components/SocialButton';
 import { useBuildTime, useSiteMetadata } from '@/hooks';
 import { SocialType } from '@/config';
 
 const Footer = () => {
   const buildTime = useBuildTime();
-  const { author, siteUrl, github, twitter, facebook, weibo } = useSiteMetadata();
+  const { author, siteUrl, github, twitter, facebook, weibo } =
+    useSiteMetadata();
 
   return (
     <Segment inverted style={{ padding: '5em 0em' }} vertical>
@@ -16,24 +17,29 @@ const Footer = () => {
         style={{ maxWidth: 960 }}
       >
         <SocialButton
-          type={SocialType.Website}
+          type={SocialType.website}
           url={`${siteUrl}`}
+          style={{ margin: '0 1em 1em' }}
         />
         <SocialButton
-          type={SocialType.GitHub}
+          type={SocialType.github}
           url={`https://github.com/${github}`}
+          style={{ margin: '0 1em 1em' }}
         />
         <SocialButton
-          type={SocialType.Twitter}
+          type={SocialType.twitter}
           url={`https://twitter.com/${twitter}`}
+          style={{ margin: '0 1em 1em' }}
         />
         <SocialButton
-          type={SocialType.Facebook}
+          type={SocialType.facebook}
           url={`https://facebook.com/${facebook}`}
+          style={{ margin: '0 1em 1em' }}
         />
         <SocialButton
-          type={SocialType.Weibo}
+          type={SocialType.weibo}
           url={`https://weibo.com/${weibo}`}
+          style={{ margin: '0 1em 1em' }}
         />
         <Divider inverted section />
         <List horizontal inverted divided link>
