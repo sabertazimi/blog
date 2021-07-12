@@ -1,37 +1,32 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 import { List, Divider, Container, Segment } from 'semantic-ui-react';
 import SocialButton from './SocialButton';
+import { useBuildTime, useSiteMetadata } from '@/hooks';
 
-const Footer = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        site {
-          buildTime
-        }
-      }
-    `}
-    render={data => (
+const Footer = () => {
+  const buildTime = useBuildTime();
+  const { siteUrl, github, twitter, facebook, weibo } = useSiteMetadata();
+
+   return (
       <Segment inverted style={{ padding: '5em 0em' }} vertical>
         <Container
           textAlign="center"
           className="blog-footer"
           style={{ maxWidth: 960 }}
         >
-          <SocialButton type="rocket" url="https://tazimi.dev" />
-          <SocialButton type="github" url="https://github.com/sabertazimi" />
-          <SocialButton type="twitter" url="https://twitter.com/sabertazimi" />
+          <SocialButton type="rocket" url={`${siteUrl}`} />
+          <SocialButton type="github" url={`https://github.com/${github}`} />
+          <SocialButton type="twitter" url={`https://twitter.com/${twitter}`} />
           <SocialButton
             type="facebook"
-            url="https://facebook.com/sabertazimi"
+            url={`https://facebook.com/${facebook}`}
           />
-          <SocialButton type="weibo" url="https://weibo.com/sabertazimi" />
+          <SocialButton type="weibo" url={`https://weibo.com/${weibo}`} />
           <Divider inverted section />
           <List horizontal inverted divided link>
             <List.Item>
               Copyright &copy;{' '}
-              <a href="https://github.com/sabertazimi/react-blog">
+              <a href={`https://github.com/${github}`}>
                 sabertazimi
               </a>{' '}
               {new Date().getFullYear()}
@@ -43,14 +38,13 @@ const Footer = () => (
             <List.Item>
               Last Updated at{' '}
               <a href="https://www.google.com/search?q=time">
-                {new Date(data.site.buildTime).toLocaleString()}
+                {new Date(buildTime).toLocaleString()}
               </a>
             </List.Item>
           </List>
         </Container>
       </Segment>
-    )}
-  />
-);
+    );
+};
 
 export default Footer;

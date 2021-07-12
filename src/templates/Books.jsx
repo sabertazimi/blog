@@ -1,16 +1,10 @@
 import React from 'react';
-import { Layout } from 'layouts';
-import { BookGrid } from 'components';
+import { Layout } from '@/layouts';
+import { BookGrid } from '@/components';
+import { useSiteMetadata } from '@/hooks';
 
 const Books = () => {
-  const booklist = [
-    {
-      title: 'awesome-notes',
-      author: 'sabertazimi',
-      url: 'https://notes.tazimi.dev',
-      description: 'Daily I Learned Notes',
-    },
-  ];
+  const { booklist } = useSiteMetadata();
 
   return (
     <Layout banner="Books">

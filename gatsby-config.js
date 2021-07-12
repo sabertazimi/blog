@@ -2,8 +2,20 @@ module.exports = {
   siteMetadata: {
     title: 'Sabertaz Blog',
     author: 'Sabertaz',
-    siteUrl: `https://tazimi.dev`,
+    siteUrl: 'https://tazimi.dev',
     github: 'sabertazimi',
+    twitter: 'sabertazimi',
+    facebook: 'sabertazimi',
+    weibo: 'sabertazimi',
+    email: 'sabertazimi@gmail.com',
+    booklist: [
+      {
+        title: 'awesome-notes',
+        author: 'sabertazimi',
+        url: 'https://notes.tazimi.dev',
+        description: 'Daily I Learned Notes',
+      }
+    ],
   },
   pathPrefix: '/blog',
   plugins: [
