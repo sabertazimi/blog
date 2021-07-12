@@ -1,14 +1,14 @@
 ---
-layout:     post
-title:      "Security Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2017-10-05
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'Security Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2017-10-05
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Computer Science
-    - Web Development
-    - Security
+  - Computer Science
+  - Web Development
+  - Security
 ---
 
 # Security Basic Notes
@@ -105,7 +105,7 @@ response.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
   instead of passing them in **HTTP cookies**
 
 ```js
-req.session.regenerate(function(err) {
+req.session.regenerate(function (err) {
   // New session here
 });
 ```
@@ -113,7 +113,7 @@ req.session.regenerate(function(err) {
 - what: generate complex session IDs
 
 ```js
-const generateSessionId = sess => uid(24);
+const generateSessionId = (sess) => uid(24);
 ```
 
 - how: reset session IDs after set up session successfully

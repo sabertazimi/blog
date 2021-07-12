@@ -1,15 +1,15 @@
 ---
-layout:     post
-title:      "Design Patterns Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2017-05-15
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'Design Patterns Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2017-05-15
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Computer Science
-    - Development
-    - Design Patterns
-    - Architecture
+  - Computer Science
+  - Development
+  - Design Patterns
+  - Architecture
 ---
 
 # Design Patterns Notes
@@ -104,7 +104,7 @@ const MyApp = {
 通过对象字面量创建命名空间
 
 ```javascript
-MYAPP.namespace = function(namespaceString) {
+MYAPP.namespace = function (namespaceString) {
   var parts = namespaceString.split('.'),
     parent = MYAPP,
     i;
@@ -185,14 +185,14 @@ var myobj = (function () {
 var myApp = myApp || {};
 myApp.utils = {};
 
-(function() {
+(function () {
   var val = 5;
 
-  this.getValue = function() {
+  this.getValue = function () {
     return val;
   };
 
-  this.setValue = function(newVal) {
+  this.setValue = function (newVal) {
     val = newVal;
   };
 
@@ -203,8 +203,8 @@ myApp.utils = {};
 // inject new behaviour into the tools namespace
 // which we defined via the utilities module
 
-(function() {
-  this.diagnose = function() {
+(function () {
+  this.diagnose = function () {
     return 'diagnosis';
   };
 }.apply(myApp.utils.tools));
@@ -218,7 +218,7 @@ myApp.utils = {};
 - 再判断是否支持 AMD(define)，存在则使用 AMD 方式加载模块
 
 ```js
-(function(window, factory) {
+(function (window, factory) {
   if (typeof exports === 'object') {
     module.exports = factory();
   } else if (typeof define === 'function' && define.amd) {
@@ -226,7 +226,7 @@ myApp.utils = {};
   } else {
     window.eventUtil = factory();
   }
-})(this, function() {
+})(this, function () {
   //module ...
 });
 ```
@@ -415,14 +415,14 @@ export class Hello extends React.Component {
 ### Class Pattern
 
 ```js
-var Person = function(firstName, lastName) {
+var Person = function (firstName, lastName) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.gender = 'male';
 };
 
 // Define a subclass constructor for for "Superhero":
-var Superhero = function(firstName, lastName, powers) {
+var Superhero = function (firstName, lastName, powers) {
   // Invoke the superclass constructor on the new object
   // then use .call() to invoke the constructor as a method of
   // the object to be initialized.
@@ -529,7 +529,7 @@ function Universe() {
 ### Abstract Factory
 
 ```js
-var AbstractVehicleFactory = (function() {
+var AbstractVehicleFactory = (function () {
   // Storage for our vehicle types
   var types = {};
 
@@ -550,7 +550,7 @@ var AbstractVehicleFactory = (function() {
 
   return {
     getVehicle: _getVehicle,
-    registerVehicle: _registerVehicle
+    registerVehicle: _registerVehicle,
   };
 })();
 ```
@@ -558,7 +558,7 @@ var AbstractVehicleFactory = (function() {
 ### Factory Method
 
 ```js
-module.exports = (function() {
+module.exports = (function () {
   function VehicleFactory() {
     var publicVehicle = new Object();
 
@@ -620,7 +620,7 @@ module.exports = (function() {
     // private features, added to obj
 
     // core: create method
-    this.create = function(options) {
+    this.create = function (options) {
       var vehicleClass = '',
         newVehicle = {};
 
@@ -652,7 +652,7 @@ module.exports = (function() {
   // define more factory
 
   return {
-    vehicleFactory: VehicleFactory
+    vehicleFactory: VehicleFactory,
   };
 })();
 ```
@@ -667,7 +667,7 @@ module.exports = (function() {
 ```js
 // old interface
 function Shipping() {
-  this.request = function(zipStart, zipEnd, weight) {
+  this.request = function (zipStart, zipEnd, weight) {
     // ...
     return '$49.75';
   };
@@ -675,16 +675,16 @@ function Shipping() {
 
 // new interface
 function AdvancedShipping() {
-  this.login = function(credentials) {
+  this.login = function (credentials) {
     /* ... */
   };
-  this.setStart = function(start) {
+  this.setStart = function (start) {
     /* ... */
   };
-  this.setDestination = function(destination) {
+  this.setDestination = function (destination) {
     /* ... */
   };
-  this.calculate = function(weight) {
+  this.calculate = function (weight) {
     return '$39.50';
   };
 }
@@ -696,11 +696,11 @@ function AdapterShipping(credentials) {
   shipping.login(credentials);
 
   return {
-    request: function(zipStart, zipEnd, weight) {
+    request: function (zipStart, zipEnd, weight) {
       shipping.setStart(zipStart);
       shipping.setDestination(zipEnd);
       return shipping.calculate(weight);
-    }
+    },
   };
 }
 ```
@@ -725,7 +725,7 @@ cost = adapter.request('78701', '10010', '2 lbs');
 - ConcreteDecorator 类: private ClassName component;(拥有一个对象引用)
 
 ```js
-const __decorate = function(decorators, target, key, desc) {
+const __decorate = function (decorators, target, key, desc) {
   const argumentsLength = arguments.length;
   let descriptorOrTarget;
   let decorator;
@@ -776,7 +776,7 @@ const __decorate = function(decorators, target, key, desc) {
 function Sale(price) {
   this.price = price || 100;
 }
-Sale.prototype.getPrice = function() {
+Sale.prototype.getPrice = function () {
   return this.price;
 };
 
@@ -784,32 +784,32 @@ Sale.prototype.getPrice = function() {
 // 通过uber属性获得上一次装饰后的结果
 Sale.decorators = {};
 Sale.decorators.fedtax = {
-  getPrice: function() {
+  getPrice: function () {
     var price = this.uber.getPrice();
     price += (price * 5) / 100;
     return price;
-  }
+  },
 };
 Sale.decorators.quebec = {
-  getPrice: function() {
+  getPrice: function () {
     var price = this.uber.getPrice();
     price += (price * 7.5) / 100;
     return price;
-  }
+  },
 };
 Sale.decorators.money = {
-  getPrice: function() {
+  getPrice: function () {
     return '$' + this.uber.getPrice().toFixed(2);
-  }
+  },
 };
 Sale.decorators.cdn = {
-  getPrice: function() {
+  getPrice: function () {
     return 'CDN$ ' + this.uber.getPrice().toFixed(2);
-  }
+  },
 };
 
-Sale.prototype.decorate = function(decorator) {
-  var F = function() {},
+Sale.prototype.decorate = function (decorator) {
+  var F = function () {},
     overrides = this.constructor.decorators[decorator],
     i,
     newobj;
@@ -839,32 +839,32 @@ function Sale(price) {
   this.price = price > 0 || 100;
   this.decorators_list = [];
 }
-Sale.prototype.getPrice = function() {
+Sale.prototype.getPrice = function () {
   return this.price;
 };
 
 // 定义具体装饰器
 Sale.decorators = {};
 Sale.decorators.fedtax = {
-  getPrice: function(price) {
+  getPrice: function (price) {
     return price + (price * 5) / 100;
-  }
+  },
 };
 Sale.decorators.quebec = {
-  getPrice: function(price) {
+  getPrice: function (price) {
     return price + (price * 7.5) / 100;
-  }
+  },
 };
 Sale.decorators.money = {
-  getPrice: function(price) {
+  getPrice: function (price) {
     return '$' + price.toFixed(2);
-  }
+  },
 };
 
-Sale.prototype.decorate = function(decorator) {
+Sale.prototype.decorate = function (decorator) {
   this.decorators_list.push(decorator);
 };
-Sale.prototype.getPrice = function() {
+Sale.prototype.getPrice = function () {
   var price = this.price,
     i,
     max = this.decorators_list.length,
@@ -886,10 +886,10 @@ Sale.prototype.getPrice = function() {
 ```js
 // The constructor to decorate
 function MacBook() {
-  this.cost = function() {
+  this.cost = function () {
     return 997;
   };
-  this.screenSize = function() {
+  this.screenSize = function () {
     return 11.6;
   };
 }
@@ -897,7 +897,7 @@ function MacBook() {
 // Decorator 1
 function Memory(macbook) {
   var v = macbook.cost();
-  macbook.cost = function() {
+  macbook.cost = function () {
     return v + 75;
   };
 }
@@ -905,7 +905,7 @@ function Memory(macbook) {
 // Decorator 2
 function Engraving(macbook) {
   var v = macbook.cost();
-  macbook.cost = function() {
+  macbook.cost = function () {
     return v + 200;
   };
 }
@@ -913,7 +913,7 @@ function Engraving(macbook) {
 // Decorator 3
 function Insurance(macbook) {
   var v = macbook.cost();
-  macbook.cost = function() {
+  macbook.cost = function () {
     return v + 250;
   };
 }
@@ -939,7 +939,7 @@ console.log(mb.screenSize());
 ```js
 var sabertazimi = {};
 
-sabertazimi.addMyEvent = function(el, ev, fn) {
+sabertazimi.addMyEvent = function (el, ev, fn) {
   if (el.addEventListener) {
     el.addEventListener(ev, fn, false);
   } else if (el.attachEvent) {
@@ -966,11 +966,11 @@ function Flyweight(make, model, processor) {
   this.processor = processor;
 }
 
-var FlyWeightFactory = (function() {
+var FlyWeightFactory = (function () {
   var flyweights = {};
 
   return {
-    get: function(make, model, processor) {
+    get: function (make, model, processor) {
       // 不存在所需享元，新建新享元
       if (!flyweights[make + model]) {
         flyweights[make + model] = new Flyweight(make, model, processor);
@@ -979,19 +979,19 @@ var FlyWeightFactory = (function() {
       return flyweights[make + model];
     },
 
-    getCount: function() {
+    getCount: function () {
       var count = 0;
       for (var f in flyweights) count++;
       return count;
-    }
+    },
   };
 })();
 
-var Computer = function(make, model, processor, memory, tag) {
+var Computer = function (make, model, processor, memory, tag) {
   this.flyweight = FlyWeightFactory.get(make, model, processor);
   this.memory = memory;
   this.tag = tag;
-  this.getMake = function() {
+  this.getMake = function () {
     return this.flyweight.make;
   };
   // ...
@@ -1002,22 +1002,22 @@ function ComputerCollection() {
   var count = 0;
 
   return {
-    add: function(make, model, processor, memory, tag) {
+    add: function (make, model, processor, memory, tag) {
       computers[tag] = new Computer(make, model, processor, memory, tag);
       count++;
     },
 
-    get: function(tag) {
+    get: function (tag) {
       return computers[tag];
     },
 
-    getCount: function() {
+    getCount: function () {
       return count;
-    }
+    },
   };
 }
 
-(function() {
+(function () {
   var computers = new ComputerCollection();
 
   computers.add('Dell', 'Studio XPS', 'Intel', '5G', 'Y755P');
@@ -1038,7 +1038,7 @@ function ComputerCollection() {
 
 ```js
 function GeoCoder() {
-  this.getLatLng = function(address) {
+  this.getLatLng = function (address) {
     if (address === 'Amsterdam') {
       return '52.3700° N, 4.8900° E';
     } else if (address === 'London') {
@@ -1058,20 +1058,20 @@ function GeoProxy() {
   var geocache = {};
 
   return {
-    getLatLng: function(address) {
+    getLatLng: function (address) {
       if (!geocache[address]) {
         geocache[address] = geocoder.getLatLng(address);
       }
       log.add(address + ': ' + geocache[address]);
       return geocache[address];
     },
-    getCount: function() {
+    getCount: function () {
       var count = 0;
       for (var code in geocache) {
         count++;
       }
       return count;
-    }
+    },
   };
 }
 ```
@@ -1091,27 +1091,27 @@ function GeoProxy() {
 client and receiver
 
 ```js
-const SimpleCommand = function(receving) {
+const SimpleCommand = function (receving) {
   this.receiving = receving;
 };
 
-SimpleCommand.prototype.execute = function() {
+SimpleCommand.prototype.execute = function () {
   this.receiving.action();
 };
 ```
 
 ```js
-module.exports = (function() {
+module.exports = (function () {
   var manager = {};
 
   // command to be encapsulted
-  manager.isNull = function(nu) {
+  manager.isNull = function (nu) {
     return toString.apply(nu) === '[object Null]';
   };
-  manager.isArray = function(arr) {
+  manager.isArray = function (arr) {
     return toString.apply(arr) === '[object Array]';
   };
-  manager.isString = function(str) {
+  manager.isString = function (str) {
     return toString.apply(str) === '[object String]';
   };
 
@@ -1131,7 +1131,7 @@ module.exports = (function() {
 
   return {
     execute: execute,
-    run: run
+    run: run,
   };
 })();
 ```
@@ -1152,34 +1152,34 @@ const MenuBar = {
   },
   refresh() {
     console.log('refresh menu pages');
-  }
+  },
 };
 
 // client: command object
 // command: object with `action` implemented
-const Command = receiver => {
-  return function() {
+const Command = (receiver) => {
+  return function () {
     receiver.action();
   };
 };
 const RefreshMenuBarCommand = Command(MenuBar);
 
 // executor
-button.setCommand = command => {
+button.setCommand = (command) => {
   button.command = command;
 };
 button.setCommand(RefreshMenuBarCommand);
 
-button.addEventLister('click', event => {
+button.addEventLister('click', (event) => {
   button.command();
 });
 ```
 
 ```js
-const MenuCommand = function(action) {
+const MenuCommand = function (action) {
   this.action = action;
 };
-MenuCommand.prototype.execute = function() {
+MenuCommand.prototype.execute = function () {
   this.action();
 };
 
@@ -1235,7 +1235,7 @@ appMenuBar.show();
 Command sequences to implement Macro/Batch/Undo command:
 
 ```js
-const Cursor = function(width, height, parent) {
+const Cursor = function (width, height, parent) {
   this.width = width;
   this.height = height;
   this.commandStack = [];
@@ -1251,18 +1251,18 @@ const Cursor = function(width, height, parent) {
 };
 
 Cursor.prototype = {
-  move: function(x, y) {
+  move: function (x, y) {
     var _this = this;
-    this.commandStack.push(function() {
+    this.commandStack.push(function () {
       _this.lineTo(x, y);
     });
   },
-  lineTo: function(x, y) {
+  lineTo: function (x, y) {
     this.position.x += x;
     this.position.y += y;
     this.ctx.lineTo(this.position.x, this.position.y);
   },
-  executeCommands: function() {
+  executeCommands: function () {
     this.position = { x: this.width / 2, y: this.height / 2 };
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.ctx.beginPath();
@@ -1272,10 +1272,10 @@ Cursor.prototype = {
     }
     this.ctx.stroke();
   },
-  undo: function() {
+  undo: function () {
     this.commandStack.pop();
     this.executeCommands();
-  }
+  },
 };
 ```
 
@@ -1294,25 +1294,25 @@ function ObserverList() {
   this.observerList = [];
 }
 
-ObserverList.prototype.Add = function(obj) {
+ObserverList.prototype.Add = function (obj) {
   return this.observerList.push(obj);
 };
 
-ObserverList.prototype.Empty = function() {
+ObserverList.prototype.Empty = function () {
   this.observerList = [];
 };
 
-ObserverList.prototype.Count = function() {
+ObserverList.prototype.Count = function () {
   return this.observerList.length;
 };
 
-ObserverList.prototype.Get = function(index) {
+ObserverList.prototype.Get = function (index) {
   if (index > -1 && index < this.observerList.length) {
     return this.observerList[index];
   }
 };
 
-ObserverList.prototype.Insert = function(obj, index) {
+ObserverList.prototype.Insert = function (obj, index) {
   var pointer = -1;
 
   if (index === 0) {
@@ -1326,7 +1326,7 @@ ObserverList.prototype.Insert = function(obj, index) {
   return pointer;
 };
 
-ObserverList.prototype.IndexOf = function(obj, startIndex) {
+ObserverList.prototype.IndexOf = function (obj, startIndex) {
   var i = startIndex,
     pointer = -1;
 
@@ -1340,7 +1340,7 @@ ObserverList.prototype.IndexOf = function(obj, startIndex) {
   return pointer;
 };
 
-ObserverList.prototype.RemoveAt = function(index) {
+ObserverList.prototype.RemoveAt = function (index) {
   if (index === 0) {
     this.observerList.shift();
   } else if (index === this.observerList.length - 1) {
@@ -1353,15 +1353,15 @@ function Subject() {
   this.observers = new ObserverList();
 }
 
-Subject.prototype.AddObserver = function(observer) {
+Subject.prototype.AddObserver = function (observer) {
   this.observers.Add(observer);
 };
 
-Subject.prototype.RemoveObserver = function(observer) {
+Subject.prototype.RemoveObserver = function (observer) {
   this.observers.RemoveAt(this.observers.IndexOf(observer, 0));
 };
 
-Subject.prototype.Notify = function(context) {
+Subject.prototype.Notify = function (context) {
   var observerCount = this.observers.Count();
   for (var i = 0; i < observerCount; i++) {
     this.observers.Get(i).Update(context);
@@ -1370,7 +1370,7 @@ Subject.prototype.Notify = function(context) {
 
 // The Observer
 function Observer() {
-  this.Update = function() {
+  this.Update = function () {
     // ...
   };
 }
@@ -1393,19 +1393,19 @@ function extend(extension, obj) {
 - pubsubz.js
 
 ```js
-module.exports = (function(window, doc, undef) {
+module.exports = (function (window, doc, undef) {
   var pubsubz = {};
 
   var topics = {},
     subUid = -1;
 
-  pubsubz.publish = function(topic, args) {
+  pubsubz.publish = function (topic, args) {
     // undefined check
     if (!topics[topic]) {
       return false;
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
       var subscribers = topics[topic],
         len = subscribers ? subscribers.length : 0;
 
@@ -1417,7 +1417,7 @@ module.exports = (function(window, doc, undef) {
     return true;
   };
 
-  pubsubz.subscribe = function(topic, func) {
+  pubsubz.subscribe = function (topic, func) {
     // undefined check
     if (!topics[topic]) {
       topics[topic] = [];
@@ -1427,12 +1427,12 @@ module.exports = (function(window, doc, undef) {
     var token = (++subUid).toString();
     topics[topic].push({
       token: token,
-      func: func
+      func: func,
     });
     return token;
   };
 
-  pubsubz.unsubscribe = function(token) {
+  pubsubz.unsubscribe = function (token) {
     for (var m in topics) {
       if (topics[m]) {
         for (var i = 0, j = topics[m].length; i < j; i++) {
@@ -1456,7 +1456,7 @@ module.exports = (function(window, doc, undef) {
 var pubsub = require('./pubsubz.js');
 
 // add observer to observerlist
-var testFirstSub = pubsub.subscribe('login', function(topic, data) {
+var testFirstSub = pubsub.subscribe('login', function (topic, data) {
   console.log(topic + ': ' + data);
 });
 
@@ -1465,21 +1465,21 @@ pubsub.publish('login', 'hello world!');
 pubsub.publish('login', ['test', 'a', 'b', 'c']);
 pubsub.publish('login', [{ color: 'blue' }, { text: 'hello' }]);
 
-setTimeout(function() {
+setTimeout(function () {
   pubsub.unsubscribe(testFirstSub);
 }, 0);
 
 // permanent subscribe
-pubsub.subscribe('sum', function(topic, data) {
+pubsub.subscribe('sum', function (topic, data) {
   if (toString.apply(data) !== '[object Array]') {
     console.log('Please input array: * ' + data + ' * is not array!');
   } else {
-    var tmp = data.filter(function(item) {
+    var tmp = data.filter(function (item) {
       return toString.apply(item) === '[object Number]';
     });
 
     if (tmp.length) {
-      var sum = tmp.reduce(function(previous, current) {
+      var sum = tmp.reduce(function (previous, current) {
         return previous + current;
       }, 0);
       console.log('sumof ' + data + ' : ' + sum);
@@ -1503,7 +1503,7 @@ pubsub.publish('sum', ['a', 'b', 'c', 'd', 'e']);
 
 ```js
 // Equivalent to subscribe(topicName, callback)
-$(document).on('topicName', function() {
+$(document).on('topicName', function () {
   //..perform some behaviour
 });
 
@@ -1528,19 +1528,19 @@ $(document).off('topicName');
  *   - make it safer to use
  */
 
-var MicroEvent = function() {};
+var MicroEvent = function () {};
 MicroEvent.prototype = {
-  bind: function(event, fct) {
+  bind: function (event, fct) {
     this._events = this._events || {};
     this._events[event] = this._events[event] || [];
     this._events[event].push(fct);
   },
-  unbind: function(event, fct) {
+  unbind: function (event, fct) {
     this._events = this._events || {};
     if (event in this._events === false) return;
     this._events[event].splice(this._events[event].indexOf(fct), 1);
   },
-  trigger: function(event /* , args... */) {
+  trigger: function (event /* , args... */) {
     this._events = this._events || {};
     if (event in this._events === false) return;
     for (var i = 0; i < this._events[event].length; i++) {
@@ -1549,7 +1549,7 @@ MicroEvent.prototype = {
         Array.prototype.slice.call(arguments, 1)
       );
     }
-  }
+  },
 };
 
 /**
@@ -1559,7 +1559,7 @@ MicroEvent.prototype = {
  *
  * @param {Object} the object which will support MicroEvent
  */
-MicroEvent.mixin = function(destObject) {
+MicroEvent.mixin = function (destObject) {
   var props = ['bind', 'unbind', 'trigger'];
   for (var i = 0; i < props.length; i++) {
     if (typeof destObject === 'function') {
@@ -1675,11 +1675,11 @@ MVVM 进一步允许我们创建一个模型的特定视图子集，包含了状
 ### Plugin Pattern
 
 ```js
-(function($) {
+(function ($) {
   $.extend($.fn, {
-    myplugin: function() {
+    myplugin: function () {
       // your plugin logic
-    }
+    },
   });
 })(jQuery);
 ```
@@ -1688,7 +1688,7 @@ MVVM 进一步允许我们创建一个模型的特定视图子集，包含了状
 // the semi-colon before the function invocation is a safety
 // net against concatenated scripts and/or other plugins
 // that are not closed properly.
-(function($, window, document, undefined) {
+(function ($, window, document, undefined) {
   // undefined is used here as the undefined global
   // variable in ECMAScript 3 and is mutable (i.e. it can
   // be changed by someone else). undefined isn't really
@@ -1705,7 +1705,7 @@ MVVM 进一步允许我们创建一个模型的特定视图子集，包含了状
   // Create the defaults once
   var pluginName = 'defaultPluginName',
     defaults = {
-      propertyName: 'value'
+      propertyName: 'value',
     };
 
   // The actual plugin constructor
@@ -1725,7 +1725,7 @@ MVVM 进一步允许我们创建一个模型的特定视图子集，包含了状
     this.init();
   }
 
-  Plugin.prototype.init = function() {
+  Plugin.prototype.init = function () {
     // Place initialization logic here
     // We already have access to the DOM element and
     // the options via the instance, e.g. this.element
@@ -1734,8 +1734,8 @@ MVVM 进一步允许我们创建一个模型的特定视图子集，包含了状
 
   // A really lightweight plugin wrapper around the constructor,
   // preventing against multiple instantiations
-  $.fn[pluginName] = function(options) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options) {
+    return this.each(function () {
       if (!$.data(this, 'plugin_' + pluginName)) {
         $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
       }

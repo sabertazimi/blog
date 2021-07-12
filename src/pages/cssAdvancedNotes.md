@@ -1,14 +1,14 @@
 ---
-layout:     post
-title:      "CSS Advanced Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2017-04-13
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'CSS Advanced Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2017-04-13
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - CSS
+  - Frontend Development
+  - Web Development
+  - CSS
 ---
 
 # CSS Advanced Notes
@@ -258,8 +258,13 @@ window.requestAnimationFrame(step);
   - This unblocks Start Render and allows progressive rendering.
 
 ```html
-<link rel="preload" href="/path/to/split.css" as="style">
-<link rel="stylesheet" href="/path/to/split.css" media="print" onload="this.media='all'">
+<link rel="preload" href="/path/to/split.css" as="style" />
+<link
+  rel="stylesheet"
+  href="/path/to/split.css"
+  media="print"
+  onload="this.media='all'"
+/>
 ```
 
 ### Animation

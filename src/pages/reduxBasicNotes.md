@@ -1,16 +1,16 @@
 ﻿---
-layout:     post
-title:      "Redux Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2018-03-12
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'Redux Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2018-03-12
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - JavaScript
-    - React
-    - Redux
+  - Frontend Development
+  - Web Development
+  - JavaScript
+  - React
+  - Redux
 ---
 
 # Redux Basic Notes
@@ -28,7 +28,7 @@ tags:
 Redux 中只有一个全局唯一 store 状态树, 且由 reducers 创建 store.
 
 ```js
-export default (appStore = createStore(rootReducers, initState));
+export default appStore = createStore(rootReducers, initState);
 ```
 
 #### State
@@ -114,14 +114,14 @@ import { increment } from '../actionsCreators';
 // Which part of the Redux global state does our component want to receive as props?
 function mapStateToProps(state) {
   return {
-    value: state.counter
+    value: state.counter,
   };
 }
 
 // Which action creators does it want to receive by props?
 function mapDispatchToProps(dispatch) {
   return {
-    onIncrement: () => dispatch(increment())
+    onIncrement: () => dispatch(increment()),
   };
 }
 
@@ -155,7 +155,7 @@ function applyMiddleware(store, middlewares) {
   middlewares.reverse();
 
   let next = store.dispatch;
-  middlewares.forEach(middleware => (next = middleware(store)(next)));
+  middlewares.forEach((middleware) => (next = middleware(store)(next)));
 
   return Object.assign({}, store, { dispatch: next });
 }
@@ -166,9 +166,10 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 // applyMiddleware takes createStore() and returns
 // a function with a compatible API.
-let createStoreWithMiddleware = applyMiddleware(logger, crashReporter)(
-  createStore
-);
+let createStoreWithMiddleware = applyMiddleware(
+  logger,
+  crashReporter
+)(createStore);
 
 // Use it like you would use createStore()let todoApp = combineReducers(reducers);
 let store = createStoreWithMiddleware(todoApp);
@@ -181,7 +182,7 @@ let store = createStoreWithMiddleware(todoApp);
  * Schedules actions with { meta: { delay: N } } to be delayed by N milliseconds.
  * Makes `dispatch` return a function to cancel the interval in this case.
  */
-const timeoutScheduler = store => next => action => {
+const timeoutScheduler = (store) => (next) => (action) => {
   if (!action.meta || !action.meta.delay) {
     return next(action);
   }
@@ -234,38 +235,40 @@ store.dispatch(addFave());
 - use middleware to change normal dispatch function
 
 ```js
-const applyMiddleware = (...middlewares) => store => {
-  // should return (next) => (action) => { ... } function
-  if (middlewares.length === 0) {
-    return dispatch => dispatch;
-  }
+const applyMiddleware =
+  (...middlewares) =>
+  (store) => {
+    // should return (next) => (action) => { ... } function
+    if (middlewares.length === 0) {
+      return (dispatch) => dispatch;
+    }
 
-  if (middlewares.length === 1) {
-    return middlewares[0];
-  }
+    if (middlewares.length === 1) {
+      return middlewares[0];
+    }
 
-  // [ (next) => (action) => {...}, ... ] array
-  // next: (action) => { ... } function
-  const boundMiddlewares = middlewares.map(middleware => middleware(store));
+    // [ (next) => (action) => {...}, ... ] array
+    // next: (action) => { ... } function
+    const boundMiddlewares = middlewares.map((middleware) => middleware(store));
 
-  return boundMiddlewares.reduce((a, b) => next => a(b(next)));
-};
+    return boundMiddlewares.reduce((a, b) => (next) => a(b(next)));
+  };
 
 const createStore = (reducer, middleware) => {
   // clousre for storing global state
   let state = undefined;
   const subscribers = [];
-  const coreDispatch = action => {
+  const coreDispatch = (action) => {
     validateAction(action);
     state = reducer(state, action);
-    subscribers.forEach(handler => handler());
+    subscribers.forEach((handler) => handler());
   };
   const getState = () => state;
 
   const store = {
     dispatch: coreDispatch,
     getState,
-    subscribe: handler => {
+    subscribe: (handler) => {
       subscribers.push(handler);
 
       // unsubscribe function
@@ -276,24 +279,24 @@ const createStore = (reducer, middleware) => {
           subscribers.splice(index, 1);
         }
       };
-    }
+    },
   };
 
   if (middleware) {
     // store default dispatch
-    const dispatch = action => store.dispatch(action);
+    const dispatch = (action) => store.dispatch(action);
 
     // middleware = ({ dispatch, getState }) => (next) => (action) => { ... };
     // middleware is a higher-order function (return (action) => { ... });
     // dispatch, getState and coreDispatch are injected into middleware as arguments
     store.dispatch = middleware({
       dispatch,
-      getState
+      getState,
     })(coreDispatch);
   }
 
   coreDispatch({
-    type: INIT_MEDUX
+    type: INIT_MEDUX,
   });
   return store;
 };
@@ -302,11 +305,11 @@ const createStore = (reducer, middleware) => {
 ### Action Validation
 
 ```js
-const isValidKey = key => {
+const isValidKey = (key) => {
   return ['type', 'payload', 'error', 'meta'].indexOf(key) > -1;
 };
 
-const validateAction = action => {
+const validateAction = (action) => {
   if (!action || typeof action !== 'object' || Array.isArray(action)) {
     throw new Error('Action must be an object!');
   }
@@ -337,8 +340,8 @@ export const Provider = ({ store, children }) => {
   return (
     <StoreContext.Provider value={store}>
       <StoreContext.Consumer>
-        {store => {
-          const childrenWithStore = React.Children.map(children, child =>
+        {(store) => {
+          const childrenWithStore = React.Children.map(children, (child) =>
             React.cloneElement(child, { store: store })
           );
 
@@ -349,45 +352,44 @@ export const Provider = ({ store, children }) => {
   );
 };
 
-export const connect = (
-  mapStateToProps = () => ({}),
-  mapDispatchToProps = () => ({})
-) => Component => {
-  class Connected extends React.Component {
-    onStoreOrPropsChange(props) {
-      const { store } = this.props;
-      const state = store.getState();
-      const stateProps = mapStateToProps(state, props);
-      const dispatchProps = mapDispatchToProps(store.dispatch, props);
-      this.setState({
-        ...stateProps,
-        ...dispatchProps
-      });
+export const connect =
+  (mapStateToProps = () => ({}), mapDispatchToProps = () => ({})) =>
+  (Component) => {
+    class Connected extends React.Component {
+      onStoreOrPropsChange(props) {
+        const { store } = this.props;
+        const state = store.getState();
+        const stateProps = mapStateToProps(state, props);
+        const dispatchProps = mapDispatchToProps(store.dispatch, props);
+        this.setState({
+          ...stateProps,
+          ...dispatchProps,
+        });
+      }
+
+      componentWillMount() {
+        const { store } = this.props;
+        this.onStoreOrPropsChange(this.props);
+        this.unsubscribe = store.subscribe(() =>
+          this.onStoreOrPropsChange(this.props)
+        );
+      }
+
+      componentWillReceiveProps(nextProps) {
+        this.onStoreOrPropsChange(nextProps);
+      }
+
+      componentWillUnmount() {
+        this.unsubscribe();
+      }
+
+      render() {
+        return <Component {...this.props} {...this.state} />;
+      }
     }
 
-    componentWillMount() {
-      const { store } = this.props;
-      this.onStoreOrPropsChange(this.props);
-      this.unsubscribe = store.subscribe(() =>
-        this.onStoreOrPropsChange(this.props)
-      );
-    }
-
-    componentWillReceiveProps(nextProps) {
-      this.onStoreOrPropsChange(nextProps);
-    }
-
-    componentWillUnmount() {
-      this.unsubscribe();
-    }
-
-    render() {
-      return <Component {...this.props} {...this.state} />;
-    }
-  }
-
-  return Connected;
-};
+    return Connected;
+  };
 ```
 
 ## Redux Best Practice
@@ -422,11 +424,11 @@ return state
   .concat([{ id: 'id', value: 'newValue' }])
   .slice(index + 1);
 // Second way case "EDIT":
-return state.map(item => {
+return state.map((item) => {
   if (item.id === 'id') {
     return {
       ...item,
-      value: 'newValue'
+      value: 'newValue',
     };
   } else {
     return item;
@@ -444,7 +446,7 @@ const loadTodo = (id) => (dispatch, getState) => {
     const todo = await fetch(`/todos/${id}`);
     dispatch(addTodo(todo));
   }
-}
+};
 
 // good
 const loadTodo = (id, todos) => (dispatch) => {
@@ -453,7 +455,7 @@ const loadTodo = (id, todos) => (dispatch) => {
     const todo = await fetch(`/todos/${id}`);
     dispatch(addTodo(todo));
   }
-}
+};
 ```
 
 - 在 test 里不管你用 tape 还是 mocha，请用 [enzyme.js](http://airbnb.io/enzyme/)
@@ -463,15 +465,15 @@ const loadTodo = (id, todos) => (dispatch) => {
 const fluxStandardAction = {
   type: 'ADD_TODO',
   payload: {
-    text: 'Do something'
+    text: 'Do something',
   },
-  meta: meta
+  meta: meta,
 };
 
 const fluxStandardAction = {
   type: 'ADD_TODO',
   payload: new Error(),
-  error: true
+  error: true,
 };
 ```
 

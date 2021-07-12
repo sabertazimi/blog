@@ -1,16 +1,16 @@
 ---
-layout:     post
-title:      "React Router Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2018-02-20
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'React Router Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2018-02-20
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - JavaScript
-    - React
-    - React Router
+  - Frontend Development
+  - Web Development
+  - JavaScript
+  - React
+  - React Router
 ---
 
 # React Router Basic Notes
@@ -26,7 +26,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 
 class App extends Component {
@@ -62,7 +62,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 
 render(
@@ -122,7 +122,7 @@ const PrivateRoute = ({
 - etc...
 
 ```jsx
-<Route render={props => <Component {...props} />} />
+<Route render={(props) => <Component {...props} />} />
 ```
 
 ### Link/URL Props
@@ -225,22 +225,22 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
-    ]
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+    ],
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/index.html'
-    })
-  ]
+      template: 'app/index.html',
+    }),
+  ],
 };
 ```
 
@@ -277,17 +277,17 @@ location / {
 ```jsx
 const instances = [];
 
-const register = comp => instances.push(comp);
-const unregister = comp => instances.splice(instances.indexOf(comp), 1);
+const register = (comp) => instances.push(comp);
+const unregister = (comp) => instances.splice(instances.indexOf(comp), 1);
 
-const historyPush = path => {
+const historyPush = (path) => {
   history.pushState({}, null, path);
-  instances.forEach(instance => instance.forceUpdate());
+  instances.forEach((instance) => instance.forceUpdate());
 };
 
-const historyReplace = path => {
+const historyReplace = (path) => {
   history.replaceState({}, null, path);
-  instances.forEach(instance => instance.forceUpdate());
+  instances.forEach((instance) => instance.forceUpdate());
 };
 ```
 
@@ -383,10 +383,10 @@ each `<Route>` will be aware of that and re-match and re-render with `instances`
 class Link extends Component {
   static propTypes = {
     to: PropTypes.string.isRequired,
-    replace: PropTypes.bool
+    replace: PropTypes.bool,
   };
 
-  handleClick = event => {
+  handleClick = (event) => {
     const { replace, to } = this.props;
     event.preventDefault();
 
@@ -410,12 +410,12 @@ class Link extends Component {
 ```jsx
 class Redirect extends Component {
   static defaultProps = {
-    push: false
+    push: false,
   };
 
   static propTypes = {
     to: PropTypes.string.isRequired,
-    push: PropTypes.bool.isRequired
+    push: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {

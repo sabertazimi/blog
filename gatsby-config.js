@@ -14,7 +14,7 @@ module.exports = {
         author: 'sabertazimi',
         url: 'https://notes.tazimi.dev',
         description: 'Daily I Learned Notes',
-      }
+      },
     ],
   },
   pathPrefix: '/blog',

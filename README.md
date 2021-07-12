@@ -27,15 +27,15 @@ yaml front + markdown body
 
 ```markdown
 ---
-layout:     post
-title:      "JavaScript Basic Notes"
-subtitle:   "Daily I learned"
-author:     "sabertazimi"
-date:       2019-02-29
+layout: post
+title: 'JavaScript Basic Notes'
+subtitle: 'Daily I learned'
+author: 'sabertazimi'
+date: 2019-02-29
 tags:
-    - Web
-    - Front End
-    - JavaScript
+  - Web
+  - Front End
+  - JavaScript
 ---
 
 content ...

@@ -1,14 +1,14 @@
 ---
-layout:     post
-title:      "JavaScript Advanced Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2018-03-11
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'JavaScript Advanced Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2018-03-11
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - JavaScript
+  - Frontend Development
+  - Web Development
+  - JavaScript
 ---
 
 # JavaScript Advanced Notes
@@ -46,7 +46,7 @@ babel.transform('code();', options);
 // => { code, map, ast }
 
 // 文件转码（异步）
-babel.transformFile('filename.js', options, function(err, result) {
+babel.transformFile('filename.js', options, function (err, result) {
   result; // => { code, map, ast }
 });
 
@@ -168,7 +168,7 @@ const [a, b, c] = example();
 function example() {
   return {
     foo: 1,
-    bar: 2
+    bar: 2,
   };
 }
 const { foo, bar } = example();
@@ -180,7 +180,7 @@ const { foo, bar } = example();
 const jsonData = {
   id: 42,
   status: 'OK',
-  data: [867, 5309]
+  data: [867, 5309],
 };
 
 const { id, status, data: number } = jsonData;
@@ -448,10 +448,10 @@ console.log(boldify`Hi, my name is ${name}!`);
 
 ```js
 function template(strings, ...keys) {
-  return function(...values) {
+  return function (...values) {
     const dict = values[values.length - 1] || {};
     const result = [strings[0]];
-    keys.forEach(function(key, i) {
+    keys.forEach(function (key, i) {
       const value = Number.isInteger(key) ? values[key] : dict[key];
       result.push(value, strings[i + 1]);
     });
@@ -537,10 +537,7 @@ function SaferHTML(templateData) {
     const arg = String(arguments[i]);
 
     // Escape special characters in the substitution.
-    s += arg
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+    s += arg.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
     // Don't escape special characters in the template.
     s += templateData[i];
@@ -657,7 +654,7 @@ rtf.format(1, 'week'); // 'next week'
 const dtfEnglish = new Intl.DateTimeFormat('en', {
   year: 'numeric',
   month: 'long',
-  day: 'numeric'
+  day: 'numeric',
 });
 
 dtfEnglish.format(new Date()); // => 'May 7, 2019'
@@ -689,7 +686,7 @@ no more `indexOf() > -1`
 
 // NodeList对象
 const ps = document.querySelectorAll('p');
-Array.from(ps).forEach(function(p) {
+Array.from(ps).forEach(function (p) {
   console.log(p);
 });
 
@@ -709,11 +706,11 @@ Array.from(namesSet); // ['a', 'b']
 Array.from([1, 2, 3]);
 // => [1, 2, 3]
 
-Array.from(arrayLike, x => x * x);
+Array.from(arrayLike, (x) => x * x);
 // =>
-Array.from(arrayLike).map(x => x * x);
+Array.from(arrayLike).map((x) => x * x);
 
-Array.from([1, 2, 3], x => x * x);
+Array.from([1, 2, 3], (x) => x * x);
 // [1, 4, 9]
 ```
 
@@ -764,7 +761,7 @@ arr2.push(...arr1);
 ```js
 var obj = { x: 1, y: 2, z: 3 };
 
-obj[Symbol.iterator] = function*() {
+obj[Symbol.iterator] = function* () {
   yield 1;
   yield 2;
   yield 3;
@@ -784,10 +781,10 @@ const score = {
   jamon: 42,
   todd: 19,
   ken: 4,
-  gant: 41
+  gant: 41,
 };
 
-Object.keys(score).map(k => score[k]);
+Object.keys(score).map((k) => score[k]);
 // => [ 42, 19, 4, 41 ]
 
 Object.values(score);
@@ -862,14 +859,14 @@ export * from 'my_module';
   ES6 模块 Export 分 3 种情况:
   1. `export default xxx`输出`value`,
   2. `export xxx`输出`reference`.
-  `defaultThing` and `anotherDefaultThing` shows ES6 export default value,
-  `importedThing` and `module.thing` shows ES6 export normal reference,
-  and `Destructuring Behavior` create a brand new value.
+     `defaultThing` and `anotherDefaultThing` shows ES6 export default value,
+     `importedThing` and `module.thing` shows ES6 export normal reference,
+     and `Destructuring Behavior` create a brand new value.
   3. function/class special case:
-  `export default function/class thing() {}; // function/class expressions`
-  export default reference,
-  `function/class thing() {}; export default thing; // function/class statements`
-  export default value.
+     `export default function/class thing() {}; // function/class expressions`
+     export default reference,
+     `function/class thing() {}; export default thing; // function/class statements`
+     export default value.
 
 Export default value:
 
@@ -989,7 +986,7 @@ const map = new Map([
   // element of each nested array is the key, and the 2nd is the value
   ['name', 'Jean-Luc Picard'],
   ['age', 59],
-  ['rank', 'Captain']
+  ['rank', 'Captain'],
 ]);
 
 // To get the value associated with a given `key` in a map, you
@@ -1027,7 +1024,7 @@ const arrayClone = new Map(Array.from(map.entries));
 const map = new Map([
   ['name', 'Jean-Luc Picard'],
   ['age', 59],
-  ['rank', 'Captain']
+  ['rank', 'Captain'],
 ]);
 
 // The `for/of` loop can loop through iterators
@@ -1088,7 +1085,7 @@ iter.next(); // { value: undefined, done: true }
 const Iterable = {
   [Symbol.iterator]() {
     return Iterator;
-  }
+  },
 };
 
 const Iterator = {
@@ -1100,12 +1097,12 @@ const Iterator = {
   },
   throw(e) {
     throw e;
-  }
+  },
 };
 
 const IteratorResult = {
   value: any,
-  done: boolean
+  done: boolean,
 };
 
 const Iterator = {
@@ -1114,7 +1111,7 @@ const Iterator = {
   },
   [Symbol.iterator]() {
     return this;
-  }
+  },
 };
 ```
 
@@ -1122,30 +1119,30 @@ const Iterator = {
 function methodsIterator() {
   let index = 0;
   let methods = Object.keys(this)
-    .filter(key => {
+    .filter((key) => {
       return typeof this[key] === 'function';
     })
-    .map(key => this[key]);
+    .map((key) => this[key]);
 
   // iterator object
   return {
     next: () => ({
       // Conform to Iterator protocol
       done: index >= methods.length,
-      value: methods[index++]
-    })
+      value: methods[index++],
+    }),
   };
 }
 
 let myMethods = {
-  toString: function() {
+  toString: function () {
     return '[object myMethods]';
   },
-  sumNumbers: function(a, b) {
+  sumNumbers: function (a, b) {
     return a + b;
   },
   numbers: [1, 5, 6],
-  [Symbol.iterator]: methodsIterator // Conform to Iterable Protocol
+  [Symbol.iterator]: methodsIterator, // Conform to Iterable Protocol
 };
 
 for (let method of myMethods) {
@@ -1159,7 +1156,7 @@ for (let method of myMethods) {
 const AsyncIterable = {
   [Symbol.asyncIterator]() {
     return AsyncIterator;
-  }
+  },
 };
 
 const AsyncIterator = {
@@ -1171,12 +1168,12 @@ const AsyncIterator = {
   },
   throw(e) {
     return Promise.reject(e);
-  }
+  },
 };
 
 const IteratorResult = {
   value: any,
-  done: boolean
+  done: boolean,
 };
 ```
 
@@ -1192,31 +1189,31 @@ function remotePostsAsyncIteratorsFactory() {
       if (done) {
         return Promise.resolve({
           done: true,
-          value: undefined
+          value: undefined,
         });
       }
 
       const res = await fetch(
         `https://jsonplaceholder.typicode.com/posts/${i++}`
-      ).then(r => r.json());
+      ).then((r) => r.json());
 
       // the posts source is ended
       if (Object.keys(res).length === 0) {
         done = true;
         return Promise.resolve({
           done: true,
-          value: undefined
+          value: undefined,
         });
       } else {
         return Promise.resolve({
           done: false,
-          value: res
+          value: res,
         });
       }
     },
     [Symbol.asyncIterator]() {
       return this;
-    }
+    },
   };
 
   return asyncIterableIterator;
@@ -1280,7 +1277,7 @@ const users = {
     for (const key in this) {
       if (this[key]) yield key;
     }
-  }
+  },
 };
 ```
 
@@ -1415,8 +1412,8 @@ coroutine(function* bounce() {
 ```js
 const asyncSource = {
   async *[Symbol.asyncIterator]() {
-    yield await new Promise(res => setTimeout(res, 1000, 1));
-  }
+    yield await new Promise((res) => setTimeout(res, 1000, 1));
+  },
 };
 
 async function* remotePostsAsyncGenerator() {
@@ -1425,7 +1422,7 @@ async function* remotePostsAsyncGenerator() {
   while (true) {
     const res = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${i++}`
-    ).then(r => r.json());
+    ).then((r) => r.json());
 
     // when no more remote posts will be available,
     // it will break the infinite loop.
@@ -1452,7 +1449,7 @@ async function* getRemoteData() {
 
   while (hasMore) {
     const { next_page, results } = await fetch(URL, { params: { page } }).then(
-      r => r.json()
+      (r) => r.json()
     );
 
     // return 5 elements with each iteration
@@ -1471,13 +1468,13 @@ modify default object behavior with `Proxy` and `Reflect`
 ```js
 // new Proxy(target, handler)
 Proxy(target, {
-  set: function(target, name, value, receiver) {
+  set: function (target, name, value, receiver) {
     const success = Reflect.set(target, name, value, receiver);
     if (success) {
       log('property ' + name + ' on ' + target + ' set to ' + value);
     }
     return success;
-  }
+  },
 });
 ```
 
@@ -1502,7 +1499,7 @@ APIs of handler:
 ```js
 const withZeroValue = (target, zeroValue = 0) =>
   new Proxy(target, {
-    get: (obj, prop) => (prop in obj ? obj[prop] : zeroValue)
+    get: (obj, prop) => (prop in obj ? obj[prop] : zeroValue),
   });
 
 let pos = { x: 4, y: 19 };
@@ -1514,14 +1511,14 @@ console.log(pos.z); // => 0
 #### Negative Array Indice with Proxy
 
 ```js
-const negativeArray = els =>
+const negativeArray = (els) =>
   new Proxy(target, {
     get: (target, propKey, receiver) =>
       Reflect.get(
         target,
         +propKey < 0 ? String(target.length + +propKey) : propKey,
         receiver
-      )
+      ),
   });
 ```
 
@@ -1531,17 +1528,17 @@ const negativeArray = els =>
 const hide = (target, prefix = '_') =>
   new Proxy(target, {
     has: (obj, prop) => !prop.startsWith(prefix) && prop in obj,
-    ownKeys: obj =>
+    ownKeys: (obj) =>
       Reflect.ownKeys(obj).filter(
-        prop => typeof prop !== 'string' || !prop.startsWith(prefix)
+        (prop) => typeof prop !== 'string' || !prop.startsWith(prefix)
       ),
-    get: (obj, prop, rec) => (prop in rec ? obj[prop] : undefined)
+    get: (obj, prop, rec) => (prop in rec ? obj[prop] : undefined),
   });
 
 let userData = hide({
   firstName: 'Tom',
   mediumHandle: '@tbarrasso',
-  _favoriteRapper: 'Drake'
+  _favoriteRapper: 'Drake',
 });
 
 '_favoriteRapper' in userData; // has: false
@@ -1580,7 +1577,7 @@ const readOnly = target => new Proxy(target, NODE_HANDLER)
 ```js
 const range = (min, max) =>
   new Proxy(Object.create(null), {
-    has: (_, prop) => +prop >= min && +prop <= max
+    has: (_, prop) => +prop >= min && +prop <= max,
   });
 
 const X = 10.5;
@@ -1590,7 +1587,7 @@ if (X in range(1, 100)) {
   // => true
 }
 
-nums.filter(n => n in range(1, 10));
+nums.filter((n) => n in range(1, 10));
 // => [1, 5]
 ```
 
@@ -1640,16 +1637,16 @@ const map2 = map1.set{ 'b': 2 };
 ```js
 // global scope
 var e = 10;
-function sum(a){
-  return function(b){
-    return function(c){
+function sum(a) {
+  return function (b) {
+    return function (c) {
       // outer functions scope
-      return function(d){
+      return function (d) {
         // local scope
         return a + b + c + d + e;
-      }
-    }
-  }
+      };
+    };
+  };
 }
 
 console.log(sum(1)(2)(3)(4)); // log 20
@@ -1660,11 +1657,11 @@ console.log(sum(1)(2)(3)(4)); // log 20
 function MyObject(name, message) {
   this.name = name.toString();
   this.message = message.toString();
-  this.getName = function() {
+  this.getName = function () {
     return this.name;
   };
 
-  this.getMessage = function() {
+  this.getMessage = function () {
     return this.message;
   };
 }
@@ -1674,10 +1671,10 @@ function MyObject(name, message) {
   this.name = name.toString();
   this.message = message.toString();
 }
-MyObject.prototype.getName = function() {
+MyObject.prototype.getName = function () {
   return this.name;
 };
-MyObject.prototype.getMessage = function() {
+MyObject.prototype.getMessage = function () {
   return this.message;
 };
 ```
@@ -1705,7 +1702,7 @@ const partial = (fn, ...args) => {
 chain of multiple single argument functions
 
 ```js
-const add = x => y => x + y;
+const add = (x) => (y) => x + y;
 ```
 
 ```javascript
@@ -1713,7 +1710,7 @@ function schonfinkelize(fn) {
   const slice = Array.prototype.slice,
     stored_args = slice.call(arguments, 1);
 
-  return function() {
+  return function () {
     const new_args = slice.call(arguments),
       args = stored_args.concat(new_args);
     return fn.apply(null, args);
@@ -1835,8 +1832,8 @@ const foo = () => {
   new Promise((resolve, reject) => {
     resolve('Promise resolved');
   })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
   baz();
 };
 
@@ -1890,15 +1887,15 @@ Promise 构造函数本身是同步函数
 ```js
 console.log('script start');
 
-const promise1 = new Promise(function(resolve) {
+const promise1 = new Promise(function (resolve) {
   console.log('promise1');
   resolve();
   console.log('promise1 end');
-}).then(function() {
+}).then(function () {
   console.log('promise2');
 });
 
-setTimeout(function() {
+setTimeout(function () {
   console.log('settimeout');
 });
 
@@ -1921,16 +1918,16 @@ async function async2() {
 
 console.log('script start');
 
-setTimeout(function() {
+setTimeout(function () {
   console.log('setTimeout');
 }, 0);
 
 async1();
 
-new Promise(function(resolve) {
+new Promise(function (resolve) {
   console.log('promise1');
   resolve();
-}).then(function() {
+}).then(function () {
   console.log('promise2');
 });
 
@@ -2188,11 +2185,11 @@ try {
 - no need to register new event listeners for newer children
 
 ```js
-window.onload = function() {
+window.onload = function () {
   const oUl = document.getElementById('ul');
   const aLi = oUl.getElementsByTagName('li');
 
-  oUl.onmouseover = function(e) {
+  oUl.onmouseover = function (e) {
     const e = e || window.event;
     const target = e.target || e.srcElement;
 
@@ -2212,7 +2209,7 @@ window.onload = function() {
     }
   };
 
-  oUl.onmouseout = function(e) {
+  oUl.onmouseout = function (e) {
     const e = e || window.event;
     const target = e.target || e.srcElement;
 
@@ -2265,14 +2262,14 @@ function requireScript(file, callback) {
   const newjs = document.createElement('script');
 
   // IE
-  newjs.onreadystatechange = function() {
+  newjs.onreadystatechange = function () {
     if (newjs.readyState === 'loaded' || newjs.readyState === 'complete') {
       newjs.onreadystatechange = null;
       callback();
     }
   };
   // others
-  newjs.onload = function() {
+  newjs.onload = function () {
     callback();
   };
 
@@ -2281,7 +2278,7 @@ function requireScript(file, callback) {
   script.parentNode.insertBefore(newjs, script);
 }
 
-requireScript('the_rest.js', function() {
+requireScript('the_rest.js', function () {
   Application.init();
 });
 ```
@@ -2397,10 +2394,10 @@ setTimeout()/setInterval()
 ```js
 const button = document.getElementById('myButton');
 
-button.onclick = function() {
+button.onclick = function () {
   oneMethod();
 
-  setTimeout(function() {
+  setTimeout(function () {
     document.getElementById('notice').style.color = 'red';
   }, 250);
 };
@@ -2413,7 +2410,7 @@ function saveDocument(id) {
   // 利用闭包封装待执行任务
   const tasks = [openDocument, writeText, closeDocument, updateUI];
 
-  setTimeout(function() {
+  setTimeout(function () {
     // 执行下一个任务
     const task = tasks.shift();
     task(id);
@@ -2432,7 +2429,7 @@ function processArray(items, process, callback) {
   // 克隆原数组
   const todo = items.concat();
 
-  setTimeout(function() {
+  setTimeout(function () {
     process(todo.shift());
 
     if (todo.length > 0) {
@@ -2451,7 +2448,7 @@ function timedProcessArray(items, process, callback) {
   // 克隆原始数组
   const todo = items.concat();
 
-  setTimeout(function() {
+  setTimeout(function () {
     const start = +new Date();
 
     // 一次批处理任务持续 0.05s
@@ -2517,7 +2514,7 @@ function work() {
   };
 }
 
-const makeWorker = f => {
+const makeWorker = (f) => {
   let pendingJobs = {};
 
   const worker = new Worker(
@@ -2531,7 +2528,7 @@ const makeWorker = f => {
   };
 
   return (...message) =>
-    new Promise(resolve => {
+    new Promise((resolve) => {
       const jobId = String(Math.random());
       pendingJobs[jobId] = resolve;
       worker.postMessage({ jobId, message });
@@ -2540,7 +2537,7 @@ const makeWorker = f => {
 
 const testWorker = makeWorker(work);
 
-testWorker('message from main thread').then(message => {
+testWorker('message from main thread').then((message) => {
   console.log('i am main thread, i receive:-----' + message);
 });
 ```
@@ -2554,7 +2551,7 @@ testWorker('message from main thread').then(message => {
 /*
  * jsonparser.js
  */
-self.onmessage = function(event) {
+self.onmessage = function (event) {
   const jsonText = event.data,
     jsonData = JSON.parse(jsonText);
 
@@ -2608,11 +2605,11 @@ function xhrRequest(url, callback) {
   // If this URL wasn't found in the cache, make the request.
   const req = createXhrObject();
 
-  req.onerror = function() {
+  req.onerror = function () {
     callback.error();
   };
 
-  req.onreadystatechange = function() {
+  req.onreadystatechange = function () {
     if (req.readyState == 4) {
       if (req.responseText === '' || req.status == '404') {
         callback.error();
@@ -2674,7 +2671,7 @@ function debounce(func, wait = 50, immediate = true) {
     }, wait);
 
   // 这里返回的函数是每次实际调用的函数
-  return function(...params) {
+  return function (...params) {
     // 如果没有创建延迟执行函数（later），就创建一个
     if (!timer) {
       timer = later();
@@ -2700,7 +2697,7 @@ function debounce(func, wait = 50, immediate = true) {
 // simple throttle
 function throttle(action) {
   let isRunning = false;
-  return function() {
+  return function () {
     if (isRunning) return;
     isRunning = true;
     window.requestAnimationFrame(() => {
@@ -2722,7 +2719,7 @@ function throttle(action) {
  *                                两者不能共存，否则函数不能执行
  * @return {function}             返回客户调用函数
  */
-_.throttle = function(func, wait, options) {
+_.throttle = function (func, wait, options) {
   var context, args, result;
   var timeout = null;
   // 之前的时间戳
@@ -2730,7 +2727,7 @@ _.throttle = function(func, wait, options) {
   // 如果 options 没传则设为空对象
   if (!options) options = {};
   // 定时器回调函数
-  var later = function() {
+  var later = function () {
     // 如果设置了 leading，就将 previous 设为 0
     // 用于下面函数的第一个 if 判断
     previous = options.leading === false ? 0 : _.now();
@@ -2739,7 +2736,7 @@ _.throttle = function(func, wait, options) {
     result = func.apply(context, args);
     if (!timeout) context = args = null;
   };
-  return function() {
+  return function () {
     // 获得当前时间戳
     var now = _.now();
     // 首次进入前者肯定为 true
@@ -2813,12 +2810,12 @@ useEffect(() => {
 ### First Paint Time
 
 ```js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM 挂载时间: ', Date.now() - timerStart);
   // 性能日志上报
 });
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   console.log('所有资源加载完成时间: ', Date.now() - timerStart);
   // 性能日志上报
 });
@@ -2930,7 +2927,7 @@ Math.tan(x);
 - Push Cache: HTTP/2
 
 ```js
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   async function buildCache() {
     const cache = await caches.open(cacheName);
     return cache.addAll(['/main.css', '/main.mjs', '/offline.html']);
@@ -2938,7 +2935,7 @@ self.addEventListener('install', event => {
   event.waitUntil(buildCache());
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   async function cachedFetch(event) {
     const cache = await caches.open(cacheName);
     let response = await cache.match(event.request);
@@ -3170,8 +3167,8 @@ Lazy Loading Polyfill:
 ```
 
 ```js
-window.addEventListener('scroll', function(event) {
-  Array.from(document.querySelectorAll('.lazyload')).forEach(image => {
+window.addEventListener('scroll', function (event) {
+  Array.from(document.querySelectorAll('.lazyload')).forEach((image) => {
     if (image.slideIntoView(event.getBoundingClientRect())) {
       image.setAttribute('src', image.dataset.src);
     }
@@ -3182,8 +3179,8 @@ window.addEventListener('scroll', function(event) {
 Observer Lazy Loading:
 
 ```js
-const observer = new IntersectionObserver(nodes => {
-  nodes.forEach(v => {
+const observer = new IntersectionObserver((nodes) => {
+  nodes.forEach((v) => {
     if (v.isIntersecting) {
       v.target.src = v.target.dataset.src;
       observer.unobserve(v.target);
@@ -3191,8 +3188,8 @@ const observer = new IntersectionObserver(nodes => {
   });
 });
 
-const imgs = document.querySelectorAll("img.lazyload");
-imgs.forEach(v => observer.observe(v));
+const imgs = document.querySelectorAll('img.lazyload');
+imgs.forEach((v) => observer.observe(v));
 ```
 
 Native Lazy Loading:
@@ -3237,8 +3234,7 @@ const PageComponent = () => {
 #### Prefetch
 
 ```html
-<link rel="preload" />
-<link rel="prefetch" />
+<link rel="preload" /> <link rel="prefetch" />
 ```
 
 [Why not to prefetch prerender](https://addyosmani.com/blog/what-not-to-prefetch-prerender):
@@ -3384,7 +3380,7 @@ if (metric.start < lastVisibilityChange || document.hidden) return;
 
 ```js
 requestAnimationFrame(() => {
-  requestAnimationFrame(timestamp => {
+  requestAnimationFrame((timestamp) => {
     metric.finish(timestamp);
   });
 });
@@ -3438,7 +3434,7 @@ await page.waitFor(() => !!document.querySelector('.foo'));
 ```js
 const puppeteer = require('puppeteer');
 
-puppeteer.launch().then(async browser => {
+puppeteer.launch().then(async (browser) => {
   const page = await browser.newPage();
   const watchDog = page.waitForFunction('window.innerWidth < 100');
   await page.setViewport({ width: 50, height: 50 });
@@ -3450,14 +3446,14 @@ puppeteer.launch().then(async browser => {
 ```js
 const [response] = await Promise.all([
   page.waitForNavigation(), // The promise resolves after navigation has finished
-  page.click('a.my-link') // Clicking the link will indirectly cause a navigation
+  page.click('a.my-link'), // Clicking the link will indirectly cause a navigation
 ]);
 ```
 
 ```js
 const firstRequest = await page.waitForRequest('http://example.com/resource');
 const finalRequest = await page.waitForRequest(
-  request =>
+  (request) =>
     request.url() === 'http://example.com' && request.method() === 'GET'
 );
 return firstRequest.url();
@@ -3468,7 +3464,7 @@ const firstResponse = await page.waitForResponse(
   'https://example.com/resource'
 );
 const finalResponse = await page.waitForResponse(
-  response =>
+  (response) =>
     response.url() === 'https://example.com' && response.status() === 200
 );
 return finalResponse.ok();
@@ -3477,7 +3473,7 @@ return finalResponse.ok();
 ```js
 await page.evaluate(() => window.open('https://www.example.com/'));
 const newWindowTarget = await browserContext.waitForTarget(
-  target => target.url() === 'https://www.example.com/'
+  (target) => target.url() === 'https://www.example.com/'
 );
 ```
 
@@ -3486,7 +3482,7 @@ const newWindowTarget = await browserContext.waitForTarget(
 ```js
 const [response] = await Promise.all([
   page.waitForNavigation(waitOptions),
-  page.click(selector, clickOptions)
+  page.click(selector, clickOptions),
 ]);
 ```
 
@@ -3576,8 +3572,8 @@ V(G) = e - n + 2 **<10**
 
 ```js
 O.property = 'tazimi';
-O.method = function() {};
-O.prototype.method = function() {};
+O.method = function () {};
+O.prototype.method = function () {};
 ```
 
 #### 公共耦合(4)
@@ -3604,7 +3600,7 @@ const absFactory = new AbstractFactory({ env: 'TEST' });
 #### 印记耦合(2)
 
 ```js
-O.prototype.makeBread = function(args) {
+O.prototype.makeBread = function (args) {
   return new Bread(args.type, args.size);
 };
 
@@ -3639,23 +3635,23 @@ O.makeBread({ type: wheat, size: 99, name: 'foo' });
 const mockery = require('mockery');
 mockery.enable();
 
-describe('Sum suite File', function() {
-  beforeEach(function() {
+describe('Sum suite File', function () {
+  beforeEach(function () {
     mockery.registerAllowable('./mySumFS', true);
   });
 
-  afterEach(function() {
+  afterEach(function () {
     mockery.deregisterAllowable('./mySumFS');
   });
 
-  it('Adds Integers!', function() {
+  it('Adds Integers!', function () {
     const filename = 'numbers';
     const fsMock = {
-      readFileSync: function(path, encoding) {
+      readFileSync: function (path, encoding) {
         expect(path).toEqual(filename);
         expect(encoding).toEqual('utf8');
         return JSON.stringify({ a: 9, b: 3 });
-      }
+      },
     };
 
     mockery.registerMock('fs', fsMock);
@@ -3669,10 +3665,10 @@ describe('Sum suite File', function() {
 ### Monkey Patch
 
 ```js
-let _wr = function(type) {
+let _wr = function (type) {
   let orig = window.history[type];
 
-  return function() {
+  return function () {
     let rv = orig.apply(this, arguments);
     let e = new Event(type.toLowerCase());
     e.arguments = arguments;
@@ -3684,11 +3680,11 @@ let _wr = function(type) {
 window.history.pushState = _wr('pushState');
 window.history.replaceState = _wr('replaceState');
 
-window.addEventListener('pushstate', function(event) {
+window.addEventListener('pushstate', function (event) {
   // doing something
 });
 
-window.addEventListener('replacestate', function(event) {
+window.addEventListener('replacestate', function (event) {
   // doing something
 });
 ```
@@ -3699,7 +3695,7 @@ window.addEventListener('replacestate', function(event) {
 
 ```js
 var devtools = /./;
-devtools.toString = function() {
+devtools.toString = function () {
   this.opened = true;
 };
 
@@ -3736,22 +3732,22 @@ const transactions = [
     seller: 'WAL0412',
     buyer: 'WAL3023',
     price: 203450,
-    time: 1539688433
+    time: 1539688433,
   },
   {
     id: '1d4c-31f8f14b-1571',
     seller: 'WAL0452',
     buyer: 'WAL3023',
     price: 348299,
-    time: 1539688433
+    time: 1539688433,
   },
   {
     id: 'b12c-b3adf58f-809f',
     seller: 'WAL0012',
     buyer: 'WAL2025',
     price: 59240,
-    time: 1539688433
-  }
+    time: 1539688433,
+  },
 ];
 
 console.table(data, ['id', 'price']);
@@ -3768,7 +3764,7 @@ copy(obj); // to clipborad
 ```
 
 ```js
-window.onerror = function(errorMessage, scriptURI, lineNo, columnNo, error) {
+window.onerror = function (errorMessage, scriptURI, lineNo, columnNo, error) {
   console.log('errorMessage: ' + errorMessage); // 异常信息
   console.log('scriptURI: ' + scriptURI); // 异常文件路径
   console.log('lineNo: ' + lineNo); // 异常行号
@@ -3778,7 +3774,7 @@ window.onerror = function(errorMessage, scriptURI, lineNo, columnNo, error) {
   // 异常上报
 };
 
-window.addEventListener('error', function() {
+window.addEventListener('error', function () {
   console.log(error);
   // ...
   // 异常上报
@@ -3798,7 +3794,7 @@ const traceProperty = (object, property) => {
     set(newValue) {
       console.trace(`setting ${property} to `, newValue);
       value = newValue;
-    }
+    },
   });
 };
 ```
@@ -3873,7 +3869,7 @@ long click reload: multiple reload options e.g clean cache
 ```js
 const listener = getEventListeners($0).click[0].listener;
 $0.removeEventListener('click', listener);
-$0.addEventListener('click', e => {
+$0.addEventListener('click', (e) => {
   // do something
   // ...
 
@@ -4039,9 +4035,9 @@ const item = {};
 // bad
 const atom = {
   lukeSkywalker: lukeSkywalker,
-  addValue: function(value) {
+  addValue: function (value) {
     return atom.value + value;
-  }
+  },
 };
 
 // good
@@ -4049,7 +4045,7 @@ const atom = {
   lukeSkywalker,
   addValue(value) {
     return atom.value + value;
-  }
+  },
 };
 ```
 
@@ -4156,7 +4152,7 @@ function foo() {
 }
 
 // bad
-const foo = function() {
+const foo = function () {
   // ...
 };
 
@@ -4204,19 +4200,19 @@ function handleThings(opts = {}) {
 
 ```js
 // bad
-arr.map(x => x + 1);
+arr.map((x) => x + 1);
 arr.map((x, index) => x + index);
-[1, 2, 3].map(x => {
+[1, 2, 3].map((x) => {
   const y = x + 1;
   return x * y;
 });
 
 // good
-arr.map(x => x + 1);
+arr.map((x) => x + 1);
 arr.map((x, index) => {
   return x + index;
 });
-[1, 2, 3].map(x => {
+[1, 2, 3].map((x) => {
   const y = x + 1;
   return x * y;
 });
@@ -4226,7 +4222,7 @@ arr.map((x, index) => {
 
 ```js
 // bad
-['get', 'post', 'put'].map(httpMethod =>
+['get', 'post', 'put'].map((httpMethod) =>
   Object.prototype.hasOwnProperty.call(
     httpMagicObjectWithAVeryLongName,
     httpMethod
@@ -4234,7 +4230,7 @@ arr.map((x, index) => {
 );
 
 // good
-['get', 'post', 'put'].map(httpMethod =>
+['get', 'post', 'put'].map((httpMethod) =>
   Object.prototype.hasOwnProperty.call(
     httpMagicObjectWithAVeryLongName,
     httpMethod
@@ -4318,7 +4314,7 @@ sum === 15;
 
 // good
 let sum = 0;
-numbers.forEach(num => {
+numbers.forEach((num) => {
   sum += num;
 });
 sum === 15;
@@ -4335,12 +4331,12 @@ for (let i = 0; i < numbers.length; i++) {
 
 // good
 const increasedByOne = [];
-numbers.forEach(num => {
+numbers.forEach((num) => {
   increasedByOne.push(num + 1);
 });
 
 // best (keeping it functional)
-const increasedByOne = numbers.map(num => num + 1);
+const increasedByOne = numbers.map((num) => num + 1);
 ```
 
 - use `function*` for generator
@@ -4352,7 +4348,7 @@ function* foo() {
 }
 
 // bad
-const bar = function*() {
+const bar = function* () {
   // ...
 };
 
@@ -4362,7 +4358,7 @@ function* foo() {
 }
 
 // good
-const foo = function*() {
+const foo = function* () {
   // ...
 };
 ```
@@ -4464,29 +4460,37 @@ switch (foo) {
 
 ```js
 // bad
-const arr = [[0, 1], [2, 3], [4, 5]];
+const arr = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+];
 
 const objectInArray = [
   {
-    id: 1
+    id: 1,
   },
   {
-    id: 2
-  }
+    id: 2,
+  },
 ];
 
 const numberInArray = [1, 2];
 
 // good
-const arr = [[0, 1], [2, 3], [4, 5]];
+const arr = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+];
 
 const objectInArray = [
   {
-    id: 1
+    id: 1,
   },
   {
-    id: 2
-  }
+    id: 2,
+  },
 ];
 
 const numberInArray = [1, 2];
@@ -4498,7 +4502,7 @@ const numberInArray = [1, 2];
 // good
 const foo = superLongLongLongLongLongLongLongLongFunctionName();
 
-['get', 'post', 'put'].map(httpMethod =>
+['get', 'post', 'put'].map((httpMethod) =>
   Object.prototype.hasOwnProperty.call(
     httpMagicObjectWithAVeryLongName,
     httpMethod
@@ -4629,7 +4633,7 @@ const seo = {
   description: 'This is an awesome site that you definitely should check out.',
   url: 'https://www.mydomain.com/about',
   image: 'https://mydomain.com/images/home/logo.png',
-}
+};
 
 <Helmet
   title={`${seo.title} | Code Mochi`}
@@ -4647,7 +4651,7 @@ const seo = {
     { property: 'twitter:title', content: `${seo.title} | Code Mochi` },
     { property: 'twitter:description', content: seo.description },
   ]}
-/>
+/>;
 ```
 
 ## PWA
@@ -4727,10 +4731,10 @@ function isImage(fetchRequest) {
   return fetchRequest.method === 'GET' && fetchRequest.destination === 'image';
 }
 
-self.addEventListener('fetch', e => {
+self.addEventListener('fetch', (e) => {
   e.respondWith(
     fetch(e.request)
-      .then(response => {
+      .then((response) => {
         if (response.ok) return response;
 
         // User is online, but response was not ok
@@ -4739,7 +4743,7 @@ self.addEventListener('fetch', e => {
           return caches.match('/broken.png');
         }
       })
-      .catch(err => {
+      .catch((err) => {
         // User is probably offline
         if (isImage(e.request)) {
           // Get broken image placeholder from cache
@@ -4749,10 +4753,10 @@ self.addEventListener('fetch', e => {
   );
 });
 
-self.addEventListener('install', e => {
+self.addEventListener('install', (e) => {
   self.skipWaiting();
   e.waitUntil(
-    caches.open('precache').then(cache => {
+    caches.open('precache').then((cache) => {
       // Add /broken.png to "precache"
       cache.add('/broken.png');
     })
@@ -4835,7 +4839,7 @@ TrustedTypes.createPolicy(
     createHTML(s) {
       console.error('Please fix! Insecure string assignment detected:', s);
       return s;
-    }
+    },
   },
   true
 );
@@ -4908,16 +4912,16 @@ Use Canvas or WebGL to generate user
 [fingerprint](https://yinzhicao.org/TrackingFree/crossbrowsertracking_NDSS17.pdf).
 
 ```js
-function getCanvasFingerprint () {
+function getCanvasFingerprint() {
   const canvas = document.createElement('canvas');
-  const context = canvas.getContext("2d");
-  context.font = "18pt Arial";
-  context.textBaseline = "top";
-  context.fillText("Hello, user.", 2, 2);
-  return canvas.toDataURL("image/jpeg");
+  const context = canvas.getContext('2d');
+  context.font = '18pt Arial';
+  context.textBaseline = 'top';
+  context.fillText('Hello, user.', 2, 2);
+  return canvas.toDataURL('image/jpeg');
 }
 
-getCanvasFingerprint()
+getCanvasFingerprint();
 ```
 
 ## HTTP Protocol
@@ -4998,11 +5002,11 @@ Location, IP,
 Feature List 等)
 只向部分流量投放新版本.
 可以实现千人千页,
-每个用户获得由不同的功能 (FLAGS开启关闭) 组成的不同页面.
+每个用户获得由不同的功能 (FLAGS 开启关闭) 组成的不同页面.
 
 业界成熟的灰度方案:
 
-- 简单灰度逻辑通过 Nginx 配置做规则判断(路由, 参数, IP, Cookie等), upstream 到不同的服务器:
+- 简单灰度逻辑通过 Nginx 配置做规则判断(路由, 参数, IP, Cookie 等), upstream 到不同的服务器:
   - 新代码部署到 A 边.
   - 符合灰度策略的小部分流量切到 A 边, 剩余大部分流量仍去往 B 边
   - 验证 A 边功能是否正常可用/好用

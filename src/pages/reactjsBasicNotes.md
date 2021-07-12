@@ -1,15 +1,15 @@
 ---
-layout:     post
-title:      "React Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2018-01-3
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'React Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2018-01-3
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - JavaScript
-    - React
+  - Frontend Development
+  - Web Development
+  - JavaScript
+  - React
 ---
 
 # React Basic Notes
@@ -2646,7 +2646,7 @@ export default function App() {
 }
 
 function ColorPicker({ children }) {
-  let [color, setColor] = useState("red");
+  let [color, setColor] = useState('red');
   return (
     <div style={{ color }}>
       <input value={color} onChange={(e) => setColor(e.target.value)} />
@@ -3063,8 +3063,8 @@ Locating in `react-scripts/scripts/`:
 
 ```js
 // 增加关机提示信息
-['SIGINT', 'SIGTERM'].forEach(function(sig) {
-  process.on(sig, function() {
+['SIGINT', 'SIGTERM'].forEach(function (sig) {
+  process.on(sig, function () {
     console.log(chalk.cyan('Gracefully shutting down. Please wait...\n'));
     devServer.close();
     process.exit();
@@ -3125,7 +3125,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       new BundleAnalyzerPlugin({
         analyzerPort: 5000,
       }),
-  ]
+  ];
 }
 ```
 
@@ -3348,10 +3348,8 @@ ReactDOM.render(<WrapperContainer />, container);
 import { DatePicker as LibraryXDatePicker } from 'LibraryX';
 
 const DatePicker = (props) => {
-  return (
-    <LibraryXDatePicker {...props} />
-  );
-}
+  return <LibraryXDatePicker {...props} />;
+};
 
 export default DatePicker;
 ```

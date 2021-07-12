@@ -1,14 +1,14 @@
 ---
-layout:     post
-title:      "CSS Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2017-03-05
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'CSS Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2017-03-05
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - CSS
+  - Frontend Development
+  - Web Development
+  - CSS
 ---
 
 # CSS 3 Basic Notes
@@ -1800,7 +1800,8 @@ movie style
   width: 100px;
   height: 100px;
   background-color: #8cffa0;
-  mask-image: url(https://mdn.mozillademos.org/files/12668/MDN.svg), url(https://mdn.mozillademos.org/files/12676/star.svg);
+  mask-image: url(https://mdn.mozillademos.org/files/12668/MDN.svg),
+    url(https://mdn.mozillademos.org/files/12676/star.svg);
   mask-size: 100% 100%;
   mask-composite: add; /* Can be changed in the live sample */
 }
@@ -2554,18 +2555,18 @@ TweenMax.fromTo(element, 1, { x: 0 }, { x: 100 });
 const tl = new TimelineMax();
 tl.staggerFrom(
   [
-    "#Capa_1 > g > path:nth-child(1)",
-    "#Capa_1 > circle:nth-child(7)",
-    "#Capa_1 > path:nth-child(6)",
-    "#Capa_1 > circle:nth-child(5)"
+    '#Capa_1 > g > path:nth-child(1)',
+    '#Capa_1 > circle:nth-child(7)',
+    '#Capa_1 > path:nth-child(6)',
+    '#Capa_1 > circle:nth-child(5)',
   ],
   1,
   {
     scaleY: 0,
     scaleX: 0,
-    transformOrigin: "center",
+    transformOrigin: 'center',
     ease: Bounce.easeOut,
-    stagger: 0.2
+    stagger: 0.2,
   }
 );
 ```
@@ -3002,9 +3003,7 @@ a.btn-custom {
 ```html
 <body>
   <div class="content">
-    <div class="content-inside">
-      content
-    </div>
+    <div class="content-inside">content</div>
   </div>
   <footer class="footer"></footer>
 </body>
@@ -3031,9 +3030,7 @@ a.btn-custom {
 
 ```html
 <body>
-  <div class="content">
-    content
-  </div>
+  <div class="content">content</div>
   <footer class="footer"></footer>
 </body>
 
@@ -3049,9 +3046,7 @@ a.btn-custom {
 
 ```html
 <body>
-  <div class="content">
-    content
-  </div>
+  <div class="content">content</div>
   <footer class="footer"></footer>
 </body>
 
@@ -3075,9 +3070,7 @@ a.btn-custom {
 
 ```html
 <body>
-  <div class="content">
-    content
-  </div>
+  <div class="content">content</div>
   <footer class="footer"></footer>
 </body>
 
@@ -3590,13 +3583,9 @@ const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
 ```html
 <div class="alert alert-info">
   <div class="alert-content">
-    <h2 class="alert-title">
-      Info
-    </h2>
+    <h2 class="alert-title">Info</h2>
     <div class="alert-body">
-      <p>
-        Info Message.
-      </p>
+      <p>Info Message.</p>
     </div>
   </div>
 </div>

@@ -1,14 +1,14 @@
 ---
-layout:     post
-title:      "HTML Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2017-06-11
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'HTML Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2017-06-11
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Frontend Development
-    - Web Development
-    - HTML
+  - Frontend Development
+  - Web Development
+  - HTML
 ---
 
 # HTML5 Basic Notes
@@ -489,9 +489,9 @@ style="display: none";
       <label for="courses">Select Courses</label>
       <select id="courses" name="student_courses">
         <optgroup label="Engineering">
-          <option value="computer_engineering"
-            >Computer Science Engineering</option
-          >
+          <option value="computer_engineering">
+            Computer Science Engineering
+          </option>
           <option value="slectrical_engineering">Electrical Engineering</option>
           <option value="mechanical_engineering">Mechanical Engineering</option>
           <option value="civil_engineering">Civil Engineering</option>
@@ -501,9 +501,9 @@ style="display: none";
           <option value="finance_management">Finance Management</option>
           <option value="technology_management">Technology Management</option>
           <option value="marketing_management">Marketing Management</option>
-          <option value="business_administration"
-            >Business Administration</option
-          >
+          <option value="business_administration">
+            Business Administration
+          </option>
         </optgroup>
       </select>
 
@@ -710,11 +710,11 @@ figure 可拥有唯一的 0/1 个 figcaption
 ```
 
 ```js
-const onChange = event => {
+const onChange = (event) => {
   const {
     currentTarget: {
-      dataset: { row, column }
-    }
+      dataset: { row, column },
+    },
   } = event;
 };
 ```
@@ -1043,7 +1043,7 @@ export function trapTabKey(e, context) {
 const listExpander = document.querySelector('.list-expander');
 const list = document.querySelector('#expandable-list-1');
 
-listExpander.addEventListener('click', e => {
+listExpander.addEventListener('click', (e) => {
   if (list.getAttribute('aria-expanded') === 'true') {
     list.setAttribute('aria-expanded', 'false');
   } else {

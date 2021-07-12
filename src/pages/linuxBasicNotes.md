@@ -1,14 +1,14 @@
 ---
-layout:     post
-title:      "Linux Basic Notes"
-subtitle:   "Be a Stupid Learner"
-date:       2017-08-23
-author:     "Sabertaz"
-header-img: "images/home-bg.jpg"
+layout: post
+title: 'Linux Basic Notes'
+subtitle: 'Be a Stupid Learner'
+date: 2017-08-23
+author: 'Sabertaz'
+header-img: 'images/home-bg.jpg'
 tags:
-    - Computer Science
-    - GNU
-    - Linux
+  - Computer Science
+  - GNU
+  - Linux
 ---
 
 # Linux Basic Notes
@@ -1060,7 +1060,7 @@ nftables 命令行工具：nft
 
 #### hping
 
-`hping -p -S -a`可伪造IP地址
+`hping -p -S -a`可伪造 IP 地址
 
 #### mtr
 
@@ -1443,7 +1443,7 @@ fi
 - `(( xxx ))`: arithemetic condition
 
 | operator              | function                                          |
-| :-------------------- | :------------------------------------------------ |
+| :-------------------- | :------------------------------------------------ | --- | --- |
 | ! EXPRESSION          | The EXPRESSION is false                           |
 | -n STRING             | The length of STRING is greater than zero         |
 | -z STRING             | The lengh of STRING is zero (ie it is empty)      |
@@ -1461,7 +1461,7 @@ fi
 | -w FILE               | FILE exists and the write permission is granted   |
 | -x FILE               | FILE exists and the execute permission is granted |
 | `AND -a &&`           |                                                   |
-| `OR -o ||`            |                                                   |
+| `OR -o                |                                                   | `   |     |
 | `NOT ! !`             |                                                   |
 
 - {}: group regexp
@@ -2506,7 +2506,7 @@ sudo systemctl status docker
 sudo usermod -aG docker $USER
 ```
 
-#### Docker  Uninstallation
+#### Docker Uninstallation
 
 ```bash
 docker container stop $(docker container ls -aq)
