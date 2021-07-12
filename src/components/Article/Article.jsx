@@ -5,8 +5,8 @@ import ArticleContent from './ArticleContent';
 import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
-import { Container, Icons, SocialGroup } from 'components';
-import { Colors } from 'config';
+import { Container, Icons, SocialGroup } from '@/components';
+import { Colors } from '@/config';
 
 const Article = ({ post }) => {
   return (

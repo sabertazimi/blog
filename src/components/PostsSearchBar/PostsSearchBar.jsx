@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'gatsby';
-import { Icon, Input, AutoComplete } from 'antd';
+import { Input, AutoComplete } from 'antd';
 
 const PostsSearchBar = ({ posts }) => {
   const [data, setData] = useState([]);
@@ -30,10 +30,14 @@ const PostsSearchBar = ({ posts }) => {
       style={{ width: '100%' }}
       dataSource={data.map(renderOption)}
       onSearch={handleSearch}
-      placeholder="Search Posts"
       optionLabelProp="text"
     >
-      <Input suffix={<Icon type="search" />} />
+      <Input.Search
+        size="large"
+        allowClear
+        enterButton="Search"
+        placeholder="Search Posts ..."
+      />
     </AutoComplete>
   );
 };

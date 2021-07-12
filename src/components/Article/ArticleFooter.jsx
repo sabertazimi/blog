@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Button, Icon } from 'antd';
+import { Button } from 'antd';
+import {
+  ArrowLeftOutlined,
+  ArrowRightOutlined,
+  HomeOutlined,
+} from '@ant-design/icons';
 import { useResponsive } from 'hooks';
 import { BreakPoints, Colors } from 'config';
 import * as styles from './ArticleFooter.module.css';
@@ -24,10 +29,11 @@ const ArticleFooter = ({ post }) => {
           color: Colors.light,
         }}
       >
-        <Icon
-          type={post.prevPost ? 'arrow-left' : 'home'}
-          style={{ marginRight: '10px' }}
-        />
+        {post.prevPost ? (
+          <ArrowLeftOutlined style={{ marginRight: '10px' }} />
+        ) : (
+          <HomeOutlined style={{ marginRight: '10px' }} />
+        )}
         <Link
           to={post.prevPost ? `${post.prevPost.slug}` : '/posts'}
           style={{ fontWeight: 800, color: Colors.light }}
@@ -54,10 +60,11 @@ const ArticleFooter = ({ post }) => {
         >
           {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}
         </Link>
-        <Icon
-          type={post.nextPost ? 'arrow-right' : 'home'}
-          style={{ marginLeft: '10px' }}
-        />
+        {post.nextPost ? (
+          <ArrowRightOutlined style={{ marginRight: '10px' }} />
+        ) : (
+          <HomeOutlined style={{ marginLeft: '10px' }} />
+        )}
       </Button>
     </div>
   );

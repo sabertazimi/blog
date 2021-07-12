@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import { Row, Col, Menu, Popover, Icon } from 'antd';
+import { Row, Col, Menu, Popover } from 'antd';
+import { BarsOutlined } from '@ant-design/icons';
 import { Visibility, Segment, Image } from 'semantic-ui-react';
 import PostsSearchBar from 'components/PostsSearchBar';
 import { useResponsive } from 'hooks';
@@ -49,10 +50,7 @@ const Header = ({ posts }) => {
           }
           trigger="click"
         >
-          <Icon
-            type="bars"
-            style={{ fontSize: '2em', color: Colors.primary }}
-          />
+          <BarsOutlined style={{ fontSize: '2em', color: Colors.primary }} />
         </Popover>
       </Col>
     </Row>
