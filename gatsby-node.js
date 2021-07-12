@@ -57,6 +57,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       followingUrl: profileJSON.html_url + '/following',
       createDate: new Date(profileJSON.created_at).toDateString(),
     };
+
     githubRepos = reposJSON
       .filter(repo => repo.stargazers_count > 0)
       .sort((repo1, repo2) =>
@@ -91,7 +92,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             excerpt(pruneLength: 500)
             timeToRead
             html
-            tableOfContents
+            tableOfContents(
+              maxDepth: 4
+            )
           }
         }
       }

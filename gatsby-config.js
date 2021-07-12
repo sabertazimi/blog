@@ -11,7 +11,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/pages/`,
       },
     },
     {
@@ -19,10 +19,6 @@ module.exports = {
       options: {
         footnotes: true,
         gfm: true,
-        tableOfContents: {
-          heading: null,
-          maxDepth: 6,
-        },
         plugins: [
           'gatsby-remark-copy-linked-files',
           {
