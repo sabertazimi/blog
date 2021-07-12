@@ -6,11 +6,6 @@ const BreakPoints = {
   desktop: 1280,
 };
 
-const MetaData = {
-  title: "Sabertazimi ' Blog",
-  url: 'https://tazimi.dev',
-};
-
 const Colors = {
   primary: '#1890ff',
   blue: '#2185d0',
@@ -22,9 +17,17 @@ const Colors = {
   light: '#f8f9fa',
   white: '#fff',
   dark: '#343a40',
-  black: '#000',
+  black: '#1b1c1d',
   overlay: 'rgba(0, 0, 0, 0.8)',
   transparent: 'transparent',
 };
 
-export { PRIMARY_COLOR, BreakPoints, MetaData, Colors };
+const SocialType = {
+  Website: 'website',
+  GitHub: 'github',
+  Twitter: 'twitter',
+  Facebook: 'facebook',
+  Weibo: 'weibo',
+};
+
+export { PRIMARY_COLOR, BreakPoints, Colors, SocialType };

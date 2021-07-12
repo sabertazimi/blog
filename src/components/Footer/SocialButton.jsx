@@ -1,17 +1,41 @@
 import React from 'react';
-import { Icon, Button } from 'semantic-ui-react';
+import { Button } from 'antd';
+import {
+  RocketOutlined,
+  GithubOutlined,
+  TwitterOutlined,
+  FacebookOutlined,
+  WeiboOutlined,
+} from '@ant-design/icons';
+import { SocialType, Colors } from '@/config';
+
+const getSocialIcon = (type) => {
+  switch (type) {
+    case SocialType.GitHub:
+      return <GithubOutlined style={{ fontSize: '2em' }} />;
+    case SocialType.Twitter:
+      return <TwitterOutlined style={{ fontSize: '2em' }} />;
+    case SocialType.Facebook:
+      return <FacebookOutlined style={{ fontSize: '2em' }} />;
+    case SocialType.Weibo:
+      return <WeiboOutlined style={{ fontSize: '2em' }} />;
+    default:
+      return <RocketOutlined style={{ fontSize: '2em' }} />;
+  }
+};
 
 const SocialButton = ({ type, url }) => (
   <Button
-    as="a"
-    icon
-    circular
+    size="large"
+    shape="circle"
+    type="link"
     href={`${url}`}
-    color="black"
-    style={{ margin: '0 1em' }}
-  >
-    <Icon name={`${type}`} size="big" />
-  </Button>
+    icon={getSocialIcon(type)}
+    style={{
+      margin: '0 1.5em 1em',
+      color: Colors.white,
+    }}
+  />
 );
 
 export default SocialButton;
