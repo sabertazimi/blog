@@ -36,11 +36,11 @@ const SocialType = {
   weibo: 'weibo',
 };
 
-const SocialShare = {
+const SocialQuery = {
   twitter: 'https://twitter.com/intent/tweet?url=',
   facebook: 'https://www.facebook.com/sharer.php?u=',
   linkedin: 'https://www.linkedin.com/shareArticle?mini=true&url=',
   weibo: 'https://service.weibo.com/share/share.php?url=',
 };
 
-export { PRIMARY_COLOR, BreakPoints, Colors, SocialType, SocialShare };
+export { PRIMARY_COLOR, BreakPoints, Colors, SocialType, SocialQuery };

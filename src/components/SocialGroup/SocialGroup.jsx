@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from '@reach/router';
 import { Space } from 'antd';
 import SocialButton from '@/components/SocialButton';
-import { Colors, SocialType, SocialShare } from '@/config';
+import { Colors, SocialType, SocialQuery } from '@/config';
 import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
@@ -18,7 +18,7 @@ const SocialGroup = () => {
     >
       <SocialButton
         type={SocialType.twitter}
-        url={`${SocialShare.twitter}${url}`}
+        url={`${SocialQuery.twitter}${url}`}
         style={{
           backgroundColor: Colors.twitter,
         }}
@@ -26,7 +26,7 @@ const SocialGroup = () => {
       <SocialButton
         color={Colors.facebook}
         type={SocialType.facebook}
-        url={`${SocialShare.facebook}${url}`}
+        url={`${SocialQuery.facebook}${url}`}
         style={{
           backgroundColor: Colors.facebook,
         }}
@@ -34,7 +34,7 @@ const SocialGroup = () => {
       <SocialButton
         color={Colors.weibo}
         type={SocialType.weibo}
-        url={`${SocialShare.weibo}${url}`}
+        url={`${SocialQuery.weibo}${url}`}
         style={{
           backgroundColor: Colors.weibo,
         }}
@@ -42,7 +42,7 @@ const SocialGroup = () => {
       <SocialButton
         color={Colors.linkedin}
         type={SocialType.linkedin}
-        url={`${SocialShare.linkedin}${url}`}
+        url={`${SocialQuery.linkedin}${url}`}
         style={{
           backgroundColor: Colors.linkedin,
         }}
