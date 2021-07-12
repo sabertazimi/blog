@@ -6,10 +6,10 @@ const PostsSearchBar = ({ posts }) => {
   const [data, setData] = useState([]);
 
   const handleSearch = useCallback(
-    value => {
+    (value) => {
       setData(
         value
-          ? posts.filter(post =>
+          ? posts.filter((post) =>
               post.title.toLowerCase().includes(value.toLowerCase())
             )
           : []
@@ -18,7 +18,7 @@ const PostsSearchBar = ({ posts }) => {
     [posts]
   );
 
-  const renderOption = post => (
+  const renderOption = (post) => (
     <AutoComplete.Option key={post.title} text={post.title}>
       <Link to={`${post.slug}`}>{post.title}</Link>
     </AutoComplete.Option>

@@ -24,6 +24,6 @@ const Svg = () => (
   </svg>
 );
 
-const Comment = props => <Icon component={Svg} {...props} />;
+const Comment = (props) => <Icon component={Svg} {...props} />;
 
 export default Comment;

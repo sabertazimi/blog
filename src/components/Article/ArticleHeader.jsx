@@ -23,7 +23,7 @@ const ArticleHeader = ({ post }) => {
     >
       <animated.div style={props}>
         {post.tags ? (
-          post.tags.map(tag => {
+          post.tags.map((tag) => {
             return (
               <Tag
                 key={tag}

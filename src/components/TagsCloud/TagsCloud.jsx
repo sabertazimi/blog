@@ -9,7 +9,7 @@ const TagsCloud = ({ tags, activeTag }) => {
   });
 
   if (activeTag) {
-    tagsList = tagsList.filter(tag => tag !== activeTag);
+    tagsList = tagsList.filter((tag) => tag !== activeTag);
   }
 
   return (
@@ -24,7 +24,7 @@ const TagsCloud = ({ tags, activeTag }) => {
           {activeTag} &nbsp;&nbsp; {tags[activeTag]}
         </Label>
       ) : null}
-      {tagsList.map(tag => {
+      {tagsList.map((tag) => {
         return (
           <Label
             key={tag}

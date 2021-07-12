@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { Colors } from '@/config';
 import Icons from '@/components/Icons';
 
-const SocialButton = ({ type, url, style, ...props}) => (
+const SocialButton = ({ type, url, style, ...props }) => (
   <Button
     size="large"
     type="link"

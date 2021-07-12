@@ -16,6 +16,6 @@ const Svg = () => (
   </svg>
 );
 
-const Close = props => <Icon component={Svg} {...props} />;
+const Close = (props) => <Icon component={Svg} {...props} />;
 
 export default Close;

@@ -19,14 +19,14 @@ const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
     return window.innerWidth || 0;
   };
 
-  const handleResize = event => {
+  const handleResize = (event) => {
     if (ticking) return;
 
     ticking = true;
     frameId = requestAnimationFrame(() => handleUpdate(event));
   };
 
-  const handleUpdate = event => {
+  const handleUpdate = (event) => {
     const width = _getWidth();
     const nextVisible = isVisible(width, { maxWidth, minWidth });
 

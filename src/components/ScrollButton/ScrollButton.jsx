@@ -12,7 +12,7 @@ const ScrollButton = () => {
   const onScroll = (e, { calculations }) =>
     setDirection(calculations.direction);
 
-  const scrollTo = event => {
+  const scrollTo = (event) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -46,7 +46,9 @@ const ScrollButton = () => {
       <Button
         type="primary"
         shape="circle"
-        icon={direction === 'down' ? <ArrowUpOutlined /> : <ArrowDownOutlined />}
+        icon={
+          direction === 'down' ? <ArrowUpOutlined /> : <ArrowDownOutlined />
+        }
         size={isMobile ? 'small' : 'large'}
         style={{
           position: 'fixed',

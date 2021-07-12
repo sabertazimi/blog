@@ -16,6 +16,6 @@ const Svg = () => (
   </svg>
 );
 
-const Hamburger = props => <Icon component={Svg} {...props} />;
+const Hamburger = (props) => <Icon component={Svg} {...props} />;
 
 export default Hamburger;

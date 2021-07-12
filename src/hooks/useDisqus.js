@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const loadScript = url => {
+const loadScript = (url) => {
   const script = document.createElement('script');
   script.src = `${url}/embed.js`;
   script.setAttribute('data-timestamp', +new Date());
@@ -10,7 +10,7 @@ const loadScript = url => {
   }
 };
 
-const useDisqus = url => {
+const useDisqus = (url) => {
   useEffect(() => loadScript(url), [url]);
 };
 
