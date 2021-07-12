@@ -3,6 +3,7 @@ module.exports = {
     title: 'Sabertaz Blog',
     author: 'Sabertaz',
     siteUrl: `https://tazimi.dev`,
+    github: 'sabertazimi',
   },
   pathPrefix: '/blog',
   plugins: [

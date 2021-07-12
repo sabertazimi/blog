@@ -5,8 +5,10 @@
  */
 
 const path = require('path');
-const fetch = require('node-fetch');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { Octokit } = require('@octokit/rest');
+const octokit= new Octokit();
+const config = require('./gatsby-config');
 
 exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   switch (node.internal.type) {
@@ -33,12 +35,16 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   let githubRepos;
 
   try {
-    const profilePromise = fetch('https://api.github.com/users/sabertazimi');
-    const profileResponse = await profilePromise;
-    const profileJSON = await profileResponse.json();
-    const reposPromise = fetch('https://api.github.com/users/sabertazimi/repos');
-    const reposResponse = await reposPromise;
-    const reposJSON = await reposResponse.json();
+    const profileResponse = await octokit.rest.users.getByUsername({
+      username: config.siteMetadata.github,
+    });
+    const reposResponse = await octokit.request('GET /users/{username}/repos', {
+      username: config.siteMetadata.github,
+    });
+
+    const profileJSON = profileResponse.data;
+    const reposJSON = reposResponse.data;
+
     githubProfile = {
       username: profileJSON.login,
       avatar: profileJSON.avatar_url,
