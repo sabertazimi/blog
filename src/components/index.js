@@ -11,7 +11,6 @@ import SocialGroup from './SocialGroup';
 import TagsCloud from './TagsCloud';
 import BookGrid from './BookGrid';
 import GithubCard from './GithubCard';
-import ScrollButton from './ScrollButton';
 import ErrorBoundary from './ErrorBoundary';
 
 export {
@@ -28,6 +27,5 @@ export {
   TagsCloud,
   BookGrid,
   GithubCard,
-  ScrollButton,
   ErrorBoundary,
 };
