@@ -1,20 +1,20 @@
-const randomColor = () => {
-  const colors = [
-    'red',
-    'orange',
-    'yellow',
-    'olive',
-    'green',
-    'teal',
-    'blue',
-    'violet',
-    'purple',
-    'pink',
-    'brown',
-    'grey',
-  ];
+const colors = [
+  'red',
+  'orange',
+  'yellow',
+  'olive',
+  'green',
+  'teal',
+  'blue',
+  'violet',
+  'purple',
+  'pink',
+  'brown',
+  'grey',
+];
 
-  const colorIdx = Math.floor(Math.random() * 11);
+const randomColor = () => {
+  const colorIdx = Math.floor(Math.random() * (colors.length - 1));
   return colors[colorIdx];
 };
 

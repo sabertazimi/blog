@@ -5,7 +5,7 @@ import { Header, Footer, Container } from 'components';
 import { useResponsive } from 'hooks';
 import { BreakPoints } from 'config';
 
-const Layout = ({ banner, posts, children }) => {
+const Layout = ({ banner, children }) => {
   const isnotMobile = useResponsive({ minWidth: BreakPoints.mobile });
 
   const props = useSpring({
@@ -15,7 +15,7 @@ const Layout = ({ banner, posts, children }) => {
 
   return (
     <div>
-      <Header posts={posts} />
+      <Header />
       <div style={{ padding: `${isnotMobile ? '7em' : '0'} 0em 3em 0` }}>
         <animated.div style={props}>
           <Container style={{ maxWidth: 960 }}>

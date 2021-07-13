@@ -1,11 +1,13 @@
 import React from 'react';
-import { PostLayout } from 'layouts';
-import { GridPostPreviews } from 'components';
+import { PostLayout } from '@/layouts';
+import { GridPostPreviews } from '@/components';
 
-const Posts = ({ pageContext: { posts } }) => (
-  <PostLayout posts={posts}>
-    <GridPostPreviews posts={posts} />
-  </PostLayout>
-);
+const Posts = () => {
+  return (
+    <PostLayout>
+      <GridPostPreviews />
+    </PostLayout>
+  );
+};
 
 export default Posts;

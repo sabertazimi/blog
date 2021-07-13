@@ -2,51 +2,52 @@ import React from 'react';
 import { Card, Image, Icon, Table, List } from 'semantic-ui-react';
 import { useSiteMetadata } from '@/hooks';
 
-const GithubCard = ({ githubProfile, githubRepos }) => {
+const GithubCard = ({ github }) => {
+  const { profile, repos } = github;
   const { email } = useSiteMetadata();
 
-  if (githubProfile && githubRepos) {
+  if (profile && repos) {
     return (
       <Card centered fluid>
-        <Image centered size="medium" src={githubProfile.avatar} />
+        <Image centered size="medium" src={profile.avatar} />
         <Card.Content>
           <Card.Header>
-            <a href={githubProfile.url}>
+            <a href={profile.url}>
               <Icon name="github" />
-              {githubProfile.username}
+              {profile.username}
             </a>
           </Card.Header>
           <Card.Meta>
-            <span className="date">Joined in {githubProfile.createDate}</span>
+            <span className="date">Joined in {profile.createDate}</span>
           </Card.Meta>
           <br />
           <Card.Description>
             <List>
               <List.Item>
                 <Icon name="info circle" />
-                {githubProfile.bio || 'No Description'}
+                {profile.bio || 'No Description'}
               </List.Item>
               <List.Item>
                 <Icon name="marker" />
-                {githubProfile.location || 'Earth'}
+                {profile.location || 'Earth'}
               </List.Item>
             </List>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a href={githubProfile.followersUrl}>
+          <a href={profile.followersUrl}>
             <Icon name="user circle" />
-            {githubProfile.followers} Followers
+            {profile.followers} Followers
           </a>
           <br />
           <br />
-          <a href={githubProfile.followingUrl}>
+          <a href={profile.followingUrl}>
             <Icon name="user circle outline" />
-            {githubProfile.following} Following
+            {profile.following} Following
           </a>
           <Table celled padded>
             <Table.Body>
-              {githubRepos.map((repo, index) => (
+              {repos.map((repo, index) => (
                 <Table.Row key={index}>
                   <Table.Cell>
                     <a href={repo.repoUrl}>{repo.name}</a>

@@ -1,7 +1,7 @@
 import React from 'react';
+import { usePostsMetadata, useResponsive } from '@/hooks';
+import { BreakPoints } from '@/config';
 import PostPreview from './PostPreview';
-import { useResponsive } from 'hooks';
-import { BreakPoints } from 'config';
 
 const flexStyle = {
   display: 'flex',
@@ -36,15 +36,16 @@ const rightFlexStyle = {
   maxWidth: '35%',
 };
 
-const GridPostPreviews = ({ posts }) => {
+const GridPostPreviews = () => {
+  const { posts } = usePostsMetadata();
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
-  const isnotMobile = useResponsive({ minWidth: BreakPoints.desktop });
+  const isNotMobile = useResponsive({ minWidth: BreakPoints.desktop });
 
   return (
     <div style={{ paddingTop: isMobile ? 0 : '11em' }}>
-      {isnotMobile ? (
+      {isNotMobile ? (
         <div style={rowFlexStyle}>
           <div style={{ ...leftFlexStyle, marginRight: '2em' }}>
             {leftPosts.map((post, index) => {

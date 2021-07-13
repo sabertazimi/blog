@@ -1,8 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Input, AutoComplete } from 'antd';
+import { usePostsMetadata } from '@/hooks';
 
-const PostsSearchBar = ({ posts }) => {
+const PostsSearchBar = () => {
+  const { posts } = usePostsMetadata();
   const [data, setData] = useState([]);
 
   const handleSearch = useCallback(

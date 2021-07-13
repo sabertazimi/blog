@@ -74,8 +74,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     console.error(err.message);
   }
 
-  return graphql(`
-    query {
+  const result = await graphql(`
+    query PostsDataQuery {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
@@ -89,116 +89,125 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
               tags
               date
             }
-            excerpt(pruneLength: 500)
             timeToRead
-            html
+            excerpt(pruneLength: 500)
             tableOfContents(maxDepth: 4)
+            html
           }
         }
       }
     }
-  `).then((result) => {
-    const posts = result.data.allMarkdownRemark.edges.map(
-      ({ node }, index, array) => {
-        const prevPost =
-          index === array.length - 1
-            ? null
-            : {
-                slug: array[index + 1].node.fields.slug,
-                title: array[index + 1].node.frontmatter.title,
-              };
-        const nextPost =
-          index === 0
-            ? null
-            : {
-                slug: array[index - 1].node.fields.slug,
-                title: array[index - 1].node.frontmatter.title,
-              };
+  `);
 
-        // post data details
-        return {
-          slug: node.fields.slug,
-          title: node.frontmatter.title,
-          subtitle: node.frontmatter.subtitle,
-          author: node.frontmatter.author,
-          tags: node.frontmatter.tags,
-          date: node.frontmatter.date,
-          excerpt: node.excerpt,
-          timeToRead: node.timeToRead,
-          html: node.html,
-          toc: node.tableOfContents,
-          prevPost,
-          nextPost,
-        };
-      }
-    );
+  if (result.errors) {
+    console.error(`Error while running GraphQL query.`);
+    return;
+  }
 
-    const tags = [].concat
-      .apply(
-        [],
-        posts.map((post) => post.tags || [])
-      )
-      .reduce((acc, cur) => {
-        if (!acc[cur]) acc[cur] = 0;
-        acc[cur] += 1;
-        return acc;
-      }, {});
+  const posts = result.data.allMarkdownRemark.edges.map(
+    ({ node }, index, array) => {
+      const prevPost =
+        index === array.length - 1
+          ? null
+          : {
+              slug: array[index + 1].node.fields.slug,
+              title: array[index + 1].node.frontmatter.title,
+            };
+      const nextPost =
+        index === 0
+          ? null
+          : {
+              slug: array[index - 1].node.fields.slug,
+              title: array[index - 1].node.frontmatter.title,
+            };
 
+      // post data details
+      return {
+        slug: node.fields.slug,
+        title: node.frontmatter.title,
+        subtitle: node.frontmatter.subtitle,
+        author: node.frontmatter.author,
+        tags: node.frontmatter.tags,
+        date: node.frontmatter.date,
+        timeToRead: node.timeToRead,
+        excerpt: node.excerpt,
+        toc: node.tableOfContents,
+        html: node.html,
+        prevPost,
+        nextPost,
+      };
+    }
+  );
+
+  const tags = [].concat
+    .apply(
+      [],
+      posts.map((post) => post.tags || [])
+    )
+    .reduce((acc, cur) => {
+      if (!acc[cur]) acc[cur] = 0;
+      acc[cur] += 1;
+      return acc;
+    }, {});
+
+  const homePageTemplate = require.resolve('./src/templates/Home.jsx');
+  const postsPageTemplate = require.resolve('./src/templates/Posts.jsx');
+  const tagsPageTemplate = require.resolve('./src/templates/Tags.jsx');
+  const booksPageTemplate = require.resolve('./src/templates/Books.jsx');
+  const aboutPageTemplate = require.resolve('./src/templates/About.jsx');
+  const postPageTemplate = require.resolve('./src/templates/Post.jsx');
+
+  createPage({
+    path: '/',
+    component: homePageTemplate,
+  });
+
+  createPage({
+    path: '/posts',
+    component: postsPageTemplate,
+  });
+
+  createPage({
+    path: '/tags',
+    component: tagsPageTemplate,
+  });
+
+  createPage({
+    path: '/tags/all',
+    component: tagsPageTemplate,
+  });
+
+  Object.keys(tags).forEach((tag) => {
     createPage({
-      path: '/',
-      component: require.resolve('./src/templates/Home.jsx'),
-    });
-
-    createPage({
-      path: '/posts',
-      component: require.resolve('./src/templates/Posts.jsx'),
-      context: { posts },
-    });
-
-    createPage({
-      path: '/tags',
-      component: require.resolve('./src/templates/Tags.jsx'),
-      context: { tags, posts },
-    });
-
-    createPage({
-      path: '/tags/all',
-      component: require.resolve('./src/templates/Tags.jsx'),
-      context: { tags, posts },
-    });
-
-    Object.keys(tags).forEach((tag) => {
-      createPage({
-        path: `/tags/${tag}`,
-        component: require.resolve('./src/templates/Tags.jsx'),
-        context: {
-          tags,
-          activeTag: tag,
-          posts: posts.filter((post) => post.tags && post.tags.includes(tag)),
-        },
-      });
-    });
-
-    createPage({
-      path: '/books',
-      component: require.resolve('./src/templates/Books.jsx'),
-    });
-
-    createPage({
-      path: '/about',
-      component: require.resolve('./src/templates/About.jsx'),
+      path: `/tags/${tag}`,
+      component: tagsPageTemplate,
       context: {
-        githubProfile,
-        githubRepos,
+        activeTag: tag,
       },
     });
+  });
 
-    posts.forEach((post) => {
-      createPage({
-        path: post.slug,
-        component: require.resolve('./src/templates/Post.jsx'),
-        context: { post },
-      });
+  createPage({
+    path: '/books',
+    component: booksPageTemplate,
+  });
+
+  createPage({
+    path: '/about',
+    component: aboutPageTemplate,
+    context: {
+      github: {
+        profile: githubProfile,
+        repos: githubRepos,
+      },
+    },
+  });
+
+  posts.forEach((post) => {
+    createPage({
+      path: post.slug,
+      component: postPageTemplate,
+      context: { post },
     });
   });
 };

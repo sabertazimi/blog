@@ -1,15 +1,13 @@
 import useDisqus from './useDisqus';
-import useForm from './useForm';
 import useResponsive from './useResponsive';
-import useGithub from './useGithub';
 import useBuildTime from './useBuildTime';
 import useSiteMetadata from './useSiteMetadata';
+import usePostsMetadata from './usePostsMetadata';
 
 export {
   useDisqus,
-  useForm,
   useResponsive,
-  useGithub,
   useBuildTime,
   useSiteMetadata,
+  usePostsMetadata,
 };

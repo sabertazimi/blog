@@ -69,6 +69,7 @@ button {
   font-weight: 400 !important;
 }
 
+/* code block background */
 .gatsby-highlight {
   position: relative;
   padding-top: 38px;
@@ -76,6 +77,7 @@ button {
   background: #21252b;
 }
 
+/* code block language description */
 .gatsby-highlight::before {
   position: absolute;
   top: 0;
@@ -95,6 +97,7 @@ button {
   color: #f8f9fa;
 }
 
+/* code block MacOS flags */
 .gatsby-highlight::after {
   position: absolute;
   top: 0;
