@@ -34,16 +34,16 @@ const Header = () => {
                 fontWeight: 800,
               }}
             >
-              <Menu.Item>
+              <Menu.Item key="posts">
                 <Link to="/posts">Posts</Link>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item key="tags">
                 <Link to="/tags">Tags</Link>
               </Menu.Item>
-              <Menu.Item as={Link} to="/books">
+              <Menu.Item key="books">
                 <Link to="/books">Books</Link>
               </Menu.Item>
-              <Menu.Item as={Link} to="/about">
+              <Menu.Item key="about">
                 <Link to="/about">About</Link>
               </Menu.Item>
             </Menu>
@@ -75,22 +75,22 @@ const Header = () => {
         lineHeight: '64px',
       }}
     >
-      <Menu.Item>
+      <Menu.Item key="home">
         <Image as={Link} to="/" src={logo} alt="logo" size="tiny" centered />
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="posts">
         <Link to="/posts">Posts</Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="tags">
         <Link to="/tags">Tags</Link>
       </Menu.Item>
-      <Menu.Item as={Link} to="/books">
+      <Menu.Item key="books">
         <Link to="/books">Books</Link>
       </Menu.Item>
-      <Menu.Item as={Link} to="/about">
+      <Menu.Item key="about">
         <Link to="/about">About</Link>
       </Menu.Item>
-      <Menu.Item style={{ borderBottomColor: Colors.transparent }}>
+      <Menu.Item style={{ borderBottomColor: Colors.transparent }} key="search">
         <PostsSearchBar />
       </Menu.Item>
     </Menu>
