@@ -3,8 +3,7 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
-import { Colors } from '@/config';
-import { randomColor } from '@/utils';
+import { Colors, getRandomColor } from '@/config';
 import { Container } from '@/components';
 import * as styles from './PostCard.module.css';
 
@@ -27,8 +26,8 @@ const PostCard = ({ post }) => {
       >
         <Tag
           key={tagName}
-          color={randomColor()}
-          style={{ marginBottom: '1rem' }}
+          className="mb-3"
+          color={getRandomColor()}
         >
           <Link to={`/tags/${tagName}`} style={{ fontWeight: 800 }}>
             {tagName}
@@ -39,7 +38,8 @@ const PostCard = ({ post }) => {
         </h2>
         <Tag
           color={Colors.black}
-          style={{ marginBottom: '1rem', color: Colors.light, fontWeight: 800 }}
+          className="mb-3 font-extrabold"
+          style={{ color: Colors.light }}
         >
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
         </Tag>

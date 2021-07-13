@@ -8,23 +8,39 @@ const BreakPoints = {
 
 const Colors = {
   primary: '#1890ff',
-  blue: '#2185d0',
   red: '#f03e3e',
-  yellow: '#f59f00',
-  green: '#37b24d',
-  orange: '#f76707',
+  pink: '#d7336c',
+  grape: '#ae3ec9',
   violet: '#7048e8',
-  light: '#f8f9fa',
+  indigo: '#4263eb',
+  blue: '#1c7ed6',
+  cyn: '#1098ad',
+  teal: '#0ca678',
+  green: '#37b24d',
+  lime: '#74b816',
+  yellow: '#f59f00',
+  orange: '#f76707',
   white: '#fff',
-  dark: '#343a40',
   black: '#1b1c1d',
-  overlay: 'rgba(0, 0, 0, 0.8)',
-  transparent: 'transparent',
+  light: '#f8f9fa',
+  dark: '#343a40',
+  grey: '#767676',
   github: '#181717',
   twitter: '#1da1f2',
   facebook: '#1877f2',
   linkedin: '#0a66c2',
   weibo: '#e6162d',
+  overlay: 'rgba(0, 0, 0, 0.8)',
+  transparent: 'rgba(0, 0, 0, 0)',
+};
+
+const getRandomColor = () => {
+  const colors = Object.keys(Colors);
+  const colorfulLimit = colors.findIndex(
+    (color) => Colors[color] === Colors.white
+  );
+  const colorIdx = Math.floor(Math.random() * colorfulLimit);
+  return Colors[colors[colorIdx]];
 };
 
 const SocialType = {
@@ -43,4 +59,11 @@ const SocialQuery = {
   weibo: 'https://service.weibo.com/share/share.php?url=',
 };
 
-export { PRIMARY_COLOR, BreakPoints, Colors, SocialType, SocialQuery };
+export {
+  PRIMARY_COLOR,
+  BreakPoints,
+  Colors,
+  getRandomColor,
+  SocialType,
+  SocialQuery,
+};

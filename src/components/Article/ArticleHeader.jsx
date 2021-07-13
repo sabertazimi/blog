@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Tag } from 'antd';
 import { useSpring, animated } from 'react-spring';
-import { Colors } from '@/config';
+import { Tag } from 'antd';
+import { Colors, getRandomColor } from '@/config';
 
 const ArticleHeader = ({ post }) => {
   const props = useSpring({
@@ -25,11 +25,7 @@ const ArticleHeader = ({ post }) => {
         {post.tags ? (
           post.tags.map((tag) => {
             return (
-              <Tag
-                key={tag}
-                color={Colors.primary}
-                style={{ marginBottom: '1em' }}
-              >
+              <Tag key={tag} className="mb-3" color={getRandomColor()}>
                 <Link to={`/tags/${tag}`} style={{ fontWeight: 800 }}>
                   {tag}
                 </Link>
@@ -37,7 +33,7 @@ const ArticleHeader = ({ post }) => {
             );
           })
         ) : (
-          <Tag color={Colors.primary}>
+          <Tag key="all" className="mb-3" color={getRandomColor()}>
             <Link to="/tags/all">CS</Link>
           </Tag>
         )}
@@ -45,14 +41,16 @@ const ArticleHeader = ({ post }) => {
           {post.title || 'Article'}
         </h1>
         <Tag
+          className="mb-3 font-extrabold"
           color={Colors.black}
-          style={{ marginBottom: '1em', color: Colors.light, fontWeight: 800 }}
+          style={{ color: Colors.light }}
         >
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}
         </Tag>
         <Tag
+          className="font-extrabold"
           color={Colors.black}
-          style={{ color: Colors.light, fontWeight: 800 }}
+          style={{ color: Colors.light }}
         >
           ({post.timeToRead} minutes)
         </Tag>
