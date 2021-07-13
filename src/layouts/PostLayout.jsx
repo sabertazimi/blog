@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, ScrollButton } from 'components';
+import { Header, Footer, ScrollButton } from '@/components';
 
 const PostLayout = ({ children }) => (
   <div>

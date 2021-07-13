@@ -5,16 +5,18 @@ import ArticleContent from './ArticleContent';
 import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
-import { Container, Icons, SocialGroup } from '@/components';
 import { Colors } from '@/config';
+import { Container, Icons, SocialGroup } from '@/components';
 
 const Article = ({ post }) => {
+  const { excerpt, toc, html, ...postMetadata } = post;
+
   return (
     <div>
-      <ArticleHeader post={post} />
+      <ArticleHeader post={postMetadata} />
       <Container>
-        <ArticleNavigation toc={post.toc} />
-        <ArticleContent content={post.html} />
+        <ArticleNavigation toc={toc} />
+        <ArticleContent content={html} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={post} />
         <ArticleDivider>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
-import { Tag } from 'antd';
-import { Container } from 'components';
-import PreviewMarkdown from './PreviewMarkdown';
-import { Colors } from 'config';
-import { randomColor } from 'utils';
-import * as styles from './PostPreview.module.css';
+import { Button, Skeleton, Tag } from 'antd';
+import { ReadOutlined } from '@ant-design/icons';
+import { Colors } from '@/config';
+import { randomColor } from '@/utils';
+import { Container } from '@/components';
+import * as styles from './PostCard.module.css';
 
-const PostPreview = ({ post }) => {
+const PostCard = ({ post }) => {
   const tagName = post.tags ? post.tags[0] : 'Computer Science';
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
@@ -43,10 +43,30 @@ const PostPreview = ({ post }) => {
         >
           Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
         </Tag>
-        <PreviewMarkdown post={post} />
+        <Container>
+          <Skeleton
+            paragraph={{ rows: Math.min(Math.floor(post.timeToRead / 2), 10) }}
+          />
+          <Button
+            type="primary"
+            shape="circle"
+            size="large"
+            style={{
+              float: 'right',
+              width: '2.5em',
+              height: '2.5em',
+              margin: 0,
+              fontSize: '1.5em',
+            }}
+          >
+            <Link to={`${post.slug}`} style={{ color: Colors.light }}>
+              <ReadOutlined />
+            </Link>
+          </Button>
+        </Container>
       </Container>
     </animated.div>
   );
 };
 
-export default PostPreview;
+export default PostCard;

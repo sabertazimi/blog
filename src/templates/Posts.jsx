@@ -1,11 +1,11 @@
 import React from 'react';
 import { PostLayout } from '@/layouts';
-import { GridPostPreviews } from '@/components';
+import { PostsGrid } from '@/components';
 
 const Posts = () => {
   return (
     <PostLayout>
-      <GridPostPreviews />
+      <PostsGrid />
     </PostLayout>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { usePostsMetadata } from '@/hooks';
 import { Layout } from '@/layouts';
-import { TagsCloud, ListPostPreviews } from '@/components';
+import { TagsCloud, PostsList } from '@/components';
 
 const Tags = ({ pageContext: { activeTag } }) => {
   const { posts, tags } = usePostsMetadata();
@@ -13,9 +13,9 @@ const Tags = ({ pageContext: { activeTag } }) => {
     <Layout banner="Tags">
       <TagsCloud tags={tags} activeTag={activeTag} />
       {Boolean(activeTag && postsByTag) ? (
-        <ListPostPreviews posts={postsByTag} />
+        <PostsList posts={postsByTag} />
       ) : (
-        <ListPostPreviews posts={posts} />
+        <PostsList posts={posts} />
       )}
     </Layout>
   );

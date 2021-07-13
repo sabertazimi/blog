@@ -4,8 +4,8 @@ import Container from './Container';
 import Icons from './Icons';
 import Menu from './Menu';
 import TypingTitle from './TypingTitle';
-import GridPostPreviews from './GridPostPreviews';
-import ListPostPreviews from './ListPostPreviews';
+import PostsGrid from './PostsGrid';
+import PostsList from './PostsList';
 import Article from './Article';
 import SocialGroup from './SocialGroup';
 import TagsCloud from './TagsCloud';
@@ -21,8 +21,8 @@ export {
   Icons,
   Menu,
   TypingTitle,
-  GridPostPreviews,
-  ListPostPreviews,
+  PostsGrid,
+  PostsList,
   Article,
   SocialGroup,
   TagsCloud,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { List } from 'semantic-ui-react';
 
-const ListPostPreviews = ({ posts }) => (
+const PostsList = ({ posts }) => (
   <List
     divided
     animated
@@ -24,4 +24,4 @@ const ListPostPreviews = ({ posts }) => (
   </List>
 );
 
-export default ListPostPreviews;
+export default PostsList;
