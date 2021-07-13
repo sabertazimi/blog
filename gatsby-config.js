@@ -8,6 +8,7 @@ module.exports = {
     facebook: 'sabertazimi',
     weibo: 'sabertazimi',
     email: 'sabertazimi@gmail.com',
+    disqusUrl: 'https://sabertaz-blog.disqus.com',
     booklist: [
       {
         title: 'awesome-notes',

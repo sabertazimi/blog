@@ -14,6 +14,7 @@ const useSiteMetadata = () => {
             twitter
             facebook
             email
+            disqusUrl
             booklist {
               title
               author

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
-import { Colors } from 'config';
+import { useSpring, animated } from 'react-spring';
+import { Colors } from '@/config';
 
 const ArticleHeader = ({ post }) => {
   const props = useSpring({

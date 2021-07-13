@@ -18,9 +18,9 @@ const Article = ({ post }) => {
         <ArticleNavigation toc={toc} />
         <ArticleContent content={html} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
-        <ArticleFooter post={post} />
+        <ArticleFooter post={postMetadata} />
         <ArticleDivider>
-          <Icons.Comment style={{ color: Colors.primary }} />
+          <Icons.Comment style={{ fontSize: '1.35em', color: Colors.primary }} />
         </ArticleDivider>
         <ArticleComments />
         <SocialGroup />
