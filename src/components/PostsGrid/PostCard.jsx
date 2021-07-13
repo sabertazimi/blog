@@ -26,10 +26,10 @@ const PostCard = ({ post }) => {
       >
         <Tag
           key={tagName}
-          className="mb-3"
+          className="mb-3 font-extrabold"
           color={getRandomColor()}
         >
-          <Link to={`/tags/${tagName}`} style={{ fontWeight: 800 }}>
+          <Link to={`/tags/${tagName}`}>
             {tagName}
           </Link>
         </Tag>
