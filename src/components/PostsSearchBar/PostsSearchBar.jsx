@@ -5,41 +5,37 @@ import { usePostsMetadata } from '@/hooks';
 
 const PostsSearchBar = () => {
   const { posts } = usePostsMetadata();
-  const [data, setData] = useState([]);
+  const [options, setOptions] = useState([]);
 
   const handleSearch = useCallback(
     (value) => {
-      setData(
+      setOptions(
         value
-          ? posts.filter((post) =>
-              post.title.toLowerCase().includes(value.toLowerCase())
-            )
+          ? posts
+              .filter((post) =>
+                post.title.toLowerCase().includes(value.toLowerCase())
+              )
+              .map((post) => ({
+                value: post.title,
+                label: (
+                  <div>
+                    <Link to={`${post.slug}`}>{post.title}</Link>
+                  </div>
+                ),
+              }))
           : []
       );
     },
     [posts]
   );
 
-  const renderOption = (post) => (
-    <AutoComplete.Option key={post.title} text={post.title}>
-      <Link to={`${post.slug}`}>{post.title}</Link>
-    </AutoComplete.Option>
-  );
-
   return (
     <AutoComplete
-      size="large"
       style={{ width: '100%' }}
-      dataSource={data.map(renderOption)}
+      options={options}
       onSearch={handleSearch}
-      optionLabelProp="text"
     >
-      <Input.Search
-        size="large"
-        allowClear
-        enterButton="Search"
-        placeholder="Search Posts ..."
-      />
+      <Input.Search allowClear enterButton placeholder="Search Posts ..." />
     </AutoComplete>
   );
 };
