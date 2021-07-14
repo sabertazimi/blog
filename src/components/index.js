@@ -9,7 +9,7 @@ import PostsList from './PostsList';
 import Article from './Article';
 import SocialGroup from './SocialGroup';
 import TagsCloud from './TagsCloud';
-import BookGrid from './BookGrid';
+import BooksGrid from './BooksGrid';
 import GithubCard from './GithubCard';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -25,7 +25,7 @@ export {
   Article,
   SocialGroup,
   TagsCloud,
-  BookGrid,
+  BooksGrid,
   GithubCard,
   ErrorBoundary,
 };
