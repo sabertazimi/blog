@@ -1,15 +1,9 @@
 import React from 'react';
 
-const Container = ({ style, children, ...props }) => (
+const Container = ({ style, className, children, ...props }) => (
   <div
-    style={{
-      position: 'relative',
-      display: 'block',
-      margin: '0 auto',
-      maxWidth: '100%',
-      width: '100%',
-      ...style,
-    }}
+    style={{ ...style }}
+    className={`container block relative mx-auto my-0  ${className}`}
     {...props}
   >
     {children}
