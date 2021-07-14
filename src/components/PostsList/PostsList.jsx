@@ -1,27 +1,26 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { List } from 'semantic-ui-react';
+import { List } from 'antd';
 
 const PostsList = ({ posts }) => (
   <List
-    divided
-    animated
-    relaxed="very"
-    size="massive"
-    verticalAlign="middle"
-    style={{ marginTop: '2em' }}
-  >
-    {posts.map((post, index) => (
-      <List.Item key={post.title || index}>
-        <List.Content floated="right">{post.author}</List.Content>
-        <List.Content>
-          <List.Header as={Link} to={`${post.slug}`}>
-            {post.title}
-          </List.Header>
-        </List.Content>
+    className="mt-6"
+    dataSource={posts}
+    renderItem={(post) => (
+      <List.Item>
+        <List.Item.Meta
+          title={
+            <Link
+              className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
+              to={`${post.slug}`}
+            >
+              {post.title}
+            </Link>
+          }
+        />
       </List.Item>
-    ))}
-  </List>
+    )}
+  />
 );
 
 export default PostsList;
