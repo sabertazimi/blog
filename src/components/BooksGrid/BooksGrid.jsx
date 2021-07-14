@@ -9,8 +9,8 @@ const BooksGrid = () => {
   return (
     <Row>
       {booklist.map((bookData, index) => (
-        <Col span={24}>
-          <BookCard key={index} data={bookData} />
+        <Col span={24} key={index}>
+          <BookCard data={bookData} />
         </Col>
       ))}
     </Row>

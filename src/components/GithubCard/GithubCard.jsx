@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from 'antd';
 import { Card, Image, Icon, Table, List } from 'semantic-ui-react';
 import { useSiteMetadata } from '@/hooks';
 
@@ -73,10 +74,12 @@ const GithubCard = ({ github }) => {
         textAlign: 'center',
       }}
     >
-      <h1>About me</h1>
-      <p>
-        Please mail to <a href={`mailto:${email}`}>me</a>.
-      </p>
+      <Typography.Title>About me</Typography.Title>
+      <Typography.Paragraph>
+        <Typography.Text className="text-xl">
+          Please mail to <a href={`mailto:${email}`}>me</a>.
+        </Typography.Text>
+      </Typography.Paragraph>
     </div>
   );
 };

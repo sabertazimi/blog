@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
-import { Tag } from 'antd';
+import { Tag, Typography } from 'antd';
 import { Colors, getRandomColor } from '@/config';
 
 const ArticleHeader = ({ post }) => {
@@ -37,9 +37,9 @@ const ArticleHeader = ({ post }) => {
             <Link to="/tags/all">CS</Link>
           </Tag>
         )}
-        <h1 style={{ color: Colors.light, fontSize: '4em', margin: '0.2em 0' }}>
+        <Typography.Title style={{ color: Colors.light, fontSize: '4em', margin: '0.2em 0' }}>
           {post.title || 'Article'}
-        </h1>
+        </Typography.Title>
         <Tag
           className="mb-3 font-extrabold"
           color={Colors.black}

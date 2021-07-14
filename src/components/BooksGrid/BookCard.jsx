@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Card } from 'antd';
+import { Badge, Card, Typography } from 'antd';
 import { getRandomColor } from '@/config';
 
 const BookCard = ({ data }) => {
@@ -11,7 +11,7 @@ const BookCard = ({ data }) => {
         hoverable
         title={
           <a href={url}>
-            <h3>{title}</h3>
+            <Typography.Title level={2}>{title}</Typography.Title>
           </a>
         }
       >

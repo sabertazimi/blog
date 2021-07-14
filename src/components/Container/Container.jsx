@@ -1,7 +1,7 @@
 import React from 'react';
-import { BreakPoints } from 'config';
+import { BreakPoints } from '@/config';
 
-const Container = ({ children, style, ...rest }) => (
+const Container = ({ style, children, ...props }) => (
   <div
     style={{
       maxWidth: BreakPoints.laptop,
@@ -11,7 +11,7 @@ const Container = ({ children, style, ...rest }) => (
       padding: '1em 3em',
       ...style,
     }}
-    {...rest}
+    {...props}
   >
     {children}
   </div>

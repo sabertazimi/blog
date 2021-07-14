@@ -1,5 +1,5 @@
 import React from 'react';
-import { Message } from 'semantic-ui-react';
+import { Result, Typography } from 'antd';
 
 class ErrorBoundary extends React.Component {
   state = { hasError: false, error: '', info: '' };
@@ -19,16 +19,24 @@ class ErrorBoundary extends React.Component {
 
     if (hasError && isDevelopment) {
       return (
-        <Message
-          error
-          icon="alarm"
-          header="Some Error Happened"
-          list={[
-            `${error.message}.`,
-            'Please check console output for further details.',
-            'Please reload this page after changing code.',
-          ]}
-        />
+        <Result status="error" title="Some Error Happened">
+          <div>
+            <Typography.Paragraph>
+              <Typography.Text strong className="text-xl">
+                Please check the following information:
+              </Typography.Text>
+            </Typography.Paragraph>
+            <Typography.Paragraph>
+              <Typography.Text>{`${error.message}.`}</Typography.Text>
+            </Typography.Paragraph>
+            <Typography.Paragraph>
+              <Typography.Text>Please check console output for further details.</Typography.Text>
+            </Typography.Paragraph>
+            <Typography.Paragraph>
+              <Typography.Text>Please reload this page after changing code.</Typography.Text>
+            </Typography.Paragraph>
+          </div>
+        </Result>
       );
     }
 

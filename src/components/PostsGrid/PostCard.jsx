@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
-import { Button, Skeleton, Tag } from 'antd';
+import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
 import { Colors, getRandomColor } from '@/config';
 import { Container } from '@/components';
@@ -33,9 +33,9 @@ const PostCard = ({ post }) => {
             {tagName}
           </Link>
         </Tag>
-        <h2 style={{ marginTop: 0, marginBottom: '1rem' }}>
+        <Typography.Title level={2} style={{ marginTop: 0, marginBottom: '1rem' }}>
           {post.title || 'Article'}
-        </h2>
+        </Typography.Title>
         <Tag
           color={Colors.black}
           className="mb-3 font-extrabold"
