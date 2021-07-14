@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
-import { Tag, Typography } from 'antd';
+import { Tag } from 'antd';
 import { Colors, getRandomColor } from '@config';
 
 const ArticleHeader = ({ post }) => {
@@ -26,33 +26,35 @@ const ArticleHeader = ({ post }) => {
           post.tags.map((tag) => {
             return (
               <Tag key={tag} className="mb-3" color={getRandomColor()}>
-                <Link to={`/tags/${tag}`} style={{ fontWeight: 800 }}>
+                <Link className="text-base font-extrabold" to={`/tags/${tag}`}>
                   {tag}
                 </Link>
               </Tag>
             );
           })
         ) : (
-          <Tag key="all" className="mb-3" color={getRandomColor()}>
+          <Tag className="mb-3" color={getRandomColor()}>
             <Link to="/tags/all">CS</Link>
           </Tag>
         )}
-        <Typography.Title style={{ color: Colors.light, fontSize: '4em', margin: '0.2em 0' }}>
+        <h1 className="mx-0 mb-1 text-8xl" style={{ color: Colors.light }}>
           {post.title || 'Article'}
-        </Typography.Title>
+        </h1>
         <Tag
-          className="mb-3 font-extrabold"
+          className="mb-3"
           color={Colors.black}
-          style={{ color: Colors.light }}
         >
-          Posted on {new Date(post.date).toDateString() || 'Nowadays'}
+          <div className="text-base font-extrabold">
+            Posted on {new Date(post.date).toDateString() || 'Nowadays'}
+          </div>
         </Tag>
         <Tag
-          className="font-extrabold"
+          className="mb-3"
           color={Colors.black}
-          style={{ color: Colors.light }}
         >
-          ({post.timeToRead} minutes)
+          <div className="text-base font-extrabold">
+            ({post.timeToRead} minutes)
+          </div>
         </Tag>
       </animated.div>
     </div>

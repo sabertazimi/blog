@@ -11,9 +11,8 @@ const Footer = () => {
 
   return (
     <Container
+      className="max-w-full p-8 text-center lg:p-20"
       style={{
-        padding: '5em',
-        textAlign: 'center',
         color: Colors.light,
         backgroundColor: Colors.black,
       }}
@@ -30,7 +29,13 @@ const Footer = () => {
           ))}
         </Col>
       </Row>
-      <Divider style={{ marginTop: '2em', marginBottom: '2em', backgroundColor: Colors.light }} />
+      <Divider
+        style={{
+          marginTop: '2em',
+          marginBottom: '2em',
+          backgroundColor: Colors.light,
+        }}
+      />
       <Row align="middle" justify="center">
         <Col span={24}>
           Copyright &copy;{' '}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
-import {Colors, getRandomColor } from '@config';
+import { Colors, getRandomColor } from '@config';
 
 const TagsCloud = ({ tags, activeTag }) => {
   let tagsList = Object.keys(tags).sort((a, b) => {
@@ -15,8 +15,8 @@ const TagsCloud = ({ tags, activeTag }) => {
   return (
     <div>
       {activeTag ? (
-        <Tag key={activeTag} className="mb-3 text-lg" color={getRandomColor()}>
-          <Link to={`/tags/${activeTag}`}>
+        <Tag className="mb-3" color={getRandomColor()}>
+          <Link className="text-lg font-extrabold" to={`/tags/${activeTag}`}>
             {activeTag} &nbsp; {tags[activeTag]}
           </Link>
         </Tag>
@@ -25,18 +25,20 @@ const TagsCloud = ({ tags, activeTag }) => {
         return (
           <Tag
             key={tag}
-            className="mb-3 text-lg"
+            className="mb-3"
             color={activeTag ? Colors.grey : getRandomColor()}
           >
-            <Link to={`/tags/${tag}`}>
+            <Link className="text-lg font-extrabold" to={`/tags/${tag}`}>
               {tag} &nbsp; {tags[tag]}
             </Link>
           </Tag>
         );
       })}
       {activeTag ? (
-        <Tag key="all" className="mb-3 text-lg" color={getRandomColor()}>
-          <Link to="/tags">All</Link>
+        <Tag className="mb-3" color={getRandomColor()}>
+          <Link className="text-lg font-extrabold" to="/tags">
+            All
+          </Link>
         </Tag>
       ) : null}
     </div>

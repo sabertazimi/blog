@@ -5,7 +5,6 @@ import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
 import { Colors, getRandomColor } from '@config';
 import Container from '@components/Container';
-import * as styles from './PostCard.module.css';
 
 const PostCard = ({ post }) => {
   const tagName = post.tags ? post.tags[0] : 'Computer Science';
@@ -15,33 +14,23 @@ const PostCard = ({ post }) => {
   });
 
   return (
-    <animated.div style={{ ...props, width: '100%' }}>
-      <Container
-        style={{
-          marginTop: 0,
-          marginBottom: '3em',
-          padding: '1em 1.2em',
-        }}
-        className={styles.cell}
-      >
-        <Tag
-          key={tagName}
-          className="mb-3 font-extrabold"
-          color={getRandomColor()}
-        >
-          <Link to={`/tags/${tagName}`}>
+    <Container className="px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2">
+      <animated.div style={props}>
+        <Tag className="mb-3" color={getRandomColor()}>
+          <Link className="text-base font-extrabold" to={`/tags/${tagName}`}>
             {tagName}
           </Link>
         </Tag>
-        <Typography.Title level={2} style={{ marginTop: 0, marginBottom: '1rem' }}>
+        <Typography.Title
+          level={2}
+          style={{ marginTop: 0, marginBottom: '1rem' }}
+        >
           {post.title || 'Article'}
         </Typography.Title>
-        <Tag
-          color={Colors.black}
-          className="mb-3 font-extrabold"
-          style={{ color: Colors.light }}
-        >
-          Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
+        <Tag className="mb-3" color={Colors.black}>
+          <div className="text-base font-extrabold">
+            Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
+          </div>
         </Tag>
         <Container>
           <Skeleton
@@ -59,13 +48,13 @@ const PostCard = ({ post }) => {
               fontSize: '1.5em',
             }}
           >
-            <Link to={`${post.slug}`} style={{ color: Colors.light }}>
+            <Link style={{ color: Colors.light }} to={`${post.slug}`}>
               <ReadOutlined />
             </Link>
           </Button>
         </Container>
-      </Container>
-    </animated.div>
+      </animated.div>
+    </Container>
   );
 };
 

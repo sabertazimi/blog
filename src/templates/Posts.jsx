@@ -1,12 +1,12 @@
 import React from 'react';
-import { PostLayout } from '@layouts';
+import { Layout } from '@layouts';
 import { PostsGrid } from '@components';
 
 const Posts = () => {
   return (
-    <PostLayout>
+    <Layout banner="Posts">
       <PostsGrid />
-    </PostLayout>
+    </Layout>
   );
 };
 

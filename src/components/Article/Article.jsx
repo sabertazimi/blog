@@ -1,12 +1,14 @@
 import React from 'react';
+import { Colors } from '@config';
+import Container from '@components/Container';
+import Icons from '@components/Icons';
+import SocialGroup from '@components/SocialGroup';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleContent from './ArticleContent';
 import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
-import { BreakPoints, Colors } from '@config';
-import { Container, Icons, SocialGroup } from '@components';
 
 const Article = ({ post }) => {
   const { excerpt, toc, html, ...postMetadata } = post;
@@ -14,18 +16,15 @@ const Article = ({ post }) => {
   return (
     <div>
       <ArticleHeader post={postMetadata} />
-      <Container
-        style={{
-          maxWidth: BreakPoints.laptop,
-        }}
-      >
+      <Container className="max-w-screen-lg">
         <ArticleNavigation toc={toc} />
         <ArticleContent content={html} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={postMetadata} />
         <ArticleDivider>
           <Icons.Comment
-            style={{ fontSize: '1.35em', color: Colors.primary }}
+            className="text-2xl"
+            style={{ color: Colors.primary }}
           />
         </ArticleDivider>
         <ArticleComments />

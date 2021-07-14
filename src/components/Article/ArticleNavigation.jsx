@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button, Drawer } from 'antd';
 import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import { useResponsive } from '@hooks';
-import { BreakPoints, Colors } from '@config';
+import { Colors } from '@config';
 import * as styles from './ArticleNavigation.module.css';
 
 const ArticleNavigation = ({ toc }) => {
   const [tocVisible, setTocVisible] = useState(false);
-  const isNotMobile = useResponsive({ minWidth: BreakPoints.mobile });
 
-  const handleClick = () => setTocVisible(!tocVisible);
+  const handleClick = useCallback(
+    () => setTocVisible(!tocVisible),
+    [tocVisible]
+  );
 
-  return isNotMobile ? (
-    <div
-      className={styles.tocContainer}
-      style={{ backgroundColor: Colors.primary }}
-    >
+  return (
+    <div className="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block">
       <Button
         type="primary"
         shape="circle"
@@ -39,7 +37,7 @@ const ArticleNavigation = ({ toc }) => {
         />
       </Drawer>
     </div>
-  ) : null;
+  );
 };
 
 export default ArticleNavigation;
