@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, Card, Typography } from 'antd';
-import { getRandomColor } from '@/config';
+import { getRandomColor } from '@config';
 
 const BookCard = ({ data }) => {
   const { title, url, author, description } = data;

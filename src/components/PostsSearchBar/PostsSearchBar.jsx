@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Input, AutoComplete } from 'antd';
-import { usePostsMetadata } from '@/hooks';
+import { usePostsMetadata } from '@hooks';
 
 const PostsSearchBar = () => {
   const { posts } = usePostsMetadata();

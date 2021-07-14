@@ -3,9 +3,9 @@ import { Link } from 'gatsby';
 import { Row, Col, Menu, Popover } from 'antd';
 import { BarsOutlined } from '@ant-design/icons';
 import { Visibility, Segment, Image } from 'semantic-ui-react';
-import { useResponsive } from '@/hooks';
-import { BreakPoints, Colors } from '@/config';
-import PostsSearchBar from '@/components/PostsSearchBar';
+import { useResponsive } from '@hooks';
+import { BreakPoints, Colors } from '@config';
+import PostsSearchBar from '@components/PostsSearchBar';
 import * as styles from './Header.module.css';
 import logo from 'images/logo-full.png';
 

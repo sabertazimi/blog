@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useSiteMetadata } from '@/hooks';
-import { LandingLayout } from '@/layouts';
-import { Menu, TypingTitle, ErrorBoundary } from '@/components';
+import { useSiteMetadata } from '@hooks';
+import { LandingLayout } from '@layouts';
+import { Menu, TypingTitle, ErrorBoundary } from '@components';
 
 const Home = () => {
   const { siteUrl, title } = useSiteMetadata();

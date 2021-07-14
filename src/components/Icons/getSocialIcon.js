@@ -7,7 +7,7 @@ import {
   LinkedinOutlined,
   WeiboOutlined,
 } from '@ant-design/icons';
-import { SocialType } from '@/config';
+import { SocialType } from '@config';
 
 const getSocialIcon = (type, size = '2em') => {
   switch (type) {

@@ -1,10 +1,18 @@
 {
   "compilerOptions": {
-    // This must be specified if "paths" is set
-    "baseUrl": ".",
-    // Relative to "baseUrl"
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
     "paths": {
-      "*": ["*", "src/*"]
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@images/*": ["src/images/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@styles/*": ["src/styles/*"],
+      "@templates/*": ["src/templates/*"]
     }
-  }
+  },
+  "exclude": ["build", "dist", "public", "node_modules"]
 }

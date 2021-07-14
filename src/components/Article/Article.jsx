@@ -5,8 +5,8 @@ import ArticleContent from './ArticleContent';
 import ArticleNavigation from './ArticleNavigation';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
-import { BreakPoints, Colors } from '@/config';
-import { Container, Icons, SocialGroup } from '@/components';
+import { BreakPoints, Colors } from '@config';
+import { Container, Icons, SocialGroup } from '@components';
 
 const Article = ({ post }) => {
   const { excerpt, toc, html, ...postMetadata } = post;

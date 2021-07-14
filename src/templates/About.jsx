@@ -1,6 +1,6 @@
 import React from 'react';
-import { Layout } from '@/layouts';
-import { GithubCard } from '@/components';
+import { Layout } from '@layouts';
+import { GithubCard } from '@components';
 
 const About = ({ pageContext: { github } }) => (
   <Layout banner="About Me">

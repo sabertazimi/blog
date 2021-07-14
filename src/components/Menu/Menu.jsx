@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Icons } from '@/components';
+import { useResponsive } from '@hooks';
+import { BreakPoints, Colors } from '@config';
+import Icons from '@components/Icons';
 import MenuLink from './MenuLink';
-import { useResponsive } from 'hooks';
-import { BreakPoints, Colors } from 'config';
 import * as styles from './Menu.module.css';
 
 const Menu = ({ onExpand }) => {

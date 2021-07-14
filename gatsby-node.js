@@ -218,6 +218,14 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {
         '@': path.resolve(__dirname, 'src'),
+        "@components": path.resolve(__dirname, "./src/components"),
+        "@config": path.resolve(__dirname, "./src/config"),
+        "@hooks": path.resolve(__dirname, "./src/hooks"),
+        "@images": path.resolve(__dirname, "./src/images"),
+        "@layouts": path.resolve(__dirname, "./src/layouts"),
+        "@pages": path.resolve(__dirname, "./src/pages"),
+        "@styles": path.resolve(__dirname, "./src/styles"),
+        "@templates": path.resolve(__dirname, "./src/templates"),
       },
     },
   });

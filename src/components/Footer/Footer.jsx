@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col, Divider } from 'antd';
-import { useBuildTime, useSiteMetadata } from '@/hooks';
-import { Colors, SocialType } from '@/config';
-import Container from '@/components/Container';
-import SocialButton from '@/components/SocialButton';
+import { useBuildTime, useSiteMetadata } from '@hooks';
+import { Colors, SocialType } from '@config';
+import Container from '@components/Container';
+import SocialButton from '@components/SocialButton';
 
 const Footer = () => {
   const buildTime = useBuildTime();

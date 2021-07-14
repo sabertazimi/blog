@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Colors } from '@/config';
-import landingImage from '@/images/landing.jpg';
+import { Colors } from '@config';
+import landingImage from '@images/landing.jpg';
 
 const LandingLayout = ({ children }) => {
   const props = useSpring({

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Tag, Typography } from 'antd';
-import { Colors, getRandomColor } from '@/config';
+import { Colors, getRandomColor } from '@config';
 
 const ArticleHeader = ({ post }) => {
   const props = useSpring({

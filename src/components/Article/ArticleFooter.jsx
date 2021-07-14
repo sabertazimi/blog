@@ -6,8 +6,8 @@ import {
   ArrowRightOutlined,
   HomeOutlined,
 } from '@ant-design/icons';
-import { useResponsive } from '@/hooks';
-import { BreakPoints, Colors } from '@/config';
+import { useResponsive } from '@hooks';
+import { BreakPoints, Colors } from '@config';
 import * as styles from './ArticleFooter.module.css';
 
 const ArticleFooter = ({ post }) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
 import { Space } from 'antd';
-import { Colors, SocialType, SocialQuery } from '@/config';
-import SocialButton from '@/components/SocialButton';
+import { Colors, SocialType, SocialQuery } from '@config';
+import SocialButton from '@components/SocialButton';
 import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {

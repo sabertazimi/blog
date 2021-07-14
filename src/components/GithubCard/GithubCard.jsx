@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from 'antd';
 import { Card, Image, Icon, Table, List } from 'semantic-ui-react';
-import { useSiteMetadata } from '@/hooks';
+import { useSiteMetadata } from '@hooks';
 
 const GithubCard = ({ github }) => {
   const { profile, repos } = github;

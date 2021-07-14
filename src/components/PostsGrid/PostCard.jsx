@@ -3,8 +3,8 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
-import { Colors, getRandomColor } from '@/config';
-import Container from '@/components/Container';
+import { Colors, getRandomColor } from '@config';
+import Container from '@components/Container';
 import * as styles from './PostCard.module.css';
 
 const PostCard = ({ post }) => {

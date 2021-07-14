@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
-import { Colors } from '@/config';
-import Icons from '@/components/Icons';
+import { Colors } from '@config';
+import Icons from '@components/Icons';
 
 const SocialButton = ({ type, url, style, ...props }) => (
   <Button

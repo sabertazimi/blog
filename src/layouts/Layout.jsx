@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Divider } from 'antd';
-import { Header, Footer, Container } from '@/components';
+import { Header, Footer, Container } from '@components';
 
 const Layout = ({ banner, children }) => {
   const props = useSpring({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDisqus, useSiteMetadata } from '@/hooks';
+import { useDisqus, useSiteMetadata } from '@hooks';
 import * as styles from './ArticleComments.module.css';
 
 const ArticleComments = () => {

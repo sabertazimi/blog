@@ -1,6 +1,6 @@
 import React from 'react';
-import { usePostsMetadata, useResponsive } from '@/hooks';
-import { BreakPoints } from '@/config';
+import { usePostsMetadata, useResponsive } from '@hooks';
+import { BreakPoints } from '@config';
 import PostCard from './PostCard';
 
 const flexStyle = {

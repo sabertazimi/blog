@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
-import { Colors, getRandomColor } from '@/config';
+import {Colors, getRandomColor } from '@config';
 
 const TagsCloud = ({ tags, activeTag }) => {
   let tagsList = Object.keys(tags).sort((a, b) => {

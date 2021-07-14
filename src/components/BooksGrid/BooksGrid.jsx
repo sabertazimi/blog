@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import { useSiteMetadata } from '@/hooks';
+import { useSiteMetadata } from '@hooks';
 import BookCard from './BookCard';
 
 const BooksGrid = () => {

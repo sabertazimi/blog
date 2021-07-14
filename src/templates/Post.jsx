@@ -1,6 +1,6 @@
 import React from 'react';
-import { PostLayout } from '@/layouts';
-import { Article } from '@/components';
+import { PostLayout } from '@layouts';
+import { Article } from '@components';
 
 const Post = ({ pageContext: { post } }) => (
   <PostLayout>

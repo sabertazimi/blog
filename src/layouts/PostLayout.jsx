@@ -1,6 +1,6 @@
 import React from 'react';
 import { BackTop } from 'antd';
-import { Header, Footer } from '@/components';
+import { Header, Footer } from '@components';
 
 const PostLayout = ({ children }) => (
   <div>
