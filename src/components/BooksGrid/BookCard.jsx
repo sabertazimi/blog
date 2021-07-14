@@ -1,5 +1,6 @@
 import React from 'react';
-import { Badge, Card, Typography } from 'antd';
+import { Badge, Card } from 'antd';
+import { BookOutlined } from '@ant-design/icons';
 import { getRandomColor } from '@config';
 
 const BookCard = ({ data }) => {
@@ -11,7 +12,8 @@ const BookCard = ({ data }) => {
         hoverable
         title={
           <a href={url}>
-            <Typography.Title level={2}>{title}</Typography.Title>
+            <BookOutlined className="text-6xl align-top" />
+            <span className="text-span-xl">{title}</span>
           </a>
         }
       >
