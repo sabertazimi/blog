@@ -1,13 +1,9 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Divider } from 'antd';
-import { useResponsive } from '@/hooks';
-import { BreakPoints } from '@/config';
 import { Header, Footer, Container } from '@/components';
 
 const Layout = ({ banner, children }) => {
-  const isNotMobile = useResponsive({ minWidth: BreakPoints.mobile });
-
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },
@@ -16,7 +12,7 @@ const Layout = ({ banner, children }) => {
   return (
     <div>
       <Header />
-      <div style={{ padding: `${isNotMobile ? '7em' : '0'} 0em 3em 0` }}>
+      <div className="pt-0 pb-12 px-0 lg:pt-24">
         <animated.div style={props}>
           <Container style={{ maxWidth: 960 }}>
             <Divider style={{ margin: '3em 0em', fontWeight: 800 }}>

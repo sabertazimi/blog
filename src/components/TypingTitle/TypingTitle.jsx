@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
-import { useResponsive } from 'hooks';
-import { BreakPoints } from 'config';
 
 const TypingTitle = ({
   titles = [],
@@ -9,9 +7,6 @@ const TypingTitle = ({
   loop = true,
   style = {},
 } = {}) => {
-  const isnotMobile = useResponsive({ minWidth: BreakPoints.laptop });
-  const fontSize = isnotMobile ? '5em' : '2em';
-
   useEffect(() => {
     const options = {
       strings: [...titles],
@@ -31,13 +26,12 @@ const TypingTitle = ({
 
   return (
     <div
-      className="typing-title-container"
+      className="typing-title-container text-5xl lg:text-9xl"
       style={{
         width: '100%',
         height: '100%',
         marginTop: 0,
         paddingTop: 0,
-        fontSize,
         fontWeight: 800,
         textAlign: 'center',
         ...style,

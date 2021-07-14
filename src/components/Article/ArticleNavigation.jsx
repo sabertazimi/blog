@@ -14,7 +14,7 @@ const ArticleNavigation = ({ toc }) => {
   return isNotMobile ? (
     <div
       className={styles.tocContainer}
-      style={{ margin: 0, backgroundColor: Colors.primary }}
+      style={{ backgroundColor: Colors.primary }}
     >
       <Button
         type="primary"
@@ -32,7 +32,9 @@ const ArticleNavigation = ({ toc }) => {
         visible={tocVisible}
       >
         <div
-          className={`${styles.toc} ${tocVisible ? styles.tocExpanded : ''}`}
+          className={
+            tocVisible ? `${styles.toc} ${styles.tocExpanded}` : `${styles.toc}`
+          }
           dangerouslySetInnerHTML={{ __html: toc }}
         />
       </Drawer>
