@@ -31,48 +31,41 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 };
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  let githubProfile;
-  let githubRepos;
+  const profileResponse = await octokit.rest.users.getByUsername({
+    username: config.siteMetadata.github,
+  });
+  const reposResponse = await octokit.request('GET /users/{username}/repos', {
+    username: config.siteMetadata.github,
+  });
 
-  try {
-    const profileResponse = await octokit.rest.users.getByUsername({
-      username: config.siteMetadata.github,
-    });
-    const reposResponse = await octokit.request('GET /users/{username}/repos', {
-      username: config.siteMetadata.github,
-    });
+  const { data: profileJSON } = profileResponse;
+  const { data: reposJSON } = reposResponse;
 
-    const profileJSON = profileResponse.data;
-    const reposJSON = reposResponse.data;
+  const githubProfile = {
+    username: profileJSON.login,
+    avatar: profileJSON.avatar_url,
+    bio: profileJSON.bio,
+    location: profileJSON.location,
+    url: profileJSON.html_url,
+    followers: profileJSON.followers,
+    followersUrl: profileJSON.html_url + '/followers',
+    following: profileJSON.following,
+    followingUrl: profileJSON.html_url + '/following',
+    createDate: new Date(profileJSON.created_at).toDateString(),
+  };
 
-    githubProfile = {
-      username: profileJSON.login,
-      avatar: profileJSON.avatar_url,
-      bio: profileJSON.bio,
-      location: profileJSON.location,
-      url: profileJSON.html_url,
-      followers: profileJSON.followers,
-      followersUrl: profileJSON.html_url + '/followers',
-      following: profileJSON.following,
-      followingUrl: profileJSON.html_url + '/following',
-      createDate: new Date(profileJSON.created_at).toDateString(),
-    };
-
-    githubRepos = reposJSON
-      .filter((repo) => repo.stargazers_count > 0)
-      .sort((repo1, repo2) =>
-        repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
-      )
-      .map((repo) => ({
-        name: repo.name,
-        stars: repo.stargazers_count,
-        language: repo.language,
-        repoUrl: repo.html_url,
-      }))
-      .slice(0, 3);
-  } catch (err) {
-    console.error(err.message);
-  }
+  const githubRepos = reposJSON
+    .filter((repo) => repo.stargazers_count > 0)
+    .sort((repo1, repo2) =>
+      repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
+    )
+    .map((repo) => ({
+      name: repo.name,
+      stars: repo.stargazers_count,
+      language: repo.language,
+      repoUrl: repo.html_url,
+    }))
+    .slice(0, 3);
 
   const result = await graphql(`
     query PostsDataQuery {
@@ -218,14 +211,14 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {
         '@': path.resolve(__dirname, 'src'),
-        "@components": path.resolve(__dirname, "./src/components"),
-        "@config": path.resolve(__dirname, "./src/config"),
-        "@hooks": path.resolve(__dirname, "./src/hooks"),
-        "@images": path.resolve(__dirname, "./src/images"),
-        "@layouts": path.resolve(__dirname, "./src/layouts"),
-        "@pages": path.resolve(__dirname, "./src/pages"),
-        "@styles": path.resolve(__dirname, "./src/styles"),
-        "@templates": path.resolve(__dirname, "./src/templates"),
+        '@components': path.resolve(__dirname, './src/components'),
+        '@config': path.resolve(__dirname, './src/config'),
+        '@hooks': path.resolve(__dirname, './src/hooks'),
+        '@images': path.resolve(__dirname, './src/images'),
+        '@layouts': path.resolve(__dirname, './src/layouts'),
+        '@pages': path.resolve(__dirname, './src/pages'),
+        '@styles': path.resolve(__dirname, './src/styles'),
+        '@templates': path.resolve(__dirname, './src/templates'),
       },
     },
   });
