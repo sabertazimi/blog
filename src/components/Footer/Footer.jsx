@@ -38,17 +38,23 @@ const Footer = () => {
       />
       <Row align="middle" justify="center">
         <Col span={24}>
-          Copyright &copy;{' '}
-          <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
-          {new Date().getFullYear()}
+          <span>
+            Copyright &copy;{' '}
+            <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
+            {new Date().getFullYear()}
+          </span>
           <Divider type="vertical" style={{ backgroundColor: Colors.light }} />
-          Built with <a href="https://reactjs.org">React</a> and{' '}
-          <a href="https://gatsbyjs.org">Gatsby</a>
+          <span>
+            Built with <a href="https://reactjs.org">React</a> and{' '}
+            <a href="https://gatsbyjs.org">Gatsby</a>
+          </span>
           <Divider type="vertical" style={{ backgroundColor: Colors.light }} />
-          Last Updated at{' '}
-          <a href="https://www.google.com/search?q=time">
-            {new Date(buildTime).toLocaleString()}
-          </a>
+          <span>
+            Last Updated at{' '}
+            <a href="https://www.google.com/search?q=time">
+              {new Date(buildTime).toLocaleString()}
+            </a>
+          </span>
         </Col>
       </Row>
     </Container>
