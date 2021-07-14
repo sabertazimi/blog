@@ -4,11 +4,11 @@ import { useSiteMetadata } from '@/hooks';
 import BookCard from './BookCard';
 
 const BooksGrid = () => {
-  const { booklist } = useSiteMetadata();
+  const { bookList } = useSiteMetadata();
 
   return (
     <Row>
-      {booklist.map((bookData, index) => (
+      {bookList.map((bookData, index) => (
         <Col span={24} key={index}>
           <BookCard data={bookData} />
         </Col>
