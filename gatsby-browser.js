@@ -4,8 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import './src/styles/normalize.css';
 import 'prismjs/themes/prism-okaidia.css';
+import './src/styles/normalize.css';
 import './src/styles/global.css';
-import './src/styles/tailwind.css';
 import './src/styles/antd.css';
