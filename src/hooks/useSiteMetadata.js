@@ -9,13 +9,16 @@ const useSiteMetadata = () => {
             title
             author
             siteUrl
-            weibo
-            github
-            twitter
-            facebook
+            socialList {
+              github
+              twitter
+              facebook
+              linkedin
+              weibo
+            }
             email
             disqusUrl
-            booklist {
+            bookList {
               title
               author
               url

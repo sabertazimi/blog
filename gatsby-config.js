@@ -3,13 +3,16 @@ module.exports = {
     title: 'Sabertaz Blog',
     author: 'Sabertaz',
     siteUrl: 'https://tazimi.dev',
-    github: 'sabertazimi',
-    twitter: 'sabertazimi',
-    facebook: 'sabertazimi',
-    weibo: 'sabertazimi',
+    socialList: {
+      github: 'sabertazimi',
+      twitter: 'sabertazimi',
+      facebook: 'sabertazimi',
+      linkedin: 'sabertazimi',
+      weibo: 'sabertazimi',
+    },
     email: 'sabertazimi@gmail.com',
     disqusUrl: 'https://sabertaz-blog.disqus.com',
-    booklist: [
+    bookList: [
       {
         title: 'awesome-notes',
         author: 'sabertazimi',
