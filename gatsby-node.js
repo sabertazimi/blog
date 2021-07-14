@@ -32,10 +32,10 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const profileResponse = await octokit.rest.users.getByUsername({
-    username: config.siteMetadata.github,
+    username: config.siteMetadata.socialList.github,
   });
   const reposResponse = await octokit.request('GET /users/{username}/repos', {
-    username: config.siteMetadata.github,
+    username: config.siteMetadata.socialList.github,
   });
 
   const { data: profileJSON } = profileResponse;
@@ -48,9 +48,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     location: profileJSON.location,
     url: profileJSON.html_url,
     followers: profileJSON.followers,
-    followersUrl: profileJSON.html_url + '/followers',
+    followersUrl: `${profileJSON.html_url}/followers`,
     following: profileJSON.following,
-    followingUrl: profileJSON.html_url + '/following',
+    followingUrl: `${profileJSON.html_url}/following`,
     createDate: new Date(profileJSON.created_at).toDateString(),
   };
 
