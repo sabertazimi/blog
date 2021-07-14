@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Tooltip } from 'antd';
-import { useResponsive } from 'hooks';
-import { BreakPoints, Colors } from 'config';
+import { useResponsive } from '@hooks';
+import { BreakPoints, Colors } from '@config';
 import * as styles from './Menu.module.css';
 
 const MenuLink = ({ title, to, children }) => {
