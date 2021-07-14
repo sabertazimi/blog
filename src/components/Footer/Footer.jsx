@@ -1,66 +1,52 @@
 import React from 'react';
-import { List, Divider, Container, Segment } from 'semantic-ui-react';
-import SocialButton from '@/components/SocialButton';
+import { Row, Col, Divider } from 'antd';
 import { useBuildTime, useSiteMetadata } from '@/hooks';
-import { SocialType } from '@/config';
+import { Colors, SocialType } from '@/config';
+import Container from '@/components/Container';
+import SocialButton from '@/components/SocialButton';
 
 const Footer = () => {
   const buildTime = useBuildTime();
-  const { author, siteUrl, github, twitter, facebook, weibo } =
-    useSiteMetadata();
+  const { author, socialList } = useSiteMetadata();
 
   return (
-    <Segment inverted style={{ padding: '5em 0em' }} vertical>
-      <Container
-        textAlign="center"
-        className="blog-footer"
-        style={{ maxWidth: 960 }}
-      >
-        <SocialButton
-          type={SocialType.website}
-          url={`${siteUrl}`}
-          style={{ margin: '0 1em 1em' }}
-        />
-        <SocialButton
-          type={SocialType.github}
-          url={`https://github.com/${github}`}
-          style={{ margin: '0 1em 1em' }}
-        />
-        <SocialButton
-          type={SocialType.twitter}
-          url={`https://twitter.com/${twitter}`}
-          style={{ margin: '0 1em 1em' }}
-        />
-        <SocialButton
-          type={SocialType.facebook}
-          url={`https://facebook.com/${facebook}`}
-          style={{ margin: '0 1em 1em' }}
-        />
-        <SocialButton
-          type={SocialType.weibo}
-          url={`https://weibo.com/${weibo}`}
-          style={{ margin: '0 1em 1em' }}
-        />
-        <Divider inverted section />
-        <List horizontal inverted divided link>
-          <List.Item>
-            Copyright &copy;{' '}
-            <a href={`https://github.com/${github}`}>{author}</a>{' '}
-            {new Date().getFullYear()}
-          </List.Item>
-          <List.Item>
-            Built with <a href="https://reactjs.org">React</a> and{' '}
-            <a href="https://gatsbyjs.org">Gatsby</a>
-          </List.Item>
-          <List.Item>
-            Last Updated at{' '}
-            <a href="https://www.google.com/search?q=time">
-              {new Date(buildTime).toLocaleString()}
-            </a>
-          </List.Item>
-        </List>
-      </Container>
-    </Segment>
+    <Container
+      style={{
+        padding: '5em',
+        textAlign: 'center',
+        color: Colors.light,
+        backgroundColor: Colors.black,
+      }}
+    >
+      <Row align="middle" justify="center">
+        <Col span={24}>
+          {Object.keys(SocialType).map((social) => (
+            <SocialButton
+              key={social}
+              type={social}
+              url={`https://${social}.com/${socialList[social]}`}
+              style={{ margin: '0 1em 1em' }}
+            />
+          ))}
+        </Col>
+      </Row>
+      <Divider style={{ marginTop: '2em', marginBottom: '2em', backgroundColor: Colors.light }} />
+      <Row align="middle" justify="center">
+        <Col span={24}>
+          Copyright &copy;{' '}
+          <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
+          {new Date().getFullYear()}
+          <Divider type="vertical" style={{ backgroundColor: Colors.light }} />
+          Built with <a href="https://reactjs.org">React</a> and{' '}
+          <a href="https://gatsbyjs.org">Gatsby</a>
+          <Divider type="vertical" style={{ backgroundColor: Colors.light }} />
+          Last Updated at{' '}
+          <a href="https://www.google.com/search?q=time">
+            {new Date(buildTime).toLocaleString()}
+          </a>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

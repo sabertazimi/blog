@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
 import { Space } from 'antd';
-import SocialButton from '@/components/SocialButton';
 import { Colors, SocialType, SocialQuery } from '@/config';
+import SocialButton from '@/components/SocialButton';
 import * as styles from './SocialGroup.module.css';
 
 const SocialGroup = () => {
@@ -16,37 +16,18 @@ const SocialGroup = () => {
       size={0}
       className={styles.socialGroup}
     >
-      <SocialButton
-        type={SocialType.twitter}
-        url={`${SocialQuery.twitter}${url}`}
-        style={{
-          backgroundColor: Colors.twitter,
-        }}
-      />
-      <SocialButton
-        color={Colors.facebook}
-        type={SocialType.facebook}
-        url={`${SocialQuery.facebook}${url}`}
-        style={{
-          backgroundColor: Colors.facebook,
-        }}
-      />
-      <SocialButton
-        color={Colors.weibo}
-        type={SocialType.weibo}
-        url={`${SocialQuery.weibo}${url}`}
-        style={{
-          backgroundColor: Colors.weibo,
-        }}
-      />
-      <SocialButton
-        color={Colors.linkedin}
-        type={SocialType.linkedin}
-        url={`${SocialQuery.linkedin}${url}`}
-        style={{
-          backgroundColor: Colors.linkedin,
-        }}
-      />
+      {Object.keys(SocialType)
+        .filter((social) => social !== SocialType.github)
+        .map((social) => (
+          <SocialButton
+            key={social}
+            type={social}
+            url={`${SocialQuery[social]}${url}`}
+            style={{
+              backgroundColor: Colors[social],
+            }}
+          />
+        ))}
     </Space>
   );
 };
