@@ -11,6 +11,7 @@ const PostCard = ({ post }) => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },
+    delay: 200,
   });
 
   return (
