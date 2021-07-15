@@ -1,9 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
-
-let frameId = 0;
-let ticking = false;
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const useResponsive = ({ minWidth, maxWidth, onUpdate, getWidth } = {}) => {
+  const frameId = useRef(0);
+  const ticking = useRef(false);
   const [visible, setVisible] = useState(true);
 
   const handleUpdate = useCallback((event) => {
@@ -32,14 +31,14 @@ const useResponsive = ({ minWidth, maxWidth, onUpdate, getWidth } = {}) => {
       onUpdate(event, { maxWidth, minWidth, width });
     }
 
-    ticking = false;
+    ticking.current = false;
   }, [visible, minWidth, maxWidth, onUpdate, getWidth]);
 
   const handleResize = useCallback((event) => {
-    if (ticking) return;
+    if (ticking.current) return;
 
-    ticking = true;
-    frameId = requestAnimationFrame(() => handleUpdate(event));
+    ticking.current = true;
+    frameId.current = requestAnimationFrame(() => handleUpdate(event));
   }, [handleUpdate]);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const useResponsive = ({ minWidth, maxWidth, onUpdate, getWidth } = {}) => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(frameId);
+      cancelAnimationFrame(frameId.current);
     };
   }, [handleUpdate, handleResize]);
 
