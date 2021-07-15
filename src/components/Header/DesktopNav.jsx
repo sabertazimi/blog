@@ -5,9 +5,13 @@ import { Colors, Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
 
-const DesktopNav = ({ fixed }) => (
+const DesktopNav = ({ className, fixed }) => (
   <Menu
-    className={fixed ? 'transition bg-white' : 'transition bg-gradient-primary'}
+    className={
+      fixed
+        ? `transition bg-white ${className}`
+        : `transition bg-gradient-primary ${className}`
+    }
     mode="horizontal"
     style={{
       position: 'fixed',

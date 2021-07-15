@@ -5,8 +5,8 @@ import { BarsOutlined } from '@ant-design/icons';
 import { Colors, Routes } from '@config';
 import logo from 'images/logo-full.png';
 
-const MobileNav = () => (
-  <Row type="flex" justify="space-around" align="middle">
+const MobileNav = ({ className }) => (
+  <Row type="flex" justify="space-around" align="middle" className={className}>
     <Col span={12} offset={6}>
       <Link to="/">
         <Image
