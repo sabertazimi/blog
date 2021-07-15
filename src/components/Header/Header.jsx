@@ -7,7 +7,7 @@ import DesktopNav from './DesktopNav';
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
-  const isNotMobile = useResponsive({ minWidth: BreakPoints.mobile });
+  const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
 
   const hideFixedNav = () => setNavFixed(false);
   const showFixedNav = () => setNavFixed(true);
@@ -19,7 +19,7 @@ const Header = () => {
       once={false}
     >
       <Segment style={{ padding: 0 }} textAlign="center" vertical>
-        {isNotMobile ? <DesktopNav fixed={navFixed} /> : <MobileNav />}
+        {isMobile ? <MobileNav /> : <DesktopNav fixed={navFixed} />}
       </Segment>
     </Visibility>
   );

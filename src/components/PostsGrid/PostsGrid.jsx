@@ -40,11 +40,11 @@ const PostsGrid = () => {
   const { posts } = usePostsMetadata();
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
-  const isNotMobile = useResponsive({ minWidth: BreakPoints.desktop });
+  const isDesktop = useResponsive({ minWidth: BreakPoints.desktop });
 
   return (
     <div>
-      {isNotMobile ? (
+      {isDesktop ? (
         <div style={rowFlexStyle}>
           <div style={{ ...leftFlexStyle, marginRight: '2em' }}>
             {leftPosts.map((post, index) => {
