@@ -49,7 +49,7 @@ const PostCard = ({ post }) => {
               fontSize: '1.5em',
             }}
           >
-            <Link style={{ color: Colors.light }} to={`${post.slug}`}>
+            <Link to={`${post.slug}`}>
               <ReadOutlined />
             </Link>
           </Button>
