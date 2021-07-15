@@ -3,6 +3,9 @@ module.exports = {
     title: 'Sabertaz Blog',
     author: 'Sabertaz',
     siteUrl: 'https://tazimi.dev',
+    email: 'sabertazimi@gmail.com',
+    disqusUrl: 'https://sabertaz-blog.disqus.com',
+    landingTitles: [`I'm a coder.`, `I'm a learner.`],
     socialList: {
       github: 'sabertazimi',
       twitter: 'sabertazimi',
@@ -10,8 +13,6 @@ module.exports = {
       linkedin: 'sabertazimi',
       weibo: 'sabertazimi',
     },
-    email: 'sabertazimi@gmail.com',
-    disqusUrl: 'https://sabertaz-blog.disqus.com',
     bookList: [
       {
         title: 'awesome-notes',

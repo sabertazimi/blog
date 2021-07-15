@@ -5,7 +5,7 @@ import { LandingLayout } from '@layouts';
 import { Menu, TypingTitle, ErrorBoundary } from '@components';
 
 const Home = () => {
-  const { siteUrl, title } = useSiteMetadata();
+  const { siteUrl, title, landingTitles } = useSiteMetadata();
 
   return (
     <div>
@@ -18,7 +18,7 @@ const Home = () => {
       </ErrorBoundary>
       <LandingLayout>
         <TypingTitle
-          titles={["I'm a CS student.", "I'm a coder.", "I'm a learner."]}
+          titles={landingTitles}
           style={{ padding: '3em 0', height: 'auto' }}
         />
         <Menu />
