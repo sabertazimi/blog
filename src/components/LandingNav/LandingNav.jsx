@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { useResponsive } from '@hooks';
-import { BreakPoints, Colors } from '@config';
+import { Colors } from '@config';
 import Icons from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
 import * as styles from './LandingNav.module.css';
 
 const LandingNav = ({ onExpand }) => {
   const [expanded, setExpanded] = useState(false);
-  const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
 
   const handleClick = useCallback(() => {
     if (onExpand) {
@@ -47,17 +45,17 @@ const LandingNav = ({ onExpand }) => {
       >
         {expanded ? (
           <Icons.Close
+            className="text-lg md:text-4xl"
             style={{
               fontWeight: 800,
-              fontSize: isMobile ? '1rem' : '2rem',
               color: Colors.white,
             }}
           />
         ) : (
           <Icons.Hamburger
+            className="text-lg md:text-4xl"
             style={{
               fontWeight: 800,
-              fontSize: isMobile ? '1rem' : '2rem',
               color: Colors.white,
             }}
           />

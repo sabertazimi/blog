@@ -1,6 +1,5 @@
 import React from 'react';
-import { usePostsMetadata, useResponsive } from '@hooks';
-import { BreakPoints } from '@config';
+import { usePostsMetadata } from '@hooks';
 import PostCard from './PostCard';
 
 const flexStyle = {
@@ -36,35 +35,41 @@ const rightFlexStyle = {
   maxWidth: '35%',
 };
 
+const FlexContainer = ({ style, className, children, ...props }) => (
+  <div
+    style={{ ...style }}
+    className={`container h-full mx-auto my-0 ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
 const PostsGrid = () => {
   const { posts } = usePostsMetadata();
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
-  const isDesktop = useResponsive({ minWidth: BreakPoints.desktop });
 
   return (
-    <div>
-      {isDesktop ? (
-        <div style={rowFlexStyle}>
-          <div style={{ ...leftFlexStyle, marginRight: '2em' }}>
-            {leftPosts.map((post, index) => {
-              return <PostCard key={post.title || index} post={post} />;
-            })}
-          </div>
-          <div style={rightFlexStyle}>
-            {rightPosts.map((post, index) => {
-              return <PostCard key={post.title || index} post={post} />;
-            })}
-          </div>
-        </div>
-      ) : (
-        <div style={columnStyle}>
-          {posts.map((post, index) => {
+    <>
+      <FlexContainer className="xl:hidden" style={columnStyle}>
+        {posts.map((post, index) => {
+          return <PostCard key={post.title || index} post={post} />;
+        })}
+      </FlexContainer>
+      <FlexContainer className="hidden xl:visible xl:flex" style={rowFlexStyle}>
+        <div style={{ ...leftFlexStyle, marginRight: '2em' }}>
+          {leftPosts.map((post, index) => {
             return <PostCard key={post.title || index} post={post} />;
           })}
         </div>
-      )}
-    </div>
+        <div style={rightFlexStyle}>
+          {rightPosts.map((post, index) => {
+            return <PostCard key={post.title || index} post={post} />;
+          })}
+        </div>
+      </FlexContainer>
+    </>
   );
 };
 
