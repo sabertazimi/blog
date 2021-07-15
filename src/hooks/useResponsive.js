@@ -3,40 +3,24 @@ import { useState, useEffect, useCallback } from 'react';
 let frameId = 0;
 let ticking = false;
 
-const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
+const useResponsive = ({ minWidth, maxWidth, onUpdate, getWidth } = {}) => {
   const [visible, setVisible] = useState(true);
 
-  const fitsMaxWidth = useCallback(
-    (width, maxWidth) => !maxWidth || width <= maxWidth,
-    []
-  );
-  const fitsMinWidth = useCallback(
-    (width, minWidth) => !minWidth || width >= minWidth,
-    []
-  );
+  const handleUpdate = useCallback((event) => {
+    const _getWidth = () => {
+      if (getWidth) {
+        return getWidth();
+      }
 
-  const isVisible = useCallback(
-    (width, { maxWidth, minWidth }) =>
-      fitsMinWidth(width, minWidth) && fitsMaxWidth(width, maxWidth),
-    [fitsMaxWidth, fitsMinWidth]
-  );
+      return window.innerWidth || 0;
+    };
 
-  const _getWidth = useCallback(() => {
-    if (getWidth) {
-      return getWidth();
-    }
+    const isVisible = (width, { maxWidth, minWidth }) => {
+      const fitsMinWidth = !minWidth || width >= minWidth;
+      const fitsMaxWidth = !maxWidth || width <= maxWidth;
+      return fitsMinWidth && fitsMaxWidth;
+    };
 
-    return window.innerWidth || 0;
-  }, [getWidth]);
-
-  const handleResize = (event) => {
-    if (ticking) return;
-
-    ticking = true;
-    frameId = requestAnimationFrame(() => handleUpdate(event));
-  };
-
-  const handleUpdate = (event) => {
     const width = _getWidth();
     const nextVisible = isVisible(width, { maxWidth, minWidth });
 
@@ -49,7 +33,14 @@ const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
     }
 
     ticking = false;
-  };
+  }, [visible, minWidth, maxWidth, onUpdate, getWidth]);
+
+  const handleResize = useCallback((event) => {
+    if (ticking) return;
+
+    ticking = true;
+    frameId = requestAnimationFrame(() => handleUpdate(event));
+  }, [handleUpdate]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -59,7 +50,7 @@ const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(frameId);
     };
-  });
+  }, [handleUpdate, handleResize]);
 
   return visible;
 };
