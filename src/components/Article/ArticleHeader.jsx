@@ -12,10 +12,10 @@ const ArticleHeader = ({ post }) => {
 
   return (
     <div
+      className="bg-gradient-primary"
       style={{
         width: '100%',
         padding: '10em 8em',
-        background: 'linear-gradient(120deg,#2b488a,#ca3749)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',

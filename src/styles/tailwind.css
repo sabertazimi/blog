@@ -4,12 +4,15 @@
 
 @layer components {
   .text-span {
-    @apply inline-block ml-2 text-xl align-bottom;
+    @apply inline-block ml-2 text-xl align-bottom !important;
   }
   .text-span-lg {
-    @apply inline-block ml-2 text-3xl font-extrabold align-bottom;
+    @apply inline-block ml-2 text-3xl font-extrabold align-bottom !important;
   }
   .text-span-xl {
-    @apply inline-block ml-2 text-5xl font-extrabold align-bottom;
+    @apply inline-block ml-2 text-5xl font-extrabold align-bottom !important;
+  }
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-indigo-700 to-red-500 !important;
   }
 }
