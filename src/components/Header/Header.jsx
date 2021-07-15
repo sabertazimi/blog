@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Visibility, Segment } from 'semantic-ui-react';
+import { Visibility } from 'semantic-ui-react';
 import { useResponsive } from '@hooks';
 import { BreakPoints } from '@config';
 import MobileNav from './MobileNav';
@@ -18,9 +18,7 @@ const Header = () => {
       onBottomPassedReverse={hideFixedNav}
       once={false}
     >
-      <Segment style={{ padding: 0 }} textAlign="center" vertical>
-        {isMobile ? <MobileNav /> : <DesktopNav fixed={navFixed} />}
-      </Segment>
+      {isMobile ? <MobileNav /> : <DesktopNav fixed={navFixed} />}
     </Visibility>
   );
 };

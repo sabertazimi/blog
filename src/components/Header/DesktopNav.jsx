@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Menu, Avatar, Image } from 'antd';
+import { Menu, Image } from 'antd';
 import { Colors, Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
