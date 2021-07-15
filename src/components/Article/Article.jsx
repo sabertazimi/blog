@@ -1,13 +1,13 @@
 import React from 'react';
 import { Colors } from '@config';
-import Container from '@components/Container';
 import Icons from '@components/Icons';
+import Container from '@components/Container';
 import SocialGroup from '@components/SocialGroup';
 import ArticleHeader from './ArticleHeader';
-import ArticleFooter from './ArticleFooter';
-import ArticleContent from './ArticleContent';
 import ArticleNav from './ArticleNav';
+import ArticleContent from './ArticleContent';
 import ArticleDivider from './ArticleDivider';
+import ArticleFooter from './ArticleFooter';
 import ArticleComments from './ArticleComments';
 
 const Article = ({ post }) => {
@@ -16,7 +16,7 @@ const Article = ({ post }) => {
   return (
     <div>
       <ArticleHeader post={postMetadata} />
-      <Container className="max-w-screen-lg">
+      <Container className="max-w-screen-lg px-6">
         <ArticleNav toc={toc} />
         <ArticleContent content={html} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
