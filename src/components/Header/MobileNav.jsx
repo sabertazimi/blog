@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Row, Col, Popover, Menu } from 'antd';
+import { Row, Col, Menu, Popover, Image } from 'antd';
 import { BarsOutlined } from '@ant-design/icons';
-import { Image } from 'semantic-ui-react';
 import { Colors, Routes } from '@config';
 import logo from 'images/logo-full.png';
 
 const MobileNav = () => (
   <Row type="flex" justify="space-around" align="middle">
     <Col span={12} offset={6}>
-      <Image as={Link} to="/" src={logo} alt="logo" size="tiny" />
+      <Link to="/">
+        <Image
+          src={logo}
+          alt="Logo"
+          preview={false}
+          width="6rem"
+          height="6rem"
+        />
+      </Link>
     </Col>
     <Col span={6}>
       <Popover
