@@ -1,23 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+
+let frameId = 0;
+let ticking = false;
 
 const useResponsive = ({ maxWidth, minWidth, onUpdate, getWidth } = {}) => {
-  let frameId = 0;
-  let ticking = false;
   const [visible, setVisible] = useState(true);
 
-  const fitsMaxWidth = (width, maxWidth) => !maxWidth || width <= maxWidth;
-  const fitsMinWidth = (width, minWidth) => !minWidth || width >= minWidth;
+  const fitsMaxWidth = useCallback(
+    (width, maxWidth) => !maxWidth || width <= maxWidth,
+    []
+  );
+  const fitsMinWidth = useCallback(
+    (width, minWidth) => !minWidth || width >= minWidth,
+    []
+  );
 
-  const isVisible = (width, { maxWidth, minWidth }) =>
-    fitsMinWidth(width, minWidth) && fitsMaxWidth(width, maxWidth);
+  const isVisible = useCallback(
+    (width, { maxWidth, minWidth }) =>
+      fitsMinWidth(width, minWidth) && fitsMaxWidth(width, maxWidth),
+    [fitsMaxWidth, fitsMinWidth]
+  );
 
-  const _getWidth = () => {
+  const _getWidth = useCallback(() => {
     if (getWidth) {
       return getWidth();
     }
 
     return window.innerWidth || 0;
-  };
+  }, [getWidth]);
 
   const handleResize = (event) => {
     if (ticking) return;
