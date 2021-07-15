@@ -1,42 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useResponsive } from '@hooks';
 import { BreakPoints, Colors } from '@config';
 import Icons from '@components/Icons';
-import MenuLink from './MenuLink';
-import * as styles from './Menu.module.css';
+import LandingNavLink from './LandingNavLink';
+import * as styles from './LandingNav.module.css';
 
-const Menu = ({ onExpand }) => {
+const LandingNav = ({ onExpand }) => {
   const [expanded, setExpanded] = useState(false);
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (onExpand) {
       onExpand(!expanded);
     }
 
-    setExpanded(!expanded);
-  };
+    setExpanded((expanded) => !expanded);
+  }, [expanded, onExpand]);
 
   return (
     <React.Fragment>
       <nav
-        className={styles.menu}
+        className={styles.landingNav}
         style={{
           transform: expanded ? 'translateX(0)' : 'translateX(-100%)',
         }}
       >
-        <MenuLink title="View Posts" to="/posts">
+        <LandingNavLink title="View Posts" to="/posts">
           Posts
-        </MenuLink>
-        <MenuLink title="View Tags" to="/tags">
+        </LandingNavLink>
+        <LandingNavLink title="View Tags" to="/tags">
           Tags
-        </MenuLink>
-        <MenuLink title="View Books" to="/books">
+        </LandingNavLink>
+        <LandingNavLink title="View Books" to="/books">
           Books
-        </MenuLink>
-        <MenuLink title="About Me" to="/about">
+        </LandingNavLink>
+        <LandingNavLink title="About Me" to="/about">
           About
-        </MenuLink>
+        </LandingNavLink>
       </nav>
       <div
         role="button"
@@ -73,4 +73,4 @@ const Menu = ({ onExpand }) => {
   );
 };
 
-export default Menu;
+export default LandingNav;

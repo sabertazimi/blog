@@ -2,14 +2,14 @@ import React, { useState, useCallback } from 'react';
 import { Button, Drawer } from 'antd';
 import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { Colors } from '@config';
-import * as styles from './ArticleNavigation.module.css';
+import * as styles from './ArticleNav.module.css';
 
-const ArticleNavigation = ({ toc }) => {
+const ArticleNav = ({ toc }) => {
   const [tocVisible, setTocVisible] = useState(false);
 
   const handleClick = useCallback(
-    () => setTocVisible(!tocVisible),
-    [tocVisible]
+    () => setTocVisible((tocVisible) => !tocVisible),
+    []
   );
 
   return (
@@ -40,4 +40,4 @@ const ArticleNavigation = ({ toc }) => {
   );
 };
 
-export default ArticleNavigation;
+export default ArticleNav;

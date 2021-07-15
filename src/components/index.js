@@ -1,7 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 import Container from './Container';
-import Menu from './Menu';
+import LandingNav from './LandingNav';
 import TypingTitle from './TypingTitle';
 import PostsGrid from './PostsGrid';
 import PostsList from './PostsList';
@@ -15,7 +15,7 @@ export {
   Header,
   Footer,
   Container,
-  Menu,
+  LandingNav,
   TypingTitle,
   PostsGrid,
   PostsList,

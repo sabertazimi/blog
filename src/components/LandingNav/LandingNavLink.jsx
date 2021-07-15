@@ -3,16 +3,16 @@ import { Link } from 'gatsby';
 import { Tooltip } from 'antd';
 import { useResponsive } from '@hooks';
 import { BreakPoints, Colors } from '@config';
-import * as styles from './Menu.module.css';
+import * as styles from './LandingNav.module.css';
 
-const MenuLink = ({ title, to, children }) => {
+const LandingNavLink = ({ title, to, children }) => {
   const isMobile = useResponsive({ maxWidth: BreakPoints.mobile });
 
   return (
     <Tooltip placement="left" title={title}>
       <Link to={to}>
         <span
-          className={styles.menuLink}
+          className={styles.landingNavLink}
           style={{
             borderBottom: `5px solid ${Colors.light}`,
             fontSize: isMobile ? '2rem' : '4rem',
@@ -26,4 +26,4 @@ const MenuLink = ({ title, to, children }) => {
   );
 };
 
-export default MenuLink;
+export default LandingNavLink;

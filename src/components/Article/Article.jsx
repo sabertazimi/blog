@@ -6,7 +6,7 @@ import SocialGroup from '@components/SocialGroup';
 import ArticleHeader from './ArticleHeader';
 import ArticleFooter from './ArticleFooter';
 import ArticleContent from './ArticleContent';
-import ArticleNavigation from './ArticleNavigation';
+import ArticleNav from './ArticleNav';
 import ArticleDivider from './ArticleDivider';
 import ArticleComments from './ArticleComments';
 
@@ -17,7 +17,7 @@ const Article = ({ post }) => {
     <div>
       <ArticleHeader post={postMetadata} />
       <Container className="max-w-screen-lg">
-        <ArticleNavigation toc={toc} />
+        <ArticleNav toc={toc} />
         <ArticleContent content={html} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={postMetadata} />
