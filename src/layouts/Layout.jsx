@@ -12,7 +12,7 @@ const Layout = ({ banner, children }) => {
   return (
     <div>
       <Header />
-      <Container className="min-h-screen px-0 pt-0 pb-28 lg:pt-24">
+      <Container className="min-h-screen px-0 pt-0 pb-28 md:pt-24">
         <animated.div style={props}>
           <Divider style={{ margin: '3em 0em', fontWeight: 800 }}>
             {banner || 'Life'}
