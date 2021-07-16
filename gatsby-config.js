@@ -76,5 +76,7 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-antd',
     'gatsby-plugin-postcss',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-robots-txt',
   ],
 };
