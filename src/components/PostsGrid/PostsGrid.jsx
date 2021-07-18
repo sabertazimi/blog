@@ -38,7 +38,7 @@ const rightFlexStyle = {
 const FlexContainer = ({ style, className, children, ...props }) => (
   <div
     style={{ ...style }}
-    className={`container h-full mx-auto my-0 ${className}`}
+    className={`flex container h-full mx-auto my-0 ${className}`}
     {...props}
   >
     {children}

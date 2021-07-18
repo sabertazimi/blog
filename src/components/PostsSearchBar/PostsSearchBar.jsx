@@ -31,7 +31,7 @@ const PostsSearchBar = () => {
 
   return (
     <AutoComplete
-      style={{ width: '100%' }}
+      className="flex-container"
       options={options}
       onSearch={handleSearch}
     >

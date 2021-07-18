@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Menu, Image } from 'antd';
+import { Menu } from 'antd';
 import { Colors, Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
@@ -25,18 +25,12 @@ const DesktopNav = ({ className, fixed }) => (
       key="home"
       className={
         fixed
-          ? 'transition scale-0 transform-gpu'
-          : 'transition scale-100 transform-gpu '
+          ? 'flex-container transition scale-0 transform-gpu'
+          : 'flex-container transition scale-100 transform-gpu '
       }
     >
       <Link to="/">
-        <Image
-          src={logo}
-          alt="Logo"
-          preview={false}
-          width="6rem"
-          height="6rem"
-        />
+        <img className="block w-full h-24" src={logo} alt="Logo" />
       </Link>
     </Menu.Item>
     {Routes.map((route) => (
@@ -44,8 +38,8 @@ const DesktopNav = ({ className, fixed }) => (
         key={route.id}
         className={
           fixed
-            ? 'transition -translate-x-28 transform-gpu'
-            : 'transition translate-x-0 transform-gpu '
+            ? 'flex-container transition -translate-x-28 transform-gpu'
+            : 'flex-container transition translate-x-0 transform-gpu '
         }
       >
         <Link
@@ -61,8 +55,8 @@ const DesktopNav = ({ className, fixed }) => (
       key="search"
       className={
         fixed
-          ? 'transition -translate-x-28 transform-gpu'
-          : 'transition translate-x-0 transform-gpu '
+          ? 'flex-container transition -translate-x-28 transform-gpu'
+          : 'flex-container transition translate-x-0 transform-gpu '
       }
       style={{ borderBottomColor: Colors.transparent }}
     >

@@ -1,24 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Row, Col, Menu, Popover, Image } from 'antd';
+import { Row, Col, Menu, Popover } from 'antd';
 import { BarsOutlined } from '@ant-design/icons';
 import { Colors, Routes } from '@config';
 import logo from 'images/logo-full.png';
 
 const MobileNav = ({ className }) => (
-  <Row type="flex" justify="space-around" align="middle" className={className}>
-    <Col span={12} offset={6}>
+  <Row type="flex" justify="center" align="middle" className={className}>
+    <Col span={8} offset={8} className="flex-container">
       <Link to="/">
-        <Image
-          src={logo}
-          alt="Logo"
-          preview={false}
-          width="6rem"
-          height="6rem"
-        />
+        <img className="block w-24 h-24" src={logo} alt="Logo" />
       </Link>
     </Col>
-    <Col span={6}>
+    <Col span={8} className="flex-container">
       <Popover
         placement="bottomRight"
         content={
