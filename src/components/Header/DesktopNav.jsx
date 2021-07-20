@@ -9,16 +9,10 @@ const DesktopNav = ({ className, fixed }) => (
   <Menu
     className={
       fixed
-        ? `transition bg-white border-transparent ${className}`
-        : `transition bg-gradient-primary border-transparent ${className}`
+        ? `fixed z-100 w-full font-extrabold transition bg-white border-transparent ${className}`
+        : `fixed z-100 w-full font-extrabold transition bg-gradient-primary border-transparent ${className}`
     }
     mode="horizontal"
-    style={{
-      position: 'fixed',
-      zIndex: 9999,
-      width: '100%',
-      fontWeight: 800,
-    }}
   >
     <Menu.Item
       key="home"

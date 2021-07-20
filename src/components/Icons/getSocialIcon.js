@@ -9,20 +9,20 @@ import {
 } from '@ant-design/icons';
 import { SocialType } from '@config';
 
-const getSocialIcon = (type, size = '2em') => {
+const getSocialIcon = (type) => {
   switch (type) {
     case SocialType.github:
-      return <GithubOutlined style={{ fontSize: size }} />;
+      return <GithubOutlined className="text-4xl" />;
     case SocialType.twitter:
-      return <TwitterOutlined style={{ fontSize: size }} />;
+      return <TwitterOutlined className="text-4xl" />;
     case SocialType.facebook:
-      return <FacebookOutlined style={{ fontSize: size }} />;
+      return <FacebookOutlined className="text-4xl" />;
     case SocialType.linkedin:
-      return <LinkedinOutlined style={{ fontSize: size }} />;
+      return <LinkedinOutlined className="text-4xl" />;
     case SocialType.weibo:
-      return <WeiboOutlined style={{ fontSize: size }} />;
+      return <WeiboOutlined className="text-4xl" />;
     default:
-      return <RocketOutlined style={{ fontSize: size }} />;
+      return <RocketOutlined className="text-4xl" />;
   }
 };
 
