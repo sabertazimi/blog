@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePostsMetadata } from '@hooks';
+import FlexContainer from '@components/FlexContainer';
 import PostCard from './PostCard';
 
 const flexStyle = {
@@ -34,16 +35,6 @@ const rightFlexStyle = {
   ...leftFlexStyle,
   maxWidth: '35%',
 };
-
-const FlexContainer = ({ style, className, children, ...props }) => (
-  <div
-    style={{ ...style }}
-    className={`flex container h-full mx-auto my-0 ${className}`}
-    {...props}
-  >
-    {children}
-  </div>
-);
 
 const PostsGrid = () => {
   const { posts } = usePostsMetadata();
