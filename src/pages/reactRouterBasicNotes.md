@@ -6,11 +6,11 @@ date: 2018-02-20
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
+  - React Router
+  - React
+  - JavaScript
   - Frontend Development
   - Web Development
-  - JavaScript
-  - React
-  - React Router
 ---
 
 # React Router Basic Notes

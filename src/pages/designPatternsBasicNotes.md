@@ -6,10 +6,10 @@ date: 2017-05-15
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
-  - Computer Science
-  - Development
   - Design Patterns
   - Architecture
+  - Development
+  - Computer Science
 ---
 
 # Design Patterns Basic Notes

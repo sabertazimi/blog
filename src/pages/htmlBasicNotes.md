@@ -6,9 +6,9 @@ date: 2017-06-11
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
+  - HTML
   - Frontend Development
   - Web Development
-  - HTML
 ---
 
 # HTML Basic Notes

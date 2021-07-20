@@ -6,10 +6,10 @@ date: 2017-09-15
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
-  - Computer Science
-  - GNU
-  - Linux
   - Vim
+  - Linux
+  - GNU
+  - Computer Science
 ---
 
 # Vim Basic Notes

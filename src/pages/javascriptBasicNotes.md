@@ -6,9 +6,9 @@ date: 2017-07-1
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
+  - JavaScript
   - Frontend Development
   - Web Development
-  - JavaScript
 ---
 
 # JavaScript Basic Notes

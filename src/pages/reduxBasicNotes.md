@@ -6,11 +6,11 @@ date: 2018-03-12
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
+  - Redux
+  - React
+  - JavaScript
   - Frontend Development
   - Web Development
-  - JavaScript
-  - React
-  - Redux
 ---
 
 # Redux Basic Notes

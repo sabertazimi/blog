@@ -6,9 +6,9 @@ date: 2017-08-23
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
-  - Computer Science
-  - GNU
   - Linux
+  - GNU
+  - Computer Science
 ---
 
 # Linux Basic Notes

@@ -6,10 +6,10 @@ date: 2018-01-3
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
+  - React
+  - JavaScript
   - Frontend Development
   - Web Development
-  - JavaScript
-  - React
 ---
 
 # React Basic Notes

@@ -6,10 +6,10 @@ date: 2018-03-05
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
-  - Computer Science
-  - GNU
-  - Linux
   - Git
+  - Linux
+  - GNU
+  - Computer Science
 ---
 
 # Git Basic Notes

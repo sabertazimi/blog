@@ -6,9 +6,9 @@ date: 2017-04-13
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
+  - CSS
   - Frontend Development
   - Web Development
-  - CSS
 ---
 
 # CSS Advanced Notes
