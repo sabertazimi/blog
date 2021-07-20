@@ -12,9 +12,8 @@ import * as styles from './ArticleFooter.module.css';
 const ArticleFooter = ({ post }) => (
   <div className={styles.clearfix}>
     <Button
-      type="primary"
       size="large"
-      className="w-full mb-6 md:mb-0 md:w-5/12 "
+      className="w-full mb-6 md:mb-0 md:w-5/12 button-primary"
       style={{
         float: 'left',
         height: '4em',
@@ -37,9 +36,8 @@ const ArticleFooter = ({ post }) => (
       </Link>
     </Button>
     <Button
-      type="primary"
       size="large"
-      className="w-full mb-6 md:mb-0 md:w-5/12 "
+      className="w-full mb-6 md:mb-0 md:w-5/12 button-primary"
       style={{
         float: 'right',
         height: '4em',

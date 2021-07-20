@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
-import { Colors, getRandomColor } from '@config';
+import { getRandomColor } from '@config';
 
 const ArticleHeader = ({ post }) => {
   const props = useSpring({
@@ -37,21 +37,15 @@ const ArticleHeader = ({ post }) => {
             <Link to="/tags/all">CS</Link>
           </Tag>
         )}
-        <h1 className="mx-0 mb-1 text-8xl" style={{ color: Colors.light }}>
+        <h1 className="mx-0 mb-1 text-8xl text-light">
           {post.title || 'Article'}
         </h1>
-        <Tag
-          className="mb-3"
-          color={Colors.black}
-        >
+        <Tag className="mb-3 tag-black">
           <div className="text-base font-extrabold">
             Posted on {new Date(post.date).toDateString() || 'Nowadays'}
           </div>
         </Tag>
-        <Tag
-          className="mb-3"
-          color={Colors.black}
-        >
+        <Tag className="mb-3 tag-black">
           <div className="text-base font-extrabold">
             ({post.timeToRead} minutes)
           </div>

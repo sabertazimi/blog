@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Row, Col, Menu, Popover } from 'antd';
 import { BarsOutlined } from '@ant-design/icons';
-import { Colors, Routes } from '@config';
+import { Routes } from '@config';
 import logo from 'images/logo-full.png';
 
 const MobileNav = ({ className }) => (
@@ -17,13 +17,8 @@ const MobileNav = ({ className }) => (
         placement="bottomRight"
         content={
           <Menu
+            className="w-full text-3xl font-extrabold text-center min-w-400"
             mode="vertical"
-            style={{
-              width: '100%',
-              minWidth: '400px',
-              textAlign: 'center',
-              fontWeight: 800,
-            }}
           >
             {Routes.map((route) => (
               <Menu.Item key={route.id}>
@@ -34,7 +29,7 @@ const MobileNav = ({ className }) => (
         }
         trigger="click"
       >
-        <BarsOutlined style={{ fontSize: '2em', color: Colors.primary }} />
+        <BarsOutlined className="text-5xl text-primary" />
       </Popover>
     </Col>
   </Row>

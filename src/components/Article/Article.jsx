@@ -1,5 +1,4 @@
 import React from 'react';
-import { Colors } from '@config';
 import Icons from '@components/Icons';
 import Container from '@components/Container';
 import SocialGroup from '@components/SocialGroup';
@@ -22,10 +21,7 @@ const Article = ({ post }) => {
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={postMetadata} />
         <ArticleDivider>
-          <Icons.Comment
-            className="text-2xl"
-            style={{ color: Colors.primary }}
-          />
+          <Icons.Comment className="text-2xl text-primary" />
         </ArticleDivider>
         <ArticleComments />
         <SocialGroup />

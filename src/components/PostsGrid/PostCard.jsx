@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
-import { Colors, getRandomColor } from '@config';
+import { getRandomColor } from '@config';
 import Container from '@components/Container';
 
 const PostCard = ({ post }) => {
@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
         >
           {post.title || 'Article'}
         </Typography.Title>
-        <Tag className="mb-3" color={Colors.black}>
+        <Tag className="mb-3 tag-black">
           <div className="text-base font-extrabold">
             Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
           </div>
@@ -38,7 +38,7 @@ const PostCard = ({ post }) => {
             paragraph={{ rows: Math.min(Math.floor(post.timeToRead / 2), 10) }}
           />
           <Button
-            type="primary"
+            className="button-primary"
             shape="circle"
             size="large"
             style={{

@@ -16,7 +16,10 @@
     @apply bg-gradient-to-r from-indigo-700 to-red-500 !important;
   }
   .button-primary {
-    @apply border-primary bg-primary hover:bg-secondary !important;
+    @apply text-light border-primary bg-primary hover:bg-secondary !important;
+  }
+  .tag-black {
+    @apply bg-black border-black text-light !important;
   }
   .flex-container {
     @apply flex justify-center items-center content-center !important;

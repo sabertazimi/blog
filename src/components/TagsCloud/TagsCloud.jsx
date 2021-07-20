@@ -26,7 +26,7 @@ const TagsCloud = ({ tags, activeTag }) => {
           <Tag
             key={tag}
             className="mb-3"
-            color={activeTag ? Colors.grey : getRandomColor()}
+            color={activeTag ? Colors.gray : getRandomColor()}
           >
             <Link className="text-lg font-extrabold" to={`/tags/${tag}`}>
               {tag} &nbsp; {tags[tag]}
