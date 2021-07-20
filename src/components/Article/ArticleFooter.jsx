@@ -1,65 +1,33 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  HomeOutlined,
-} from '@ant-design/icons';
-import { Colors } from '@config';
-import * as styles from './ArticleFooter.module.css';
+import FlexContainer from '@components/FlexContainer';
 
 const ArticleFooter = ({ post }) => (
-  <div className={styles.clearfix}>
+  <FlexContainer className="justify-between ">
     <Button
       size="large"
-      className="w-full mb-6 md:mb-0 md:w-5/12 button-primary"
-      style={{
-        float: 'left',
-        height: '4em',
-        padding: '0.3em 1em',
-        borderRadius: 0,
-        fontSize: '1.5em',
-        color: Colors.light,
-      }}
+      className="w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
     >
-      {post.prevPost ? (
-        <ArrowLeftOutlined style={{ marginRight: '10px' }} />
-      ) : (
-        <HomeOutlined style={{ marginRight: '10px' }} />
-      )}
       <Link
+        className="font-extrabold text-light"
         to={post.prevPost ? `${post.prevPost.slug}` : '/posts'}
-        style={{ fontWeight: 800, color: Colors.light }}
       >
         {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
       </Link>
     </Button>
     <Button
       size="large"
-      className="w-full mb-6 md:mb-0 md:w-5/12 button-primary"
-      style={{
-        float: 'right',
-        height: '4em',
-        padding: '0.3em 1em',
-        borderRadius: 0,
-        fontSize: '1.5em',
-        color: Colors.light,
-      }}
+      className="w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
     >
       <Link
+        className="font-extrabold text-light"
         to={post.nextPost ? `${post.nextPost.slug}` : '/posts'}
-        style={{ fontWeight: 800, color: Colors.light }}
       >
-        {post.nextPost ? `${post.nextPost.title}` : 'Back to Home'}
+        {post.nextPost ? `${post.nextPost.title}` : 'Back to HomePage'}
       </Link>
-      {post.nextPost ? (
-        <ArrowRightOutlined style={{ marginRight: '10px' }} />
-      ) : (
-        <HomeOutlined style={{ marginLeft: '10px' }} />
-      )}
     </Button>
-  </div>
+  </FlexContainer>
 );
 
 export default ArticleFooter;
