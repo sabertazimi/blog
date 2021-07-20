@@ -5735,25 +5735,27 @@ const seo = {
   description: 'This is an awesome site that you definitely should check out.',
   url: 'https://www.mydomain.com/about',
   image: 'https://mydomain.com/images/home/logo.png',
-}
+};
 
-<Helmet
-  title={`${seo.title} | Code Mochi`}
-  meta={[
-    {
-      name: 'description',
-      property: 'og:description',
-      content: seo.description,
-    },
-    { property: 'og:title', content: `${seo.title} | Code Mochi` },
-    { property: 'og:url', content: seo.url },
-    { property: 'og:image', content: seo.image },
-    { property: 'og:image:type', content: 'image/jpeg' },
-    { property: 'twitter:image:src', content: seo.image },
-    { property: 'twitter:title', content: `${seo.title} | Code Mochi` },
-    { property: 'twitter:description', content: seo.description },
-  ]}
-/>
+return (
+  <Helmet
+    title={`${seo.title} | Code Mochi`}
+    meta={[
+      {
+        name: 'description',
+        property: 'og:description',
+        content: seo.description,
+      },
+      { property: 'og:title', content: `${seo.title} | Code Mochi` },
+      { property: 'og:url', content: seo.url },
+      { property: 'og:image', content: seo.image },
+      { property: 'og:image:type', content: 'image/jpeg' },
+      { property: 'twitter:image:src', content: seo.image },
+      { property: 'twitter:title', content: `${seo.title} | Code Mochi` },
+      { property: 'twitter:description', content: seo.description },
+    ]}
+  />
+);
 ```
 
 ## Network
