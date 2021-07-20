@@ -13,7 +13,7 @@ const ColorPalette = {
   grape: '#ae3ec9',
   violet: '#7048e8',
   indigo: '#4263eb',
-  blue: '#1c7ed6',
+  blue: '#1890ff',
   cyan: '#1098ad',
   teal: '#0ca678',
   green: '#37b24d',
