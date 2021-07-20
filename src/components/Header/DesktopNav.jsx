@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Menu } from 'antd';
-import { Colors, Routes } from '@config';
+import { Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
 
@@ -9,15 +9,14 @@ const DesktopNav = ({ className, fixed }) => (
   <Menu
     className={
       fixed
-        ? `transition bg-white ${className}`
-        : `transition bg-gradient-primary ${className}`
+        ? `transition bg-white border-transparent ${className}`
+        : `transition bg-gradient-primary border-transparent ${className}`
     }
     mode="horizontal"
     style={{
       position: 'fixed',
       zIndex: 9999,
       width: '100%',
-      borderBottomColor: Colors.transparent,
       fontWeight: 800,
     }}
   >
@@ -43,8 +42,9 @@ const DesktopNav = ({ className, fixed }) => (
         }
       >
         <Link
-          className="transition-none"
-          style={{ color: fixed ? Colors.dark : Colors.light }}
+          className={
+            fixed ? 'transition-none text-dark' : 'transition-none text-light'
+          }
           to={route.path}
         >
           {route.name}
@@ -55,10 +55,9 @@ const DesktopNav = ({ className, fixed }) => (
       key="search"
       className={
         fixed
-          ? 'flex-container transition -translate-x-28 transform-gpu'
-          : 'flex-container transition translate-x-0 transform-gpu '
+          ? 'flex-container border-transparent transition -translate-x-28 transform-gpu'
+          : 'flex-container border-transparent transition translate-x-0 transform-gpu'
       }
-      style={{ borderBottomColor: Colors.transparent }}
     >
       <PostsSearchBar />
     </Menu.Item>

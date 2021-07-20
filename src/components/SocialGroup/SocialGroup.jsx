@@ -23,9 +23,7 @@ const SocialGroup = () => {
             key={social}
             type={social}
             url={`${SocialQuery[social]}${url}`}
-            style={{
-              backgroundColor: Colors[social],
-            }}
+            color={Colors[social]}
           />
         ))}
     </Space>

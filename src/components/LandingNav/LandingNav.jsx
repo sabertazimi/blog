@@ -1,19 +1,15 @@
 import React, { useState, useCallback } from 'react';
-import { Colors } from '@config';
+import { Routes } from '@config';
 import Icons from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
 import * as styles from './LandingNav.module.css';
 
-const LandingNav = ({ onExpand }) => {
+const LandingNav = () => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = useCallback(() => {
-    if (onExpand) {
-      onExpand(!expanded);
-    }
-
     setExpanded((expanded) => !expanded);
-  }, [expanded, onExpand]);
+  }, []);
 
   return (
     <React.Fragment>
@@ -23,18 +19,11 @@ const LandingNav = ({ onExpand }) => {
           transform: expanded ? 'translateX(0)' : 'translateX(-100%)',
         }}
       >
-        <LandingNavLink title="View Posts" to="/posts">
-          Posts
-        </LandingNavLink>
-        <LandingNavLink title="View Tags" to="/tags">
-          Tags
-        </LandingNavLink>
-        <LandingNavLink title="View Books" to="/books">
-          Books
-        </LandingNavLink>
-        <LandingNavLink title="About Me" to="/about">
-          About
-        </LandingNavLink>
+        {Routes.map((route) => (
+          <LandingNavLink key={route.id} title={route.title} to={route.path}>
+            {route.name}
+          </LandingNavLink>
+        ))}
       </nav>
       <div
         role="button"
@@ -44,28 +33,17 @@ const LandingNav = ({ onExpand }) => {
         onKeyDown={() => {}}
       >
         {expanded ? (
-          <Icons.Close
-            className="text-lg md:text-4xl"
-            style={{
-              fontWeight: 800,
-              color: Colors.white,
-            }}
-          />
+          <Icons.Close className="text-lg font-extrabold md:text-4xl text-light" />
         ) : (
-          <Icons.Hamburger
-            className="text-lg md:text-4xl"
-            style={{
-              fontWeight: 800,
-              color: Colors.white,
-            }}
-          />
+          <Icons.Hamburger className="text-lg font-extrabold md:text-4xl text-light" />
         )}
       </div>
       <div
-        className={styles.overlay}
-        style={{
-          backgroundColor: expanded ? Colors.overlay : Colors.transparent,
-        }}
+        className={
+          expanded
+            ? `bg-black bg-opacity-80 ${styles.overlay}`
+            : `bg-black bg-opacity-0 ${styles.overlay}`
+        }
       />
     </React.Fragment>
   );
