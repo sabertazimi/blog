@@ -11,21 +11,12 @@ const ArticleHeader = ({ post }) => {
   });
 
   return (
-    <div
-      className="bg-gradient-primary"
-      style={{
-        width: '100%',
-        padding: '10em 8em',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <div className="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary">
       <animated.div style={props}>
         {post.tags ? (
           post.tags.map((tag) => {
             return (
-              <Tag key={tag} className="mb-3" color={getColorByName(tag)}>
+              <Tag key={tag} color={getColorByName(tag)}>
                 <Link className="text-base font-extrabold" to={`/tags/${tag}`}>
                   {tag}
                 </Link>
@@ -33,21 +24,21 @@ const ArticleHeader = ({ post }) => {
             );
           })
         ) : (
-          <Tag className="mb-3 bg-primary border-primary">
+          <Tag className="bg-primary border-primary">
             <Link className="text-light" to="/tags/all">
               CS
             </Link>
           </Tag>
         )}
-        <h1 className="mx-0 mb-1 text-8xl text-light">
+        <h1 className="my-8 text-8xl text-light">
           {post.title || 'Article'}
         </h1>
-        <Tag className="mb-3 tag-black">
+        <Tag className="tag-black">
           <div className="text-base font-extrabold">
             Posted on {new Date(post.date).toDateString() || 'Nowadays'}
           </div>
         </Tag>
-        <Tag className="mb-3 tag-black">
+        <Tag className="tag-black">
           <div className="text-base font-extrabold">
             ({post.timeToRead} minutes)
           </div>

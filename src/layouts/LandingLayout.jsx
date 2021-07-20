@@ -11,21 +11,10 @@ const LandingLayout = ({ children }) => {
 
   return (
     <animated.div
-      className="text-light"
+      className="flex-col w-full h-screen p-0 m-0 overflow-x-hidden overflow-y-auto bg-center bg-no-repeat bg-cover text-light flex-container"
       style={{
         ...props,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        width: '100%',
-        height: '100vh',
-        margin: 0,
-        padding: 0,
-        overflowX: 'hidden',
-        overflowY: 'auto',
-        background: `url("${landingImage}") center no-repeat`,
-        backgroundSize: 'cover',
+        backgroundImage: `url("${landingImage}")`,
       }}
     >
       {children}

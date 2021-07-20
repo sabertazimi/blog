@@ -2,7 +2,7 @@
 .markdown-body {
   text-size-adjust: 100%;
   line-height: 1.5;
-  color: #212529;
+  color: #343a40; /* dark for color palette */
   font-size: 16px;
   word-wrap: break-word;
   font-family: 'Spectral', 'Noto Serif SC', 'Noto Sans SC', -apple-system,
@@ -41,7 +41,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: #1890ff;
+  background-color: #1890ff; /* primary for color palette */
   content: '';
   transition: all 0.2s ease-in-out;
 }
@@ -66,7 +66,7 @@
   box-sizing: content-box;
   max-width: 100%;
   border-style: none;
-  background-color: #fff;
+  background-color: #fff; /* white for color palette */
 }
 
 .markdown-body img[align='right'] {
@@ -89,7 +89,7 @@
   margin-bottom: 20px;
   font-weight: 800;
   line-height: 1.8;
-  color: #343a40;
+  color: #343a40; /* dark for color palette */
 }
 
 .markdown-body h1::before,
@@ -140,7 +140,11 @@
   border-radius: 2px;
   width: auto;
   height: 3px;
-  background: linear-gradient(to right, #3b5998, #54c8ff);
+  background: linear-gradient(
+    to right,
+    #1890ff,
+    #40a9ff
+  ); /* primary to secondary */
   content: '';
 }
 
@@ -151,17 +155,17 @@
 
 .markdown-body h2 {
   margin-top: 2em;
-  color: #2185d0;
+  color: #1890ff; /* primary for color palette */
   font-size: 3em;
 }
 
 .markdown-body h3 {
-  color: #f76707;
+  color: #f76707; /* orange for color palette */
   font-size: 2em;
 }
 
 .markdown-body h4 {
-  color: #7048e8;
+  color: #7048e8; /* violet for color palette */
   font-size: 1.5em;
 }
 
@@ -262,24 +266,24 @@
   font-weight: 400;
   line-height: 1.8;
   padding: 6px 13px;
-  border: 1px solid #dfe2e5;
+  border: 1px solid #dfe2e5; /* separate color for table */
 }
 
 .markdown-body table tr {
-  background-color: #fff;
-  border-top: 1px solid #c6cbd1;
+  background-color: #fff; /* white for color palette */
+  border-top: 1px solid #c6cbd1; /* separate color for table */
 }
 
 .markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
+  background-color: #f6f8fa; /* separate color for table */
 }
 
 .markdown-body blockquote {
   margin: 0;
   margin-bottom: 20px;
   padding: 0 1em;
-  color: #6a737d;
-  border-left: 0.25em solid #1890ff;
+  color: #767676; /* gray for color palette */
+  border-left: 0.25em solid #1890ff; /* primary for color palette */
 }
 
 .markdown-body blockquote > :first-child {
@@ -297,7 +301,7 @@
   overflow: hidden;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #54c8ff;
+  border-bottom: 1px solid #1098ad; /* cyan for color palette */
 }
 
 .markdown-body hr::before {
@@ -319,5 +323,5 @@
   margin-top: 0;
   margin-bottom: 20px;
   border-radius: 0 0 6px 6px;
-  background: #2d2d2d !important;
+  background: #343a40 !important; /* dark for color palette */
 }

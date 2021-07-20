@@ -5,7 +5,7 @@ import { Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
 
-const DesktopNav = ({ className, fixed }) => (
+const DesktopNav = ({ fixed, className = '' }) => (
   <Menu
     className={
       fixed

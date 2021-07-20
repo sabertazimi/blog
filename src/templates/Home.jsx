@@ -17,11 +17,8 @@ const Home = () => {
         </Helmet>
       </ErrorBoundary>
       <LandingLayout>
-        <TypingTitle
-          titles={landingTitles}
-          style={{ padding: '3em 0', height: 'auto' }}
-        />
         <LandingNav />
+        <TypingTitle titles={landingTitles} />
       </LandingLayout>
     </div>
   );

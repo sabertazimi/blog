@@ -5,7 +5,7 @@ const TypingTitle = ({
   titles = [],
   speed = 50,
   loop = true,
-  style = {},
+  className = '',
 } = {}) => {
   useEffect(() => {
     const options = {
@@ -26,16 +26,7 @@ const TypingTitle = ({
 
   return (
     <div
-      className="typing-title-container text-5xl lg:text-9xl"
-      style={{
-        width: '100%',
-        height: '100%',
-        marginTop: 0,
-        paddingTop: 0,
-        fontWeight: 800,
-        textAlign: 'center',
-        ...style,
-      }}
+      className={`w-full h-auto px-0 py-0 mx-auto my-0 text-5xl font-extrabold text-center typing-title-container lg:text-9xl ${className}`}
     >
       <span className="typing-title" />
     </div>

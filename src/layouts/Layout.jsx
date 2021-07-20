@@ -14,7 +14,7 @@ const Layout = ({ banner, children }) => {
       <Header />
       <Container className="min-h-screen px-0 pt-0 pb-28 md:pt-24">
         <animated.div style={props}>
-          <Divider style={{ margin: '3em 0em', fontWeight: 800 }}>
+          <Divider className="mx-0 my-12 font-extrabold">
             {banner || 'Life'}
           </Divider>
           {children}

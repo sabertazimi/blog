@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider } from 'antd';
 
 const ArticleDivider = ({ children }) => (
-  <Divider style={{ margin: '2em 0', fontWeight: 800 }}>{children}</Divider>
+  <Divider className="mx-0 my-8 font-extrabold">{children}</Divider>
 );
 
 export default ArticleDivider;
