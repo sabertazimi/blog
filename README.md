@@ -30,17 +30,23 @@ yaml front + markdown body
 ```markdown
 ---
 layout: post
-title: 'JavaScript Basic Notes'
+title: 'React Redux Basic Notes'
 subtitle: 'Daily I learned'
-author: 'sabertazimi'
-date: 2019-02-29
+author: 'sabertaz'
+date: 2022-02-03
 tags:
-  - Web
-  - Front End
+  - Redux
+  - React
   - JavaScript
+  - Frontend Development
+  - Web Development
 ---
 
-content ...
+# React Redux Basic Notes
+
+## Introduction
+
+<... more contents>
 ```
 
 ## Installation
