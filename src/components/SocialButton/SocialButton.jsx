@@ -8,7 +8,7 @@ const SocialButton = ({ type, url, color, className, ...props }) => (
     type="link"
     href={`${url}`}
     icon={Icons.getSocialIcon(type)}
-    className={`text-center text-white rounded-none ${className}`}
+    className={`text-center text-light rounded-none ${className}`}
     style={{ backgroundColor: color }}
     {...props}
   />

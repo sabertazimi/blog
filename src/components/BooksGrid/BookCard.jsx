@@ -1,13 +1,13 @@
 import React from 'react';
 import { Badge, Card } from 'antd';
 import { BookOutlined } from '@ant-design/icons';
-import { getRandomColor } from '@config';
+import { getColorByName } from '@config';
 
 const BookCard = ({ data }) => {
   const { title, url, author, description } = data;
 
   return (
-    <Badge.Ribbon text={title} color={getRandomColor()}>
+    <Badge.Ribbon text={title} color={getColorByName(title)}>
       <Card
         hoverable
         title={

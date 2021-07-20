@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Badge } from 'antd';
 import { StarOutlined, BranchesOutlined } from '@ant-design/icons';
-import { getRandomColor } from '@config';
+import { getColorByName } from '@config';
 
 const GithubRepoCard = ({ repo }) => (
-  <Badge.Ribbon text={repo.name} color={getRandomColor()}>
+  <Badge.Ribbon text={repo.name} color={getColorByName(repo.name)}>
     <Card
       className="mt-8"
       hoverable

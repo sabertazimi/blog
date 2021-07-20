@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
-import { getRandomColor } from '@config';
+import { getColorByName } from '@config';
 
 const ArticleHeader = ({ post }) => {
   const props = useSpring({
@@ -25,7 +25,7 @@ const ArticleHeader = ({ post }) => {
         {post.tags ? (
           post.tags.map((tag) => {
             return (
-              <Tag key={tag} className="mb-3" color={getRandomColor()}>
+              <Tag key={tag} className="mb-3" color={getColorByName(tag)}>
                 <Link className="text-base font-extrabold" to={`/tags/${tag}`}>
                   {tag}
                 </Link>
@@ -33,8 +33,10 @@ const ArticleHeader = ({ post }) => {
             );
           })
         ) : (
-          <Tag className="mb-3" color={getRandomColor()}>
-            <Link to="/tags/all">CS</Link>
+          <Tag className="mb-3 bg-primary border-primary">
+            <Link className="text-light" to="/tags/all">
+              CS
+            </Link>
           </Tag>
         )}
         <h1 className="mx-0 mb-1 text-8xl text-light">

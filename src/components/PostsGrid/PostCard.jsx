@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
-import { getRandomColor } from '@config';
+import { getColorByName } from '@config';
 import Container from '@components/Container';
 
 const PostCard = ({ post }) => {
@@ -17,7 +17,7 @@ const PostCard = ({ post }) => {
   return (
     <Container className="px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2">
       <animated.div style={props}>
-        <Tag className="mb-3" color={getRandomColor()}>
+        <Tag className="mb-3" color={getColorByName(tagName)}>
           <Link className="text-base font-extrabold" to={`/tags/${tagName}`}>
             {tagName}
           </Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Card, Badge, Typography } from 'antd';
 import { useSiteMetadata } from '@hooks';
-import { getRandomColor } from '@config';
+import { getColorByName } from '@config';
 import GithubCardHeader from './GithubCardHeader';
 import GithubCardContent from './GithubCardContent';
 import GithubRepoCard from './GithubRepoCard';
@@ -12,7 +12,10 @@ const GithubCard = ({ github }) => {
 
   if (profile && repos) {
     return (
-      <Badge.Ribbon text={profile.username} color={getRandomColor()}>
+      <Badge.Ribbon
+        text={profile.username}
+        color={getColorByName(profile.username)}
+      >
         <Card hoverable title={<GithubCardHeader profile={profile} />}>
           <Card.Meta
             avatar={<Avatar src={profile.avatar} />}
