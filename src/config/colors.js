@@ -25,7 +25,6 @@ const ColorPalette = {
 const getColorByName = (name = "") => {
   const palette = Object.keys(ColorPalette);
   const colorIdx = name.length % palette.length;
-  console.log(colorIdx);
   return ColorPalette[palette[colorIdx]];
 };
 
