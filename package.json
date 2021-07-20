@@ -14,7 +14,9 @@
     "build:gh-pages": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "format": "prettier --write src/**/*.{js,jsx,md,mdx,css}"
+    "format": "prettier --write src/**/*.{js,jsx,md,mdx,css}",
+    "audit": "npm audit --registry https://registry.npmjs.org",
+    "audit:fix": "npm audit fix --registry https://registry.npmjs.org"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
