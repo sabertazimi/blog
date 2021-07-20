@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import { Visibility } from 'semantic-ui-react';
+import React, { useState, useRef, useCallback } from 'react';
+import { useVisibility } from '@hooks';
 import MobileNav from './MobileNav';
 import DesktopNav from './DesktopNav';
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
+  const headerRef = useRef();
 
-  const hideFixedNav = () => setNavFixed(false);
-  const showFixedNav = () => setNavFixed(true);
+  const hideFixedNav = useCallback(() => {
+    setNavFixed(false);
+  }, []);
+
+  const showFixedNav = useCallback(() => {
+    setNavFixed(true);
+  }, []);
+
+  useVisibility({
+    ref: headerRef,
+    onBottomPassed: showFixedNav,
+    onBottomPassedReverse: hideFixedNav,
+  });
 
   return (
-    <Visibility
-      onBottomPassed={showFixedNav}
-      onBottomPassedReverse={hideFixedNav}
-      once={false}
-    >
+    <div ref={headerRef}>
       <MobileNav className="md:hidden" />
       <DesktopNav className="hidden md:visible md:flex" fixed={navFixed} />
-    </Visibility>
+    </div>
   );
 };
 
