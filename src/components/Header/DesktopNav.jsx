@@ -9,8 +9,8 @@ const DesktopNav = ({ fixed }) => (
   <Menu
     className={
       fixed
-        ? 'fixed z-100 w-full font-extrabold transition bg-white border-transparent hidden md:visible md:flex'
-        : 'fixed z-100 w-full font-extrabold transition bg-gradient-primary border-transparent hidden md:visible md:flex'
+        ? 'fixed z-100 w-full font-extrabold transition transform-gpu bg-white border-transparent hidden md:visible md:flex'
+        : 'fixed z-100 w-full font-extrabold transition transform-gpu bg-gradient-primary border-transparent hidden md:visible md:flex'
     }
     mode="horizontal"
   >

@@ -41,8 +41,8 @@ const LandingNav = () => {
       <div
         className={
           expanded
-            ? 'fixed top-0 left-0 z-10 block w-full h-full transition-all bg-black bg-opacity-80'
-            : 'fixed top-0 left-0 z-10 block w-full h-full transition-all bg-black bg-opacity-0'
+            ? 'fixed top-0 left-0 z-10 block w-full h-full transition-all transform-gpu bg-black bg-opacity-80'
+            : 'fixed top-0 left-0 z-10 block w-full h-full transition-all transform-gpu bg-black bg-opacity-0'
         }
       />
     </React.Fragment>
