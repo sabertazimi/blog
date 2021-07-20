@@ -22,13 +22,14 @@ const ColorPalette = {
   orange: '#f76707',
 };
 
-const getColorByName = (name = "") => {
+const hashString = (name = '') => {
+  return name.length;
+};
+
+const getColorByName = (name = '') => {
   const palette = Object.keys(ColorPalette);
-  const colorIdx = name.length % palette.length;
+  const colorIdx = hashString(name) % palette.length;
   return ColorPalette[palette[colorIdx]];
 };
 
-export {
-  Colors,
-  getColorByName,
-};
+export { Colors, getColorByName };
