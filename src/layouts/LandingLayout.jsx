@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Colors } from '@config';
 import landingImage from '@images/landing.jpg';
 
 const LandingLayout = ({ children }) => {
@@ -12,6 +11,7 @@ const LandingLayout = ({ children }) => {
 
   return (
     <animated.div
+      className="text-light"
       style={{
         ...props,
         display: 'flex',
@@ -26,7 +26,6 @@ const LandingLayout = ({ children }) => {
         overflowY: 'auto',
         background: `url("${landingImage}") center no-repeat`,
         backgroundSize: 'cover',
-        color: Colors.light,
       }}
     >
       {children}
