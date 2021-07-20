@@ -17,7 +17,7 @@ const MobileNav = ({ className }) => (
         placement="bottomRight"
         content={
           <Menu
-            className="w-full text-3xl font-extrabold text-center min-w-400"
+            className="w-full max-w-md text-3xl font-extrabold text-center min-w-xs"
             mode="vertical"
           >
             {Routes.map((route) => (
