@@ -12,7 +12,7 @@ tags:
   - Git
 ---
 
-# Git Basic Note
+# Git Basic Notes
 
 ## Basic
 
@@ -33,7 +33,7 @@ git config --global color.ui true
 ```
 
 ```bash
-git config --global commit.template $HOME/.gitmsg.md
+git config --global commit.template $HOME/.GitCommit.md
 git config --global push.default simple
 git config --global pull.rebase true
 git config --global rebase.autoStash true
@@ -76,7 +76,7 @@ git help config
 - Modified
 - Staged
 
-### .gitignore
+### Git Ignore File
 
 文件 .gitignore 的格式规范如下：
 
@@ -94,7 +94,7 @@ git help config
 # but do track lib.a, even though you're ignoring .a files above
 !lib.a
 
-# only ignore the TODO file in the current directory, not subdir/TODO
+# only ignore the TODO file in the current directory, not subDir/TODO
 /TODO
 
 # ignore all files in the build/ directory
@@ -107,7 +107,7 @@ doc/*.txt
 doc/**/*.pdf
 ```
 
-### diff
+### Diff
 
 查看未暂存(un-staged)差异
 
@@ -127,7 +127,7 @@ git diff --staged
 git diff --check
 ```
 
-### add
+### Add
 
 - 交互式的选择 add 特定部分
 
@@ -135,7 +135,7 @@ git diff --check
 git add -p
 ```
 
-### commit
+### Commit
 
 - -a: 跳过暂存阶段(git add)
 - -v: 显示详细 diff 信息
@@ -150,22 +150,18 @@ git commit -a -v
 git commit --amend -a -v
 ```
 
-#### 提交信息格式
+#### Commit Style Guide
 
-```html
-firstline -
-<type
-  >(<scope
-    >):
-    <subject>
-      (emptyline)
-      <body>
-        (emptyline)
-        <footer></footer></body></subject></scope
-></type>
+```md
+firstLine - <type>(<scope>): <subject>
+(emptyLine)
+
+<body>
+  (emptyLine)
+<footer>
 ```
 
-##### Message Subject(First Line)
+##### Message Subject
 
 no more than 50 characters
 
@@ -205,7 +201,7 @@ no more than 50 characters
   To migrate your project, change all the commands, where you use `--port-runner`
   to `--runner-port`.
 
-### stash
+### Stash
 
 - git stash: 备份当前的工作区的内容，将当前的工作区内容保存到 Git 栈
 - git stash apply/pop: 从 Git 栈中读取最近一次保存的内容，恢复工作区的相关内容
@@ -214,11 +210,18 @@ no more than 50 characters
 - git stash clear: 清空 Git 栈
 
 ```bash
-# git stash unapply
+# git stash popup
 git stash show -p stash@{0} | git apply -R
 ```
 
-### revert
+Pop a single file:
+
+```bash
+git restore -s stash@{0} -- <filename>
+git checkout stash@{0} -- <filename>
+```
+
+### Revert
 
 - 重新提交前 n 次的 commit
 
@@ -226,7 +229,7 @@ git stash show -p stash@{0} | git apply -R
 git revert -n
 ```
 
-### remove
+### Remove
 
 完全删除文件
 
@@ -240,13 +243,13 @@ git rm filename
 git rm --cached filename
 ```
 
-### move
+### Move
 
 ```bash
 git mv old_path new_path
 ```
 
-### log
+### Log
 
 - -p: 打印 diff 差异信息
 - -n: n 为十进制数字,显示最近 n 次信息
@@ -264,7 +267,7 @@ git mv old_path new_path
 git log -p --stat --graph --pretty=format:"%h - %an, %ar : %s" --since=2.weeks path_name
 ```
 
-#### pretty-format
+#### Pretty Format
 
 | 选项 | 说明                                       |
 | :--- | :----------------------------------------- |
@@ -284,7 +287,7 @@ git log -p --stat --graph --pretty=format:"%h - %an, %ar : %s" --since=2.weeks p
 | %cr  | 提交日期,按多久以前的方式显示              |
 | %s   | 提交说明                                   |
 
-#### 常用选项
+#### Log Options
 
 | 选项               | 说明                                                    |
 | :----------------- | :------------------------------------------------------ |
@@ -299,7 +302,7 @@ git log -p --stat --graph --pretty=format:"%h - %an, %ar : %s" --since=2.weeks p
 | --before=/--until= | 限制日志时间 "2008-01-15" "2 years 1 day 3 minutes ago" |
 | --help             |
 
-### reflog
+### Reflog
 
 `git reflog show` is an alias for
 `git log -g --abbrev-commit --pretty=oneline`.
@@ -309,7 +312,7 @@ git reflog
 git reset HEAD@{index}
 ```
 
-### show
+### Show
 
 - 查看其他分支 或 提交点的文件状态
 
@@ -317,7 +320,7 @@ git reset HEAD@{index}
 git show branchName/commitHash:fileName
 ```
 
-### remote
+### Remote
 
 添加与删除远程仓库源
 
@@ -357,14 +360,14 @@ git push origin --delete [remote-branch-name]
 git config --global credential.helper store
 ```
 
-### tag
+### Tag
 
 列出标记及其信息
 
 ```bash
 git tag
 git tag -l "v1.8-"
-git show <tagname(v1.4)>
+git show <tagName(v1.4)>
 ```
 
 创建标签:
@@ -375,24 +378,24 @@ git show <tagname(v1.4)>
 创建附注(annotated)标签
 
 ```bash
-git tag -a <tagname(v1.4)> [commit序列]
+git tag -a <tagName(v1.4)> [commit序列]
 ```
 
 创建轻量(lightweight)标签
 
 ```bash
-git tag <tagname(v1.4)> [commit序列]
+git tag <tagName(v1.4)> [commit序列]
 ```
 
 共享标签至远程库
 
 ```bash
-git push [remote-name] <tagname>
+git push [remote-name] <tagName>
 git push [remote-name] --tags
 git push --follow-tags
 ```
 
-### alias
+### Alias
 
 - !: 执行外部命令
 
@@ -408,11 +411,11 @@ git config --global alias.last 'log -1 HEAD'
 git config --global alias.visual '!gitk'
 ```
 
-### merge
+### Merge
 
 合并的结果是生成一个新的快照(并提交)(新的提交对象)
 
-### rebase
+### Rebase
 
 切换到工作分支,编码开发新特性
 
@@ -425,7 +428,7 @@ git checkout feature-branch
 ```bash
 git rebase master
 
-git rebase [basebranch] [topicbranch]
+git rebase [baseBranch] [topicBranch]
 ```
 
 切换到主分支,合并特性分支
@@ -435,7 +438,7 @@ git checkout master
 git merge feature-branch
 ```
 
-pull with auto reabse and auto stash
+pull with auto rebase and auto stash
 
 ```bash
 git pull --rebase --autostash
@@ -457,6 +460,7 @@ git branch <new-branch-name>
 
 ```bash
 git branch -d <branch-name>
+git push origin --delete <remote-branch-name>
 ```
 
 切换分支
@@ -477,14 +481,14 @@ git checkout -b <new-branch-name>
 git branch -v(详细信息) -vv(详细远程信息) --merged(显示合并至当前分支的分支) --no-merged(显示未合并至当前分支的分支)
 ```
 
-#### remote branch
+#### Remote Branch
 
 本地分支跟踪远程分支(在此本地分支上运行 git pull 自动抓取),2 种方式:
 
 - 设置当前所在本地分支跟踪某一远程分支
 
 ```bash
-git branch -u [remotename]/[branch]
+git branch -u [remoteName]/[branch]
 ```
 
 - 创建并切换至新的本地分支(跟踪某一远程分支)
@@ -494,10 +498,18 @@ git branch -u [remotename]/[branch]
 ```bash
 git checkout --track [new-local-branch]
 
-git checkout -b [new-local-branch] [remotename]/[branch]
+git checkout -b [new-local-branch] [remoteName]/[branch]
+```
+
+- Delete remote branch
+
+```bash
+git push origin --delete [remote-branch-name]
 ```
 
 ### Advanced Branch Workflow
+
+[Git Flow Extension](https://github.com/nvie/gitflow):
 
 1. master 类型分支，名为?|master 或 master，其中?为开发代号
 2. develop 类型分支，名为?|develop 或 develop，其中?为开发代号
@@ -512,9 +524,7 @@ git checkout -b [new-local-branch] [remotename]/[branch]
 
 下面介绍模型中的约定，并定义 gg-\*这样的抽象动作来完成约定中的行为
 
-约定:
-
-#### master 类型 && develop 类型
+#### Master Branch and Develop Branch
 
 _多长期分支模式_: master 分支与 develop 分支都是长期分支,区别在于分支的**稳定性等级** - master > develop
 
@@ -535,7 +545,7 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > 在使用型任务中使用 gg-work-init 进行版本控制的初始化,
 > 拉取需要使用的稳定版本程序的 master 分支，并初始化对应的 basedOn 分支（见 9）.
 
-#### feature 类型分支满足
+#### Feature Branch
 
 1. 只能从 develop 类型分支上创建
 2. 最终必须合并到 develop 类型分支
@@ -545,7 +555,7 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > 在 develop 类型分支上使用 gg-feature-open featureName 建立并转向一个名为 feature/featureName 的新分支
 > 在一个 feature 类型分支上使用 gg-feature-close 把这个分支的工作合并到 develop 类型分支上，删除此分支，完成一个特性的开发
 
-#### release 类型分支满足
+#### Release Branch
 
 1. 只能从 develop 类型分支上创建
 2. 最终必须同时合并到 master 类型分支(发布新的版本)和 develop 类型分支(基于新版本的进一步开发)
@@ -555,7 +565,7 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > 在这个分支上允许进行小的改动（比如修改一下 readme 文件中的版本号）,
 > 然后使用 gg-release-close 将此版本合并（发布）到 master 类型分支上，同时合并到 develop 类型分支上，然后删除此分支.
 
-#### hotfix 类型分支满足
+#### Hotfix Branch
 
 1. 只能从 master 类型分支上创建
 2. 最终必须同时合并到 master 类型分支(发布新的热补丁版本)和 develop 类型分支(基于新版本的进一步开发)
@@ -564,7 +574,7 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > 当新版本发布后发现必须马上解决的严重 bug 时，使用 gg-hotfix-open versionNum 建立名为 hotfix-versionNum 的临时分支,
 > 在这个分支上完成 bug 的修复，然后使用 gg-hotfix-close 将此版本合并（发布）到 master 类型分支上，同时合并到 develop 类型分支上，然后删除此分支.
 
-#### issues 类型分支满足
+#### Issues Branch
 
 1. 只能从 develop 类型分支上创建
 2. 最终必须合并到 develop 类型分支
@@ -575,7 +585,7 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > 在一个 issues 类型分支上使用 gg-issues-close 把这个分支的工作合并到 develop 类型分支上，然后删除此分支，解决了一个复杂的问题
 > issues 类型和 feature 类型的实现方式一模一样，仅仅有名字上面的差别。
 
-#### trials 类型分支满足
+#### Trials Branch
 
 - 可以从除了 release 类型分支以外的任何类型分支上创建
 - 在这个分支上请发挥想象力大胆实验
@@ -586,7 +596,7 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > 在满足条件的分支 A 上工作，时不时会冒出一些大胆的想法
 > 这个时候使用 gg-trials-open trialsName 创建并转向一个名为 A/trials.trialsName 的实验分支，在这个分支上进行疯狂的实验
 
-#### basedOn 类型分支满足
+#### BasedOn Branch
 
 1. 从 name|master 建立并初始化为 name|basedOn
 2. 只能从对应的 master 分支 fork 到此分支
@@ -602,26 +612,26 @@ git 在每次提交的时候要求输入对此提交的概括，这个概括不�
 > (init)v1.0===>v0.9=====>v0.8======>v1.3,
 > 这个分支上的 commit 来源于 master，但是其分支提交历史与 master 分支无关
 
-#### work 类型分支满足
+#### Work Branch
 
 1. 只能从 basedOn 类型分支上创建
 2. 可以借助 basedOn 分支升级
 
-## Inside
+## Git Inside
 
-### add detail
+### Add Inside
 
 - create blob objects: contains content of files
 - add files to index list (.git/index)
 
-### commit detail
+### Commit Inside
 
 - create tree objects: each object represent a directory,
   contains blob object refs in this directory
 - create commit object:
   contains root tree object hash number and parent commit object hash number
 
-### checkout detail
+### Checkout Inside
 
 ```bash
 git checkout <commit-hash-id>
@@ -633,7 +643,7 @@ git checkout <commit-hash-id>
 - write .git/index
 - set HEAD to that commit (detached HEAD state)
 
-### merge detail
+### Merge Inside
 
 ```bash
 git merge <giver-branch>/<giver-commit>
@@ -645,28 +655,28 @@ git merge <giver-branch>/<giver-commit>
 - do what `git checkout` do
 - remove `.git/MERGE_HEAD`
 
-### fetch detail
+### Fetch Inside
 
 - get hash of remote commit and its root tree object
 - copy all diff objects in tree graph into .git/objects
 - update `.git/refs/remotes/origin/<branch>`, set `.git/FETCH_HEAD` to it
 
-### clone detail
+### Clone Inside
 
 `git init` + `git remote add origin <repo-url>` + `git pull origin`
 
-### push detail
+### Push Inside
 
 - apply commit to remote repo
 - update remote repo `.git/refs/heads/<branch>` to new commit
 - update local repo `.git/refs/remotes/origin/<branch>` to new commit
 
-### HEAD/branch detail
+### HEAD Branch Inside
 
 - HEAD -> refs/heads/master -> commit object
 - branches are just refs, refs are just files (contain commit hash id)
 
-### .git/objects
+### Git Objects
 
 `.git/objects` is immutable, `.git/refs` is mutable
 
@@ -695,7 +705,7 @@ git cat-file -p <object-hash-number>
 ```bash
 #!/bin/bash
 
-function seperator() {
+function separator() {
     for i in {1..20}
     do
         printf "-"
@@ -733,7 +743,7 @@ function print_git_objects() {
         if [ $len -gt 30 ]
         then
             index=$(expr $index + 1)
-            seperator $index
+            separator $index
             echo $file
             git_object_type $file
             git_object_content $file
@@ -750,7 +760,7 @@ print_git_objects
 
 #### Popular LICENSE
 
-![Free Software License](img/6_free_software_licenses.png)
+![Free Software License](figures/6_free_software_licenses.png)
 
 #### Unique LICENSE
 
@@ -791,7 +801,7 @@ that's REALLY being a dick.
 1c. Modifying the original work to contain hidden harmful content.
 That would make you a PROPER dick.
 
-If you become rich through modifications, related worksrvices, or supporting
+If you become rich through modifications, related work services, or supporting
 the original work, share the love. Only a dick would make loads off this work
 and not buy the original works creator(s) a pint.Code is provided with no
 warranty. Using somebody else's code and bitching when it goes wrong makes
@@ -812,7 +822,7 @@ Being a dick includes - but is not limited to - the following instances:
 1b. Reserve a copy of this project and tell your teacher
 that it is your own homework - Plagiarism is shame.
 
-If you become rich through modifications, related worksrvices,
+If you become rich through modifications, related work services,
 or supporting the original work, share the love. Only a dick would make loads
 off this work and not buy the original works creator(s) a pint.Code is
 provided with no warranty. Using somebody else's code and bitching when it
@@ -873,50 +883,84 @@ THE SOFTWARE.
 5. Push to the branch (`git push origin my-new-feature`).
 6. Create new Pull Request.
 
-### Create Repo without Browser
+### GitHub CLI Tool
 
-- 利用 GitHub Repository API 以及 curl 工具创建仓库
+#### CLI Installation
+
+Install `gh` by `apt`,
+according of [official introduction](https://github.com/cli/cli/blob/trunk/docs/install_linux.md).
 
 ```bash
-curl -u 'username' -d '{"name":"RepoName",
-\ "description":"description string","homepage":"URL",
-\ "auto_init":true, "gitignore_template":"Meteor", "license_template":"mit"}'
-\ https://api.github.com/user/repos
+gh auth login
 ```
 
-- 上传本地代码至远程仓库
+#### GH Issue Usage
+
+```bash
+gh issue create
+gh issue close
+gh issue status
+gh issue list
+```
+
+#### GH PR Usage
+
+```bash
+gh pr checkout
+gh pr create
+gh pr close
+gh pr merge
+gh pr status
+gh pr list
+```
+
+#### GH Repo Usage
+
+Clone repo:
+
+```bash
+gh repo clone cli/cli
+
+# fastest way to clone authorized user repos
+gh alias set rc 'repo clone'
+gh rc dragon
+```
+
+Create repo:
+
+```bash
+# create a repository under your account using the current directory name
+$ git init my-project
+$ cd my-project
+$ gh repo create
+
+# create a repository with a specific name
+$ gh repo create my-project
+
+# create a repository in an organization
+$ gh repo create cli/my-project
+
+# disable issues and wiki
+$ gh repo create --enable-issues=false --enable-wiki=false
+```
+
+Push repo:
 
 ```bash
 git init
 
 echo "# RepoName" >> README.md
 git add README.md
-git commit
+git commit -m "Initial commit"
 
 git remote add origin git@github.com:username/RepoName.git
 git push -u origin master
 ```
 
-或
+List repo:
 
 ```bash
-git clone git@github.com:username/RepoName
-
-echo "# RepoName" >> README.md
-git add README.md
-git commit
-git push -u
-```
-
-### Purge
-
-```bash
-git rev-list --objects --all
-\ | grep "$(git verify-pack -v .git/objects/pack/*.idx
-\ | sort -k 3 -n | tail -5 | awk '{print$1}')"
-git filter-branch -f --prune-empty --index-filter
-\ 'git rm -rf --cached --ignore-unmatch your-file-name'
-\ --tag-name-filter cat -- --all
+gh repo list sabertazimi
 ```
 
 ### Wiki
@@ -933,9 +977,9 @@ git clone git@github.com:user/repo.wiki.git
 curl -i http://git.io -F "url=https://github.com/technoweenie" -F "code=t"
 ```
 
-## Git tools
+## Git Tools
 
-### diff && patch
+### Diff and Patch
 
 ```bash
 diff -u <src> <dist>
@@ -943,8 +987,8 @@ diff -Nur <src_dir> <dist_dir>
 ```
 
 ```bash
-patch -p[num] < patchfile
-patch -dry -run -p[num] < patchfile
+patch -p[num] < patchFile
+patch -dry -run -p[num] < patchFile
 ```
 
 ```bash
@@ -956,11 +1000,22 @@ patch -p1 <../program_2.0.patch
 
 - [cz-cli](https://github.com/commitizen/cz-cli)
 - [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog)
-- [commitlint](https://github.com/conventional-changelog/commitlint)
+- [Commit Linter](https://github.com/conventional-changelog/commitlint)
 
 ### Changelog Generator
 
 - [standard-version](https://github.com/conventional-changelog/standard-version)
+
+### Purge Tool
+
+```bash
+git rev-list --objects --all
+\ | grep "$(git verify-pack -v .git/objects/pack/*.idx
+\ | sort -k 3 -n | tail -5 | awk '{print$1}')"
+git filter-branch -f --prune-empty --index-filter
+\ 'git rm -rf --cached --ignore-unmatch your-file-name'
+\ --tag-name-filter cat -- --all
+```
 
 ## Commands List
 
@@ -1003,7 +1058,7 @@ git reset $(git merge-base master $(git rev-parse --abbrev-ref HEAD))
 - `git merge-base master $(name of your branch)`
   will find the best common ancestor between master and current branch
 - `git reset $(hash of the branch creation)`
-  will undo all the commits, merges, rebases
+  will undo all the commits, merges, rebase
   (preserving changes to the code)
 
 #### git rm
@@ -1062,7 +1117,7 @@ git pull --allow-unrelated-histories
 - add submodule
 
 ```bash
-git submodule add git://github.com/chneukirchen/rack.git ./lib/rack
+git submodule add git://github.com/rack/rack.git ./lib/rack
 cat .gitmodules
 ```
 
@@ -1130,7 +1185,7 @@ git submodule update --init --force --remote
 
 #### git format-patch
 
-mbox 的格式来生成一系列的补丁以便你可以发送到一个邮件列表中
+mailbox 的格式来生成一系列的补丁以便你可以发送到一个邮件列表中
 
 #### git imap-send
 

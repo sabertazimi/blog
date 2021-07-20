@@ -37,7 +37,7 @@ if (token && SESSIONS[token]) {
 
 solutions:
 
-- `crypto.timiingSafeEqual`
+- `crypto.timingSafeEqual`
 - `object.hasOwnProperty(token)`
 
 ### SQL Injection
@@ -113,13 +113,15 @@ req.session.regenerate(function (err) {
 - what: generate complex session IDs
 
 ```js
-const generateSessionId = (sess) => uid(24);
+const generateSessionId = (session) => uid(24);
 ```
 
 - how: reset session IDs after set up session successfully
 - how: reset session IDs after it's been changed manually on client(Set-Cookies)
 
-### XSS(Cross-Site-Scripting) Attack
+### XSS Attack
+
+Cross-Site Scripting:
 
 - Reflected XSS: url input(search pages)
 
@@ -133,7 +135,9 @@ don't trust user:
 - `trim()`
 - using template engine(handlebars, jade, etc...)
 
-### CSRF(Cross-Site Request Forgery) - 跨站请求伪造
+### CSRF
+
+Cross-Site Request Forgery - 跨站请求伪造:
 
 挟制用户在当前已登录的 Web 应用程序上执行非本意的操作,
 利用已认证用户(长期 Cookies), 访问攻击者网站, 并被强制执行脚本,
@@ -203,7 +207,7 @@ function openUrl(url) {
 
 #### Malicious Redirects Protection
 
-Check the Referer when doing redirects
+Check the Referrer when doing redirects
 
 ```js
 function isRelative(url) {
@@ -220,15 +224,17 @@ function isRelative(url) {
 
 #### User Enumeration Protection
 
-##### Login
+##### Login Protection
 
 使攻击者无法枚举用户名, 他无法确定是用户不存在还是密码错误
 
-- Login error message: Unkonwn User **or** Password
+- Login error message: Unknown User **or** Password
 - All login code-paths take the same time on average: time consuming operations
 - All login code-paths take the same context: session IDs, cookies
 
-##### Signup/Reset(not with name, should with email)
+##### Sign Up or Reset Protection
+
+Not with name, should with email:
 
 使攻击者无法枚举用户名, 他无法确定是用户不存在还是用户已存在
 
@@ -240,7 +246,7 @@ function isRelative(url) {
 Dangerous Macros:
 
 - XML Bombs
-- XML Externel Entities
+- XML External Entities
 
 #### XML Protection
 
@@ -249,11 +255,11 @@ Disable DTD parse in XML parser
 ### Information Leakage
 
 - Server in Response Headers
-- Cookies: JSESSIONID -> java
+- Cookies: SESSION_ID -> java
 - URL: .jsp, .php, .asp
 - Error Message
 - AJAX responses
-- JSON/XML reponses
+- JSON/XML responses
 - Code Information
 
 ```json
@@ -263,7 +269,7 @@ Disable DTD parse in XML parser
     Content-length: 196
     Connection: close
     Content-Type: text/html
-    Cookie: JSESSIONID=XXXXX
+    Cookie: SESSION_ID=XXXXX
 }
 {
     Server: Microsoft-IIS/5.0
@@ -303,7 +309,7 @@ GET /../../../passwd.key HTTP/1.1
 
 ### 病毒 NPM 包
 
-名字与流行包相近, 通过 postinstall 脚本执行病毒脚本，获取系统环境变量信息 e.g crossenv
+名字与流行包相近, 通过 postinstall 脚本执行病毒脚本，获取系统环境变量信息 e.g `crossenv`
 
 #### Package Protection
 
@@ -402,8 +408,8 @@ and security for public/private key pair
       `过滤` 防止 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 攻击.
 - [ ] 使用参数化的查询防止 [SQL 注入](https://en.wikipedia.org/wiki/SQL_injection).
 - [ ] 过滤所有具有功能性的用户输入，比如 `CSV导入`
-- [ ] `过滤`一些特殊的用户输入，例如将 robots.txt 作为用户名，而你刚好提供了 coolcorp.io/username 之类的 url
-      来提供用户信息访问页面。（此时变成 coolcorp.io/robots.txt，可能无法正常工作）
+- [ ] `过滤`一些特殊的用户输入，例如将 robots.txt 作为用户名，而你刚好提供了 coolCorp.io/username 之类的 url
+      来提供用户信息访问页面。（此时变成 coolCorp.io/robots.txt，可能无法正常工作）
 - [ ] 不要自己手动拼装 JSON 字符串，不管这个对象有多么小。请使用你所用的语言相应的库或者框架来编写
 - [ ] `过滤` 那些有点像 URL 的输入，
       [SSRF](https://docs.google.com/document/d/1v1TkWZtrhzRLy0bYXBcdLUedXGb9njTNIJXa3u9akHM/edit#heading=h.t4tsk5ixehdd)
@@ -416,7 +422,7 @@ and security for public/private key pair
 - [ ] 检查所有机器没有必要开放的`端口`
 - [ ] 检查数据库是否没有设置密码或者使用默认密码，特别是 MongoDB 和 Redis
 - [ ] 使用 SSH 登录你的机器，不要使用密码，而是通过 SSH key 验证来登录
-- [ ] 及时更新系统，防止出现 0day 漏洞，比如 Heartbleed、Shellshock 等
+- [ ] 及时更新系统，防止出现 0day 漏洞，比如 HeartBleed、ShellShock 等
 - [ ] 修改服务器配置，HTTPS 使用 TLS1.2，禁用其他的模式。(值得这么做)
 - [ ] 不要在线上开启 DEBUG 模式，有些框架，DEBUG 模式会开启很多权限以及后门，或者是暴露一些敏感数据到错误栈信息里面
 - [ ] 对坏人和 DDOS 攻击要有所准备，使用那些提供 DDOS 清洗的主机服务

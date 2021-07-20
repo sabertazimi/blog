@@ -59,7 +59,7 @@ babel.transformFromAst(ast, code, options);
 // => { code, map, ast }
 ```
 
-#### Codemod
+#### CodeMod Tool
 
 Use Babel to refactor code,
 like [jscodeshift](https://github.com/facebook/jscodeshift).
@@ -95,7 +95,7 @@ let b = 2;
 - 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone)
 - 块级作用域
 
-### Destructuring(Pattern Matching)
+### Destructuring Pattern Matching
 
 - **建议只要有可能，就不要在模式中放置圆括号**
 - 赋值语句的非模式部分，可以使用圆括号
@@ -189,7 +189,7 @@ console.log(id, status, number);
 // 42, "OK", [867, 5309]
 ```
 
-##### 遍历 map/list
+##### Traverse Map and List
 
 ```js
 const map = new Map();
@@ -318,7 +318,7 @@ let { length: len } = 'hello';
 len; // 5
 ```
 
-#### Number/Boolean Style Matching
+#### Number and Boolean Style Matching
 
 number/boolean 会转化成对象
 
@@ -441,9 +441,9 @@ const boldify = (parts, ...insertedParts) => {
     .join('');
 };
 
-const name = 'Jamon Holmgren';
+const name = 'Sabertaz';
 console.log(boldify`Hi, my name is ${name}!`);
-// => "Hi, my name is <strong>Jamon Holmgren</strong>!"
+// => "Hi, my name is <strong>Sabertaz</strong>!"
 ```
 
 ```js
@@ -619,7 +619,7 @@ BigInt(a) * BigInt(b);
 
 ### Internationalization
 
-#### Number Intl
+#### Number i18n
 
 ```js
 const nfFrench = new Intl.NumberFormat('fr');
@@ -627,7 +627,7 @@ nf.format(12345678901234567890n);
 // => 12 345 678 901 234 567 890
 ```
 
-#### String Intl
+#### String i18n
 
 ```js
 const lfEnglish = new Intl.ListFormat('en');
@@ -635,9 +635,27 @@ const lfEnglish = new Intl.ListFormat('en');
 
 lfEnglish.format(['Ada', 'Grace', 'Ida']);
 // => 'Ada, Grace and Ida'
+
+const formatter = new Intl.ListFormat('en', {
+  style: 'long',
+  type: 'conjunction',
+});
+console.log(formatter.format(vehicles));
+// expected output: "Motorcycle, Bus, and Car"
+
+const formatter2 = new Intl.ListFormat('de', {
+  style: 'short',
+  type: 'disjunction',
+});
+console.log(formatter2.format(vehicles));
+// expected output: "Motorcycle, Bus oder Car"
+
+const formatter3 = new Intl.ListFormat('en', { style: 'narrow', type: 'unit' });
+console.log(formatter3.format(vehicles));
+// expected output: "Motorcycle Bus Car"
 ```
 
-#### Time Intl
+#### Time i18n
 
 ```js
 const rtfEnglish = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
@@ -667,11 +685,11 @@ dtfEnglish.formatRange(start, end); // => 'May 7 - 9, 2019'
 [...Array(5).keys()]; // => [0, 1, 2, 3, 4]
 ```
 
-#### Array.includes
+#### Array Includes
 
 no more `indexOf() > -1`
 
-#### Array.from
+#### Array From
 
 强大的**函数式**方法
 
@@ -714,7 +732,7 @@ Array.from([1, 2, 3], (x) => x * x);
 // [1, 4, 9]
 ```
 
-#### Array.copyWithin
+#### Array CopyWithin
 
 替换数组元素，修改原数组
 
@@ -737,20 +755,34 @@ i32a.copyWithin(0, 2);
 // => Int32Array [3, 4, 5, 4, 5]
 ```
 
-#### Array.find
+#### Array Find
 
 ```js
 arr.find(fn);
 arr.findIndex(fn);
 ```
 
-#### Array.flat
+#### Array Flat
 
 `[2, [2, 2]] => [2, 2, 2]`
 
-#### Array.flatMap
+#### Array FlatMap
 
 map + flat
+
+#### Array Map
+
+相当于 Haskell 中的 List Map
+
+#### Array Filter
+
+相当于 Haskell 中的 List Filter
+
+#### Array Reduce
+
+相当于 Haskell 中的 fold
+
+#### Array Sort
 
 #### Spread Array
 
@@ -778,10 +810,10 @@ obj[Symbol.iterator] = function* () {
 
 ```js
 const score = {
-  jamon: 42,
+  saber: 42,
   todd: 19,
   ken: 4,
-  gant: 41,
+  gan: 41,
 };
 
 Object.keys(score).map((k) => score[k]);
@@ -794,10 +826,10 @@ Object.entries(score);
 /**
  * =>
  * [
- * [ 'jamon', 42 ],
+ * [ 'saber', 42 ],
  * [ 'todd', 19 ],
  * [ 'ken', 4 ],
- * [ 'gant', 41 ],
+ * [ 'gan', 41 ],
  * ]
  */
 ```
@@ -1304,7 +1336,7 @@ The generator function itself is not iterable, call it to get the iterable-itera
 ```js
 for (const v of someOddNumbers) {
   console.log(v);
-} // => TypeEror: someOddNumbers is not iterable
+} // => TypeError: someOddNumbers is not iterable
 
 for (const v of number()) {
   console.log(v); // 1 3 5 7
@@ -1508,7 +1540,7 @@ pos = withZeroValue(pos);
 console.log(pos.z); // => 0
 ```
 
-#### Negative Array Indice with Proxy
+#### Negative Array Indices with Proxy
 
 ```js
 const negativeArray = (els) =>
@@ -1537,7 +1569,7 @@ const hide = (target, prefix = '_') =>
 
 let userData = hide({
   firstName: 'Tom',
-  mediumHandle: '@tbarrasso',
+  mediumHandle: '@bar',
   _favoriteRapper: 'Drake',
 });
 
@@ -1591,6 +1623,303 @@ nums.filter((n) => n in range(1, 10));
 // => [1, 5]
 ```
 
+### Asynchronous Programming
+
+#### Promise
+
+avoid callback hell with:
+
+- return `new Promise`
+- return `promise.then`
+- `Promise.all`: short-circuits when an input value is rejected
+- `Promise.race`: short-circuits when an input value is settled
+- `Promise.any`: short-circuits when an input value is fulfilled
+- `Promise.allSettled`: does not short-circuits
+
+resolve only accept **one** value
+
+```js
+return new Promise((resolve) => resolve([a, b]));
+```
+
+- promises on the same chain execute orderly
+- promises on two separate chains execute in random order
+
+```js
+const users = ['User1', 'User2', 'User3', 'User4'];
+
+const response = [];
+
+const getUser = (user) => () => {
+  return axios.get(`/users/userId=${user}`).then((res) => response.push(res));
+};
+
+const getUsers = (users) => {
+  const [getFirstUser, getSecondUser, getThirdUser, getFourthUser] =
+    users.map(getUser);
+
+  getFirstUser()
+    .then(getSecondUser)
+    .then(getThirdUser)
+    .then(getFourthUser)
+    .catch(console.log);
+};
+```
+
+```js
+const users = ['User1', 'User2', 'User3', 'User4'];
+
+let response = [];
+
+function getUsers(users) {
+  const promises = [];
+  promises[0] = axios.get(`/users/userId=${users[0]}`);
+  promises[1] = axios.get(`/users/userId=${users[1]}`);
+  promises[2] = axios.get(`/users/userId=${users[2]}`);
+  promises[3] = axios.get(`/users/userId=${users[3]}`);
+
+  Promise.all(promises)
+    .then((userDataArr) => (response = userDataArr))
+    .catch((err) => console.log(err));
+}
+```
+
+##### Promise All
+
+- `Promise.all([...])` fail-fast.
+  If at least one promise in the promises array rejects,
+  then the promise returned rejects too.
+
+```js
+Promise.all(urls.map(fetch)).then(responses =>
+    Promise.all(responses.map(res => res.text())
+).then(texts => {
+  //
+})
+```
+
+```js
+Promise.all(urls.map((url) => fetch(url).then((resp) => resp.text()))).then(
+  (texts) => {
+    //
+  }
+);
+```
+
+##### Promise Polyfill
+
+```js
+class Promise {
+  // `executor` takes 2 parameters, `resolve()` and `reject()`. The executor
+  // function is responsible for calling `resolve()` or `reject()` to say that
+  // the async operation succeeded (resolved) or failed (rejected).
+  constructor(executor) {
+    if (typeof executor !== 'function') {
+      throw new Error('Executor must be a function');
+    }
+
+    // Internal state. `$state` is the state of the promise, and `$chained` is
+    // an array of the functions we need to call once this promise is settled.
+    this.$state = 'PENDING';
+    this.$chained = [];
+
+    // Implement `resolve()` and `reject()` for the executor function to use
+    const resolve = (res) => {
+      // A promise is considered "settled" when it is no longer
+      // pending, that is, when either `resolve()` or `reject()`
+      // was called once. Calling `resolve()` or `reject()` twice
+      // or calling `reject()` after `resolve()` was already called
+      // are no-ops.
+      if (this.$state !== 'PENDING') {
+        return;
+      }
+
+      // If `res` is a "thenable", lock in this promise to match the
+      // resolved or rejected state of the thenable.
+      const then = res != null ? res.then : null;
+      if (typeof then === 'function') {
+        // In this case, the promise is "resolved", but still in the 'PENDING'
+        // state. This is what the ES6 spec means when it says "A resolved promise
+        // may be pending, fulfilled or rejected" in
+        // http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects
+        return then(resolve, reject);
+      }
+
+      this.$state = 'FULFILLED';
+      this.$internalValue = res;
+
+      // If somebody called `.then()` while this promise was pending, need
+      // to call their `onFulfilled()` function
+      for (const { onFulfilled } of this.$chained) {
+        onFulfilled(res);
+      }
+
+      return res;
+    };
+
+    const reject = (err) => {
+      if (this.$state !== 'PENDING') {
+        return;
+      }
+
+      this.$state = 'REJECTED';
+      this.$internalValue = err;
+
+      for (const { onRejected } of this.$chained) {
+        onRejected(err);
+      }
+    };
+
+    // Call the executor function with `resolve()` and `reject()` as in the spec.
+    try {
+      // If the executor function throws a sync exception, we consider that
+      // a rejection. Keep in mind that, since `resolve()` or `reject()` can
+      // only be called once, a function that synchronously calls `resolve()`
+      // and then throws will lead to a fulfilled promise and a swallowed error
+      executor(resolve, reject);
+    } catch (err) {
+      reject(err);
+    }
+  }
+
+  // `onFulfilled` is called if the promise is fulfilled, and `onRejected`
+  // if the promise is rejected. For now, you can think of 'fulfilled' and
+  // 'resolved' as the same thing.
+  then(onFulfilled, onRejected) {
+    return new Promise((resolve, reject) => {
+      // Ensure that errors in `onFulfilled()` and `onRejected()` reject the
+      // returned promise, otherwise they'll crash the process. Also, ensure
+      // that the promise
+      const _onFulfilled = (res) => {
+        try {
+          // If `onFulfilled()` returns a promise, trust `resolve()` to handle
+          // it correctly.
+          // store new value to new Promise
+          resolve(onFulfilled(res));
+        } catch (err) {
+          reject(err);
+        }
+      };
+
+      const _onRejected = (err) => {
+        try {
+          // store new value to new Promise
+          reject(onRejected(err));
+        } catch (_err) {
+          reject(_err);
+        }
+      };
+
+      if (this.$state === 'FULFILLED') {
+        _onFulfilled(this.$internalValue);
+      } else if (this.$state === 'REJECTED') {
+        _onRejected(this.$internalValue);
+      } else {
+        this.$chained.push({
+          onFulfilled: _onFulfilled,
+          onRejected: _onRejected,
+        });
+      }
+    });
+  }
+
+  catch(onRejected) {
+    return this.then(null, onRejected);
+  }
+}
+```
+
+#### Await and Async
+
+avoid wrong parallel logic (too sequential)
+
+```js
+// wrong
+const books = await bookModel.fetchAll();
+const author = await authorModel.fetch(authorId);
+
+// right
+const bookPromise = bookModel.fetchAll();
+const authorPromise = authorModel.fetch(authorId);
+const book = await bookPromise;
+const author = await authorPromise;
+
+async getAuthors(authorIds) {
+  // WRONG, this will cause sequential calls
+  // const authors = _.map(
+  //   authorIds,
+  //   id => await authorModel.fetch(id));
+  // CORRECT
+  const promises = _.map(authorIds, id => authorModel.fetch(id));
+  const authors = await Promise.all(promises);
+}
+```
+
+##### Await Arrays
+
+- If you want to execute await calls in series,
+  use a for-loop (or any loop without a callback).
+- Don't ever use await with `forEach` (`forEach` is not promise-aware),
+  use a for-loop (or any loop without a callback) instead.
+- Don't await inside filter and reduce,
+  always await an array of promises with map, then filter or reduce accordingly.
+
+#### Sleep Function
+
+```js
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+```
+
+```js
+sleep(2000).then(() => {
+  //do something after 2000 milliseconds
+  console.log('resolved');
+});
+
+async function add(n1, n2) {
+  await sleep(2222);
+  console.log(n1 + n2);
+}
+
+add(1, 2);
+```
+
+#### Race Condition
+
+- keep latest updates
+- recover from failures
+- online and offline sync ([PouchDB](https://github.com/pouchdb/pouchdb))
+- tools: [redux-saga](https://github.com/redux-saga/redux-saga)
+
+```js
+export default {
+  data() {
+    return {
+      text: '',
+      results: [],
+      nextRequestId: 1,
+      displayedRequestId: 0,
+    };
+  },
+  watch: {
+    async text(value) {
+      const requestId = this.nextRequestId++;
+      const results = await search(value);
+
+      // guarantee display latest search results (when input keep changing)
+      if (requestId < this.displayedRequestId) {
+        return;
+      }
+
+      this.displayedRequestId = requestId;
+      this.results = results;
+    },
+  },
+};
+```
+
 ## Functional JavaScript
 
 - predictable (pure and immutable)
@@ -1625,14 +1954,16 @@ const map2 = map1.set{ 'b': 2 };
 
 ### Closure
 
-两个函数都维持着对外部作用域 Counter 的引用,
-因此总可以访问 Counter 作用域内定义的变量 count (外部局部变量)
+Closure is a function that remembers
+the variables from the place where it is defined (lexical scope),
+regardless of where it is executed later:
 
 - 函数外部不可对函数内部进行赋值或引用
 - 函数中的闭包函数可对函数进行赋值或引用(函数对于闭包来说是外部, 即内部引用外部)
 - 特权性质: 从外部通过闭包方法访问内部(函数作用域)局部变量 (private getter)
-- local scope -> outer functions scope -> global scope
-- Closure Performance: avoid unnecessary closure creation
+- Local Scope -> Outer Functions Scope -> Global Scope.
+- Closure Performance: avoid unnecessary closure creation.
+- The stale closure captures variables that have outdated values.
 
 ```js
 // global scope
@@ -1681,7 +2012,24 @@ MyObject.prototype.getMessage = function () {
 
 #### 闭包函数的结构
 
-优先级: this > 局部变量 > 形参 > arguments > 函数名
+- 优先级: this > 局部变量 > 形参 > arguments > 函数名
+- `innerFunc()` has access to `outerVar` from its lexical scope,
+  even being **executed outside of its lexical scope**.
+
+```js
+unction outerFunc() {
+  let outerVar = 'I am outside!';
+
+  function innerFunc() {
+    console.log(outerVar); // => logs "I am outside!"
+  }
+
+  return innerFunc;
+}
+
+const myInnerFunc = outerFunc();
+myInnerFunc();
+```
 
 ### Partial Application
 
@@ -1706,7 +2054,7 @@ const add = (x) => (y) => x + y;
 ```
 
 ```javascript
-function schonfinkelize(fn) {
+function curry(fn) {
   const slice = Array.prototype.slice,
     stored_args = slice.call(arguments, 1);
 
@@ -1717,27 +2065,11 @@ function schonfinkelize(fn) {
   };
 }
 
-const addOne = schonfinkelize(add, 1);
+const addOne = curry(add, 1);
 // addOne(3) === 4;
-const addFive = schonfinkelize(addOne, 1, 3);
+const addFive = curry(addOne, 1, 3);
 // addFive(4) === 9;
 ```
-
-### API
-
-#### `[]`.map
-
-相当于 Haskell 中的 List Map
-
-#### `[]`.filter
-
-相当于 Haskell 中的 List Filter
-
-#### `[]`.reduce
-
-相当于 Haskell 中的 fold
-
-#### `[]`.sort
 
 ## Internal JavaScript
 
@@ -1750,15 +2082,15 @@ Under the hood
   - Initialization phase: 分配内存, 在作用域中绑定变量 (`undefined`)
 - Execution phase/Assignment phase
 
-### Exection Context
+### Execution Context
 
-#### Global Exection Context
+#### Global Execution Context
 
 - create global object (`window`)
 - create `this` object(refer to `window`)
 - declare and initialize variable(`undefined`)/function, store them into memory
 
-#### Function Exection Context
+#### Function Execution Context
 
 - create arguments object
 - create `this` object
@@ -1773,7 +2105,7 @@ Under the hood
 
 ### Event Loop
 
-![Event Loop](./images/event_loop.jpg)
+![Event Loop](figures/EventLoop.jpg)
 
 The job of the **event loop** is to look into the call stack
 and determine if the call stack is empty or not.
@@ -1896,12 +2228,12 @@ const promise1 = new Promise(function (resolve) {
 });
 
 setTimeout(function () {
-  console.log('settimeout');
+  console.log('setTimeout');
 });
 
 console.log('script end');
 
-// 输出顺序: script start->promise1->promise1 end->script end->promise2->settimeout
+// 输出顺序: script start->promise1->promise1 end->script end->promise2->setTimeout
 ```
 
 `await a(); b()` 等价于 `Promise(a()).then(b())`: a 是同步执行, b 是 microtask
@@ -1987,7 +2319,7 @@ test();
 - Chrome: Blink (based on Webkit) + V8
 - Firefox: Gecko + SpiderMonkey
 - Safari: Webkit + JavaScriptCore (Nitro)
-- Edge: Trident/EdgeHTML + Chakra
+- Edge: Trident/EdgeHTML + Chakra -> Chromium
 
 ### Browser Process
 
@@ -2026,7 +2358,7 @@ CSS is context-free grammar.
 Webkit use flex/bison (bottom-to-up), Gecko use up-to-bottom.
 
 ```js
-ruleset
+ruleSet
   : selector [ ',' S* selector ]*
     '{' S* declaration [ ';' S* declaration ]* '}' S*
   ;
@@ -2080,9 +2412,14 @@ Paint Order:
 ### Memory Leak
 
 - useless global vars (bind to window or document)
-- useless callback functions (e.g setInterval/setTimeout)
 - useless DOM reference
-- closure
+- incorrect closure
+  - useless callback functions
+  - forgotten timer from setTimeout/setInterval
+- forgotten event listener
+- forgotten subscriber
+- forgotten console log
+- forgotten Set/Map (while WeakSet/WeakMap don't bother GC)
 - circular reference
 
 ### 禁用特性
@@ -2090,7 +2427,7 @@ Paint Order:
 - with () {}
 - eval()
 - 少用 new
-- 少用 cotinue
+- 少用 continue
 - 少用 forEach()
 
 ### 局部变量/函数参数
@@ -2259,23 +2596,23 @@ window.onload = function () {
 ```javascript
 function requireScript(file, callback) {
   const script = document.getElementsByTagName('script')[0];
-  const newjs = document.createElement('script');
+  const newJS = document.createElement('script');
 
   // IE
-  newjs.onreadystatechange = function () {
-    if (newjs.readyState === 'loaded' || newjs.readyState === 'complete') {
-      newjs.onreadystatechange = null;
+  newJS.onreadystatechange = function () {
+    if (newJS.readyState === 'loaded' || newJS.readyState === 'complete') {
+      newJS.onreadystatechange = null;
       callback();
     }
   };
   // others
-  newjs.onload = function () {
+  newJS.onload = function () {
     callback();
   };
 
   // 添加至html页面
-  newjs.src = file;
-  script.parentNode.insertBefore(newjs, script);
+  newJS.src = file;
+  script.parentNode.insertBefore(newJS, script);
 }
 
 requireScript('the_rest.js', function () {
@@ -2334,20 +2671,20 @@ getComputedStyle();
 ```js
 const fragment = document.createDocumentFragment();
 appendDataToElement(fragment, data);
-document.getElementById('mylist').appendChild(fragment);
+document.getElementById('myList').appendChild(fragment);
 ```
 
 - oldNode.cloneNode(true);
 
 ```js
-const old = document.getElementById('mylist');
+const old = document.getElementById('myList');
 const clone = old.cloneNode(true);
 
 appendDataToElement(clone, data);
 old.parentNode.replaceChild(clone, old);
 ```
 
-#### requestAnimationFrame
+#### Animation Frame
 
 run scripts as early as possible:
 `requestAnimationFrame()` runs after the CPU work is done (UI events and JS scripts),
@@ -2367,8 +2704,8 @@ script -> style -> layout -> paint -> composite
 ```
 
 Make `script` stage become: read then write.
-Interleaved read and write will triger multiple times
-of relayout/repaint/recomposite.
+Interleaved read and write will trigger multiple times
+of re-layout/repaint/re-composite.
 
 ```js
 // bad
@@ -2549,7 +2886,7 @@ testWorker('message from main thread').then((message) => {
 
 ```js
 /*
- * jsonparser.js
+ * JSONParser.js
  */
 self.onmessage = function (event) {
   const jsonText = event.data,
@@ -2563,9 +2900,9 @@ self.onmessage = function (event) {
 /*
  * main.js
  */
-const worker = new Worker('jsonparse.js';
+const worker = new Worker('JSONParser.js');
 
-worker.onmessage = function(event) {
+worker.onmessage = function (event) {
   const jsonData = event.data;
   evaluateData(jsonData);
 };
@@ -2651,7 +2988,7 @@ function now() {
  *
  * @param  {function} func        回调函数
  * @param  {number}   wait        表示时间窗口的间隔
- * @param  {boolean}  immediate   设置为ture时，是否立即调用函数
+ * @param  {boolean}  immediate   设置为 true 时，是否立即调用函数
  * @return {function}             返回客户调用函数
  */
 function debounce(func, wait = 50, immediate = true) {
@@ -2776,7 +3113,7 @@ _.throttle = function (func, wait, options) {
 };
 ```
 
-#### RequestAnimationFrame Throttling
+#### Animation Frame Throttling
 
 ```js
 let frameId = 0;
@@ -2858,7 +3195,7 @@ function getPerformanceTiming() {
   //【原因】是否太多不必要的操作都放到 onload 回调函数里执行了，考虑过延迟加载、按需加载的策略么？
   times.loadEvent = t.loadEventEnd - t.loadEventStart;
   // DNS 缓存时间
-  times.appcache = t.domainLookupStart - t.fetchStart;
+  times.appCache = t.domainLookupStart - t.fetchStart;
   // 卸载页面的时间
   times.unloadEvent = t.unloadEventEnd - t.unloadEventStart;
   // TCP 建立连接完成握手的时间
@@ -3004,7 +3341,7 @@ Etag 是由服务器为每个资源生成的唯一的标识字符串,
 - positive case: IIFE function heuristics
 - passive case: too small (`< 1KB`) and inline scripts
 
-### Browser Pefermance Monitoring
+### Browser Performance Monitoring
 
 前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。
 
@@ -3013,7 +3350,7 @@ Etag 是由服务器为每个资源生成的唯一的标识字符串,
 在一个模拟场景里, 去提交一个需要做性能审计的页面,
 通过一系列的工具、规则去运行你的页面, 提取一些性能指标, 得出一个审计报告.
 
-常见的工具有 Google 的 Lighthouse，webpagetest，pagespeed 等
+常见的工具有 Google 的 Lighthouse，WebPageTest，PageSpeed 等
 
 | 优点                                   |             缺点             |
 | :------------------------------------- | :--------------------------: |
@@ -3075,10 +3412,11 @@ Load 也不一定代表用户看到主要内容.
 它的优点是相对校准的估算出内容渲染时间, 贴近用户感知.
 但缺点是无原生 API 支持, 算法推导时 DOM 节点不含权重.
 
-- First Contentful Paint
-- First Meaningful Paint
-- First Ipnut Delay
-- Time to Interactive
+- First Contentful Paint (FCP)
+- First Meaningful Paint (FMP)
+- Largest Contentful Paint (LCP)
+- First Input Delay (FID)
+- Time to Interactive (TOI)
 
 #### 上报关联的维度
 
@@ -3188,8 +3526,8 @@ const observer = new IntersectionObserver((nodes) => {
   });
 });
 
-const imgs = document.querySelectorAll('img.lazyload');
-imgs.forEach((v) => observer.observe(v));
+const images = document.querySelectorAll('img.lazyload');
+images.forEach((v) => observer.observe(v));
 ```
 
 Native Lazy Loading:
@@ -3217,9 +3555,9 @@ Best practice: lazy loading scripts not execute immediately
 (**Chrome Coverage Devtools**)
 
 ```html
-<script src="myscript.js"></script>
-<script src="myscript.js" async></script>
-<script src="myscript.js" defer></script>
+<script src="myScript.js"></script>
+<script src="myScript.js" async></script>
+<script src="myScript.js" defer></script>
 ```
 
 ```jsx
@@ -3231,13 +3569,13 @@ const PageComponent = () => {
 };
 ```
 
-#### Prefetch
+#### PreFetch
 
 ```html
 <link rel="preload" /> <link rel="prefetch" />
 ```
 
-[Why not to prefetch prerender](https://addyosmani.com/blog/what-not-to-prefetch-prerender):
+[Why not to PreFetch and PreRender](https://addyosmani.com/blog/what-not-to-prefetch-prerender):
 
 - avoid prefetching pages for authentication
 - avoid over-prefetching to limit accidental DOS
@@ -3273,7 +3611,7 @@ const PageComponent = () => {
 ### V8 Good Parts
 
 - source code (parser) AST (interpreter) bytecode
-- send profilling data from bytecode to optimizing compiler, generate optimized code
+- send profiling data from bytecode to optimizing compiler, generate optimized code
 - **Ignition** interpreter
 - **TurboFan** optimizing compiler (2 for SpiderMonkey/Edge, 3 for Safari)
 
@@ -3320,8 +3658,8 @@ V8 use ICs to memorize information (same shape) where to find properties on obje
 
 #### V8 Perf Tools
 
-- [deoptigate](https://github.com/thlorenz/deoptigate)
-- [turbolizer](https://github.com/thlorenz/turbolizer)
+- [Deoptigate](https://github.com/thlorenz/deoptigate)
+- [Turbolizer](https://github.com/thlorenz/turbolizer)
 - [v8 map processor](https://github.com/thlorenz/v8-map-processor)
 
 #### Awesome V8 Performance Tutorial
@@ -3337,14 +3675,14 @@ Audits of Chrome: PWA, best practices, SEO, performance, device simulator
 
 #### Inspect Android Device
 
-- enable developmemnt mode and USB debugging in Android Device
+- enable development mode and USB debugging in Android Device
 - link Android and PC with USB cable
 - open `chrome://inspect/#devices` to start inspecting
 
 ### Performance Best Practice
 
 - use monomorphic objects due to shape and inline caches
-- use monomorphic fucntion in hot code paths
+- use monomorphic function in hot code paths
 - resource optimization
 - code splitting
 - lazy loading
@@ -3518,7 +3856,7 @@ await page.goto('https://www.google.com');
 await page.tracing.stop();
 ```
 
-#### Other Puppeterr Testing API
+#### Other Puppeteer Testing API
 
 - `page.setOfflineMode`
 - `page.setGeolocation`
@@ -3536,7 +3874,7 @@ await page.tracing.stop();
 #### UI 测试
 
 - 用户行为: Karma/Selenium
-- 功能测试: Phantomjs/Slimerjs/Karma
+- 功能测试: Phantom.js/Slimer.js/Karma
 
 ### 可测试代码
 
@@ -3625,7 +3963,7 @@ O.makeBread({ type: wheat, size: 99, name: 'foo' });
 - 编写代码时，保持最小复杂度(最小依赖，最低耦合)
 - 利用 mock/stub 模拟外部依赖/测试数据
 
-#### mock/stub/spy
+#### Mock Testing
 
 - mock: 模拟对象中的方法/接口
 - stub: 模拟对象中的返回值
@@ -3760,7 +4098,7 @@ debugger;
 ```
 
 ```js
-copy(obj); // to clipborad
+copy(obj); // to clipboard
 ```
 
 ```js
@@ -3862,7 +4200,7 @@ long click reload: multiple reload options e.g clean cache
 - click filename, filter error messages
 - add folder to workspace
 
-#### capture default eventListener
+#### Capture Default Event Listener
 
 > \$0: the reference to the currently selected element in the Elements panel
 
@@ -3888,7 +4226,7 @@ $0.addEventListener('click', (e) => {
 
 ### Network Panel
 
-- throtting: simulate different network environment
+- throttling: simulate different network environment
 - initiator：go to files
 
 ### Performance Panel
@@ -3955,26 +4293,26 @@ tool for composite stage analysis
 // bad
 let i,
   len,
-  dragonball,
+  dragonBall,
   items = getItems(),
   goSportsTeam = true;
 
 // bad
 let i;
 const items = getItems();
-let dragonball;
+let dragonBall;
 const goSportsTeam = true;
 let len;
 
 // good
 const goSportsTeam = true;
 const items = getItems();
-let dragonball;
+let dragonBall;
 let i;
 let length;
 ```
 
-- no chains assignment (create implict global variable)
+- no chains assignment (create implicit global variable)
 
 ```js
 // bad
@@ -4034,7 +4372,7 @@ const item = {};
 ```js
 // bad
 const atom = {
-  lukeSkywalker: lukeSkywalker,
+  lukeSkyWalker: lukeSkyWalker,
   addValue: function (value) {
     return atom.value + value;
   },
@@ -4042,14 +4380,14 @@ const atom = {
 
 // good
 const atom = {
-  lukeSkywalker,
+  lukeSkyWalker,
   addValue(value) {
     return atom.value + value;
   },
 };
 ```
 
-- use Object.prototype.XX not object.xx
+- use `Object.prototype.XX` not `object.xx`
 
 ```js
 // bad
@@ -4532,7 +4870,7 @@ if (a && b && c) {
   a += d;
 }
 
-// antipattern
+// anti pattern
 // missing or inconsistent spaces
 // make the code confusing
 let d = 0,
@@ -4560,8 +4898,8 @@ if (a && b && c) {
 
 ```js
 /*
- * @module myapp
- * @namespace MYAPP
+ * @module app
+ * @namespace APP
  */
 ```
 
@@ -4591,67 +4929,6 @@ if (a && b && c) {
  * @param {Number}/{String} instructions
  * @return {Number}/{String} instructions
  */
-```
-
-## SSR
-
-- [Server Side Rendering with Puppeteer](https://developers.google.com/web/tools/puppeteer/articles/ssr)
-- [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
-
-```js
-if (isBotAgent) {
-  // return pre-rendering static html to search engine crawler
-  // like Gatsby
-} else {
-  // server side rendering at runtime for real interactive users
-  // ReactDOMServer.renderToString()
-}
-```
-
-## SEO
-
-### SEO Tutorials
-
-- [SEO Basics](https://developers.google.com/search/docs/guides/javascript-seo-basics)
-- [SPA SEO Basics](https://snipcart.com/spa-seo)
-
-### SEO Tips
-
-- [server-side rendering](https://css-tricks.com/server-side-react-rendering)
-  (e.g next.js)
-- [prerendering](https://github.com/chrisvfritz/prerender-spa-plugin)
-- mobile performance optimization
-  (e.g minify resources, code splitting, CDN, lazy loading, minimize reflows)
-- [SEO-friendly routing and URL management](https://reacttraining.com/react-router)
-- [Google webmaster tools](https://www.google.com/webmasters)
-
-#### SEO Metadata
-
-```js
-const seo = {
-  title: 'About',
-  description: 'This is an awesome site that you definitely should check out.',
-  url: 'https://www.mydomain.com/about',
-  image: 'https://mydomain.com/images/home/logo.png',
-};
-
-<Helmet
-  title={`${seo.title} | Code Mochi`}
-  meta={[
-    {
-      name: 'description',
-      property: 'og:description',
-      content: seo.description,
-    },
-    { property: 'og:title', content: `${seo.title} | Code Mochi` },
-    { property: 'og:url', content: seo.url },
-    { property: 'og:image', content: seo.image },
-    { property: 'og:image:type', content: 'image/jpeg' },
-    { property: 'twitter:image:src', content: seo.image },
-    { property: 'twitter:title', content: `${seo.title} | Code Mochi` },
-    { property: 'twitter:description', content: seo.description },
-  ]}
-/>;
 ```
 
 ## PWA
@@ -4717,7 +4994,7 @@ const cacheEnd = performance.now();
 ```js
 // Check that service workers are registered
 if ('serviceWorker' in navigator) {
-  // Use the window load event to keep the page load performant
+  // Use the window load event to keep the page load performance
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js');
   });
@@ -4772,7 +5049,724 @@ self.addEventListener('install', (e) => {
 
 - [Extensive Guide](https://www.smashingmagazine.com/2018/11/guide-pwa-progressive-web-applications)
 
-## HTTP/2
+## Web Observer API
+
+- [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
+- [Mutation Observer](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+- [Performance Observer](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
+- [Resize Observer](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
+- [Reporting Observer](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver)
+
+### Intersection Observer
+
+```js
+// <img class="lzy_img" src="lazy_img.jpg" data-src="real_img.jpg" />
+document.addEventListener('DOMContentLoaded', () => {
+  const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const lazyImage = entry.target;
+        console.log('Lazy loading ', lazyImage);
+        lazyImage.src = lazyImage.dataset.src;
+
+        // only load image once
+        lazyImage.classList.remove('lzy');
+        imgObserver.unobserve(lazyImage);
+      }
+    });
+  });
+
+  const lazyImages = document.querySelectorAll('img.lzy_img');
+  lazyImages.forEach((lazyImage) => imageObserver.observe(lazyImage));
+});
+```
+
+## Web Animations API
+
+- `KeyframeEffect`
+- `Animation`
+
+```js
+const rabbitDownKeyframes = new KeyframeEffect(
+  whiteRabbit, // element to animate
+  [
+    { transform: 'translateY(0%)' }, // keyframe
+    { transform: 'translateY(100%)' }, // keyframe
+  ],
+  { duration: 3000, fill: 'forwards' } // keyframe options
+);
+
+const rabbitDownAnimation = new Animation(
+  rabbitDownKeyFrames,
+  document.timeline
+);
+
+whiteRabbit.addEventListener('click', downHandler);
+
+function downHandler() {
+  rabbitDownAnimation.play();
+  whiteRabbit.removeEventListener('click', downHandler);
+}
+```
+
+- `element.animate`
+
+```js
+const animationKeyframes = [
+  {
+    transform: 'rotate(0)',
+    color: '#000',
+  },
+  {
+    color: '#431236',
+    offset: 0.3,
+  },
+  {
+    transform: 'rotate(360deg)',
+    color: '#000',
+  },
+];
+
+const animationTiming = {
+  duration: 3000,
+  iterations: Infinity,
+};
+
+const animation = document
+  .querySelector('alice')
+  .animate(animationKeyframes, animationTiming);
+```
+
+- `animation.pause()/play()/reverse()/finish()/cancel()`
+
+```js
+animation.pause();
+animation.currentTime = animation.effect.getComputedTiming().duration / 2;
+```
+
+## Web Canvas API
+
+### Canvas Basic Usage
+
+- 绘制路径 beginPath() -> draw() -> closePath()
+- Path2D 对象
+- 绘制样式: 颜色、渐变、变换、阴影
+- 绘制图形: fill/stroke/clip
+
+```javascript
+const context = canvas.getContext('2d');
+```
+
+```javascript
+// 根据参数画线
+function drawLine(fromX, fromY, toX, toY) {
+  context.moveTo(fromX, fromY);
+  context.lineTo(toX, toY);
+  context.stroke();
+}
+
+// 根据参数画圆
+function drawCircle(x, y, radius, color) {
+  context.fillStyle = color;
+  context.beginPath();
+  context.arc(x, y, radius, 0, Math.PI * 2, true);
+  context.closePath();
+  context.fill();
+  context.stroke();
+}
+
+// 改变 canvas 中图形颜色
+function changeColor(color) {
+  context.fillStyle = color;
+  context.fill();
+}
+```
+
+### Game Loop With Canvas
+
+for all objects:
+
+- constructor: `position{x, y}`, `speed{x, y}`, `size{x, y}`
+- update(deltaTime): change position or speed
+- draw(ctx): use canvas api and object properties (position/size) to render objects
+
+```js
+let canvas = document.getElementById('gameScreen');
+let ctx = canvas.getContext('2d');
+
+const GAME_WIDTH = 800;
+const GAME_HEIGHT = 600;
+
+let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+
+let lastTime = 0;
+function gameLoop(timestamp) {
+  let deltaTime = timestamp - lastTime;
+  lastTime = timestamp;
+
+  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+  game.update(deltaTime);
+  game.draw(ctx);
+
+  requestAnimationFrame(gameLoop);
+}
+
+requestAnimationFrame(gameLoop);
+```
+
+### Canvas Performance
+
+- canvas buffer
+
+```js
+frontCanvasContext.drawImage(bufferCanvas, 0, 0);
+```
+
+- multiple canvas: top layer, background layer, interactive layer
+- disable alpha path
+
+```js
+const ctx = canvas.getContext('2d', { alpha: false });
+```
+
+### Canvas Reference
+
+- [Canvas on MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API)
+- [Canvas Cheat Sheet](https://simon.html5.org/dump/html5-canvas-cheat-sheet.html)
+- [Canvas Perf Tips 1](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas)
+- [Canvas Perf Tips 2](https://www.html5rocks.com/en/tutorials/canvas/performance/)
+- [Canvas Deep Live](https://joshondesign.com/p/books/canvasdeepdive/toc.html)
+
+## Web Audio API
+
+### From Oscillator
+
+```js
+                         -3  -1   1       4   6       9   11
+                       -4  -2   0   2   3   5   7   8   10  12
+  .___________________________________________________________________________.
+  :  | |  |  | | | |  |  | | | | | |  |  | | | |  |  | | | | | |  |  | | | |  :
+  :  | |  |  | | | |  |  | | | | | |  |  | | | |  |  | | | | | |  |  | | | |  :
+  :  | |  |  | | | |  |  | | | | | |  |  | | | |  |  | | | | | |  |  | | | |  :
+<-:  |_|  |  |_| |_|  |  |_| |_| |_|  |  |_| |_|  |  |_| |_| |_|  |  |_| |_|  :->
+  :   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   :
+  : A | B | C | D | E | F | G | A | B | C | D | E | F | G | A | B | C | D | E :
+  :___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___:
+    ^                           ^           ^               ^           ^
+  220 Hz                      440 Hz      523.25 Hz       880 Hz     1174.65 Hz
+(-1 Octave)                 (middle A)                 (+1 Octave)
+```
+
+```js
+const audioContext = new AudioContext();
+
+const baseFrequency = 440;
+const getNoteFreq = (base, pitch) => base * Math.pow(2, pitch / 12);
+// oscillator.frequency.value = getNoteFreq(440, 7);
+
+const getNoteDetune = (pitch) => pitch * 100;
+// oscillator.detune.value = getNoteDetune(7);
+
+const play = (type, delay, pitch, duration) => {
+  const oscillator = audioContext.createOscillator();
+  oscillator.connect(audioContext.destination);
+
+  oscillator.type = type;
+  oscillator.detune.value = getNoteDetune(pitch);
+
+  const startTime = audioContext.currentTime + delay;
+  const stopTime = startTime + duration;
+  oscillator.start(startTime);
+  oscillator.stop(stopTime);
+};
+```
+
+### From Music Data
+
+```js
+const sampleSize = 1024; // number of samples to collect before analyzing data
+const audioUrl = 'viper.mp3';
+
+let audioData = null;
+let audioPlaying = false;
+
+const audioContext = new AudioContext();
+const sourceNode = audioContext.createBufferSource();
+const analyserNode = audioContext.createAnalyser();
+const javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
+
+// Create the array for the data values
+const amplitudeArray = new Uint8Array(analyserNode.frequencyBinCount);
+
+// Now connect the nodes together
+sourceNode.connect(audioContext.destination);
+sourceNode.connect(analyserNode);
+analyserNode.connect(javascriptNode);
+javascriptNode.connect(audioContext.destination);
+
+// setup the event handler that is triggered
+// every time enough samples have been collected
+// trigger the audio analysis and draw the results
+javascriptNode.onaudioprocess = function () {
+  // get the Time Domain data for this sample
+  analyserNode.getByteTimeDomainData(amplitudeArray);
+
+  // draw the display if the audio is playing
+  // if (audioPlaying == true) {
+  // requestAnimFrame(drawTimeDomain);
+  // }
+};
+
+// Load the audio from the URL via Ajax and store it in global variable audioData
+// Note that the audio load is asynchronous
+function loadSound(url) {
+  fetch(url)
+    .then((response) => {
+      audioContext.decodeAudioData(response, (buffer) => {
+        audioData = buffer;
+        playSound(audioData);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+// Play the audio and loop until stopped
+function playSound(buffer) {
+  sourceNode.buffer = buffer;
+  sourceNode.start(0); // Play the sound now
+  sourceNode.loop = true;
+  audioPlaying = true;
+}
+
+function stopSound() {
+  sourceNode.stop(0);
+  audioPlaying = false;
+}
+```
+
+### Audio Bar Chart with Canvas
+
+- [AnalyserNode.getByteFrequencyData API](https://developer.mozilla.org/zh-CN/docs/Web/API/AnalyserNode/getByteFrequencyData)
+- [Github Demo](https://github.com/bogdan-cornianu/swave/blob/master/src/visualizer.ts)
+
+```js
+const WIDTH = this.canvas.clientWidth;
+const HEIGHT = this.canvas.clientHeight;
+this.analyserNode.fftSize = 256;
+let bufferLengthAlt = this.analyserNode.frequencyBinCount;
+let dataArrayAlt = new Uint8Array(bufferLengthAlt);
+
+this.ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+let draw = () => {
+  let drawVisual = requestAnimationFrame(draw);
+  this.analyserNode.getByteFrequencyData(dataArrayAlt);
+
+  this.ctx.fillStyle = 'rgb(255, 255, 255)';
+  this.ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+  let barWidth = (WIDTH / bufferLengthAlt) * 2.5;
+  let barHeight;
+  let x = 0;
+
+  for (let i = 0; i < bufferLengthAlt; i++) {
+    barHeight = dataArrayAlt[i];
+
+    this.ctx.fillStyle = 'rgb(' + (barHeight + 100) + ',15,156)';
+    this.ctx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+    x += barWidth + 1;
+  }
+};
+
+draw();
+```
+
+## Web Storage API
+
+- Cookie for session state.
+- DOM storage for Web Component state.
+- Web Storage for simple UI options (dark mode, sidebar size, etc.).
+- IndexedDB for large binary objects and data dumps.
+- Cache API for offline and quick file access.
+- JavaScript variables for everything else.
+
+### Local Storage API
+
+- 协同 cookies
+- 对于复杂对象的读取与存储,
+  需要借助 `JSON.parse` 与 `JSON.stringify`
+
+```js
+if (!localStorage.getItem('bgColor')) {
+  populateStorage();
+} else {
+  setStyles();
+}
+
+function populateStorage() {
+  localStorage.setItem('bgColor', document.getElementById('bgColor').value);
+  localStorage.setItem('font', document.getElementById('font').value);
+  localStorage.setItem('image', document.getElementById('image').value);
+
+  setStyles();
+}
+
+function setStyles() {
+  var currentColor = localStorage.getItem('bgColor');
+  var currentFont = localStorage.getItem('font');
+  var currentImage = localStorage.getItem('image');
+
+  document.getElementById('bgColor').value = currentColor;
+  document.getElementById('font').value = currentFont;
+  document.getElementById('image').value = currentImage;
+
+  htmlElem.style.backgroundColor = '#' + currentColor;
+  pElem.style.fontFamily = currentFont;
+  imgElem.setAttribute('src', currentImage);
+}
+```
+
+### Web Files API
+
+## Web Navigator API
+
+```js
+navigator.connection.effectiveType; // 2G - 5G
+```
+
+## Web Sockets API
+
+### Web Sockets Message Header
+
+Request Header:
+
+```js
+GET /chat HTTP/1.1
+Host: example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: 16-byte, base64 encoded
+Sec-WebSocket-Version: 13
+Sec-Websocket-Protocol: protocol [,protocol]*
+Sec-Websocket-Extension: extension [,extension]*
+```
+
+Response Header:
+
+```js
+HTTP/1.1 101 "Switching Protocols" or other description
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: 20-byte, MD5 hash in base64
+Sec-Websocket-Protocol: protocol [,protocol]*
+Sec-Websocket-Extension: extension [,extension]*
+```
+
+### Web Sockets Basic Usage
+
+通信功能
+
+```js
+WebSocket WebSocket(
+  in DOMString url,
+  in optional DOMString protocols
+);
+
+WebSocket WebSocket(
+  in DOMString url,
+  in optional DOMString[] protocols
+);
+```
+
+```js
+function WebSocketTest() {
+  if ('WebSocket' in window) {
+    alert('WebSocket is supported by your Browser!');
+    // Let us open a web socket
+    var ws = new WebSocket('ws://localhost:9998/echo');
+    ws.onopen = function () {
+      // Web Socket is connected, send data using send()
+      ws.send('Message to send');
+      alert('Message is sent...');
+    };
+    ws.onmessage = function (evt) {
+      var received_msg = evt.data;
+      alert('Message is received...');
+    };
+    ws.onclose = function () {
+      // websocket is closed.
+      alert('Connection is closed...');
+    };
+  } else {
+    // The browser doesn't support WebSocket
+    alert('WebSocket NOT supported by your Browser!');
+  }
+}
+```
+
+### Web Socket HeartBeat Mechanism
+
+连接终止时，Web Socket 不会自动恢复,
+需要自己实现, 通常为了保持连接状态，需要增加心跳机制.
+
+每隔一段时间会向服务器发送一个数据包, 告诉服务器自己 Alive,
+服务器端如果 Alive, 就会回传一个数据包给客户端.
+主要在一些**长时间连接**的应用场景需要考虑心跳机制及重连机制,
+以保证长时间的连接及数据交互.
+
+## Web RTC API
+
+多媒体通信
+
+## Web Workers API
+
+- 多线程处理
+- 有两种方法可以停止 Worker:
+  从主页调用 `worker.terminate()` 或在 worker 内部调用 `self.close()`
+- 利用 [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel)
+  可以创建 Shared Worker, 即共享 Workers 在同一源 (origin) 下面的各种进程都可以访问它，
+  包括：iframes、浏览器中的不同 tab 页 (browsing context)
+- Web Workers 无法访问一些非常关键的 JavaScript 特性:
+  DOM(它会造成线程不安全), window 对象, document 对象, parent 对象.
+- Use Case: Graphic App (Ray Tracing), Encryption, Prefetching Data,
+  PWA (Service Worker), Spell Checking
+
+```html
+<button onclick="startComputation()">Start computation</button>
+
+<script>
+  const worker = new Worker('worker.js');
+
+  worker.addEventListener(
+    'message',
+    function (e) {
+      console.log(e.data);
+    },
+    false
+  );
+
+  function startComputation() {
+    worker.postMessage({ cmd: 'average', data: [1, 2, 3, 4] });
+  }
+</script>
+```
+
+```js
+// worker.js
+self.addEventListener(
+  'message',
+  function (e) {
+    const data = e.data;
+    switch (data.cmd) {
+      case 'average':
+        const result = calculateAverage(data);
+        self.postMessage(result);
+        break;
+      default:
+        self.postMessage('Unknown command');
+    }
+  },
+  false
+);
+```
+
+## Web Gamepad API
+
+[Gamepad API Tutorials](https://developer.mozilla.org/zh-CN/docs/Games/Techniques/Controls_Gamepad_API)
+
+```js
+const gamepads = {};
+
+function gamepadHandler(event, connecting) {
+  // gamepad === navigator.getGamepads()[gamepad.index]
+  const { gamepad } = event;
+
+  if (connecting) {
+    gamepads[gamepad.index] = gamepad;
+  } else {
+    delete gamepads[gamepad.index];
+  }
+}
+
+window.addEventListener('gamepadconnected', (e) => {
+  gamepadHandler(e, true);
+});
+
+window.addEventListener('gamepaddisconnected', (e) => {
+  gamepadHandler(e, false);
+});
+```
+
+## Web Geolocation API
+
+```js
+if (window.navigator.geolocation) {
+  //getCurrentPosition第三个参数为可选参数
+  navigator.geolocation.getCurrentPosition(locationSuccess, locationError, {
+    // 指示浏览器获取高精度的位置，默认为false
+    enableHighAccuracy: true,
+    // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+    timeout: 5000,
+    // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+    maximumAge: 3000,
+  });
+} else {
+  alert('Your browser does not support Geolocation!');
+}
+```
+
+locationError 为获取位置信息失败的回调函数，可以根据错误类型提示信息：
+
+```js
+locationError: function(error){
+    switch(error.code) {
+        case error.TIMEOUT:
+            showError("A timeout occurred! Please try again!");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            showError('We can\'t detect your location. Sorry!');
+            break;
+        case error.PERMISSION_DENIED:
+            showError('Please allow geolocation access for this to work.');
+            break;
+        case error.UNKNOWN_ERROR:
+            showError('An unknown error occurred!');
+            break;
+    }
+}
+```
+
+locationSuccess 为获取位置信息成功的回调函数，返回的数据中包含经纬度等信息，结合 Google Map API 即可在地图中显示当前用户的位置信息，如下：
+
+```js
+locationSuccess: function(position){
+    var coords = position.coords;
+    var latlng = new google.maps.LatLng(
+        // 维度
+        coords.latitude,
+        // 精度
+        coords.longitude
+    );
+    var myOptions = {
+        // 地图放大倍数
+        zoom: 12,
+        // 地图中心设为指定坐标点
+        center: latlng,
+        // 地图类型
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    // 创建地图并输出到页面
+    var myMap = new google.maps.Map(
+        document.getElementById("map"),myOptions
+    );
+    // 创建标记
+    var marker = new google.maps.Marker({
+        // 标注指定的经纬度坐标点
+        position: latlng,
+        // 指定用于标注的地图
+        map: myMap
+    });
+    //创建标注窗口
+    var infoWindow = new google.maps.InfoWindow({
+        content:"您在这里<br/>纬度："+
+            coords.latitude+
+            "<br/>经度："+coords.longitude
+    });
+    //打开标注窗口
+    infoWindow.open(myMap,marker);
+}
+```
+
+```js
+navigator.geolocation.watchPosition(
+  locationSuccess,
+  locationError,
+  positionOption
+);
+```
+
+自动更新地理位置
+
+## Web URL API
+
+- [URLSearchParams](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams)
+
+## SSR
+
+- [Server Side Rendering with Puppeteer](https://developers.google.com/web/tools/puppeteer/articles/ssr)
+- [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
+
+```js
+if (isBotAgent) {
+  // return pre-rendering static html to search engine crawler
+  // like Gatsby
+} else {
+  // server side rendering at runtime for real interactive users
+  // ReactDOMServer.renderToString()
+}
+```
+
+## SEO
+
+### SEO Tutorials
+
+- [SEO Basics](https://developers.google.com/search/docs/guides/javascript-seo-basics)
+- [SPA SEO Basics](https://snipcart.com/spa-seo)
+
+### SEO Tips
+
+- [server-side rendering](https://css-tricks.com/server-side-react-rendering)
+  (e.g next.js)
+- [PreRendering](https://github.com/chrisvfritz/prerender-spa-plugin)
+- mobile performance optimization
+  (e.g minify resources, code splitting, CDN, lazy loading, minimize reflows)
+- [SEO-friendly routing and URL management](https://reacttraining.com/react-router)
+- [Google webmaster tools](https://www.google.com/webmasters)
+
+#### SEO Metadata
+
+```js
+const seo = {
+  title: 'About',
+  description: 'This is an awesome site that you definitely should check out.',
+  url: 'https://www.mydomain.com/about',
+  image: 'https://mydomain.com/images/home/logo.png',
+}
+
+<Helmet
+  title={`${seo.title} | Code Mochi`}
+  meta={[
+    {
+      name: 'description',
+      property: 'og:description',
+      content: seo.description,
+    },
+    { property: 'og:title', content: `${seo.title} | Code Mochi` },
+    { property: 'og:url', content: seo.url },
+    { property: 'og:image', content: seo.image },
+    { property: 'og:image:type', content: 'image/jpeg' },
+    { property: 'twitter:image:src', content: seo.image },
+    { property: 'twitter:title', content: `${seo.title} | Code Mochi` },
+    { property: 'twitter:description', content: seo.description },
+  ]}
+/>
+```
+
+## Network
+
+### HTTPS
+
+HyperText Transfer Protocol (HTTP) + Transport Layer Security (TLS):
+
+- CA (Certificate Authority) 认证体系是 HTTPS 防止中间人攻击 (HTTP 明文传输) 的核心,
+  客户端需要对服务器发来的证书进行安全性校验.
+- 通过 CA 认证体系避免了中间人窃取 AES 密钥并发起拦截和修改 HTTP 通讯的报文.
+
+### HTTP 2
 
 在 HTTP/1.x 中，每次请求都会建立一次 HTTP 连接:
 
@@ -4784,7 +5778,195 @@ HTTP/2 的多路复用就是为了解决上述的两个性能问题.
 帧代表着最小的数据单位, 每个帧会标识出该帧属于哪个流, 流也就是多个帧组成的数据流.
 多路复用, 就是在一个 TCP 连接中可以存在多条流, 避免队头阻塞问题和连接数过多问题.
 
+HTTP/2 = `HTTP` + `HPack / Stream` + `TLS 1.2+` + `TCP`
+
+- 二进制传输 (乱序二进制帧 Stream)
+- Header 压缩 (HPack)
+- 多路复用
+- Server Push
+- 事实加密 (Chrome/Firefox 只支持 HTTP/2 over TLS 1.2+)
+
+### HTTP 3
+
+HTTP/3 = `HTTP` + `QPack / Stream` + `QUIC / TLS 1.3+` + `UDP`
+
+- 解决多次握手高延迟问题
+- 解决队头 (数据重传) 阻塞 (后续数据) 问题
+- QUIC 协议保证传输可靠、实现快速握手、集成 TLS 加密、实现多路复用
+
 ## Security
+
+- [Web Security Checklist](https://eggjs.org/zh-cn/core/security.html)
+- [ESLint Node Security Tool](https://github.com/nodesecurity/eslint-plugin-security)
+
+### Web Authentication
+
+#### HTTP Basic Authentication
+
+HTTP basic authentication is 401 authentication:
+
+- 客户端向服务器请求数据:
+
+```js
+Get /index.html HTTP/1.0
+Host:www.google.com
+```
+
+- 服务器向客户端发送验证请求代码 `401` `WWW-Authenticate: Basic realm=”google.com”`
+
+```js
+HTTP/1.0 401 Unauthorized
+Server: SokEvo/1.0
+WWW-Authenticate: Basic realm=”google.com”
+Content-Type: text/html
+Content-Length: xxx
+```
+
+- 当符合 HTTP/1.0 或 HTTP/1.1 的客户端收到 401 返回值时,
+  将自动弹出一个登录窗口, 要求用户输入用户名和密码.
+- 用户输入用户名和密码后, 将用户名及密码以 BASE64 加密方式加密, 并将密文放入前一条请求信息中
+- 服务器收到上述请求信息后, 将 Authorization 字段后的用户信息取出、解密,
+  将解密后的用户名及密码与用户数据库进行比较验证
+
+```js
+Get /index.html HTTP/1.0
+Host:www.google.com
+Authorization: Basic d2FuZzp3YW5n
+```
+
+#### Session Cookie
+
+##### Session Cookie Basis
+
+HTTP 协议是一个无状态的协议,
+服务器不会知道到底是哪一台浏览器访问了它,
+因此需要一个标识用来让服务器区分不同的浏览器.
+Cookie 就是这个管理服务器与客户端之间状态的标识.
+Response header with `Set-Cookie`, Request header with `Cookie`.
+
+浏览器第一次访问服务端, 服务端就会创建一次 Session, 在会话中保存标识该浏览器的信息.
+Session 缓存在服务端, Cookie 缓存在客户端,
+他们都由服务端生成, 实现 HTTP 协议的状态.
+
+- 客户端发送登录信息 (ID, Password).
+- 服务器收到客户端首次请求并验证成功后,
+  会在服务器端创建 Session 并保存唯一的标识字符串 Session ID (Key-Value Store)，
+  在 Response Header 中设置 `Set-Cookie: <Session ID>`.
+- 客户端后续发送请求都需在 Request Header 中设置: `Cookie: <Session ID>`.
+- 服务器根据 `<Session ID>` 进行用户验证,
+  利用 Session Cookie 机制可以简单地实现**用户登录状态验证**,
+  保护需要登录权限才能访问的路由服务.
+
+##### Session Cookie Cons
+
+- 认证方式局限于在浏览器 (Cookie).
+- 非 HTTPS 协议下使用 Cookie, 容易受到 CSRF 跨站点请求伪造攻击.
+- Session ID 不包含具体用户信息, 需要 Key-Value Store (eg Redis) 持久化,
+  在分布式环境下需要在每个服务器上都备份, 占用了大量的存储空间.
+
+#### Token Authentication
+
+##### Token Authentication Basis
+
+- 客户端发送登录信息 (ID, Password).
+- 服务端收到请求验证成功后, 服务端会签发一个 Token (包含用户信息) 并发送给客户端.
+- 客户端收到 Token 后存储到 Cookie 或 Local Storage,
+  客户端每次向服务端请求都需在 Request Header 中设置: `Authorization: <Token>`.
+- 服务端收到请求并验证 Token, 成功发送资源 (鉴权成功), 不成功发送 401 错误代码 (鉴权失败).
+
+##### Token Authentication Pros
+
+- Token 认证不局限于浏览器 (Cookie).
+- 不使用 Cookie 可以规避 CSRF 攻击.
+- Token 中包含了用户信息, 不需要 Key-Value Store 持久化, 分布式友好.
+  服务器端变成无状态, 服务器端只需要根据定义的规则校验 Token 合法性.
+  上述两点使得 Token Authentication 具有更好的扩展性.
+
+##### Token Authentication Cons
+
+- Token 认证 (加密解密过程) 比 Session Cookie 更消耗性能.
+- Token (包含用户信息) 比 Session ID 大, 更占带宽.
+- 不保存 Session 状态, 无法中止或更改 Token 权限, Token 到期前会始终有效, 存在盗用风险:
+  - JWT 有效期应短.
+  - JWT 应使用 HTTPS 协议.
+  - 对于重要权限， 需使用二次验证 (Two Factor Authentication).
+
+#### JSON Web Token
+
+##### JSON Web Token Basis
+
+- 基于 Token 的解决方案中最常用的是 JWT.
+- 服务器认证用户密码以后, 生成一个 JSON 对象并签名加密后作为 Token 返回给用户.
+- JSON 对象包含用户信息, 用户身份, 令牌过期时间等:
+  - Header: 明文 Base64 编码 JSON 对象, 描述 JWT 的元数据.
+    一般为 Token 的加密算法和 Token 的类型, 如 `{"alg": "HS256","typ": "JWT"}`.
+  - Payload: 明文 Base64 编码 JSOn 对象，存放实际数据.
+    有 7 个官方字段和部分定义私有字段, 一般存放用户名, 用户身份, JWT 描述字段.
+  - Signature: 对 Header 和 Payload 的签名, 利用签名验证信息的正确性, 防止数据篡改. 签名需要服务端保存的密钥.
+- 把三个部分拼成一个字符串, 每个部分之间用 `.` 分隔: `HeaderBase64.PayloadBase64.Signature`.
+
+##### JSON Web TOken Pros
+
+- JWT 默认是不加密.
+- JWT 不加密的情况下, 不能将秘密数据写入 JWT.
+- JWT 可以加密, 生成原始 Token 以后, 可以用密钥再加密一次.
+- JWT 不仅可用于认证, 也可用于交换信息.
+  有效使用 JWT, 可以降低服务器查询数据库的次数.
+
+##### JSON Web Token Cons
+
+- 不保存 Session 状态, 无法中止或更改 Token 权限, Token 到期前会始终有效, 存在盗用风险:
+  - JWT 有效期应短.
+  - JWT 应使用 HTTPS 协议.
+  - 对于重要权限， 需使用二次验证 (Two Factor Authentication).
+
+#### OAuth Authentication
+
+OAuth (Open Authorization) 是一个开放标准, 作用于第三方授权和第三方访问.
+用户数据的所有者告诉系统, 同意授权第三方应用进入系统, 获取这些数据.
+系统从而产生一个短期进入令牌 (Token), 用来代替密码供第三方应用使用.
+
+第三方应用申请令牌之前, 都必须先到系统备案, 说明自己的身份, 然后会拿到两个身份识别码:
+Client ID 和 Client Secret. 这是为了防止令牌被滥用, 没有备案过的第三方应用拿不到令牌 (Token).
+
+OAuth Token 特征:
+
+1. 授权短 (Short Expire Time)
+2. 可撤销 (Revoke)
+3. 权限小 (Scope)
+
+##### OAuth Authentication Basis
+
+- 在 GitHub Developer Settings 中备案第三方应用,
+  拿到属于它的客户端 ID 和客户端密钥
+  (3rd-Party Server vs Resource Owner)
+- 在自己的第三方网站提供一个 GitHub 登录链接,
+  用户点击该链接后会跳转到 GitHub OAuth API
+  `https://github.com/login/oauth/authorize/?client_id=${clientID}`.
+- 用户跳转到 GitHub, 通过验证并同意使用 GitHub 身份登录第三方网站,
+  此时就会带着授权码 Code 跳回第三方网站.
+- 第三方网站收到授权码, 利用授权码, 客户端 ID, 客户端密钥向 GitHub 请求 `access_token`令牌
+  `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}`
+  (3rd-Party Server vs Authorization Server)
+- 第三方网站收到令牌, 可以暂时拥有 GitHub 一些请求的权限比如用户信息,
+  `https://api.github.com/user?access_token=${accessToken}`
+  或者 Request Header `Authorization: token ${accessToken}`.
+  可以构建第三方网站自己的 Token, 做进一步相关鉴权操作 (如 Session Cookie).
+  (3rd-Party Server vs Resource Server)
+
+##### OAuth 2.0
+
+OAuth 2.0 允许自动更新令牌.
+资源所有者颁发令牌时一次性颁发两个令牌,
+一个用于获取数据 (Access Token),
+另一个用于获取新的令牌 (Refresh Token）.
+令牌到期前, 第三方网站使用 Refresh Token 发请求更新令牌:
+
+```html
+https://github.com/login/oauth/access_token? client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET& grant_type=refresh_token&
+refresh_token=REFRESH_TOKEN
+```
 
 ### Content Security Policy Level 3
 
@@ -4812,7 +5994,7 @@ CSP help prevent from XSS
 <script nonce="random123" src="https://cdnjs.com/lib.js"></script>
 ```
 
-nonce only CSP block 3rd lscripts and dynamic scripts generate by trusted users,
+nonce only CSP block 3rd scripts and dynamic scripts generate by trusted users,
 'strict-dynamic' can tackle it.
 
 ```html
@@ -4869,7 +6051,7 @@ def allow_request(req):
   if req['sec-fetch-site'] in ('same-origin', 'same-site', 'none'):
     return True
 
-  # Allow simple top-lelve navigations from anywhere
+  # Allow simple top-level navigation from anywhere
   if req['sec-fetch-mode'] == 'navigate' and req.method == 'GET':
     return True
 
@@ -4923,26 +6105,6 @@ function getCanvasFingerprint() {
 
 getCanvasFingerprint();
 ```
-
-## HTTP Protocol
-
-### HTTP 2
-
-HTTP/2 = `HTTP` + `HPack / Strem` + `TLS 1.2+` + `TCP`
-
-- 二进制传输 (乱序二进制帧 Stream)
-- Header 压缩 (HPack)
-- 多路复用
-- Server Push
-- 事实加密 (Chrome/Firefox 只支持 HTTP/2 over TLS 1.2+)
-
-### HTTP 3
-
-HTTP/3 = `HTTP` + `QPack / Strem` + `QUIC / TLS 1.3+` + `UDP`
-
-- 解决多次握手高延迟问题
-- 解决队头 (数据重传) 阻塞 (后续数据) 问题
-- QUIC 协议保证传输可靠、实现快速握手、集成 TLS 加密、实现多路复用
 
 ## DevOps
 
@@ -5083,10 +6245,83 @@ server {
 
 - 前端优化:
   每一个页面都需要去获取灰度规则，这个灰度请求将阻塞页面.
-  可以使用 localStrage 存储这个用户是否为灰度用户,
-  然后定期的更新 localStrage,
+  可以使用 localStorage 存储这个用户是否为灰度用户,
+  然后定期的更新 localStorage,
   取代大量的请求造成的体验问题.
 
 - 后端优化:
   利用 MemCache 在内存中缓存灰度规则与灰度用户列表,
   提升灰度发布性能.
+
+### Zero Trust Access Control
+
+从防御的角度来讲, 内部风险是外部风险的超集:
+当攻击者攻陷任何一个内部人员 (合法用户或员工) 的设备后,
+攻击者便成了内部人员.
+[零信任](https://zchn.github.io/j/ztcn)
+从这个角度看就是假设任何一台主机都有可能被攻陷.
+
+#### Chain of Trust
+
+零信任并不是完全没有信任,
+而是几个基本的最小化的信任根 (Root of Trust),
+重构信任链 (Chain of Trust).
+通过一系列的标准化流程 (Standard Process) 建立的一个完整的信任链
+(信任树 Tree of Trust 或者信任网 Web of Trust).
+
+几个典型的例子包括:
+
+- 多因子认证 (MFA, Multi-Factor Authentication):
+  人的身份的信任根.
+- 可信平台模块 (TPM, Trusted Platform Module)和可信启动 (Trusted Boot):
+  机器的身份的信任根.
+- 源代码和可信编译 (Trusted Build):
+  软件的信任根.
+
+#### Identity 2.0
+
+身份 2.0 是对于以上的信任链的标准化,
+以便于在安全访问策略中使用这些在建立信任过程中收集到的信息.
+
+在身份 2.0 中, 一切本体 (Entity) 都有身份.
+用户有用户身份, 员工有员工身份, 机器有机器身份, 软件有软件身份.
+
+在身份 2.0 中, 一切访问 (Access) 都带有访问背景 (Access Context):
+
+- 目的: 为了帮助用户解决一个技术问题
+- 访问者: 员工 A
+- 授权者: 用户 B
+- 访问方式: 软件 C
+- 访问地点: 机器 D
+
+#### Continuous Access Control
+
+持续访问控制会在软件开发和运行的各个环节持续地进行访问控制:
+
+- 在员工登录时要求提供多因子认证.
+- 在部署软件时要求软件是从信任的源码库在安全的环境中编译而来,
+  并经过代码评估 (Code Review).
+- 在主机之间建立连接时要求双方提供主机完整性证明.
+- 在微服务获取特定用户数据时要求提供该用户的授权令牌 (Authorization Token).
+
+#### Zero Trust Basement
+
+零信任的实施依赖于扎实的基础安全架构, 没有基础就没有上层建筑.
+谷歌零信任依赖于以下基础设施提供的基本安全保障:
+
+- 数据加密和密钥管理 (Encryption and Key Management)
+- 身份和访问管理 (Identity and Access Management)
+- 数字化人力资源管理 (Digital Human Resource)
+- 数字化设备管理 (Digital Device Management)
+- 数据中心安全 (Data Center Security)
+- 网络安全 (Network Security)
+- 主机安全 (Host Security)
+- 容器隔离 (Container Isolation，gVisor)
+- 可信启动 (Trusted Boot)
+- 可验证编译 (Verifiable Build)
+- 软件完整性验证 (Software Integrity Verification)
+- 双向 TLS (mTLS)
+- 基于服务的访问策略 (Service Access Policy)
+- 终端用户令牌 (End User Context Tokens)
+- 配置即代码 (Configuration as Code)
+- 标准化开发和部署 (Standard Development and Deployment)

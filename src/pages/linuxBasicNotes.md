@@ -90,17 +90,17 @@ sudo service restart sshd
   - HostName 主机名(ip) `ssh user@ip`
   - Port 可忽略
   - User 登录用户名 `ssh user@ip`
-  - PreferredAuthentications publickey
+  - PreferredAuthentications publicKey
   - IdentityFile 密钥文件完整路径 `ssh -i file`
 
 ```bash
 Host github.com
   HostName github.com
-  PreferredAuthentications publickey
+  PreferredAuthentications publicKey
   IdentityFile ~/.ssh/id_rsa
 Host cs.github.com
   HostName github.com
-  PreferredAuthentications publickey
+  PreferredAuthentications publicKey
   IdentityFile ~/.ssh/cs
 Host cloud
     HostName xx.org
@@ -124,9 +124,9 @@ google-chrome socks5 127.0.0.1 7070
 
 ### 密钥文件
 
-- 登录远程主机：ssh -i hustlyl root@119.29.140.60
-- 文件传输：sftp -i hustlyl root@119.29.140.60
-- 登录数据库：mysql -h 10.66.135.125 -P 3306 -uroot -p
+- 登录远程主机：ssh -i sabertaz root@119.29.140.60
+- 文件传输：sftp -i sabertaz root@119.29.140.60
+- 登录数据库：mysql -h 10.66.135.125 -P 3306 -u root -p
 
 ### 远程传输文件
 
@@ -292,7 +292,7 @@ print working directory
 #### rm
 
 - –r delete directory
-- –f delete forcely
+- –f delete forcedly
 - -i 显示确认信息
 
 #### cp
@@ -329,7 +329,7 @@ indicate how a command name is interpreted
 
 display a list of appropriate commands
 
-#### whereis/whatis
+#### whereis and whatis
 
 #### which
 
@@ -356,13 +356,69 @@ display a list of appropriate commands
 
 ### Process Command
 
+#### uptime
+
+Average load information
+
 #### ps
 
-report a snapshot of current processes
+Report a snapshot of current processes
+
+```bash
+ps aux
+```
 
 #### top
 
-display tasks
+top/htop:
+
+- Display tasks
+- Average load
+- Process status
+- CPU usage
+
+atop:
+
+- Memory usage
+- Disk I/O usage
+- Network usage
+
+#### vmstat
+
+Outputs a snapshot of system resource usage:
+
+- CPU usage
+- Context switch times
+- Interrupt times (/proc/interrupts)
+- Running and exclusive process status
+- Memory usage
+- Swap space
+- Disk I/O usage
+
+#### pidstat
+
+Process and Thread:
+
+- CPU usage
+- Context switch times
+- Interrupt times (/proc/interrupts)
+
+```bash
+pidstat 1
+```
+
+#### mpstat
+
+- CPU usage
+- Software interrupt times (/proc/interrupts)
+
+```bash
+mpstat -P ALL 1
+```
+
+#### lscpu
+
+Show `/proc/cpuinfo`.
 
 #### jobs
 
@@ -392,12 +448,7 @@ shutdown or reboot the system
 
 outputs a process list arranged in a tree-like pattern
 
-#### vmstat
-
-outputs a snapshot of system resource usage:
-including memory, swap and disk I/O
-
-#### xload/tload
+#### xload and tload
 
 draws a graph showing system load over time
 
@@ -430,7 +481,7 @@ report or omit repeated lines
 
 print newline, word, and byte counts for each file
 
-#### head/tail
+#### Head and Tail
 
 output the first/last part of a file
 
@@ -439,12 +490,12 @@ head -n 5 filename
 tail -f filename
 ```
 
-#### tee
+#### Tee
 
 read from standard input and write to standard output and files
 
 ```bash
-[me@linuxbox ~]$ ls /usr/bin | tee ls.txt | grep zip
+[me@linuxBox ~]$ ls /usr/bin | tee ls.txt | grep zip
 bunzip2
 bzip2
 ....
@@ -538,7 +589,9 @@ sudo apt-get install screenfetch
 - bzip2 –d(解压缩) –k(保留压缩文件) 压缩文件
 - bunzip2 –k(保留压缩文件) 压缩文件
 
-#### .tar.gz/.tar.bz2
+#### Tar
+
+tar.gz/.tar.bz2:
 
 tar [可选参数] 压缩文件(可指定压缩路径) [-c 解压缩路径]源文件/源目录
 
@@ -587,7 +640,7 @@ groupdel test2
 
 ##### 查看组
 
-- groups someuser
+- groups someUser
 - cat /etc/group
 
 ```bash
@@ -627,8 +680,8 @@ Options:
 - -Z, --selinux-user SEUSER use a specific SEUSER for the SELinux user mapping
 
 ```bash
-useradd -s bash -m testuser
-passwd testuser # modify `/etc/passwd`, then add to `/etc/sudoers`
+useradd -s bash -m testUser
+passwd testUser # modify `/etc/passwd`, then add to `/etc/sudoers`
 ```
 
 `adduser` is a perl script which uses `useradd` binary in back-end,
@@ -659,7 +712,7 @@ w/who 查看当前登录的所有用户
 
 whoami 查看当前登录用户名
 
-finger apacheuser 查看单个用户信息
+finger apacheUser 查看单个用户信息
 
 ##### 限制用户
 
@@ -691,7 +744,7 @@ finger apacheuser 查看单个用户信息
 
 /etc/sudoers.tmp
 
-#### SetUID/SetGID 权限
+#### SetUID and SetGID
 
 可执行程序/目录+普通用户临时获得 root 权限 （rws）:
 
@@ -714,7 +767,6 @@ xrandr -s 1920x1800 # set resolution
 #!/bin/bash
 
 # Simple print cpu topology
-# Author: kodango
 
 # numactl --hardware
 # ls /sys/devices/system/node/node0
@@ -911,7 +963,7 @@ yum makecache
 make install
 ```
 
-e.g apche /var/www/html/index.html /usr/local/apache/htdocs/index.html
+e.g apache /var/www/html/index.html /usr/local/apache/htdocs/index.html
 
 #### Applications Management
 
@@ -933,9 +985,9 @@ e.g apche /var/www/html/index.html /usr/local/apache/htdocs/index.html
 wget -r -p -np -k -P ~/tmp/ http://java-er.com
 ```
 
-#### Certbot
+#### Certificate Bot
 
-[Certbot](https://github.com/certbot/certbot)
+[CertBot](https://github.com/certbot/certbot)
 for SSL certificates.
 
 #### GFW
@@ -943,7 +995,6 @@ for SSL certificates.
 - [Hosts](https://github.com/racaljk/hosts)
 - [RSS](https://github.com/breakwa11/shadowsocks-rss)
 - [ChinaDNS](https://github.com/shadowsocks/ChinaDNS-Python)
-- [Sshuttle](https://github.com/apenwarr/sshuttle)
 - [ProxyChains](https://github.com/rofl0r/proxychains-ng)
 - [OpenVPN](https://github.com/OpenVPN/openvpn)
 - [VPNGate](https://github.com/waylau/vpngate-mirrors)
@@ -1007,7 +1058,7 @@ ufw allow https
 
 #### arp
 
-`arp -a`显示地址解析协议(IP 地址—网卡地址):
+`arp -a`显示地址解析协议 (IP 地址—网卡地址):
 
 - 网际互联层：IP 协议(网际)、IGMP 协议(互联网组管理)、ICMP 协议(互联网控制报文)
 - 传输层：TCP 协议(传输控制)、UDP 协议(用户数据报)
@@ -1041,18 +1092,18 @@ ufw allow https
 
 `telnet [ip/domain] [端口]`远程管理与端口探测命令
 
-#### traceroute
+#### Trace Route
 
 - `traceroute [-n IP] domain`路由跟踪命令
 - `traceroute -n -I -T -p`路由扫描
 
-#### NetFilter 框架
+#### Net Filter Framework
 
 nftables 命令行工具：nft
 
 ### 网络扫描命令
 
-预防策略——SYN 攻击、DDOS 攻击
+预防策略——SYN 攻击、DDoS 攻击
 
 #### fping
 
@@ -1137,7 +1188,7 @@ crontab -e(establish)
 - jobs —— 所有作业
 - atq —— 延时作业队列
 
-- at -M(不使用邮件发送运行结果) -f filename deltatime
+- at -M(不使用邮件发送运行结果) -f filename deltaTime
 - atrm 作业号/名
 
 - bg/fg 作业号/名
@@ -1197,7 +1248,7 @@ sudo apt-get install read-edid
 sudo get-edid | parse-edid
 ```
 
-#### Touchpad Synaptics
+#### Touch Pad Synoptics
 
 ```bash
 synclient TouchpadOff=0
@@ -1286,7 +1337,7 @@ sudo timedatectl set-local-rtc 1
 
 ## Shell 编程
 
-### Warings
+### Shell Warnings
 
 - = 左右无空格
 - () [] 内部最好有空格
@@ -1304,7 +1355,7 @@ sudo timedatectl set-local-rtc 1
 #### Here Document
 
 ```bash
-commnad << END
+command << END
 ...
 END
 
@@ -1400,7 +1451,7 @@ done
 - PS1 环境变量——shell 头行打印信息
 - PATH 环境变量
 
-##### Env Commnad
+##### Environment Command
 
 - env——查看环境变量
 - export 变量名=变量值——设置环境变量
@@ -1440,13 +1491,13 @@ fi
 ```
 
 - `[[ xxx ]]`: condition
-- `(( xxx ))`: arithemetic condition
+- `(( xxx ))`: arithmetic condition
 
 | operator              | function                                          |
-| :-------------------- | :------------------------------------------------ | --- | --- |
+| :-------------------- | :------------------------------------------------ |
 | ! EXPRESSION          | The EXPRESSION is false                           |
 | -n STRING             | The length of STRING is greater than zero         |
-| -z STRING             | The lengh of STRING is zero (ie it is empty)      |
+| -z STRING             | The length of STRING is zero (ie it is empty)     |
 | STRING1 == STRING2    | STRING1 is equal to STRING2                       |
 | STRING1 != STRING2    | STRING1 is not equal to STRING2                   |
 | STRING1 > STRING2     | STRING1 sorts after STRING2                       |
@@ -1461,7 +1512,7 @@ fi
 | -w FILE               | FILE exists and the write permission is granted   |
 | -x FILE               | FILE exists and the execute permission is granted |
 | `AND -a &&`           |                                                   |
-| `OR -o                |                                                   | `   |     |
+| `OR -o \|\|`          |                                                   |
 | `NOT ! !`             |                                                   |
 
 - {}: group regexp
@@ -1490,7 +1541,7 @@ aA1b aA2b aB3b aB4b
   - `${parameter^^}` 把 parameter 的值全部转换成大写字母
   - `${parameter^}` 仅仅把 parameter 的第一个字符转换成大写字母
   - `${parameter#pattern}` `${parameter##pattern}`,
-    `${parameter%pattern}` `${parameter%%pattern}`: 从 paramter 所包含的字符串中清除开头/末尾一部分文本
+    `${parameter%pattern}` `${parameter%%pattern}`: 从 parameter 所包含的字符串中清除开头/末尾一部分文本
   - `${parameter/pattern/string}`, `${parameter//pattern/string}`,
     `${parameter/#pattern/string}`, `${parameter/%pattern/string}`: replace
 
@@ -1750,12 +1801,12 @@ echo "Program terminated."
 ```bash
 #!/bin/bash
 # while-read: read lines from a file
-while read distro version release; do
-    printf "Distro: %s\tVersion: %s\tReleased: %s\n" \
-        $distro \
+while read dist version release; do
+    printf "Dist: %s\tVersion: %s\tReleased: %s\n" \
+        $dist \
         $version \
         $release
-done < distros.txt
+done < dist.txt
 ```
 
 #### do while statement
@@ -1974,7 +2025,7 @@ if [[ ${#@} -ne 0 ]] && [[ "${@#"--help"}" = "" ]]; then
 fi;
 ```
 
-#### Bash slient option
+#### Bash Silent Option
 
 ```bash
 #!/bin/sh
@@ -2008,9 +2059,9 @@ fi;
 
 ```bash
 #!/bin/sh
-CURR_DIR="$(dirname $0);"
+CUR_DIR="$(dirname $0);"
 printf -- 'moving application to /opt/app.jar';
-mv "${CURR_DIR}/application.jar" /opt/app.jar;
+mv "${CUR_DIR}/application.jar" /opt/app.jar;
 ```
 
 #### Bash error handle
@@ -2048,6 +2099,23 @@ printf -- ' DONE!\n';
 ```
 
 ## Terminal
+
+### Terminal Basis
+
+- 电传打字机 (TeleTypeWriter, TTY) 是物理设备,
+  最初是为电报设计, 后来被连接到计算机上, 发送输入和获取输出.
+- 电传打字机 (TTY) 现在被运行在内核中的模块所模拟,
+  被称为终端模拟器 (Terminal Emulator).
+- 伪终端 (Pseudo Terminal, PTY) 是运行在用户区的终端模拟程序.
+- Shell 由 Terminal fork 出来, 是 Terminal 的子进程.
+  Terminal 处理键盘事件, 负责字符的显示.
+  Shell 负责解释执行用户输入的字符, 返回操作系统底层响应.
+- 可以使用 `stty` 命令对 TTY 设备进行配置.
+- 远程终端 `ssh` 也是一种伪终端 PTY:
+  - Local: PTY Master is Terminal, PTY Slave is `bash` and `ssh client`.
+  - Remote: PTY Master is `ssh server`, PTY Slave is `bash`.
+
+### Default Terminal
 
 ```bash
 sudo update-alternatives --install /usr/bin/x-terminal-emulator
@@ -2118,9 +2186,9 @@ t        # 显示一个时钟
 
 ##### Tmux Scroll
 
-- `C-a + [` to into scoll mode, `q` to quit scoll mode
-- copy mode can scoll too
-- `set -g mouse on` for enabling mouse scolling
+- `C-a + [` to into scroll mode, `q` to quit scroll mode
+- copy mode can scroll too
+- `set -g mouse on` for enabling mouse scrolling
 
 #### Configuration
 
@@ -2173,8 +2241,6 @@ set-window-option -g window-status-current-bg red
 
 ## Perf Tools
 
-### uptime
-
 ### Top Command
 
 ```bash
@@ -2185,18 +2251,6 @@ top
 
 ```bash
 dmesg | tail
-```
-
-### mpstat
-
-```bash
-mpstat -P ALL 1
-```
-
-### pidstat
-
-```bash
-pidstat 1
 ```
 
 ### iostat
@@ -2290,7 +2344,7 @@ ffmpeg -i music_flac.flac \
 # - libmp3lame: MP3 解码器
 # - ar: audio rate 音频采样率, 默认用原音频的采样率
 # - ab: audio bit rate 音频比特率, 默认 128K
-# - ac: aduio channels 音频声道, 默认采用源音频的声道数
+# - ac: audio channels 音频声道, 默认采用源音频的声道数
 ```
 
 ```bash
@@ -2324,7 +2378,7 @@ ffmpeg -i video.mp4 \
 ```bash
 # audio only
 ffmpeg -i cut.mp4 -vn output.mp3
-ffmpeg -i video.mp4 -vn -acodec copy video_novideo.m4a
+ffmpeg -i video.mp4 -vn -acodec copy video_noVideo.m4a
 
 # video only
 ffmpeg -i video.mp4 -vcodec copy -an video_silent.mp4
@@ -2342,14 +2396,14 @@ ffmpeg -i input.mkv -ss 00:02:00.0 -t 30 -c copy output.mkv
 ffmpeg -ss 00:01:30.0 -i input.mkv -ss 00:00:30.0 -t 30 output.mkv
 ```
 
-#### FFmpeg Muxing
+#### FFmpeg Mixing
 
 ```bash
 # replace audio
 ffmpeg -i input.mkv -i input.mp3 -map 0:v -map 1:a -c copy -shortest output.mp4
 
 # merge audio and video
-ffmpeg -i video_novideo.m4a -i video_silent.mp4 -c copy video_merge.mp4
+ffmpeg -i video_noVideo.m4a -i video_silent.mp4 -c copy video_merge.mp4
 
 ffmpeg -i "concat:01.mp4|02.mp4|03.mp4" -c copy out.mp4
 
@@ -2405,7 +2459,7 @@ sudo ffmpeg -f fbdev -framerate 10 -i /dev/fb0 rec.mp4
 #### FFmpeg Live Streaming
 
 ```bash
-ffmpeg -re i rec.mp4 按照网站要求编码 -f flv "你的rtmp地址/你的直播码"
+ffmpeg -re i rec.mp4 按照网站要求编码 -f flv "你的 RTMP 地址/你的直播码"
 ```
 
 ### Nginx

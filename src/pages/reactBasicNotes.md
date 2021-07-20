@@ -14,7 +14,7 @@ tags:
 
 # React Basic Notes
 
-## Diff Algorithm (Reconciliation)
+## Core of React
 
 ### React Fiber
 
@@ -22,6 +22,15 @@ tags:
 
 React Fiber 的目标是提高其在动画、布局和手势等领域的适用性.
 它的主要特性是`Incremental Rendering`: 将渲染任务拆分为小的任务块并将任务分配到多个帧上的能力.
+
+#### React Fiber Metadata
+
+[Fiber](https://github.com/facebook/react/blob/v17.0.0/packages/react-reconciler/src/ReactInternalTypes.js):
+
+- Component type.
+- Current props and state.
+- Pointers to parent, sibling, and child components.
+- Other internal metadata to track rendering process.
 
 ### React Render Stage
 
@@ -40,9 +49,10 @@ React Fiber 的目标是提高其在动画、布局和手势等领域的适用�
 
 #### Component Elements of Same Type
 
-- update the props to match the new element
-- methods: `getDerivedStateFromProps`
-- then `render` called, diff algorithm recurses on the old result and the new result
+- Update the props to match the new element
+- Methods: `getDerivedStateFromProps`
+- Then `render` called,
+  diff algorithm recursively on the old result and the new result.
 
 ### React Fiber Effects
 
@@ -53,14 +63,16 @@ React Fiber 的目标是提高其在动画、布局和手势等领域的适用�
 - `useEffect` callback: `got Passive` tag.
   - `useEffect(fn)`: `Mount` and `Update` lifecycle.
   - `useEffect(fn, [])`: `Mount` lifecycle.
-  - `useEffect(fn, [deps])`: `Mount` lifecycle and `deps` changed.
+  - `useEffect(fn, [deps])`:
+    `Mount` lifecycle and
+    `Update` lifecycle with `deps` changed.
 
 React create effects when `Render` stage,
 then update effects to real DOM when `Commit` stage.
 
 ### React Commit Stage
 
-#### BeforeMutation Stage
+#### Before Mutation Stage
 
 #### Mutation Stage
 
@@ -94,9 +106,8 @@ after three stages of `Commit`.
   可以提升 React 性能.
   未来会在更多的可以 Batched Updates 的场景下将 setState 设为异步执行,
   所以编写代码时最好将 setState 总是当做异步执行函数.
-
-Batch Update: 事件处理,
-Not Bacth Update: Async Work (setTimeout/Promise.then)
+- Batch Update: 事件处理.
+- Not Batch Update: Async Work (setTimeout/Promise.then)
 
 ```js
 class Example extends React.Component {
@@ -131,7 +142,7 @@ class Example extends React.Component {
 // => 0 0 2 3
 ```
 
-### componentDidMount()
+### componentDidMount
 
 - don't `setState` directly in this method
 - can use `setInterval`/`setTimeout`/AJAX request/`fetch` in this method,
@@ -262,18 +273,18 @@ ReactDOM.render({
 <Component /> 将被转换为 React.createElement(Component)
 ```
 
-### functional/class component
+### Functional and Class component
 
 - 函数型组件没有实例, 类型组件具有实例, 但实例化的工作由 react 自动完成
 - class component 具有更多特性: state, lifecycle hook, performance optimizations(shouldComponentUpdate()回调方法)
 
-### stateful/stateless component
+### Stateless and Stateful component
 
-#### stateless component
+#### Stateless component
 
 采用函数型声明, 不使用 setState(), 一般作为表现型组件
 
-#### stateful component
+#### Stateful component
 
 - 采用类型声明, 使用 setState(), 一般作为容器型组件(containers)
 - 结合 Redux 中的 connect 方法, 将 store 中的 state 作为此类组件的 props
@@ -319,6 +330,18 @@ getSnapshotBeforeUpdate:
 #### Unmounting Stage
 
 componentWillUnmount()
+
+### Render Function
+
+- Default render behavior (without any `memo`/`useMemo`/`PureComponent`):
+  when a parent component renders,
+  React will recursively render all child components inside of it
+  (because `props.children` is always a new reference when parent re-rendering).
+- Render logic:
+  - Can't mutate existing variables and objects.
+  - Can't create random values like `Math.random()` or `Date.now()`.
+  - Can't make network requests.
+  - Can't queue state updates.
 
 ### Refs
 
@@ -619,9 +642,7 @@ const hook = {
 };
 ```
 
-### Default Hooks
-
-#### useMemo
+### useMemo
 
 - returns a memoized value
 - only recompute the memoized value when one of the dependencies has changed
@@ -645,13 +666,13 @@ const Button = ({ color, children }) => {
 };
 ```
 
-#### useCallback
+### useCallback
 
 - returns a memoized callback
 - 对事件句柄进行缓存, `useState` 的第二个返回值是 `dispatch`,
   但是每次都是返回新的函数, 使用 `useCallback`, 可以让它使用上次的函数.
   在虚拟 DOM 更新过程中, 如果事件句柄相同, 那么就不用每次都进行
-  `removeEventListner` 与 `addEventListner`.
+  `removeEventListener` 与 `addEventListener`.
 - `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`
 
 ```js
@@ -678,7 +699,7 @@ function Child({ fetchData }) {
 }
 ```
 
-#### useState
+### useState
 
 - read rendered props/state
 - return value of `useState` is `ref` to `hooks[idx]`:
@@ -686,6 +707,8 @@ function Child({ fetchData }) {
 - return function of `useState` (`setState`) is to change value of `hooks[idx]`
 - 由于 setState 更新状态 (dispatch action) 时基于 hook.BaseState,
   `setState(value + 1)` 与 `setState(value => value + 1)` 存在差异
+- 当在 useEffect 中调用 setState 时, 最好使用 `setState(callback)` 形式,
+  这样可以不用再 Deps List 中显式声明 state, 也可以避免一些 BUG
 
 ```js
 setState((prevState) => {
@@ -767,7 +790,7 @@ ChatAPI.subscribeToFriendStatus(300, handleStatusChange); // Run next effect
 ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
 ```
 
-#### useReducer
+### useReducer
 
 - Use useState whenever manage a JS **primitive** (e.g. string, boolean, integer).
 - Use useReducer whenever manage an **object** or **array**.
@@ -838,14 +861,30 @@ const reducer = (state, action) => {
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
-#### useRef
+### useRef
 
-`useRef` read rendered props/state from **the future**.
-Generally, you should avoid reading or setting refs
-during rendering because they’re mutable.
-We want to keep the rendering predictable.
-However, if we want to get the latest value of a particular prop or state,
-it's good to read/set `ref.current`.
+#### Refs Basis
+
+- `ref` can bind to HTMLElement.
+- `ref` can either be a state that does not need to change too often.
+- `ref` can either be a state that should change as frequently as possible
+  but should not trigger full re-rendering of the component.
+
+#### Refs Values
+
+- Mutable Value:
+  `useRef()` is useful for for keeping any mutable value around.
+  Updating reference values inside handlers/useEffect callbacks is good,
+  updating reference values during rendering (outside callbacks) is bad.
+- Lifecycle Persisted Value:
+  `useRef()` creates a plain JavaScript object,
+  is persisted (stays the same) between component re-renderings.
+- Silent Value:
+  update reference values don't trigger re-renderings.
+- Latest Value:
+  `useRef()` read rendered props/state from **the future**.
+  It's good to get **latest** value of a particular prop or state
+  (the updated reference value is available right away).
 
 ```js
 function Example() {
@@ -863,17 +902,63 @@ function Example() {
 }
 ```
 
-#### useEffect
+#### Refs Update Mechanism
+
+- Update a `ref`, no re-renderings happens.
+- Update a `state`, the deep rendering mechanism works to re-render components.
+- Store values in refs and have them updated,
+  which is more **efficient** than `useState` (which can be expensive)
+  when the values are to be updated multiple times within a second.
+
+```jsx
+function UserAvatar(props) {
+  return <img src={props.src} />;
+}
+
+function Username(props) {
+  return <span>{props.name}</span>;
+}
+
+function User() {
+  const user = useRef({
+    name: 'UserName',
+    avatarURL: 'https://avatar.com/avatar',
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      user.current = {
+        name: 'NewUserName',
+        avatarURL: 'https://avatar.com/newavatar',
+      };
+    }, 5000);
+  });
+
+  // Only output once
+  console.log('Rendered.');
+
+  // Both children won't be re-rendered
+  // due to shallow rendering mechanism
+  return (
+    <div>
+      <Username name={user.name} />
+      <UserAvatar src={user.avatarURL} />
+    </div>
+  );
+}
+```
+
+### useEffect
 
 [Complete Guide](https://overreacted.io/a-complete-guide-to-useeffect)
 
-##### useEffect Lifecycle
+#### useEffect Lifecycle
 
 1. React renders UI for current props/state to screen.
 2. React cleans up the effect for prev props/state.
 3. React runs the effect for current props/state.
 
-##### useEffect Nasty Loop
+#### useEffect Nasty Loop
 
 The effect hook runs when the component `mounts`
 but also when the component `updates`.
@@ -882,7 +967,7 @@ the component updates and the effect runs again.
 It fetches the data again and again.
 That’s a bug and needs to be avoided.
 
-##### useEffect Deps List
+#### useEffect Deps List
 
 无论是将组件编写为类还是函数, 都必须为 effect 响应所有 props 和 state 的更新.
 在传统的 Class Component, 需要编写代码去检测这些 props 和 state 是否变更
@@ -940,7 +1025,7 @@ const useDataApi = (initialUrl, initialData) => {
 };
 ```
 
-#### Closure BUG in useEffect
+#### Closure in useEffect
 
 - useEffect Hook 会丢弃上一次渲染结果,
   它会清除上一次 effect,
@@ -998,12 +1083,61 @@ function useInterval(callback, delay) {
 }
 ```
 
-### Basic Rules
+#### useEffect State vs Class State
+
+- 如同 `Closure in useEffect`, 每次调用 useEffect 时,
+  会捕获那一次 render 时的 props 和 state.
+- Class Component 中的 this.state.xxx 却总是指向最新的 state.
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(`You clicked ${count} times`);
+    }, 3000);
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+// Output:
+// Mounted: You clicked 0 times
+// Clicked 5 times in 3s
+// You clicked 1 times
+// You clicked 2 times
+// You clicked 3 times
+// You clicked 4 times
+// You clicked 5 times
+```
+
+```js
+componentDidUpdate() {
+  setTimeout(() => {
+    console.log(`You clicked ${this.state.count} times`);
+  }, 3000);
+}
+// Output:
+// Mounted: You clicked 0 times
+// Clicked 5 times in 3s
+// You clicked 5 times
+// You clicked 5 times
+// You clicked 5 times
+// You clicked 5 times
+// You clicked 5 times
+```
+
+### Hooks Usage Rules
 
 - only call Hooks at the top level (don't inside loops, conditions or nested functions)
 - only call Hooks from React function components
 
-### Hooks Internel
+### Hooks Internal
 
 ```js
 const MyReact = (function () {
@@ -1910,6 +2044,51 @@ const App = (props) => {
 };
 ```
 
+### Hooks Best Practice
+
+如果将一个函数任意地将其放在 useEffect Deps List 中
+可能会导致重复无意义的 useEffect 执行
+(因为每次 render 期间的此函数都会重新定义).
+有两个解决办法:
+
+- 对于被多次复用 Utils 函数 (且不依赖组件的任何值),
+  应该提到组件外面的公共区域去定义.
+- 对于只被特定 Effect Hook 调用的 Utils 函数,
+  可以放到 useEffect 内部定义.
+- 对于其他需要在组件内(或自定义 Hooks 内)定义的函数,
+  可使用 useCallback 包裹函数, 并设置正确的 Deps List,
+  尽可能地减少 render 时重新定义此函数.
+
+```js
+// ✅ Not affected by the data flow
+function getFetchUrl(query) {
+  return 'https://hn.algolia.com/api/v1/search?query=' + query;
+}
+
+function SearchResults() {
+  useEffect(() => {
+    const url = getFetchUrl('react');
+    // ... Fetch data and do something ...
+  }, []); // ✅ Deps are OK
+
+  useEffect(() => {
+    const url = getFetchUrl('redux');
+    // ... Fetch data and do something ...
+  }, []); // ✅ Deps are OK
+
+  // ...
+}
+```
+
+- Don't forget to cleanup side effects (return function in useEffect)
+- Set correct deps list for useEffect:
+  - avoid object deps (should use object property).
+  - enough deps list to avoid infinite loop rendering pitfall.
+  - enough deps list to avoid stale closure.
+- setState(state => state + 1) is better (avoid outdated state).
+- Change `useState` to `useRef` when values not for rendering.
+- Don't put any `if` statement before hooks function.
+
 ## ES6 Syntax
 
 ### Comments
@@ -1923,7 +2102,7 @@ render() {
 }
 ```
 
-### binding for this
+### Binding for This
 
 ```js
 constructor() {
@@ -1964,7 +2143,7 @@ const ReservationItem = <ReservationCard />;
 const reservationItem = <ReservationCard />;
 ```
 
-- setting displayname for HOC
+- setting displayName for HOC
 
 ```js
 // bad
@@ -2046,7 +2225,7 @@ render() {
   superLongParam="bar"
   anotherSuperLongParam="baz"
 >
-  <Quux />
+  <Bar />
 </Foo>
 
 // bad
@@ -2163,15 +2342,15 @@ render() {
 - 组件细分化
 - 组件
   - 只传入必要的 props
-  - 使用 immutablejs 或者 react.addons.update 实现不可变数据结构
+  - 使用 Immutable.js 或者 react.addons.update 实现不可变数据结构
   - 结合 React.addons.PureRenderMixin 来减少 reRender
 - 在 shouldComponentUpdate 中优化组件减少 reRender
 - 使用 context
 - 少做 dom 操作，始终让 UI 能够基于 State 还原
 - 在 store 和 action 中不 dom 操作或者访问 window.属性，只与数据打交道
 - 推荐使用 ES6
-- npm 的 debug 包，log 组件渲染的每个步骤和动作
-- [Singel](https://github.com/diegohaz/singel)
+- npm 的 debug 包, log 组件渲染的每个步骤和动作
+- [Single Element Pattern](https://github.com/diegohaz/singel)
 
 ## Modern React
 
@@ -2228,6 +2407,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 ### Context API
+
+Context API provide a Dependency Injection style method,
+to provide values to children components.
 
 ```js
 function contextWrapper(WrappedComponent, Context) {
@@ -2339,7 +2521,7 @@ class ErrorBoundary extends React.Component {
         <div>
           <h1>Oops, something went wrong :(</h1>
           <p>The error: {this.state.error.toString()}</p>
-          <p>Where it occured: {this.state.info.componentStack}</p>
+          <p>Where it occurred: {this.state.info.componentStack}</p>
         </div>
       );
     }
@@ -2482,7 +2664,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 - use `key` correctly
 - `shouldComponentUpdate`
-- `React.PureComponent`: **shallow compare** diff
+- `React.memo/React.useMemo/React.PureComponent`:
+  **shallow compare** on components,
+  to prevent unnecessary re-renders caused by parent components.
 - `React.memo`: **shallow compare** diff
 - stateless component
 - Immutable.js
@@ -2579,7 +2763,8 @@ Prevent useless re-rendering:
 
 - shouldComponentUpdate
 - React.PureComponent: **shallow compare** diff
-- React.memo: **shallow compare** diff
+- React.memo: **shallow compare** diff,
+  to memorize stateless components that **props not changed often**.
 - memorized values
 - memorized event handlers
 - 在用`memo`或者`useMemo`做优化前
@@ -2684,7 +2869,7 @@ function App(items) {
 }
 ```
 
-### Code Spliting
+### Code Splitting
 
 ```js
 import React, { Component } from 'react';
@@ -2796,10 +2981,10 @@ start.server.js
 
 ```js
 import React from 'react';
-import ReactDOMServer from "react-dom/server";
+import ReactDOMServer from 'react-dom/server';
 import App from './App.js';
 
-export deafult () => ReactDOMServer.renderToString(<App />);
+export default () => ReactDOMServer.renderToString(<App />);
 ```
 
 index.html.js
@@ -3031,7 +3216,7 @@ npm init react-app app-name --scripts-version @sabertazimi/react-scripts --use-n
 
 ### React Scripts
 
-#### React Scripts Initilization
+#### React Scripts Initialization
 
 Initialization in `react-scripts/scripts/init.js`:
 
@@ -3157,7 +3342,7 @@ npx create-react-app my-app --template [template-name]
 
 ### Deployment
 
-- [Offical Documentation](https://facebook.github.io/create-react-app/docs/deployment)
+- [Official Documentation](https://facebook.github.io/create-react-app/docs/deployment)
 - [Deploy Subdirectory](https://medium.com/@svinkle/how-to-deploy-a-react-app-to-a-subdirectory-f694d46427c1)
 
 ## Styled Component
@@ -3264,7 +3449,7 @@ const GreenButton = Button.extend`
 // Use our styles
 const WrapperContainer = () => (
   <div>
-    <Button>Defaul button</Button>
+    <Button>Default button</Button>
     <RedButton>Red button</RedButton>
     <GreenButton>Green button</GreenButton>
   </div>
@@ -3314,7 +3499,7 @@ const Button = styled.button`
 
 const WrapperContainer = () => (
   <div>
-    <Button>Defaul button</Button>
+    <Button>Default button</Button>
     {/* Button with prop "red" */}
     <Button red>Red button</Button>
     {/* Button with prop "green" */}

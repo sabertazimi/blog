@@ -11,7 +11,7 @@ tags:
   - CSS
 ---
 
-# CSS 3 Basic Notes
+# CSS Basic Notes
 
 ## Cascading and Inheritance
 
@@ -117,6 +117,16 @@ h1 {
 }
 ```
 
+### CSS Inheritance
+
+- Most CSS properties that affect the text node are inherited properties:
+  color, font-size, font-family, etc.
+- Most CSS properties that affect the element node are non-inherited properties.
+- When the `unset` value is set on an inherited property,
+  it resets the property value to its inherited value.
+- `unset` value resets a non-inherited property to its `initial` value.
+- `revert` reverses the CSS default values to the browser user-agent styles.
+
 ## Property Value
 
 ### Initial Value
@@ -174,82 +184,20 @@ span {
 } /* display computed to `block` */
 ```
 
-## Best Practice
+## Property Order
 
-### Normalize
-
-```css
-html {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  margin: inherit;
-  padding: inherit;
-}
-
-body {
-  line-height: 1.5;
-}
-```
-
-### gap
-
-```css
-* + * {
-  margin-top: 1.5em;
-}
-```
-
-### rem vs em
-
-- Size in em if the property scales according to it’s font-size
-
-```css
-.container {
-  margin-top: 1.2em;
-}
-```
-
-Size in em if the font-size should be modular
-(relative to it's context/parent): `Modular Font Size`
-
-```css
-.container {
-  font-size: 1.2rem;
-}
-
-.container p {
-  font-size: 1em;
-}
-
-.container small {
-  font-size: 0.9em;
-}
-```
-
-- Size everything else in rem (include media queries)
-
-## 属性排序
-
-### 概述
+### Property Order Summary
 
 > 显示属性 -> 自身属性 -> 文本属性
 
-#### 显示属性
+#### Display Property
 
 - position
 - display
 - float
 - clear
 
-#### 自身属性
+#### Self Property
 
 - width
 - height
@@ -259,7 +207,7 @@ Size in em if the font-size should be modular
 - list-style
 - background
 
-#### 文本属性
+#### Text Property
 
 - color
 - font
@@ -270,9 +218,9 @@ Size in em if the font-size should be modular
 - other text
 - content
 
-### 详细
+### Property Order Details
 
-#### 显示属性 Detail
+#### Display Property Details
 
 - position
 - z-index
@@ -286,7 +234,7 @@ Size in em if the font-size should be modular
 - float
 - clear
 
-#### 自身属性 Detail
+#### Self Property Details
 
 - width
 - min-width
@@ -334,7 +282,7 @@ Size in em if the font-size should be modular
 - background-repeat
 - background-position
 
-#### 文本属性 Detail
+#### Text Property Details
 
 - color
 - font
@@ -355,9 +303,9 @@ Size in em if the font-size should be modular
 - content
 - quotes
 
-## 命名规范
+## Naming Convention
 
-### 页面结构
+### Layout Structure Naming Convention
 
 - 容器: container
 - 页头：header
@@ -370,31 +318,31 @@ Size in em if the font-size should be modular
 - 页面外围控制整体佈局宽度：wrapper
 - 左右中：left right center
 
-### 导航
+### Navigation Naming Convention
 
 - 导航：nav
-- 主导航：mainnav
-- 子导航：subnav
-- 顶导航：topnav
+- 主导航：main-nav
+- 子导航：sub-nav
+- 顶导航：top-nav
 - 边导航：sidebar
-- 左导航：leftsidebar
-- 右导航：rightsidebar
+- 左导航：left-sidebar
+- 右导航：right-sidebar
 - 菜单：menu
-- 子菜单：submenu
+- 子菜单：sub-menu
 - 标题: title
 - 摘要: summary
 
-### 功能
+### Functional Component Naming Convention
 
 - 标志：logo
 - 广告：banner
 - 登陆：login
-- 登录条：loginbar
+- 登录条：login-bar
 - 注册：register
 - 搜索：search
 - 功能区：shop
 - 标题：title
-- 加入：joinus
+- 加入：join us
 - 状态：status
 - 按钮：btn
 - 滚动：scroll
@@ -415,9 +363,9 @@ Size in em if the font-size should be modular
 - 友情链接：link
 - 版权：copyright
 
-### CSS Files
+### CSS Files Naming Convention
 
-- abstracts: \$variables, @mixin function
+- abstracts: `$variables`, `@mixin` function
 - vendors: external libraries (font-awesome, bootstrap)
 - base: normalize.css, reset.css, utils.css, font.css, base.css
   (margin-right, text-center, float-right)
@@ -429,7 +377,7 @@ Size in em if the font-size should be modular
 
 ## CSS Selector
 
-![CSS 3 Selector](images/css3-selector-lest.png)
+![CSS3 Selector](figures/CSS3SelectorList.png)
 
 ### 元素选择器
 
@@ -463,6 +411,12 @@ ul > li {
 
 - `E + F`：直接相邻兄弟选择器
 - `E ~ F`：一般兄弟选择器
+
+```css
+* + * {
+  margin-top: 1.5em;
+}
+```
 
 ```css
 li + li {
@@ -594,6 +548,10 @@ a[title*='link'] {
 - `:empty`：没有子元素的元素，没有子元素包括文本节点；
 - `:not(exception)`：该选择器将选择与括号内的选择器不匹配的元素：
 - `:lang(en)`：具有使用双字母缩写(en)表示的语言的元素；
+- `<target_element>:has(<selector>)`:
+  a target element has child elements, `:has` normal priority
+- `<target_element>:where(<selector>)`:
+  a target element has child elements, `:where` 0 priority
 - E F:first-of-type **相同类型** 的第一个元素
 - E F:last-of-type **相同类型** 的最后一个元素
 - E F:only-of-type 孩子中只有一种该元素
@@ -662,7 +620,7 @@ button:focus-visible {
 }
 ```
 
-- ::before 与 ::after ：使用 contnet 属性生成额外的内容并插入在标记中：
+- ::before 与 ::after ：使用 content 属性生成额外的内容并插入在标记中：
 
 ```css
 a:after {
@@ -815,56 +773,49 @@ For `.container ul li a` selector:
 - finally, filter down the above selection to
   the ones contained in an element with the class `.container`
 
-## 全局属性值
+## CSS Normalize
 
-- auto
-- inherit
-- initial 指定为默认值，用于消除样式
-- none
+- `*` selector has poor performance
 
-## Box Style
+```css
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+}
 
-### width
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: inherit;
+  padding: inherit;
+}
+
+body {
+  line-height: 1.5;
+}
+```
+
+## CSS Box
+
+### Width
 
 auto with `css-sizing`:
 present for `fill-available/max-content/min-content/fit-content`
 with `height`/`width`/`min-width`/`max-width`/`min-height`/`max-height`/
 `grid-template-rows`/`grid-template-columns`/`flex-basis`.
 
-### z-index
+### Z Index
 
 数值越大，处于可视的优先级越大
 
-### overflow/overflow-x/overflow-y
+### Overflow
 
-visible,hidden,scroll,auto
+visible, hidden, scroll, auto
 
-### text-overflow
-
-- clip 切除溢出部分
-- ellipsis 省略号标志
-
-```css
-.truncation-article-container {
-  width: 500px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-```
-
-```css
-.article-container {
-  display: -webkit-box;
-  word-break: break-all;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; /* 需要显示的行数 */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-```
-
-### resize
+### Resize Box
 
 前置属性:overflow
 
@@ -873,11 +824,11 @@ visible,hidden,scroll,auto
 resize: none/both/horizontal/vertical/inherit;
 ```
 
-### box-sizing
+### Box Sizing
 
 content-box(default), padding-box, border-box
 
-### height
+### Box Height
 
 XXvh(viewport height)
 
@@ -888,7 +839,7 @@ cal(50% - 100px);
 cal(10em + 3px);
 ```
 
-### column
+### Box Column
 
 ```css
 /*子元素分列*/
@@ -917,16 +868,16 @@ cal(10em + 3px);
 - Flex Formatting Context(FFC)
 - Grid Formatting Context(GFC)
 
-### Margin
+### Box Margin
 
 - If both margin-left and margin-right are auto, their used values are equal.
   (CSS2 Visual formatting model details: 10.3.3)
 - If margin-top, or margin-bottom are auto, their used value is 0.
   (CSS2 Visual formatting model details: 10.6.3)
 
-### Percentage of Width/Top
+### Box Percentage Length
 
-positioned elements with `top: percentage`
+Positioned elements with `top: percentage`
 depend on `height` of parent,
 if `height` of parent is `auto`, it's not working.
 
@@ -939,7 +890,18 @@ if `height` of parent is `auto`, it's not working.
 - vertical margin collapsing
 - 每个元素的 margin box 的左边, 与包含块 border box 的左边相接触
 - BFC 的区域不会与 float box 重叠: 自适应分栏布局, 清除外/内部浮动
-- 计算 BFC 的高度时, 浮动元素也参与计算: 防止内边距塌陷 (margin-top collapse with margin-bottom)
+- 计算 BFC 的高度时, 浮动元素也参与计算:
+  防止内边距塌陷 (margin-top collapse with margin-bottom)
+
+## Stack Context
+
+The root element forms the root stacking context.
+Other stacking contexts are generated by any `position`/`opacity`/`transform` element
+(including relatively positioned elements)
+having a computed value of `z-index` other than `auto`.
+
+Once apply a `position` property to a box,
+can use the `z-index` property to adjust its stack level.
 
 ### Create BFC
 
@@ -953,7 +915,7 @@ if `height` of parent is `auto`, it's not working.
 - direct children of `display: flex/inline-flex`
 - direct children of `display: grid/inline-grid`
 
-### Margin Collapsing/Merging
+### Margin Collapsing
 
 - closet sibling: 1's margin-bottom with 2's margin-top
 - parent and it's first/last child: up with up (bottom with bottom)
@@ -968,9 +930,9 @@ float make element specified value of `display`:
 - `inline-table` computed to `table`
 - `inline`/`inline-block`/`table-*` computed to `block`
 
-### fixed parent
+### Fixed Parent
 
-> Floating wont work inside fixed or absolute divs unless specify widthh
+> Floating wont work inside fixed or absolute `div` unless specify width
 
 ```css
 .parent {
@@ -981,7 +943,7 @@ float make element specified value of `display`:
 }
 ```
 
-### 清除浮动
+### Float ClearFix
 
 **Best Practice**: 为父容器添加 clearfix class
 `display: table` 防止外边距塌陷, `clear: both` 清楚浮动
@@ -1005,36 +967,26 @@ float make element specified value of `display`:
 - 段中部分元素浮动(结合 margin/padding), 可实现内嵌效果
 - 分栏布局
 
-## Stack Context
-
-The root element forms the root stacking context.
-Other stacking contexts are generated by any `position`/`opacity`/`transform` element
-(including relatively positioned elements)
-having a computed value of `z-index` other than `auto`.
-
-Once apply a `position` property to a box,
-can use the `z-index` property to adjust its stack level.
-
 ## Position Patterns
 
-position
+### Static Position
 
-### static
+top/left/width/right/z-index are invalid
 
-- top/left/width/right/z-index are invalid
+### Relative Position
 
-### relative
+- 使元素相对于 `static` 布局, 可使用`top/bottom/left/right`属性进行定位.
+- 初始位置被保留, 不脱离文档流.
 
-使元素相对于 static 布局, 可使用`top/bottom/left/right`属性进行平移
+### Absolute Position
 
-### absolute
-
-- 使元素相对于 浏览器窗口/父元素(`positoin: non-static`) 布局 (包括 `%` 形式的 `width/height`)
-  - 若 body 为 static, 则元素不会随着滚动条滚动, 其相对于初始窗口布局
-- 可使用`top/bottom/left/right`属性进行定位
-- `float: none`
-- display: `inline-table` computed to `table`
-- display: `inline`/`inline-block`/`table-*` computed to `block`
+- 使元素相对于 浏览器窗口/父元素(`position: non-static`) 布局 (包括 `%` 形式的 `width/height`)
+  - 若 body 为 static, 则元素不会随着滚动条滚动, 其相对于初始窗口布局.
+- 可使用 `top/bottom/left/right` 属性进行定位.
+- 初始位置不被保留, 脱离文档流.
+- `float` property computed to `float: none`.
+- `display` `inline-table` computed to `table`.
+- `display` `inline`/`inline-block`/`table-*` computed to `block`.
 
 ```css
 .overlay {
@@ -1066,7 +1018,7 @@ position
 }
 ```
 
-### fixed
+### Fixed Position
 
 - 使元素想对于 浏览器窗口 布局, 但不受滑动条影响
 - 可使用`top/bottom/left/right`属性进行定位
@@ -1089,11 +1041,26 @@ position
 }
 ```
 
+### Sticky Position
+
+`position: sticky` + `top: 0`:
+
+- 粘性定位的元素在它距离视窗顶部大于 0 时， 会按照默认布局， 表现为 Relative Position.
+- 一旦其距离顶部的距离等于 0, 元素会固定在窗口顶部, 表现为 Fixed Position.
+
+```css
+.sticky {
+  position: sticky;
+  top: 0;
+  margin-top: 50px;
+}
+```
+
 ## Flex Patterns
 
-[Complete Guid to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Flexbox Complete Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox)
 
-### Under the Hood of `flex`
+### Flex Under the Hood
 
 当 flex-basis 设置为 auto 且 width（或者 height）不为 auto 时，计算 used size 时会用到 width（或者 height）的值
 
@@ -1103,7 +1070,7 @@ position
   true width = `flex-basis` (or `width`) - `flex-shrink`/sum of `flex-shrink`
 - text nodes and pseudo-elements can be flex children
 
-### Useful Shorthand of `flex`
+### Flex Useful Shorthand
 
 `flex: flex-grow flex-shrink flex-basis`
 
@@ -1125,7 +1092,13 @@ position
 
 元素会被赋予一个容器中自由空间的指定占比 equal to `flex: <positive-number> 1 0`
 
-### 父元素属性
+### Flex Parent Property
+
+- justify-content: defines alignment along main axis.
+- align-items: defines alignment for cross axis.
+- align-content:
+  aligns flex container's lines within
+  when there is extra space in the cross-axis.
 
 ```css
 display: flex;
@@ -1136,7 +1109,7 @@ align-content: flex-start/flex-end/center/space-between/space-around;
 align-items: flex-start/flex-end/center/baseline/stretch;
 ```
 
-### 子元素属性
+### Flex Children Property
 
 ```css
 flex: number; /*宽/高度权重*/
@@ -1147,7 +1120,7 @@ flex-grow: number;
 align-self: auto/flex-start/flex-end/center/baseline/stretch;
 ```
 
-### Flexibity of `float`
+### Flexibility of Float
 
 ```html
 <div class="parent">
@@ -1271,7 +1244,7 @@ main {
 
 ## Grid Patterns
 
-[Complete Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
+[Grid Complete Guide](https://css-tricks.com/snippets/css/complete-guide-grid)
 
 ```css
 .container {
@@ -1305,7 +1278,7 @@ main {
 }
 ```
 
-responsive grid layout
+Responsive `grid` layout
 
 ```css
 .items {
@@ -1343,36 +1316,36 @@ _named_ rows and columns
 
 ### Grid Attention Tips
 
-- `grid-column` will refactor template of grid (`grid-template-columns`)
-- `grid-row` will refactor template of grid (`grid-template-rows`)
+- `grid-column` will refactor template of `grid` (`grid-template-columns`)
+- `grid-row` will refactor template of `grid` (`grid-template-rows`)
 
 ### Grid Alignment
 
 - `justify-content`/`align-content` content within element,
   attach to **parent** css selector
   (effectively adjusts `padding` of parent)
-- `justify-items`/`align-items` inline items inside box,
+- `justify-items`/`align-items` `inline` items inside box,
   attach to **parent** css selector
   (controls `margin` of children )
-- `justify-self`/`align-self` inline element within parent,
-  attach to **chilren** css selector
+- `justify-self`/`align-self` `inline` element within parent,
+  attach to **children** css selector
   (effectively adjusts `margin` of children)
 
-## 分栏问题
+## Column Patterns
 
 - float 左右元素 + margin 中间元素
 - float 元素 + width: %
 
-### 两栏布局
+### Two Column Pattern
 
-利用父元素 relative 与 子元素 absolute 进行布局
+利用父元素 `relative` 与 子元素 `absolute` 进行布局
 
-- inline-block + inline-block
-- float + float
-- float + margin-left
+- `inline-block` + `inline-block`
+- `float` + `float`
+- `float` + `margin-left`
   (block element ignore float element, inline element surround float element)
-- absolute + margin-left (absolute element not in normal flow)
-- float + BFC
+- `absolute` + `margin-left` (absolute element not in normal flow)
+- `float` + BFC
 
 ```css
 .div-1 {
@@ -1394,13 +1367,13 @@ _named_ rows and columns
 }
 ```
 
-### 三栏布局
+### Three Column Pattern
 
-#### absolute to left/right + margin to middle
+#### Absolute and Margin Column
 
 position .left and .right with absolute, add margin-left and margin-right to .middle
 
-#### float to left/right + margin to middle
+#### Float and Margin Column
 
 ```html
 .left .right .middle
@@ -1420,7 +1393,7 @@ position .left and .right with absolute, add margin-left and margin-right to .mi
 }
 ```
 
-#### float + negative margin both to left/right
+#### Float and Negative Margin Column
 
 On a floated element, a negative margin opposite the float direction will decrease
 the float area, causing adjacent elements to overlap the floated element. A negative
@@ -1450,7 +1423,7 @@ margin in the direction of the float will pull the floated element in that direc
 .container .middle {
   float: left;
   width: 100%;
-  background-color: blueviolet;
+  background-color: violet;
 }
 
 .container .left {
@@ -1467,15 +1440,15 @@ margin in the direction of the float will pull the floated element in that direc
   position: relative;
   width: 200px;
   margin-right: -200px;
-  background-color: darkred;
+  background-color: red;
 }
 ```
 
-## 居中问题
+## Centering Patterns
 
-[CSS Tricks - Centering CSS Complete Guide](https://css-tricks.com/centering-css-complete-guide/)
+[Centering CSS Complete Guide](https://css-tricks.com/centering-css-complete-guide/)
 
-### 水平居中问题
+### Horizontal Centering Pattern
 
 - inline: text-align, flex/grid box
 - block: auto margin, flex/grid box
@@ -1494,44 +1467,183 @@ margin in the direction of the float will pull the floated element in that direc
 }
 ```
 
-### 垂直居中问题
+### Vertical Centering Pattern
 
-- inline\*: padding, line-height, vertical-align, flex/grid box
-- block: top+margin, top+tranlateY, vertical-align, flex/grid box
+#### Vertical Inline element
 
-### 混合布局
+- padding
+- line-height
+- vertical-align: middle
+  - 作用环境: parent element `line-height` === `height`.
+  - 作用对象: children element `display: inline-block/inline`.
+- flexbox
+- grid
 
-在子容器中在设置新元素即可
+#### Vertical Block element
 
-## list-style-type/image
-
-改变 ul/ol 前标记类型
-
-## align
-
-### text-align
-
-justify(自适应，左右都无空格)
-
-### vertical-align
-
-垂直对齐方式
+- top + margin
+- top + translateY
+- vertical-align
+- flexbox
+- grid
 
 ```css
-.form__item__label {
+.form-item-label {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 ```
 
-## opacity
+### Mixing Centering Pattern
+
+在子容器中在设置新元素即可
+
+## CSS ScrollBar
+
+### Custom ScrollBar
+
+```css
+.demo::-webkit-scrollbar {
+  /* 滚动条整体样式 */
+  /* 高宽分别对应横竖滚动条的尺寸 */
+  width: 10px;
+  height: 1px;
+}
+
+.demo::-webkit-scrollbar-thumb {
+  /* 滚动条方块 */
+  border-radius: 10px;
+  background-color: blue;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+.demo::-webkit-scrollbar-track {
+  /* 滚动条轨道 */
+  border-radius: 10px;
+  background-color: #ededed;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+```
+
+### Hidden ScrollBar
+
+```css
+.demo::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.demo {
+  scrollbar-width: none; /* FireFox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+```
+
+## CSS Opacity
 
 0 ~ 1, 渐进效果常用属性
 
-## border
+## CSS Colors
 
-mix transparent with non-transparent border to make shapes (e.g. triangle).
+### HSL Color
+
+- H: hue
+- S: saturation (stay `50%` etc.)
+- L: lightness (easy to theme colors)
+
+```css
+/* Hover Button */
+:root {
+  --primary-h: 221;
+  --primary-s: 72%;
+  --primary-l: 62%;
+}
+
+.button {
+  background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+}
+
+.button:hover {
+  --primary-l: 54%;
+}
+```
+
+```css
+/* Custom Buttons */
+:root {
+  --primary-h: 221;
+  --primary-s: 72%;
+  --primary-l: 62%;
+}
+
+.button {
+  background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+}
+
+.button--secondary {
+  --primary-l: 90%;
+  color: #222;
+}
+
+.button--ghost {
+  --primary-l: 90%;
+  background-color: transparent;
+  border: 3px solid hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+}
+```
+
+```css
+/* Change lightness to get gradient */
+.section {
+  background: linear-gradient(
+    to left,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l)),
+    hsl(var(--primary-h), var(--primary-s), 95%)
+  );
+}
+
+.section-2 {
+  --primary-h: 167;
+}
+```
+
+## CSS Border
+
+### Border Radius
+
+### Border Image
+
+```css
+border-image: source slice width outset repeat;
+```
+
+### Border Collapse
+
+```css
+table,
+tr,
+td {
+  border: 1px solid #666;
+}
+table {
+  border-collapse: collapse;
+}
+```
+
+### Border Best Practice
+
+Mix transparent with non-transparent border to make shapes (e.g. triangle).
 
 ```css
 .arrow-up {
@@ -1573,14 +1685,6 @@ mix transparent with non-transparent border to make shapes (e.g. triangle).
 
   border-right: 20px solid #8de698;
 }
-```
-
-### border-radius
-
-### border-image
-
-```css
-border-image: source slice width outset repeat;
 ```
 
 ## CSS Background
@@ -1899,28 +2003,144 @@ Horizontal Scrolling Methods:
 
 .paragraph {
   text-indent: 2em; /* 段落缩进 */
-  line-height: 1.5em; /* 行间距  */
-  word-spacing: 50px; /* 词间距  */
   letter-spacing: 50px; /* 字间距  */
+  word-spacing: 50px; /* 词间距  */
+  line-height: 1.5em; /* 行间距  */
 }
 ```
 
-### white-space
+### Text Alignment
 
-html 中, 普通标签内自动忽略空格符, 并将其与空白符转换成一个空格进行输出, 可用 white-spacing 改变这一行为
+justify: 自适应，左右都无空格
+
+```css
+.wrap {
+  text-justify: distribute-all-lines; /* ie6-8 */
+  text-align: justify;
+  text-align-last: justify; /* 一个块或行的最后一行对齐方式 */
+}
+```
+
+### Text Overflow
+
+- clip 切除溢出部分
+- ellipsis 省略号标志 (要设定 width)
+
+```css
+.truncation-article-container {
+  width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
+```css
+.article-container {
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* 需要显示的行数 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+### Text Wrap
+
+```css
+/* 不换行 */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* 自动换行 */
+.auto-wrap {
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+/* 自动换行 */
+pre {
+  word-wrap: break-word; /* IE 5.5-7 */
+  white-space: pre-wrap; /* Modern Browsers */
+}
+
+/* 强制换行 */
+.force-wrap {
+  word-break: break-all;
+}
+```
+
+### Text Transform
 
 ```css
 p {
-  /* 保留所有特殊符号 */
-  white-space: pre;
+  /* 大写字母 */
+  text-transform: uppercase;
+}
+
+p {
+  /* 小写字母 */
+  text-transform: lowercase;
+}
+
+p {
+  /* 首字母大写 */
+  text-transform: capitalize;
+}
+
+p {
+  /* 小型的大写字母 */
+  font-variant: small-caps;
 }
 ```
 
+### Text Writing Mode
+
+#### Vertical Writing Mode
+
+```css
+/* 单列展示 */
+.wrap {
+  width: 25px;
+  height: auto;
+  padding: 8px 5px;
+  line-height: 18px;
+  font-size: 12px;
+  word-wrap: break-word; /* 英文自动换行 */
+}
+
+/* 多列展示 */
+.wrap {
+  height: 200px;
+  line-height: 30px;
+  text-align: justify;
+  writing-mode: vertical-lr; /*从左向右 */
+  writing-mode: vertical-rl; /* 从右向左 */
+  writing-mode: tb-lr; /* IE 从左向右 */
+  writing-mode: tb-rl; /* IE 从右向左 */
+}
+```
+
+### White Space
+
+普通标签内自动忽略空格符,
+并将其与空白符转换成一个空格进行输出,
+可用 `white-space` 改变这一行为:
+
+|------------|-----|----------|------|-------|
+| White Space|换行符|空格和制表符|文字换行|行尾空格|
+| normal | 合并 | 合并 | 换行 | 删除 |
+| nowrap | 合并 | 合并 | 不换行 | 删除 |
+| pre | 保留 | 保留 | 不换行 | 保留 |
+| pre-wrap | 保留 | 保留 | 换行 | 挂起 |
+| pre-line | 保留 | 合并 | 换行 | 删除 |
+| break-spaces | 保留 | 保留 | 换行 | 换行 |
+
 ## CSS Font
 
-### font-size
-
-Best Practice
+### Font Size
 
 ```css
 html {
@@ -1939,20 +2159,23 @@ strong {
 }
 ```
 
-### font-style
+### Font Style
 
-normal,italic,oblique
+- normal
+- italic
+- oblique
 
-### font-variant
+### Font Variant
 
-normal,small-caps(小型大写字母)
+- normal
+- small-caps: 小型大写字母
 
-### font-size-adjust
+### Font Size Adjust
 
 - 使字体保持大小，不随字体类型改变而改变
 - 不同字体有不同的值(x-height/字体尺寸)
 
-### font-diplay
+### Font Display
 
 The font display timeline:
 
@@ -1977,7 +2200,7 @@ whether and when it is downloaded and ready to use:
 ```css
 @font-face {
   font-family: ExampleFont;
-  src: url(/path/to/fonts/examplefont.woff) format('woff'), url(/path/to/fonts/examplefont.eot)
+  src: url(/path/to/fonts/exampleFont.woff) format('woff'), url(/path/to/fonts/exampleFont.eot)
       format('eot');
   font-weight: 400;
   font-style: normal;
@@ -1985,20 +2208,20 @@ whether and when it is downloaded and ready to use:
 }
 ```
 
-### custom function - @font-face
+### Custom Fonts Function
 
-使用户使用服务端提供的字体(bootstrap 中有使用@font-face)
+`@font-face` 使用户使用服务端提供的字体:
 
 ```css
 @font-face {
-  /*:call <SNR>105_SparkupNext()*/
+  /*:call <SNR>105_SparkUpNext()*/
   font-family: mySpecialFont;
   font-style/font-weight/font-variant: inherit;
   src: url(‘./Colleen.ttf’);
 }
 
 /*selector {*/
-/*:call <SNR>105_SparkupNext()*/
+/*:call <SNR>105_SparkUpNext()*/
 /*font-family:mySpecialFont;*/
 /*}*/
 ```
@@ -2101,7 +2324,7 @@ font-weight: 400;
 华文新魏：STXinwei
 ```
 
-## CSS Couter
+## CSS Counter
 
 Adjust the appearance of content based on its location in a document.
 
@@ -2146,7 +2369,101 @@ filter: initial;
 filter: unset;
 ```
 
-## Object Position/Fit
+### SVG Filter
+
+内投影滤镜
+
+```html
+<svg
+  width="300"
+  height="300"
+  viewBox="0 0 20 20"
+  style="position:absolute;left:-999px;"
+>
+  <filter id="inset-shadow">
+    <!-- 投影偏移 -->
+    <feOffset dx="0" dy="0" />
+    <!-- 投影模糊 -->
+    <feGaussianBlur stdDeviation="6" result="offset-blur" />
+    <!-- 反转投影使其变成内投影 -->
+    <feComposite
+      operator="out"
+      in="SourceGraphic"
+      in2="offset-blur"
+      result="inverse"
+    />
+    <!-- 内投影附加黑色 -->
+    <feFlood flood-color="black" flood-opacity=".95" result="color" />
+    <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+    <!-- 把内投影显示在图像上 -->
+    <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+  </filter>
+</svg>
+```
+
+毛玻璃滤镜
+
+```html
+<svg width="0" height="0" style="position:absolute;">
+  <filter id="blur" color-interpolation-filters="sRGB">
+    <feGaussianBlur stdDeviation="6" edgeMode="duplicate" />
+    <feComponentTransfer>
+      <feFuncA type="discrete" tableValues="0 1" />
+    </feComponentTransfer>
+  </filter>
+</svg>
+```
+
+### Backdrop Filter
+
+```css
+body {
+  background-image: url('https://images.unsplash.com/image');
+  background-position: center;
+}
+
+.card {
+  backdrop-filter: blur(12px) saturate(200%);
+  background-color: rgba(17, 25, 40, 0.54);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+```
+
+## CSS Interactive
+
+### Cursor and Pointer
+
+```css
+.wrap {
+  cursor: default;
+  pointer-events: none;
+}
+```
+
+### User Select
+
+```css
+.wrap {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+```
+
+### CSS Form
+
+- 输入框光标颜色
+
+```css
+input {
+  caret-color: red;
+}
+```
+
+## Object Position and Fit
 
 object-position/object-fit 只针对替换元素有作用:
 
@@ -2200,7 +2517,7 @@ background-position/background-size,
 - pseudo elements (::before and ::after)
 - pseudo elements with animation
   (opacity, scale, translate, width/height, margin, background-position)
-- :hover/:foucs/:target + animation/transform/transition
+- :hover/:focus/:target + animation/transform/transition
 - transform: scale/translate
 - animation-delay
 - width/height
@@ -2218,7 +2535,7 @@ overflow: hidden;
 z-index: -1;
 ```
 
-Changing top/right/bottom/left of pseduo element
+Changing top/right/bottom/left of pseudo element
 can change animation start point
 (e.g bottom: 0, right: 0, change width/height from 0 to 100%,
 size animation will start from bottom-right corner).
@@ -2234,7 +2551,7 @@ size animation will start from bottom-right corner).
 
 ```css
 .element {
-  transition: property durtation timing-function delay;
+  transition: property duration timing-function delay;
   transition: transform 0.5s ease-in-out 0.2s;
 }
 ```
@@ -2242,7 +2559,7 @@ size animation will start from bottom-right corner).
 #### Transition Internal
 
 `transition` take effect only when
-browser detecing different styles between `style` stage.
+browser detecting different styles between `style` stage.
 
 ```js
 // transition not working
@@ -2261,7 +2578,7 @@ requestAnimationFrame(() => {
 
 // transition working
 panel.style.transform = 'scale(0)';
-// `getComutedStyle(element).property` trigger a new `style` stage
+// `getComputedStyle(element).property` trigger a new `style` stage
 getComputedStyle(panel).transform;
 panel.style.transition = 'transform .5s';
 // previous `transform` is `scale(0)`
@@ -2274,7 +2591,7 @@ By specifying the transition on the element itself,
 define the transition to occur in both directions
 (hover on and hover off).
 
-Change `transition` when `:hvoer` etc state bring magic effect:
+Change `transition` when `:hover` etc state bring magic effect:
 
 ```css
 .menu-nav {
@@ -2304,7 +2621,7 @@ Change `transition` when `:hvoer` etc state bring magic effect:
 
 Transition Best Practice:
 with `transition: opacity 0.5s` set,
-fisrt add `.opacity-0` class,
+first add `.opacity-0` class,
 then replace it with `.opacity-1` class.
 Transition animation get trigger
 as css style of element changed (class changed).
@@ -2350,10 +2667,10 @@ which are specified in [CSSOM-VIEW].
 - rotate/X/Y/Z/3d(): deg
 - skew/X/Y(): deg
 - matrix()/matrix3d()
-- transform-orgin: change transform start point
+- transform-origin: change transform start point
   `top bottom center left right`
 - perspective(): 为 **3D** 转换元素定义透视视图
-- keep translate(-50%, -50%) in keyframe transform peoperty list
+- keep translate(-50%, -50%) in keyframe transform property list
   when using it for alignment
 
 一般需要在容器元素上加上以下样式:
@@ -2369,13 +2686,13 @@ which are specified in [CSSOM-VIEW].
 }
 ```
 
-> :hover should not add to transfromed elements
+> :hover should not add to transformed elements
 > :hover should add to parent element
 
 当旋转绝对定位居中的元素时, 需要改变 `transform-origin`:
 
 ```css
-.roate {
+.rotate {
   position: absolute;
   top: 200px;
   left: 50%;
@@ -2484,7 +2801,7 @@ body {
   - alternate/alternate-reverse 不断交替方向
   - reverse 100%->0%方向
 - animation-fill-mode: forwards
-- animatino-play-state: `paused`/`running`
+- animation-play-state: `paused`/`running`
 - DOM events:
   - animationiteration: triggered after each animation iteration
   - animationend: triggered after an animation completes
@@ -2506,7 +2823,7 @@ animation pattern: 利用 `animation-paly-state`
 与 JS 添加 `.animate` 类控制动画开始和停止.
 
 ```css
-.to-animte {
+.to-animate {
   animation: animationName 1.5s linear;
   animation-play-state: paused;
   animation-iteration-count: infinite;
@@ -2541,6 +2858,28 @@ setTimeout(() => element.classList.remove('animate'), duration);
 }
 ```
 
+### Animation Best Practice
+
+#### Clear Splash Animation
+
+```css
+.cube {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  -webkit-perspective: 1000;
+  perspective: 1000;
+
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  /* Other transform properties here */
+}
+```
+
 ### GreenSock Library
 
 #### TweenMax
@@ -2555,10 +2894,10 @@ TweenMax.fromTo(element, 1, { x: 0 }, { x: 100 });
 const tl = new TimelineMax();
 tl.staggerFrom(
   [
-    '#Capa_1 > g > path:nth-child(1)',
-    '#Capa_1 > circle:nth-child(7)',
-    '#Capa_1 > path:nth-child(6)',
-    '#Capa_1 > circle:nth-child(5)',
+    '#Cap_1 > g > path:nth-child(1)',
+    '#Cap_1 > circle:nth-child(7)',
+    '#Cap_1 > path:nth-child(6)',
+    '#Cap_1 > circle:nth-child(5)',
   ],
   1,
   {
@@ -2571,7 +2910,7 @@ tl.staggerFrom(
 );
 ```
 
-## Responsive Desgin
+## Responsive Design
 
 ### Responsive Font
 
@@ -2583,6 +2922,36 @@ tl.staggerFrom(
 - `vh`
 - `vmin`
 - `vmax`
+
+### Responsive Size
+
+- Size in `em` if the property scales according to it’s font-size.
+- **Modular Font Size**:
+  Size in `em` if the font-size should be modular
+  (relative to it's context/parent).
+- Size everything else in `rem` (include media queries).
+
+```css
+/* scales to self font-size */
+.container {
+  margin-top: 1.2em;
+}
+```
+
+```css
+/* modular font size */
+.container {
+  font-size: 1.2rem;
+}
+
+.container p {
+  font-size: 1em;
+}
+
+.container small {
+  font-size: 0.9em;
+}
+```
 
 ### Responsive Box
 
@@ -2600,7 +2969,7 @@ img {
 }
 ```
 
-#### responsive inline-box
+#### Responsive Inline Box
 
 use `inline-box` with `width`
 
@@ -2611,7 +2980,7 @@ use `inline-box` with `width`
 }
 ```
 
-### responsive image
+### Responsive Image
 
 ```css
 .responsive-image {
@@ -2628,10 +2997,11 @@ use `inline-box` with `width`
 </picture>
 ```
 
-### media query
+### Media Query
 
 - `only` for improving compatibility with older browsers
 - definition order matters when media query with a different selector
+- JavaScript API: `window.matchMedia()`
 
 ```css
 @media (not/only) 设备类型 and ((not) 设备特性),
@@ -2706,7 +3076,7 @@ if (window.matchMedia('(min-width: 400px)').matches) {
 
 ## Accessibility
 
-### Screnn Reader Only
+### Screen Reader Only
 
 ```css
 .sr-only {
@@ -2723,7 +3093,7 @@ if (window.matchMedia('(min-width: 400px)').matches) {
 }
 ```
 
-## 常用组件 (Awesome Demo)
+## Awesome Components
 
 ### Landing Page
 
@@ -2785,7 +3155,7 @@ h1 {
 }
 ```
 
-### Flexiable Heading
+### Flexible Heading
 
 ```css
 h1 {
@@ -2825,22 +3195,26 @@ h1::after {
   height: 35px;
   margin-right: 20px;
 
-  /* 消除默认箭头 */
-  text-indent: 0.01px;
-  text-overflow: '';
-
   /* 自定义边框 */
   border: 0;
 
   /* 将箭头图片移至右端 */
-  background: url('../img/arrow.png') no-repeat;
+  background: url('images/arrow.png') no-repeat;
   background-color: #fff;
   background-position: right;
 
   /* 消除默认样式 */
-  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
+
+  /* 消除默认箭头 */
+  text-indent: 0.01px;
+  text-overflow: '';
+
+  /* 文本属性 */
+  text-align: center;
+  text-align-last: center;
 }
 
 .custom-select:focus {
@@ -2852,10 +3226,11 @@ h1::after {
   height: 25px;
   padding-left: 30px;
 
-  color: #323333;
   background-color: #fff;
+  color: #323333;
 
   line-height: 25px;
+  direction: rtl;
 }
 
 .custom-select option:hover {
@@ -2869,7 +3244,9 @@ h1::after {
 
 #### 基本原则
 
-对 a 标签进行样式设置
+- `list-style-type`: 改变 `ul`/`ol` 前标记类型
+- `list-style-image`: 改变 `ul`/`ol` 前标记类型
+- 设置 `<a href="#">` 样式
 
 ```css
 ul {
@@ -3264,7 +3641,7 @@ function leave(el, done) {
 
 ### Resizable Component
 
-[Codepen Demo](https://codepen.io/ZeroX-DG/pen/vjdoYe)
+[CodePen Demo](https://codepen.io/ZeroX-DG/pen/vjdoYe)
 
 ```js
 bottom-right:
@@ -3362,7 +3739,7 @@ body {
 如下:
 
 ```js
-const resetScollX = () => {
+const resetScrollX = () => {
   window.scrollTo(0, 0);
 };
 ```
@@ -3478,7 +3855,7 @@ const resetScollX = () => {
 - background triangle
 - clip path triangle
 - border triangle
-- pseudo elment triangle
+- pseudo element triangle
 
 ```css
 .triangle {
@@ -3578,7 +3955,7 @@ const root = document.documentElement;
 const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
 ```
 
-### Scope Variebls
+### Scope Variables
 
 ```html
 <div class="alert alert-info">
@@ -3632,10 +4009,10 @@ const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
 ### Invalid and Empty Value in CSS Variables
 
 - `--invalid-value: initial;` is invalid value
-  leding to `var(--invalid-value)` called failed,
+  leading to `var(--invalid-value)` called failed,
   `var(--invalid-value, backup-value)` get backup-value.
 - `--empty-value: ;` is valid empty value
-  leding to `var(--empty-value)` called succeeded,
+  leading to `var(--empty-value)` called succeeded,
   `var(--empty-value, backup-value)` get **parent value**.
 - Use Invalid and Empty Value to
   implement `if (true)` in CSS.

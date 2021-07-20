@@ -11,7 +11,7 @@ tags:
   - HTML
 ---
 
-# HTML5 Basic Notes
+# HTML Basic Notes
 
 ## Emmet
 
@@ -189,7 +189,8 @@ but so can every `<article>` and `<section>` element
 
 ## Head Tag
 
-- [Meta Data in `head`](https://gethead.info/)
+`Meta` data list in
+[HEAD](https://github.com/joshbuchea/HEAD).
 
 ### Favicon
 
@@ -197,6 +198,24 @@ but so can every `<article>` and `<section>` element
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
+```
+
+### Theme Color
+
+- [MDN Introduction](https://developer.mozilla.org/docs/Web/HTML/Element/meta/name/theme-color)
+- [HTML Specification](https://html.spec.whatwg.org/multipage/semantics.html#meta-theme-color)
+
+```html
+<meta
+  name="theme-color"
+  content="#319197"
+  media="(prefers-color-scheme: light)"
+/>
+<meta
+  name="theme-color"
+  content="#872e4e"
+  media="(prefers-color-scheme: dark)"
+/>
 ```
 
 ## Form
@@ -228,13 +247,13 @@ but so can every `<article>` and `<section>` element
     />
     <label for="cb_0">5寸</label>
     <!-- 一个input一个label，一一对应，同类name相同 -->
-    <input type="radio" 单选框 name="material" value="fushi" id="rd_0" />
+    <input type="radio" 单选框 name="material" value="fs" id="rd_0" />
     <label for="rd_0">富士，单选第一个</label>
 
     <input
       type="text"
       单行文本框，默认
-      id="dexcription"
+      id="description"
       placeholder="里面是提示"
       value="这里是默认内容"
       readonly只读
@@ -282,25 +301,28 @@ but so can every `<article>` and `<section>` element
 
 ### 表单元素共有属性
 
-#### form=form_name
+#### Form Property
 
+`form=form_name`:
 使表单元素可放置于表单之外
 
-#### formaction=target_name
+#### Form Action Property
 
+`formaction=target_name`:
 使表单元素可提交到不同页面
 
-#### formmethod=post/get
+#### Form Method Property
 
+`formmethod=post/get`:
 使表单元素以不同的方式提交
 
-#### formenctype
+#### Form Enctype
 
 - 默认值：application/x-www-form-urlencoded 提交前编码所有字符
 - multipart/form-data 不编码字符，**上传控件表单元素**必须使用改值
 - text/plain 表单元素数据中的空格->`+`
 
-#### formtarget
+#### Form Target
 
 定义表单提交后加载页面打开方式
 
@@ -308,20 +330,20 @@ but so can every `<article>` and `<section>` element
 - self 默认:在相同的框架中打开被链接文档
 - parent 在父框架集中打开被链接文档
 - top 在整个窗口中打开被链接文档
-- framename 在指定的框架中打开被链接文档
+- frameName 在指定的框架中打开被链接文档
 
-#### formnovalidate
+#### Form Novalidate
 
 取消表单元素的提交验证
 
 将 submit 元素的 formnovalidate 属性值为 true，使整个表单提交验证失效，实现加提交；
 进而弹出再次确认按钮(真提交)。
 
-#### autofocus
+#### AutoFocus
 
-#### required
+#### Required
 
-### labels
+### Form Labels
 
 指定表单元素的标签
 
@@ -329,7 +351,7 @@ but so can every `<article>` and `<section>` element
 <label for="input_id">OS : </label>
 ```
 
-#### 隐式 control 属性
+#### 隐式 Control 属性
 
 javascript tips：通过 control 属性改变标签对应表单元素的值
 
@@ -338,31 +360,33 @@ var textbox = $('#label_id').control;
 textbox.value = '666666'; //  等同于 input.value = '666666';
 ```
 
-### input
+### Form input
 
-#### type
+#### Form Input Type
 
-##### text
+##### Form Input Text
 
-##### radio
+##### Form Input Radio
 
 name 相同时, 多个 radio 组成一个 radio group
 
-##### checkbox
+##### Checkbox
 
-##### search
+##### Search
 
 搜索条
 
-##### tel
+##### Form Tel
 
 电话号码 - 无输入检查
 
-##### url
+##### Form Url
 
-##### email
+##### Form Email
 
-##### date/month/week/time/datetime-local
+##### Form DateTime
+
+date/month/week/time/datetime-local:
 
 ```javascript
 stepUp();
@@ -492,7 +516,7 @@ style="display: none";
           <option value="computer_engineering">
             Computer Science Engineering
           </option>
-          <option value="slectrical_engineering">Electrical Engineering</option>
+          <option value="electrical_engineering">Electrical Engineering</option>
           <option value="mechanical_engineering">Mechanical Engineering</option>
           <option value="civil_engineering">Civil Engineering</option>
           <option value="chemical_engineering">Chemical Engineering</option>
@@ -539,23 +563,24 @@ style="display: none";
 
 **Attr** -
 
-#### datagrid
+#### Data Grid
 
-#### 配合 autocomplete 属性
+#### 配合 AutoComplete 属性
 
-#### open(boolean)
+#### Open
 
 默认 open=false
 
-### dl>(multi)dt + (multi)dd
+### Table Cells
 
-defined list>defined tab + defined data
+- `dl > (multi)dt + (multi)dd`:
+  defined list > defined tab + defined data
 
-### summary
+### Summary
 
 折叠/收缩时触发 toggle 事件
 
-### mark
+### Mark
 
 突出/高亮显示，无关原文作者
 
@@ -654,19 +679,19 @@ figure 可拥有唯一的 0/1 个 figcaption
 </picture>
 ```
 
-### a(anchor)
+### Anchor
 
-**Attr** -
+`<a>`
 
-#### href
+#### Anchor Href
 
 超链接指向--超链接/#id/#name
 
-#### id/name
+#### Anchor ID or Name
 
 当前锚点标识
 
-#### target
+#### Anchor Target
 
 定义被链接文档出现方式
 
@@ -686,11 +711,12 @@ figure 可拥有唯一的 0/1 个 figcaption
 
 ### time
 
-#### pubdate
+#### Pub Date
 
-- boolean 代表当前`<time>`表示整个网页的时间
+`pubdate`:
+boolean 代表当前`<time>`表示整个网页的时间
 
-#### datetime
+#### DateTime
 
 ```html
 <time datetime="2010-11-13T20:00Z"></time>
@@ -753,7 +779,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-## Accessbility
+## Accessibility
 
 - 不要将颜色作为传达信息的唯一手段 (色盲/弱)
 - 确保文本与其背景保持足够的对比
@@ -843,7 +869,7 @@ The `<article>` element is used to represent a fully self-contained region of co
 
 ```html
 <p>
-  Everytime Kenny is killed, Stan will announce
+  Every time Kenny is killed, Stan will announce
   <q cite="http://en.wikipedia.org/wiki/Kenny_McCormick#Cultural_impact">
     Oh my God, you/they killed Kenny! </q
   >.
@@ -858,7 +884,7 @@ The `<article>` element is used to represent a fully self-contained region of co
   </p>
 </blockquote>
 
-<cite>– Aldous Huxley, Brave New World</cite>
+<cite>– Ados Huxley, Brave New World</cite>
 ```
 
 #### Text Access
@@ -883,7 +909,7 @@ Use `<button>` for clickable elements
 
 - alt=""
 
-#### Audio/Source Access
+#### Audio Source Access
 
 - src=""
 - type=""
@@ -927,7 +953,7 @@ Use `<button>` for clickable elements
     <address property="address" typeof="PostalAddress">
       <p property="streetAddress">123 Main St., Suite 404</p>
       <p>
-        <span property="addressLocality">Yourtown</span>,
+        <span property="addressLocality">Your Town</span>,
         <span property="addressRegion">AK</span>,
         <span property="postalCode">12345</span>
       </p>
@@ -941,7 +967,7 @@ Use `<button>` for clickable elements
 
 - more than 4.5:1 ratio
 
-#### Accesskey and Tabindex
+#### Access key and Tabindex
 
 ```html
 <a id="second" href="" accesskey="c"></a>
@@ -954,7 +980,7 @@ document.addEventListener('keyup', (event) => {
         case 27:
             // exit
             break;
-        // enter || spacebar
+        // enter || space bar
         case 13 || 32:
             // submit or something
             break;
@@ -1022,7 +1048,7 @@ export function trapTabKey(e, context) {
 - `aria-haspopup="true"`: dropdown/popup
 - `aria-current="pages`: breadcrumb
 - `aria-valuenow`/`aria-valuemin`/`aria-valuemax`: progress
-- `aria-describledBy`: input + small
+- `aria-describedBy`: input + small
 
 ```html
 <button

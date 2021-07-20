@@ -37,7 +37,7 @@ var undefined = void null;
 var undefined = void 1;
 var undefined = function () {};
 
-;(fucntion (undef) {
+(function (undef) {
   var undefined = undef;
 })();
 ```
@@ -323,21 +323,22 @@ function example() {
 }
 ```
 
-### 数组(与 Object 同源)
+### Array
 
+- 与 Object 同源
 - 关联数组：`arrayName[“string”] = value;` 实际为 Array 对象添加属性`{string:value}`
 - 缓存数组长度:`int l = list.length`(访问`length`造成运算)
 - `[]`数组，`{}`对象
 
 数组在 数值运算环境 中转化为 0(空数组)/num(单一元素数组)/NaN(多元素数组/NaN 数组)
 
-#### length
+#### Array Length
 
 - 数组下标满足 [0, 2^32-1) 即可
 - 运用大于 length 的下标, length 自动增大，不会发生数组边界错误
 - length 等于 数组最后一个整数属性名+1, length 不一定等于 数组中有效元素个数
 
-#### 数组字面量
+#### Array Literals
 
 不使用构造函数,使用数组字面量创建数组
 
@@ -355,9 +356,9 @@ if (typeof Array.isArray === 'undefined') {
 }
 ```
 
-#### 常用方法
+#### Array Methods
 
-##### sort
+##### Array Sort
 
 ```js
 arr.sort(toExchange);
@@ -370,7 +371,7 @@ var toExchange = function (a, b) {
 };
 ```
 
-##### 堆栈
+##### Array Stack
 
 ```javascript
 arr.unshift(value); // 添加数组首元素
@@ -379,7 +380,7 @@ arr.shift(); // 删除数组首元素
 arr.pop(); // 删除数组尾元素
 ```
 
-##### 分割/合并
+##### Array Slice and Merge
 
 - slice 不改变原数组, splice 改变原数组
 
@@ -391,20 +392,20 @@ string(charArray).split('割断点'); // 选择割断符,返回字符串数组
 [].splice(); // 功能强大的多态方法
 ```
 
-##### 替换
+##### Array Replace
 
 ```javascript
 [].replace(oldSubStr, newStr);
 ```
 
-##### 查询
+##### Array Query
 
 ```javascript
 ''.substr(start, end);
 [].indexOf(char); // -1 or other
 ```
 
-##### 遍历
+##### Array Traverse
 
 ```javascript
 [] / obj.forEach(function (val) {}); // 遍历数组/对象所有元素(val为单个元素)
@@ -425,7 +426,7 @@ console.log(arrayCopy); // [ '1', [ '3' ], 3 ]
 console.log(nestedArray); //  1, [ 2 ], 3 ]
 ```
 
-##### 其他
+##### Array Other Methods
 
 ```javascript
 [].reverse();
@@ -742,7 +743,7 @@ alert(a);
 - Type(x) === Type(y): return `x === y` (Strict Equality Comparison)
 - Type(x) !== Type(y):
   - x and y are `undefined` or `null`: return true
-  - return comparsion between `ToNumber(x)` and `ToPrimitive(y)`
+  - return comparison between `ToNumber(x)` and `ToPrimitive(y)`
 
 ### 条件表达式
 
@@ -767,7 +768,7 @@ var i = a ? 1 : b ? 2 : c ? 3 : 4;
 
 ## 控制流程
 
-### switch/case
+### Switch Case Statement
 
 用方法查询代替 switch/case 语句
 
@@ -808,7 +809,7 @@ function doAction(action) {
 
 ### 原型链
 
-![原型链](./images/prototype.png)
+![原型链](figures/Prototype.png)
 
 - 实例化对象仅有属性`__proto__`, 没有属性`prototype`, 函数才具有属性 `prototype` (指向引擎为其自动创建的原型对象)
 - 所有引用类型 (包括对象/数组/函数/构造函数) 都有属性`__proto__`(隐式原型)
@@ -844,7 +845,7 @@ Array.__proto__ === Function.prototype;
 // true because of Function is `function Function()` and inherited from `Function.prototype`
 // Function has its own `prototype` property refer to `Function.prototype`
 Function.__proto__ === Function.prototype;
-// true because of Object.protoype is the top of inheritance chains (null is Object.prototype.__proto__)
+// true because of Object.prototype is the top of inheritance chains (null is Object.prototype.__proto__)
 // all `object/function/array instance`.__proto__......__proto__ refer to Object.prototype
 Function.__proto__.__proto__ === Object.prototype;
 
@@ -903,12 +904,12 @@ function Employee(name) {
     return this.name};
 }
 
-var employee = newInstance(Empolyee,'Jack');
+var employee = newInstance(Employee,'Jack');
 =>
 var employee = new Employee('Jack');
 ```
 
-##### Object.create
+##### Object Create API
 
 ```js
 Object.create = function (o) {
@@ -1015,7 +1016,7 @@ Best Practice: **即使函数模式 + 揭示模式**
 
 ```javascript
 //匿名即时函数模式
-var myobj = (function () {
+var obj = (function () {
   // private member
   var name = "tazimi";
   // private method
@@ -1054,15 +1055,15 @@ Best Practice:
 
 ```javascript
 // 命名空间模式
-MYAPP.namespace('MYAPP.utilities.array');
+APP.namespace('APP.utilities.array');
 
 //形参: 导入全局变量
-MYAPP.utilities.array = (function (app, global) {
+APP.utilities.array = (function (app, global) {
 // start of var declare
 
 // 依赖模式
-var uobj = MYAPP.utilities.object,
-  ulang = MYAPP.utilities.lang,
+var uObj = APP.utilities.object,
+  uLang = APP.utilities.lang,
 // 私有属性
   arrStr = "[object Array]",
   toStr = Object.prototype.toString;
@@ -1090,7 +1091,7 @@ return {
   indexOf: inArray
 };
 
-}(MYAPP, this));
+}(APP, this));
 ```
 
 ### 普通属性
@@ -1177,12 +1178,12 @@ Child.prototype = new Parent(); // 设置原型链,建立继承关系
 Child.prototype.constructor = Child; // 使得 Prototype 对象与 Constructor 对象形成闭环
 ```
 
-#### kclass 语法糖
+#### Class Simulation
 
 复制式地继承，将会消耗大量内存单元 **Best Practice**:
 
 ```javascript
-var klass = function (Parent, props) {
+var classSim = function (Parent, props) {
   var Child, F, i;
 
   // 新的构造函数
@@ -1217,7 +1218,7 @@ var klass = function (Parent, props) {
 ```
 
 ```javascript
-var SuperMan = klass(Man, {
+var SuperMan = classSim(Man, {
   _construct: function (what) {
     console.log("SuperMan's constructor");
   },
@@ -1371,7 +1372,7 @@ var greet = 'Hello there';
 // primitive is converted to an object
 // in order to use the split() method
 greet.split(' ')[0]; // "Hello"
-// attemting to augment a primitive is not an error
+// attempting to augment a primitive is not an error
 greet.smile = true;
 // but it doesn't actually work
 typeof greet.smile; // "undefined"
@@ -1415,12 +1416,18 @@ Function.__proto__ === Function.prototype; // true
 Function.__proto__.__proto__ === Object.prototype; // true
 ```
 
-### 函数调用模式 (innovation pattern) (`this` binding types)
+### Invocation Patterns and This Bindings
 
-#### Default/Implicit Binding
+#### Implicit Binding
 
-- 普通调用模式: this 绑定至全局对象/`undefined` (`strict mode`)
-- 方法调用模式(`.`/`[]`): this 绑定至此方法所属的对象
+- Function Invocation 普通调用模式: `this` 绑定至全局对象/`undefined` (`strict mode`)
+  - setTimeout 和 setInterval 中传入的 Callbacks
+    会自动转变为 Function Invocation,
+    `this` bind to global/undefined object.
+  - 同理, React Class Component 中传入的 Event Handlers
+    会自动转变为 Function Invocation,
+    需要显式地 `this.handleClick = this.handleClick.bind(this);`
+- Method Invocation 方法调用模式: this 绑定至此方法所属的对象
 
 ```js
 add(1, 2); // this -> global
@@ -1441,26 +1448,41 @@ const obj = {
 obj.foo(); // 1
 ```
 
+```js
+class Hero {
+  constructor(heroName) {
+    this.heroName = heroName;
+  }
+
+  logName() {
+    console.log(this.heroName);
+  }
+}
+
+const batman = new Hero('Batman');
+setTimeout(batman.logName, 1000);
+// after 1 second logs "undefined"
+```
+
 #### Explicit Binding
 
-apply/bind/call 调用模式
-
+Apply/Bind/Call Invocation:
 函数引用不可以改变函数定义作用域 (scope)，但可以改变函数执行作用域 (context)
 
 ```js
 this.construct = Foo;
 this.construct(options);
     =>
-Foo.call(this, optiions);
+Foo.call(this, options);
 ```
 
-#### New Binding
+#### Constructor Binding
 
-构造器调用模式(new): this 绑定至传入的空对象
+Constructor Invocation: this 绑定至传入的空对象
 
-#### `this` in arrow function
+#### Arrow Function Binding
 
-- `this` defined where arrow function defined (not called) **lexically**
+- `this` defined where arrow function defined (not called) (**lexical scope**)
 - `apply`/`call`/`bind` can't change `this` in arrow function
 
 ```js
@@ -1492,14 +1514,14 @@ func(); // `this` in `inner` function refer to `window`
 - 不是数组,但有 length 属性(实参个数)
 - Array.prototype/[].func.apply(arguments, ...);
 
-#### arguments.callee
+#### Arguments Callee
 
 - 引用 arguments 所属 function, 可以利用 callee 实现匿名递归函数
 - arguments.callee.length: 形参个数
 
 ```js
 try {
-  if (arguments.length !== arugments.callee.length) {
+  if (arguments.length !== arguments.callee.length) {
     throw new Error('传递的参数个数不匹配');
   }
 } catch (err) {
@@ -1664,7 +1686,7 @@ var foo = function () {
   return foo();
 };
 
-//first run: same behavoir as second run
+//first run: same behavior as second run
 console.log(foo()); // t
 //second run
 console.log(foo()); // t
@@ -1723,7 +1745,7 @@ var getResult = (function () {
 })();
 ```
 
-### call/apply/bind
+### Bind Invocation
 
 - `Function.call(contextObj, arg1, arg2,...)`
 - `Function.apply(contextArray, [arg1, arg2, ...]/arguments)`
@@ -1745,17 +1767,17 @@ String.prototype.stringStaticFunction.call/apply();
 context.function(arguments);
 ```
 
-#### bind
+#### Function Bind
 
 - change function runtime context (ignore innovation pattern `function/method/new/call/apply`)
 - curry function
 - can't change `this` in arrow function
 
 ```js
-const bindedFunc = func.bind(context, arg1, arg2, ...);
+const boundFunc = func.bind(context, arg1, arg2, ...);
 ```
 
-#### 通过 call/apply 实现 bind 函数
+#### Function Call and Apply
 
 ```javascript
 function bind(o, m) {
@@ -1773,9 +1795,9 @@ var one = {
     },
   },
   two = { name: 'another object' },
-  twosay = bind(two, one.say);
+  twoSay = bind(two, one.say);
 
-twosay('yo'); // "yo, another object"
+twoSay('yo'); // "yo, another object"
 ```
 
 ### 多态方法
@@ -1929,7 +1951,7 @@ Math.min / Math.max; // 最小值/最大值
 
 #### 时间函数
 
-##### setInterval
+##### Interval Function
 
 **Tips:** 相当于一重循环
 
@@ -2049,29 +2071,29 @@ var app = {};
 
 ```javascript
 // global object
-var MYAPP = {};
+var APP = {};
 // constructors
-MYAPP.Parent = function () {};
-MYAPP.Child = function () {};
+APP.Parent = function () {};
+APP.Child = function () {};
 // a variable
-MYAPP.some_var = 1;
+APP.some_var = 1;
 // an object container
-MYAPP.modules = {};
+APP.modules = {};
 // nested objects
-MYAPP.modules.module1 = {};
-MYAPP.modules.module1.data = { a: 1, b: 2 };
-MYAPP.modules.module2 = {};
+APP.modules.module1 = {};
+APP.modules.module1.data = { a: 1, b: 2 };
+APP.modules.module2 = {};
 ```
 
 #### 通用命名空间函数
 
 ```javascript
-MYAPP.namespace = function (namespaceString) {
+APP.namespace = function (namespaceString) {
   var parts = namespaceString.split('.'),
-    parent = MYAPP,
+    parent = APP,
     i;
   // strip redundant leading global
-  if (parts[0] === 'MYAPP') {
+  if (parts[0] === 'APP') {
     // remove leading global
     parts = parts.slice(1);
   }
@@ -2090,12 +2112,12 @@ MYAPP.namespace = function (namespaceString) {
 
 ```javascript
 // assign returned value to a local var
-var module2 = MYAPP.namespace('MYAPP.modules.module2');
-module2 === MYAPP.modules.module2; // true
-// skip initial `MYAPP`
-MYAPP.namespace('modules.module51');
+var module2 = APP.namespace('APP.modules.module2');
+module2 === APP.modules.module2; // true
+// skip initial `APP`
+APP.namespace('modules.module51');
 // long namespace
-MYAPP.namespace('once.upon.a.time.there.was.this.long.nested.property');
+APP.namespace('once.upon.a.time.there.was.this.long.nested.property');
 ```
 
 ### 沙盒模式
@@ -2170,7 +2192,7 @@ Sandbox.modules.event = function (box) {
   // access to the Sandbox prototype if needed:
   // box.constructor.prototype.m = "mmm";
   box.attachEvent = function () {};
-  box.dettachEvent = function () {};
+  box.detachEvent = function () {};
 };
 Sandbox.modules.ajax = function (box) {
   box.makeRequest = function () {};
@@ -2195,7 +2217,7 @@ Sandbox(function (box) {
 Sandbox('dom', 'event', function (box) {
   // work with dom and event
   Sandbox('ajax', function (box) {
-    // another sandboxed "box" object
+    // another sandbox "box" object
     // this "box" is not the same as
     // the "box" outside this function
     //...
@@ -2288,10 +2310,10 @@ const showAlert = (type, message, duration = 3) {
 ##### append
 
 ```javascript
-var testdiv = document.getElementById('testdiv');
+var testDiv = document.getElementById('testDiv');
 
 var para = document.createElement('p');
-testdiv.appendChild(para);
+testDiv.appendChild(para);
 
 var txt = document.createTextNode('Hello World');
 para.appendChild(txt);
@@ -2400,12 +2422,12 @@ document.body.appendChild(frag);
 ```
 
 ```javascript
-var oldnode = document.getElementById('result'),
-  clone = oldnode.cloneNode(true);
+var oldNode = document.getElementById('result'),
+  clone = oldNode.cloneNode(true);
 // work with the clone
 
 // when you're done:
-oldnode.parentNode.replaceChild(clone, oldnode);
+oldNode.parentNode.replaceChild(clone, oldNode);
 ```
 
 ### HTML DOM
@@ -2415,7 +2437,7 @@ element.innerHTML;
 element.textContent;
 ```
 
-innerHTML: unconcrete,including all types of childNodes
+innerHTML: non-concrete, including all types of childNodes
 
 `div.innerHTML = <p>Test<em>test</em>Test.</p>`
 
@@ -2454,7 +2476,7 @@ element.style.fontFamily;
 element.style.marginTopWidth;
 ```
 
-#### Get/Set Styles
+#### Getter and Setter Styles
 
 - getPropertyValue
 - setProperty
@@ -2520,7 +2542,7 @@ function addClass(element, value) {
 }
 ```
 
-#### CSSStyleSheet Interface
+#### CSS StyleSheet Interface
 
 ##### CSS Rules Definition
 
@@ -2545,7 +2567,7 @@ for (i of myRules) {
   const myStyle = i.style;
 
   // Set the bg color on the body
-  myStyle.setProperty('background-color', 'peachpuff');
+  myStyle.setProperty('background-color', 'peachPuff');
 
   // Get the font size of the body
   myStyle.getPropertyValue('font-size');
@@ -2608,7 +2630,7 @@ for (i of myRules) {
 }
 ```
 
-##### Add/Remove CSS Rules
+##### Add and Remove CSS Rules
 
 ```js
 let myStylesheet = document.styleSheets[0];
@@ -2633,7 +2655,7 @@ console.log(myStylesheet.cssRules.length); // 7
 
 For `click/keydown` events:
 
-- `event.prevetDefault()`
+- `event.preventDefault()`
 - `event.stopPropagation()`
 
 `element.dispatchEvent` to trigger events.
@@ -2686,7 +2708,7 @@ window.addEventListener('visibilitychange', () => {
 ```js
 const videoElement = document.getElementById('videoElement');
 
-// Autoplay the video if application is visible
+// AutoPlay the video if application is visible
 if (document.visibilityState == 'visible') {
   videoElement.play();
 }
@@ -2853,7 +2875,7 @@ source.addEventListener('copy', (event) => {
   const selection = document.getSelection();
   event.clipboardData.setData(
     'text/plain',
-    selection.toString().concat('copyrihgt information')
+    selection.toString().concat('copyright information')
   );
   event.preventDefault();
 });
@@ -2931,12 +2953,12 @@ function readyFunction() {
 ```js
 //add more ready function
 function addLoadEvent(func) {
-  var oldonload = window.onload;
+  var oldOnLoad = window.onload;
   if (typeof window.onload != 'function') {
     window.onload = func;
   } else {
     window.onload = function () {
-      oldonload();
+      oldOnLoad();
       func();
     };
   }
@@ -2962,8 +2984,8 @@ window.addEventListener(
   (event) => {
     // event.oldURL
     // event.nweURL
-    if (location.hash === '#somecoolfeature') {
-      somecoolfeature();
+    if (location.hash === '#someCoolFeature') {
+      someCoolFeature();
     }
   },
   false
@@ -2974,7 +2996,7 @@ window.addEventListener(
 
 - getBoundingClientRect
 
-#### width/height
+#### Width and Height API
 
 - offsetWidth/offsetHeight = content + padding + border
 - clientWidth/clientHeight = content + padding
@@ -3025,7 +3047,7 @@ if (window.innerHeight + window.pageYOffset === document.body.scrollHeight) {
 }
 ```
 
-#### DOM left/top Property
+#### DOM Left and Top Property
 
 - offsetLeft/offsetTop: 表示该元素的左上角（边框外边缘）与已定位的父容器（offsetParent 对象）左上角的距离
 - scrollLeft/scrollTop: 元素滚动条位置, 被隐藏的内容区域左侧/上方的像素大小
@@ -3149,7 +3171,7 @@ request.onreadystatechange = function () {
   //do something
   /*
   switch(request.readyState) {
-    case 0: initalize
+    case 0: initialize
     case 1: loading
     case 2: loaded
     case 3: transaction
@@ -3370,7 +3392,7 @@ RegExp.$*;
 |          | `(?<!exp)`     | 匹配前面不是 exp 的位置                         |
 | 注释     | (?#comment)    | 用于提供注释让人阅读                            |
 
-### Best Practice(提升效率)
+### RegExp Best Practice
 
 - 不使用 new RegExp(),使用正则表达式字面量
 - 将正则表达式赋值给变量，防止正则表达式重复创建
@@ -3456,7 +3478,9 @@ if (!String.prototype.trim) {
 
 `/[(^\s+)(\s+$)]/g`
 
-## 错误处理(Error/Exception)
+## 错误处理
+
+Error and Exception
 
 ### 错误类型
 
@@ -3482,909 +3506,3 @@ MyError.prototype.constructor = MyError;
 
 - 在可能失败的地方抛出异常，对失败处做标签，易于**调试与测试**
 - 修复 bug 后，可考虑是否在此处抛出异常
-
-## Asynchronous Programming
-
-### Promise
-
-avoid callback hell with:
-
-- return `new Promise`
-- return `promise.then`
-- `Promise.all`: short-circuits when an input value is rejected
-- `Promise.race`: short-circuits when an input value is settled
-- `Promise.any`: short-circuits when an input value is fulfilled
-- `Promise.allSettled`: does not short-circuits
-
-resolve only accept **one** value
-
-```js
-return new Promise((resolve) => resolve([a, b]));
-```
-
-- promises on the same chain execute orderly
-- promises on two seperate chains execute in random order
-
-```js
-const users = [
-  'W8lbAokuirfdlTJpnsNC5kryuHtu1G53',
-  'ZinqxnohbXMQdtF6avtlUkxLLknRxCTh',
-  'ynQePb3RB2JSx4iziGYMM5eXgkwnufS5',
-  'EtT2haq2sNoWnNjmeyZnfUmZn9Ihfi8w',
-];
-
-const response = [];
-
-const getUser = (user) => () => {
-  return axios.get(`/users/userId=${user}`).then((res) => response.push(res));
-};
-
-const getUsers = (users) => {
-  const [getFirstUser, getSecondUser, getThirdUser, getFourthUser] =
-    users.map(getUser);
-
-  getFirstUser()
-    .then(getSecondUser)
-    .then(getThirdUser)
-    .then(getFourthUser)
-    .catch(console.log);
-};
-```
-
-```js
-const users = [
-  'W8lbAokuirfdlTJpnsNC5kryuHtu1G53',
-  'ZinqxnohbXMQdtF6avtlUkxLLknRxCTh',
-  'ynQePb3RB2JSx4iziGYMM5eXgkwnufS5',
-  'EtT2haq2sNoWnNjmeyZnfUmZn9Ihfi8w',
-];
-
-let response = [];
-
-function getUsers(users) {
-  const promises = [];
-  promises[0] = axios.get(`/users/userId=${users[0]}`);
-  promises[1] = axios.get(`/users/userId=${users[1]}`);
-  promises[2] = axios.get(`/users/userId=${users[2]}`);
-  promises[3] = axios.get(`/users/userId=${users[3]}`);
-
-  Promise.all(promises)
-    .then((userDataArr) => (response = userDataArr))
-    .catch((err) => console.log(err));
-}
-```
-
-#### Promise.all
-
-- `Promise.all([...])` fail-fast.
-  If at least one promise in the promises array rejects,
-  then the promise returned rejects too.
-
-```js
-Promise.all(urls.map(fetch)).then(responses =>
-    Promise.all(responses.map(res => res.text())
-).then(texts => {
-  //
-})
-```
-
-```js
-Promise.all(urls.map((url) => fetch(url).then((resp) => resp.text()))).then(
-  (texts) => {
-    //
-  }
-);
-```
-
-#### Promise Polyfill
-
-```js
-class Promise {
-  // `executor` takes 2 parameters, `resolve()` and `reject()`. The executor
-  // function is responsible for calling `resolve()` or `reject()` to say that
-  // the async operation succeeded (resolved) or failed (rejected).
-  constructor(executor) {
-    if (typeof executor !== 'function') {
-      throw new Error('Executor must be a function');
-    }
-
-    // Internal state. `$state` is the state of the promise, and `$chained` is
-    // an array of the functions we need to call once this promise is settled.
-    this.$state = 'PENDING';
-    this.$chained = [];
-
-    // Implement `resolve()` and `reject()` for the executor function to use
-    const resolve = (res) => {
-      // A promise is considered "settled" when it is no longer
-      // pending, that is, when either `resolve()` or `reject()`
-      // was called once. Calling `resolve()` or `reject()` twice
-      // or calling `reject()` after `resolve()` was already called
-      // are no-ops.
-      if (this.$state !== 'PENDING') {
-        return;
-      }
-
-      // If `res` is a "thenable", lock in this promise to match the
-      // resolved or rejected state of the thenable.
-      const then = res != null ? res.then : null;
-      if (typeof then === 'function') {
-        // In this case, the promise is "resolved", but still in the 'PENDING'
-        // state. This is what the ES6 spec means when it says "A resolved promise
-        // may be pending, fulfilled or rejected" in
-        // http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects
-        return then(resolve, reject);
-      }
-
-      this.$state = 'FULFILLED';
-      this.$internalValue = res;
-
-      // If somebody called `.then()` while this promise was pending, need
-      // to call their `onFulfilled()` function
-      for (const { onFulfilled } of this.$chained) {
-        onFulfilled(res);
-      }
-
-      return res;
-    };
-
-    const reject = (err) => {
-      if (this.$state !== 'PENDING') {
-        return;
-      }
-
-      this.$state = 'REJECTED';
-      this.$internalValue = err;
-
-      for (const { onRejected } of this.$chained) {
-        onRejected(err);
-      }
-    };
-
-    // Call the executor function with `resolve()` and `reject()` as in the spec.
-    try {
-      // If the executor function throws a sync exception, we consider that
-      // a rejection. Keep in mind that, since `resolve()` or `reject()` can
-      // only be called once, a function that synchronously calls `resolve()`
-      // and then throws will lead to a fulfilled promise and a swallowed error
-      executor(resolve, reject);
-    } catch (err) {
-      reject(err);
-    }
-  }
-
-  // `onFulfilled` is called if the promise is fulfilled, and `onRejected`
-  // if the promise is rejected. For now, you can think of 'fulfilled' and
-  // 'resolved' as the same thing.
-  then(onFulfilled, onRejected) {
-    return new Promise((resolve, reject) => {
-      // Ensure that errors in `onFulfilled()` and `onRejected()` reject the
-      // returned promise, otherwise they'll crash the process. Also, ensure
-      // that the promise
-      const _onFulfilled = (res) => {
-        try {
-          // If `onFulfilled()` returns a promise, trust `resolve()` to handle
-          // it correctly.
-          // store new value to new Promise
-          resolve(onFulfilled(res));
-        } catch (err) {
-          reject(err);
-        }
-      };
-
-      const _onRejected = (err) => {
-        try {
-          // store new value to new Promise
-          reject(onRejected(err));
-        } catch (_err) {
-          reject(_err);
-        }
-      };
-
-      if (this.$state === 'FULFILLED') {
-        _onFulfilled(this.$internalValue);
-      } else if (this.$state === 'REJECTED') {
-        _onRejected(this.$internalValue);
-      } else {
-        this.$chained.push({
-          onFulfilled: _onFulfilled,
-          onRejected: _onRejected,
-        });
-      }
-    });
-  }
-
-  catch(onRejected) {
-    return this.then(null, onRejected);
-  }
-}
-```
-
-### await/async
-
-avoid wrong parallel logic (too sequential)
-
-```js
-// wrong
-const books = await bookModel.fetchAll();
-const author = await authorModel.fetch(authorId);
-
-// right
-const bookPromise = bookModel.fetchAll();
-const authorPromise = authorModel.fetch(authorId);
-const book = await bookPromise;
-const author = await authorPromise;
-
-async getAuthors(authorIds) {
-  // WRONG, this will cause sequential calls
-  // const authors = _.map(
-  //   authorIds,
-  //   id => await authorModel.fetch(id));
-  // CORRECT
-  const promises = _.map(authorIds, id => authorModel.fetch(id));
-  const authors = await Promise.all(promises);
-}
-```
-
-#### Await Arrays
-
-- If you want to execute await calls in series,
-  use a for-loop (or any loop without a callback).
-- Don't ever use await with `forEach` (`forEach` is not promise-aware),
-  use a for-loop (or any loop without a callback) instead.
-- Don't await inside filter and reduce,
-  always await an array of promises with map, then filter or reduce accordingly.
-
-### Sleep Function
-
-```js
-function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
-```
-
-```js
-sleep(2000).then(() => {
-  //do something after 2000 milliseconds
-  console.log('resolved');
-});
-
-async function add(n1, n2) {
-  await sleep(2222);
-  console.log(n1 + n2);
-}
-
-add(1, 2);
-```
-
-### Race Condition
-
-- keep latest updates
-- recover from failures
-- online and offline sync ([PouchDB](https://github.com/pouchdb/pouchdb))
-- tools: [redux-saga](https://github.com/redux-saga/redux-saga)
-
-```js
-export default {
-  data() {
-    return {
-      text: '',
-      results: [],
-      nextRequestId: 1,
-      displayedRequestId: 0,
-    };
-  },
-  watch: {
-    async text(value) {
-      const requestId = this.nextRequestId++;
-      const results = await search(value);
-
-      // guarantee display latest search results (when input keep changing)
-      if (requestId < this.displayedRequestId) {
-        return;
-      }
-
-      this.displayedRequestId = requestId;
-      this.results = results;
-    },
-  },
-};
-```
-
-## Geolocation API
-
-```js
-if (window.navigator.geolocation) {
-  //getCurrentPosition第三个参数为可选参数
-  navigator.geolocation.getCurrentPosition(locationSuccess, locationError, {
-    // 指示浏览器获取高精度的位置，默认为false
-    enableHighAccuracy: true,
-    // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
-    timeout: 5000,
-    // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
-    maximumAge: 3000,
-  });
-} else {
-  alert('Your browser does not support Geolocation!');
-}
-```
-
-locationError 为获取位置信息失败的回调函数，可以根据错误类型提示信息：
-
-```js
-locationError: function(error){
-    switch(error.code) {
-        case error.TIMEOUT:
-            showError("A timeout occured! Please try again!");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            showError('We can\'t detect your location. Sorry!');
-            break;
-        case error.PERMISSION_DENIED:
-            showError('Please allow geolocation access for this to work.');
-            break;
-        case error.UNKNOWN_ERROR:
-            showError('An unknown error occured!');
-            break;
-    }
-}
-```
-
-locationSuccess 为获取位置信息成功的回调函数，返回的数据中包含经纬度等信息，结合 Google Map API 即可在地图中显示当前用户的位置信息，如下：
-
-```js
-locationSuccess: function(position){
-    var coords = position.coords;
-    var latlng = new google.maps.LatLng(
-        // 维度
-        coords.latitude,
-        // 精度
-        coords.longitude
-    );
-    var myOptions = {
-        // 地图放大倍数
-        zoom: 12,
-        // 地图中心设为指定坐标点
-        center: latlng,
-        // 地图类型
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    // 创建地图并输出到页面
-    var myMap = new google.maps.Map(
-        document.getElementById("map"),myOptions
-    );
-    // 创建标记
-    var marker = new google.maps.Marker({
-        // 标注指定的经纬度坐标点
-        position: latlng,
-        // 指定用于标注的地图
-        map: myMap
-    });
-    //创建标注窗口
-    var infowindow = new google.maps.InfoWindow({
-        content:"您在这里<br/>纬度："+
-            coords.latitude+
-            "<br/>经度："+coords.longitude
-    });
-    //打开标注窗口
-    infowindow.open(myMap,marker);
-}
-```
-
-```js
-navigator.geolocation.watchPosition(
-  locationSuccess,
-  locationError,
-  positionOption
-);
-```
-
-自动更新地理位置
-
-## Web Audio API
-
-### From Oscillator
-
-```js
-                         -3  -1   1       4   6       9   11
-                       -4  -2   0   2   3   5   7   8   10  12
-  .___________________________________________________________________________.
-  :  | |  |  | | | |  |  | | | | | |  |  | | | |  |  | | | | | |  |  | | | |  :
-  :  | |  |  | | | |  |  | | | | | |  |  | | | |  |  | | | | | |  |  | | | |  :
-  :  | |  |  | | | |  |  | | | | | |  |  | | | |  |  | | | | | |  |  | | | |  :
-<-:  |_|  |  |_| |_|  |  |_| |_| |_|  |  |_| |_|  |  |_| |_| |_|  |  |_| |_|  :->
-  :   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   :
-  : A | B | C | D | E | F | G | A | B | C | D | E | F | G | A | B | C | D | E :
-  :___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___:
-    ^                           ^           ^               ^           ^
-  220 Hz                      440 Hz      523.25 Hz       880 Hz     1174.65 Hz
-(-1 Octave)                 (middle A)                 (+1 Octave)
-```
-
-```js
-const audioContext = new AudioContext();
-
-const baseFrequency = 440;
-const getNoteFreq = (base, pitch) => base * Math.pow(2, pitch / 12);
-// oscillator.frequency.value = getNoteFreq(440, 7);
-
-const getNoteDetune = (pitch) => pitch * 100;
-// oscillator.detune.value = getNoteDetune(7);
-
-const play = (type, delay, pitch, duration) => {
-  const oscillator = audioContext.createOscillator();
-  oscillator.connect(audioContext.destination);
-
-  oscillator.type = type;
-  oscillator.detune.value = getNoteDetune(pitch);
-
-  const startTime = audioContext.currentTime + delay;
-  const stopTime = startTime + duration;
-  oscillator.start(startTime);
-  oscillator.stop(stopTime);
-};
-```
-
-### From Music Data
-
-```js
-const sampleSize = 1024; // number of samples to collect before analyzing data
-const audioUrl = 'viper.mp3';
-
-let audioData = null;
-let audioPlaying = false;
-
-const audioContext = new AudioContext();
-const sourceNode = audioContext.createBufferSource();
-const analyserNode = audioContext.createAnalyser();
-const javascriptNode = audioContext.createScriptProcessor(sampleSize, 1, 1);
-
-// Create the array for the data values
-const amplitudeArray = new Uint8Array(analyserNode.frequencyBinCount);
-
-// Now connect the nodes together
-sourceNode.connect(audioContext.destination);
-sourceNode.connect(analyserNode);
-analyserNode.connect(javascriptNode);
-javascriptNode.connect(audioContext.destination);
-
-// setup the event handler that is triggered
-// every time enough samples have been collected
-// trigger the audio analysis and draw the results
-javascriptNode.onaudioprocess = function () {
-  // get the Time Domain data for this sample
-  analyserNode.getByteTimeDomainData(amplitudeArray);
-
-  // draw the display if the audio is playing
-  // if (audioPlaying == true) {
-  // requestAnimFrame(drawTimeDomain);
-  // }
-};
-
-// Load the audio from the URL via Ajax and store it in global variable audioData
-// Note that the audio load is asynchronous
-function loadSound(url) {
-  fetch(url)
-    .then((response) => {
-      audioContext.decodeAudioData(response, (buffer) => {
-        audioData = buffer;
-        playSound(audioData);
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
-
-// Play the audio and loop until stopped
-function playSound(buffer) {
-  sourceNode.buffer = buffer;
-  sourceNode.start(0); // Play the sound now
-  sourceNode.loop = true;
-  audioPlaying = true;
-}
-
-function stopSound() {
-  sourceNode.stop(0);
-  audioPlaying = false;
-}
-```
-
-### Audio Bar Chart with Canvas
-
-- [AnalyserNode.getByteFrequencyData API](https://developer.mozilla.org/zh-CN/docs/Web/API/AnalyserNode/getByteFrequencyData)
-- [Github Demo](https://github.com/bogdan-cornianu/swave/blob/master/src/visualizer.ts)
-
-```js
-const WIDTH = this.canvas.clientWidth;
-const HEIGHT = this.canvas.clientHeight;
-this.analyserNode.fftSize = 256;
-let bufferLengthAlt = this.analyserNode.frequencyBinCount;
-let dataArrayAlt = new Uint8Array(bufferLengthAlt);
-
-this.ctx.clearRect(0, 0, WIDTH, HEIGHT);
-
-let draw = () => {
-  let drawVisual = requestAnimationFrame(draw);
-  this.analyserNode.getByteFrequencyData(dataArrayAlt);
-
-  this.ctx.fillStyle = 'rgb(255, 255, 255)';
-  this.ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-  let barWidth = (WIDTH / bufferLengthAlt) * 2.5;
-  let barHeight;
-  let x = 0;
-
-  for (let i = 0; i < bufferLengthAlt; i++) {
-    barHeight = dataArrayAlt[i];
-
-    this.ctx.fillStyle = 'rgb(' + (barHeight + 100) + ',15,156)';
-    this.ctx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
-
-    x += barWidth + 1;
-  }
-};
-
-draw();
-```
-
-## Web Storage API
-
-- 协同 cookies
-- 对于复杂对象的读取与存储,
-  需要借助 `JSON.parse` 与 `JSON.stringify`
-
-```js
-if (!localStorage.getItem('bgcolor')) {
-  populateStorage();
-} else {
-  setStyles();
-}
-
-function populateStorage() {
-  localStorage.setItem('bgcolor', document.getElementById('bgcolor').value);
-  localStorage.setItem('font', document.getElementById('font').value);
-  localStorage.setItem('image', document.getElementById('image').value);
-
-  setStyles();
-}
-
-function setStyles() {
-  var currentColor = localStorage.getItem('bgcolor');
-  var currentFont = localStorage.getItem('font');
-  var currentImage = localStorage.getItem('image');
-
-  document.getElementById('bgcolor').value = currentColor;
-  document.getElementById('font').value = currentFont;
-  document.getElementById('image').value = currentImage;
-
-  htmlElem.style.backgroundColor = '#' + currentColor;
-  pElem.style.fontFamily = currentFont;
-  imgElem.setAttribute('src', currentImage);
-}
-```
-
-## Web Navigator API
-
-```js
-navigator.connection.effectiveType; // 2G - 5G
-```
-
-## Web Files API
-
-## Web Sockets API
-
-通信功能
-
-```js
-WebSocket WebSocket(
-  in DOMString url,
-  in optional DOMString protocols
-);
-
-WebSocket WebSocket(
-  in DOMString url,
-  in optional DOMString[] protocols
-);
-```
-
-```js
-function WebSocketTest() {
-  if ('WebSocket' in window) {
-    alert('WebSocket is supported by your Browser!');
-    // Let us open a web socket
-    var ws = new WebSocket('ws://localhost:9998/echo');
-    ws.onopen = function () {
-      // Web Socket is connected, send data using send()
-      ws.send('Message to send');
-      alert('Message is sent...');
-    };
-    ws.onmessage = function (evt) {
-      var received_msg = evt.data;
-      alert('Message is received...');
-    };
-    ws.onclose = function () {
-      // websocket is closed.
-      alert('Connection is closed...');
-    };
-  } else {
-    // The browser doesn't support WebSocket
-    alert('WebSocket NOT supported by your Browser!');
-  }
-}
-```
-
-## Web RTC API
-
-多媒体通信
-
-## Web Workers API
-
-- 多线程处理
-- 有两种方法可以停止 Worker:
-  从主页调用 `worker.terminate()` 或在 worker 内部调用 `self.close()`
-- 利用 [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel)
-  可以创建 Shared Worker, 即共享 Workers 在同一源 (origin) 下面的各种进程都可以访问它，
-  包括：iframes、浏览器中的不同 tab 页 (browsing context)
-- Web Workers 无法访问一些非常关键的 JavaScript 特性:
-  DOM(它会造成线程不安全), window 对象, document 对象, parent 对象.
-- Usecase: Graphic App (Ray Tracing), Encryption, Prefetching Data,
-  PWA (Service Worker), Spell Checking
-
-```html
-<button onclick="startComputation()">Start computation</button>
-
-<script>
-  const worker = new Worker('worker.js');
-
-  worker.addEventListener(
-    'message',
-    function (e) {
-      console.log(e.data);
-    },
-    false
-  );
-
-  function startComputation() {
-    worker.postMessage({ cmd: 'average', data: [1, 2, 3, 4] });
-  }
-</script>
-```
-
-```js
-// worker.js
-self.addEventListener(
-  'message',
-  function (e) {
-    const data = e.data;
-    switch (data.cmd) {
-      case 'average':
-        const result = calculateAverage(data);
-        self.postMessage(result);
-        break;
-      default:
-        self.postMessage('Unknown command');
-    }
-  },
-  false
-);
-```
-
-## Web Animations API
-
-- `KeyframeEffect`
-- `Animation`
-
-```js
-const rabbitDownKeyframes = new KeyframeEffect(
-  whiteRabbit, // element to animate
-  [
-    { transform: 'translateY(0%)' }, // keyframe
-    { transform: 'translateY(100%)' }, // keyframe
-  ],
-  { duration: 3000, fill: 'forwards' } // keyframe options
-);
-
-const rabbitDownAnimation = new Animation(
-  rabbitDownKeyFrames,
-  document.timeline
-);
-
-whiteRabbit.addEventListener('click', downHandler);
-
-function downHandler() {
-  rabbitDownAnimation.play();
-  whiteRabbit.removeEventListener('click', downHandler);
-}
-```
-
-- `element.animate`
-
-```js
-const animationKeyframes = [
-  {
-    transform: 'rotate(0)',
-    color: '#000',
-  },
-  {
-    color: '#431236',
-    offset: 0.3,
-  },
-  {
-    transform: 'rotate(360deg)',
-    color: '#000',
-  },
-];
-
-const animationTiming = {
-  duration: 3000,
-  iterations: Infinity,
-};
-
-const animation = document
-  .querySelector('alice')
-  .animate(animationKeyframes, animationTiming);
-```
-
-- `animation.pause()/play()/reverse()/finish()/cancel()`
-
-```js
-animation.pause();
-animation.currentTime = animation.effect.getComputedTiming().duration / 2;
-```
-
-## Web Canvas API
-
-### Basic Usage
-
-- 绘制路径 beginPath() -> draw() -> closePath()
-- Path2D 对象
-- 绘制样式: 颜色、渐变、变换、阴影
-- 绘制图形: fill/stroke/clip
-
-```javascript
-const context = canvas.getContext('2d');
-```
-
-```javascript
-// 根据参数画线
-function drawLine(fromX, fromY, toX, toY) {
-  context.moveTo(fromX, fromY);
-  context.lineTo(toX, toY);
-  context.stroke();
-}
-
-// 根据参数画圆
-function drawCircle(x, y, radius, color) {
-  context.fillStyle = color;
-  context.beginPath();
-  context.arc(x, y, radius, 0, Math.PI * 2, true);
-  context.closePath();
-  context.fill();
-  context.stroke();
-}
-
-// 改变 canvas 中图形颜色
-function changeColor(color) {
-  context.fillStyle = color;
-  context.fill();
-}
-```
-
-### Game Loop With Canvas
-
-for all objects:
-
-- constructor: `positon{x, y}`, `speed{x, y}`, `size{x, y}`
-- update(deltatime): change position or speed
-- draw(ctx): use canvas api and object properties (position/size) to render objects
-
-```js
-let canvas = document.getElementById('gameScreen');
-let ctx = canvas.getContext('2d');
-
-const GAME_WIDTH = 800;
-const GAME_HEIGHT = 600;
-
-let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-
-let lastTime = 0;
-function gameLoop(timestamp) {
-  let deltaTime = timestamp - lastTime;
-  lastTime = timestamp;
-
-  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-
-  game.update(deltaTime);
-  game.draw(ctx);
-
-  requestAnimationFrame(gameLoop);
-}
-
-requestAnimationFrame(gameLoop);
-```
-
-### Canvas Performance
-
-- canvas buffer
-
-```js
-frontCanvasContext.drawImage(bufferCanvas, 0, 0);
-```
-
-- multiple canvas: top layer, background layer, interactive layer
-- disable alpha path
-
-```js
-const ctx = canvas.getContext('2d', { alpha: false });
-```
-
-### Canvas Reference
-
-- [Canvas on MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API)
-- [Canvas Cheat Sheet](https://simon.html5.org/dump/html5-canvas-cheat-sheet.html)
-- [Canvas Perf Tips 1](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas)
-- [Canvas Perf Tips 2](https://www.html5rocks.com/en/tutorials/canvas/performance/)
-- [Canvas Deep Live](https://joshondesign.com/p/books/canvasdeepdive/toc.html)
-
-## Gamepad API
-
-[Gamepad API Tutorials](https://developer.mozilla.org/zh-CN/docs/Games/Techniques/Controls_Gamepad_API)
-
-```js
-const gamepads = {};
-
-function gamepadHandler(event, connecting) {
-  // gamepad === navigator.getGamepads()[gamepad.index]
-  const { gamepad } = event;
-
-  if (connecting) {
-    gamepads[gamepad.index] = gamepad;
-  } else {
-    delete gamepads[gamepad.index];
-  }
-}
-
-window.addEventListener('gamepadconnected', (e) => {
-  gamepadHandler(e, true);
-});
-
-window.addEventListener('gamepaddisconnected', (e) => {
-  gamepadHandler(e, false);
-});
-```
-
-## URL API
-
-- [URLSearchParams](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams)
-
-## Observer API
-
-- [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
-- [Mutation Observer](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
-- [Performance Observer](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
-- [Resize Observer](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
-- [Reporting Observer](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver)
-
-### Intersection Observer
-
-```js
-// <img class="lzy_img" src="lazy_img.jpg" data-src="real_img.jpg" />
-document.addEventListener('DOMContentLoaded', () => {
-  const imageObserver = new IntersectionObserver((entries, imgObserver) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const lazyImage = entry.target;
-        console.log('Lazy loading ', lazyImage);
-        lazyImage.src = lazyImage.dataset.src;
-
-        // only load image once
-        lazyImage.classList.remove('lzy');
-        imgObserver.unobserve(lazyImage);
-      }
-    });
-  });
-
-  const lazyImages = document.querySelectorAll('img.lzy_img');
-  lazyImages.forEach((lazyImage) => imageObserver.observe(lazyImage));
-});
-```

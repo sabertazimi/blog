@@ -13,8 +13,17 @@ tags:
 
 # CSS Advanced Notes
 
-content -> centering -> font family -> spacing -> color&contrast
--> balance(position) -> primary/secondary color -> custom font -> images/links
+## CSS Framework Key Points
+
+- Content
+- Centering
+- Font Family
+- Spacing
+- Color and Contrast
+- Balance (Position)
+- Primary and Secondary Color
+- Custom Text (Font)
+- Images and Links
 
 ## Typography Principles
 
@@ -27,7 +36,7 @@ content -> centering -> font family -> spacing -> color&contrast
 > refer to: font-family, font-size, spacing, color
 
 - [reference](https://noti.st/rar/mz1rIY/golden-rules-of-typography-on-the-web)
-- [Praticel Typography](https://practicaltypography.com)
+- [Practical Typography](https://practicaltypography.com)
 
 ### font-size and spacing
 
@@ -69,7 +78,7 @@ consistent (and relative) to each other:
 
 ### Table
 
-- remove fills, gridlines, border and bolding
+- remove fills, grid lines, border and bolding
 - left-align text, right-align numbers
   and align headings with data
 - put white space to work to group and separate
@@ -94,7 +103,7 @@ consistent (and relative) to each other:
 
 > <https://adamsilver.io/articles/where-to-put-buttons-in-forms>
 
-## Graceful Degration
+## Graceful Degradation
 
 write old browser css code,
 then write modern browser css code
@@ -104,7 +113,7 @@ then write modern browser css code
   display: flex;
 }
 
-/* old browser dosen't support this rule */
+/* old browser don't support this rule */
 /* old browser will ignore this rule */
 .grid {
   display: grid;
@@ -114,7 +123,7 @@ then write modern browser css code
 ## CSS Houdini
 
 - [Draft](https://drafts.css-houdini.org)
-- [Implementaion Status](https://ishoudinireadyyet.com/)
+- [Implementation Status](https://ishoudinireadyyet.com/)
 
 CSS Houdini bring many API:
 
@@ -151,10 +160,6 @@ to let developers enhance css without any browser updates
 avoid to frequently change css property
 or call JS DOM API triggering layout stage (reflow)
 
-### reset.css
-
-- `*` selector has poor performance
-
 ### will-change
 
 告知浏览器该元素会有哪些变化的方法，这样浏览器可以在元素属性真正发生变化之前提前做好对应的优化准备工作
@@ -166,7 +171,7 @@ or call JS DOM API triggering layout stage (reflow)
   will-change: contents;
   will-change: transform; /* Example of <custom-ident> */
   will-change: opacity; /* Example of <custom-ident> */
-  will-change: left, top; /* Example of two <animateable-feature> */
+  will-change: left, top; /* Example of two <animate-feature> */
 
   will-change: unset;
   will-change: initial;
@@ -209,7 +214,9 @@ contain: paint;
 - layout: 声明没有外部元素可以影响它内部的布局，反之亦然
 - paint: 声明这个元素的子孙节点不会在它边缘外显示。如果一个元素在视窗外或因其他原因导致不可见，则同样保证它的子孙节点不会被显示
 
-### window.requestAnimationFrame
+### Animation Frame
+
+`window.requestAnimationFrame`:
 
 - reflow: `javascript -> style -> layout -> paint -> composite`
 - repaint: `paint -> composite`
@@ -247,7 +254,7 @@ window.requestAnimationFrame(step);
 - Avoid @import:
   - In your HTML;
   - but in CSS especially;
-  - and beware of oddities with the Preload Scanner.
+  - and beware of oddities with the PreLoad Scanner.
 - Be wary of synchronous CSS and JavaScript order:
   - JavaScript defined after CSS won’t run until CSSOM is completed;
   - so if your JavaScript doesn’t depend on your CSS;
@@ -276,7 +283,7 @@ window.requestAnimationFrame(step);
 - js-based animation: `requestAnimationFrame` is better than `setTimeout`/`setInterval`
 - position animation:`transform: translate(npx, npx)` is better than `top`/`right`/`bottom`/`left`
 - scale animation: `transform: scale(n)` better than `width`/`height`
-- rotation animation: `transform: rotate(ndeg)` is better
+- rotation animation: `transform: rotate(deg)` is better
 - opacity/visibility animation: `opacity: 0...1` is better
 
 #### DevTools for Animation
@@ -299,131 +306,6 @@ window.requestAnimationFrame(step);
 
 - [Browser Hacks](https://github.com/4ae9b8/browserhacks)
 
-```css
-/* stylelint-disable */
-/***** Selector Hacks ******/
-
-/* IE6 and below */
-* html #uno {
-  color: red;
-}
-
-/* IE7 */
-*:first-child + html #dos {
-  color: red;
-}
-
-/* IE7, FF, Saf, Opera  */
-html > body #tres {
-  color: red;
-}
-
-/* IE8, FF, Saf, Opera (Everything but IE 6,7) */
-html>/**/body #cuatro {
-  color: red;
-}
-
-/* Opera 9.27 and below, safari 2 */
-html:first-child #cinco {
-  color: red;
-}
-
-/* Safari 2-3 */
-html[xmlns*=''] body:last-child #seis {
-  color: red;
-}
-
-/* safari 3+, chrome 1+, opera9+, ff 3.5+ */
-body:nth-of-type(1) #siete {
-  color: red;
-}
-
-/* safari 3+, chrome 1+, opera9+, ff 3.5+ */
-body:first-of-type #ocho {
-  color: red;
-}
-
-/* saf3+, chrome1+ */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  #diez {
-    color: red;
-  }
-}
-
-/* iPhone / mobile webkit */
-@media screen and (max-device-width: 480px) {
-  #veintiseis {
-    color: red;
-  }
-}
-
-/* Safari 2 - 3.1 */
-html[xmlns*='']:root #trece {
-  color: red;
-}
-
-/* Safari 2 - 3.1, Opera 9.25 */
-*|html[xmlns*=''] #catorce {
-  color: red;
-}
-
-/* Everything but IE6-8 */
-:root * > #quince {
-  color: red;
-}
-
-/* IE7 */
-* + html #dieciocho {
-  color: red;
-}
-
-/* Firefox only. 1+ */
-#veinticuatro,
-x:-moz-any-link {
-  color: red;
-}
-
-/* Firefox 3.0+ */
-#veinticinco,
-x:-moz-any-link,
-x:default {
-  color: red;
-}
-
-/***** Attribute Hacks ******/
-
-/* IE6 */
-#once {
-  _color: blue;
-}
-
-/* IE6, IE7 */
-#doce {
-  *color: blue; /* or #color: blue */
-}
-
-/* Everything but IE6 */
-#diecisiete {
-  color/**/: blue;
-}
-
-/* IE6, IE7, IE8 */
-#diecinueve {
-  color: blue\9;
-}
-
-/* IE7, IE8 */
-#veinte {
-  color/*\**/: blue\9;
-}
-
-/* IE6, IE7 -- acts as an !important */
-#veintesiete {
-  color: blue !ie;
-} /* string after ! can be anything */
-/* stylelint-enable */
-```
-
 ## Design Principles
 
 ### 费茨定律
@@ -443,7 +325,7 @@ x:default {
 
 - 手机号/银行卡号/超大数字分段放置, 信息分层 e.g `134 9999 9999`, `999, 999, 999`
 - 文章布局时增大段落间 margin, 改变部分文字的粗细/字体/颜色
-- 导航/选项卡不超过 9 个 (超过 9 个可使用 dropdown/submenu)
+- 导航/选项卡不超过 9 个 (超过 9 个可使用 dropdown/subMenu)
 
 ### 席克定律
 
