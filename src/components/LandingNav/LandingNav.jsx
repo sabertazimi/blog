@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { Routes } from '@config';
 import Icons from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
-import * as styles from './LandingNav.module.css';
 
 const LandingNav = () => {
   const [expanded, setExpanded] = useState(false);
@@ -14,10 +13,11 @@ const LandingNav = () => {
   return (
     <React.Fragment>
       <nav
-        className={styles.landingNav}
-        style={{
-          transform: expanded ? 'translateX(0)' : 'translateX(-100%)',
-        }}
+        className={
+          expanded
+            ? 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all duration-500 z-100 translate-x-0'
+            : 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all duration-500 z-100 -translate-x-full'
+        }
       >
         {Routes.map((route) => (
           <LandingNavLink key={route.id} title={route.title} to={route.path}>
@@ -28,7 +28,7 @@ const LandingNav = () => {
       <div
         role="button"
         tabIndex="0"
-        className={styles.hamburger}
+        className="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"
         onClick={handleClick}
         onKeyDown={() => {}}
       >
@@ -41,8 +41,8 @@ const LandingNav = () => {
       <div
         className={
           expanded
-            ? `bg-black bg-opacity-80 ${styles.overlay}`
-            : `bg-black bg-opacity-0 ${styles.overlay}`
+            ? 'fixed top-0 left-0 z-10 block w-full h-full transition-all bg-black bg-opacity-80'
+            : 'fixed top-0 left-0 z-10 block w-full h-full transition-all bg-black bg-opacity-0'
         }
       />
     </React.Fragment>
