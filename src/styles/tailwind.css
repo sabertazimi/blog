@@ -22,6 +22,6 @@
     @apply bg-black border-black text-light !important;
   }
   .flex-container {
-    @apply flex justify-center items-center content-center !important;
+    @apply flex flex-row justify-center items-center content-center !important;
   }
 }
