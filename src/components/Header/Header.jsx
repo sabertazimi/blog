@@ -23,8 +23,8 @@ const Header = () => {
 
   return (
     <div ref={headerRef}>
-      <MobileNav className="md:hidden" />
-      <DesktopNav className="hidden md:visible md:flex" fixed={navFixed} />
+      <MobileNav />
+      <DesktopNav fixed={navFixed} />
     </div>
   );
 };

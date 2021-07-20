@@ -5,8 +5,8 @@ import { BarsOutlined } from '@ant-design/icons';
 import { Routes } from '@config';
 import logo from 'images/logo-full.png';
 
-const MobileNav = ({ className }) => (
-  <Row type="flex" justify="center" align="middle" className={className}>
+const MobileNav = () => (
+  <Row type="flex" justify="center" align="middle" className="md:hidden">
     <Col span={8} offset={8} className="flex-container">
       <Link to="/">
         <img className="block w-24 h-24" src={logo} alt="Logo" />
@@ -17,7 +17,7 @@ const MobileNav = ({ className }) => (
         placement="bottomRight"
         content={
           <Menu
-            className="w-full max-w-md text-3xl font-extrabold text-center min-w-xs"
+            className="w-full max-w-md text-2xl font-extrabold text-center min-w-xs"
             mode="vertical"
           >
             {Routes.map((route) => (

@@ -5,12 +5,12 @@ import { Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
 
-const DesktopNav = ({ fixed, className = '' }) => (
+const DesktopNav = ({ fixed }) => (
   <Menu
     className={
       fixed
-        ? `fixed z-100 w-full font-extrabold transition bg-white border-transparent ${className}`
-        : `fixed z-100 w-full font-extrabold transition bg-gradient-primary border-transparent ${className}`
+        ? 'fixed z-100 w-full font-extrabold transition bg-white border-transparent hidden md:visible md:flex'
+        : 'fixed z-100 w-full font-extrabold transition bg-gradient-primary border-transparent hidden md:visible md:flex'
     }
     mode="horizontal"
   >
