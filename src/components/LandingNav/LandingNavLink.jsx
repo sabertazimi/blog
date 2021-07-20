@@ -10,7 +10,7 @@ const LandingNavLink = ({ title = 'Tooltip', to = '/', children }) => (
         className={classNames(
           'block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light',
           'text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl',
-          'transition-all scale-100 opacity-80 hover:opacity-100 hover:scale-110'
+          'transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110'
         )}
       >
         {children}

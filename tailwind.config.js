@@ -79,7 +79,10 @@ module.exports = {
         '10/12': '83.333333%',
         '11/12': '91.666667%',
       },
-
+      borderWidth: {
+        5: '5px',
+        6: '6px',
+      },
       zIndex: {
         25: 25,
         75: 75,
@@ -91,10 +94,6 @@ module.exports = {
         secondary: '#40a9ff',
         light: '#f8f9fa',
         dark: '#343a40',
-      },
-      borderWidth: {
-        5: '5px',
-        6: '6px',
       },
     },
   },

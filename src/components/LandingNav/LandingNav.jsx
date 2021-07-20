@@ -15,8 +15,8 @@ const LandingNav = () => {
       <nav
         className={
           expanded
-            ? 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all duration-500 z-100 translate-x-0'
-            : 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all duration-500 z-100 -translate-x-full'
+            ? 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 translate-x-0'
+            : 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 -translate-x-full'
         }
       >
         {Routes.map((route) => (
