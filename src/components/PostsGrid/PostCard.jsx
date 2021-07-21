@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag, Typography } from 'antd';
@@ -15,7 +16,13 @@ const PostCard = ({ post }) => {
   });
 
   return (
-    <Container className="px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2">
+    <Container
+      className={classNames(
+        'px-5 py-4 mt-0 mb-16',
+        'transition duration-300 shadow-xl transform-gpu',
+        'hover:shadow-2xl hover:-translate-y-2'
+      )}
+    >
       <animated.div style={props}>
         <Tag color={getColorByName(tagName)}>
           <Link className="text-base font-extrabold" to={`/tags/${tagName}`}>
