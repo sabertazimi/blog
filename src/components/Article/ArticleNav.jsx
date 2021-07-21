@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import classNames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import * as styles from './ArticleNav.module.css';
@@ -12,7 +13,13 @@ const ArticleNav = ({ toc }) => {
   );
 
   return (
-    <div className="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block">
+    <div
+      className={classNames(
+        'fixed hidden m-0 bg-transparent',
+        'top-8 right-28 z-max',
+        'md:block'
+      )}
+    >
       <Button
         className="button-primary"
         shape="circle"
@@ -21,6 +28,7 @@ const ArticleNav = ({ toc }) => {
         onClick={handleClick}
       />
       <Drawer
+        className="font-extrabold text-dark"
         title="Table of Contents"
         placement="right"
         closable={false}
@@ -28,11 +36,10 @@ const ArticleNav = ({ toc }) => {
         visible={tocVisible}
       >
         <div
-          className={
-            tocVisible
-              ? `transition transform-gpu scale-100 ${styles.toc}`
-              : `transition transform-gpu scale-0 ${styles.toc}`
-          }
+          className={classNames('transition transform-gpu', styles.toc, {
+            'scale-100': tocVisible,
+            'scale-0': !tocVisible,
+          })}
           dangerouslySetInnerHTML={{ __html: toc }}
         />
       </Drawer>

@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
@@ -11,7 +12,13 @@ const ArticleHeader = ({ post }) => {
   });
 
   return (
-    <div className="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary">
+    <div
+      className={classNames(
+        'w-full px-32 py-40',
+        'bg-center bg-no-repeat bg-cover',
+        'bg-gradient-primary'
+      )}
+    >
       <animated.div style={props}>
         {post.tags ? (
           post.tags.map((tag) => {
@@ -30,9 +37,7 @@ const ArticleHeader = ({ post }) => {
             </Link>
           </Tag>
         )}
-        <h1 className="my-8 text-8xl text-light">
-          {post.title || 'Article'}
-        </h1>
+        <h1 className="my-8 text-8xl text-light">{post.title || 'Article'}</h1>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
             Posted on {new Date(post.date).toDateString() || 'Nowadays'}
