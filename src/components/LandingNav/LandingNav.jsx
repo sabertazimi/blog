@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import classNames from 'classnames';
 import { Routes } from '@config';
 import Icons from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
@@ -13,11 +14,16 @@ const LandingNav = () => {
   return (
     <React.Fragment>
       <nav
-        className={
-          expanded
-            ? 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 translate-x-0'
-            : 'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 -translate-x-full'
-        }
+        className={classNames(
+          'fixed top-0 left-0',
+          'flex flex-col items-center justify-center',
+          'w-full h-full',
+          'transition-all transform-gpu duration-500 z-100',
+          {
+            'translate-x-0': expanded,
+            '-translate-x-full': !expanded,
+          }
+        )}
       >
         {Routes.map((route) => (
           <LandingNavLink key={route.id} title={route.title} to={route.path}>
@@ -26,9 +32,12 @@ const LandingNav = () => {
         ))}
       </nav>
       <div
+        className={classNames(
+          'fixed bg-transparent border-none',
+          'cursor-pointer top-12 left-12 z-100'
+        )}
         role="button"
         tabIndex="0"
-        className="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"
         onClick={handleClick}
         onKeyDown={() => {}}
       >
@@ -39,11 +48,15 @@ const LandingNav = () => {
         )}
       </div>
       <div
-        className={
-          expanded
-            ? 'fixed top-0 left-0 z-10 block w-full h-full transition-all transform-gpu bg-black bg-opacity-80'
-            : 'fixed top-0 left-0 z-10 block w-full h-full transition-all transform-gpu bg-black bg-opacity-0'
-        }
+        className={classNames(
+          'fixed top-0 left-0 z-10',
+          'block w-full h-full',
+          'transition-all transform-gpu bg-black',
+          {
+            'bg-opacity-80': expanded,
+            'bg-opacity-0': !expanded,
+          }
+        )}
       />
     </React.Fragment>
   );

@@ -15,10 +15,10 @@ const Footer = () => {
         <Col span={24}>
           {Object.keys(SocialType).map((social) => (
             <SocialButton
+              className="mx-5 mt-0 mb-4"
               key={social}
               type={social}
               url={`https://${social}.com/${socialList[social]}`}
-              className="mx-5 mt-0 mb-4"
             />
           ))}
         </Col>
@@ -31,12 +31,12 @@ const Footer = () => {
             <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
             {new Date().getFullYear()}
           </span>
-          <Divider type="vertical" className="bg-light" />
+          <Divider className="bg-light" type="vertical" />
           <span>
             Built with <a href="https://reactjs.org">React</a> and{' '}
             <a href="https://gatsbyjs.org">Gatsby</a>
           </span>
-          <Divider type="vertical" className="bg-light" />
+          <Divider className="bg-light" type="vertical" />
           <span>
             Last Updated at{' '}
             <a href="https://www.google.com/search?q=time">

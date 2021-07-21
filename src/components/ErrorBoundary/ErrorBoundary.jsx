@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component {
         <Result status="error" title="Some Error Happened">
           <div>
             <Typography.Paragraph>
-              <Typography.Text strong className="text-xl">
+              <Typography.Text className="text-xl font-extrabold">
                 Please check the following information:
               </Typography.Text>
             </Typography.Paragraph>

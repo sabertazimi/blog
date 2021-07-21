@@ -6,13 +6,13 @@ import { Routes } from '@config';
 import logo from 'images/logo-full.png';
 
 const MobileNav = () => (
-  <Row type="flex" justify="center" align="middle" className="md:hidden">
-    <Col span={8} offset={8} className="flex-container">
+  <Row className="md:hidden" type="flex" justify="center" align="middle">
+    <Col className="flex-container" span={8} offset={8}>
       <Link to="/">
         <img className="block w-24 h-24" src={logo} alt="Logo" />
       </Link>
     </Col>
-    <Col span={8} className="flex-container">
+    <Col className="flex-container" span={8}>
       <Popover
         placement="bottomRight"
         content={

@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import { Tooltip } from 'antd';
 
 const LandingNavLink = ({ title = 'Tooltip', to = '/', children }) => (
-  <Tooltip placement="left" title={title} className="mb-16">
+  <Tooltip className="mb-16" placement="left" title={title}>
     <Link to={to}>
       <span
         className={classNames(
