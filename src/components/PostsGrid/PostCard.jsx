@@ -29,7 +29,7 @@ const PostCard = ({ post }) => {
             {tagName}
           </Link>
         </Tag>
-        <Typography.Title level={2} className="my-3">
+        <Typography.Title className="my-3" level={2}>
           {post.title || 'Article'}
         </Typography.Title>
         <Tag className="tag-black">
@@ -41,7 +41,14 @@ const PostCard = ({ post }) => {
           <Skeleton
             paragraph={{ rows: Math.min(Math.floor(post.timeToRead / 2), 10) }}
           />
-          <Button className="float-right m-0 text-2xl rounded-full w-14 h-14 button-primary">
+          <Button
+            className={classNames(
+              'float-right m-0',
+              'text-2xl rounded-full',
+              'w-14 h-14',
+              'button-primary'
+            )}
+          >
             <Link to={`${post.slug}`}>
               <ReadOutlined />
             </Link>
