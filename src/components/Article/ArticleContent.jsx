@@ -11,8 +11,8 @@ const ArticleContent = ({ content }) => {
 
   return (
     <animated.div
-      style={props}
       className={styles.markdownBody}
+      style={props}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

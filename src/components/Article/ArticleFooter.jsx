@@ -1,13 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
 import FlexContainer from '@components/FlexContainer';
 
 const ArticleFooter = ({ post }) => (
-  <FlexContainer className="justify-between ">
+  <FlexContainer className="justify-between">
     <Button
+      className={classNames(
+        'w-full h-24 mb-6',
+        'text-2xl align-bottom rounded-none',
+        'md:mb-0 md:w-5/12',
+        'button-primary'
+      )}
       size="large"
-      className="w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
     >
       <Link
         className="font-extrabold text-light"
@@ -17,8 +23,13 @@ const ArticleFooter = ({ post }) => (
       </Link>
     </Button>
     <Button
+      className={classNames(
+        'w-full h-24 mb-6',
+        'text-2xl align-bottom rounded-none',
+        'md:mb-0 md:w-5/12',
+        'button-primary'
+      )}
       size="large"
-      className="w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
     >
       <Link
         className="font-extrabold text-light"
