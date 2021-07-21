@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import classNames from 'classnames';
 import Typed from 'typed.js';
 
 const TypingTitle = ({
@@ -26,7 +27,12 @@ const TypingTitle = ({
 
   return (
     <div
-      className={`w-full h-auto px-0 py-0 mx-auto my-0 text-5xl font-extrabold text-center typing-title-container lg:text-9xl ${className}`}
+      className={classNames(
+        'w-full h-auto px-0 py-0 mx-auto my-0',
+        'text-5xl font-extrabold text-center',
+        'typing-title-container lg:text-9xl',
+        className
+      )}
     >
       <span className="typing-title" />
     </div>
