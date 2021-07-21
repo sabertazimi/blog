@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useSpring, animated } from 'react-spring';
 import landingImage from '@images/landing.jpg';
 
@@ -11,7 +12,11 @@ const LandingLayout = ({ children }) => {
 
   return (
     <animated.div
-      className="flex-col w-full h-screen p-0 m-0 overflow-x-hidden overflow-y-auto bg-center bg-no-repeat bg-cover text-light flex-container"
+      className={classNames(
+        'flex-col w-full h-screen p-0 m-0 overflow-x-hidden overflow-y-auto',
+        'bg-center bg-no-repeat bg-cover text-light ',
+        'flex-container'
+      )}
       style={{
         ...props,
         backgroundImage: `url("${landingImage}")`,
