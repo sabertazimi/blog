@@ -147,8 +147,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 12. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com/).
 13. **`LICENSE`**: This Gatsby starter is licensed under the `MIT` license.
 14. **`package.json`**: A manifest file for Node.js projects.
-15. **`package-lock.json`**:
-    This is an automatically generated file based on npm dependencies.
+15. **`package-lock.json`**: This is automatically generated file based on NPM dependencies.
 16. **`README.md`**: A text file containing useful reference information.
 
 ## Contact
