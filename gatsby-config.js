@@ -78,6 +78,11 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
-    'gatsby-plugin-minify-html',
+    {
+      resolve: 'gatsby-plugin-minify-html',
+      options: {
+        debug: true,
+      },
+    },
   ],
 };
