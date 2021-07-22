@@ -12,7 +12,6 @@
 
 [![Code Lines](https://img.shields.io/tokei/lines/github/sabertazimi/blog?style=for-the-badge&logo=visualstudiocode)](https://github.com/sabertazimi/blog)
 [![Netlify Status](https://img.shields.io/netlify/a182a53a-297d-425b-88d6-323ce7039495?logo=netlify&style=for-the-badge)](https://app.netlify.com/sites/sabertaz/deploys)
-[![Vercel Status](https://img.shields.io/github/deployments/sabertazimi/blog/Production?label=vercel&logo=vercel&style=for-the-badge)](https://github.com/sabertazimi/blog/deployments/activity_log?environment=Production)
 
 [![Continuous Integration](https://img.shields.io/github/workflow/status/sabertazimi/blog/Continuous%20Integration/main?style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 [![CodeQL](https://img.shields.io/github/workflow/status/sabertazimi/blog/CodeQL/main?label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
