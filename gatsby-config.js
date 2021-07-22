@@ -81,7 +81,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-minify-html',
       options: {
-        debug: true,
+        debug: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-zopfli',
+      options: {
+        verbose: false,
+        extensions: ['css', 'html', 'js', 'svg'],
       },
     },
   ],
