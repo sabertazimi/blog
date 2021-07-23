@@ -37,7 +37,10 @@ jobs:
     - name: Installation
       run: npm ci
     - name: Building work
-      run: npm run build:gh-pages
+      run: |
+          npm run lint --if-present
+          npm run test --if-present
+          npm run build:gh-pages
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
