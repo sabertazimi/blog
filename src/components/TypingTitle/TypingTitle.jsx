@@ -24,7 +24,7 @@ const TypingTitle = ({
     return () => {
       typed.destroy();
     };
-  }, [titles, speed, loop]);
+  }, [titles, speed, delay, loop]);
 
   return (
     <div
