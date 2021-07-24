@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Input, AutoComplete } from 'antd';
+import { SearchOutlined } from'@ant-design/icons';
 import { usePostsMetadata } from '@hooks';
 
 const PostsSearchBar = () => {
@@ -35,7 +36,11 @@ const PostsSearchBar = () => {
       options={options}
       onSearch={handleSearch}
     >
-      <Input.Search allowClear enterButton placeholder="Search Posts ..." />
+      <Input
+        allowClear
+        placeholder="Search Posts ..."
+        prefix={<SearchOutlined />}
+      />
     </AutoComplete>
   );
 };
