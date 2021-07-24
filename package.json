@@ -8,16 +8,14 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "npm run develop",
+    "audit": "npm audit fix --registry https://registry.npmjs.org",
     "build": "gatsby build",
     "build:gh-pages": "gatsby build --prefix-paths",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx,md,mdx,css}",
-    "audit": "npm audit --registry https://registry.npmjs.org",
-    "audit:fix": "npm audit fix --registry https://registry.npmjs.org",
-    "audit:force": "npm run audit:fix -- --force"
+    "serve": "gatsby serve",
+    "start": "npm run develop"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
