@@ -4,7 +4,8 @@ import Typed from 'typed.js';
 
 const TypingTitle = ({
   titles = [],
-  speed = 50,
+  speed = 60,
+  delay = 600,
   loop = true,
   className = '',
 } = {}) => {
@@ -14,7 +15,7 @@ const TypingTitle = ({
       smartBackspace: true,
       typeSpeed: speed,
       backSpeed: speed,
-      backDelay: 1000,
+      backDelay: delay,
       loop,
     };
 
