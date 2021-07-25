@@ -7,8 +7,9 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { Octokit } = require('@octokit/rest');
-const octokit = new Octokit();
 const config = require('./gatsby-config');
+
+const octokit = new Octokit();
 
 exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   switch (node.internal.type) {
@@ -143,12 +144,12 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       return acc;
     }, {});
 
-  const homePageTemplate = require.resolve('./src/templates/Home.jsx');
-  const postsPageTemplate = require.resolve('./src/templates/Posts.jsx');
-  const tagsPageTemplate = require.resolve('./src/templates/Tags.jsx');
-  const booksPageTemplate = require.resolve('./src/templates/Books.jsx');
-  const aboutPageTemplate = require.resolve('./src/templates/About.jsx');
-  const postPageTemplate = require.resolve('./src/templates/Post.jsx');
+  const homePageTemplate = require.resolve('./src/templates/Home.tsx');
+  const postsPageTemplate = require.resolve('./src/templates/Posts.tsx');
+  const tagsPageTemplate = require.resolve('./src/templates/Tags.tsx');
+  const booksPageTemplate = require.resolve('./src/templates/Books.tsx');
+  const aboutPageTemplate = require.resolve('./src/templates/About.tsx');
+  const postPageTemplate = require.resolve('./src/templates/Post.tsx');
 
   createPage({
     path: '/',
@@ -210,15 +211,15 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {
-        '@': path.resolve(__dirname, 'src'),
-        '@components': path.resolve(__dirname, './src/components'),
-        '@config': path.resolve(__dirname, './src/config'),
-        '@hooks': path.resolve(__dirname, './src/hooks'),
-        '@images': path.resolve(__dirname, './src/images'),
-        '@layouts': path.resolve(__dirname, './src/layouts'),
-        '@pages': path.resolve(__dirname, './src/pages'),
-        '@styles': path.resolve(__dirname, './src/styles'),
-        '@templates': path.resolve(__dirname, './src/templates'),
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@config': path.resolve(__dirname, 'src/config'),
+        '@hooks': path.resolve(__dirname, 'src/hooks'),
+        '@images': path.resolve(__dirname, 'src/images'),
+        '@layouts': path.resolve(__dirname, 'src/layouts'),
+        '@pages': path.resolve(__dirname, 'src/pages'),
+        '@styles': path.resolve(__dirname, 'src/styles'),
+        '@templates': path.resolve(__dirname, 'src/templates'),
+        '@types': path.resolve(__dirname, 'src/types'),
       },
     },
   });
