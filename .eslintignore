@@ -1,0 +1,13 @@
+# don't ever lint node_modules
+node_modules
+
+# don't lint build output (make sure it's set to your correct build folder name)
+build
+dist
+public
+
+# don't lint nyc coverage output
+coverage
+
+# don't lint gatsby node api
+gatsby-node.js
