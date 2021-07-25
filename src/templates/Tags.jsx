@@ -12,7 +12,7 @@ const Tags = ({ pageContext: { activeTag } }) => {
   return (
     <Layout banner="Tags">
       <TagsCloud tags={tags} activeTag={activeTag} />
-      {Boolean(activeTag && postsByTag) ? (
+      {activeTag && postsByTag ? (
         <PostsList posts={postsByTag} />
       ) : (
         <PostsList posts={posts} />
