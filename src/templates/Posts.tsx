@@ -1,8 +1,9 @@
 import React from 'react';
+import { PageProps } from 'gatsby';
 import { Layout } from '@layouts';
 import { PostsGrid } from '@components';
 
-const Posts = () => {
+const Posts: React.FC<PageProps> = () => {
   return (
     <Layout banner="Posts">
       <PostsGrid />

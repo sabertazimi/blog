@@ -1,12 +1,20 @@
 import React from 'react';
+import { PageProps } from 'gatsby';
+import { PostType, TagType } from '@types';
 import { usePostsMetadata } from '@hooks';
 import { Layout } from '@layouts';
 import { TagsCloud, PostsList } from '@components';
 
-const Tags = ({ pageContext: { activeTag } }) => {
+interface TagsPageProps extends PageProps {
+  pageContext: {
+    activeTag: TagType;
+  }
+}
+
+const Tags: React.FC<TagsPageProps> = ({ pageContext: { activeTag } }) => {
   const { posts, tags } = usePostsMetadata();
   const postsByTag = posts.filter(
-    (post) => post.tags && post.tags.includes(activeTag)
+    (post: PostType) => post.tags && post.tags.includes(activeTag)
   );
 
   return (

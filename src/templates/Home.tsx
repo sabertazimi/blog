@@ -1,10 +1,11 @@
 import React from 'react';
+import { PageProps } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { useSiteMetadata } from '@hooks';
 import { LandingLayout } from '@layouts';
 import { LandingNav, TypingTitle, ErrorBoundary } from '@components';
 
-const Home = () => {
+const Home: React.FC<PageProps> = () => {
   const { siteUrl, title, landingTitles } = useSiteMetadata();
 
   return (
