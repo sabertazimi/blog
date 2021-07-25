@@ -1,4 +1,6 @@
-export interface PostType {
+export declare type TagType = string;
+
+interface PostMetaType {
   slug: string;
   title: string;
   subtitle: string;
@@ -6,14 +8,17 @@ export interface PostType {
   tags: string;
   date: string;
   timeToRead: string;
-  excerpt?: string;
-  toc?: string;
-  html?: string;
   prevPost: string;
   nextPost: string;
 }
 
-export type TagType = string;
+interface PostContentType {
+  excerpt: string;
+  toc: string;
+  html: string;
+}
+
+export declare type PostType = PostMetaType & Partial<PostContentType>;
 
 interface Profile {
   username: string;
@@ -39,4 +44,3 @@ export interface GitHubType {
   profile: Profile;
   repos: Repo[];
 }
-
