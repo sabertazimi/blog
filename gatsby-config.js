@@ -72,6 +72,22 @@ module.exports = {
         include_favicon: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: 'jsx', // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        stages: ['develop'],
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+        exclude: ['node_modules', '.cache', 'public'],
+      },
+    },
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-antd',
