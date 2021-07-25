@@ -46,14 +46,6 @@ jobs:
       with:
         name: dist
         path: public
-    # - name: NPM audit
-    #   uses: oke-py/npm-audit-action@v1
-    #   with:
-    #     audit_level: moderate
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     issue_assignees: sabertazimi
-    #     issue_labels: vulnerability,test
-    #     dedupe_issues: true
   
   deploy:
     runs-on: ubuntu-latest
