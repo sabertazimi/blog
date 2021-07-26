@@ -41,6 +41,7 @@ const PostCard = ({ post }) => {
           <Skeleton
             paragraph={{ rows: Math.min(Math.floor(post.timeToRead / 2), 10) }}
           />
+          {/* @TODO: Feature: Add loading progress state for PostCard click button */}
           <Button
             className={classNames(
               'float-right m-0',
