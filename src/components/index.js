@@ -1,27 +1,12 @@
-import Header from './Header';
-import Footer from './Footer';
-import Container from './Container';
-import LandingNav from './LandingNav';
-import TypingTitle from './TypingTitle';
-import PostsGrid from './PostsGrid';
-import PostsList from './PostsList';
-import Article from './Article';
-import TagsCloud from './TagsCloud';
-import BooksGrid from './BooksGrid';
-import GithubCard from './GithubCard';
-import ErrorBoundary from './ErrorBoundary';
-
-export {
-  Header,
-  Footer,
-  Container,
-  LandingNav,
-  TypingTitle,
-  PostsGrid,
-  PostsList,
-  Article,
-  TagsCloud,
-  BooksGrid,
-  GithubCard,
-  ErrorBoundary,
-};
+export { default as Header } from './Header';
+export { default as Footer } from './Footer';
+export { default as Container } from './Container';
+export { default as LandingNav } from './LandingNav';
+export { default as TypingTitle } from './TypingTitle';
+export { default as PostsGrid } from './PostsGrid';
+export { default as PostsList } from './PostsList';
+export { default as Article } from './Article';
+export { default as TagsCloud } from './TagsCloud';
+export { default as BooksGrid } from './BooksGrid';
+export { default as GithubCard } from './GithubCard';
+export { default as ErrorBoundary } from './ErrorBoundary';
