@@ -2,6 +2,9 @@ import React from 'react';
 import { useDisqus, useSiteMetadata } from '@hooks';
 import * as styles from './ArticleComments.module.css';
 
+/**
+ * @TODO Looking for Disqus alternative due to Ads
+ */
 const ArticleComments = () => {
   const { disqusUrl } = useSiteMetadata();
   useDisqus(disqusUrl);
