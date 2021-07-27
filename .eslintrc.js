@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   settings: {
     react: {
       version: 'detect', // detect react version
@@ -27,5 +27,6 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 0,
+    'prettier/prettier': 'error',
   },
 };
