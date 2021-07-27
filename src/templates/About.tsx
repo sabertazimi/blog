@@ -7,7 +7,7 @@ import { GithubCard } from '@components';
 interface AboutPageProps extends PageProps {
   pageContext: {
     github: GitHubType;
-  }
+  };
 }
 
 const About: React.FC<AboutPageProps> = ({ pageContext: { github } }) => (

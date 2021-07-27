@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Input, AutoComplete } from 'antd';
-import { SearchOutlined } from'@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 import { usePostsMetadata } from '@hooks';
 
 const PostsSearchBar = () => {

@@ -13,7 +13,4 @@ const SocialQuery = {
   weibo: 'https://service.weibo.com/share/share.php?url=',
 };
 
-export {
-  SocialType,
-  SocialQuery,
-};
+export { SocialType, SocialQuery };

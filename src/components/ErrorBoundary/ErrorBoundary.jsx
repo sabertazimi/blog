@@ -30,10 +30,14 @@ class ErrorBoundary extends React.Component {
               <Typography.Text>{`${error.message}.`}</Typography.Text>
             </Typography.Paragraph>
             <Typography.Paragraph>
-              <Typography.Text>Please check console output for further details.</Typography.Text>
+              <Typography.Text>
+                Please check console output for further details.
+              </Typography.Text>
             </Typography.Paragraph>
             <Typography.Paragraph>
-              <Typography.Text>Please reload this page after changing code.</Typography.Text>
+              <Typography.Text>
+                Please reload this page after changing code.
+              </Typography.Text>
             </Typography.Paragraph>
           </div>
         </Result>

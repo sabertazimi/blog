@@ -8,7 +8,7 @@ import { TagsCloud, PostsList } from '@components';
 interface TagsPageProps extends PageProps {
   pageContext: {
     activeTag: TagType;
-  }
+  };
 }
 
 const Tags: React.FC<TagsPageProps> = ({ pageContext: { activeTag } }) => {
