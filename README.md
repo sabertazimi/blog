@@ -79,6 +79,8 @@ tags:
 ### Installation
 
 ```bash
+git clone --depth=1 https://github.com/sabertazimi/blog
+cd blog
 npm install
 ```
 
@@ -110,6 +112,8 @@ Build for `/xxx` prefix path:
 ```bash
 npm run build:gh-pages
 ```
+
+More Github Pages deployment details in `.github/workflows/ci.yml`.
 
 ## Fold Structure
 
