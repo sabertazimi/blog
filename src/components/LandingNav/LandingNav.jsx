@@ -39,6 +39,7 @@ const LandingNav = () => {
         role="button"
         tabIndex="0"
         onClick={handleClick}
+        onKeyDown={handleClick}
       >
         {expanded ? (
           <Icons.Close className="text-lg font-extrabold md:text-4xl text-light" />
