@@ -1,3 +1,27 @@
+export interface Book {
+  title: string;
+  author: string;
+  url: string;
+  description: string;
+}
+
+export interface SiteMetadata {
+  title: string;
+  author: string;
+  siteUrl: string;
+  email: string;
+  disqusUrl: string;
+  landingTitles: string[];
+  socialList: {
+    github: string;
+    twitter: string;
+    facebook: string;
+    linkedin: string;
+    weibo: string;
+  };
+  bookList: Book[];
+}
+
 export declare type TagType = string;
 
 interface PostMetaType {
