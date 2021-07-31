@@ -11,7 +11,7 @@ interface TagsPageProps extends PageProps {
   };
 }
 
-const Tags: React.FC<TagsPageProps> = ({ pageContext: { activeTag } }) => {
+const Tags = ({ pageContext: { activeTag } }: TagsPageProps): JSX.Element => {
   const { posts, tags } = usePostsMetadata();
   const postsByTag = posts.filter(
     (post: PostType) => post.tags && post.tags.includes(activeTag)

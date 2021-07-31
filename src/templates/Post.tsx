@@ -10,7 +10,7 @@ interface PostPageProps extends PageProps {
   };
 }
 
-const Post: React.FC<PostPageProps> = ({ pageContext: { post } }) => (
+const Post = ({ pageContext: { post } }: PostPageProps): JSX.Element => (
   <PostLayout>
     <Article post={post} />
   </PostLayout>

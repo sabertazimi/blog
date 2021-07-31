@@ -10,7 +10,7 @@ interface AboutPageProps extends PageProps {
   };
 }
 
-const About: React.FC<AboutPageProps> = ({ pageContext: { github } }) => (
+const About = ({ pageContext: { github } }: AboutPageProps): JSX.Element => (
   <Layout banner="About Me">
     <GithubCard github={github} />
   </Layout>
