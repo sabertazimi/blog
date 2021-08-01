@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { ErrorInfo } from 'react';
 import { Result, Typography } from 'antd';
 
-class ErrorBoundary extends React.Component {
-  state = { hasError: false, error: '', info: '' };
+interface Props {
+  children: React.ReactNode;
+}
 
-  componentDidCatch(error, info) {
+interface State {
+  hasError: boolean;
+  error: Error;
+  errorInfo: ErrorInfo;
+}
+
+class ErrorBoundary extends React.Component<Props, State> {
+  readonly state: State = {
+    hasError: false,
+    error: new Error(),
+    errorInfo: { componentStack: '' },
+  };
+
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({
       hasError: true,
       error,
-      info,
+      errorInfo,
     });
   }
 
-  render() {
+  public render(): React.ReactNode {
     const { hasError, error } = this.state;
     const { children } = this.props;
     const isDevelopment = process.env.NODE_ENV === 'development';
