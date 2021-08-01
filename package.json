@@ -17,6 +17,7 @@
     "lint": "npm run lint:style",
     "lint:style": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
     "lint:type-check": "tsc --noEmit",
+    "prelease": "standard-version --dry-run",
     "release": "standard-version",
     "serve": "gatsby serve",
     "start": "npm run develop"
