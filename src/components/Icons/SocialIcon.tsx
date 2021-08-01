@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import { SocialType } from '@config';
 
-const getSocialIcon = (type) => {
+const SocialIcon = (type) => {
   switch (type) {
     case SocialType.github:
       return <GithubOutlined className="text-4xl" />;
@@ -26,4 +26,4 @@ const getSocialIcon = (type) => {
   }
 };
 
-export default getSocialIcon;
+export default SocialIcon;

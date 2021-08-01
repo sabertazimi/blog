@@ -55,11 +55,8 @@ const usePostsMetadata = () => {
     };
   });
 
-  const tags = [].concat
-    .apply(
-      [],
-      posts.map((post) => post.tags || [])
-    )
+  const tags = posts
+    .map((post) => post.tags || [])
     .reduce((acc, cur) => {
       if (!acc[cur]) acc[cur] = 0;
       acc[cur] += 1;
