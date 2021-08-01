@@ -14,8 +14,8 @@ const usePostsMetadata = () => {
                 title
                 subtitle
                 author
-                tags
                 date
+                tags
               }
               timeToRead
             }

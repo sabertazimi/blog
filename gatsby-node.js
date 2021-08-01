@@ -80,8 +80,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
               title
               subtitle
               author
-              tags
               date
+              tags
             }
             timeToRead
             excerpt(pruneLength: 500)
