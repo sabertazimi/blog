@@ -1,7 +1,7 @@
 import React from 'react';
-import Icons from '@components/Icons';
 import Container from '@components/Container';
 import SocialGroup from '@components/SocialGroup';
+import { Comment } from '@components/Icons';
 import ArticleHeader from './ArticleHeader';
 import ArticleNav from './ArticleNav';
 import ArticleContent from './ArticleContent';
@@ -21,7 +21,7 @@ const Article = ({ post }) => {
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={postMetadata} />
         <ArticleDivider>
-          <Icons.Comment className="text-2xl text-primary" />
+          <Comment className="text-2xl text-primary" />
         </ArticleDivider>
         <ArticleComments />
         <SocialGroup />

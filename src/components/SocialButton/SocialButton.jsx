@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import Icons from '@components/Icons';
+import { getSocialIcon } from '@components/Icons';
 
 const SocialButton = ({ type, url, color, className = '', ...props }) => (
   <Button
@@ -9,7 +9,7 @@ const SocialButton = ({ type, url, color, className = '', ...props }) => (
     size="large"
     type="link"
     href={`${url}`}
-    icon={Icons.getSocialIcon(type)}
+    icon={getSocialIcon(type)}
     {...props}
   />
 );

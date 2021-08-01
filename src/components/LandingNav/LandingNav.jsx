@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
 import { Routes } from '@config';
-import Icons from '@components/Icons';
+import { Close, Hamburger } from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
 
 const LandingNav = () => {
@@ -42,9 +42,9 @@ const LandingNav = () => {
         onKeyDown={handleClick}
       >
         {expanded ? (
-          <Icons.Close className="text-lg font-extrabold md:text-4xl text-light" />
+          <Close className="text-lg font-extrabold md:text-4xl text-light" />
         ) : (
-          <Icons.Hamburger className="text-lg font-extrabold md:text-4xl text-light" />
+          <Hamburger className="text-lg font-extrabold md:text-4xl text-light" />
         )}
       </div>
       <div
