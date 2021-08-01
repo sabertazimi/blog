@@ -17,6 +17,7 @@
     "lint": "npm run lint:style",
     "lint:style": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
     "lint:type-check": "tsc --noEmit",
+    "release": "standard-version",
     "serve": "gatsby serve",
     "start": "npm run develop"
   },
@@ -75,6 +76,7 @@
     "postcss": "^8.3.6",
     "postcss-import": "^14.0.2",
     "prettier": "^2.3.2",
+    "standard-version": "^9.3.1",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   },
