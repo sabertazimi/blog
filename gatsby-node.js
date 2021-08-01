@@ -133,11 +133,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
   );
 
-  const tags = [].concat
-    .apply(
-      [],
-      posts.map((post) => post.tags || [])
-    )
+  const tags = posts
+    .map((post) => post.tags || [])
+    .flat()
     .reduce((acc, cur) => {
       if (!acc[cur]) acc[cur] = 0;
       acc[cur] += 1;

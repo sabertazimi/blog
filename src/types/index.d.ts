@@ -29,8 +29,8 @@ interface PostMetaType {
   title: string;
   subtitle: string;
   author: string;
-  tags: string;
   date: string;
+  tags: string[];
   timeToRead: string;
   prevPost: string;
   nextPost: string;

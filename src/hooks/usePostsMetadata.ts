@@ -57,6 +57,7 @@ const usePostsMetadata = () => {
 
   const tags = posts
     .map((post) => post.tags || [])
+    .flat()
     .reduce((acc, cur) => {
       if (!acc[cur]) acc[cur] = 0;
       acc[cur] += 1;
