@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/sabertazimi/blog/compare/v2.1.0...v2.1.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* **hooks:** add missing hooks types ([3bdabc5](https://github.com/sabertazimi/blog/commit/3bdabc55b314f55e0369827ef7c33e6fe0e99a9f)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **images:** rectify images resolution ([611261b](https://github.com/sabertazimi/blog/commit/611261b55a5a5ea98288d7c9771a948b3feb45d2)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **layouts:** add missing types ([7388b82](https://github.com/sabertazimi/blog/commit/7388b820d10fec92c78ae7da56f14007d3c168a7)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **TagsClound:** add missing types ([2e0c2a9](https://github.com/sabertazimi/blog/commit/2e0c2a9e2bce955ebe9ea76503611d5872df7657)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **TagType:** narrowing string to TagType ([f3be81d](https://github.com/sabertazimi/blog/commit/f3be81d4b19919fbc3c99692f413e03069fd4285)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+
+
+### Building Work
+
+* **tsconfig:** ship lib to ESNext (ES2021) ([59c44a2](https://github.com/sabertazimi/blog/commit/59c44a2220d68b3c6dad54eb202a28d38dc9fa4e))
+
 ## [2.1.0](https://github.com/sabertazimi/blog/compare/v2.0.3...v2.1.0) (2021-08-02)
 
 
