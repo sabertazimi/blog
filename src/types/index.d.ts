@@ -1,3 +1,5 @@
+import { SocialType } from '@config';
+
 export interface Book {
   title: string;
   author: string;
@@ -13,11 +15,7 @@ export interface SiteMetadata {
   disqusUrl: string;
   landingTitles: string[];
   socialList: {
-    github: string;
-    twitter: string;
-    facebook: string;
-    linkedin: string;
-    weibo: string;
+    [key in SocialType]: string;
   };
   bookList: Book[];
 }

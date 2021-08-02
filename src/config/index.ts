@@ -1,3 +1,7 @@
+export type { BaseColor, PaletteColor, Color } from './colors';
+export type { RouteType } from './routes';
+export type { SocialType } from './social';
+
 export { Colors, getColorByName } from './colors';
-export { SocialType, SocialQuery } from './social';
-export { default as Routes } from './routes';
+export { Routes } from './routes';
+export { SocialList, SocialQuery } from './social';
