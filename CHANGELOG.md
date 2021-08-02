@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/sabertazimi/blog/compare/v2.0.0...v2.0.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* **README:** remove empty lines ([6ed9757](https://github.com/sabertazimi/blog/commit/6ed975759d1466dae6e6a0dc09f575492596ba17))
+
+
+### Building Work
+
+* **CHANGELOG:** add more fields to CHANGELOG ([fbb2e41](https://github.com/sabertazimi/blog/commit/fbb2e41d159d61edc6191184d5cb98ac225362b7))
+* **scripts:** add dry-run release support ([0da2c2d](https://github.com/sabertazimi/blog/commit/0da2c2d71e26c1a3b7c984a132dc63eb10899690))
+
 ## 2.0.0 (2021-08-01)
 
 
