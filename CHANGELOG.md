@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/sabertazimi/blog/compare/v2.0.2...v2.0.3) (2021-08-02)
+
+
+### Bug Fixes
+
+* **release:** tag with signature ([44dd42e](https://github.com/sabertazimi/blog/commit/44dd42ef19b1594bf2d681e6483791102a1a72e3))
+
 ### [2.0.2](https://github.com/sabertazimi/blog/compare/v2.0.1...v2.0.2) (2021-08-02)
 
 
