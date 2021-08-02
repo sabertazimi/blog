@@ -7,19 +7,19 @@ import {
   LinkedinOutlined,
   WeiboOutlined,
 } from '@ant-design/icons';
-import { SocialType } from '@config';
+import { SocialType, SocialList } from '@config';
 
-const SocialIcon = (type) => {
+const SocialIcon = (type: SocialType): JSX.Element => {
   switch (type) {
-    case SocialType.github:
+    case SocialList.github:
       return <GithubOutlined className="text-4xl" />;
-    case SocialType.twitter:
+    case SocialList.twitter:
       return <TwitterOutlined className="text-4xl" />;
-    case SocialType.facebook:
+    case SocialList.facebook:
       return <FacebookOutlined className="text-4xl" />;
-    case SocialType.linkedin:
+    case SocialList.linkedin:
       return <LinkedinOutlined className="text-4xl" />;
-    case SocialType.weibo:
+    case SocialList.weibo:
       return <WeiboOutlined className="text-4xl" />;
     default:
       return <RocketOutlined className="text-4xl" />;

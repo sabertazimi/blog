@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import { useLocation } from '@reach/router';
 import { Space } from 'antd';
-import { Colors, SocialType, SocialQuery } from '@config';
+import { Color, Colors, SocialType, SocialList, SocialQuery } from '@config';
 import SocialButton from '@components/SocialButton';
 
-const SocialGroup = () => {
+const SocialGroup = (): JSX.Element => {
   const location = useLocation();
   const url = location.href;
 
@@ -21,14 +21,14 @@ const SocialGroup = () => {
       align="center"
       size={0}
     >
-      {Object.keys(SocialType)
-        .filter((social) => social !== SocialType.github)
+      {Object.keys(SocialList)
+        .filter((social) => social !== SocialList.github)
         .map((social) => (
           <SocialButton
             key={social}
-            type={social}
-            url={`${SocialQuery[social]}${url}`}
-            color={Colors[social]}
+            type={social as SocialType}
+            url={`${SocialQuery[social as SocialType]}${url}`}
+            color={Colors[social as Color]}
           />
         ))}
     </Space>

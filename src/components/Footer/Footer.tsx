@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col, Divider } from 'antd';
 import { useBuildTime, useSiteMetadata } from '@hooks';
-import { SocialType } from '@config';
+import { SocialType, SocialList } from '@config';
 import Container from '@components/Container';
 import SocialButton from '@components/SocialButton';
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   const buildTime = useBuildTime();
   const { author, socialList } = useSiteMetadata();
 
@@ -13,12 +13,12 @@ const Footer = () => {
     <Container className="max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light">
       <Row align="middle" justify="center">
         <Col span={24}>
-          {Object.keys(SocialType).map((social) => (
+          {Object.keys(SocialList).map((social) => (
             <SocialButton
-              className="mx-5 mt-0 mb-4"
               key={social}
-              type={social}
-              url={`https://${social}.com/${socialList[social]}`}
+              className="mx-5 mt-0 mb-4"
+              type={social as SocialType}
+              url={`https://${social}.com/${socialList[social as SocialType]}`}
             />
           ))}
         </Col>

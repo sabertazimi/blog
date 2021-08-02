@@ -1,8 +1,21 @@
 import React from 'react';
 import { Button } from 'antd';
 import { SocialIcon } from '@components/Icons';
+import { SocialType } from '@config';
 
-const SocialButton = ({ type, url, color, className = '', ...props }) => (
+interface Props extends React.HTMLProps<HTMLButtonElement> {
+  type: SocialType;
+  url: string;
+  color?: string;
+  className?: string;
+}
+
+const SocialButton = ({
+  type,
+  url,
+  color,
+  className = '',
+}: Props): JSX.Element => (
   <Button
     className={`text-center text-light rounded-none ${className}`}
     style={{ backgroundColor: color }}
@@ -10,7 +23,6 @@ const SocialButton = ({ type, url, color, className = '', ...props }) => (
     type="link"
     href={`${url}`}
     icon={SocialIcon(type)}
-    {...props}
   />
 );
 
