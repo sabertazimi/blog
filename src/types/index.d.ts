@@ -22,13 +22,17 @@ export interface SiteMetadata {
 
 export declare type TagType = string;
 
+export interface TagsType {
+  [key: TagType]: number;
+}
+
 interface PostMetaType {
   slug: string;
   title: string;
   subtitle: string;
   author: string;
   date: string;
-  tags: string[];
+  tags: TagType[];
   timeToRead: string;
   prevPost: string;
   nextPost: string;
