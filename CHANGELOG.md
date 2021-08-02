@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/sabertazimi/blog/compare/v2.0.1...v2.0.2) (2021-08-02)
+
+
+### Bug Fixes
+
+* **Container:** ship to TSX ([0e91109](https://github.com/sabertazimi/blog/commit/0e91109ab70dae20e981e039fa3543fe358174e5)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **tsconfig:** rectify path resolution in vscode ([2f935c6](https://github.com/sabertazimi/blog/commit/2f935c6acfa29816b5f521908575a0945fcff220))
+
+
+### Building Work
+
+* **jsconfig:** keep consistence with tsconfig ([e788180](https://github.com/sabertazimi/blog/commit/e788180af4f382d33563c7ecb316a19cf052164b))
+
 ### [2.0.1](https://github.com/sabertazimi/blog/compare/v2.0.0...v2.0.1) (2021-08-02)
 
 
