@@ -1,6 +1,17 @@
 import React from 'react';
 
-const Container = ({ className = '', style = {}, children, ...props }) => (
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+}
+
+const Container = ({
+  className = '',
+  style = {},
+  children,
+  ...props
+}: Props): JSX.Element => (
   <div
     className={`flex-container container relative h-full mx-auto my-0 p-auto ${className}`}
     style={{ ...style }}
