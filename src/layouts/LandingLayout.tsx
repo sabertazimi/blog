@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useSpring, animated } from 'react-spring';
-// @TODO: Bug: images resolution in React TypeScript
+// @TODO: Bug: Images resolution in React TypeScript
 import landingImage from '@images/landing.jpg';
 
 interface Props {
