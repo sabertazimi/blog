@@ -3,7 +3,11 @@ import classNames from 'classnames';
 import { useSpring, animated } from 'react-spring';
 import landingImage from '@images/landing.jpg';
 
-const LandingLayout = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const LandingLayout = ({ children }: Props): JSX.Element => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateY(-200px)' },
     to: { opacity: 1, transform: 'translateY(0)' },

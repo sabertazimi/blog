@@ -3,7 +3,12 @@ import { useSpring, animated } from 'react-spring';
 import { Divider } from 'antd';
 import { Header, Footer, Container } from '@components';
 
-const Layout = ({ banner, children }) => {
+interface Props {
+  banner: string;
+  children: React.ReactNode;
+}
+
+const Layout = ({ banner, children }: Props): JSX.Element => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },

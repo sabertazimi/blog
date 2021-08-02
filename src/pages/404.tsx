@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout } from 'layouts';
+import { Layout } from '@layouts';
 
-const NotFoundPage = () => {
+const NotFoundPage = (): JSX.Element => {
   return (
     <Layout banner="Exploring">
       <div className="text-center">
