@@ -1,6 +1,26 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { PostType, TagType, TagsType } from '@types';
 
-const usePostsMetadata = () => {
+interface PostsMetadataNode {
+  node: {
+    fields: {
+      slug: string;
+    };
+    frontmatter: {
+      title: string;
+      subtitle: string;
+      author: string;
+      date: string;
+      tags: TagType[];
+    };
+    timeToRead: number;
+  };
+}
+
+const usePostsMetadata = (): {
+  posts: PostType[];
+  tags: TagsType;
+} => {
   const data = useStaticQuery(
     graphql`
       query PostsMetadataQuery {
@@ -25,40 +45,46 @@ const usePostsMetadata = () => {
     `
   );
 
-  const posts = data.allMarkdownRemark.edges.map(({ node }, index, array) => {
-    const prevPost =
-      index === array.length - 1
-        ? null
-        : {
-            slug: array[index + 1].node.fields.slug,
-            title: array[index + 1].node.frontmatter.title,
-          };
-    const nextPost =
-      index === 0
-        ? null
-        : {
-            slug: array[index - 1].node.fields.slug,
-            title: array[index - 1].node.frontmatter.title,
-          };
+  const posts: PostType[] = data.allMarkdownRemark.edges.map(
+    (
+      { node }: PostsMetadataNode,
+      index: number,
+      array: PostsMetadataNode[]
+    ) => {
+      const prevPost =
+        index === array.length - 1
+          ? null
+          : {
+              slug: array[index + 1].node.fields.slug,
+              title: array[index + 1].node.frontmatter.title,
+            };
+      const nextPost =
+        index === 0
+          ? null
+          : {
+              slug: array[index - 1].node.fields.slug,
+              title: array[index - 1].node.frontmatter.title,
+            };
 
-    // post data details
-    return {
-      slug: node.fields.slug,
-      title: node.frontmatter.title,
-      subtitle: node.frontmatter.subtitle,
-      author: node.frontmatter.author,
-      tags: node.frontmatter.tags,
-      date: node.frontmatter.date,
-      timeToRead: node.timeToRead,
-      prevPost,
-      nextPost,
-    };
-  });
+      // post data details
+      return {
+        slug: node.fields.slug,
+        title: node.frontmatter.title,
+        subtitle: node.frontmatter.subtitle,
+        author: node.frontmatter.author,
+        tags: node.frontmatter.tags,
+        date: node.frontmatter.date,
+        timeToRead: node.timeToRead,
+        prevPost,
+        nextPost,
+      };
+    }
+  );
 
-  const tags = posts
+  const tags: TagsType = posts
     .map((post) => post.tags || [])
     .flat()
-    .reduce((acc, cur) => {
+    .reduce((acc: TagsType, cur: TagType) => {
       if (!acc[cur]) acc[cur] = 0;
       acc[cur] += 1;
       return acc;
