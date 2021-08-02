@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@ant-design/icons';
+import IconFactory from './IconFactory';
 
 const Svg = () => (
   <svg
@@ -16,6 +16,5 @@ const Svg = () => (
   </svg>
 );
 
-const Close = (props) => <Icon component={Svg} {...props} />;
-
+const Close = IconFactory(Svg);
 export default Close;

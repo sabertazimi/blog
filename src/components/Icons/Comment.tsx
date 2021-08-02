@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@ant-design/icons';
+import IconFactory from './IconFactory';
 
 const Svg = () => (
   <svg
@@ -24,6 +24,5 @@ const Svg = () => (
   </svg>
 );
 
-const Comment = (props) => <Icon component={Svg} {...props} />;
-
+const Comment = IconFactory(Svg);
 export default Comment;
