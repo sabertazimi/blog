@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/sabertazimi/blog/compare/v2.0.3...v2.1.0) (2021-08-02)
+
+
+### Features
+
+* **Icons:** create IconFactory HOC util component ([bfadb4f](https://github.com/sabertazimi/blog/commit/bfadb4f7fd65163f9e5be95cf321283bf09a152c)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+
+
+### Bug Fixes
+
+* **config:** rewrite config types ([3dc1de1](https://github.com/sabertazimi/blog/commit/3dc1de1aaefffcf38a72fe5d2bcf30ee6792d4cc))
+* **Container:** use HTMLProps instead of HTMLAttributes ([922cefb](https://github.com/sabertazimi/blog/commit/922cefba7348c67339ca023452404077d48e0f56)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **Social:** rectify social-related components type error ([e5ffdea](https://github.com/sabertazimi/blog/commit/e5ffdea5d5bd8cfad0bb354116a37d37b6df05ae)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+
 ### [2.0.3](https://github.com/sabertazimi/blog/compare/v2.0.2...v2.0.3) (2021-08-02)
 
 
