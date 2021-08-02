@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   className?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
 }
 
-const Container = ({
+const FlexContainer = ({
   className = '',
   style = {},
   children,
@@ -21,4 +21,4 @@ const Container = ({
   </div>
 );
 
-export default Container;
+export default FlexContainer;
