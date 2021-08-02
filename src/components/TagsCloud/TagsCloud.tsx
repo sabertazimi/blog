@@ -2,8 +2,14 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import { Colors, getColorByName } from '@config';
+import { TagType, TagsType } from '@types';
 
-const TagsCloud = ({ tags, activeTag }) => {
+interface Props {
+  tags: TagsType;
+  activeTag: TagType;
+}
+
+const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
   let tagsList = Object.keys(tags).sort((a, b) => {
     return tags[b] - tags[a];
   });
