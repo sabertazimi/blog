@@ -1,19 +1,33 @@
 {
+  "include": ["./src/**/*"],
   "exclude": ["node_modules", "build", "dist", "public", "coverage"],
   "compilerOptions": {
-    "target": "es2017",
-    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "module": "es2015",
+    "lib": ["dom", "es2017"],
+    "jsx": "react",
+    "outDir": "./build",
+    "removeComments": true,
+    "isolatedModules": true,
+    "strict": true,
+    "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@config/*": ["src/config/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@images/*": ["src/images/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"],
-      "@templates/*": ["src/templates/*"],
-      "@types/*": ["src/types/*"]
-    }
+      "@components": ["src/components"],
+      "@config": ["src/config"],
+      "@hooks": ["src/hooks"],
+      "@images": ["src/images"],
+      "@layouts": ["src/layouts"],
+      "@pages": ["src/pages"],
+      "@styles": ["src/styles"],
+      "@templates": ["src/templates"],
+      "@types": ["src/types"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
