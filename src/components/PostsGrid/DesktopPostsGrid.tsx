@@ -1,7 +1,7 @@
 import React from 'react';
+import { PostType } from '@types';
 import FlexContainer from '@components/FlexContainer';
 import PostCard from './PostCard';
-import { PostType } from '@types';
 
 interface Props {
   posts: PostType[];

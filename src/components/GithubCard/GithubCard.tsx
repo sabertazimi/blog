@@ -1,8 +1,8 @@
 import React from 'react';
 import { Avatar, Card, Badge, Typography } from 'antd';
+import { GitHubType } from '@types';
 import { useSiteMetadata } from '@hooks';
 import { getColorByName } from '@config';
-import { GitHubType } from '@types';
 import GithubCardHeader from './GithubCardHeader';
 import GithubCardContent from './GithubCardContent';
 import GithubRepoCard from './GithubRepoCard';

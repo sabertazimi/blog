@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
+import { PostType } from '@types';
 import { getColorByName } from '@config';
 import Container from '@components/Container';
-import { PostType } from '@types';
 
 interface Props {
   post: PostType;
