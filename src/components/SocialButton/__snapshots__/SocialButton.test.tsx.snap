@@ -1,13 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header renders correctly 1`] = `
+exports[`SocialButton render GitHub correctly (snapshot) 1`] = `
 <a
   className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
   href="https://github.com/"
   onClick={[Function]}
+  role="link"
   style={
     Object {
-      "backgroundColor": undefined,
+      "backgroundColor": "",
     }
   }
 >
