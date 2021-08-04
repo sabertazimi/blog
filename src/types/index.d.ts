@@ -46,7 +46,7 @@ interface PostContentType {
 
 export declare type PostType = PostMetaType & Partial<PostContentType>;
 
-interface Profile {
+export interface Profile {
   username: string;
   avatar: string;
   bio: string;
@@ -59,7 +59,7 @@ interface Profile {
   createDate: string;
 }
 
-interface Repo {
+export interface Repo {
   name: string;
   stars: number;
   language: string;
