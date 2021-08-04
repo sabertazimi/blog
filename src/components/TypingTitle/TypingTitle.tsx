@@ -2,13 +2,21 @@ import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import Typed from 'typed.js';
 
+interface Props {
+  titles: string[];
+  speed?: number;
+  delay?: number;
+  loop?: boolean;
+  className?: string;
+}
+
 const TypingTitle = ({
-  titles = [],
+  titles,
   speed = 60,
   delay = 600,
   loop = true,
   className = '',
-} = {}) => {
+}: Props): JSX.Element => {
   useEffect(() => {
     const options = {
       strings: [...titles],
