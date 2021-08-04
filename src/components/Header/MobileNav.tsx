@@ -5,11 +5,11 @@ import { BarsOutlined } from '@ant-design/icons';
 import { Routes } from '@config';
 import logo from 'images/logo-full.png';
 
-const MobileNav = () => (
-  <Row className="md:hidden" type="flex" justify="center" align="middle">
+const MobileNav = (): JSX.Element => (
+  <Row className="md:hidden" justify="center" align="middle">
     <Col className="flex-container" span={8} offset={8}>
       <Link to="/">
-        <img className="block w-24 h-24" src={logo} alt="Logo" />
+        <img className="block w-24 h-24" src={logo as string} alt="Logo" />
       </Link>
     </Col>
     <Col className="flex-container" span={8}>
