@@ -21,7 +21,8 @@
     "release": "standard-version -s",
     "serve": "gatsby serve",
     "start": "npm run develop",
-    "test": "jest"
+    "test": "jest",
+    "test:snapshot": "jest --updateSnapshot"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
