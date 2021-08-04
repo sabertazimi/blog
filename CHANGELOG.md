@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/sabertazimi/blog/compare/v2.1.1...v2.2.0) (2021-08-04)
+
+
+### Features
+
+* **lint:** enable TypeScript type checking ([fba899b](https://github.com/sabertazimi/blog/commit/fba899b3f1942e71f89aca79d8dfc3f480701af2)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+
+
+### Bug Fixes
+
+* **Article:** add missing types ([593d38c](https://github.com/sabertazimi/blog/commit/593d38c8906bc16915a7ce6a9a666e04800564e6)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **ArticleFooter:** production environment Ads free ([895a7ab](https://github.com/sabertazimi/blog/commit/895a7abd2f57f6a40189f90625607a961dc6a551)), closes [#108](https://github.com/sabertazimi/blog/issues/108)
+* **BooksGrid:** add missing types ([fda78a6](https://github.com/sabertazimi/blog/commit/fda78a61e4ec90ee5b074ce83fbb2cfd0f8e5c49)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **css:** declare `*.css` for TSX import ([3d4541d](https://github.com/sabertazimi/blog/commit/3d4541dc1d4f1a02d650d6d21628d9b26562deb8)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **DesktopNav:** rectify types error ([686177c](https://github.com/sabertazimi/blog/commit/686177cb33bde6d06f2fd7b6063ec7b780e32695)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **DesktopPostsGrid:** add missing types ([b44f900](https://github.com/sabertazimi/blog/commit/b44f900c3037465155689032ab1f7c4d702984f1)), closes [#124](https://github.com/sabertazimi/blog/issues/124) [#82](https://github.com/sabertazimi/blog/issues/82)
+* **GithubCard:** add missing types ([9f78fdf](https://github.com/sabertazimi/blog/commit/9f78fdfb130acf5b4723513944f024b0eab44446)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **Header:** rectify ref types ([637508e](https://github.com/sabertazimi/blog/commit/637508ee0851beb944a3fca856073f9247533b76)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **LandingLayout:** declare `*.png` in `index.d.ts` ([d67c3a4](https://github.com/sabertazimi/blog/commit/d67c3a41f164e6308306bc113d86633b737b8348)), closes [#112](https://github.com/sabertazimi/blog/issues/112) [#82](https://github.com/sabertazimi/blog/issues/82)
+* **LandingNav:** rectify types error ([512fef2](https://github.com/sabertazimi/blog/commit/512fef2eddb34023e3f06ebfd13c4d4001f341e2)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **MobileNav:** rectify types error ([61a2102](https://github.com/sabertazimi/blog/commit/61a21024484b7cb1e33660bb13b2a0416d311306)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **PostsGrid:** add missing types ([ff1724e](https://github.com/sabertazimi/blog/commit/ff1724e4e184ed1a71c26b94943674bfc48ccf0c)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **PostsList:** add missing types ([cdbf056](https://github.com/sabertazimi/blog/commit/cdbf05613e6b58fde1bf47a745ee38d07c4a9fe5)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **PostsSearchBar:** add missing types ([55ac9b5](https://github.com/sabertazimi/blog/commit/55ac9b59df3e093edebd8645f2a20bf30dd1eafb)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **Tag:** change TagsType to Record ([8ff87a2](https://github.com/sabertazimi/blog/commit/8ff87a294519ce32e6480fba5fe46b2aeaaf873b)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **types:** export Profile and Repo type ([6576e8b](https://github.com/sabertazimi/blog/commit/6576e8b72214238c3da4144dac4bebd86ae58601)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **types:** rectify `timeToRead` to number type ([80442cf](https://github.com/sabertazimi/blog/commit/80442cf0965fb831272189f9ee28eec46ae74588)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **types:** rectify prev/nextPost types ([667ae46](https://github.com/sabertazimi/blog/commit/667ae46654e226e6cc56af72e7989ae42347982c)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+* **TypingTitle:** add missing types ([4a7233f](https://github.com/sabertazimi/blog/commit/4a7233f319362406f0ce764d790663cbf62f5048)), closes [#82](https://github.com/sabertazimi/blog/issues/82)
+
+
+### Building Work
+
+* **CI:** add FIXME for todo-bot trigger ([6085fa4](https://github.com/sabertazimi/blog/commit/6085fa4e8821152b2a476e20feb59518278058ad))
+* **CI:** remove artifacts transfer ([5c6f78b](https://github.com/sabertazimi/blog/commit/5c6f78be1aa137faae03af6709b598f503f56dd9))
+* **deps-dev:** bump @octokit/types from 6.21.1 to 6.22.0 ([b9520bf](https://github.com/sabertazimi/blog/commit/b9520bfdce14af0ea3440175cbfd32dc99f89c65))
+* **deps-dev:** bump @octokit/types from 6.22.0 to 6.23.0 ([0913aea](https://github.com/sabertazimi/blog/commit/0913aeaac4b470fdc8ec12b336c87c8ffde3f3a4))
+* **deps-dev:** bump @types/node from 16.4.3 to 16.4.10 ([3c125b6](https://github.com/sabertazimi/blog/commit/3c125b64013be5ed7b0601f9094d7f9eae1df5b8))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([7d32f52](https://github.com/sabertazimi/blog/commit/7d32f524654c6b51468649e3c7a1c13b20ef70fc))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([51e7c1f](https://github.com/sabertazimi/blog/commit/51e7c1fa8ec65caa64e130ddd4a7f03aad570c9c))
+* **deps-dev:** bump @typescript-eslint/parser from 4.28.4 to 4.28.5 ([e365850](https://github.com/sabertazimi/blog/commit/e3658509a65efc9a603247cf39e153c90e1dc363))
+* **deps-dev:** bump @typescript-eslint/parser from 4.28.5 to 4.29.0 ([fc66517](https://github.com/sabertazimi/blog/commit/fc66517ff8e888f231d28c65898640e90054876e))
+* **deps-dev:** bump eslint from 7.31.0 to 7.32.0 ([0fcb3da](https://github.com/sabertazimi/blog/commit/0fcb3da163f1696900f821aa7ddfc79ce0676f2c))
+* **deps:** bump @octokit/rest from 18.7.1 to 18.7.2 ([fa1d9e4](https://github.com/sabertazimi/blog/commit/fa1d9e4f095d8012424eff50c6863e7211ac9c68))
+* **deps:** bump @octokit/rest from 18.7.2 to 18.8.0 ([d5f9a74](https://github.com/sabertazimi/blog/commit/d5f9a74cb813621ff6da4d5b462fd95d0c0fb68c))
+* **deps:** bump antd from 4.16.8 to 4.16.10 ([735deae](https://github.com/sabertazimi/blog/commit/735deae95499ff3ca36288f3c5827f90b190dd95))
+* **eslint:** add exclude directories ([e862066](https://github.com/sabertazimi/blog/commit/e8620663c4b4bf9d3cb107b6735b17f5470c37b1))
+
 ### [2.1.1](https://github.com/sabertazimi/blog/compare/v2.1.0...v2.1.1) (2021-08-02)
 
 
