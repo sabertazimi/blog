@@ -4,7 +4,11 @@ import { Button, Drawer } from 'antd';
 import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import * as styles from './ArticleNav.module.css';
 
-const ArticleNav = ({ toc }) => {
+interface Props {
+  toc: string;
+}
+
+const ArticleNav = ({ toc }: Props): JSX.Element => {
   const [tocVisible, setTocVisible] = useState(false);
 
   const handleClick = useCallback(

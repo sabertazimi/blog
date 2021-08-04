@@ -2,9 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
+import { PostType } from '@types';
 import FlexContainer from '@components/FlexContainer';
 
-const ArticleFooter = ({ post }) => (
+interface Props {
+  post: PostType;
+}
+
+const ArticleFooter = ({ post }: Props): JSX.Element => (
   <FlexContainer className="justify-between">
     <Button
       className={classNames(

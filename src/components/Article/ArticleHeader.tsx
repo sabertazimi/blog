@@ -3,9 +3,14 @@ import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
+import { PostType } from '@types';
 import { getColorByName } from '@config';
 
-const ArticleHeader = ({ post }) => {
+interface Props {
+  post: PostType;
+}
+
+const ArticleHeader = ({ post }: Props): JSX.Element => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },

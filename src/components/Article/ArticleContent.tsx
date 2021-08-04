@@ -2,7 +2,11 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import * as styles from './ArticleContent.module.css';
 
-const ArticleContent = ({ content }) => {
+interface Props {
+  content: string;
+}
+
+const ArticleContent = ({ content }: Props): JSX.Element => {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateY(-200px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
