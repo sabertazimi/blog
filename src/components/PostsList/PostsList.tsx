@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { List } from 'antd';
+import { PostType } from '@types';
 
-const PostsList = ({ posts }) => (
+interface Props {
+  posts: PostType[];
+}
+
+const PostsList = ({ posts }: Props): JSX.Element => (
   <List
     className="mt-6"
     dataSource={posts}
