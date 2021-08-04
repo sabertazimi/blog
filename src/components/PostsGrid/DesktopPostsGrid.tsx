@@ -2,6 +2,7 @@ import React from 'react';
 import FlexContainer from '@components/FlexContainer';
 import PostCard from './PostCard';
 
+// @FIXME: Bug: missing TypeScript types
 const DesktopPostsGrid = ({ posts }) => {
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2));
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
