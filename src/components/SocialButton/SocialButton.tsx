@@ -19,11 +19,11 @@ const SocialButton = ({
   <Button
     className={`text-center text-light rounded-none ${className}`}
     role="link"
-    style={{ backgroundColor: color }}
     size="large"
     type="link"
     href={`${url}`}
     icon={SocialIcon(type)}
+    style={{ backgroundColor: color ? color : '' }}
   />
 );
 
