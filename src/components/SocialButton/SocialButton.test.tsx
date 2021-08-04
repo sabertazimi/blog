@@ -7,13 +7,26 @@ import SocialButton from './SocialButton';
 describe('SocialButton', () => {
   const socialList = Object.keys(SocialList).concat('default');
 
-  test.each(socialList)('should render [%s] correctly (snapshot)', (social) => {
+  test.each(socialList)(
+    'should render [%s] button correctly (snapshot)',
+    (social) => {
+      const tree = renderer
+        .create(
+          <SocialButton
+            type={social as SocialType}
+            url={`https://${social}.com`}
+          />
+        )
+        .toJSON();
+
+      expect(tree).toMatchSnapshot();
+    }
+  );
+
+  test('should render colorful button correctly (snapshot)', () => {
     const tree = renderer
       .create(
-        <SocialButton
-          type={social as SocialType}
-          url={`https://${social}.com`}
-        />
+        <SocialButton type="github" url="https://github.com" color="blue" />
       )
       .toJSON();
 
@@ -21,7 +34,7 @@ describe('SocialButton', () => {
   });
 
   test.each(socialList)(
-    'should render [%s] with correct structure',
+    'should render [%s] button with correct structure',
     (social) => {
       const { getByRole } = render(
         <SocialButton
@@ -38,12 +51,18 @@ describe('SocialButton', () => {
     }
   );
 
-  test.each(socialList)('should render [%s] with correct URL', (social) => {
-    const { getByRole } = render(
-      <SocialButton type={social as SocialType} url={`https://${social}.com`} />
-    );
-    const link = getByRole('link');
+  test.each(socialList)(
+    'should render [%s] button with correct URL',
+    (social) => {
+      const { getByRole } = render(
+        <SocialButton
+          type={social as SocialType}
+          url={`https://${social}.com`}
+        />
+      );
+      const link = getByRole('link');
 
-    expect(link).toHaveAttribute('href', `https://${social}.com`);
-  });
+      expect(link).toHaveAttribute('href', `https://${social}.com`);
+    }
+  );
 });
