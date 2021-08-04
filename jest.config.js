@@ -17,7 +17,14 @@ module.exports = {
       '<rootDir>/__mocks__/jest.mock.js',
     ...paths,
   },
-  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/public'],
+  testPathIgnorePatterns: [
+    'node_modules',
+    '\\.cache',
+    '<rootDir>.*/public',
+    '<rootDir>.*/build',
+    '<rootDir>.*/dist',
+    '<rootDir>.*/coverage',
+  ],
   globals: {
     __PATH_PREFIX__: '',
   },
