@@ -26,11 +26,11 @@ type BaseColor = keyof typeof Colors;
 type PaletteColor = keyof typeof ColorPalette;
 type Color = BaseColor;
 
-const hashString = (name = '') => {
+const hashString = (name: string) => {
   return name.length;
 };
 
-const getColorByName = (name = ''): string => {
+const getColorByName = (name: string): string => {
   const palette = Object.keys(ColorPalette);
   const colorIdx = hashString(name) % palette.length;
   const paletteColor = palette[colorIdx] as PaletteColor;
