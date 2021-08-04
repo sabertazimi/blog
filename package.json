@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "audit": "npm audit fix --registry https://registry.npmjs.org",
-    "build": "gatsby build",
-    "build:gh-pages": "gatsby build --prefix-paths",
+    "build": "gatsby build && npm run test:badge",
+    "build:gh-pages": "gatsby build --prefix-paths && npm run test:badge",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,md,mdx,css}",
@@ -22,6 +22,7 @@
     "serve": "gatsby serve",
     "start": "concurrently \"npm:develop\" \"npm:test:watch\"",
     "test": "jest",
+    "test:badge": "node scripts/generateJestCoverageBadge.js",
     "test:watch": "jest --watch"
   },
   "dependencies": {

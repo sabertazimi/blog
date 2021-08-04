@@ -4,7 +4,7 @@ const { spawnSync } = require('child_process');
 const fetch = require('node-fetch');
 
 const SummaryFilePath = 'coverage/coverage-summary.json';
-const OutputBadgePath = './badges';
+const OutputBadgePath = './public';
 const CoverageType = ['statements', 'branches', 'functions', 'lines'];
 const BadgeStyle = [
   'for-the-badge',
@@ -66,7 +66,9 @@ const generateCoverageFile = async (
   const badgeUrl = getBadgeUrl(summaryFilePath, coverageType, badgeStyle);
 
   if (!badgeUrl) {
-    console.error(`generateCoverageFile: missing badgeUrl for ${coverageType}`);
+    console.error(
+      `Generate coverage badge: missing badge URL for ${coverageType}`
+    );
     return;
   }
 
@@ -77,17 +79,26 @@ const generateCoverageFile = async (
     try {
       fs.writeFileSync(output, file, { encoding: 'utf8' });
     } catch (e) {
-      console.error(`generateCoverageFile: no file to write for ${coverageType}`);
+      console.error(
+        `Generate coverage badge: no file to write for ${coverageType}`
+      );
       return;
     }
   } else {
-    console.error(`generateCoverageFile: no file to write for ${coverageType}`);
+    console.error(
+      `Generate coverage badge: no file to write for ${coverageType}`
+    );
+    return;
   }
 };
 
-generateCoverageFile(
-  SummaryFilePath,
-  CoverageType[3],
-  BadgeStyle[0],
-  OutputBadgePath
-);
+const main = () => {
+  generateCoverageFile(
+    SummaryFilePath,
+    CoverageType[3],
+    BadgeStyle[0],
+    OutputBadgePath
+  );
+};
+
+main();
