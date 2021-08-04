@@ -3,7 +3,17 @@ import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { Tooltip } from 'antd';
 
-const LandingNavLink = ({ title = 'Tooltip', to = '/', children }) => (
+interface Props {
+  title: string;
+  to: string;
+  children: React.ReactNode;
+}
+
+const LandingNavLink = ({
+  title = 'Tooltip',
+  to = '/',
+  children,
+}: Props): JSX.Element => (
   <Tooltip className="mb-16" placement="left" title={title}>
     <Link to={to}>
       <span

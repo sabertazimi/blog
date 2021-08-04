@@ -4,7 +4,7 @@ import { Routes } from '@config';
 import { Close, Hamburger } from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
 
-const LandingNav = () => {
+const LandingNav = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = useCallback(() => {
@@ -37,7 +37,7 @@ const LandingNav = () => {
           'cursor-pointer top-12 left-12 z-100'
         )}
         role="button"
-        tabIndex="0"
+        tabIndex={0}
         onClick={handleClick}
         onKeyDown={handleClick}
       >
