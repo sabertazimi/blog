@@ -24,4 +24,5 @@ module.exports = {
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
   setupFiles: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest.env.setup.js'],
 };
