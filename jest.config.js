@@ -7,6 +7,7 @@ const paths = pathsToModuleNameMapper(compilerOptions.paths, {
 module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
+  coverageReporters: ['json-summary', 'lcov', 'text', 'clover'],
   transform: {
     '^.+\\.[jt]sx?$': '<rootDir>/jest.transformer.js',
   },
