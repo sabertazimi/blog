@@ -9,11 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const LandingNavLink = ({
-  title = 'Tooltip',
-  to = '/',
-  children,
-}: Props): JSX.Element => (
+const LandingNavLink = ({ title, to, children }: Props): JSX.Element => (
   <Tooltip className="mb-16" placement="left" title={title}>
     <Link to={to} role="link">
       <span
