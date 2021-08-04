@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/sabertazimi/blog/compare/v2.3.0...v2.3.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* **colors:** remove useless default parameters ([f78284e](https://github.com/sabertazimi/blog/commit/f78284e2801574b436162ce1ae5cfd9b9d6b6e49))
+* **LandingNav:** add a11y role ([5f9f24b](https://github.com/sabertazimi/blog/commit/5f9f24b3f97b5a84725769890e5f5300c769629e))
+* **LandingNav:** add routes props ([1cb18ba](https://github.com/sabertazimi/blog/commit/1cb18ba57160eea47070b232e99b6841447a93de))
+* **LandingNavLink:** remove useless default props ([6dd5833](https://github.com/sabertazimi/blog/commit/6dd5833a5cd65522bf5e83adb84182426637588e))
+
+
+### Building Work
+
+* **CI:** separate lint/testing/building work ([b8e15b5](https://github.com/sabertazimi/blog/commit/b8e15b5cf9d9b43c227717d6cae73f76d74e9696))
+* **scripts:** concurrent watching gatsby and jest ([6648118](https://github.com/sabertazimi/blog/commit/66481188cf21bbdc71a39b4b8cd981c65fac80c8))
+* **test:** add jest ignore patterns ([675a218](https://github.com/sabertazimi/blog/commit/675a218828bb2490739436201739a718bb078871))
+
+
+### Testing
+
+* **colors:** complete `colors.getColorByName` testing ([0567e79](https://github.com/sabertazimi/blog/commit/0567e798c3691099faa05943a1b8f57bea0d33f2))
+* **colors:** export ColorPalette for testing ([9cd7d49](https://github.com/sabertazimi/blog/commit/9cd7d49e8ca6cbf9703aa69879d67e653c17e23e))
+* **LandingNav:** complete LandingNav testing ([40f41db](https://github.com/sabertazimi/blog/commit/40f41db00f94b4241bee7670ed7596befb6a841e))
+* **SocialButton:** complete all social buttons testing ([479900b](https://github.com/sabertazimi/blog/commit/479900b1ab28a1e5f8b49a1ff9f3cc426f55550d)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **SocialButton:** cover colorful button testing ([812f5e6](https://github.com/sabertazimi/blog/commit/812f5e6e13408bf17cdb2a9ee5432d052b4c2cd1))
+* **SocialButton:** format code ([62ee4fb](https://github.com/sabertazimi/blog/commit/62ee4fb67d9c209464ff8c794d030094f4717ddb))
+* **SocialButton:** format code ([ab9c2ab](https://github.com/sabertazimi/blog/commit/ab9c2ab15d21396da5badea11e39caae2e7bb1c6))
+* **SocialButton:** pretty testing ouput ([9ee87b1](https://github.com/sabertazimi/blog/commit/9ee87b12b0a7830ed35354d5a565fd9591a3167b))
+
 ## [2.3.0](https://github.com/sabertazimi/blog/compare/v2.2.0...v2.3.0) (2021-08-04)
 
 
