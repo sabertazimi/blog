@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
-import SocialButton from './SocialButton';
 import { SocialType, SocialList } from '@config';
+import SocialButton from './SocialButton';
 
 const socialList = Object.keys(SocialList).concat('default');
 
 describe('SocialButton', () => {
-  test.each(socialList)('render %s correctly (snapshot)', (social) => {
+  test.each(socialList)('should render %s correctly (snapshot)', (social) => {
     const tree = renderer
       .create(
         <SocialButton
@@ -20,7 +20,7 @@ describe('SocialButton', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test.each(socialList)('render %s with correct structure', (social) => {
+  test.each(socialList)('should render %s with correct structure', (social) => {
     const { getByRole } = render(
       <SocialButton type={social as SocialType} url={`https://${social}.com`} />
     );
@@ -32,7 +32,7 @@ describe('SocialButton', () => {
     expect(link).toContainElement(icon);
   });
 
-  test.each(socialList)('render %s with correct URL', (social) => {
+  test.each(socialList)('should render %s with correct URL', (social) => {
     const { getByRole } = render(
       <SocialButton type={social as SocialType} url={`https://${social}.com`} />
     );
