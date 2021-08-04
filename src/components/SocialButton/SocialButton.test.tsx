@@ -7,7 +7,7 @@ import SocialButton from './SocialButton';
 describe('SocialButton', () => {
   const socialList = Object.keys(SocialList).concat('default');
 
-  test.each(socialList)('should render %s correctly (snapshot)', (social) => {
+  test.each(socialList)('should render [%s] correctly (snapshot)', (social) => {
     const tree = renderer
       .create(
         <SocialButton
@@ -20,19 +20,25 @@ describe('SocialButton', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test.each(socialList)('should render %s with correct structure', (social) => {
-    const { getByRole } = render(
-      <SocialButton type={social as SocialType} url={`https://${social}.com`} />
-    );
-    const link = getByRole('link');
-    const icon = getByRole('img');
+  test.each(socialList)(
+    'should render [%s] with correct structure',
+    (social) => {
+      const { getByRole } = render(
+        <SocialButton
+          type={social as SocialType}
+          url={`https://${social}.com`}
+        />
+      );
+      const link = getByRole('link');
+      const icon = getByRole('img');
 
-    expect(link).toBeInTheDocument();
-    expect(icon).toBeInTheDocument();
-    expect(link).toContainElement(icon);
-  });
+      expect(link).toBeInTheDocument();
+      expect(icon).toBeInTheDocument();
+      expect(link).toContainElement(icon);
+    }
+  );
 
-  test.each(socialList)('should render %s with correct URL', (social) => {
+  test.each(socialList)('should render [%s] with correct URL', (social) => {
     const { getByRole } = render(
       <SocialButton type={social as SocialType} url={`https://${social}.com`} />
     );
