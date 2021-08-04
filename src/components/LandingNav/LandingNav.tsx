@@ -1,10 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
-import { Routes } from '@config';
+import { RouteType } from '@config';
 import { Close, Hamburger } from '@components/Icons';
 import LandingNavLink from './LandingNavLink';
 
-const LandingNav = (): JSX.Element => {
+interface Props {
+  routes: RouteType[];
+}
+
+const LandingNav = ({ routes }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = useCallback(() => {
@@ -25,7 +29,7 @@ const LandingNav = (): JSX.Element => {
           }
         )}
       >
-        {Routes.map((route) => (
+        {routes.map((route) => (
           <LandingNavLink key={route.id} title={route.title} to={route.path}>
             {route.name}
           </LandingNavLink>

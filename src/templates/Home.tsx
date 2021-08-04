@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Routes } from '@config';
 import { useSiteMetadata } from '@hooks';
 import { LandingLayout } from '@layouts';
 import { LandingNav, TypingTitle, ErrorBoundary } from '@components';
@@ -17,7 +18,7 @@ const Home = (): JSX.Element => {
         </Helmet>
       </ErrorBoundary>
       <LandingLayout>
-        <LandingNav />
+        <LandingNav routes={Routes} />
         <TypingTitle titles={landingTitles} />
       </LandingLayout>
     </div>
