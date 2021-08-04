@@ -6,7 +6,11 @@ import { Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
 
-const DesktopNav = ({ fixed }) => (
+interface Props {
+  fixed: boolean;
+}
+
+const DesktopNav = ({ fixed }: Props): JSX.Element => (
   <Menu
     className={classNames(
       'fixed z-100 w-full font-extrabold transition transform-gpu border-transparent hidden md:visible md:flex',
@@ -22,7 +26,7 @@ const DesktopNav = ({ fixed }) => (
       })}
     >
       <Link to="/">
-        <img className="block w-full h-24" src={logo} alt="Logo" />
+        <img className="block w-full h-24" src={logo as string} alt="Logo" />
       </Link>
     </Menu.Item>
     {Routes.map((route) => (
