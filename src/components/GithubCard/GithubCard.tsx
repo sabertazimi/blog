@@ -2,11 +2,16 @@ import React from 'react';
 import { Avatar, Card, Badge, Typography } from 'antd';
 import { useSiteMetadata } from '@hooks';
 import { getColorByName } from '@config';
+import { GitHubType } from '@types';
 import GithubCardHeader from './GithubCardHeader';
 import GithubCardContent from './GithubCardContent';
 import GithubRepoCard from './GithubRepoCard';
 
-const GithubCard = ({ github }) => {
+interface Props {
+  github: GitHubType;
+}
+
+const GithubCard = ({ github }: Props): JSX.Element => {
   const { profile, repos } = github;
   const { email } = useSiteMetadata();
 

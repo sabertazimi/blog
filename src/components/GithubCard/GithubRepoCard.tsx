@@ -2,8 +2,13 @@ import React from 'react';
 import { Card, Badge } from 'antd';
 import { StarOutlined, BranchesOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
+import { Repo } from '@types';
 
-const GithubRepoCard = ({ repo }) => (
+interface Props {
+  repo: Repo;
+}
+
+const GithubRepoCard = ({ repo }: Props): JSX.Element => (
   <Badge.Ribbon text={repo.name} color={getColorByName(repo.name)}>
     <Card
       className="mt-8"

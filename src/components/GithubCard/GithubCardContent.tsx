@@ -5,8 +5,13 @@ import {
   EnvironmentOutlined,
   UserOutlined,
 } from '@ant-design/icons';
+import { Profile } from '@types';
 
-const GithubCardContent = ({ profile }) => (
+interface Props {
+  profile: Profile;
+}
+
+const GithubCardContent = ({ profile }: Props): JSX.Element => (
   <Space direction="vertical">
     <div>
       <InfoCircleOutlined className="text-2xl align-top" />
