@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/sabertazimi/blog/compare/v2.2.0...v2.3.0) (2021-08-04)
+
+
+### Features
+
+* **jest-TypeScript:** add ts-jest support ([80a287f](https://github.com/sabertazimi/blog/commit/80a287f0d24e24d8c00629ebbd818962f4bb942e)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **jest:** add jest support ([e667b7d](https://github.com/sabertazimi/blog/commit/e667b7d513de7c8c0d2c40636491ac9c79bd475d)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **test-React:** add React Testing Library support ([a8b087a](https://github.com/sabertazimi/blog/commit/a8b087a0b96c98c78c2a97827feedd67f61860a4)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+
+
+### Bug Fixes
+
+* **jest:** add jsdom environment support ([e4553e5](https://github.com/sabertazimi/blog/commit/e4553e57b8e4d33f623d3d820b69ace68a7a588f)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **SocialButton:** add a11y `role=link` ([8294c96](https://github.com/sabertazimi/blog/commit/8294c96f33527696785eb9ab561abaa0d9d3b2ff)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **SocialButton:** color prop type guard ([cf1f3b4](https://github.com/sabertazimi/blog/commit/cf1f3b4a2cbeb09750ba2a2ca2a99bcf783898d2)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+
+
+### Building Work
+
+* **scripts:** polish test script up ([37a58ac](https://github.com/sabertazimi/blog/commit/37a58ac26ac0c8f714710cc5027bbc3044ad8aad)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+
+
+### Testing
+
+* **__mocks__:** format code ([c0af081](https://github.com/sabertazimi/blog/commit/c0af08157a0bb5ab49fddba6ad262df92cd3b738)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **jest-config:** polish up ([df1f21d](https://github.com/sabertazimi/blog/commit/df1f21d46eabde705a3f21d1b9def64e6d55d5cb)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **mocks:** add gatsby mocks support ([25d92aa](https://github.com/sabertazimi/blog/commit/25d92aa639c583ceaffe7a71eb4cd2b270feb1eb)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **paths:** add paths alias ([636e659](https://github.com/sabertazimi/blog/commit/636e65991f889cfe09f54b21635150d30ee439ce)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **snapshot:** setup jest snapshot testing ([a3e7066](https://github.com/sabertazimi/blog/commit/a3e7066618db852c5f46070cb195674179f81e97)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **SocialButton:** add Github button snapshot ([bd7d843](https://github.com/sabertazimi/blog/commit/bd7d843823572a8fefcf0240c89f9343527df1f3)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+* **SocialButton:** complete GitHub icon testing ([0acf22d](https://github.com/sabertazimi/blog/commit/0acf22d16dffd958fd9c236e26c41d5d5a7d0a7a)), closes [#64](https://github.com/sabertazimi/blog/issues/64)
+
 ## [2.2.0](https://github.com/sabertazimi/blog/compare/v2.1.1...v2.2.0) (2021-08-04)
 
 
