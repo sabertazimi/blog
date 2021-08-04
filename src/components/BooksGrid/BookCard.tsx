@@ -2,8 +2,13 @@ import React from 'react';
 import { Badge, Card } from 'antd';
 import { BookOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
+import { Book } from '@types';
 
-const BookCard = ({ data }) => {
+interface Props {
+  data: Book;
+}
+
+const BookCard = ({ data }: Props): JSX.Element => {
   const { title, url, author, description } = data;
 
   return (
