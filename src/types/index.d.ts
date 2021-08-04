@@ -34,8 +34,14 @@ interface PostMetaType {
   date: string;
   tags: TagType[];
   timeToRead: number;
-  prevPost: string;
-  nextPost: string;
+  prevPost: {
+    slug: string;
+    title: string;
+  };
+  nextPost: {
+    slug: string;
+    title: string;
+  };
 }
 
 interface PostContentType {
