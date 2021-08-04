@@ -21,10 +21,7 @@ export interface SiteMetadata {
 }
 
 export declare type TagType = string;
-
-export interface TagsType {
-  [key: TagType]: number;
-}
+export declare type TagsType = Record<TagType, number>;
 
 interface PostMetaType {
   slug: string;
