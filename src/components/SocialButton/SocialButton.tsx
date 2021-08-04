@@ -18,6 +18,7 @@ const SocialButton = ({
 }: Props): JSX.Element => (
   <Button
     className={`text-center text-light rounded-none ${className}`}
+    role="link"
     style={{ backgroundColor: color }}
     size="large"
     type="link"
