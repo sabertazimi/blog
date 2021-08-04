@@ -3,9 +3,9 @@ import { useVisibility } from '@hooks';
 import MobileNav from './MobileNav';
 import DesktopNav from './DesktopNav';
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const [navFixed, setNavFixed] = useState(false);
-  const headerRef = useRef();
+  const headerRef = useRef<HTMLDivElement>(null);
 
   const hideFixedNav = useCallback(() => {
     setNavFixed(false);
