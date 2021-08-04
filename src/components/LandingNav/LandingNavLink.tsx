@@ -15,7 +15,7 @@ const LandingNavLink = ({
   children,
 }: Props): JSX.Element => (
   <Tooltip className="mb-16" placement="left" title={title}>
-    <Link to={to}>
+    <Link to={to} role="link">
       <span
         className={classNames(
           'block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light',

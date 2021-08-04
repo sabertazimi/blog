@@ -28,6 +28,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
             '-translate-x-full': !expanded,
           }
         )}
+        role="navigation"
       >
         {routes.map((route) => (
           <LandingNavLink key={route.id} title={route.title} to={route.path}>
@@ -61,6 +62,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
             'bg-opacity-0': !expanded,
           }
         )}
+        role="banner"
       />
     </React.Fragment>
   );
