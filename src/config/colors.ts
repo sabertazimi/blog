@@ -38,4 +38,4 @@ const getColorByName = (name = ''): string => {
 };
 
 export type { BaseColor, PaletteColor, Color };
-export { Colors, getColorByName };
+export { Colors, ColorPalette, getColorByName };
