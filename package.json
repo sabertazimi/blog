@@ -20,8 +20,9 @@
     "prelease": "standard-version --dry-run -s",
     "release": "standard-version -s",
     "serve": "gatsby serve",
-    "start": "npm run develop",
-    "test": "jest"
+    "start": "concurrently \"npm:develop\" \"npm:test:watch\"",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -56,6 +57,7 @@
     "autoprefixer": "^10.3.1",
     "babel-jest": "^27.0.6",
     "babel-preset-gatsby": "^1.10.0",
+    "concurrently": "^6.2.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
