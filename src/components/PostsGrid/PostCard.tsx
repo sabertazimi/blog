@@ -6,8 +6,13 @@ import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
 import Container from '@components/Container';
+import { PostType } from '@types';
 
-const PostCard = ({ post }) => {
+interface Props {
+  post: PostType;
+}
+
+const PostCard = ({ post }: Props): JSX.Element => {
   const tagName = post.tags ? post.tags[0] : 'Computer Science';
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },

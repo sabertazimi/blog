@@ -3,7 +3,7 @@ import { usePostsMetadata } from '@hooks';
 import MobilePostsGrid from './MobilePostsGrid';
 import DesktopPostsGrid from './DesktopPostsGrid';
 
-const PostsGrid = () => {
+const PostsGrid = (): JSX.Element => {
   const { posts } = usePostsMetadata();
 
   return (
