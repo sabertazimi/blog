@@ -85,7 +85,14 @@ module.exports = {
       options: {
         stages: ['develop'],
         extensions: ['js', 'jsx', 'ts', 'tsx'],
-        exclude: ['node_modules', '.cache', 'public'],
+        exclude: [
+          'node_modules',
+          '.cache',
+          'public',
+          'build',
+          'dist',
+          'coverage',
+        ],
       },
     },
     'gatsby-plugin-offline',
