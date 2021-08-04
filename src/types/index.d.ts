@@ -33,7 +33,7 @@ interface PostMetaType {
   author: string;
   date: string;
   tags: TagType[];
-  timeToRead: string;
+  timeToRead: number;
   prevPost: string;
   nextPost: string;
 }
