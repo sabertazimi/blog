@@ -4,12 +4,17 @@ import { Input, AutoComplete } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { usePostsMetadata } from '@hooks';
 
-const PostsSearchBar = () => {
+interface Option {
+  value: string;
+  label: React.ReactNode;
+}
+
+const PostsSearchBar = (): JSX.Element => {
   const { posts } = usePostsMetadata();
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<Option[]>([]);
 
   const handleSearch = useCallback(
-    (value) => {
+    (value: string) => {
       setOptions(
         value
           ? posts
