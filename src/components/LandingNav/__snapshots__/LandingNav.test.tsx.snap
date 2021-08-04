@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingNav should render routes correctly (snapshot) 1`] = `
+Array [
+  <nav
+    className="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 -translate-x-full"
+    role="navigation"
+  >
+    <a
+      className="mb-16"
+      href="/posts"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        Posts
+      </span>
+    </a>
+    <a
+      className="mb-16"
+      href="/tags"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        Tags
+      </span>
+    </a>
+    <a
+      className="mb-16"
+      href="/books"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        Books
+      </span>
+    </a>
+    <a
+      className="mb-16"
+      href="/about"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        About
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <span
+      className="anticon text-lg font-extrabold md:text-4xl text-light"
+      role="img"
+    >
+      <svg
+        fill="currentColor"
+        height="2em"
+        p-id="7522"
+        viewBox="0 0 1024 1024"
+        width="2em"
+      >
+        <path
+          d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 784H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 472H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+          p-id="7523"
+        />
+      </svg>
+    </span>
+  </div>,
+  <div
+    className="fixed top-0 left-0 z-10 block w-full h-full transition-all transform-gpu bg-black bg-opacity-0"
+    role="banner"
+  />,
+]
+`;
+
+exports[`LandingNav should render routes correctly (snapshot) 2`] = `
+Array [
+  <nav
+    className="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 translate-x-0"
+    role="navigation"
+  >
+    <a
+      className="mb-16"
+      href="/posts"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        Posts
+      </span>
+    </a>
+    <a
+      className="mb-16"
+      href="/tags"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        Tags
+      </span>
+    </a>
+    <a
+      className="mb-16"
+      href="/books"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        Books
+      </span>
+    </a>
+    <a
+      className="mb-16"
+      href="/about"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="link"
+    >
+      <span
+        className="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
+      >
+        About
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <span
+      className="anticon text-lg font-extrabold md:text-4xl text-light"
+      role="img"
+    >
+      <svg
+        fill="currentColor"
+        height="2em"
+        p-id="8392"
+        viewBox="0 0 1024 1024"
+        width="2em"
+      >
+        <path
+          d="M563.8 512l262.5-312.9c4.4-5.2 0.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9c-4.4 5.2-0.7 13.1 6.1 13.1h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+          p-id="8393"
+        />
+      </svg>
+    </span>
+  </div>,
+  <div
+    className="fixed top-0 left-0 z-10 block w-full h-full transition-all transform-gpu bg-black bg-opacity-80"
+    role="banner"
+  />,
+]
+`;
