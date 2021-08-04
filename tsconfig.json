@@ -1,6 +1,6 @@
 {
   "include": ["./src/**/*", "index.d.ts"],
-  "exclude": ["node_modules", "build", "dist", "public", "coverage"],
+  "exclude": ["node_modules", "build", "dist", "public", "coverage", "__mocks__"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
