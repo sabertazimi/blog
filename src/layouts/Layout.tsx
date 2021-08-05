@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Divider } from 'antd';
 import { Header, Footer, Container } from '@components';
 
 interface Props {
   banner: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Layout = ({ banner, children }: Props): JSX.Element => {

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { useSpring, animated } from 'react-spring';
 import landingImage from '@images/landing.jpg';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const LandingLayout = ({ children }: Props): JSX.Element => {

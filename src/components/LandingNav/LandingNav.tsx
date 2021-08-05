@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
 import classNames from 'classnames';
 import { RouteType } from '@config';
 import { Close, Hamburger } from '@components/Icons';
@@ -16,7 +16,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
   }, []);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <nav
         className={classNames(
           'fixed top-0 left-0',
@@ -64,7 +64,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
         )}
         role="banner"
       />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { ReactNode, useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Input, AutoComplete } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
@@ -6,7 +6,7 @@ import { usePostsMetadata } from '@hooks';
 
 interface Option {
   value: string;
-  label: React.ReactNode;
+  label: ReactNode;
 }
 
 const PostsSearchBar = (): JSX.Element => {

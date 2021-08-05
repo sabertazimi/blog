@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { Tooltip } from 'antd';
@@ -6,7 +6,7 @@ import { Tooltip } from 'antd';
 interface Props {
   title: string;
   to: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const LandingNavLink = ({ title, to, children }: Props): JSX.Element => (

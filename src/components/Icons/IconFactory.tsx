@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType, SVGProps } from 'react';
 import Icon from '@ant-design/icons';
 
 interface Props {
@@ -7,9 +7,7 @@ interface Props {
 
 type IconType = (props: Props) => JSX.Element;
 
-const IconFactory = (
-  svg: React.ComponentType<React.SVGProps<SVGSVGElement>>
-): IconType => {
+const IconFactory = (svg: ComponentType<SVGProps<SVGSVGElement>>): IconType => {
   const IconComponent = ({ className }: Props): JSX.Element => (
     <Icon component={svg} className={className} />
   );

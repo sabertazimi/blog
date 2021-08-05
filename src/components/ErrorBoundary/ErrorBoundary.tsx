@@ -1,8 +1,8 @@
-import React, { ErrorInfo } from 'react';
+import React, { ErrorInfo, ReactNode, Component } from 'react';
 import { Result, Typography } from 'antd';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 interface State {
@@ -11,7 +11,7 @@ interface State {
   errorInfo: ErrorInfo;
 }
 
-class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> {
   readonly state: State = {
     hasError: false,
     error: new Error(),
@@ -26,7 +26,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     });
   }
 
-  public render(): React.ReactNode {
+  public render(): ReactNode {
     const { hasError, error } = this.state;
     const { children } = this.props;
     const isDevelopment = process.env.NODE_ENV === 'development';

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { HTMLProps, CSSProperties, ReactNode } from 'react';
 
-interface Props extends React.HTMLProps<HTMLDivElement> {
+interface Props extends HTMLProps<HTMLDivElement> {
   className?: string;
-  style?: React.CSSProperties;
-  children: React.ReactNode;
+  style?: CSSProperties;
+  children: ReactNode;
 }
 
 const FlexContainer = ({

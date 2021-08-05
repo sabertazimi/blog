@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Divider } from 'antd';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const ArticleDivider = ({ children }: Props): JSX.Element => (

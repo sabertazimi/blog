@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { BackTop } from 'antd';
 import { Header, Footer, Container } from '@components';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const PostLayout = ({ children }: Props): JSX.Element => (

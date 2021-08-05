@@ -3,14 +3,14 @@
  * forked from `<Visibility />` React Semantic UI component,
  * https://github.com/Semantic-Org/Semantic-UI-React/blob/master/src/behaviors/Visibility/Visibility.js
  */
-import { useEffect, useRef, useCallback } from 'react';
+import { RefObject, useEffect, useRef, useCallback } from 'react';
 
 const useVisibility = ({
   ref,
   onBottomPassed,
   onBottomPassedReverse,
 }: {
-  ref: React.RefObject<HTMLElement>;
+  ref: RefObject<HTMLElement>;
   onBottomPassed: () => void;
   onBottomPassedReverse: () => void;
 }): void => {
