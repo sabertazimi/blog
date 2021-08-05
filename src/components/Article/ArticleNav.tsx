@@ -9,7 +9,7 @@ interface Props {
   post: PostMetaType;
 }
 
-const ArticleFooter = ({ post }: Props): JSX.Element => (
+const ArticleNav = ({ post }: Props): JSX.Element => (
   <FlexContainer className="justify-between">
     <Button
       className={classNames(
@@ -46,4 +46,4 @@ const ArticleFooter = ({ post }: Props): JSX.Element => (
   </FlexContainer>
 );
 
-export default ArticleFooter;
+export default ArticleNav;

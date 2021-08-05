@@ -7,7 +7,7 @@ import ArticleHeader from './ArticleHeader';
 import ArticleToc from './ArticleToc';
 import ArticleContent from './ArticleContent';
 import ArticleDivider from './ArticleDivider';
-import ArticleFooter from './ArticleFooter';
+import ArticleNav from './ArticleNav';
 import ArticleComments from './ArticleComments';
 
 interface Props {
@@ -49,7 +49,7 @@ const Article = ({ post, url }: Props): JSX.Element => {
         <ArticleToc toc={toc as string} />
         <ArticleContent content={html as string} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
-        <ArticleFooter post={postMetadata} />
+        <ArticleNav post={postMetadata} />
         <ArticleDivider>
           <Comment className="text-2xl text-primary" />
         </ArticleDivider>
