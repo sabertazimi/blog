@@ -2,15 +2,18 @@ import React, { ReactNode, useState, useCallback } from 'react';
 import { Link } from 'gatsby';
 import { Input, AutoComplete } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import { usePostsMetadata } from '@hooks';
+import { PostMetaType } from '@types';
+
+interface Props {
+  posts: PostMetaType[];
+}
 
 interface Option {
   value: string;
   label: ReactNode;
 }
 
-const PostsSearchBar = (): JSX.Element => {
-  const { posts } = usePostsMetadata();
+const PostsSearchBar = ({ posts }: Props): JSX.Element => {
   const [options, setOptions] = useState<Option[]>([]);
 
   const handleSearch = useCallback(

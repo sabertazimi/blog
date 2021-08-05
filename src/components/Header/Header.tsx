@@ -1,9 +1,14 @@
 import React, { useState, useRef, useCallback } from 'react';
+import { PostMetaType } from '@types';
 import { useVisibility } from '@hooks';
 import MobileNav from './MobileNav';
 import DesktopNav from './DesktopNav';
 
-const Header = (): JSX.Element => {
+interface Props {
+  posts: PostMetaType[];
+}
+
+const Header = ({ posts }: Props): JSX.Element => {
   const [navFixed, setNavFixed] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +29,7 @@ const Header = (): JSX.Element => {
   return (
     <div ref={headerRef}>
       <MobileNav />
-      <DesktopNav fixed={navFixed} />
+      <DesktopNav fixed={navFixed} posts={posts} />
     </div>
   );
 };

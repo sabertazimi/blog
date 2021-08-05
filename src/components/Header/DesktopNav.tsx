@@ -2,15 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { Menu } from 'antd';
+import { PostMetaType } from '@types';
 import { Routes } from '@config';
 import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
 
 interface Props {
   fixed: boolean;
+  posts: PostMetaType[];
 }
 
-const DesktopNav = ({ fixed }: Props): JSX.Element => (
+const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
     className={classNames(
       'fixed z-100 w-full font-extrabold transition transform-gpu border-transparent hidden md:visible md:flex',
@@ -58,7 +60,7 @@ const DesktopNav = ({ fixed }: Props): JSX.Element => (
         }
       )}
     >
-      <PostsSearchBar />
+      <PostsSearchBar posts={posts} />
     </Menu.Item>
   </Menu>
 );
