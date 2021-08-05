@@ -17,7 +17,7 @@ const About = ({ pageContext: { github } }: AboutPageProps): JSX.Element => {
 
   return (
     <Layout banner="About Me">
-      <GithubCard profile={profile} repos={repos} email={email} />
+      <GithubCard email={email} profile={profile} repos={repos} />
     </Layout>
   );
 };

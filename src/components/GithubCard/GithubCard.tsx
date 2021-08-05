@@ -7,12 +7,12 @@ import GithubCardContent from './GithubCardContent';
 import GithubRepoCard from './GithubRepoCard';
 
 interface Props {
-  profile: Profile;
-  repos: Repo[];
   email: string;
+  profile?: Profile;
+  repos?: Repo[];
 }
 
-const GithubCard = ({ profile, repos, email }: Props): JSX.Element => {
+const GithubCard = ({ email, profile, repos }: Props): JSX.Element => {
   if (profile && repos) {
     return (
       <Badge.Ribbon
