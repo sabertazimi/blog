@@ -18,7 +18,6 @@ describe('SocialButton', () => {
           />
         )
         .toJSON();
-
       expect(tree).toMatchSnapshot();
     }
   );
@@ -29,7 +28,6 @@ describe('SocialButton', () => {
         <SocialButton type="github" url="https://github.com" color="blue" />
       )
       .toJSON();
-
     expect(tree).toMatchSnapshot();
   });
 
