@@ -95,6 +95,12 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: false,
+      },
+    },
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-antd',
