@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ArticleNav = ({ post }: Props): JSX.Element => (
-  <FlexContainer className="justify-between">
+  <FlexContainer className="justify-between" role="navigation">
     <Button
       className={classNames(
         'w-full h-24 mb-6',
