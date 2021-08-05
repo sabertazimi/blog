@@ -12,9 +12,10 @@ import ArticleComments from './ArticleComments';
 
 interface Props {
   post: PostType;
+  url: string;
 }
 
-const Article = ({ post }: Props): JSX.Element => {
+const Article = ({ post, url }: Props): JSX.Element => {
   const {
     slug,
     title,
@@ -52,7 +53,7 @@ const Article = ({ post }: Props): JSX.Element => {
         <ArticleDivider>
           <Comment className="text-2xl text-primary" />
         </ArticleDivider>
-        <ArticleComments />
+        <ArticleComments url={url} />
         <SocialGroup />
       </Container>
     </div>

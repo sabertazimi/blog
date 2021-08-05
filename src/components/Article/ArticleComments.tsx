@@ -1,10 +1,13 @@
 import React from 'react';
-import { useDisqus, useSiteMetadata } from '@hooks';
+import { useDisqus } from '@hooks';
 import * as styles from './ArticleComments.module.css';
 
-const ArticleComments = (): JSX.Element => {
-  const { disqusUrl } = useSiteMetadata();
-  useDisqus(disqusUrl);
+interface Props {
+  url: string;
+}
+
+const ArticleComments = ({ url }: Props): JSX.Element => {
+  useDisqus(url);
 
   return <div id="disqus_thread" className={styles.disqus} />;
 };
