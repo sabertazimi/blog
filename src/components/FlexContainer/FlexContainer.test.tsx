@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import FlexContainer from './FlexContainer';
 
-describe('Container', () => {
+describe('FlexContainer', () => {
   test('should render correctly (snapshot)', () => {
     const tree = renderer
       .create(
