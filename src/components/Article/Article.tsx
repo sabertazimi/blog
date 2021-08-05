@@ -4,7 +4,7 @@ import Container from '@components/Container';
 import SocialGroup from '@components/SocialGroup';
 import { Comment } from '@components/Icons';
 import ArticleHeader from './ArticleHeader';
-import ArticleNav from './ArticleNav';
+import ArticleToc from './ArticleToc';
 import ArticleContent from './ArticleContent';
 import ArticleDivider from './ArticleDivider';
 import ArticleFooter from './ArticleFooter';
@@ -46,7 +46,7 @@ const Article = ({ post, url }: Props): JSX.Element => {
     <div>
       <ArticleHeader post={postMetadata} />
       <Container className="max-w-screen-lg px-6">
-        <ArticleNav toc={toc as string} />
+        <ArticleToc toc={toc as string} />
         <ArticleContent content={html as string} />
         <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
         <ArticleFooter post={postMetadata} />

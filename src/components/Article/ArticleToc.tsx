@@ -2,13 +2,13 @@ import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
 import { Button, Drawer } from 'antd';
 import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import * as styles from './ArticleNav.module.css';
+import * as styles from './ArticleToc.module.css';
 
 interface Props {
   toc: string;
 }
 
-const ArticleNav = ({ toc }: Props): JSX.Element => {
+const ArticleToc = ({ toc }: Props): JSX.Element => {
   const [tocVisible, setTocVisible] = useState(false);
 
   const handleClick = useCallback(
@@ -51,4 +51,4 @@ const ArticleNav = ({ toc }: Props): JSX.Element => {
   );
 };
 
-export default ArticleNav;
+export default ArticleToc;
