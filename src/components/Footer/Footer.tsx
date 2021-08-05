@@ -1,52 +1,53 @@
 import React from 'react';
 import { Row, Col, Divider } from 'antd';
-import { useBuildTime, useSiteMetadata } from '@hooks';
+import { SiteMetadata } from '@types';
 import { SocialType, SocialList } from '@config';
 import Container from '@components/Container';
 import SocialButton from '@components/SocialButton';
 
-const Footer = (): JSX.Element => {
-  const buildTime = useBuildTime();
-  const { author, socialList } = useSiteMetadata();
+interface Props {
+  buildTime: string;
+  author: SiteMetadata['author'];
+  socialList: SiteMetadata['socialList'];
+}
 
-  return (
-    <Container className="max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light">
-      <Row align="middle" justify="center">
-        <Col span={24}>
-          {Object.keys(SocialList).map((social) => (
-            <SocialButton
-              key={social}
-              className="mx-5 mt-0 mb-4"
-              type={social as SocialType}
-              url={`https://${social}.com/${socialList[social as SocialType]}`}
-            />
-          ))}
-        </Col>
-      </Row>
-      <Divider className="my-12 bg-light" />
-      <Row align="middle" justify="center">
-        <Col span={24}>
-          <span>
-            Copyright &copy;{' '}
-            <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
-            {new Date().getFullYear()}
-          </span>
-          <Divider className="bg-light" type="vertical" />
-          <span>
-            Built with <a href="https://reactjs.org">React</a> and{' '}
-            <a href="https://gatsbyjs.org">Gatsby</a>
-          </span>
-          <Divider className="bg-light" type="vertical" />
-          <span>
-            Last Updated at{' '}
-            <a href="https://www.google.com/search?q=time">
-              {new Date(buildTime).toLocaleString()}
-            </a>
-          </span>
-        </Col>
-      </Row>
-    </Container>
-  );
-};
+const Footer = ({ buildTime, author, socialList }: Props): JSX.Element => (
+  <Container className="max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light">
+    <Row align="middle" justify="center">
+      <Col span={24}>
+        {Object.keys(SocialList).map((social) => (
+          <SocialButton
+            key={social}
+            className="mx-5 mt-0 mb-4"
+            type={social as SocialType}
+            url={`https://${social}.com/${socialList[social as SocialType]}`}
+          />
+        ))}
+      </Col>
+    </Row>
+    <Divider className="my-12 bg-light" />
+    <Row align="middle" justify="center">
+      <Col span={24}>
+        <span>
+          Copyright &copy;{' '}
+          <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
+          {new Date().getFullYear()}
+        </span>
+        <Divider className="bg-light" type="vertical" />
+        <span>
+          Built with <a href="https://reactjs.org">React</a> and{' '}
+          <a href="https://gatsbyjs.org">Gatsby</a>
+        </span>
+        <Divider className="bg-light" type="vertical" />
+        <span>
+          Last Updated at{' '}
+          <a href="https://www.google.com/search?q=time">
+            {new Date(buildTime).toLocaleString()}
+          </a>
+        </span>
+      </Col>
+    </Row>
+  </Container>
+);
 
 export default Footer;
