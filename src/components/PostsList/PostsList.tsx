@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { List } from 'antd';
-import { PostType } from '@types';
+import { PostMetaType } from '@types';
 
 interface Props {
-  posts: PostType[];
+  posts: PostMetaType[];
 }
 
 const PostsList = ({ posts }: Props): JSX.Element => (

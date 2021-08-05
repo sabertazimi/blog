@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
-import { PostType, TagType } from '@types';
+import { PostMetaType, TagType } from '@types';
 import { usePostsMetadata } from '@hooks';
 import { Layout } from '@layouts';
 import { TagsCloud, PostsList } from '@components';
@@ -14,7 +14,7 @@ interface TagsPageProps extends PageProps {
 const Tags = ({ pageContext: { activeTag } }: TagsPageProps): JSX.Element => {
   const { posts, tags } = usePostsMetadata();
   const postsByTag = posts.filter(
-    (post: PostType) => post.tags && post.tags.includes(activeTag)
+    (post: PostMetaType) => post.tags && post.tags.includes(activeTag)
   );
 
   return (

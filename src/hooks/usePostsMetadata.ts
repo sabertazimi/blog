@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { PostType, TagType, TagsType } from '@types';
+import { PostMetaType, TagType, TagsType } from '@types';
 
 interface PostsMetadataNode {
   node: {
@@ -18,7 +18,7 @@ interface PostsMetadataNode {
 }
 
 const usePostsMetadata = (): {
-  posts: PostType[];
+  posts: PostMetaType[];
   tags: TagsType;
 } => {
   const data = useStaticQuery(
@@ -45,7 +45,7 @@ const usePostsMetadata = (): {
     `
   );
 
-  const posts: PostType[] = data.allMarkdownRemark.edges.map(
+  const posts: PostMetaType[] = data.allMarkdownRemark.edges.map(
     (
       { node }: PostsMetadataNode,
       index: number,

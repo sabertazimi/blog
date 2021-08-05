@@ -2,11 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { Button } from 'antd';
-import { PostType } from '@types';
+import { PostMetaType } from '@types';
 import FlexContainer from '@components/FlexContainer';
 
 interface Props {
-  post: PostType;
+  post: PostMetaType;
 }
 
 const ArticleFooter = ({ post }: Props): JSX.Element => (

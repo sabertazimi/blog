@@ -4,12 +4,12 @@ import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import { ReadOutlined } from '@ant-design/icons';
-import { PostType } from '@types';
+import { PostMetaType } from '@types';
 import { getColorByName } from '@config';
 import Container from '@components/Container';
 
 interface Props {
-  post: PostType;
+  post: PostMetaType;
 }
 
 const PostCard = ({ post }: Props): JSX.Element => {

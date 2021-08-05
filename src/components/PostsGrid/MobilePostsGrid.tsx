@@ -1,10 +1,10 @@
 import React from 'react';
-import { PostType } from '@types';
+import { PostMetaType } from '@types';
 import FlexContainer from '@components/FlexContainer';
 import PostCard from './PostCard';
 
 interface Props {
-  posts: PostType[];
+  posts: PostMetaType[];
 }
 
 const MobilePostsGrid = ({ posts }: Props): JSX.Element => (

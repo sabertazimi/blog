@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 import { Tag } from 'antd';
-import { PostType } from '@types';
+import { PostMetaType } from '@types';
 import { getColorByName } from '@config';
 
 interface Props {
-  post: PostType;
+  post: PostMetaType;
 }
 
 const ArticleHeader = ({ post }: Props): JSX.Element => {
