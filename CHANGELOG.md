@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/sabertazimi/blog/compare/v2.3.1...v2.4.0) (2021-08-05)
+
+
+### Features
+
+* **containers:** add Footer container ([e2d54e7](https://github.com/sabertazimi/blog/commit/e2d54e7c563248c2418d394a2f52e126521617bd))
+* **containers:** add Header container ([1c4b317](https://github.com/sabertazimi/blog/commit/1c4b3176c30306b49fc5825bfd366b7add0fb1ae))
+
+
+### Bug Fixes
+
+* **Article:** add a11y navigation role to Nav ([7102a69](https://github.com/sabertazimi/blog/commit/7102a69b8d2d654881d913c5749d1dc8ddae9ae0))
+* **layouts:** ship to Header and Footer containers ([3f02387](https://github.com/sabertazimi/blog/commit/3f023875a845814df6380bb28fffc9e474ffce89))
+
+
+### Building Work
+
+* **jest-badge:** generate jest coverage badge ([05f4664](https://github.com/sabertazimi/blog/commit/05f4664d92509c32f9a3faff6ebcc4dbc572856a))
+* **jest-badge:** generate jest coverage badge to build directory ([b0d7ab5](https://github.com/sabertazimi/blog/commit/b0d7ab5c3f5a14935e3be8de1030fa2a86fe21b7))
+* **jest:** add `json-summary` coverage reporter ([6174ebc](https://github.com/sabertazimi/blog/commit/6174ebc0c8100fbc84a73c43a727fdaaa1d1f22a))
+* **jest:** polish jest setup files ([de682fe](https://github.com/sabertazimi/blog/commit/de682fe7c36c454a9087b1d5bc9a260cf16eaf3d))
+* **paths:** add [@containers](https://github.com/containers) paths resolution ([9233457](https://github.com/sabertazimi/blog/commit/923345788421c2e6bc6acf8eec72f48e6c59d0b2))
+* **webpack:** add bundle analyzer support ([78d8be6](https://github.com/sabertazimi/blog/commit/78d8be615ead07adfc4e0483ae640135be155f36))
+
+
+### Testing
+
+* **Container:** add snapshot testing ([b9da6dc](https://github.com/sabertazimi/blog/commit/b9da6dcac725435e2d3b73e84ae8b764981bd12a))
+* **FlexContainer:** add snapshot testing ([7d03d9f](https://github.com/sabertazimi/blog/commit/7d03d9ff419485a5d9d542fb4e3e96225a559961))
+* **GithubCard:** add more testing ([27347b1](https://github.com/sabertazimi/blog/commit/27347b1497d48ad6d9e3d7a3405e7e66de105897))
+* **GithubCard:** add snapshot testing ([061c6e1](https://github.com/sabertazimi/blog/commit/061c6e1fc97f414f7e926b03466ab06af4bbf972))
+* **Icons:** add Icons snapshot testing ([e500903](https://github.com/sabertazimi/blog/commit/e500903029e22fe2cd2fdcba98688b03ddbf2899))
+* **mocks:** mock window.matchMedia function ([96066d3](https://github.com/sabertazimi/blog/commit/96066d30486bd3eb2ef299b68d804619012abbde))
+
 ### [2.3.1](https://github.com/sabertazimi/blog/compare/v2.3.0...v2.3.1) (2021-08-04)
 
 
