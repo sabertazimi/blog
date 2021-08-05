@@ -52,8 +52,8 @@ export declare type PostType = PostMetaType & Partial<PostContentType>;
 export interface Profile {
   username: string;
   avatar: string;
-  bio: string;
-  location: string;
+  bio?: string;
+  location?: string;
   url: string;
   followers: number;
   followersUrl: string;
