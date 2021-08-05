@@ -9,7 +9,7 @@ interface Props {
   post: PostMetaType;
 }
 
-const ArticleNav = ({ post }: Props): JSX.Element => (
+const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
   <FlexContainer className="justify-between" role="navigation">
     <Button
       className={classNames(
@@ -22,9 +22,9 @@ const ArticleNav = ({ post }: Props): JSX.Element => (
     >
       <Link
         className="font-extrabold text-light"
-        to={post.prevPost ? `${post.prevPost.slug}` : '/posts'}
+        to={prevPost ? prevPost.slug : '/posts'}
       >
-        {post.prevPost ? `${post.prevPost.title}` : 'Back to Home'}
+        {prevPost ? prevPost.title : 'Back to Home'}
       </Link>
     </Button>
     <Button
@@ -38,9 +38,9 @@ const ArticleNav = ({ post }: Props): JSX.Element => (
     >
       <Link
         className="font-extrabold text-light"
-        to={post.nextPost ? `${post.nextPost.slug}` : '/posts'}
+        to={nextPost ? nextPost.slug : '/posts'}
       >
-        {post.nextPost ? `${post.nextPost.title}` : 'Back to HomePage'}
+        {nextPost ? nextPost.title : 'Back to HomePage'}
       </Link>
     </Button>
   </FlexContainer>

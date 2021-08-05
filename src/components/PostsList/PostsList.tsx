@@ -11,15 +11,15 @@ const PostsList = ({ posts }: Props): JSX.Element => (
   <List
     className="mt-6"
     dataSource={posts}
-    renderItem={(post) => (
+    renderItem={({ slug, title }) => (
       <List.Item>
         <List.Item.Meta
           title={
             <Link
               className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
-              to={`${post.slug}`}
+              to={`${slug}`}
             >
-              {post.title}
+              {title}
             </Link>
           }
         />

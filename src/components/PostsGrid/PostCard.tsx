@@ -13,7 +13,8 @@ interface Props {
 }
 
 const PostCard = ({ post }: Props): JSX.Element => {
-  const tagName = post.tags ? post.tags[0] : 'Computer Science';
+  const { tags, slug, title, date, timeToRead } = post;
+  const tagName = tags ? tags[0] : 'Computer Science';
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },
@@ -35,16 +36,16 @@ const PostCard = ({ post }: Props): JSX.Element => {
           </Link>
         </Tag>
         <Typography.Title className="my-3" level={2}>
-          {post.title || 'Article'}
+          {title || 'Article'}
         </Typography.Title>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
-            Posted on {new Date(post.date).toDateString() || 'Nowadays'}{' '}
+            Posted on {new Date(date).toDateString() || 'Nowadays'}{' '}
           </div>
         </Tag>
         <Container className="mt-3">
           <Skeleton
-            paragraph={{ rows: Math.min(Math.floor(post.timeToRead / 2), 10) }}
+            paragraph={{ rows: Math.min(Math.floor(timeToRead / 2), 10) }}
           />
           {/* @TODO: Feature: Add loading progress state for PostCard click button */}
           <Button
@@ -55,7 +56,7 @@ const PostCard = ({ post }: Props): JSX.Element => {
               'button-primary'
             )}
           >
-            <Link to={`${post.slug}`}>
+            <Link to={`${slug}`}>
               <ReadOutlined />
             </Link>
           </Button>

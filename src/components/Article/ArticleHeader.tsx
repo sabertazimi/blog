@@ -11,6 +11,7 @@ interface Props {
 }
 
 const ArticleHeader = ({ post }: Props): JSX.Element => {
+  const { tags, title, date, timeToRead } = post;
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },
@@ -25,8 +26,8 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
       )}
     >
       <animated.div style={props}>
-        {post.tags ? (
-          post.tags.map((tag) => {
+        {tags ? (
+          tags.map((tag) => {
             return (
               <Tag key={tag} color={getColorByName(tag)}>
                 <Link className="text-base font-extrabold" to={`/tags/${tag}`}>
@@ -42,16 +43,14 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
             </Link>
           </Tag>
         )}
-        <h1 className="my-8 text-8xl text-light">{post.title || 'Article'}</h1>
+        <h1 className="my-8 text-8xl text-light">{title || 'Article'}</h1>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
-            Posted on {new Date(post.date).toDateString() || 'Nowadays'}
+            Posted on {new Date(date).toDateString() || 'Nowadays'}
           </div>
         </Tag>
         <Tag className="tag-black">
-          <div className="text-base font-extrabold">
-            ({post.timeToRead} minutes)
-          </div>
+          <div className="text-base font-extrabold">({timeToRead} minutes)</div>
         </Tag>
       </animated.div>
     </div>

@@ -49,7 +49,7 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
       <Container className="max-w-screen-lg px-6">
         <ArticleToc toc={toc as string} />
         <ArticleContent content={html as string} />
-        <ArticleDivider>{post.subtitle || 'Blog'}</ArticleDivider>
+        <ArticleDivider>{subtitle || 'Blog'}</ArticleDivider>
         <ArticleNav post={postMetadata} />
         <ArticleDivider>
           <Comment className="text-2xl text-primary" />

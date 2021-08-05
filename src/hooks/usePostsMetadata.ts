@@ -82,7 +82,7 @@ const usePostsMetadata = (): {
   );
 
   const tags: TagsType = posts
-    .map((post) => post.tags || [])
+    .map(({ tags }) => tags || [])
     .flat()
     .reduce((acc: TagsType, cur: TagType) => {
       if (!acc[cur]) acc[cur] = 0;
