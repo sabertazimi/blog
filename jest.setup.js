@@ -1,3 +1,1 @@
-global.___loader = {
-  enqueue: jest.fn(),
-};
+import '@testing-library/jest-dom/extend-expect';
