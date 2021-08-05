@@ -23,7 +23,7 @@ export interface SiteMetadata {
 export declare type TagType = string;
 export declare type TagsType = Record<TagType, number>;
 
-interface PostMetaType {
+export interface PostMetaType {
   slug: string;
   title: string;
   subtitle: string;
