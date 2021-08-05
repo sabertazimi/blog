@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { BackTop } from 'antd';
-import { Header, Footer, Container } from '@components';
+import { Container } from '@components';
+import { Header, Footer } from '@containers';
 
 interface Props {
   children: ReactNode;
