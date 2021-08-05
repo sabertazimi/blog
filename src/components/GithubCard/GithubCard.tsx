@@ -1,20 +1,18 @@
 import React from 'react';
 import { Avatar, Card, Badge, Typography } from 'antd';
-import { GitHubType } from '@types';
-import { useSiteMetadata } from '@hooks';
+import { Profile, Repo } from '@types';
 import { getColorByName } from '@config';
 import GithubCardHeader from './GithubCardHeader';
 import GithubCardContent from './GithubCardContent';
 import GithubRepoCard from './GithubRepoCard';
 
 interface Props {
-  github: GitHubType;
+  profile: Profile;
+  repos: Repo[];
+  email: string;
 }
 
-const GithubCard = ({ github }: Props): JSX.Element => {
-  const { profile, repos } = github;
-  const { email } = useSiteMetadata();
-
+const GithubCard = ({ profile, repos, email }: Props): JSX.Element => {
   if (profile && repos) {
     return (
       <Badge.Ribbon
