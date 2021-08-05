@@ -1,17 +1,16 @@
 import React from 'react';
-import { usePostsMetadata } from '@hooks';
+import { PostType } from '@types';
 import MobilePostsGrid from './MobilePostsGrid';
 import DesktopPostsGrid from './DesktopPostsGrid';
+interface Props {
+  posts: PostType[];
+}
 
-const PostsGrid = (): JSX.Element => {
-  const { posts } = usePostsMetadata();
-
-  return (
-    <>
-      <MobilePostsGrid posts={posts} />
-      <DesktopPostsGrid posts={posts} />
-    </>
-  );
-};
+const PostsGrid = ({ posts }: Props): JSX.Element => (
+  <>
+    <MobilePostsGrid posts={posts} />
+    <DesktopPostsGrid posts={posts} />
+  </>
+);
 
 export default PostsGrid;
