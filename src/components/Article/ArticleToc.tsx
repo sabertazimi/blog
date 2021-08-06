@@ -23,6 +23,7 @@ const ArticleToc = ({ toc }: Props): JSX.Element => {
         'top-8 right-28 z-max',
         'md:block'
       )}
+      role="navigation"
     >
       <Button
         className="button-primary"
