@@ -5,10 +5,10 @@ import Header from './Header';
 const basePosts = Array.from(Array(5).keys()).map((post) => ({
   slug: `/${post}BasicNotes/`,
   timeToRead: post,
+  title: `${post} Basic Notes`,
 }));
 const posts = basePosts.map((post, index) => ({
   ...post,
-  title: `${index} Basic Notes`,
   subtitle: 'Be a Stupid Learner',
   author: 'Sabertaz',
   date: '2018-08-08T00:00:00.000Z',

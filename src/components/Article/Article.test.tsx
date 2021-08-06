@@ -7,12 +7,12 @@ const socialUrl = 'https://example.com';
 const basePost = {
   slug: '/reduxBasicNotes/',
   timeToRead: 8,
+  title: 'Redux Basic Notes',
   excerpt: 'Redux Basic Notes Basic Concepts',
   html: '<h1>Redux Basic Notes</h1>',
 };
 const post = {
   ...basePost,
-  title: 'Redux Basic Notes',
   subtitle: 'Be a Stupid Learner',
   author: 'Sabertaz',
   date: '2018-08-08T00:00:00.000Z',

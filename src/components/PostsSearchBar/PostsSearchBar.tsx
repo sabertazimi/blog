@@ -21,17 +21,14 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
       setOptions(
         value
           ? posts
-              .filter(({ title }) => {
-                if (title) {
-                  return title.toLowerCase().includes(value.toLowerCase());
-                }
-                return true;
-              })
+              .filter(({ title }) =>
+                title.toLowerCase().includes(value.toLowerCase())
+              )
               .map(({ slug, title }) => ({
-                value: title || 'Article',
+                value: title,
                 label: (
                   <div>
-                    <Link to={`${slug}`}>{title || 'Article'}</Link>
+                    <Link to={`${slug}`}>{title}</Link>
                   </div>
                 ),
               }))

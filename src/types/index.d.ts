@@ -26,7 +26,7 @@ export declare type TagsType = Record<TagType, number>;
 export interface PostMetaType {
   slug: string;
   timeToRead: number;
-  title?: string;
+  title: string;
   subtitle?: string;
   author?: string;
   date?: string;

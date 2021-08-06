@@ -36,7 +36,7 @@ const PostCard = ({ post }: Props): JSX.Element => {
           </Link>
         </Tag>
         <Typography.Title className="my-3" level={2}>
-          {title || 'Article'}
+          {title}
         </Typography.Title>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">

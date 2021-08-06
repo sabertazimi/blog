@@ -43,7 +43,7 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
             </Link>
           </Tag>
         )}
-        <h1 className="my-8 text-8xl text-light">{title || 'Article'}</h1>
+        <h1 className="my-8 text-8xl text-light">{title}</h1>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
             Posted on {date ? new Date(date).toDateString() : 'Nowadays'}
