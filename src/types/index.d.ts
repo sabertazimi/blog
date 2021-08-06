@@ -42,9 +42,9 @@ export interface PostMetaType {
 }
 
 interface PostContentType {
-  excerpt: string;
-  toc: string;
-  html: string;
+  excerpt?: string;
+  toc?: string;
+  html?: string;
 }
 
 export declare type PostType = PostMetaType & PostContentType;
