@@ -46,7 +46,7 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
         <h1 className="my-8 text-8xl text-light">{title || 'Article'}</h1>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
-            Posted on {new Date(date).toDateString() || 'Nowadays'}
+            Posted on {date ? new Date(date).toDateString() : 'Nowadays'}
           </div>
         </Tag>
         <Tag className="tag-black">
