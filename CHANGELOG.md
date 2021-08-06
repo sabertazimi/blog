@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.1](https://github.com/sabertazimi/blog/compare/v2.4.0...v2.4.1) (2021-08-06)
+
+
+### Bug Fixes
+
+* **ArticleHeader:** add date type guard ([3c9415b](https://github.com/sabertazimi/blog/commit/3c9415b86b65ea64781a993e7fe7625b04b53995))
+* **ArticleToc:** add a11y navigation role ([b9b1b61](https://github.com/sabertazimi/blog/commit/b9b1b61a1c1be8ccecab4a877fb17c0fd153ef8b))
+* **PostsGrid:** add date type guard ([42747cf](https://github.com/sabertazimi/blog/commit/42747cfc0da4abf646cc14179f9c7ef315ca7bec))
+* **PostsSearchBar:** add post title type guard ([8df70f3](https://github.com/sabertazimi/blog/commit/8df70f3c6a678c04a35bfe4b2f53ebed9b096fac))
+
+
+### Building Work
+
+* **test:** only-changed for dev and all for CI ([460377a](https://github.com/sabertazimi/blog/commit/460377aefb7ce31f881f1f1461867d03031fbeca))
+
+
+### Testing
+
+* **__mocks__:** add ReactDOM.createPortal mock function ([312061e](https://github.com/sabertazimi/blog/commit/312061eacbc30a49a66f3f15c8a34e9b1e3f1c44))
+* **Article:** add Article snapshot testing ([c3bab18](https://github.com/sabertazimi/blog/commit/c3bab1899b46fc438aef21cba4fbee93fb735592))
+* **Article:** add partial Article snapshot testing ([e3eb45b](https://github.com/sabertazimi/blog/commit/e3eb45b8ae8f51a1078b69271c1ee4e0b0be6a76))
+* **Article:** remove toc test from Article.test.tsx ([3c419ec](https://github.com/sabertazimi/blog/commit/3c419ecf312f2e2e09b4a0b82a23359acffb6203))
+* **ArticleToc:** addd snapshot testing ([e0e7ab9](https://github.com/sabertazimi/blog/commit/e0e7ab9933be08403033d7ba520bf65e1bdc6b09))
+* **Header:** add snapshot testing ([68f8fd7](https://github.com/sabertazimi/blog/commit/68f8fd7586d066f14409e63035579d391c29b92d))
+* **mocks:** add animation frame function mocks ([93b4b48](https://github.com/sabertazimi/blog/commit/93b4b488a4c43acb262fa2216c2ec5ca52b748a4))
+* **PostsSearchBar:** add searching testing ([ceb7a62](https://github.com/sabertazimi/blog/commit/ceb7a62ab9573a953f921e4f5d0748c359c13eea))
+
 ## [2.4.0](https://github.com/sabertazimi/blog/compare/v2.3.1...v2.4.0) (2021-08-05)
 
 
