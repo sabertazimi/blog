@@ -40,7 +40,7 @@ const PostCard = ({ post }: Props): JSX.Element => {
         </Typography.Title>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
-            Posted on {new Date(date).toDateString() || 'Nowadays'}{' '}
+            Posted on {date ? new Date(date).toDateString() : 'Nowadays'}{' '}
           </div>
         </Tag>
         <Container className="mt-3">
