@@ -42,7 +42,7 @@ jobs:
           npm run lint --if-present
     - name: Testing
       run: |
-          npm run test --if-present
+          npm run test:all --if-present
     - name: Building work
       run: |
           npm run build:gh-pages

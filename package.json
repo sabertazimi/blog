@@ -21,7 +21,8 @@
     "release": "standard-version -s",
     "serve": "gatsby serve",
     "start": "concurrently \"npm:develop\" \"npm:test:watch\"",
-    "test": "jest",
+    "test": "jest -o",
+    "test:all": "jest",
     "test:badge": "node scripts/generateJestCoverageBadge.js",
     "test:watch": "jest --watch"
   },
