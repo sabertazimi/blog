@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagsCloud should render correctly with active tag (snapshot) 1`] = `
+<div>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#f59f00",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/JavaScript"
+    >
+      JavaScript
+         
+      10
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#767676",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/Web Development"
+    >
+      Web Development
+         
+      30
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#767676",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/Frontend Development"
+    >
+      Frontend Development
+         
+      20
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#767676",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/React"
+    >
+      React
+         
+      5
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#767676",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/Redux"
+    >
+      Redux
+         
+      1
+    </a>
+  </span>
+  <span
+    className="ant-tag mb-3 bg-primary border-primary"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold text-light"
+      href="/tags"
+    >
+      All
+    </a>
+  </span>
+</div>
+`;
+
+exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
+<div>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#7048e8",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/Web Development"
+    >
+      Web Development
+         
+      30
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#37b24d",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/Frontend Development"
+    >
+      Frontend Development
+         
+      20
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#f59f00",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/JavaScript"
+    >
+      JavaScript
+         
+      10
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#1890ff",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/React"
+    >
+      React
+         
+      5
+    </a>
+  </span>
+  <span
+    className="ant-tag ant-tag-has-color mb-3"
+    style={
+      Object {
+        "backgroundColor": "#1890ff",
+      }
+    }
+  >
+    <a
+      className="text-lg font-extrabold"
+      href="/tags/Redux"
+    >
+      Redux
+         
+      1
+    </a>
+  </span>
+</div>
+`;
