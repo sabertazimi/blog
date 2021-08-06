@@ -22,7 +22,7 @@
     "serve": "gatsby serve",
     "start": "concurrently \"npm:develop\" \"npm:test:watch\"",
     "test": "jest -o",
-    "test:all": "jest",
+    "test:all": "jest --verbose",
     "test:badge": "node scripts/generateJestCoverageBadge.js",
     "test:watch": "jest --watch"
   },
