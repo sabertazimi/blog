@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.2](https://github.com/sabertazimi/blog/compare/v2.4.1...v2.4.2) (2021-08-06)
+
+
+### Testing
+
+* **snapshot:** add snapshot testing for all components ([e0e3cda](https://github.com/sabertazimi/blog/commit/e0e3cdaa464484ef8872d63564bb94cc17854244))
+
 ### [2.4.1](https://github.com/sabertazimi/blog/compare/v2.4.0...v2.4.1) (2021-08-06)
 
 
