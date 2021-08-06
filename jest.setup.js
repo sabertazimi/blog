@@ -13,3 +13,9 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+window.requestAnimationFrame = function (callback) {
+  setTimeout(callback);
+};
+
+window.cancelAnimationFrame = window.clearTimeout;
