@@ -9,7 +9,6 @@ describe('Article', () => {
     slug: '/reduxBasicNotes/',
     timeToRead: 8,
     excerpt: 'Redux Basic Notes Basic Concepts',
-    toc: 'Redux Basic Notes ToC',
     html: '<h1>Redux Basic Notes</h1>',
   };
   const post = {
