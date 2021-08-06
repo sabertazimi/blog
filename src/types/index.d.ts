@@ -25,17 +25,17 @@ export declare type TagsType = Record<TagType, number>;
 
 export interface PostMetaType {
   slug: string;
-  title: string;
-  subtitle: string;
-  author: string;
-  date: string;
-  tags: TagType[];
   timeToRead: number;
-  prevPost: {
+  title?: string;
+  subtitle?: string;
+  author?: string;
+  date?: string;
+  tags?: TagType[];
+  prevPost?: {
     slug: string;
     title: string;
   };
-  nextPost: {
+  nextPost?: {
     slug: string;
     title: string;
   };
@@ -47,7 +47,7 @@ interface PostContentType {
   html: string;
 }
 
-export declare type PostType = PostMetaType & Partial<PostContentType>;
+export declare type PostType = PostMetaType & PostContentType;
 
 export interface Profile {
   username: string;
