@@ -42,7 +42,7 @@ const repos = [
 describe('GithubCard', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(
-      <GithubCard profile={profile} repos={repos} email={email} />
+      <GithubCard email={email} profile={profile} repos={repos} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
