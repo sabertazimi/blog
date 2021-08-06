@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 import GithubCard from './GithubCard';
 
 describe('GithubCard', () => {
@@ -41,21 +41,21 @@ describe('GithubCard', () => {
   ];
 
   test('should render correctly (snapshot)', () => {
-    const tree = renderer
-      .create(<GithubCard profile={profile} repos={repos} email={email} />)
-      .toJSON();
+    const tree = create(
+      <GithubCard profile={profile} repos={repos} email={email} />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly when missing bio and location data (snapshot)', () => {
-    const tree = renderer
-      .create(<GithubCard email={email} profile={baseProfile} repos={repos} />)
-      .toJSON();
+    const tree = create(
+      <GithubCard email={email} profile={baseProfile} repos={repos} />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly when missing github data (snapshot)', () => {
-    const tree = renderer.create(<GithubCard email={email} />).toJSON();
+    const tree = create(<GithubCard email={email} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

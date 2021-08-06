@@ -1,43 +1,48 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { create, act } from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import { Routes } from '@config';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {
   test('should render routes correctly (snapshot)', () => {
-    const component = renderer.create(<LandingNav routes={Routes} />);
-    let tree = component.toJSON() as renderer.ReactTestRendererJSON[];
+    const renderer = create(<LandingNav routes={Routes} />);
+    const tree = renderer.toJSON();
+    expect(tree).toMatchSnapshot();
 
-    expect(tree).toMatchSnapshot();
-    renderer.act(() => tree[1].props.onClick());
-    tree = component.toJSON() as renderer.ReactTestRendererJSON[];
-    expect(tree).toMatchSnapshot();
+    const instance = renderer.root;
+    const navButton = instance.find(
+      (node) => node.type === 'div' && node.props.role === 'button'
+    );
+    act(() => navButton.props.onClick());
+
+    const expandTree = renderer.toJSON();
+    expect(expandTree).toMatchSnapshot();
   });
 
   test('should render route with correct structure', () => {
     const { getByRole, getAllByRole } = render(<LandingNav routes={Routes} />);
     const nav = getByRole('navigation');
-    const links = getAllByRole('link');
-    const button = getByRole('button');
+    const navLinks = getAllByRole('link');
+    const navButton = getByRole('button');
     const icon = getByRole('img');
 
     expect(nav).toBeInTheDocument();
-    links.forEach((link) => expect(link).toBeInTheDocument());
-    expect(button).toBeInTheDocument();
+    navLinks.forEach((navLink) => expect(navLink).toBeInTheDocument());
+    expect(navButton).toBeInTheDocument();
     expect(icon).toBeInTheDocument();
 
-    links.forEach((link) => expect(nav).toContainElement(link));
-    expect(button).toContainElement(icon);
+    navLinks.forEach((navLink) => expect(nav).toContainElement(navLink));
+    expect(navButton).toContainElement(icon);
   });
 
   test('should expanded when clicked', () => {
     const { getByRole } = render(<LandingNav routes={Routes} />);
     const nav = getByRole('navigation');
     const overlay = getByRole('banner');
-    const button = getByRole('button');
+    const navButton = getByRole('button');
 
-    fireEvent.click(button);
+    fireEvent.click(navButton);
     expect(nav).toHaveClass('translate-x-0');
     expect(overlay).toHaveClass('bg-opacity-80');
   });

@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 import Article from './Article';
 
 describe('Article', () => {
@@ -36,24 +36,16 @@ describe('Article', () => {
   };
 
   test('should render correctly (snapshot)', () => {
-    const tree = renderer
-      .create(
-        <Article post={post} commentUrl={commentUrl} socialUrl={socialUrl} />
-      )
-      .toJSON();
+    const tree = create(
+      <Article post={post} commentUrl={commentUrl} socialUrl={socialUrl} />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly without partial data (snapshot)', () => {
-    const tree = renderer
-      .create(
-        <Article
-          post={basePost}
-          commentUrl={commentUrl}
-          socialUrl={socialUrl}
-        />
-      )
-      .toJSON();
+    const tree = create(
+      <Article post={basePost} commentUrl={commentUrl} socialUrl={socialUrl} />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

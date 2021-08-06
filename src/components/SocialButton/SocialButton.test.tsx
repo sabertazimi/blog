@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import { SocialType, SocialList } from '@config';
 import SocialButton from './SocialButton';
@@ -10,24 +10,20 @@ describe('SocialButton', () => {
   test.each(socialList)(
     'should render [%s] button correctly (snapshot)',
     (social) => {
-      const tree = renderer
-        .create(
-          <SocialButton
-            type={social as SocialType}
-            url={`https://${social}.com`}
-          />
-        )
-        .toJSON();
+      const tree = create(
+        <SocialButton
+          type={social as SocialType}
+          url={`https://${social}.com`}
+        />
+      ).toJSON();
       expect(tree).toMatchSnapshot();
     }
   );
 
   test('should render colorful button correctly (snapshot)', () => {
-    const tree = renderer
-      .create(
-        <SocialButton type="github" url="https://github.com" color="blue" />
-      )
-      .toJSON();
+    const tree = create(
+      <SocialButton type="github" url="https://github.com" color="blue" />
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
