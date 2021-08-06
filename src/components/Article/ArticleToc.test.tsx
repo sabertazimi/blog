@@ -3,9 +3,9 @@ import { create, act } from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import ArticleToc from './ArticleToc';
 
-describe('ArticleToc', () => {
-  const toc = 'Post Table of Contents';
+const toc = 'Post Table of Contents';
 
+describe('ArticleToc', () => {
   test('should render correctly (snapshot)', () => {
     const renderer = create(<ArticleToc toc={toc} />);
     const tree = renderer.toJSON();

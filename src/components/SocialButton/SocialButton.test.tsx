@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 import { SocialType, SocialList } from '@config';
 import SocialButton from './SocialButton';
 
-describe('SocialButton', () => {
-  const socialList = Object.keys(SocialList).concat('default');
+const socialList = Object.keys(SocialList).concat('default');
 
+describe('SocialButton', () => {
   test.each(socialList)(
     'should render [%s] button correctly (snapshot)',
     (social) => {
