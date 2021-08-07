@@ -3,10 +3,10 @@ name: Continuous Integration
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
+      - main
 
 jobs:
   build:
@@ -15,47 +15,47 @@ jobs:
     strategy:
       matrix:
         os:
-        - ubuntu-latest
+          - ubuntu-latest
         node-version:
-        - 16
+          - 16
         architecture:
-        - x64
+          - x64
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        submodules: true
-        fetch-depth: 1
-    - name: Setup Node environment
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        architecture: ${{ matrix.architecture }}
-        registry-url: https://registry.npmjs.org/
-        cache: 'npm'
-    - name: Installation
-      run: |
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Setup Node environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          architecture: ${{ matrix.architecture }}
+          registry-url: https://registry.npmjs.org/
+          cache: 'npm'
+      - name: Installation
+        run: |
           npm ci
-    - name: Linting
-      run: |
+      - name: Linting
+        run: |
           npm run lint --if-present
-    - name: Testing
-      run: |
+      - name: Testing
+        run: |
           npm run test:all --if-present
-    - name: Building work
-      run: |
+      - name: Building work
+        run: |
           npm run build:gh-pages
-    - name: List production artifacts
-      run: |
+      - name: List production artifacts
+        run: |
           ls -alhR ./public
-    - name: Deploy to Github Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.ref == 'refs/heads/main' }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-        force_orphan: true
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: ${{ github.event.head_commit.message }}
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: ${{ github.event.head_commit.message }}
