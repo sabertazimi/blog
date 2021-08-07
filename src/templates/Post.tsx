@@ -14,7 +14,6 @@ interface PostPageProps extends PageProps {
 
 const Post = ({ pageContext: { post } }: PostPageProps): JSX.Element => {
   const { disqusUrl } = useSiteMetadata();
-  // TODO: Bug: social share url from useLocation become `undefined`
   const { href: socialUrl } = useLocation();
 
   return (
