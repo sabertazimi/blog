@@ -15,12 +15,12 @@ const DesktopPostsGrid = ({ posts }: Props): JSX.Element => {
     <FlexContainer className="items-start hidden xl:visible xl:flex">
       <FlexContainer className="flex-col max-w-7/12">
         {leftPosts.map((post, index) => {
-          return <PostCard key={post.title || index} post={post} />;
+          return <PostCard key={index} post={post} />;
         })}
       </FlexContainer>
       <FlexContainer className="flex-col max-w-4/12">
         {rightPosts.map((post, index) => {
-          return <PostCard key={post.title || index} post={post} />;
+          return <PostCard key={index} post={post} />;
         })}
       </FlexContainer>
     </FlexContainer>
