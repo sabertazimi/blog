@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
 import classNames from 'classnames';
+import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 
 interface Props {

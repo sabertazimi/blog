@@ -1,13 +1,13 @@
-import React from 'react';
 import {
-  RocketOutlined,
-  GithubOutlined,
-  TwitterOutlined,
   FacebookOutlined,
+  GithubOutlined,
   LinkedinOutlined,
+  RocketOutlined,
+  TwitterOutlined,
   WeiboOutlined,
 } from '@ant-design/icons';
-import { SocialType, SocialList } from '@config';
+import { SocialList, SocialType } from '@config';
+import React from 'react';
 
 const SocialIcon = (type: SocialType): JSX.Element => {
   switch (type) {

@@ -1,8 +1,8 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { PostMetaType } from '@types';
 import { useVisibility } from '@hooks';
-import MobileNav from './MobileNav';
+import { PostMetaType } from '@types';
+import React, { useCallback, useRef, useState } from 'react';
 import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav';
 
 interface Props {
   posts: PostMetaType[];

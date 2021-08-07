@@ -1,10 +1,10 @@
-import React from 'react';
+import { getColorByName } from '@config';
+import { PostMetaType } from '@types';
+import { Tag } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
-import { useSpring, animated } from 'react-spring';
-import { Tag } from 'antd';
-import { PostMetaType } from '@types';
-import { getColorByName } from '@config';
+import React from 'react';
+import { animated, useSpring } from 'react-spring';
 
 interface Props {
   post: PostMetaType;

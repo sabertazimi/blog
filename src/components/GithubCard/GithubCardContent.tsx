@@ -1,11 +1,11 @@
-import React from 'react';
-import { Space } from 'antd';
 import {
-  InfoCircleOutlined,
   EnvironmentOutlined,
+  InfoCircleOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import { Profile } from '@types';
+import { Space } from 'antd';
+import React from 'react';
 
 interface Props {
   profile: Profile;

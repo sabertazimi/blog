@@ -1,6 +1,6 @@
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { render, fireEvent, waitFor } from '@testing-library/react';
 import PostsSearchBar from './PostsSearchBar';
 
 const basePosts = Array.from(Array(5).keys()).map((post) => ({

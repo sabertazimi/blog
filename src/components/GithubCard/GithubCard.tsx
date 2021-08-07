@@ -1,9 +1,9 @@
-import React from 'react';
-import { Avatar, Card, Badge, Typography } from 'antd';
-import { Profile, Repo } from '@types';
 import { getColorByName } from '@config';
-import GithubCardHeader from './GithubCardHeader';
+import { Profile, Repo } from '@types';
+import { Avatar, Badge, Card, Typography } from 'antd';
+import React from 'react';
 import GithubCardContent from './GithubCardContent';
+import GithubCardHeader from './GithubCardHeader';
 import GithubRepoCard from './GithubRepoCard';
 
 interface Props {

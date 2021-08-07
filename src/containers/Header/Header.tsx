@@ -1,6 +1,6 @@
-import React from 'react';
-import { usePostsMetadata } from '@hooks';
 import { Header as PureHeader } from '@components';
+import { usePostsMetadata } from '@hooks';
+import React from 'react';
 
 const Header = (): JSX.Element => {
   const { posts } = usePostsMetadata();

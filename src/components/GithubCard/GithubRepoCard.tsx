@@ -1,8 +1,8 @@
-import React from 'react';
-import { Card, Badge } from 'antd';
-import { StarOutlined, BranchesOutlined } from '@ant-design/icons';
-import { Repo } from '@types';
+import { BranchesOutlined, StarOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
+import { Repo } from '@types';
+import { Badge, Card } from 'antd';
+import React from 'react';
 
 interface Props {
   repo: Repo;

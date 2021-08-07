@@ -1,8 +1,8 @@
-import React from 'react';
-import classNames from 'classnames';
+import { SocialButton } from '@components';
+import { Color, Colors, SocialList, SocialQuery, SocialType } from '@config';
 import { Space } from 'antd';
-import { Color, Colors, SocialType, SocialList, SocialQuery } from '@config';
-import SocialButton from '@components/SocialButton';
+import classNames from 'classnames';
+import React from 'react';
 
 interface Props {
   url: string;

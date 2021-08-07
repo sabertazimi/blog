@@ -1,9 +1,9 @@
-import React from 'react';
-import { PageProps } from 'gatsby';
-import { TagType } from '@types';
+import { PostsList, TagsCloud } from '@components';
 import { usePostsMetadata } from '@hooks';
 import { Layout } from '@layouts';
-import { TagsCloud, PostsList } from '@components';
+import { TagType } from '@types';
+import { PageProps } from 'gatsby';
+import React from 'react';
 
 interface TagsPageProps extends PageProps {
   pageContext: {

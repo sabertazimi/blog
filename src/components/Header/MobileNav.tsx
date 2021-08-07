@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { Row, Col, Menu, Popover } from 'antd';
 import { BarsOutlined } from '@ant-design/icons';
 import { Routes } from '@config';
+import { Col, Menu, Popover, Row } from 'antd';
+import { Link } from 'gatsby';
 import logo from 'images/logo-full.png';
+import React from 'react';
 
 const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">

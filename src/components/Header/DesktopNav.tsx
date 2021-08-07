@@ -1,11 +1,11 @@
-import React from 'react';
+import { PostsSearchBar } from '@components';
+import { Routes } from '@config';
+import { PostMetaType } from '@types';
+import { Menu } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
-import { Menu } from 'antd';
-import { PostMetaType } from '@types';
-import { Routes } from '@config';
-import PostsSearchBar from '@components/PostsSearchBar';
 import logo from 'images/logo-full.png';
+import React from 'react';
 
 interface Props {
   fixed: boolean;

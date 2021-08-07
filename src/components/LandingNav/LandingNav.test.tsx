@@ -1,7 +1,7 @@
-import React from 'react';
-import { create, act } from 'react-test-renderer';
-import { render, fireEvent } from '@testing-library/react';
 import { Routes } from '@config';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
+import { act, create } from 'react-test-renderer';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {

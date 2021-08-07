@@ -1,6 +1,6 @@
-import React from 'react';
+import { FlexContainer } from '@components';
 import { PostMetaType } from '@types';
-import FlexContainer from '@components/FlexContainer';
+import React from 'react';
 import PostCard from './PostCard';
 
 interface Props {

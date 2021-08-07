@@ -1,11 +1,11 @@
 declare module '*.css';
 
-declare module '*.png' {
+declare module '*.jpg' {
   const value: unknown;
   export = value;
 }
 
-declare module '*.jpg' {
+declare module '*.png' {
   const value: unknown;
   export = value;
 }

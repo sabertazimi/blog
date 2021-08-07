@@ -1,7 +1,7 @@
+import { SocialList, SocialType } from '@config';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { render } from '@testing-library/react';
-import { SocialType, SocialList } from '@config';
 import SocialButton from './SocialButton';
 
 const socialList = Object.keys(SocialList).concat('default');

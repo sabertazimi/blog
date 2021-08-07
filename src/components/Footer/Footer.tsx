@@ -1,9 +1,8 @@
-import React from 'react';
-import { Row, Col, Divider } from 'antd';
+import { Container, SocialButton } from '@components';
+import { SocialList, SocialType } from '@config';
 import { SiteMetadata } from '@types';
-import { SocialType, SocialList } from '@config';
-import Container from '@components/Container';
-import SocialButton from '@components/SocialButton';
+import { Col, Divider, Row } from 'antd';
+import React from 'react';
 
 interface Props {
   buildTime: string | number | Date;

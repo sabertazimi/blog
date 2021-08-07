@@ -1,6 +1,6 @@
-import React from 'react';
-import { Row, Col } from 'antd';
 import { Book } from '@types';
+import { Col, Row } from 'antd';
+import React from 'react';
 import BookCard from './BookCard';
 
 interface Props {

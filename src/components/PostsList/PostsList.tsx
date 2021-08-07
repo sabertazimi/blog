@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { List } from 'antd';
 import { PostMetaType } from '@types';
+import { List } from 'antd';
+import { Link } from 'gatsby';
+import React from 'react';
 
 interface Props {
   posts: PostMetaType[];

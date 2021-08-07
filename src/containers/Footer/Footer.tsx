@@ -1,6 +1,6 @@
-import React from 'react';
-import { useBuildTime, useSiteMetadata } from '@hooks';
 import { Footer as PureFooter } from '@components';
+import { useBuildTime, useSiteMetadata } from '@hooks';
+import React from 'react';
 
 const Footer = (): JSX.Element => {
   const buildTime = useBuildTime();

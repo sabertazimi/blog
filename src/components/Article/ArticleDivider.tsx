@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import { Divider } from 'antd';
+import React, { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;

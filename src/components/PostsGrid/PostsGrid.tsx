@@ -1,7 +1,8 @@
-import React from 'react';
 import { PostMetaType } from '@types';
-import MobilePostsGrid from './MobilePostsGrid';
+import React from 'react';
 import DesktopPostsGrid from './DesktopPostsGrid';
+import MobilePostsGrid from './MobilePostsGrid';
+
 interface Props {
   posts: PostMetaType[];
 }

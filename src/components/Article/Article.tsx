@@ -1,14 +1,13 @@
-import React from 'react';
-import { PostType } from '@types';
-import Container from '@components/Container';
-import SocialGroup from '@components/SocialGroup';
+import { Container, SocialGroup } from '@components';
 import { Comment } from '@components/Icons';
-import ArticleHeader from './ArticleHeader';
-import ArticleToc from './ArticleToc';
+import { PostType } from '@types';
+import React from 'react';
+import ArticleComments from './ArticleComments';
 import ArticleContent from './ArticleContent';
 import ArticleDivider from './ArticleDivider';
+import ArticleHeader from './ArticleHeader';
 import ArticleNav from './ArticleNav';
-import ArticleComments from './ArticleComments';
+import ArticleToc from './ArticleToc';
 
 interface Props {
   post: PostType;

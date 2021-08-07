@@ -1,5 +1,5 @@
-import React from 'react';
 import { Layout } from '@layouts';
+import React from 'react';
 
 const NotFoundPage = (): JSX.Element => {
   return (

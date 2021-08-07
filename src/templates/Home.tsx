@@ -1,9 +1,9 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import { ErrorBoundary, LandingNav, TypingTitle } from '@components';
 import { Routes } from '@config';
 import { useSiteMetadata } from '@hooks';
 import { LandingLayout } from '@layouts';
-import { LandingNav, TypingTitle, ErrorBoundary } from '@components';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const Home = (): JSX.Element => {
   const { siteUrl, title, landingTitles } = useSiteMetadata();

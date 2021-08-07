@@ -1,8 +1,8 @@
-import React from 'react';
-import { Badge, Card } from 'antd';
 import { BookOutlined } from '@ant-design/icons';
-import { Book } from '@types';
 import { getColorByName } from '@config';
+import { Book } from '@types';
+import { Badge, Card } from 'antd';
+import React from 'react';
 
 interface Props {
   data: Book;

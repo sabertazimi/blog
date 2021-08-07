@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { Tag } from 'antd';
-import { TagType, TagsType } from '@types';
 import { Colors, getColorByName } from '@config';
+import { TagsType, TagType } from '@types';
+import { Tag } from 'antd';
+import { Link } from 'gatsby';
+import React from 'react';
 
 interface Props {
   tags: TagsType;

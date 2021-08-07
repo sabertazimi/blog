@@ -1,12 +1,12 @@
-import React from 'react';
+import { ReadOutlined } from '@ant-design/icons';
+import { Container } from '@components';
+import { getColorByName } from '@config';
+import { PostMetaType } from '@types';
+import { Button, Skeleton, Tag, Typography } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
-import { useSpring, animated } from 'react-spring';
-import { Button, Skeleton, Tag, Typography } from 'antd';
-import { ReadOutlined } from '@ant-design/icons';
-import { PostMetaType } from '@types';
-import { getColorByName } from '@config';
-import Container from '@components/Container';
+import React from 'react';
+import { animated, useSpring } from 'react-spring';
 
 interface Props {
   post: PostMetaType;

@@ -13,7 +13,7 @@
     "build:gh-pages": "gatsby build --prefix-paths && npm run test:badge",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,md,mdx,css}",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css}",
     "lint": "npm run lint:style && npm run lint:type-check",
     "lint:style": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src",
     "lint:type-check": "tsc --noEmit",

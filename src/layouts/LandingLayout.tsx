@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import classNames from 'classnames';
-import { useSpring, animated } from 'react-spring';
 import landingImage from '@images/landing.jpg';
+import classNames from 'classnames';
+import React, { ReactNode } from 'react';
+import { animated, useSpring } from 'react-spring';
 
 interface Props {
   children: ReactNode;

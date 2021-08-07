@@ -1,9 +1,9 @@
-import React from 'react';
-import { PageProps } from 'gatsby';
-import { GitHubType } from '@types';
+import { GithubCard } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { Layout } from '@layouts';
-import { GithubCard } from '@components';
+import { GitHubType } from '@types';
+import { PageProps } from 'gatsby';
+import React from 'react';
 
 interface AboutPageProps extends PageProps {
   pageContext: {

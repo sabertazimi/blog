@@ -1,10 +1,10 @@
-import React from 'react';
-import { PageProps } from 'gatsby';
-import { useLocation } from '@reach/router';
-import { PostType } from '@types';
+import { Article } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { PostLayout } from '@layouts';
-import { Article } from '@components';
+import { useLocation } from '@reach/router';
+import { PostType } from '@types';
+import { PageProps } from 'gatsby';
+import React from 'react';
 
 interface PostPageProps extends PageProps {
   pageContext: {

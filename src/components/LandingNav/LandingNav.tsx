@@ -1,7 +1,7 @@
-import React, { Fragment, useState, useCallback } from 'react';
-import classNames from 'classnames';
-import { RouteType } from '@config';
 import { Close, Hamburger } from '@components/Icons';
+import { RouteType } from '@config';
+import classNames from 'classnames';
+import React, { Fragment, useCallback, useState } from 'react';
 import LandingNavLink from './LandingNavLink';
 
 interface Props {

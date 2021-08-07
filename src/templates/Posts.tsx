@@ -1,7 +1,7 @@
-import React from 'react';
+import { PostsGrid } from '@components';
 import { usePostsMetadata } from '@hooks';
 import { Layout } from '@layouts';
-import { PostsGrid } from '@components';
+import React from 'react';
 
 const Posts = (): JSX.Element => {
   const { posts } = usePostsMetadata();
