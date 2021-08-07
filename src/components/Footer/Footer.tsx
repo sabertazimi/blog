@@ -6,7 +6,7 @@ import Container from '@components/Container';
 import SocialButton from '@components/SocialButton';
 
 interface Props {
-  buildTime: string;
+  buildTime: string | number | Date;
   author: SiteMetadata['author'];
   socialList: SiteMetadata['socialList'];
 }
@@ -42,7 +42,7 @@ const Footer = ({ buildTime, author, socialList }: Props): JSX.Element => (
         <span>
           Last Updated at{' '}
           <a href="https://www.google.com/search?q=time">
-            {new Date(buildTime).toLocaleString()}
+            {new Date(buildTime).toLocaleString('zh-CN')}
           </a>
         </span>
       </Col>
