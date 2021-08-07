@@ -41,7 +41,7 @@ describe('Article', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test('should render correctly without partial data (snapshot)', () => {
+  test('should render correctly with partial data (snapshot)', () => {
     const tree = create(
       <Article post={basePost} commentUrl={commentUrl} socialUrl={socialUrl} />
     ).toJSON();
