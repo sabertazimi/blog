@@ -14,17 +14,18 @@ const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
 
 describe('ErrorBoundary', () => {
   const OLD_ENV = process.env;
+  let mockConsoleError: jest.SpyInstance;
 
   beforeEach(() => {
     process.env = { ...OLD_ENV, NODE_ENV: 'development' };
-    jest.spyOn(console, 'error').mockImplementation(() => {
+    mockConsoleError = jest.spyOn(console, 'error').mockImplementation(() => {
       return;
     });
   });
 
   afterEach(() => {
     process.env = OLD_ENV;
-    (console.error as unknown as jest.SpyInstance).mockRestore();
+    mockConsoleError.mockRestore();
   });
 
   test('should render children correctly (snapshot)', () => {
@@ -53,6 +54,6 @@ describe('ErrorBoundary', () => {
     expect(queryByRole('alert')).not.toBeInTheDocument();
     rerender(<ComponentWithError shouldThrow />);
     expect(queryByRole('alert')).toBeInTheDocument();
-    expect(console.error).toHaveBeenCalledTimes(4);
+    expect(mockConsoleError).toHaveBeenCalledTimes(4);
   });
 });
