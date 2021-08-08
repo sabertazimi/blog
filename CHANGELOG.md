@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.3](https://github.com/sabertazimi/blog/compare/v2.4.2...v2.4.3) (2021-08-08)
+
+
+### Bug Fixes
+
+* **ErrorBoundary:** add a11y alert role ([7136808](https://github.com/sabertazimi/blog/commit/71368082a9eba6c5e311929bc5f328c62d94b576))
+* **Footer:** keep locale for snapshot testing ([9a74f15](https://github.com/sabertazimi/blog/commit/9a74f1533bb39557aab72652473c838c872cda4b))
+* **mocks:** add requestAnimationFrame missing return value ([e025b14](https://github.com/sabertazimi/blog/commit/e025b1412e5887875ea77bdc692183336bee81e2))
+* **PostsGrid:** use arry index as rendering ID ([b3c6177](https://github.com/sabertazimi/blog/commit/b3c6177f57e41404bd50274ce07f74190c5f7ae1))
+* **useVisibility:** log error message when missing refs ([353269a](https://github.com/sabertazimi/blog/commit/353269a35a0830dee5f8f12aec3051e2bb51fee4))
+
+
+### Building Work
+
+* **CI:** disable Jest verbose output ([1a86f8e](https://github.com/sabertazimi/blog/commit/1a86f8e4637f79ce095b5944f27bf2394c043a81))
+
+
+### Testing
+
+* **ArticleComments:** add snapshot testing ([c40074a](https://github.com/sabertazimi/blog/commit/c40074a0ae586eff04630fd02a954c0ef12ac9d5))
+* **ErrorBoundary:** add error rendering tests ([a2bdffe](https://github.com/sabertazimi/blog/commit/a2bdffe69a29fd6958254bd72485af24f673a980))
+* **hooks:** add graql related hooks testing ([6fde2c4](https://github.com/sabertazimi/blog/commit/6fde2c47623cdb34ef03d710c75d0665cf8da4f5))
+* **PostCard:** add snapshot testing ([01867b3](https://github.com/sabertazimi/blog/commit/01867b301d51d5805d3427177eca271b6fbaf36d))
+* **TypingTitle:** setup mock for typed.js module ([754029c](https://github.com/sabertazimi/blog/commit/754029c9a49840d49a2a23105f248367ba25d0a0))
+* **useVisibility:** add functional testing ([8d41f61](https://github.com/sabertazimi/blog/commit/8d41f6176d2ab9c273b8af7c05452fe4b92bc1b8))
+* **useVisibility:** imporve code coverage ([a073c6f](https://github.com/sabertazimi/blog/commit/a073c6f098ec27d7fb1642ed260e1e6c7c000faa))
+
 ### [2.4.2](https://github.com/sabertazimi/blog/compare/v2.4.1...v2.4.2) (2021-08-06)
 
 
