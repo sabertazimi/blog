@@ -4,10 +4,7 @@ const loadScript = (url: string) => {
   const script = document.createElement('script');
   script.src = `${url}/embed.js`;
   script.setAttribute('data-timestamp', (+new Date()).toString());
-
-  if (document.getElementById('disqus_thread')) {
-    (document.body || document.head).appendChild(script);
-  }
+  document.body.appendChild(script);
 };
 
 const useDisqus = (url: string): void => {
