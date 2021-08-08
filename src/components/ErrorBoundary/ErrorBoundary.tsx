@@ -34,7 +34,7 @@ class ErrorBoundary extends Component<Props, State> {
     if (hasError && isDevelopment) {
       return (
         <Result status="error" title="Some Error Happened">
-          <div>
+          <div role="alert">
             <Typography.Paragraph>
               <Typography.Text className="text-xl font-extrabold">
                 Please check the following information:
