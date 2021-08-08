@@ -14,18 +14,17 @@ const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
 
 describe('ErrorBoundary', () => {
   const OLD_ENV = process.env;
-  let spy: jest.SpyInstance;
 
   beforeEach(() => {
     process.env = { ...OLD_ENV, NODE_ENV: 'development' };
-    spy = jest.spyOn(console, 'error').mockImplementation(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {
       return;
     });
   });
 
   afterEach(() => {
     process.env = OLD_ENV;
-    spy.mockRestore();
+    (console.error as unknown as jest.SpyInstance).mockRestore();
   });
 
   test('should render children correctly (snapshot)', () => {
