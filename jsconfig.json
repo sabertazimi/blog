@@ -1,6 +1,13 @@
 {
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "build", "dist", "public", "coverage", "__mocks__"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "public",
+    "coverage",
+    "__mocks__"
+  ],
   "compilerOptions": {
     "target": "es5",
     "module": "es2015",
