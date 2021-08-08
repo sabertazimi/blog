@@ -30,7 +30,8 @@ const useVisibility = ({
     const oldBottomPassed = bottomPassed.current;
 
     if (!ref.current) {
-      throw new Error('Ref to HTML Element missing!');
+      console.error('Ref to HTML Element missing!');
+      return;
     }
 
     // calculate visibility
