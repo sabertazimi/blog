@@ -1,4 +1,4 @@
-import { Article } from '@components';
+import { Article, MetaHeader } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { PostLayout } from '@layouts';
 import { useLocation } from '@reach/router';
@@ -13,13 +13,16 @@ interface PostPageProps extends PageProps {
 }
 
 const Post = ({ pageContext: { post } }: PostPageProps): JSX.Element => {
-  const { disqusUrl } = useSiteMetadata();
+  const { disqusUrl, siteUrl, title } = useSiteMetadata();
   const { href: socialUrl } = useLocation();
 
   return (
-    <PostLayout>
-      <Article post={post} commentUrl={disqusUrl} socialUrl={socialUrl} />
-    </PostLayout>
+    <div>
+      <MetaHeader siteUrl={siteUrl} title={title} />
+      <PostLayout>
+        <Article post={post} commentUrl={disqusUrl} socialUrl={socialUrl} />
+      </PostLayout>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { GithubCard } from '@components';
+import { GithubCard, MetaHeader } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { Layout } from '@layouts';
 import { GitHubType } from '@types';
@@ -12,13 +12,16 @@ interface AboutPageProps extends PageProps {
 }
 
 const About = ({ pageContext: { github } }: AboutPageProps): JSX.Element => {
-  const { email } = useSiteMetadata();
+  const { email, siteUrl, title } = useSiteMetadata();
   const { profile, repos } = github;
 
   return (
-    <Layout banner="About Me">
-      <GithubCard email={email} profile={profile} repos={repos} />
-    </Layout>
+    <div>
+      <MetaHeader siteUrl={siteUrl} title={title} />
+      <Layout banner="About Me">
+        <GithubCard email={email} profile={profile} repos={repos} />
+      </Layout>
+    </div>
   );
 };
 

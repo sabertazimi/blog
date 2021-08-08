@@ -1,15 +1,18 @@
-import { BooksGrid } from '@components';
+import { BooksGrid, MetaHeader } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { Layout } from '@layouts';
 import React from 'react';
 
 const Books = (): JSX.Element => {
-  const { bookList } = useSiteMetadata();
+  const { siteUrl, title, bookList } = useSiteMetadata();
 
   return (
-    <Layout banner="Books">
-      <BooksGrid bookList={bookList} />
-    </Layout>
+    <div>
+      <MetaHeader siteUrl={siteUrl} title={title} />
+      <Layout banner="Books">
+        <BooksGrid bookList={bookList} />
+      </Layout>
+    </div>
   );
 };
 
