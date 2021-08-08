@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { create } from 'react-test-renderer';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -47,7 +47,7 @@ describe('ErrorBoundary', () => {
 
   test('should render alert message when error happened', () => {
     const { queryByRole, rerender } = render(<ComponentWithError />, {
-      wrapper: ErrorBoundary as React.ComponentType<unknown>,
+      wrapper: ErrorBoundary as ComponentType<unknown>,
     });
 
     expect(queryByRole('alert')).not.toBeInTheDocument();
