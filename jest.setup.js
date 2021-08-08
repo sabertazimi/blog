@@ -15,7 +15,7 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 window.requestAnimationFrame = function (callback) {
-  setTimeout(callback);
+  return setTimeout(callback);
 };
 
 window.cancelAnimationFrame = window.clearTimeout;
