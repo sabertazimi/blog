@@ -4,6 +4,9 @@ exports[`TypingTitle should render correctly (snapshot) 1`] = `
 <div
   className="w-full h-auto px-0 py-0 mx-auto my-0 text-5xl font-extrabold text-center typing-title-container lg:text-9xl"
 >
-  <span />
+  <span
+    aria-level={2}
+    role="heading"
+  />
 </div>
 `;
