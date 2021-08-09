@@ -1,6 +1,6 @@
+import { useTypingEffect } from '@hooks';
 import classNames from 'classnames';
-import React, { useEffect, useRef } from 'react';
-import Typed from 'typed.js';
+import React, { useRef } from 'react';
 
 interface Props {
   titles: string[];
@@ -18,24 +18,7 @@ const TypingTitle = ({
   className = '',
 }: Props): JSX.Element => {
   const ref = useRef<HTMLSpanElement>(null);
-  const typed = useRef<Typed | null>(null);
-
-  useEffect(() => {
-    const options = {
-      strings: [...titles],
-      smartBackspace: true,
-      typeSpeed: speed,
-      backSpeed: speed,
-      backDelay: delay,
-      loop,
-    };
-
-    typed.current = new Typed(ref.current as HTMLSpanElement, options);
-
-    return () => {
-      typed.current!.destroy();
-    };
-  }, [titles, speed, delay, loop]);
+  useTypingEffect(ref, { titles, speed, delay, loop });
 
   return (
     <div
