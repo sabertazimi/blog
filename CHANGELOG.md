@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/sabertazimi/blog/compare/v2.4.3...v2.5.0) (2021-08-09)
+
+
+### Features
+
+* **hooks:** move typing logic to useTypingEffect hook ([74838a9](https://github.com/sabertazimi/blog/commit/74838a9ba73968d15be45fa8a986dfc5501286ed))
+* **MetaHeader:** add MetaHeader component for a11y ([430f67d](https://github.com/sabertazimi/blog/commit/430f67d63aa2375940a6e22707a1c41958bff7db)), closes [#89](https://github.com/sabertazimi/blog/issues/89)
+
+
+### Bug Fixes
+
+* **MetaHeader:** add html lang attribute for a11y ([59e7174](https://github.com/sabertazimi/blog/commit/59e7174f38a7a0ddcd8bce88caf7bb3ed4970ea7))
+* **pages-404:** rectify css modules order conflict ([568602b](https://github.com/sabertazimi/blog/commit/568602b9748a16ea2401193b68e39b6b95bf5092))
+* **templates:** `import type` for type only imports ([aab1ff1](https://github.com/sabertazimi/blog/commit/aab1ff1135db8d279f28b4ab0ea2a7850ed8f2e7))
+* **templates:** add MetaHeader to all template components ([2351581](https://github.com/sabertazimi/blog/commit/235158132fc18af264ba293041ef9ddaddfaa540)), closes [#89](https://github.com/sabertazimi/blog/issues/89)
+* **TypingTitle:** change to useRef version ([530616e](https://github.com/sabertazimi/blog/commit/530616ebfd1592bd6fa860f3433d0aad278a960e))
+* **TypingTitles:** add a11y heading role to typing titles ([f7100d8](https://github.com/sabertazimi/blog/commit/f7100d829c19822c53c967fff7dff81d23e6df09))
+
+
+### Building Work
+
+* **deps-core:** bump gatsby from 3.10.2 to 3.11.1 ([bb0a78a](https://github.com/sabertazimi/blog/commit/bb0a78a5cc209daf561fb7beb7cb663bd0d8d63f))
+* **deps-dev:** bump @types/node from 16.4.10 to 16.4.13 ([7d42534](https://github.com/sabertazimi/blog/commit/7d42534bd18f6ff92c763a19afc05812651ba70a))
+* **deps-dev:** bump @types/react from 17.0.15 to 17.0.16 ([0e29878](https://github.com/sabertazimi/blog/commit/0e29878402aec92196783fe35304381a22ea4724))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([27a7ed0](https://github.com/sabertazimi/blog/commit/27a7ed096af7a9ea307cfab3a79da45ed9a80b4c))
+* **deps-dev:** bump @typescript-eslint/parser from 4.29.0 to 4.29.1 ([f6ef519](https://github.com/sabertazimi/blog/commit/f6ef519a3e7b7d0b5052c8863294d8ccbbac5853))
+* **deps-dev:** bump babel-preset-gatsby from 1.10.0 to 1.11.0 ([2a8ec57](https://github.com/sabertazimi/blog/commit/2a8ec578795485dc5d71135f0fb640f00daded70))
+* **deps-dev:** bump concurrently from 6.2.0 to 6.2.1 ([1d0ccf1](https://github.com/sabertazimi/blog/commit/1d0ccf198930962c3e4f4dae62952efd023589a4))
+* **deps-dev:** bump eslint-plugin-import from 2.23.4 to 2.24.0 ([9db77d2](https://github.com/sabertazimi/blog/commit/9db77d26164d68dfc1d8bbefd09e7f05f80c344b))
+* **deps-dev:** bump gatsby-plugin-catch-links from 3.10.0 to 3.11.0 ([c5c1018](https://github.com/sabertazimi/blog/commit/c5c1018c285f726627c2e66dd5c7d049cf233c3e))
+* **deps-dev:** bump gatsby-plugin-manifest from 3.10.0 to 3.11.0 ([ad1f685](https://github.com/sabertazimi/blog/commit/ad1f685c661579057e9a0cf7bf2a4ac9e08e7517))
+* **deps-dev:** bump gatsby-plugin-offline from 4.10.0 to 4.11.0 ([7a66068](https://github.com/sabertazimi/blog/commit/7a66068fd67988db6fa0990e38f97218195c8f0c))
+* **deps-dev:** bump gatsby-plugin-postcss from 4.10.0 to 4.11.0 ([1ac9bd2](https://github.com/sabertazimi/blog/commit/1ac9bd2d0c28503eb1778e0ebb4ae5c1fe7ec583))
+* **deps-dev:** bump gatsby-plugin-react-helmet from 4.10.0 to 4.11.0 ([14e7735](https://github.com/sabertazimi/blog/commit/14e77353d8d5a57aeab862e4aefa0480d0541c22))
+* **deps-dev:** bump gatsby-plugin-sitemap from 4.6.0 to 4.7.0 ([55db247](https://github.com/sabertazimi/blog/commit/55db247582b7cca0df8263d8e7f98acd5ac52f60))
+* **deps-dev:** bump gatsby-remark-autolink-headers from 4.7.0 to 4.8.0 ([3ed8f89](https://github.com/sabertazimi/blog/commit/3ed8f89b0db864bd1df48a70b202341b85094446))
+* **deps-dev:** bump gatsby-remark-copy-linked-files ([686c343](https://github.com/sabertazimi/blog/commit/686c3436bc98a6a9d64ea69d2abb14b1efcbb026))
+* **deps-dev:** bump gatsby-remark-prismjs from 5.7.0 to 5.8.0 ([f247f54](https://github.com/sabertazimi/blog/commit/f247f5410a01bbaf75bf861c94cc625f04ba1cdd))
+* **deps-dev:** bump gatsby-remark-smartypants from 4.7.0 to 4.8.0 ([ed54f1e](https://github.com/sabertazimi/blog/commit/ed54f1e2f0a7194df1e4feb71f4c89eec8c73521))
+* **deps-dev:** bump gatsby-source-filesystem from 3.10.0 to 3.11.0 ([646e069](https://github.com/sabertazimi/blog/commit/646e069d3755248d1598857ae3d7c62f19889d82))
+* **deps-dev:** bump gatsby-transformer-remark from 4.7.0 to 4.8.0 ([0b7d8c4](https://github.com/sabertazimi/blog/commit/0b7d8c43ddc88da8f4b3da936dc879498ef12a9a))
+* **deps:** bump @octokit/rest from 18.8.0 to 18.9.0 ([4570447](https://github.com/sabertazimi/blog/commit/457044787f238632d032001d49864037dfe4dea2))
+* **deps:** bump antd from 4.16.10 to 4.16.11 ([dc4ad98](https://github.com/sabertazimi/blog/commit/dc4ad98cf25675fd74ed18954baefe3df10623c7))
+
+
+### Testing
+
+* **useTypingEffect:** add test for useTypingEffect hook ([3971242](https://github.com/sabertazimi/blog/commit/397124224b87be801791cc731362afdcc7bc0db7))
+
 ### [2.4.3](https://github.com/sabertazimi/blog/compare/v2.4.2...v2.4.3) (2021-08-08)
 
 
