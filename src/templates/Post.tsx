@@ -3,7 +3,7 @@ import { useSiteMetadata } from '@hooks';
 import { PostLayout } from '@layouts';
 import { useLocation } from '@reach/router';
 import { PostType } from '@types';
-import { PageProps } from 'gatsby';
+import type { PageProps } from 'gatsby';
 import React from 'react';
 
 interface PostPageProps extends PageProps {

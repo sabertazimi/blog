@@ -2,7 +2,7 @@ import { MetaHeader, PostsList, TagsCloud } from '@components';
 import { usePostsMetadata, useSiteMetadata } from '@hooks';
 import { Layout } from '@layouts';
 import { TagType } from '@types';
-import { PageProps } from 'gatsby';
+import type { PageProps } from 'gatsby';
 import React from 'react';
 
 interface TagsPageProps extends PageProps {

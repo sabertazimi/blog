@@ -2,7 +2,7 @@ import { GithubCard, MetaHeader } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { Layout } from '@layouts';
 import { GitHubType } from '@types';
-import { PageProps } from 'gatsby';
+import type { PageProps } from 'gatsby';
 import React from 'react';
 
 interface AboutPageProps extends PageProps {
