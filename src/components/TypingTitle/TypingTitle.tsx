@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
 interface Props {
@@ -17,6 +17,9 @@ const TypingTitle = ({
   loop = true,
   className = '',
 }: Props): JSX.Element => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const typed = useRef<Typed | null>(null);
+
   useEffect(() => {
     const options = {
       strings: [...titles],
@@ -27,10 +30,10 @@ const TypingTitle = ({
       loop,
     };
 
-    const typed = new Typed('.typing-title', options);
+    typed.current = new Typed(ref.current as HTMLSpanElement, options);
 
     return () => {
-      typed.destroy();
+      typed.current!.destroy();
     };
   }, [titles, speed, delay, loop]);
 
@@ -43,7 +46,7 @@ const TypingTitle = ({
         className
       )}
     >
-      <span className="typing-title" />
+      <span ref={ref} />
     </div>
   );
 };
