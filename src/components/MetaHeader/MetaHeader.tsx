@@ -18,6 +18,7 @@ const MetaHeader = ({ siteUrl, title }: Props): JSX.Element => (
       <meta charSet="UTF-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="theme-color" content="#1890ff" />
       <meta name="description" content={title} />
       <title>{title}</title>
       <link rel="canonical" href={siteUrl} />

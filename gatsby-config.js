@@ -67,6 +67,8 @@ module.exports = {
         name: 'Sabertaz Blog',
         short_name: 'Blog',
         start_url: '/',
+        theme_color: '#1890ff',
+        background_color: '#f8f9fa',
         display: 'standalone',
         icon: 'src/images/favicon.ico',
         include_favicon: true,
