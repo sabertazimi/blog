@@ -67,6 +67,7 @@ const HeaderWithRef = (): JSX.Element => {
   );
 };
 
+// TODO: Test: rewrite hooks tests with react-hooks-testing-library
 describe('useVisibility', () => {
   let mockConsoleError: jest.SpyInstance;
 
