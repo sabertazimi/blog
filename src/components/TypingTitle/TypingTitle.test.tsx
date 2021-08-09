@@ -1,3 +1,4 @@
+import { render, waitFor } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import TypingTitle from './TypingTitle';
@@ -12,5 +13,12 @@ describe('TypingTitle', () => {
     const tree = renderer.toJSON();
     expect(tree).toMatchSnapshot();
     renderer.unmount();
+  });
+
+  test('should work correctly', async () => {
+    const { queryByRole } = render(<TypingTitle titles={landingTitles} />);
+    await waitFor(() => {
+      expect(queryByRole('heading')).toBeInTheDocument();
+    });
   });
 });
