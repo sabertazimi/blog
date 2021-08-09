@@ -9,7 +9,12 @@ interface Props {
 
 const MetaHeader = ({ siteUrl, title }: Props): JSX.Element => (
   <ErrorBoundary>
-    <Helmet key={siteUrl}>
+    <Helmet
+      key={siteUrl}
+      htmlAttributes={{
+        lang: 'en',
+      }}
+    >
       <meta charSet="UTF-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
