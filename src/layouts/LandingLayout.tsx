@@ -1,33 +1,25 @@
 import landingImage from '@images/landing.jpg';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
-import { animated, useSpring } from 'react-spring';
 
 interface Props {
   children: ReactNode;
 }
 
 const LandingLayout = ({ children }: Props): JSX.Element => {
-  const props = useSpring({
-    from: { opacity: 0, transform: 'translateY(-200px)' },
-    to: { opacity: 1, transform: 'translateY(0)' },
-    delay: 500,
-  });
-
   return (
-    <animated.div
+    <div
       className={classNames(
         'flex-col w-full h-screen p-0 m-0 overflow-x-hidden overflow-y-auto',
         'bg-center bg-no-repeat bg-cover text-light ',
         'flex-container'
       )}
       style={{
-        ...props,
         backgroundImage: `url("${landingImage}")`,
       }}
     >
       {children}
-    </animated.div>
+    </div>
   );
 };
 
