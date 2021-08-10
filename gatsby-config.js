@@ -17,7 +17,7 @@ module.exports = {
       {
         title: 'awesome-notes',
         author: 'sabertazimi',
-        url: 'https://notes.tazimi.dev',
+        url: 'https://sabertazimi.github.io/awesome-notes',
         description: 'Daily I Learned Notes',
       },
     ],
