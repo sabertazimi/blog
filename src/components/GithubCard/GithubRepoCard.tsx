@@ -1,7 +1,7 @@
 import { BranchesOutlined, StarOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
 import { Repo } from '@types';
-import { Badge, Card } from 'antd';
+import { Badge, Card, Tag } from 'antd';
 import React from 'react';
 
 interface Props {
@@ -20,7 +20,13 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
         </a>
       }
     >
-      <Card.Meta title={<span className="text-span">{repo.language}</span>} />
+      <Card.Meta
+        title={
+          <Tag className="mb-2" color={getColorByName(repo.language)}>
+            {repo.language}
+          </Tag>
+        }
+      />
       <StarOutlined className="text-2xl align-top" />
       <span className="text-span">{repo.stars}</span>
     </Card>
