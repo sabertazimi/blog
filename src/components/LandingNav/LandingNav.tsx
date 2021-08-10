@@ -42,6 +42,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
           'cursor-pointer top-12 left-12 z-100'
         )}
         role="button"
+        aria-labelledby="button"
         tabIndex={0}
         onClick={handleClick}
         onKeyDown={handleClick}
