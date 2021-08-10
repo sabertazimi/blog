@@ -357,6 +357,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **markdown-code:** add MacOS bar to `<code>` section ([a4dcce2](https://github.com/sabertazimi/blog/commit/a4dcce2801bdfb12341a627ed6ddf478a931e0e6))
 * **PostsSearchBar:** impl SearchBar with antd ([713fe1e](https://github.com/sabertazimi/blog/commit/713fe1e62fcfc7f4d2d70dc96b07f25fb8ff0b1a)), closes [#65](https://github.com/sabertazimi/blog/issues/65)
 * **Search:** complete basic UI for search ([7fcd3bc](https://github.com/sabertazimi/blog/commit/7fcd3bcb926fe2acb9cfcf8f4914704554f99c13)), closes [#55](https://github.com/sabertazimi/blog/issues/55)
+* **release:** add standard-version support ([8261270](https://github.com/sabertazimi/blog/commit/82612704fe139304bd2c05f3f17f2d90b6437f59))
 
 
 ### Bug Fixes
@@ -386,6 +387,3 @@ All notable changes to this project will be documented in this file. See [standa
 * **testing:** rectify testing ([aa7c5e9](https://github.com/sabertazimi/blog/commit/aa7c5e9b03e85a6e4ec7c1161b7cf9e02e211b11))
 * **TypingTitle:** add delay to effect hook deps ([8e71319](https://github.com/sabertazimi/blog/commit/8e713195e1c3a630e58c9f0b972251d45525036c))
 * **vulnerability:** bump deps version ([a0cee6a](https://github.com/sabertazimi/blog/commit/a0cee6a5fa21bd02bc02f1f9f6b219deae778ebb))
-
-
-* **release:** add standard-version support ([8261270](https://github.com/sabertazimi/blog/commit/82612704fe139304bd2c05f3f17f2d90b6437f59))
