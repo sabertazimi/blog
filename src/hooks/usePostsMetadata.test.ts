@@ -28,13 +28,15 @@ describe('usePostsMetadata', () => {
   test.each(testIterator)(
     `should return correct [%i / ${testCount}] post metadata`,
     (index) => {
-      jest.spyOn(gatsby, 'useStaticQuery').mockImplementation(() => {
-        return {
-          allMarkdownRemark: {
-            edges: Posts,
-          },
-        };
-      });
+      const mockUseStaticQuery = jest
+        .spyOn(gatsby, 'useStaticQuery')
+        .mockImplementation(() => {
+          return {
+            allMarkdownRemark: {
+              edges: Posts,
+            },
+          };
+        });
 
       const { posts, tags } = usePostsMetadata();
 
@@ -73,20 +75,22 @@ describe('usePostsMetadata', () => {
       expect(tags['Frontend Development']).toBe(5);
       expect(tags['Web Development']).toBe(5);
 
-      (gatsby.useStaticQuery as unknown as jest.SpyInstance).mockRestore();
+      mockUseStaticQuery.mockRestore();
     }
   );
 
   test.each(testIterator)(
     `should return correct [%i / ${testCount}] post metadata with partial data`,
     (index) => {
-      jest.spyOn(gatsby, 'useStaticQuery').mockImplementation(() => {
-        return {
-          allMarkdownRemark: {
-            edges: BasePosts,
-          },
-        };
-      });
+      const mockUseStaticQuery = jest
+        .spyOn(gatsby, 'useStaticQuery')
+        .mockImplementation(() => {
+          return {
+            allMarkdownRemark: {
+              edges: BasePosts,
+            },
+          };
+        });
 
       const { posts, tags } = usePostsMetadata();
 
@@ -118,7 +122,7 @@ describe('usePostsMetadata', () => {
       // Check correct empty tags data of post are returned
       expect(tags).toMatchObject({});
 
-      (gatsby.useStaticQuery as unknown as jest.SpyInstance).mockRestore();
+      mockUseStaticQuery.mockRestore();
     }
   );
 });

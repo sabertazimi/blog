@@ -25,15 +25,25 @@ const siteMetadata = {
 };
 
 describe('useSiteMetadata', () => {
-  test(`should return correct site metadata`, () => {
-    jest.spyOn(gatsby, 'useStaticQuery').mockImplementation(() => {
-      return {
-        site: {
-          siteMetadata,
-        },
-      };
-    });
+  let mockUseStaticQuery: jest.SpyInstance;
 
+  beforeEach(() => {
+    mockUseStaticQuery = jest
+      .spyOn(gatsby, 'useStaticQuery')
+      .mockImplementation(() => {
+        return {
+          site: {
+            siteMetadata,
+          },
+        };
+      });
+  });
+
+  afterEach(() => {
+    mockUseStaticQuery.mockRestore();
+  });
+
+  test(`should return correct site metadata`, () => {
     const {
       title,
       author,
@@ -66,7 +76,5 @@ describe('useSiteMetadata', () => {
         siteMetadata['bookList'][index]['description']
       );
     });
-
-    (gatsby.useStaticQuery as unknown as jest.SpyInstance).mockRestore();
   });
 });

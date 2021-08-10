@@ -4,18 +4,22 @@ import useBuildTime from './useBuildTime';
 const buildTime = new Date(2021, 0, 1, 8, 0, 0).toLocaleString('zh-CN');
 
 describe('useBuildTime', () => {
-  beforeAll(() => {
-    jest.spyOn(gatsby, 'useStaticQuery').mockImplementation(() => {
-      return {
-        site: {
-          buildTime,
-        },
-      };
-    });
+  let mockUseStaticQuery: jest.SpyInstance;
+
+  beforeEach(() => {
+    mockUseStaticQuery = jest
+      .spyOn(gatsby, 'useStaticQuery')
+      .mockImplementation(() => {
+        return {
+          site: {
+            buildTime,
+          },
+        };
+      });
   });
 
-  afterAll(() => {
-    (gatsby.useStaticQuery as unknown as jest.SpyInstance).mockRestore();
+  afterEach(() => {
+    mockUseStaticQuery.mockRestore();
   });
 
   test('should return date time', () => {
