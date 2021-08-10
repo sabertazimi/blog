@@ -256,7 +256,12 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
                   className="ant-card-meta-title"
                 >
                   <span
-                    className="text-span"
+                    className="ant-tag ant-tag-has-color mb-2"
+                    style={
+                      Object {
+                        "backgroundColor": "#d7336c",
+                      }
+                    }
                   >
                     C
                   </span>
@@ -373,7 +378,12 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
                   className="ant-card-meta-title"
                 >
                   <span
-                    className="text-span"
+                    className="ant-tag ant-tag-has-color mb-2"
+                    style={
+                      Object {
+                        "backgroundColor": "#f59f00",
+                      }
+                    }
                   >
                     JavaScript
                   </span>
@@ -490,7 +500,12 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
                   className="ant-card-meta-title"
                 >
                   <span
-                    className="text-span"
+                    className="ant-tag ant-tag-has-color mb-2"
+                    style={
+                      Object {
+                        "backgroundColor": "#7048e8",
+                      }
+                    }
                   >
                     Zsh
                   </span>
@@ -829,7 +844,12 @@ exports[`GithubCard should render correctly when missing bio and location data (
                   className="ant-card-meta-title"
                 >
                   <span
-                    className="text-span"
+                    className="ant-tag ant-tag-has-color mb-2"
+                    style={
+                      Object {
+                        "backgroundColor": "#d7336c",
+                      }
+                    }
                   >
                     C
                   </span>
@@ -946,7 +966,12 @@ exports[`GithubCard should render correctly when missing bio and location data (
                   className="ant-card-meta-title"
                 >
                   <span
-                    className="text-span"
+                    className="ant-tag ant-tag-has-color mb-2"
+                    style={
+                      Object {
+                        "backgroundColor": "#f59f00",
+                      }
+                    }
                   >
                     JavaScript
                   </span>
@@ -1063,7 +1088,12 @@ exports[`GithubCard should render correctly when missing bio and location data (
                   className="ant-card-meta-title"
                 >
                   <span
-                    className="text-span"
+                    className="ant-tag ant-tag-has-color mb-2"
+                    style={
+                      Object {
+                        "backgroundColor": "#7048e8",
+                      }
+                    }
                   >
                     Zsh
                   </span>
