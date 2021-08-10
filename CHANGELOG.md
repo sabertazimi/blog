@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/sabertazimi/blog/compare/v2.5.0...v2.6.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* **css-fonts:** remove custom fonts ([51e88d8](https://github.com/sabertazimi/blog/commit/51e88d84effae20204b1d6bcf703209cbbd2d746))
+* **GithubRepoCard:** move language field to Tag ([070541c](https://github.com/sabertazimi/blog/commit/070541c40412ad3b09978a8a0f1635bee8f3cdd5))
+* **LandingNav:** add aria-labelledby a11y access name ([359f674](https://github.com/sabertazimi/blog/commit/359f674741d21c1bebc48d7a06ac53a7f9913072))
+* **LandingNav:** remove invalid ARIA value ([82e1871](https://github.com/sabertazimi/blog/commit/82e18716c6cf2017302e19203dde7bec20d98ab1)), closes [#89](https://github.com/sabertazimi/blog/issues/89)
+* **PWA:** add missing theme color for PWA ([1335db6](https://github.com/sabertazimi/blog/commit/1335db68ca0380547c0a047a7f92fcf4c03983e7))
+
+
+### Testing
+
+* **hooks:** add react hooks testing library support ([d55e343](https://github.com/sabertazimi/blog/commit/d55e343f653657effabd7449fe07f873fb78cd21))
+* **mocks:** explicit jest spy instance ([d5e0cfd](https://github.com/sabertazimi/blog/commit/d5e0cfdfba36d7f13af3cd754e233c446b347fb6))
+
+
+### Performance
+
+* **LandingLayout:** remove React spring in landing page ([8de6dfa](https://github.com/sabertazimi/blog/commit/8de6dfa04056885b84702b8105a142105526296b))
+
 ## [2.5.0](https://github.com/sabertazimi/blog/compare/v2.4.3...v2.5.0) (2021-08-09)
 
 
