@@ -4,7 +4,7 @@ const { spawnSync } = require('child_process');
 const fetch = require('node-fetch');
 
 const SummaryFilePath = 'coverage/coverage-summary.json';
-const OutputBadgePath = './public';
+const OutputBadgePath = 'public';
 const CoverageType = ['statements', 'branches', 'functions', 'lines'];
 const BadgeStyle = [
   'for-the-badge',
@@ -22,74 +22,34 @@ const getCoveragePercentage = (summaryFilePath, coverageType) => {
 const getBadgeColor = (percentage) => {
   if (percentage < 80) return 'red';
   if (percentage < 90) return 'yellow';
-
   return 'brightgreen';
 };
 
 const getBadgeUrl = (summaryFilePath, coverageType, badgeStyle) => {
   const percentage = getCoveragePercentage(summaryFilePath, coverageType);
-  if (percentage === undefined) return;
-
   const coverage = `${percentage}${encodeURI('%')}`;
   const color = getBadgeColor(percentage);
   const url = `https://img.shields.io/badge/${coverageType}-${coverage}-${color}?logo=jest&style=${badgeStyle}`;
-
   return url;
 };
 
 const downloadBadgeFile = async (url) => {
-  try {
-    const response = await fetch(url);
-    const data = await response.text();
-
-    return data;
-  } catch (err) {
-    console.error(`Unable to retrieve data from ${url}`);
-    return '';
-  }
+  const response = await fetch(url);
+  const data = await response.text();
+  return data;
 };
+
 const generateCoverageFile = async (
   summaryFilePath,
   coverageType,
   badgeStyle,
   outputDir
 ) => {
-  if (outputDir) {
-    try {
-      spawnSync('mkdir', ['-p', outputDir]);
-    } catch (e) {
-      console.error(`Unable to create output directory: ${outputDir}`);
-      return;
-    }
-  }
-
+  spawnSync('mkdir', ['-p', outputDir]);
   const badgeUrl = getBadgeUrl(summaryFilePath, coverageType, badgeStyle);
-
-  if (!badgeUrl) {
-    console.error(
-      `Generate coverage badge: missing badge URL for ${coverageType}`
-    );
-    return;
-  }
-
   const output = path.join(outputDir, `coverage-${coverageType}.svg`);
   const file = await downloadBadgeFile(badgeUrl);
-
-  if (file.length > 0) {
-    try {
-      fs.writeFileSync(output, file, { encoding: 'utf8' });
-    } catch (e) {
-      console.error(
-        `Generate coverage badge: no file to write for ${coverageType}`
-      );
-      return;
-    }
-  } else {
-    console.error(
-      `Generate coverage badge: no file to write for ${coverageType}`
-    );
-    return;
-  }
+  fs.writeFileSync(output, file, { encoding: 'utf8' });
 };
 
 const main = () => {
