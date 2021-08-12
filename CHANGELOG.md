@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.1](https://github.com/sabertazimi/blog/compare/v2.6.0...v2.6.1) (2021-08-12)
+
+
+### Building Work
+
+* **CI:** add `coveralls` support ([0127f30](https://github.com/sabertazimi/blog/commit/0127f308d836b7dd390ecea6af4be22bd67c7211))
+* **deps-dev:** bump @octokit/types from 6.24.0 to 6.25.0 ([412ecb4](https://github.com/sabertazimi/blog/commit/412ecb40cbf12c033829769af036b8c1d3834122))
+* **deps-dev:** bump @types/jest from 26.0.24 to 27.0.0 ([f03006b](https://github.com/sabertazimi/blog/commit/f03006b569d2bc984e0c4e69e9cc9c191c9bb289))
+* **deps-dev:** bump @types/node from 16.4.13 to 16.4.14 ([e400c5d](https://github.com/sabertazimi/blog/commit/e400c5d28cd0be17bccf3ab1e372fc8cda420ac3))
+* **deps-dev:** bump @types/node from 16.4.14 to 16.6.0 ([500ecab](https://github.com/sabertazimi/blog/commit/500ecab203e49b666cd8f7f692762cc12ac15ad0))
+* **deps-dev:** bump @types/react from 17.0.16 to 17.0.17 ([e511853](https://github.com/sabertazimi/blog/commit/e511853b281e75663d38a164b231ea900abb29dc))
+* **Jest-badge:** remove redundant error checking ([819515b](https://github.com/sabertazimi/blog/commit/819515b1aa9ff118544466adf988e5db847b38f4))
+* **Site Metadata:** change URL of `awesome-notes` book ([228f357](https://github.com/sabertazimi/blog/commit/228f35721ceb914e278004359dbc1384175c6382))
+
 ## [2.6.0](https://github.com/sabertazimi/blog/compare/v2.5.0...v2.6.0) (2021-08-10)
 
 
