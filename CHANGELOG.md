@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/sabertazimi/blog/compare/v2.6.1...v2.7.0) (2021-08-13)
+
+
+### Building Work
+
+* **deps:** user event tesing support ([6e6ad84](https://github.com/sabertazimi/blog/commit/6e6ad84e74b906ffc195eb28eb4aa4335c03d971))
+* **Jest-coverage:** ignore scroll-related code ([b99bf84](https://github.com/sabertazimi/blog/commit/b99bf848d1bd7b53a37c4472f0a8ffc08b4ad720)), closes [testing-library/react-testing-library#671](https://github.com/testing-library/react-testing-library/issues/671) [enzymejs/enzyme#426](https://github.com/enzymejs/enzyme/issues/426)
+
 ### [2.6.1](https://github.com/sabertazimi/blog/compare/v2.6.0...v2.6.1) (2021-08-12)
 
 
