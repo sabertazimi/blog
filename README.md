@@ -127,39 +127,61 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 ```bash
 .
 ├── node_modules
+├── __mocks__
+├── scripts
 ├── src
 ├── .gitignore
-├── .prettierrc
 ├── .tokeignore
+├── .eslintrc.json
+├── .markdownlint.json
+├── .prettierrc.json
+├── .versionrc.json
 ├── gatsby-browser.js
 ├── gatsby-config.js
 ├── gatsby-node.js
 ├── gatsby-ssr.js
+├── jest.config.js
+├── jest.env.setup.js
+├── jest.setup.js
+├── jest.transformer.js
+├── index.d.ts
 ├── jsconfig.json
+├── tsconfig.json
 ├── postcss.config.js
 ├── tailwind.config.js
 ├── LICENSE
-├── package-lock.json
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
 
 1. **`/node_modules`**: This directory contains all of the modules of code.
-2. **`/src`**: This directory contains all of the code related to the front-end.
-3. **`.gitignore`**: This file tells git which files it should not track.
-4. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
-5. **`.tokeignore`**: This is a configuration file for [Code Lines](https://github.com/XAMPPRocky/tokei).
-6. **`gatsby-browser.js`**: This file is usage of the [Gatsby Browser APIs](https://www.gatsbyjs.com/docs/browser-apis).
-7. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site.
-8. **`gatsby-node.js`**: This file is usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis).
-9. **`gatsby-ssr.js`**: This file is usage of the [Gatsby Server Side Rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis).
-10. **`jsconfig.json`**: This is a configuration file for [VSCode](https://code.visualstudio.com).
-11. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
-12. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com/).
-13. **`LICENSE`**: This Gatsby starter is licensed under the `MIT` license.
-14. **`package.json`**: A manifest file for Node.js projects.
-15. **`package-lock.json`**: This is automatically generated file based on NPM dependencies.
-16. **`README.md`**: A text file containing useful reference information.
+2. **`/__mocks__`**: mock API for 3rd-party libraries for Jest testing.
+3. **`/src`**: This directory contains all of the code related to the front-end.
+4. **`/scripts`**: CI related-scripts written in JavaScript.
+5. **`.gitignore`**: This file tells git which files it should not track.
+6. **`.tokeignore`**: This is a configuration file for [Code Lines](https://github.com/XAMPPRocky/tokei).
+7. **`.eslintrc.json`**: This is a configuration file for [ESLint](https://eslint.org).
+8. **`.markdownlint.json`**: This is a configuration file for [MarkdownLint](https://github.com/DavidAnson/markdownlint).
+9. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
+10. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
+11. **`gatsby-browser.js`**: This file is usage of the [Gatsby Browser APIs](https://www.gatsbyjs.com/docs/browser-apis).
+12. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site.
+13. **`gatsby-node.js`**: This file is usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis).
+14. **`gatsby-ssr.js`**: This file is usage of the [Gatsby Server Side Rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis).
+15. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
+16. **`jest.env.setup.js`**: This is Jest environment setup script.
+17. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
+18. **`jest.transformer.js`**: This is TypeScript testing code transformer for Jest.
+19. **`index.d.ts`**: This is types definition for static assets (like `CSS`/`JPG`/`PNG`).
+20. **`jsconfig.json`**: This is a configuration file for [VSCode](https://code.visualstudio.com).
+21. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
+22. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
+23. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
+24. **`LICENSE`**: This Gatsby starter is licensed under the `MIT` license.
+25. **`package.json`**: A manifest file for Node.js projects.
+26. **`package-lock.json`**: This is automatically generated file based on NPM dependencies.
+27. **`README.md`**: A text file containing useful reference information.
 
 ## Contact
 
