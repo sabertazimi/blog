@@ -147,7 +147,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 1. **`/node_modules`**: This directory contains all of the modules of code.
 2. **`/src`**: This directory contains all of the code related to the front-end.
 3. **`.gitignore`**: This file tells git which files it should not track.
-4. **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io).
+4. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
 5. **`.tokeignore`**: This is a configuration file for [Code Lines](https://github.com/XAMPPRocky/tokei).
 6. **`gatsby-browser.js`**: This file is usage of the [Gatsby Browser APIs](https://www.gatsbyjs.com/docs/browser-apis).
 7. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site.
