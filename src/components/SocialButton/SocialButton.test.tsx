@@ -9,7 +9,7 @@ const socialList = Object.keys(SocialList).concat('default');
 describe('SocialButton', () => {
   test.each(socialList)(
     'should render [%s] button correctly (snapshot)',
-    (social) => {
+    social => {
       const tree = create(
         <SocialButton
           type={social as SocialType}
@@ -29,7 +29,7 @@ describe('SocialButton', () => {
 
   test.each(socialList)(
     'should render [%s] button with correct structure',
-    (social) => {
+    social => {
       const { getByRole } = render(
         <SocialButton
           type={social as SocialType}
@@ -47,7 +47,7 @@ describe('SocialButton', () => {
 
   test.each(socialList)(
     'should render [%s] button with correct URL',
-    (social) => {
+    social => {
       const { getByRole } = render(
         <SocialButton
           type={social as SocialType}

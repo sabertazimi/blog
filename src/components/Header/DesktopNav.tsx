@@ -31,7 +31,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
         <img className="block w-full h-24" src={logo as string} alt="Logo" />
       </Link>
     </Menu.Item>
-    {Routes.map((route) => (
+    {Routes.map(route => (
       <Menu.Item
         key={route.id}
         className={classNames('flex-container transition transform-gpu', {

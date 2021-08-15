@@ -14,7 +14,7 @@ const Footer = ({ buildTime, author, socialList }: Props): JSX.Element => (
   <Container className="max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light">
     <Row align="middle" justify="center">
       <Col span={24}>
-        {Object.keys(SocialList).map((social) => (
+        {Object.keys(SocialList).map(social => (
           <SocialButton
             key={social}
             className="mx-5 mt-0 mb-4"

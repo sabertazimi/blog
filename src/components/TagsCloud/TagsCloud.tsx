@@ -15,7 +15,7 @@ const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
   });
 
   if (activeTag) {
-    tagsList = tagsList.filter((tag) => tag !== activeTag);
+    tagsList = tagsList.filter(tag => tag !== activeTag);
   }
 
   return (
@@ -27,7 +27,7 @@ const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
           </Link>
         </Tag>
       ) : null}
-      {tagsList.map((tag) => {
+      {tagsList.map(tag => {
         return (
           <Tag
             key={tag}

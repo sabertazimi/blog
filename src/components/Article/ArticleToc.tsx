@@ -12,7 +12,7 @@ const ArticleToc = ({ toc }: Props): JSX.Element => {
   const [tocVisible, setTocVisible] = useState(false);
 
   const handleClick = useCallback(
-    () => setTocVisible((tocVisible) => !tocVisible),
+    () => setTocVisible(tocVisible => !tocVisible),
     []
   );
 

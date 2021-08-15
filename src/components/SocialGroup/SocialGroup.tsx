@@ -21,8 +21,8 @@ const SocialGroup = ({ url }: Props): JSX.Element => (
     size={0}
   >
     {Object.keys(SocialList)
-      .filter((social) => social !== SocialList.github)
-      .map((social) => (
+      .filter(social => social !== SocialList.github)
+      .map(social => (
         <SocialButton
           key={social}
           type={social as SocialType}

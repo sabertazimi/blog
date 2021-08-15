@@ -12,7 +12,7 @@ describe('ArticleToc', () => {
     expect(tree).toMatchSnapshot();
 
     const instance = renderer.root;
-    const tocButton = instance.find((node) => node.type === 'button');
+    const tocButton = instance.find(node => node.type === 'button');
     act(() => tocButton.props.onClick());
 
     const expandTree = renderer.toJSON();

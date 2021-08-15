@@ -12,7 +12,7 @@ describe('LandingNav', () => {
 
     const instance = renderer.root;
     const navButton = instance.find(
-      (node) => node.type === 'div' && node.props.role === 'button'
+      node => node.type === 'div' && node.props.role === 'button'
     );
     act(() => navButton.props.onClick());
 
@@ -28,11 +28,11 @@ describe('LandingNav', () => {
     const icon = getByRole('img');
 
     expect(nav).toBeInTheDocument();
-    navLinks.forEach((navLink) => expect(navLink).toBeInTheDocument());
+    navLinks.forEach(navLink => expect(navLink).toBeInTheDocument());
     expect(navButton).toBeInTheDocument();
     expect(icon).toBeInTheDocument();
 
-    navLinks.forEach((navLink) => expect(nav).toContainElement(navLink));
+    navLinks.forEach(navLink => expect(nav).toContainElement(navLink));
     expect(navButton).toContainElement(icon);
   });
 

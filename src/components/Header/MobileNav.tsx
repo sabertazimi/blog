@@ -20,7 +20,7 @@ const MobileNav = (): JSX.Element => (
             className="w-full max-w-md text-2xl font-extrabold text-center min-w-xs"
             mode="vertical"
           >
-            {Routes.map((route) => (
+            {Routes.map(route => (
               <Menu.Item key={route.id}>
                 <Link to={route.path}>{route.name}</Link>
               </Menu.Item>

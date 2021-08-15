@@ -12,7 +12,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = useCallback(() => {
-    setExpanded((expanded) => !expanded);
+    setExpanded(expanded => !expanded);
   }, []);
 
   return (
@@ -30,7 +30,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
         )}
         role="navigation"
       >
-        {routes.map((route) => (
+        {routes.map(route => (
           <LandingNavLink key={route.id} title={route.title} to={route.path}>
             {route.name}
           </LandingNavLink>

@@ -2,7 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import BooksGrid from './BooksGrid';
 
-const bookList = Array.from(Array(3).keys()).map((index) => ({
+const bookList = Array.from(Array(3).keys()).map(index => ({
   title: `Book ${index}`,
   author: 'Sabertaz',
   url: `https://example.com/${index}`,

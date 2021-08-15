@@ -3,7 +3,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import PostsSearchBar from './PostsSearchBar';
 
-const basePosts = Array.from(Array(5).keys()).map((post) => ({
+const basePosts = Array.from(Array(5).keys()).map(post => ({
   slug: `/${post}BasicNotes/`,
   timeToRead: post,
   title: `${post} Basic Notes`,
@@ -32,7 +32,7 @@ describe('PostsSearchBar', () => {
 
   test.each(Array.from(Array(5).keys()))(
     'should render [%i Basic Notes] options when searching',
-    (index) => {
+    index => {
       const { getByRole, getByText } = render(<PostsSearchBar posts={posts} />);
       const input = getByRole('combobox');
 

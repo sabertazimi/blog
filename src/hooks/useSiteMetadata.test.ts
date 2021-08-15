@@ -63,7 +63,7 @@ describe('useSiteMetadata', () => {
     landingTitles.forEach((title, index) =>
       expect(title).toBe(siteMetadata['landingTitles'][index])
     );
-    Object.keys(SocialList).forEach((social) =>
+    Object.keys(SocialList).forEach(social =>
       expect(socialList[social as SocialType]).toBe(
         siteMetadata['socialList'][social as SocialType]
       )

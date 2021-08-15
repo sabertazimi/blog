@@ -3,14 +3,14 @@ import usePostsMetadata from './usePostsMetadata';
 
 const testCount = 5;
 const testIterator = Array.from(Array(testCount).keys());
-const BasePosts = testIterator.map((post) => ({
+const BasePosts = testIterator.map(post => ({
   node: {
     fields: { slug: `/${post + 1}BasicNotes/` },
     frontmatter: { title: `${post + 1} Basic Notes` },
     timeToRead: post + 1,
   },
 }));
-const Posts = testIterator.map((post) => ({
+const Posts = testIterator.map(post => ({
   node: {
     fields: { slug: `/${post + 1}BasicNotes/` },
     frontmatter: {
@@ -27,7 +27,7 @@ const Posts = testIterator.map((post) => ({
 describe('usePostsMetadata', () => {
   test.each(testIterator)(
     `should return correct [%i / ${testCount}] post metadata`,
-    (index) => {
+    index => {
       const mockUseStaticQuery = jest
         .spyOn(gatsby, 'useStaticQuery')
         .mockImplementation(() => {
@@ -81,7 +81,7 @@ describe('usePostsMetadata', () => {
 
   test.each(testIterator)(
     `should return correct [%i / ${testCount}] post metadata with partial data`,
-    (index) => {
+    index => {
       const mockUseStaticQuery = jest
         .spyOn(gatsby, 'useStaticQuery')
         .mockImplementation(() => {

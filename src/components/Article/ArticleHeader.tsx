@@ -27,7 +27,7 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
     >
       <animated.div style={props}>
         {tags ? (
-          tags.map((tag) => {
+          tags.map(tag => {
             return (
               <Tag key={tag} color={getColorByName(tag)}>
                 <Link className="text-base font-extrabold" to={`/tags/${tag}`}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import Header from './Header';
 
-const basePosts = Array.from(Array(5).keys()).map((post) => ({
+const basePosts = Array.from(Array(5).keys()).map(post => ({
   slug: `/${post}BasicNotes/`,
   timeToRead: post,
   title: `${post} Basic Notes`,
