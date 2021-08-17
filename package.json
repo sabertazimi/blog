@@ -9,8 +9,9 @@
   ],
   "scripts": {
     "audit": "npm audit fix --registry https://registry.npmjs.org",
-    "build": "gatsby build && npm run test:badge",
-    "build:gh-pages": "gatsby build --prefix-paths && npm run test:badge",
+    "build": "gatsby build && npm run build:badge",
+    "build:badge": "ts-node scripts/badge.ts",
+    "build:gh-pages": "gatsby build --prefix-paths && npm run build:badge",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "lint": "npm run lint:style && npm run lint:type-check",
@@ -23,7 +24,6 @@
     "start:watch": "concurrently \"npm:develop\" \"npm:test:watch\"",
     "test": "jest -o",
     "test:all": "jest",
-    "test:badge": "node scripts/generateJestCoverageBadge.js",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -97,6 +97,7 @@
     "react-test-renderer": "^16.14.0",
     "standard-version": "^9.3.1",
     "ts-jest": "^27.0.4",
+    "ts-node": "^10.2.0",
     "tslib": "^2.3.1",
     "typescript": "^4.3.5"
   },
