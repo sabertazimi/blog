@@ -49,5 +49,12 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
+  },
+  "ts-node": {
+    "files": true,
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs"
+    }
   }
 }
