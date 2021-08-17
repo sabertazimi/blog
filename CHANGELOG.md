@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/sabertazimi/blog/compare/v2.7.0...v2.8.0) (2021-08-17)
+
+
+### :sparkles: Features
+
+* **TypeScript:** add ts-node support for TS script ([3a1dcdb](https://github.com/sabertazimi/blog/commit/3a1dcdbffc840c33b172abedfb59534afa1ddf46))
+
+
+### :bug: Bug Fixes
+
+* **deps-types:** add missing node-fetch TS types ([99d8aa2](https://github.com/sabertazimi/blog/commit/99d8aa20594de2d1cd51b39b6c6c101a603854cc))
+* **Jest-badge:** rectify ts-node config ([80be426](https://github.com/sabertazimi/blog/commit/80be426866ad4944df0c84dbd30d7503feb709ee))
+
+
+### :rocket: Building Work
+
+* **CHANGELOG:** add emoji to changelog ([cb0bea4](https://github.com/sabertazimi/blog/commit/cb0bea44da44a4332bdf56e3b4ffe077be9bba25))
+* **deps-dev:** bump @types/jest from 27.0.0 to 27.0.1 ([1f72818](https://github.com/sabertazimi/blog/commit/1f728182e90f5b41d8cf3955fd1db9337b506bb0))
+* **deps-dev:** bump @types/node from 16.6.0 to 16.6.1 ([18e2328](https://github.com/sabertazimi/blog/commit/18e23287142d87f88b860e5c2f773c7ec7013bb1))
+* **deps-dev:** bump @types/react from 17.0.17 to 17.0.18 ([d1bd0ed](https://github.com/sabertazimi/blog/commit/d1bd0ed5a682f55165db5cb6ac4db96da239e15f))
+* **deps-dev:** bump gatsby-plugin-robots-txt from 1.6.8 to 1.6.9 ([89c880f](https://github.com/sabertazimi/blog/commit/89c880ff116a3c680667846cd0c6e7a3d0b9ba2f))
+* **deps-dev:** bump tslib from 2.3.0 to 2.3.1 ([652bdd3](https://github.com/sabertazimi/blog/commit/652bdd393bced49f94cdac67a0ffd7c05fb52b70))
+* **deps:** bump @ant-design/icons from 4.6.2 to 4.6.3 ([2a0107b](https://github.com/sabertazimi/blog/commit/2a0107bd68a5432d8acfef9b4c871ca4a3542038))
+* **deps:** bump @octokit/rest from 18.9.0 to 18.9.1 ([5d1835e](https://github.com/sabertazimi/blog/commit/5d1835e296b7ead0abdf66d38116a57c07c92c53))
+* **deps:** bump antd from 4.16.11 to 4.16.12 ([515a108](https://github.com/sabertazimi/blog/commit/515a108ee5ed0eb46271f831dd298397c27426aa))
+
 ## [2.7.0](https://github.com/sabertazimi/blog/compare/v2.6.1...v2.7.0) (2021-08-13)
 
 
