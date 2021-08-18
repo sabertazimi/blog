@@ -1,0 +1,38 @@
+trigger:
+  - main
+
+variables:
+  CI: true
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - script: |
+      git config --global core.autocrlf false
+      git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      git config --global user.name "github-actions[bot]"
+    displayName: 'Initialize git config'
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm ci
+      rm $(which yarn)
+      rm $(which yarnpkg)
+    displayName: 'Installation'
+
+  - script: |
+      npm run lint --if-present
+    displayName: 'Linting'
+
+  - script: |
+      npm run test:all --if-present
+    displayName: 'Unit testing'
+
+  - script: |
+      npm run build:gh-pages --if-present
+    displayName: 'Building work'
