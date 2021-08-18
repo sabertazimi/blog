@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/sabertazimi/blog/compare/v2.8.0...v2.9.0) (2021-08-18)
+
+
+### :bug: Bug Fixes
+
+* **API-GitHub:** local fallback data for GitHub API ([bc7545a](https://github.com/sabertazimi/blog/commit/bc7545a225047f465e97afe7bdf89758713c942e))
+
+
+### :sparkles: Features
+
+* **progress bar:** add loading and reading progress bar ([3244dd3](https://github.com/sabertazimi/blog/commit/3244dd3834c3dfe12d7bfb8931f79ba11af69796))
+
+
+### :rocket: Building Work
+
+* **CI-azure:** add more pipeline triggers ([150632a](https://github.com/sabertazimi/blog/commit/150632ad32edab3a4ca061cbafb6cd400e7b8b60))
+* **CI:** initialize git config ([512fef6](https://github.com/sabertazimi/blog/commit/512fef670d769388d28d186db264ee7a407e1ad6))
+* **CI:** set up CI with Azure Pipelines ([3e5093a](https://github.com/sabertazimi/blog/commit/3e5093a551933a69140f46e131308ed68564b2a0))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([5cae3b5](https://github.com/sabertazimi/blog/commit/5cae3b52288d6433ae3041e37799f64d4f2b63e6))
+* **deps-dev:** bump @typescript-eslint/parser from 4.29.1 to 4.29.2 ([30a8882](https://github.com/sabertazimi/blog/commit/30a88823fd90b8b87f26141ee1e0ffc3bf1e36c7))
+* **deps-dev:** bump ts-jest from 27.0.4 to 27.0.5 ([4f03a30](https://github.com/sabertazimi/blog/commit/4f03a3020f5a1b397d15062738c73f23d929b2e8))
+
 ## [2.8.0](https://github.com/sabertazimi/blog/compare/v2.7.0...v2.8.0) (2021-08-17)
 
 
