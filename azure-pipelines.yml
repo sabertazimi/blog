@@ -1,4 +1,12 @@
 trigger:
+  branches:
+    include:
+      - main
+  tags:
+    include:
+      - '*'
+
+pr:
   - main
 
 variables:
