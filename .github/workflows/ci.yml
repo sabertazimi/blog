@@ -27,6 +27,11 @@ jobs:
         with:
           submodules: true
           fetch-depth: 1
+      - name: Initialize git config
+        run: |
+          git config --global core.autocrlf false
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
       - name: Setup Node environment
         uses: actions/setup-node@v2
         with:
@@ -50,7 +55,7 @@ jobs:
           flag-name: Node ${{ matrix.node-version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
       - name: Building work
         run: |
-          npm run build:gh-pages
+          npm run build:gh-pages --if-present
       - name: List production artifacts
         run: |
           ls -alhR ./public
