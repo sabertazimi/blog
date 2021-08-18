@@ -32,41 +32,80 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
 };
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  const profileResponse = await octokit.rest.users.getByUsername({
-    username: config.siteMetadata.socialList.github,
-  });
-  const reposResponse = await octokit.request('GET /users/{username}/repos', {
-    username: config.siteMetadata.socialList.github,
-  });
-
-  const { data: profileJSON } = profileResponse;
-  const { data: reposJSON } = reposResponse;
-
-  const githubProfile = {
-    username: profileJSON.login,
-    avatar: profileJSON.avatar_url,
-    bio: profileJSON.bio,
-    location: profileJSON.location,
-    url: profileJSON.html_url,
-    followers: profileJSON.followers,
-    followersUrl: `${profileJSON.html_url}/followers`,
-    following: profileJSON.following,
-    followingUrl: `${profileJSON.html_url}/following`,
-    createDate: new Date(profileJSON.created_at).toDateString(),
+  let githubProfile = {
+    username: 'sabertazimi',
+    avatar: 'https://avatars.githubusercontent.com/u/12670482?v=4',
+    bio: 'CS',
+    location: 'Wuhan',
+    url: 'https://github.com/sabertazimi',
+    followers: 42,
+    followersUrl: 'https://github.com/sabertazimi/followers',
+    following: 185,
+    followingUrl: 'https://github.com/sabertazimi/following',
+    createDate: 'Sat May 30 2015',
   };
 
-  const githubRepos = reposJSON
-    .filter((repo) => repo.stargazers_count > 0)
-    .sort((repo1, repo2) =>
-      repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
-    )
-    .map((repo) => ({
-      name: repo.name,
-      stars: repo.stargazers_count,
-      language: repo.language,
-      repoUrl: repo.html_url,
-    }))
-    .slice(0, 3);
+  let githubRepos = [
+    {
+      name: 'awesome-notes',
+      stars: 22,
+      language: 'JavaScript',
+      repoUrl: 'https://github.com/sabertazimi/awesome-notes',
+    },
+    {
+      name: 'hust-lab',
+      stars: 22,
+      language: 'C',
+      repoUrl: 'https://github.com/sabertazimi/hust-lab',
+    },
+    {
+      name: 'dragon-zsh-theme',
+      stars: 11,
+      language: 'Zsh',
+      repoUrl: 'https://github.com/sabertazimi/dragon-zsh-theme',
+    },
+  ];
+
+  try {
+    const profileResponse = await octokit.rest.users.getByUsername({
+      username: config.siteMetadata.socialList.github,
+    });
+    const reposResponse = await octokit.request('GET /users/{username}/repos', {
+      username: config.siteMetadata.socialList.github,
+    });
+
+    const { data: profileJSON } = profileResponse;
+    const { data: reposJSON } = reposResponse;
+
+    githubProfile = {
+      username: profileJSON.login,
+      avatar: profileJSON.avatar_url,
+      bio: profileJSON.bio,
+      location: profileJSON.location,
+      url: profileJSON.html_url,
+      followers: profileJSON.followers,
+      followersUrl: `${profileJSON.html_url}/followers`,
+      following: profileJSON.following,
+      followingUrl: `${profileJSON.html_url}/following`,
+      createDate: new Date(profileJSON.created_at).toDateString(),
+    };
+
+    githubRepos = reposJSON
+      .filter(repo => repo.stargazers_count > 0)
+      .sort((repo1, repo2) =>
+        repo1.stargazers_count < repo2.stargazers_count ? 1 : -1
+      )
+      .map(repo => ({
+        name: repo.name,
+        stars: repo.stargazers_count,
+        language: repo.language,
+        repoUrl: repo.html_url,
+      }))
+      .slice(0, 3);
+  } catch (error) {
+    console.warn(error.message);
+    console.warn('GitHub API request error, fallback to local GitHub data.');
+  }
 
   const result = await graphql(`
     query PostsDataQuery {
@@ -134,7 +173,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   );
 
   const tags = posts
-    .map((post) => post.tags || [])
+    .map(post => post.tags || [])
     .flat()
     .reduce((acc, cur) => {
       if (!acc[cur]) acc[cur] = 0;
@@ -169,7 +208,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     component: tagsPageTemplate,
   });
 
-  Object.keys(tags).forEach((tag) => {
+  Object.keys(tags).forEach(tag => {
     createPage({
       path: `/tags/${tag}`,
       component: tagsPageTemplate,
@@ -195,7 +234,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     },
   });
 
-  posts.forEach((post) => {
+  posts.forEach(post => {
     createPage({
       path: post.slug,
       component: postPageTemplate,
