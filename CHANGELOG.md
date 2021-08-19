@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/sabertazimi/blog/compare/v2.9.0...v2.10.0) (2021-08-19)
+
+
+### :rocket: Building Work
+
+* **deps-core:** bump gatsby from 3.11.1 to 3.12.0 ([c46f21f](https://github.com/sabertazimi/blog/commit/c46f21fc4f34b307f71bc4a26d0eba2e282e5d2b))
+* **deps-dev:** bump @types/node from 16.6.1 to 16.6.2 ([b7806cd](https://github.com/sabertazimi/blog/commit/b7806cd881bc5179e5d51a8f500d3d510c3f5ae2))
+* **deps-dev:** bump @types/react from 17.0.18 to 17.0.19 ([9e251a7](https://github.com/sabertazimi/blog/commit/9e251a79988767fc43cc54d2d10b8ee4433ff3db))
+* **deps-dev:** bump eslint-plugin-import from 2.24.0 to 2.24.1 ([8a601f6](https://github.com/sabertazimi/blog/commit/8a601f65f215faa45949514385c8ffb7f26809d5))
+* **deps-dev:** bump gatsby-plugin-eslint from 3.0.0 to 4.0.0 ([462dd76](https://github.com/sabertazimi/blog/commit/462dd761478b301df6924e0efa9cfbc1b2b2dcd7))
+* **deps-dev:** bump ts-node from 10.2.0 to 10.2.1 ([983ad2f](https://github.com/sabertazimi/blog/commit/983ad2f86b45b9b1088a8b44ae3c810f509cb03d))
+* **deps:** remove duplicated packages ([b596b54](https://github.com/sabertazimi/blog/commit/b596b549a0883dff75ce2623e156f13e35365e70))
+
 ## [2.9.0](https://github.com/sabertazimi/blog/compare/v2.8.0...v2.9.0) (2021-08-18)
 
 
