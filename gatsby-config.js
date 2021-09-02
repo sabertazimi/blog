@@ -109,13 +109,6 @@ module.exports = {
         color: '#40a9ff',
       },
     },
-    {
-      resolve: 'gatsby-plugin-page-progress',
-      options: {
-        color: '#40a9ff',
-        height: 3,
-      },
-    },
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-antd',
