@@ -49,19 +49,19 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     {
       name: 'awesome-notes',
       stars: 22,
-      language: 'JavaScript',
+      language: 'TypeScript',
       repoUrl: 'https://github.com/sabertazimi/awesome-notes',
     },
     {
       name: 'hust-lab',
-      stars: 22,
+      stars: 21,
       language: 'C',
       repoUrl: 'https://github.com/sabertazimi/hust-lab',
     },
     {
       name: 'dragon-zsh-theme',
       stars: 11,
-      language: 'Zsh',
+      language: 'Shell',
       repoUrl: 'https://github.com/sabertazimi/dragon-zsh-theme',
     },
   ];
