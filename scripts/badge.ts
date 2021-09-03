@@ -19,19 +19,13 @@ const getCoveragePercentage = (
   summaryFilePath: string,
   coverageType: string
 ) => {
-  let summary = '';
-
   try {
-    summary = fs.readFileSync(summaryFilePath, 'utf8');
+    const summary = fs.readFileSync(summaryFilePath, 'utf8');
+    return JSON.parse(summary)['total'][coverageType]['pct'];
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-
+    if (error instanceof Error) console.error(error.message);
     return 0;
   }
-
-  return JSON.parse(summary)['total'][coverageType]['pct'];
 };
 
 const getBadgeColor = (percentage: number) => {
