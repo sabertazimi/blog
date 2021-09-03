@@ -9,9 +9,9 @@
   ],
   "scripts": {
     "audit": "npm audit fix --registry https://registry.npmjs.org",
-    "build": "gatsby build && npm run build:badge",
-    "build:badge": "ts-node scripts/badge.ts",
-    "build:gh-pages": "gatsby build --prefix-paths && npm run build:badge",
+    "badge": "ts-node scripts/badge.ts",
+    "build": "gatsby build",
+    "build:gh-pages": "gatsby build --prefix-paths",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "lint": "npm run lint:style && npm run lint:type-check",

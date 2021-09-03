@@ -17,7 +17,7 @@
 [![Code Lines](https://img.shields.io/tokei/lines/github/sabertazimi/blog?style=for-the-badge&logo=visualstudiocode)](https://github.com/sabertazimi/blog)
 [![Top Language](https://img.shields.io/github/languages/top/sabertazimi/blog?logo=typescript&style=for-the-badge)](https://github.com/https://github.com/sabertazimi/blog/search?l=typescript)
 
-[![Continuous Integration](https://img.shields.io/github/workflow/status/sabertazimi/blog/Continuous%20Integration/main?style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/workflow/status/sabertazimi/blog/CI/main?style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 [![CodeQL](https://img.shields.io/github/workflow/status/sabertazimi/blog/CodeQL/main?label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
 
 [![Jest Coverage](https://img.shields.io/coveralls/github/sabertazimi/blog?logo=coveralls&style=for-the-badge)](https://coveralls.io/github/sabertazimi/blog)

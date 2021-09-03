@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: CI
 
 on:
   push:
@@ -9,8 +9,31 @@ on:
       - main
 
 jobs:
-  build:
-    name: Node ${{ matrix.node-version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Setup Node environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          architecture: x64
+          registry-url: https://registry.npmjs.org/
+          cache: 'npm'
+      - name: Installation
+        run: |
+          npm ci
+      - name: Linting
+        run: |
+          npm run lint
+
+  test:
+    name: Testing on Node ${{ matrix.node-version }} ${{ matrix.os }} ${{ matrix.architecture }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -20,18 +43,12 @@ jobs:
           - 16
         architecture:
           - x64
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 1
-      - name: Initialize git config
-        run: |
-          git config --global core.autocrlf false
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
       - name: Setup Node environment
         uses: actions/setup-node@v2
         with:
@@ -42,29 +59,72 @@ jobs:
       - name: Installation
         run: |
           npm ci
-      - name: Linting
-        run: |
-          npm run lint --if-present
       - name: Testing
         run: |
-          npm run test:all --if-present
-      - name: Coveralls GitHub Action
+          npm run test:all
+          npm run badge
+      - name: Coveralls action
         uses: coverallsapp/github-action@1.1.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: Node ${{ matrix.node-version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
+          flag-name: Node ${{ matrix.node-version }} ${{ matrix.os }} ${{ matrix.architecture }}
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: badges
+          path: public
+
+  build:
+    name: Building
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Setup Node environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          architecture: x64
+          registry-url: https://registry.npmjs.org/
+          cache: 'npm'
+      - name: Installation
+        run: |
+          npm ci
       - name: Building work
         run: |
-          npm run build:gh-pages --if-present
+          npm run build:gh-pages
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: demos
+          path: public
+
+  deploy:
+    name: Deployment
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs: [lint, test, build]
+    steps:
+      - name: Download production artifacts
+        uses: actions/download-artifact@v2
       - name: List production artifacts
         run: |
-          ls -alhR ./public
+          ls -R
+        working-directory: .
+      - name: Aggregate production artifacts
+        run: |
+          mkdir -p ./build/
+          cp -fr badges/* ./build/
+          cp -fr demos/* ./build/
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./build
           force_orphan: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
