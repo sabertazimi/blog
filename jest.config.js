@@ -36,10 +36,10 @@ module.exports = {
   testPathIgnorePatterns: [
     'node_modules',
     '\\.cache',
-    '<rootDir>/public',
-    '<rootDir>/build',
-    '<rootDir>/dist',
-    '<rootDir>/coverage',
+    '<rootDir>.*/public',
+    '<rootDir>.*/build',
+    '<rootDir>.*/dist',
+    '<rootDir>.*/coverage',
   ],
   globals: {
     __PATH_PREFIX__: '',
