@@ -24,13 +24,13 @@ jobs:
           node-version: 16
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
+          cache: 'yarn'
       - name: Installation
         run: |
-          npm ci
+          yarn
       - name: Linting
         run: |
-          npm run lint
+          yarn lint
 
   test:
     name: Testing on Node ${{ matrix.node-version }} ${{ matrix.os }} ${{ matrix.architecture }}
@@ -55,14 +55,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
+          cache: 'yarn'
       - name: Installation
         run: |
-          npm ci
+          yarn
       - name: Testing
         run: |
-          npm run test:all
-          npm run badge
+          yarn test:all
+          yarn badge
       - name: Coveralls action
         uses: coverallsapp/github-action@1.1.3
         with:
@@ -89,13 +89,13 @@ jobs:
           node-version: 16
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
+          cache: 'yarn'
       - name: Installation
         run: |
-          npm ci
+          yarn
       - name: Building work
         run: |
-          npm run build:gh-pages
+          yarn build:gh-pages
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
