@@ -2590,7 +2590,7 @@ __metadata:
     eslint-plugin-prettier: ^4.0.0
     eslint-plugin-react: ^7.25.1
     eslint-plugin-react-hooks: ^4.2.0
-    eslint-webpack-plugin: ^2.4.3
+    eslint-webpack-plugin: ^3.0.0
     gatsby: ^3.12.1
     gatsby-plugin-antd: ^2.2.0
     gatsby-plugin-catch-links: ^3.13.0
@@ -2963,7 +2963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:*, @types/eslint@npm:^7.2.6":
+"@types/eslint@npm:*, @types/eslint@npm:^7.2.14, @types/eslint@npm:^7.2.6":
   version: 7.28.0
   resolution: "@types/eslint@npm:7.28.0"
   dependencies:
@@ -7486,7 +7486,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-webpack-plugin@npm:^2.4.3, eslint-webpack-plugin@npm:^2.5.4":
+"eslint-webpack-plugin@npm:^2.5.4":
   version: 2.5.4
   resolution: "eslint-webpack-plugin@npm:2.5.4"
   dependencies:
@@ -7500,6 +7500,22 @@ __metadata:
     eslint: ^7.0.0
     webpack: ^4.0.0 || ^5.0.0
   checksum: df663e5f656c84e135db144d77b82874d158955451969890d454a76ec355c309a84a186e3aaf4fa53d7529ac01a43c2943a49768fd0493fd32df3e5ba8c5210a
+  languageName: node
+  linkType: hard
+
+"eslint-webpack-plugin@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "eslint-webpack-plugin@npm:3.0.1"
+  dependencies:
+    "@types/eslint": ^7.2.14
+    jest-worker: ^27.0.6
+    micromatch: ^4.0.4
+    normalize-path: ^3.0.0
+    schema-utils: ^3.1.0
+  peerDependencies:
+    eslint: ^7.0.0
+    webpack: ^5.0.0
+  checksum: ef9241907d7b99eb7edad48e005c49aa73124875f9c910bfde1645dfe853f2cbbfce363c80b2c2157d00a23545caefa74c138a61c1deb7f8666ee3569a025549
   languageName: node
   linkType: hard
 
