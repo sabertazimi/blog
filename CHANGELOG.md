@@ -2,6 +2,84 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/sabertazimi/blog/compare/v2.10.0...v2.11.0) (2021-09-11)
+
+
+### :bug: Bug Fixes
+
+* **deps-security:** npm audit fix ([e87642a](https://github.com/sabertazimi/blog/commit/e87642a6b5abd3131d1e99e0baa7e22e010f8104))
+* **Page Progress:** remove page progress indicator plugin ([be0e574](https://github.com/sabertazimi/blog/commit/be0e57462853a78d7950b7deb3a916897a8ec175))
+
+
+### :zap: Performance
+
+* **images:** optimize images via ImgBot ([#216](https://github.com/sabertazimi/blog/issues/216)) ([130670e](https://github.com/sabertazimi/blog/commit/130670ecd576180f491f3d6f4ffe4091e429cff0))
+
+
+### :sparkles: Features
+
+* **yarn:** switch from npm to yarn berry ([8ef36e0](https://github.com/sabertazimi/blog/commit/8ef36e03c6f11fa281a24997a25954e4c4b259dc))
+
+
+### :rocket: Building Work
+
+* **CI-azure:** remove azure pipelines ([8cfd53b](https://github.com/sabertazimi/blog/commit/8cfd53b261a3875b3cb6f1526cb767e0027a8916))
+* **CI-CodeQL:** change crontab time ([52a3cfa](https://github.com/sabertazimi/blog/commit/52a3cfa7a4b830b4b26c0424d3ffab9d9287d95b))
+* **CI:** separate CI stages ([83dadfa](https://github.com/sabertazimi/blog/commit/83dadfaa1ad2fe99b362e991fe7023b920343746))
+* **CI:** ship to yarn berry scripts ([4c8ee3b](https://github.com/sabertazimi/blog/commit/4c8ee3b66d748386eaffc621bb24a95865a0f919))
+* **deps-bot:** add renovate.json ([#217](https://github.com/sabertazimi/blog/issues/217)) ([856c912](https://github.com/sabertazimi/blog/commit/856c912ba21b6d107e9779bf3f7e072499972c2a))
+* **deps-bot:** change semantic commit type ([97fd324](https://github.com/sabertazimi/blog/commit/97fd3241f2d04181965f5a88dd23685af704871c))
+* **deps-bot:** disable renovate dashboard ([dda5224](https://github.com/sabertazimi/blog/commit/dda5224da19978dfca93cc63af22d119195ea9e7))
+* **deps-bot:** schedule deps bot to weekend ([f743089](https://github.com/sabertazimi/blog/commit/f743089f453442697b93fefd0dee2428dc8f7a2f))
+* **deps-bot:** setup renovate bot configuration ([d417780](https://github.com/sabertazimi/blog/commit/d41778092c577a440796a569ebe9b859c260124c))
+* **deps-dev:** bump @octokit/types from 6.25.0 to 6.27.0 ([#212](https://github.com/sabertazimi/blog/issues/212)) ([7586e72](https://github.com/sabertazimi/blog/commit/7586e72a623607986daf5a0b6c32da1665eec5c1))
+* **deps-dev:** bump @testing-library/react-hooks from 7.0.1 to 7.0.2 ([#194](https://github.com/sabertazimi/blog/issues/194)) ([04f4478](https://github.com/sabertazimi/blog/commit/04f447837feefb5ea8dfd1f383d3161da550a275))
+* **deps-dev:** bump @types/node from 16.6.2 to 16.7.1 ([bcb007b](https://github.com/sabertazimi/blog/commit/bcb007b4487f4da11e68208a8c4a2fe4eac99379))
+* **deps-dev:** bump @types/node from 16.7.1 to 16.7.4 ([39ebe0b](https://github.com/sabertazimi/blog/commit/39ebe0b72046e355616a5e765b66a0769821d4cc))
+* **deps-dev:** bump @types/node from 16.7.4 to 16.7.7 ([#187](https://github.com/sabertazimi/blog/issues/187)) ([f9cd793](https://github.com/sabertazimi/blog/commit/f9cd7936e9f5bc86f4b5714eb8929ae7e43b99a0))
+* **deps-dev:** bump @types/node from 16.7.7 to 16.7.8 ([#191](https://github.com/sabertazimi/blog/issues/191)) ([a95bafc](https://github.com/sabertazimi/blog/commit/a95bafc297433c8d798fe4298b1b6c61c57496f0))
+* **deps-dev:** bump @types/node from 16.7.8 to 16.7.10 ([#209](https://github.com/sabertazimi/blog/issues/209)) ([87b3a72](https://github.com/sabertazimi/blog/commit/87b3a72d0e8efac642fd96f57f1d34f533357928))
+* **deps-dev:** bump @types/react from 17.0.19 to 17.0.20 ([#202](https://github.com/sabertazimi/blog/issues/202)) ([c10c07f](https://github.com/sabertazimi/blog/commit/c10c07fc05cde138e6475402b96706b5dec7f875))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([da626d6](https://github.com/sabertazimi/blog/commit/da626d6b24ad117071e22a1bac0049fa16395fe2))
+* **deps-dev:** bump @typescript-eslint/eslint-plugin ([#192](https://github.com/sabertazimi/blog/issues/192)) ([9291371](https://github.com/sabertazimi/blog/commit/92913715097ee991d150f7fd2c9d83ba7f846f38))
+* **deps-dev:** bump @typescript-eslint/parser from 4.29.2 to 4.29.3 ([d3649c5](https://github.com/sabertazimi/blog/commit/d3649c5d29e933c43dd234fbc9b5d77c5aaf4392))
+* **deps-dev:** bump @typescript-eslint/parser from 4.29.3 to 4.30.0 ([#193](https://github.com/sabertazimi/blog/issues/193)) ([9d02ee1](https://github.com/sabertazimi/blog/commit/9d02ee1e7ab187c73bbce7534d464154970f7117))
+* **deps-dev:** bump autoprefixer from 10.3.1 to 10.3.2 ([959c6fd](https://github.com/sabertazimi/blog/commit/959c6fd6cdfd394d5d8a4f78079a0d26f99eccb3))
+* **deps-dev:** bump autoprefixer from 10.3.2 to 10.3.3 ([80d11b2](https://github.com/sabertazimi/blog/commit/80d11b2d011e544b34031928dcf635bbf6afcedc))
+* **deps-dev:** bump autoprefixer from 10.3.3 to 10.3.4 ([#201](https://github.com/sabertazimi/blog/issues/201)) ([97079f3](https://github.com/sabertazimi/blog/commit/97079f3e1228c67abfcb7896dcf994b12aca5c9b))
+* **deps-dev:** bump babel-jest from 27.0.6 to 27.1.0 ([5ee112f](https://github.com/sabertazimi/blog/commit/5ee112fe1c0ef242077385fe3a73c1952f445ef5))
+* **deps-dev:** bump eslint-plugin-import from 2.24.1 to 2.24.2 ([39437a8](https://github.com/sabertazimi/blog/commit/39437a8bbb5ff186582deff097d63602ef790532))
+* **deps-dev:** bump eslint-plugin-prettier from 3.4.0 to 3.4.1 ([864c652](https://github.com/sabertazimi/blog/commit/864c6522f937a1d28dc0e4e2e4f896469f1328c1))
+* **deps-dev:** bump eslint-plugin-prettier from 3.4.1 to 4.0.0 ([#190](https://github.com/sabertazimi/blog/issues/190)) ([1036570](https://github.com/sabertazimi/blog/commit/1036570ff0461c9ea8c493eb04b11a5ff0c8ec03))
+* **deps-dev:** bump eslint-plugin-react from 7.24.0 to 7.25.1 ([#189](https://github.com/sabertazimi/blog/issues/189)) ([3a6a166](https://github.com/sabertazimi/blog/commit/3a6a166fdb20fc2ab716a57ea4edac01e089890d))
+* **deps-dev:** bump gatsby-plugin-catch-links from 3.12.0 to 3.13.0 ([#210](https://github.com/sabertazimi/blog/issues/210)) ([b309333](https://github.com/sabertazimi/blog/commit/b309333b84bba727331bd1ae6fd70fa8b48a6799))
+* **deps-dev:** bump gatsby-plugin-manifest from 3.12.0 to 3.13.0 ([#213](https://github.com/sabertazimi/blog/issues/213)) ([96e354f](https://github.com/sabertazimi/blog/commit/96e354f4fe1d1fcacb8a727eb9d3fd55eace18ad))
+* **deps-dev:** bump gatsby-plugin-nprogress from 3.12.0 to 3.13.0 ([#207](https://github.com/sabertazimi/blog/issues/207)) ([fda541a](https://github.com/sabertazimi/blog/commit/fda541af36ecf8ddd08e697f591d7b1a93fb6a4a))
+* **deps-dev:** bump gatsby-plugin-offline from 4.12.0 to 4.13.0 ([#204](https://github.com/sabertazimi/blog/issues/204)) ([ba946d9](https://github.com/sabertazimi/blog/commit/ba946d90faee713b308f5d079bf7731144abfffb))
+* **deps-dev:** bump gatsby-plugin-postcss from 4.12.0 to 4.13.0 ([#200](https://github.com/sabertazimi/blog/issues/200)) ([6b9b3fd](https://github.com/sabertazimi/blog/commit/6b9b3fd6013b4dc3454c043a3ab858daa14d9824))
+* **deps-dev:** bump gatsby-plugin-react-helmet from 4.12.0 to 4.13.0 ([#208](https://github.com/sabertazimi/blog/issues/208)) ([3f4de6f](https://github.com/sabertazimi/blog/commit/3f4de6ff4e519c123d08aea6503c1b6d8860d317))
+* **deps-dev:** bump gatsby-plugin-robots-txt from 1.6.9 to 1.6.10 ([#195](https://github.com/sabertazimi/blog/issues/195)) ([2907f50](https://github.com/sabertazimi/blog/commit/2907f50c77b8ec763f01c69ef7c44482f23127f4))
+* **deps-dev:** bump gatsby-plugin-sitemap from 4.8.0 to 4.9.0 ([#199](https://github.com/sabertazimi/blog/issues/199)) ([d92b2e7](https://github.com/sabertazimi/blog/commit/d92b2e7e963409f718b6834dc0aca7f62c027cc0))
+* **deps-dev:** bump gatsby-plugin-webpack-bundle-analyser-v2 ([#211](https://github.com/sabertazimi/blog/issues/211)) ([0ceb1eb](https://github.com/sabertazimi/blog/commit/0ceb1ebc8a0997142950381d67526f5c636e76ac))
+* **deps-dev:** bump gatsby-remark-autolink-headers ([#206](https://github.com/sabertazimi/blog/issues/206)) ([02e851a](https://github.com/sabertazimi/blog/commit/02e851ada1cc8b0591dd8ee7dfe2fcda857a3f75))
+* **deps-dev:** bump gatsby-remark-copy-linked-files ([#215](https://github.com/sabertazimi/blog/issues/215)) ([41b949a](https://github.com/sabertazimi/blog/commit/41b949aa79c33f171bf5f1c27f18280ab494c0de))
+* **deps-dev:** bump gatsby-remark-prismjs from 5.9.0 to 5.10.0 ([#214](https://github.com/sabertazimi/blog/issues/214)) ([e39897c](https://github.com/sabertazimi/blog/commit/e39897cfc2cc70db3ab35bd281596e70740c7b37))
+* **deps-dev:** bump gatsby-remark-smartypants from 4.9.0 to 4.10.0 ([#196](https://github.com/sabertazimi/blog/issues/196)) ([4382e02](https://github.com/sabertazimi/blog/commit/4382e02e668d1da3ca3c4a8ac1863061ec366b57))
+* **deps-dev:** bump gatsby-source-filesystem from 3.12.0 to 3.13.0 ([#197](https://github.com/sabertazimi/blog/issues/197)) ([30c2760](https://github.com/sabertazimi/blog/commit/30c276094829e5943af579963d7874258a29a7fa))
+* **deps-dev:** bump jest from 27.0.6 to 27.1.0 ([86733c9](https://github.com/sabertazimi/blog/commit/86733c9fc4a85c6b394602bd3525daa9a24d0c57))
+* **deps-dev:** bump typescript from 4.3.5 to 4.4.2 ([0c388da](https://github.com/sabertazimi/blog/commit/0c388da6142dbfa1c655a1ee1404cf4e5e6e1ec8))
+* **deps:** bump @ant-design/icons from 4.6.3 to 4.6.4 ([76616c2](https://github.com/sabertazimi/blog/commit/76616c276332f4ae141f4d2e5f45bdfd979a479c))
+* **deps:** bump @octokit/rest from 18.9.1 to 18.10.0 ([#205](https://github.com/sabertazimi/blog/issues/205)) ([85c37d9](https://github.com/sabertazimi/blog/commit/85c37d9b8758b7734d82161b33f93ed6d4ecd023))
+* **deps:** bump antd from 4.16.12 to 4.16.13 ([513c741](https://github.com/sabertazimi/blog/commit/513c74109fcbe12958d8f2c1f496a697a20e5574))
+* **deps:** bump gatsby from 3.12.0 to 3.12.1 ([89eeb65](https://github.com/sabertazimi/blog/commit/89eeb652d323973cf62b3ef0b7846dbf6f4afecb))
+* **deps:** bump tailwindcss from 2.2.7 to 2.2.8 ([9f0da94](https://github.com/sabertazimi/blog/commit/9f0da9492add9132a648cb2aa4f4ec33631de93c))
+* **deps:** bump tailwindcss from 2.2.8 to 2.2.9 ([#188](https://github.com/sabertazimi/blog/issues/188)) ([58a327c](https://github.com/sabertazimi/blog/commit/58a327cc6ade8b27ebc2c7c44b5b1322b06b32f7))
+* **Gatsby-Node API:** update fallback GitHub profile data ([34fb5c6](https://github.com/sabertazimi/blog/commit/34fb5c664cf9f90f4fc229883447357c72cc1455))
+* **Jest-badge:** format code ([68e87bf](https://github.com/sabertazimi/blog/commit/68e87bf5a45c016772217c9b410c31bcc6ad0fec))
+* **Jest-badge:** rectify unknown error type in TS 4.4.2 ([b24cf9d](https://github.com/sabertazimi/blog/commit/b24cf9d5f11ea0060380eec778d86c0d943914f4))
+* **Jest-config:** ignore nested dist files ([a7a40b4](https://github.com/sabertazimi/blog/commit/a7a40b48ab7386423f349a4c9b3949cd2f95eb1d))
+* **Jest:** enable Jest config intellisense ([1a23dd9](https://github.com/sabertazimi/blog/commit/1a23dd99eff4b410b985b2faf5615235ebaa7eac))
+
 ## [2.10.0](https://github.com/sabertazimi/blog/compare/v2.9.0...v2.10.0) (2021-08-19)
 
 
