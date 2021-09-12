@@ -41,8 +41,10 @@
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@octokit/types": "^6.27.0",
     "@react-spring/types": "^9.2.4",
+    "@testing-library/dom": "^8.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^7.0.2",
@@ -62,6 +64,7 @@
     "babel-jest": "^27.1.0",
     "babel-preset-gatsby": "^1.11.0",
     "concurrently": "^6.2.1",
+    "core-js": "^3.17.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
@@ -100,7 +103,8 @@
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "webpack": "^5.52.1"
   },
   "repository": {
     "type": "git",

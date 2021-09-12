@@ -119,7 +119,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.15.5, @babel/core@npm:^7.1.0, @babel/core@npm:^7.14.8, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5":
+"@babel/core@npm:7.15.5, @babel/core@npm:^7.1.0, @babel/core@npm:^7.14.8, @babel/core@npm:^7.15.5, @babel/core@npm:^7.7.2, @babel/core@npm:^7.7.5":
   version: 7.15.5
   resolution: "@babel/core@npm:7.15.5"
   dependencies:
@@ -2558,10 +2558,12 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^4.6.4
+    "@babel/core": ^7.15.5
     "@octokit/rest": ^18.10.0
     "@octokit/types": ^6.27.0
     "@reach/router": ^1.3.4
     "@react-spring/types": ^9.2.4
+    "@testing-library/dom": ^8.5.0
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/react-hooks": ^7.0.2
@@ -2583,6 +2585,7 @@ __metadata:
     babel-preset-gatsby: ^1.11.0
     classnames: ^2.3.1
     concurrently: ^6.2.1
+    core-js: ^3.17.3
     eslint: ^7.32.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: ^2.24.2
@@ -2630,6 +2633,7 @@ __metadata:
     tslib: ^2.3.1
     typed.js: ^2.0.12
     typescript: ^4.4.2
+    webpack: ^5.52.1
   languageName: unknown
   linkType: soft
 
@@ -2717,7 +2721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.0.0":
+"@testing-library/dom@npm:^8.0.0, @testing-library/dom@npm:^8.5.0":
   version: 8.5.0
   resolution: "@testing-library/dom@npm:8.5.0"
   dependencies:
@@ -5963,7 +5967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.9.0":
+"core-js@npm:^3.17.3, core-js@npm:^3.9.0":
   version: 3.17.3
   resolution: "core-js@npm:3.17.3"
   checksum: cdc61f068533469e15745e4644cc205916248b5b49d07840ed8e26a52e4aa557499e3d70e42a76dbc5e921f87d2db4365d9d3a5b8babbd351c3fd9e981d74fab
@@ -19506,7 +19510,7 @@ typescript@^4.4.2:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.35.0":
+"webpack@npm:^5.35.0, webpack@npm:^5.52.1":
   version: 5.52.1
   resolution: "webpack@npm:5.52.1"
   dependencies:
