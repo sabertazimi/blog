@@ -1,7 +1,7 @@
 {
   "extends": ["config:base"],
   "assignees": ["sabertazimi"],
-  "dependencyDashboard": true,
+  "dependencyDashboard": false,
   "labels": ["dependencies"],
   "lockFileMaintenance": { "enabled": true },
   "postUpdateOptions": ["yarnDedupeHighest"],
