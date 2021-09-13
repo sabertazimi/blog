@@ -2288,13 +2288,13 @@ __metadata:
   linkType: hard
 
 "@octokit/plugin-paginate-rest@npm:^2.16.0":
-  version: 2.16.0
-  resolution: "@octokit/plugin-paginate-rest@npm:2.16.0"
+  version: 2.16.1
+  resolution: "@octokit/plugin-paginate-rest@npm:2.16.1"
   dependencies:
-    "@octokit/types": ^6.26.0
+    "@octokit/types": ^6.27.1
   peerDependencies:
     "@octokit/core": ">=2"
-  checksum: db366cb5810005caf96862f8b8f0032aa183f4d8f8e18b8d2cdac952abf768c5e8580948eacf3b3754bfba2745fbb3101adfe893ffe3c3512640ca06db40ee89
+  checksum: c40026eb063acf01a238c0a976d09c109288e150288fa5c4116ba080760cbac17432058cc72f489245d76098cc61e21dc0c5d561b34d8e625aa631438a5f6fd3
   languageName: node
   linkType: hard
 
@@ -2308,14 +2308,14 @@ __metadata:
   linkType: hard
 
 "@octokit/plugin-rest-endpoint-methods@npm:^5.9.0":
-  version: 5.10.1
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.10.1"
+  version: 5.10.2
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.10.2"
   dependencies:
-    "@octokit/types": ^6.27.0
+    "@octokit/types": ^6.27.1
     deprecation: ^2.3.1
   peerDependencies:
     "@octokit/core": ">=3"
-  checksum: 65af1ad7c96c84cf5d42bdb704a530b04e205f90a32e6009fdd4b043ab78ff0018f3f274fb9f6cfbeeba82ca80cccc50cf1a30b41d24f39f3921fa4b388d5380
+  checksum: 098a9118c5e60f430a2bcbcc8d5830ab615c6722a4fc09dde801dd6b0ba6e723a51f77bdf27b03bdbfb35223601e1d23dd0b8ae475b114150f6647eb1b56a9f3
   languageName: node
   linkType: hard
 
@@ -2356,7 +2356,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.26.0, @octokit/types@npm:^6.27.0, @octokit/types@npm:^6.27.1":
+"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.27.1":
   version: 6.27.1
   resolution: "@octokit/types@npm:6.27.1"
   dependencies:
@@ -3831,14 +3831,14 @@ __metadata:
   linkType: hard
 
 "ajv@npm:^8.0.1":
-  version: 8.6.2
-  resolution: "ajv@npm:8.6.2"
+  version: 8.6.3
+  resolution: "ajv@npm:8.6.3"
   dependencies:
     fast-deep-equal: ^3.1.1
     json-schema-traverse: ^1.0.0
     require-from-string: ^2.0.2
     uri-js: ^4.2.2
-  checksum: b86d6cb86c69abbd8ce71ab7d4ff272660bf6d34fa9fbe770f73e54da59d531b2546692e36e2b35bbcfb11d20db774b4c09189671335185b8c799d65194e5169
+  checksum: 690ffb9408415fdab43686b3f92037ba0c8362f5d0709a123ba3fb546e6ad81414455f80a2b5cc432ce924afe9864671198f022bc331a19c072d4ede152ec3ca
   languageName: node
   linkType: hard
 
@@ -4742,8 +4742,8 @@ __metadata:
   linkType: hard
 
 "boxen@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "boxen@npm:5.0.1"
+  version: 5.1.0
+  resolution: "boxen@npm:5.1.0"
   dependencies:
     ansi-align: ^3.0.0
     camelcase: ^6.2.0
@@ -4753,7 +4753,7 @@ __metadata:
     type-fest: ^0.20.2
     widest-line: ^3.1.0
     wrap-ansi: ^7.0.0
-  checksum: a5fd6e48ec3bf929dcfa8543ce41e6df0217e4d11a0c95c394c53e230bc59dcecbdfe3c1aa37cdacf6e80b6bd814dfab8f384dbab9563ac2f1cfd6e43e7a6940
+  checksum: 1071216b6bf8101c94e09141a68bfc5ed229c6805f37b852a7d1269b753b245eb02e40e68802122c8c5f8ed2e8ab0e50e610b9f925c4e94fcb5a3f9e85be460d
   languageName: node
   linkType: hard
 
@@ -5045,9 +5045,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001125, caniuse-lite@npm:^1.0.30001252, caniuse-lite@npm:^1.0.30001254":
-  version: 1.0.30001256
-  resolution: "caniuse-lite@npm:1.0.30001256"
-  checksum: 4f9b44e07cdf35e410c9b503dd410051281a9281b198456b5987d22d94ffdeb3e60b784067d4eb06f76ec55855deb8715ffaa16234aa5b55d2dbda290ab304dc
+  version: 1.0.30001257
+  resolution: "caniuse-lite@npm:1.0.30001257"
+  checksum: d336d5bfaacc5be9d6ab1de3687e6cd88b124f9c3a2013ff40ab9f324cca249de5f93cc4589076c4414d65066ccaa35fc9894346735c3088ce5452c42baaf7db
   languageName: node
   linkType: hard
 
@@ -5643,8 +5643,8 @@ __metadata:
   linkType: hard
 
 "contentful-management@npm:^7.5.1":
-  version: 7.37.0
-  resolution: "contentful-management@npm:7.37.0"
+  version: 7.38.0
+  resolution: "contentful-management@npm:7.38.0"
   dependencies:
     "@types/json-patch": 0.0.30
     axios: ^0.21.0
@@ -5652,17 +5652,18 @@ __metadata:
     fast-copy: ^2.1.0
     lodash.isplainobject: ^4.0.6
     type-fest: ^0.21.3
-  checksum: c8a285c15a88d83c46725a33b31c266935ece8e63b33b42b9d5f6f6773be8e478067fe60c5361329758bd7be19a7d50a273cd9ae5e3a830268a565cab8cdaa7c
+  checksum: be1a657407afa5079f3e4cf26d4a9cb905c8b5003948ec2735505217b66adb97eefb4b94f6df2dd326cf064736e729157e97ddb5e5854cff01a3301bd432da2c
   languageName: node
   linkType: hard
 
 "contentful-sdk-core@npm:^6.8.0":
-  version: 6.8.5
-  resolution: "contentful-sdk-core@npm:6.8.5"
+  version: 6.9.0
+  resolution: "contentful-sdk-core@npm:6.9.0"
   dependencies:
     fast-copy: ^2.1.0
+    lodash: ^4.17.21
     qs: ^6.9.4
-  checksum: 763249eb0d6946028884240d3d1ffaf944f8e8d0fd312c09b3db1cf01f56a0c93553fe52ca14085e74d6c853f0e79c3cfc19140be79b5a90804f0469ec9620ea
+  checksum: 856574480dc9f8450bba640ccfdee149e317a148fe832a395066c265f23ab9647fc0df0a9c34470ae7ca02e1166333d45882eabefc754db5ea8fab3368a2dd37
   languageName: node
   linkType: hard
 
@@ -13482,13 +13483,13 @@ __metadata:
   linkType: hard
 
 "node-gyp-build@npm:^4.2.2":
-  version: 4.2.3
-  resolution: "node-gyp-build@npm:4.2.3"
+  version: 4.3.0
+  resolution: "node-gyp-build@npm:4.3.0"
   bin:
     node-gyp-build: bin.js
     node-gyp-build-optional: optional.js
     node-gyp-build-test: build-test.js
-  checksum: 450d7b2016290d269343f8a33d13f4d7ccd0a38057af0d71a4d714fe06e6051da50b677a411ea9e240706253c4b53eb41e1b050df72d75d796b2e4d91b2757ae
+  checksum: 1ecab16d9f275174d516e223f60f65ebe07540347d5c04a6a7d6921060b7f2e3af4f19463d9d1dcedc452e275c2ae71354a99405e55ebd5b655bb2f38025c728
   languageName: node
   linkType: hard
 
@@ -18131,9 +18132,9 @@ resolve@^2.0.0-next.3:
   linkType: hard
 
 "tapable@npm:^2.1.1, tapable@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "tapable@npm:2.2.0"
-  checksum: 5a7e31ddd2400d524b68e7ba0373e492ba52b321b8e1eb15b65956e9c1b9ba90dd175210a1318b6752538cbe3b284f4a7218a714be942aeeb812623c243aea25
+  version: 2.2.1
+  resolution: "tapable@npm:2.2.1"
+  checksum: 3b7a1b4d86fa940aad46d9e73d1e8739335efd4c48322cb37d073eb6f80f5281889bf0320c6d8ffcfa1a0dd5bfdbd0f9d037e252ef972aca595330538aac4d51
   languageName: node
   linkType: hard
 
