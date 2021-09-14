@@ -37,12 +37,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-        node-version:
-          - 16
-        architecture:
-          - x64
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [14, 16]
+        architecture: [x64]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -65,11 +62,13 @@ jobs:
           yarn badge
       - name: Coveralls action
         uses: coverallsapp/github-action@1.1.3
+        if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: Node ${{ matrix.node-version }} ${{ matrix.os }} ${{ matrix.architecture }}
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
+        if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: badges
           path: public
