@@ -7,8 +7,8 @@
   "lockFileMaintenance": { "enabled": true },
   "packageRules": [
     {
-      "matchPackageNames": ["node"],
-      "enabled": false
+      "matchDepTypes": ["peerDependencies", "engines"],
+      "rangeStrategy": "widen"
     },
     {
       "matchUpdateTypes": [
