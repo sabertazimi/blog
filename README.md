@@ -20,7 +20,7 @@
 [![CI](https://img.shields.io/github/workflow/status/sabertazimi/blog/CI/main?style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 [![CodeQL](https://img.shields.io/github/workflow/status/sabertazimi/blog/CodeQL/main?label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
 
-[![Jest Coverage](https://img.shields.io/coveralls/github/sabertazimi/blog?logo=coveralls&style=for-the-badge)](https://coveralls.io/github/sabertazimi/blog)
+[![Jest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
 [![Jest Coverage](https://raw.githubusercontents.com/sabertazimi/blog/gh-pages/coverage-lines.svg)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 
 A great [blog](https://sabertazimi.github.io/blog) system based on React and Gatsby.
