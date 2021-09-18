@@ -2280,10 +2280,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^10.1.4":
-  version: 10.1.4
-  resolution: "@octokit/openapi-types@npm:10.1.4"
-  checksum: 47db9eebbfa79b584a947fe4371813a8279f2d6489d952b0cf193626147a4f9a3cdd38bce1dcccc8a718fd1c3c239c9a571d9b144c4d7cc4bf3ba4c9eeb75b90
+"@octokit/openapi-types@npm:^10.2.2":
+  version: 10.2.2
+  resolution: "@octokit/openapi-types@npm:10.2.2"
+  checksum: b88f7eb8cd2ff8fd8dda0d802520ab5fde5f81932fd660e677668356ca1be8439e88482c0f6c27c8c277eb46116e0bf002aae14cb9f944e025f94a6d93445bf5
   languageName: node
   linkType: hard
 
@@ -2356,12 +2356,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.27.1":
-  version: 6.27.1
-  resolution: "@octokit/types@npm:6.27.1"
+"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.27.1, @octokit/types@npm:^6.28.1":
+  version: 6.28.1
+  resolution: "@octokit/types@npm:6.28.1"
   dependencies:
-    "@octokit/openapi-types": ^10.1.4
-  checksum: 3965c7be16933d9b874824c4cf153e36a8c8ea7d6884a74e410f9b252c05ef06ea05dd209a82bdd1fe4a84b0a1dbc732961ad1dd070d8408fe7796b779077954
+    "@octokit/openapi-types": ^10.2.2
+  checksum: e62dde612a7c02da028bd0ee35a8adc0cb9ce4e9ca43004ea4c190e6b32f10241566fbe38ef07f2e741549bb671d9864e43e3a45f0772ac73ce6ae05384adfb1
   languageName: node
   linkType: hard
 
@@ -2560,7 +2560,7 @@ __metadata:
     "@ant-design/icons": ^4.6.4
     "@babel/core": ^7.15.5
     "@octokit/rest": ^18.10.0
-    "@octokit/types": ^6.27.1
+    "@octokit/types": ^6.28.1
     "@reach/router": ^1.3.4
     "@react-spring/types": ^9.2.4
     "@testing-library/dom": ^8.5.0
