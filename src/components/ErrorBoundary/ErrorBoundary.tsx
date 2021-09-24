@@ -14,7 +14,7 @@ interface State {
 class ErrorBoundary extends Component<Props, State> {
   readonly state: State = {
     hasError: false,
-    error: new Error(),
+    error: Error('Error'),
     errorInfo: { componentStack: '' },
   };
 

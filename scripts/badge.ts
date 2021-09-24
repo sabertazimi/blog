@@ -1,7 +1,7 @@
 import cp from 'child_process';
 import fs from 'fs';
-import fetch from 'node-fetch';
 import path from 'path';
+import fetch from 'node-fetch';
 
 const rootPath = path.join(__dirname, '..');
 const SummaryFilePath = path.join(rootPath, 'coverage/coverage-summary.json');
@@ -21,7 +21,7 @@ const getCoveragePercentage = (
 ) => {
   try {
     const summary = fs.readFileSync(summaryFilePath, 'utf8');
-    return JSON.parse(summary)['total'][coverageType]['pct'];
+    return JSON.parse(summary).total[coverageType].pct;
   } catch (error) {
     if (error instanceof Error) console.error(error.message);
     return 0;

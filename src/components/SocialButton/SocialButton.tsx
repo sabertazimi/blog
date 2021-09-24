@@ -23,7 +23,7 @@ const SocialButton = ({
     type="link"
     href={`${url}`}
     icon={SocialIcon(type)}
-    style={{ backgroundColor: color ? color : '' }}
+    style={{ backgroundColor: color || '' }}
   />
 );
 

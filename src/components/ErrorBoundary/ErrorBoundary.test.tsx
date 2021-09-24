@@ -18,9 +18,9 @@ describe('ErrorBoundary', () => {
 
   beforeEach(() => {
     process.env = { ...OLD_ENV, NODE_ENV: 'development' };
-    mockConsoleError = jest.spyOn(console, 'error').mockImplementation(() => {
-      return;
-    });
+    mockConsoleError = jest
+      .spyOn(console, 'error')
+      .mockImplementation(jest.fn());
   });
 
   afterEach(() => {

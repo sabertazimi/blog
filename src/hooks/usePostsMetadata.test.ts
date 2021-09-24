@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-conditional-expect */
 import * as gatsby from 'gatsby';
 import usePostsMetadata from './usePostsMetadata';
 
@@ -71,7 +72,7 @@ describe('usePostsMetadata', () => {
       }
 
       // Check correct tags data of post are returned
-      expect(tags['JavaScript']).toBe(5);
+      expect(tags.JavaScript).toBe(5);
       expect(tags['Frontend Development']).toBe(5);
       expect(tags['Web Development']).toBe(5);
 

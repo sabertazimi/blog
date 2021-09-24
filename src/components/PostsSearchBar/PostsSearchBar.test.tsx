@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import PostsSearchBar from './PostsSearchBar';
@@ -32,14 +32,21 @@ describe('PostsSearchBar', () => {
 
   test.each(Array.from(Array(5).keys()))(
     'should render [%i Basic Notes] options when searching',
-    index => {
-      const { getByRole, getByText } = render(<PostsSearchBar posts={posts} />);
+    async index => {
+      const mockConsoleError = jest
+        .spyOn(console, 'error')
+        .mockImplementation(jest.fn());
+      const { getByRole, findAllByText } = render(
+        <PostsSearchBar posts={posts} />
+      );
       const input = getByRole('combobox');
 
       fireEvent.change(input, { target: { value: `${index}` } });
-      waitFor(() => expect(getByText(posts[index].title)).toBeInTheDocument());
+      expect(await findAllByText(posts[index].title)).toHaveLength(2);
       fireEvent.change(input, { target: { value: '' } });
-      waitFor(() => expect(getByText('0 Basic Notes')).not.toBeInTheDocument());
+      expect(await findAllByText(posts[index].title)).toHaveLength(2);
+
+      mockConsoleError.mockRestore();
     }
   );
 });

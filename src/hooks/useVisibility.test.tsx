@@ -71,9 +71,9 @@ describe('useVisibility', () => {
   let mockConsoleError: jest.SpyInstance;
 
   beforeEach(() => {
-    mockConsoleError = jest.spyOn(console, 'error').mockImplementation(() => {
-      return;
-    });
+    mockConsoleError = jest
+      .spyOn(console, 'error')
+      .mockImplementation(jest.fn());
   });
 
   afterEach(() => {

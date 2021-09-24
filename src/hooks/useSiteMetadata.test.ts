@@ -55,26 +55,24 @@ describe('useSiteMetadata', () => {
       bookList,
     } = useSiteMetadata();
 
-    expect(title).toBe(siteMetadata['title']);
-    expect(author).toBe(siteMetadata['author']);
-    expect(siteUrl).toBe(siteMetadata['siteUrl']);
-    expect(email).toBe(siteMetadata['email']);
-    expect(disqusUrl).toBe(siteMetadata['disqusUrl']);
+    expect(title).toBe(siteMetadata.title);
+    expect(author).toBe(siteMetadata.author);
+    expect(siteUrl).toBe(siteMetadata.siteUrl);
+    expect(email).toBe(siteMetadata.email);
+    expect(disqusUrl).toBe(siteMetadata.disqusUrl);
     landingTitles.forEach((title, index) =>
-      expect(title).toBe(siteMetadata['landingTitles'][index])
+      expect(title).toBe(siteMetadata.landingTitles[index])
     );
     Object.keys(SocialList).forEach(social =>
       expect(socialList[social as SocialType]).toBe(
-        siteMetadata['socialList'][social as SocialType]
+        siteMetadata.socialList[social as SocialType]
       )
     );
     bookList.forEach((book, index) => {
-      expect(book['title']).toBe(siteMetadata['bookList'][index]['title']);
-      expect(book['author']).toBe(siteMetadata['bookList'][index]['author']);
-      expect(book['url']).toBe(siteMetadata['bookList'][index]['url']);
-      expect(book['description']).toBe(
-        siteMetadata['bookList'][index]['description']
-      );
+      expect(book.title).toBe(siteMetadata.bookList[index].title);
+      expect(book.author).toBe(siteMetadata.bookList[index].author);
+      expect(book.url).toBe(siteMetadata.bookList[index].url);
+      expect(book.description).toBe(siteMetadata.bookList[index].description);
     });
   });
 });
