@@ -2429,15 +2429,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-rest-endpoint-methods@npm:5.11.1":
-  version: 5.11.1
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.11.1"
+"@octokit/plugin-rest-endpoint-methods@npm:5.11.2":
+  version: 5.11.2
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.11.2"
   dependencies:
-    "@octokit/types": ^6.30.0
+    "@octokit/types": ^6.31.0
     deprecation: ^2.3.1
   peerDependencies:
     "@octokit/core": ">=3"
-  checksum: 1af99f78350b8a0f88fec67ef7f1ea6617470662a3c636e33858af73dd432362796198bcd7d3b4f336ebedfa62e07a52421e2cee22505dd0206f867e3c01a3c0
+  checksum: 57e8960cf260b291790e4cb7313bf3ce0814ffa808215c7e989ea3f260f2bd021a975ac42677e4563e753674acc3102b181f1187d8a6f548810275493deaa270
   languageName: node
   linkType: hard
 
@@ -2466,15 +2466,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/rest@npm:^18.10.0":
-  version: 18.11.0
-  resolution: "@octokit/rest@npm:18.11.0"
+"@octokit/rest@npm:^18.11.1":
+  version: 18.11.1
+  resolution: "@octokit/rest@npm:18.11.1"
   dependencies:
     "@octokit/core": ^3.5.1
     "@octokit/plugin-paginate-rest": ^2.16.0
     "@octokit/plugin-request-log": ^1.0.4
-    "@octokit/plugin-rest-endpoint-methods": 5.11.1
-  checksum: eb67c815db9b03cf4e047de397bef0dae4f1bba3fc048ed9de56974a3a7115124cdf999a5f59a7e1adc8f8722dbfffdbde7f81e9873df7bb76298f70514845e3
+    "@octokit/plugin-rest-endpoint-methods": 5.11.2
+  checksum: e7a7185ffbba70712f73f4d3f676285bfa4bdb729d94ec1bed0872a3016139bd774c5a732903c449100609c0134e24a0f6e538c98a5226996d76042f06212698
   languageName: node
   linkType: hard
 
@@ -2689,7 +2689,7 @@ __metadata:
     "@ant-design/icons": ^4.7.0
     "@babel/core": ^7.15.5
     "@dg-scripts/eslint-config": ^1.1.1
-    "@octokit/rest": ^18.10.0
+    "@octokit/rest": ^18.11.1
     "@octokit/types": ^6.31.0
     "@reach/router": ^1.3.4
     "@react-spring/types": ^9.2.4
