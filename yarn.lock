@@ -14,26 +14,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons-svg@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "@ant-design/icons-svg@npm:4.1.0"
-  checksum: c875e9692c65afd21d2c072fc4a6469bfe9d0a983a331eacea14c4e5e404ce1c24da1389dfb441f9db99318ac3f39445d5115cca13f7e3fe5c3ba25884058536
+"@ant-design/icons-svg@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "@ant-design/icons-svg@npm:4.2.1"
+  checksum: c1fa1bbeb0c58209e2c5d49ce001543823ae2d8326e1c7aafb992deac7aaa901a44f9a16151ad919d2628dbe3d783b325ed2b9440436002225801332323296d4
   languageName: node
   linkType: hard
 
-"@ant-design/icons@npm:^4.6.3, @ant-design/icons@npm:^4.6.4":
-  version: 4.6.4
-  resolution: "@ant-design/icons@npm:4.6.4"
+"@ant-design/icons@npm:^4.6.3, @ant-design/icons@npm:^4.7.0":
+  version: 4.7.0
+  resolution: "@ant-design/icons@npm:4.7.0"
   dependencies:
     "@ant-design/colors": ^6.0.0
-    "@ant-design/icons-svg": ^4.0.0
+    "@ant-design/icons-svg": ^4.2.1
     "@babel/runtime": ^7.11.2
     classnames: ^2.2.6
     rc-util: ^5.9.4
   peerDependencies:
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
-  checksum: 8bc2cbac17dcd1eb2296370ced7b8c66ba24e720809373ea50f06b00711bdc13e4bd6783d571ff0df7fd05f092bd96206c3dd5dee5f42f4a0fc2c6f2c864d00b
+  checksum: 4264d38e6b3cc6d640e1e7f9821e5f428369c31754df03b4712706dba4e89c7bc3e6370ba8dc52b9eb278ccb986ddf215bfac0b0c01e5b7e8ed6f50179be1a69
   languageName: node
   linkType: hard
 
@@ -2686,7 +2686,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
-    "@ant-design/icons": ^4.6.4
+    "@ant-design/icons": ^4.7.0
     "@babel/core": ^7.15.5
     "@dg-scripts/eslint-config": ^1.1.1
     "@octokit/rest": ^18.10.0
