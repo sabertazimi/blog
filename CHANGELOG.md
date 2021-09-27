@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/sabertazimi/blog/compare/v2.11.0...v2.12.0) (2021-09-27)
+
+
+### :rocket: Building Work
+
+* **CI:** add multiple environment for building ([467a508](https://github.com/sabertazimi/blog/commit/467a508a702608cc4af2d5600c9afb56e876c7c2))
+* **CI:** add multiple environment for testing ([ffbb88f](https://github.com/sabertazimi/blog/commit/ffbb88fa57d2d4b2fdd8494bb084d873521b5f1c))
+* **CI:** reduce virtual machines efforts ([82df9c4](https://github.com/sabertazimi/blog/commit/82df9c434c7df80cbe717139397c0ea879ff18ae))
+* **CI:** reduce virtual machines efforts ([5767295](https://github.com/sabertazimi/blog/commit/5767295a84028237582a245feb34de1ba1c10641))
+* **CI:** reduce virtual machines efforts ([91909d8](https://github.com/sabertazimi/blog/commit/91909d8a1c31b57e32d8ae0a5891bb05d484b406))
+* **CI:** switch `coveralls` to `codecov` ([4ccdbbf](https://github.com/sabertazimi/blog/commit/4ccdbbf5670d872ffc4d018e16c3412f50e23669))
+* **deps-bot:** change PR concurrent limits ([1567bbc](https://github.com/sabertazimi/blog/commit/1567bbc7ab96ac0dbc4e46ab60a14fd0331fe7bc))
+* **deps-bot:** disable renovate dependency dashboard ([2f4db29](https://github.com/sabertazimi/blog/commit/2f4db29fd9bebc03e2b3211b933af3c1f566b04e))
+* **deps-bot:** enable `pin` version ([d7e8083](https://github.com/sabertazimi/blog/commit/d7e80830a60165bb2ace14d21ede85b8f07d95bd))
+* **deps-bot:** enable non-major deps automerge ([d2fe69b](https://github.com/sabertazimi/blog/commit/d2fe69bca6fdcf7931bc9f08f74845d912bace92))
+* **deps-bot:** remove GitHub dependabot ([ae277a6](https://github.com/sabertazimi/blog/commit/ae277a612fc9a0be3e01ea6e151b055df54b4ae4))
+* **deps-bot:** setup renovate bot configuration ([c96ec45](https://github.com/sabertazimi/blog/commit/c96ec45cede2c77ccb67ef94c1e5ff83ed293dbe))
+* **deps-bot:** widen peerDeps and engines ([a0fc5dd](https://github.com/sabertazimi/blog/commit/a0fc5dd5f8b97504d55e982cecfc09962d9322f1))
+* **deps:** rectify missing peer deps ([e56ab17](https://github.com/sabertazimi/blog/commit/e56ab1758f8ed4c86bb8149135e4afe4e1e58326))
+* **eslint:** add `dg-scripts` eslint configuration ([cbb422c](https://github.com/sabertazimi/blog/commit/cbb422c02297c02a7b4777b07cfe688288447baf))
+
+
+### :sparkles: Features
+
+* **stylelint:** add `stylelint` support ([0deb6cd](https://github.com/sabertazimi/blog/commit/0deb6cd3892913d8179415b2999c5c390ec0437d))
+
+
+### :bug: Bug Fixes
+
+* **css-styles:** rectify stylelint error ([16ef0b4](https://github.com/sabertazimi/blog/commit/16ef0b400977b94476751cdcea2f4dbc8b3add70))
+* **deps:** pin dependencies ([#226](https://github.com/sabertazimi/blog/issues/226)) ([a32dd02](https://github.com/sabertazimi/blog/commit/a32dd02170e37fea236f092163ae56fd140ce28c))
+* **deps:** rectify peerDeps error ([5a71473](https://github.com/sabertazimi/blog/commit/5a714733087e916fe79582e4070351385f06a59a))
+* **deps:** update dependency @ant-design/icons to ^4.7.0 ([#254](https://github.com/sabertazimi/blog/issues/254)) ([f2de586](https://github.com/sabertazimi/blog/commit/f2de586a5eaa358e44eb858cd65992483173156d))
+* **deps:** update dependency @octokit/rest to ^18.11.1 ([#252](https://github.com/sabertazimi/blog/issues/252)) ([7b82dfb](https://github.com/sabertazimi/blog/commit/7b82dfb982c5b3c2125d8d5ba0b37364f0120b16))
+* **deps:** update dependency prismjs to ^1.25.0 ([#239](https://github.com/sabertazimi/blog/issues/239)) ([b9dfda1](https://github.com/sabertazimi/blog/commit/b9dfda17c286c7b9722e96041b3f697adf671706))
+* **deps:** update dependency tailwindcss to ^2.2.16 ([#259](https://github.com/sabertazimi/blog/issues/259)) ([3e2e0a7](https://github.com/sabertazimi/blog/commit/3e2e0a707d857784509d96c2000639afc050a304))
+* **deps:** update react monorepo to v17 (major) ([bf1a512](https://github.com/sabertazimi/blog/commit/bf1a51230cf6b5c68566f601b8ad6076d171bd52))
+* **lint-markdown:** rectify css styles error in `md` files ([0eb72b9](https://github.com/sabertazimi/blog/commit/0eb72b9ac47bc4653b91b7194d6f29ff9339c690))
+* **markdownlint:** add `markdownlint` support ([192771e](https://github.com/sabertazimi/blog/commit/192771e0e3c3f8cfc5eda474f74175a4a655083e))
+
 ## [2.11.0](https://github.com/sabertazimi/blog/compare/v2.10.0...v2.11.0) (2021-09-11)
 
 
