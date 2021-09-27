@@ -111,11 +111,8 @@ then write modern browser css code
 ```css
 .grid {
   display: flex;
-}
 
-/* old browser don't support this rule */
-/* old browser will ignore this rule */
-.grid {
+  /* old browser will ignore this rule */
   display: grid;
 }
 ```
@@ -137,174 +134,19 @@ CSS Houdini bring many API:
 
 to let developers enhance css without any browser updates
 
-## CSS Performance
+## HomePage User Experience
 
-### Basic Perf Tips
+[UX Research](https://baymard.com/blog/2021-current-state-of-ecommerce-homepage-ux)
+point out that:
 
-- use `audits` panel to diagnose
-- use CSS shorthand and color shortcuts
-- eliminate unneeded zeros and units
-- remove unused CSS by `coverage` panel of Devtools
-- `link` is parallel, `@import` isn't parallel
-
-### CSS Selectors
-
-减少选择器的复杂性，与构造样式本身的其他工作相比，
-选择器复杂性可以占用计算元素样式所需时间的 50%以上
-
-### CSS Triggers
-
-- [CSS Triggers](https://github.com/GoogleChromeLabs/css-triggers)
-- [JS DOM API Triggers](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
-
-avoid to frequently change css property
-or call JS DOM API triggering layout stage (reflow)
-
-### will-change
-
-告知浏览器该元素会有哪些变化的方法，这样浏览器可以在元素属性真正发生变化之前提前做好对应的优化准备工作
-
-```css
- {
-  will-change: auto;
-  will-change: scroll-position;
-  will-change: contents;
-  will-change: transform; /* Example of <custom-ident> */
-  will-change: opacity; /* Example of <custom-ident> */
-  will-change: left, top; /* Example of two <animate-feature> */
-
-  will-change: unset;
-  will-change: initial;
-  will-change: inherit;
-}
-```
-
-### contain
-
-[CSS Containment](https://developers.google.com/web/updates/2016/06/css-containment)
-
-contain 属性允许开发者声明当前元素和它的内容尽可能的独立于 DOM 树的其他部分。
-这使得浏览器在重新计算布局、样式、绘图或它们的组合的时候，只会影响到有限的 DOM 区域，而不是整个页面
-
-```css
-/* 无布局包含*/
-contain: none;
-
-/* 布局包含 layout、style、paint 和 size*/
-contain: strict;
-
-/* 布局包含layout、style 和 paint */
-contain: content;
-
-/* 布局包含 size */
-contain: size;
-
-/* 布局包含 layout */
-contain: layout;
-
-/* 布局包含 style */
-contain: style;
-
-/* 布局包含 paint */
-contain: paint;
-```
-
-- size: 声明这个元素的尺寸会变化，不需要去检查它依赖关系中的尺寸变化
-- style: 声明那些同时会影响这个元素和其子孙元素的属性，都在这个元素的包含范围内
-- layout: 声明没有外部元素可以影响它内部的布局，反之亦然
-- paint: 声明这个元素的子孙节点不会在它边缘外显示。如果一个元素在视窗外或因其他原因导致不可见，则同样保证它的子孙节点不会被显示
-
-### Animation Frame
-
-`window.requestAnimationFrame`:
-
-- reflow: `javascript -> style -> layout -> paint -> composite`
-- repaint: `paint -> composite`
-
-告诉浏览器希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用
-
-> 若想要在下次重绘时产生另一个动画画面，callback 必须调用 requestAnimationFrame
-
-```js
-const start = null;
-const element = document.getElementById('SomeElementYouWantToAnimate');
-element.style.position = 'absolute';
-
-function step(timestamp) {
-  if (!start) {
-    start = timestamp;
-  }
-
-  const progress = timestamp - start;
-  element.style.left = Math.min(progress / 10, 200) + 'px';
-
-  if (progress < 2000) {
-    window.requestAnimationFrame(step);
-  }
-}
-
-window.requestAnimationFrame(step);
-```
-
-### CSS Loading Tips
-
-- Lazyload any CSS not needed for Start Render:
-  - This could be Critical CSS;
-  - or splitting your CSS into Media Queries.
-- Avoid @import:
-  - In your HTML;
-  - but in CSS especially;
-  - and beware of oddities with the PreLoad Scanner.
-- Be wary of synchronous CSS and JavaScript order:
-  - JavaScript defined after CSS won’t run until CSSOM is completed;
-  - so if your JavaScript doesn’t depend on your CSS;
-    - load it before your CSS;
-  - but if it does depend on your CSS:
-    - load it after your CSS.
-- Load CSS as the DOM needs it:
-  - This unblocks Start Render and allows progressive rendering.
-
-```html
-<link rel="preload" href="/path/to/split.css" as="style" />
-<link
-  rel="stylesheet"
-  href="/path/to/split.css"
-  media="print"
-  onload="this.media='all'"
-/>
-```
-
-### Animation
-
-#### Best Practice
-
-- [High Performance Tips](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations)
-- all animation: `keyframe` animation or `transitions` is best
-- js-based animation: `requestAnimationFrame` is better than `setTimeout`/`setInterval`
-- position animation:`transform: translate(npx, npx)` is better than `top`/`right`/`bottom`/`left`
-- scale animation: `transform: scale(n)` better than `width`/`height`
-- rotation animation: `transform: rotate(deg)` is better
-- opacity/visibility animation: `opacity: 0...1` is better
-
-#### DevTools for Animation
-
-- [DevTools for Animation Performance](https://calibreapp.com/blog/investigate-animation-performance-with-devtools)
-- slower CPU simulation in `performance` panel
-- enable paint instrumentation in `performance` panel
-- FPS meter in `rendering` panel
-- paint flashing in `rendering` panel
-- `layers` panel
-
-#### Animation Internal
-
-- `width`/`height`/`margin`/`left`/`top` in `Layout` stage
-- `box-shadow`/`border-radius`/`background`/`outline`/`color` in `Paint` stage
-- `cursor`/`z-index`/`transform`/`opacity` in `Composite Layers` stage
-- `top`/`left` has very large time to `paint` each frame
-
-## CSS Hacks
-
-- [Browser Hacks](https://github.com/4ae9b8/browserhacks)
+- Feature a Broad Range of Product Types (6% Don’t)
+- Avoid Overly Aggressive and Distracting Ads (59% Don’t)
+- Implement Carousels Carefully (75% Don’t)
+- Assist the Selection of a Well-Defined Scope (62% Don’t)
+- Invest in Bespoke Imagery and Design (19% Don’t)
+- Make the Search Field Immediately Obvious (22% Don’t)
+- Implement Country & Language Selection Carefully (35% Don’t)
+- Ensure Visual Hit Areas Match the Actual Hit Areas (43% Don’t)
 
 ## Design Principles
 

@@ -40,38 +40,56 @@ has 4 bits - thousands, hundreds, tens, ones `0000`:
 > but selectors in it have effect on specificity
 
 ```scss
+/* stylelint-disable at-rule-no-unknown */
+
+/* specificity: 0001 */
 h1 {
-  specificity: 0001;
+  color: red;
 }
 
+/* specificity: 0100 */
 #id {
-  specificity: 0100;
+  color: green;
 }
 
+/* specificity: 0003 */
 h1 + p::first-letter {
-  specificity: 0003;
+  color: blue;
 }
 
+/* specificity: 0022 */
 li > a[href*='en-US'] > .inline-warning {
-  specificity: 0022;
-}
-
-/* <h1 style="color: black">Hello</h1> */
-inline-style {
-  specificity: 1000;
+  color: yellow;
 }
 ```
 
+```html
+<!-- specificity: 1000; -->
+<h1 style="color: black">Hello</h1>
+```
+
 ```css
+/* specificity: 0023 */
+div li:nth-child(2) a:hover,
+div li:nth-child(2) a:focus {
+  border: 10px dashed black;
+}
+
+/* specificity: 0024 */
+div div li:nth-child(2) a:hover,
+div div li:nth-child(2) a:focus {
+  border: 10px solid black;
+}
+
+/* specificity: 0033 */
+div div .nav:nth-child(2) a:hover,
+div div .nav:nth-child(2) a:focus {
+  border: 10px double black;
+}
+
 /* specificity: 0101 */
 #outer a {
   background-color: red;
-}
-
-/* specificity: 0201 */
-/* win */
-#outer #inner a {
-  background-color: blue;
 }
 
 /* specificity: 0104 */
@@ -80,25 +98,13 @@ inline-style {
 }
 
 /* specificity: 0113 */
-/* win */
 #outer div ul .nav a {
   color: white;
 }
 
-/* specificity: 0024 */
-div div li:nth-child(2) a:hover {
-  border: 10px solid black;
-}
-
-/* specificity: 0023 */
-div li:nth-child(2) a:hover {
-  border: 10px dashed black;
-}
-
-/* specificity: 0033 */
-/* win */
-div div .nav:nth-child(2) a:hover {
-  border: 10px double black;
+/* specificity: 0201 */
+#outer #inner a {
+  background-color: blue;
 }
 ```
 
@@ -126,6 +132,17 @@ h1 {
   it resets the property value to its inherited value.
 - `unset` value resets a non-inherited property to its `initial` value.
 - `revert` reverses the CSS default values to the browser user-agent styles.
+
+#### Inherited CSS Property
+
+- all elements： visibility, cursor.
+- inline elements：
+  letter-spacing, word-spacing, white-space, line-height,
+  color, font, font-family, font-size, font-style, font-variant, font-weight,
+  text-decoration, text-transform, direction
+- block elements： text-indent, text-align
+- list elements： list-style, list-style-type, list-style-position, list-style-image
+- table elements： border-collapse
 
 ## Property Value
 
@@ -377,7 +394,7 @@ span {
 
 ## CSS Selector
 
-![CSS3 Selector](figures/CSS3SelectorList.png)
+![CSS3 Selector](./figures/CSS3SelectorList.png)
 
 ### 元素选择器
 
@@ -406,6 +423,19 @@ ul > li {
   list-style: none;
 } /* 仅限ul的直接子元素li，忽略嵌套子元素 */
 ```
+
+Using the descendant selector without more specificity can be really expensive.
+The browser is going to check every descendant element for a match
+because the relationship isn’t restricted to parent and child.
+
+For `.container ul li a` selector:
+
+- match every `<a>` on the page
+- find every `<a>` contained in a `<li>`
+- use the previous matches and narrow down to
+  the ones contained in a `<ul>`
+- finally, filter down the above selection to
+  the ones contained in an element with the class `.container`
 
 #### Sibling Selectors
 
@@ -440,8 +470,8 @@ checkbox `input` as hidden `click` event listener
 
 ```css
 input.checkbox {
-  opacity: 0;
   visibility: hidden;
+  opacity: 0;
 }
 
 nav {
@@ -457,7 +487,7 @@ input.checkbox:checked ~ nav {
 }
 ```
 
-### 属性选择器
+### Attribute Selectors
 
 `E[attr]`
 
@@ -519,7 +549,7 @@ a[title*='link'] {
 //定位所有title里具有link字符串的a链接
 ```
 
-### 伪类
+### Pseudo Class Selectors
 
 - :link：未访问的链接；
 - :visited：已访问的链接，不建议使用；
@@ -580,6 +610,13 @@ div:target {
 ```
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .msg {
+    opacity: 0;
+    transition: none;
+  }
+}
+
 .msg {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
@@ -591,39 +628,41 @@ input:not(:placeholder-shown) + .msg {
 ```
 
 ```css
-/* Mouse Focus Style */
-button:focus:not(:focus-visible) {
-  outline: 2px dotted #416dea;
-  outline-offset: 2px;
-  box-shadow: 0px 1px 1px #416dea;
-}
-
 /* Tab Focus Style */
 button:focus-visible {
   outline: 2px solid #416dea;
   outline-offset: 2px;
-  box-shadow: 0px 1px 1px #416dea;
+  box-shadow: 0 1px 1px #416dea;
+}
+
+/* Mouse Focus Style */
+button:focus:not(:focus-visible) {
+  outline: 2px dotted #416dea;
+  outline-offset: 2px;
+  box-shadow: 0 1px 1px #416dea;
 }
 ```
 
-### 伪元素
+### Pseudo Element Selectors
 
-- ::first-line：匹配文本首行；
-- ::first-letter：匹配文本首字母；
-- ::selection：匹配突出显示的文本：
+- `::first-line`: 匹配文本首行.
+- `::first-letter`: 匹配文本首字母.
+- `::selection`: 匹配突出显示的文本.
+- `::before`
+- `::after`
 
 ```css
-//定义选中的文本颜色与背景色
+/* 定义选中的文本颜色与背景色 */
 ::selection {
-  background: #444;
   color: #fff;
+  background: #444;
 }
 ```
 
-- ::before 与 ::after ：使用 content 属性生成额外的内容并插入在标记中：
+- `::before` 与 `::after`: 使用 content 属性生成额外的内容并插入在标记中.
 
 ```css
-a:after {
+a::after {
   content: '↗';
 }
 ```
@@ -631,10 +670,11 @@ a:after {
 attr() – 调用当前元素的属性
 
 ```css
-a:after {
+a::after {
   content: '(' attr(href) ')';
 }
-a:after {
+
+b::after {
   content: '(' attr(data-language) ')';
 }
 ```
@@ -650,9 +690,9 @@ h1::before {
 counter() – 调用计数器，可以不使用列表元素实现序号功能,配合 CSS3 中`counter-increment`和`counter-reset`属性
 
 ```css
-h2:before {
-  counter-increment: chapter;
+h2::before {
   content: 'Chapter ' counter(chapter);
+  counter-increment: chapter;
 }
 ```
 
@@ -662,8 +702,8 @@ div {
 }
 
 h2::before {
-  counter-increment: tidbit-counter 1;
   content: counter(tidbit-counter, list-style-type) ': ';
+  counter-increment: tidbit-counter 1;
 }
 ```
 
@@ -681,17 +721,17 @@ h2::before {
 output -->
 ```
 
-nested counters
+Nested counters:
 
 ```css
 ol {
-  counter-reset: section; /* 为每个ol元素创建新的计数器实例 */
   list-style-type: none;
+  counter-reset: section; /* 为每个ol元素创建新的计数器实例 */
 }
 
-li:before {
-  counter-increment: section; /* 只增加计数器的当前实例 */
+li::before {
   content: counters(section, '.') ' '; /* 为所有计数器实例增加以“.”分隔的值 */
+  counter-increment: section; /* 只增加计数器的当前实例 */
 }
 ```
 
@@ -746,32 +786,17 @@ li:before {
 
 ```css
 .first-details-intro::after {
-  width: 0;
-  height: 0;
-  content: '';
   position: absolute;
   top: 50%;
   right: 0;
+  width: 0;
+  height: 0;
+  content: '';
   border-top: 15px solid transparent;
   border-right: 25px solid #fff;
   border-bottom: 15px solid transparent;
 }
 ```
-
-### Descendant Selector
-
-using the descendant selector without more specificity can be really expensive.
-The browser is going to check every descendant element for a match
-because the relationship isn’t restricted to parent and child.
-
-For `.container ul li a` selector:
-
-- match every `<a>` on the page
-- find every `<a>` contained in a `<li>`
-- use the previous matches and narrow down to
-  the ones contained in a `<ul>`
-- finally, filter down the above selection to
-  the ones contained in an element with the class `.container`
 
 ## CSS Normalize
 
@@ -780,8 +805,8 @@ For `.container ul li a` selector:
 ```css
 html {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
+  margin: 0;
   font-size: 100%;
 }
 
@@ -789,8 +814,8 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-  margin: inherit;
   padding: inherit;
+  margin: inherit;
 }
 
 body {
@@ -820,7 +845,7 @@ visible, hidden, scroll, auto
 前置属性:overflow
 
 ```css
-/*允许用户修改元素尺寸*/
+/* 允许用户修改元素尺寸 */
 resize: none/both/horizontal/vertical/inherit;
 ```
 
@@ -839,18 +864,42 @@ cal(50% - 100px);
 cal(10em + 3px);
 ```
 
-### Box Column
+#### Mobile Box Viewport
 
 ```css
-/*子元素分列*/
+.my-element {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
+```
+
+```js
+window.addEventListener('resize', () => {
+  // Get viewport height and multiple it by 1% to get a value for a vh unit
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+```
+
+### Box Column
+
+Multiple-column layout:
+
+- `column-count`
+- `column-width`
+- `column-gap`
+- `column-rule`
+
+```css
+/* 子元素分列 */
 .three-column {
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
   padding: 1em;
   -moz-column-count: 3;
-  -moz-column-gap: 1em;
   -webkit-column-count: 3;
-  -webkit-column-gap: 1em;
   column-count: 3;
-  column-gap: 1em;
 }
 ```
 
@@ -937,8 +986,8 @@ float make element specified value of `display`:
 ```css
 .parent {
   position: fixed;
-  left: 0px;
   top: 5px;
+  left: 0;
   width: 100%;
 }
 ```
@@ -949,12 +998,12 @@ float make element specified value of `display`:
 `display: table` 防止外边距塌陷, `clear: both` 清楚浮动
 
 ```css
-.clearfix:before,
-.clearfix:after {
-  content: '';
+.clearfix::before,
+.clearfix::after {
   display: table;
+  content: '';
 }
-.clearfix:after {
+.clearfix::after {
   clear: both;
 }
 .clearfix {
@@ -966,6 +1015,12 @@ float make element specified value of `display`:
 
 - 段中部分元素浮动(结合 margin/padding), 可实现内嵌效果
 - 分栏布局
+- `shape-outside` provides a way to customize wrapping,
+  making it possible to wrap text around complex objects rather than simple boxes.
+
+```css
+shape-outside: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+```
 
 ## Position Patterns
 
@@ -993,10 +1048,10 @@ top/left/width/right/z-index are invalid
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -50;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: -50;
 }
 ```
 
@@ -1005,11 +1060,11 @@ top/left/width/right/z-index are invalid
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -100;
   width: 100%;
   height: 100vh;
-  background-size: cover;
   overflow: hidden;
-  z-index: -100;
+  background-size: cover;
 }
 
 .fullscreen-video video {
@@ -1027,7 +1082,7 @@ top/left/width/right/z-index are invalid
 - display: `inline`/`inline-block`/`table-*` computed to `block`
 
 ```css
-/* 使子元素可以相对于父元素布局*/
+/* 使子元素可以相对于父元素布局 */
 
 .parent {
   position: relative;
@@ -1035,7 +1090,6 @@ top/left/width/right/z-index are invalid
 
 .children {
   position: absolute;
-
   top: auto;
   left: 0;
 }
@@ -1099,25 +1153,27 @@ top/left/width/right/z-index are invalid
 - align-content:
   aligns flex container's lines within
   when there is extra space in the cross-axis.
+- `*-content` adjust parent padding,
+  `*-items` and `*-self` adjust children margin.
 
 ```css
 display: flex;
 flex-direction: row/column;
 flex-wrap: nowrap/wrap/wrap-reverse;
-justify-content: flex-start/flex-end/center/space-between/space-around;
 align-content: flex-start/flex-end/center/space-between/space-around;
 align-items: flex-start/flex-end/center/baseline/stretch;
+justify-content: flex-start/flex-end/center/space-between/space-around;
 ```
 
 ### Flex Children Property
 
 ```css
-flex: number; /*宽/高度权重*/
-order: number; /*显示顺序*/
+flex: number; /* 宽/高度权重 */
 flex-basis: number;
-flex-shrink: number;
 flex-grow: number;
+flex-shrink: number;
 align-self: auto/flex-start/flex-end/center/baseline/stretch;
+order: number; /* 显示顺序 */
 ```
 
 ### Flexibility of Float
@@ -1166,9 +1222,9 @@ will change width of pseudo elements.
 
 ```css
 body {
+  display: flex;
   height: 100vh;
   margin: 0;
-  display: flex;
 }
 
 aside {
@@ -1190,55 +1246,53 @@ main {
 }
 
 .initial {
-  /*width: 100px~200px*/
+  /* width: 100px~200px */
   -webkit-flex: initial;
   flex: initial;
   width: 200px;
   min-width: 100px;
 }
 .none {
-  /*width: 200px*/
+  /* width: 200px */
   -webkit-flex: none;
   flex: none;
   width: 200px;
 }
 .flex1 {
-  /*width: left width * 1/3*/
+  /* width: left width * 1/3 */
   -webkit-flex: 1;
   flex: 1;
 }
 .flex2 {
-  /*width: left width * 2/3*/
+  /* width: left width * 2/3 */
   -webkit-flex: 2;
   flex: 2;
 }
 ```
 
 ```css
-/*子元素全部居中对齐*/
+/* 子元素全部居中对齐 */
 .vertical-container {
-  height: 300px;
-
   display: -webkit-flex;
   display: flex;
-
   -webkit-align-items: center;
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  height: 300px;
 }
 ```
 
 ```css
 .layer {
   display: flex;
-  margin: 5px;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid #000;
-  background-color: #fff;
   flex-grow: 1;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid #000;
 }
 ```
 
@@ -1248,8 +1302,11 @@ main {
 
 ```css
 .container {
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'header header header'
+    'advert content content'
+    'footer footer footer';
+
   /*
    * grid-template-columns:
    *   repeat([auto-fit / auto-fill / numbers], minmax(60px, 1fr));
@@ -1257,24 +1314,21 @@ main {
 
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-rows: minmax(90px, 1fr);
-
-  grid-template-areas:
-    'header header header'
-    'advert content content'
-    'footer footer footer';
-
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  justify-items: center;
   align-items: end;
+  justify-items: center;
 }
 
 .item {
+  grid-area: footer;
   grid-row: start / end; /* 2 / -1 */
   grid-column: start / end;
-  grid-area: footer;
+  align-self: end;
+
   /* grid-area: hstart / vstart / hend / vend */
   justify-self: center;
-  align-self: end;
 }
 ```
 
@@ -1292,10 +1346,10 @@ _named_ rows and columns
 ```css
 .main {
   display: grid;
-  grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
   grid-template-rows: [header] 100px [body] auto;
-  grid-template-columns: [l-gutter] 1fr[sidebar] 4fr [content] 8fr [r-gutter] 1fr;
+  grid-template-columns: [l-gutter] 1fr [sidebar] 4fr [content] 8fr [r-gutter] 1fr;
+  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
 }
 
 .header {
@@ -1427,17 +1481,17 @@ margin in the direction of the float will pull the floated element in that direc
 }
 
 .container .left {
-  float: left;
   position: relative;
   right: 300px;
+  float: left;
   width: 300px;
   margin-left: -100%;
   background-color: darkblue;
 }
 
 .container .right {
-  float: left;
   position: relative;
+  float: left;
   width: 200px;
   margin-right: -200px;
   background-color: red;
@@ -1456,9 +1510,9 @@ margin in the direction of the float will pull the floated element in that direc
 
 ```css
 .container {
-  float: left;
   position: relative;
   left: 50%;
+  float: left;
 }
 
 .container ul {
@@ -1478,6 +1532,17 @@ margin in the direction of the float will pull the floated element in that direc
   - 作用对象: children element `display: inline-block/inline`.
 - flexbox
 - grid
+
+Button label (`<a>`) vertical alignment:
+
+```css
+a.button::before {
+  display: inline-block;
+  height: 16px;
+  vertical-align: middle;
+  content: '';
+}
+```
 
 #### Vertical Block element
 
@@ -1499,6 +1564,24 @@ margin in the direction of the float will pull the floated element in that direc
 
 在子容器中在设置新元素即可
 
+## CSS Logical Properties and Values
+
+### CSS Logical Basis
+
+In positioning/sizing/margin/padding/border/text alignment:
+
+- `block-start` for `top`
+- `block-end` for `bottom`
+- `block` for vertical
+- `inline-start` for `left`
+- `inline-end` for `right`
+- `inline` for horizontal
+
+### CSS Logical Reference
+
+- [W3C CSS Logical Draft](https://drafts.csswg.org/css-logical)
+- [CSS Tricks CSS Logical Guide](https://css-tricks.com/css-logical-properties-and-values)
+
 ## CSS ScrollBar
 
 ### Custom ScrollBar
@@ -1506,14 +1589,13 @@ margin in the direction of the float will pull the floated element in that direc
 ```css
 .demo::-webkit-scrollbar {
   /* 滚动条整体样式 */
+
   /* 高宽分别对应横竖滚动条的尺寸 */
   width: 10px;
   height: 1px;
 }
 
 .demo::-webkit-scrollbar-thumb {
-  /* 滚动条方块 */
-  border-radius: 10px;
   background-color: blue;
   background-image: -webkit-linear-gradient(
     45deg,
@@ -1525,12 +1607,16 @@ margin in the direction of the float will pull the floated element in that direc
     transparent 75%,
     transparent
   );
+
+  /* 滚动条方块 */
+  border-radius: 10px;
 }
 
 .demo::-webkit-scrollbar-track {
+  background-color: #ededed;
+
   /* 滚动条轨道 */
   border-radius: 10px;
-  background-color: #ededed;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 ```
@@ -1538,15 +1624,15 @@ margin in the direction of the float will pull the floated element in that direc
 ### Hidden ScrollBar
 
 ```css
-.demo::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
-}
-
 .demo {
   scrollbar-width: none; /* FireFox */
   -ms-overflow-style: none; /* IE 10+ */
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.demo::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
 }
 ```
 
@@ -1574,7 +1660,8 @@ margin in the direction of the float will pull the floated element in that direc
   background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
   --primary-l: 54%;
 }
 ```
@@ -1593,11 +1680,13 @@ margin in the direction of the float will pull the floated element in that direc
 
 .button--secondary {
   --primary-l: 90%;
+
   color: #222;
 }
 
 .button--ghost {
   --primary-l: 90%;
+
   background-color: transparent;
   border: 3px solid hsl(var(--primary-h), var(--primary-s), var(--primary-l));
 }
@@ -1649,41 +1738,33 @@ Mix transparent with non-transparent border to make shapes (e.g. triangle).
 .arrow-up {
   width: 0;
   height: 0;
-
   border-right: 16px solid transparent;
-  border-left: 16px solid transparent;
-
   border-bottom: 20px solid #8888e8;
+  border-left: 16px solid transparent;
 }
 
 .arrow-right {
   width: 0;
   height: 0;
-
   border-top: 16px solid transparent;
   border-bottom: 16px solid transparent;
-
   border-left: 20px solid #e888a3;
 }
 
 .arrow-down {
   width: 0;
   height: 0;
-
+  border-top: 20px solid #f7df6c;
   border-right: 16px solid transparent;
   border-left: 16px solid transparent;
-
-  border-top: 20px solid #f7df6c;
 }
 
 .arrow-left {
   width: 0;
   height: 0;
-
   border-top: 16px solid transparent;
-  border-bottom: 16px solid transparent;
-
   border-right: 20px solid #8de698;
+  border-bottom: 16px solid transparent;
 }
 ```
 
@@ -1695,10 +1776,11 @@ Mix transparent with non-transparent border to make shapes (e.g. triangle).
 - linear-gradient()
 - radial-gradient()
 
-awesome gradient buttons
+Awesome gradient buttons:
 
 ```css
-.btn:hover {
+.btn:hover,
+.btn:focus {
   background-position: right center; /* change the direction of the change here */
 }
 
@@ -1758,8 +1840,8 @@ awesome gradient buttons
 .video {
   min-width: 100%;
   min-height: 100%;
-  background-size: cover;
   overflow: hidden;
+  background-size: cover;
 }
 ```
 
@@ -1804,17 +1886,17 @@ body {
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .parallax {
   min-height: 60%; /* key */
-  background-attachment: fixed; /* key */
   background-image: url('./images/bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* key */
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 ```
 
@@ -1850,14 +1932,14 @@ h1 {
 ```css
 .background {
   background-image: url('bg.png');
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .background h1 {
-  background-color: black; /* mix with background */
   color: white; /* keep white */
+  background-color: black; /* mix with background */
   mix-blend-mode: screen; /* screen or multiply  */
 }
 ```
@@ -1880,8 +1962,8 @@ Night mode:
 
 ```css
 .night {
-  background-blend-mode: darken;
   filter: brightness(80%) grayscale(20%) contrast(1.2);
+  background-blend-mode: darken;
 }
 ```
 
@@ -1889,8 +1971,8 @@ movie style
 
 ```css
 .movie {
-  background-blend-mode: soft-light;
   filter: contrast(1.1);
+  background-blend-mode: soft-light;
 }
 ```
 
@@ -1913,9 +1995,33 @@ movie style
 
 ### Clip Path
 
+#### Basic Clip Path
+
 ```css
 .polygon {
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+```
+
+#### SVG Clip Path
+
+<!-- markdownlint-disable line-length -->
+
+```html
+<svg class="svg">
+  <clipPath id="circle" clipPathUnits="objectBoundingBox">
+    <path
+      d="M0.5,0 C0.776,0,1,0.224,1,0.5 C1,0.603,0.969,0.7,0.915,0.779 C0.897,0.767,0.876,0.76,0.853,0.76 C0.794,0.76,0.747,0.808,0.747,0.867 C0.747,0.888,0.753,0.908,0.764,0.925 C0.687,0.972,0.597,1,0.5,1 C0.224,1,0,0.776,0,0.5 C0,0.224,0.224,0,0.5,0"
+    ></path>
+  </clipPath>
+</svg>
+```
+
+<!-- markdownlint-enable line-length -->
+
+```css
+.item {
+  clip-path: url('#circle');
 }
 ```
 
@@ -1932,25 +2038,26 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   z-index: 1;
+  pointer-events: none;
   background: linear-gradient(to right top, teal 50%, transparent 50%) no-repeat;
   background-size: 100% calc(100% - 100vh);
-  pointer-events: none;
   mix-blend-mode: darken;
 }
 
 /* use after element to hidden triangle background gradient */
+
 /* only show 5px background */
 .indicator::after {
-  content: '';
   position: fixed;
   top: 5px;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   left: 0;
   z-index: 1;
+  content: '';
   background: #fff;
 }
 ```
@@ -1959,13 +2066,12 @@ body {
 
 ```css
 .jumbotron {
-  background-image: url('');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  height: 1px;
   width: 1px;
+  height: 1px;
+  background-image: url('');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 ```
 
@@ -2002,10 +2108,10 @@ Horizontal Scrolling Methods:
 }
 
 .paragraph {
+  line-height: 1.5em; /* 行间距  */
   text-indent: 2em; /* 段落缩进 */
   letter-spacing: 50px; /* 字间距  */
   word-spacing: 50px; /* 词间距  */
-  line-height: 1.5em; /* 行间距  */
 }
 ```
 
@@ -2015,9 +2121,9 @@ justify: 自适应，左右都无空格
 
 ```css
 .wrap {
-  text-justify: distribute-all-lines; /* ie6-8 */
   text-align: justify;
   text-align-last: justify; /* 一个块或行的最后一行对齐方式 */
+  text-justify: distribute-all-lines; /* ie6-8 */
 }
 ```
 
@@ -2038,11 +2144,11 @@ justify: 自适应，左右都无空格
 ```css
 .article-container {
   display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-break: break-all;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4; /* 需要显示的行数 */
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 ```
 
@@ -2056,8 +2162,8 @@ justify: 自适应，左右都无空格
 
 /* 自动换行 */
 .auto-wrap {
-  word-wrap: break-word;
   word-break: normal;
+  word-wrap: break-word;
 }
 
 /* 自动换行 */
@@ -2076,23 +2182,10 @@ pre {
 
 ```css
 p {
-  /* 大写字母 */
-  text-transform: uppercase;
-}
-
-p {
-  /* 小写字母 */
-  text-transform: lowercase;
-}
-
-p {
-  /* 首字母大写 */
-  text-transform: capitalize;
-}
-
-p {
-  /* 小型的大写字母 */
-  font-variant: small-caps;
+  font-variant: small-caps; /* 小型的大写字母 */
+  text-transform: uppercase; /* 大写字母 */
+  text-transform: lowercase; /* 小写字母 */
+  text-transform: capitalize; /* 首字母大写 */
 }
 ```
 
@@ -2102,21 +2195,21 @@ p {
 
 ```css
 /* 单列展示 */
-.wrap {
+.wrap-single {
   width: 25px;
   height: auto;
   padding: 8px 5px;
-  line-height: 18px;
   font-size: 12px;
+  line-height: 18px;
   word-wrap: break-word; /* 英文自动换行 */
 }
 
 /* 多列展示 */
-.wrap {
+.wrap-multiple {
   height: 200px;
   line-height: 30px;
   text-align: justify;
-  writing-mode: vertical-lr; /*从左向右 */
+  writing-mode: vertical-lr; /* 从左向右 */
   writing-mode: vertical-rl; /* 从右向左 */
   writing-mode: tb-lr; /* IE 从左向右 */
   writing-mode: tb-rl; /* IE 从右向左 */
@@ -2124,6 +2217,10 @@ p {
 ```
 
 ### White Space
+
+- Web Default: 空格被解析为换行
+- Web Default: 换行被解析为空格
+- Web Default: 自动合并空格
 
 普通标签内自动忽略空格符,
 并将其与空白符转换成一个空格进行输出,
@@ -2144,17 +2241,17 @@ p {
 
 ```css
 html {
-  /*浏览器默认size为16px，此时将html-size自动计算为10px*/
+  /* 浏览器默认size为16px，此时将html-size自动计算为10px */
   font-size: 62.5%;
 }
 
 small {
-  /*11px*/
+  /* 11px */
   font-size: 1.1rem;
 }
 
 strong {
-  /*18px*/
+  /* 18px */
   font-size: 1.8rem;
 }
 ```
@@ -2200,10 +2297,10 @@ whether and when it is downloaded and ready to use:
 ```css
 @font-face {
   font-family: ExampleFont;
+  font-style: normal;
+  font-weight: 400;
   src: url(/path/to/fonts/exampleFont.woff) format('woff'), url(/path/to/fonts/exampleFont.eot)
       format('eot');
-  font-weight: 400;
-  font-style: normal;
   font-display: fallback;
 }
 ```
@@ -2214,31 +2311,34 @@ whether and when it is downloaded and ready to use:
 
 ```css
 @font-face {
-  /*:call <SNR>105_SparkUpNext()*/
+  /* :call <SNR>105_SparkUpNext() */
   font-family: mySpecialFont;
-  font-style/font-weight/font-variant: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  font-variant: inherit;
   src: url(‘./Colleen.ttf’);
 }
 
-/*selector {*/
-/*:call <SNR>105_SparkUpNext()*/
-/*font-family:mySpecialFont;*/
-/*}*/
+/* selector { */
+
+/* :call <SNR>105_SparkUpNext() */
+
+/* font-family:mySpecialFont; */
+
+/* } */
 ```
 
 ### Font Best Practice
 
 ```css
-text-decoration: none;
-text-transform: uppercase;
-
-color: black;
-line-height: 100px;
-
-letter-spacing: 1.3px;
 font-family: sans-serif;
 font-size: 12px;
 font-weight: 400;
+line-height: 100px;
+color: black;
+text-decoration: none;
+text-transform: uppercase;
+letter-spacing: 1.3px;
 ```
 
 ```css
@@ -2335,10 +2435,11 @@ body {
 }
 
 /* Increment the value of section counter by 1 */
+
 /* Display the value of section counter */
 h3::before {
-  counter-increment: section;
   content: counter(section);
+  counter-increment: section;
 }
 ```
 
@@ -2348,17 +2449,17 @@ h3::before {
 - [Instagram Filter](https://github.com/una/CSSgram)
 
 ```css
-filter: url(resources.svg); /*引用SVG filter元素*/
-filter: blur(5px); /*模糊*/
-filter: brightness(0.4); /*高光*/
-filter: contrast(200%); /*对比度*/
-filter: drop-shadow(16px 16px 20px blue); /*阴影*/
-filter: grayscale(50%); /*灰度*/
-filter: hue-rotate(90deg); /*色相旋转*/
-filter: invert(75%); /*颜色翻转/反相*/
-filter: opacity(25%); /*透明度*/
-filter: saturate(30%); /*饱和度*/
-filter: sepia(60%); /*老照片*/
+filter: url(resources.svg); /* 引用SVG filter元素 */
+filter: blur(5px); /* 模糊 */
+filter: brightness(0.4); /* 高光 */
+filter: contrast(200%); /* 对比度 */
+filter: drop-shadow(16px 16px 20px blue); /* 阴影 */
+filter: grayscale(50%); /* 灰度 */
+filter: hue-rotate(90deg); /* 色相旋转 */
+filter: invert(75%); /* 颜色翻转/反相 */
+filter: opacity(25%); /* 透明度 */
+filter: saturate(30%); /* 饱和度 */
+filter: sepia(60%); /* 老照片 */
 
 /* Apply multiple filters */
 filter: contrast(175%) brightness(3%);
@@ -2367,6 +2468,29 @@ filter: contrast(175%) brightness(3%);
 filter: inherit;
 filter: initial;
 filter: unset;
+```
+
+### Fusion Effect
+
+- Parent element: `background-color` + `filter: contrast()`.
+- Child element: `filter: blur()`.
+
+```html
+<div class="container">
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+</div>
+```
+
+```css
+.container {
+  background: #fff; /* Required */
+  filter: contrast(30);
+}
+
+.circle {
+  filter: blur(10px);
+}
 ```
 
 ### SVG Filter
@@ -2423,10 +2547,10 @@ body {
 }
 
 .card {
-  backdrop-filter: blur(12px) saturate(200%);
   background-color: rgba(17, 25, 40, 0.54);
-  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 12px;
+  backdrop-filter: blur(12px) saturate(200%);
 }
 ```
 
@@ -2436,8 +2560,8 @@ body {
 
 ```css
 .wrap {
-  cursor: default;
   pointer-events: none;
+  cursor: default;
 }
 ```
 
@@ -2498,12 +2622,20 @@ background-position/background-size,
 #### Transition and Transform
 
 ```css
-.div {
-  transform: scaleX(0);
-  transition: * * transform * * 0.5s ease;
+@media screen and (prefers-reduced-motion: reduce) {
+  .div {
+    transition: none;
+    transform: scaleX(0);
+  }
 }
 
-.div:hover {
+.div {
+  transition: * * transform * * 0.5s ease;
+  transform: scaleX(0);
+}
+
+.div:hover,
+.div:focus {
   transform: scaleX(1);
 }
 ```
@@ -2514,10 +2646,10 @@ background-position/background-size,
 
 - opacity
 - `overflow: hidden`
-- pseudo elements (::before and ::after)
+- pseudo elements (`::before` and `::after`)
 - pseudo elements with animation
   (opacity, scale, translate, width/height, margin, background-position)
-- :hover/:focus/:target + animation/transform/transition
+- `:hover`/`:focus`/`:target` + animation/transform/transition
 - transform: scale/translate
 - animation-delay
 - width/height
@@ -2531,8 +2663,8 @@ background-position/background-size,
 - multiple box-shadow
 
 ```css
-overflow: hidden;
 z-index: -1;
+overflow: hidden;
 ```
 
 Changing top/right/bottom/left of pseudo element
@@ -2550,6 +2682,11 @@ size animation will start from bottom-right corner).
 - transition-delay: .5s;
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .element {
+    transition: none;
+  }
+}
 .element {
   transition: property duration timing-function delay;
   transition: transform 0.5s ease-in-out 0.2s;
@@ -2594,10 +2731,25 @@ define the transition to occur in both directions
 Change `transition` when `:hover` etc state bring magic effect:
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .menu-nav {
+    visibility: hidden;
+    transition: none;
+    transform: translateX(-100%);
+  }
+}
+
 .menu-nav {
   visibility: hidden;
-  transform: translateX(-100%);
   transition: all 0.4s ease-in-out;
+  transform: translateX(-100%);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .menu-link {
+    opacity: 0;
+    transition: none;
+  }
 }
 
 .menu-link {
@@ -2610,8 +2762,18 @@ Change `transition` when `:hover` etc state bring magic effect:
   transform: translateX(0);
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .menu-toggle:checked ~ .menu-nav .menu-link {
+    opacity: 1;
+
+    /* magic effect for delaying transition */
+    transition: none;
+  }
+}
+
 .menu-toggle:checked ~ .menu-nav .menu-link {
   opacity: 1;
+
   /* magic effect for delaying transition */
   transition: opacity 0.4s ease-in-out 0.4s;
 }
@@ -2627,6 +2789,12 @@ Transition animation get trigger
 as css style of element changed (class changed).
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .element {
+    transition: none;
+  }
+}
+
 .element {
   transition: opacity 0.5s;
 }
@@ -2740,6 +2908,11 @@ backface-visibility: hidden;
 - animation bounce/cache: first -100, then, +5/+20, finally 0
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .element {
+    animation: none;
+  }
+}
 .element {
   animation: name duration timing-function delay iteration-count direction;
 }
@@ -2757,6 +2930,15 @@ backface-visibility: hidden;
   }
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+    animation-duration: 2.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+}
+
 body {
   animation-name: body-fade-in;
   animation-duration: 2.5s;
@@ -2766,19 +2948,37 @@ body {
 ```
 
 ```css
-@keyframes name {
-  0%/from {
+@keyframes name1 {
+  0% {
     color: red;
   }
   50% {
     color: blue;
   }
-  100%/to {
+  100% {
     color: green;
   }
 }
 
-/*直接动画*/
+@keyframes name2 {
+  from {
+    color: red;
+  }
+  to {
+    color: green;
+  }
+}
+
+/* 直接动画 */
+@media screen and (prefers-reduced-motion: reduce) {
+  .div {
+    animation: none;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    animation-delay: 0.5s;
+  }
+}
+
 .div {
   animation-name: name;
   animation-duration: 1s;
@@ -2786,12 +2986,15 @@ body {
   animation-delay: 0.5s;
 }
 
-/*hover后再播放动画，高级化transform+transition*/
-.div:hover {
-  animation-name: name;
-  animation-duration: 1s;
-  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-  animation-delay: 0.5s;
+/* hover 后再播放动画, 高级化 transform + transition */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .div:hover,
+  .div:focus {
+    animation-name: name;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    animation-delay: 0.5s;
+  }
 }
 ```
 
@@ -2823,6 +3026,14 @@ animation pattern: 利用 `animation-paly-state`
 与 JS 添加 `.animate` 类控制动画开始和停止.
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .to-animate {
+    animation: none;
+    animation-play-state: paused;
+    animation-iteration-count: infinite;
+  }
+}
+
 .to-animate {
   animation: animationName 1.5s linear;
   animation-play-state: paused;
@@ -2848,12 +3059,19 @@ setTimeout(() => element.classList.remove('animate'), duration);
 
 ```css
 /* first: scale(1), last: scale(1.2) */
+@media screen and (prefers-reduced-motion: reduce) {
+  .scale-up {
+    transition: none;
+    transform: scale(0.8);
+  }
+}
 .scale-up {
-  transform: scale(0.8);
   transition: transform 0.2s linear;
+  transform: scale(0.8);
 }
 
-.scale-up:hover {
+.scale-up:hover,
+.scale-up:focus {
   transform: none;
 }
 ```
@@ -2866,13 +3084,10 @@ setTimeout(() => element.classList.remove('animate'), duration);
 .cube {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-
   -webkit-perspective: 1000;
   perspective: 1000;
-
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 
@@ -2997,42 +3212,27 @@ use `inline-box` with `width`
 </picture>
 ```
 
-### Media Query
+## Media Query
 
 - `only` for improving compatibility with older browsers
 - definition order matters when media query with a different selector
 - JavaScript API: `window.matchMedia()`
 
 ```css
-@media (not/only) 设备类型 and ((not) 设备特性),
-  (not/only) 设备类型 and ((not) 设备特性-1) and ((not) 设备特性-2) {
+/* stylelint-disable */
+@media (not / only) 设备类型 and ((not) 设备特性),
+  (not / only) 设备类型 and ((not) 设备特性-1) and ((not) 设备特性-2) {
   /* 样式代码 */
 }
+/* stylelint-enable */
 ```
 
 ```css
-/*screen size : 500px ~ 1000px*/
+/* screen size : 500px ~ 1000px */
 @media screen and (min-width: 500px) and (max-width: 1000px) {
   .container {
     width: 750px;
   }
-}
-```
-
-#### JavaScript Media Query API
-
-- [MDN Media Query Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
-
-```js
-// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
-const mql = window.matchMedia(mediaQueryString);
-```
-
-```js
-if (window.matchMedia('(min-width: 400px)').matches) {
-  /* the view port is at least 400 pixels wide */
-} else {
-  /* the view port is less than 400 pixels wide */
 }
 ```
 
@@ -3069,10 +3269,111 @@ if (window.matchMedia('(min-width: 400px)').matches) {
 | scan                | Progressive interlaced | no      | tv 媒体扫描方式      |
 | orientation         | Portrait/landscape     | no      | 横屏或竖屏           |
 
+- `prefers-contrast`: `less`, `more`.
+- `prefers-color-scheme`: `light`, `dark`.
+- `prefers-reduced-motion`: `no-preference`, `reduce`.
+
+#### Prefers Color Scheme
+
+```css
+.day {
+  color: black;
+  background: #eee;
+}
+.night {
+  color: white;
+  background: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .day.dark-scheme {
+    color: white;
+    background: #333;
+  }
+  .night.dark-scheme {
+    color: #ddd;
+    background: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .day.light-scheme {
+    color: #555;
+    background: white;
+  }
+  .night.light-scheme {
+    color: black;
+    background: #eee;
+  }
+}
+```
+
+#### Prefers Reduced Motion
+
+```css
+@media (prefers-reduced-motion) {
+  .animated {
+    animation: none;
+  }
+}
+```
+
 #### Style for Print PDF
 
 - [Page Style Standard](https://developer.mozilla.org/en-US/docs/Web/CSS/@page)
 - [PDF Style Tutorial](https://www.smashingmagazine.com/2015/01/designing-for-print-with-css/)
+
+### Media Query Support Detection
+
+Detecting media query support in CSS:
+
+```css
+/* stylelint-disable-next-line */
+@media not all and (prefers-reduced-data), (prefers-reduced-data) {
+  color: blue;
+}
+```
+
+- No support:
+  not all and (prefers-reduced-data): false,
+  (prefers-reduced-data): false,
+  Combined: false.
+- Support, but off:
+  not all and (prefers-reduced-data): true,
+  (prefers-reduced-data): false,
+  Combined: true.
+- Support, and on:
+  not all and (prefers-reduced-data): false,
+  (prefers-reduced-data): true,
+  Combined: true.
+
+Detecting media query support in JavaScript:
+
+```js
+const query = '(prefers-reduced-data)';
+
+// window.matchMedia(query).media return 'not all' or original query string
+const resolvedMediaQuery = window.matchMedia(query).media;
+
+const isSupported = query === resolvedMediaQuery;
+```
+
+### JavaScript Media Query API
+
+- [MDN Media Query Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+
+```js
+// https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList
+const mql = window.matchMedia(mediaQueryString);
+```
+
+```js
+if (window.matchMedia('(min-width: 400px)').matches) {
+  /* the view port is at least 400 pixels wide */
+} else {
+  /* the view port is less than 400 pixels wide */
+}
+```
 
 ## Accessibility
 
@@ -3083,13 +3384,13 @@ if (window.matchMedia('(min-width: 400px)').matches) {
   position: absolute;
   width: 1px;
   height: 1px;
-  margin: -1px;
   padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
-  white-space: nowrap;
+  margin: -1px;
   overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 ```
 
@@ -3108,9 +3409,9 @@ h1 {
 .jumbotron {
   min-height: 100%;
   background-image: url('');
-  background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   opacity: 0.8;
 }
 ```
@@ -3120,11 +3421,11 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -100;
   width: 100%;
   height: 100vh;
-  background-size: cover;
   overflow: hidden;
-  z-index: -100;
+  background-size: cover;
 }
 
 .fullscreen-video video {
@@ -3136,11 +3437,11 @@ h1 {
 ```css
 .parallax {
   min-height: 60%; /* key */
-  background-attachment: fixed; /* key */
   background-image: url('./images/bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* key */
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 ```
 
@@ -3160,17 +3461,17 @@ h1 {
 ```css
 h1 {
   display: flex;
-  width: 100%;
   align-items: center;
+  width: 100%;
 }
 
 h1::before,
 h1::after {
-  content: '';
-  background-color: gray;
+  flex: 1;
   height: 0.1em;
   margin: 0.2em;
-  flex: 1;
+  content: '';
+  background-color: gray;
 }
 ```
 
@@ -3183,11 +3484,151 @@ h1::after {
 - `table-layout: fixed` to contain cells with same width
 - implement filter or pagination with `display: none` applied to `<tr>`
 
+```css
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+```
+
 ### Form
 
 - [Form Design Patterns](https://adamsilver.io/articles/form-design-from-zero-to-hero-all-in-one-blog-post)
 
-#### Select
+#### Custom Form
+
+```css
+input[type='email'],
+input[type='number'],
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='url'],
+input[type='password'],
+textarea,
+select {
+  box-sizing: border-box;
+  height: 38px;
+  padding: 6px 10px;
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type='email'],
+input[type='number'],
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='url'],
+input[type='password'],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='search']:focus,
+input[type='text']:focus,
+input[type='tel']:focus,
+input[type='url']:focus,
+input[type='password']:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33c3f0;
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: inline;
+}
+
+label > .label-body {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+```
+
+#### Custom Checkbox Widget
+
+```css
+input[type='checkbox'] + label::before {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  content: '';
+  background: white;
+}
+
+input[type='checkbox']:checked + label::before {
+  background: #5ac5c9;
+}
+
+input[type='checkbox']:checked + label::after {
+  position: absolute;
+  top: 3px;
+  left: 27px;
+  width: 13px;
+  height: 6px;
+  content: '';
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  transform: rotate(-45deg);
+}
+
+input[type='checkbox']:focus + label::before {
+  outline: #5d9dd5 solid 1px;
+  box-shadow: 0 0 8px #5e9ed6;
+}
+
+input[type='checkbox']:disabled + label {
+  color: #575757;
+}
+
+input[type='checkbox']:disabled + label::before {
+  background: #ddd;
+}
+```
+
+#### Custom Select Widget
 
 ```css
 .custom-select {
@@ -3195,26 +3636,26 @@ h1::after {
   height: 35px;
   margin-right: 20px;
 
-  /* 自定义边框 */
-  border: 0;
+  /* 文本属性 */
+  text-align: center;
+  text-align-last: center;
+
+  /* 消除默认箭头 */
+  text-indent: 0.01px;
+  text-overflow: '';
 
   /* 将箭头图片移至右端 */
   background: url('images/arrow.png') no-repeat;
   background-color: #fff;
   background-position: right;
 
+  /* 自定义边框 */
+  border: 0;
+
   /* 消除默认样式 */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
-  /* 消除默认箭头 */
-  text-indent: 0.01px;
-  text-overflow: '';
-
-  /* 文本属性 */
-  text-align: center;
-  text-align-last: center;
 }
 
 .custom-select:focus {
@@ -3225,15 +3666,14 @@ h1::after {
   width: 100%;
   height: 25px;
   padding-left: 30px;
-
-  background-color: #fff;
-  color: #323333;
-
   line-height: 25px;
+  color: #323333;
+  background-color: #fff;
   direction: rtl;
 }
 
-.custom-select option:hover {
+.custom-select option:hover,
+.custom-select option:focus {
   color: #fff;
   background: url(../img/tick.png) no-repeat 8px center;
   background-color: #e74f4d;
@@ -3250,7 +3690,7 @@ h1::after {
 
 ```css
 ul {
-  /* 垂直菜单设置宽度, 水平菜单不设置宽度*/
+  /* 垂直菜单设置宽度, 水平菜单不设置宽度 */
   list-style: none;
 }
 
@@ -3280,10 +3720,10 @@ li {
 
 ```css
 a {
-  opacity: 0;
-  cursor: default;
-  pointer-events: none;
   text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+  opacity: 0;
 }
 ```
 
@@ -3305,31 +3745,19 @@ a::after {
   left: 0;
   width: 0;
   height: 3px;
-  background-color: #22313f;
   content: '';
+  background-color: #22313f;
   transform-origin: bottom-center;
 }
 
-a:hover {
+a:hover,
+a:focus {
   color: #22313f;
 }
 
-a:hover::after {
+a:hover::after,
+a:focus::after {
   width: 100%;
-}
-```
-
-### Button
-
-- padding
-
-```css
-a.btn-custom {
-  padding: 10px 40px;
-  border-radius: 0;
-  background-color: #000;
-  line-height: 100px;
-  text-align: center;
 }
 ```
 
@@ -3367,6 +3795,7 @@ a.btn-custom {
     min-height: 100%;
 
     /* Equal to height of footer */
+
     /* But also accounting for potential margin-bottom of last child */
     margin-bottom: -50px;
   }
@@ -3456,9 +3885,9 @@ a.btn-custom {
     height: 100%;
   }
   body {
-    min-height: 100%;
     display: grid;
     grid-template-rows: 1fr auto;
+    min-height: 100%;
   }
   .footer {
     grid-row-start: 2;
@@ -3467,14 +3896,87 @@ a.btn-custom {
 </style>
 ```
 
+### Button
+
+- padding
+
+```css
+a.btn-custom {
+  padding: 10px 40px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #000;
+  border-radius: 0;
+}
+```
+
+#### Gradient Button
+
+```css
+@media screen and (prefers-reduced-motion: reduce) {
+  a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-size: 0% 2px;
+    transition: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  background-size: 0% 2px;
+  transition: background-size 0.3s;
+}
+
+a:hover,
+a:focus {
+  background-size: 100% 2px;
+}
+```
+
+```css
+@media screen and (prefers-reduced-motion: reduce) {
+  a {
+    display: inline-block;
+    padding: 5px;
+    color: #333;
+    text-decoration: none;
+    background-image: linear-gradient(to top, #333 50%, #fff 50%);
+    background-size: 100% 200%;
+    transition: none;
+  }
+}
+
+a {
+  display: inline-block;
+  padding: 5px;
+  color: #333;
+  text-decoration: none;
+  background-image: linear-gradient(to top, #333 50%, #fff 50%);
+  background-size: 100% 200%;
+  transition: all 0.3s;
+}
+
+a:hover,
+a:focus {
+  color: #fff;
+  background-position: 0 100%;
+}
+```
+
 ### Picture
 
 #### 圆形图片
 
 ```css
  {
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
 }
 ```
 
@@ -3486,20 +3988,25 @@ a.btn-custom {
 #### Animated Dots
 
 ```css
-dot {
+.dot {
   display: inline-block;
   height: 1em;
+  overflow: hidden;
   line-height: 1;
   text-align: left;
   vertical-align: -0.25ex;
-  overflow: hidden;
 }
 
-dot::before {
+@media screen and (prefers-reduced-motion: no-preference) {
+  .dot::before {
+    animation: dot1 3s infinite step-start both;
+  }
+}
+
+.dot::before {
   display: block;
-  content: '...\A..\A.';
   white-space: pre-wrap;
-  animation: dot1 3s infinite step-start both;
+  content: '...\A..\A.';
 }
 
 @keyframes dot1 {
@@ -3515,9 +4022,11 @@ dot::before {
 #### Fade with Class
 
 ```css
-.enter,
-.leave {
-  transition: opacity 0.5s;
+@media screen and (prefers-reduced-motion: no-preference) {
+  .enter,
+  .leave {
+    transition: opacity 0.5s;
+  }
 }
 
 .before-enter,
@@ -3564,14 +4073,22 @@ function leave(el, done) {
 #### Accordion Menu Animation
 
 ```css
+@media screen and (prefers-reduced-motion: reduce) {
+  .menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: none;
+  }
+}
+
 .menu {
-  overflow: hidden;
   max-height: 0;
+  overflow: hidden;
   transition: max-height, 0.3s;
 }
 
-.container:hover .menu,
-.menu:focus {
+.menu:focus,
+.container:hover .menu {
   max-height: 1em;
 }
 ```
@@ -3699,11 +4216,11 @@ body {
 }
 
 .slide {
-  box-sizing: border-box;
   position: absolute; /* key 2 */
+  z-index: 0; /* key 3 */
+  box-sizing: border-box;
   width: 100%;
   height: 100vh;
-  z-index: 0; /* key 3 */
 }
 
 .slide:target {
@@ -3713,11 +4230,19 @@ body {
 
 ```css
 /* Rotate Fade-In Animation */
+@media screen and (prefers-reduced-motion: reduce) {
+  .slide {
+    z-index: 0;
+    transition: none;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+  }
+}
 .slide {
   z-index: 0;
+  transition: transform 1s, opacity 0.8s;
   transform: rotate(90deg);
   transform-origin: 0 0;
-  transition: transform 1s, opacity 0.8s;
 }
 
 .slide:target {
@@ -3726,8 +4251,8 @@ body {
 }
 
 .slide:target ~ section {
-  transform: rotate(-90deg);
   opacity: 0;
+  transform: rotate(-90deg);
 }
 ```
 
@@ -3742,6 +4267,37 @@ body {
 const resetScrollX = () => {
   window.scrollTo(0, 0);
 };
+```
+
+### Timeline and Steps
+
+Use pseudo elements to construct circle and line:
+
+```css
+/* The separator line */
+.c-timeline__item:not(:last-child) .c-timeline__content::before {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 2px;
+  height: 100%;
+  content: '';
+  background-color: #d3d3d3;
+}
+
+/* The circle */
+.c-timeline__content::after {
+  position: absolute;
+  top: 0;
+  left: -12px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  content: '';
+  background-color: #fff;
+  border: 2px solid #d3d3d3;
+  border-radius: 50%;
+}
 ```
 
 ### Layout
@@ -3759,12 +4315,28 @@ const resetScrollX = () => {
 - float
 - flex
 
-### Geometry
+### Geometry and Shape
 
-- background: color/image/gradient/clip-path
-- border
-- box-shadow (inset)
-- pseudo element
+> CSS Shape on [CSS Tricks](https://css-tricks.com/the-shapes-of-css).
+
+- Background: `color`/`size`/`image`/`gradient`/`clip-path`.
+  In modern browsers `background`/`gradient`/`clip-path`
+  with `transition`/`transform`
+  better than `pseudo elements`.
+- `border`.
+- `box-shadow` (inset).
+- `clip-path`
+- `filter`.
+- `mask`
+- `aspect-ratio`.
+- SVG:
+  - SVG icon.
+  - SVG filter.
+  - SVG clip-path.
+  - SVG mask.
+- pseudo elements.
+
+> [CSSIcon](https://github.com/wentin/cssicon): Pure CSS Icons
 
 #### Stretch Line
 
@@ -3779,25 +4351,27 @@ const resetScrollX = () => {
   background-color: #000;
 }
 
-.line {
+.line,
+.line-background {
   background: linear-gradient(#000, #000) 50% / 70% 10px no-repeat;
 }
 
-.line {
+.line,
+.line-border {
   border-top: 10px solid #000;
 }
 
+.line,
 .line::after {
-  /* control line length */
-  content: '_______';
-
-  /* hide content */
-  color: transparent;
-
   /* set thickness */
   font-size: 5em;
 
+  /* hide content */
+  color: transparent;
   text-decoration: line-through #000;
+
+  /* control line length */
+  content: '_______';
 }
 ```
 
@@ -3808,13 +4382,13 @@ const resetScrollX = () => {
 - pseudo element with `dashed` `text-decoration`
 
 ```css
-.dash {
+.dash-background {
   background: linear-gradient(to left, #000 70%, transparent 0);
-  ​background-repeat: repeat-x;
+  background-repeat: repeat-x;
   background-size: 30px 10px;
 }
 
-.dash {
+.dash-border {
   border-top: 10px dashed #000;
 }
 
@@ -3831,22 +4405,22 @@ const resetScrollX = () => {
 - pseudo element circle
 
 ```css
-.circle {
+.circle-background {
   background-image: radial-gradient(#000 72%, transparent 0);
 }
 
-.circle {
+.circle-clip-path {
   clip-path: circle(50%);
 }
 
-.circle {
+.circle-border {
   border-radius: 50%;
 }
 
 .circle::after {
-  content: '·';
-  line-height: 0;
   font-size: 120vw;
+  line-height: 0;
+  content: '·';
 }
 ```
 
@@ -3866,36 +4440,34 @@ const resetScrollX = () => {
 .arrow-right {
   width: 20px;
   height: 32px;
-  background-color: #e888a3;
   clip-path: polygon(0 0, 0 100%, 100% 50%);
+  background-color: #e888a3;
 }
 
 /* transparent border */
 .arrow-up {
   width: 0;
   height: 0;
-
   border-right: 16px solid transparent;
-  border-left: 16px solid transparent;
-
   border-bottom: 20px solid #8888e8;
+  border-left: 16px solid transparent;
 }
 
 /* pseudo element + hidden overflow */
 .arrow-down {
+  position: relative;
   width: 40px;
   height: 40px;
-  position: relative;
   overflow: hidden;
 
   &::before {
-    content: '';
-    display: block;
-    width: calc(40px / 1.41);
-    height: calc(40px / 1.41);
     position: absolute;
     top: 0;
     left: 0;
+    display: block;
+    width: calc(40px / 1.41);
+    height: calc(40px / 1.41);
+    content: '';
     background: #f7df6c;
     transform: rotate(-45deg);
     transform-origin: 0 0;
@@ -3903,6 +4475,7 @@ const resetScrollX = () => {
 }
 
 /* HTML Entities */
+
 /**
  * ◄ : &#9668;
  * ► : &#9658;
@@ -3973,8 +4546,8 @@ const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
   --primary: #777;
   --secondary: #ccc;
 
-  border: 1px solid var(--primary);
   background-color: var(--secondary);
+  border: 1px solid var(--primary);
 }
 
 .alert::before {
@@ -4025,10 +4598,12 @@ const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
 
 button {
   --is-raised: var(--OFF);
+
   border: 1px solid var(--is-raised, rgb(0 0 0 / 0.1));
 }
 
-button:hover {
+button:hover,
+button:focus {
   --is-raised: var(--ON);
 }
 ```
@@ -4049,6 +4624,7 @@ html {
   --media-md: initial;
   --media-lg: initial;
   --media-xl: initial;
+
   /* ... */
   --media-pointer-fine: initial;
   --media-pointer-none: initial;
@@ -4090,7 +4666,6 @@ html {
 
   /** 小于 56.249em, 宽度 49%  */
   --sm-width: var(--media-sm) 49%;
-
   --md-width: var(--media-md) 32%;
   --lg-width: var(--media-gte-lg) 24%;
 
@@ -4098,6 +4673,7 @@ html {
 
   --sm-and-down-bg: var(--media-lte-sm) red;
   --md-and-up-bg: var(--media-gte-md) green;
+
   background: var(--sm-and-down-bg, var(--md-and-up-bg));
 }
 ```
@@ -4121,7 +4697,7 @@ html {
 
 ```css
 .circle {
-  fill: #ffff00;
+  fill: #ff0;
 }
 ```
 
@@ -4174,3 +4750,467 @@ This is also used to create **icon systems**.
   />
 </pattern>
 ```
+
+### SVG Mask
+
+Avatar with circle status indicator:
+
+```html
+<svg role="none">
+  <mask id="circle">
+    <circle fill="white" cx="100" cy="100" r="100"></circle>
+    <circle fill="black" cx="86%" cy="86%" r="18"></circle>
+  </mask>
+  <g mask="url(#circle)">
+    <image
+      x="0"
+      y="0"
+      width="100%"
+      height="100%"
+      xlink:href="avatar.jpg"
+    ></image>
+    <circle
+      fill="none"
+      cx="100"
+      cy="100"
+      r="100"
+      stroke="rgba(0,0,0,0.1)"
+      stroke-width="2"
+    ></circle>
+  </g>
+</svg>
+```
+
+## PostCSS Tool
+
+- [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env)
+- [PostCSS Flexbox Checker](https://github.com/luisrudge/postcss-flexbugs-fixes)
+
+## StyleLint Tool
+
+- [StyleLint Plugin](https://github.com/kristerkari/stylelint-declaration-block-no-ignored-properties)
+
+stylelint-config-mass plugin `index.js`:
+
+```js
+module.exports = {
+  extends: ['stylelint-config-sass-guidelines'],
+  rules: {
+    'order/properties-order': [
+      'position',
+      'z-index',
+      'top',
+      'right',
+      'bottom',
+      'left',
+      'box-sizing',
+      'display',
+      'visibility',
+      'opacity',
+      'mix-blend-mode',
+      'isolation',
+      'float',
+      'clear',
+      'flex',
+      'flex-basis',
+      'flex-direction',
+      'flex-flow',
+      'flex-grow',
+      'flex-shrink',
+      'flex-wrap',
+      'grid',
+      'grid-area',
+      'grid-template',
+      'grid-template-areas',
+      'grid-template-rows',
+      'grid-template-columns',
+      'grid-row',
+      'grid-row-start',
+      'grid-row-end',
+      'grid-column',
+      'grid-column-start',
+      'grid-column-end',
+      'grid-auto-rows',
+      'grid-auto-columns',
+      'grid-auto-flow',
+      'grid-gap',
+      'grid-row-gap',
+      'grid-column-gap',
+      'align-content',
+      'align-items',
+      'align-self',
+      'justify-content',
+      'justify-items',
+      'justify-self',
+      'order',
+      'columns',
+      'column-gap',
+      'column-fill',
+      'column-rule',
+      'column-rule-width',
+      'column-rule-style',
+      'column-rule-color',
+      'column-span',
+      'column-count',
+      'column-width',
+      'backface-visibility',
+      'perspective',
+      'perspective-origin',
+      'transform',
+      'transform-origin',
+      'transform-style',
+      'transition',
+      'transition-delay',
+      'transition-duration',
+      'transition-property',
+      'transition-timing-function',
+      'width',
+      'min-width',
+      'max-width',
+      'height',
+      'min-height',
+      'max-height',
+      'overflow',
+      'overflow-x',
+      'overflow-y',
+      'resize',
+      'margin',
+      'margin-top',
+      'margin-right',
+      'margin-bottom',
+      'margin-left',
+      'padding',
+      'padding-top',
+      'padding-right',
+      'padding-bottom',
+      'padding-left',
+      'border',
+      'border-top',
+      'border-right',
+      'border-bottom',
+      'border-left',
+      'border-width',
+      'border-top-width',
+      'border-right-width',
+      'border-bottom-width',
+      'border-left-width',
+      'border-style',
+      'border-top-style',
+      'border-right-style',
+      'border-bottom-style',
+      'border-left-style',
+      'border-radius',
+      'border-top-left-radius',
+      'border-top-right-radius',
+      'border-bottom-left-radius',
+      'border-bottom-right-radius',
+      'border-color',
+      'border-top-color',
+      'border-right-color',
+      'border-bottom-color',
+      'border-left-color',
+      'outline',
+      'outline-offset',
+      'outline-width',
+      'outline-style',
+      'outline-color',
+      'box-shadow',
+      'list-style',
+      'list-style-type',
+      'list-style-position',
+      'list-style-image',
+      'table-layout',
+      'caption-side',
+      'border-collapse',
+      'border-spacing',
+      'empty-cells',
+      'animation',
+      'animation-name',
+      'animation-duration',
+      'animation-timing-function',
+      'animation-delay',
+      'animation-iteration-count',
+      'animation-direction',
+      'animation-fill-mode',
+      'animation-play-state',
+      'background',
+      'background-attachment',
+      'background-clip',
+      'background-color',
+      'background-image',
+      'background-origin',
+      'background-position',
+      'background-repeat',
+      'background-size',
+      'background-blend-mode',
+      'cursor',
+      'color',
+      'font',
+      'font-family',
+      'font-kerning',
+      'font-size',
+      'font-size-adjust',
+      'font-stretch',
+      'font-weight',
+      'font-smoothing',
+      'osx-font-smoothing',
+      'font-variant',
+      'font-style',
+      'tab-size',
+      'text-align',
+      'text-align-last',
+      'text-justify',
+      'text-indent',
+      'text-transform',
+      'text-decoration',
+      'text-decoration-color',
+      'text-decoration-line',
+      'text-decoration-style',
+      'text-rendering',
+      'text-shadow',
+      'text-overflow',
+      'line-height',
+      'word-spacing',
+      'letter-spacing',
+      'white-space',
+      'word-break',
+      'word-wrap',
+      'vertical-align',
+      'content',
+      'quotes',
+      'counter-reset',
+      'counter-increment',
+      'page-break-before',
+      'page-break-after',
+      'page-break-inside',
+      'pointer-events',
+      'will-change',
+    ],
+    'order/properties-alphabetical-order': null,
+    'selector-class-pattern': [
+      '^[a-z0-9\\-\\_]+$',
+      {
+        message:
+          'Selector should be written in lowercase with hyphens (selector-class-pattern)',
+      },
+    ],
+  },
+};
+```
+
+## Tailwind
+
+### Tailwind Directives
+
+```css
+@layer base {
+  h1 {
+    @apply text-3xl;
+  }
+}
+
+@layer components {
+  .primary-btn {
+    @apply bg-yellow-600 hover:bg-yellow-800 text-black font-bold py-4 px-6 shadow-md;
+  }
+}
+
+@layer utilities {
+  @variants hover {
+    .padding-large {
+      padding: 30px;
+    }
+  }
+
+  @variants focus hover {
+    .border-small {
+      border: 1px solid #30485e;
+    }
+    .border-medium-dashed {
+      border: 7px dashed #30485e;
+    }
+  }
+
+  @responsive {
+    /* generate for all breakpoints */
+    .border-solid {
+      border: 10px solid #30485e;
+    }
+  }
+
+  @screen sm {
+    /* generate for small screen breakpoint */
+    .border-solid {
+      border: 10px solid #30485e;
+    }
+  }
+}
+```
+
+## CSS Performance
+
+### Basic Perf Tips
+
+- use `audits` panel to diagnose
+- use CSS shorthand and color shortcuts
+- eliminate unneeded zeros and units
+- remove unused CSS by `coverage` panel of Devtools
+- `link` is parallel, `@import` isn't parallel
+
+### CSS Selectors
+
+减少选择器的复杂性，与构造样式本身的其他工作相比，
+选择器复杂性可以占用计算元素样式所需时间的 50%以上
+
+### CSS Triggers
+
+- [CSS Triggers](https://github.com/GoogleChromeLabs/css-triggers)
+- [JS DOM API Triggers](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
+
+avoid to frequently change css property
+or call JS DOM API triggering layout stage (reflow)
+
+### will-change
+
+告知浏览器该元素会有哪些变化的方法，这样浏览器可以在元素属性真正发生变化之前提前做好对应的优化准备工作
+
+```css
+ {
+  will-change: auto;
+  will-change: scroll-position;
+  will-change: contents;
+  will-change: transform; /* Example of <custom-ident> */
+  will-change: opacity; /* Example of <custom-ident> */
+  will-change: left, top; /* Example of two <animate-feature> */
+  will-change: unset;
+  will-change: initial;
+  will-change: inherit;
+}
+```
+
+### contain
+
+[CSS Containment](https://developers.google.com/web/updates/2016/06/css-containment)
+
+contain 属性允许开发者声明当前元素和它的内容尽可能的独立于 DOM 树的其他部分。
+这使得浏览器在重新计算布局、样式、绘图或它们的组合的时候，只会影响到有限的 DOM 区域，而不是整个页面
+
+```css
+/* 无布局包含 */
+contain: none;
+
+/* 布局包含 layout、style、paint 和 size */
+contain: strict;
+
+/* 布局包含layout、style 和 paint */
+contain: content;
+
+/* 布局包含 size */
+contain: size;
+
+/* 布局包含 layout */
+contain: layout;
+
+/* 布局包含 style */
+contain: style;
+
+/* 布局包含 paint */
+contain: paint;
+```
+
+- size: 声明这个元素的尺寸会变化，不需要去检查它依赖关系中的尺寸变化
+- style: 声明那些同时会影响这个元素和其子孙元素的属性，都在这个元素的包含范围内
+- layout: 声明没有外部元素可以影响它内部的布局，反之亦然
+- paint: 声明这个元素的子孙节点不会在它边缘外显示。如果一个元素在视窗外或因其他原因导致不可见，则同样保证它的子孙节点不会被显示
+
+### Animation Frame
+
+`window.requestAnimationFrame`:
+
+- reflow: `javascript -> style -> layout -> paint -> composite`
+- repaint: `paint -> composite`
+
+告诉浏览器希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用
+
+> 若想要在下次重绘时产生另一个动画画面，callback 必须调用 requestAnimationFrame
+
+```js
+const start = null;
+const element = document.getElementById('SomeElementYouWantToAnimate');
+element.style.position = 'absolute';
+
+function step(timestamp) {
+  if (!start) {
+    start = timestamp;
+  }
+
+  const progress = timestamp - start;
+  element.style.left = Math.min(progress / 10, 200) + 'px';
+
+  if (progress < 2000) {
+    window.requestAnimationFrame(step);
+  }
+}
+
+window.requestAnimationFrame(step);
+```
+
+### CSS Loading Tips
+
+- Lazyload any CSS not needed for Start Render:
+  - This could be Critical CSS;
+  - or splitting your CSS into Media Queries.
+- Avoid @import:
+  - In your HTML;
+  - but in CSS especially;
+  - and beware of oddities with the PreLoad Scanner.
+- Be wary of synchronous CSS and JavaScript order:
+  - JavaScript defined after CSS won’t run until CSSOM is completed;
+  - so if your JavaScript doesn’t depend on your CSS;
+    - load it before your CSS;
+  - but if it does depend on your CSS:
+    - load it after your CSS.
+- Load CSS as the DOM needs it:
+  - This unblocks Start Render and allows progressive rendering.
+
+```html
+<link rel="preload" href="/path/to/split.css" as="style" />
+<link
+  rel="stylesheet"
+  href="/path/to/split.css"
+  media="print"
+  onload="this.media='all'"
+/>
+```
+
+### Animation Performance
+
+#### Best Practice
+
+- [High Performance Tips](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations)
+- all animation: `keyframe` animation or `transitions` is best
+- js-based animation: `requestAnimationFrame` is better than `setTimeout`/`setInterval`
+- position animation:`transform: translate(npx, npx)` is better than `top`/`right`/`bottom`/`left`
+- scale animation: `transform: scale(n)` better than `width`/`height`
+- rotation animation: `transform: rotate(deg)` is better
+- opacity/visibility animation: `opacity: 0...1` is better
+
+#### DevTools for Animation
+
+- [DevTools for Animation Performance](https://calibreapp.com/blog/investigate-animation-performance-with-devtools)
+- slower CPU simulation in `performance` panel
+- enable paint instrumentation in `performance` panel
+- FPS meter in `rendering` panel
+- paint flashing in `rendering` panel
+- `layers` panel
+
+#### Animation Internal
+
+- `width`/`height`/`margin`/`left`/`top` in `Layout` stage
+- `box-shadow`/`border-radius`/`background`/`outline`/`color` in `Paint` stage
+- `cursor`/`z-index`/`transform`/`opacity` in `Composite Layers` stage
+- `top`/`left` has very large time to `paint` each frame
+
+## CSS Hacks
+
+- [Browser Hacks](https://github.com/4ae9b8/browserhacks)
