@@ -135,6 +135,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 ├── .eslintrc.json
 ├── .markdownlint.json
 ├── .prettierrc.json
+├── .stylelintrc.json
 ├── .versionrc.json
 ├── gatsby-browser.js
 ├── gatsby-config.js
@@ -164,24 +165,26 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 7. **`.eslintrc.json`**: This is a configuration file for [ESLint](https://eslint.org).
 8. **`.markdownlint.json`**: This is a configuration file for [MarkdownLint](https://github.com/DavidAnson/markdownlint).
 9. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
-10. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
-11. **`gatsby-browser.js`**: This file is usage of the [Gatsby Browser APIs](https://www.gatsbyjs.com/docs/browser-apis).
-12. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site.
-13. **`gatsby-node.js`**: This file is usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis).
-14. **`gatsby-ssr.js`**: This file is usage of the [Gatsby Server Side Rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis).
-15. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
-16. **`jest.env.setup.js`**: This is Jest environment setup script.
-17. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
-18. **`jest.transformer.js`**: This is TypeScript testing code transformer for Jest.
-19. **`index.d.ts`**: This is types definition for static assets (like `CSS`/`JPG`/`PNG`).
-20. **`jsconfig.json`**: This is a configuration file for [VSCode](https://code.visualstudio.com).
-21. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
-22. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
-23. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
-24. **`LICENSE`**: This Gatsby starter is licensed under the `MIT` license.
-25. **`package.json`**: A manifest file for Node.js projects.
-26. **`package-lock.json`**: This is automatically generated file based on NPM dependencies.
-27. **`README.md`**: A text file containing useful reference information.
+10. **`.stylelintrc.json`**: This is a configuration file for [StyleLint](https://stylelint.io).
+11. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
+12. **`gatsby-browser.js`**: This file is usage of the [Gatsby Browser APIs](https://www.gatsbyjs.com/docs/browser-apis).
+13. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site.
+14. **`gatsby-node.js`**: This file is usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis).
+15. **`gatsby-ssr.js`**:
+    This file is usage of the [Gatsby Server Side Rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis).
+16. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
+17. **`jest.env.setup.js`**: This is Jest environment setup script.
+18. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
+19. **`jest.transformer.js`**: This is TypeScript testing code transformer for Jest.
+20. **`index.d.ts`**: This is types definition for static assets (like `CSS`/`JPG`/`PNG`).
+21. **`jsconfig.json`**: This is a configuration file for [VSCode](https://code.visualstudio.com).
+22. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
+23. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
+24. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
+25. **`LICENSE`**: This Gatsby starter is licensed under the `MIT` license.
+26. **`package.json`**: A manifest file for Node.js projects.
+27. **`package-lock.json`**: This is automatically generated file based on NPM dependencies.
+28. **`README.md`**: A text file containing useful reference information.
 
 ## Contact
 
