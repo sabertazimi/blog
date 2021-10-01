@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { ComponentType } from 'react';
+import React from 'react';
 import { create } from 'react-test-renderer';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -13,7 +13,7 @@ const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
 };
 
 describe('ErrorBoundary', () => {
-  const OLD_ENV = process.env;
+  const OLD_ENV = { ...process.env };
   let mockConsoleError: jest.SpyInstance;
 
   beforeEach(() => {
@@ -48,7 +48,7 @@ describe('ErrorBoundary', () => {
 
   test('should render alert message when error happened', () => {
     const { queryByRole, rerender } = render(<ComponentWithError />, {
-      wrapper: ErrorBoundary as ComponentType<unknown>,
+      wrapper: ErrorBoundary,
     });
 
     expect(queryByRole('alert')).not.toBeInTheDocument();
