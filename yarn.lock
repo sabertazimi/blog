@@ -2422,14 +2422,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-paginate-rest@npm:^2.16.0":
-  version: 2.16.5
-  resolution: "@octokit/plugin-paginate-rest@npm:2.16.5"
+"@octokit/plugin-paginate-rest@npm:^2.16.4":
+  version: 2.16.7
+  resolution: "@octokit/plugin-paginate-rest@npm:2.16.7"
   dependencies:
-    "@octokit/types": ^6.31.0
+    "@octokit/types": ^6.31.3
   peerDependencies:
     "@octokit/core": ">=2"
-  checksum: dba2b22e8da063b8fb7809ecc096c60e2733622b1924592f3b1aa33d0de3e0082aab586ce5c7dcfbfeab9663e2999bc4889e3cf2be5db828633905523b3318bf
+  checksum: 86e394527347245b4fce73ee24aff9b585b944bd90fa1e4c2ce56ef25f413150a89f363a6ac21f79c5c5cc3e9d58a394dd10cd1d95f726469757a9251f901e6e
   languageName: node
   linkType: hard
 
@@ -2442,15 +2442,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-rest-endpoint-methods@npm:5.11.2":
-  version: 5.11.2
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.11.2"
+"@octokit/plugin-rest-endpoint-methods@npm:5.11.4":
+  version: 5.11.4
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.11.4"
   dependencies:
-    "@octokit/types": ^6.31.0
+    "@octokit/types": ^6.31.2
     deprecation: ^2.3.1
   peerDependencies:
     "@octokit/core": ">=3"
-  checksum: 57e8960cf260b291790e4cb7313bf3ce0814ffa808215c7e989ea3f260f2bd021a975ac42677e4563e753674acc3102b181f1187d8a6f548810275493deaa270
+  checksum: 3e1f8bd469dffb04f0a87de38989b9cc3ce726c8ad1ae3f777a17589bfdf092cfae0644caab6227f338f700c566fd9b17c8c25e6b8a4798ca44bd4c0e081e46d
   languageName: node
   linkType: hard
 
@@ -2479,19 +2479,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/rest@npm:^18.11.1":
-  version: 18.11.1
-  resolution: "@octokit/rest@npm:18.11.1"
+"@octokit/rest@npm:^18.11.4":
+  version: 18.11.4
+  resolution: "@octokit/rest@npm:18.11.4"
   dependencies:
     "@octokit/core": ^3.5.1
-    "@octokit/plugin-paginate-rest": ^2.16.0
+    "@octokit/plugin-paginate-rest": ^2.16.4
     "@octokit/plugin-request-log": ^1.0.4
-    "@octokit/plugin-rest-endpoint-methods": 5.11.2
-  checksum: e7a7185ffbba70712f73f4d3f676285bfa4bdb729d94ec1bed0872a3016139bd774c5a732903c449100609c0134e24a0f6e538c98a5226996d76042f06212698
+    "@octokit/plugin-rest-endpoint-methods": 5.11.4
+  checksum: 3ca3df2a4be8689d9a8e49527928110cfeb4ff312950101e31157ad9c08421fb41135adadc04718e65be4a7c087ceeb9f897ce22e121c59302d21f855f8c258e
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.31.0, @octokit/types@npm:^6.31.3":
+"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.31.2, @octokit/types@npm:^6.31.3":
   version: 6.31.3
   resolution: "@octokit/types@npm:6.31.3"
   dependencies:
@@ -2703,7 +2703,7 @@ __metadata:
     "@babel/core": ^7.15.5
     "@dg-scripts/eslint-config": ^1.1.3
     "@dg-scripts/stylelint-config": ^1.1.3
-    "@octokit/rest": ^18.11.1
+    "@octokit/rest": ^18.11.4
     "@octokit/types": ^6.31.3
     "@reach/router": ^1.3.4
     "@react-spring/types": ^9.2.4
