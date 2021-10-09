@@ -2439,21 +2439,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^10.6.4":
-  version: 10.6.4
-  resolution: "@octokit/openapi-types@npm:10.6.4"
-  checksum: 2ee92ac55f2bfd45dd13f2d643f0041945398a9bf4643c47d25dbb307588ddb662a8f7b1ac3ed667b4cb43b369d14c5119c80d19dde03e5719930ca886037ab9
+"@octokit/openapi-types@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "@octokit/openapi-types@npm:11.1.0"
+  checksum: ac0328840775111d0815dfa062a11114438294d51143d1c1a670e5d27c2d07de6b3a20f7bc9ad93ff1bf07597ea80e0f7dc45c0c4b2b2e4c774006c0ef94ad70
   languageName: node
   linkType: hard
 
-"@octokit/plugin-paginate-rest@npm:^2.16.4":
-  version: 2.16.7
-  resolution: "@octokit/plugin-paginate-rest@npm:2.16.7"
+"@octokit/plugin-paginate-rest@npm:^2.16.8":
+  version: 2.16.9
+  resolution: "@octokit/plugin-paginate-rest@npm:2.16.9"
   dependencies:
-    "@octokit/types": ^6.31.3
+    "@octokit/types": ^6.33.0
   peerDependencies:
     "@octokit/core": ">=2"
-  checksum: 86e394527347245b4fce73ee24aff9b585b944bd90fa1e4c2ce56ef25f413150a89f363a6ac21f79c5c5cc3e9d58a394dd10cd1d95f726469757a9251f901e6e
+  checksum: 98134c03122fa049f65eebb7b5ddb942bfd9522d42057f531f4c54e4b5bacdea6abad082901bc4b4ecc172dd95875eb9ff5249ca2874a9eb3faf9338bbba1c58
   languageName: node
   linkType: hard
 
@@ -2466,15 +2466,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-rest-endpoint-methods@npm:5.11.4":
-  version: 5.11.4
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.11.4"
+"@octokit/plugin-rest-endpoint-methods@npm:^5.12.0":
+  version: 5.12.1
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:5.12.1"
   dependencies:
-    "@octokit/types": ^6.31.2
+    "@octokit/types": ^6.33.0
     deprecation: ^2.3.1
   peerDependencies:
     "@octokit/core": ">=3"
-  checksum: 3e1f8bd469dffb04f0a87de38989b9cc3ce726c8ad1ae3f777a17589bfdf092cfae0644caab6227f338f700c566fd9b17c8c25e6b8a4798ca44bd4c0e081e46d
+  checksum: 6ad0a304916be1cf3129b1febd77e1e2b0d3df10ce6b64c027d57d189ae52fca21dab6179ef05e22792407fe5792f0ba2221ca8d4f7a60977c4d4c1e8245cdcd
   languageName: node
   linkType: hard
 
@@ -2503,24 +2503,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/rest@npm:^18.11.4":
-  version: 18.11.4
-  resolution: "@octokit/rest@npm:18.11.4"
+"@octokit/rest@npm:^18.12.0":
+  version: 18.12.0
+  resolution: "@octokit/rest@npm:18.12.0"
   dependencies:
     "@octokit/core": ^3.5.1
-    "@octokit/plugin-paginate-rest": ^2.16.4
+    "@octokit/plugin-paginate-rest": ^2.16.8
     "@octokit/plugin-request-log": ^1.0.4
-    "@octokit/plugin-rest-endpoint-methods": 5.11.4
-  checksum: 3ca3df2a4be8689d9a8e49527928110cfeb4ff312950101e31157ad9c08421fb41135adadc04718e65be4a7c087ceeb9f897ce22e121c59302d21f855f8c258e
+    "@octokit/plugin-rest-endpoint-methods": ^5.12.0
+  checksum: c18bd6676a60b66819b016b0f969fcd04d8dfa04d01b7af9af9a7410ff028c621c995185e29454c23c47906da506c1e01620711259989a964ebbfd9106f5b715
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.31.2, @octokit/types@npm:^6.31.3":
-  version: 6.31.3
-  resolution: "@octokit/types@npm:6.31.3"
+"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.31.3, @octokit/types@npm:^6.33.0":
+  version: 6.33.0
+  resolution: "@octokit/types@npm:6.33.0"
   dependencies:
-    "@octokit/openapi-types": ^10.6.4
-  checksum: 2dc2638f83f00771a10375a3da59a8bd4de2a2f367d522c3c1648b5d2167bef2affd25819076d32c408f05592bbaa007e3bb8aed23f370ff635729c9e3d040ad
+    "@octokit/openapi-types": ^11.1.0
+  checksum: f9eec5fbb072f8d154662a5a8335e99fdcb69bd043d2c0ae36e0addad4c648a776b764373580a58558cfad70a867243fb1e899c106afec69942e0571233231e1
   languageName: node
   linkType: hard
 
@@ -2727,7 +2727,7 @@ __metadata:
     "@babel/core": ^7.15.8
     "@dg-scripts/eslint-config": ^1.1.3
     "@dg-scripts/stylelint-config": ^1.1.3
-    "@octokit/rest": ^18.11.4
+    "@octokit/rest": ^18.12.0
     "@octokit/types": ^6.31.3
     "@reach/router": ^1.3.4
     "@react-spring/types": ^9.2.6
