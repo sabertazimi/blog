@@ -2776,7 +2776,7 @@ __metadata:
     gatsby-transformer-remark: ^4.11.0
     identity-obj-proxy: ^3.0.0
     jest: ^27.2.5
-    markdownlint-cli: ^0.28.1
+    markdownlint-cli: ^0.29.0
     node-fetch: ^2.6.5
     postcss: ^8.3.9
     postcss-import: ^14.0.2
@@ -5809,10 +5809,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:~8.0.0":
-  version: 8.0.0
-  resolution: "commander@npm:8.0.0"
-  checksum: 4b652188473fbc5cbacc5a95c53ed854278cb28a94bd6743c2013c00c11433fa60bdf41835b7e4fb3751ca6c8836dc9c09a68b587736dbd59a72a47a91fd5cd0
+"commander@npm:~8.2.0":
+  version: 8.2.0
+  resolution: "commander@npm:8.2.0"
+  checksum: e868805bc266777f7a9c8a740e15b9e02b8148d8251f577ea9b9ef373ac0bdeb77b9b60cfc033592c9e1affea89993be08c13c623f0c619f9bf152c0e4d12cb0
   languageName: node
   linkType: hard
 
@@ -9919,7 +9919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.0, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7":
+"glob@npm:^7.0.0, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7, glob@npm:~7.2.0":
   version: 7.2.0
   resolution: "glob@npm:7.2.0"
   dependencies:
@@ -9930,20 +9930,6 @@ __metadata:
     once: ^1.3.0
     path-is-absolute: ^1.0.0
   checksum: 78a8ea942331f08ed2e055cb5b9e40fe6f46f579d7fd3d694f3412fe5db23223d29b7fee1575440202e9a7ff9a72ab106a39fee39934c7bedafe5e5f8ae20134
-  languageName: node
-  linkType: hard
-
-"glob@npm:~7.1.7":
-  version: 7.1.7
-  resolution: "glob@npm:7.1.7"
-  dependencies:
-    fs.realpath: ^1.0.0
-    inflight: ^1.0.4
-    inherits: 2
-    minimatch: ^3.0.4
-    once: ^1.3.0
-    path-is-absolute: ^1.0.0
-  checksum: b61f48973bbdcf5159997b0874a2165db572b368b931135832599875919c237fc05c12984e38fe828e69aa8a921eb0e8a4997266211c517c9cfaae8a93988bb8
   languageName: node
   linkType: hard
 
@@ -13205,9 +13191,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markdown-it@npm:12.0.4":
-  version: 12.0.4
-  resolution: "markdown-it@npm:12.0.4"
+"markdown-it@npm:12.2.0":
+  version: 12.2.0
+  resolution: "markdown-it@npm:12.2.0"
   dependencies:
     argparse: ^2.0.1
     entities: ~2.1.0
@@ -13216,7 +13202,7 @@ __metadata:
     uc.micro: ^1.0.5
   bin:
     markdown-it: bin/markdown-it.js
-  checksum: 001451527c165b8cda6636c19228dd8a96ce593c2dd08c3d1380fd5294bd8368a7f167a3107da05327abe98b553d4f0cadec9e19eb3b7d4249369a73ae4399e1
+  checksum: 8e3d6646edf8e7ef19ed707c59d16741bd40804f1e7567407efd2f346ae0f7ddcdeada83e7affebd21b9d7d947b27fc60fd795a970461785030a4e52e750122b
   languageName: node
   linkType: hard
 
@@ -13229,43 +13215,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markdownlint-cli@npm:^0.28.1":
-  version: 0.28.1
-  resolution: "markdownlint-cli@npm:0.28.1"
+"markdownlint-cli@npm:^0.29.0":
+  version: 0.29.0
+  resolution: "markdownlint-cli@npm:0.29.0"
   dependencies:
-    commander: ~8.0.0
+    commander: ~8.2.0
     deep-extend: ~0.6.0
     get-stdin: ~8.0.0
-    glob: ~7.1.7
+    glob: ~7.2.0
     ignore: ~5.1.8
     js-yaml: ^4.1.0
     jsonc-parser: ~3.0.0
     lodash.differencewith: ~4.5.0
     lodash.flatten: ~4.4.0
-    markdownlint: ~0.23.1
-    markdownlint-rule-helpers: ~0.14.0
+    markdownlint: ~0.24.0
+    markdownlint-rule-helpers: ~0.15.0
     minimatch: ~3.0.4
     minimist: ~1.2.5
     run-con: ~1.2.10
   bin:
     markdownlint: markdownlint.js
-  checksum: 2702cb5e03b3b59cf6ea116982b14cf69c9a2d55120cf6918896bf64fce41b7b94d6b8954a1d45572110c63ec662d109438d93df7f09011d6fd64a4c8674de6d
+  checksum: 4bc748bbfdb7a6d6067453cb1626f7bb2467f5492d71d57e9e5c3e3858edd8e4c41ca4b557eac06e7c72841c484d62a76cda749143e1865721ce8c72d2da4052
   languageName: node
   linkType: hard
 
-"markdownlint-rule-helpers@npm:~0.14.0":
-  version: 0.14.0
-  resolution: "markdownlint-rule-helpers@npm:0.14.0"
-  checksum: c428810bd03267b614c021392d65aa78b114110af0f10f14e54c4c0b2734bd496f2a409416fcbdf73fc5378884d913132e4567ab07bd40047c3cd5959383e178
+"markdownlint-rule-helpers@npm:~0.15.0":
+  version: 0.15.0
+  resolution: "markdownlint-rule-helpers@npm:0.15.0"
+  checksum: c8cc35fdadf1908e89d08cffa6ab917c56656cd1f4a4bc04f0640a6835658a26d5917251d6d76aea23c242488e51ea86211115f3af102f1925f339e4d3a2b271
   languageName: node
   linkType: hard
 
-"markdownlint@npm:~0.23.1":
-  version: 0.23.1
-  resolution: "markdownlint@npm:0.23.1"
+"markdownlint@npm:~0.24.0":
+  version: 0.24.0
+  resolution: "markdownlint@npm:0.24.0"
   dependencies:
-    markdown-it: 12.0.4
-  checksum: e80a903c8c92deb69c24f09c64917aa5e1812cceaadd7411316065722c28de4995a53ac2b29451ff701247556d0e31725ae4a215d3f5e13b8ff2c2b25deadedc
+    markdown-it: 12.2.0
+  checksum: 5308070947796d706e752e7dfe6c741fe613d007be152e710a1fb7bbe2f0481beb2be4c0ed053065aea631daeac3f86d66e5e8cb9a753febf35158930771f34f
   languageName: node
   linkType: hard
 
