@@ -13,6 +13,8 @@ tags:
 
 # CSS Basic Notes
 
+[TOC]
+
 ## Cascading and Inheritance
 
 ### Cascading Order
@@ -1003,9 +1005,11 @@ float make element specified value of `display`:
   display: table;
   content: '';
 }
+
 .clearfix::after {
   clear: both;
 }
+
 .clearfix {
   *zoom: 1;
 }
@@ -1252,17 +1256,20 @@ main {
   width: 200px;
   min-width: 100px;
 }
+
 .none {
   /* width: 200px */
   -webkit-flex: none;
   flex: none;
   width: 200px;
 }
+
 .flex1 {
   /* width: left width * 1/3 */
   -webkit-flex: 1;
   flex: 1;
 }
+
 .flex2 {
   /* width: left width * 2/3 */
   -webkit-flex: 2;
@@ -1725,6 +1732,7 @@ tr,
 td {
   border: 1px solid #666;
 }
+
 table {
   border-collapse: collapse;
 }
@@ -2687,6 +2695,7 @@ size animation will start from bottom-right corner).
     transition: none;
   }
 }
+
 .element {
   transition: property duration timing-function delay;
   transition: transform 0.5s ease-in-out 0.2s;
@@ -2913,6 +2922,7 @@ backface-visibility: hidden;
     animation: none;
   }
 }
+
 .element {
   animation: name duration timing-function delay iteration-count direction;
 }
@@ -2925,6 +2935,7 @@ backface-visibility: hidden;
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -2952,9 +2963,11 @@ body {
   0% {
     color: red;
   }
+
   50% {
     color: blue;
   }
+
   100% {
     color: green;
   }
@@ -2964,6 +2977,7 @@ body {
   from {
     color: red;
   }
+
   to {
     color: green;
   }
@@ -3065,6 +3079,7 @@ setTimeout(() => element.classList.remove('animate'), duration);
     transform: scale(0.8);
   }
 }
+
 .scale-up {
   transition: transform 0.2s linear;
   transform: scale(0.8);
@@ -3280,6 +3295,7 @@ use `inline-box` with `width`
   color: black;
   background: #eee;
 }
+
 .night {
   color: white;
   background: #333;
@@ -3290,6 +3306,7 @@ use `inline-box` with `width`
     color: white;
     background: #333;
   }
+
   .night.dark-scheme {
     color: #ddd;
     background: black;
@@ -3301,6 +3318,7 @@ use `inline-box` with `width`
     color: #555;
     background: white;
   }
+
   .night.light-scheme {
     color: black;
     background: #eee;
@@ -3557,8 +3575,12 @@ input[type='url']:focus,
 input[type='password']:focus,
 textarea:focus,
 select:focus {
+  /* Custom border color */
   border: 1px solid #33c3f0;
-  outline: 0;
+
+  /* Key point: remove default outline */
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 label,
@@ -3770,18 +3792,14 @@ a:focus::after {
 
 5 种方法:
 
-- negative bottom margin content-wrapper with **fixed height** footer
-- negative top margin on **fixed height** footer
-- `calc` on **fixed height** footer
-- use `flex` on `body`
-- use `grid` on `body`
+- negative bottom margin content-wrapper with **fixed height** footer.
 
 ```html
 <body>
-  <div class="wrapper">
+  <main class="wrapper">
     content
     <div class="push"></div>
-  </div>
+  </main>
   <footer class="footer"></footer>
 </body>
 
@@ -3791,6 +3809,7 @@ a:focus::after {
     height: 100%;
     margin: 0;
   }
+
   .wrapper {
     min-height: 100%;
 
@@ -3799,6 +3818,7 @@ a:focus::after {
     /* But also accounting for potential margin-bottom of last child */
     margin-bottom: -50px;
   }
+
   .footer,
   .push {
     height: 50px;
@@ -3806,11 +3826,13 @@ a:focus::after {
 </style>
 ```
 
+- negative top margin on **fixed height** footer.
+
 ```html
 <body>
-  <div class="content">
-    <div class="content-inside">content</div>
-  </div>
+  <main class="content">
+    <section class="content-inside">content</section>
+  </main>
   <footer class="footer"></footer>
 </body>
 
@@ -3820,13 +3842,16 @@ a:focus::after {
     height: 100%;
     margin: 0;
   }
+
   .content {
     min-height: 100%;
   }
+
   .content-inside {
     padding: 20px;
     padding-bottom: 50px;
   }
+
   .footer {
     height: 50px;
     margin-top: -50px;
@@ -3834,9 +3859,11 @@ a:focus::after {
 </style>
 ```
 
+- `calc` on **fixed height** footer.
+
 ```html
 <body>
-  <div class="content">content</div>
+  <main class="content">content</main>
   <footer class="footer"></footer>
 </body>
 
@@ -3844,15 +3871,18 @@ a:focus::after {
   .content {
     min-height: calc(100vh - 70px);
   }
+
   .footer {
     height: 50px;
   }
 </style>
 ```
 
+- Use `flex` on `body`.
+
 ```html
 <body>
-  <div class="content">content</div>
+  <main class="content">content</main>
   <footer class="footer"></footer>
 </body>
 
@@ -3861,22 +3891,27 @@ a:focus::after {
   body {
     height: 100%;
   }
+
   body {
     display: flex;
     flex-direction: column;
   }
+
   .content {
     flex: 1 0 auto;
   }
+
   .footer {
     flex-shrink: 0;
   }
 </style>
 ```
 
+- Use `grid` on `body`.
+
 ```html
 <body>
-  <div class="content">content</div>
+  <main class="content">content</main>
   <footer class="footer"></footer>
 </body>
 
@@ -3884,14 +3919,42 @@ a:focus::after {
   html {
     height: 100%;
   }
+
   body {
     display: grid;
     grid-template-rows: 1fr auto;
     min-height: 100%;
   }
+
   .footer {
     grid-row-start: 2;
     grid-row-end: 3;
+  }
+</style>
+```
+
+- Use `gird` with `min-content`.
+
+```html
+<body>
+  <div class="grid">
+    <header>
+      <!-- ... -->
+    </header>
+    <main>
+      <!-- ... -->
+    </div>
+    <footer>
+      <!-- ... -->
+    </footer>
+  </div>
+</body>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    height: 100vh;
   }
 </style>
 ```
@@ -4013,6 +4076,7 @@ a:focus {
   33% {
     transform: translateY(-2em);
   }
+
   66% {
     transform: translateY(-1em);
   }
@@ -4105,51 +4169,67 @@ function leave(el, done) {
   0% {
     margin-left: 0;
   }
+
   10% {
     margin-left: 0;
   }
+
   12% {
     margin-left: -100%;
   }
+
   22% {
     margin-left: -100%;
   }
+
   24% {
     margin-left: -200%;
   }
+
   34% {
     margin-left: -200%;
   }
+
   36% {
     margin-left: -300%;
   }
+
   46% {
     margin-left: -300%;
   }
+
   48% {
     margin-left: -400%;
   }
+
   58% {
     margin-left: -400%;
   }
+
   60% {
     margin-left: -300%;
   }
+
   70% {
     margin-left: -300%;
   }
+
   72% {
     margin-left: -200%;
   }
+
   82% {
     margin-left: -200%;
   }
+
   84% {
     margin-left: -100%;
   }
+
   94% {
     margin-left: -100%;
   }
+
   96% {
     margin-left: 0;
   }
@@ -4238,6 +4318,7 @@ body {
     transform-origin: 0 0;
   }
 }
+
 .slide {
   z-index: 0;
   transition: transform 1s, opacity 0.8s;
@@ -5026,6 +5107,7 @@ module.exports = {
     .border-small {
       border: 1px solid #30485e;
     }
+
     .border-medium-dashed {
       border: 7px dashed #30485e;
     }
@@ -5211,6 +5293,14 @@ window.requestAnimationFrame(step);
 - `cursor`/`z-index`/`transform`/`opacity` in `Composite Layers` stage
 - `top`/`left` has very large time to `paint` each frame
 
+### CSS Performance Reference
+
+- CSS optimization [guide](https://kinsta.com/blog/optimize-css).
+
 ## CSS Hacks
 
 - [Browser Hacks](https://github.com/4ae9b8/browserhacks)
+
+## Modern CSS
+
+- New CSS features in 2021: [Hover 2021](https://2021-hover-conf-new-in-css.netlify.app).
