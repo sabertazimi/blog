@@ -6,21 +6,27 @@
   .text-span {
     @apply inline-block ml-2 text-xl align-bottom !important;
   }
+  
   .text-span-lg {
     @apply inline-block ml-2 text-3xl font-extrabold align-bottom !important;
   }
+  
   .text-span-xl {
     @apply inline-block ml-2 text-5xl font-extrabold align-bottom !important;
   }
+  
   .bg-gradient-primary {
     @apply bg-gradient-to-r from-indigo-700 to-red-500 !important;
   }
+  
   .button-primary {
     @apply text-light border-primary bg-primary hover:bg-secondary !important;
   }
+  
   .tag-black {
     @apply bg-black border-black text-light !important;
   }
+  
   .flex-container {
     @apply flex flex-row flex-wrap justify-center items-center content-center !important;
   }
