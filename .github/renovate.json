@@ -21,6 +21,11 @@
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "squash"
+    },
+    {
+      "matchPackageNames": ["@sabertazimi/react-scripts", "stylelint-config-mass"],
+      "matchPackagePatterns": ["^@dg-scripts/"],
+      "groupName": "bod monorepo"
     }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"],
