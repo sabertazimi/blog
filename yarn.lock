@@ -2793,7 +2793,7 @@ __metadata:
     react-helmet: ^6.1.0
     react-spring: ^9.3.0
     react-test-renderer: ^16.14.0
-    standard-version: ^9.3.1
+    standard-version: ^9.3.2
     stylelint: ^13.13.1
     tailwindcss: ^2.2.17
     ts-jest: ^27.0.7
@@ -6039,18 +6039,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-conventionalcommits@npm:4.5.0":
-  version: 4.5.0
-  resolution: "conventional-changelog-conventionalcommits@npm:4.5.0"
-  dependencies:
-    compare-func: ^2.0.0
-    lodash: ^4.17.15
-    q: ^1.5.1
-  checksum: e11944881f123f26a92e823a96e4d921b03203a312da9d539773c424103b49917f59fa717a079738f4d5b0e9709b0336ec323a86a56df7d008663b01e5f8b3b9
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-conventionalcommits@npm:^4.5.0":
+"conventional-changelog-conventionalcommits@npm:4.6.1, conventional-changelog-conventionalcommits@npm:^4.5.0":
   version: 4.6.1
   resolution: "conventional-changelog-conventionalcommits@npm:4.6.1"
   dependencies:
@@ -18606,14 +18595,14 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"standard-version@npm:^9.3.1":
-  version: 9.3.1
-  resolution: "standard-version@npm:9.3.1"
+"standard-version@npm:^9.3.2":
+  version: 9.3.2
+  resolution: "standard-version@npm:9.3.2"
   dependencies:
     chalk: ^2.4.2
     conventional-changelog: 3.1.24
     conventional-changelog-config-spec: 2.1.0
-    conventional-changelog-conventionalcommits: 4.5.0
+    conventional-changelog-conventionalcommits: 4.6.1
     conventional-recommended-bump: 6.1.0
     detect-indent: ^6.0.0
     detect-newline: ^3.1.0
@@ -18627,7 +18616,7 @@ resolve@^2.0.0-next.3:
     yargs: ^16.0.0
   bin:
     standard-version: bin/cli.js
-  checksum: 8cf328d8400cf603a3d189656b742bb8dd36b467d71f110ea2ee353b4864c3c5097f06a903aa5d1c1ce23233a28d71dade518e8250467784bbddf5398f6edb87
+  checksum: 40e1105b73e77105338a869096708e15aebf0c1104740f8cbbbb24173f55a8e7f221ff2e4cad4765c230d34094caa4e378ceb74a1ea890709c32f5fb67bd49b7
   languageName: node
   linkType: hard
 
