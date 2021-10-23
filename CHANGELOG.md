@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/sabertazimi/blog/compare/v2.12.0...v2.13.0) (2021-10-23)
+
+
+### :rocket: Building Work
+
+* **deps:** bundle bod deps into single PR ([c30f8e4](https://github.com/sabertazimi/blog/commit/c30f8e49e713739a5ff651531ec9fd5bd8047193))
+
+
+### :bug: Bug Fixes
+
+* **deps:** update dependency @octokit/rest to ^18.11.4 ([#269](https://github.com/sabertazimi/blog/issues/269)) ([f085375](https://github.com/sabertazimi/blog/commit/f0853751bf8d5bcf9abce8fb3c6535a8073d2bdc))
+* **deps:** update dependency @octokit/rest to ^18.12.0 ([#291](https://github.com/sabertazimi/blog/issues/291)) ([a72f91a](https://github.com/sabertazimi/blog/commit/a72f91a3c4ee89fc264ba8c7a12cf6c234b57631))
+* **deps:** update dependency gatsby to ^3.14.1 ([#270](https://github.com/sabertazimi/blog/issues/270)) ([203998b](https://github.com/sabertazimi/blog/commit/203998bebdcd0b8e6f258e0e6a804efe89a7d778))
+* **deps:** update dependency gatsby to ^3.14.2 ([#286](https://github.com/sabertazimi/blog/issues/286)) ([96bcecd](https://github.com/sabertazimi/blog/commit/96bcecd2dff9292fcf12d7d8f5f3620223829d0e))
+* **deps:** update dependency gatsby to ^3.14.3 ([#308](https://github.com/sabertazimi/blog/issues/308)) ([46e95f3](https://github.com/sabertazimi/blog/commit/46e95f3c10a4dc60db0bea1971f8e105279ad276))
+* **deps:** update dependency gatsby to ^3.14.4 ([#325](https://github.com/sabertazimi/blog/issues/325)) ([f891d00](https://github.com/sabertazimi/blog/commit/f891d00e02c3048afa8dfc8b38ae0785fbc3b1f7))
+* **deps:** update dependency react-spring to ^9.2.6 ([#287](https://github.com/sabertazimi/blog/issues/287)) ([53566da](https://github.com/sabertazimi/blog/commit/53566da295f77a92c8851195c10cab10712bb5c0))
+* **deps:** update dependency react-spring to ^9.3.0 ([#295](https://github.com/sabertazimi/blog/issues/295)) ([18b5d55](https://github.com/sabertazimi/blog/commit/18b5d552237d87cf893a3db32e48a8be6f41f784))
+* **deps:** update dependency tailwindcss to ^2.2.17 ([#309](https://github.com/sabertazimi/blog/issues/309)) ([eb76070](https://github.com/sabertazimi/blog/commit/eb760700db538c6f642672f96f5bc39ee105b500))
+* **ErrorBoundary-types:** change children type to `ReactElement` ([5420890](https://github.com/sabertazimi/blog/commit/5420890480aaad9ba7bdc63d0240464436c2d3a1)), closes [testing-library/react-testing-library#966](https://github.com/testing-library/react-testing-library/issues/966) [testing-library/react-testing-library#970](https://github.com/testing-library/react-testing-library/issues/970)
+
+
+### :sparkles: Features
+
+* **gatsby:** bump gatsby to v4 ([#324](https://github.com/sabertazimi/blog/issues/324)) ([d32ec4a](https://github.com/sabertazimi/blog/commit/d32ec4a283ac01ce1ee0c39f97c45596f2467073)), closes [#319](https://github.com/sabertazimi/blog/issues/319)
+
 ## [2.12.0](https://github.com/sabertazimi/blog/compare/v2.11.0...v2.12.0) (2021-09-27)
 
 
