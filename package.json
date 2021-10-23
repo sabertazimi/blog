@@ -15,7 +15,7 @@
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "lint": "yarn lint:md && yarn lint:style && yarn lint:type-check",
-    "lint:md": "markdownlint -i node_modules ./src/pages && stylelint ./src/pages/**/*.md",
+    "lint:md": "markdownlint -i node_modules ./src/pages",
     "lint:style": "eslint --ext .js,.jsx,.ts,.tsx ./src && stylelint ./src/**/*.css",
     "lint:type-check": "tsc --noEmit",
     "prelease": "standard-version --dry-run -s",
