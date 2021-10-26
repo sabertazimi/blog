@@ -25,10 +25,10 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: 'yarn'
-      - name: Installation
+      - name: Install dependencies
         run: |
           yarn
-      - name: Linting
+      - name: Run linter tests
         run: |
           yarn lint
 
@@ -53,14 +53,14 @@ jobs:
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
           cache: 'yarn'
-      - name: Installation
+      - name: Install dependencies
         run: |
           yarn
-      - name: Testing
+      - name: Run unit tests
         run: |
           yarn test:all
           yarn badge
-      - name: Coverage report action
+      - name: Perform code coverage report action
         uses: codecov/codecov-action@v2
         if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
       - name: Archive production artifacts
@@ -91,10 +91,10 @@ jobs:
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
           cache: 'yarn'
-      - name: Installation
+      - name: Install dependencies
         run: |
           yarn
-      - name: Building work
+      - name: Build application
         run: |
           yarn build:gh-pages
       - name: Archive production artifacts
