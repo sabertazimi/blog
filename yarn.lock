@@ -2763,7 +2763,7 @@ __metadata:
     gatsby: ^4.1.0
     gatsby-plugin-antd: ^2.2.0
     gatsby-plugin-catch-links: ^4.1.0
-    gatsby-plugin-eslint: ^4.0.1
+    gatsby-plugin-eslint: ^4.0.2
     gatsby-plugin-manifest: ^4.1.0
     gatsby-plugin-minify-html: ^1.0.4
     gatsby-plugin-nprogress: ^4.1.0
@@ -9166,16 +9166,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-eslint@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "gatsby-plugin-eslint@npm:4.0.1"
+"gatsby-plugin-eslint@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "gatsby-plugin-eslint@npm:4.0.2"
   dependencies:
     webpack-merge: ^5.8.0
   peerDependencies:
-    eslint: ^7.18.0
-    eslint-webpack-plugin: ^2.4.3
+    eslint: ^7.18.0 || ^8
+    eslint-webpack-plugin: ^2.4.3 || ^3
     gatsby: ^2 || ^3 || ^4
-  checksum: 4a232f2596ebf95d32ce95ac18d3f02e63636b56b45fb7ea4046a7f2f0c9811c49d89e1e15adbf7aa82db5f3e42979f828c56e6120f56d686c8335425afcbec4
+  checksum: 49d220fafa5890e3a1dabdfb7d9b7c54c773c0aad91726a1968f9b20eb085ecd86ba4e75088d39675b0b38d572cd6b339c53a72214dcb68f201fe8f91c0e2f93
   languageName: node
   linkType: hard
 
