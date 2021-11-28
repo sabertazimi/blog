@@ -90,7 +90,7 @@ exports[`ArticleToc should render correctly (snapshot) 2`] = `
               "height": undefined,
               "msTransform": "translateX(100%)",
               "transform": "translateX(100%)",
-              "width": "256px",
+              "width": "378px",
             }
           }
         >
@@ -106,9 +106,13 @@ exports[`ArticleToc should render correctly (snapshot) 2`] = `
                 className="ant-drawer-header"
               >
                 <div
-                  className="ant-drawer-title"
+                  className="ant-drawer-header-title"
                 >
-                  Table of Contents
+                  <div
+                    className="ant-drawer-title"
+                  >
+                    Table of Contents
+                  </div>
                 </div>
               </div>
               <div
