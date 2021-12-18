@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import ErrorBoundary from './ErrorBoundary';
@@ -47,13 +47,13 @@ describe('ErrorBoundary', () => {
   });
 
   test('should render alert message when error happened', () => {
-    const { queryByRole, rerender } = render(<ComponentWithError />, {
+    const { rerender } = render(<ComponentWithError />, {
       wrapper: ErrorBoundary,
     });
 
-    expect(queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     rerender(<ComponentWithError shouldThrow />);
-    expect(queryByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
     expect(mockConsoleError).toHaveBeenCalledTimes(4);
   });
 });

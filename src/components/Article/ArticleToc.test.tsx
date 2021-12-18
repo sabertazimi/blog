@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act, create } from 'react-test-renderer';
 import ArticleToc from './ArticleToc';
@@ -20,10 +20,10 @@ describe('ArticleToc', () => {
   });
 
   test('should expand ToC when clicked', () => {
-    const { getByRole, getByText } = render(<ArticleToc toc={toc} />);
-    const tocButton = getByRole('button');
+    render(<ArticleToc toc={toc} />);
+    const tocButton = screen.getByRole('button');
 
     fireEvent.click(tocButton);
-    expect(getByText(toc)).toBeInTheDocument();
+    expect(screen.getByText(toc)).toBeInTheDocument();
   });
 });

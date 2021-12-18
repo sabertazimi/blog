@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import PostsSearchBar from './PostsSearchBar';
@@ -36,15 +36,13 @@ describe('PostsSearchBar', () => {
       const mockConsoleError = jest
         .spyOn(console, 'error')
         .mockImplementation(jest.fn());
-      const { getByRole, findAllByText } = render(
-        <PostsSearchBar posts={posts} />
-      );
-      const input = getByRole('combobox');
+      render(<PostsSearchBar posts={posts} />);
+      const input = screen.getByRole('combobox');
 
       fireEvent.change(input, { target: { value: `${index}` } });
-      expect(await findAllByText(posts[index].title)).toHaveLength(2);
+      expect(await screen.findAllByText(posts[index].title)).toHaveLength(2);
       fireEvent.change(input, { target: { value: '' } });
-      expect(await findAllByText(posts[index].title)).toHaveLength(2);
+      expect(await screen.findAllByText(posts[index].title)).toHaveLength(2);
 
       mockConsoleError.mockRestore();
     }
