@@ -1,5 +1,5 @@
 import { SocialList, SocialType } from '@config';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import SocialButton from './SocialButton';
@@ -30,14 +30,14 @@ describe('SocialButton', () => {
   test.each(socialList)(
     'should render [%s] button with correct structure',
     social => {
-      const { getByRole } = render(
+      render(
         <SocialButton
           type={social as SocialType}
           url={`https://${social}.com`}
         />
       );
-      const link = getByRole('link');
-      const icon = getByRole('img');
+      const link = screen.getByRole('link');
+      const icon = screen.getByRole('img');
 
       expect(link).toBeInTheDocument();
       expect(icon).toBeInTheDocument();
@@ -48,13 +48,13 @@ describe('SocialButton', () => {
   test.each(socialList)(
     'should render [%s] button with correct URL',
     social => {
-      const { getByRole } = render(
+      render(
         <SocialButton
           type={social as SocialType}
           url={`https://${social}.com`}
         />
       );
-      const link = getByRole('link');
+      const link = screen.getByRole('link');
 
       expect(link).toHaveAttribute('href', `https://${social}.com`);
     }

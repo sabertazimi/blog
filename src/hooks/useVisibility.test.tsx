@@ -93,6 +93,8 @@ describe('useVisibility', () => {
     fireEvent.scroll(window, { target: { scrollY: 0 } });
     await waitFor(() => {
       expect(onBottomPassed).not.toBeCalled();
+    });
+    await waitFor(() => {
       expect(onBottomPassedReverse).not.toBeCalled();
     });
   });

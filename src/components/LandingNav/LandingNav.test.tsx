@@ -1,5 +1,5 @@
 import { Routes } from '@config';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act, create } from 'react-test-renderer';
 import LandingNav from './LandingNav';
@@ -21,11 +21,11 @@ describe('LandingNav', () => {
   });
 
   test('should render route with correct structure', () => {
-    const { getByRole, getAllByRole } = render(<LandingNav routes={Routes} />);
-    const nav = getByRole('navigation');
-    const navLinks = getAllByRole('link');
-    const navButton = getByRole('button');
-    const icon = getByRole('img');
+    render(<LandingNav routes={Routes} />);
+    const nav = screen.getByRole('navigation');
+    const navLinks = screen.getAllByRole('link');
+    const navButton = screen.getByRole('button');
+    const icon = screen.getByRole('img');
 
     expect(nav).toBeInTheDocument();
     navLinks.forEach(navLink => expect(navLink).toBeInTheDocument());
@@ -37,10 +37,10 @@ describe('LandingNav', () => {
   });
 
   test('should expanded when clicked', () => {
-    const { getByRole } = render(<LandingNav routes={Routes} />);
-    const nav = getByRole('navigation');
-    const overlay = getByRole('banner');
-    const navButton = getByRole('button');
+    render(<LandingNav routes={Routes} />);
+    const nav = screen.getByRole('navigation');
+    const overlay = screen.getByRole('banner');
+    const navButton = screen.getByRole('button');
 
     fireEvent.click(navButton);
     expect(nav).toHaveClass('translate-x-0');

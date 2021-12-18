@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import Container from './Container';
@@ -14,13 +14,14 @@ describe('Container', () => {
   });
 
   test('should render children correctly', () => {
-    const { getByRole } = render(
+    render(
       <Container role="main">
         <h1>Container</h1>
       </Container>
     );
-    const container = getByRole('main');
+    const container = screen.getByRole('main');
+    const header = screen.getByText('Container');
 
-    expect(container.firstChild).toHaveTextContent('Container');
+    expect(container).toContainElement(header);
   });
 });

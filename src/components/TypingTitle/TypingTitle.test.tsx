@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import TypingTitle from './TypingTitle';
@@ -16,9 +16,9 @@ describe('TypingTitle', () => {
   });
 
   test('should work correctly', async () => {
-    const { queryByRole } = render(<TypingTitle titles={landingTitles} />);
+    render(<TypingTitle titles={landingTitles} />);
     await waitFor(() => {
-      expect(queryByRole('heading')).toBeInTheDocument();
+      expect(screen.getByRole('heading')).toBeInTheDocument();
     });
   });
 });
