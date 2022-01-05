@@ -1,5 +1,5 @@
 import { useVisibility } from '@hooks';
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import React, { useCallback, useRef, useState } from 'react';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';

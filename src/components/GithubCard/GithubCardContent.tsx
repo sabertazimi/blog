@@ -3,7 +3,7 @@ import {
   InfoCircleOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { Profile } from '@types';
+import type { Profile } from '@types';
 import { Space } from 'antd';
 import React from 'react';
 

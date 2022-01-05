@@ -6,7 +6,8 @@ import {
   TwitterOutlined,
   WeiboOutlined,
 } from '@ant-design/icons';
-import { SocialList, SocialType } from '@config';
+import type { SocialType } from '@config';
+import { SocialList } from '@config';
 import React from 'react';
 
 const SocialIcon = (type: SocialType): JSX.Element => {

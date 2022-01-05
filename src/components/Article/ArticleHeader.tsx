@@ -1,5 +1,5 @@
 import { getColorByName } from '@config';
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import { Tag } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';

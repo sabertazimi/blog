@@ -1,4 +1,4 @@
-import { SocialType } from '@config';
+import type { SocialType } from '@config';
 
 export interface Book {
   title: string;

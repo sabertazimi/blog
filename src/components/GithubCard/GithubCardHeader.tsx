@@ -1,5 +1,5 @@
 import { GithubOutlined } from '@ant-design/icons';
-import { Profile } from '@types';
+import type { Profile } from '@types';
 import React from 'react';
 
 interface Props {

@@ -1,4 +1,5 @@
-import { SocialList, SocialType } from '@config';
+import type { SocialType } from '@config';
+import { SocialList } from '@config';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';

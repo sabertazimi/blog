@@ -1,7 +1,8 @@
 import { Container } from '@components';
 import { Footer, Header } from '@containers';
 import { BackTop } from 'antd';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 
 interface Props {
   children: ReactNode;

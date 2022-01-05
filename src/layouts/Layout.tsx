@@ -1,7 +1,8 @@
 import { Container } from '@components';
 import { Footer, Header } from '@containers';
 import { Divider } from 'antd';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { animated, useSpring } from 'react-spring';
 
 interface Props {

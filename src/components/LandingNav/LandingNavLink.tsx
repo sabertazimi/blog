@@ -1,7 +1,8 @@
 import { Tooltip } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 
 interface Props {
   title: string;

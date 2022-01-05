@@ -1,4 +1,4 @@
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import { List } from 'antd';
 import { Link } from 'gatsby';
 import React from 'react';
