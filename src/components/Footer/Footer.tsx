@@ -30,7 +30,6 @@ const Footer = ({ buildTime, author, socialList }: Props): JSX.Element => (
         <span>
           Copyright &copy;{' '}
           <a href={`https://github.com/${socialList.github}`}>{author}</a>{' '}
-          {new Date().getFullYear()}
         </span>
         <Divider className="bg-light" type="vertical" />
         <span>
