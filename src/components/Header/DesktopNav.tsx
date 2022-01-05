@@ -1,6 +1,6 @@
 import { PostsSearchBar } from '@components';
 import { Routes } from '@config';
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import { Menu } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';

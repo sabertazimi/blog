@@ -1,6 +1,6 @@
 import { Container, SocialGroup } from '@components';
 import { Comment } from '@components/Icons';
-import { PostType } from '@types';
+import type { PostType } from '@types';
 import React from 'react';
 import ArticleComments from './ArticleComments';
 import ArticleContent from './ArticleContent';

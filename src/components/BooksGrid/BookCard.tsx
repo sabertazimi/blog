@@ -1,6 +1,6 @@
 import { BookOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
-import { Book } from '@types';
+import type { Book } from '@types';
 import { Badge, Card } from 'antd';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import React from 'react';
 import DesktopPostsGrid from './DesktopPostsGrid';
 import MobilePostsGrid from './MobilePostsGrid';

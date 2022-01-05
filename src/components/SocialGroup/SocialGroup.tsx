@@ -1,5 +1,6 @@
 import { SocialButton } from '@components';
-import { Color, Colors, SocialList, SocialQuery, SocialType } from '@config';
+import type { Color, SocialType } from '@config';
+import { Colors, SocialList, SocialQuery } from '@config';
 import { Space } from 'antd';
 import classNames from 'classnames';
 import React from 'react';

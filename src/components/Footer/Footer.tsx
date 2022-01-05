@@ -1,6 +1,7 @@
 import { Container, SocialButton } from '@components';
-import { SocialList, SocialType } from '@config';
-import { SiteMetadata } from '@types';
+import type { SocialType } from '@config';
+import { SocialList } from '@config';
+import type { SiteMetadata } from '@types';
 import { Col, Divider, Row } from 'antd';
 import React from 'react';
 

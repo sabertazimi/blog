@@ -1,5 +1,5 @@
 import { getColorByName } from '@config';
-import { Profile, Repo } from '@types';
+import type { Profile, Repo } from '@types';
 import { Avatar, Badge, Card, Typography } from 'antd';
 import React from 'react';
 import GithubCardContent from './GithubCardContent';

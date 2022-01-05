@@ -1,4 +1,4 @@
-import { PostMetaType, TagsType, TagType } from '@types';
+import type { PostMetaType, TagType, TagsType } from '@types';
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface PostsMetadataNode {

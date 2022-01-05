@@ -1,5 +1,5 @@
 import { FlexContainer } from '@components';
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import { Button } from 'antd';
 import classNames from 'classnames';
 import { Link } from 'gatsby';

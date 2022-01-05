@@ -1,5 +1,5 @@
 import { FlexContainer } from '@components';
-import { PostMetaType } from '@types';
+import type { PostMetaType } from '@types';
 import React from 'react';
 import PostCard from './PostCard';
 

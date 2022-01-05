@@ -1,5 +1,5 @@
 import { Colors, getColorByName } from '@config';
-import { TagsType, TagType } from '@types';
+import type { TagType, TagsType } from '@types';
 import { Tag } from 'antd';
 import { Link } from 'gatsby';
 import React from 'react';

@@ -1,7 +1,8 @@
 import { SocialIcon } from '@components/Icons';
-import { SocialType } from '@config';
+import type { SocialType } from '@config';
 import { Button } from 'antd';
-import React, { HTMLProps } from 'react';
+import type { HTMLProps } from 'react';
+import React from 'react';
 
 interface Props extends HTMLProps<HTMLButtonElement> {
   type: SocialType;

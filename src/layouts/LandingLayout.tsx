@@ -1,6 +1,7 @@
 import landingImage from '@images/landing.jpg';
 import classNames from 'classnames';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 
 interface Props {
   children: ReactNode;

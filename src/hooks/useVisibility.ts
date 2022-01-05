@@ -3,7 +3,8 @@
  * forked from `<Visibility />` React Semantic UI component,
  * https://github.com/Semantic-Org/Semantic-UI-React/blob/master/src/behaviors/Visibility/Visibility.js
  */
-import { RefObject, useCallback, useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 const useVisibility = ({
   ref,

@@ -1,4 +1,5 @@
-import { SocialList, SocialType } from '@config';
+import type { SocialType } from '@config';
+import { SocialList } from '@config';
 import * as gatsby from 'gatsby';
 import useSiteMetadata from './useSiteMetadata';
 

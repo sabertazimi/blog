@@ -1,4 +1,4 @@
-import { Book } from '@types';
+import type { Book } from '@types';
 import { Col, Row } from 'antd';
 import React from 'react';
 import BookCard from './BookCard';

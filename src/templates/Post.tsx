@@ -2,7 +2,7 @@ import { Article, MetaHeader } from '@components';
 import { useSiteMetadata } from '@hooks';
 import { PostLayout } from '@layouts';
 import { useLocation } from '@reach/router';
-import { PostType } from '@types';
+import type { PostType } from '@types';
 import type { PageProps } from 'gatsby';
 import React from 'react';
 
