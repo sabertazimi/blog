@@ -1,7 +1,9 @@
 import * as gatsby from 'gatsby';
 import useBuildTime from './useBuildTime';
 
-const buildTime = new Date(2021, 0, 1, 8, 0, 0).toLocaleString('zh-CN');
+const buildTime = new Date(2022, 0, 1, 8, 0, 0).toLocaleString('zh-CN', {
+  hour12: false,
+});
 
 describe('useBuildTime', () => {
   let mockUseStaticQuery: jest.SpyInstance;
@@ -24,6 +26,6 @@ describe('useBuildTime', () => {
 
   test('should return date time', () => {
     const buildTime = useBuildTime();
-    expect(buildTime).toBe('2021/1/1 上午8:00:00');
+    expect(buildTime).toBe('2022/1/1 08:00:00');
   });
 });
