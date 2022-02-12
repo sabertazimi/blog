@@ -41,7 +41,7 @@ const Footer = ({ buildTime, author, socialList }: Props): JSX.Element => (
         <span>
           Last Updated at{' '}
           <a href="https://www.google.com/search?q=time">
-            {new Date(buildTime).toLocaleString('zh-CN')}
+            {new Date(buildTime).toLocaleString('zh-CN', { hour12: false })}
           </a>
         </span>
       </Col>
