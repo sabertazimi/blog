@@ -19,7 +19,7 @@ jobs:
           submodules: true
           fetch-depth: 1
       - name: Setup Node environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           architecture: x64
@@ -47,7 +47,7 @@ jobs:
           submodules: true
           fetch-depth: 1
       - name: Setup Node environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
@@ -85,7 +85,7 @@ jobs:
           submodules: true
           fetch-depth: 1
       - name: Setup Node environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
