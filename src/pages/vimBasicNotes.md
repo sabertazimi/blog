@@ -405,9 +405,9 @@ u: 回退命令
 
 > :h ex-cmd-index
 
-_黑魔法_列表:
+**黑魔法**列表:
 
-- :normal 将 Ex 命令与 Normal 指令结合在一起的_黑魔法_
+- :normal 将 Ex 命令与 Normal 指令结合在一起的**黑魔法**
 - :args 文件列表
 - :argdo {ExCommands} 对存于文件列表的所有文件执行 Ex 命令
 - :global 对 patterns 执行 EX 命令
