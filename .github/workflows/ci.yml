@@ -33,7 +33,7 @@ jobs:
           yarn lint
 
   test:
-    name: Testing on Node ${{ matrix.node-version }} ${{ matrix.os }} ${{ matrix.architecture }}
+    name: Testing
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -71,7 +71,7 @@ jobs:
           path: public
 
   build:
-    name: Building on Node ${{ matrix.node-version }} ${{ matrix.os }} ${{ matrix.architecture }}
+    name: Building
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
