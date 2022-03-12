@@ -1,7 +1,7 @@
 import cp from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
+import { fetch } from 'undici';
 
 const rootPath = path.join(__dirname, '..');
 const SummaryFilePath = path.join(rootPath, 'coverage/coverage-summary.json');
