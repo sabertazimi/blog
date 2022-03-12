@@ -3321,7 +3321,6 @@ __metadata:
     "@testing-library/user-event": ^13.5.0
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.26
-    "@types/node-fetch": ^2.6.1
     "@types/prismjs": ^1.26.0
     "@types/reach__router": ^1.3.10
     "@types/react": ^17.0.40
@@ -3360,7 +3359,6 @@ __metadata:
     identity-obj-proxy: ^3.0.0
     jest: ^27.5.1
     markdownlint-cli: ^0.31.1
-    node-fetch: ^2.6.7
     postcss: ^8.4.8
     postcss-import: ^14.0.2
     prettier: ^2.5.1
@@ -3378,6 +3376,7 @@ __metadata:
     tslib: ^2.3.1
     typed.js: ^2.0.12
     typescript: ^4.6.2
+    undici: ^4.15.1
     webpack: ^5.70.0
   dependenciesMeta:
     "@react-spring/core":
@@ -3919,7 +3918,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-fetch@npm:2, @types/node-fetch@npm:^2.6.1":
+"@types/node-fetch@npm:2":
   version: 2.6.1
   resolution: "@types/node-fetch@npm:2.6.1"
   dependencies:
@@ -20046,6 +20045,13 @@ resolve@^2.0.0-next.3:
     sprintf-js: ^1.1.1
     util-deprecate: ^1.0.2
   checksum: b7719c30e5d1fdda4ee9379e8d80dca2b0668942420ba365ae3410120e08225fe36707a7981ce0f921812dee6a2290b713cdce1e75e770b98e67a45d8a378d35
+  languageName: node
+  linkType: hard
+
+"undici@npm:^4.15.1":
+  version: 4.15.1
+  resolution: "undici@npm:4.15.1"
+  checksum: 13b264d4966de105e211e1ca9433e2d8be5fcfe85e4cafea6b97c4685df3364bc8bc9e9b27796ce400e8a1e45e92a65b1453fcb499557e4f5c013af18f194852
   languageName: node
   linkType: hard
 
