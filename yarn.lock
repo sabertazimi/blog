@@ -1487,12 +1487,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
-  version: 7.16.7
-  resolution: "@babel/runtime@npm:7.16.7"
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+  version: 7.17.8
+  resolution: "@babel/runtime@npm:7.17.8"
   dependencies:
     regenerator-runtime: ^0.13.4
-  checksum: 47912f0aaacd1cab2e2552aaf3e6eaffbcaf2d5ac9b07a89a12ac0d42029cb92c070b0d16f825e4277c4a34677c54d8ffe85e1f7c6feb57de58f700eec67ce2f
+  checksum: 68d195c1630bb91ac20e86635d292a17ebab7f361cfe79406b3f5a6cc2e59fa283ae5006568899abf869312c2b35b744bd407aea8ffdb650f1a68d07785d47e9
   languageName: node
   linkType: hard
 
@@ -3348,7 +3348,7 @@ __metadata:
     gatsby-plugin-react-helmet: ^5.10.0
     gatsby-plugin-robots-txt: ^1.7.0
     gatsby-plugin-sitemap: ^5.10.1
-    gatsby-plugin-webpack-bundle-analyser-v2: ^1.1.26
+    gatsby-plugin-webpack-bundle-analyser-v2: ^1.1.27
     gatsby-plugin-zopfli: ^2.0.0
     gatsby-remark-autolink-headers: ^5.10.1
     gatsby-remark-copy-linked-files: ^5.10.0
@@ -9871,15 +9871,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:^1.1.26":
-  version: 1.1.26
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.26"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:^1.1.27":
+  version: 1.1.27
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.27"
   dependencies:
-    "@babel/runtime": ^7.16.3
+    "@babel/runtime": ^7.17.8
     webpack-bundle-analyzer: ^4.5.0
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0
-  checksum: 28c896f2308d7ae76237b3ab513cc71d4e1aab7a0eb37538853ea249ffee113ca34108f6ef608aad5bb257ac35ceeef3091d76c4dde92068a14b053a93644b31
+  checksum: 99bb315b9a64bddec0af64a7a040ab32391873a9636a209d18f3e923cd1434ea1250f8bc37bdfd156f69414227e2496cc44eeccb392f0da8e3bcc5089b527aee
   languageName: node
   linkType: hard
 
