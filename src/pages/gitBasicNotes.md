@@ -14,19 +14,18 @@ tags:
 
 # Git Basic Notes
 
-## Basic
-
-### Config
+## Git Configuration
 
 - /etc/gitconfig
 - ~/.gitconfig 或 ~/.config/git/config
 - repo/.git/config
 
-#### Basic Configuration
+### Basic Configuration
 
 ```bash
 git config --global user.name "sabertazimi"
 git config --global user.email sabertazimi@gmail.com
+git config --global core.autocrlf false
 git config --global core.editor vim
 git config --global credential.helper store
 git config --global color.ui true
@@ -34,12 +33,21 @@ git config --global color.ui true
 
 ```bash
 git config --global commit.template $HOME/.GitCommit.md
+git config --global commit.gpgsign true
+git config --global user.signingkey <pub-keyID>
+
 git config --global push.default simple
+git config --global merge.conflictstyle diff3
 git config --global pull.rebase true
 git config --global rebase.autoStash true
 ```
 
-#### Proxy Configuration
+```bash
+# after 1s, git auto correct wrong command
+git config --global help.autocorrect 10
+```
+
+### Proxy Configuration
 
 - github.com.cnpmjs.org
 - hub.fastgit.org
@@ -59,7 +67,7 @@ git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 ```
 
-#### List and Help
+### List and Help
 
 ```bash
 git config --list
@@ -69,14 +77,14 @@ git help
 git help config
 ```
 
-### File State
+## File State
 
 - Untracked
 - Unmodified(**Stable State**)
 - Modified
 - Staged
 
-### Git Ignore File
+## Git Ignore File
 
 文件 .gitignore 的格式规范如下：
 
@@ -107,7 +115,7 @@ doc/*.txt
 doc/**/*.pdf
 ```
 
-### Diff
+## Diff
 
 查看未暂存(un-staged)差异
 
@@ -127,7 +135,7 @@ git diff --staged
 git diff --check
 ```
 
-### Add
+## Add
 
 - 交互式的选择 add 特定部分
 
@@ -135,7 +143,7 @@ git diff --check
 git add -p
 ```
 
-### Commit
+## Commit
 
 - -a: 跳过暂存阶段(git add)
 - -v: 显示详细 diff 信息
@@ -150,10 +158,23 @@ git commit -a -v
 git commit --amend -a -v
 ```
 
-#### Commit Style Guide
+### Commit Style Guide
+
+- [Conventional Commits Specification](https://github.com/conventional-commits/conventionalcommits.org)
+- [Commit Lint](https://github.com/conventional-changelog/commitlint)
+- [Commitizen: Conventional commits CLI tool](https://github.com/commitizen/cz-cli)
+- [Standard Version: Automate versioning and CHANGELOG generation](https://github.com/conventional-changelog/standard-version)
+
+```bash
+npm i -D standard-version
+```
+
+```bash
+npx commitizen init cz-conventional-changelog --save-dev --save-exact
+```
 
 ```md
-firstLine - <type>(<scope>): <subject>
+<type>(<scope>): <subject>
 (emptyLine)
 
 <body>
@@ -161,23 +182,25 @@ firstLine - <type>(<scope>): <subject>
 <footer>
 ```
 
-##### Message Subject
+#### Message Subject
 
 no more than 50 characters
 
-###### Type Values
+#### Commit Type
 
-- (production code change)
-  - feat (new feature for the user)
-  - fix (bug fix for the user)
-  - docs (changes to the documentation)
-  - refactor (refactoring production code, e.g. renaming a variable)
-- (no production code change)
-  - style (formatting, missing semi colons)
-  - test (adding missing tests, refactoring tests)
-  - chore (updating grunt tasks etc)
+- feat: 新增了一个功能 (MINOR Version).
+- fix: 修复了一个 bug (PATCH Version）.
+- docs: 只是更改文档.
+- style: 不影响代码含义的变化 (空白、格式化、缺少分号等).
+- refactor: 代码重构, 既不修复错误也不添加功能.
+- perf: 改进性能的代码更改.
+- test: 添加确实测试或更正现有的测试.
+- build: 影响构建系统或外部依赖关系的更改 (示例范围: gulp, broccoli, NPM).
+- ci: 更改持续集成文件和脚本 (示例范围: Travis, Circle, BrowserStack, SauceLabs).
+- chore: 其他不修改 src 或 test 文件 e.g `chore(release)`.
+- revert: commit 回退.
 
-###### Scope Values
+#### Scope Values
 
 - init
 - runner
@@ -187,21 +210,112 @@ no more than 50 characters
 - proxy
 - empty
 
-##### Message Body
+#### Message Body
 
 - uses the imperative, present tense: “change” not “changed” nor “changes”
 - includes **motivation** for the change and contrasts with previous behavior
 
-##### Message Footer
+#### Message Footer
 
 - referencing issues e.g. close #666, #888
-- breaking changes 碎片式更改(特别是**用户端**)
+- BREAKING CHANGE (`<type>!`) (MAJOR Version)
   e.g.`port-runner` command line option has changed to `runner-port`,
   so that it is consistent with the configuration file syntax.
   To migrate your project, change all the commands, where you use `--port-runner`
   to `--runner-port`.
 
-### Stash
+### Git Commit Tool
+
+[Commitizen CLI](https://github.com/commitizen/cz-cli):
+
+```bash
+npm i -g commitizen cz-conventional-changelog
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+git cz # replace for `git commit`
+```
+
+[CommitLint](https://github.com/conventional-changelog/commitlint):
+
+```bash
+yarn add -D @commitlint/config-conventional @commitlint/cli
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+
+yarn add -D husky
+yarn husky install
+yarn husky add .husky/commit-msg 'yarn commitlint --edit "$1"'
+```
+
+[Husky](https://github.com/typicode/husky):
+
+```bash
+npx husky-init
+npx husky add .husky/pre-commit "lint-staged"
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+```
+
+```json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{md,mdx}": ["prettier --write"]
+  }
+}
+```
+
+### Git Commit Emoji
+
+- [GitEmoji](https://github.com/carloscuesta/gitmoji)
+
+| Commit type              | Emoji                                         |
+| :----------------------- | :-------------------------------------------- |
+| Initial commit           | :tada: `:tada:`                               |
+| Version tag              | :bookmark: `:bookmark:`                       |
+| New feature              | :sparkles: `:sparkles:`                       |
+| Bugfix                   | :bug: `:bug:`                                 |
+| Metadata                 | :card_index: `:card_index:`                   |
+| Documentation            | :books: `:books:`                             |
+| Documenting source code  | :bulb: `:bulb:`                               |
+| Performance              | :racehorse: `:racehorse:`                     |
+| Cosmetic                 | :lipstick: `:lipstick:`                       |
+| Tests                    | :rotating_light: `:rotating_light:`           |
+| Adding a test            | :white_check_mark: `:white_check_mark:`       |
+| Make a test pass         | :heavy_check_mark: `:heavy_check_mark:`       |
+| General update           | :zap: `:zap:`                                 |
+| Improve format/structure | :art: `:art:`                                 |
+| Refactor code            | :hammer: `:hammer:`                           |
+| Removing code/files      | :fire: `:fire:`                               |
+| Continuous Integration   | :green_heart: `:green_heart:`                 |
+| Security                 | :lock: `:lock:`                               |
+| Upgrading dependencies   | :arrow_up: `:arrow_up:`                       |
+| Downgrading dependencies | :arrow_down: `:arrow_down:`                   |
+| Lint                     | :shirt: `:shirt:`                             |
+| Translation              | :alien: `:alien:`                             |
+| Text                     | :pencil: `:pencil:`                           |
+| Critical hotfix          | :ambulance: `:ambulance:`                     |
+| Deploying stuff          | :rocket: `:rocket:`                           |
+| Fixing on MacOS          | :apple: `:apple:`                             |
+| Fixing on Linux          | :penguin: `:penguin:`                         |
+| Fixing on Windows        | :checkered_flag: `:checkered_flag:`           |
+| Work in progress         | :construction: `:construction:`               |
+| Adding CI build system   | :construction_worker: `:construction_worker:` |
+| Removing a dependency    | :heavy_minus_sign: `:heavy_minus_sign:`       |
+| Adding a dependency      | :heavy_plus_sign: `:heavy_plus_sign:`         |
+| Docker                   | :whale: `:whale:`                             |
+| Configuration files      | :wrench: `:wrench:`                           |
+| Package.json in JS       | :package: `:package:`                         |
+| Bad code                 | :poop: `:poop:`                               |
+| Reverting changes        | :rewind: `:rewind:`                           |
+| Breaking changes         | :boom: `:boom:`                               |
+| Code review changes      | :ok_hand: `:ok_hand:`                         |
+| Accessibility            | :wheelchair: `:wheelchair:`                   |
+| Move/rename repository   | :truck: `:truck:`                             |
+
+## Stash
 
 - git stash: 备份当前的工作区的内容，将当前的工作区内容保存到 Git 栈
 - git stash apply/pop: 从 Git 栈中读取最近一次保存的内容，恢复工作区的相关内容
@@ -221,7 +335,7 @@ git restore -s stash@{0} -- <filename>
 git checkout stash@{0} -- <filename>
 ```
 
-### Revert
+## Revert
 
 - 重新提交前 n 次的 commit
 
@@ -229,7 +343,7 @@ git checkout stash@{0} -- <filename>
 git revert -n
 ```
 
-### Remove
+## Remove
 
 完全删除文件
 
@@ -243,13 +357,13 @@ git rm filename
 git rm --cached filename
 ```
 
-### Move
+## Move
 
 ```bash
 git mv old_path new_path
 ```
 
-### Log
+## Log
 
 - -p: 打印 diff 差异信息
 - -n: n 为十进制数字,显示最近 n 次信息
@@ -267,27 +381,28 @@ git mv old_path new_path
 git log -p --stat --graph --pretty=format:"%h - %an, %ar : %s" --since=2.weeks path_name
 ```
 
-#### Pretty Format
+### Pretty Format
 
-| 选项 | 说明                                       |
-| :--- | :----------------------------------------- |
-| %H   | 提交对象(commit)的完整哈希字串             |
-| %h   | 提交对象的简短哈希字串                     |
-| %T   | 树对象(tree)的完整哈希字串                 |
-| %t   | 树对象的简短哈希字串                       |
-| %P   | 父对象(parent)的完整哈希字串               |
-| %p   | 父对象的简短哈希字串                       |
-| %an  | 作者(author)的名字                         |
-| %ae  | 作者的电子邮件地址                         |
-| %ad  | 作者修订日期(可以用\|-date=\|选项定制格式) |
-| %ar  | 作者修订日期，按多久以前的方式显示         |
-| %cn  | 提交者(committer)的名字                    |
-| %ce  | 提交者的电子邮件地址                       |
-| %cd  | 提交日期                                   |
-| %cr  | 提交日期,按多久以前的方式显示              |
-| %s   | 提交说明                                   |
+| 选项 | 说明                                        |
+| :--- | :------------------------------------------ |
+| %H   | 提交对象(commit)的完整哈希字串              |
+| %h   | 提交对象的简短哈希字串                      |
+| %T   | 树对象(tree)的完整哈希字串                  |
+| %t   | 树对象的简短哈希字串                        |
+| %P   | 父对象(parent)的完整哈希字串                |
+| %p   | 父对象的简短哈希字串                        |
+| %an  | 作者(author)的名字                          |
+| %ae  | 作者的电子邮件地址                          |
+| %ad  | 作者修订日期 (可以用\|-date=\|选项定制格式) |
+| %at  | 作者修订日期 (ms)                           |
+| %ar  | 作者修订日期，按多久以前的方式显示          |
+| %cn  | 提交者(committer)的名字                     |
+| %ce  | 提交者的电子邮件地址                        |
+| %cd  | 提交日期                                    |
+| %cr  | 提交日期,按多久以前的方式显示               |
+| %s   | 提交说明                                    |
 
-#### Log Options
+### Log Options
 
 | 选项               | 说明                                                    |
 | :----------------- | :------------------------------------------------------ |
@@ -302,17 +417,70 @@ git log -p --stat --graph --pretty=format:"%h - %an, %ar : %s" --since=2.weeks p
 | --before=/--until= | 限制日志时间 "2008-01-15" "2 years 1 day 3 minutes ago" |
 | --help             |
 
-### Reflog
+### Log Filter
+
+#### Log by Amount
+
+```bash
+git log -3
+```
+
+#### Log by Date
+
+- `before` and `until`
+- `after` and `since`
+
+```bash
+git log --before="yesterday"
+git log --after="1 week ago"
+git log --after="2014-7-1" --before="2014-7-4"
+```
+
+#### Log by Author
+
+```bash
+git log --author="John\|Mary"
+```
+
+#### Log by Commit Message
+
+```bash
+git log --grep="feat"
+git log --grep="fix"
+```
+
+#### Log by File
+
+```bash
+git log -- src/components/ErrorBoundary/ErrorBoundary.test.tsx
+git log -- "*.test.tsx"
+```
+
+#### Log by Content
+
+```bash
+git log -S"Hello, World!"
+```
+
+#### Log by Range
+
+```bash
+git log main..feature
+```
+
+## Reflog
 
 `git reflog show` is an alias for
 `git log -g --abbrev-commit --pretty=oneline`.
+
+`git reflog` is useful for trace local git manipulation history.
 
 ```bash
 git reflog
 git reset HEAD@{index}
 ```
 
-### Show
+## Show
 
 - 查看其他分支 或 提交点的文件状态
 
@@ -320,7 +488,7 @@ git reset HEAD@{index}
 git show branchName/commitHash:fileName
 ```
 
-### Remote
+## Remote
 
 添加与删除远程仓库源
 
@@ -360,7 +528,7 @@ git push origin --delete [remote-branch-name]
 git config --global credential.helper store
 ```
 
-### Tag
+## Tag
 
 列出标记及其信息
 
@@ -395,7 +563,7 @@ git push [remote-name] --tags
 git push --follow-tags
 ```
 
-### Alias
+## Alias
 
 - !: 执行外部命令
 
@@ -411,11 +579,11 @@ git config --global alias.last 'log -1 HEAD'
 git config --global alias.visual '!gitk'
 ```
 
-### Merge
+## Merge
 
 合并的结果是生成一个新的快照(并提交)(新的提交对象)
 
-### Rebase
+## Rebase
 
 切换到工作分支,编码开发新特性
 
@@ -446,7 +614,7 @@ git pull --rebase --autostash
 
 ## Branch
 
-### Basic Workflow Commands
+### Basic Branch Workflow
 
 #### Basic Branch
 
@@ -483,7 +651,13 @@ git branch -v(详细信息) -vv(详细远程信息) --merged(显示合并至当�
 
 #### Remote Branch
 
-本地分支跟踪远程分支(在此本地分支上运行 git pull 自动抓取),2 种方式:
+- Show all remote branch:
+
+```bash
+git branch -r
+```
+
+本地分支跟踪远程分支(在此本地分支上运行 git pull 自动抓取), 2 种方式:
 
 - 设置当前所在本地分支跟踪某一远程分支
 
@@ -504,7 +678,15 @@ git checkout -b [new-local-branch] [remoteName]/[branch]
 - Delete remote branch
 
 ```bash
-git push origin --delete [remote-branch-name]
+git push --delete origin [remote-branch-name]
+```
+
+#### Upstream Branch
+
+```bash
+git status -sb
+git branch -avv
+git remote show origin
 ```
 
 ### Advanced Branch Workflow
@@ -643,6 +825,50 @@ git checkout <commit-hash-id>
 - write .git/index
 - set HEAD to that commit (detached HEAD state)
 
+```js
+// Get file commit history
+const Git = require('nodegit');
+let repo;
+
+Git.Repository.open(path.resolve('./.git'))
+  .then(function (r) {
+    repo = r;
+    return repo.getMasterCommit();
+  })
+  .then(function (firstCommitOnMaster) {
+    const walker = repo.createRevWalk();
+    walker.push(firstCommitOnMaster.sha());
+    walker.sorting(Git.Revwalk.SORT.Time);
+
+    return walker.fileHistoryWalk(historyFile, 2);
+  })
+  .then(resultingArrayOfCommits => {
+    if (resultingArrayOfCommits.length > 0) {
+      const commit = resultingArrayOfCommits[0].commit;
+      const date = commit.date();
+    }
+  });
+
+const getGitLastUpdatedTimeStamp = filePath => {
+  let lastUpdated = 0;
+
+  try {
+    lastUpdated =
+      parseInt(
+        spawn
+          .sync('git', ['log', '-1', '--format=%at', path.basename(filePath)], {
+            cwd: path.dirname(filePath),
+          })
+          .stdout.toString('utf-8')
+      ) * 1000;
+  } catch (e) {
+    /* do not handle for now */
+  }
+
+  return lastUpdated;
+};
+```
+
 ### Merge Inside
 
 ```bash
@@ -756,11 +982,53 @@ print_git_objects
 
 ## GitHub
 
+### GPG Usage
+
+```bash
+# Generate GPG key
+gpg --full-generate-key
+# List GPG keys
+gpg --list-keys
+
+# Generate GPG public key string
+gpg --armor --export <pub-keyID>
+# Copy output to GitHub GPG textarea
+
+# Git global configuration for GPG signature commits
+git config --global user.signingkey <pub-keyID>
+git config --global commit.gpgsign true
+
+# Single signature commit
+git commit -S -m "..."
+
+# Import GitHub signature
+curl https://github.com/web-flow.gpg | gpg --import
+gpg --sign-key <GitHub-keyID>
+
+# Log git signature
+git log --show-signature
+```
+
 ### LICENSE
 
 #### Popular LICENSE
 
-![Free Software License](figures/6_free_software_licenses.png)
+```mermaid
+graph TD
+License --> A{Open Source}
+A -->|Yes| B{Same License}
+A -->|No| D{List Copyright on Changed}
+B -->|Yes| GPL
+B -->|No| C{Change Docs}
+C -->|Yes| Mozilla
+C -->|No| LGPL
+D -->|Yes| Apache
+D -->|No| E{Enterprise}
+E -->|Yes| MIT
+E -->|No| BSD
+```
+
+![Free Software License](./figures/6_free_software_licenses.png)
 
 #### Unique LICENSE
 
@@ -789,45 +1057,23 @@ Commons License"
 ```
 
 ```markdown
-DBAD : DON'T BE A DICK PUBLIC LICENSE:
-
-Do whatever you like with the original work, just don't be a dick.
-
-Being a dick includes - but is not limited to - the following instances:
-
-1a. Outright copyright infringement - Don't just copy this and change the name.
-1b. Selling the unmodified original with no work done what-so-ever,
-that's REALLY being a dick.
-1c. Modifying the original work to contain hidden harmful content.
-That would make you a PROPER dick.
-
-If you become rich through modifications, related work services, or supporting
-the original work, share the love. Only a dick would make loads off this work
-and not buy the original works creator(s) a pint.Code is provided with no
-warranty. Using somebody else's code and bitching when it goes wrong makes
-you a DONKEY dick. Fix the problem yourself. A non-dick would submit the fix
-back.
-```
-
-```markdown
 Homework Public License(HPL)
 
-Copyright (c) 2016 Yilong Liu
+Copyright (c) 2016 Sabertaz
 
-This is for your reference only,not for your cheating - Just don't be a dick.
+This is for your reference only,not for your cheating.
 
-Being a dick includes - but is not limited to - the following instances:
+Don't:
 
 1a. Outright copyright infringement - Don't just copy this and change the name.
 1b. Reserve a copy of this project and tell your teacher
 that it is your own homework - Plagiarism is shame.
 
 If you become rich through modifications, related work services,
-or supporting the original work, share the love. Only a dick would make loads
+or supporting the original work, share the love. Only a poor guy would make loads
 off this work and not buy the original works creator(s) a pint.Code is
 provided with no warranty. Using somebody else's code and bitching when it
-goes wrong makes you a DONKEY dick. Fix the problem yourself. A non-dick
-would submit the fix back.
+goes wrong makes you stupid. Fix the problem yourself.
 ```
 
 ```markdown
@@ -882,6 +1128,7 @@ THE SOFTWARE.
 4. Commit changes (`git commit -am 'Add some feature'`).
 5. Push to the branch (`git push origin my-new-feature`).
 6. Create new Pull Request.
+7. Check `Allow edits from maintainers`.
 
 ### GitHub CLI Tool
 
@@ -977,6 +1224,127 @@ git clone git@github.com:user/repo.wiki.git
 curl -i http://git.io -F "url=https://github.com/technoweenie" -F "code=t"
 ```
 
+### GitHub Flavored Markdown
+
+#### Link
+
+##### Tooltip of Link
+
+```md
+This is a [link to a web page](https://url.com 'This title will appear as a tooltip').
+```
+
+```md
+![Alt text](https://imageurl.com 'This is a title')
+```
+
+##### Label of Link
+
+```md
+This is a [link to a web page][mylabel].
+
+Then at the end of the document …
+
+[mylabel]: https://url.com 'Optional title'
+[mylabel]: https://url.com 'Optional title'
+```
+
+```md
+![Alt text][mylabel]
+
+[mylabel]: https://imageurl.com 'This is a title'
+```
+
+### GitHub Pages
+
+In `https://github.com/<user>/<repo>/settings/pages`,
+setup `source` of pages and `Enforce HTTPS`.
+
+### GitHub Git Attributes
+
+`.gitattributes`:
+
+```bash
+*.md linguist-detectable=true
+*.md linguist-documentation=false
+```
+
+### GitHub Actions
+
+```yml
+name: Dependencies
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Setup Node environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          architecture: x64
+          registry-url: https://registry.npmjs.org/
+          cache: yarn
+      - name: Install dependencies
+        run: |
+          yarn
+      - name: Update dependencies
+        run: |
+          yarn up '*'
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3.1.0
+        with:
+          commit-message: 'build(deps): update all dependencies'
+          branch: build/deps-update
+          delete-branch: true
+          title: 'build(deps): update all dependencies'
+          body: An updated update of all NPM dependencies.
+          labels: dependencies
+          assignees: sabertazimi
+          reviewers: sabertazimi
+```
+
+```yml
+name: Deploy to Vercel
+uses: amondnet/vercel-action@v20
+with:
+  vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  vercel-args: ${{ fromJSON('["--prod", ""]')[github.ref != 'refs/heads/main'] }}
+  vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+  vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  scope: ${{ secrets.VERCEL_ORG_ID }}
+  working-directory: ./
+```
+
+### GitHub Dependabot
+
+```yml
+version: 2
+updates:
+  - package-ecosystem: npm # See documentation for possible values
+    directory: / # Location of package manifests
+    schedule:
+      interval: weekly
+      day: sunday
+      time: '14:00'
+      timezone: Asia/Shanghai
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    assignees:
+      - sabertazimi
+```
+
 ## Git Tools
 
 ### Diff and Patch
@@ -1015,6 +1383,15 @@ git rev-list --objects --all
 git filter-branch -f --prune-empty --index-filter
 \ 'git rm -rf --cached --ignore-unmatch your-file-name'
 \ --tag-name-filter cat -- --all
+```
+
+### Reverse List
+
+Lists commit objects in reverse chronological order:
+
+```bash
+git rev-list --count HEAD
+git rev-parse --short HEAD
 ```
 
 ## Commands List
@@ -1067,7 +1444,12 @@ git reset $(git merge-base master $(git rev-parse --abbrev-ref HEAD))
 
 #### git clean
 
-从工作区中移除不想要的文件。可以是编译的临时文件或者合并冲突的文件。
+Remove untracked files from the working tree:
+
+```bash
+# Recursive force clean
+git clean -df
+```
 
 #### git branch
 

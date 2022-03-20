@@ -57,7 +57,7 @@ class App extends Component {
 
 Key Notes: In component of parent route, should render {this.props.children}
 
-```js
+```jsx
 import {
   BrowserRouter as Router,
   Switch,
@@ -105,11 +105,11 @@ const PrivateRoute = ({
 
 ### URL Params
 
-```js
+```jsx
 <Route path="/repos/:userName/:repoName" component={Repo} />
 ```
 
-```js
+```jsx
 // In Repo.js
 <div>{this.props.params.userName}</ div>
 <div>{this.props.params.repoName}</ div>
@@ -122,7 +122,7 @@ const PrivateRoute = ({
 - etc...
 
 ```jsx
-<Route render={(props) => <Component {...props} />} />
+<Route render={props => <Component {...props} />} />
 ```
 
 ### Link and URL Props
@@ -189,7 +189,7 @@ export default withRouter(Login);
 
 ### Relative Path
 
-```js
+```jsx
 <ConnectedRouter history={history} basename="/react-boilerplate">
   <Fragment>
     <Switch>
@@ -216,7 +216,7 @@ const Header = () => (
 - `publicPath: '/'`
 - `historyApiFallback: true`
 
-```javascript
+```js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -251,13 +251,13 @@ app.use(express.static(path.resolve(__dirname, 'build')));
 
 // always serve index.html for any request
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html');
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 ```
 
 ### Nginx Config
 
-```c
+```nginx
 # always serve index.html for any request (react-router for single page application)
 root /var/www/blog/html/build;
 index index.html;
@@ -277,17 +277,17 @@ location / {
 ```jsx
 const instances = [];
 
-const register = (comp) => instances.push(comp);
-const unregister = (comp) => instances.splice(instances.indexOf(comp), 1);
+const register = comp => instances.push(comp);
+const unregister = comp => instances.splice(instances.indexOf(comp), 1);
 
-const historyPush = (path) => {
+const historyPush = path => {
   history.pushState({}, null, path);
-  instances.forEach((instance) => instance.forceUpdate());
+  instances.forEach(instance => instance.forceUpdate());
 };
 
-const historyReplace = (path) => {
+const historyReplace = path => {
   history.replaceState({}, null, path);
-  instances.forEach((instance) => instance.forceUpdate());
+  instances.forEach(instance => instance.forceUpdate());
 };
 ```
 
@@ -386,7 +386,7 @@ class Link extends Component {
     replace: PropTypes.bool,
   };
 
-  handleClick = (event) => {
+  handleClick = event => {
     const { replace, to } = this.props;
     event.preventDefault();
 

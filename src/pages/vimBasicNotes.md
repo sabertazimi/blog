@@ -878,3 +878,227 @@ set enc=utf8
 set fencs=utf8,gbk,gb2312,gb18030
 set termencoding=utf-8
 ```
+
+## VSCode Vim
+
+### Easy Motion
+
+- `<leader><leader> w`: start of word forwards.
+- `<leader><leader> b`: start of word backwards.
+- `<leader><leader> j`: start of line forwards.
+- `<leader><leader> k`: start of line backwards.
+
+| Motion Command                      | Description                           |
+| ----------------------------------- | ------------------------------------- |
+| `<leader><leader> s <char>`         | Search character                      |
+| `<leader><leader> f <char>`         | Find character forwards               |
+| `<leader><leader> F <char>`         | Find character backwards              |
+| `<leader><leader> t <char>`         | Til character forwards                |
+| `<leader><leader> T <char>`         | Til character backwards               |
+| `<leader><leader> w`                | Start of word forwards                |
+| `<leader><leader> b`                | Start of word backwards               |
+| `<leader><leader> l`                | Matches begin & end of word forwards  |
+| `<leader><leader> h`                | Matches begin & end of word backwards |
+| `<leader><leader> e`                | End of word forwards                  |
+| `<leader><leader> ge`               | End of word backwards                 |
+| `<leader><leader> j`                | Start of line forwards                |
+| `<leader><leader> k`                | Start of line backwards               |
+| `<leader><leader> / <char>... <CR>` | Search n-character                    |
+| `<leader><leader><leader> bdt`      | Til character                         |
+| `<leader><leader><leader> bdw`      | Start of word                         |
+| `<leader><leader><leader> bde`      | End of word                           |
+| `<leader><leader><leader> bdjk`     | Start of line                         |
+| `<leader><leader><leader> j`        | JumpToAnywhere motion                 |
+
+## NeoVim
+
+```bash
+sudo snap install nvim --classic
+```
+
+- [LunarVim](https://github.com/LunarVim/LunarVim)
+- [NvChad/MegaChad](https://github.com/NvChad/NvChad)
+
+```bash
+git clone https://github.com/LunarVim/LunarVim
+bash LunarVim/utils/installer/install.sh
+```
+
+```bash
+mv ~/.config/nvim ~/.config/NVIM.BAK
+git clone https://github.com/NvChad/NvChad ~/.config/nvim
+nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+```
+
+### NeoVim Language server
+
+[LSPConfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md):
+
+```bash
+# html cssls jsonls
+npm i -g vscode-langservers-extracted
+
+# tsserver
+npm i -g typescript typescript-language-server
+
+# volar: Vue SFC
+npm install -g @volar/vue-language-server
+```
+
+[LSPInstall](https://github.com/williamboman/nvim-lsp-installer):
+
+```bash
+:LspInstall typescript
+```
+
+### NeoVim TreeSitter
+
+```bash
+:TSInstall html css javascript typescript tsx vue json jsonc yaml bash
+```
+
+### NvChad Key Mapping
+
+- `<leader>` is set to `<SPACE>`.
+- `<SPACE>uk`: view key mappings.
+- `<SPACE>uu`: update NvChad.
+
+| Key mapping | Action                   | Notes                              |
+| ----------- | ------------------------ | ---------------------------------- |
+| `jk`        | ESC to normal mode       |                                    |
+| `<SHIFT>t`  | open a new buffer        |                                    |
+| `<SPACE>x`  | close current buffer     | (hides a terminal)                 |
+| `<TAB>`     | cycle active buffer      | `<SHIFT><TAB>` for previous buffer |
+| `<CTRL>n`   | open NvimTree explorer   | `<ENTER>` to select                |
+| `<SPACE>uk` | view key mappings        |                                    |
+| `<SPACE>uu` | update NvChad            |                                    |
+| `<SPACE>/`  | toggle commenting a line |                                    |
+| `<SPACE>ff` | find a file              | Telescope picker                   |
+| `<SPACE>gs` | git status               | Telescope picker                   |
+
+### NvChad Configuration
+
+- `~/.config/nvim/lua/colors/init.lua`: Loads syntax theme and highlights.
+- `~/.config/nvim/lua/colors/highlights.lua`: All highlights definition.
+- `~/.config/nvim/lua/core/mappings.lua`: All key mappings.
+- `~/.config/nvim/lua/core/options.lua`: All options.
+- `~/.config/nvim/lua/plugins/init.lua`: Plugins configuration.
+- `~/.config/nvim/lua/plugins/packerInit.lua`: `Packer` configuration.
+- `~/.config/nvim/lua/plugins/config/*.lua`: Configs of various plugins.
+
+```lua
+-- ~/.config/nvim/lua/custom/chadrc.lua
+
+local M = {}
+
+-- make sure you maintain the structure of `core/default_config.lua` here,
+-- example of changing theme:
+
+M.ui = {
+   theme = "onedark", -- default theme
+}
+
+M.plugins = {
+   default_plugin_config_replace = {
+      nvim_treesitter = {
+        ensure_installed = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "typescript",
+          "vue",
+          "lua",
+          "rust",
+          "vim",
+          "latex",
+          "markdown",
+          "jsonc",
+       },
+     }
+   },
+   options = {
+      lspconfig = {
+         setup_lspconf = "custom.lspconfig",
+      },
+   },
+   install = {
+     { "williamboman/nvim-lsp-installer" },
+   }
+}
+
+return M
+```
+
+```lua
+-- ~/.config/nvim/lua/custom/lspconfig.lua
+local M = {}
+
+M.setup_lsp = function(attach, capabilities)
+   local lspconfig = require "lspconfig"
+
+   -- lspservers with default config
+   local servers = { "html", "cssls", "tsserver", "volar", "rust_analyzer" }
+
+   for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup {
+         on_attach = attach,
+         capabilities = capabilities,
+         flags = {
+            debounce_text_changes = 150,
+         },
+      }
+   end
+end
+
+return M
+```
+
+```lua
+local M = {}
+
+M.setup_lsp = function(attach, capabilities)
+   local lsp_installer = require "nvim-lsp-installer"
+
+   lsp_installer.settings {
+      ui = {
+         icons = {
+            server_installed = "﫟" ,
+            server_pending = "",
+            server_uninstalled = "✗",
+         },
+      },
+   }
+
+   lsp_installer.on_server_ready(function(server)
+      local opts = {
+         on_attach = attach,
+         capabilities = capabilities,
+         flags = {
+            debounce_text_changes = 150,
+         },
+         settings = {},
+      }
+
+      -- Basic example to edit lsp server's options.
+      -- Disabling tsserver's inbuilt formatter.
+      if server.name == 'tsserver' then
+        opts.on_attach = function(client, bufnr)
+           client.resolved_capabilities.document_formatting = false
+           vim.api.nvim_buf_set_keymap(
+              bufnr,
+              "n",
+              "<space>fm",
+              "<cmd>lua vim.lsp.buf.formatting()<CR>",
+              {}
+           )
+         end
+      end
+
+      server:setup(opts)
+      vim.cmd [[ do User LspAttachBuffers ]]
+   end)
+end
+
+return M
+```

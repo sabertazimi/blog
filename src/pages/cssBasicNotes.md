@@ -13,8 +13,6 @@ tags:
 
 # CSS Basic Notes
 
-[TOC]
-
 ## Cascading and Inheritance
 
 ### Cascading Order
@@ -685,7 +683,7 @@ url() / uri() – 用于引用媒体文件
 
 ```css
 h1::before {
-  content: url(logo.png);
+  content: url('logo.png');
 }
 ```
 
@@ -861,9 +859,11 @@ XXvh(viewport height)
 
 直接计算宽度/高度
 
-```js
-cal(50% - 100px);
-cal(10em + 3px);
+```css
+.my-element {
+  width: calc(10em + 3px);
+  height: calc(50% - 100px);
+}
 ```
 
 #### Mobile Box Viewport
@@ -878,7 +878,7 @@ cal(10em + 3px);
 ```js
 window.addEventListener('resize', () => {
   // Get viewport height and multiple it by 1% to get a value for a vh unit
-  let vh = window.innerHeight * 0.01;
+  const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 ```
@@ -895,12 +895,8 @@ Multiple-column layout:
 ```css
 /* 子元素分列 */
 .three-column {
-  -moz-column-gap: 1em;
-  -webkit-column-gap: 1em;
   column-gap: 1em;
   padding: 1em;
-  -moz-column-count: 3;
-  -webkit-column-count: 3;
   column-count: 3;
 }
 ```
@@ -996,10 +992,17 @@ float make element specified value of `display`:
 
 ### Float ClearFix
 
-**Best Practice**: 为父容器添加 clearfix class
-`display: table` 防止外边距塌陷, `clear: both` 清楚浮动
+**Best Practice**:
+为父容器 (`.row`) 添加 `.clearfix`,
+`display: table` 防止外边距塌陷, `clear: both` 清除浮动.
 
 ```css
+.row {
+  width: 100%;
+  max-width: --var(row-max-width);
+  margin: 0 auto;
+}
+
 .clearfix::before,
 .clearfix::after {
   display: table;
@@ -1055,7 +1058,7 @@ top/left/width/right/z-index are invalid
   z-index: -50;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
 }
 ```
 
@@ -1120,35 +1123,44 @@ top/left/width/right/z-index are invalid
 
 ### Flex Under the Hood
 
-当 flex-basis 设置为 auto 且 width（或者 height）不为 auto 时，计算 used size 时会用到 width（或者 height）的值
+当 `flex-basis` 设置为 `auto`
+且 `width` 或者 (`height`）不为`auto`时,
+计算 used size 时会用 `width` 或者 (`height`) 代替 `flex-basis`:
 
-- when there is some free space left:
-  true width = `flex-basis` (or `width`) + `flex-grow`/sum of `flex-grow`
-- when there is not enough space:
-  true width = `flex-basis` (or `width`) - `flex-shrink`/sum of `flex-shrink`
-- text nodes and pseudo-elements can be flex children
+- When there is some free space left:
+  true width = `flex-basis` + `flex-grow`/sum of `flex-grow`.
+- When there is not enough space:
+  true width = `flex-basis` - `flex-shrink`/sum of `flex-shrink`.
+- Text nodes and pseudo-elements can be flex children.
 
 ### Flex Useful Shorthand
 
-`flex: flex-grow flex-shrink flex-basis`
+`flex: flex-grow flex-shrink flex-basis`.
 
-- `flex:auto`:
+- `flex: auto`:
 
-元素会根据自身的宽度与高度来确定尺寸，但是会自行伸长以吸收 flex 容器中额外的自由空间，
-也会缩短至自身最小尺寸以适应容器 equal to`flex: 1 1 auto`
+元素会根据自身的宽度与高度来确定尺寸,
+但是会自行伸长以吸收 flex 容器中额外的自由空间,
+也会缩短至自身最小尺寸以适应容器.
+Equal to `flex: 1 1 auto`.
 
-- `flex:initial`:
+- `flex: initial`:
 
-属性默认值， 元素会根据自身宽高设置尺寸。它会缩短自身以适应容器，
-但不会伸长并吸收 flex 容器中的额外自由空间来适应容器 equal to `flex: 0 1 auto`
+属性默认值, 元素会根据自身宽高设置尺寸.
+它会缩短自身以适应容器,
+但不会伸长并吸收 flex 容器中的额外自由空间来适应容器.
+Equal to `flex: 0 1 auto`.
 
-- `flex:none`:
+- `flex: none`:
 
-元素会根据自身宽高来设置尺寸。它是完全非弹性的：既不会缩短，也不会伸长来适应 flex 容器 equal to `flex: 0 0 auto`
+元素会根据自身宽高来设置尺寸.
+它是完全非弹性的: 既不会缩短, 也不会伸长来适应 flex 容器.
+Equal to `flex: 0 0 auto`.
 
-- `flex:<positive-number>`
+- `flex: <positive-number>`
 
-元素会被赋予一个容器中自由空间的指定占比 equal to `flex: <positive-number> 1 0`
+元素会被赋予一个容器中自由空间的指定占比.
+Equal to `flex: <positive-number> 1 0`.
 
 ### Flex Parent Property
 
@@ -1160,27 +1172,25 @@ top/left/width/right/z-index are invalid
 - `*-content` adjust parent padding,
   `*-items` and `*-self` adjust children margin.
 
-```css
-display: flex;
-flex-direction: row/column;
-flex-wrap: nowrap/wrap/wrap-reverse;
-align-content: flex-start/flex-end/center/space-between/space-around;
-align-items: flex-start/flex-end/center/baseline/stretch;
-justify-content: flex-start/flex-end/center/space-between/space-around;
-```
+Common flex attributes:
+
+- `display: flex;`.
+- `flex-direction: row/column;`.
+- `flex-wrap: nowrap/wrap/wrap-reverse;`.
+- `align-content: flex-start/flex-end/center/space-between/space-around;`.
+- `align-items: flex-start/flex-end/center/baseline/stretch;`.
+- `justify-content: flex-start/flex-end/center/space-between/space-around;`.
 
 ### Flex Children Property
 
-```css
-flex: number; /* 宽/高度权重 */
-flex-basis: number;
-flex-grow: number;
-flex-shrink: number;
-align-self: auto/flex-start/flex-end/center/baseline/stretch;
-order: number; /* 显示顺序 */
-```
+- `flex: number;` 宽/高度权重.
+- `flex-basis: number;`.
+- `flex-grow: number;`.
+- `flex-shrink: number;`.
+- `align-self: auto/flex-start/flex-end/center/baseline/stretch;`.
+- `order: number;` 显示顺序.
 
-### Flexibility of Float
+### Flexibility of Float and Alignment
 
 ```html
 <div class="parent">
@@ -1199,9 +1209,9 @@ order: number; /* 显示顺序 */
 }
 ```
 
-### Pseudo Elements of Flex Box
+### Flexbox Pseudo Elements
 
-set `flex` to pseudo elements of flex box
+Set `flex` to pseudo elements of flex box
 will change width of pseudo elements.
 
 ```css
@@ -1245,13 +1255,11 @@ main {
 
 ```css
 .container {
-  display: -webkit-flex;
   display: flex;
 }
 
 .initial {
   /* width: 100px~200px */
-  -webkit-flex: initial;
   flex: initial;
   width: 200px;
   min-width: 100px;
@@ -1259,20 +1267,17 @@ main {
 
 .none {
   /* width: 200px */
-  -webkit-flex: none;
   flex: none;
   width: 200px;
 }
 
 .flex1 {
   /* width: left width * 1/3 */
-  -webkit-flex: 1;
   flex: 1;
 }
 
 .flex2 {
   /* width: left width * 2/3 */
-  -webkit-flex: 2;
   flex: 2;
 }
 ```
@@ -1280,11 +1285,8 @@ main {
 ```css
 /* 子元素全部居中对齐 */
 .vertical-container {
-  display: -webkit-flex;
   display: flex;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-justify-content: center;
   justify-content: center;
   height: 300px;
 }
@@ -1355,8 +1357,7 @@ _named_ rows and columns
   display: grid;
   grid-template-rows: [header] 100px [body] auto;
   grid-template-columns: [l-gutter] 1fr [sidebar] 4fr [content] 8fr [r-gutter] 1fr;
-  grid-row-gap: 1rem;
-  grid-column-gap: 2rem;
+  grid-gap: 1rem 2rem;
 }
 
 .header {
@@ -1391,6 +1392,23 @@ _named_ rows and columns
 - `justify-self`/`align-self` `inline` element within parent,
   attach to **children** css selector
   (effectively adjusts `margin` of children)
+
+### Grid Pseudo Elements
+
+```css
+h1.lines {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1em;
+}
+
+h1.lines::before,
+h1.lines::after {
+  align-self: center;
+  content: '';
+  border-top: 1px solid black;
+}
+```
 
 ## Column Patterns
 
@@ -1604,13 +1622,13 @@ In positioning/sizing/margin/padding/border/text alignment:
 
 .demo::-webkit-scrollbar-thumb {
   background-color: blue;
-  background-image: -webkit-linear-gradient(
+  background-image: linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0.2) 25%,
+    rgb(255 255 255 / 20%) 25%,
     transparent 25%,
     transparent 50%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.2) 75%,
+    rgb(255 255 255 / 20%) 50%,
+    rgb(255 255 255 / 20%) 75%,
     transparent 75%,
     transparent
   );
@@ -1624,7 +1642,7 @@ In positioning/sizing/margin/padding/border/text alignment:
 
   /* 滚动条轨道 */
   border-radius: 10px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
 }
 ```
 
@@ -1664,7 +1682,7 @@ In positioning/sizing/margin/padding/border/text alignment:
 }
 
 .button {
-  background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  background-color: hsl(var(--primary-h) var(--primary-s) var(--primary-l));
 }
 
 .button:hover,
@@ -1682,20 +1700,20 @@ In positioning/sizing/margin/padding/border/text alignment:
 }
 
 .button {
-  background-color: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  background-color: hsl(var(--primary-h) var(--primary-s) var(--primary-l));
 }
 
-.button--secondary {
+.button-secondary {
   --primary-l: 90%;
 
   color: #222;
 }
 
-.button--ghost {
+.button-ghost {
   --primary-l: 90%;
 
   background-color: transparent;
-  border: 3px solid hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  border: 3px solid hsl(var(--primary-h) var(--primary-s) var(--primary-l));
 }
 ```
 
@@ -1704,8 +1722,8 @@ In positioning/sizing/margin/padding/border/text alignment:
 .section {
   background: linear-gradient(
     to left,
-    hsl(var(--primary-h), var(--primary-s), var(--primary-l)),
-    hsl(var(--primary-h), var(--primary-s), 95%)
+    hsl(var(--primary-h) var(--primary-s) var(--primary-l)),
+    hsl(var(--primary-h) var(--primary-s) 95%)
   );
 }
 
@@ -1914,7 +1932,7 @@ body {
 
 ```css
 h1 {
-  background-image: url(bg.jpg);
+  background-image: url('bg.jpg');
   background-clip: text;
 }
 ```
@@ -1994,8 +2012,8 @@ movie style
   width: 100px;
   height: 100px;
   background-color: #8cffa0;
-  mask-image: url(https://mdn.mozillademos.org/files/12668/MDN.svg),
-    url(https://mdn.mozillademos.org/files/12676/star.svg);
+  mask-image: url('https://mdn.mozillademos.org/files/12668/MDN.svg'),
+    url('https://mdn.mozillademos.org/files/12676/star.svg');
   mask-size: 100% 100%;
   mask-composite: add; /* Can be changed in the live sample */
 }
@@ -2076,7 +2094,7 @@ body {
 .jumbotron {
   width: 1px;
   height: 1px;
-  background-image: url('');
+  background-image: url('bg.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -2151,7 +2169,7 @@ justify: 自适应，左右都无空格
 
 ```css
 .article-container {
-  display: -webkit-box;
+  display: box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -2307,7 +2325,7 @@ whether and when it is downloaded and ready to use:
   font-family: ExampleFont;
   font-style: normal;
   font-weight: 400;
-  src: url(/path/to/fonts/exampleFont.woff) format('woff'), url(/path/to/fonts/exampleFont.eot)
+  src: url('/path/to/fonts/exampleFont.woff') format('woff'), url('/path/to/fonts/exampleFont.eot')
       format('eot');
   font-display: fallback;
 }
@@ -2324,16 +2342,13 @@ whether and when it is downloaded and ready to use:
   font-style: inherit;
   font-weight: inherit;
   font-variant: inherit;
-  src: url(‘./Colleen.ttf’);
+  src: url('./Colleen.ttf');
 }
 
-/* selector { */
-
-/* :call <SNR>105_SparkUpNext() */
-
-/* font-family:mySpecialFont; */
-
-/* } */
+.selector {
+  /* :call <SNR>105_SparkUpNext() */
+  font-family: mySpecialFont, sans-serif;
+}
 ```
 
 ### Font Best Practice
@@ -2350,28 +2365,28 @@ letter-spacing: 1.3px;
 ```
 
 ```css
-小米米官网: {
-  font-family: 'Arial', 'Microsoft YaHei', '黑体', '宋体', sans-serif;
+.mi: {
+  font-family: Arial, 'Microsoft YaHei', '黑体', '宋体', sans-serif;
 }
 
-淘宝技术研发中心: {
+.tao: {
   font: 12px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
 }
 
-加网: {
-  font: 14px/1.5 'Microsoft YaHei', arial, tahoma, \5b8b\4f53, sans-serif;
+.one-plus: {
+  font: 14px/1.5 'Microsoft YaHei', Arial, Tahoma, '\5b8b\4f53', sans-serif;
 }
 
-淘宝ued: {
+.tao-ued: {
   font: 12px/1 Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif;
 }
 
-一淘ux: {
+.tao-ux: {
   font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑',
     Arial, sans-serif;
 }
 
- {
+.font {
   font: 12px/1 Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif;
 }
 ```
@@ -2457,25 +2472,27 @@ h3::before {
 - [Instagram Filter](https://github.com/una/CSSgram)
 
 ```css
-filter: url(resources.svg); /* 引用SVG filter元素 */
-filter: blur(5px); /* 模糊 */
-filter: brightness(0.4); /* 高光 */
-filter: contrast(200%); /* 对比度 */
-filter: drop-shadow(16px 16px 20px blue); /* 阴影 */
-filter: grayscale(50%); /* 灰度 */
-filter: hue-rotate(90deg); /* 色相旋转 */
-filter: invert(75%); /* 颜色翻转/反相 */
-filter: opacity(25%); /* 透明度 */
-filter: saturate(30%); /* 饱和度 */
-filter: sepia(60%); /* 老照片 */
+.filter {
+  filter: url('resources.svg'); /* 引用SVG filter元素 */
+  filter: blur(5px); /* 模糊 */
+  filter: brightness(0.4); /* 高光 */
+  filter: contrast(200%); /* 对比度 */
+  filter: drop-shadow(16px 16px 20px blue); /* 阴影 */
+  filter: grayscale(50%); /* 灰度 */
+  filter: hue-rotate(90deg); /* 色相旋转 */
+  filter: invert(75%); /* 颜色翻转/反相 */
+  filter: opacity(25%); /* 透明度 */
+  filter: saturate(30%); /* 饱和度 */
+  filter: sepia(60%); /* 老照片 */
 
-/* Apply multiple filters */
-filter: contrast(175%) brightness(3%);
+  /* Apply multiple filters */
+  filter: contrast(175%) brightness(3%);
 
-/* Global values */
-filter: inherit;
-filter: initial;
-filter: unset;
+  /* Global values */
+  filter: inherit;
+  filter: initial;
+  filter: unset;
+}
 ```
 
 ### Fusion Effect
@@ -2555,8 +2572,8 @@ body {
 }
 
 .card {
-  background-color: rgba(17, 25, 40, 0.54);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  background-color: rgb(17 25 40 / 54%);
+  border: 1px solid rgb(255 255 255 / 12.5%);
   border-radius: 12px;
   backdrop-filter: blur(12px) saturate(200%);
 }
@@ -2578,9 +2595,6 @@ body {
 ```css
 .wrap {
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 ```
@@ -2592,6 +2606,18 @@ body {
 ```css
 input {
   caret-color: red;
+}
+```
+
+## SVG Styles
+
+```css
+svg {
+  fill: red;
+  stroke: blue;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
 }
 ```
 
@@ -3097,16 +3123,10 @@ setTimeout(() => element.classList.remove('animate'), duration);
 
 ```css
 .cube {
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 1000;
   perspective: 1000;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-
-  /* Other transform properties here */
 }
 ```
 
@@ -3393,6 +3413,24 @@ if (window.matchMedia('(min-width: 400px)').matches) {
 }
 ```
 
+### Container Query
+
+```css
+.sidebar {
+  /* stylelint-disable-next-line  property-no-unknown */
+  container-type: inline-size;
+  /* stylelint-disable-next-line  property-no-unknown */
+  container-name: sidebar;
+}
+
+@container sidebar (min-width: 400px) {
+  .card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+```
+
 ## Accessibility
 
 ### Screen Reader Only
@@ -3418,7 +3456,7 @@ if (window.matchMedia('(min-width: 400px)').matches) {
 
 ```css
 h1 {
-  background-image: url(bg.jpg);
+  background-image: url('bg.jpg');
   background-clip: text;
 }
 ```
@@ -3470,7 +3508,7 @@ h1 {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
 }
 ```
 
@@ -3555,8 +3593,6 @@ input[type='tel'],
 input[type='url'],
 input[type='password'],
 textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
 
@@ -3608,6 +3644,9 @@ label > .label-body {
 ```
 
 #### Custom Checkbox Widget
+
+Input itself as border shape,
+Pseudo elements as center shape (checked transform animation):
 
 ```css
 input[type='checkbox'] + label::before {
@@ -3675,8 +3714,6 @@ input[type='checkbox']:disabled + label::before {
   border: 0;
 
   /* 消除默认样式 */
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
 
@@ -3697,14 +3734,48 @@ input[type='checkbox']:disabled + label::before {
 .custom-select option:hover,
 .custom-select option:focus {
   color: #fff;
-  background: url(../img/tick.png) no-repeat 8px center;
+  background: url('./img/tick.png') no-repeat 8px center;
   background-color: #e74f4d;
+}
+```
+
+#### Custom Switch Widget
+
+Pseudo element switch from circle to circle:
+
+- thumb-size: 2rem.
+- track-width: `2 * thumb-size`.
+- track-height: thumb-size.
+- pseudo-element border-radius: 50%.
+- track border-radius: track-size.
+- checked transform:
+  track `background-color`,
+  pseudo element `translateX`.
+
+```css
+.gui-switch > input {
+  appearance: none;
+  display: grid;
+  flex-shrink: 0;
+  grid: [track] 1fr / [track] 1fr;
+  align-items: center;
+  inline-size: var(--track-size);
+  block-size: var(--thumb-size);
+  padding: var(--track-padding);
+  border-radius: var(--track-size);
+}
+
+.gui-switch > input::before {
+  grid-area: track;
+  content: '';
+  inline-size: var(--thumb-size);
+  block-size: var(--thumb-size);
 }
 ```
 
 ### Navigation
 
-#### 基本原则
+#### Navigation Basis
 
 - `list-style-type`: 改变 `ul`/`ol` 前标记类型
 - `list-style-image`: 改变 `ul`/`ol` 前标记类型
@@ -3782,6 +3853,72 @@ a:focus::after {
   width: 100%;
 }
 ```
+
+#### GitHub Link
+
+<!-- markdownlint-disable line-length -->
+
+```html
+<a
+  href="https://github.com/Trevald/WhatTheTag.com"
+  class="github-corner"
+  aria-label="View source on GitHub"
+>
+  <svg
+    width="80"
+    height="80"
+    viewBox="0 0 250 250"
+    style="position: absolute;top: 0;right: 0;color: #2d3748;border: 0;fill: #718096"
+    aria-hidden="true"
+  >
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path
+      d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+      fill="currentColor"
+      style="transform-origin: 130px 106px;"
+      class="octo-arm"
+    ></path>
+    <path
+      d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+      fill="currentColor"
+      class="octo-body"
+    ></path>
+  </svg>
+</a>
+
+<style>
+  .github-corner:focus .octo-arm,
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .github-corner:focus .octo-arm,
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+  }
+
+  @keyframes octocat-wave {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+
+    20%,
+    60% {
+      transform: rotate(-25deg);
+    }
+
+    40%,
+    80% {
+      transform: rotate(10deg);
+    }
+  }
+</style>
+```
+
+<!-- markdownlint-enable line-length -->
 
 ### Footer
 
@@ -3927,8 +4064,7 @@ a:focus::after {
   }
 
   .footer {
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row: 2 / 3;
   }
 </style>
 ```
@@ -3979,7 +4115,7 @@ a.btn-custom {
 @media screen and (prefers-reduced-motion: reduce) {
   a {
     text-decoration: none;
-    background-image: linear-gradient(currentColor, currentColor);
+    background-image: linear-gradient(currentcolor, currentcolor);
     background-repeat: no-repeat;
     background-position: 0% 100%;
     background-size: 0% 2px;
@@ -3989,7 +4125,7 @@ a.btn-custom {
 
 a {
   text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(currentcolor, currentcolor);
   background-repeat: no-repeat;
   background-position: 0% 100%;
   background-size: 0% 2px;
@@ -4241,22 +4377,22 @@ function leave(el, done) {
 [CodePen Demo](https://codepen.io/ZeroX-DG/pen/vjdoYe)
 
 ```js
-bottom-right:
-  new_width = element_original_width + (mouseX - original_mouseX)
-  new_height = element_original_height + (mouseY - original_mouseY)
-bottom-left:
-  new_width = element_original_width - (mouseX - original_mouseX)
-  new_height = element_original_height + (mouseY - original_mouseY)
-  new_x = element_original_x - (mouseX - original_mouseX)
-top-right:
-  new_width = element_original_width + (mouseX - original_mouseX)
-  new_height = element_original_height - (mouseY - original_mouseY)
-  new_y = element_original_y + (mouseY - original_mouseY)
-top-left:
-  new_width = element_original_width - (mouseX - original_mouseX)
-  new_height = element_original_height - (mouseY - original_mouseY)
-  new_x = element_original_x + (mouseX - original_mouseX)
-  new_y = element_original_y + (mouseY - original_mouseY)
+// bottom-right:
+new_width = element_original_width + (mouseX - original_mouseX);
+new_height = element_original_height + (mouseY - original_mouseY);
+// bottom-left:
+new_width = element_original_width - (mouseX - original_mouseX);
+new_height = element_original_height + (mouseY - original_mouseY);
+new_x = element_original_x - (mouseX - original_mouseX);
+// top-right:
+new_width = element_original_width + (mouseX - original_mouseX);
+new_height = element_original_height - (mouseY - original_mouseY);
+new_y = element_original_y + (mouseY - original_mouseY);
+// top-left:
+new_width = element_original_width - (mouseX - original_mouseX);
+new_height = element_original_height - (mouseY - original_mouseY);
+new_x = element_original_x + (mouseX - original_mouseX);
+new_y = element_original_y + (mouseY - original_mouseY);
 ```
 
 ### Slides
@@ -4356,7 +4492,7 @@ Use pseudo elements to construct circle and line:
 
 ```css
 /* The separator line */
-.c-timeline__item:not(:last-child) .c-timeline__content::before {
+.c-timeline-item:not(:last-child) .c-timeline-content::before {
   position: absolute;
   top: 0;
   right: 100%;
@@ -4367,7 +4503,7 @@ Use pseudo elements to construct circle and line:
 }
 
 /* The circle */
-.c-timeline__content::after {
+.c-timeline-content::after {
   position: absolute;
   top: 0;
   left: -12px;
@@ -4572,14 +4708,14 @@ Use pseudo elements to construct circle and line:
 
 ```js
 const polygon = (n = 3) => {
-  let deg = (2 * Math.PI) / n;
-  let points = [];
+  const deg = (2 * Math.PI) / n;
+  const points = [];
 
   for (let i = 0; i < n; ++i) {
-    let theta = deg * i;
-    let x = 50 * Math.cos(theta) + 50 + '%';
-    let y = 50 * Math.sin(theta) + 50 + '%';
-    points.push(x + ' ' + y);
+    const theta = deg * i;
+    const x = `${50 * Math.cos(theta) + 50}%`;
+    const y = `${50 * Math.sin(theta) + 50}%`;
+    points.push(`${x} ${y}`);
   }
 
   return `polygon(${points.join(',')})`;
@@ -4660,6 +4796,25 @@ const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
 }
 ```
 
+```css
+:root {
+  --primary: hsl(260deg 95% 70%);
+  --secondary: hsl(320deg 95% 60%);
+}
+
+.button {
+  background-color: var(--button-background, transparent);
+}
+
+.button-primary {
+  --button-background: var(--primary);
+}
+
+.button-secondary {
+  --button-background: var(--secondary);
+}
+```
+
 ### Invalid and Empty Value in CSS Variables
 
 - `--invalid-value: initial;` is invalid value
@@ -4673,19 +4828,19 @@ const bgColor = getComputedStyle(root).getPropertyValue('--body-bg');
 
 ```css
 :root {
-  --ON: initial;
-  --OFF: ;
+  --on: initial;
+  --off: ;
 }
 
 button {
-  --is-raised: var(--OFF);
+  --is-raised: var(--off);
 
-  border: 1px solid var(--is-raised, rgb(0 0 0 / 0.1));
+  border: 1px solid var(--is-raised, rgb(0 0 0 / 10%));
 }
 
 button:hover,
 button:focus {
-  --is-raised: var(--ON);
+  --is-raised: var(--on);
 }
 ```
 
@@ -4855,7 +5010,7 @@ Avatar with circle status indicator:
       cx="100"
       cy="100"
       r="100"
-      stroke="rgba(0,0,0,0.1)"
+      stroke="rgb(0 0 0 / 10%)"
       stroke-width="2"
     ></circle>
   </g>
@@ -5209,15 +5364,16 @@ contain: paint;
 
 `window.requestAnimationFrame`:
 
-- reflow: `javascript -> style -> layout -> paint -> composite`
-- repaint: `paint -> composite`
+- Reflow: `JavaScript -> Style -> Layout -> Paint -> Composite`.
+- Repaint: `Paint -> Composite`.
 
-告诉浏览器希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用
+告诉浏览器希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画.
+该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用.
 
-> 若想要在下次重绘时产生另一个动画画面，callback 必须调用 requestAnimationFrame
+> 若想要在下次重绘时产生另一个动画画面，callback 必须调用 requestAnimationFrame.
 
 ```js
-const start = null;
+let start = null;
 const element = document.getElementById('SomeElementYouWantToAnimate');
 element.style.position = 'absolute';
 
@@ -5227,7 +5383,7 @@ function step(timestamp) {
   }
 
   const progress = timestamp - start;
-  element.style.left = Math.min(progress / 10, 200) + 'px';
+  element.style.left = `${Math.min(progress / 10, 200)}px`;
 
   if (progress < 2000) {
     window.requestAnimationFrame(step);
@@ -5269,29 +5425,31 @@ window.requestAnimationFrame(step);
 
 #### Best Practice
 
-- [High Performance Tips](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations)
-- all animation: `keyframe` animation or `transitions` is best
-- js-based animation: `requestAnimationFrame` is better than `setTimeout`/`setInterval`
-- position animation:`transform: translate(npx, npx)` is better than `top`/`right`/`bottom`/`left`
-- scale animation: `transform: scale(n)` better than `width`/`height`
-- rotation animation: `transform: rotate(deg)` is better
-- opacity/visibility animation: `opacity: 0...1` is better
+- [High Performance Tips](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations).
+- All animation: `keyframe` animation or `transitions` is best.
+- JS-based animation: `requestAnimationFrame` is better than `setTimeout`/`setInterval`.
+- Position animation:`transform: translate(npx, npx)` is better than `top`/`right`/`bottom`/`left`.
+- Scale animation: `transform: scale(n)` better than `width`/`height`.
+- Rotation animation: `transform: rotate(deg)` is better.
+- Opacity/visibility animation: `opacity: 0...1` is better.
 
 #### DevTools for Animation
 
-- [DevTools for Animation Performance](https://calibreapp.com/blog/investigate-animation-performance-with-devtools)
-- slower CPU simulation in `performance` panel
-- enable paint instrumentation in `performance` panel
-- FPS meter in `rendering` panel
-- paint flashing in `rendering` panel
-- `layers` panel
+- [DevTools for Animation Performance](https://calibreapp.com/blog/investigate-animation-performance-with-devtools).
+- Slower CPU simulation in `performance` panel.
+- Enable paint instrumentation in `performance` panel.
+- FPS meter in `rendering` panel.
+- Paint flashing in `rendering` panel.
+- `layers` panel.
 
 #### Animation Internal
 
-- `width`/`height`/`margin`/`left`/`top` in `Layout` stage
-- `box-shadow`/`border-radius`/`background`/`outline`/`color` in `Paint` stage
-- `cursor`/`z-index`/`transform`/`opacity` in `Composite Layers` stage
-- `top`/`left` has very large time to `paint` each frame
+[CSS Triggers List](https://github.com/GoogleChromeLabs/css-triggers):
+
+- `width`/`height`/`margin`/`left`/`top` in `Layout` stage.
+- `box-shadow`/`border-radius`/`background`/`outline`/`color` in `Paint` stage.
+- `cursor`/`z-index`/`transform`/`opacity` in `Composite Layers` stage.
+- `top`/`left` has very large time to `paint` each frame.
 
 ### CSS Performance Reference
 

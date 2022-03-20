@@ -146,16 +146,21 @@ table>.row*4>.cell*3 = table>tr.row*4>td.cell*3
 
 ## Structure
 
-[Reference Website](http://www.html5jscss.com/html5-semantics-section.html)
+- [Semantics Section Reference](http://www.html5jscss.com/html5-semantics-section.html)
 
 ### section
 
 必须含有**hx**标题子标签
 
-### header footer
+### Header
 
-not only can the page `<body>` contain a header and a footer,
-but so can every `<article>` and `<section>` element
+Not only can the page `<body>` contain a header,
+but also can every `<article>` and `<section>` element.
+
+### Footer
+
+Not only can the page `<body>` contain a footer,
+but also can every `<article>` and `<section>` element.
 
 ### hgroup
 
@@ -355,8 +360,8 @@ but so can every `<article>` and `<section>` element
 
 javascript tips：通过 control 属性改变标签对应表单元素的值
 
-```javascript
-var textbox = $('#label_id').control;
+```js
+const textbox = $('#label_id').control;
 textbox.value = '666666'; //  等同于 input.value = '666666';
 ```
 
@@ -388,7 +393,7 @@ name 相同时, 多个 radio 组成一个 radio group
 
 date/month/week/time/datetime-local:
 
-```javascript
+```js
 stepUp();
 stepDown();
 ```
@@ -397,15 +402,33 @@ stepDown();
 input.valueAsNumber input.valueAsDate
 ```
 
+##### Form Datalist
+
+```html
+<label for="myBrowser">Choose a browser from this list:</label>
+<input list="browsers" id="myBrowser" name="myBrowser" />
+<datalist id="browsers">
+  <option value="Chrome"></option>
+  <option value="Firefox"></option>
+  <option value="Internet Explorer"></option>
+  <option value="Opera"></option>
+  <option value="Safari"></option>
+  <option value="Microsoft Edge"></option>
+</datalist>
+```
+
 #### indeterminate
 
 javascript tips：检查 type=checkbox 的状态
 
-```javascript
+```js
 if (checkbox.indeterminate) {
+  doSomething();
 } else {
   if (checkbox.checked) {
+    doSomething();
   } else {
+    doSomething();
   }
 }
 ```
@@ -559,9 +582,72 @@ style="display: none";
 
 ## Content
 
-### details > summary | datalist
+### Details
 
-**Attr** -
+Accordion list without JavaScript:
+
+```html
+<div class="container">
+  <h3>FAQ</h3>
+
+  <details>
+    <summary>Why is it called an accordion menu?</summary>
+    <hr />
+    <p>
+      Because each part of it can expand and contract, like in an accordion. If
+      you don't know what an accordion is, just imagine a cute fluffy cat. You
+      still won't know what it is, but at least you'll feel better about not
+      knowing.
+    </p>
+  </details>
+
+  <details>
+    <summary>Huh?</summary>
+    <hr />
+    <p>Huh.</p>
+  </details>
+
+  <details>
+    <summary>If I use an accordion menu will it make me cool?</summary>
+    <hr />
+    <p>
+      No, not unless you're designing a MySpace profile. The <code
+        >{"<details>"}</code
+      > element is cool though, and you can use that for a lot of things. I'm using
+      it on this page right below here, to show the code for each example!
+    </p>
+  </details>
+</div>
+
+<style>
+  .container {
+    padding: 1em 2em;
+    border: 0.2em solid black;
+    border-radius: 2em;
+  }
+
+  details {
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 0.1em solid black;
+    border-radius: 1em;
+  }
+
+  summary {
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+</style>
+```
+
+#### Details Summary
+
+```html
+<details>
+  <summary>Details</summary>
+  Something small enough to escape casual notice.
+</details>
+```
 
 #### Data Grid
 
@@ -571,89 +657,154 @@ style="display: none";
 
 默认 open=false
 
-### Table Cells
+### Description List
 
-- `dl > (multi)dt + (multi)dd`:
-  defined list > defined tab + defined data
+- `<dl>`: description list.
+- `<dt>`: description Term.
+- `<dd>`: description details.
+
+```html
+<h1>Review your data</h1>
+<p>
+  Please review the data you entered in the previous step to ensure it is
+  correct:
+</p>
+<dl>
+  <dt>First name</dt>
+  <dd>Marc</dd>
+
+  <dt>Last name</dt>
+  <dd>Simmons</dd>
+
+  <dt>Date of Birth</dt>
+  <dd><time datetime="1990-05-15">May 15 1990</time></dd>
+</dl>
+```
 
 ### Summary
 
 折叠/收缩时触发 toggle 事件
 
+### Table
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Col Header 1</th>
+      <th scope="col">Col Header 2</th>
+      <th scope="col">Col Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Row Header 1</th>
+      <td>Row 1 Col 2</td>
+      <td>Row 1 Col 3</td>
+    </tr>
+    <tr>
+      <th scope="row">Row Header 2</th>
+      <td>Row 2 Col 2</td>
+      <td>Row 2 Col 3</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Summary</th>
+      <td>Col 2 summary</td>
+      <td>Col 3 summary</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
 ### Mark
 
 突出/高亮显示，无关原文作者
 
-### ins
+### Ins
 
-insert text
+Insert text
 
-### del
+### Del
 
-delete text
+Delete text
 
-### u
+### U
 
 underline text
 
-### em
+### Em
 
-原文作者文章重点
+文章重点
 
-### strong
+### Strong
 
-原文作者段落强调
+段落强调
 
-### small
+### Small
 
 - 免责声明、注意事项、法律规定、版权声明
 - 不改变文字样式
 
-### hr
+### Hr
 
 下划线
 
-### `<progress value="" max="">`
+### Progress
 
 value/max 百分比
 
-### meter
+```html
+<label for="file">File progress:</label>
 
-#### value
+<progress id="file" max="100" value="70">70%</progress>
+```
 
-#### min
+### Meter
 
-#### max
+#### Value
 
-#### low
+#### Min
 
-#### high
+#### Max
 
-#### optimum
+#### Low
 
-### wbr
+#### High
+
+#### Optimum
+
+### Wbr
 
 软换行
 
 ## Media
 
-### figure
+### Figure
 
 流内容 如代码、文件、图片、音频、视频
 
-### figcaption
+### Figcaption
 
 figure 可拥有唯一的 0/1 个 figcaption
 
 `<figcaption>figure_title</figcaption>`
 
-### img
+```html
+<figure aria-labelledby="image-alt">
+  <img src="/media/cc0-images/elephant-660-480.jpg" alt="Elephant at sunset" />
+  <figcaption id="image-alt">An elephant at sunset</figcaption>
+</figure>
+```
+
+### Image
 
 **Attr** -
 
-#### src
+#### Src
 
-#### alt
+#### Alt
 
 (图片崩溃时文本)、title(提示信息)、class(CSS 类选择器)
 
@@ -666,16 +817,41 @@ figure 可拥有唯一的 0/1 个 figcaption
 <!-- `img` element, `srcset` attribute -->
 <img
   srcset="foo-320w.jpg 320w, foo-480w.jpg 480w, foo-800w.jpg 800w"
-  sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
-  src="foo-800w.jpg"
+  sizes="(max-width: 480px) 440px, 320px"
+  src="foo-320w.jpg"
   alt="bar"
 />
+```
 
+### Picture
+
+- Multiple `<source>` and only one `<img>`
+
+```html
 <!-- `picture` and `source` elements, `srcset` attributes -->
 <picture>
   <source media="(max-width: 799px)" srcset="foo-480w.jpg" />
   <source media="(min-width: 800px)" srcset="foo-800w.jpg" />
   <img src="foo-800w.jpg" alt="bar" />
+</picture>
+```
+
+- Multiple width images
+
+```html
+<picture>
+  <source srcset="128px.jpg, 256px.jpg 2x, 512px.jpg 3x" />
+  <img src="foo.jpg" alt="bar" />
+</picture>
+```
+
+- Multiple type images
+
+```html
+<picture>
+  <source srcset="foo.avif" type="image/avif" />
+  <source srcset="foo.webp" type="image/webp" />
+  <img src="foo.jpg" />
 </picture>
 ```
 
@@ -701,11 +877,13 @@ figure 可拥有唯一的 0/1 个 figcaption
 - top 在整个窗口中打开被链接文档
 - framename 在指定的框架中打开被链接文档
 
-### embed
+### Embed
 
-插入媒体流
+插入媒体流:
 
-### command
+- Embed [best practice](https://web.dev/embed-best-practices).
+
+### Command
 
 ## Information
 
@@ -736,7 +914,7 @@ boolean 代表当前`<time>`表示整个网页的时间
 ```
 
 ```js
-const onChange = (event) => {
+const onChange = event => {
   const {
     currentTarget: {
       dataset: { row, column },
@@ -781,28 +959,21 @@ sudo systemctl restart nginx
 
 ## Accessibility
 
-- 不要将颜色作为传达信息的唯一手段 (色盲/弱)
-- 确保文本与其背景保持足够的对比
-- 提供输入焦点的视觉提示
-- 注意表单
-- 避免组件识别障碍
-
 ### Semantic HTML
 
 - [Definitive Guide](https://css-tricks.com/how-to-section-your-html)
 - [Semantic HTML Presentation](http://justineo.github.io/slideshows/semantic-html/#/)
 
-### Structure Access
+### Structure Accessibility
 
-- header
-- main
-- footer
-- section
-- article
-- nav
-- aside
-
-#### Body Access
+- [Semantics Section Reference](http://www.html5jscss.com/html5-semantics-section.html)
+- `<header>`: `role="banner"`
+- `<nav>`: `role="navigation"`
+- `<main>`: `role="main"`
+- `<aside>`: `role="complementary"`
+- `<section>`: `role="region"`
+- `<article>`: `role="article"`
+- `<footer>`: `role="contentinfo"`
 
 ```html
 <header>
@@ -813,12 +984,64 @@ sudo systemctl restart nginx
   </nav>
 </header>
 
-<main></main>
+<main>
+  <section></section>
+</main>
 
 <footer></footer>
 ```
 
-#### Article Access
+### Heading Accessibility
+
+- 7 heading levels: `<div role="heading" aria-level="7"></div>`
+- One `<h1>` per page
+
+### Navigation Accessibility
+
+- Have a HTML sitemap.
+- Support keyboard navigation (Key and Tab Index).
+- Breadcrumbs a11y:
+  - `aria-label="breadcrumbs"`
+  - `aria-label="page"`
+
+```html
+<nav aria-label="breadcrumbs">
+  <ol>
+    <li>
+      <a href="https://example.com/"> Home </a>
+    </li>
+    <li>
+      <a href="https://example.com/products"> Products </a>
+    </li>
+    <li>
+      <a href="https://example.com/products/childrens-clothing">
+        Children's clothing
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://example.com/products/childrens-clothing/shoes"
+        aria-current="page"
+      >
+        Shoes
+      </a>
+    </li>
+  </ol>
+</nav>
+```
+
+### Section Accessibility
+
+```html
+<section aria-labelledby="sectionHeader1">
+  <h2 id="sectionHeader1">A great section</h2>
+</section>
+<section aria-labelledby="sectionHeader2">
+  <h2 id="sectionHeader2">An even better section</h2>
+</section>
+```
+
+### Article Accessibility
 
 The `<article>` element is used to represent a fully self-contained region of content
 
@@ -842,25 +1065,7 @@ The `<article>` element is used to represent a fully self-contained region of co
 </article>
 ```
 
-#### Radio Group with `fieldset` and `legend`
-
-```html
-<form>
-  <fieldset>
-    <legend>Choose one of these three items:</legend>
-    <input id="one" type="radio" name="items" value="one" />
-    <label for="one">Choice One</label><br />
-    <input id="two" type="radio" name="items" value="two" />
-    <label for="two">Choice Two</label><br />
-    <input id="three" type="radio" name="items" value="three" />
-    <label for="three">Choice Three</label>
-  </fieldset>
-</form>
-```
-
-### Element Access
-
-#### Reference Access
+### Reference Accessibility
 
 - `<cite>`
 - `<q>`
@@ -887,13 +1092,24 @@ The `<article>` element is used to represent a fully self-contained region of co
 <cite>– Ados Huxley, Brave New World</cite>
 ```
 
-#### Text Access
+### Link Accessibility
+
+```html
+<article>
+  <h2 id="article1-title">My article</h2>
+  <p>Article brief description with truncation...</p>
+  <a href="article1-url" aria-labelledby="article1-title">Read more</a>
+</article>
+```
+
+### Text Accessibility
 
 - `<b>`
 - `<strong>`
 - `<mark>`
 - `<ins>`
 - `<del>`
+- `<abbr>`: 专有名词解释 `<abbr title="HyperText Markup Language">HTML</abbr>`
 
 不要将 `<b>` 元素与 `<strong>`、`<em>` 或 `<mark>` 元素混淆:
 
@@ -901,47 +1117,119 @@ The `<article>` element is used to represent a fully self-contained region of co
 - `<em>` 强调文本
 - `<mark>` 元素表示某些相关性的文本
 
-#### Button Access
+#### Text Color A11Y
+
+- Devtool inspect elements A11Y for color contrast ratio.
+- Don't forget `::selection`.
+
+#### Text Spacing A11Y
+
+- `line-height` of blocks of text should be **1.5**.
+- space between paragraphs should be **1.5 times** the `line-height`
+  (so a minimum of `2.25 rem`).
+- Line height (line spacing) to at least **1.5 times** the font size.
+- Spacing following paragraphs to at least **2 times** the font size.
+- Letter spacing (tracking) to at least **0.12** times the font size.
+- Word spacing to at least **0.16** times the font size.
+
+### Button Accessibility
 
 Use `<button>` for clickable elements
 
-#### Image Access
+### Image Accessibility
 
-- alt=""
+- `alt=""`
 
-#### Audio Source Access
+### SVG Accessibility
 
-- src=""
-- type=""
-
-#### Figure Access
+- `<title>`
+- `<desc>`
 
 ```html
-<figure>
+<svg width="100" height="75">
+  <title>Dark rectangle</title>
+  <desc>A grey rectangle with rounded corners and a dark green border</desc>
+  <rect
+    width="75"
+    height="50"
+    rx="20"
+    ry="20"
+    fill="#666"
+    stroke="#229b23"
+    stroke-fill="1"
+  />
+</svg>
+```
+
+### Figure Accessibility
+
+```html
+<figure aria-labelledby="image-alt">
   <img src="" alt="" />
   <br />
-  <figcaption></figcaption>
+  <figcaption id="image-alt"></figcaption>
 </figure>
 ```
 
-#### Form Access
+### Audio Source Accessibility
 
-- label[for] input
+- `src=""`
+- `type=""`
+
+### Form Accessibility
+
+#### Group Related Fields
+
+With `fieldset` and `legend`:
 
 ```html
-<form>
+<form role="form">
+  <fieldset>
+    <legend>Choose one of these three items:</legend>
+    <input id="one" type="radio" name="items" value="one" />
+    <label for="one">Choice One</label><br />
+    <input id="two" type="radio" name="items" value="two" />
+    <label for="two">Choice Two</label><br />
+    <input id="three" type="radio" name="items" value="three" />
+    <label for="three">Choice Three</label>
+  </fieldset>
+</form>
+```
+
+#### Input Accessibility
+
+- `label[for]` input.
+- `aria-describedby` and `aria-invalid` for input error.
+
+```html
+<form role="form">
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" />
 </form>
 ```
 
-#### Time Access
+```html
+<form role="form">
+  <label for="email-address"> Your Email Address </label>
+  <span id="email-error">
+    Error: Your email address must contain an @ symbol
+  </span>
+  <input
+    id="email-address"
+    type="email"
+    aria-describedby="email-error"
+    aria-invalid="true"
+  />
+</form>
+```
+
+### Time Accessibility
 
 ```html
 <time datetime="2016-09-15">Thursday, September 15<sup>th</sup></time>
 ```
 
-#### Address Access
+### Address Accessibility
 
 ```html
 <footer>
@@ -963,45 +1251,47 @@ Use `<button>` for clickable elements
 </footer>
 ```
 
-#### Color Contrast
+### Color Contrast
 
 - more than 4.5:1 ratio
 
-#### Access key and Tabindex
+### Keys and Tabindex Accessibility
 
 ```html
 <a id="second" href="" accesskey="c"></a>
 ```
 
 ```js
-document.addEventListener('keyup', (event) => {
-    switch (event.keyCode) {
-        // escape
-        case 27:
-            // exit
-            break;
-        // enter || space bar
-        case 13 || 32:
-            // submit or something
-            break;
-        // left arrow
-        case 37:
-            // move back / previous
-            break;
-        // right arrow
-        case 39:
-            // move forward
-            break;
-        // up arrow
-        case 38:
-            // move up
-            break;
-        // down arrow
-        case 40:
-            // move down
-            break;
-       }
-}
+document.addEventListener('keyup', event => {
+  switch (event.keyCode) {
+    // escape
+    case 27:
+      // exit
+      break;
+    // enter || space bar
+    case 13 || 32:
+      // submit or something
+      break;
+    // left arrow
+    case 37:
+      // move back / previous
+      break;
+    // right arrow
+    case 39:
+      // move forward
+      break;
+    // up arrow
+    case 38:
+      // move up
+      break;
+    // down arrow
+    case 40:
+      // move down
+      break;
+    default:
+      throw new Error('Unsupported key!');
+  }
+});
 ```
 
 ```js
@@ -1017,18 +1307,18 @@ document.addEventListener('keyup', (event) => {
 export function trapTabKey(e, context) {
   if (e.key !== 'Tab') return;
 
-  let focusableItems = getFocusable(context);
-  let focusedItem = document.activeElement;
+  const focusableItems = getFocusable(context);
+  const focusedItem = document.activeElement;
 
-  let focusedItemIndex = focusableItems.indexOf(focusedItem);
+  const focusedItemIndex = focusableItems.indexOf(focusedItem);
 
   if (e.shiftKey) {
-    if (focusedItemIndex == 0) {
+    if (focusedItemIndex === 0) {
       focusableItems[focusableItems.length - 1].focus();
       e.preventDefault();
     }
   } else {
-    if (focusedItemIndex == focusableItems.length - 1) {
+    if (focusedItemIndex === focusableItems.length - 1) {
       focusableItems[0].focus();
       e.preventDefault();
     }
@@ -1040,15 +1330,66 @@ export function trapTabKey(e, context) {
 
 [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria):
 
-- `aria-label`
-- `aria-labelledby="dropdownMenuButton"`: dropdown/form
-- `aria-disabled="true"`: disable element
-- `aria-controls="navbarSupportedContent"`: navigation
-- `aria-expanded="false"`: dropdown
-- `aria-haspopup="true"`: dropdown/popup
-- `aria-current="pages`: breadcrumb
-- `aria-valuenow`/`aria-valuemin`/`aria-valuemax`: progress
-- `aria-describedBy`: input + small
+- `aria-label`.
+- `aria-labelledby="dropdownMenuButton"`: dropdown/form>.
+- `aria-describedBy`: input + small.
+
+```html
+<label id="l1" for="f3">label text</label>
+<input type="text" id="f3" aria-labelledby="l1 l2" />
+<p>other content</p>
+<span tabindex="-1" id="l2">more label text</span>
+
+<div aria-describedby="test">text</div>
+<div id="test" role="tooltip">tooltip text</div>
+
+<div role="dialog" aria-label="login" aria-describedby="log1">
+  <div id="log1" tabindex="-1">Provide user name and password to login.</div>
+</div>
+```
+
+- `aria-disabled="true"`: disable element.
+- `aria-hidden="true"`.
+- `aria-controls="navbarSupportedContent"`: navigation/select.
+- `aria-expanded="false"`: dropdown.
+- `aria-haspopup="true"`: dropdown/popup.
+- `aria-current="pages`: breadcrumb.
+- `aria-valuenow`/`aria-valuemin`/`aria-valuemax`: progress.
+- [role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles).
+  - `<header>`: `role="banner"`.
+  - `<nav>`: `role="navigation"`.
+  - `<main>`: `role="main"`.
+  - `<section>`: `role="region"`.
+  - `<article>`: `role="article"`.
+  - `<aside>`: `role="complementary"`.
+  - `<footer>`: `role="contentinfo"`.
+  - `<form>`: `role="form"`.
+  - 7th heading level: `<div role="heading" aria-level="7"></div>`.
+  - `role="button"`.
+  - `role="checkbox"`.
+  - `role="gridcell"`.
+  - `role="link"`.
+  - `role="menuitem"`.
+  - `role="menuitemcheckbox"`.
+  - `role="menuitemradio"`.
+  - `role="option"`.
+  - `role="progressbar"`.
+  - `role="radio"`.
+  - `role="scrollbar"`.
+  - `role="searchbox"`.
+  - `role="separator (when focusable)"`.
+  - `role="slider"`.
+  - `role="spinbutton"`.
+  - `role="switch"`.
+  - `role="tab"`.
+  - `role="tabpanel"`.
+  - `role="textbox"`.
+  - `role="tooltip"`.
+  - `role="treeitem"`.
+  - `role="presentation"`: removes the semantics of an element.
+    If set an interactive or focusable element to `role="presentation"`,
+    assistive technology user will not know what it is or how to use it.
+  - `role="application"`.
 
 ```html
 <button
@@ -1069,7 +1410,7 @@ export function trapTabKey(e, context) {
 const listExpander = document.querySelector('.list-expander');
 const list = document.querySelector('#expandable-list-1');
 
-listExpander.addEventListener('click', (e) => {
+listExpander.addEventListener('click', e => {
   if (list.getAttribute('aria-expanded') === 'true') {
     list.setAttribute('aria-expanded', 'false');
   } else {
@@ -1077,3 +1418,60 @@ listExpander.addEventListener('click', (e) => {
   }
 });
 ```
+
+### HTML First over ARIA
+
+```html
+<!--div role="banner"-->
+<header></header>
+
+<!--div role="navigation"-->
+<nav></nav>
+
+<!--div role="main"-->
+<main></main>
+
+<!--div role="region"-->
+<section [accessible name]></section>
+
+<!--div role="complementary"-->
+<aside></aside>
+
+<!--div role="contentinfo"-->
+<footer></footer>
+
+<!--div role="form"-->
+<form></form>
+
+<div role="search"></div>
+```
+
+### Best Practice Tips for Accessibility
+
+- [Web Accessibility Initiative-Accessible Rich Internet Applications](https://www.sitepoint.com/wai-aria 'WAI-ARIA')
+- Don't use `aria-hidden` on the `<body>` element.
+- Make sure `IDs` and `Keys` of elements are unique.
+- Make sure `document` has a `title` element (with tool like `react-helmet`).
+- 不要将颜色作为传达信息的唯一手段 (色盲/弱)
+- 确保文本与其背景保持足够的对比
+- 提供输入焦点的视觉提示
+- 注意表单
+- 避免组件识别障碍
+
+### Accessibility Checklist
+
+- [W3C ARIA Usage Rule](https://www.w3.org/TR/aria-in-html)
+- [WebAIM WCAG (Web Content Accessibility Guidelines) 2 Checklist](https://webaim.org/standards/wcag/checklist)
+- [A11Y Project](https://github.com/a11yproject/a11yproject.com)
+- [A11Y 101](https://dev.to/inhuofficial/101-digital-accessibility-tips-and-tricks-4728)
+
+### Accessibility Tools
+
+- [LightHouse](https://github.com/GoogleChrome/lighthouse)
+- [AXE DevTools](https://github.com/dequelabs/axe-core)
+- [ESLint JSX A11Y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
+- [React A11Y](https://github.com/reactjs/react-a11y)
+
+### Accessibility Reference
+
+- [Semantic search element](https://www.sarasoueidan.com/blog/in-quest-of-search)

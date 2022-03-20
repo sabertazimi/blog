@@ -13,7 +13,7 @@ tags:
 
 # Security Basic Notes
 
-## Curated List of Vulnerability(漏洞)
+## Curated List of Vulnerability
 
 ### Object Injection
 
@@ -53,10 +53,13 @@ SELECT *
 
 #### SQL Injection Protection
 
-parameterized statements
+- Don’t allow multiple statements.
+- Validate user input.
+- Allowlist user input.
+- Parameterized statements: use placeholders instead of variable interpolation.
 
-```js
-// Construct the SQL statement we want to run, specifying the parameter.
+```sql
+-- Construct the SQL statement we want to run, specifying the parameter.
 String sql = "SELECT * FROM users WHERE email = ?";
 ```
 
@@ -106,14 +109,14 @@ response.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
 
 ```js
 req.session.regenerate(function (err) {
-  // New session here
+  process(err);
 });
 ```
 
 - what: generate complex session IDs
 
 ```js
-const generateSessionId = (session) => uid(24);
+const generateSessionId = session => uid(24);
 ```
 
 - how: reset session IDs after set up session successfully
@@ -123,7 +126,8 @@ const generateSessionId = (session) => uid(24);
 
 Cross-Site Scripting:
 
-- Reflected XSS: url input(search pages)
+- Reflected XSS: url input (search pages) `http://localhost:8080/test?name=<script>alert('attack')</script>`.
+- Stored XSS: store script into database.
 
 user input: `<script> malicious code </script>`
 
@@ -139,7 +143,7 @@ don't trust user:
 
 Cross-Site Request Forgery - 跨站请求伪造:
 
-挟制用户在当前已登录的 Web 应用程序上执行非本意的操作,
+挟制用户在当前已登录的 Web 应用程序上执行**非本意**的操作,
 利用已认证用户(长期 Cookies), 访问攻击者网站, 并被强制执行脚本,
 在用户不知情的情况下提交 Get/Post Request with Cookies 给被攻击网站.
 
@@ -148,23 +152,20 @@ CSRF 利用的是网站对用户网页浏览器的信任.
 
 #### CSRF Protection
 
-- GET request 没有副作用
-- 确保 request 正常渠道发起(hidden token check in form)
-- 开启同源策略(Same Origin Policy)
-- Addition Authentication: input password again
-
-```js
-express/csurf library
-```
+- 确保 `GET request` 没有副作用.
+- 确保 `request` 正常渠道发起 (Hidden token check in form).
+- 开启同源策略 (**Same Origin Policy**).
+- Addition Authentication: input password again.
+- Express: `csurf` library.
 
 ```html
 <a
   href="https://an.evil.site"
   target="_blank"
-  rel="noopener noreferrer
-nofollow"
-  >进入一个“邪恶”的网站</a
+  rel="noopener noreferrer nofollow"
 >
+  进入一个“邪恶”的网站
+</a>
 ```
 
 ```js
@@ -172,11 +173,20 @@ nofollow"
 'use strict';
 
 function openUrl(url) {
-  var newTab = window.open();
+  const newTab = window.open();
   newTab.opener = null;
   newTab.location = url;
 }
 ```
+
+### Distributed Denial of Service
+
+DDoS, 攻击者不断地提出服务请求, 让合法用户的请求无法及时处理:
+
+- Web 服务.
+- 邮件服务.
+- DNS 服务.
+- 即时通讯服务.
 
 ### File Upload Vulnerabilities
 
@@ -263,21 +273,23 @@ Disable DTD parse in XML parser
 - Code Information
 
 ```json
-{
-    Server: Apache/1.3.23
-    Accept-Ranges:  bytes
-    Content-length: 196
-    Connection: close
-    Content-Type: text/html
-    Cookie: SESSION_ID=XXXXX
-}
-{
-    Server: Microsoft-IIS/5.0
-    Content-Type: text/html
-    Accept-Ranges: bytes
-    ETag: "b0aac0542e25c31"
-    Content-Length: 7369
-}
+[
+  {
+    "Server": "Apache/1.3.23",
+    "Accept-Ranges": "bytes",
+    "Content-length": 196,
+    "Connection": "close",
+    "Content-Type": "text/html",
+    "Cookie": "SESSION_ID=XXXXX"
+  },
+  {
+    "Server": "Microsoft-IIS/5.0",
+    "Content-Type": "text/html",
+    "Accept-Ranges": "bytes",
+    "ETag": "b0aac0542e25c31",
+    "Content-Length": 7369
+  }
+]
 ```
 
 #### Information Leakage Protection
@@ -327,6 +339,36 @@ GET /../../../passwd.key HTTP/1.1
 - 不动态构造正则表达式 new RegExp()
 - 禁止用户输入影响正则表达式构建/匹配
 
+### Supply Chain Attack
+
+Case:
+
+- left-pad.
+- eslint-scope.
+- antd.
+- faker.js.
+- colors.js.
+- node-ipc.
+
+Solution:
+
+- 代码质量.
+- 测试完备性.
+- 文档完备性.
+- 工程完备性 (DevOps).
+- 开发人员构成.
+- 兼容性:
+- 流行度.
+- 历史遗留 Bug.
+- 重复实现复杂度.
+- 使用时长.
+- 后续依赖版本更新策略.
+
+Example:
+
+- [OpenBase](https://openbase.com)
+- [NPM Package Advisor](https://snyk.io/advisor)
+
 ## JWT
 
 JSON Web Tokens is small, object-friendly
@@ -335,8 +377,6 @@ and security for public/private key pair
 (compared to SWT, Simple Web Tokens)
 
 ## Security Checklist
-
-[返回目录](README-zh.md)
 
 ### 权限系统 (注册/注册/二次验证/密码重置)
 
@@ -440,3 +480,13 @@ and security for public/private key pair
 - [ ] 被黑或者数据泄露时，检查数据访问前的日志，通知用户更改密码。你可能需要外部的机构来帮助审计
 - [ ] 使用 [Netflix Scumblr](https://github.com/Netflix/Scumblr) 及时了解
       你的组织（公司）在社交网络或者搜索引擎上的一些讨论信息，比如黑客攻击、漏洞等等
+
+## Security Best Practice
+
+[Security Helmet](https://github.com/helmetjs/helmet):
+
+- XSS Protection.
+- Setting a `Context-Security-Policy` header.
+- Ensure all connections to be HTTPS.
+- Avoid Clicking-jacking using `X-Frame-Options`.
+- Disable the `X-Powered-By` header.

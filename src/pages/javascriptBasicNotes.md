@@ -15,32 +15,26 @@ tags:
 
 ## 常量
 
-常数值 **加括号** 可转化为对象
+常数值 **加括号** 可转化为对象.
 
 ## 变量
 
-### 原始数据类型值 Primitive type
+### Primitive Values
 
-- Undefined
-- Null
-- Boolean
-- Number
-- String
+Primitive data types:
+
+- Null.
+- Undefined.
+- Boolean.
+- Number.
+- String.
+- Symbol.
+- BigInt.
 
 #### undefined
 
 - 对象属性未定义时，该属性值为 undefined
 - 未初始化变量的初值为 undefined(表示 等待被赋值)
-
-```js
-var undefined = void null;
-var undefined = void 1;
-var undefined = function () {};
-
-(function (undef) {
-  var undefined = undef;
-})();
-```
 
 #### null
 
@@ -51,21 +45,22 @@ var undefined = function () {};
 计算浮点数时，应先计算整数，再利用移位/乘法/除法转化为浮点数
 
 ```js
-var a = (1 + 2) / 10; // a = 0.1 + 0.2;
+const a = (1 + 2) / 10; // a = 0.1 + 0.2;
 ```
 
 #### 非数 NaN
 
+- `NaN === NaN`: `false`.
+
 ```js
 typeof NaN; // 'number'
-NaN === NaN; // false
-isNaN();
-isFinite();
+Number.isNaN();
+Number.isFinite();
 ```
 
 ```js
 function isNumber(value) {
-  return typeof value === 'number' && isFinite(value);
+  return typeof value === 'number' && Number.isFinite(value);
 }
 ```
 
@@ -78,6 +73,7 @@ Infinity will be converted to `null` with `JSON.stringify()`.
 
 ```js
 const largeNumber = 1.7976931348623157e308;
+// eslint-disable-next-line @typescript-eslint/no-loss-of-precision
 const largerNumber = 1.7976931348623157e309;
 
 console.log(largeNumber); // 1.7976931348623157e+308
@@ -85,6 +81,7 @@ console.log(largerNumber); // Infinity
 console.log(46 / 0); // Infinity
 console.log(Number.POSITIVE_INFINITY); // Infinity
 console.log(Number.MAX_VALUE); // Infinity
+// eslint-disable-next-line @typescript-eslint/no-loss-of-precision
 console.log(-1.7976931348623157e309); // -Infinity
 console.log(-46 / 0); // -Infinity
 console.log(Number.NEGATIVE_INFINITY); // -Infinity
@@ -108,25 +105,25 @@ console.log(typeof goodString); // string
 console.log(goodString instanceof String); // false
 console.log(Object.prototype.toString.call(goodString)); // [object String]
 
+// eslint-disable-next-line no-new-wrappers
 const badString = new String("I've been a naughty string");
 console.log(typeof badString); // object
 console.log(badString instanceof String); // true
 console.log(Object.prototype.toString.call(badString)); // [object String]
 
-const isPrimitiveString = (value) => typeof value === 'string';
+const isPrimitiveString = value => typeof value === 'string';
 console.log(isPrimitiveString(goodString)); // true
 console.log(isPrimitiveString(badString)); // false
 
-const isObjectWrappedString = (value) => value instanceof String;
+const isObjectWrappedString = value => value instanceof String;
 console.log(isObjectWrappedString(goodString)); // false
 console.log(isObjectWrappedString(badString)); // true
 
-const isString = (value) =>
-  typeof value === 'string' || value instanceof String;
+const isString = value => typeof value === 'string' || value instanceof String;
 console.log(isString(goodString)); // true
 console.log(isString(badString)); // true
 
-const isStringAlternative = (value) =>
+const isStringAlternative = value =>
   Object.prototype.toString.call(badString) === '[object String]';
 console.log(isStringAlternative(goodString)); // true
 console.log(isStringAlternative(badString)); // true
@@ -148,137 +145,31 @@ is a useful way of coercing a value into a primitive type.
 
 ```js
 // Not recommended (primitive object wrapper):
+// eslint-disable-next-line no-new-wrappers
 typeof new String(37); // object
 
 // Safe (type coercion with wrapper function):
 typeof String(37); // string
 
 // Primitive strings:
+// eslint-disable-next-line no-self-compare
 '37' === '37'; // true
 
 // Object-wrapped string:
-'37' === new String(37); // false
+// eslint-disable-next-line no-new-wrappers
+new String(37) === '37'; // false
 
 // Type-coerced string:
-'37' === String(37); // true
+String(37) === '37'; // true
 ```
 
-### 引用类型值 Object type
+### Variable Hoisting
 
-- Object e.g Date
-- Array
-- Function
+`var` 表达式和 `function` 声明都将会被提升到当前作用域 (全局作用域/函数作用域) 顶部,
+其余表达式顺序不变.
 
-**反模式**:
-
-- 隐式全局变量(未使用 var 声明便使用变量)
-
-实质:隐式全局变量不是真正的变量，而是全局对象(在浏览器环境中为 window 对象)的属性;可以**`delete`**删除隐式全局量
-
-```javascript
-//函数外隐式全局变量
-global = 1;
-//函数内隐式全局变量
-function () {
-  global = 1;
-}
-//链式赋值
-function () {
-  //b为隐式全局变量
-  var a = b = 1;
-}
-```
-
-### Date
-
-- [Definitive Guide](https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript)
-
-```js
-const now= new Date();
-now.getFullYear(); // 1-n
-now.getMonth();    // Warn: 0-11
-now.getDate();     // 1-n
-now.getDay():      // Warn: 0-6
-now.toString();
-now.toDateString();
-now.toTimeString();
-now.toLocaleString();
-now.toLocaleDateString();
-now.toLocaleTimeString();
-
-const daysOfMonth = (year, month) => {
-  // `0` for last month of next month
-  return (new Date(year, month + 1, 0)).getDate();
-};
-
-const prevYear = (year) => {
-  return (new Date(year - 1, 0)).getFullYear();
-}
-
-const nextYear = (year) => {
-  return (new Date(year + 1, 0)).getFullYear();
-}
-
-const prevMonth = (year, month) => {
-  return (new Date(year, month - 1)).getMonth();
-};
-
-const nextMonth = (year, month) => {
-  return (new Date(year, month + 1)).getMonth();
-};
-```
-
-```js
-const getDateItemList = (year, month) => {
-  const days = daysOfMonth(year, month);
-  const currentDateItemList = [...Array(days).keys()].map((index) => {
-    return DateItem(year, month, 1 + index);
-  });
-
-  const firstDayItem = DateItem(year, month, 1);
-  const firstDayWeekday = firstDayItem.day;
-  const lastMonthDays = daysOfMonth(year, month - 1);
-  const prefixDays = firstDayWeekday === 0 ? 7 : firstDayWeekday;
-  const prefixFirstDay = lastMonthDays - prefixDays + 1;
-  const prefixYear = prevYear(year);
-  const prefixMonth = prevMonth(year, month);
-  const prefixDateItemList = [...Array(prefixDays).keys()].map((index) => {
-    return DateItem(prefixYear, prefixMonth, prefixFirstDay + index);
-  });
-
-  const lastDayItem = DateItem(year, month, days);
-  const lastDayWeekday = lastDayItem.day;
-  const suffixDays = lastDayWeekday === 6 ? 7 : 6 - lastDayWeekday;
-  const suffixYear = nextYear(year);
-  const suffixMonth = nextMonth(year, month);
-  const suffixDateItemList = [...Array(suffixDays).keys()].map((index) => {
-    return DateItem(suffixYear, suffixMonth, 1 + index);
-  });
-
-  const dateItemList = [
-    ...prefixDateItemList,
-    ...currentDateItemList,
-    ...suffixDateItemList,
-  ];
-
-  return dateItemList;
-};
-```
-
-### 全局变量
-
-定义在函数体外，在函数体内不使用 var 关键字引用
-
-### 局部变量
-
-函数体内使用 var 关键字定义
-
-- 不使用 var 声明变量将会导致隐式的全局变量
-- 声明局部变量时绝对不要遗漏 var 关键字
-
-### 变量提升 Hoisting
-
-var 表达式和 function 声明都将会被提升到当前作用域(全局作用域/函数作用域)的顶部, 其余表达式顺序不变
+<!-- eslint-disable vars-on-top -->
+<!-- eslint-disable no-var -->
 
 ```js
 // 我们知道这个行不通 (假设没有未定义的全局变量)
@@ -309,6 +200,11 @@ function example() {
 }
 ```
 
+<!-- eslint-enable vars-on-top -->
+<!-- eslint-enable no-var -->
+<!-- eslint-disable vars-on-top -->
+<!-- eslint-disable no-var -->
+
 ```js
 function example() {
   console.log(named); // => undefined
@@ -321,6 +217,91 @@ function example() {
     console.log('Flying');
   };
 }
+```
+
+<!-- eslint-enable vars-on-top -->
+<!-- eslint-enable no-var -->
+
+### Reference Values
+
+- Object e.g Date.
+- Array.
+- Function.
+
+### Date
+
+- [Definitive Guide](https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript)
+
+```js
+const now = new Date();
+now.getFullYear(); // 1-n
+now.getMonth(); // Warn: 0-11
+now.getDate(); // 1-n
+now.getDay(); // Warn: 0-6
+now.toString();
+now.toDateString();
+now.toTimeString();
+now.toLocaleString();
+now.toLocaleDateString();
+now.toLocaleTimeString();
+
+const daysOfMonth = (year, month) => {
+  // `0` for last month of next month
+  return new Date(year, month + 1, 0).getDate();
+};
+
+const prevYear = year => {
+  return new Date(year - 1, 0).getFullYear();
+};
+
+const nextYear = year => {
+  return new Date(year + 1, 0).getFullYear();
+};
+
+const prevMonth = (year, month) => {
+  return new Date(year, month - 1).getMonth();
+};
+
+const nextMonth = (year, month) => {
+  return new Date(year, month + 1).getMonth();
+};
+```
+
+```js
+const getDateItemList = (year, month) => {
+  const days = daysOfMonth(year, month);
+  const currentDateItemList = [...Array(days).keys()].map(index => {
+    return DateItem(year, month, 1 + index);
+  });
+
+  const firstDayItem = DateItem(year, month, 1);
+  const firstDayWeekday = firstDayItem.day;
+  const lastMonthDays = daysOfMonth(year, month - 1);
+  const prefixDays = firstDayWeekday === 0 ? 7 : firstDayWeekday;
+  const prefixFirstDay = lastMonthDays - prefixDays + 1;
+  const prefixYear = prevYear(year);
+  const prefixMonth = prevMonth(year, month);
+  const prefixDateItemList = [...Array(prefixDays).keys()].map(index => {
+    return DateItem(prefixYear, prefixMonth, prefixFirstDay + index);
+  });
+
+  const lastDayItem = DateItem(year, month, days);
+  const lastDayWeekday = lastDayItem.day;
+  const suffixDays = lastDayWeekday === 6 ? 7 : 6 - lastDayWeekday;
+  const suffixYear = nextYear(year);
+  const suffixMonth = nextMonth(year, month);
+  const suffixDateItemList = [...Array(suffixDays).keys()].map(index => {
+    return DateItem(suffixYear, suffixMonth, 1 + index);
+  });
+
+  const dateItemList = [
+    ...prefixDateItemList,
+    ...currentDateItemList,
+    ...suffixDateItemList,
+  ];
+
+  return dateItemList;
+};
 ```
 
 ### Array
@@ -342,12 +323,12 @@ function example() {
 
 不使用构造函数,使用数组字面量创建数组
 
-```javascript
-new Array(3); // 数组长度
-new Array(3.14); // RangeError
+```js
+const arr1 = new Array(3); // 数组长度
+const arr2 = new Array(3.14); // RangeError
 ```
 
-```javascript
+```js
 if (typeof Array.isArray === 'undefined') {
   Array.isArray = function (arg) {
     // 其余对象返回值 [object Object/Number/String/Boolean]
@@ -360,20 +341,18 @@ if (typeof Array.isArray === 'undefined') {
 
 ##### Array Sort
 
+`toExchange`:
+
+- `return 1`: a, b 交换位置.
+- `return -1`: a, b 不交换位置.
+
 ```js
 arr.sort(toExchange);
 ```
 
-```js
-var toExchange = function (a, b) {
-  return 1; // a, b 交换位置
-  return -1; // a, b 不交换位置
-};
-```
-
 ##### Array Stack
 
-```javascript
+```js
 arr.unshift(value); // 添加数组首元素
 arr.push(value); // 添加数组尾元素
 arr.shift(); // 删除数组首元素
@@ -384,7 +363,7 @@ arr.pop(); // 删除数组尾元素
 
 - slice 不改变原数组, splice 改变原数组
 
-```javascript
+```js
 [].concat(otherArray);
 [string].join('连接符'); // 将字符串数组连接成字符串o
 string(charArray).split('割断点'); // 选择割断符,返回字符串数组
@@ -394,28 +373,28 @@ string(charArray).split('割断点'); // 选择割断符,返回字符串数组
 
 ##### Array Replace
 
-```javascript
+```js
 [].replace(oldSubStr, newStr);
 ```
 
 ##### Array Query
 
-```javascript
+```js
 ''.substr(start, end);
 [].indexOf(char); // -1 or other
 ```
 
 ##### Array Traverse
 
-```javascript
+```js
 [] / obj.forEach(function (val) {}); // 遍历数组/对象所有元素(val为单个元素)
 ```
 
 ##### Deep Clone of Array
 
 ```js
-let nestedArray = [1, [2], 3];
-let arrayCopy = JSON.parse(JSON.stringify(nestedArray));
+const nestedArray = [1, [2], 3];
+const arrayCopy = JSON.parse(JSON.stringify(nestedArray));
 
 // Make some changes
 arrayCopy[0] = '1'; // change shallow element
@@ -428,21 +407,21 @@ console.log(nestedArray); //  1, [ 2 ], 3 ]
 
 ##### Array Other Methods
 
-```javascript
+```js
 [].reverse();
 ```
 
-```javascript
+```js
 // Tips
 // 反转字符串
-var reverseStr = normalizedStr.split('').reverse().join('');
+const reverseStr = normalizedStr.split('').reverse().join('');
 ```
 
 ##### Array Tips
 
 - 对字符串每个元素进行单独操作 e.g map/filter
 
-```javascript
+```js
 str
   .split('')
   .map(function (subStr) {
@@ -455,25 +434,25 @@ str.split('').someOperator().join('');
 
 - 实现 contains 方法
 
-```javascript
-arr.indexOf(item) === -1;
+```js
+!arr.includes(item);
 ```
 
 - 改变某一处字母
 
-```javascript
+```js
 after = after.charAt(0).toUpperCase() + after.slice(1);
 ```
 
 - 删除只能指定元素
 
-```javascript
+```js
 arr.splice(index, 1);
 ```
 
 - Remove Duplicate Elements
 
-```javascript
+```js
 // 1: "Set"
 [...new Set(array)];
 
@@ -489,10 +468,13 @@ array.reduce(
 
 ##### 高阶函数
 
-```javascript
-[].map((item) => {});                            // map over
-[].filter((item) => {});                         // list comprehension
-[].reduce((previous, current [, currentIndex, arr]) => {}, initial);   // fold function
+```js
+[].map(item => item + 1); // map over
+[].filter(item => item === 0); // list comprehension
+[].reduce(
+  (previous, current, currentIndex, arr) => current + previous,
+  initial
+); // fold function
 ```
 
 ### 类型检测
@@ -501,19 +483,19 @@ array.reduce(
 
 ```js
 function typeOf(o) {
-  var _toString = Object.prototype.toString,
-    _type = {
-      undefined: 'undefined',
-      number: 'number',
-      boolean: 'boolean',
-      string: 'string',
-      '[object Function]': 'function',
-      '[object Array]': 'array',
-      '[object Date]': 'date',
-      '[object RegExp]': 'regexp',
-      '[object Error]': 'error',
-      '[object JSON]': 'json',
-    };
+  const _toString = Object.prototype.toString;
+  const _type = {
+    undefined: 'undefined',
+    number: 'number',
+    boolean: 'boolean',
+    string: 'string',
+    '[object Function]': 'function',
+    '[object Array]': 'array',
+    '[object Date]': 'date',
+    '[object RegExp]': 'regexp',
+    '[object Error]': 'error',
+    '[object JSON]': 'json',
+  };
 
   return _type[typeof o] || _type[_toString.call(o)] || (o ? 'object' : 'null');
 }
@@ -600,16 +582,19 @@ const valueOf = Object.prototype.valueOf;
 const toString = Object.prototype.toString;
 
 // 添加valueOf日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.valueOf = function () {
   console.log('valueOf');
   return valueOf.call(this);
 };
 // 添加toString日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.toString = function () {
   console.log('toString');
   return toString.call(this);
 };
 const a = {};
+// eslint-disable-next-line no-new-wrappers
 const b = new Boolean(false);
 
 if (a) {
@@ -632,11 +617,13 @@ const valueOf = Object.prototype.valueOf;
 const toString = Object.prototype.toString;
 
 // 添加valueOf日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.valueOf = function () {
   console.log('valueOf');
   return valueOf.call(this);
 };
 // 添加toString日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.toString = function () {
   console.log('toString');
   return toString.call(this);
@@ -659,11 +646,13 @@ const valueOf = Object.prototype.valueOf;
 const toString = Object.prototype.toString;
 
 // 添加valueOf日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.valueOf = function () {
   console.log('valueOf');
   return '1'; // 强制返回原始值
 };
 // 添加toString日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.toString = function () {
   console.log('toString');
   return toString.call(this);
@@ -684,11 +673,13 @@ const valueOf = Object.prototype.valueOf;
 const toString = Object.prototype.toString;
 
 // 添加valueOf日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.valueOf = function () {
   console.log('valueOf');
   return valueOf.call(this);
 };
 // 添加toString日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.toString = function () {
   console.log('toString');
   return toString.call(this);
@@ -709,11 +700,13 @@ const valueOf = Object.prototype.valueOf;
 const toString = Object.prototype.toString;
 
 // 添加valueOf日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.valueOf = function () {
   console.log('valueOf');
   return valueOf.call(this);
 };
 // 添加toString日志
+// eslint-disable-next-line no-extend-native
 Object.prototype.toString = function () {
   console.log('toString');
   return this;
@@ -733,24 +726,55 @@ alert(a);
 
 ## 运算符
 
-- == 与 ===
-- != 与 !==
-
 ### Loose Comparison
 
-[JS Loose Comparison](https://felix-kling.de/js-loose-comparison):
+`==` 与 `!=`, [JS Loose Comparison](https://felix-kling.de/js-loose-comparison):
 
 - Type(x) === Type(y): return `x === y` (Strict Equality Comparison)
 - Type(x) !== Type(y):
   - x and y are `undefined` or `null`: return true
   - return comparison between `ToNumber(x)` and `ToPrimitive(y)`
 
+### Strict Equal
+
+`===` 与 `!==`:
+
+- strings: same length, same characters in corresponding positions.
+- numbers: numerically equal.
+- objects: refer to same Object.
+- Positive and negative `0` are equal to one another.
+- `NaN` is not equal to anything, including `NaN`.
+- `null` and `undefined` types are not equal with `===`, but equal with `==`.
+
+<!-- eslint-disable eqeqeq -->
+
+```js
+const true1 = 0 == false; // true
+const false1 = 0 === false; // false
+const true2 = 1 == '1'; // true
+const false2 = 1 === '1'; // false
+const true3 = undefined == null; // true
+const false3 = undefined === null; // false
+const true4 = '0' == false; // true
+const false4 = '0' === false; // false
+// eslint-disable-next-line no-self-compare
+const false5 = [] == []; // false, refer different objects in memory
+// eslint-disable-next-line no-self-compare
+const false6 = [] === []; // false, refer different objects in memory
+// eslint-disable-next-line no-self-compare
+const false7 = {} == {}; // false, refer different objects in memory
+// eslint-disable-next-line no-self-compare
+const false8 = {} === {}; // false, refer different objects in memory
+```
+
+<!-- eslint-enable eqeqeq -->
+
 ### 条件表达式
 
 养成使用分号结束句子的习惯, 需分行显示的语句必须确保单行不会形成完整语义
 
 ```js
-var i = a ? 1 : b ? 2 : c ? 3 : 4;
+const i = a ? 1 : b ? 2 : c ? 3 : 4;
 ```
 
 ### Add Operator
@@ -766,33 +790,50 @@ var i = a ? 1 : b ? 2 : c ? 3 : 4;
 - 两个字符串，直接拼接
 - 一个字符串一个数字，直接拼接为字符串
 
+### Dot Operator
+
+`.` 优先级高于 `=`:
+`el.data` 优先求值, 引用 `old`, 指向 `old.data`.
+`5` => `el`, `5` => `el.data` (`old.data`).
+
+```js
+let el = { data: 1 };
+const old = el;
+
+el.data = el = 5;
+console.log(el); // 5
+console.log(el.data); // undefined
+console.log(old); // { data: 5 }
+console.log(old.data); // 5
+```
+
 ## 控制流程
 
 ### Switch Case Statement
 
 用方法查询代替 switch/case 语句
 
-```javascript
+```js
 function doAction(action) {
-  var actions = {
-    hack: function () {
+  const actions = {
+    hack() {
       return 'hack';
     },
 
-    slash: function () {
+    slash() {
       return 'slash';
     },
 
-    run: function () {
+    run() {
       return 'run';
     },
   };
 
   if (typeof actions[action] !== 'function') {
-    throw new Error('Invalid action.');
+    throw new TypeError('Invalid action.');
   }
 
-  //闭包方法集
+  // 闭包方法集
   return actions[action]();
 }
 ```
@@ -807,9 +848,9 @@ function doAction(action) {
 
 即共用方法,单独属性,封装细节
 
-### 原型链
+### Prototype Chain
 
-![原型链](figures/Prototype.png)
+![原型链](./figures/Prototype.png)
 
 - 实例化对象仅有属性`__proto__`, 没有属性`prototype`, 函数才具有属性 `prototype` (指向引擎为其自动创建的原型对象)
 - 所有引用类型 (包括对象/数组/函数/构造函数) 都有属性`__proto__`(隐式原型)
@@ -818,6 +859,9 @@ function doAction(action) {
 - 除`Object.create()`外, 所新建对象的 `__proto__` 指向构造该对象的构造函数的`原型对象(prototype)`
 - 除`typeof Function.prototype` 为 'function' 外, 其余函数/构造函数的原型对象都为 '对象'(`typeof` 为 'object')
 - 先有`Object.prototype`(原型链顶端), `Function.prototype` 继承`Object.prototype`而产生, 最后`Object/Function/Array/其它构造函数`继承`Function.prototype`而产生
+- `__proto__`:
+  `[[proto]]` getter is `Object.getPrototypeOf(object)`,
+  `[[proto]]` setter is `Object.setPrototypeOf(object, prototype)`.
 
 > `Object` ---`__proto__`--> `Function.prototype` ---`__proto__`
 > --> `Object.prototype` ---`__proto__`--> `null`
@@ -838,16 +882,16 @@ const foo = new Foo(2);
 ```js
 // true because of `Object` is `function Object()` and inherited from `Function.prototype`
 // Object has its own `prototype` property refer to `Object.prototype`
-Object.__proto__ === Function.prototype;
+Object[[proto]] === Function.prototype;
 // true because of `Array` is `function Array()` and inherited from `Function.prototype`
 // Array has its own `prototype` property refer to `Array.prototype`
-Array.__proto__ === Function.prototype;
+Array[[proto]] === Function.prototype;
 // true because of Function is `function Function()` and inherited from `Function.prototype`
 // Function has its own `prototype` property refer to `Function.prototype`
-Function.__proto__ === Function.prototype;
+Function[[proto]] === Function.prototype;
 // true because of Object.prototype is the top of inheritance chains (null is Object.prototype.__proto__)
 // all `object/function/array instance`.__proto__......__proto__ refer to Object.prototype
-Function.__proto__.__proto__ === Object.prototype;
+Function[[proto]][[proto]] === Object.prototype;
 
 // =>
 Object instanceof Function; // true
@@ -866,14 +910,14 @@ Function instanceof Object; // true
 对象字面量由 Object 构造函数 隐式构造
 
 ```js
-var obj = {
+const obj = {
   name: 'sabertazimi',
 };
 
-console.log(obj.__proto__ === Object.prototype); // true
+console.log(obj[[proto]] === Object.prototype); // true
 ```
 
-##### new 构造函数
+##### New Constructor
 
 new 构造函数作用原理如下:
 
@@ -883,30 +927,32 @@ new 构造函数作用原理如下:
   - Prototype.constructor = Constructor
 
 ```js
-function newInstance(constructor){
-  //var this = Object.create(Person.prototype);
+function newInstance(constructor, ...args) {
+  // var this = Object.create(Person.prototype);
   // this.__proto__ = F.prototype
   // F.prototype = Person.prototype
   // 即 this.__proto__ = Person.prototype;
-    var obj = {};
-    obj.__proto__ = constructor.prototype;
-    constructor.apply(obj,sliceArguments(arguments,1));
-    return obj;
+  const obj = {};
+  obj[[proto]] = constructor.prototype;
+  constructor.apply(obj, args);
+  return obj;
 }
-=>
-new Constructor(arguments);
+
+// =>
+const instance = new Constructor(arguments);
 ```
 
 ```js
 function Employee(name) {
-    this.name = name;
-    this.getName = function () {
-    return this.name};
+  this.name = name;
+  this.getName = function () {
+    return this.name;
+  };
 }
 
-var employee = newInstance(Employee,'Jack');
-=>
-var employee = new Employee('Jack');
+const employee = newInstance(Employee, 'Jack');
+// =>
+const employee = new Employee('Jack');
 ```
 
 ##### Object Create API
@@ -915,32 +961,36 @@ var employee = new Employee('Jack');
 Object.create = function (o) {
   if (arguments.length > 1) {
     throw new Error(
-      'Object.create implementation' + ' only accepts the first parameter.'
+      'Object.create implementation only accepts the first parameter.'
     );
   }
   function F() {}
   F.prototype = o;
   return new F();
 };
+
+// new F() lead to `f.__proto__ === F.prototype` true
+// `F.prototype === o` true
+// `f.__proto__ === o` true
 ```
 
-#### 返回值
+#### Constructor Return Value
 
 - 返回 this 或 user-defined literal object
 - 当返回值为**基本类型**时,仍然可得到 this 指针指向的原有对象
 
-```javascript
-var ObjectMaker = function () {
+```js
+const ObjectMaker = function () {
   this.name = 'This is it';
-  //user-defined literal object
-  //直接忽略this.name
-  var that = {};
+  // user-defined literal object
+  // 直接忽略this.name
+  const that = {};
   that.name = "And that's that";
   return that;
 };
 ```
 
-#### instanceof
+#### Instance Of Constructor
 
 若 在实例对象的原型链(`__proto__`)中 能找到 构造函数的`prototype`属性(Prototype 对象), 则返回`true`, 否则返回`false`
 
@@ -948,31 +998,69 @@ var ObjectMaker = function () {
 // true only if
 // 1. Foo.__proto__ === Bar.prototype
 // 2. Foo.__proto__......__proto__ === Bar.prototype
-Foo instance of Bar
+console.log(Foo instanceof Bar);
 ```
 
-#### 最佳实践
+#### Constructor Best Practice
 
-```javascript
+```js
+function Foo() {
+  if (!new.target) {
+    throw new Error('Foo() must be called with new');
+  }
+}
+```
+
+```js
 function Waffle() {
-  //当未使用new关键字时,this指向全局对象
-  //此时进入if语句
+  // 当未使用 `new` 关键字时, `this` 指向全局对象
   if (!(this instanceof Waffle)) {
     return new Waffle();
   }
 
-  //正常构造函数
+  // 正常构造函数
   this.tastes = 'yummy';
 }
 ```
 
+```js
+class A {
+  constructor() {
+    console.log(new.target.name);
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+
+const a = new A(); // logs "A"
+const b = new B(); // logs "B"
+
+class C {
+  constructor() {
+    console.log(new.target);
+  }
+}
+class D extends C {
+  constructor() {
+    super();
+  }
+}
+
+const c = new C(); // logs class C{constructor(){console.log(new.target);}}
+const d = new D(); // logs class D extends C{constructor(){super();}}
+```
+
 ### 全局对象
 
-```javascript
-//立即函数模式:
-//此时返回值不是函数本身,而是函数执行后的return语句返回值
-var global = (function () {
-  //返回全局对象
+```js
+// 立即函数模式:
+// 此时返回值不是函数本身,而是函数执行后的return语句返回值
+const global = (function () {
+  // 返回全局对象
   return this;
 })();
 ```
@@ -983,10 +1071,10 @@ var global = (function () {
 
 实现方式: 闭包
 
-```javascript
+```js
 function Gadget() {
   // private member
-  var name = 'iPod';
+  const name = 'iPod';
   // public function
   this.getName = function () {
     return name;
@@ -998,10 +1086,10 @@ function Gadget() {
 
 getter:返回基本类型值/**引用**类型**深拷贝**(POLA 最低授权原则)
 
-```javascript
+```js
 function Gadget() {
   // private member
-  var pref = {};
+  const pref = {};
   // public function
   this.getPref = function () {
     return pref.clone();
@@ -1014,21 +1102,21 @@ Best Practice: **即使函数模式 + 揭示模式**
 - 实现私有属性与私有方法
 - 提供私有方法的公共(读/执行 not 写)接口,公共接口发生意外,私有方法仍安全
 
-```javascript
-//匿名即时函数模式
-var obj = (function () {
+```js
+// 匿名即时函数模式.
+const obj = (function () {
   // private member
-  var name = "tazimi";
+  const name = 'tazimi';
   // private method
-  var getName = function getName() {
+  const getName = function getName() {
     return name;
-  }
+  };
   // 闭包
   return {
     // 公共接口 - 私有方法
-    getName: getName;
+    getName,
   };
-}());
+})();
 ```
 
 ### 静态属性与方法
@@ -1041,7 +1129,7 @@ var obj = (function () {
 
 直接向构造函数添加方法
 
-```javascript
+```js
 Object.isArray = function () {};
 ```
 
@@ -1053,45 +1141,43 @@ package+import+private field/methods+constructor+public methods
 
 Best Practice:
 
-```javascript
+```js
 // 命名空间模式
 APP.namespace('APP.utilities.array');
 
-//形参: 导入全局变量
+// 形参: 导入全局变量
 APP.utilities.array = (function (app, global) {
-// start of var declare
+  // 依赖模式
+  const uObj = APP.utilities.object;
+  const uLang = APP.utilities.lang;
 
-// 依赖模式
-var uObj = APP.utilities.object,
-  uLang = APP.utilities.lang,
-// 私有属性
-  arrStr = "[object Array]",
-  toStr = Object.prototype.toString;
-// 私有方法
-  inArray = function (haystack, needle) {
-    for (var i = 0, max = haystack.length; i < max; i += 1) {
+  // 私有属性
+  const arrStr = '[object Array]';
+  const toStr = Object.prototype.toString;
+
+  // 私有方法
+  const inArray = function (haystack, needle) {
+    for (let i = 0, max = haystack.length; i < max; i += 1) {
       if (haystack[i] === needle) {
         return i;
       }
     }
-    return −1;
-  },
-  isArray = function (a) {
+
+    return -1;
+  };
+  const isArray = function (a) {
     return toStr.call(a) === arrayString;
   };
 
-// end of var declare
+  // 初始化模式:
+  // 初始化代码, 只执行一次.
 
-// 初始化模式
-初始化代码,只执行一次
-
-// 揭示公共接口
-return {
-  isArray: isArray,
-  indexOf: inArray
-};
-
-}(APP, this));
+  // 揭示公共接口.
+  return {
+    isArray,
+    indexOf: inArray,
+  };
+})(APP, this);
 ```
 
 ### 普通属性
@@ -1102,8 +1188,9 @@ return {
 
 为 prototype 添加方法,可以通过实现语法糖 method()简化代码(链模式)
 
-```javascript
+```js
 if (typeof Function.prototype.method !== 'function') {
+  // eslint-disable-next-line no-extend-native
   Function.prototype.method = function (name, implementation) {
     this.prototype[name] = implementation;
     return this;
@@ -1111,8 +1198,8 @@ if (typeof Function.prototype.method !== 'function') {
 }
 ```
 
-```javascript
-var Person = function (name) {
+```js
+const Person = function (name) {
   this.name = name;
 }
   .method('getName', function () {
@@ -1130,11 +1217,11 @@ var Person = function (name) {
 
 可用于所有继承模式中,减少内存消耗 **Best Practice**:
 
-```javascript
-var inherit = (function () {
+```js
+const inherit = (function () {
   // 减少继承过程中父类的实例化,减少资源消耗
   // 实例化一个空类所需资源更少
-  var F = function () {};
+  const F = function () {};
   return function (C, P) {
     // c.__proto__ = C.prototype = f
     // f.__proto__ = F.prototype
@@ -1161,7 +1248,7 @@ Child.prototype.add = function () {
 
 此模式会使得子类属性继承 2 次 **Best Practice**:
 
-```javascript
+```js
 function Parent(name) {
   this.name = name || 'Adam';
 }
@@ -1171,9 +1258,10 @@ Parent.prototype.say = function () {
 };
 
 // child constructor
-function Child(name) {
-  Parent.apply(this, arguments);
+function Child(...args) {
+  Parent.apply(this, args);
 }
+
 Child.prototype = new Parent(); // 设置原型链,建立继承关系
 Child.prototype.constructor = Child; // 使得 Prototype 对象与 Constructor 对象形成闭环
 ```
@@ -1182,32 +1270,34 @@ Child.prototype.constructor = Child; // 使得 Prototype 对象与 Constructor �
 
 复制式地继承，将会消耗大量内存单元 **Best Practice**:
 
-```javascript
-var classSim = function (Parent, props) {
-  var Child, F, i;
-
+```js
+const classSim = function (Parent, props) {
   // 新的构造函数
-  Child = function () {
-    if (Child.uber && Child.uber.hasOwnProperty('_construct')) {
-      Child.uber._construct.apply(this, arguments);
+  const Child = function (...args) {
+    if (
+      Child.uber &&
+      Object.prototype.hasOwnProperty.call(Child.uber, '_construct')
+    ) {
+      Child.uber._construct.apply(this, args);
     }
-    if (Child.prototype.hasOwnProperty('_construct')) {
-      Child.prototype._construct.apply(this, arguments);
+    if (Object.prototype.hasOwnProperty.call(Child.prototype, '_construct')) {
+      Child.prototype._construct.apply(this, args);
     }
   };
 
   // 类式继承
   Parent = Parent || Object;
+
   // 代理构造函数F
-  F = function () {};
+  const F = function () {};
   F.prototype = Parent.prototype;
   Child.prototype = new F();
   Child.uber = Parent.prototype;
   Child.prototype.constructor = Child;
 
   // 添加属性与方法
-  for (i in props) {
-    if (props.hasOwnProperty(i)) {
+  for (const i in props) {
+    if (Object.prototype.hasOwnProperty.call(props, i)) {
       Child.prototype[i] = props[i];
     }
   }
@@ -1217,14 +1307,14 @@ var classSim = function (Parent, props) {
 };
 ```
 
-```javascript
-var SuperMan = classSim(Man, {
-  _construct: function (what) {
+```js
+const SuperMan = classSim(Man, {
+  _construct(what) {
     console.log("SuperMan's constructor");
   },
-  getName: function () {
-    var name = SuperMan.uber.getName.call(this);
-    return 'I am ' + name;
+  getName() {
+    const name = SuperMan.uber.getName.call(this);
+    return `I am ${name}`;
   },
 });
 ```
@@ -1235,16 +1325,16 @@ var SuperMan = classSim(Man, {
 
 构造函数的原型对象被设置为新实例的原型引用
 
-```javascript
+```js
 f.prototype = o;
 ```
 
-```javascript
+```js
 if (!Object.create) {
   Object.create = function (o) {
     if (arguments.length > 1) {
       throw new Error(
-        'Object.create implementation' + ' only accepts the first parameter.'
+        'Object.create implementation only accepts the first parameter.'
       );
     }
     function F() {}
@@ -1254,8 +1344,8 @@ if (!Object.create) {
 }
 ```
 
-```javascript
-var switchProto = {
+```js
+const switchProto = {
   isOn: function isOn() {
     return this.state;
   },
@@ -1268,7 +1358,7 @@ var switchProto = {
   state: false,
 };
 
-var switchInstance = Object.create(switchProto);
+const switchInstance = Object.create(switchProto);
 ```
 
 #### 独立 - 原型克隆
@@ -1277,10 +1367,10 @@ var switchInstance = Object.create(switchProto);
 
 ##### 浅克隆
 
-```javascript
-_.extend = function (obj) {
-  each(slice.call(arguments, 1), function (source) {
-    for (var prop in source) {
+```js
+_.extend = function (obj, ...args) {
+  each(...args, function (source) {
+    for (const prop in source) {
       obj[prop] = source[prop];
     }
   });
@@ -1290,15 +1380,15 @@ _.extend = function (obj) {
 
 ##### 深克隆
 
-```javascript
+```js
 function extendDeep(parent, child) {
-  var i,
-    toStr = Object.prototype.toString,
-    astr = '[object Array]';
+  let i;
+  const toStr = Object.prototype.toString;
+  const astr = '[object Array]';
   child = child || {};
 
   for (i in parent) {
-    if (parent.hasOwnProperty(i)) {
+    if (Object.prototype.hasOwnProperty.call(parent, i)) {
       // 若属性为对象,则进行深克隆
       if (typeof parent[i] === 'object') {
         child[i] = toStr.call(parent[i]) === astr ? [] : {};
@@ -1315,16 +1405,14 @@ function extendDeep(parent, child) {
 
 ##### 属性混入 - 多重继承
 
-```javascript
-function mix() {
-  var arg,
-    prop,
-    child = {};
+```js
+function mix(...args) {
+  const child = {};
 
-  for (arg = 0; arg < arguments.length; arg += 1) {
-    for (prop in arguments[arg]) {
-      if (arguments[arg].hasOwnProperty(prop)) {
-        child[prop] = arguments[arg][prop];
+  for (let arg = 0; arg < args.length; arg += 1) {
+    for (const prop in args[arg]) {
+      if (Object.prototype.hasOwnProperty.call(args[arg], prop)) {
+        child[prop] = args[arg][prop];
       }
     }
   }
@@ -1333,8 +1421,8 @@ function mix() {
 }
 ```
 
-```javascript
-var cake = mix(
+```js
+const cake = mix(
   { eggs: 2, large: true },
   { butter: 1, salted: true },
   { flour: '3 cups' },
@@ -1346,11 +1434,11 @@ var cake = mix(
 
 ```js
 function factory() {
-  var highlander = {
+  const highlander = {
     name: 'MacLeod',
   };
 
-  //利用闭包，返回私有对象，实现工厂方法
+  // 利用闭包，返回私有对象，实现工厂方法
   return {
     get: function get() {
       return highlander;
@@ -1366,9 +1454,9 @@ function factory() {
 - new Number/String/Boolean();
 - 改变内置原型
 
-```javascript
+```js
 // primitive string
-var greet = 'Hello there';
+const greet = 'Hello there';
 // primitive is converted to an object
 // in order to use the split() method
 greet.split(' ')[0]; // "Hello"
@@ -1380,9 +1468,10 @@ typeof greet.smile; // "undefined"
 
 不使用 new 关键字,包装类构造函数返回值为基本类型
 
-```javascript
+```js
 typeof Number(1); // "number"
 typeof Number('1'); // "number"
+// eslint-disable-next-line no-new-wrappers
 typeof Number(new Number()); // "number"
 typeof String(1); // "string"
 typeof Boolean(1); // "boolean"
@@ -1390,17 +1479,33 @@ typeof Boolean(1); // "boolean"
 
 ### 错误对象
 
-```javascript
-{
-name: "XXError"
-message: "something wrong"
-extra: "This was rather embarrassing"
-remedy: genericErrorHandler //处理错误的函数名
-}
+```js
+const err = {
+  name: 'XXError',
+  message: 'something wrong',
+  extra: 'This was rather embarrassing',
+  remedy: genericErrorHandler, // 处理错误的函数名.
+};
 
-catch (e) {
+try {
+  throwError();
+} catch (e) {
   console.log(e.message);
-  e.remedy();  // genericErrorHandler
+  e.remedy(); // genericErrorHandler.
+}
+```
+
+Avoid using try-catch inside a loop:
+
+```js
+const object = ['foo', 'bar'];
+
+try {
+  for (let i = 0; i < object.length; i++) {
+    // do something that throws an exception
+  }
+} catch (e) {
+  // handle exception
 }
 ```
 
@@ -1411,9 +1516,9 @@ catch (e) {
 - Object 是 Function 的实例对象, **Function.prototype**是 Object 的实例对象
 
 ```js
-Object.__proto__ === Function.prototype; // true
-Function.__proto__ === Function.prototype; // true
-Function.__proto__.__proto__ === Object.prototype; // true
+Object[[proto]] === Function.prototype; // true
+Function[[proto]] === Function.prototype; // true
+Function[[proto]][[proto]] === Object.prototype; // true
 ```
 
 ### Invocation Patterns and This Bindings
@@ -1434,13 +1539,16 @@ add(1, 2); // this -> global
 
 const obj = {
   value: 1,
-  foo: function () {
+  foo() {
     // 若不将 this 赋值给 that, 而在内部函数中直接使用 this.value
     // 则会发生错误: 内部函数的 this 指向全局对象而不是obj
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const that = this;
+
     function inner() {
       return that.value;
     }
+
     return inner();
   },
 };
@@ -1467,12 +1575,12 @@ setTimeout(batman.logName, 1000);
 #### Explicit Binding
 
 Apply/Bind/Call Invocation:
-函数引用不可以改变函数定义作用域 (scope)，但可以改变函数执行作用域 (context)
+函数引用不可以改变函数定义作用域 (scope)，但可以改变函数执行作用域 (context).
 
 ```js
 this.construct = Foo;
 this.construct(options);
-    =>
+// =>
 Foo.call(this, options);
 ```
 
@@ -1487,7 +1595,7 @@ Constructor Invocation: this 绑定至传入的空对象
 
 ```js
 const obj = {
-  foo: function () {
+  foo() {
     const inner = () => {
       return this.value;
     };
@@ -1521,6 +1629,7 @@ func(); // `this` in `inner` function refer to `window`
 
 ```js
 try {
+  // eslint-disable-next-line no-caller
   if (arguments.length !== arguments.callee.length) {
     throw new Error('传递的参数个数不匹配');
   }
@@ -1535,10 +1644,7 @@ try {
 - 函数每次运行时，都会新建执行环境内部对象，执行完后销毁此对象
 - 每个执行环境拥有独立的作用域链,例如 独立全局对象、独立**活动对象**,
 - 可动态改变作用域链的语句: with/try catch(异常对象入列，位于作用域链链首)
-
-```js
-scope -> (list) [0]活动对象 -> [1]全局对象
-```
+- `scope` -> `(list) [0]活动对象` -> `[1]全局对象`.
 
 #### 全局对象 window
 
@@ -1548,28 +1654,32 @@ scope -> (list) [0]活动对象 -> [1]全局对象
 
 ### 函数表达式
 
-```javascript
-//函数声明
-function foo() {}
-
-//函数表达式
-var foo = function foo() {};
-var obj = {
-  say: function say() {},
-};
-
-//变量提升
+```js
+// 变量提升
+// eslint-disable-next-line no-var
 var foo;
+// eslint-disable-next-line no-const-assign
 foo = function foo() {};
 
 console.log(foo.name);
+
+// 函数声明
+function foo() {}
+
+// 函数表达式
+const foo = function foo() {};
+
+const obj = {
+  say: function say() {},
+};
 ```
 
 函数声明对于函数内部而言无法修改 (const)
 
 ```js
-var b = 10;
+const b = 10;
 (function b() {
+  // eslint-disable-next-line no-func-assign
   b = 20;
   console.log(b);
 })();
@@ -1581,9 +1691,9 @@ var b = 10;
 
 **无副作用**的函数: 注意是否需要拷贝传入对象,使原有对象不受函数影响,并返回新对象
 
-```javascript
+```js
 // 除非必要,否则不改变原有对象
-var obj = {
+const obj = {
   value: 2,
 };
 
@@ -1593,21 +1703,21 @@ function setValue(obj, val) {
 }
 ```
 
-```javascript
+```js
 // 好习惯: 改变新对象,返回新对象
-var obj = {
+const obj = {
   value: 2,
 };
 
 function setValue(obj, val) {
-  var instance = extend({}, obj, { value: val });
+  const instance = extend({}, obj, { value: val });
   return instance;
 }
 ```
 
 ### 回调函数
 
-```javascript
+```js
 // check if callback is callable
 if (typeof callback !== 'function') {
   callback = false;
@@ -1619,11 +1729,11 @@ if (callback) {
 }
 ```
 
-```javascript
-var findNodes = function (callback) {
-  var i = 100000,
-    nodes = [],
-    found;
+```js
+const findNodes = function (callback) {
+  let i = 100000;
+  const nodes = [];
+  let found;
 
   // check if callback is callable
   if (typeof callback !== 'function') {
@@ -1645,19 +1755,22 @@ var findNodes = function (callback) {
 };
 ```
 
-当回调函数为对象方法时(特别时方法中使用 this 指针),需同时传入对象参数,并利用 apply/call 改变执行环境
+当回调函数为对象方法时 (特别时方法中使用 this 指针),
+需同时传入对象参数,
+并利用 `apply/call` 改变执行环境.
 
-```javascript
-var findNodes = function (callbackObj, callback) {
+```js
+const findNodes = function (callbackObj, callback) {
   if (typeof callback === 'function') {
     callback.call(callbackObj, found);
   }
 };
 
-var findNodes = function (callbackObj, callback) {
+const findNodes = function (callbackObj, callback) {
   if (typeof callback === 'string') {
     callback = callbackObj[callback];
   }
+
   if (typeof callback === 'function') {
     callback.call(callbackObj, found);
   }
@@ -1672,11 +1785,12 @@ var findNodes = function (callbackObj, callback) {
 - 第二次执行时,不再进行初始化(函数被重定义至真正函数)
 - 第一次执行为 promise, 将重复使用的部分进行初始化，之后的调用不再浪费新空间，提高代码效率
 
-```javascript
-//definition
+```js
+// definition
+// eslint-disable-next-line no-var
 var foo = function () {
   // initialize code;
-  var t = new Date();
+  const t = new Date();
 
   foo = function () {
     return t;
@@ -1686,20 +1800,21 @@ var foo = function () {
   return foo();
 };
 
-//first run: same behavior as second run
+// first run: same behavior as second run
 console.log(foo()); // t
-//second run
+// second run
 console.log(foo()); // t
 ```
 
 ```js
+// eslint-disable-next-line no-var
 var addEvent = function (el, type, handle) {
   addEvent = el.addEventListener
     ? function (el, type, handle) {
         el.addEventListener(type, handle, false);
       }
     : function (el, type, handle) {
-        el.attachEvent('on' + type, handle);
+        el.attachEvent(`on${type}`, handle);
       };
 
   // 保持每次调用对外表现行为一致
@@ -1717,7 +1832,7 @@ var addEvent = function (el, type, handle) {
 - 末尾添加括号(传参),使函数立即执行
 - 将整个函数置于括号内
 
-```javascript
+```js
 (function () {
   console.log('watch out');
 })();
@@ -1736,9 +1851,9 @@ var foo = (function () {}());
 foo 不被赋予 function 值,而被赋予函数执行后的返回值;
 此返回值可设为函数可产生闭包。
 
-```javascript
-var getResult = (function () {
-  var res = 2 + 2;
+```js
+const getResult = (function () {
+  const res = 2 + 2;
   return function () {
     return res;
   };
@@ -1749,21 +1864,25 @@ var getResult = (function () {
 
 - `Function.call(contextObj, arg1, arg2,...)`
 - `Function.apply(contextArray, [arg1, arg2, ...]/arguments)`
-- call 效率高于 apply
+- call 效率高于 apply.
 
 ```js
-function.call/apply();
-window.function.call/apply();
-//js解释器临时将数组/字符串包装成对象原型
-[].arrayStaticFunction.call/apply();
-Array.prototype.arrayStaticFunction.call/apply();
-"".stringStaticFunction.call/apply();
-String.prototype.stringStaticFunction.call/apply();
+window.function.call();
+window.function.apply();
+// js解释器临时将数组/字符串包装成对象原型.
+[].arrayStaticFunction.call();
+[].arrayStaticFunction.apply();
+Array.prototype.arrayStaticFunction.call();
+Array.prototype.arrayStaticFunction.apply();
+''.stringStaticFunction.call();
+''.stringStaticFunction.apply();
+String.prototype.stringStaticFunction.call();
+String.prototype.stringStaticFunction.apply();
 ```
 
-相当于 -
+相当于:
 
-```javascript
+```js
 context.function(arguments);
 ```
 
@@ -1774,28 +1893,28 @@ context.function(arguments);
 - can't change `this` in arrow function
 
 ```js
-const boundFunc = func.bind(context, arg1, arg2, ...);
+const boundFunc = func.bind(context, arg1, arg2, argN);
 ```
 
 #### Function Call and Apply
 
-```javascript
+```js
 function bind(o, m) {
-  return function () {
-    return m.apply(o, [].slice.call(arguments));
+  return function (...args) {
+    return m.apply(o, args);
   };
 }
 ```
 
-```javascript
-var one = {
-    name: 'object',
-    say: function (greet) {
-      return greet + ', ' + this.name;
-    },
+```js
+const one = {
+  name: 'object',
+  say(greet) {
+    return `${greet}, ${this.name}`;
   },
-  two = { name: 'another object' },
-  twoSay = bind(two, one.say);
+};
+const two = { name: 'another object' };
+const twoSay = bind(two, one.say);
 
 twoSay('yo'); // "yo, another object"
 ```
@@ -1803,18 +1922,12 @@ twoSay('yo'); // "yo, another object"
 ### 多态方法
 
 ```js
-var greet = function greet(options) {
-  //运用slice方法与arguments隐参,得到参数对象/数组
-  //运用if/switch方法分情况调用函数,实现多态方法
-  var args = [].slice.call(arguments, 0);
-  //方法集中含有此方法
+const greet = function greet(options, ...rest) {
+  // 运用 if/switch 方法分情况调用函数, 实现多态方法.
   if (typeof options === 'string' && typeof methods[options] === 'function') {
-    action = options;
-    //取第2个参数开始为真正的参数
-    args.shift();
+    // 方法集中含有此方法:
+    return methods[options](...rest);
   }
-  //调用对应方法,入参为args,返回调用值
-  return methods[action](args);
 };
 ```
 
@@ -1832,18 +1945,21 @@ hasOwnProperty:
 - 不要使用字符串作参数 new Function();(会调用`eval`函数)
 - 不要使用字符串作`setTimeOut`/`setInterval`的第一个参数(会调用`eval`函数)
 
-```javascript
-// anti-pattern
-var property = 'name';
-alert(eval('obj.' + property));
-// preferred
-var property = 'name';
+```js
+// Anti-pattern:
+const property = 'name';
+// eslint-disable-next-line no-eval
+alert(eval(`obj.${property}`));
+// Preferred:
+const property = 'name';
 alert(obj[property]);
 
-// anti-pattern
+// Anti-pattern:
+// eslint-disable-next-line no-implied-eval
 setTimeout('myFunc()', 1000);
+// eslint-disable-next-line no-implied-eval
 setTimeout('myFunc(1, 2, 3)', 1000);
-// preferred
+// Preferred:
 setTimeout(myFunc, 1000);
 setTimeout(function () {
   myFunc(1, 2, 3);
@@ -1852,48 +1968,39 @@ setTimeout(function () {
 
 ### 常用函数
 
-#### Object
+#### Object Descriptor
 
-- `Object.create(prototype[,descriptors])`
-
-```js
-var o = Object.create({
-  say: function () {
-    alert(this.name);
-  },
-  name: 'Byron',
-});
-```
+对象的属性描述符:
 
 - Object.defineProperty(O,Prop,descriptor)
 - Object.defineProperties(O,descriptors)
 
-```js
-// value：值，默认是undefined
-// writable：是否是只读property，默认是false,有点像C#中的const
-// enumerable：是否可以被枚举(for in)，默认false
-// configurable：是否可以被删除，默认false
-```
+数据描述符:
 
-````js
-// get:返回property的值得方法，默认是undefined
-// set：为property设置值的方法，默认是undefined
-```js
+- configurable：是否可以被删除，默认 false
+- enumerable：是否可以被枚举(for in)，默认 false
+- writable：是否是只读 property，默认是 false,有点像 C#中的 const
+- value：值，默认是 undefined
+
+存取描述符:
+
+- get: 返回 property 值的方法, 默认是 undefined
+- set：为 property 设置值的方法, 默认是 undefined
 
 ```js
-Object.defineProperty(o,'age', {
-      value: 24,
-      writable: true,
-      enumerable: true,
-      configurable: true
+Object.defineProperty(o, 'age', {
+  value: 24,
+  writable: true,
+  enumerable: true,
+  configurable: true,
 });
 Object.defineProperty(o, 'sex', {
-      value: 'male',
-      writable: false,    //  不可赋值
-      enumerable: false,  //  不可遍历/枚举
-      configurable: false
+  value: 'male',
+  writable: false, //  不可赋值
+  enumerable: false, //  不可遍历/枚举
+  configurable: false,
 });
-````
+```
 
 ```js
 Object.defineProperties(o, {
@@ -1912,12 +2019,25 @@ Object.defineProperties(o, {
 });
 ```
 
+#### Object Functions
+
+- `Object.create(prototype[,descriptors])`
+
+```js
+const o = Object.create({
+  say() {
+    alert(this.name);
+  },
+  name: 'Byron',
+});
+```
+
 - Object.getOwnPropertyDescriptor(O,property)
 - Object.getOwnPropertyNames
 - Object.keys() - 仅获取可枚举的属性
 
 ```js
-var props = Object.getOwnPropertyDescriptor(o, 'age');
+const props = Object.getOwnPropertyDescriptor(o, 'age');
 console.log(props);
 // Object {value: 24, writable: true, enumerable: true, configurable: true}
 
@@ -1931,7 +2051,7 @@ console.log(Object.keys(o)); // ["age"]
 
 #### 类型判断
 
-```javascript
+```js
 Boolean(val); // true
 Array(val); // Array[<3个空存储位置>]
 ```
@@ -1944,7 +2064,7 @@ parseInt(val, 2 / 8 / 10);
 
 #### 数学函数
 
-```javascript
+```js
 Math.floor(Math.random * arr.length);
 Math.min / Math.max; // 最小值/最大值
 ```
@@ -1953,18 +2073,20 @@ Math.min / Math.max; // 最小值/最大值
 
 ##### Interval Function
 
-**Tips:** 相当于一重循环
+Combine setInterval/setTimeout function with Closure:
 
 ```js
 // 选择排序: 具有两重循环
-let animation = setInterval(() => {
+const animation = setInterval(() => {
   // interval - (外)循环结束条件
-  if (i >= length) {
+  if (i >= dataLength) {
     clearInterval(animation);
     // 结束动画
     setTimeout(() => {
-      for (let n = 0; n < length; n++) {
+      for (let n = 0; n < dataLength; n++) {
         ele_arr[n].className = 'data-list__item finish';
+
+        // eslint-disable-next-line no-loop-func
         (function (index) {
           setTimeout(() => {
             ele_arr[index].className = 'data-list__item';
@@ -1985,6 +2107,8 @@ let animation = setInterval(() => {
     );
     data_queue[j] = data_queue[j - 1];
     ele_arr[j].className = 'data-list__item change';
+
+    // eslint-disable-next-line no-loop-func
     (function (index) {
       setTimeout(() => {
         ele_arr[index].className = 'data-list__item';
@@ -2006,10 +2130,10 @@ let animation = setInterval(() => {
 
 ##### 配置对象
 
-```javascript
-var conf = {
-  name: "tazimi",
-  e-mail: "test@gmail.com"
+```js
+const conf = {
+  name: 'name',
+  eMail: 'test@gmail.com',
 };
 
 addPerson(conf);
@@ -2023,7 +2147,7 @@ addPerson(conf);
 
 ##### 链模式
 
-```javascript
+```js
 return this;
 ```
 
@@ -2037,12 +2161,13 @@ obj.init();
 
 ##### 初始化分支
 
-浏览器探嗅:执行此功能的 if/else 语句只执行一次
+浏览器探嗅: 执行此功能的 if/else 语句只执行一次.
 
 检测浏览器对 H5/CSS3/ES5/ES2016 的支持情况,不足则自行编写函数补充功能.
 
-```javascript
+```js
 if (typeof target === 'undefined') {
+  initialization();
 }
 ```
 
@@ -2052,26 +2177,26 @@ if (typeof target === 'undefined') {
 
 通过传参匿名函数,创建命名空间,进行模块包裹
 
-```javascript
-var app = {};
+```js
+const app = {};
 
 (function (exports) {
   (function (exports) {
-    var api = {
+    const api = {
       moduleExists: function test() {
         return true;
       },
     };
-    //闭包式继承,扩展exports对象为api对象
+    // 闭包式继承,扩展exports对象为api对象
     $.extend(exports, api);
   })(typeof exports === 'undefined' ? window : exports);
-  //将api对象绑定至app对象上
+  // 将api对象绑定至app对象上
 })(app);
 ```
 
-```javascript
+```js
 // global object
-var APP = {};
+const APP = {};
 // constructors
 APP.Parent = function () {};
 APP.Child = function () {};
@@ -2087,11 +2212,11 @@ APP.modules.module2 = {};
 
 #### 通用命名空间函数
 
-```javascript
+```js
 APP.namespace = function (namespaceString) {
-  var parts = namespaceString.split('.'),
-    parent = APP,
-    i;
+  let parts = namespaceString.split('.');
+  let parent = APP;
+  let i;
   // strip redundant leading global
   if (parts[0] === 'APP') {
     // remove leading global
@@ -2102,7 +2227,7 @@ APP.namespace = function (namespaceString) {
     if (typeof parent[parts[i]] === 'undefined') {
       parent[parts[i]] = {};
     }
-    //关键: 向内嵌套
+    // 关键: 向内嵌套
     parent = parent[parts[i]];
   }
   // 返回最内层模块名
@@ -2110,9 +2235,9 @@ APP.namespace = function (namespaceString) {
 };
 ```
 
-```javascript
+```js
 // assign returned value to a local var
-var module2 = APP.namespace('APP.modules.module2');
+const module2 = APP.namespace('APP.modules.module2');
 module2 === APP.modules.module2; // true
 // skip initial `APP`
 APP.namespace('modules.module51');
@@ -2127,15 +2252,12 @@ APP.namespace('once.upon.a.time.there.was.this.long.nested.property');
 - 私有属性绑定至 this/prototype
 - 特权方法绑定至 modules/prototype
 
-```javascript
-function Sandbox() {
-  // turning arguments into an array
-  var args = Array.prototype.slice.call(arguments),
-    // the last argument is the callback
-    callback = args.pop(),
-    // modules can be passed as an array or as individual parameters
-    modules = args[0] && typeof args[0] === 'string' ? args : args[0],
-    i;
+```js
+function Sandbox(...args) {
+  // the last argument is the callback
+  const callback = args.pop();
+  // modules can be passed as an array or as individual parameters
+  let modules = args[0] && typeof args[0] === 'string' ? args : args[0];
 
   // make sure the function is called
   // as a constructor
@@ -2151,15 +2273,15 @@ function Sandbox() {
   // no modules or "*" both mean "use all modules"
   if (!modules || modules === '*') {
     modules = [];
-    for (i in Sandbox.modules) {
-      if (Sandbox.modules.hasOwnProperty(i)) {
+    for (const i in Sandbox.modules) {
+      if (Object.prototype.hasOwnProperty.call(Sandbox.modules, i)) {
         modules.push(i);
       }
     }
   }
 
   // initialize the required modules
-  for (i = 0; i < modules.length; i += 1) {
+  for (let i = 0; i < modules.length; i += 1) {
     Sandbox.modules[modules[i]](this);
   }
 
@@ -2168,12 +2290,12 @@ function Sandbox() {
 }
 ```
 
-```javascript
+```js
 // any prototype properties as needed
 Sandbox.prototype = {
   name: 'My Application',
   version: '1.0',
-  getName: function () {
+  getName() {
     return this.name;
   },
 };
@@ -2181,7 +2303,7 @@ Sandbox.prototype = {
 
 静态属性 - 使用添加的方法/模块
 
-```javascript
+```js
 Sandbox.modules = {};
 Sandbox.modules.dom = function (box) {
   box.getElement = function () {};
@@ -2202,7 +2324,7 @@ Sandbox.modules.ajax = function (box) {
 
 #### 沙盒使用方式
 
-```javascript
+```js
 Sandbox(['ajax', 'event'], function (box) {
   // console.log(box);
 });
@@ -2220,14 +2342,14 @@ Sandbox('dom', 'event', function (box) {
     // another sandbox "box" object
     // this "box" is not the same as
     // the "box" outside this function
-    //...
+    // ...
     // done with Ajax
   });
   // no trace of Ajax module here
 });
 ```
 
-## JavaScript DOM Basic Notes
+## JavaScript DOM API
 
 - DOM Level 0
 - DOM Level 1
@@ -2253,11 +2375,11 @@ if (document.implementation) {
 }
 ```
 
-### DOM - O
+### DOM Tree
 
-- native object: JavaScript Native e.g. Array
-- host object: provided by Browser e.g. HTML5 API
-- user-defined object
+- Native object: JavaScript Native e.g. Array.
+- Host object: provided by Browser e.g. HTML5 API.
+- User-defined object.
 
 ```html
 <table>
@@ -2284,6 +2406,7 @@ parentElement.appendChild(childElement);
 parentElement.insertBefore(newElement, targetElement);
 parentElement.removeChild();
 parentElement.replaceChild();
+parentElement.replaceChildren();
 parentElement.hasChildNode();
 
 setAttribute();
@@ -2296,30 +2419,35 @@ document.querySelectorAll();
 ```
 
 ```js
-const showAlert = (type, message, duration = 3) {
+const showAlert = (type, message, duration = 3) => {
   const div = document.createElement('div');
   div.className = type;
-  div.appendChild(document.createTextNode(message))
+  div.appendChild(document.createTextNode(message));
   container.insertBefore(div, form);
   setTimeout(() => div.remove(), duration * 1000);
 };
 ```
 
-#### dynamic creation
+#### Append DOM Node
 
-##### append
+| Method             | Node | HTML | Text | IE  | Event Listeners | Secure  |
+| ------------------ | ---- | ---- | ---- | --- | --------------- | ------- |
+| append             | Yes  | No   | Yes  | No  | Preserves       | Yes     |
+| appendChild        | Yes  | No   | No   | Yes | Preserves       | Yes     |
+| innerHTML          | No   | Yes  | Yes  | Yes | Loses           | Careful |
+| insertAdjacentHTML | No   | Yes  | Yes  | Yes | Preserves       | Careful |
 
-```javascript
-var testDiv = document.getElementById('testDiv');
+```js
+const testDiv = document.getElementById('testDiv');
 
-var para = document.createElement('p');
+const para = document.createElement('p');
 testDiv.appendChild(para);
 
-var txt = document.createTextNode('Hello World');
+const txt = document.createTextNode('Hello World');
 para.appendChild(txt);
 ```
 
-##### insert
+#### Insert DOM Node
 
 ```js
 // 4 positions
@@ -2342,8 +2470,8 @@ p.insertAdjacentElement('beforebegin', link);
 
 ```js
 function insertAfter(newElement, targetElement) {
-  var parent = targetElement.parentNode;
-  if (parent.lastChild == targetElement) {
+  const parent = targetElement.parentNode;
+  if (parent.lastChild === targetElement) {
     parent.appendChild(newElement);
   } else {
     parent.insertBefore(newElement, targetElement.nextSibling);
@@ -2351,9 +2479,18 @@ function insertAfter(newElement, targetElement) {
 }
 ```
 
-#### node
+#### Replace DOM Node
 
-node 除包括元素结点(tag)外，包括许多其它结点(甚至空格符视作一个结点),需借助 nodeType 找出目标结点
+```js
+node.replaceChild(document.createTextNode(text), node.firstChild);
+node.replaceChildren(...nodeList);
+```
+
+#### DOM Node Type
+
+Node 除包括元素结点 (tag) 外,
+包括许多其它结点 (甚至空格符视作一个结点),
+需借助 nodeType 找出目标结点.
 
 ```js
 node.nodeType;
@@ -2402,10 +2539,11 @@ node.nextElementSibling;
 
 减少 DOM 操作次数,减少页面渲染次数
 
-```javascript
-var p, t, frag;
+```js
+const frag = document.createDocumentFragment();
 
-frag = document.createDocumentFragment();
+let p;
+let t;
 
 p = document.createElement('p');
 t = document.createTextNode('first paragraph');
@@ -2421,9 +2559,9 @@ frag.appendChild(p);
 document.body.appendChild(frag);
 ```
 
-```javascript
-var oldNode = document.getElementById('result'),
-  clone = oldNode.cloneNode(true);
+```js
+const oldNode = document.getElementById('result');
+const clone = oldNode.cloneNode(true);
 // work with the clone
 
 // when you're done:
@@ -2452,12 +2590,12 @@ document.body;
 documents.images;
 documents.links;
 documents.forms;
-documents.forms[0].elements; //第一个表单内的所有字段
+documents.forms[0].elements; // 第一个表单内的所有字段
 element.alt = string;
 element.classname = value;
 ```
 
-```javascript
+```js
 document.querySelector('cssSelector');
 document.querySelectorAll('cssSelector');
 ```
@@ -2471,9 +2609,9 @@ It allows users to read and modify CSS style dynamically.
 #### Inline Styles
 
 ```js
-element.style.*;
-element.style.fontFamily;
-element.style.marginTopWidth;
+const style = element.style.XX;
+const font = element.style.fontFamily;
+const mt = element.style.marginTopWidth;
 ```
 
 #### Getter and Setter Styles
@@ -2485,7 +2623,7 @@ element.style.marginTopWidth;
 - `getPropertyPriority`: return `''` or `important`
 
 ```js
-let box = document.querySelector('.box');
+const box = document.querySelector('.box');
 
 box.style.setProperty('color', 'orange');
 box.style.setProperty('font-family', 'Georgia, serif');
@@ -2529,7 +2667,7 @@ element.classList.toggle;
 
 **Tip**: bind class
 
-```javascript
+```js
 function addClass(element, value) {
   if (!element.className) {
     element.className = value;
@@ -2552,12 +2690,12 @@ function addClass(element, value) {
 - `style` property of rules
 
 ```js
-let myRules = document.styleSheets[0].cssRules,
-  p = document.querySelector('p');
+const myRules = document.styleSheets[0].cssRules;
+const p = document.querySelector('p');
 
 for (i of myRules) {
   if (i.type === 1) {
-    p.innerHTML += `<c​ode>${i.selectorText}</c​ode><br>`;
+    p.innerHTML += `<code>${i.selectorText}</code><br>`;
   }
 
   if (i.selectorText === 'a:hover') {
@@ -2595,15 +2733,15 @@ for (i of myRules) {
 - nested `cssRules`
 
 ```js
-let myRules = document.styleSheets[0].cssRules,
-  p = document.querySelector('.output');
+const myRules = document.styleSheets[0].cssRules;
+const p = document.querySelector('.output');
 
 for (i of myRules) {
   if (i.type === 4) {
-    p.innerHTML += `<c​ode>${i.conditionText}</c​ode><br>`;
+    p.innerHTML += `<code>${i.conditionText}</code><br>`;
 
     for (j of i.cssRules) {
-      p.innerHTML += `<c​ode>${j.selectorText}</c​ode><br>`;
+      p.innerHTML += `<code>${j.selectorText}</code><br>`;
     }
   }
 }
@@ -2616,15 +2754,15 @@ for (i of myRules) {
 - `keyText` property of rules
 
 ```js
-let myRules = document.styleSheets[0].cssRules,
-  p = document.querySelector('.output');
+const myRules = document.styleSheets[0].cssRules;
+const p = document.querySelector('.output');
 
 for (i of myRules) {
   if (i.type === 7) {
-    p.innerHTML += `<c​ode>${i.name}</c​ode><br>`;
+    p.innerHTML += `<code>${i.name}</code><br>`;
 
     for (j of i.cssRules) {
-      p.innerHTML += `<c​ode>${j.keyText}</c​ode><br>`;
+      p.innerHTML += `<code>${j.keyText}</code><br>`;
     }
   }
 }
@@ -2633,7 +2771,7 @@ for (i of myRules) {
 ##### Add and Remove CSS Rules
 
 ```js
-let myStylesheet = document.styleSheets[0];
+const myStylesheet = document.styleSheets[0];
 console.log(myStylesheet.cssRules.length); // 8
 
 document.styleSheets[0].insertRule(
@@ -2644,7 +2782,7 @@ console.log(document.styleSheets[0].cssRules.length); // 9
 ```
 
 ```js
-let myStylesheet = document.styleSheets[0];
+const myStylesheet = document.styleSheets[0];
 console.log(myStylesheet.cssRules.length); // 8
 
 myStylesheet.deleteRule(3);
@@ -2653,18 +2791,18 @@ console.log(myStylesheet.cssRules.length); // 7
 
 ### DOM Events
 
-For `click/keydown` events:
-
-- `event.preventDefault()`
-- `event.stopPropagation()`
-
-`element.dispatchEvent` to trigger events.
+- `event.preventDefault()`.
+- `event.stopPropagation()`.
+- `element.dispatchEvent(event)` to trigger events.
+- Default `bubble` mode, can change to `capture` mode.
 
 #### Events Checking
 
 ```js
-node.matches(event.target); // return false or true
-node.contains(event.target); // return false or true
+function handleEvent(event) {
+  node.matches(event.target); // return false or true
+  node.contains(event.target); // return false or true
+}
 ```
 
 #### Global DOM Event
@@ -2683,7 +2821,7 @@ DOMContentLoaded:
   而所有资源加载完成之后, **load** 事件才会被触发
 
 ```js
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', event => {
   console.log('DOM fully loaded and parsed.');
 });
 ```
@@ -2701,6 +2839,8 @@ window.addEventListener('visibilitychange', () => {
     case 'visible':
       console.log('Tab被聚焦');
       break;
+    default:
+      throw new Error('Unsupported visibility!');
   }
 });
 ```
@@ -2709,13 +2849,13 @@ window.addEventListener('visibilitychange', () => {
 const videoElement = document.getElementById('videoElement');
 
 // AutoPlay the video if application is visible
-if (document.visibilityState == 'visible') {
+if (document.visibilityState === 'visible') {
   videoElement.play();
 }
 
 // Handle page visibility change events
 function handleVisibilityChange() {
-  if (document.visibilityState == 'hidden') {
+  if (document.visibilityState === 'hidden') {
     videoElement.pause();
   } else {
     videoElement.play();
@@ -2727,13 +2867,14 @@ document.addEventListener('visibilitychange', handleVisibilityChange, false);
 
 #### Form Events
 
-- [checkValidity API](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/checkValidity)
+- [CheckValidity API](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/checkValidity)
 - [FromData API](https://developer.mozilla.org/docs/Web/API/FormData)
+- [Forms Constraint Validation](https://www.sitepoint.com/html-forms-constraint-validation-complete-guide)
 
 ```js
 // <form className='validated-form' noValidate onSubmit={onSubmit}>
 
-const onSubmit = (event) => {
+const onSubmit = event => {
   event.preventDefault();
 
   const form = event.target;
@@ -2763,6 +2904,29 @@ const onSubmit = (event) => {
 };
 ```
 
+```js
+function validateForm(e) {
+  const form = e.target;
+
+  if (form.checkValidity()) {
+    // form is valid - make further checks
+  } else {
+    // form is invalid - cancel submit
+    e.preventDefault();
+    // apply invalid class
+    Array.from(form.elements).forEach(i => {
+      if (i.checkValidity()) {
+        // field is valid - remove class
+        i.parentElement.classList.remove('invalid');
+      } else {
+        // field is invalid - add class
+        i.parentElement.classList.add('invalid');
+      }
+    });
+  }
+}
+```
+
 #### Input Events
 
 - focus/focusin/focusout event
@@ -2772,7 +2936,7 @@ const onSubmit = (event) => {
 ```js
 const input = document.querySelector('input');
 
-input.addEventListener('select', (event) => {
+input.addEventListener('select', event => {
   const log = document.getElementById('log');
   const selection = event.target.value.substring(
     event.target.selectionStart,
@@ -2784,7 +2948,7 @@ input.addEventListener('select', (event) => {
 
 #### Mouse Events
 
-```javascript
+```js
 onclick;
 ondbclick;
 onmouse - down / move / enter / out / leave / over;
@@ -2794,28 +2958,36 @@ For click event, no need for X/Y to judge internal/outside state.
 Use DOM API `element.contains` to check is a better way.
 
 ```js
-window.addEventListener('click', (event) => {
-  if (document.getElementById('main').contains(event.target) {
-    // ...
+window.addEventListener('click', event => {
+  if (document.getElementById('main').contains(event.target)) {
+    process();
   }
 });
 ```
 
-[Drag Event](https://developer.mozilla.org/en-US/docs/Web/API/Document/drag_event):
+[Drag Event](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent):
 
-- dragstart
+- dragstart: start point.
 - dragend
-- dragover
-- dragenter
+- dragenter: call `event.preventDefault()` in drop zone.
+- dragover: call `event.preventDefault()` in drop zone.
 - dragleave
-- drop
+- drop: end point.
+
+Key point for implementing DnD widget is
+[DataTransfer](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer):
+
+- Bindings between Drag Zone and Drop Zone.
+- `DataTransfer.dropEffect` and `DataTransfer.effectAllowed` to define DnD UI type.
+- `DataTransfer.getData` and `DataTransfer.setData` to transfer data.
+- `DataTransfer.files` and `DataTransfer.items` to transfer data.
 
 [Context Menu Event](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event):
 
 ```js
 const noContext = document.getElementById('noContextMenu');
 
-noContext.addEventListener('contextmenu', (e) => {
+noContext.addEventListener('contextmenu', e => {
   e.preventDefault();
 });
 ```
@@ -2824,12 +2996,13 @@ noContext.addEventListener('contextmenu', (e) => {
 
 `onkeypress/up/down`
 
-```javascript
+```js
 document.onkeydown = function (event) {
-  var e = event || window.event || arguments.callee.caller.arguments[0];
-  if (e && e.keyCode == 13) {
+  // eslint-disable-next-line no-caller
+  const e = event || window.event || arguments.callee.caller.arguments[0];
+  if (e && e.keyCode === 13) {
     // enter 键
-    //coding
+    // coding
   }
 };
 ```
@@ -2871,7 +3044,7 @@ document.onkeydown = function (event) {
 ```js
 const source = document.querySelector('div.source');
 
-source.addEventListener('copy', (event) => {
+source.addEventListener('copy', event => {
   const selection = document.getSelection();
   event.clipboardData.setData(
     'text/plain',
@@ -2883,19 +3056,18 @@ source.addEventListener('copy', (event) => {
 
 #### Frame Events
 
-```javascript
-onresize / load / scroll / error;
-```
+- onresize.
+- onload.
+- onscroll.
+- onerror.
 
 #### User-Defined Handler
 
-```javascript
+```js
 function myHandler(e) {
-  var src, parts;
-
   // get event and source element
-  e = e || window.event;
-  src = e.target || e.srcElement;
+  const e = e || window.event;
+  const src = e.target || e.srcElement;
 
   // 事件授权
   if (src.nodeName.toLowerCase() !== 'button') {
@@ -2905,7 +3077,7 @@ function myHandler(e) {
   // actual work: update label
   parts = src.innerHTML.split(': ');
   parts[1] = parseInt(parts[1], 10) + 1;
-  src.innerHTML = parts[0] + ': ' + parts[1];
+  src.innerHTML = `${parts[0]}: ${parts[1]}`;
   // no bubble
   if (typeof e.stopPropagation === 'function') {
     e.stopPropagation();
@@ -2925,7 +3097,7 @@ function myHandler(e) {
 
 ### Document
 
-```javascript
+```js
 document.write();
 document.URI;
 document.title;
@@ -2933,7 +3105,7 @@ document.title;
 
 ### Window
 
-```javascript
+```js
 window.location(string);
 window.innerWidth(number);
 window.closed(boolean);
@@ -2942,18 +3114,16 @@ window.closed(boolean);
 **Tip**: 实现 jQuery 中`\$(document).ready(function(){});
 
 ```js
-//initialize
+// initialize.
 window.onload = readyFunction;
 
-function readyFunction() {
-  function() {}
-}
+function readyFunction() {}
 ```
 
 ```js
-//add more ready function
+// add more ready function
 function addLoadEvent(func) {
-  var oldOnLoad = window.onload;
+  const oldOnLoad = window.onload;
   if (typeof window.onload != 'function') {
     window.onload = func;
   } else {
@@ -2981,10 +3151,10 @@ function addLoadEvent(func) {
 ```js
 window.addEventListener(
   'hashchange',
-  (event) => {
+  event => {
     // event.oldURL
     // event.nweURL
-    if (location.hash === '#someCoolFeature') {
+    if (window.location.hash === '#someCoolFeature') {
       someCoolFeature();
     }
   },
@@ -2994,7 +3164,9 @@ window.addEventListener(
 
 ### Rect API
 
-- getBoundingClientRect
+`getBoundingClientRect`:
+
+[![Client Rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png)](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
 
 #### Width and Height API
 
@@ -3053,7 +3225,7 @@ if (window.innerHeight + window.pageYOffset === document.body.scrollHeight) {
 - scrollLeft/scrollTop: 元素滚动条位置, 被隐藏的内容区域左侧/上方的像素大小
 
 ```js
-const isElementInViewport = (el) => {
+const isElementInViewport = el => {
   const { top, height, left, width } = el.getBoundingClientRect();
   const w = window.innerWidth || document.documentElement.clientWidth;
   const h = window.innerHeight || document.documentElement.clientHeight;
@@ -3075,8 +3247,8 @@ Mutation Observer 有以下特点:
 - 它即可以观察发生在 DOM 节点的所有变动，也可以观察某一类变动
 
 ```js
-const mutationObserver = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
+const mutationObserver = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
     console.log(mutation);
   });
 });
@@ -3095,7 +3267,7 @@ mutationObserver.observe(document.documentElement, {
 ```js
 const target = document.querySelector('#container');
 const callback = (mutations, observer) => {
-  mutations.forEach((mutation) => {
+  mutations.forEach(mutation => {
     switch (mutation.type) {
       case 'attributes':
         // the name of the changed attribute is in
@@ -3108,6 +3280,8 @@ const callback = (mutations, observer) => {
         // any added nodes are in mutation.addedNodes
         // any removed nodes are in mutation.removedNodes
         break;
+      default:
+        throw new Error('Unsupported mutation!');
     }
   });
 };
@@ -3125,23 +3299,23 @@ observer.observe(target, {
 
 ### 基本用法
 
-```javascript
-var XHR = (function () {
-  var standard = {
-      createXHR: function () {
-        return new XMLHttpRequest();
-      },
+```js
+const XHR = (function () {
+  const standard = {
+    createXHR() {
+      return new XMLHttpRequest();
     },
-    newActionXObject = {
-      createXHR: function () {
-        return new ActionXObject('Msxml12.XMLHTTP');
-      },
+  };
+  const newActionXObject = {
+    createXHR() {
+      return new ActionXObject('Msxml12.XMLHTTP');
     },
-    oldActionXObject = {
-      createXHR: function () {
-        return new ActionXObject('Microsoft.XMLHTTP');
-      },
-    };
+  };
+  const oldActionXObject = {
+    createXHR() {
+      return new ActionXObject('Microsoft.XMLHTTP');
+    },
+  };
 
   // 根据兼容性返回对应的工厂对象
   // 此立即函数运行一次即可完成兼容性检查，防止重复检查
@@ -3159,16 +3333,16 @@ var XHR = (function () {
 })();
 ```
 
-```javascript
-var request = XHR.createXHR();
+```js
+const request = XHR.createXHR();
 ```
 
-```javascript
+```js
 // 3rd argument : async mode
 request.open('GET', 'example.txt', true);
 
 request.onreadystatechange = function () {
-  //do something
+  // do something
   /*
   switch(request.readyState) {
     case 0: initialize
@@ -3178,9 +3352,9 @@ request.onreadystatechange = function () {
     case 4: complete
   }
   */
-  if (request.readyState == 4) {
-    var para = document.createElement('p');
-    var txt = document.createTextNode(request.responseText);
+  if (request.readyState === 4) {
+    const para = document.createElement('p');
+    const txt = document.createTextNode(request.responseText);
     para.appendChild(txt);
     document.getElementById('new').appendChild(para);
   }
@@ -3191,16 +3365,16 @@ request.send(null);
 
 ### 简单封装
 
-```javascript
+```js
 ajax({
-  url: './TestXHR.aspx', //请求地址
-  type: 'POST', //请求方式
-  data: { name: 'super', age: 20 }, //请求参数
+  url: './TestXHR.aspx', // 请求地址
+  type: 'POST', // 请求方式
+  data: { name: 'super', age: 20 }, // 请求参数
   dataType: 'json',
-  success: function (response, xml) {
+  success(response, xml) {
     // 此处放成功后执行的代码
   },
-  fail: function (status) {
+  fail(status) {
     // 此处放失败后执行的代码
   },
 });
@@ -3209,20 +3383,21 @@ function ajax(options) {
   options = options || {};
   options.type = (options.type || 'GET').toUpperCase();
   options.dataType = options.dataType || 'json';
-  var params = formatParams(options.data);
+  const params = formatParams(options.data);
+  let xhr;
 
-  //创建 - 非IE6 - 第一步
+  // 创建 - 非IE6 - 第一步
   if (window.XMLHttpRequest) {
-    var xhr = new XMLHttpRequest();
+    xhr = new XMLHttpRequest();
   } else {
-    //IE6及其以下版本浏览器
-    var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    // IE6及其以下版本浏览器
+    xhr = new ActiveXObject('Microsoft.XMLHTTP');
   }
 
-  //接收 - 第三步
+  // 接收 - 第三步
   xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4) {
-      var status = xhr.status;
+    if (xhr.readyState === 4) {
+      const status = xhr.status;
       if (status >= 200 && status < 300) {
         options.success && options.success(xhr.responseText, xhr.responseXML);
       } else {
@@ -3231,24 +3406,25 @@ function ajax(options) {
     }
   };
 
-  //连接 和 发送 - 第二步
-  if (options.type == 'GET') {
-    xhr.open('GET', options.url + '?' + params, true);
+  // 连接 和 发送 - 第二步
+  if (options.type === 'GET') {
+    xhr.open('GET', `${options.url}?${params}`, true);
     xhr.send(null);
-  } else if (options.type == 'POST') {
+  } else if (options.type === 'POST') {
     xhr.open('POST', options.url, true);
-    //设置表单提交时的内容类型
+    // 设置表单提交时的内容类型
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(params);
   }
 }
-//格式化参数
+
+// 格式化参数
 function formatParams(data) {
-  var arr = [];
-  for (var name in data) {
-    arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+  const arr = [];
+  for (const name in data) {
+    arr.push(`${encodeURIComponent(name)}=${encodeURIComponent(data[name])}`);
   }
-  arr.push(('v=' + Math.random()).replace('.', ''));
+  arr.push(`v=${Math.random()}`.replace('.', ''));
   return arr.join('&');
 }
 ```
@@ -3260,76 +3436,100 @@ function formatParams(data) {
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
 ```
 
-```javascript
-Response.Headers.Add("Access-Control-Allow-Origin", "*");
-// JSON
-{
- ‘Access-Control-Allow-Origin‘: ‘*‘,
-}
+```js
+Response.Headers.Add('Access-Control-Allow-Origin', '*');
 ```
 
-```javascript
+```js
 $.ajax({
-  url:"http://map.oicqzone.com/gpsApi.php?lat=22.502412986242&lng=113.93832783228",
-  type:‘GET‘,
-  dataType:‘JSONP‘,  // 处理Ajax跨域问题
-  success: function(data){
-  $(‘body‘).append( "Name: " + data );
-  }
+  url: 'http://map.oicqzone.com/gpsApi.php?lat=22.502412986242&lng=113.93832783228',
+  type: 'GET',
+  dataType: 'JSONP', // 处理Ajax 跨域问题.
+  success(data) {
+    $('body').append(`Name: ${data}`);
+  },
 });
 ```
 
 ## JSON
 
-```javascript
-var obj = JSON.parse(json);
-var json = JSON.stringify(obj);
+```js
+const obj = JSON.parse(json);
+const json = JSON.stringify(obj);
 ```
 
-### jQuery
+`JSON.stringify`:
 
-```javascript
-$.getJSON('/json/cats.json', function (json) {
-  $('.message').html(JSON.stringify(json));
-});
-```
-
-## 正则表达式
+- `Symbol`/`function`/`NaN`/`Infinity`/`undefined`: `null`/ignored.
+- `BitInt`: throw `TypeError`.
+- Circular reference object: throw `TypeError`.
+- `toJSON` method:
 
 ```js
-var re = /pattern/gim;
+const obj = {
+  name: 'zc',
+  toJSON() {
+    return 'return toJSON';
+  },
+};
+
+// return toJSON
+console.log(JSON.stringify(obj));
+
+// "2022-03-06T08:24:56.138Z"
+JSON.stringify(new Date());
 ```
 
-### Flags
+## Regular Expression
+
+```js
+const re = /pattern/gim;
+```
+
+### RegExp Flags
 
 - g 全局匹配
 - m 多行匹配
 - i 大小写敏感匹配
+- u 修饰符
+- y (粘连全局符) 修饰符号隐含了头部匹配的标志
 
-### 元字符
+```js
+function codePointLength(text) {
+  const result = text.match(/[\s\S]/gu);
+  return result ? result.length : 0;
+}
 
-| 符号     | 说明                                       |
-| :------- | :----------------------------------------- |
-| .        | 匹配除换行符以外的任意字符                 |
-| \w       | 匹配字母或数字或下划线或汉字               |
-| \s       | 空白符(" " \n \r \t \f)                    |
-| \S       | 非空白符(alpha number)                     |
-| \d       | 匹配数字                                   |
-| \b       | 匹配单词的开始或结束                       |
-| ^        | 匹配字符串的开始                           |
-| \$       | 匹配字符串的结束                           |
-| \W       | 匹配任意不是字母，数字，下划线，汉字的字符 |
-| \S       | 匹配任意不是空白符的字符                   |
-| \D       | 匹配任意非数字的字符                       |
-| \B       | 匹配不是单词开头或结束的位置               |
-| [^x]     | 匹配除了 x 以外的任意字符                  |
-| [^aeiou] | 匹配除了 aeiou 这几个字母以外的任意字符    |
+const s = '𠮷𠮷';
 
-### 常用限定符
+s.length; // 4
+codePointLength(s); // 2
+```
+
+### RegExp Character Classes
+
+| 符号       | 说明                                       |
+| :--------- | :----------------------------------------- |
+| .          | 匹配除换行符以外的任意字符                 |
+| \w         | 匹配字母或数字或下划线或汉字               |
+| \s         | 空白符(" " \n \r \t \f)                    |
+| \S         | 非空白符(alpha number)                     |
+| \d         | 匹配数字                                   |
+| \b         | 匹配单词的开始或结束                       |
+| ^          | 匹配字符串的开始                           |
+| \$         | 匹配字符串的结束                           |
+| \W         | 匹配任意不是字母，数字，下划线，汉字的字符 |
+| \S         | 匹配任意不是空白符的字符                   |
+| \D         | 匹配任意非数字的字符                       |
+| \B         | 匹配不是单词开头或结束的位置               |
+| `[^x]`     | 匹配除了 x 以外的任意字符                  |
+| `[^aeiou]` | 匹配除了 aeiou 这几个字母以外的任意字符    |
+
+### RegExp Quantifiers
 
 | 符号  | 说明              |
 | :---- | :---------------- |
-| \*    | 重复零次或更多次  |
+| `*`   | 重复零次或更多次  |
 | +     | 重复一次或更多次  |
 | ?     | 重复零次或一次    |
 | {n}   | 重复 n 次         |
@@ -3338,7 +3538,7 @@ var re = /pattern/gim;
 
 | 懒惰限定符 | 说明                              |
 | :--------- | :-------------------------------- |
-| \*?        | 重复任意次，但尽可能少重复        |
+| `*?`       | 重复任意次，但尽可能少重复        |
 | +?         | 重复 1 次或更多次，但尽可能少重复 |
 | ??         | 重复 0 次或 1 次，但尽可能少重复  |
 | {n,m}?     | 重复 n 到 m 次，但尽可能少重复    |
@@ -3349,7 +3549,8 @@ var re = /pattern/gim;
 位置编号 - 左括号的顺序
 
 ```js
-var regExp = /((<\/?\w+>.*\2))/g;
+// eslint-disable-next-line no-useless-backreference
+const regExp = /((<\/?\w+>.*\2))/g;
 ```
 
 - `\1 \2 \3`: 第 n 个子表达式匹配的结果字符
@@ -3357,15 +3558,13 @@ var regExp = /((<\/?\w+>.*\2))/g;
 
 ### RegExp 静态属性
 
-反向引用的值可以从 RegExp() 构造函数中取得
+反向引用的值可以从 `RegExp()` 构造函数中取得:
 
-```js
-RegExp.$1;
-RegExp.$_;
-RegExp.$&;
-RegExp.$+;
-RegExp.$*;
-```
+- `RegExp.$1`.
+- `RegExp.$_`.
+- `RegExp.$&`.
+- `RegExp.$+`.
+- `RegExp.$*`.
 
 | 长名         | 短名 | 说明                     |
 | :----------- | :--- | :----------------------- |
@@ -3376,7 +3575,7 @@ RegExp.$*;
 | rightContext | \$\' | 匹配结果字符串后的字符   |
 | multiline    | \$\* | 指定是否开启多行模式     |
 
-### 分组语法
+### RegExp Group and Ranges
 
 - group
 - lookahead (零宽断言)
@@ -3392,32 +3591,67 @@ RegExp.$*;
 |          | `(?<!exp)`     | 匹配前面不是 exp 的位置                         |
 | 注释     | (?#comment)    | 用于提供注释让人阅读                            |
 
+```js
+const string = 'Favorite GitHub Repos: tc39/ecma262 v8/v8.dev';
+const regex = /\b(?<owner>[a-z0-9]+)\/(?<repo>[a-z0-9\.]+)\b/g;
+
+for (const match of string.matchAll(regex)) {
+  console.log(`${match[0]} at ${match.index} with '${match.input}'`);
+  console.log(`owner: ${match.groups.owner}`);
+  console.log(`repo: ${match.groups.repo}`);
+}
+```
+
 ### RegExp Best Practice
 
 - 不使用 new RegExp(),使用正则表达式字面量
 - 将正则表达式赋值给变量，防止正则表达式重复创建
-- 以简单(唯一性)字元开始，如 `^/$ x \u363A [a-z] \b`, 避免以分组表达式开始
-
-```js
-\s\s* 优于 \s{1,}
-```
-
-- 减少表达式的重叠匹配
-- 减少分支表达式,并将最常用的分支放在最前面
-- 无需反向引用时，使用非捕获组
-
-```js
-(?:...) 优于 (...)
-```
+- 以简单(唯一性)字元开始，如 `^/$ x \u363A [a-z] \b`, 避免以分组表达式开始:
+  e.g `\s\s*` 优于 `\s{1,}`.
+- 减少表达式的重叠匹配.
+- 减少分支表达式,并将最常用的分支放在最前面.
+- 无需反向引用时，使用非捕获组:
+  e.g `(?:...)` 优于 `(...)`.
 
 ### RegExp 常用函数
 
 #### test
 
-```javascript
-/Reg/Flags.test(str); // 返回值为 Boolean
+```js
+/[a-z|A-Z|0-9]/gim.test(str);
+```
 
-/[a-z|A-Z|0-9]/gmi.test(str);
+```js
+const ignoreList = [
+  // # All
+  '^npm-debug\\.log$', // Error log for npm
+  '^\\..*\\.swp$', // Swap file for vim state
+
+  // # macOS
+  '^\\.DS_Store$', // Stores custom folder attributes
+  '^\\.AppleDouble$', // Stores additional file resources
+  '^\\.LSOverride$', // Contains the absolute path to the app to be used
+  '^Icon\\r$', // Custom Finder icon: http://superuser.com/questions/298785/icon-file-on-os-x-desktop
+  '^\\._.*', // Thumbnail
+  '^\\.Spotlight-V100(?:$|\\/)', // Directory that might appear on external disk
+  '\\.Trashes', // File that might appear on external disk
+  '^__MACOSX$', // Resource fork
+
+  // # Linux
+  '~$', // Backup file
+
+  // # Windows
+  '^Thumbs\\.db$', // Image file cache
+  '^ehthumbs\\.db$', // Folder config file
+  '^Desktop\\.ini$', // Stores custom folder attributes
+  '@eaDir$', // "hidden" folder where the server stores thumbnails
+];
+
+export const junkRegex = new RegExp(ignoreList.join('|'));
+
+export function isJunk(filename) {
+  return junkRegex.test(filename);
+}
 ```
 
 #### replace
@@ -3435,13 +3669,14 @@ replace(regExp, str / func);
 - 倒数第二个参数: 匹配文本在源字符串中的下标位置
 - 最后一个参数: 源字符串自身
 
-###### replace best practice
+###### Replace best practice
 
 - 使用２个子表达式修剪字符串,字符串总长度影响性能
 - 使用循环修剪字符串(分别用 正/负循环 修剪 首/尾空白符),空白字符长度影响性能
 
 ```js
 if (!String.prototype.trim) {
+  // eslint-disable-next-line no-extend-native
   String.prototype.trim = function () {
     return this.replace(/^\s+/, '').replace(/\s+$/, '');
   };
@@ -3450,10 +3685,11 @@ if (!String.prototype.trim) {
 
 ```js
 if (!String.prototype.trim) {
+  // eslint-disable-next-line no-extend-native
   String.prototype.trim = function () {
-    var str = this.replace(/^\s+/, ''),
-      end = str.length - 1,
-      ws = /\s/;
+    const str = this.replace(/^\s+/, '');
+    let end = str.length - 1;
+    const ws = /\s/;
 
     while (ws.test(str.charAt(end))) {
       end--;
@@ -3494,11 +3730,12 @@ Error and Exception
 - 自定义错误
 
 ```js
-function MyError(message) {
-  Error.call(this, arguments);
-  this.message = message;
+function MyError(...args) {
+  Error.call(this, args);
+  this.message = args[0];
 }
-MyError.prototype = new Error();
+
+MyError.prototype = new Error('Error');
 MyError.prototype.constructor = MyError;
 ```
 
