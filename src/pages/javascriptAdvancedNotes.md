@@ -809,10 +809,60 @@ obj[Symbol.iterator] = function* () {
 
 ### New Object API
 
-- Object.keys()
-- Object.values()
-- Object.entries()
-- Object.fromEntries()
+- `Object.is`:
+
+```js
+// Case 1: Evaluation result is the same as using ===
+Object.is(25, 25); // true
+Object.is('foo', 'foo'); // true
+Object.is('foo', 'bar'); // false
+Object.is(null, null); // true
+Object.is(undefined, undefined); // true
+Object.is(window, window); // true
+Object.is([], []); // false
+const foo = { a: 1 };
+const bar = { a: 1 };
+Object.is(foo, foo); // true
+Object.is(foo, bar); // false: different reference pointers.
+
+// Case 2: Signed zero
+Object.is(0, -0); // false
+Object.is(+0, -0); // false
+Object.is(-0, -0); // true
+Object.is(0n, -0n); // true
+
+// Case 3: NaN
+Object.is(NaN, 0 / 0); // true
+Object.is(NaN, Number.NaN); // true
+```
+
+```js
+if (!Object.is) {
+  Object.defineProperty(Object, 'is', {
+    value: (x, y) => {
+      // SameValue algorithm
+      if (x === y) {
+        // return true if x and y are not 0, OR
+        // if x and y are both 0 of the same sign.
+        // This checks for cases 1 and 2 above.
+        return x !== 0 || 1 / x === 1 / y;
+      } else {
+        // return true if both x AND y evaluate to NaN.
+        // The only possibility for a variable to not be strictly equal to itself
+        // is when that variable evaluates to NaN (example: Number.NaN, 0/0, NaN).
+        // This checks for case 3.
+        // eslint-disable-next-line no-self-compare
+        return x !== x && y !== y;
+      }
+    },
+  });
+}
+```
+
+- `Object.keys`.
+- `Object.values`.
+- `Object.entries`.
+- `Object.fromEntries`.
 
 ```js
 const score = {
@@ -1680,24 +1730,24 @@ Proxy(target, {
 });
 ```
 
-APIs of handler:
+`Reflect` handlers:
 
-- `get`.
-- `set`.
-- `has`.
-- `apply`.
-- `construct`.
-- `Reflect.ownKeys`:
+- `Reflect.get(target, propKey)`.
+- `Reflect.set(target, propKey, value)`.
+- `Reflect.has(target, propKey)`.
+- `Reflect.apply(target, thisArgument, argumentsList)`.
+- `Reflect.construct(target, argumentsList)`:
+  `new target(...argumentsList)`.
+- `Reflect.ownKeys(target)`:
   `Object.getOwnPropertyNames` + `Object.getOwnPropertySymbols`,
   all keys include Symbols.
-- `deleteProperty`.
-- `defineProperty`.
-- `isExtensible`.
-- `preventExtensions`.
-- `getPrototypeOf`.
-- `setPrototypeOf`.
-- `getOwnPropertyDescriptor`.
-- `getOwnPropertyDescriptors`.
+- `Reflect.getPrototypeOf(target)`.
+- `Reflect.setPrototypeOf(target, prototype)`.
+- `Reflect.getOwnPropertyDescriptor(target, propKey)`.
+- `Reflect.defineProperty(target, propKey, attributes)`.
+- `Reflect.deleteProperty(target, propKey)`.
+- `Reflect.isExtensible(target)`.
+- `Reflect.preventExtensions(target)`.
 
 Change original object will change proxy object,
 change proxy object will change original object via `set` related API.
@@ -1717,6 +1767,7 @@ change proxy object will change original object via `set` related API.
   - 对象上定义新属性时, 只有 Proxy 可以监听到.
   - 数组新增删除修改时, 只有 Proxy 可以监听到.
   - `Object.defineProperty` 无法监听数组, `Proxy` 则可以直接监听数组变化.
+  - Vue2: 重写数组方法监听数组变化, Vue3: `Proxy` 监听数组变化.
 - Proxy 不兼容 IE, Object.defineProperty 不兼容 IE8 及以下.
 
 #### Default Zero Value with Proxy
@@ -2419,6 +2470,26 @@ const addOne = curry(add, 1);
 const addFive = curry(addOne, 1, 3);
 // addFive(4) === 9;
 ```
+
+### Functional JavaScript Library
+
+#### Lodash
+
+- chunk.
+- shuffle.
+- take.
+- difference.
+- intersection.
+- isEmpty.
+- orderBy.
+- merge.
+- cloneDeep.
+- debounce.
+- throttle.
+- startCase.
+- kebabCase.
+- snakeCase.
+- camelCase.
 
 ## Internal JavaScript
 
@@ -5901,7 +5972,7 @@ if (entry.transferSize === 0) {
 ```
 
 ```js
-function handleRequest(event) {
+async function handleRequest(event) {
   const cacheStart = performance.now();
   const response = await caches.match(event.request);
   const cacheEnd = performance.now();
@@ -7584,6 +7655,40 @@ def allow_request(req):
 ```
 
 ### Sandbox
+
+- `eval()`:
+  它能访问执行上下文中的局部变量, 也能访问所有全局变量, 是一个非常危险的函数.
+- `new Function()`:
+  在全局作用域中被创建, 不会创建闭包.
+  当运行函数时, 只能访问本地变量和全局变量,
+  不能访问 Function 构造器被调用生成的上下文的作用域.
+- `with () {}`:
+  它首先会在传入的对象中查找对应的变量,
+  如果找不到就会往更上层的全局作用域去查找,
+  导致全局环境污染.
+
+ProxySandbox:
+
+```js
+function sandbox(code) {
+  code = `with (sandbox) {${code}}`;
+  // eslint-disable-next-line no-new-func
+  const fn = new Function('sandbox', code);
+
+  return function (sandbox) {
+    const sandboxProxy = new Proxy(sandbox, {
+      has(target, key) {
+        return true;
+      },
+      get(target, key) {
+        if (key === Symbol.unscopables) return undefined;
+        return target[key];
+      },
+    });
+    return fn(sandboxProxy);
+  };
+}
+```
 
 ```js
 // 简化伪代码示例
