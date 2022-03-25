@@ -16,9 +16,21 @@ tags:
 
 ## Core of React
 
-- `Scheduler` 调度器: 度任务的优先级, 高优任务优先进入 `Reconciler`.
-- `Reconciler` 协调器: 负责找出变化的组件.
-- `Renderer` 渲染器: 负责将变化的组件渲染到页面上.
+- `Scheduler` 调度器: 调度任务的优先级, 高优任务优先进入 `Reconciler`.
+- `Reconciler` 协调器:
+  - 装载 `Renderer`.
+  - 接收 `ReactDOM` 和 `React` 模块 (用户代码) 发起的更新请求:
+    - `setState`.
+    - `dispatchAction`.
+  - 找出变化组件, 构建 Fiber Tree.
+- `Renderer` 渲染器:
+  - 引导 `React` 应用启动 (e.g `ReactDOM.createRoot(rootNode).render(<App />)`).
+  - 实现 `HostConfig` 协议, 将变化的组件渲染到页面上.
+
+其中 `Reconciler` 构建 Fiber Tree 的过程被包装成一个回调函数, 传入 `Scheduler` 模块等待调度.
+`Scheduler` 将回调函数进一步包装成任务对象, 放入多优先级调度的任务队列, 循环消费任务队列, 直至队列清空.
+
+[![React Core Packages](./figures/ReactCorePackages.png)](https://7kms.github.io/react-illustration-series/main/macro-structure)
 
 ### React Virtual DOM
 
@@ -40,7 +52,7 @@ React Fiber 的目标是提高其在动画、布局和手势等领域的适用�
 
 #### React Fiber Metadata
 
-[Fiber](https://github.com/facebook/react/blob/v17.0.0/packages/react-reconciler/src/ReactInternalTypes.js):
+[Fiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js):
 
 - Component type.
 - Current props and state.
@@ -186,16 +198,16 @@ export const IdleLane: Lanes = /*                       */ 0b0100000000000000000
 export const OffscreenLane: Lane = /*                   */ 0b1000000000000000000000000000000;
 ```
 
-### React Diff Stage
+### React Diff Phase
 
-Reconciler
+Reconciler:
 
 - O(n) incomplete tree comparison: only compare same level nodes.
 - `key` prop to hint for nodes reuse.
 
-### React Render Stage
+### React Render Phase
 
-Reconciler
+Reconciler.
 
 #### Elements of Different Types
 
@@ -217,17 +229,59 @@ Reconciler
 - Then `render` called,
   diff algorithm recursively on the old result and the new result.
 
-### React Commit Stage
+### React Commit Phase
 
-Renderer
+Renderer:
 
-#### Before Mutation Stage
+- Implementing `HostConfig` [protocol](https://github.com/facebook/react/blob/main/packages/react-reconciler/README.md).
+- Rendering fiber tree to real contents
+  - Web: DOM node.
+  - Native: native UI.
+  - Server: SSR strings.
+- Real renderer [demo](https://github.com/sabertazimi/awesome-web/tree/main/packages/react-renderer/src/renderer).
 
-#### Mutation Stage
+#### HostConfig Protocol
+
+- `isPrimaryRender: true`.
+- `supportsHydration: true`: SSR renderer.
+- `supportsMutation: true`: React DOM renderer.
+- `supportsPersistence: true`: React Native renderer.
+- Platform timer functions:
+  - now.
+  - scheduleTimeout.
+  - cancelTimeout.
+- Creation operations:
+  - createInstance.
+  - createTextInstance.
+- UI tree operations:
+  - appendInitialChild.
+  - appendChild.
+  - appendChildToContainer.
+  - removeChildFromContainer.
+  - removeChild.
+  - clearContainer.
+- Update props operations:
+  - finalizeInitialChildren.
+  - prepareUpdate.
+  - commitUpdate.
+  - commitTextUpdate.
+  - shouldSetTextContent.
+  - resetTextContent.
+- Context and schedule operations:
+  - getRootHostContext.
+  - getChildHostContext.
+  - getPublicInstance.
+  - prepareForCommit.
+  - resetAfterCommit.
+  - preparePortalMount.
+
+#### Before Mutation Phase
+
+#### Mutation Phase
 
 - `Placement` effects: `DOM.appendChild` called.
 
-#### Layout Stage
+#### Layout Phase
 
 - `componentDidMount` lifecycle function called **synchronously**.
 - `useLayoutEffect` callback called **synchronously**.
@@ -505,11 +559,11 @@ this.setState((prevState, props) => ({
 React 协调阶段的生命周期钩子可能会被调用多次,
 协调阶段的生命周期钩子不要包含副作用
 
-#### Creation and Mounting Stage
+#### Creation and Mounting Phase
 
 constructor(props, context) -> getDerivedStateFromProps() -> render() -> componentDidMount()
 
-#### Updating Stage
+#### Updating Phase
 
 update for three reasons:
 
@@ -524,7 +578,7 @@ getSnapshotBeforeUpdate:
 在最新的渲染输出提交给 DOM 前将会立即调用,
 这对于从 DOM 捕获信息（比如：滚动位置）很有用.
 
-#### Unmounting Stage
+#### Unmounting Phase
 
 componentWillUnmount()
 
@@ -688,6 +742,75 @@ export default function App() {
     </Breadcrumbs>
   );
 }
+```
+
+React `SubComponents` pattern:
+
+```tsx
+import type { CSSProperties, ReactNode } from 'react';
+import React from 'react';
+
+interface Props {
+  children: ReactNode;
+  style?: CSSProperties;
+  rest?: any;
+}
+
+const Header = ({ children, style, ...rest }: Props): JSX.Element => (
+  <div style={{ ...style }} {...rest}>
+    {children}
+  </div>
+);
+
+const Body = ({ children, style, ...rest }: Props): JSX.Element => (
+  <div style={{ ...style }} {...rest}>
+    {children}
+  </div>
+);
+
+const Footer = ({ children, style, ...rest }: Props): JSX.Element => (
+  <div style={{ ...style }} {...rest}>
+    {children}
+  </div>
+);
+
+const getChildrenOnDisplayName = (children: ReactNode[], displayName: string) =>
+  React.Children.map(children, child =>
+    child.displayName === displayName ? child : null
+  );
+
+const Card = ({ children }: { children: ReactNode[] }): JSX.Element => {
+  const header = getChildrenOnDisplayName(children, 'Header');
+  const body = getChildrenOnDisplayName(children, 'Body');
+  const footer = getChildrenOnDisplayName(children, 'Footer');
+
+  return (
+    <div className="card">
+      {header && <div className="card-header">{header}</div>}
+      <div className="card-body">{body}</div>
+      {footer && <div className="card-footer">{footer}</div>}
+    </div>
+  );
+};
+
+Header.displayName = 'Header';
+Body.displayName = 'Body';
+Footer.displayName = 'Footer';
+Card.Header = Header;
+Card.Body = Body;
+Card.Footer = Footer;
+
+const App = () => (
+  <div>
+    <Card>
+      <Card.Header>Header</Card.Header>
+      <Card.Body>Body</Card.Body>
+      <Card.Footer>Footer</Card.Footer>
+    </Card>
+  </div>
+);
+
+export default App;
 ```
 
 ### Refs
@@ -1262,7 +1385,9 @@ App = MyReact.render(Component);
 - **Shallow compare** diff.
 - **Optimization** helps to
   avoid expensive calculations on every render
-  (avoid re-render problem).
+  (avoid re-render problem):
+  - **Good use** for complex objects or expensive calculations.
+  - **Donn't use** for primitive values or simple calculations.
 
 ```ts
 function mountMemo<T>(
@@ -2096,7 +2221,7 @@ function App() {
 如果出现更紧急的更新 (User Input), 则上面的更新都会被中断,
 直到没有其他紧急操作之后才会去继续执行更新.
 
-Debounce:
+Opt-in concurrent features (implementing debounce-like function):
 
 ```js
 import { useRef, useState, useTransition } from 'react';
@@ -2139,15 +2264,52 @@ function Checkbox() {
 
 ### UseSyncExternalStore Hook
 
-Allows external stores to support concurrent reads
+`Props`/`Context`/`useState`/`useReducer` are internal states
+not affected by concurrent features.
+
+External stores affected by concurrent features including:
+
+- Global variables:
+  - `document.body`.
+- Date.
+- Redux store.
+- Zustand store.
+
+`useSyncExternalStore` allows external stores to support concurrent reads
 by forcing updates to the store to be synchronous.
 
-```js
+```ts
+type UseSyncExternalStore = (
+  subscribe: (callback: Callback) => Unsubscribe,
+  getSnapshot: () => State
+) => State;
+```
+
+Simple demo from [React Conf 2021](https://www.youtube.com/watch?v=oPfSC5bQPR8):
+
+```jsx
 import { useSyncExternalStore } from 'react';
 
 // We will also publish a backwards compatible shim
 // It will prefer the native API, when available
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
+
+const store = {
+  state: { count: 0 },
+  listeners: new Set(),
+  setState: fn => {
+    store.state = fn(store.state);
+    store.listeners.forEach(listener => listener());
+  },
+  subscribe: callback => {
+    store.listeners.add(callback);
+    return () => store.listeners.delete(callback);
+  },
+  getSnapshot: () => {
+    const snap = Object.freeze(store.state);
+    return snap;
+  },
+};
 
 function App() {
   // Basic usage. getSnapshot must return a cached/memoized result
@@ -2156,9 +2318,117 @@ function App() {
   // Selecting a specific field using an inline getSnapshot
   const selectedField = useSyncExternalStore(
     store.subscribe,
-    () => store.getSnapshot().selectedField
+    () => store.getSnapshot().count
+  );
+
+  return (
+    <div>
+      {state.count}
+      {selectedField}
+    </div>
   );
 }
+```
+
+Migrate from `useState` + `useEffect` + `useRef` to `useSyncExternalStore`
+for 3rd external stores libraries (e.g `Redux`):
+
+```jsx
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
+
+const createStore = initialState => {
+  let state = initialState;
+  const listeners = new Set();
+
+  const getState = () => state;
+  const setState = fn => {
+    state = fn(state);
+    listeners.forEach(listener => listener());
+  };
+  const subscribe = listener => {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  };
+
+  return {
+    getState,
+    setState,
+    subscribe,
+  };
+};
+
+// Explicitly process external store for React v17.
+// Sync external store state to React internal state
+// with `useState` and `store.subscribe`:
+// store.setState -> updater -> setState.
+const useStoreLegacy = (store, selector) => {
+  const [state, setState] = useState(selector(store.getState()));
+
+  useEffect(() => {
+    const updater = () => setState(selector(store.getState()));
+    const unsubscribe = store.subscribe(updater);
+    updater();
+    return unsubscribe;
+  }, [store, selector]);
+
+  return state;
+};
+
+// Use `useSyncExternalStore` for React v18+.
+const useStore = (store, selector) => {
+  return useSyncExternalStore(
+    store.subscribe,
+    useCallback(() => selector(store.getState()), [store, selector])
+  );
+};
+
+const store = createStore({ count: 0, text: 'hello' });
+
+const Counter = () => {
+  const count = useStore(
+    store,
+    useCallback(state => state.count, [])
+  );
+
+  const handleClick = () =>
+    store.setState(state => ({ ...state, count: state.count + 1 }));
+
+  return (
+    <div>
+      {count}
+      <button onClick={handleClick}>+1</button>
+    </div>
+  );
+};
+
+const TextBox = () => {
+  const text = useStore(
+    store,
+    useCallback(state => state.text, [])
+  );
+
+  const handleChange = event => {
+    store.setState(state => ({ ...state, text: event.target.value }));
+  };
+
+  return (
+    <div>
+      <input type="text" value={text} onChange={handleChange} />
+    </div>
+  );
+};
+
+const App = () => (
+  <div>
+    <Counter />
+    <Counter />
+    <TextBox />
+    <TextBox />
+  </div>
+);
+
+React.createRoot(document.querySelector('#root')).render(<App />);
 ```
 
 ### Custom Hooks
@@ -3241,6 +3511,45 @@ const App = props => {
 };
 ```
 
+### Custom URL Params Hook
+
+Storing state in the URL:
+
+```ts
+export default function useStateParams<T>(
+  initialState: T,
+  paramsName: string,
+  serialize: (state: T) => string,
+  deserialize: (state: string) => T
+): [T, (state: T) => void] {
+  const history = useHistory();
+  const search = new URLSearchParams(history.location.search);
+
+  const existingValue = search.get(paramsName);
+  const [state, setState] = useState<T>(
+    existingValue ? deserialize(existingValue) : initialState
+  );
+
+  useEffect(() => {
+    // Updates state when user navigates backwards or forwards in browser history
+    if (existingValue && deserialize(existingValue) !== state) {
+      setState(deserialize(existingValue));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [existingValue]);
+
+  const onChange = (s: T) => {
+    setState(s);
+    const searchParams = new URLSearchParams(history.location.search);
+    searchParams.set(paramsName, serialize(s));
+    const pathname = history.location.pathname;
+    history.push({ pathname, search: searchParams.toString() });
+  };
+
+  return [state, onChange];
+}
+```
+
 ### Custom Store Hook
 
 Simple implementation:
@@ -3419,7 +3728,7 @@ class Publisher {
 }
 
 class Subscriber {
-  collected: any;
+  collected: any; // Previous state cache.
   collector;
   onChange;
 
@@ -3926,58 +4235,6 @@ state = {};
 handle = e => {};
 ```
 
-### Lazy and Suspense
-
-```jsx
-import React, { lazy, Suspense } from 'react';
-
-const Product = lazy(() => import('./ProductHandler'));
-
-const App = () => (
-  <div className="product-list">
-    <h1>My Awesome Product</h1>
-    <Suspense fallback={<h2>Product list is loading...</h2>}>
-      <p>Take a look at my product:</p>
-      <section>
-        <Product id="PDT-49-232" />
-        <Product id="PDT-50-233" />
-        <Product id="PDT-51-234" />
-      </section>
-    </Suspense>
-  </div>
-);
-```
-
-```jsx
-const { lazy, Suspense } = React;
-
-const Lazy = lazy(
-  () =>
-    new Promise(resolve => {
-      setTimeout(() => {
-        resolve({ default: () => <Resource /> });
-      }, 4000);
-    })
-);
-
-const Resource = () => (
-  <div className="box">
-    <h1>React Lazy</h1>
-    <p>This component loaded after 4 seconds, using React Lazy and Suspense</p>
-  </div>
-);
-
-const App = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Lazy />
-    </Suspense>
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
 ### Context API
 
 Context API provide a Dependency Injection style method,
@@ -4276,7 +4533,7 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
-### Concurrent Mode
+### Concurrent Features
 
 ```js
 import * as ReactDOM from 'react-dom';
@@ -4289,7 +4546,11 @@ const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(<App />);
 ```
 
-Automatic batching in promises, async code and native event handlers:
+### Batching Updates
+
+All updates will be automatically batched,
+including updates inside of
+**promises, async code and native event handlers**:
 
 ```js
 function handleClick() {
@@ -4323,24 +4584,96 @@ element.addEventListener('click', () => {
 });
 ```
 
-### Batching Updates
+`ReactDOM.flushSync` can opt-out of automatic batching.
 
-All updates will be automatically batched,
-including updates inside of
-**timeouts, promises, native event handlers**:
+### Suspense
 
-```js
-function handleClick() {
-  setCount(c => c + 1);
-  setFlag(f => !f);
-  // React 18+ will only re-render once at the end (that's batching!)
-}
+Extract loading/skeleton/placeholder components into single place:
 
-setTimeout(() => {
-  setCount(c => c + 1);
-  setFlag(f => !f);
-  // React 18+ will only re-render once at the end (that's batching!)
-}, 1000);
+```jsx
+const App = () => (
+  <Suspense fallback={<Skeleton />}>
+    <Header />
+    <Suspense fallback={<ListPlaceholder />}>
+      <ListLayout>
+        <List pageId={pageId} />
+      </ListLayout>
+    </Suspense>
+  </Suspense>
+);
+```
+
+#### Suspense and Lazy
+
+Lazy loading and code splitting:
+
+```jsx
+import React, { lazy, Suspense } from 'react';
+
+const Product = lazy(() => import('./ProductHandler'));
+
+const App = () => (
+  <div className="product-list">
+    <h1>My Awesome Product</h1>
+    <Suspense fallback={<h2>Product list is loading...</h2>}>
+      <p>Take a look at my product:</p>
+      <section>
+        <Product id="PDT-49-232" />
+        <Product id="PDT-50-233" />
+        <Product id="PDT-51-234" />
+      </section>
+    </Suspense>
+  </div>
+);
+```
+
+```jsx
+const { lazy, Suspense } = React;
+
+const Lazy = lazy(
+  () =>
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve({ default: () => <Resource /> });
+      }, 4000);
+    })
+);
+
+const Resource = () => (
+  <div className="box">
+    <h1>React Lazy</h1>
+    <p>This component loaded after 4 seconds, using React Lazy and Suspense</p>
+  </div>
+);
+
+const App = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Lazy />
+    </Suspense>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+#### Suspense for SSR
+
+React v18+: enable `Suspense` on the server:
+
+- Selective Hydration: one slow part doesn't slow down whole page.
+- Streaming HTML: show initial HTML early and stream the rest HTML.
+- Enable code splitting for SSR.
+
+```jsx
+const LandingPage = () => (
+  <div>
+    <FastComponent />
+    <Suspense fallback={<Spinner />}>
+      <Comments />
+    </Suspense>
+  </div>
+);
 ```
 
 ## React Performance
@@ -4367,6 +4700,7 @@ setTimeout(() => {
 - Isomorphic rendering.
 - Webpack bundle analyzer.
 - [Progressive React](https://houssein.me/progressive-react).
+- `useDeferredValue`/`useTransition` hook for debounce concurrent features.
 
 ### Re-rendering Problem
 
@@ -5132,24 +5466,24 @@ type State = typeof initialState;
 
 ```ts
 export function updateName(name: string) {
-  return <const>{
+  return {
     type: 'UPDATE_NAME',
     name,
-  };
+  } as const;
 }
 
 export function addPoints(points: number) {
-  return <const>{
+  return {
     type: 'ADD_POINTS',
     points,
-  };
+  } as const;
 }
 
 export function setLikesGames(value: boolean) {
-  return <const>{
+  return {
     type: 'SET_LIKES_GAMES',
     value,
-  };
+  } as const;
 }
 
 type Action = ReturnType<
@@ -6254,7 +6588,10 @@ export default DatePicker;
 #### Styles Isolation
 
 - Shadow DOM container.
-- CSS scoped / CSS selector renaming.
+- CSS module.
+- CSS scoped namespace
+- CSS selector renaming.
+- CSS in JS.
 
 #### Scripts Isolation
 
