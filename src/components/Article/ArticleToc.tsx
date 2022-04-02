@@ -46,6 +46,7 @@ const ArticleToc = ({ toc }: Props): JSX.Element => {
             'scale-0': !tocVisible,
           })}
           dangerouslySetInnerHTML={{ __html: toc }}
+          onClick={handleClick}
         />
       </Drawer>
     </div>
