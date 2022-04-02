@@ -14,16 +14,16 @@ interface Props {
 
 const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
+    mode="horizontal"
     className={classNames(
       'fixed z-100 w-full font-extrabold bg-transparent border-transparent transition transform-gpu hidden md:visible md:flex',
       {
         'bg-gradient-primary': !fixed,
         'bg-white/30': fixed,
         'shadow-lg': fixed,
-        'backdrop-blur-sm': fixed,
+        'backdrop-blur-primary': fixed,
       }
     )}
-    mode="horizontal"
   >
     <Menu.Item
       key="home"
