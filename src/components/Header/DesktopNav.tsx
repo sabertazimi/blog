@@ -15,16 +15,21 @@ interface Props {
 const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
     className={classNames(
-      'fixed z-100 w-full font-extrabold transition transform-gpu border-transparent hidden md:visible md:flex',
-      { 'bg-white': fixed, 'bg-gradient-primary': !fixed }
+      'fixed z-100 w-full font-extrabold bg-transparent border-transparent transition transform-gpu hidden md:visible md:flex',
+      {
+        'bg-gradient-primary': !fixed,
+        'bg-white/30': fixed,
+        'shadow-lg': fixed,
+        'backdrop-blur-sm': fixed,
+      }
     )}
     mode="horizontal"
   >
     <Menu.Item
       key="home"
       className={classNames('flex-container transition transform-gpu', {
-        'scale-0': fixed,
         'scale-100': !fixed,
+        'scale-0': fixed,
       })}
     >
       <Link to="/">
@@ -35,14 +40,14 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       <Menu.Item
         key={route.id}
         className={classNames('flex-container transition transform-gpu', {
-          '-translate-x-28': fixed,
           'translate-x-0': !fixed,
+          '-translate-x-28': fixed,
         })}
       >
         <Link
           className={classNames('transition-none', {
-            'text-dark': fixed,
             'text-light': !fixed,
+            'text-dark': fixed,
           })}
           to={route.path}
         >
@@ -55,8 +60,8 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       className={classNames(
         'flex-container border-transparent transition transform-gpu',
         {
-          '-translate-x-28': fixed,
           'translate-x-0': !fixed,
+          '-translate-x-28': fixed,
         }
       )}
     >
