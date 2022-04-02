@@ -54,6 +54,6 @@ describe('ErrorBoundary', () => {
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     rerender(<ComponentWithError shouldThrow />);
     expect(screen.getByRole('alert')).toBeInTheDocument();
-    expect(mockConsoleError).toHaveBeenCalledTimes(4);
+    expect(mockConsoleError).toHaveBeenCalledTimes(7);
   });
 });
