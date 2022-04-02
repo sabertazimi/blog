@@ -3328,7 +3328,7 @@ __metadata:
     "@types/react-dom": ^17.0.14
     "@types/react-helmet": ^6.1.5
     "@types/react-test-renderer": ^17.0.1
-    antd: ^4.19.4
+    antd: ^4.19.5
     autoprefixer: ^10.4.4
     babel-jest: ^27.5.1
     babel-preset-gatsby: ^2.11.1
@@ -3362,7 +3362,7 @@ __metadata:
     markdownlint-cli: ^0.31.1
     postcss: ^8.4.12
     postcss-import: ^14.1.0
-    prettier: ^2.6.1
+    prettier: ^2.6.2
     prismjs: ^1.27.0
     react: ^18.0.0
     react-dom: ^18.0.0
@@ -4740,9 +4740,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^4.0.0, antd@npm:^4.19.4":
-  version: 4.19.4
-  resolution: "antd@npm:4.19.4"
+"antd@npm:^4.0.0, antd@npm:^4.19.5":
+  version: 4.19.5
+  resolution: "antd@npm:4.19.5"
   dependencies:
     "@ant-design/colors": ^6.0.0
     "@ant-design/icons": ^4.7.0
@@ -4760,7 +4760,7 @@ __metadata:
     rc-dialog: ~8.6.0
     rc-drawer: ~4.4.2
     rc-dropdown: ~3.3.2
-    rc-field-form: ~1.24.0
+    rc-field-form: ~1.25.0
     rc-image: ~5.2.5
     rc-input: ~0.0.1-alpha.5
     rc-input-number: ~7.3.0
@@ -4790,7 +4790,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: d565c251f6e6a3581d283a362aa73a6ed1dc23816cbb82f11ace836dac30ee660456a2cb2ef878c2789897e10aae9ca85eb8b05a021d26a43b1f167d8342a2b1
+  checksum: 08f543da4712fc069d04f69295ac4d0088138a0e27d14692f4c6a8f9bdfa592eb4e239a0208fcd63871ea4bc84896e3e8fa39ab2c975ac5719a9efdf072332dd
   languageName: node
   linkType: hard
 
@@ -16129,12 +16129,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "prettier@npm:2.6.1"
+"prettier@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "prettier@npm:2.6.2"
   bin:
     prettier: bin-prettier.js
-  checksum: 78be1f8a3ddfad7c3d8a854b6c8941a3bb1ddfca4225c38d778e0fe1029a55368f71b3bbefff82c689015fbb4d391ec44add957f01308ad2725e01a7c1f37cb6
+  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
   languageName: node
   linkType: hard
 
@@ -16545,9 +16545,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-field-form@npm:~1.24.0":
-  version: 1.24.0
-  resolution: "rc-field-form@npm:1.24.0"
+"rc-field-form@npm:~1.25.0":
+  version: 1.25.0
+  resolution: "rc-field-form@npm:1.25.0"
   dependencies:
     "@babel/runtime": ^7.8.4
     async-validator: ^4.0.2
@@ -16555,7 +16555,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 9df11592fb9c736170ee1ef33b64a9d8cfc790f3f6a72457f2a1d805939b1f3bc3a161590962bd772fd96e97029d4c3ea36cb202fc5000097719194b6fafe261
+  checksum: 3c4441241b480bb208490ddb61a1a401249b6533839908c532b81752169ba774a88511c811cee1062649ef5119df071736fdc49d558638c75224c12b0925ff70
   languageName: node
   linkType: hard
 
