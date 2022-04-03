@@ -30,6 +30,7 @@
 
 .markdown-body a {
   position: relative;
+  padding-bottom: 2px;
   text-decoration: none;
   background-color: transparent;
   border-bottom: none;
@@ -224,12 +225,36 @@
   margin-bottom: 20px;
 }
 
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
 .markdown-body ul ul,
 .markdown-body ul ol,
 .markdown-body ol ol,
 .markdown-body ol ul {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.markdown-body ul ul,
+.markdown-body ol ul {
+  list-style-type: circle;
+}
+
+.markdown-body ul ul ul,
+.markdown-body ul ol ul,
+.markdown-body ol ul ul,
+.markdown-body ol ol ul {
+  list-style-type: square;
+}
+
+.markdown-body ul ol,
+.markdown-body ol ol {
   list-style-type: lower-roman;
 }
 
