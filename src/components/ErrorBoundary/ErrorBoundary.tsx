@@ -34,6 +34,8 @@ class ErrorBoundary extends Component<Props, State> {
 
     if (hasError && isDevelopment) {
       return (
+        // @TODO: Remove comment until ant-design/ant-design#34945 merged.
+        // @ts-expect-error Wait for https://github.com/ant-design/ant-design/pull/34945.
         <Result status="error" title="Some Error Happened">
           <div role="alert">
             <Typography.Paragraph>
