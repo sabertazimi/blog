@@ -2,7 +2,7 @@
 layout: post
 title: 'JavaScript Advanced Notes'
 subtitle: 'Be a Stupid Learner'
-date: 2018-03-11
+date: 2022-04-03
 author: 'Sabertaz'
 header-img: 'images/home-bg.jpg'
 tags:
@@ -20,22 +20,30 @@ tags:
 - [Technical Committees 39](https://www.ecma-international.org/technical-committees/tc39 'TC39')
 - [New Feature Process](http://tc39.github.io/process-document)
 
+JavaScript = ECMAScript + DOM + BOM:
+
+- ECMAScript: ECMA-262.
+- DOM: DOM Core + DOM HTML (`document`).
+- BOM: Browser Object Model API (HTML5)
+  (`window`/`navigator`/`location`/`screen`/`performance` etc).
+
 ### Variable
 
-- 一方面规定, var/function 声明的全局变量,
+- 一方面规定, `var`/`function` 声明的全局变量,
   依旧是全局对象的属性, 意味着会`Hoisting`.
-- 另一方面规定, let/const/class 声明的全局变量,
+- 另一方面规定, `let`/`const`/`class` 声明的全局变量,
   不属于全局对象的属性, 意味着不会`Hoisting`.
+- `var` 只有函数作用域, `let`/`const` 拥有块级作用域.
 
 #### Let Variable
 
-- 块级作用域内定义的变量/函数，在块级作用域外 ReferenceError
-- 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone)
+- 块级作用域内定义的变量/函数，在块级作用域外 ReferenceError.
+- 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone).
 - `let` variable in `for-loop` closure,
   every closure for each loop
   binds the block-scoped variable.
 
-```js
+```ts
 const a = 1;
 
 b = 3; // temporal dead zone: throw reference error
@@ -43,13 +51,30 @@ b = 3; // temporal dead zone: throw reference error
 let b = 2;
 ```
 
+`let` 变量拥有块级作用域:
+
+```ts
+// for (var i = 0; i < 5; ++i) {
+//   setTimeout(() => console.log(i), 0);
+// }
+// Output 5, 5, 5, 5, 5.
+// 所有的 i 都是同一个变量, 输出同一个最终值.
+
+for (let i = 0; i < 5; ++i) {
+  setTimeout(() => console.log(i), 0);
+}
+// Output: 0, 1, 2, 3, 4.
+// JavaScript 引擎会为每个迭代循环声明一个新的迭代变量.
+// 每个 setTimeout 引用的都是不同的变量实例.
+```
+
 #### Const Variable
 
-- const 一旦声明变量，就必须立即初始化，不能留到以后赋值
+- const 一旦声明变量，就必须立即初始化，不能留到以后赋值.
 - 引用一个`Reference`变量时，只表示此变量地址不可变，但所引用变量的值/属性可变
-  (xxx \* const, 即`const`指针, 指向一个变量)
-- 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone)
-- 块级作用域
+  (`xxx *const`, 即`const`指针, 指向一个变量).
+- 块级作用域.
+- 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone).
 
 ### Destructuring Pattern Matching
 
@@ -65,15 +90,15 @@ let b = 2;
 - ES6 内部使用严格相等运算符（===），判断一个位置是否有值。若此位置无值，则使用默认值
 - 如果一个数组成员不严格等于 undefined，默认值不会生效
 
-```js
+```ts
 const [x = 1] = [undefined];
-x; // 1
+console.log(x); // 1
 
 const [x = 1] = [null];
-x; // null
+console.log(x); // null
 ```
 
-```js
+```ts
 let [x = 1, y = x] = []; // x=1; y=1
 let [x = 1, y = x] = [2]; // x=2; y=2
 let [x = 1, y = x] = [1, 2]; // x=1; y=2
@@ -82,7 +107,7 @@ let [x = y, y = 1] = []; // ReferenceError
 
 #### Swap Value with Destructuring
 
-```js
+```ts
 [x, y] = [y, x];
 ```
 
@@ -93,7 +118,7 @@ let [x = y, y = 1] = []; // ReferenceError
 - 一次性定义多个参数.
 - 一次性定义多个参数的默认值.
 
-```js
+```ts
 // 参数是一组有次序的值
 function f1([x, y, z]) {}
 f1([1, 2, 3]);
@@ -119,7 +144,7 @@ jQuery.ajax = function (
 };
 ```
 
-```js
+```ts
 // 返回一个数组
 function example1() {
   return [1, 2, 3];
@@ -137,7 +162,7 @@ function example2() {
 const { foo, bar } = example2();
 ```
 
-```js
+```ts
 function add([x, y]) {
   return x + y;
 }
@@ -160,7 +185,7 @@ move(); // [0, 0]
 
 #### Parse JSON Object with Destructuring
 
-```js
+```ts
 const jsonData = {
   id: 42,
   status: 'OK',
@@ -178,7 +203,7 @@ console.log(id, status, number);
 - `for index in Iterable<T>`: key.
 - `for [key, value] of Iterable<T>`: entry.
 
-```js
+```ts
 const map = new Map();
 map.set('first', 'hello');
 map.set('second', 'world');
@@ -202,7 +227,7 @@ for (const [, value] of map) {
 
 #### Import with Destructuring
 
-```js
+```ts
 const { SourceMapConsumer, SourceNode } = require('source-map');
 ```
 
@@ -214,27 +239,27 @@ const { SourceMapConsumer, SourceNode } = require('source-map');
 - Set.
 - Generator function.
 
-```js
+```ts
 const [foo, [[bar], baz]] = [1, [[2], 3]];
-foo; // 1
-bar; // 2
-baz; // 3
+console.log(foo); // 1
+console.log(bar); // 2
+console.log(baz); // 3
 
 const [, , third] = ['foo', 'bar', 'baz'];
-third; // "baz"
+console.log(third); // "baz"
 
 const [x, , y] = [1, 2, 3];
-x; // 1
-y; // 3
+console.log(x); // 1
+console.log(y); // 3
 
 const [head, ...tail] = [1, 2, 3, 4];
-head; // 1
-tail; // [2, 3, 4]
+console.log(head); // 1
+console.log(tail); // [2, 3, 4]
 
 const [x, y, ...z] = ['a'];
-x; // "a"
-y; // undefined
-z; // []
+console.log(x); // "a"
+console.log(y); // undefined
+console.log(z); // []
 
 // Generator 函数
 function* fibs() {
@@ -248,74 +273,74 @@ function* fibs() {
 }
 
 const [first, second, third, fourth, fifth, sixth] = fibs();
-sixth; // 5
+console.log(sixth); // 5
 ```
 
 #### Object Destructuring
 
 - 真正被赋值的是后者，而不是前者.
 
-```js
+```ts
 const { pattern: variable } = { key: value };
 ```
 
 - 解构赋值的规则: 只要等号右边的值不是对象，就先将其转为对象.
 - undefined/null 无法转化为对象.
 
-```js
+```ts
 const { prop: x } = undefined; // TypeError
 const { prop: y } = null; // TypeError
 ```
 
-```js
+```ts
 const { bar, foo } = { foo: 'aaa', bar: 'bbb' };
-foo; // "aaa"
-bar; // "bbb"
+console.log(foo); // "aaa"
+console.log(bar); // "bbb"
 
 const { foo, bar } = { foo: 'aaa', bar: 'bbb' };
 
 const { baz } = { foo: 'aaa', bar: 'bbb' };
-baz; // undefined
+console.log(baz); // undefined
 ```
 
-```js
+```ts
 const { foo: baz } = { foo: 'aaa', bar: 'bbb' };
-baz; // "aaa"
+console.log(baz); // "aaa"
 
 const obj = { first: 'hello', last: 'world' };
 const { first: f, last: l } = obj;
-f; // 'hello'
-l; // 'world'
+console.log(f); // 'hello'
+console.log(l); // 'world'
 ```
 
-```js
+```ts
 const { log, sin, cos } = Math;
 ```
 
 #### String Destructuring
 
-```js
+```ts
 const [a, b, c, d, e] = 'hello';
-a; // "h"
-b; // "e"
-c; // "l"
-d; // "l"
-e; // "o"
+console.log(a); // "h"
+console.log(b); // "e"
+console.log(c); // "l"
+console.log(d); // "l"
+console.log(e); // "o"
 
 const { length: len } = 'hello';
-len; // 5
+console.log(len); // 5
 ```
 
 #### Number and Boolean Destructuring
 
 `number`/`boolean` 会转化成对象:
 
-```js
+```ts
 let { toString: s } = 123;
-s === Number.prototype.toString; // true
+const truthy = s === Number.prototype.toString; // true
 
 let { toString: s } = true;
-s === Boolean.prototype.toString; // true
+const truthy = s === Boolean.prototype.toString; // true
 ```
 
 ### Logical Operators
@@ -339,14 +364,14 @@ s === Boolean.prototype.toString; // true
 
 ### ES6 String
 
-```js
+```ts
 // eslint-disable-next-line no-self-compare
-'z' === 'z'; // true
+const truthy = 'z' === 'z'; // true
 // eslint-disable-next-line no-octal-escape
-'\172' === 'z'; // true
-'\x7A' === 'z'; // true
-'\u007A' === 'z'; // true
-'\u{7A}' === 'z'; // true
+const truthy = '\172' === 'z'; // true
+const truthy = '\x7A' === 'z'; // true
+const truthy = '\u007A' === 'z'; // true
+const truthy = '\u{7A}' === 'z'; // true
 ```
 
 #### String Methods
@@ -354,19 +379,19 @@ s === Boolean.prototype.toString; // true
 - string.codePointAt(index): 正确处理 4 字节存储字符
 - string.fromCodePoint(codePoint)
 
-```js
+```ts
 function is32Bit(c) {
   return c.codePointAt(0) > 0xffff;
 }
 
-String.fromCodePoint(0x78, 0x1f680, 0x79) === 'x\uD83D\uDE80y';
-// true
+// True:
+const truthy = String.fromCodePoint(0x78, 0x1f680, 0x79) === 'x\uD83D\uDE80y';
 ```
 
 - string.includes(substr)/startsWith(substr)/endsWith(substr)
 - 使用第二个参数 n 时，endsWith 针对前 n 个字符，其他两个方法针对从第 n 个位置直到字符串结束
 
-```js
+```ts
 const s = 'Hello world!';
 
 s.startsWith('world', 6); // true
@@ -376,7 +401,7 @@ s.includes('Hello', 6); // false
 
 - repeat(times)
 
-```js
+```ts
 'hello'.repeat(2); // "hellohello"
 'na'.repeat(2.9); // "nana"
 
@@ -392,7 +417,7 @@ s.includes('Hello', 6); // false
 
 - padStart/padEnd(len, paddingStr)
 
-```js
+```ts
 '1'.padStart(10, '0'); // "0000000001"
 '12'.padStart(10, '0'); // "0000000012"
 '123456'.padStart(10, '0'); // "0000123456"
@@ -410,7 +435,7 @@ s.includes('Hello', 6); // false
   - `replaceAll(substr, newSubstr)`.
   - `replaceAll(substr, replacerFunction)`.
 
-```js
+```ts
 // eslint-disable-next-line prefer-regex-literals
 const regexp = new RegExp('foo[a-z]*', 'g');
 const str = 'table football, foosball';
@@ -432,7 +457,7 @@ Array.from(str.matchAll(regexp), m => m[0]);
 // Array [ "football", "foosball" ]
 ```
 
-```js
+```ts
 'aabbcc'.replaceAll('b', '.');
 // => 'aa..cc'
 
@@ -444,7 +469,7 @@ Array.from(str.matchAll(regexp), m => m[0]);
 
 `str` 表示模板字符串
 
-```js
+```ts
 // 普通字符串
 `In JavaScript '\n' is a line-feed.``\`Yo\` World!``In JavaScript this is // 多行字符串
  not legal.``${
@@ -456,7 +481,7 @@ Array.from(str.matchAll(regexp), m => m[0]);
 
 #### Tagged Templates
 
-```js
+```ts
 const boldify = (parts, ...insertedParts) => {
   return parts
     .map((s, i) => {
@@ -471,7 +496,7 @@ console.log(boldify`Hi, my name is ${name}!`);
 // => "Hi, my name is <strong>Sabertaz</strong>!"
 ```
 
-```js
+```ts
 function template(strings, ...keys) {
   return function (...values) {
     const dict = values[values.length - 1] || {};
@@ -492,7 +517,7 @@ t2Closure('Hello', { foo: 'World' }); // "Hello World!"
 
 - 编译模板(小型模板引擎)
 
-```js
+```ts
 function compile(template) {
   const evalExpr = /<%=(.+?)%>/g;
   const expr = /<%([\s\S]+?)%>/g;
@@ -546,14 +571,14 @@ const libraryHtml = hashTemplate`
 
 - 国际化处理
 
-```js
+```ts
 i18n`Welcome to ${siteName}, you are visitor number ${visitorNumber}!`;
 // "欢迎访问xxx，您是第xxxx位访问者！"
 ```
 
 - XSS 攻击
 
-```js
+```ts
 const message = SaferHTML`<p>${sender} has sent you a message.</p>`;
 
 function SaferHTML(templateString, ...expressions) {
@@ -578,7 +603,7 @@ function SaferHTML(templateString, ...expressions) {
 
 - 运行代码
 
-```js
+```ts
 jsx`
   <div>
     <input
@@ -605,15 +630,15 @@ HelloWorldApp.main();
 - 0oxxx/0Oxxx
 - Number.isFinite()/isNaN()/parseInt()/parseFloat()/isInteger()/isSafeInteger()
 - Number.EPSILON/`MAX_SAFE_INTEGER`/`MIN_SAFE_INTEGER`
-- \*\* 指数运算符
+- `**` 指数运算符
 - BigInt
 
-```js
+```ts
 const a = 2172141653;
 const b = 15346349309;
-a * b;
+const c1 = a * b;
 // => 33334444555566670000
-BigInt(a) * BigInt(b);
+const c2 = BigInt(a) * BigInt(b);
 // => 33334444555566667777n
 ```
 
@@ -621,7 +646,7 @@ BigInt(a) * BigInt(b);
 
 #### Number i18n
 
-```js
+```ts
 const nfFrench = new Intl.NumberFormat('fr');
 nf.format(12345678901234567890n);
 // => 12 345 678 901 234 567 890
@@ -629,7 +654,7 @@ nf.format(12345678901234567890n);
 
 #### String i18n
 
-```js
+```ts
 const lfEnglish = new Intl.ListFormat('en');
 // const lfEnglish = new Intl.ListFormat('en', { type: 'disjunction' }); => 'or'
 
@@ -657,7 +682,7 @@ console.log(formatter3.format(vehicles));
 
 #### Time i18n
 
-```js
+```ts
 const rtfEnglish = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 
 rtf.format(-1, 'day'); // 'yesterday'
@@ -668,7 +693,7 @@ rtf.format(0, 'week'); // 'this week'
 rtf.format(1, 'week'); // 'next week'
 ```
 
-```js
+```ts
 const dtfEnglish = new Intl.DateTimeFormat('en', {
   year: 'numeric',
   month: 'long',
@@ -681,8 +706,8 @@ dtfEnglish.formatRange(start, end); // => 'May 7 - 9, 2019'
 
 ### Array
 
-```js
-[...Array(5).keys()]; // => [0, 1, 2, 3, 4]
+```ts
+const array = [...Array(5).keys()]; // => [0, 1, 2, 3, 4]
 ```
 
 #### Array Includes
@@ -698,7 +723,7 @@ no more `indexOf() > -1`
 - 克隆数组
 - map 函数
 
-```js
+```ts
 // Set
 // Map
 
@@ -741,11 +766,11 @@ Array.from(Array(5).keys());
 
 替换数组元素，修改原数组
 
-```js
+```ts
 Array.prototype.copyWithin(target, (start = 0), (end = this.length));
 ```
 
-```js
+```ts
 [1, 2, 3, 4, 5].copyWithin(0, 3)[
   // => [4, 5, 3, 4, 5]
 
@@ -762,7 +787,7 @@ i32a.copyWithin(0, 2);
 
 #### Array Find
 
-```js
+```ts
 arr.find(fn);
 arr.findIndex(fn);
 ```
@@ -791,11 +816,11 @@ map + flat
 
 #### Spread Array
 
-```js
+```ts
 arr2.push(...arr1);
 ```
 
-```js
+```ts
 const obj = { x: 1, y: 2, z: 3 };
 
 obj[Symbol.iterator] = function* () {
@@ -804,14 +829,14 @@ obj[Symbol.iterator] = function* () {
   yield 3;
 };
 
-[...obj]; // print [1, 2, 3]
+const array = [...obj]; // print [1, 2, 3]
 ```
 
 ### New Object API
 
 - `Object.is`:
 
-```js
+```ts
 // Case 1: Evaluation result is the same as using ===
 Object.is(25, 25); // true
 Object.is('foo', 'foo'); // true
@@ -836,7 +861,7 @@ Object.is(NaN, 0 / 0); // true
 Object.is(NaN, Number.NaN); // true
 ```
 
-```js
+```ts
 if (!Object.is) {
   Object.defineProperty(Object, 'is', {
     value: (x, y) => {
@@ -864,7 +889,7 @@ if (!Object.is) {
 - `Object.entries`.
 - `Object.fromEntries`.
 
-```js
+```ts
 const score = {
   saber: 42,
   todd: 19,
@@ -890,7 +915,7 @@ Object.entries(score);
  */
 ```
 
-```js
+```ts
 const object = { x: 42, y: 50, abc: 9001 };
 const result = Object.fromEntries(
   Object.entries(object)
@@ -899,7 +924,7 @@ const result = Object.fromEntries(
 );
 ```
 
-```js
+```ts
 const map = new Map(Object.entries(object));
 const objectCopy = Object.fromEntries(map);
 ```
@@ -915,17 +940,17 @@ const objectCopy = Object.fromEntries(map);
 
 ### Modules
 
-```js
+```ts
 import { lastName as surname } from './profile.js';
 ```
 
-```js
+```ts
 export const firstName = 'Michael';
 export const lastName = 'Jackson';
 export const year = 1958;
 ```
 
-```js
+```ts
 // profile.js
 const firstName = 'Michael';
 const lastName = 'Jackson';
@@ -934,7 +959,7 @@ const year = 1958;
 export { firstName, lastName, year };
 ```
 
-```js
+```ts
 // 接口改名
 export { foo as myFoo } from 'my_module';
 
@@ -966,7 +991,7 @@ Export default value:
 <!-- eslint-disable import/no-duplicates -->
 <!-- eslint-disable no-import-assign -->
 
-```js
+```ts
 // module.js
 // main.js
 // eslint-disable-next-line import/no-named-default
@@ -995,7 +1020,7 @@ setTimeout(() => {
 
 Export normal reference:
 
-```js
+```ts
 // module.js
 // main.js
 import { thing as importedThing } from './module.js';
@@ -1021,7 +1046,7 @@ To sum up:
 <!-- eslint-disable import/export -->
 <!-- eslint-disable import/no-duplicates -->
 
-```js
+```ts
 // These give you a live reference to the exported thing(s):
 import { thing } from './module.js';
 import { thing as otherName } from './module.js';
@@ -1034,9 +1059,9 @@ const module = await import('./module.js');
 const { thing } = await import('./module.js');
 
 // These export a live reference:
-export { thing }
-export { thing as otherName }
-export { thing as default }
+export { thing };
+export { thing as otherName };
+export { thing as default };
 // eslint-disable-next-line prettier/prettier
 export default function thing() {}
 // These export the current value:
@@ -1050,7 +1075,7 @@ export default 'hello!';
 
 ### Class
 
-```js
+```ts
 class A {
   constructor(value) {
     this.val = value;
@@ -1060,6 +1085,7 @@ class A {
 class B extends A {
   constructor(value) {
     super(value);
+    console.log('New');
   }
 }
 
@@ -1089,14 +1115,57 @@ console.log(BB.prototype[[proto]] === AA.prototype);
 console.log(bb[[proto]] === BB.prototype);
 ```
 
-禁止对复合对象字面量进行导出操作 (array literal, object literal)
+禁止对复合对象字面量进行导出操作 (array literal, object literal).
+
+#### Class Private Member
+
+```ts
+class Dong {
+  constructor() {
+    this.#name = 'dog';
+    this.#age = 20;
+    this.friend = 'cat';
+  }
+
+  hello() {
+    return `I'm ${this.#name} ${this.#age} years old`;
+  }
+}
+```
+
+```ts
+const classPrivateFieldGet = (receiver, state) => {
+  return state.get(receiver);
+};
+
+const classPrivateFieldSet = (receiver, state, value) => {
+  state.set(receiver, value);
+};
+
+const dongName = new WeakMap();
+const dongAge = new WeakMap();
+
+class Dong {
+  constructor() {
+    classPrivateFieldSet(this, dongName, 'dong');
+    classPrivateFieldSet(this, dongAge, 20);
+  }
+
+  hello() {
+    return `I'm ${classPrivateFieldGet(this, dongName)}, ${classPrivateFieldGet(
+      this,
+      dongAge
+    )} years old`;
+  }
+}
+```
 
 #### Class Static Blocks
 
 Static blocks have access to class private member.
 Its mainly useful whenever set up multiple static fields.
 
-```js
+```ts
 class Foo {
   static #count = 0;
 
@@ -1113,7 +1182,7 @@ class Foo {
 }
 ```
 
-```js
+```ts
 class Translator {
   static translations = {
     yes: 'ja',
@@ -1130,7 +1199,7 @@ class Translator {
 }
 ```
 
-```js
+```ts
 class SuperClass {
   static superField1 = console.log('superField1');
   static {
@@ -1170,7 +1239,7 @@ class SubClass extends SuperClass {
 
 ### Map
 
-```js
+```ts
 const map = new Map([
   // You define a map via an array of 2-element arrays. The first
   // element of each nested array is the key, and the 2nd is the value
@@ -1184,7 +1253,7 @@ const map = new Map([
 map.get('name'); // 'Jean-Luc Picard'
 ```
 
-```js
+```ts
 const map = new Map([]);
 
 // eslint-disable-next-line no-new-wrappers
@@ -1206,11 +1275,11 @@ const obj = {};
 obj[n1] = 'One';
 obj[n2] = 'Two';
 
-obj[n1]; // 'Two'
-obj[5]; // 'Two'
+const two1 = obj[n1]; // 'Two'
+const two2 = obj[5]; // 'Two'
 ```
 
-```js
+```ts
 const objectClone = new Map(Object.entries(object));
 const arrayClone = new Map(Array.from(map.entries));
 const map = new Map([
@@ -1221,16 +1290,16 @@ const map = new Map([
 
 // The `for/of` loop can loop through iterators
 for (const key of map.keys()) {
-  key; // 'name', 'age', 'rank'
+  console.log(key); // 'name', 'age', 'rank'
 }
 
-for (const v of map.values()) {
-  v; // 'Jean-Luc Picard', 59, 'Captain'
+for (const value of map.values()) {
+  console.log(value); // 'Jean-Luc Picard', 59, 'Captain'
 }
 
 for (const [key, value] of map.entries()) {
-  key; // 'name', 'age', 'rank'
-  value; // 'Jean-Luc Picard', 59, 'Captain'
+  console.log(key); // 'name', 'age', 'rank'
+  console.log(value); // 'Jean-Luc Picard', 59, 'Captain'
 }
 ```
 
@@ -1256,7 +1325,7 @@ WeakMap 结构与 Map 结构基本类似,
   and may be used as the key of an Object property.
 - Symbols don't auto-convert to "strings" and can't convert to numbers
 
-```js
+```ts
 const arr = ['a', 'b', 'c'];
 const iter = arr[Symbol.iterator]();
 
@@ -1268,15 +1337,17 @@ iter.next(); // { value: undefined, done: true }
 
 ### Iterator
 
-- 一个数据结构只要具有 Symbol.iterator 属性 (其为 function), 就可以认为是 "可遍历的" (iterable)
-- implement iterator with `Symbol.iterator`
-- 只有 `for...in` 可以遍历到原型上的属性
-- Object.getOwnPropertyNames, Object.getOwnPropertySymbols 和 Reflect.ownKeys 可获取到不可枚举的属性
-- Object.getOwnPropertySymbols 和 Reflect.ownKeys 可获取到 Symbol 属性
+- 一个数据结构只要具有 Symbol.iterator 属性 (其为 function), 就可以认为是 "可遍历的" (iterable).
+- Implement iterator with `Symbol.iterator`.
+- 只有 `for...in` 可以遍历到原型上的属性.
+- `for...in`/`for...of` 隐形调用迭代器的方式, 称为内部迭代器, 使用方便, 不可自定义迭代过程.
+- `{ next, done, value }` 显式调用迭代器的方式, 称为外部迭代器, 使用复杂, 可以自定义迭代过程.
+- Object.getOwnPropertyNames, Object.getOwnPropertySymbols 和 Reflect.ownKeys 可获取到不可枚举的属性.
+- Object.getOwnPropertySymbols 和 Reflect.ownKeys 可获取到 Symbol 属性.
 
 #### Synchronous Iterator
 
-```js
+```ts
 const Iterable = {
   [Symbol.iterator]() {
     return Iterator;
@@ -1310,7 +1381,7 @@ const Iterator = {
 };
 ```
 
-```js
+```ts
 function methodsIterator() {
   let index = 0;
   const methods = Object.keys(this)
@@ -1347,7 +1418,7 @@ for (const method of myMethods) {
 
 #### Asynchronous Iterator
 
-```js
+```ts
 const AsyncIterable = {
   [Symbol.asyncIterator]() {
     return AsyncIterator;
@@ -1372,7 +1443,7 @@ const IteratorResult = {
 };
 ```
 
-```js
+```ts
 function remotePostsAsyncIteratorsFactory() {
   let i = 1;
   let done = false;
@@ -1426,7 +1497,7 @@ function remotePostsAsyncIteratorsFactory() {
 })();
 ```
 
-```js
+```ts
 // tasks will run in parallel
 ait.next().then();
 ait.next().then();
@@ -1439,7 +1510,7 @@ ait.next().then();
 
 #### Basic Usage
 
-```js
+```ts
 function* gen() {
   yield 1;
   yield 2;
@@ -1458,7 +1529,7 @@ g.return(1); // { value: 1, done: true }
 
 Iterable object:
 
-```js
+```ts
 const users = {
   james: false,
   andrew: true,
@@ -1478,7 +1549,7 @@ const users = {
 
 Early return:
 
-```js
+```ts
 function* gen() {
   yield 1;
   yield 2;
@@ -1496,7 +1567,7 @@ g.next(); // { value: undefined, done: true }
 
 The generator function itself is not iterable, call it to get the iterable-iterator:
 
-```js
+```ts
 for (const v of someOddNumbers) {
   console.log(v);
 } // => TypeError: someOddNumbers is not iterable
@@ -1508,7 +1579,7 @@ for (const v of number()) {
 
 Messaging system:
 
-```js
+```ts
 function* lazyCalculator(operator) {
   const firstOperand = yield;
   const secondOperand = yield;
@@ -1540,7 +1611,7 @@ g.next(); // { value: undefined, done: true }
 
 Error handling:
 
-```js
+```ts
 function* generator() {
   try {
     yield 1;
@@ -1578,7 +1649,7 @@ Generator based control flow goodness for nodejs and the browser,
 using promises, letting you write non-blocking code in a nice-ish way
 (just like [tj/co](https://github.com/tj/co)).
 
-```js
+```ts
 function coroutine(generatorFunc) {
   const generator = generatorFunc();
   nextResponse();
@@ -1606,7 +1677,7 @@ coroutine(function* bounce() {
 
 #### Asynchronous Generator
 
-```js
+```ts
 const asyncSource = {
   async *[Symbol.asyncIterator]() {
     yield await new Promise(resolve => setTimeout(resolve, 1000, 1));
@@ -1633,7 +1704,7 @@ async function* remotePostsAsyncGenerator() {
 }
 ```
 
-```js
+```ts
 function* chunkify(array, n) {
   yield array.slice(0, n);
   array.length > n && (yield* chunkify(array.slice(n), n));
@@ -1663,7 +1734,7 @@ async function* getRemoteData() {
 因为首次调用 `next` 函数时,
 生成器函数并没有在 `yield` 关键字处暂停.
 
-```js
+```ts
 function promise1() {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -1717,7 +1788,7 @@ co(readFile).then(res => console.log(res));
 
 Modify default object behavior with `Proxy` and `Reflect`:
 
-```js
+```ts
 // new Proxy(target, handler)
 Proxy(target, {
   set(target, name, value, receiver) {
@@ -1754,25 +1825,25 @@ change proxy object will change original object via `set` related API.
 
 #### Proxy vs DefineProperty
 
-- Simple: `Proxy` 使用上比 Object.defineProperty 方便.
+- Simple: `Proxy` 使用上比 `Object.defineProperty` 方便.
   - `Object.defineProperty` 只能监听对象, 导致 `Vue 2` `data` 属性必须通过一个返回对象的函数方式初始化,
   - `Vue 3` 更加多元化, 可以监听任意数据.
-- Performant: `Proxy` 代理整个对象, Object.defineProperty 只代理对象上的某个属性.
+- Performant: `Proxy` 代理整个对象, `Object.defineProperty` 只代理对象上的某个属性.
   - `Object.defineProperty` 由于每次只能监听对象一个键的 `get`/`set`, 导致需要循环监听浪费性能.
   - `Proxy` 可以一次性监听到所有属性.
-- Lazy: Proxy 性能优于 Object.defineProperty.
-  - 如果对象内部要全部递归代理, 则 Proxy 可以只在调用时递归.
-  - Object.defineProperty 需要在一开始就全部递归.
+- Lazy: `Proxy` 性能优于 `Object.defineProperty`.
+  - 如果对象内部要全部递归代理, 则 `Proxy` 可以只在调用时递归.
+  - `Object.defineProperty` 需要在一开始就全部递归.
 - Feature:
-  - 对象上定义新属性时, 只有 Proxy 可以监听到.
-  - 数组新增删除修改时, 只有 Proxy 可以监听到.
+  - 对象上定义新属性时, 只有 `Proxy` 可以监听到.
+  - 数组新增删除修改时, 只有 `Proxy` 可以监听到.
   - `Object.defineProperty` 无法监听数组, `Proxy` 则可以直接监听数组变化.
   - Vue2: 重写数组方法监听数组变化, Vue3: `Proxy` 监听数组变化.
-- Proxy 不兼容 IE, Object.defineProperty 不兼容 IE8 及以下.
+- `Proxy` 不兼容 IE, `Object.defineProperty` 不兼容 IE8 及以下.
 
 #### Default Zero Value with Proxy
 
-```js
+```ts
 const withZeroValue = (target, zeroValue = 0) =>
   new Proxy(target, {
     get: (obj, prop) => (prop in obj ? obj[prop] : zeroValue),
@@ -1786,7 +1857,7 @@ console.log(pos.z); // => 0
 
 #### Negative Array Indices with Proxy
 
-```js
+```ts
 const negativeArray = els =>
   new Proxy(target, {
     get: (target, propKey, receiver) =>
@@ -1800,7 +1871,7 @@ const negativeArray = els =>
 
 #### Hiding Properties with Proxy
 
-```js
+```ts
 const hide = (target, prefix = '_') =>
   new Proxy(target, {
     has: (obj, prop) => !prop.startsWith(prefix) && prop in obj,
@@ -1817,14 +1888,14 @@ const userData = hide({
   _favoriteRapper: 'Drake',
 });
 
-'_favoriteRapper' in userData; // has: false
-Object.keys(userData); // ownKeys: ['firstName', 'mediumHandle']
-userData._favoriteRapper; // get: undefined
+const falsy = '_favoriteRapper' in userData; // has: false
+const keys = Object.keys(userData); // ownKeys: ['firstName', 'mediumHandle']
+console.log(userData._favoriteRapper); // get: undefined
 ```
 
 #### Read Only Object with Proxy
 
-```js
+```ts
 const NOPE = () => {
   throw new Error("Can't modify read-only object");
 };
@@ -1849,7 +1920,7 @@ const readOnly = target => new Proxy(target, NODE_HANDLER);
 
 #### Range Judgement with Proxy
 
-```js
+```ts
 const range = (min, max) =>
   new Proxy(Object.create(null), {
     has: (_, prop) => +prop >= min && +prop <= max,
@@ -1868,7 +1939,7 @@ nums.filter(n => n in range(1, 10));
 
 #### Handle Exception with Proxy
 
-```js
+```ts
 function createExceptionProxy(target) {
   return new Proxy(target, {
     get: (target, prop) => {
@@ -1914,7 +1985,7 @@ class ExceptionHandler {
 }
 ```
 
-```js
+```ts
 const obj = {
   name: 'obj',
   say() {
@@ -1947,14 +2018,14 @@ Avoid callback hell with:
 
 resolve only accept **one** value
 
-```js
+```ts
 return new Promise(resolve => resolve([a, b]));
 ```
 
 - promises on the same chain execute orderly
 - promises on two separate chains execute in random order
 
-```js
+```ts
 const users = ['User1', 'User2', 'User3', 'User4'];
 
 const response = [];
@@ -1975,7 +2046,7 @@ const getUsers = users => {
 };
 ```
 
-```js
+```ts
 const users = ['User1', 'User2', 'User3', 'User4'];
 
 let response = [];
@@ -2009,7 +2080,7 @@ function getUsers(users) {
   returns when all given promises are settled
   (rejected or fulfilled, doesn't matter).
 
-```js
+```ts
 Promise.all(urls.map(fetch))
   .then(responses => Promise.all(responses.map(res => res.text())))
   .then(texts => {
@@ -2017,7 +2088,7 @@ Promise.all(urls.map(fetch))
   });
 ```
 
-```js
+```ts
 Promise.all(urls.map(url => fetch(url).then(resp => resp.text()))).then(
   texts => {
     //
@@ -2027,7 +2098,7 @@ Promise.all(urls.map(url => fetch(url).then(resp => resp.text()))).then(
 
 - `Promise.all` with `async`/`await`
 
-```js
+```ts
 const loadData = async () => {
   try {
     const urls = ['...', '...'];
@@ -2047,7 +2118,7 @@ const data = loadData().then(data => console.log(data));
 
 #### Promise Polyfill
 
-```js
+```ts
 class Promise {
   // `executor` takes 2 parameters, `resolve()` and `reject()`. The executor
   // function is responsible for calling `resolve()` or `reject()` to say that
@@ -2183,7 +2254,7 @@ then only the second form is going to catch that rejection.
 
 #### Memorize Async Function
 
-```js
+```ts
 const memo = {};
 const progressQueues = {};
 
@@ -2224,7 +2295,7 @@ function memoProcessData(key) {
 
 avoid wrong parallel logic (too sequential)
 
-```js
+```ts
 // wrong
 const books = await bookModel.fetchAll();
 const author = await authorModel.fetch(authorId);
@@ -2259,13 +2330,13 @@ async function getAuthors(authorIds) {
 
 #### Sleep Function
 
-```js
+```ts
 function sleep(time) {
   return new Promise(resolve => setTimeout(resolve, time));
 }
 ```
 
-```js
+```ts
 sleep(2000).then(() => {
   // do something after 2000 milliseconds
   console.log('resolved');
@@ -2286,7 +2357,7 @@ add(1, 2);
 - online and offline sync ([PouchDB](https://github.com/pouchdb/pouchdb))
 - tools: [redux-saga](https://github.com/redux-saga/redux-saga)
 
-```js
+```ts
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   data() {
@@ -2350,7 +2421,7 @@ For example, in vanilla.js, `map2 === map1` become `false`,
 but in immutable.js `map2 === map1` become `true`
 (copy free due to immutable data).
 
-```js
+```ts
 const map1 = { b: 2 };
 const map2 = map1.set('b', 2);
 ```
@@ -2361,14 +2432,14 @@ Closure is a function that remembers
 the variables from the place where it is defined (lexical scope),
 regardless of where it is executed later:
 
-- 函数外部不可对函数内部进行赋值或引用
-- 函数中的闭包函数可对函数进行赋值或引用(函数对于闭包来说是外部, 即内部引用外部)
-- 特权性质: 从外部通过闭包方法访问内部(函数作用域)局部变量 (private getter)
+- 函数外部不可对函数内部进行赋值或引用.
+- 函数中的闭包函数可对函数进行赋值或引用(函数对于闭包来说是外部, 即内部引用外部).
+- 特权性质: 从外部通过闭包方法访问内部(函数作用域)局部变量 (private getter).
 - Local Scope -> Outer Functions Scope -> Global Scope.
-- Closure Performance: avoid unnecessary closure creation.
-- The stale closure captures variables that have outdated values.
+- Closure performance: avoid unnecessary closure creation (GC).
+- Stale closure captures variables that have outdated values (memory leak).
 
-```js
+```ts
 // global scope
 const e = 10;
 
@@ -2387,7 +2458,7 @@ function sum(a) {
 console.log(sum(1)(2)(3)(4)); // log 20
 ```
 
-```js
+```ts
 // BAD
 function MyObject(name, message) {
   this.name = name.toString();
@@ -2416,11 +2487,11 @@ MyObject.prototype.getMessage = function () {
 
 #### 闭包函数的结构
 
-- 优先级: this > 局部变量 > 形参 > arguments > 函数名
+- 优先级: this > 局部变量 > 形参 > arguments > 函数名.
 - `innerFunc()` has access to `outerVar` from its lexical scope,
   even being **executed outside of its lexical scope**.
 
-```js
+```ts
 function outerFunc() {
   const outerVar = 'I am outside!';
 
@@ -2435,9 +2506,27 @@ const myInnerFunc = outerFunc();
 myInnerFunc();
 ```
 
+#### Closure Usage
+
+- 闭包实现封装.
+- 闭包实现私有属性与方法.
+- 闭包实现工厂方法.
+- 闭包实现对象缓存.
+
+```ts
+const createLoginLayer = (function (creator) {
+  let singleton;
+
+  return function () {
+    if (!singleton) singleton = creator();
+    return singleton;
+  };
+})(loginCreator);
+```
+
 ### Partial Application
 
-```js
+```ts
 const partialFromBind = (fn, ...args) => {
   return fn.bind(null, ...args);
 };
@@ -2453,11 +2542,11 @@ const partial = (fn, ...args) => {
 
 chain of multiple single argument functions
 
-```js
+```ts
 const add = x => y => x + y;
 ```
 
-```js
+```ts
 function curry(fn, ...stored_args) {
   return function (...new_args) {
     const args = stored_args.concat(new_args);
@@ -2537,49 +2626,52 @@ if there’s any pending call back waiting to be executed:
 
 - ES6 job queue: used by `Promises` (higher priority)
 - Message queue: used by `setTimeout`, `DOM events`
-- 微任务 Microtask，有特权, 可以插队:
+- 微任务 MicroTask (Jobs)，有特权, 可以插队:
   - `process.nextTick`.
-  - `Promises.then` (Promise 构造函数是同步函数).
+  - `Promises.then` (**Promise 构造函数是同步函数**).
   - `Object.observer`, `MutationObserver`.
   - `catch finally`.
-- 宏任务 Macrotask，没有特权:
+- 宏任务 MacroTask (Tasks)，没有特权:
+  - `scripts`: 整体脚本视作一个宏任务.
+  - `MessageChannel`, `postMessage`.
   - `setImmediate`, `I/O`.
   - `setTimeout`, `setInterval`.
-  - `MessageChannel`, `postMessage`.
   - `XHR` callback function.
   - `requestAnimationFrame`.
   - UI interaction `events` callback function.
   - UI rendering.
-- Microtask 优先于 Macrotask.
+- MicroTask 优先于 MacroTask.
 - 浏览器为了能够使得 JS 内部 (macro)task 与 DOM 任务能够有序的执行,
   会在一个 (macro)task 执行结束后, 在下一个 (macro)task 执行开始前, 对页面进行重新渲染.
   当 JS 引擎从任务队列中取出一个宏任务来执行, 如果执行过程中有遇到微任务,
   那么执行完该宏任务就会去执行宏任务内的所有微任务, 然后更新 UI.
   后面就是再从任务队列中取出下一个宏任务来继续执行, 以此类推.
+- `Event Loop` 与 `Call Stack` 有且仅有一个, `Task/Job/Message Queue` 可以有多个.
 
-> 宏任务队列取宏任务 -> 执行 1 个宏任务 -> 检查微任务队列并执行所有微任务 -> 浏览器渲染 -> 宏任务队列
+:::tip Event Loop
+宏任务队列取宏任务 -> 执行 1 个宏任务 -> 检查微任务队列并执行所有微任务
+-> requestAnimationFrame -> 浏览器重排/重绘 -> requestIdleCallback
+-> 宏任务队列取宏任务
+:::
 
-```js
-for (let ii = 0; ii < macrotask.length; ii++) {
-  // eslint-disable-next-line no-eval
-  eval(macrotask[ii])();
+`Event Loop` simple model:
 
-  if (microtask.length !== 0) {
-    // process all microtasks
-    for (let __i = 0; __i < microtask.length; __i++) {
-      // eslint-disable-next-line no-eval
-      eval(microtask[__i])();
-    }
+```ts
+for (macroTask of macroTaskQueue) {
+  // 1. Handle current MacroTask.
+  handleMacroTask(macroTask);
 
-    // empty microtask
-    microtask = [];
+  // 2. Handle all MicroTasks.
+  for (microTask of microTaskQueue) {
+    handleMicroTask(microTask);
   }
-
-  // next macrotask in next loop iteration
 }
 ```
 
-```js
+Using `setTimeout` with `0` seconds timer
+helps to defer execution of `Promise` and `bar` until the **stack** is **empty**.
+
+```ts
 const bar = () => {
   console.log('bar');
 };
@@ -2607,10 +2699,9 @@ foo();
 // bar
 ```
 
-As above code, using `setTimeout` with `0` seconds timer
-helps to defer execution of `Promise` and `bar` until the **stack** is **empty**.
+`process.nextTick()` run before `Promise.then()`:
 
-```js
+```ts
 console.log('1');
 
 setTimeout(() => {
@@ -2644,9 +2735,9 @@ console.log('10');
 // 1 10 8 9 5 7 2 3 4 6
 ```
 
-Promise 构造函数本身是同步函数
+Promise 构造函数本身是同步函数:
 
-```js
+```ts
 console.log('script start');
 
 const promise1 = new Promise(function (resolve) {
@@ -2663,12 +2754,18 @@ setTimeout(function () {
 
 console.log('script end');
 
-// 输出顺序: script start->promise1->promise1 end->script end->promise2->setTimeout
+// 输出顺序:
+// script start
+// promise1
+// promise1 end
+// script end
+// promise2
+// setTimeout.
 ```
 
-`await a(); b()` 等价于 `Promise(a()).then(b())`: a 是同步执行, b 是 microtask
+`await a(); b()` 等价于 `Promise(a()).then(b())`: a 是同步执行, b 是 MicroTask:
 
-```js
+```ts
 async function async1() {
   console.log('async1 start');
   await async2();
@@ -2695,21 +2792,20 @@ new Promise(function (resolve) {
 
 console.log('script end');
 
-/*
-script start
-async1 start
-async2
-promise1
-script end
-async1 end
-promise2
-setTimeout
-*/
+// script start
+// async1 start
+// async2
+// promise1
+// script end
+// async1 end
+// promise2
+// setTimeout
 ```
 
-当调用栈没有同步函数时, 直接执行任务队列里的函数
+当调用栈没有同步函数时, 清空 MicroTask 任务队列里的函数,
+再从 MacroTask 任务队列里取出一个函数执行 (第二次 Event Loop):
 
-```js
+```ts
 function test() {
   console.log('start');
 
@@ -2730,6 +2826,7 @@ function test() {
   Promise.resolve().then(() => {
     console.log('children1');
   });
+
   console.log('end');
 }
 
@@ -2761,6 +2858,109 @@ that is waiting for the result of that I/O operation.
 The Node.js execution model was designed to cater to the needs of most web servers,
 which tend to be **I/O-intensive** (due to non-blocking I/O).
 
+```ts
+console.log('glob1');
+
+setTimeout(function () {
+  console.log('timeout1');
+  process.nextTick(function () {
+    console.log('timeout1_nextTick');
+  });
+  new Promise(function (resolve) {
+    console.log('timeout1_promise');
+    resolve();
+  }).then(function () {
+    console.log('timeout1_then');
+  });
+});
+
+setImmediate(function () {
+  console.log('immediate1');
+  process.nextTick(function () {
+    console.log('immediate1_nextTick');
+  });
+  new Promise(function (resolve) {
+    console.log('immediate1_promise');
+    resolve();
+  }).then(function () {
+    console.log('immediate1_then');
+  });
+});
+
+process.nextTick(function () {
+  console.log('glob1_nextTick');
+});
+new Promise(function (resolve) {
+  console.log('glob1_promise');
+  resolve();
+}).then(function () {
+  console.log('glob1_then');
+});
+
+setTimeout(function () {
+  console.log('timeout2');
+  process.nextTick(function () {
+    console.log('timeout2_nextTick');
+  });
+  new Promise(function (resolve) {
+    console.log('timeout2_promise');
+    resolve();
+  }).then(function () {
+    console.log('timeout2_then');
+  });
+});
+
+process.nextTick(function () {
+  console.log('glob2_nextTick');
+});
+new Promise(function (resolve) {
+  console.log('glob2_promise');
+  resolve();
+}).then(function () {
+  console.log('glob2_then');
+});
+
+setImmediate(function () {
+  console.log('immediate2');
+  process.nextTick(function () {
+    console.log('immediate2_nextTick');
+  });
+  new Promise(function (resolve) {
+    console.log('immediate2_promise');
+    resolve();
+  }).then(function () {
+    console.log('immediate2_then');
+  });
+});
+
+console.log('glob2');
+
+// glob1
+// glob1_promise
+// glob2_promise
+// glob2
+// glob1_nextTick
+// glob2_nextTick
+// glob1_then
+// glob2_then
+// timeout1
+// timeout1_promise
+// timeout1_nextTick
+// timeout1_then
+// timeout2
+// timeout2_promise
+// timeout2_nextTick
+// timeout2_then
+// immediate1
+// immediate1_promise
+// immediate1_nextTick
+// immediate1_then
+// immediate2
+// immediate2_promise
+// immediate2_nextTick
+// immediate2_then
+```
+
 ## V8 Good Parts
 
 - source code (parser) AST (interpreter) bytecode
@@ -2773,7 +2973,7 @@ which tend to be **I/O-intensive** (due to non-blocking I/O).
 
 - [Shapes ICS](https://mathiasbynens.be/notes/shapes-ics)
 
-```js
+```ts
 // o1 and o2 have the same shape
 // JSObject(1, 2) => Shape('x', 'y')
 // JSObject(3, 4) => Shape('x', 'y')
@@ -2785,7 +2985,7 @@ const o2 = { x: 3, y: 4 };
 
 Shape Transform
 
-```js
+```ts
 // Shape chain: Shape(empty) => Shape(x) => Shape(x, y)
 const o = {};
 o.x = 1;
@@ -2861,10 +3061,10 @@ Orinoco 优化 (优化全停顿现象):
 
 ## Browser Internal
 
-- Chrome: Blink (based on Webkit) + V8
-- Firefox: Gecko + SpiderMonkey
-- Safari: Webkit + JavaScriptCore (Nitro)
-- Edge: Trident/EdgeHTML + Chakra -> Chromium
+- Chrome: Blink (based on Webkit) + V8.
+- Firefox: Gecko + SpiderMonkey.
+- Safari: Webkit + JavaScriptCore (Nitro).
+- Edge: Trident/EdgeHTML + Chakra -> Chromium.
 
 ### Browser Process
 
@@ -3058,7 +3258,7 @@ Paint Order:
 - 局部变量引用嵌套成员: 加快原型链查找
 - 局部变量引用方法时，应注意会动态改变 this 指针
 
-```js
+```ts
 const DOM = tazimi.util.Dom;
 
 DOM.method.call(/* 关注 this 指针 */);
@@ -3075,7 +3275,7 @@ DOM.method.call(/* 关注 this 指针 */);
 
 #### 倒序循环可提升性能
 
-```js
+```ts
 for (let i = item.length; i--; ) {
   process(items[i]);
 }
@@ -3093,7 +3293,7 @@ do {
 
 #### Duff's Device
 
-```js
+```ts
 let i = items.length % 8;
 
 while (i) {
@@ -3120,13 +3320,27 @@ while (i) {
 
 调用栈尺寸限制异常，应立即定位在代码中的递归实例上
 
-```js
+```ts
 try {
   recursion();
 } catch (ex) {
   console.error('error info');
 }
 ```
+
+#### Exception Handling
+
+- `try catch`.
+- `Promise.catch`.
+- `window.addEventListener('error', handler, true)`.
+- `window.addEventListener('unhandledrejection', handler, true)`.
+- Web Worker heartbeat monitoring.
+- `process.on('uncaughtException', handleError)`.
+- `process.on('SIGHUP', handleExit)`.
+- `process.on('SIGINT', handleExit)`.
+- `process.on('SIGQUIT', handleExit)`.
+- `process.on('SIGTERM', handleExit)`.
+- AOP (Aspect Oriented Programming): Middleware/Interceptor/Monkey Patch.
 
 ### Event Delegation
 
@@ -3139,7 +3353,7 @@ try {
   Event Target ->
   Event Bubbling (default true).
 
-```js
+```ts
 window.onload = function () {
   const oUl = document.getElementById('ul');
   const aLi = oUl.getElementsByTagName('li');
@@ -3211,7 +3425,7 @@ window.onload = function () {
 
 #### 动态加载
 
-```js
+```ts
 function requireScript(file, callback) {
   const script = document.getElementsByTagName('script')[0];
   const newJS = document.createElement('script');
@@ -3243,13 +3457,13 @@ requireScript('the_rest.js', function () {
 - 局部变量缓存 DOM 元素
 - 局部变量缓存布局信息
 
-```js
+```ts
 const btn = document.getElementById('btn');
 ```
 
 - HTML Collection 转化成数组再操作
 
-```js
+```ts
 function toArray(coll) {
   for (let i = 0, a = [], len = coll.length; i < len; i++) {
     a[i] = coll[i];
@@ -3271,14 +3485,9 @@ function toArray(coll) {
 - 重排: 重新构造渲染树
 - 重绘: 重新绘制受影响部分
 
-**获取**或改变布局的操作会导致渲染树**变化队列**刷新,执行渲染队列中的"待处理变化",重排 DOM 元素
-
-```js
-offsetTop / Left / Width / Height;
-scrollTop / Left / Width / Height;
-clientTop / Left / Width / Height;
-getComputedStyle();
-```
+**获取**或改变布局的操作会导致渲染树**变化队列**刷新,
+执行渲染队列中的"待处理变化",
+重排 DOM 元素
 
 #### 批量修改 DOM
 
@@ -3286,7 +3495,7 @@ getComputedStyle();
 - 使待修改 DOM 元素脱离标准文档流(改变布局／定位方式)，可减少其他元素的重绘次数.
 - `document.createDocumentFragment()`.
 
-```js
+```ts
 const fragment = document.createDocumentFragment();
 appendDataToElement(fragment, data);
 document.getElementById('myList').appendChild(fragment);
@@ -3294,7 +3503,7 @@ document.getElementById('myList').appendChild(fragment);
 
 - oldNode.cloneNode(true);
 
-```js
+```ts
 const old = document.getElementById('myList');
 const clone = old.cloneNode(true);
 
@@ -3312,7 +3521,7 @@ and just before the frame is rendered (layout, paint, composite etc.).
 
 在 js 中(除定位属性) 外，不直接操作 element.style.attr/element.cssText:
 
-```js
+```ts
 element.classList.add('className');
 element.className += ' className';
 ```
@@ -3335,17 +3544,20 @@ read css -> write css (re-layout/paint/composite)
 read css -> write css (only re-layout/paint/composite once).
 :::
 
-### 定时器(防止脚本阻塞)
+### 定时器
 
-JavaScript 　代码与 UI 共享线程
+JavaScript 代码与 UI 共享线程.
 
-setTimeout()/setInterval()
+`setTimeout`/`setInterval`:
 
-- 第二个参数: 不是执行时间, 是加入执行队列时间
-- 若其他位于执行队列中的函数执行时间超过延时，则用户感觉不到延时的存在
-- 模拟有间隙的循环，使得 UI 更新得以进入浏览器线程的执行队列中
+- 第二个参数: 不是执行时间, 是加入执行队列时间.
+- 若其他位于执行队列中的函数执行时间超过延时，则用户感觉不到延时的存在.
+- 模拟有间隙的循环，使得 UI 更新得以进入浏览器线程的执行队列中.
+- 通过 MicroTask/MicroTask 实现时间分片调度器,
+  使得长任务不阻塞页面操作 (60 FPS):
+  e.g React Scheduler and Reconciler, Vue `nextTick` API.
 
-```js
+```ts
 const button = document.getElementById('myButton');
 
 button.onclick = function () {
@@ -3357,9 +3569,9 @@ button.onclick = function () {
 };
 ```
 
-- 分解任务
+分解任务 (Time Slicing):
 
-```js
+```ts
 function saveDocument(id) {
   // 利用闭包封装待执行任务
   const tasks = [openDocument, writeText, closeDocument, updateUI];
@@ -3379,7 +3591,7 @@ function saveDocument(id) {
 }
 ```
 
-```js
+```ts
 function processArray(items, process, callback) {
   // 克隆原数组
   const todo = items.concat();
@@ -3397,9 +3609,9 @@ function processArray(items, process, callback) {
 }
 ```
 
-- 批处理任务
+批处理任务:
 
-```js
+```ts
 function timedProcessArray(items, process, callback) {
   // 克隆原始数组
   const todo = items.concat();
@@ -3424,7 +3636,7 @@ function timedProcessArray(items, process, callback) {
 
 ### 计时器
 
-```js
+```ts
 /*
  * usage: start -> stop -> getTime
  */
@@ -3465,7 +3677,7 @@ const Timer = {
 
 #### AJAX Cache
 
-```js
+```ts
 const localCache = {};
 
 function xhrRequest(url, callback) {
@@ -3558,7 +3770,7 @@ client.interceptors.response.use(
 - debounce: 防抖动是将多次执行变为最后一次执行 (可用于检测某个连续的 DOM 操作结束, 如 scroll 停止)
 - throttle: 节流是将多次执行变成每隔一段时间执行 (保证一定时间内只执行一次)
 
-```js
+```ts
 // 这个是用来获取当前时间戳的
 function now() {
   return +new Date();
@@ -3598,6 +3810,7 @@ function debounce(func, wait = 50, immediate = true) {
       if (immediate) {
         func.apply(this, params);
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         context = this;
         args = params;
       }
@@ -3611,7 +3824,7 @@ function debounce(func, wait = 50, immediate = true) {
 }
 ```
 
-```js
+```ts
 // simple throttle
 function throttle(action) {
   let isRunning = false;
@@ -3626,7 +3839,7 @@ function throttle(action) {
 }
 ```
 
-```js
+```ts
 /**
  * underscore 节流函数，返回函数连续调用时，func 执行频率限定为 次 / wait
  *
@@ -3668,6 +3881,7 @@ _.throttle = function (func, wait, options) {
 
     // 计算剩余时间
     const remaining = wait - (now - previous);
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     context = this;
     args = original_args;
 
@@ -3703,7 +3917,7 @@ _.throttle = function (func, wait, options) {
 
 #### Animation Frame Throttling
 
-```js
+```ts
 function useAnimation() {
   let frameId = 0;
   let ticking = false;
@@ -3735,10 +3949,10 @@ function useAnimation() {
 
 #### 位操作
 
-- i%2 => `i&0x1`
+- `i%2` => `i&0x1`.
 - 位掩码
 
-```js
+```ts
 const OPTION_A = 1;
 const OPTION_B = 2;
 const OPTION_C = 4;
@@ -3750,15 +3964,15 @@ const options = OPTION_A | OPTION_C | OPTION_D;
 
 #### Math 对象
 
-```js
-Math.E;
-Math.LN10;
-Math.LN2;
-Math.LOG2E;
-Math.LOG10E;
-Math.PI;
-Math.SQRT1_2;
-Math.SQRT2;
+```ts
+const epsilon = Math.E;
+const log10 = Math.LN10;
+const log2 = Math.LN2;
+const log2e = Math.LOG2E;
+const log10e = Math.LOG10E;
+const pi = Math.PI;
+const squareRoot = Math.SQRT1_2;
+const squareRoot2 = Math.SQRT2;
 
 Math.abs(num);
 Math.exp(num);
@@ -3788,7 +4002,7 @@ Math.tan(x);
 - (On-) Disk Cache: big files
 - Push Cache: HTTP/2
 
-```js
+```ts
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('install', event => {
   async function buildCache() {
@@ -3950,23 +4164,30 @@ Load 也不一定代表用户看到主要内容.
 就是用户看到主要内容的一个时间点.
 
 它的优点是相对校准的估算出内容渲染时间, 贴近用户感知.
-但缺点是无原生 API 支持, 算法推导时 DOM 节点不含权重.
+但缺点是无原生 API 支持, 算法推导时 DOM 节点含权重.
 
-- First Contentful Paint (FCP)
+- First Paint (FP): 0 ~ 1 ~ 2.5s.
+- First Contentful Paint (FCP): 0 ~ 2 ~ 4s.
 - First Meaningful Paint (FMP)
-- Largest Contentful Paint (LCP)
-- First Input Delay (FID)
-- Time to Interactive (TOI)
+- Largest Contentful Paint (LCP): 0 ~ 2.5 ~ 4s.
+- Time to Interactive (TTI): 0 ~ 3.8 ~ 7.3s.
+- First Input Delay (FID): 0 ~ 0.1 ~ 0.3s.
+
+Google Core Web Vitals:
+
+- 加载 (Loading): LCP.
+- 交互 (Interactivity): FID.
+- 视觉稳定 (Visual Stability): CLS.
 
 #### Monitoring Report Dimension
 
 不同的页面操作/页面打开方式/浏览器环境都会对我们页面加载的性能会有影响,
 需要上报这些维度的数据, 以便深入性能分析:
 
-- 当前页面是否可见
-- 页面加载方式: 直接打开/刷新打开/前进后退打开
-- 是否启用 HTTP2
-- 是否启用 Service Worker
+- 当前页面是否可见.
+- 页面加载方式: 直接打开/刷新打开/前进后退打开.
+- 是否启用 HTTP2.
+- 是否启用 Service Worker.
 
 #### Monitoring Report Performance
 
@@ -4064,7 +4285,7 @@ Lazy Loading Polyfill:
 <img data-src="flower.jpg" class="lazyload" />
 ```
 
-```js
+```ts
 window.addEventListener('scroll', function (event) {
   Array.from(document.querySelectorAll('.lazyload')).forEach(image => {
     if (image.slideIntoView(event.getBoundingClientRect())) {
@@ -4076,7 +4297,7 @@ window.addEventListener('scroll', function (event) {
 
 Observer Lazy Loading:
 
-```js
+```ts
 const observer = new IntersectionObserver(nodes => {
   nodes.forEach(v => {
     if (v.isIntersecting) {
@@ -4123,7 +4344,7 @@ Best practice: lazy loading scripts not execute immediately.
 <script src="myScript.js" defer></script>
 ```
 
-```jsx
+```tsx
 const DetailsComponent = lazy(() => import('./details'));
 const PageComponent = () => {
   <Suspense fallback={<div>Loading...</div>}>
@@ -4210,7 +4431,7 @@ performance.measure('mainThread', 'mainThread-start', 'mainThread-stop');
 
 #### First Paint Time
 
-```js
+```ts
 const entryHandler = list => {
   for (const entry of list.getEntries()) {
     if (entry.name === 'first-paint') {
@@ -4232,7 +4453,7 @@ observer.observe({ type: 'paint', buffered: true });
 // }
 ```
 
-```js
+```ts
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM 挂载时间: ', Date.now() - timerStart);
 
@@ -4246,7 +4467,7 @@ window.addEventListener('load', function () {
 });
 ```
 
-```js
+```ts
 // 计算加载时间.
 function getPerformanceTiming() {
   const performance = window.performance;
@@ -4303,7 +4524,7 @@ function getPerformanceTiming() {
 }
 ```
 
-```js
+```ts
 const [pageNav] = performance.getEntriesByType('navigation');
 
 // Measuring DNS lookup time.
@@ -4351,7 +4572,7 @@ First Contentful Paint:
 - Reduce server response time (e.g CDN).
 - TBT (Total Blocking Time) = TTI (Time to Interactive) - FCP (First Contentful Paint).
 
-```js
+```ts
 const entryHandler = list => {
   for (const entry of list.getEntries()) {
     if (entry.name === 'first-contentful-paint') {
@@ -4383,8 +4604,9 @@ Largest Contentful Paint:
   - Convert images from JPEG/PNG to WebP.
 - Responsive images:
   size image based on device size with `srcset` on `<img>` or `<picture>`.
+- LCP optimization [guide](https://csswizardry.com/2022/03/optimising-largest-contentful-paint).
 
-```js
+```ts
 const entryHandler = list => {
   if (observer) {
     observer.disconnect();
@@ -4422,7 +4644,7 @@ Cumulative Layout Shift:
   unless they appear when the user interacts with the page.
 - When it’s necessary to move elements, use `transform` animations.
 
-```js
+```ts
 let sessionValue = 0;
 let sessionEntries = [];
 const cls = {
@@ -4503,7 +4725,7 @@ observer.observe({ type: 'layout-shift', buffered: true });
 - `performance.now()` is more precise (100 us)
 - `performance.now()` is strictly monotonic (unaffected by changes of machine time)
 
-```js
+```ts
 let lastVisibilityChange = 0;
 
 window.addEventListener('visibilitychange', () => {
@@ -4522,7 +4744,7 @@ function metrics() {
 }
 ```
 
-```js
+```ts
 requestAnimationFrame(() => {
   requestAnimationFrame(timestamp => {
     metric.finish(timestamp);
@@ -4535,7 +4757,7 @@ requestAnimationFrame(() => {
 - [Puppeteer](https://pptr.dev/#?product=Puppeteer&version=v1.16.0&show=api-class-page)
 - [Puppeteer Recipes](https://addyosmani.com/blog/puppeteer-recipes)
 
-```js
+```ts
 const puppeteer = require('puppeteer');
 
 (async () => {
@@ -4549,7 +4771,7 @@ const puppeteer = require('puppeteer');
 
 #### Browser Context
 
-```js
+```ts
 // Create a new incognito browser context
 const context = await browser.createIncognitoBrowserContext();
 // Create a new page inside context.
@@ -4566,7 +4788,7 @@ await context.close();
 
 #### Event Testing
 
-```js
+```ts
 // wait for selector
 await page.waitFor('.foo');
 // wait for 1 second
@@ -4575,7 +4797,7 @@ await page.waitFor(1000);
 await page.waitFor(() => !!document.querySelector('.foo'));
 ```
 
-```js
+```ts
 const puppeteer = require('puppeteer');
 
 puppeteer.launch().then(async browser => {
@@ -4587,14 +4809,14 @@ puppeteer.launch().then(async browser => {
 });
 ```
 
-```js
+```ts
 const [response] = await Promise.all([
   page.waitForNavigation(), // The promise resolves after navigation has finished
   page.click('a.my-link'), // Clicking the link will indirectly cause a navigation
 ]);
 ```
 
-```js
+```ts
 const firstRequest = await page.waitForRequest('http://example.com/resource');
 const finalRequest = await page.waitForRequest(
   request =>
@@ -4603,7 +4825,7 @@ const finalRequest = await page.waitForRequest(
 return firstRequest.url();
 ```
 
-```js
+```ts
 const firstResponse = await page.waitForResponse(
   'https://example.com/resource'
 );
@@ -4614,7 +4836,7 @@ const finalResponse = await page.waitForResponse(
 return finalResponse.ok();
 ```
 
-```js
+```ts
 await page.evaluate(() => window.open('https://www.example.com/'));
 const newWindowTarget = await browserContext.waitForTarget(
   target => target.url() === 'https://www.example.com/'
@@ -4623,14 +4845,14 @@ const newWindowTarget = await browserContext.waitForTarget(
 
 #### Operation Simulation Testing
 
-```js
+```ts
 const [response] = await Promise.all([
   page.waitForNavigation(waitOptions),
   page.click(selector, clickOptions),
 ]);
 ```
 
-```js
+```ts
 // Using ‘page.mouse’ to trace a 100x100 square.
 await page.mouse.move(0, 0);
 await page.mouse.down();
@@ -4641,7 +4863,7 @@ await page.mouse.move(0, 0);
 await page.mouse.up();
 ```
 
-```js
+```ts
 await page.keyboard.type('Hello World!');
 await page.keyboard.press('ArrowLeft');
 
@@ -4656,7 +4878,7 @@ await page.keyboard.press('Backspace');
 
 #### Tracing Testing
 
-```js
+```ts
 await page.tracing.start({ path: 'trace.json' });
 await page.goto('https://www.google.com');
 await page.tracing.stop();
@@ -4685,7 +4907,7 @@ await page.tracing.stop();
 ### 可测试代码
 
 - 完整注释
-- 最小复杂度 = (扇入 \* 扇出) ^ 2
+- 最小复杂度 = (扇入 `*` 扇出) ^ 2
 - 可隔离性: 最小依赖性 + 松耦合性
 
 #### 范例
@@ -4698,7 +4920,7 @@ V(G) = e - n + 2 **<10**
 
 ### 函数复杂度
 
-函数复杂度 = (扇入 \* 扇出) ^ 2
+函数复杂度 = (扇入 `*` 扇出) ^ 2
 
 #### 扇出(引用)
 
@@ -4715,7 +4937,7 @@ V(G) = e - n + 2 **<10**
 
 #### 内容耦合(5)
 
-```js
+```ts
 O.property = 'tazimi';
 O.method = function () {};
 O.prototype.method = function () {};
@@ -4725,7 +4947,7 @@ O.prototype.method = function () {};
 
 共享全局变量
 
-```js
+```ts
 let Global = 'global';
 
 function A() {
@@ -4738,13 +4960,13 @@ function B() {
 
 #### 控制耦合(3)
 
-```js
+```ts
 const absFactory = new AbstractFactory({ env: 'TEST' });
 ```
 
 #### 印记耦合(2)
 
-```js
+```ts
 O.prototype.makeBread = function (args) {
   return new Bread(args.type, args.size);
 };
@@ -4776,7 +4998,7 @@ O.makeBread({ type: wheat, size: 99, name: 'foo' });
 - stub: 模拟对象中的返回值
 - spy: 在原有对象的基础上，增加监视用变量/方法 e.g assert/调用次数/参数限制
 
-```js
+```ts
 const mockery = require('mockery');
 mockery.enable();
 
@@ -4814,7 +5036,7 @@ describe('Sum suite File', function () {
 Inject trace function (log, monitor, report service)
 to window `pushState` and `replaceState`.
 
-```js
+```ts
 const _wr = function (type) {
   const orig = window.history[type];
 
@@ -4841,7 +5063,7 @@ window.addEventListener('replacestate', function (event) {
 
 #### Event Propagation Injection
 
-```js
+```ts
 const originalStopPropagation = MouseEvent.prototype.stopPropagation;
 
 MouseEvent.prototype.stopPropagation = function (...args) {
@@ -4852,7 +5074,7 @@ MouseEvent.prototype.stopPropagation = function (...args) {
 
 #### Window Scroll Injection
 
-```js
+```ts
 let originalScrollTop = element.scrollTop;
 
 Object.defineProperty(element, 'scrollTop', {
@@ -4874,7 +5096,7 @@ Object.defineProperty(element, 'scrollTop', {
 - `copy`: copy complex object to clipboard.
 - `monitor`: monitor object.
 
-```js
+```ts
 const devtools = /./;
 devtools.toString = function () {
   this.opened = true;
@@ -4884,41 +5106,41 @@ console.log('%c', devtools);
 // devtools.opened will become true if/when the console is opened
 ```
 
-```js
+```ts
 // Basic console functions
-console.assert;
-console.clear;
-console.log;
-console.debug;
-console.info;
-console.warn;
-console.error;
+console.assert();
+console.clear();
+console.log();
+console.debug();
+console.info();
+console.warn();
+console.error();
 
 // Different output styles
-console.dir;
-console.dirxml;
-console.table;
-console.group;
-console.groupCollapsed;
-console.groupEnd;
+console.dir();
+console.dirxml();
+console.table();
+console.group();
+console.groupCollapsed();
+console.groupEnd();
 
 // Trace console functions
-console.trace;
-console.count;
-console.countReset;
-console.time;
-console.timeEnd;
-console.timeLog;
+console.trace();
+console.count();
+console.countReset();
+console.time();
+console.timeEnd();
+console.timeLog();
 
 // Non-standard console functions
-console.profile;
-console.profileEnd;
-console.timeStamp;
+console.profile();
+console.profileEnd();
+console.timeStamp();
 ```
 
 `console.log`
 
-```js
+```ts
 // `sprinf` style log
 console.log('%d %o %s', integer, object, string);
 console.log('%c ...', 'css style');
@@ -4926,7 +5148,7 @@ console.log('%c ...', 'css style');
 
 `console.table`
 
-```js
+```ts
 // display array of object (tabular data)
 const transactions = [
   {
@@ -4957,15 +5179,15 @@ console.table(data, ['id', 'price']);
 
 #### JS API
 
-```js
+```ts
 // debugger;
 ```
 
-```js
+```ts
 copy(obj); // to clipboard
 ```
 
-```js
+```ts
 window.onerror = function (errorMessage, scriptURI, lineNo, columnNo, error) {
   console.log(`errorMessage: ${errorMessage}`); // 异常信息
   console.log(`scriptURI: ${scriptURI}`); // 异常文件路径
@@ -4985,7 +5207,7 @@ window.addEventListener('error', function () {
 
 ##### Trace Property (Vue Internal)
 
-```js
+```ts
 const traceProperty = (object, property) => {
   let value = object[property];
   Object.defineProperty(object, property, {
@@ -5017,7 +5239,7 @@ ndb index.js
 
 **不使用特性/浏览器推断**，往往容易推断错误(且会随着浏览器更新产生新的错误)
 
-```js
+```ts
 // 特性检测
 if (document.getElementById) {
   element = document.getElementById(id);
@@ -5032,7 +5254,7 @@ if (document.getElementById) {
 
 #### Console DevTools Detection
 
-```js
+```ts
 const x = document.createElement('div');
 
 Object.defineProperty(x, 'id', {
@@ -5045,7 +5267,7 @@ Object.defineProperty(x, 'id', {
 console.log(x);
 ```
 
-```js
+```ts
 // eslint-disable-next-line prefer-regex-literals
 const c = new RegExp('1');
 
@@ -5060,11 +5282,11 @@ console.log(c);
 
 #### Debugger Detection
 
-```js
+```ts
 (function () {}.constructor('debugger')());
 ```
 
-```js
+```ts
 (() => {
   function block() {
     if (
@@ -5089,7 +5311,7 @@ console.log(c);
 })();
 ```
 
-```js
+```ts
 const startTime = new Date();
 // debugger;
 const endTime = new Date();
@@ -5144,9 +5366,9 @@ long click reload: multiple reload options e.g clean cache
 
 #### Capture Default Event Listener
 
-> \$0: the reference to the currently selected element in the Elements panel
+`$0`: the reference to the currently selected element in the Elements panel.
 
-```js
+```ts
 const listener = getEventListeners($0).click[0].listener;
 $0.removeEventListener('click', listener);
 $0.addEventListener('click', e => {
@@ -5304,7 +5526,7 @@ Tool for composite stage analysis
 - no single `let/const`
 - sort `let/const`
 
-```js
+```ts
 // bad
 let i;
 let len;
@@ -5329,7 +5551,7 @@ let length;
 
 - no chains assignment (create implicit global variable)
 
-```js
+```ts
 // bad
 (function example() {
   // JavaScript 把它解释为
@@ -5356,7 +5578,7 @@ console.log(c); // throws ReferenceError
 
 - use `()` wrap multiple line
 
-```js
+```ts
 // bad
 const foo = superLongLongLongLongLongLongLongLongFunctionName();
 
@@ -5374,7 +5596,7 @@ const foo = 'superLongLongLongLongLongLongLongLongString';
 
 - use literal
 
-```js
+```ts
 // bad
 // eslint-disable-next-line no-new-object
 const item = new Object();
@@ -5385,7 +5607,7 @@ const item = {};
 
 - use object-shorthand
 
-```js
+```ts
 // bad
 const atom = {
   lukeSkyWalker,
@@ -5405,7 +5627,7 @@ const atom = {
 
 - use `Object.prototype.XX` not `object.xx`
 
-```js
+```ts
 // bad
 // 在模块范围内的缓存中查找一次
 // eslint-disable-next-line no-prototype-builtins
@@ -5421,7 +5643,7 @@ console.log(has.call(object, key));
 
 - use object spread not object.assign
 
-```js
+```ts
 // very bad
 const original = { a: 1, b: 2 };
 const copy = Object.assign(original, { c: 3 }); // 变异的 `original` ಠ_ಠ
@@ -5440,7 +5662,7 @@ const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
 
 - use `.` for static name, use `[]` for variable name
 
-```js
+```ts
 // good
 const isJedi = luke.jedi;
 
@@ -5455,7 +5677,7 @@ function getProp(prop) {
 - use `push` not `[]`
 - use array spread (best) or `Array.from` (good)
 
-```js
+```ts
 const foo = document.querySelectorAll('.foo');
 
 // good
@@ -5469,7 +5691,7 @@ const nodes = [...foo];
 
 对于多个返回值使用对象解构，而不是数组解构
 
-```js
+```ts
 // bad
 function processInputBad(input) {
   // 处理代码...
@@ -5493,14 +5715,14 @@ const { left, top } = processInput(input);
 
 ### String Style
 
-- use `'` not `"`
-- use \`\${}\` not `'str1' + 'str2'`
+- Use `'` not `"`.
+- Use \``${}`\` not `'str1' + 'str2'`.
 
 ### Function Style
 
 - use naming function expression not function declaration
 
-```js
+```ts
 // bad
 function foo() {
   // ...
@@ -5520,7 +5742,7 @@ const short = function longUniqueMoreDescriptiveLexicalFoo() {
 
 - use `...args` not `arguments`
 
-```js
+```ts
 // bad
 function concatenateAll() {
   // eslint-disable-next-line prefer-rest-params
@@ -5536,7 +5758,7 @@ function concatenateAll(...args) {
 
 - use default parameters not default expression pattern
 
-```js
+```ts
 // bad
 function handleThings(opts) {
   this.opts = opts || {};
@@ -5554,7 +5776,7 @@ function handleThings(opts = {}) {
 
 - `()` and `{}` should pair
 
-```js
+```ts
 // bad
 arr.map(x => x + 1);
 arr.map((x, index) => x + index);
@@ -5576,7 +5798,7 @@ arr.map((x, index) => {
 
 - use `()` wrap multiple line return value
 
-```js
+```ts
 // bad
 ['get', 'post', 'put'].map(httpMethod =>
   Object.prototype.hasOwnProperty.call(
@@ -5599,13 +5821,13 @@ arr.map((x, index) => {
 - Import first.
 - No shorthand `export from`.
 
-```js
+```ts
 // bad
 // filename es6.js
 export { es6 as default } from './AirbnbStyleGuide';
 ```
 
-```js
+```ts
 // good
 // filename es6.js
 import { es6 } from './AirbnbStyleGuide';
@@ -5614,7 +5836,7 @@ export default es6;
 
 - Path occurs once.
 
-```js
+```ts
 // bad
 // eslint-disable-next-line import/no-duplicates
 import foo from 'foo';
@@ -5623,14 +5845,14 @@ import foo from 'foo';
 import { named1, named2 } from 'foo';
 ```
 
-```js
+```ts
 // good
 import foo, { named1, named2 } from 'foo';
 ```
 
 - Not export `let`.
 
-```js
+```ts
 // bad
 // let foo = 3;
 // export { foo };
@@ -5646,7 +5868,7 @@ export { foo };
   - 使用 `map/reduce/filter/any/every/some/find/findIndex/ ...` 遍历数组
   - 使用 `Object.keys() / Object.values() / Object.entries()` 迭代对象生成数组
 
-```js
+```ts
 const numbers = [1, 2, 3, 4, 5];
 
 // bad
@@ -5687,7 +5909,7 @@ const increasedByOne = numbers.map(num => num + 1);
 
 - use `function*` for generator
 
-```js
+```ts
 // bad
 function* fooBad() {
   // ...
@@ -5722,7 +5944,7 @@ if 语句使用 ToBoolean 的抽象方法来计算表达式的结果:
 
 对于布尔值使用简写，但是对于字符串和数字进行显式比较
 
-```js
+```ts
 // bad
 if (isValid === true) {
   // ...
@@ -5756,7 +5978,7 @@ if (collection.length > 0) {
 
 Use `{}` warp `case` when exists `const`/`let`/`function`/`class` declaration:
 
-```js
+```ts
 // good
 switch (foo) {
   case 1: {
@@ -5787,7 +6009,7 @@ switch (foo) {
 - 键入最后一个运算符后再换行, 运算符置于行尾可使 automatic semicolon insertion 机制失效
 - 换行后保持 2 个缩进层次
 
-```js
+```ts
 // bad
 const arr = [
   [0, 1],
@@ -5827,7 +6049,7 @@ const numberInArray = [1, 2];
 
 - use `()` wrap multiple line assignment or arguments
 
-```js
+```ts
 // good
 const foo = superLongLongLongLongLongLongLongLongFunctionName();
 
@@ -5843,16 +6065,16 @@ const foo = superLongLongLongLongLongLongLongLongFunctionName();
 
 Good places to use a white space include:
 
-- ,/; 后
-- +,-,\*,/,<,>,= 前后
-- function () {}
-- function foo() {}
-- } if/for/while () {}
-- } else {}
-- no space inner `()` `[]`
-- use space inner `{}`
+- `,`/`;` 后.
+- `+`,`-`,`*`,`/`,`<`,`>`,`=` 前后.
+- `function () {}`.
+- `function foo() {}`.
+- `} if/for/while () {}`.
+- `} else {}`.
+- No space inner `()` `[]`.
+- Use space inner `{}`.
 
-```js
+```ts
 let d = 0;
 let a = b + 1;
 
@@ -5878,7 +6100,7 @@ if (a && b && c) {
 - 上方插入空行
 - 与下方语句统一缩进
 
-```js
+```ts
 /*
  * comments
  * comments
@@ -5887,7 +6109,7 @@ if (a && b && c) {
 
 #### 模块
 
-```js
+```ts
 /*
  * @module app
  * @namespace APP
@@ -5896,7 +6118,7 @@ if (a && b && c) {
 
 #### 对象
 
-```js
+```ts
 /*
  * @class mathStuff
  */
@@ -5904,7 +6126,7 @@ if (a && b && c) {
 
 #### 属性
 
-```js
+```ts
 /*
  * @property propertyName
  * @type Number/String
@@ -5913,7 +6135,7 @@ if (a && b && c) {
 
 #### 方法/函数
 
-```js
+```ts
 /*
  * @constructor
  * @method sum
@@ -5948,7 +6170,7 @@ Progressive Web Apps:
 
 - Need startup time.
 
-```js
+```ts
 // 20~100 ms for desktop
 // 100 ms for mobile
 const entry = performance.getEntriesByName(url)[0];
@@ -5962,7 +6184,7 @@ const swStartupTime = entry.requestStart - entry.workerStart;
   - SW asleep = SW boot latency + read time ( + network latency),
   - NO SW = network latency.
 
-```js
+```ts
 const entry = performance.getEntriesByName(url)[0];
 
 // no remote request means this was handled by the cache
@@ -5971,7 +6193,7 @@ if (entry.transferSize === 0) {
 }
 ```
 
-```js
+```ts
 async function handleRequest(event) {
   const cacheStart = performance.now();
   const response = await caches.match(event.request);
@@ -5979,12 +6201,93 @@ async function handleRequest(event) {
 }
 ```
 
-#### SW Demo
+#### Service Worker Caching Strategy
 
-- SW Serving Strategy.
-- SW Caching Strategy.
+5 caching strategy in [workbox](https://developer.chrome.com/docs/workbox/caching-strategies-overview).
 
-```js
+Stale-While-Revalidate:
+
+```ts
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.open(cacheName).then(function (cache) {
+      cache.match(event.request).then(function (cacheResponse) {
+        fetch(event.request).then(function (networkResponse) {
+          cache.put(event.request, networkResponse);
+        });
+
+        return cacheResponse || networkResponse;
+      });
+    })
+  );
+});
+```
+
+Cache first, then Network:
+
+```ts
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.open(cacheName).then(function (cache) {
+      cache.match(event.request).then(function (cacheResponse) {
+        if (cacheResponse) return cacheResponse;
+
+        return fetch(event.request).then(function (networkResponse) {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      });
+    })
+  );
+});
+```
+
+Network first, then Cache:
+
+```ts
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    fetch(event.request).catch(function () {
+      return caches.match(event.request);
+    })
+  );
+});
+```
+
+Cache only:
+
+```ts
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.open(cacheName).then(function (cache) {
+      cache.match(event.request).then(function (cacheResponse) {
+        return cacheResponse;
+      });
+    })
+  );
+});
+```
+
+Network only:
+
+```ts
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    fetch(event.request).then(function (networkResponse) {
+      return networkResponse;
+    })
+  );
+});
+```
+
+#### SW Usage
+
+```ts
 // Check that service workers are registered
 if ('serviceWorker' in navigator) {
   // Use the window load event to keep the page load performance
@@ -5994,9 +6297,9 @@ if ('serviceWorker' in navigator) {
 }
 ```
 
-#### SW for Broken Images
+Broken images use case:
 
-```js
+```ts
 function isImage(fetchRequest) {
   return fetchRequest.method === 'GET' && fetchRequest.destination === 'image';
 }
@@ -6044,6 +6347,7 @@ self.addEventListener('install', e => {
 
 ### PWA Tutorials
 
+- [Offline Cookbook](https://web.dev/offline-cookbook)
 - [Extensive Guide](https://www.smashingmagazine.com/2018/11/guide-pwa-progressive-web-applications)
 - [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers).
 
@@ -6057,7 +6361,7 @@ self.addEventListener('install', e => {
 
 ### Intersection Observer
 
-```js
+```ts
 // <img class="lzy_img" src="lazy_img.jpg" data-src="real_img.jpg" />
 document.addEventListener('DOMContentLoaded', () => {
   const imageObserver = new IntersectionObserver((entries, imgObserver) => {
@@ -6084,7 +6388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 - `KeyframeEffect`.
 - `Animation`.
 
-```js
+```ts
 const rabbitDownKeyframes = new KeyframeEffect(
   whiteRabbit, // element to animate
   [
@@ -6109,7 +6413,7 @@ function downHandler() {
 
 - `element.animate`.
 
-```js
+```ts
 const animationKeyframes = [
   {
     transform: 'rotate(0)',
@@ -6140,7 +6444,7 @@ const animation = document
 - `animation.effect`.
 - `animation.pause()/play()/reverse()/finish()/cancel()`.
 
-```js
+```ts
 animation.pause();
 animation.currentTime = animation.effect.getComputedTiming().duration / 2;
 
@@ -6178,11 +6482,11 @@ function createPlayer(animations) {
 - 绘制样式: 颜色、渐变、变换、阴影
 - 绘制图形: fill/stroke/clip
 
-```js
+```ts
 const context = canvas.getContext('2d');
 ```
 
-```js
+```ts
 // 根据参数画线
 function drawLine(fromX, fromY, toX, toY) {
   context.moveTo(fromX, fromY);
@@ -6215,7 +6519,7 @@ for all objects:
 - update(deltaTime): change position or speed
 - draw(ctx): use canvas api and object properties (position/size) to render objects
 
-```js
+```ts
 const canvas = document.getElementById('gameScreen');
 const ctx = canvas.getContext('2d');
 
@@ -6244,14 +6548,14 @@ requestAnimationFrame(gameLoop);
 
 Canvas buffer:
 
-```js
+```ts
 frontCanvasContext.drawImage(bufferCanvas, 0, 0);
 ```
 
 - multiple canvas: top layer, background layer, interactive layer
 - disable alpha path
 
-```js
+```ts
 const ctx = canvas.getContext('2d', { alpha: false });
 ```
 
@@ -6300,7 +6604,7 @@ onmessage = function (event) {
 (-1 Octave)                 (middle A)                 (+1 Octave)
 ```
 
-```js
+```ts
 const audioContext = new AudioContext();
 
 const baseFrequency = 440;
@@ -6326,7 +6630,7 @@ const play = (type, delay, pitch, duration) => {
 
 ### From Music Data
 
-```js
+```ts
 const sampleSize = 1024; // number of samples to collect before analyzing data
 const audioUrl = 'viper.mp3';
 
@@ -6394,7 +6698,7 @@ function stopSound() {
 - [AnalyserNode.getByteFrequencyData API](https://developer.mozilla.org/zh-CN/docs/Web/API/AnalyserNode/getByteFrequencyData)
 - [Github Demo](https://github.com/bogdan-cornianu/swave/blob/master/src/visualizer.ts)
 
-```js
+```ts
 const WIDTH = this.canvas.clientWidth;
 const HEIGHT = this.canvas.clientHeight;
 this.analyserNode.fftSize = 256;
@@ -6448,7 +6752,7 @@ draw();
 - 对于复杂对象的读取与存储,
   需要借助 `JSON.parse` 与 `JSON.stringify`
 
-```js
+```ts
 if (!localStorage.getItem('bgColor')) {
   populateStorage();
 } else {
@@ -6480,7 +6784,7 @@ function setStyles() {
 
 ### IndexDB API
 
-```js
+```ts
 export class IndexedDB {
   constructor(dbName, dbVersion, dbUpgrade) {
     return new Promise((resolve, reject) => {
@@ -6544,7 +6848,7 @@ export class IndexedDB {
 }
 ```
 
-```js
+```ts
 // IndexedDB usage
 import { IndexedDB } from './indexedDB.js';
 
@@ -6611,8 +6915,8 @@ export class State {
 
 ## Web Navigator API
 
-```js
-navigator.connection.effectiveType; // 2G - 5G
+```ts
+const networkType = navigator.connection.effectiveType; // 2G - 5G
 ```
 
 ## Web Sockets API
@@ -6647,7 +6951,7 @@ Sec-Websocket-Extension: extension [,extension]*
 
 通信功能
 
-```js
+```ts
 function WebSocketTest() {
   if ('WebSocket' in window) {
     alert('WebSocket is supported by your Browser!');
@@ -6723,7 +7027,7 @@ function WebSocketTest() {
 </script>
 ```
 
-```js
+```ts
 // worker.js
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener(
@@ -6759,7 +7063,7 @@ self.addEventListener(
 
 ### Web Worker Loader
 
-```js
+```ts
 // 文件名为index.js
 function work() {
   onmessage = ({ data: { jobId, message } }) => {
@@ -6801,7 +7105,7 @@ testWorker('message from main thread').then(message => {
 - 先 on ,后 post
 - main.js/worker.js 的 onmessage 与 postMessage 相互触发
 
-```js
+```ts
 /*
  * JSONParser.js
  */
@@ -6815,7 +7119,7 @@ self.onmessage = function (event) {
 };
 ```
 
-```js
+```ts
 /*
  * main.js
  */
@@ -6837,7 +7141,7 @@ worker.postMessage(jsonText);
 
 [Gamepad API Tutorials](https://developer.mozilla.org/zh-CN/docs/Games/Techniques/Controls_Gamepad_API)
 
-```js
+```ts
 const gamepads = {};
 
 function gamepadHandler(event, connecting) {
@@ -6862,7 +7166,7 @@ window.addEventListener('gamepaddisconnected', e => {
 
 ## Web Geolocation API
 
-```js
+```ts
 if (window.navigator.geolocation) {
   // getCurrentPosition第三个参数为可选参数
   navigator.geolocation.getCurrentPosition(locationSuccess, locationError, {
@@ -6880,7 +7184,7 @@ if (window.navigator.geolocation) {
 
 locationError 为获取位置信息失败的回调函数，可以根据错误类型提示信息：
 
-```js
+```ts
 function locationError(error) {
   switch (error.code) {
     case error.TIMEOUT:
@@ -6903,7 +7207,7 @@ function locationError(error) {
 
 locationSuccess 为获取位置信息成功的回调函数，返回的数据中包含经纬度等信息，结合 Google Map API 即可在地图中显示当前用户的位置信息，如下：
 
-```js
+```ts
 function locationSuccess(position) {
   const coords = position.coords;
   const latlng = new google.maps.LatLng(
@@ -6942,7 +7246,7 @@ function locationSuccess(position) {
 }
 ```
 
-```js
+```ts
 navigator.geolocation.watchPosition(
   locationSuccess,
   locationError,
@@ -6962,7 +7266,7 @@ navigator.geolocation.watchPosition(
 
 Get and Post:
 
-```js
+```ts
 const response = await fetch('/api/names', {
   headers: {
     Accept: 'application/json',
@@ -6980,7 +7284,7 @@ const response = await fetch('/api/names', {
 
 Request object:
 
-```js
+```ts
 const request = new Request('/api/names', {
   method: 'POST',
   body: JSON.stringify(object),
@@ -7055,7 +7359,7 @@ export default function CSRPage() {
 - [Server Side Rendering with Puppeteer](https://developers.google.com/web/tools/puppeteer/articles/ssr)
 - [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
 
-```js
+```ts
 if (isBotAgent) {
   // return pre-rendering static html to search engine crawler
   // like Gatsby
@@ -7165,8 +7469,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
 #### SEO Metadata
 
-```jsx
-import Helmet from 'react-helmet';
+```tsx
+import { Helmet } from 'react-helmet';
 
 function App() {
   const seo = {
@@ -7495,9 +7799,9 @@ Client ID 和 Client Secret. 这是为了防止令牌被滥用, 没有备案过�
 
 OAuth Token 特征:
 
-1. 授权短 (Short Expire Time)
-2. 可撤销 (Revoke)
-3. 权限小 (Scope)
+1. 授权短 (Short Expire Time).
+2. 可撤销 (Revoke).
+3. 权限小 (Scope).
 
 #### OAuth Authentication Basis
 
@@ -7533,6 +7837,10 @@ https://github.com/login/oauth/access_token
 &grant_type=refresh_token
 &refresh_token=REFRESH_TOKEN
 ```
+
+#### OAuth Usage
+
+- Modern guide to [OAuth](https://fusionauth.io/learn/expert-advice/oauth/modern-guide-to-oauth).
 
 ### Single Sign On
 
@@ -7600,7 +7908,7 @@ Content-Security-Policy: script-src https://example.com/
 - TrustedScript
 - TrustedScriptURL
 
-```js
+```ts
 // fallback policy
 TrustedTypes.createPolicy(
   'default',
@@ -7669,7 +7977,7 @@ def allow_request(req):
 
 ProxySandbox:
 
-```js
+```ts
 function sandbox(code) {
   code = `with (sandbox) {${code}}`;
   // eslint-disable-next-line no-new-func
@@ -7690,7 +7998,7 @@ function sandbox(code) {
 }
 ```
 
-```js
+```ts
 // 简化伪代码示例
 const frame = document.body.appendChild(
   document.createElement('iframe', {
@@ -7762,7 +8070,7 @@ sandbox().call(window, { window, location, history, document }, code);
   - Battery level.
   - Batter status.
 
-```js
+```ts
 function getCanvasFingerprint() {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -7847,32 +8155,32 @@ Feature List 等)
 
 ```bash
 # Canary Deployment
-map $COOKIE\_canary $group {
+map $COOKIE_canary $group {
   # canary account
-  ~\*devui$ server\_canary;
-  default server\_default;
+  ~*devui$ server_canary;
+  default server_default;
 }
 
 # 流量均分, 注释掉其中某一边, 另一边为灰度流量访问边
-upstream server\_canary {
-  server 11.11.11.11:8000 weight=1 max\_fails=1 fail\_timeout=30s;
-  server 22.22.22.22 weight=1 max\_fails=1 fail\_timeout=30s;
+upstream server_canary {
+  server 11.11.11.11:8000 weight=1 max_fails=1 fail_timeout=30s;
+  server 22.22.22.22 weight=1 max_fails=1 fail_timeout=30s;
 }
 
 # 流量均分, 注释掉其中某一边, 另一边为正常流量访问边
-upstream server\_default {
-  server 11.11.11.11:8000 weight=2 max\_fails=1 fail\_timeout=30s;
-  server 22.22.22.22 weight=2 max\_fails=1 fail\_timeout=30s;
+upstream server_default {
+  server 11.11.11.11:8000 weight=2 max_fails=1 fail_timeout=30s;
+  server 22.22.22.22 weight=2 max_fails=1 fail_timeout=30s;
 }
 
 # 配置 8000 端口的转发规则, 并且 expose port
 server {
   listen 8000;
-  server\_name \_;
+  server_name _;
   root /var/canaryDemo;
 
   # Load configuration files for the default server block.
-  include /etc/nginx/default.d/\*.conf;
+  include /etc/nginx/default.d/*.conf;
 
   location / {
     root /var/canaryDemo;
@@ -7882,26 +8190,26 @@ server {
 }
 
 server {
-  listen 80 default\_server;
-  listen \[::\]:80 default\_server;
-  server\_name \_;
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  server_name _;
   # root /usr/share/nginx/html;
   root /var/canaryDemo;
 
   # Load configuration files for the default server block.
-  include /etc/nginx/default.d/\*.conf;
+  include /etc/nginx/default.d/*.conf;
 
   location / {
-    proxy\_pass http://$group;
+    proxy_pass http://$group;
     # root /var/canaryDemo;
     # index index.html;
   }
 
-  error\_page 404 /404.html;
+  error_page 404 /404.html;
     location = /40x.html {
   }
 
-  error\_page 500 502 503 504 /50x.html;
+  error_page 500 502 503 504 /50x.html;
   location = /50x.h
 }
 ```
@@ -8014,7 +8322,7 @@ A read-eval-print loop(REPL) can replace node REPL.
 npm install babel-core --save
 ```
 
-```js
+```ts
 const babel = require('babel-core');
 
 // 字符串转码
@@ -8038,8 +8346,10 @@ babel.transformFromAst(ast, code, options);
 
 ### CodeMod Tool
 
-Use Babel to refactor code,
-like [jscodeshift](https://github.com/facebook/jscodeshift).
+Use Babel to refactor code:
+
+- [JSCodeshift](https://github.com/facebook/jscodeshift)
+- [ReactCodemod](https://github.com/reactjs/react-codemod)
 
 ### Babel Transform Plugin
 
@@ -8052,7 +8362,7 @@ like [jscodeshift](https://github.com/facebook/jscodeshift).
 }
 ```
 
-```js
+```ts
 // index.js
 module.exports = babel => {
   const t = babel.types;
@@ -8111,7 +8421,7 @@ module.exports = babel => {
 }
 ```
 
-```js
+```ts
 // index.js
 const defaultTargets = {
   android: 30,
@@ -8169,7 +8479,7 @@ Enable `devServer` type intellisense:
 npm i -D @types/webpack-dev-server
 ```
 
-```js
+```ts
 /** @type {import('webpack').Configuration} */
 module.exports = {
   entry: {
@@ -8237,7 +8547,7 @@ sudo sysctl -p
 
 ### Webpack Resolve Path Options
 
-```js
+```ts
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
@@ -8259,7 +8569,7 @@ module.exports = {
 
 get `baseUrl`and `paths` from `tsconfig.json`:
 
-```js
+```ts
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
@@ -8328,7 +8638,7 @@ and disabled in production mode.
 
 Accelerate second build time:
 
-```js
+```ts
 module.exports = {
   cache: {
     type: 'filesystem',
@@ -8343,7 +8653,7 @@ module.exports = {
 
 ### Webpack Library Configuration
 
-```js
+```ts
 const path = require('path');
 
 module.exports = {
@@ -8366,7 +8676,7 @@ module.exports = {
 
 #### Webpack Babel Loader
 
-```js
+```ts
 const config = {
   test: /\.(js|mjs|jsx|ts|tsx)$/,
   include: path.resolve('src'),
@@ -8400,7 +8710,7 @@ const config = {
 
 #### Webpack CSS Loader
 
-```js
+```ts
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
@@ -8457,7 +8767,7 @@ module.exports = {
 - `asset` automatically chooses between exporting data URI and separate file
   (`url-loader` with asset size limit, default `8kb`).
 
-```js
+```ts
 const config = {
   rules: [
     {
@@ -8475,7 +8785,7 @@ const config = {
 
 ##### Webpack Resource Assets
 
-```js
+```ts
 const path = require('path');
 
 module.exports = {
@@ -8503,7 +8813,7 @@ module.exports = {
 };
 ```
 
-```js
+```ts
 import mainImage from './images/main.png';
 
 img.src = mainImage; // '/dist/151cfcfa1bd74779aadb.png'
@@ -8511,7 +8821,7 @@ img.src = mainImage; // '/dist/151cfcfa1bd74779aadb.png'
 
 ##### Webpack Inline Assets
 
-```js
+```ts
 const path = require('path');
 const svgToMiniDataURI = require('mini-svg-data-uri');
 
@@ -8538,7 +8848,7 @@ module.exports = {
 };
 ```
 
-```js
+```ts
 import metroMap from './images/metro.svg';
 
 block.style.background = `url(${metroMap})`;
@@ -8547,7 +8857,7 @@ block.style.background = `url(${metroMap})`;
 
 ##### Webpack Source Assets
 
-```js
+```ts
 const path = require('path');
 
 module.exports = {
@@ -8567,7 +8877,7 @@ module.exports = {
 };
 ```
 
-```js
+```ts
 import exampleText from './example.txt';
 
 block.textContent = exampleText; // 'Hello world'
@@ -8575,48 +8885,50 @@ block.textContent = exampleText; // 'Hello world'
 
 #### Webpack Thread Loader
 
-```js
-[
-  {
-    loader: 'thread-loader',
-    // loaders with equal options will share worker pools
-    options: {
-      // the number of spawned workers, defaults to (number of cpus - 1) or
-      // fallback to 1 when require('os').cpus() is undefined
-      workers: 2,
+```ts
+const config = {
+  rules: [
+    {
+      loader: 'thread-loader',
+      // loaders with equal options will share worker pools
+      options: {
+        // the number of spawned workers, defaults to (number of cpus - 1) or
+        // fallback to 1 when require('os').cpus() is undefined
+        workers: 2,
 
-      // number of jobs a worker processes in parallel
-      // defaults to 20
-      workerParallelJobs: 50,
+        // number of jobs a worker processes in parallel
+        // defaults to 20
+        workerParallelJobs: 50,
 
-      // additional node.js arguments
-      workerNodeArgs: ['--max-old-space-size=1024'],
+        // additional node.js arguments
+        workerNodeArgs: ['--max-old-space-size=1024'],
 
-      // Allow to respawn a dead worker pool
-      // respawning slows down the entire compilation
-      // and should be set to false for development
-      poolRespawn: false,
+        // Allow to respawn a dead worker pool
+        // respawning slows down the entire compilation
+        // and should be set to false for development
+        poolRespawn: false,
 
-      // timeout for killing the worker processes when idle
-      // defaults to 500 (ms)
-      // can be set to Infinity for watching builds to keep workers alive
-      poolTimeout: 2000,
+        // timeout for killing the worker processes when idle
+        // defaults to 500 (ms)
+        // can be set to Infinity for watching builds to keep workers alive
+        poolTimeout: 2000,
 
-      // number of jobs the poll distributes to the workers
-      // defaults to 200
-      // decrease of less efficient but more fair distribution
-      poolParallelJobs: 50,
+        // number of jobs the poll distributes to the workers
+        // defaults to 200
+        // decrease of less efficient but more fair distribution
+        poolParallelJobs: 50,
 
-      // name of the pool
-      // can be used to create different pools with elseWise identical options
-      name: 'my-pool',
+        // name of the pool
+        // can be used to create different pools with elseWise identical options
+        name: 'my-pool',
+      },
     },
-  },
-  // your expensive loader (e.g babel-loader)
-];
+    // your expensive loader (e.g babel-loader)
+  ],
+};
 ```
 
-```js
+```ts
 const threadLoader = require('thread-loader');
 
 threadLoader.warmup(
@@ -8642,7 +8954,7 @@ threadLoader.warmup(
 npm i -D worker-loader
 ```
 
-```js
+```ts
 module.exports = {
   module: {
     rules: [
@@ -8684,7 +8996,7 @@ module.exports = {
 
 #### Common Chunks
 
-```js
+```ts
 const config = new webpack.optimize.CommonsChunkPlugin({
   name: string, // or
   names: [string],
@@ -8743,7 +9055,7 @@ const config = new webpack.optimize.CommonsChunkPlugin({
 
 #### Code Minimization
 
-```js
+```ts
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -8838,7 +9150,7 @@ Split chunks configuration:
   - reuseExistingChunk: `true` / `false`.
   - enforce：`true` / `false`.
 
-```js
+```ts
 module.exports = {
   optimization: {
     runtimeChunk: true,
@@ -8915,7 +9227,7 @@ Live code inclusion (AST analysis) + dead code elimination:
 
 #### Building Caches
 
-```js
+```ts
 const config = new HardSourceWebpackPlugin({
   // Either an absolute path or relative to webpack options.context.
   cacheDirectory: 'node_modules/.cache/hard-source/[confighash]',
@@ -8952,7 +9264,7 @@ const config = new HardSourceWebpackPlugin({
 
 Webpack 5
 
-```js
+```ts
 const config = {
   cache: {
     type: 'memory',
@@ -8960,7 +9272,7 @@ const config = {
 };
 ```
 
-```js
+```ts
 const config = {
   cache: {
     type: 'filesystem',
@@ -8973,7 +9285,7 @@ const config = {
 
 #### Webpack Perf Profiling
 
-```js
+```ts
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
 const smp = new SpeedMeasurePlugin();
@@ -9060,7 +9372,7 @@ Webpack 5 support out of box cache.
 
 #### Webpack Custom Plugin
 
-```js
+```ts
 module.exports = {
   plugins: [
     function () {
@@ -9079,7 +9391,7 @@ module.exports = {
 };
 ```
 
-```js
+```ts
 const childProcess = require('child_process');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const branch = childProcess
@@ -9121,7 +9433,7 @@ module.exports = HotLoad;
 
 Typed webpack plugin from `laravel-mix/`:
 
-```js
+```ts
 const readline = require('readline');
 const _ = require('lodash');
 const chalk = require('chalk');
@@ -9385,7 +9697,7 @@ npm i -D jest ts-jest @types/jest react-test-renderer
 
 `jest.config.js`:
 
-```js
+```ts
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
 const { compilerOptions } = require('./tsconfig.json');
 const paths = pathsToModuleNameMapper(compilerOptions.paths, {
@@ -9431,7 +9743,7 @@ module.exports = {
 
 `jest.env.setup.js`:
 
-```js
+```ts
 import path from 'path';
 import dotenv from 'dotenv';
 
@@ -9447,7 +9759,7 @@ dotenv.config({
 - Inject more expect DOM assertion.
 - [Jest DOM Expect API](https://github.com/testing-library/jest-dom)
 
-```js
+```ts
 import '@testing-library/jest-dom/extend-expect';
 
 // Global/Window object Stubs for Jest
@@ -9565,7 +9877,7 @@ describe('Link should', () => {
 
 Jest async [guide](https://jestjs.io/docs/tutorial-async):
 
-```js
+```ts
 await expect(asyncCall()).resolves.toEqual('Expected');
 await expect(asyncCall()).rejects.toThrowError();
 ```
@@ -9577,7 +9889,7 @@ await expect(asyncCall()).rejects.toThrowError();
 - `jest.createMockFromModule('moduleName')`.
 - `jest.requireActual('moduleName')`.
 
-```js
+```tsx
 // react-dom.js
 import React from 'react';
 const reactDom = jest.requireActual('react-dom');
@@ -9596,7 +9908,7 @@ reactDom.createPortal = mockCreatePortal;
 module.exports = reactDom;
 ```
 
-```js
+```ts
 // gatsby.js
 import React from 'react';
 const gatsby = jest.requireActual('gatsby');
@@ -9680,304 +9992,6 @@ async function run(arg = '.') {
 run(process.argv[2]);
 ```
 
-## Enzyme
-
-### Enzyme Mindset
-
-`React Internals`:
-
-- Enzyme tests ultimately prevent from modifying component without changing the test.
-- Enzyme tests slowed down development speed and productivity,
-  since every small change requires rewriting some part of tests.
-- Enzyme provide access the DOM of the component.
-  So using enzyme,
-  we are not bound to test the internals
-  but we can test the DOM too.
-
-### Enzyme Installation
-
-```bash
-npm i -D enzyme enzyme-adapter-react-16 @types/enzyme
-```
-
-## React Testing Library
-
-### React Testing Library Mindset
-
-`User behavior` and `A11Y`:
-
-- Rather than tests focusing on the **implementation** (props and state) (Enzyme),
-  tests are more focused on **user behavior** (react-testing-library).
-- React testing library enforce to
-  use `placeholder`, `aria`, `test-ids` to access elements,
-  benefiting for a11y components
-  (write tests > build accessible components > tests pass).
-
-But sometimes may need to test the internals of the component
-when just testing the DOM from user’s perspective may not make sense.
-
-So depending on the use cases,
-we can choose between these two libraries
-or just install them all for individual use cases.
-
-> Enzyme for Internal API, React testing library for user behavior.
-
-### React Testing Library Installation
-
-<!-- markdownlint-disable line-length -->
-
-```bash
-npm i -D @testing-library/react @testing-library/dom @testing-library/jest-dom @testing-library/user-event
-```
-
-<!-- markdownlint-enable line-length -->
-
-### React Testing Library Basis
-
-```tsx
-import React from 'react';
-
-/**
- * render: render the component
- * screen: finding elements along with user
- **/
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Checkbox, Welcome } from './';
-
-describe('Welcome should', () => {
-  test('has correct welcome message', () => {
-    render(<Welcome firstName="John" lastName="Doe" />);
-    expect(screen.getByRole('heading')).toHaveTextContent('Welcome, John Doe');
-  });
-
-  test('has correct input value', () => {
-    render(<Welcome firstName="John" lastName="Doe" />);
-    expect(screen.getByRole('form')).toHaveFormValues({
-      firstName: 'John',
-      lastName: 'Doe',
-    });
-  });
-
-  test('handles click correctly', () => {
-    render(<Checkbox />);
-    userEvent.click(screen.getByText('Check'));
-    expect(screen.getByLabelText('Check')).toBeChecked();
-  });
-});
-```
-
-```tsx
-import React from 'react';
-import { fireEvent, render, wait } from '@testing-library/react';
-
-import { App } from './App';
-import { api } from './api';
-
-// Normally you can mock entire module using jest.mock('./api);
-const mockCreateItem = (api.createItem = jest.fn());
-
-test('allows users to add items to their list', async () => {
-  const todoText = 'Learn spanish';
-  mockCreateItem.mockResolvedValueOnce({ id: 123, text: todoText });
-
-  const { getByText, getByLabelText } = render(<App />);
-
-  const input = getByLabelText('What needs to be done?');
-  const button = getByText('Add #1');
-
-  fireEvent.change(input, { target: { value: todoText } });
-  fireEvent.click(button);
-
-  await wait(() => getByText(todoText));
-
-  expect(mockCreateItem).toBeCalledTimes(1);
-  expect(mockCreateItem).toBeCalledWith(
-    '/items',
-    expect.objectContaining({ text: todoText })
-  );
-});
-```
-
-### React Testing Library Events
-
-#### FireEvent API
-
-- `fireEvent` trigger DOM event: `fireEvent(node, event)`.
-- `fireEvent.*` helpers for default event types:
-  - click fireEvent.click(node).
-  - See [all supported events](https://github.com/testing-library/dom-testing-library/blob/main/src/event-map.js).
-
-#### UserEvent API
-
-[User Event](https://testing-library.com/docs/ecosystem-user-event)
-provides more advanced simulation of browser interactions
-than the built-in `fireEvent method`.
-
-```bash
-npm i -D @testing-library/user-event @testing-library/dom
-```
-
-```js
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
-test('click', () => {
-  render(
-    <div>
-      <label htmlFor="checkbox">Check</label>
-      <input id="checkbox" type="checkbox" />
-    </div>
-  );
-
-  userEvent.click(screen.getByText('Check'));
-  expect(screen.getByLabelText('Check')).toBeChecked();
-});
-```
-
-### React Hooks Testing Library
-
-#### Basic Hook Testing
-
-```js
-import { useCallback, useState } from 'react';
-
-export default function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue);
-  const increment = useCallback(() => setCount(x => x + 1), []);
-  const reset = useCallback(() => setCount(initialValue), [initialValue]);
-  return { count, increment, reset };
-}
-```
-
-```js
-import { act, renderHook } from '@testing-library/react-hooks';
-import useCounter from './useCounter';
-
-test('should reset counter to updated initial value', () => {
-  const { result, rerender } = renderHook(
-    ({ initialValue }) => useCounter(initialValue),
-    {
-      initialProps: { initialValue: 0 },
-    }
-  );
-
-  rerender({ initialValue: 10 });
-
-  act(() => {
-    result.current.reset();
-  });
-
-  expect(result.current.count).toBe(10);
-});
-```
-
-#### Async Hook Testing
-
-```js
-import React, { useCallback, useContext, useState } from 'react';
-
-export default function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue);
-  const step = useContext(CounterStepContext);
-  const increment = useCallback(() => setCount(x => x + step), [step]);
-  const incrementAsync = useCallback(
-    () => setTimeout(increment, 100),
-    [increment]
-  );
-  const reset = useCallback(() => setCount(initialValue), [initialValue]);
-  return { count, increment, incrementAsync, reset };
-}
-```
-
-```js
-import { renderHook } from '@testing-library/react-hooks';
-import useCounter from './useCounter';
-
-test('should increment counter after delay', async () => {
-  const { result, waitForNextUpdate } = renderHook(() => useCounter());
-  result.current.incrementAsync();
-  await waitForNextUpdate();
-  expect(result.current.count).toBe(1);
-});
-```
-
-#### Error Hook Testing
-
-```js
-import React, { useCallback, useContext, useState } from 'react';
-
-export default function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue);
-  const step = useContext(CounterStepContext);
-  const increment = useCallback(() => setCount(x => x + step), [step]);
-  const incrementAsync = useCallback(
-    () => setTimeout(increment, 100),
-    [increment]
-  );
-  const reset = useCallback(() => setCount(initialValue), [initialValue]);
-
-  if (count > 9000) {
-    throw new Error("It's over 9000!");
-  }
-
-  return { count, increment, incrementAsync, reset };
-}
-```
-
-```js
-import { act, renderHook } from '@testing-library/react-hooks';
-import { useCounter } from './useCounter';
-
-it('should throw when over 9000', () => {
-  const { result } = renderHook(() => useCounter(9000));
-
-  act(() => {
-    result.current.increment();
-  });
-
-  expect(result.error).toEqual(Error("It's over 9000!"));
-});
-```
-
-### React Testing Library API
-
-- `getByXXX` queries: common use case.
-- `queryByXXX` queries: not throw error when nothing match.
-- `findByXXX` queries: `getBy` queries + `waitFor`.
-
-| API        | No Match | 1 Match | 1+ Match | Await |
-| ---------- | -------- | ------- | -------- | ----- |
-| getBy      | throw    | return  | throw    | No    |
-| queryBy    | null     | return  | throw    | No    |
-| findBy     | throw    | return  | throw    | Yes   |
-| getAllBy   | throw    | array   | array    | No    |
-| queryAllBy | []       | array   | array    | No    |
-| findAllBy  | throw    | array   | array    | Yes   |
-
-```jsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import TransactionCreateStepTwo from './TransactionCreateStepTwo';
-
-test('if amount and note is entered, pay button becomes enabled', async () => {
-  render(
-    <TransactionCreateStepTwo sender={{ id: '5' }} receiver={{ id: '5' }} />
-  );
-
-  expect(await screen.findByRole('button', { name: /pay/i })).toBeDisabled();
-
-  userEvent.type(screen.getByPlaceholderText(/amount/i), '50');
-  userEvent.type(screen.getByPlaceholderText(/add a note/i), 'dinner');
-  expect(await screen.findByRole('button', { name: /pay/i })).toBeEnabled();
-});
-```
-
-### React Testing Library Reference
-
-- [React testing library cheat sheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
-
 ## E2E Testing
 
 When it comes to test heavy visual features,
@@ -10000,7 +10014,7 @@ npx cypress open
 
 `e2e/plugins/index.js`: setup TypeScript to transpile tests:
 
-```js
+```ts
 const wp = require('@cypress/webpack-preprocessor');
 
 module.exports = on => {
