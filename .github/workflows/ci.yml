@@ -61,7 +61,7 @@ jobs:
           yarn test:all
           yarn badge
       - name: Perform code coverage report action
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
