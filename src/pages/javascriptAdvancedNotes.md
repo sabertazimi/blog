@@ -13,2576 +13,1136 @@ tags:
 
 # JavaScript Advanced Notes
 
-## Modern JavaScript
+## DOM
 
-### TC39
-
-- [Technical Committees 39](https://www.ecma-international.org/technical-committees/tc39 'TC39')
-- [New Feature Process](http://tc39.github.io/process-document)
-
-JavaScript = ECMAScript + DOM + BOM:
-
-- ECMAScript: ECMA-262.
-- DOM: DOM Core + DOM HTML (`document`).
-- BOM: Browser Object Model API (HTML5)
-  (`window`/`navigator`/`location`/`screen`/`performance` etc).
-
-### Variable
-
-- 一方面规定, `var`/`function` 声明的全局变量,
-  依旧是全局对象的属性, 意味着会`Hoisting`.
-- 另一方面规定, `let`/`const`/`class` 声明的全局变量,
-  不属于全局对象的属性, 意味着不会`Hoisting`.
-- `var` 只有函数作用域, `let`/`const` 拥有块级作用域.
-
-#### Let Variable
-
-- 块级作用域内定义的变量/函数，在块级作用域外 ReferenceError.
-- 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone).
-- `let` variable in `for-loop` closure,
-  every closure for each loop
-  binds the block-scoped variable.
+- DOM Level 0
+- DOM Level 1
+  - DOM Core
+  - DOM HTML
+- DOM Level 2
+  - DOM2 Core
+  - DOM2 HTML
+  - DOM2 Events
+  - DOM2 Style
+  - DOM2 Traversal
+  - DOM2 Range
+  - DOM2 Views
+- DOM Level 3
+  - DOM3 Core
+  - DOM3 Load and Save
+  - DOM3 Validation
 
 ```ts
-const a = 1;
-
-b = 3; // temporal dead zone: throw reference error
-
-let b = 2;
-```
-
-`let` 变量拥有块级作用域:
-
-```ts
-// for (var i = 0; i < 5; ++i) {
-//   setTimeout(() => console.log(i), 0);
-// }
-// Output 5, 5, 5, 5, 5.
-// 所有的 i 都是同一个变量, 输出同一个最终值.
-
-for (let i = 0; i < 5; ++i) {
-  setTimeout(() => console.log(i), 0);
+if (document.implementation) {
+  document.implementation.hasFeature('HTML', '1.0');
+  // => DOM HTML
 }
-// Output: 0, 1, 2, 3, 4.
-// JavaScript 引擎会为每个迭代循环声明一个新的迭代变量.
-// 每个 setTimeout 引用的都是不同的变量实例.
 ```
 
-#### Const Variable
+### DOM Tree
 
-- const 一旦声明变量，就必须立即初始化，不能留到以后赋值.
-- 引用一个`Reference`变量时，只表示此变量地址不可变，但所引用变量的值/属性可变
-  (`xxx *const`, 即`const`指针, 指向一个变量).
-- 块级作用域.
-- 不存在变量提升, 导致暂时性死区 (Temporal Dead Zone).
+- Native object: JavaScript Native e.g. Array.
+- Host object: provided by Browser e.g. HTML5 API.
+- User-defined object.
 
-### Destructuring Pattern Matching
+```html
+<table>
+  <tr>
+    <td align="center" colspan="2">element node</td>
+  </tr>
+  <tr>
+    <td>text node</td>
+    <td>attribute node</td>
+  </tr>
+</table>
+```
 
-- **建议只要有可能，就不要在模式中放置圆括号**.
-- 赋值语句的非模式部分，可以使用圆括号.
-- Every time access value via `.`:
-  stop and think whether use destructuring instead.
-- Destructure as early as possible.
-- Remember to include default values, especially in nested destructuring.
-
-#### Default Value in Destructuring
-
-- ES6 内部使用严格相等运算符（===），判断一个位置是否有值。若此位置无值，则使用默认值
-- 如果一个数组成员不严格等于 undefined，默认值不会生效
+### DOM Core
 
 ```ts
-const [x = 1] = [undefined];
-console.log(x); // 1
+document.createElement('nodeName');
+document.createTextNode('String');
 
-const [x = 1] = [null];
-console.log(x); // null
+cloneNode();
+node.remove();
+
+parentElement.appendChild(childElement);
+parentElement.insertBefore(newElement, targetElement);
+parentElement.removeChild();
+parentElement.replaceChild();
+parentElement.replaceChildren();
+parentElement.hasChildNode();
+
+setAttribute();
+getAttribute();
+
+document.getElementById();
+document.getElementsByTagName();
+document.querySelector();
+document.querySelectorAll();
 ```
 
 ```ts
-let [x = 1, y = x] = []; // x=1; y=1
-let [x = 1, y = x] = [2]; // x=2; y=2
-let [x = 1, y = x] = [1, 2]; // x=1; y=2
-let [x = y, y = 1] = []; // ReferenceError
-```
-
-#### Swap Value with Destructuring
-
-```ts
-[x, y] = [y, x];
-```
-
-#### Function Parameters and Return Value Destructuring
-
-- 可用于工厂 (`factory`) / 设置 (`options`) 模式传参一般为 `options` 对象,
-- 具有固定的属性名.
-- 一次性定义多个参数.
-- 一次性定义多个参数的默认值.
-
-```ts
-// 参数是一组有次序的值
-function f1([x, y, z]) {}
-f1([1, 2, 3]);
-
-// 参数是一组无次序的值
-function f2({ x, y, z }) {}
-f2({ z: 3, y: 2, x: 1 });
-
-// 可省略 const foo = config.foo || 'default foo';
-jQuery.ajax = function (
-  url,
-  {
-    async = true,
-    beforeSend = function () {},
-    cache = true,
-    complete = function () {},
-    crossDomain = false,
-    global = true,
-    // ... more config
-  }
-) {
-  // ... do stuff
+const showAlert = (type, message, duration = 3) => {
+  const div = document.createElement('div');
+  div.className = type;
+  div.appendChild(document.createTextNode(message));
+  container.insertBefore(div, form);
+  setTimeout(() => div.remove(), duration * 1000);
 };
 ```
 
+#### Append DOM Node
+
+| Method             | Node | HTML | Text | IE  | Event Listeners | Secure  |
+| ------------------ | ---- | ---- | ---- | --- | --------------- | ------- |
+| append             | Yes  | No   | Yes  | No  | Preserves       | Yes     |
+| appendChild        | Yes  | No   | No   | Yes | Preserves       | Yes     |
+| innerHTML          | No   | Yes  | Yes  | Yes | Loses           | Careful |
+| insertAdjacentHTML | No   | Yes  | Yes  | Yes | Preserves       | Careful |
+
 ```ts
-// 返回一个数组
-function example1() {
-  return [1, 2, 3];
-}
-const [a, b, c] = example1();
+const testDiv = document.getElementById('testDiv');
 
-// 返回一个对象
-function example2() {
-  return {
-    foo: 1,
-    bar: 2,
-  };
-}
+const para = document.createElement('p');
+testDiv.appendChild(para);
 
-const { foo, bar } = example2();
+const txt = document.createTextNode('Hello World');
+para.appendChild(txt);
+```
+
+#### Insert DOM Node
+
+```ts
+// 4 positions
+//
+// <!-- beforebegin -->
+// <p>
+// <!-- afterbegin -->
+// foo
+// <!-- beforeend -->
+// </p>
+// <!-- afterend -->
+const p = document.querySelector('p');
+
+p.insertAdjacentHTML('beforebegin', '<a></a>');
+p.insertAdjacentText('afterbegin', 'foo');
+
+// simply be moved element, not copied element
+p.insertAdjacentElement('beforebegin', link);
 ```
 
 ```ts
-function add([x, y]) {
-  return x + y;
-}
-add([1, 2]) // 3
-  [([1, 2], [3, 4])].map(([a, b]) => a + b);
-// [ 3, 7 ]
-
-function move({ x = 0, y = 0 } = {}) {
-  return [x, y];
-}
-move({ x: 3, y: 8 }); // [3, 8]
-move({ x: 3 }); // [3, 0]
-move({}); // [0, 0]
-move(); // [0, 0]
-
-// 严格为 undefined 时，触发默认值设置
-[1, undefined, 3].map((x = 'yes') => x);
-// [ 1, 'yes', 3 ]
-```
-
-#### Parse JSON Object with Destructuring
-
-```ts
-const jsonData = {
-  id: 42,
-  status: 'OK',
-  data: [867, 5309],
-};
-
-const { id, status, data: number } = jsonData;
-
-console.log(id, status, number);
-// 42, "OK", [867, 5309]
-```
-
-#### Traverse Map and List with Destructuring
-
-- `for index in Iterable<T>`: key.
-- `for [key, value] of Iterable<T>`: entry.
-
-```ts
-const map = new Map();
-map.set('first', 'hello');
-map.set('second', 'world');
-
-for (const [key, value] of map) {
-  console.log(`${key} is ${value}`);
-}
-// first is hello
-// second is world
-
-// 获取键名
-for (const [key] of map) {
-  // ...
-}
-
-// 获取键值
-for (const [, value] of map) {
-  // ...
-}
-```
-
-#### Import with Destructuring
-
-```ts
-const { SourceMapConsumer, SourceNode } = require('source-map');
-```
-
-#### Array Iterator Destructuring
-
-等号右边必须为数组等实现了 Iterator 接口的对象, 否则报错:
-
-- Array.
-- Set.
-- Generator function.
-
-```ts
-const [foo, [[bar], baz]] = [1, [[2], 3]];
-console.log(foo); // 1
-console.log(bar); // 2
-console.log(baz); // 3
-
-const [, , third] = ['foo', 'bar', 'baz'];
-console.log(third); // "baz"
-
-const [x, , y] = [1, 2, 3];
-console.log(x); // 1
-console.log(y); // 3
-
-const [head, ...tail] = [1, 2, 3, 4];
-console.log(head); // 1
-console.log(tail); // [2, 3, 4]
-
-const [x, y, ...z] = ['a'];
-console.log(x); // "a"
-console.log(y); // undefined
-console.log(z); // []
-
-// Generator 函数
-function* fibs() {
-  let a = 0;
-  let b = 1;
-
-  while (true) {
-    yield a;
-    [a, b] = [b, a + b];
+function insertAfter(newElement, targetElement) {
+  const parent = targetElement.parentNode;
+  if (parent.lastChild === targetElement) {
+    parent.appendChild(newElement);
+  } else {
+    parent.insertBefore(newElement, targetElement.nextSibling);
   }
 }
-
-const [first, second, third, fourth, fifth, sixth] = fibs();
-console.log(sixth); // 5
 ```
 
-#### Object Destructuring
-
-- 真正被赋值的是后者，而不是前者.
+#### Replace DOM Node
 
 ```ts
-const { pattern: variable } = { key: value };
+node.replaceChild(document.createTextNode(text), node.firstChild);
+node.replaceChildren(...nodeList);
 ```
 
-- 解构赋值的规则: 只要等号右边的值不是对象，就先将其转为对象.
-- undefined/null 无法转化为对象.
+#### DOM Node Type
+
+Node 除包括元素结点 (tag) 外,
+包括许多其它结点 (甚至空格符视作一个结点),
+需借助 nodeType 找出目标结点.
+
+| nodeType | representation |
+| :------- | :------------- |
+| 1        | 元素结点       |
+| 2        | 属性结点       |
+| 3        | 文本结点       |
 
 ```ts
-const { prop: x } = undefined; // TypeError
-const { prop: y } = null; // TypeError
+const type = node.nodeType;
+const name = node.nodeName;
+const value = node.nodeValue;
 ```
 
+#### Traverse DOM Tree
+
 ```ts
-const { bar, foo } = { foo: 'aaa', bar: 'bbb' };
-console.log(foo); // "aaa"
-console.log(bar); // "bbb"
+const parent = node.parentNode;
+const children = node.childNodes;
+const first = node.firstChild;
+const last = node.lastChild;
+const previous = node.previousSibling;
+const next = node.nextSibling;
+const textContent = node.textContent;
 
-const { foo, bar } = { foo: 'aaa', bar: 'bbb' };
-
-const { baz } = { foo: 'aaa', bar: 'bbb' };
-console.log(baz); // undefined
+// Returns closest ancestor of current element matching selectors
+node.closest(selectors);
 ```
 
-```ts
-const { foo: baz } = { foo: 'aaa', bar: 'bbb' };
-console.log(baz); // "aaa"
+Element-only navigation:
+Navigation properties listed above refer to all nodes.
+For instance, in `childNodes` we can see both
+text nodes, element nodes, and even comment nodes if there exist.
 
-const obj = { first: 'hello', last: 'world' };
-const { first: f, last: l } = obj;
-console.log(f); // 'hello'
-console.log(l); // 'world'
+```ts
+const parent = node.parentElement;
+const children = node.children;
+const first = node.firstElementChild;
+const last = node.lastElementChild;
+const previous = node.previousElementSibling;
+const next = node.nextElementSibling;
 ```
 
-```ts
-const { log, sin, cos } = Math;
-```
+#### DOM Fragment
 
-#### String Destructuring
+减少 DOM 操作次数, 减少页面渲染次数:
 
 ```ts
-const [a, b, c, d, e] = 'hello';
-console.log(a); // "h"
-console.log(b); // "e"
-console.log(c); // "l"
-console.log(d); // "l"
-console.log(e); // "o"
+const frag = document.createDocumentFragment();
 
-const { length: len } = 'hello';
-console.log(len); // 5
-```
+let p;
+let t;
 
-#### Number and Boolean Destructuring
+p = document.createElement('p');
+t = document.createTextNode('first paragraph');
+p.appendChild(t);
+frag.appendChild(p);
 
-`number`/`boolean` 会转化成对象:
+p = document.createElement('p');
+t = document.createTextNode('second paragraph');
+p.appendChild(t);
+frag.appendChild(p);
 
-```ts
-let { toString: s } = 123;
-const truthy = s === Number.prototype.toString; // true
-
-let { toString: s } = true;
-const truthy = s === Boolean.prototype.toString; // true
-```
-
-### Logical Operators
-
-- Optional Chaining Operator `?.`:
-  Legible property chains that don't throw an error
-  if a requested reference is missing.
-- Nullish coalescing operator `??`:
-  Binary operator.
-  If the value of left side expression is `null` or `undefined`,
-  right side of the operator is evaluated.
-- Logical assignment operators
-  `&&=`, `||=`, `??=`):
-  All of them are binary operators.
-  For `&&=`, if left side is truthy,
-  right-side expression is assigned to left side.
-  For `||=` if left side is falsy,
-  right-side expression is assigned to left side.
-  With the `??=`, if left-side value is `null` or `undefined`,
-  right-side expression is assigned to left side.
-
-### ES6 String
-
-```ts
-// eslint-disable-next-line no-self-compare
-const truthy = 'z' === 'z'; // true
-// eslint-disable-next-line no-octal-escape
-const truthy = '\172' === 'z'; // true
-const truthy = '\x7A' === 'z'; // true
-const truthy = '\u007A' === 'z'; // true
-const truthy = '\u{7A}' === 'z'; // true
-```
-
-#### String Methods
-
-- string.codePointAt(index): 正确处理 4 字节存储字符
-- string.fromCodePoint(codePoint)
-
-```ts
-function is32Bit(c) {
-  return c.codePointAt(0) > 0xffff;
-}
-
-// True:
-const truthy = String.fromCodePoint(0x78, 0x1f680, 0x79) === 'x\uD83D\uDE80y';
-```
-
-- string.includes(substr)/startsWith(substr)/endsWith(substr)
-- 使用第二个参数 n 时，endsWith 针对前 n 个字符，其他两个方法针对从第 n 个位置直到字符串结束
-
-```ts
-const s = 'Hello world!';
-
-s.startsWith('world', 6); // true
-s.endsWith('Hello', 5); // true
-s.includes('Hello', 6); // false
-```
-
-- repeat(times)
-
-```ts
-'hello'.repeat(2); // "hellohello"
-'na'.repeat(2.9); // "nana"
-
-'na'.repeat(-0.9); // ""
-'na'.repeat(-1); // RangeError
-
-'na'.repeat(NaN); // ""
-'na'.repeat(Infinity); // RangeError
-
-'na'.repeat('na'); // ""
-'na'.repeat('3'); // "nanana"
-```
-
-- padStart/padEnd(len, paddingStr)
-
-```ts
-'1'.padStart(10, '0'); // "0000000001"
-'12'.padStart(10, '0'); // "0000000012"
-'123456'.padStart(10, '0'); // "0000123456"
-
-'12'.padStart(10, 'YYYY-MM-DD'); // "YYYY-MM-12"
-'09-12'.padStart(10, 'YYYY-MM-DD'); // "YYYY-09-12"
-```
-
-- `trimLeft()`/`trimStart()`: remove start whitespace.
-- `trimRight()`/`trimEnd()`: remove end whitespace.
-- `matchAll(regexp)`.
-- `replaceAll`:
-  - `replaceAll(regexp, newSubstr)`.
-  - `replaceAll(regexp, replacerFunction)`.
-  - `replaceAll(substr, newSubstr)`.
-  - `replaceAll(substr, replacerFunction)`.
-
-```ts
-// eslint-disable-next-line prefer-regex-literals
-const regexp = new RegExp('foo[a-z]*', 'g');
-const str = 'table football, foosball';
-const matches = str.matchAll(regexp);
-
-for (const match of matches) {
-  console.log(
-    `Found ${match[0]} start=${match.index} end=${
-      match.index + match[0].length
-    }.`
-  );
-}
-// expected output: "Found football start=6 end=14."
-// expected output: "Found foosball start=16 end=24."
-
-// matches iterator is exhausted after the for..of iteration
-// Call matchAll again to create a new iterator
-Array.from(str.matchAll(regexp), m => m[0]);
-// Array [ "football", "foosball" ]
+// 只渲染一次HTML页面
+document.body.appendChild(frag);
 ```
 
 ```ts
-'aabbcc'.replaceAll('b', '.');
-// => 'aa..cc'
+const oldNode = document.getElementById('result');
+const clone = oldNode.cloneNode(true);
+// work with the clone
 
-'aabbcc'.replaceAll(/b/g, '.');
-// => 'aa..cc'
+// when you're done:
+oldNode.parentNode.replaceChild(clone, oldNode);
 ```
 
-#### Template String
-
-`str` 表示模板字符串
+### HTML DOM
 
 ```ts
-// 普通字符串
-`In JavaScript '\n' is a line-feed.``\`Yo\` World!``In JavaScript this is // 多行字符串
- not legal.``${
-  x // 引用变量
-} + ${y * 2} = ${x + y * 2}``${obj.x + obj.y}``foo ${
-  fn() // 调用函数
-} bar`;
+const innerHTML = element.innerHTML;
+const textContent = element.textContent;
 ```
 
-#### Tagged Templates
+`innerHTML`: non-concrete, including all types of childNodes.
 
-```ts
-const boldify = (parts, ...insertedParts) => {
-  return parts
-    .map((s, i) => {
-      if (i === insertedParts.length) return s;
-      return `${s}<strong>${insertedParts[i]}</strong>`;
-    })
-    .join('');
-};
+`div.innerHTML = <p>Test<em>test</em>Test.</p>`
 
-const name = 'Sabertaz';
-console.log(boldify`Hi, my name is ${name}!`);
-// => "Hi, my name is <strong>Sabertaz</strong>!"
+```html
+<div>
+  <p>Test<em>test</em>Test.</p>
+</div>
 ```
 
 ```ts
-function template(strings, ...keys) {
-  return function (...values) {
-    const dict = values[values.length - 1] || {};
-    const result = [strings[0]];
-    keys.forEach(function (key, i) {
-      const value = Number.isInteger(key) ? values[key] : dict[key];
-      result.push(value, strings[i + 1]);
-    });
-    return result.join('');
-  };
-}
-
-const t1Closure = template`${0}${1}${0}!`;
-t1Closure('Y', 'A'); // "YAY!"
-const t2Closure = template`${0} ${'foo'}!`;
-t2Closure('Hello', { foo: 'World' }); // "Hello World!"
+const body = document.body;
+const images = documents.images;
+const links = documents.links;
+const forms = documents.forms;
+const formElements = documents.forms[0].elements; // 第一个表单内的所有字段
+element.alt = string;
+element.classname = value;
 ```
 
-- 编译模板(小型模板引擎)
-
 ```ts
-function compile(template) {
-  const evalExpr = /<%=(.+?)%>/g;
-  const expr = /<%([\s\S]+?)%>/g;
-
-  template = template
-    .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
-    .replace(expr, '`); \n $1 \n  echo(`');
-
-  template = `echo(\`${template}\`);`;
-
-  const script = `(function parse(data){
-      let output = "";
-
-      function echo(html){
-        output += html;
-      }
-
-      ${template}
-
-      return output;
-    })`;
-
-  return script;
-}
-
-const template = `
-<ul>
-  <% for(let i=0; i < data.supplies.length; i++) { %>
-    <li><%= data.supplies[i] %></li>
-  <% } %>
-</ul>
-`;
-const parse = compile(template);
-div.innerHTML = parse({ supplies: ['broom', 'mop', 'cleaner'] });
-// => <ul>
-// =>   <li>broom</li>
-// =>   <li>mop</li>
-// =>   <li>cleaner</li>
-// => </ul>
-
-// 下面的hashTemplate函数
-// 是一个自定义的模板处理函数
-const libraryHtml = hashTemplate`
-  <ul>
-    #for book in ${myBooks}
-      <li><i>#{book.title}</i> by #{book.author}</li>
-    #end
-  </ul>
-`;
+document.querySelector('cssSelector');
+document.querySelectorAll('cssSelector');
 ```
 
-- 国际化处理
+### CSSOM
+
+The CSS Object Model is a set of APIs allowing the manipulation of CSS from JavaScript.
+It is much like the DOM, but for the CSS rather than the HTML.
+It allows users to read and modify CSS style dynamically.
+
+#### Inline Styles
 
 ```ts
-i18n`Welcome to ${siteName}, you are visitor number ${visitorNumber}!`;
-// "欢迎访问xxx，您是第xxxx位访问者！"
+const style = element.style.XX;
+const font = element.style.fontFamily;
+const mt = element.style.marginTopWidth;
 ```
 
-- XSS 攻击
+#### Getter and Setter Styles
+
+- getPropertyValue
+- setProperty
+- removeProperty
+- item
+- `getPropertyPriority`: return `''` or `important`
 
 ```ts
-const message = SaferHTML`<p>${sender} has sent you a message.</p>`;
+const box = document.querySelector('.box');
 
-function SaferHTML(templateString, ...expressions) {
-  let s = templateString[0];
+box.style.setProperty('color', 'orange');
+box.style.setProperty('font-family', 'Georgia, serif');
+op.innerHTML = box.style.getPropertyValue('color');
+op2.innerHTML = `${box.style.item(0)}, ${box.style.item(1)}`;
 
-  for (let i = 0; i < expressions.length; i++) {
-    const expression = String(expressions[i]);
+box.style.setProperty('font-size', '1.5em');
+box.style.item(0); // "font-size"
 
-    // Escape special characters in the substitution.
-    s += expression
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-
-    // Don't escape special characters in the template.
-    s += templateString[i + 1];
-  }
-
-  return s;
-}
+document.body.style.removeProperty('font-size');
+document.body.style.item(0); // ""
 ```
 
-- 运行代码
+#### Computed Styles
+
+- shorthand style for full property
+- longhand style for specific property
+- `getPropertyValue` can get css variables too
 
 ```ts
-jsx`
-  <div>
-    <input
-      ref='input'
-      onChange='${this.handleChange}'
-      defaultValue='${this.state.value}' />
-      ${this.state.value}
-   </div>
-`;
+const background = window.getComputedStyle(document.body).background;
 
-java`
-class HelloWorldApp {
-  public static void main(String[] args) {
-    System.out.println(“Hello World!”); // Display the string.
+// dot notation, same as above
+const backgroundColor = window.getComputedStyle(el).backgroundColor;
+
+// square bracket notation
+const backgroundColor = window.getComputedStyle(el)['background-color'];
+
+// using getPropertyValue()
+// can get css variables property too
+window.getComputedStyle(el).getPropertyValue('background-color');
+```
+
+#### CSS Class
+
+```ts
+element.classList.add('class');
+element.classList.remove('class');
+element.classList.toggle('class');
+```
+
+**Tip**: bind class
+
+```ts
+function addClass(element, value) {
+  if (!element.className) {
+    element.className = value;
+  } else {
+    newClassName = element.className;
+    newClassName += ' ';
+    newClassName += value;
+    element.className = newClassName;
   }
 }
-`;
-HelloWorldApp.main();
 ```
 
-### Number
+#### CSS StyleSheet API
 
-- 0bxxx/0Bxxx
-- 0oxxx/0Oxxx
-- Number.isFinite()/isNaN()/parseInt()/parseFloat()/isInteger()/isSafeInteger()
-- Number.EPSILON/`MAX_SAFE_INTEGER`/`MIN_SAFE_INTEGER`
-- `**` 指数运算符
-- BigInt
+##### CSS Rules Definition
 
-```ts
-const a = 2172141653;
-const b = 15346349309;
-const c1 = a * b;
-// => 33334444555566670000
-const c2 = BigInt(a) * BigInt(b);
-// => 33334444555566667777n
-```
-
-### Internationalization
-
-#### Number i18n
+- type of `cssRules`:
+  STYLE_RULE (1), IMPORT_RULE (3), MEDIA_RULE (4), KEYFRAMES_RULE (7)
+- `selectorText` property of rules
+- `style` property of rules
 
 ```ts
-const nfFrench = new Intl.NumberFormat('fr');
-nf.format(12345678901234567890n);
-// => 12 345 678 901 234 567 890
-```
+const myRules = document.styleSheets[0].cssRules;
+const p = document.querySelector('p');
 
-#### String i18n
+for (i of myRules) {
+  if (i.type === 1) {
+    p.innerHTML += `<code>${i.selectorText}</code><br>`;
+  }
 
-```ts
-const lfEnglish = new Intl.ListFormat('en');
-// const lfEnglish = new Intl.ListFormat('en', { type: 'disjunction' }); => 'or'
+  if (i.selectorText === 'a:hover') {
+    i.selectorText = 'a:hover, a:active';
+  }
 
-lfEnglish.format(['Ada', 'Grace', 'Ida']);
-// => 'Ada, Grace and Ida'
+  const myStyle = i.style;
 
-const formatter = new Intl.ListFormat('en', {
-  style: 'long',
-  type: 'conjunction',
-});
-console.log(formatter.format(vehicles));
-// expected output: "Motorcycle, Bus, and Car"
+  // Set the bg color on the body
+  myStyle.setProperty('background-color', 'peachPuff');
 
-const formatter2 = new Intl.ListFormat('de', {
-  style: 'short',
-  type: 'disjunction',
-});
-console.log(formatter2.format(vehicles));
-// expected output: "Motorcycle, Bus oder Car"
+  // Get the font size of the body
+  myStyle.getPropertyValue('font-size');
 
-const formatter3 = new Intl.ListFormat('en', { style: 'narrow', type: 'unit' });
-console.log(formatter3.format(vehicles));
-// expected output: "Motorcycle Bus Car"
-```
+  // Get the 5th item in the body's style rule
+  myStyle.item(5);
 
-#### Time i18n
+  // Log the current length of the body style rule (8)
+  console.log(myStyle.length);
 
-```ts
-const rtfEnglish = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+  // Remove the line height
+  myStyle.removeProperty('line-height');
 
-rtf.format(-1, 'day'); // 'yesterday'
-rtf.format(0, 'day'); // 'today'
-rtf.format(1, 'day'); // 'tomorrow'
-rtf.format(-1, 'week'); // 'last week'
-rtf.format(0, 'week'); // 'this week'
-rtf.format(1, 'week'); // 'next week'
-```
+  // log the length again (7)
+  console.log(myStyle.length);
 
-```ts
-const dtfEnglish = new Intl.DateTimeFormat('en', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
-
-dtfEnglish.format(new Date()); // => 'May 7, 2019'
-dtfEnglish.formatRange(start, end); // => 'May 7 - 9, 2019'
-```
-
-### Array
-
-```ts
-const array = [...Array(5).keys()]; // => [0, 1, 2, 3, 4]
-```
-
-#### Array Includes
-
-no more `indexOf() > -1`
-
-#### Array From
-
-强大的**函数式**方法
-
-- 伪数组对象(array-like object)
-- 可枚举对象(iterable object)
-- 克隆数组
-- map 函数
-
-```ts
-// Set
-// Map
-
-// NodeList 对象
-const ps = document.querySelectorAll('p');
-Array.from(ps).forEach(function (p) {
-  console.log(p);
-});
-
-// arguments 对象
-function foo() {
-  // eslint-disable-next-line prefer-rest-params
-  const args = Array.from(arguments);
-  // ...
-}
-
-Array.from('hello');
-// => ['h', 'e', 'l', 'l', 'o']
-
-const namesSet = new Set(['a', 'b']);
-Array.from(namesSet); // ['a', 'b']
-
-// 克隆数组
-Array.from([1, 2, 3]);
-// => [1, 2, 3]
-
-Array.from(arrayLike, x => x * x);
-// =>
-Array.from(arrayLike).map(x => x * x);
-
-Array.from([1, 2, 3], x => x * x);
-// [1, 4, 9]
-
-// random array generation
-Array.from(Array(5).keys());
-// [0, 1, 2, 3, 4]
-```
-
-#### Array CopyWithin
-
-替换数组元素，修改原数组
-
-```ts
-Array.prototype.copyWithin(target, (start = 0), (end = this.length));
-```
-
-```ts
-[1, 2, 3, 4, 5].copyWithin(0, 3)[
-  // => [4, 5, 3, 4, 5]
-
-  // -2相当于3号位，-1相当于4号位
-  (1, 2, 3, 4, 5)
-].copyWithin(0, -2, -1);
-// => [4, 2, 3, 4, 5]
-
-// 将2号位到数组结束，复制到0号位
-const i32a = new Int32Array([1, 2, 3, 4, 5]);
-i32a.copyWithin(0, 2);
-// => Int32Array [3, 4, 5, 4, 5]
-```
-
-#### Array Find
-
-```ts
-arr.find(fn);
-arr.findIndex(fn);
-```
-
-#### Array Flat
-
-`[2, [2, 2]] => [2, 2, 2]`
-
-#### Array FlatMap
-
-map + flat
-
-#### Array Map
-
-相当于 Haskell 中的 List Map
-
-#### Array Filter
-
-相当于 Haskell 中的 List Filter
-
-#### Array Reduce
-
-相当于 Haskell 中的 fold
-
-#### Array Sort
-
-#### Spread Array
-
-```ts
-arr2.push(...arr1);
-```
-
-```ts
-const obj = { x: 1, y: 2, z: 3 };
-
-obj[Symbol.iterator] = function* () {
-  yield 1;
-  yield 2;
-  yield 3;
-};
-
-const array = [...obj]; // print [1, 2, 3]
-```
-
-### New Object API
-
-- `Object.is`:
-
-```ts
-// Case 1: Evaluation result is the same as using ===
-Object.is(25, 25); // true
-Object.is('foo', 'foo'); // true
-Object.is('foo', 'bar'); // false
-Object.is(null, null); // true
-Object.is(undefined, undefined); // true
-Object.is(window, window); // true
-Object.is([], []); // false
-const foo = { a: 1 };
-const bar = { a: 1 };
-Object.is(foo, foo); // true
-Object.is(foo, bar); // false: different reference pointers.
-
-// Case 2: Signed zero
-Object.is(0, -0); // false
-Object.is(+0, -0); // false
-Object.is(-0, -0); // true
-Object.is(0n, -0n); // true
-
-// Case 3: NaN
-Object.is(NaN, 0 / 0); // true
-Object.is(NaN, Number.NaN); // true
-```
-
-```ts
-if (!Object.is) {
-  Object.defineProperty(Object, 'is', {
-    value: (x, y) => {
-      // SameValue algorithm
-      if (x === y) {
-        // return true if x and y are not 0, OR
-        // if x and y are both 0 of the same sign.
-        // This checks for cases 1 and 2 above.
-        return x !== 0 || 1 / x === 1 / y;
-      } else {
-        // return true if both x AND y evaluate to NaN.
-        // The only possibility for a variable to not be strictly equal to itself
-        // is when that variable evaluates to NaN (example: Number.NaN, 0/0, NaN).
-        // This checks for case 3.
-        // eslint-disable-next-line no-self-compare
-        return x !== x && y !== y;
-      }
-    },
-  });
+  // Check priority of font-family (empty string)
+  myStyle.getPropertyPriority('font-family');
 }
 ```
 
-- `Object.keys`.
-- `Object.values`.
-- `Object.entries`.
-- `Object.fromEntries`.
+##### Media Rule
+
+- `conditionText` property of media rule
+- nested `cssRules`
 
 ```ts
-const score = {
-  saber: 42,
-  todd: 19,
-  ken: 4,
-  gan: 41,
-};
+const myRules = document.styleSheets[0].cssRules;
+const p = document.querySelector('.output');
 
-Object.keys(score).map(k => score[k]);
-// => [ 42, 19, 4, 41 ]
+for (i of myRules) {
+  if (i.type === 4) {
+    p.innerHTML += `<code>${i.conditionText}</code><br>`;
 
-Object.values(score);
-// => [ 42, 19, 4, 41 ]
-
-Object.entries(score);
-/**
- * =>
- * [
- * [ 'saber', 42 ],
- * [ 'todd', 19 ],
- * [ 'ken', 4 ],
- * [ 'gan', 41 ],
- * ]
- */
+    for (j of i.cssRules) {
+      p.innerHTML += `<code>${j.selectorText}</code><br>`;
+    }
+  }
+}
 ```
 
+##### Keyframe Rule
+
+- `name` property of keyframe rule
+- nested `cssRules`:
+- `keyText` property of rules
+
 ```ts
-const object = { x: 42, y: 50, abc: 9001 };
-const result = Object.fromEntries(
-  Object.entries(object)
-    .filter(([key, value]) => key.length === 1)
-    .map(([key, value]) => [key, value * 2])
+const myRules = document.styleSheets[0].cssRules;
+const p = document.querySelector('.output');
+
+for (i of myRules) {
+  if (i.type === 7) {
+    p.innerHTML += `<code>${i.name}</code><br>`;
+
+    for (j of i.cssRules) {
+      p.innerHTML += `<code>${j.keyText}</code><br>`;
+    }
+  }
+}
+```
+
+##### Add and Remove CSS Rules
+
+```ts
+const myStylesheet = document.styleSheets[0];
+console.log(myStylesheet.cssRules.length); // 8
+
+document.styleSheets[0].insertRule(
+  'article { line-height: 1.5; font-size: 1.5em; }',
+  myStylesheet.cssRules.length
 );
+console.log(document.styleSheets[0].cssRules.length); // 9
 ```
 
 ```ts
-const map = new Map(Object.entries(object));
-const objectCopy = Object.fromEntries(map);
+const myStylesheet = document.styleSheets[0];
+console.log(myStylesheet.cssRules.length); // 8
+
+myStylesheet.deleteRule(3);
+console.log(myStylesheet.cssRules.length); // 7
 ```
 
-### Arrow Function
+### DOM Events
 
-- no thisArgs binding
-- no arguments binding
-- no prototype binding
-- no suited for `New` constructor
-- not suited as methods of plain object
-  (`this` in arrow function would be refer to `window`)
+- `event.preventDefault()`.
+- `event.stopPropagation()`.
+- `element.dispatchEvent(event)` to trigger events.
+- Default `bubble` mode, can change to `capture` mode.
 
-### Modules
+#### Events Checking
 
 ```ts
-import { lastName as surname } from './profile.js';
-```
-
-```ts
-export const firstName = 'Michael';
-export const lastName = 'Jackson';
-export const year = 1958;
-```
-
-```ts
-// profile.js
-const firstName = 'Michael';
-const lastName = 'Jackson';
-const year = 1958;
-
-export { firstName, lastName, year };
-```
-
-```ts
-// 接口改名
-export { foo as myFoo } from 'my_module';
-
-// 整体输出
-export * from 'my_module';
-```
-
-#### CommonJS vs ES6 Module
-
-- CommonJS 模块是运行时加载，ES6 模块是编译时输出接口.
-- CommonJS 是单个值导出, ES6 Module 可以导出多个.
-- CommonJS 是动态语法可以写在判断里, ES6 Module 静态语法只能写在顶层.
-- CommonJS 的 `this` 是当前模块, ES6 Module 的 `this` 是 `undefined`.
-- CommonJS 模块输出的是一个值的拷贝,
-  ES6 模块 Export 分 3 种情况:
-  1. `export default xxx`输出`value`,
-  2. `export xxx`输出`reference`.
-     `defaultThing` and `anotherDefaultThing` shows ES6 export default value,
-     `importedThing` and `module.thing` shows ES6 export normal reference,
-     and `Destructuring Behavior` create a brand new value.
-  3. function/class special case:
-     `export default function/class thing() {}; // function/class expressions`
-     export default reference,
-     `function/class thing() {}; export default thing; // function/class statements`
-     export default value.
-
-Export default value:
-
-<!-- eslint-disable import/no-duplicates -->
-<!-- eslint-disable no-import-assign -->
-
-```ts
-// module.js
-// main.js
-// eslint-disable-next-line import/no-named-default
-import { default as defaultThing, thing } from './module.js';
-import anotherDefaultThing from './module.js';
-
-// eslint-disable-next-line import/no-mutable-exports
-let thing = 'initial';
-
-export { thing };
-export default thing;
-
-setTimeout(() => {
-  thing = 'changed';
-}, 500);
-
-setTimeout(() => {
-  console.log(thing); // "changed"
-  console.log(defaultThing); // "initial"
-  console.log(anotherDefaultThing); // "initial"
-}, 1000);
-```
-
-<!-- eslint-enable import/no-duplicates -->
-<!-- eslint-enable no-import-assign -->
-
-Export normal reference:
-
-```ts
-// module.js
-// main.js
-import { thing as importedThing } from './module.js';
-
-// eslint-disable-next-line import/no-mutable-exports
-export let thing = 'initial';
-
-setTimeout(() => {
-  thing = 'changed';
-}, 500);
-const module = await import('./module.js');
-let { thing } = await import('./module.js'); // Destructuring Behavior
-
-setTimeout(() => {
-  console.log(importedThing); // "changed"
-  console.log(module.thing); // "changed"
-  console.log(thing); // "initial"
-}, 1000);
-```
-
-To sum up:
-
-<!-- eslint-disable import/export -->
-<!-- eslint-disable import/no-duplicates -->
-
-```ts
-// These give you a live reference to the exported thing(s):
-import { thing } from './module.js';
-import { thing as otherName } from './module.js';
-import * as module from './module.js';
-
-// eslint-disable-next-line no-import-assign
-const module = await import('./module.js');
-// This assigns the current value of the export to a new identifier:
-// eslint-disable-next-line no-import-assign
-const { thing } = await import('./module.js');
-
-// These export a live reference:
-export { thing };
-export { thing as otherName };
-export { thing as default };
-// eslint-disable-next-line prettier/prettier
-export default function thing() {}
-// These export the current value:
-export default thing;
-// eslint-disable-next-line import/no-anonymous-default-export
-export default 'hello!';
-```
-
-<!-- eslint-enable import/export -->
-<!-- eslint-enable import/no-duplicates -->
-
-### Class
-
-```ts
-class A {
-  constructor(value) {
-    this.val = value;
-  }
-}
-
-class B extends A {
-  constructor(value) {
-    super(value);
-    console.log('New');
-  }
-}
-
-const b = new B(6);
-
-console.log(B[[proto]] === A);
-console.log(B.prototype.constructor === B);
-console.log(B.prototype[[proto]] === A.prototype);
-console.log(b[[proto]] === B.prototype);
-
-function AA(value) {
-  this.val = value;
-}
-
-function BB(value) {
-  AA.call(this, value);
-}
-
-BB.prototype = Object.create(AA.prototype);
-BB.prototype.constructor = BB;
-
-const bb = new BB(6);
-
-console.log(BB[[proto]] === Function.prototype); // not consistence with class syntax
-console.log(BB.prototype.constructor === BB);
-console.log(BB.prototype[[proto]] === AA.prototype);
-console.log(bb[[proto]] === BB.prototype);
-```
-
-禁止对复合对象字面量进行导出操作 (array literal, object literal).
-
-#### Class Private Member
-
-```ts
-class Dong {
-  constructor() {
-    this.#name = 'dog';
-    this.#age = 20;
-    this.friend = 'cat';
-  }
-
-  hello() {
-    return `I'm ${this.#name} ${this.#age} years old`;
-  }
+function handleEvent(event) {
+  node.matches(event.target); // return false or true
+  node.contains(event.target); // return false or true
 }
 ```
 
-```ts
-const classPrivateFieldGet = (receiver, state) => {
-  return state.get(receiver);
-};
+#### Global DOM Event
 
-const classPrivateFieldSet = (receiver, state, value) => {
-  state.set(receiver, value);
-};
+DOMContentLoaded:
 
-const dongName = new WeakMap();
-const dongAge = new WeakMap();
-
-class Dong {
-  constructor() {
-    classPrivateFieldSet(this, dongName, 'dong');
-    classPrivateFieldSet(this, dongAge, 20);
-  }
-
-  hello() {
-    return `I'm ${classPrivateFieldGet(this, dongName)}, ${classPrivateFieldGet(
-      this,
-      dongAge
-    )} years old`;
-  }
-}
-```
-
-#### Class Static Blocks
-
-Static blocks have access to class private member.
-Its mainly useful whenever set up multiple static fields.
+- 当文档中没有脚本时, 浏览器解析完文档便能触发 DOMContentLoaded 事件
+- 如果文档中包含脚本, 则脚本会阻塞文档的解析,
+  而脚本需要等 CSSOM 构建完成才能执行
+  - 在 DOM、CSSOM 构建完毕, `defer` 脚本执行完成之后, DOMContentLoaded 事件触发
+  - HTML 文档构建不受 `async` 脚本影响,
+    不需要等待 async 脚本执行与样式表加载,
+    HTML 解析完毕后, DOMContentLoaded 立即触发
+- 在任何情况下, DOMContentLoaded 的触发不需要等待图片等其他资源加载完成
+- 当 HTML 文档解析完成就会触发 DOMContentLoaded,
+  而所有资源加载完成之后, **load** 事件才会被触发
 
 ```ts
-class Foo {
-  static #count = 0;
-
-  get count() {
-    return Foo.#count;
-  }
-
-  static {
-    try {
-      const lastInstances = loadLastInstances();
-      Foo.#count += lastInstances.length;
-    } catch {}
-  }
-}
-```
-
-```ts
-class Translator {
-  static translations = {
-    yes: 'ja',
-  };
-
-  static englishWords = [];
-  static germanWords = [];
-  static {
-    for (const [english, german] of Object.entries(translations)) {
-      this.englishWords.push(english);
-      this.germanWords.push(german);
-    }
-  }
-}
-```
-
-```ts
-class SuperClass {
-  static superField1 = console.log('superField1');
-  static {
-    assert.equal(this, SuperClass);
-    console.log('static block 1 SuperClass');
-  }
-
-  static superField2 = console.log('superField2');
-  static {
-    console.log('static block 2 SuperClass');
-  }
-}
-
-class SubClass extends SuperClass {
-  static subField1 = console.log('subField1');
-  static {
-    assert.equal(this, SubClass);
-    console.log('static block 1 SubClass');
-  }
-
-  static subField2 = console.log('subField2');
-  static {
-    console.log('static block 2 SubClass');
-  }
-}
-
-// Output:
-// 'superField1'
-// 'static block 1 SuperClass'
-// 'superField2'
-// 'static block 2 SuperClass'
-// 'subField1'
-// 'static block 1 SubClass'
-// 'subField2'
-// 'static block 2 SubClass'
-```
-
-### Map
-
-```ts
-const map = new Map([
-  // You define a map via an array of 2-element arrays. The first
-  // element of each nested array is the key, and the 2nd is the value
-  ['name', 'Jean-Luc Picard'],
-  ['age', 59],
-  ['rank', 'Captain'],
-]);
-
-// To get the value associated with a given `key` in a map, you
-// need to call `map.get(key)`. Using `map.key` will **not** work.
-map.get('name'); // 'Jean-Luc Picard'
-```
-
-```ts
-const map = new Map([]);
-
-// eslint-disable-next-line no-new-wrappers
-const n1 = new Number(5);
-// eslint-disable-next-line no-new-wrappers
-const n2 = new Number(5);
-
-map.set(n1, 'One');
-map.set(n2, 'Two');
-
-// `n1` and `n2` are objects, so `n1 !== n2`. That means the map has
-// separate keys for `n1` and `n2`.
-map.get(n1); // 'One'
-map.get(n2); // 'Two'
-map.get(5); // undefined
-
-// If you were to do this with an object, `n2` would overwrite `n1`
-const obj = {};
-obj[n1] = 'One';
-obj[n2] = 'Two';
-
-const two1 = obj[n1]; // 'Two'
-const two2 = obj[5]; // 'Two'
-```
-
-```ts
-const objectClone = new Map(Object.entries(object));
-const arrayClone = new Map(Array.from(map.entries));
-const map = new Map([
-  ['name', 'Jean-Luc Picard'],
-  ['age', 59],
-  ['rank', 'Captain'],
-]);
-
-// The `for/of` loop can loop through iterators
-for (const key of map.keys()) {
-  console.log(key); // 'name', 'age', 'rank'
-}
-
-for (const value of map.values()) {
-  console.log(value); // 'Jean-Luc Picard', 59, 'Captain'
-}
-
-for (const [key, value] of map.entries()) {
-  console.log(key); // 'name', 'age', 'rank'
-  console.log(value); // 'Jean-Luc Picard', 59, 'Captain'
-}
-```
-
-### WeakMap
-
-WeakMap 结构与 Map 结构基本类似,
-唯一的区别就是 WeakMap 只接受对象作为键名 (null 除外),
-而且键名所指向的对象不计入垃圾回收机制.
-
-它的键所对应的对象可能会在将来消失.
-一个对应 DOM 元素的 WeakMap 结构,
-当某个 DOM 元素被清除,
-其所对应的 WeakMap 记录就会自动被移除.
-
-有时候我们会把对象作为一个对象的键用来存放属性值,
-普通集合类型比如简单对象会阻止垃圾回收器对这些作为属性键存在的对象的回收,
-有造成内存泄漏的危险,
-而 WeakMap/WeakSet 则更加安全些.
-
-### Symbol
-
-- A Symbol is a **unique** and **immutable** primitive value
-  and may be used as the key of an Object property.
-- Symbols don't auto-convert to "strings" and can't convert to numbers
-
-```ts
-const arr = ['a', 'b', 'c'];
-const iter = arr[Symbol.iterator]();
-
-iter.next(); // { value: 'a', done: false }
-iter.next(); // { value: 'b', done: false }
-iter.next(); // { value: 'c', done: false }
-iter.next(); // { value: undefined, done: true }
-```
-
-### Iterator
-
-- 一个数据结构只要具有 Symbol.iterator 属性 (其为 function), 就可以认为是 "可遍历的" (iterable).
-- Implement iterator with `Symbol.iterator`.
-- 只有 `for...in` 可以遍历到原型上的属性.
-- `for...in`/`for...of` 隐形调用迭代器的方式, 称为内部迭代器, 使用方便, 不可自定义迭代过程.
-- `{ next, done, value }` 显式调用迭代器的方式, 称为外部迭代器, 使用复杂, 可以自定义迭代过程.
-- Object.getOwnPropertyNames, Object.getOwnPropertySymbols 和 Reflect.ownKeys 可获取到不可枚举的属性.
-- Object.getOwnPropertySymbols 和 Reflect.ownKeys 可获取到 Symbol 属性.
-
-#### Synchronous Iterator
-
-```ts
-const Iterable = {
-  [Symbol.iterator]() {
-    return Iterator;
-  },
-};
-
-const Iterator = {
-  next() {
-    return IteratorResult;
-  },
-  return() {
-    return IteratorResult;
-  },
-  throw(e) {
-    throw e;
-  },
-};
-
-const IteratorResult = {
-  value: any,
-  done: boolean,
-};
-
-const Iterator = {
-  next() {
-    return IteratorResult;
-  },
-  [Symbol.iterator]() {
-    return this;
-  },
-};
-```
-
-```ts
-function methodsIterator() {
-  let index = 0;
-  const methods = Object.keys(this)
-    .filter(key => {
-      return typeof this[key] === 'function';
-    })
-    .map(key => this[key]);
-
-  // iterator object
-  return {
-    next: () => ({
-      // Conform to Iterator protocol
-      done: index >= methods.length,
-      value: methods[index++],
-    }),
-  };
-}
-
-const myMethods = {
-  toString() {
-    return '[object myMethods]';
-  },
-  sumNumbers(a, b) {
-    return a + b;
-  },
-  numbers: [1, 5, 6],
-  [Symbol.iterator]: methodsIterator, // Conform to Iterable Protocol
-};
-
-for (const method of myMethods) {
-  console.log(method); // logs methods `toString` and `sumNumbers`
-}
-```
-
-#### Asynchronous Iterator
-
-```ts
-const AsyncIterable = {
-  [Symbol.asyncIterator]() {
-    return AsyncIterator;
-  },
-};
-
-const AsyncIterator = {
-  next() {
-    return Promise.resolve(IteratorResult);
-  },
-  return() {
-    return Promise.resolve(IteratorResult);
-  },
-  throw(e) {
-    return Promise.reject(e);
-  },
-};
-
-const IteratorResult = {
-  value: any,
-  done: boolean,
-};
-```
-
-```ts
-function remotePostsAsyncIteratorsFactory() {
-  let i = 1;
-  let done = false;
-
-  const asyncIterableIterator = {
-    // the next method will always return a Promise
-    async next() {
-      // do nothing if we went out-of-bounds
-      if (done) {
-        return Promise.resolve({
-          done: true,
-          value: undefined,
-        });
-      }
-
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${i++}`
-      ).then(r => r.json());
-
-      // the posts source is ended
-      if (Object.keys(res).length === 0) {
-        done = true;
-        return Promise.resolve({
-          done: true,
-          value: undefined,
-        });
-      } else {
-        return Promise.resolve({
-          done: false,
-          value: res,
-        });
-      }
-    },
-    [Symbol.asyncIterator]() {
-      return this;
-    },
-  };
-
-  return asyncIterableIterator;
-}
-
-(async () => {
-  const ait = remotePostsAsyncIteratorsFactory();
-
-  await ait.next(); // { done:false, value:{id: 1, ...} }
-  await ait.next(); // { done:false, value:{id: 2, ...} }
-  await ait.next(); // { done:false, value:{id: 3, ...} }
-  // ...
-  await ait.next(); // { done:false, value:{id: 100, ...} }
-  await ait.next(); // { done:true, value:undefined }
-})();
-```
-
-```ts
-// tasks will run in parallel
-ait.next().then();
-ait.next().then();
-ait.next().then();
-```
-
-### Generator
-
-- [Synchronous Generators](https://dev.to/jfet97/javascript-iterators-and-generators-synchronous-generators-3ai4)
-
-#### Basic Usage
-
-```ts
-function* gen() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const g = gen();
-
-g.next(); // { value: 1, done: false }
-g.next(); // { value: 2, done: false }
-g.next(); // { value: 3, done: false }
-g.next(); // { value: undefined, done: true }
-g.return(); // { value: undefined, done: true }
-g.return(1); // { value: 1, done: true }
-```
-
-Iterable object:
-
-```ts
-const users = {
-  james: false,
-  andrew: true,
-  alexander: false,
-  daisy: false,
-  luke: false,
-  clare: true,
-
-  *[Symbol.iterator]() {
-    // this === 'users'
-    for (const key in this) {
-      if (this[key]) yield key;
-    }
-  },
-};
-```
-
-Early return:
-
-```ts
-function* gen() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const g = gen();
-
-g.next(); // { value: 1, done: false }
-g.return('foo'); // { value: "foo", done: true }
-g.next(); // { value: undefined, done: true }
-```
-
-#### Complex Usage
-
-The generator function itself is not iterable, call it to get the iterable-iterator:
-
-```ts
-for (const v of someOddNumbers) {
-  console.log(v);
-} // => TypeError: someOddNumbers is not iterable
-
-for (const v of number()) {
-  console.log(v); // 1 3 5 7
-}
-```
-
-Messaging system:
-
-```ts
-function* lazyCalculator(operator) {
-  const firstOperand = yield;
-  const secondOperand = yield;
-
-  switch (operator) {
-    case '+':
-      yield firstOperand + secondOperand;
-      return;
-    case '-':
-      yield firstOperand - secondOperand;
-      return;
-    case '*':
-      yield firstOperand * secondOperand;
-      return;
-    case '/':
-      yield firstOperand / secondOperand;
-      return;
-    default:
-      throw new Error('Unsupported operation!');
-  }
-}
-
-const g = gen('*');
-g.next(); // { value: undefined, done: false }
-g.next(10); // { value: undefined, done: false }
-g.next(2); // { value: 20, done: false }
-g.next(); // { value: undefined, done: true }
-```
-
-Error handling:
-
-```ts
-function* generator() {
-  try {
-    yield 1;
-  } catch (e) {
-    console.log(e);
-  }
-
-  yield 2;
-  yield 3;
-  yield 4;
-  yield 5;
-}
-
-const it = generator();
-
-it.next(); // {value: 1, done: false}
-
-// the error will be handled and printed ("Error: Handled!"),
-// then the flow will continue, so we will get the
-// next yielded value as result.
-it.throw(Error('Handled!')); // {value: 2, done: false}
-
-it.next(); // {value: 3, done: false}
-
-// now the generator instance is paused on the
-// third yield that is not inside a try-catch.
-// the error will be re-thrown out
-it.throw(Error('Not handled!')); // !!! Uncaught Error: Not handled! !!!
-
-// now the iterator is exhausted
-it.next(); // {value: undefined, done: true}
-```
-
-Generator based control flow goodness for nodejs and the browser,
-using promises, letting you write non-blocking code in a nice-ish way
-(just like [tj/co](https://github.com/tj/co)).
-
-```ts
-function coroutine(generatorFunc) {
-  const generator = generatorFunc();
-  nextResponse();
-
-  function nextResponse(value) {
-    const response = generator.next(value);
-
-    if (response.done) {
-      return;
-    }
-
-    if (value.then) {
-      value.then(nextResponse);
-    } else {
-      nextResponse(response.value);
-    }
-  }
-}
-
-coroutine(function* bounce() {
-  yield bounceUp;
-  yield bounceDown;
+document.addEventListener('DOMContentLoaded', event => {
+  console.log('DOM fully loaded and parsed.');
 });
 ```
 
-#### Asynchronous Generator
+#### Tab Visibility Event
+
+- 切换标签页时改变网页标题/声音/视频
 
 ```ts
-const asyncSource = {
-  async *[Symbol.asyncIterator]() {
-    yield await new Promise(resolve => setTimeout(resolve, 1000, 1));
-  },
-};
-
-async function* remotePostsAsyncGenerator() {
-  let i = 1;
-
-  while (true) {
-    const res = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${i++}`
-    ).then(r => r.json());
-
-    // when no more remote posts will be available,
-    // it will break the infinite loop.
-    // the async iteration will end
-    if (Object.keys(res).length === 0) {
+window.addEventListener('visibilitychange', () => {
+  switch (document.visibilityState) {
+    case 'hidden':
+      console.log('Tab隐藏');
       break;
-    }
-
-    yield res;
+    case 'visible':
+      console.log('Tab被聚焦');
+      break;
+    default:
+      throw new Error('Unsupported visibility!');
   }
-}
+});
 ```
 
 ```ts
-function* chunkify(array, n) {
-  yield array.slice(0, n);
-  array.length > n && (yield* chunkify(array.slice(n), n));
+const videoElement = document.getElementById('videoElement');
+
+// AutoPlay the video if application is visible
+if (document.visibilityState === 'visible') {
+  videoElement.play();
 }
 
-async function* getRemoteData() {
-  let hasMore = true;
-  let page;
-
-  while (hasMore) {
-    const { next_page, results } = await fetch(URL, { params: { page } }).then(
-      r => r.json()
-    );
-
-    // Return 5 elements with each iteration.
-    yield* chunkify(results, 5);
-
-    hasMore = next_page != null;
-    page = next_page;
+// Handle page visibility change events
+function handleVisibilityChange() {
+  if (document.visibilityState === 'hidden') {
+    videoElement.pause();
+  } else {
+    videoElement.play();
   }
 }
+
+document.addEventListener('visibilitychange', handleVisibilityChange, false);
 ```
 
-当为 `next` 传递值进行调用时,
-传入的值会被当作上一次生成器函数暂停时 `yield` 关键字的返回值处理.
-第一次调用 `g.next()` 传入参数是毫无意义,
-因为首次调用 `next` 函数时,
-生成器函数并没有在 `yield` 关键字处暂停.
+#### Form Events
+
+- [CheckValidity API](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/checkValidity)
+- [FromData API](https://developer.mozilla.org/docs/Web/API/FormData)
+- [Forms Constraint Validation](https://www.sitepoint.com/html-forms-constraint-validation-complete-guide)
 
 ```ts
-function promise1() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('1');
-    }, 1000);
+// <form className='validated-form' noValidate onSubmit={onSubmit}>
+
+const onSubmit = event => {
+  event.preventDefault();
+
+  const form = event.target;
+  const isValid = form.checkValidity(); // returns true or false
+  const formData = new FormData(form);
+
+  const validationMessages = Array.from(formData.keys()).reduce((acc, key) => {
+    acc[key] = form.elements[key].validationMessage;
+    return acc;
+  }, {});
+
+  setErrors(validationMessages);
+
+  console.log({
+    validationMessages,
+    data,
+    isValid,
   });
-}
 
-function promise2(value) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(`value:${value}`);
-    }, 1000);
-  });
-}
+  if (isValid) {
+    // here you do what you need to do if is valid
+    const data = Array.from(formData.keys()).reduce((acc, key) => {
+      acc[key] = formData.get(key);
+      return acc;
+    }, {});
+  }
+};
+```
 
-function* readFile() {
-  const value = yield promise1();
-  const result = yield promise2(value);
-  return result;
-}
+```ts
+function validateForm(e) {
+  const form = e.target;
 
-function co(gen) {
-  return new Promise((resolve, reject) => {
-    const g = gen();
-
-    function next(param) {
-      const { done, value } = g.next(param);
-
-      if (!done) {
-        // Resolve chain.
-        Promise.resolve(value).then(res => next(res));
+  if (form.checkValidity()) {
+    // form is valid - make further checks
+  } else {
+    // form is invalid - cancel submit
+    e.preventDefault();
+    // apply invalid class
+    Array.from(form.elements).forEach(i => {
+      if (i.checkValidity()) {
+        // field is valid - remove class
+        i.parentElement.classList.remove('invalid');
       } else {
-        resolve(value);
+        // field is invalid - add class
+        i.parentElement.classList.add('invalid');
       }
-    }
-
-    // First invoke g.next() without params.
-    next();
-  });
-}
-
-co(readFile).then(res => console.log(res));
-// const g = readFile();
-// const value = g.next();
-// const result = g.next(value);
-// resolve(result);
-```
-
-### Proxy and Reflect
-
-Modify default object behavior with `Proxy` and `Reflect`:
-
-```ts
-// new Proxy(target, handler)
-Proxy(target, {
-  set(target, name, value, receiver) {
-    const success = Reflect.set(target, name, value, receiver);
-    if (success) {
-      log(`property ${name} on ${target} set to ${value}`);
-    }
-    return success;
-  },
-});
-```
-
-`Reflect` handlers:
-
-- `Reflect.get(target, propKey)`.
-- `Reflect.set(target, propKey, value)`.
-- `Reflect.has(target, propKey)`.
-- `Reflect.apply(target, thisArgument, argumentsList)`.
-- `Reflect.construct(target, argumentsList)`:
-  `new target(...argumentsList)`.
-- `Reflect.ownKeys(target)`:
-  `Object.getOwnPropertyNames` + `Object.getOwnPropertySymbols`,
-  all keys include Symbols.
-- `Reflect.getPrototypeOf(target)`.
-- `Reflect.setPrototypeOf(target, prototype)`.
-- `Reflect.getOwnPropertyDescriptor(target, propKey)`.
-- `Reflect.defineProperty(target, propKey, attributes)`.
-- `Reflect.deleteProperty(target, propKey)`.
-- `Reflect.isExtensible(target)`.
-- `Reflect.preventExtensions(target)`.
-
-Change original object will change proxy object,
-change proxy object will change original object via `set` related API.
-
-#### Proxy vs DefineProperty
-
-- Simple: `Proxy` 使用上比 `Object.defineProperty` 方便.
-  - `Object.defineProperty` 只能监听对象, 导致 `Vue 2` `data` 属性必须通过一个返回对象的函数方式初始化,
-  - `Vue 3` 更加多元化, 可以监听任意数据.
-- Performant: `Proxy` 代理整个对象, `Object.defineProperty` 只代理对象上的某个属性.
-  - `Object.defineProperty` 由于每次只能监听对象一个键的 `get`/`set`, 导致需要循环监听浪费性能.
-  - `Proxy` 可以一次性监听到所有属性.
-- Lazy: `Proxy` 性能优于 `Object.defineProperty`.
-  - 如果对象内部要全部递归代理, 则 `Proxy` 可以只在调用时递归.
-  - `Object.defineProperty` 需要在一开始就全部递归.
-- Feature:
-  - 对象上定义新属性时, 只有 `Proxy` 可以监听到.
-  - 数组新增删除修改时, 只有 `Proxy` 可以监听到.
-  - `Object.defineProperty` 无法监听数组, `Proxy` 则可以直接监听数组变化.
-  - Vue2: 重写数组方法监听数组变化, Vue3: `Proxy` 监听数组变化.
-- `Proxy` 不兼容 IE, `Object.defineProperty` 不兼容 IE8 及以下.
-
-#### Default Zero Value with Proxy
-
-```ts
-const withZeroValue = (target, zeroValue = 0) =>
-  new Proxy(target, {
-    get: (obj, prop) => (prop in obj ? obj[prop] : zeroValue),
-  });
-
-let pos = { x: 4, y: 19 };
-console.log(pos.z); // => undefined
-pos = withZeroValue(pos);
-console.log(pos.z); // => 0
-```
-
-#### Negative Array Indices with Proxy
-
-```ts
-const negativeArray = els =>
-  new Proxy(target, {
-    get: (target, propKey, receiver) =>
-      Reflect.get(
-        target,
-        +propKey < 0 ? String(target.length + +propKey) : propKey,
-        receiver
-      ),
-  });
-```
-
-#### Hiding Properties with Proxy
-
-```ts
-const hide = (target, prefix = '_') =>
-  new Proxy(target, {
-    has: (obj, prop) => !prop.startsWith(prefix) && prop in obj,
-    ownKeys: obj =>
-      Reflect.ownKeys(obj).filter(
-        prop => typeof prop !== 'string' || !prop.startsWith(prefix)
-      ),
-    get: (obj, prop, rec) => (prop in rec ? obj[prop] : undefined),
-  });
-
-const userData = hide({
-  firstName: 'Tom',
-  mediumHandle: '@bar',
-  _favoriteRapper: 'Drake',
-});
-
-const falsy = '_favoriteRapper' in userData; // has: false
-const keys = Object.keys(userData); // ownKeys: ['firstName', 'mediumHandle']
-console.log(userData._favoriteRapper); // get: undefined
-```
-
-#### Read Only Object with Proxy
-
-```ts
-const NOPE = () => {
-  throw new Error("Can't modify read-only object");
-};
-
-const NOPE_HANDLER = {
-  set: NOPE,
-  defineProperty: NOPE,
-  deleteProperty: NOPE,
-  preventExtensions: NOPE,
-  setPrototypeOf: NOPE,
-  get: (obj, prop) => {
-    if (prop in obj) {
-      return Reflect.get(obj, prop);
-    }
-
-    throw new ReferenceError(`Unknown prop "${prop}"`);
-  },
-};
-
-const readOnly = target => new Proxy(target, NODE_HANDLER);
-```
-
-#### Range Judgement with Proxy
-
-```ts
-const range = (min, max) =>
-  new Proxy(Object.create(null), {
-    has: (_, prop) => +prop >= min && +prop <= max,
-  });
-
-const X = 10.5;
-const nums = [1, 5, X, 50, 100];
-
-if (X in range(1, 100)) {
-  // => true
-}
-
-nums.filter(n => n in range(1, 10));
-// => [1, 5]
-```
-
-#### Handle Exception with Proxy
-
-```ts
-function createExceptionProxy(target) {
-  return new Proxy(target, {
-    get: (target, prop) => {
-      if (!(prop in target)) {
-        return;
-      }
-
-      if (typeof target[prop] === 'function') {
-        return createExceptionZone(target, prop);
-      }
-
-      return target[prop];
-    },
-  });
-}
-
-function createExceptionZone(target, prop) {
-  return (...args) => {
-    let result;
-    ExceptionsZone.run(() => {
-      result = target[prop](...args);
     });
-    return result;
-  };
+  }
 }
+```
 
-class ExceptionsZone {
-  static exceptionHandler = new ExceptionHandler();
+#### Input Events
 
-  static run(callback) {
-    try {
-      callback();
-    } catch (e) {
-      this.exceptionHandler.handle(e);
+- focus/focusin/focusout event
+- input/change event
+- select event
+
+```ts
+const input = document.querySelector('input');
+
+input.addEventListener('select', event => {
+  const log = document.getElementById('log');
+  const selection = event.target.value.substring(
+    event.target.selectionStart,
+    event.target.selectionEnd
+  );
+  log.textContent = `You selected: ${selection}`;
+});
+```
+
+#### Mouse Events
+
+- `onclick`.
+- `ondbclick`.
+- `onmousedown/move/enter/out/leave/over`.
+
+For click event, no need for X/Y to judge internal/outside state.
+Use DOM API `element.contains` to check is a better way.
+
+```ts
+window.addEventListener('click', event => {
+  if (document.getElementById('main').contains(event.target)) {
+    process();
+  }
+});
+```
+
+[Drag Event](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent):
+
+- dragstart: start point.
+- dragend
+- dragenter: call `event.preventDefault()` in drop zone.
+- dragover: call `event.preventDefault()` in drop zone.
+- dragleave
+- drop: end point.
+
+Key point for implementing DnD widget is
+[DataTransfer](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer):
+
+- Bindings between Drag Zone and Drop Zone.
+- `DataTransfer.dropEffect` and `DataTransfer.effectAllowed` to define DnD UI type.
+- `DataTransfer.getData` and `DataTransfer.setData` to transfer data.
+- `DataTransfer.files` and `DataTransfer.items` to transfer data.
+
+[Context Menu Event](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event):
+
+```ts
+const noContext = document.getElementById('noContextMenu');
+
+noContext.addEventListener('contextmenu', e => {
+  e.preventDefault();
+});
+```
+
+#### Key Events
+
+`onkeypress/up/down`
+
+```ts
+document.onkeydown = function (event) {
+  // eslint-disable-next-line no-caller
+  const e = event || window.event || arguments.callee.caller.arguments[0];
+  if (e && e.keyCode === 13) {
+    // enter 键
+    // coding
+  }
+};
+```
+
+- event.key => [keyName](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
+
+```ts
+'Alt';
+'CapsLock';
+'Control';
+'Fn';
+'Numlock';
+'Shift';
+'Enter';
+'Tab';
+' '; // space bar
+
+'ArrowDown';
+'ArrowLeft';
+'ArrowRight';
+'ArrowUp';
+'Home';
+'End';
+'PageDOwn';
+'PageUp';
+
+'Backspace';
+'Delete';
+'Redo';
+'Undo';
+```
+
+#### Clipboard Event
+
+- copy
+- cut
+- paste
+
+```ts
+const source = document.querySelector('div.source');
+
+source.addEventListener('copy', event => {
+  const selection = document.getSelection();
+  event.clipboardData.setData(
+    'text/plain',
+    selection.toString().concat('copyright information')
+  );
+  event.preventDefault();
+});
+```
+
+#### Frame Events
+
+- onresize.
+- onload.
+- onscroll.
+- onerror.
+
+#### User-Defined Handler
+
+```ts
+function myHandler(e) {
+  // get event and source element
+  const e = e || window.event;
+  const src = e.target || e.srcElement;
+
+  // 事件授权
+  if (src.nodeName.toLowerCase() !== 'button') {
+    return;
+  }
+
+  // actual work: update label
+  parts = src.innerHTML.split(': ');
+  parts[1] = parseInt(parts[1], 10) + 1;
+  src.innerHTML = `${parts[0]}: ${parts[1]}`;
+  // no bubble
+  if (typeof e.stopPropagation === 'function') {
+    e.stopPropagation();
+  }
+  if (typeof e.cancelBubble !== 'undefined') {
+    e.cancelBubble = true;
+  }
+  // prevent default action
+  if (typeof e.preventDefault === 'function') {
+    e.preventDefault();
+  }
+  if (typeof e.returnValue !== 'undefined') {
+    e.returnValue = false;
+  }
+}
+```
+
+### Document API
+
+```ts
+document.write();
+const URI = document.URI;
+const title = document.title;
+```
+
+### Window API
+
+```ts
+window.location(string);
+window.innerWidth(number);
+window.closed(boolean);
+```
+
+**Tip**: 实现 jQuery 中 `$(document).ready(function(){})`.
+
+```ts
+// initialize.
+window.onload = readyFunction;
+
+function readyFunction() {}
+```
+
+```ts
+// add more ready function
+function addLoadEvent(func) {
+  const oldOnLoad = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function () {
+      oldOnLoad();
+      func();
+    };
+  }
+}
+```
+
+### Location API
+
+| 属性     | 描述                                        |
+| :------- | :------------------------------------------ |
+| hash     | 设置或返回从井号 (#) 开始的 URL（锚）       |
+| host     | 设置或返回主机名和当前 URL 的端口号         |
+| hostname | 设置或返回当前 URL 的主机名                 |
+| href     | 设置或返回完整的 URL                        |
+| pathname | 设置或返回当前 URL 的路径部分               |
+| port     | 设置或返回当前 URL 的端口号                 |
+| protocol | 设置或返回当前 URL 的协议                   |
+| search   | 设置或返回从问号 (?) 开始的 URL（查询部分） |
+
+```ts
+window.addEventListener(
+  'hashchange',
+  event => {
+    // event.oldURL
+    // event.nweURL
+    if (window.location.hash === '#someCoolFeature') {
+      someCoolFeature();
     }
-  }
-}
-
-class ExceptionHandler {
-  handle(exception) {
-    console.log('记录错误：', exception.message, exception.stack);
-  }
-}
-```
-
-```ts
-const obj = {
-  name: 'obj',
-  say() {
-    console.log(`Hi, I'm ${this.name}`);
   },
-  coding() {
-    // xxx.
-    throw new Error('bug');
-  },
-  coding2() {
-    // xxx.
-    throw new Error('bug2');
-  },
-};
-
-const proxy = createProxy(obj);
-
-proxy.say();
-proxy.coding();
-```
-
-### Promise
-
-Avoid callback hell with:
-
-- return `new Promise`.
-- return `promise.then((value) => {})`.
-- error handle with `promise.catch((err) => {})`.
-- cleanup with `promise.finally(() => {})`.
-
-resolve only accept **one** value
-
-```ts
-return new Promise(resolve => resolve([a, b]));
-```
-
-- promises on the same chain execute orderly
-- promises on two separate chains execute in random order
-
-```ts
-const users = ['User1', 'User2', 'User3', 'User4'];
-
-const response = [];
-
-const getUser = user => () => {
-  return axios.get(`/users/userId=${user}`).then(res => response.push(res));
-};
-
-const getUsers = users => {
-  const [getFirstUser, getSecondUser, getThirdUser, getFourthUser] =
-    users.map(getUser);
-
-  getFirstUser()
-    .then(getSecondUser)
-    .then(getThirdUser)
-    .then(getFourthUser)
-    .catch(console.log);
-};
-```
-
-```ts
-const users = ['User1', 'User2', 'User3', 'User4'];
-
-let response = [];
-
-function getUsers(users) {
-  const promises = [];
-  promises[0] = axios.get(`/users/userId=${users[0]}`);
-  promises[1] = axios.get(`/users/userId=${users[1]}`);
-  promises[2] = axios.get(`/users/userId=${users[2]}`);
-  promises[3] = axios.get(`/users/userId=${users[3]}`);
-
-  Promise.all(promises)
-    .then(userDataArr => (response = userDataArr))
-    .catch(err => console.log(err));
-}
-```
-
-#### Promise Array Functions
-
-- `Promise.all(iterable)` fail-fast:
-  if at least one promise in the promises array rejects,
-  then the promise returned rejects too.
-  Short-circuits when an input value is rejected.
-- `Promise.any(iterable)`:
-  resolves if any of the given promises are resolved.
-  Short-circuits when an input value is fulfilled.
-- `Promise.race(iterable)`:
-  Short-circuits when an input value is settled
-  (fulfilled or rejected).
-- `Promise.allSettled(iterable)`:
-  returns when all given promises are settled
-  (rejected or fulfilled, doesn't matter).
-
-```ts
-Promise.all(urls.map(fetch))
-  .then(responses => Promise.all(responses.map(res => res.text())))
-  .then(texts => {
-    //
-  });
-```
-
-```ts
-Promise.all(urls.map(url => fetch(url).then(resp => resp.text()))).then(
-  texts => {
-    //
-  }
+  false
 );
 ```
 
-- `Promise.all` with `async`/`await`
+### Rect API
+
+`getBoundingClientRect`:
+
+[![Client Rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png)](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+
+#### Width and Height API
+
+- offsetWidth/offsetHeight = content + padding + border
+- clientWidth/clientHeight = content + padding
 
 ```ts
-const loadData = async () => {
-  try {
-    const urls = ['...', '...'];
-
-    const results = await Promise.all(urls.map(fetch));
-    const dataPromises = await results.map(result => result.json());
-    const finalData = Promise.all(dataPromises);
-
-    return finalData;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const data = loadData().then(data => console.log(data));
+const height =
+  window.innerHeight ||
+  document.documentElement.clientHeight ||
+  document.body.clientHeight;
 ```
 
-#### Promise Polyfill
+#### Window Height
+
+- outerHeight: 是整个浏览器窗口的大小, 包括窗口标题、工具栏、状态栏等.
+- innerHeight: 是 DOM 视口的大小, 包括滚动条.
+- offsetHeight: 整个可视区域大小, 包括 border 和 scrollbar 在内.
+- clientHeight: 内部可视区域大小.
+- scrollHeight: 元素内容的高度, 包括溢出部分.
+
+:::tip Rect API
+In case of transforms,
+the offsetWidth and offsetHeight returns the layout width and height (all the same),
+while getBoundingClientRect() returns the rendering width and height.
+:::
+
+#### Scroll Size
+
+- scrollTop/scrollY/pageYOffset: 元素内容向上滚动了多少像素, 如果没有滚动则为 0.
+- scrollLeft/scrollX/PageXOffset: 元素内容向右滚动了多少像素, 如果没有滚动则为 0.
 
 ```ts
-class Promise {
-  // `executor` takes 2 parameters, `resolve()` and `reject()`. The executor
-  // function is responsible for calling `resolve()` or `reject()` to say that
-  // the async operation succeeded (resolved) or failed (rejected).
-  constructor(executor) {
-    if (typeof executor !== 'function') {
-      throw new TypeError('Executor must be a function');
+const supportPageOffset = window.pageXOffset !== undefined;
+const isCSS1Compat = (document.compatMode || '') === 'CSS1Compat';
+
+const x = supportPageOffset
+  ? window.pageXOffset
+  : isCSS1Compat
+  ? document.documentElement.scrollLeft
+  : document.body.scrollLeft;
+const y = supportPageOffset
+  ? window.pageYOffset
+  : isCSS1Compat
+  ? document.documentElement.scrollTop
+  : document.body.scrollTop;
+```
+
+```ts
+if (window.innerHeight + window.pageYOffset === document.body.scrollHeight) {
+  console.log('Scrolled to Bottom!');
+}
+```
+
+#### DOM Left and Top Property
+
+- offsetLeft/offsetTop: 表示该元素的左上角（边框外边缘）与已定位的父容器（offsetParent 对象）左上角的距离
+- scrollLeft/scrollTop: 元素滚动条位置, 被隐藏的内容区域左侧/上方的像素大小
+
+```ts
+const isElementInViewport = el => {
+  const { top, height, left, width } = el.getBoundingClientRect();
+  const w = window.innerWidth || document.documentElement.clientWidth;
+  const h = window.innerHeight || document.documentElement.clientHeight;
+
+  return top <= h && top + height >= 0 && left <= w && left + width >= 0;
+};
+```
+
+## Regular Expression
+
+```ts
+const re = /pattern/gim;
+```
+
+### RegExp Flags
+
+- g (global): 全局匹配.
+- m (multiline): 多行匹配.
+- i (ignoreCase): 大小写不敏感匹配.
+- u (unicode): Unicode 模式.
+- y (sticky): 粘附模式, 修饰符号隐含了头部匹配的标志.
+
+```ts
+function codePointLength(text) {
+  const result = text.match(/[\s\S]/gu);
+  return result ? result.length : 0;
+}
+
+const s = '𠮷𠮷';
+const length = s.length; // 4
+codePointLength(s); // 2
+```
+
+### RegExp Character Classes
+
+| Characters | Meaning               |
+| :--------- | :-------------------- |
+| `.`        | `[^\n\r\u2020\u2029]` |
+| `\d`       | `[0-9]`               |
+| `\D`       | `[^0-9]`              |
+| `\w`       | `[0-9a-zA-Z_]`        |
+| `\W`       | `[^0-9a-zA-Z_]`       |
+| `\s`       | `[\r\n\f\t\v]`        |
+| `\S`       | `[^\r\n\f\t\v]`       |
+| `\b`       | start/end of word     |
+| `\B`       | not start/end of word |
+| `^`        | start of string       |
+| `$`        | end of string         |
+
+### RegExp Quantifiers
+
+| Quantifiers | Repeat Times |
+| :---------- | :----------- |
+| `*`         | 0+           |
+| `+`         | 1+           |
+| `?`         | 0 ~ 1        |
+| `{n}`       | n            |
+| `{n,}`      | n+           |
+| `{n,m}`     | n ~ m        |
+
+| Lazy Quantifiers | Repeat Times (As **Less** As Possible) |
+| :--------------- | :------------------------------------- |
+| `*?`             | 0+                                     |
+| `+?`             | 1+                                     |
+| `??`             | 0 ~ 1                                  |
+| `{n,}?`          | n+                                     |
+| `{n,m}?`         | n ~ m                                  |
+
+### RegExp Back Reference
+
+位置编号 - 左括号的顺序:
+
+- `\1 \2 \3`: 第 n 个子表达式匹配的结果字符.
+- `$1 $2 $3`: 第 n 个子表达式匹配的结果字符.
+- 反向引用可以解决正则表达式回溯失控的问题 (ReDoS).
+
+```ts
+const regExp = /((<\/?\w+>.*)\2)/g;
+```
+
+```ts
+const text = 'ooo111ooo222ooo333ooo123';
+const regExp = /(\d)\1\1/g;
+const result = text.match(regExp);
+console.log(result); // [111, 222, 333]
+```
+
+:::danger RegExp Static Property
+
+Most `RegExp.XXX`/`RegExp.$X` static property aren't standard.
+Avoid use them in production:
+
+- `RegExp.input ($_)`.
+- `RegExp.lastMatch ($&)`.
+- `RegExp.lastParen ($+)`.
+- `RegExp.leftContext`.
+- `RegExp.rightContext ($')`.
+- `RegExp.$1-$9`.
+
+:::
+
+### RegExp Group and Ranges
+
+- group
+- lookahead (零宽断言)
+
+| 分类     | 代码/语法      | 说明                                            |
+| :------- | :------------- | :---------------------------------------------- |
+| 捕获     | `(exp)`        | 匹配 exp,并捕获文本到自动命名的组里             |
+|          | `(?<name>exp)` | 匹配 exp,并捕获文本到名称为 name 的组里         |
+|          | `(?:exp)`      | 匹配 exp,不捕获匹配的文本, 也不给此分组分配组号 |
+| 零宽断言 | `(?<=exp)`     | 匹配左侧是 exp 的位置                           |
+|          | `(?<!exp)`     | 匹配左侧不是 exp 的位置                         |
+|          | `(?=exp)`      | 匹配右侧是 exp 的位置                           |
+|          | `(?!exp)`      | 匹配右侧不是 exp 的位置                         |
+| 注释     | `(?#comment)`  | 用于提供注释让人阅读                            |
+
+- `(?<=\d)th` -> `9th`.
+- `(?<!\d)th` -> `health`.
+- `six(?=\d)` -> `six6`.
+- `hi(?!\d)` -> `high`.
+
+```ts
+const string = 'Favorite GitHub Repos: tc39/ecma262 v8/v8.dev';
+const regex = /\b(?<owner>[a-z0-9]+)\/(?<repo>[a-z0-9\.]+)\b/g;
+
+for (const match of string.matchAll(regex)) {
+  console.log(`${match[0]} at ${match.index} with '${match.input}'`);
+  console.log(`owner: ${match.groups.owner}`);
+  console.log(`repo: ${match.groups.repo}`);
+}
+```
+
+### RegExp Best Practice
+
+- 不使用 new RegExp(),使用正则表达式字面量
+- 将正则表达式赋值给变量, 防止正则表达式重复创建
+- 以简单(唯一性)字元开始, 如 `^/$ x \u363A [a-z] \b`, 避免以分组表达式开始:
+  e.g `\s\s*` 优于 `\s{1,}`.
+- 减少表达式的重叠匹配.
+- 减少分支表达式,并将最常用的分支放在最前面.
+- 无需反向引用时, 使用非捕获组:
+  e.g `(?:...)` 优于 `(...)`.
+
+### RegExp Functions
+
+- String:
+  - `split`.
+  - `match`.
+  - `search`.
+  - `replace`.
+- RegExp:
+  - `test`.
+  - `exec`.
+
+#### RegExp Test
+
+```ts
+/[a-z|A-Z|0-9]/gim.test(str);
+```
+
+```ts
+const ignoreList = [
+  // # All
+  '^npm-debug\\.log$', // Error log for npm
+  '^\\..*\\.swp$', // Swap file for vim state
+
+  // # macOS
+  '^\\.DS_Store$', // Stores custom folder attributes
+  '^\\.AppleDouble$', // Stores additional file resources
+  '^\\.LSOverride$', // Contains the absolute path to the app to be used
+  '^Icon\\r$', // Custom Finder icon: http://superuser.com/questions/298785/icon-file-on-os-x-desktop
+  '^\\._.*', // Thumbnail
+  '^\\.Spotlight-V100(?:$|\\/)', // Directory that might appear on external disk
+  '\\.Trashes', // File that might appear on external disk
+  '^__MACOSX$', // Resource fork
+
+  // # Linux
+  '~$', // Backup file
+
+  // # Windows
+  '^Thumbs\\.db$', // Image file cache
+  '^ehthumbs\\.db$', // Folder config file
+  '^Desktop\\.ini$', // Stores custom folder attributes
+  '@eaDir$', // "hidden" folder where the server stores thumbnails
+];
+
+export const junkRegex = new RegExp(ignoreList.join('|'));
+
+export function isJunk(filename) {
+  return junkRegex.test(filename);
+}
+```
+
+#### RegExp Replace
+
+```ts
+replace(regExp, str / func);
+```
+
+##### RegExp Replace Arguments
+
+第二个参数若为函数式参数,replace 方法会向它传递一系列参数:
+
+- 第一个参数: 匹配结果字符串
+- 第 n 个参数: 子表达式匹配结果字符串
+- 倒数第二个参数: 匹配文本在源字符串中的下标位置
+- 最后一个参数: 源字符串自身
+
+###### RegExp Replace Best Practice
+
+- 使用２个子表达式修剪字符串,字符串总长度影响性能
+- 使用循环修剪字符串(分别用 正/负循环 修剪 首/尾空白符),空白字符长度影响性能
+
+```ts
+if (!String.prototype.trim) {
+  // eslint-disable-next-line no-extend-native
+  String.prototype.trim = function () {
+    return this.replace(/^\s+/, '').replace(/\s+$/, '');
+  };
+}
+```
+
+```ts
+if (!String.prototype.trim) {
+  // eslint-disable-next-line no-extend-native
+  String.prototype.trim = function () {
+    const str = this.replace(/^\s+/, '');
+    let end = str.length - 1;
+    const ws = /\s/;
+
+    while (ws.test(str.charAt(end))) {
+      end--;
     }
 
-    // Internal state. `$state` is the state of the promise, and `$chained` is
-    // an array of the functions we need to call once this promise is settled.
-    this.$state = 'PENDING';
-    this.$chained = [];
-
-    // Implement `resolve()` and `reject()` for the executor function to use
-    const resolve = res => {
-      // A promise is considered "settled" when it is no longer
-      // pending, that is, when either `resolve()` or `reject()`
-      // was called once. Calling `resolve()` or `reject()` twice
-      // or calling `reject()` after `resolve()` was already called
-      // are no-ops.
-      if (this.$state !== 'PENDING') {
-        return;
-      }
-
-      // If `res` is a "thenable", lock in this promise to match the
-      // resolved or rejected state of the thenable.
-      const then = res != null ? res.then : null;
-      if (typeof then === 'function') {
-        // In this case, the promise is "resolved", but still in the 'PENDING'
-        // state. This is what the ES6 spec means when it says "A resolved promise
-        // may be pending, fulfilled or rejected" in
-        // http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects
-        return then(resolve, reject);
-      }
-
-      this.$state = 'FULFILLED';
-      this.$internalValue = res;
-
-      // If somebody called `.then()` while this promise was pending, need
-      // to call their `onFulfilled()` function
-      for (const { onFulfilled } of this.$chained) {
-        onFulfilled(res);
-      }
-
-      return res;
-    };
-
-    const reject = err => {
-      if (this.$state !== 'PENDING') {
-        return;
-      }
-
-      this.$state = 'REJECTED';
-      this.$internalValue = err;
-
-      for (const { onRejected } of this.$chained) {
-        onRejected(err);
-      }
-    };
-
-    // Call the executor function with `resolve()` and `reject()` as in the spec.
-    try {
-      // If the executor function throws a sync exception, we consider that
-      // a rejection. Keep in mind that, since `resolve()` or `reject()` can
-      // only be called once, a function that synchronously calls `resolve()`
-      // and then throws will lead to a fulfilled promise and a swallowed error
-      executor(resolve, reject);
-    } catch (err) {
-      reject(err);
-    }
-  }
-
-  // `onFulfilled` is called if the promise is fulfilled, and `onRejected`
-  // if the promise is rejected. For now, you can think of 'fulfilled' and
-  // 'resolved' as the same thing.
-  then(onFulfilled, onRejected) {
-    return new Promise((resolve, reject) => {
-      // Ensure that errors in `onFulfilled()` and `onRejected()` reject the
-      // returned promise, otherwise they'll crash the process. Also, ensure
-      // that the promise
-      const _onFulfilled = res => {
-        try {
-          // If `onFulfilled()` returns a promise, trust `resolve()` to handle
-          // it correctly.
-          // store new value to new Promise
-          resolve(onFulfilled(res));
-        } catch (err) {
-          reject(err);
-        }
-      };
-
-      const _onRejected = err => {
-        try {
-          // store new value to new Promise
-          reject(onRejected(err));
-        } catch (_err) {
-          reject(_err);
-        }
-      };
-
-      if (this.$state === 'FULFILLED') {
-        _onFulfilled(this.$internalValue);
-      } else if (this.$state === 'REJECTED') {
-        _onRejected(this.$internalValue);
-      } else {
-        this.$chained.push({
-          onFulfilled: _onFulfilled,
-          onRejected: _onRejected,
-        });
-      }
-    });
-  }
-
-  catch(onRejected) {
-    return this.then(null, onRejected);
-  }
-
-  finally() {
-    return this.then(null, null);
-  }
-}
-```
-
-#### Promise Thenable and Catch
-
-The main difference between the forms
-`promise.then(success, error)` and
-`promise.then(success).catch(error)`:
-
-in case if success callback returns a rejected promise,
-then only the second form is going to catch that rejection.
-
-#### Memorize Async Function
-
-```ts
-const memo = {};
-const progressQueues = {};
-
-function memoProcessData(key) {
-  return new Promise((resolve, reject) => {
-    if (Object.prototype.hasOwnProperty.call(memo, key)) {
-      resolve(memo[key]);
-      return;
-    }
-
-    if (!Object.prototype.hasOwnProperty.call(progressQueues, key)) {
-      // Called for a new key
-      // Create an entry for it in progressQueues
-      progressQueues[key] = [[resolve, reject]];
-    } else {
-      // Called for a key that's still being processed
-      // Enqueue it's handlers and exit.
-      progressQueues[key].push([resolve, reject]);
-      return;
-    }
-
-    processData(key)
-      .then(data => {
-        memo[key] = data;
-        for (const [resolver] of progressQueues[key]) resolver(data);
-      })
-      .catch(error => {
-        for (const [, rejector] of progressQueues[key]) rejector(error);
-      })
-      .finally(() => {
-        delete progressQueues[key];
-      });
-  });
-}
-```
-
-### Await and Async
-
-avoid wrong parallel logic (too sequential)
-
-```ts
-// wrong
-const books = await bookModel.fetchAll();
-const author = await authorModel.fetch(authorId);
-
-// right
-const bookPromise = bookModel.fetchAll();
-const authorPromise = authorModel.fetch(authorId);
-const book = await bookPromise;
-const author = await authorPromise;
-
-async function getAuthors(authorIds) {
-  // WRONG, this will cause sequential calls
-  // const authors = _.map(
-  //   authorIds,
-  //   id => await authorModel.fetch(id));
-  // CORRECT
-  const promises = _.map(authorIds, id => authorModel.fetch(id));
-  const authors = await Promise.all(promises);
-}
-```
-
-#### Await Arrays
-
-- If you want to execute await calls in series,
-  use a for-loop (or any loop without a callback).
-- Don't ever use await with `forEach` (`forEach` is not promise-aware),
-  use a for-loop (or any loop without a callback) instead.
-- Don't await inside filter and reduce,
-  always await an array of promises with map, then filter or reduce accordingly.
-
-### Asynchronous Programming
-
-#### Sleep Function
-
-```ts
-function sleep(time) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}
-```
-
-```ts
-sleep(2000).then(() => {
-  // do something after 2000 milliseconds
-  console.log('resolved');
-});
-
-async function add(n1, n2) {
-  await sleep(2222);
-  console.log(n1 + n2);
-}
-
-add(1, 2);
-```
-
-#### Race Condition
-
-- keep latest updates
-- recover from failures
-- online and offline sync ([PouchDB](https://github.com/pouchdb/pouchdb))
-- tools: [redux-saga](https://github.com/redux-saga/redux-saga)
-
-```ts
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  data() {
-    return {
-      text: '',
-      results: [],
-      nextRequestId: 1,
-      displayedRequestId: 0,
-    };
-  },
-  watch: {
-    async text(value) {
-      const requestId = this.nextRequestId++;
-      const results = await search(value);
-
-      // guarantee display latest search results (when input keep changing)
-      if (requestId < this.displayedRequestId) {
-        return;
-      }
-
-      this.displayedRequestId = requestId;
-      this.results = results;
-    },
-  },
-};
-```
-
-#### Async Comparison
-
-- promise 和 async/await 是专门用于处理异步操作的.
-- Generator 并不是为异步而设计出来的, 它还有其他功能（对象迭代, 控制输出, Iterator Interface...）
-- promise 编写代码相比 Generator、async 更为复杂化，且可读性也稍差.
-- Generator、async 需要与 promise 对象搭配处理异步情况.
-- async 实质是 Generator 的语法糖, 相当于会自动执行 Generator 函数.
-- async 使用上更为简洁, 将异步代码以同步的形式进行编写, 是处理异步编程的最终方案.
-
-## Functional JavaScript
-
-- predictable (pure and immutable)
-- safe (pure and immutable)
-- transparent (pure and immutable)
-- modular (composite)
-
-### Pros
-
-- type safe and state safe
-- explicit flow of data
-- concurrency safety
-
-### Cons
-
-- verbose
-- more object creation
-- more garbage collection
-- more memory usage
-
-With help of `immutable.js`,
-object creation/garbage collection/memory usage can be alleviated.
-
-For example, in vanilla.js, `map2 === map1` become `false`,
-but in immutable.js `map2 === map1` become `true`
-(copy free due to immutable data).
-
-```ts
-const map1 = { b: 2 };
-const map2 = map1.set('b', 2);
-```
-
-### Closure
-
-Closure is a function that remembers
-the variables from the place where it is defined (lexical scope),
-regardless of where it is executed later:
-
-- 函数外部不可对函数内部进行赋值或引用.
-- 函数中的闭包函数可对函数进行赋值或引用(函数对于闭包来说是外部, 即内部引用外部).
-- 特权性质: 从外部通过闭包方法访问内部(函数作用域)局部变量 (private getter).
-- Local Scope -> Outer Functions Scope -> Global Scope.
-- Closure performance: avoid unnecessary closure creation (GC).
-- Stale closure captures variables that have outdated values (memory leak).
-
-```ts
-// global scope
-const e = 10;
-
-function sum(a) {
-  return function (b) {
-    return function (c) {
-      // outer functions scope
-      return function (d) {
-        // local scope
-        return a + b + c + d + e;
-      };
-    };
+    return str.slice(0, end + 1);
   };
 }
-
-console.log(sum(1)(2)(3)(4)); // log 20
 ```
 
-```ts
-// BAD
-function MyObject(name, message) {
-  this.name = name.toString();
-  this.message = message.toString();
-  this.getName = function () {
-    return this.name;
-  };
+### RegExp Use Case
 
-  this.getMessage = function () {
-    return this.message;
-  };
-}
+#### 中英文
 
-// GOOD: avoid unnecessary
-function MyObject(name, message) {
-  this.name = name.toString();
-  this.message = message.toString();
-}
-MyObject.prototype.getName = function () {
-  return this.name;
-};
-MyObject.prototype.getMessage = function () {
-  return this.message;
-};
-```
+`/^[\u4e00-\u9fa5a-zA-Z]+$/i`
 
-#### 闭包函数的结构
+#### 数字
 
-- 优先级: this > 局部变量 > 形参 > arguments > 函数名.
-- `innerFunc()` has access to `outerVar` from its lexical scope,
-  even being **executed outside of its lexical scope**.
+`/^[1-9]*$/i`
 
-```ts
-function outerFunc() {
-  const outerVar = 'I am outside!';
+#### 空字符与空格字符
 
-  function innerFunc() {
-    console.log(outerVar); // => logs "I am outside!"
-  }
+`/[(^\s+)(\s+$)]/g`
 
-  return innerFunc;
-}
-
-const myInnerFunc = outerFunc();
-myInnerFunc();
-```
-
-#### Closure Usage
-
-- 闭包实现封装.
-- 闭包实现私有属性与方法.
-- 闭包实现工厂方法.
-- 闭包实现对象缓存.
-
-```ts
-const createLoginLayer = (function (creator) {
-  let singleton;
-
-  return function () {
-    if (!singleton) singleton = creator();
-    return singleton;
-  };
-})(loginCreator);
-```
-
-### Partial Application
-
-```ts
-const partialFromBind = (fn, ...args) => {
-  return fn.bind(null, ...args);
-};
-
-const partial = (fn, ...args) => {
-  return (...rest) => {
-    return fn(...args, ...rest);
-  };
-};
-```
-
-### Currying
-
-chain of multiple single argument functions
-
-```ts
-const add = x => y => x + y;
-```
-
-```ts
-function curry(fn, ...stored_args) {
-  return function (...new_args) {
-    const args = stored_args.concat(new_args);
-    return fn(...args);
-  };
-}
-
-const addOne = curry(add, 1);
-// addOne(3) === 4;
-const addFive = curry(addOne, 1, 3);
-// addFive(4) === 9;
-```
-
-### Functional JavaScript Library
-
-#### Lodash
-
-- chunk.
-- shuffle.
-- take.
-- difference.
-- intersection.
-- isEmpty.
-- orderBy.
-- merge.
-- cloneDeep.
-- debounce.
-- throttle.
-- startCase.
-- kebabCase.
-- snakeCase.
-- camelCase.
-
-## Internal JavaScript
-
-Under the hood
+## JavaScript Engine
 
 ### Variables Lifecycle
 
@@ -3059,7 +1619,7 @@ Orinoco 优化 (优化全停顿现象):
 
 - [v8 perf](https://github.com/thlorenz/v8-perf)
 
-## Browser Internal
+## Browser Engine
 
 - Chrome: Blink (based on Webkit) + V8.
 - Firefox: Gecko + SpiderMonkey.
@@ -3104,13 +1664,6 @@ RenderNG pipeline
 - Activate.
 - Aggregate.
 - Draw.
-
-### Browser Internal Reference
-
-- Chromium rendering engine: [RenderingNG](https://developer.chrome.com/blog/renderingng).
-- Chromium RenderingNG [architecture](https://developer.chrome.com/blog/renderingng-architecture).
-- Chromium RenderingNG [key data structures](https://developer.chrome.com/blog/renderingng-data-structures).
-- Chromium [video rendering architecture](https://developer.chrome.com/blog/videong).
 
 #### HTML Parser
 
@@ -3213,6 +1766,13 @@ Paint Order:
 - 子代
 - 轮廓
 
+### Browser Engine Reference
+
+- Chromium rendering engine: [RenderingNG](https://developer.chrome.com/blog/renderingng).
+- Chromium RenderingNG [architecture](https://developer.chrome.com/blog/renderingng-architecture).
+- Chromium RenderingNG [key data structures](https://developer.chrome.com/blog/renderingng-data-structures).
+- Chromium [video rendering architecture](https://developer.chrome.com/blog/videong).
+
 ## Effective JavaScript
 
 ### Memory Leak
@@ -3233,30 +1793,25 @@ Paint Order:
 - Forgotten `Set`/`Map`:
   `WeakSet`/`WeakMap` don't bother GC.
 - Circular reference.
+- Bad Delete Operator:
+  `delete` 操作符并不会释放内存,
+  而且会使得附加到对象上的 `hidden class`
+  (`V8` 为了优化属性访问时间而创建的隐藏类)失效,
+  让对象变成 `slow object`.
 
-#### Bad Delete Operator
+### Danger Features
 
-`delete` 操作符并不会释放内存,
-而且会使得附加到对象上的 `hidden class`
-(`V8` 为了优化属性访问时间而创建的隐藏类)
-失效,
-让对象变成 `slow object`.
+- `eval()`.
+- `with () {}`.
+- `new Function()`.
 
-### 禁用特性
+### Local Variables and Function Parameters Performance
 
-- with () {}
-- eval()
-- 少用 new
-- 少用 continue
-- 少用 forEach()
-
-### 局部变量/函数参数
-
-- 局部变量引用全局变量/全局变量作为参数传入函数: 加快符号解析
-- 局部变量缓存 DOM 元素
-- 局部变量缓存布局信息
-- 局部变量引用嵌套成员: 加快原型链查找
-- 局部变量引用方法时，应注意会动态改变 this 指针
+- 局部变量引用全局变量/全局变量作为参数传入函数: 加快符号解析.
+- 局部变量缓存 DOM 元素.
+- 局部变量缓存布局信息.
+- 局部变量引用嵌套成员: 加快原型链查找.
+- 局部变量引用方法时，应注意会动态改变 this 指针.
 
 ```ts
 const DOM = tazimi.util.Dom;
@@ -3264,16 +1819,15 @@ const DOM = tazimi.util.Dom;
 DOM.method.call(/* 关注 this 指针 */);
 ```
 
-### 函数
+### Scope Chain Performance
 
-#### 作用域链
+由于作用域链的关系，标识符解析时，寻找局部变量速度远快于寻找全局变量速度.
+故应将全局变量作为参数传入函数进行调用，不但效率高，而且易于维护与测试.
+即利用局部变量引用全局变量，加快标识符解析.
 
-由于作用域链的关系，标识符解析时，寻找局部变量速度远快于寻找全局变量速度.故应将全局变量作为参数传入函数进行调用，不但效率高，而且易于维护与测试.
-即 利用局部变量引用全局变量，加快标识符解析
+### Loop Performance
 
-### 循环
-
-#### 倒序循环可提升性能
+倒序循环可提升性能:
 
 ```ts
 for (let i = item.length; i--; ) {
@@ -3291,7 +1845,7 @@ do {
 } while (k--);
 ```
 
-#### Duff's Device
+Duff's Device:
 
 ```ts
 let i = items.length % 8;
@@ -3311,6 +1865,47 @@ while (i) {
   process(items[i--]);
   process(items[i--]);
   process(items[i--]);
+}
+```
+
+### Error
+
+#### Error Type
+
+- Error.
+- EvalError.
+- RangeError.
+- ReferenceError.
+- SyntaxError.
+- TypeError.
+- URIError.
+- 自定义错误.
+
+```ts
+function MyError(...args) {
+  Error.call(this, args);
+  this.message = args[0];
+}
+
+MyError.prototype = new Error('Error');
+MyError.prototype.constructor = MyError;
+```
+
+#### Error Object
+
+```ts
+const err = {
+  name: 'XXError',
+  message: 'something wrong',
+  extra: 'This was rather embarrassing',
+  remedy: genericErrorHandler, // 处理错误的函数名.
+};
+
+try {
+  throwError();
+} catch (e) {
+  console.log(e.message);
+  e.remedy(); // genericErrorHandler.
 }
 ```
 
@@ -3341,13 +1936,28 @@ try {
 - `process.on('SIGQUIT', handleExit)`.
 - `process.on('SIGTERM', handleExit)`.
 - AOP (Aspect Oriented Programming): Middleware/Interceptor/Monkey Patch.
+- 在可能失败的地方抛出异常, 对失败处做标签, 易于**调试与测试**.
+- 修复 bug 后, 可考虑是否在此处抛出异常.
+- Avoid using try-catch inside a loop:
+
+```ts
+const object = ['foo', 'bar'];
+
+try {
+  for (let i = 0; i < object.length; i++) {
+    // do something that throws an exception
+  }
+} catch (e) {
+  // handle exception
+}
+```
 
 ### Event Delegation
 
-- 事件委托利用的是事件冒泡机制，只制定一事件处理程序，就可以管理某一类型的所有事件
-- 使用事件委托，只需在 DOM 树中尽量最高的层次上添加一个事件处理程序
-- increases performance and reduces memory consumption
-- no need to register new event listeners for newer children
+- 事件委托利用的是事件冒泡机制，只制定一事件处理程序，就可以管理某一类型的所有事件.
+- 使用事件委托，只需在 DOM 树中尽量最高的层次上添加一个事件处理程序.
+- Increases performance and reduces memory consumption.
+- No need to register new event listeners for newer children.
 - DOM Event:
   Event Capturing (default false) ->
   Event Target ->
@@ -3400,15 +2010,15 @@ window.onload = function () {
 };
 ```
 
-### 缓存模式
+### Cache Pattern
 
 缓存对象属性与 DOM 对象
 
-### 加载脚本
+### Script Loading Performance
 
 合并脚本后再进行高级加载技术
 
-#### 延迟加载
+#### Script Lazy Loading
 
 ```html
 ... The full body of the page ...
@@ -3423,7 +2033,7 @@ window.onload = function () {
 </html>
 ```
 
-#### 动态加载
+#### Script Dynamic Loading
 
 ```ts
 function requireScript(file, callback) {
@@ -3480,16 +2090,16 @@ function toArray(coll) {
 - nextElementSibling 优于 nextSibling 优于 `childNodes[next]`
 - previousElementSibling 优于 previousSibling
 
-#### 重排与重绘
+#### Layout and Paint Performance
 
-- 重排: 重新构造渲染树
-- 重绘: 重新绘制受影响部分
+- 重排: 重新构造渲染树.
+- 重绘: 重新绘制受影响部分.
 
 **获取**或改变布局的操作会导致渲染树**变化队列**刷新,
 执行渲染队列中的"待处理变化",
 重排 DOM 元素
 
-#### 批量修改 DOM
+#### DOM Manipulation Performance
 
 - 先 `display="none"`, 修改完成后, `display=""`.
 - 使待修改 DOM 元素脱离标准文档流(改变布局／定位方式)，可减少其他元素的重绘次数.
@@ -3511,13 +2121,13 @@ appendDataToElement(clone, data);
 old.parentNode.replaceChild(clone, old);
 ```
 
-#### Animation Frame
+#### Animation Frame Performance
 
 run scripts as early as possible:
 `requestAnimationFrame()` runs after the CPU work is done (UI events and JS scripts),
 and just before the frame is rendered (layout, paint, composite etc.).
 
-### CSS
+### CSS Performance
 
 在 js 中(除定位属性) 外，不直接操作 element.style.attr/element.cssText:
 
@@ -3544,7 +2154,7 @@ read css -> write css (re-layout/paint/composite)
 read css -> write css (only re-layout/paint/composite once).
 :::
 
-### 定时器
+### Timer Performance
 
 JavaScript 代码与 UI 共享线程.
 
@@ -3569,73 +2179,6 @@ button.onclick = function () {
 };
 ```
 
-分解任务 (Time Slicing):
-
-```ts
-function saveDocument(id) {
-  // 利用闭包封装待执行任务
-  const tasks = [openDocument, writeText, closeDocument, updateUI];
-
-  setTimeout(function () {
-    // 执行下一个任务
-    const task = tasks.shift();
-    task(id);
-
-    // 检查是否还有其他任务
-    if (tasks.length > 0) {
-      // 递归调用(每次参数不同)
-      // eslint-disable-next-line no-caller
-      setTimeout(arguments.callee, 25);
-    }
-  }, 25);
-}
-```
-
-```ts
-function processArray(items, process, callback) {
-  // 克隆原数组
-  const todo = items.concat();
-
-  setTimeout(function () {
-    process(todo.shift());
-
-    if (todo.length > 0) {
-      // eslint-disable-next-line no-caller
-      setTimeout(arguments.callee, 25);
-    } else {
-      callback(items);
-    }
-  }, 25);
-}
-```
-
-批处理任务:
-
-```ts
-function timedProcessArray(items, process, callback) {
-  // 克隆原始数组
-  const todo = items.concat();
-
-  setTimeout(function () {
-    const start = +new Date();
-
-    // 一次批处理任务持续 0.05s
-    do {
-      process(todo.shift());
-    } while (todo.length < 0 && +new Date() - start < 50);
-
-    if (todo.length > 0) {
-      // eslint-disable-next-line no-caller
-      setTimeout(arguments.callee, 25);
-    } else {
-      callback(items);
-    }
-  }, 25);
-}
-```
-
-### 计时器
-
 ```ts
 /*
  * usage: start -> stop -> getTime
@@ -3658,104 +2201,66 @@ const Timer = {
 };
 ```
 
-### AJAX
-
-#### AJAX Data Format
-
-| Format                           | Size (bytes) | Download (ms) | Parse (ms) |
-| :------------------------------- | -----------: | ------------: | ---------: |
-| Verbose XML                      |      582,960 |         999.4 |      343.1 |
-| Verbose JSON-P                   |      487,913 |         598.2 |        0.0 |
-| Simple XML                       |      437,960 |         475.1 |       83.1 |
-| Verbose JSON                     |      487,895 |         527.7 |       26.7 |
-| Simple JSON                      |      392,895 |         498.7 |       29.0 |
-| Simple JSON-P                    |      392,913 |         454.0 |        3.1 |
-| Array JSON                       |      292,895 |         305.4 |       18.6 |
-| Array JSON-P                     |      292,912 |         316.0 |        3.4 |
-| Custom Format (script insertion) |      222,912 |          66.3 |       11.7 |
-| Custom Format (XHR)              |      222,892 |          63.1 |       14.5 |
-
-#### AJAX Cache
+#### Time Slicing Pattern
 
 ```ts
-const localCache = {};
+function saveDocument(id) {
+  // 利用闭包封装待执行任务
+  const tasks = [openDocument, writeText, closeDocument, updateUI];
 
-function xhrRequest(url, callback) {
-  // Check the local cache for this URL.
-  if (localCache[url]) {
-    callback.success(localCache[url]);
-    return;
-  }
+  setTimeout(function sliceTask() {
+    // 执行下一个任务
+    const task = tasks.shift();
+    task(id);
 
-  // If this URL wasn't found in the cache, make the request.
-  const req = createXhrObject();
-
-  req.onerror = function () {
-    callback.error();
-  };
-
-  req.onreadystatechange = function () {
-    if (req.readyState === 4) {
-      if (req.responseText === '' || req.status === '404') {
-        callback.error();
-        return;
-      }
-
-      // Store the response on the local cache.
-      localCache[url] = req.responseText;
-      callback.success(req.responseText);
+    // 检查是否还有其他任务
+    if (tasks.length > 0) {
+      // 递归调用(每次参数不同)
+      setTimeout(sliceTask, 25);
     }
-  };
+  }, 25);
 }
-
-req.open('GET', url, true);
-// req.set();
-req.send(null);
 ```
 
-#### AJAX Alternatives
+```ts
+function processArray(items, process, callback) {
+  // 克隆原数组
+  const todo = items.concat();
 
-- `client.request(config)`.
-- `client.get(url[, config])`.
-- `client.delete(url[, config])`.
-- `client.head(url[, config])`.
-- `client.options(url[, config])`.
-- `client.post(url[, data[, config]])`.
-- `client.put(url[, data[, config]])`.
-- `client.patch(url[, data[, config]])`.
-- `client.getUri([config])`.
+  setTimeout(function sliceTask() {
+    process(todo.shift());
+
+    if (todo.length > 0) {
+      setTimeout(sliceTask, 25);
+    } else {
+      callback(items);
+    }
+  }, 25);
+}
+```
+
+#### Task Batching Pattern
 
 ```ts
-const client = axios.create({
-  baseURL: 'https://some-domain.com/api/',
-  timeout: 1000,
-  headers: { 'X-Custom-Header': 'foobar' },
-});
+function timedProcessArray(items, process, callback) {
+  // 克隆原始数组
+  const todo = items.concat();
 
-// Add a request interceptor
-client.interceptors.request.use(
-  config => {
-    // Do something before request is sent.
-    return config;
-  },
-  error => {
-    // Do something with request error.
-    return Promise.reject(error);
-  }
-);
+  setTimeout(function sliceTask() {
+    const start = +new Date();
 
-client.interceptors.response.use(
-  response => {
-    // Any status code that lie within the range of 2xx trigger this function.
-    // Do something with response data.
-    return response;
-  },
-  error => {
-    // Any status codes that falls outside the range of 2xx trigger this function.
-    // Do something with response error.
-    return Promise.reject(error);
-  }
-);
+    // 一次批处理任务持续 0.05s
+    do {
+      process(todo.shift());
+    } while (todo.length < 0 && +new Date() - start < 50);
+
+    if (todo.length > 0) {
+      setTimeout(sliceTask, 25);
+    } else {
+      callback(items);
+    }
+  }, 25);
+}
 ```
 
 ### Reduce Repeat Manipulation
@@ -3945,9 +2450,9 @@ function useAnimation() {
 }
 ```
 
-### 算数逻辑运算
+### Math Performance
 
-#### 位操作
+#### Bit Operators
 
 - `i%2` => `i&0x1`.
 - 位掩码
@@ -3960,32 +2465,6 @@ const OPTION_D = 8;
 const OPTION_E = 16;
 
 const options = OPTION_A | OPTION_C | OPTION_D;
-```
-
-#### Math 对象
-
-```ts
-const epsilon = Math.E;
-const log10 = Math.LN10;
-const log2 = Math.LN2;
-const log2e = Math.LOG2E;
-const log10e = Math.LOG10E;
-const pi = Math.PI;
-const squareRoot = Math.SQRT1_2;
-const squareRoot2 = Math.SQRT2;
-
-Math.abs(num);
-Math.exp(num);
-Math.log(num);
-Math.pow(num, power);
-Math.sqrt(num);
-Math.acos(x);
-Math.asin(x);
-Math.atan(x);
-Math.atan2(y, x);
-Math.cos(x);
-Math.sin(x);
-Math.tan(x);
 ```
 
 ## Browser Performance
@@ -4259,7 +2738,8 @@ reduce image transfer sizes by average of ~20%
 
 ### Data Loading
 
-- [Resources Priority](https://developers.google.com/web/fundamentals/performance/resource-prioritization)
+- [Fetch Priority](https://web.dev/priority-hints)
+- [Resources Priority](https://web.dev/prioritize-resources)
 
 #### Data Loading Tips
 
@@ -4398,12 +2878,11 @@ const PageComponent = () => {
 <script nomodule src="legacy.js"></script>
 ```
 
-### Perf and Analysis Tools
+### Performance and Analysis Tools
 
 - [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference)
 - [Chrome UX Report](https://developers.google.com/web/tools/chrome-user-experience-report)
-
-Audits of Chrome: PWA, best practices, SEO, performance, device simulator
+- Audits Chrome: PWA, SEO, performance, device simulator.
 
 #### Inspect Android Device
 
@@ -4413,12 +2892,20 @@ Audits of Chrome: PWA, best practices, SEO, performance, device simulator
 
 ### Performance Best Practice
 
-- use monomorphic objects due to shape and inline caches
-- use monomorphic function in hot code paths
-- resource optimization
-- code splitting
-- lazy loading
-- offline caching (PWA)
+- Use monomorphic objects due to shape and inline caches.
+- Use monomorphic function in hot code paths.
+- Code optimization:
+  - Fast CSS styles (`CSS Performance`):
+  - Fast JavaScript code (`Effective JavaScript`) (DOM/React/Concurrency).
+- Resource optimization: HTML/CSS/JS/Images/Audio/Video/Fonts:
+  - Remove useless files.
+  - Tree shaking.
+  - Zip.
+  - CDN.
+- Lazy loading: HTML/CSS/JS/Images/Audio/Video/Fonts.
+- Code splitting: Webpack `splitChunks`.
+- Offline caching (PWA).
+- PreFetch/PreLoad/PreRendering (SSR).
 
 #### Performance API
 
@@ -4706,8 +3193,13 @@ observer.observe({ type: 'layout-shift', buffered: true });
 
 ### Performance Reference
 
-- Web Vitals Real World [Case](https://mp.weixin.qq.com/s/zJMM4SF7pc6LZPCsQfWOxw).
-- Web Monitor Real World [Case](https://zhuanlan.zhihu.com/p/420330110).
+- `web.dev` performance complete [guide](https://web.dev/fast).
+- Fetch priority [guide](https://web.dev/priority-hints).
+- Resources priority [guide](https://web.dev/prioritize-resources).
+- Chrome devtools [guide](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference).
+- Chrome UX [report](https://developers.google.com/web/tools/chrome-user-experience-report).
+- Web vitals real world [case](https://mp.weixin.qq.com/s/zJMM4SF7pc6LZPCsQfWOxw).
+- Web monitor real world [case](https://zhuanlan.zhihu.com/p/420330110).
 
 ## Testing and Debugging
 
@@ -4884,7 +3376,7 @@ await page.goto('https://www.google.com');
 await page.tracing.stop();
 ```
 
-#### Other Puppeteer Testing API
+#### Puppeteer Testing API
 
 - `page.setOfflineMode`
 - `page.setGeolocation`
@@ -4892,27 +3384,24 @@ await page.tracing.stop();
 - `page.accessibility`
 - `page.coverage`
 
-### Frameworks
+### Testing Frameworks
 
-#### Unit 测试
+#### Unit Testing Frameworks
 
 - Jasmine
 - Mocha
 
-#### UI 测试
+#### UI Testing Frameworks
 
-- 用户行为: Karma/Selenium
-- 功能测试: Phantom.js/Slimer.js/Karma
+- 用户行为: Karma/Selenium.
+- 功能测试: Phantom.js/Slimer.js/Karma.
 
 ### 可测试代码
 
-- 完整注释
-- 最小复杂度 = (扇入 `*` 扇出) ^ 2
-- 可隔离性: 最小依赖性 + 松耦合性
-
-#### 范例
-
-- 使用依赖注入，将外部对象移至函数参数处(不在函数内部调用构造器): 易于构造 mock/stub, 降低扇出(函数复杂度)
+- 完整注释.
+- 最小复杂度 = (扇入 `*` 扇出) ^ 2.
+- 可隔离性: 最小依赖性 + 松耦合性.
+- 使用依赖注入，将外部对象移至函数参数处(不在函数内部调用构造器): 易于构造 mock/stub, 降低扇出(函数复杂度).
 
 ### 圈复杂度
 
@@ -4920,22 +3409,28 @@ V(G) = e - n + 2 **<10**
 
 ### 函数复杂度
 
-函数复杂度 = (扇入 `*` 扇出) ^ 2
+函数复杂度 = (扇入 `*` 扇出) ^ 2.
 
-#### 扇出(引用)
+#### 扇出
 
-- 所引用外部对象/方法之和
-- 扇出 **<7**
-- 高扇出: 高复杂度/高依赖性/高耦合度
+引用:
 
-#### 扇入(被引用)
+- 所引用外部对象/方法之和.
+- 扇出 **<7**.
+- 高扇出: 高复杂度/高依赖性/高耦合度.
 
-- 其他对象/方法引用此函数的次数之和
-- 顶层抽象代码 与 不常用功能 应保持低扇入
+#### 扇入
+
+被引用:
+
+- 其他对象/方法引用此函数的次数之和.
+- 顶层抽象代码 与 不常用功能 应保持低扇入.
 
 ### 耦合度
 
-#### 内容耦合(5)
+#### 内容耦合
+
+5 级耦合度:
 
 ```ts
 O.property = 'tazimi';
@@ -4943,9 +3438,9 @@ O.method = function () {};
 O.prototype.method = function () {};
 ```
 
-#### 公共耦合(4)
+#### 公共耦合
 
-共享全局变量
+4 级耦合度, 共享全局变量:
 
 ```ts
 let Global = 'global';
@@ -4958,13 +3453,17 @@ function B() {
 }
 ```
 
-#### 控制耦合(3)
+#### 控制耦合
+
+3 级耦合度:
 
 ```ts
 const absFactory = new AbstractFactory({ env: 'TEST' });
 ```
 
-#### 印记耦合(2)
+#### 印记耦合
+
+2 级耦合度:
 
 ```ts
 O.prototype.makeBread = function (args) {
@@ -4974,23 +3473,27 @@ O.prototype.makeBread = function (args) {
 O.makeBread({ type: wheat, size: 99, name: 'foo' });
 ```
 
-#### 数据耦合(1)
+#### 数据耦合
 
-#### 无耦合(0)
+1 级耦合度.
 
-### 单元测试
+#### 无耦合
 
-#### 测试原则
+0 级耦合度.
 
-- 代码覆盖率
-- 非法值测试
-- 边界测试
-- 非边界测试
+### Unit Testing
 
-#### 隔离被测代码
+#### Unit Testing Principles
 
-- 编写代码时，保持最小复杂度(最小依赖，最低耦合)
-- 利用 mock/stub 模拟外部依赖/测试数据
+- 代码覆盖率.
+- 非法值测试.
+- 边界测试.
+- 非边界测试.
+
+#### Testing Code Isolation
+
+- 编写代码时，保持最小复杂度(最小依赖，最低耦合).
+- 利用 mock/stub 模拟外部依赖/测试数据.
 
 #### Mock Testing
 
@@ -5088,9 +3591,7 @@ Object.defineProperty(element, 'scrollTop', {
 });
 ```
 
-### Tools API
-
-#### Console Functions
+### Console API
 
 - `console.XXX`.
 - `copy`: copy complex object to clipboard.
@@ -5177,7 +3678,9 @@ const transactions = [
 console.table(data, ['id', 'price']);
 ```
 
-#### JS API
+### JavaScript Testing and Tracing API
+
+`debugger`:
 
 ```ts
 // debugger;
@@ -5205,7 +3708,7 @@ window.addEventListener('error', function () {
 });
 ```
 
-##### Trace Property (Vue Internal)
+#### Trace Property
 
 ```ts
 const traceProperty = (object, property) => {
@@ -5223,7 +3726,7 @@ const traceProperty = (object, property) => {
 };
 ```
 
-#### Node API
+### Node Testing API
 
 - node --inspect
 - [ndb](https://github.com/GoogleChromeLabs/ndb)
@@ -5235,7 +3738,7 @@ ndb index.js
 
 ### Browser Compatibility
 
-#### 特性检测
+#### Browser Feature Detection
 
 **不使用特性/浏览器推断**，往往容易推断错误(且会随着浏览器更新产生新的错误)
 
@@ -5245,6 +3748,484 @@ if (document.getElementById) {
   element = document.getElementById(id);
 }
 ```
+
+## Jest Testing
+
+### Jest Installation
+
+```bash
+npm i -D jest ts-jest @types/jest react-test-renderer
+```
+
+### Jest Configuration
+
+`jest.config.js`:
+
+```ts
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.json');
+const paths = pathsToModuleNameMapper(compilerOptions.paths, {
+  prefix: '<rootDir>/',
+});
+
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+module.exports = {
+  roots: ['<rootDir>/src'],
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  transform: {
+    '^.+\\.jsx?$': '<rootDir>/jest.transformer.js',
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleNameMapper: {
+    '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
+    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/__mocks__/jest.mock.js',
+    ...paths,
+    '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@layouts/(.*)$': '<rootDir>/src/layouts/$1',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
+  },
+  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/build'],
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+  globals: {
+    window: {},
+    'ts-jest': {
+      tsConfig: './tsconfig.json',
+    },
+  },
+  testURL: 'http://localhost',
+  testEnvironment: 'jsdom',
+  setupFiles: ['<rootDir>/jest.env.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupTestFrameworkScriptFile: '<rootDir>/src/setupEnzyme.ts',
+};
+```
+
+`jest.env.setup.js`:
+
+```ts
+import path from 'path';
+import dotenv from 'dotenv';
+
+console.log(`============ env-setup Loaded ===========`);
+dotenv.config({
+  path: path.resolve(process.cwd(), 'tests', 'settings', '.test.env'),
+});
+```
+
+`jest.setup.js`:
+
+- Mock missing JSDOM functions.
+- Inject more expect DOM assertion.
+- [Jest DOM Expect API](https://github.com/testing-library/jest-dom)
+
+```ts
+import '@testing-library/jest-dom/extend-expect';
+
+// Global/Window object Stubs for Jest
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
+window.requestAnimationFrame = function (callback) {
+  setTimeout(callback);
+};
+
+window.cancelAnimationFrame = window.clearTimeout;
+
+window.localStorage = {
+  getItem() {},
+  setItem() {},
+};
+
+Object.values = () => [];
+```
+
+`setupEnzyme.ts`:
+
+```ts
+import { configure } from 'enzyme';
+import * as EnzymeAdapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new EnzymeAdapter() });
+```
+
+### Jest Basic Testing
+
+- `describe` block.
+- `test` statement.
+- `it` statement.
+- `test.todo`:
+  - Skip empty todo tests.
+  - Skip temporary broken tests.
+
+```tsx
+import * as React from 'react';
+import { shallow } from 'enzyme';
+import { Checkbox } from './Checkbox';
+
+describe('Checkbox should', () => {
+  test('changes the text after click', () => {
+    const checkbox = shallow(<Checkbox labelOn="On" labelOff="Off" />);
+    expect(checkbox.text()).toEqual('Off');
+    checkbox.find('input').simulate('change');
+    expect(checkbox.text()).toEqual('On');
+  });
+});
+```
+
+### Jest Snapshot Testing
+
+- When you run jest first time,
+  it will produce an snapshot file.
+- The next time run the tests,
+  rendered output will be compared to previously created snapshot.
+- If change is expected,
+  use `jest -u` to overwrite existing snapshot.
+
+```tsx
+// Link.react.test.js
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Link from '@components/Link';
+
+describe('Link should', () => {
+  test('changes the class when hovered', () => {
+    const component = renderer.create(
+      <Link page="http://www.facebook.com">Facebook</Link>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // manually trigger the callback
+    tree.props.onMouseEnter();
+    // re-rendering
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // manually trigger the callback
+    tree.props.onMouseLeave();
+    // re-rendering
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
+```
+
+### Jest Async Testing
+
+Jest async [guide](https://jestjs.io/docs/tutorial-async):
+
+```ts
+await expect(asyncCall()).resolves.toEqual('Expected');
+await expect(asyncCall()).rejects.toThrowError();
+```
+
+### Jest Mocks
+
+`__mocks__`:
+
+- `jest.createMockFromModule('moduleName')`.
+- `jest.requireActual('moduleName')`.
+
+```tsx
+// react-dom.js
+import React from 'react';
+const reactDom = jest.requireActual('react-dom');
+
+function mockCreatePortal(element, target) {
+  return (
+    <div>
+      <div id="content">{element}</div>
+      <div id="target" data-target-tag-name={target.tagName}></div>
+    </div>
+  );
+}
+
+reactDom.createPortal = mockCreatePortal;
+
+module.exports = reactDom;
+```
+
+```ts
+// gatsby.js
+import React from 'react';
+const gatsby = jest.requireActual('gatsby');
+
+module.exports = {
+  ...gatsby,
+  graphql: jest.fn(),
+  Link: jest
+    .fn()
+    .mockImplementation(
+      ({
+        activeClassName,
+        activeStyle,
+        getProps,
+        innerRef,
+        partiallyActive,
+        ref,
+        replace,
+        to,
+        ...rest
+      }) =>
+        React.createElement('a', {
+          ...rest,
+          href: to,
+        })
+    ),
+  StaticQuery: jest.fn(),
+  useStaticQuery: jest.fn(),
+};
+```
+
+### Jest Internal
+
+A simple
+[test runner](https://github.com/typicode/xv)
+implementation:
+
+```ts
+import { promises as fs } from 'fs';
+import { basename, dirname, join } from 'path';
+import { pathToFileURL } from 'url';
+
+async function* walk(dir: string): AsyncGenerator<string> {
+  for await (const d of await fs.opendir(dir)) {
+    const entry = join(dir, d.name);
+
+    if (d.isDirectory()) {
+      yield* walk(entry);
+    } else if (d.isFile()) {
+      yield entry;
+    }
+  }
+}
+
+async function runTestFile(file: string): Promise<void> {
+  for (const value of Object.values(
+    await import(pathToFileURL(file).toString())
+  )) {
+    if (typeof value === 'function') {
+      try {
+        await value();
+      } catch (e) {
+        console.error(e instanceof Error ? e.stack : e);
+        process.exit(1);
+      }
+    }
+  }
+}
+
+async function run(arg = '.') {
+  if ((await fs.lstat(arg)).isFile()) {
+    return runTestFile(arg);
+  }
+
+  for await (const file of walk(arg)) {
+    if (
+      !dirname(file).includes('node_modules') &&
+      (basename(file) === 'test.js' || file.endsWith('.test.js'))
+    ) {
+      console.log(file);
+      await runTestFile(file);
+    }
+  }
+}
+
+run(process.argv[2]);
+```
+
+## E2E Testing
+
+When it comes to test heavy visual features,
+(e.g fixed navigation based on window scroll event),
+E2E testing helps a lot.
+
+### Cypress Installation
+
+```bash
+mkdir e2e
+cd e2e
+npm init -y
+npm install cypress webpack @cypress/webpack-preprocessor typescript ts-loader
+npx cypress open
+```
+
+`cypress open` will initialize the cypress folder structure for us.
+
+### Cypress Configuration
+
+`e2e/plugins/index.js`: setup TypeScript to transpile tests:
+
+```ts
+const wp = require('@cypress/webpack-preprocessor');
+
+module.exports = on => {
+  const options = {
+    webpackOptions: {
+      resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      },
+      module: {
+        rules: [
+          {
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            options: { transpileOnly: true },
+          },
+        ],
+      },
+    },
+  };
+
+  on('file:preprocessor', wp(options));
+};
+```
+
+`e2e/tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["DOM", "ES6"],
+    "jsx": "react",
+    "experimentalDecorators": true
+  },
+  "compileOnSave": false
+}
+```
+
+`e2e/package.json`:
+
+```json
+{
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  }
+}
+```
+
+### Basic Cypress Testing
+
+`support/commands.ts`:
+
+```ts
+import '@testing-library/cypress/add-commands';
+```
+
+`integration/component.spec.ts`:
+
+```ts
+/// <reference types="cypress"/>
+
+describe('component', () => {
+  it('should work', () => {
+    cy.visit('http://localhost:8000');
+    cy.get('#onOff')
+      .should('have.text', 'off')
+      .click()
+      .should('have.text', 'on');
+  });
+});
+```
+
+`integration/payment.spec.ts`:
+
+```ts
+import { v4 as uuid } from 'uuid';
+
+describe('payment', () => {
+  it('user can make payment', () => {
+    //  Login.
+    cy.visit('/');
+    cy.findByRole('textbox', { name: /username/i }).type('sabertaz');
+    cy.findByLabelText(/password/i).type('secret');
+    cy.findByRole('checkbox', { name: /remember me/i }).check();
+    cy.findByRole('button', { name: /sign in/i }).click();
+
+    // Check account balance.
+    let oldBalance;
+    cy.get('[data-test=nav-user-balance]').then(
+      $balance => (oldBalance = $balance.text())
+    );
+
+    // Click on new button.
+    cy.findByRole('button', { name: /new/i }).click();
+
+    // Search for user.
+    cy.findByRole('textbox').type('devon becker');
+    cy.findByText(/devon becker/i).click();
+
+    // Add amount and note and click pay.
+    const paymentAmount = '5.00';
+    cy.findByPlaceholderText(/amount/i).type(paymentAmount);
+    const note = uuid();
+    cy.findByPlaceholderText(/add a note/i).type(note);
+    cy.findByRole('button', { name: /pay/i }).click();
+
+    // Return to transactions.
+    cy.findByRole('button', { name: /return to transactions/i }).click();
+
+    // Go to personal payments.
+    cy.findByRole('tab', { name: /mine/i }).click();
+
+    // Click on payment.
+    cy.findByText(note).click({ force: true });
+
+    // Verify if payment was made.
+    cy.findByText(`-$${paymentAmount}`).should('be.visible');
+    cy.findByText(note).should('be.visible');
+
+    // Verify if payment amount was deducted.
+    cy.get('[data-test=nav-user-balance]').then($balance => {
+      const convertedOldBalance = parseFloat(oldBalance.replace(/\$|,/g, ''));
+      const convertedNewBalance = parseFloat(
+        $balance.text().replace(/\$|,/g, '')
+      );
+      expect(convertedOldBalance - convertedNewBalance).to.equal(
+        parseFloat(paymentAmount)
+      );
+    });
+  });
+});
+```
+
+### Cypress Reference
+
+- Cypress official [guide](https://learn.cypress.io).
+- Blank page testing [example](https://glebbahmutov.com/blog/visit-blank-page-between-tests).
+- Cypress CI [action](https://github.com/cypress-io/github-action).
 
 ## Chrome DevTools
 
@@ -5428,7 +4409,9 @@ Same thing in `VSCode` debug panel (log points, break points etc).
 
 ### Layer Panel
 
-Tool for composite stage analysis
+Tool for composite stage analysis:
+
+- layers
 
 ### Rendering Panel
 
@@ -5438,9 +4421,8 @@ Tool for composite stage analysis
 - paint flashing
 - layout/layer border
 
-### More Tools
+### Animation Panel
 
-- layers
 - animations
 
 ## JavaScript Style Guide
@@ -6004,7 +4986,7 @@ switch (foo) {
 }
 ```
 
-### 换行 Style
+### Lines Style
 
 - 键入最后一个运算符后再换行, 运算符置于行尾可使 automatic semicolon insertion 机制失效
 - 换行后保持 2 个缩进层次
@@ -6061,7 +5043,7 @@ const foo = superLongLongLongLongLongLongLongLongFunctionName();
 );
 ```
 
-### 空格 Style
+### Space Style
 
 Good places to use a white space include:
 
@@ -6095,7 +5077,7 @@ if (a && b && c) {
 }
 ```
 
-### 注释 Style
+### Comments Style
 
 - 上方插入空行
 - 与下方语句统一缩进
@@ -6107,7 +5089,7 @@ if (a && b && c) {
  */
 ```
 
-#### 模块
+#### Module Comments Style
 
 ```ts
 /*
@@ -6116,7 +5098,7 @@ if (a && b && c) {
  */
 ```
 
-#### 对象
+#### Object Comments Style
 
 ```ts
 /*
@@ -6124,7 +5106,7 @@ if (a && b && c) {
  */
 ```
 
-#### 属性
+#### Property Comments Style
 
 ```ts
 /*
@@ -6133,7 +5115,7 @@ if (a && b && c) {
  */
 ```
 
-#### 方法/函数
+#### Method Comments Style
 
 ```ts
 /*
@@ -6351,6 +5333,149 @@ self.addEventListener('install', e => {
 - [Extensive Guide](https://www.smashingmagazine.com/2018/11/guide-pwa-progressive-web-applications)
 - [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers).
 
+## Web Workers API
+
+- 多线程处理
+- 有两种方法可以停止 Worker:
+  从主页调用 `worker.terminate()` 或在 worker 内部调用 `self.close()`
+- 利用 [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel)
+  可以创建 Shared Worker, 即共享 Workers 在同一源 (origin) 下面的各种进程都可以访问它，
+  包括：iframes、浏览器中的不同 tab 页 (browsing context)
+- Web Workers 无法访问一些非常关键的 JavaScript 特性:
+  DOM(它会造成线程不安全), window 对象, document 对象, parent 对象.
+- Use Case: Graphic App (Ray Tracing), Encryption, Prefetching Data,
+  PWA (Service Worker), Spell Checking
+
+```html
+<button onclick="startComputation()">Start computation</button>
+
+<script>
+  const worker = new Worker('worker.js');
+
+  worker.addEventListener(
+    'message',
+    function (e) {
+      console.log(e.data);
+    },
+    false
+  );
+
+  function startComputation() {
+    worker.postMessage({ cmd: 'average', data: [1, 2, 3, 4] });
+  }
+</script>
+```
+
+```ts
+// worker.js
+// eslint-disable-next-line no-restricted-globals
+self.addEventListener(
+  'message',
+  function (e) {
+    const data = e.data;
+    switch (data.cmd) {
+      case 'average': {
+        const result = calculateAverage(data);
+        // eslint-disable-next-line no-restricted-globals
+        self.postMessage(result);
+        break;
+      }
+      default:
+        // eslint-disable-next-line no-restricted-globals
+        self.postMessage('Unknown command');
+    }
+  },
+  false
+);
+```
+
+### Web Worker Runtime
+
+- navigation 对象: appName, appVersion, userAgent, platform
+- location 对象: 所有属性只读
+- ECMAScript 对象: Object/Array/Date
+- XMLHttpRequest 方法
+- setTimeout/setInterval 方法
+- self 对象: 指向全局 worker 对象
+- importScripts 方法: 加载外部依赖
+- close 方法: 停止 worker
+
+### Web Worker Loader
+
+```ts
+// 文件名为index.js
+function work() {
+  onmessage = ({ data: { jobId, message } }) => {
+    console.log(`i am worker, receive:-----${message}`);
+    postMessage({ jobId, result: 'message from worker' });
+  };
+}
+
+const makeWorker = f => {
+  const pendingJobs = {};
+
+  const worker = new Worker(
+    URL.createObjectURL(new Blob([`(${f.toString()})()`]))
+  );
+
+  worker.onmessage = ({ data: { result, jobId } }) => {
+    // 调用 resolve, 改变 Promise 状态
+    pendingJobs[jobId](result);
+    delete pendingJobs[jobId];
+  };
+
+  return (...message) =>
+    new Promise(resolve => {
+      const jobId = String(Math.random());
+      pendingJobs[jobId] = resolve;
+      worker.postMessage({ jobId, message });
+    });
+};
+
+const testWorker = makeWorker(work);
+
+testWorker('message from main thread').then(message => {
+  console.log(`i am main thread, i receive:-----${message}`);
+});
+```
+
+### Web Worker Use Case
+
+- 先 on ,后 post
+- main.js/worker.js 的 onmessage 与 postMessage 相互触发
+
+```ts
+/*
+ * JSONParser.js
+ */
+// eslint-disable-next-line no-restricted-globals
+self.onmessage = function (event) {
+  const jsonText = event.data;
+  const jsonData = JSON.parse(jsonText);
+
+  // eslint-disable-next-line no-restricted-globals
+  self.postMessage(jsonData);
+};
+```
+
+```ts
+/*
+ * main.js
+ */
+const worker = new Worker('JSONParser.js');
+
+worker.onmessage = function (event) {
+  const jsonData = event.data;
+  evaluateData(jsonData);
+};
+
+worker.postMessage(jsonText);
+```
+
+### Web Worker Performance
+
+- Web Worker performance [guide](https://mp.weixin.qq.com/s/IJHI9JB3nMQPi46b6yGVWw).
+
 ## Web Observer API
 
 - [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
@@ -6380,6 +5505,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const lazyImages = document.querySelectorAll('img.lzy_img');
   lazyImages.forEach(lazyImage => imageObserver.observe(lazyImage));
+});
+```
+
+### Mutation Observer
+
+如果文档中连续插入 1000 个 `<li>` 元素, 就会连续触发 1000 个插入事件,
+执行每个事件的回调函数, 这很可能造成浏览器的卡顿；
+而 Mutation Observer 完全不同, 只在 1000 个段落都插入结束后才会触发, 而且只触发一次.
+
+Mutation Observer 有以下特点:
+
+- 它等待所有脚本任务完成后, 才会运行, 即采用异步方式
+- 它把 DOM 变动记录封装成一个数组进行处理, 而不是一条条地个别处理 DOM 变动
+- 它即可以观察发生在 DOM 节点的所有变动, 也可以观察某一类变动
+
+```ts
+const mutationObserver = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    console.log(mutation);
+  });
+});
+
+// 开始侦听页面的根 HTML 元素中的更改。
+mutationObserver.observe(document.documentElement, {
+  attributes: true,
+  characterData: true,
+  childList: true,
+  subtree: true,
+  attributeOldValue: true,
+  characterDataOldValue: true,
+});
+```
+
+```ts
+const target = document.querySelector('#container');
+const callback = (mutations, observer) => {
+  mutations.forEach(mutation => {
+    switch (mutation.type) {
+      case 'attributes':
+        // the name of the changed attribute is in
+        // mutation.attributeName
+        // and its old value is in mutation.oldValue
+        // the current value can be retrieved with
+        // target.getAttribute(mutation.attributeName)
+        break;
+      case 'childList':
+        // any added nodes are in mutation.addedNodes
+        // any removed nodes are in mutation.removedNodes
+        break;
+      default:
+        throw new Error('Unsupported mutation!');
+    }
+  });
+};
+
+const observer = new MutationObserver(callback);
+observer.observe(target, {
+  attributes: true,
+  attributeFilter: ['foo'], // only observe attribute 'foo'
+  attributeOldValue: true,
+  childList: true,
 });
 ```
 
@@ -6994,149 +6180,6 @@ function WebSocketTest() {
 
 - [WebRTC Security List](https://dzone.com/articles/webrtc-security-vulnerabilities-you-should-know-ab)
 
-## Web Workers API
-
-- 多线程处理
-- 有两种方法可以停止 Worker:
-  从主页调用 `worker.terminate()` 或在 worker 内部调用 `self.close()`
-- 利用 [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel)
-  可以创建 Shared Worker, 即共享 Workers 在同一源 (origin) 下面的各种进程都可以访问它，
-  包括：iframes、浏览器中的不同 tab 页 (browsing context)
-- Web Workers 无法访问一些非常关键的 JavaScript 特性:
-  DOM(它会造成线程不安全), window 对象, document 对象, parent 对象.
-- Use Case: Graphic App (Ray Tracing), Encryption, Prefetching Data,
-  PWA (Service Worker), Spell Checking
-
-```html
-<button onclick="startComputation()">Start computation</button>
-
-<script>
-  const worker = new Worker('worker.js');
-
-  worker.addEventListener(
-    'message',
-    function (e) {
-      console.log(e.data);
-    },
-    false
-  );
-
-  function startComputation() {
-    worker.postMessage({ cmd: 'average', data: [1, 2, 3, 4] });
-  }
-</script>
-```
-
-```ts
-// worker.js
-// eslint-disable-next-line no-restricted-globals
-self.addEventListener(
-  'message',
-  function (e) {
-    const data = e.data;
-    switch (data.cmd) {
-      case 'average': {
-        const result = calculateAverage(data);
-        // eslint-disable-next-line no-restricted-globals
-        self.postMessage(result);
-        break;
-      }
-      default:
-        // eslint-disable-next-line no-restricted-globals
-        self.postMessage('Unknown command');
-    }
-  },
-  false
-);
-```
-
-### Web Worker Runtime
-
-- navigation 对象: appName, appVersion, userAgent, platform
-- location 对象: 所有属性只读
-- ECMAScript 对象: Object/Array/Date
-- XMLHttpRequest 方法
-- setTimeout/setInterval 方法
-- self 对象: 指向全局 worker 对象
-- importScripts 方法: 加载外部依赖
-- close 方法: 停止 worker
-
-### Web Worker Loader
-
-```ts
-// 文件名为index.js
-function work() {
-  onmessage = ({ data: { jobId, message } }) => {
-    console.log(`i am worker, receive:-----${message}`);
-    postMessage({ jobId, result: 'message from worker' });
-  };
-}
-
-const makeWorker = f => {
-  const pendingJobs = {};
-
-  const worker = new Worker(
-    URL.createObjectURL(new Blob([`(${f.toString()})()`]))
-  );
-
-  worker.onmessage = ({ data: { result, jobId } }) => {
-    // 调用 resolve, 改变 Promise 状态
-    pendingJobs[jobId](result);
-    delete pendingJobs[jobId];
-  };
-
-  return (...message) =>
-    new Promise(resolve => {
-      const jobId = String(Math.random());
-      pendingJobs[jobId] = resolve;
-      worker.postMessage({ jobId, message });
-    });
-};
-
-const testWorker = makeWorker(work);
-
-testWorker('message from main thread').then(message => {
-  console.log(`i am main thread, i receive:-----${message}`);
-});
-```
-
-### Web Worker Use Case
-
-- 先 on ,后 post
-- main.js/worker.js 的 onmessage 与 postMessage 相互触发
-
-```ts
-/*
- * JSONParser.js
- */
-// eslint-disable-next-line no-restricted-globals
-self.onmessage = function (event) {
-  const jsonText = event.data;
-  const jsonData = JSON.parse(jsonText);
-
-  // eslint-disable-next-line no-restricted-globals
-  self.postMessage(jsonData);
-};
-```
-
-```ts
-/*
- * main.js
- */
-const worker = new Worker('JSONParser.js');
-
-worker.onmessage = function (event) {
-  const jsonData = event.data;
-  evaluateData(jsonData);
-};
-
-worker.postMessage(jsonText);
-```
-
-### Web Worker Performance
-
-- Web Worker performance [guide](https://mp.weixin.qq.com/s/IJHI9JB3nMQPi46b6yGVWw).
-
 ## Web Gamepad API
 
 [Gamepad API Tutorials](https://developer.mozilla.org/zh-CN/docs/Games/Techniques/Controls_Gamepad_API)
@@ -7256,7 +6299,263 @@ navigator.geolocation.watchPosition(
 
 自动更新地理位置
 
-## Web Fetch API
+## Web HTTP API
+
+### AJAX API
+
+#### AJAX Data Format
+
+| Format                           | Size (bytes) | Download (ms) | Parse (ms) |
+| :------------------------------- | -----------: | ------------: | ---------: |
+| Verbose XML                      |      582,960 |         999.4 |      343.1 |
+| Verbose JSON-P                   |      487,913 |         598.2 |        0.0 |
+| Simple XML                       |      437,960 |         475.1 |       83.1 |
+| Verbose JSON                     |      487,895 |         527.7 |       26.7 |
+| Simple JSON                      |      392,895 |         498.7 |       29.0 |
+| Simple JSON-P                    |      392,913 |         454.0 |        3.1 |
+| Array JSON                       |      292,895 |         305.4 |       18.6 |
+| Array JSON-P                     |      292,912 |         316.0 |        3.4 |
+| Custom Format (script insertion) |      222,912 |          66.3 |       11.7 |
+| Custom Format (XHR)              |      222,892 |          63.1 |       14.5 |
+
+#### AJAX Cache
+
+```ts
+const localCache = {};
+
+function xhrRequest(url, callback) {
+  // Check the local cache for this URL.
+  if (localCache[url]) {
+    callback.success(localCache[url]);
+    return;
+  }
+
+  // If this URL wasn't found in the cache, make the request.
+  const req = createXhrObject();
+
+  req.onerror = function () {
+    callback.error();
+  };
+
+  req.onreadystatechange = function () {
+    if (req.readyState === 4) {
+      if (req.responseText === '' || req.status === '404') {
+        callback.error();
+        return;
+      }
+
+      // Store the response on the local cache.
+      localCache[url] = req.responseText;
+      callback.success(req.responseText);
+    }
+  };
+}
+
+req.open('GET', url, true);
+// req.set();
+req.send(null);
+```
+
+#### AJAX Alternatives
+
+- `client.request(config)`.
+- `client.get(url[, config])`.
+- `client.delete(url[, config])`.
+- `client.head(url[, config])`.
+- `client.options(url[, config])`.
+- `client.post(url[, data[, config]])`.
+- `client.put(url[, data[, config]])`.
+- `client.patch(url[, data[, config]])`.
+- `client.getUri([config])`.
+
+```ts
+const client = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000,
+  headers: { 'X-Custom-Header': 'foobar' },
+});
+
+// Add a request interceptor
+client.interceptors.request.use(
+  config => {
+    // Do something before request is sent.
+    return config;
+  },
+  error => {
+    // Do something with request error.
+    return Promise.reject(error);
+  }
+);
+
+client.interceptors.response.use(
+  response => {
+    // Any status code that lie within the range of 2xx trigger this function.
+    // Do something with response data.
+    return response;
+  },
+  error => {
+    // Any status codes that falls outside the range of 2xx trigger this function.
+    // Do something with response error.
+    return Promise.reject(error);
+  }
+);
+```
+
+#### Ajax Basic Usage
+
+```ts
+const XHR = (function () {
+  const standard = {
+    createXHR() {
+      return new XMLHttpRequest();
+    },
+  };
+  const newActionXObject = {
+    createXHR() {
+      return new ActionXObject('Msxml12.XMLHTTP');
+    },
+  };
+  const oldActionXObject = {
+    createXHR() {
+      return new ActionXObject('Microsoft.XMLHTTP');
+    },
+  };
+
+  // 根据兼容性返回对应的工厂对象
+  // 此立即函数运行一次即可完成兼容性检查, 防止重复检查
+  if (standard.createXHR()) {
+    return standard;
+  } else {
+    try {
+      newActionXObject.createXHR();
+      return newActionXObject;
+    } catch (o) {
+      oldActionXObject.createXHR();
+      return oldActionXObject;
+    }
+  }
+})();
+```
+
+```ts
+const request = XHR.createXHR();
+```
+
+```ts
+// 3rd argument : async mode
+request.open('GET', 'example.txt', true);
+
+request.onreadystatechange = function () {
+  // do something
+  /*
+  switch(request.readyState) {
+    case 0: initialize
+    case 1: loading
+    case 2: loaded
+    case 3: transaction
+    case 4: complete
+  }
+  */
+  if (request.readyState === 4) {
+    const para = document.createElement('p');
+    const txt = document.createTextNode(request.responseText);
+    para.appendChild(txt);
+    document.getElementById('new').appendChild(para);
+  }
+};
+
+request.send(null);
+```
+
+#### Ajax Complex Usage
+
+```ts
+ajax({
+  url: './TestXHR.aspx', // 请求地址
+  type: 'POST', // 请求方式
+  data: { name: 'super', age: 20 }, // 请求参数
+  dataType: 'json',
+  success(response, xml) {
+    // 此处放成功后执行的代码
+  },
+  fail(status) {
+    // 此处放失败后执行的代码
+  },
+});
+
+function ajax(options) {
+  options = options || {};
+  options.type = (options.type || 'GET').toUpperCase();
+  options.dataType = options.dataType || 'json';
+  const params = formatParams(options.data);
+  let xhr;
+
+  // 创建 - 非IE6 - 第一步
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    // IE6及其以下版本浏览器
+    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+
+  // 接收 - 第三步
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      const status = xhr.status;
+      if (status >= 200 && status < 300) {
+        options.success && options.success(xhr.responseText, xhr.responseXML);
+      } else {
+        options.fail && options.fail(status);
+      }
+    }
+  };
+
+  // 连接 和 发送 - 第二步
+  if (options.type === 'GET') {
+    xhr.open('GET', `${options.url}?${params}`, true);
+    xhr.send(null);
+  } else if (options.type === 'POST') {
+    xhr.open('POST', options.url, true);
+    // 设置表单提交时的内容类型
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
+  }
+}
+
+// 格式化参数
+function formatParams(data) {
+  const arr = [];
+  for (const name in data) {
+    arr.push(`${encodeURIComponent(name)}=${encodeURIComponent(data[name])}`);
+  }
+  arr.push(`v=${Math.random()}`.replace('.', ''));
+  return arr.join('&');
+}
+```
+
+#### Ajax Cross Origin Request
+
+```html
+<!-- HTML -->
+<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+```
+
+```ts
+Response.Headers.Add('Access-Control-Allow-Origin', '*');
+```
+
+```ts
+$.ajax({
+  url: 'http://map.oicqzone.com/gpsApi.php?lat=22.502412986242&lng=113.93832783228',
+  type: 'GET',
+  dataType: 'JSONP', // 处理Ajax 跨域问题.
+  success(data) {
+    $('body').append(`Name: ${data}`);
+  },
+});
+```
+
+### Fetch API
 
 - GET: read resources
 - POST: create resources
@@ -7504,6 +6803,35 @@ function App() {
 ```
 
 ## Network
+
+### JSON
+
+```ts
+const obj = JSON.parse(json);
+const json = JSON.stringify(obj);
+```
+
+`JSON.stringify`:
+
+- `Symbol`/`function`/`NaN`/`Infinity`/`undefined`: `null`/ignored.
+- `BitInt`: throw `TypeError`.
+- Circular reference object: throw `TypeError`.
+- `toJSON` method:
+
+```ts
+const obj = {
+  name: 'zc',
+  toJSON() {
+    return 'return toJSON';
+  },
+};
+
+// return toJSON
+console.log(JSON.stringify(obj));
+
+// "2022-03-06T08:24:56.138Z"
+JSON.stringify(new Date());
+```
 
 ### HTTPS
 
@@ -9684,475 +9012,3 @@ node --trace-deprecation node_modules/webpack/bin/webpack.js
 
 - [Webpack 4 Tutorial](https://nystudio107.com/blog/an-annotated-webpack-4-config-for-frontend-web-development)
 - [Custom Plugin](https://juejin.cn/post/6870055445034172424)
-
-## Jest Testing
-
-### Jest Installation
-
-```bash
-npm i -D jest ts-jest @types/jest react-test-renderer
-```
-
-### Jest Configuration
-
-`jest.config.js`:
-
-```ts
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const { compilerOptions } = require('./tsconfig.json');
-const paths = pathsToModuleNameMapper(compilerOptions.paths, {
-  prefix: '<rootDir>/',
-});
-
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-module.exports = {
-  roots: ['<rootDir>/src'],
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  transform: {
-    '^.+\\.jsx?$': '<rootDir>/jest.transformer.js',
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/__mocks__/jest.mock.js',
-    ...paths,
-    '^@components/(.*)$': '<rootDir>/src/components/$1',
-    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
-    '^@layouts/(.*)$': '<rootDir>/src/layouts/$1',
-    '^@types/(.*)$': '<rootDir>/src/types/$1',
-  },
-  testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/build'],
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  globals: {
-    window: {},
-    'ts-jest': {
-      tsConfig: './tsconfig.json',
-    },
-  },
-  testURL: 'http://localhost',
-  testEnvironment: 'jsdom',
-  setupFiles: ['<rootDir>/jest.env.setup.js'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  setupTestFrameworkScriptFile: '<rootDir>/src/setupEnzyme.ts',
-};
-```
-
-`jest.env.setup.js`:
-
-```ts
-import path from 'path';
-import dotenv from 'dotenv';
-
-console.log(`============ env-setup Loaded ===========`);
-dotenv.config({
-  path: path.resolve(process.cwd(), 'tests', 'settings', '.test.env'),
-});
-```
-
-`jest.setup.js`:
-
-- Mock missing JSDOM functions.
-- Inject more expect DOM assertion.
-- [Jest DOM Expect API](https://github.com/testing-library/jest-dom)
-
-```ts
-import '@testing-library/jest-dom/extend-expect';
-
-// Global/Window object Stubs for Jest
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
-
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-});
-
-window.requestAnimationFrame = function (callback) {
-  setTimeout(callback);
-};
-
-window.cancelAnimationFrame = window.clearTimeout;
-
-window.localStorage = {
-  getItem() {},
-  setItem() {},
-};
-
-Object.values = () => [];
-```
-
-`setupEnzyme.ts`:
-
-```ts
-import { configure } from 'enzyme';
-import * as EnzymeAdapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new EnzymeAdapter() });
-```
-
-### Jest Basic Testing
-
-- `describe` block.
-- `test` statement.
-- `it` statement.
-- `test.todo`:
-  - Skip empty todo tests.
-  - Skip temporary broken tests.
-
-```tsx
-import * as React from 'react';
-import { shallow } from 'enzyme';
-import { Checkbox } from './Checkbox';
-
-describe('Checkbox should', () => {
-  test('changes the text after click', () => {
-    const checkbox = shallow(<Checkbox labelOn="On" labelOff="Off" />);
-    expect(checkbox.text()).toEqual('Off');
-    checkbox.find('input').simulate('change');
-    expect(checkbox.text()).toEqual('On');
-  });
-});
-```
-
-### Jest Snapshot Testing
-
-- When you run jest first time,
-  it will produce an snapshot file.
-- The next time run the tests,
-  rendered output will be compared to previously created snapshot.
-- If change is expected,
-  use `jest -u` to overwrite existing snapshot.
-
-```tsx
-// Link.react.test.js
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Link from '@components/Link';
-
-describe('Link should', () => {
-  test('changes the class when hovered', () => {
-    const component = renderer.create(
-      <Link page="http://www.facebook.com">Facebook</Link>
-    );
-
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-    // manually trigger the callback
-    tree.props.onMouseEnter();
-    // re-rendering
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-    // manually trigger the callback
-    tree.props.onMouseLeave();
-    // re-rendering
-    tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
-```
-
-### Jest Async Testing
-
-Jest async [guide](https://jestjs.io/docs/tutorial-async):
-
-```ts
-await expect(asyncCall()).resolves.toEqual('Expected');
-await expect(asyncCall()).rejects.toThrowError();
-```
-
-### Jest Mocks
-
-`__mocks__`:
-
-- `jest.createMockFromModule('moduleName')`.
-- `jest.requireActual('moduleName')`.
-
-```tsx
-// react-dom.js
-import React from 'react';
-const reactDom = jest.requireActual('react-dom');
-
-function mockCreatePortal(element, target) {
-  return (
-    <div>
-      <div id="content">{element}</div>
-      <div id="target" data-target-tag-name={target.tagName}></div>
-    </div>
-  );
-}
-
-reactDom.createPortal = mockCreatePortal;
-
-module.exports = reactDom;
-```
-
-```ts
-// gatsby.js
-import React from 'react';
-const gatsby = jest.requireActual('gatsby');
-
-module.exports = {
-  ...gatsby,
-  graphql: jest.fn(),
-  Link: jest
-    .fn()
-    .mockImplementation(
-      ({
-        activeClassName,
-        activeStyle,
-        getProps,
-        innerRef,
-        partiallyActive,
-        ref,
-        replace,
-        to,
-        ...rest
-      }) =>
-        React.createElement('a', {
-          ...rest,
-          href: to,
-        })
-    ),
-  StaticQuery: jest.fn(),
-  useStaticQuery: jest.fn(),
-};
-```
-
-### Jest Internal
-
-A simple
-[test runner](https://github.com/typicode/xv)
-implementation:
-
-```ts
-import { promises as fs } from 'fs';
-import { basename, dirname, join } from 'path';
-import { pathToFileURL } from 'url';
-
-async function* walk(dir: string): AsyncGenerator<string> {
-  for await (const d of await fs.opendir(dir)) {
-    const entry = join(dir, d.name);
-    if (d.isDirectory()) yield* walk(entry);
-    else if (d.isFile()) yield entry;
-  }
-}
-
-async function runTestFile(file: string): Promise<void> {
-  for (const value of Object.values(
-    await import(pathToFileURL(file).toString())
-  )) {
-    if (typeof value === 'function') {
-      try {
-        await value();
-      } catch (e) {
-        console.error(e instanceof Error ? e.stack : e);
-        process.exit(1);
-      }
-    }
-  }
-}
-
-async function run(arg = '.') {
-  if ((await fs.lstat(arg)).isFile()) {
-    return runTestFile(arg);
-  }
-  for await (const file of walk(arg)) {
-    if (
-      !dirname(file).includes('node_modules') &&
-      (basename(file) === 'test.js' || file.endsWith('.test.js'))
-    ) {
-      console.log(file);
-      await runTestFile(file);
-    }
-  }
-}
-
-run(process.argv[2]);
-```
-
-## E2E Testing
-
-When it comes to test heavy visual features,
-(e.g fixed navigation based on window scroll event),
-E2E testing helps a lot.
-
-### Cypress Installation
-
-```bash
-mkdir e2e
-cd e2e
-npm init -y
-npm install cypress webpack @cypress/webpack-preprocessor typescript ts-loader
-npx cypress open
-```
-
-`cypress open` will initialize the cypress folder structure for us.
-
-### Cypress Configuration
-
-`e2e/plugins/index.js`: setup TypeScript to transpile tests:
-
-```ts
-const wp = require('@cypress/webpack-preprocessor');
-
-module.exports = on => {
-  const options = {
-    webpackOptions: {
-      resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      },
-      module: {
-        rules: [
-          {
-            test: /\.tsx?$/,
-            loader: 'ts-loader',
-            options: { transpileOnly: true },
-          },
-        ],
-      },
-    },
-  };
-
-  on('file:preprocessor', wp(options));
-};
-```
-
-`e2e/tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "strict": true,
-    "sourceMap": true,
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["DOM", "ES6"],
-    "jsx": "react",
-    "experimentalDecorators": true
-  },
-  "compileOnSave": false
-}
-```
-
-`e2e/package.json`:
-
-```json
-{
-  "scripts": {
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
-  }
-}
-```
-
-### Basic Cypress Testing
-
-`support/commands.ts`:
-
-```ts
-import '@testing-library/cypress/add-commands';
-```
-
-`integration/component.spec.ts`:
-
-```ts
-/// <reference types="cypress"/>
-
-describe('component', () => {
-  it('should work', () => {
-    cy.visit('http://localhost:8000');
-    cy.get('#onOff')
-      .should('have.text', 'off')
-      .click()
-      .should('have.text', 'on');
-  });
-});
-```
-
-`integration/payment.spec.ts`:
-
-```ts
-import { v4 as uuid } from 'uuid';
-
-describe('payment', () => {
-  it('user can make payment', () => {
-    //  Login.
-    cy.visit('/');
-    cy.findByRole('textbox', { name: /username/i }).type('sabertaz');
-    cy.findByLabelText(/password/i).type('secret');
-    cy.findByRole('checkbox', { name: /remember me/i }).check();
-    cy.findByRole('button', { name: /sign in/i }).click();
-
-    // Check account balance.
-    let oldBalance;
-    cy.get('[data-test=nav-user-balance]').then(
-      $balance => (oldBalance = $balance.text())
-    );
-
-    // Click on new button.
-    cy.findByRole('button', { name: /new/i }).click();
-
-    // Search for user.
-    cy.findByRole('textbox').type('devon becker');
-    cy.findByText(/devon becker/i).click();
-
-    // Add amount and note and click pay.
-    const paymentAmount = '5.00';
-    cy.findByPlaceholderText(/amount/i).type(paymentAmount);
-    const note = uuid();
-    cy.findByPlaceholderText(/add a note/i).type(note);
-    cy.findByRole('button', { name: /pay/i }).click();
-
-    // Return to transactions.
-    cy.findByRole('button', { name: /return to transactions/i }).click();
-
-    // Go to personal payments.
-    cy.findByRole('tab', { name: /mine/i }).click();
-
-    // Click on payment.
-    cy.findByText(note).click({ force: true });
-
-    // Verify if payment was made.
-    cy.findByText(`-$${paymentAmount}`).should('be.visible');
-    cy.findByText(note).should('be.visible');
-
-    // Verify if payment amount was deducted.
-    cy.get('[data-test=nav-user-balance]').then($balance => {
-      const convertedOldBalance = parseFloat(oldBalance.replace(/\$|,/g, ''));
-      const convertedNewBalance = parseFloat(
-        $balance.text().replace(/\$|,/g, '')
-      );
-      expect(convertedOldBalance - convertedNewBalance).to.equal(
-        parseFloat(paymentAmount)
-      );
-    });
-  });
-});
-```
-
-### Cypress Reference
-
-- Blank page [testing](https://glebbahmutov.com/blog/visit-blank-page-between-tests).
-- Cypress CI [action](https://github.com/cypress-io/github-action).
