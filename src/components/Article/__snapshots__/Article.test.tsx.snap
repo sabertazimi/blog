@@ -156,7 +156,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         type="button"
       >
         <span
-          aria-label="menu-fold"
+          aria-label="Menu"
           className="anticon anticon-menu-fold"
           role="img"
         >
@@ -211,7 +211,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         type="button"
       >
         <span
-          aria-label="arrow-left"
+          aria-label="Prev"
           className="anticon anticon-arrow-left"
           role="img"
         >
@@ -248,7 +248,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           JavaScript Advanced Notes
         </a>
         <span
-          aria-label="arrow-right"
+          aria-label="Next"
           className="anticon anticon-arrow-right"
           role="img"
         >
@@ -277,6 +277,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         style={Object {}}
       >
         <span
+          aria-label="Comment"
           className="anticon text-2xl text-primary"
           role="img"
         >
@@ -567,7 +568,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         type="button"
       >
         <span
-          aria-label="menu-fold"
+          aria-label="Menu"
           className="anticon anticon-menu-fold"
           role="img"
         >
@@ -622,7 +623,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         type="button"
       >
         <span
-          aria-label="home"
+          aria-label="Home"
           className="anticon anticon-home"
           role="img"
         >
@@ -659,7 +660,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           Back to Home
         </a>
         <span
-          aria-label="home"
+          aria-label="Home"
           className="anticon anticon-home"
           role="img"
         >
@@ -688,6 +689,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         style={Object {}}
       >
         <span
+          aria-label="Comment"
           className="anticon text-2xl text-primary"
           role="img"
         >
