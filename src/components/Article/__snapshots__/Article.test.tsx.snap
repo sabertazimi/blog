@@ -241,6 +241,12 @@ exports[`Article should render correctly (snapshot) 1`] = `
         onClick={[Function]}
         type="button"
       >
+        <a
+          className="m-auto font-extrabold text-light"
+          href="/javascriptAdvancedNotes/"
+        >
+          JavaScript Advanced Notes
+        </a>
         <span
           aria-label="arrow-right"
           className="anticon anticon-arrow-right"
@@ -260,12 +266,6 @@ exports[`Article should render correctly (snapshot) 1`] = `
             />
           </svg>
         </span>
-        <a
-          className="m-auto font-extrabold text-light"
-          href="/javascriptAdvancedNotes/"
-        >
-          JavaScript Advanced Notes
-        </a>
       </button>
     </div>
     <div
@@ -652,6 +652,12 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         onClick={[Function]}
         type="button"
       >
+        <a
+          className="m-auto font-extrabold text-light"
+          href="/posts"
+        >
+          Back to Home
+        </a>
         <span
           aria-label="home"
           className="anticon anticon-home"
@@ -671,12 +677,6 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             />
           </svg>
         </span>
-        <a
-          className="m-auto font-extrabold text-light"
-          href="/posts"
-        >
-          Back to Home
-        </a>
       </button>
     </div>
     <div

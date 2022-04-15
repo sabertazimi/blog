@@ -25,8 +25,8 @@ const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
         'button-primary'
       )}
       size="large"
-      icon={prevPost ? <ArrowLeftOutlined /> : <HomeOutlined />}
     >
+      {prevPost ? <ArrowLeftOutlined /> : <HomeOutlined />}
       <Link
         className="m-auto font-extrabold text-light"
         to={prevPost ? prevPost.slug : '/posts'}
@@ -43,7 +43,6 @@ const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
         'button-primary'
       )}
       size="large"
-      icon={nextPost ? <ArrowRightOutlined /> : <HomeOutlined />}
     >
       <Link
         className="m-auto font-extrabold text-light"
@@ -51,6 +50,7 @@ const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
       >
         {nextPost ? nextPost.title : 'Back to Home'}
       </Link>
+      {nextPost ? <ArrowRightOutlined /> : <HomeOutlined />}
     </Button>
   </FlexContainer>
 );
