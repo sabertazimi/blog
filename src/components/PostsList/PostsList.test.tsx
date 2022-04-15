@@ -26,6 +26,7 @@ const posts = basePosts.map((post, index) => ({
 describe('PostsList', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(<PostsList posts={posts} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

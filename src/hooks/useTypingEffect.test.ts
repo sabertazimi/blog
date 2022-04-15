@@ -12,6 +12,7 @@ const mockOptions = {
 describe('useTypingEffect', () => {
   test('should process null ref correctly', () => {
     const { result } = renderHook(() => useTypingEffect(mockRef, mockOptions));
+
     expect(result.error).toBeFalsy();
   });
 });

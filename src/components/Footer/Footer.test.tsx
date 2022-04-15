@@ -17,6 +17,7 @@ describe('Footer', () => {
     const tree = create(
       <Footer buildTime={buildTime} author={author} socialList={socialList} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

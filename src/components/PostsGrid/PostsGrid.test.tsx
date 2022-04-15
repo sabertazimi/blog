@@ -26,6 +26,7 @@ const posts = basePosts.map((post, index) => ({
 describe('PostsGrid', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(<PostsGrid posts={posts} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

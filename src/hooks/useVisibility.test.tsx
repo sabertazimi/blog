@@ -82,7 +82,9 @@ describe('useVisibility', () => {
 
   test('should log error message when missing ref', async () => {
     render(<Header />);
+
     fireEvent.scroll(window, { target: { scrollY: 100 } });
+
     await waitFor(() => {
       expect(mockConsoleError).toHaveBeenCalledTimes(1);
     });
@@ -90,7 +92,9 @@ describe('useVisibility', () => {
 
   test('should invoke callbacks when scrolling', async () => {
     render(<HeaderWithRef />);
+
     fireEvent.scroll(window, { target: { scrollY: 0 } });
+
     await waitFor(() => {
       expect(onBottomPassed).not.toBeCalled();
     });

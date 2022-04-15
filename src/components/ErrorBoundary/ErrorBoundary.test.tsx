@@ -34,6 +34,7 @@ describe('ErrorBoundary', () => {
         <ComponentWithError />
       </ErrorBoundary>
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -43,6 +44,7 @@ describe('ErrorBoundary', () => {
         <ComponentWithError shouldThrow />
       </ErrorBoundary>
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -52,7 +54,9 @@ describe('ErrorBoundary', () => {
     });
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+
     rerender(<ComponentWithError shouldThrow />);
+
     expect(screen.getByRole('alert')).toBeInTheDocument();
     expect(mockConsoleError).toHaveBeenCalledTimes(7);
   });

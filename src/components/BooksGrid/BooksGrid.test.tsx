@@ -12,6 +12,7 @@ const bookList = Array.from(Array(3).keys()).map(index => ({
 describe('BooksGrid', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(<BooksGrid bookList={bookList} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

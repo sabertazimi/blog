@@ -10,6 +10,7 @@ describe('MetaHeader', () => {
     const tree = create(
       <MetaHeader siteUrl={siteUrl} title={title} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });
