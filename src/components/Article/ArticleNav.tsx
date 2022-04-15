@@ -15,7 +15,11 @@ interface Props {
 }
 
 const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
-  <FlexContainer className="justify-between" role="navigation">
+  <FlexContainer
+    className="justify-between"
+    role="navigation"
+    aria-label="footer-nagivation"
+  >
     <Button
       className={classNames(
         'flex-container',
