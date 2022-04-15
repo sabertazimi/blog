@@ -1,21 +1,20 @@
+import MockData from '@MockData';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import Footer from './Footer';
 
-const buildTime = new Date(2022, 0, 1, 8, 0, 0).toString();
-const author = 'Sabertaz';
-const socialList = {
-  github: 'sabertazimi',
-  twitter: 'sabertazimi',
-  facebook: 'sabertazimi',
-  linkedin: 'sabertazimi',
-  weibo: 'sabertazimi',
-};
-
 describe('Footer', () => {
+  const mockTime = MockData.time;
+  const mockAuthor = MockData.siteMetadata.author;
+  const mockSocialList = MockData.siteMetadata.socialList;
+
   test('should render correctly (snapshot)', () => {
     const tree = create(
-      <Footer buildTime={buildTime} author={author} socialList={socialList} />
+      <Footer
+        buildTime={mockTime}
+        author={mockAuthor}
+        socialList={mockSocialList}
+      />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
