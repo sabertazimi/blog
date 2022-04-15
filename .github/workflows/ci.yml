@@ -83,7 +83,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-          fetch-depth: 1
+          fetch-depth: 0 # Keep `0` for git time
       - name: Setup Node environment
         uses: actions/setup-node@v3
         with:

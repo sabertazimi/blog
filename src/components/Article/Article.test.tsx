@@ -16,6 +16,7 @@ const post = {
   subtitle: 'Be a Stupid Learner',
   author: 'Sabertaz',
   date: '2018-08-08T00:00:00.000Z',
+  gitTime: '2018-08-08T00:00:00.000Z',
   tags: [
     'Redux',
     'React',

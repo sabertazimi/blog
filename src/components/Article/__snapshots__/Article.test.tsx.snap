@@ -119,6 +119,22 @@ exports[`Article should render correctly (snapshot) 1`] = `
         <div
           className="text-base font-extrabold"
         >
+          Last updated on
+           
+          Wed Aug 08 2018
+        </div>
+      </span>
+      <span
+        className="ant-tag tag-black"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+      >
+        <div
+          className="text-base font-extrabold"
+        >
           (
           8
            minutes)
@@ -500,6 +516,22 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           className="text-base font-extrabold"
         >
           Posted on 
+          Nowadays
+        </div>
+      </span>
+      <span
+        className="ant-tag tag-black"
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+      >
+        <div
+          className="text-base font-extrabold"
+        >
+          Last updated on
+           
           Nowadays
         </div>
       </span>

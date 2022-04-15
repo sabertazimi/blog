@@ -4,21 +4,31 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require('path');
+const path = require('node:path');
+const { execSync } = require('node:child_process');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { Octokit } = require('@octokit/rest');
 const config = require('./gatsby-config');
 
 const octokit = new Octokit();
 
+/** @param {import('gatsby').CreateNodeArgs} */
 exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   switch (node.internal.type) {
     case 'MarkdownRemark': {
       const slug = createFilePath({ node, getNode, basePath: 'pages' });
+      const gitTime = execSync(
+        `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
+      ).toString();
       createNodeField({
         node,
         name: 'slug',
         value: slug,
+      });
+      createNodeField({
+        node,
+        name: 'gitTime',
+        value: gitTime,
       });
       break;
     }
@@ -31,6 +41,7 @@ exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   }
 };
 
+/** @param {import('gatsby').CreatePagesArgs} */
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   let githubProfile = {
     username: 'sabertazimi',
@@ -114,6 +125,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           node {
             fields {
               slug
+              gitTime
             }
             frontmatter {
               title
@@ -162,6 +174,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         author: node.frontmatter.author,
         tags: node.frontmatter.tags,
         date: node.frontmatter.date,
+        gitTime: node.fields.gitTime,
         timeToRead: node.timeToRead,
         excerpt: node.excerpt,
         toc: node.tableOfContents,
@@ -243,6 +256,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   });
 };
 
+/** @param {import('gatsby').CreateWebpackConfigArgs} */
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {

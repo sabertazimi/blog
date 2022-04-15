@@ -30,6 +30,7 @@ export interface PostMetaType {
   subtitle?: string;
   author?: string;
   date?: string;
+  gitTime?: string;
   tags?: TagType[];
   prevPost?: {
     slug: string;
