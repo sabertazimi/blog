@@ -3311,6 +3311,7 @@ __metadata:
     "@testing-library/react-hooks": ^8.0.0
     "@testing-library/user-event": ^14.0.4
     "@types/jest": ^27.4.1
+    "@types/jest-axe": ^3.5.3
     "@types/node": ^16.11.26
     "@types/prismjs": ^1.26.0
     "@types/reach__router": ^1.3.10
@@ -3349,6 +3350,7 @@ __metadata:
     gatsby-transformer-remark: ^5.11.1
     identity-obj-proxy: ^3.0.0
     jest: ^27.5.1
+    jest-axe: ^6.0.0
     markdownlint-cli: ^0.31.1
     postcss: ^8.4.12
     postcss-import: ^14.1.0
@@ -3832,6 +3834,16 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: f1ad54bc68f37f60b30c7915886b92f86b847033e597f9b34f2415acdbe5ed742fa559a0a40050d74cdba3b6a63c342cac1f3a64dba5b68b66a6941f4abd7903
+  languageName: node
+  linkType: hard
+
+"@types/jest-axe@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "@types/jest-axe@npm:3.5.3"
+  dependencies:
+    "@types/jest": "*"
+    axe-core: ^3.5.5
+  checksum: 39a146d5e20e2bffcdafdbaebb0af24656774c2f4a99b720e170a16c49af74ec93efe040e58eec5ae840264fb1c60c09f7b768e18e6e77452f69dda0ce815d7d
   languageName: node
   linkType: hard
 
@@ -5083,6 +5095,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axe-core@npm:4.4.1":
+  version: 4.4.1
+  resolution: "axe-core@npm:4.4.1"
+  checksum: ad14c5b71059dc3d24ef2519b8cd96e98b4a572379396201ce449d1c4262181821d6ca9550df65b22371faf06d28bbe94d391fe5675f2a08e6550f7b5da8416d
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:^3.5.5":
+  version: 3.5.6
+  resolution: "axe-core@npm:3.5.6"
+  checksum: 000777d2b6bf1f390beb1fb4b8714ed9127797c021c345b032db0c144e07320dbbe8cb0bcb7688b90b79cfbd3cdc1f27a4dc857804e3c61d7e0defb34deeb830
+  languageName: node
+  linkType: hard
+
 "axe-core@npm:^4.3.5":
   version: 4.3.5
   resolution: "axe-core@npm:4.3.5"
@@ -5920,6 +5946,16 @@ __metadata:
     escape-string-regexp: ^1.0.5
     supports-color: ^5.3.0
   checksum: ec3661d38fe77f681200f878edbd9448821924e0f93a9cefc0e26a33b145f1027a2084bf19967160d11e1f03bfe4eaffcabf5493b89098b2782c3fe0b03d80c2
+  languageName: node
+  linkType: hard
+
+"chalk@npm:4.1.0":
+  version: 4.1.0
+  resolution: "chalk@npm:4.1.0"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: 5561c7b4c063badee3e16d04bce50bd033e1be1bf4c6948639275683ffa7a1993c44639b43c22b1c505f0f813a24b1889037eb182546b48946f9fe7cdd0e7d13
   languageName: node
   linkType: hard
 
@@ -12158,6 +12194,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jest-axe@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "jest-axe@npm:6.0.0"
+  dependencies:
+    axe-core: 4.4.1
+    chalk: 4.1.0
+    jest-matcher-utils: 27.0.2
+    lodash.merge: 4.6.2
+  checksum: 9efe60394aa90ec86bf7fbd08aa2ceb8b813cd5b8d5b24fe03192c9bd2745770a5f3c56faa53c1909b28d0f23735648290dd494d6431460e1310ff2394080879
+  languageName: node
+  linkType: hard
+
 "jest-changed-files@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-changed-files@npm:27.5.1"
@@ -12260,7 +12308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^27.5.1":
+"jest-diff@npm:^27.0.2, jest-diff@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-diff@npm:27.5.1"
   dependencies:
@@ -12323,7 +12371,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-get-type@npm:^27.5.1":
+"jest-get-type@npm:^27.0.1, jest-get-type@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-get-type@npm:27.5.1"
   checksum: 63064ab70195c21007d897c1157bf88ff94a790824a10f8c890392e7d17eda9c3900513cb291ca1c8d5722cad79169764e9a1279f7c8a9c4cd6e9109ff04bbc0
@@ -12386,6 +12434,18 @@ __metadata:
     jest-get-type: ^27.5.1
     pretty-format: ^27.5.1
   checksum: 5c9689060960567ddaf16c570d87afa760a461885765d2c71ef4f4857bbc3af1482c34e3cce88e50beefde1bf35e33530b020480752057a7e3dbb1ca0bae359f
+  languageName: node
+  linkType: hard
+
+"jest-matcher-utils@npm:27.0.2":
+  version: 27.0.2
+  resolution: "jest-matcher-utils@npm:27.0.2"
+  dependencies:
+    chalk: ^4.0.0
+    jest-diff: ^27.0.2
+    jest-get-type: ^27.0.1
+    pretty-format: ^27.0.2
+  checksum: 7c12409e42300199bc0a901e68f13846d86f171792798e6a93dde643cf1b752aff015a97b8db313aee59d02795f3ec540f6e54c075d0f6b41effc732fd0d5055
   languageName: node
   linkType: hard
 
@@ -13270,7 +13330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.merge@npm:^4.6.2":
+"lodash.merge@npm:4.6.2, lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
