@@ -24,5 +24,5 @@ const Svg = () => (
   </svg>
 );
 
-const Comment = IconFactory(Svg);
+const Comment = IconFactory(Svg, 'Comment');
 export default Comment;

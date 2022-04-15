@@ -16,5 +16,5 @@ const Svg = () => (
   </svg>
 );
 
-const Close = IconFactory(Svg);
+const Close = IconFactory(Svg, 'Close');
 export default Close;

@@ -16,5 +16,5 @@ const Svg = () => (
   </svg>
 );
 
-const Hamburger = IconFactory(Svg);
+const Hamburger = IconFactory(Svg, 'Hamburger');
 export default Hamburger;

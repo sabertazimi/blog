@@ -28,7 +28,13 @@ const ArticleToc = ({ toc }: Props): JSX.Element => {
       <Button
         className="button-primary"
         shape="circle"
-        icon={tocVisible ? <CloseOutlined /> : <MenuFoldOutlined />}
+        icon={
+          tocVisible ? (
+            <CloseOutlined aria-label="Close" />
+          ) : (
+            <MenuFoldOutlined aria-label="Menu" />
+          )
+        }
         size="large"
         onClick={handleClick}
       />
