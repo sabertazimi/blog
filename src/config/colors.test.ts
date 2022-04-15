@@ -1,7 +1,7 @@
 import { ColorPalette, getColorByName } from './colors';
 
 describe('Colors', () => {
-  const tagsColor = [
+  const mockColors = [
     ['CS', ColorPalette.grape],
     ['CSS', ColorPalette.violet],
     ['Git', ColorPalette.violet],
@@ -22,7 +22,10 @@ describe('Colors', () => {
     ['Frontend Development', ColorPalette.green],
   ];
 
-  test.each(tagsColor)('should set color of tag [%s] to [%s]', (tag, color) => {
-    expect(getColorByName(tag)).toBe(color);
-  });
+  test.each(mockColors)(
+    'should set color of tag [%s] to [%s]',
+    (tag, color) => {
+      expect(getColorByName(tag)).toBe(color);
+    }
+  );
 });

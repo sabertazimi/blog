@@ -1,50 +1,21 @@
+import MockData from '@MockData';
 import type { SocialType } from '@config';
 import { SocialList } from '@config';
 import * as gatsby from 'gatsby';
 import useSiteMetadata from './useSiteMetadata';
 
-const siteMetadata = {
-  title: 'Title',
-  author: 'Sabertaz',
-  siteUrl: 'https://example.com',
-  email: 'example@github.com',
-  disqusUrl: 'https://example.com',
-  landingTitles: ['A', 'B', 'C'],
-  socialList: {
-    github: 'author',
-    twitter: 'author',
-    facebook: 'author',
-    linkedin: 'author',
-    weibo: 'author',
-  },
-  bookList: Array.from(Array(3).keys()).map(() => ({
-    title: 'Title',
-    author: 'Sabertaz',
-    url: 'https://example.com',
-    description: 'Description',
-  })),
-};
-
 describe('useSiteMetadata', () => {
-  let mockUseStaticQuery: jest.SpyInstance;
-
-  beforeEach(() => {
-    mockUseStaticQuery = jest
-      .spyOn(gatsby, 'useStaticQuery')
-      .mockImplementation(() => {
-        return {
-          site: {
-            siteMetadata,
-          },
-        };
-      });
-  });
-
-  afterEach(() => {
-    mockUseStaticQuery.mockRestore();
-  });
+  const mockSiteMetadata = MockData.siteMetadata;
 
   test(`should return correct site metadata`, () => {
+    jest.spyOn(gatsby, 'useStaticQuery').mockImplementation(() => {
+      return {
+        site: {
+          siteMetadata: mockSiteMetadata,
+        },
+      };
+    });
+
     const {
       title,
       author,
@@ -56,27 +27,29 @@ describe('useSiteMetadata', () => {
       bookList,
     } = useSiteMetadata();
 
-    expect(title).toBe(siteMetadata.title);
-    expect(author).toBe(siteMetadata.author);
-    expect(siteUrl).toBe(siteMetadata.siteUrl);
-    expect(email).toBe(siteMetadata.email);
-    expect(disqusUrl).toBe(siteMetadata.disqusUrl);
+    expect(title).toBe(mockSiteMetadata.title);
+    expect(author).toBe(mockSiteMetadata.author);
+    expect(siteUrl).toBe(mockSiteMetadata.siteUrl);
+    expect(email).toBe(mockSiteMetadata.email);
+    expect(disqusUrl).toBe(mockSiteMetadata.disqusUrl);
 
     landingTitles.forEach((title, index) =>
-      expect(title).toBe(siteMetadata.landingTitles[index])
+      expect(title).toBe(mockSiteMetadata.landingTitles[index])
     );
 
     Object.keys(SocialList).forEach(social =>
       expect(socialList[social as SocialType]).toBe(
-        siteMetadata.socialList[social as SocialType]
+        mockSiteMetadata.socialList[social as SocialType]
       )
     );
 
     bookList.forEach((book, index) => {
-      expect(book.title).toBe(siteMetadata.bookList[index].title);
-      expect(book.author).toBe(siteMetadata.bookList[index].author);
-      expect(book.url).toBe(siteMetadata.bookList[index].url);
-      expect(book.description).toBe(siteMetadata.bookList[index].description);
+      expect(book.title).toBe(mockSiteMetadata.bookList[index].title);
+      expect(book.author).toBe(mockSiteMetadata.bookList[index].author);
+      expect(book.url).toBe(mockSiteMetadata.bookList[index].url);
+      expect(book.description).toBe(
+        mockSiteMetadata.bookList[index].description
+      );
     });
   });
 });

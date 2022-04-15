@@ -41,7 +41,8 @@
       "@templates": ["src/templates"],
       "@templates/*": ["src/templates/*"],
       "@types": ["src/types"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@MockData": ["__mocks__/MockData"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
