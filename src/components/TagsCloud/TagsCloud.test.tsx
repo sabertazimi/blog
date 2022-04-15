@@ -16,11 +16,13 @@ describe('TagsCloud', () => {
     const tree = create(
       <TagsCloud activeTag={activeTag} tags={tags} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly without active tag (snapshot)', () => {
     const tree = create(<TagsCloud activeTag="" tags={tags} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

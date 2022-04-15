@@ -27,6 +27,7 @@ const posts = basePosts.map((post, index) => ({
 describe('PostsSearchBar', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(<PostsSearchBar posts={posts} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -40,8 +41,11 @@ describe('PostsSearchBar', () => {
       const input = screen.getByRole('combobox');
 
       fireEvent.change(input, { target: { value: `${index}` } });
+
       expect(await screen.findAllByText(posts[index].title)).toHaveLength(2);
+
       fireEvent.change(input, { target: { value: '' } });
+
       expect(await screen.findAllByText(posts[index].title)).toHaveLength(2);
 
       mockConsoleError.mockRestore();

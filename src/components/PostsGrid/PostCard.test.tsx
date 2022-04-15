@@ -32,11 +32,13 @@ const post = {
 describe('PostCard', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(<PostCard post={post} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly with partial data (snapshot)', () => {
     const tree = create(<PostCard post={basePost} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

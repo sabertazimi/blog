@@ -7,6 +7,7 @@ const url = 'https://example.com/posts/post';
 describe('SocialGroup', () => {
   test('should render correctly (snapshot)', () => {
     const tree = create(<SocialGroup url={url} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

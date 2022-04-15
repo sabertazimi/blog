@@ -44,6 +44,7 @@ describe('GithubCard', () => {
     const tree = create(
       <GithubCard email={email} profile={profile} repos={repos} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -51,11 +52,13 @@ describe('GithubCard', () => {
     const tree = create(
       <GithubCard email={email} profile={baseProfile} repos={repos} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly when missing github data (snapshot)', () => {
     const tree = create(<GithubCard email={email} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

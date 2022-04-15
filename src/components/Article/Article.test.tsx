@@ -41,6 +41,7 @@ describe('Article', () => {
     const tree = create(
       <Article post={post} commentUrl={commentUrl} socialUrl={socialUrl} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -48,6 +49,7 @@ describe('Article', () => {
     const tree = create(
       <Article post={basePost} commentUrl={commentUrl} socialUrl={socialUrl} />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -55,11 +57,13 @@ describe('Article', () => {
     const { container } = render(
       <Article post={post} commentUrl={commentUrl} socialUrl={socialUrl} />
     );
+
     const results = await axe(container, {
       rules: {
         'nested-interactive': { enabled: false },
       },
     });
+
     expect(results).toHaveNoViolations();
   });
 
@@ -67,11 +71,13 @@ describe('Article', () => {
     const { container } = render(
       <Article post={basePost} commentUrl={commentUrl} socialUrl={socialUrl} />
     );
+
     const results = await axe(container, {
       rules: {
         'nested-interactive': { enabled: false },
       },
     });
+
     expect(results).toHaveNoViolations();
   });
 });

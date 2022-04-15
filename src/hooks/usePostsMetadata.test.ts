@@ -38,7 +38,6 @@ describe('usePostsMetadata', () => {
             },
           };
         });
-
       const { posts, tags } = usePostsMetadata();
 
       // Check correct metadata of post are returned
@@ -93,7 +92,6 @@ describe('usePostsMetadata', () => {
             },
           };
         });
-
       const { posts, tags } = usePostsMetadata();
 
       // Check correct partial metadata of post are returned

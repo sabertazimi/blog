@@ -17,6 +17,7 @@ describe('SocialButton', () => {
           url={`https://${social}.com`}
         />
       ).toJSON();
+
       expect(tree).toMatchSnapshot();
     }
   );
@@ -25,6 +26,7 @@ describe('SocialButton', () => {
     const tree = create(
       <SocialButton type="github" url="https://github.com" color="blue" />
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -37,6 +39,7 @@ describe('SocialButton', () => {
           url={`https://${social}.com`}
         />
       );
+
       const link = screen.getByRole('link');
       const icon = screen.getByRole('img');
 
@@ -55,6 +58,7 @@ describe('SocialButton', () => {
           url={`https://${social}.com`}
         />
       );
+
       const link = screen.getByRole('link');
 
       expect(link).toHaveAttribute('href', `https://${social}.com`);

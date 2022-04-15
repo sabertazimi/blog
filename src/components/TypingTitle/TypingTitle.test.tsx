@@ -9,14 +9,14 @@ const landingTitles = [`I'm a coder.`, `I'm a learner.`];
 
 describe('TypingTitle', () => {
   test('should render correctly (snapshot)', () => {
-    const renderer = create(<TypingTitle titles={landingTitles} />);
-    const tree = renderer.toJSON();
+    const tree = create(<TypingTitle titles={landingTitles} />).toJSON();
+
     expect(tree).toMatchSnapshot();
-    renderer.unmount();
   });
 
   test('should work correctly', async () => {
     render(<TypingTitle titles={landingTitles} />);
+
     await waitFor(() => {
       expect(screen.getByRole('heading')).toBeInTheDocument();
     });

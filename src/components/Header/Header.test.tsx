@@ -34,6 +34,7 @@ describe('Header', () => {
 
   test('should render correctly (snapshot)', () => {
     const tree = create(<Header posts={posts} />).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

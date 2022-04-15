@@ -61,14 +61,17 @@ describe('useSiteMetadata', () => {
     expect(siteUrl).toBe(siteMetadata.siteUrl);
     expect(email).toBe(siteMetadata.email);
     expect(disqusUrl).toBe(siteMetadata.disqusUrl);
+
     landingTitles.forEach((title, index) =>
       expect(title).toBe(siteMetadata.landingTitles[index])
     );
+
     Object.keys(SocialList).forEach(social =>
       expect(socialList[social as SocialType]).toBe(
         siteMetadata.socialList[social as SocialType]
       )
     );
+
     bookList.forEach((book, index) => {
       expect(book.title).toBe(siteMetadata.bookList[index].title);
       expect(book.author).toBe(siteMetadata.bookList[index].author);

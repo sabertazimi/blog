@@ -10,6 +10,7 @@ describe('FlexContainer', () => {
         <h1>FlexContainer</h1>
       </FlexContainer>
     ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -19,6 +20,7 @@ describe('FlexContainer', () => {
         <h1>FlexContainer</h1>
       </FlexContainer>
     );
+
     const container = screen.getByRole('main');
     const header = screen.getByText('FlexContainer');
 
