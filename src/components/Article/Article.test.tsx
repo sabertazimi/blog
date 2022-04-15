@@ -1,3 +1,5 @@
+import { render } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import Article from './Article';
@@ -47,5 +49,29 @@ describe('Article', () => {
       <Article post={basePost} commentUrl={commentUrl} socialUrl={socialUrl} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  test('should render accessibility guidelines (AXE)', async () => {
+    const { container } = render(
+      <Article post={post} commentUrl={commentUrl} socialUrl={socialUrl} />
+    );
+    const results = await axe(container, {
+      rules: {
+        'nested-interactive': { enabled: false },
+      },
+    });
+    expect(results).toHaveNoViolations();
+  });
+
+  test('should render accessibility guidelines (AXE) with partial data', async () => {
+    const { container } = render(
+      <Article post={basePost} commentUrl={commentUrl} socialUrl={socialUrl} />
+    );
+    const results = await axe(container, {
+      rules: {
+        'nested-interactive': { enabled: false },
+      },
+    });
+    expect(results).toHaveNoViolations();
   });
 });
