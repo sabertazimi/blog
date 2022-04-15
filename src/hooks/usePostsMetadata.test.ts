@@ -13,7 +13,7 @@ const BasePosts = testIterator.map(post => ({
 }));
 const Posts = testIterator.map(post => ({
   node: {
-    fields: { slug: `/${post + 1}BasicNotes/` },
+    fields: { slug: `/${post + 1}BasicNotes/`, gitTime: `${post + 1} time` },
     frontmatter: {
       title: `${post + 1} Basic Notes`,
       subtitle: 'Be a Stupid Learner',
@@ -50,6 +50,7 @@ describe('usePostsMetadata', () => {
       );
       expect(posts[index].author).toBe(Posts[index].node.frontmatter.author);
       expect(posts[index].date).toBe(Posts[index].node.frontmatter.date);
+      expect(posts[index].gitTime).toBe(Posts[index].node.fields.gitTime);
 
       // Check correct navigation data of post are returned
       if (index === 0) {
@@ -96,9 +97,9 @@ describe('usePostsMetadata', () => {
       const { posts, tags } = usePostsMetadata();
 
       // Check correct partial metadata of post are returned
-      expect(posts[index].slug).toBe(Posts[index].node.fields.slug);
-      expect(posts[index].timeToRead).toBe(Posts[index].node.timeToRead);
-      expect(posts[index].title).toBe(Posts[index].node.frontmatter.title);
+      expect(posts[index].slug).toBe(BasePosts[index].node.fields.slug);
+      expect(posts[index].timeToRead).toBe(BasePosts[index].node.timeToRead);
+      expect(posts[index].title).toBe(BasePosts[index].node.frontmatter.title);
 
       // Check correct navigation data of post are returned
       if (index === 0) {
@@ -107,16 +108,16 @@ describe('usePostsMetadata', () => {
         expect(posts[index].prevPost).toBeFalsy();
       } else {
         expect(posts[index].prevPost?.slug).toBe(
-          Posts[index + 1].node.fields.slug
+          BasePosts[index + 1].node.fields.slug
         );
         expect(posts[index].prevPost?.title).toBe(
-          Posts[index + 1].node.frontmatter.title
+          BasePosts[index + 1].node.frontmatter.title
         );
         expect(posts[index].nextPost?.slug).toBe(
-          Posts[index - 1].node.fields.slug
+          BasePosts[index - 1].node.fields.slug
         );
         expect(posts[index].nextPost?.title).toBe(
-          Posts[index - 1].node.frontmatter.title
+          BasePosts[index - 1].node.frontmatter.title
         );
       }
 

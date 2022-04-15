@@ -5,6 +5,7 @@ interface PostsMetadataNode {
   node: {
     fields: {
       slug: string;
+      gitTime: string;
     };
     frontmatter: {
       title: string;
@@ -29,6 +30,7 @@ const usePostsMetadata = (): {
             node {
               fields {
                 slug
+                gitTime
               }
               frontmatter {
                 title
@@ -74,6 +76,7 @@ const usePostsMetadata = (): {
         author: node.frontmatter.author,
         tags: node.frontmatter.tags,
         date: node.frontmatter.date,
+        gitTime: node.fields.gitTime,
         timeToRead: node.timeToRead,
         prevPost,
         nextPost,

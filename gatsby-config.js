@@ -1,3 +1,6 @@
+const path = require('node:path');
+
+/** @type {import('gatsby').GatsbyConfig} */
 module.exports = {
   siteMetadata: {
     title: 'Sabertaz Blog',
@@ -28,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: `${__dirname}/src/pages/`,
+        path: path.join(__dirname, 'src/pages/'),
       },
     },
     {

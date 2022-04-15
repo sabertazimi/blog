@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ArticleHeader = ({ post }: Props): JSX.Element => {
-  const { tags, title, date, timeToRead } = post;
+  const { tags, title, date, gitTime, timeToRead } = post;
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-200px)' },
     to: { opacity: 1, transform: 'translateX(0)' },
@@ -47,6 +47,12 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
             Posted on {date ? new Date(date).toDateString() : 'Nowadays'}
+          </div>
+        </Tag>
+        <Tag className="tag-black">
+          <div className="text-base font-extrabold">
+            Last updated on{' '}
+            {gitTime ? new Date(gitTime).toDateString() : 'Nowadays'}
           </div>
         </Tag>
         <Tag className="tag-black">
