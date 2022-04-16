@@ -1,4 +1,4 @@
-import MockData from '@MockData';
+import MockData from '@mocks/data';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';

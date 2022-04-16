@@ -1,4 +1,4 @@
-import MockData from '@MockData';
+import MockData from '@mocks/data';
 import * as gatsby from 'gatsby';
 import useBuildTime from './useBuildTime';
 

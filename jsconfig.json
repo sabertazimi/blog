@@ -40,7 +40,7 @@
       "@templates/*": ["src/templates/*"],
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
-      "@MockData": ["__mocks__/MockData"]
+      "@mocks/*": ["__mocks__/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

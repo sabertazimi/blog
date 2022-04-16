@@ -1,6 +1,6 @@
-import MockData from '@MockData';
 import type { SocialType } from '@config';
 import { SocialList } from '@config';
+import MockData from '@mocks/data';
 import * as gatsby from 'gatsby';
 import useSiteMetadata from './useSiteMetadata';
 
