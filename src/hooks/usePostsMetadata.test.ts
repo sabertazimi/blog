@@ -8,7 +8,7 @@ describe('usePostsMetadata', () => {
   const mockBasePosts = MockData.basePosts;
 
   test.each(mockPosts)(
-    `should return correct [%i / ${mockPosts.length}] post metadata`,
+    `should return correct [%# / ${mockPosts.length}] post metadata`,
     ({
       index,
       fields: { slug, gitTime },
@@ -62,7 +62,7 @@ describe('usePostsMetadata', () => {
   );
 
   test.each(mockBasePosts)(
-    `should return correct [%i / ${mockBasePosts.length}] post metadata with partial data`,
+    `should return correct [%# / ${mockBasePosts.length}] post metadata with partial data`,
     ({ index, fields: { slug }, frontmatter: { title }, timeToRead }) => {
       jest.spyOn(gatsby, 'useStaticQuery').mockImplementation(() => {
         return {

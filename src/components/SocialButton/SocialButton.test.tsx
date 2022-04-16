@@ -1,6 +1,7 @@
 import type { SocialType } from '@config';
 import MockData from '@MockData';
 import { render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import SocialButton from './SocialButton';
@@ -27,10 +28,36 @@ describe('SocialButton', () => {
 
   test('should render colorful button correctly (snapshot)', () => {
     const tree = create(
-      <SocialButton type="github" url="https://github.com" color="blue" />
+      <SocialButton type="github" url="https://github.com" color="#299954" />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  test.each(mockSocialList)(
+    'should render [%s] button accessibility guidelines (AXE)',
+    async social => {
+      const { container } = render(
+        <SocialButton
+          type={social as SocialType}
+          url={`https://${social}.com`}
+        />
+      );
+
+      const a11y = await axe(container);
+
+      expect(a11y).toHaveNoViolations();
+    }
+  );
+
+  test('should render colorful button accessibility guidelines (AXE)', async () => {
+    const { container } = render(
+      <SocialButton type="github" url="https://github.com" color="#299954" />
+    );
+
+    const a11y = await axe(container);
+
+    expect(a11y).toHaveNoViolations();
   });
 
   test.each(mockSocialList)(

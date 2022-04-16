@@ -29,7 +29,7 @@ const TypingTitle = ({
         className
       )}
     >
-      <span role="heading" aria-level={2} ref={ref} />
+      <span role="banner" ref={ref} />
     </div>
   );
 };

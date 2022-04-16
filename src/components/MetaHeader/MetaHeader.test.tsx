@@ -1,4 +1,6 @@
 import MockData from '@MockData';
+import { render } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import MetaHeader from './MetaHeader';
@@ -13,5 +15,15 @@ describe('MetaHeader', () => {
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  test('should render accessibility guidelines (AXE)', async () => {
+    const { container } = render(
+      <MetaHeader siteUrl={mockUrl} title={mockTitle} />
+    );
+
+    const a11y = await axe(container);
+
+    expect(a11y).toHaveNoViolations();
   });
 });

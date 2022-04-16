@@ -21,7 +21,7 @@ const GithubCard = ({ email, profile, repos }: Props): JSX.Element => {
       >
         <Card hoverable title={<GithubCardHeader profile={profile} />}>
           <Card.Meta
-            avatar={<Avatar src={profile.avatar} />}
+            avatar={<Avatar src={profile.avatar} alt={profile.username} />}
             title={<GithubCardContent profile={profile} />}
             description={`Joined in ${profile.createDate}`}
           />

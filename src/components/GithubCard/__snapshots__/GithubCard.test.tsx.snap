@@ -63,6 +63,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
             style={Object {}}
           >
             <img
+              alt="sabertazimi"
               onError={[Function]}
               src="https://avatars.githubusercontent.com/u/12670482?v=4"
             />
@@ -588,6 +589,30 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
 </div>
 `;
 
+exports[`GithubCard should render correctly when missing GitHub data (snapshot) 1`] = `
+<div
+  className="mx-auto my-0 text-center"
+>
+  <h1
+    className="ant-typography"
+    onClick={null}
+    style={
+      Object {
+        "WebkitLineClamp": undefined,
+      }
+    }
+  >
+    Please mail to 
+    <a
+      href="mailto:example@github.com"
+    >
+      me
+    </a>
+    .
+  </h1>
+</div>
+`;
+
 exports[`GithubCard should render correctly when missing bio and location data (snapshot) 1`] = `
 <div
   className="ant-ribbon-wrapper"
@@ -651,6 +676,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
             style={Object {}}
           >
             <img
+              alt="sabertazimi"
               onError={[Function]}
               src="https://avatars.githubusercontent.com/u/12670482?v=4"
             />
@@ -1173,29 +1199,5 @@ exports[`GithubCard should render correctly when missing bio and location data (
       }
     />
   </div>
-</div>
-`;
-
-exports[`GithubCard should render correctly when missing github data (snapshot) 1`] = `
-<div
-  className="mx-auto my-0 text-center"
->
-  <h1
-    className="ant-typography"
-    onClick={null}
-    style={
-      Object {
-        "WebkitLineClamp": undefined,
-      }
-    }
-  >
-    Please mail to 
-    <a
-      href="mailto:example@github.com"
-    >
-      me
-    </a>
-    .
-  </h1>
 </div>
 `;

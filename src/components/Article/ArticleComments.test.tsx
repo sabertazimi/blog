@@ -17,8 +17,8 @@ describe('ArticleComments', () => {
   test('Should render accessibility guidelines (AXE)', async () => {
     const { container } = render(<ArticleComments url={mockUrl} />);
 
-    const results = await axe(container);
+    const a11y = await axe(container);
 
-    expect(results).toHaveNoViolations();
+    expect(a11y).toHaveNoViolations();
   });
 });

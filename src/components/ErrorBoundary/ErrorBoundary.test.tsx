@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import ErrorBoundary from './ErrorBoundary';
@@ -45,6 +46,30 @@ describe('ErrorBoundary', () => {
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  test('should render children accessibility guidelines (AXE)', async () => {
+    const { container } = render(
+      <ErrorBoundary>
+        <ComponentWithError />
+      </ErrorBoundary>
+    );
+
+    const a11y = await axe(container);
+
+    expect(a11y).toHaveNoViolations();
+  });
+
+  test('should render alert message accessibility guidelines (AXE)', async () => {
+    const { container } = render(
+      <ErrorBoundary>
+        <ComponentWithError shouldThrow />
+      </ErrorBoundary>
+    );
+
+    const a11y = await axe(container);
+
+    expect(a11y).toHaveNoViolations();
   });
 
   test('should render alert message when error happened', () => {
