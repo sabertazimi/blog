@@ -17,15 +17,15 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
       className="ant-tag ant-tag-has-color"
       style={
         Object {
-          "backgroundColor": "#1890ff",
+          "backgroundColor": "#f59f00",
         }
       }
     >
       <a
         className="text-base font-extrabold"
-        href="/tags/Redux"
+        href="/tags/JavaScript"
       >
-        Redux
+        JavaScript
       </a>
     </span>
     <h2
@@ -37,7 +37,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         }
       }
     >
-      Redux Basic Notes
+      1 Basic Notes
     </h2>
     <span
       className="ant-tag tag-black"
@@ -75,36 +75,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
           />
           <ul
             className="ant-skeleton-paragraph"
-          >
-            <li
-              style={
-                Object {
-                  "width": undefined,
-                }
-              }
-            />
-            <li
-              style={
-                Object {
-                  "width": undefined,
-                }
-              }
-            />
-            <li
-              style={
-                Object {
-                  "width": undefined,
-                }
-              }
-            />
-            <li
-              style={
-                Object {
-                  "width": "61%",
-                }
-              }
-            />
-          </ul>
+          />
         </div>
       </div>
       <button
@@ -113,7 +84,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         type="button"
       >
         <a
-          href="/reduxBasicNotes/"
+          href="/1BasicNotes/"
         >
           <span
             aria-label="read"
@@ -178,7 +149,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         }
       }
     >
-      Redux Basic Notes
+      1 Basic Notes
     </h2>
     <span
       className="ant-tag tag-black"
@@ -216,36 +187,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
           />
           <ul
             className="ant-skeleton-paragraph"
-          >
-            <li
-              style={
-                Object {
-                  "width": undefined,
-                }
-              }
-            />
-            <li
-              style={
-                Object {
-                  "width": undefined,
-                }
-              }
-            />
-            <li
-              style={
-                Object {
-                  "width": undefined,
-                }
-              }
-            />
-            <li
-              style={
-                Object {
-                  "width": "61%",
-                }
-              }
-            />
-          </ul>
+          />
         </div>
       </div>
       <button
@@ -254,7 +196,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         type="button"
       >
         <a
-          href="/reduxBasicNotes/"
+          href="/1BasicNotes/"
         >
           <span
             aria-label="read"

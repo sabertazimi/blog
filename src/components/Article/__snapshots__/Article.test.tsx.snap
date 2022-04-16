@@ -17,36 +17,6 @@ exports[`Article should render correctly (snapshot) 1`] = `
         className="ant-tag ant-tag-has-color"
         style={
           Object {
-            "backgroundColor": "#1890ff",
-          }
-        }
-      >
-        <a
-          className="text-base font-extrabold"
-          href="/tags/Redux"
-        >
-          Redux
-        </a>
-      </span>
-      <span
-        className="ant-tag ant-tag-has-color"
-        style={
-          Object {
-            "backgroundColor": "#1890ff",
-          }
-        }
-      >
-        <a
-          className="text-base font-extrabold"
-          href="/tags/React"
-        >
-          React
-        </a>
-      </span>
-      <span
-        className="ant-tag ant-tag-has-color"
-        style={
-          Object {
             "backgroundColor": "#f59f00",
           }
         }
@@ -91,7 +61,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
       <h1
         className="my-8 text-8xl text-light"
       >
-        Redux Basic Notes
+        1 Basic Notes
       </h1>
       <span
         className="ant-tag tag-black"
@@ -136,7 +106,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           className="text-base font-extrabold"
         >
           (
-          8
+          1
            minutes)
         </div>
       </span>
@@ -179,7 +149,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<h1>Redux Basic Notes</h1>",
+          "__html": "<h1>1 Basic Notes</h1>",
         }
       }
       style={
@@ -232,9 +202,9 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </span>
         <a
           className="m-auto font-extrabold text-light"
-          href="/javascriptBasicNotes/"
+          href="/2BasicNotes/"
         >
-          JavaScript Basic Notes
+          2 Basic Notes
         </a>
       </button>
       <button
@@ -244,9 +214,9 @@ exports[`Article should render correctly (snapshot) 1`] = `
       >
         <a
           className="m-auto font-extrabold text-light"
-          href="/javascriptAdvancedNotes/"
+          href="/0BasicNotes/"
         >
-          JavaScript Advanced Notes
+          0 Basic Notes
         </a>
         <span
           aria-label="Next"
@@ -504,7 +474,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
       <h1
         className="my-8 text-8xl text-light"
       >
-        Redux Basic Notes
+        1 Basic Notes
       </h1>
       <span
         className="ant-tag tag-black"
@@ -549,7 +519,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           className="text-base font-extrabold"
         >
           (
-          8
+          1
            minutes)
         </div>
       </span>
@@ -592,7 +562,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<h1>Redux Basic Notes</h1>",
+          "__html": undefined,
         }
       }
       style={

@@ -1,48 +1,17 @@
+import MockData from '@MockData';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import GithubCard from './GithubCard';
 
-const email = 'sabertazimi@gmail.com';
-const baseProfile = {
-  username: 'sabertazimi',
-  avatar: 'https://avatars.githubusercontent.com/u/12670482?v=4',
-  url: 'https://github.com/sabertazimi',
-  followers: 42,
-  followersUrl: 'https://github.com/sabertazimi/followers',
-  following: 185,
-  followingUrl: 'https://github.com/sabertazimi/following',
-  createDate: 'Sat May 30 2015',
-};
-const profile = {
-  ...baseProfile,
-  bio: 'CS',
-  location: 'Wuhan',
-};
-const repos = [
-  {
-    name: 'hust-lab',
-    stars: 22,
-    language: 'C',
-    repoUrl: 'https://github.com/sabertazimi/hust-lab',
-  },
-  {
-    name: 'awesome-notes',
-    stars: 22,
-    language: 'JavaScript',
-    repoUrl: 'https://github.com/sabertazimi/awesome-notes',
-  },
-  {
-    name: 'dragon-zsh-theme',
-    stars: 11,
-    language: 'Zsh',
-    repoUrl: 'https://github.com/sabertazimi/dragon-zsh-theme',
-  },
-];
-
 describe('GithubCard', () => {
+  const mockEmail = MockData.siteMetadata.email;
+  const mockBaseProfile = MockData.baseProfile;
+  const mockProfile = MockData.profile;
+  const mockRepos = MockData.repos;
+
   test('should render correctly (snapshot)', () => {
     const tree = create(
-      <GithubCard email={email} profile={profile} repos={repos} />
+      <GithubCard email={mockEmail} profile={mockProfile} repos={mockRepos} />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -50,14 +19,18 @@ describe('GithubCard', () => {
 
   test('should render correctly when missing bio and location data (snapshot)', () => {
     const tree = create(
-      <GithubCard email={email} profile={baseProfile} repos={repos} />
+      <GithubCard
+        email={mockEmail}
+        profile={mockBaseProfile}
+        repos={mockRepos}
+      />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
   test('should render correctly when missing github data (snapshot)', () => {
-    const tree = create(<GithubCard email={email} />).toJSON();
+    const tree = create(<GithubCard email={mockEmail} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

@@ -1,54 +1,32 @@
+import MockData from '@MockData';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import PostsSearchBar from './PostsSearchBar';
 
-const basePosts = Array.from(Array(5).keys()).map(post => ({
-  slug: `/${post}BasicNotes/`,
-  timeToRead: post,
-  title: `${post} Basic Notes`,
-}));
-const posts = basePosts.map((post, index) => ({
-  ...post,
-  subtitle: 'Be a Stupid Learner',
-  author: 'Sabertaz',
-  date: '2018-08-08T00:00:00.000Z',
-  tags: ['JavaScript', 'Frontend Development', 'Web Development'],
-  prevPost: {
-    slug: `/${index}BasicNotes/`,
-    title: `${index} Basic Notes`,
-  },
-  nextPost: {
-    slug: `/${index} AdvancedNotes/`,
-    title: `${index} Advanced Notes`,
-  },
-}));
-
 describe('PostsSearchBar', () => {
+  const mockPosts = MockData.posts;
+
   test('should render correctly (snapshot)', () => {
-    const tree = create(<PostsSearchBar posts={posts} />).toJSON();
+    const tree = create(<PostsSearchBar posts={mockPosts} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
-  test.each(Array.from(Array(5).keys()))(
+  test.each(mockPosts)(
     'should render [%i Basic Notes] options when searching',
-    async index => {
-      const mockConsoleError = jest
-        .spyOn(console, 'error')
-        .mockImplementation(jest.fn());
-      render(<PostsSearchBar posts={posts} />);
+    async ({ index, title }) => {
+      jest.spyOn(console, 'error').mockImplementation(jest.fn());
+      render(<PostsSearchBar posts={mockPosts} />);
       const input = screen.getByRole('combobox');
 
-      fireEvent.change(input, { target: { value: `${index}` } });
+      fireEvent.change(input, { target: { value: `${index + 1}` } });
 
-      expect(await screen.findAllByText(posts[index].title)).toHaveLength(2);
+      expect(await screen.findAllByText(title)).toHaveLength(2);
 
       fireEvent.change(input, { target: { value: '' } });
 
-      expect(await screen.findAllByText(posts[index].title)).toHaveLength(2);
-
-      mockConsoleError.mockRestore();
+      expect(await screen.findAllByText(title)).toHaveLength(2);
     }
   );
 });

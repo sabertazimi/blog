@@ -21,9 +21,8 @@ describe('Container', () => {
       </Container>
     );
 
-    const container = screen.getByRole('main');
-    const header = screen.getByText('Container');
-
-    expect(container).toContainElement(header);
+    expect(screen.getByRole('main')).toContainElement(
+      screen.getByText('Container')
+    );
   });
 });
