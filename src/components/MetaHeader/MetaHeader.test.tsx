@@ -1,14 +1,15 @@
+import MockData from '@MockData';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import MetaHeader from './MetaHeader';
 
-const siteUrl = 'https://example.com';
-const title = 'Website Title';
-
 describe('MetaHeader', () => {
+  const mockUrl = MockData.siteMetadata.siteUrl;
+  const mockTitle = MockData.siteMetadata.title;
+
   test('should render correctly (snapshot)', () => {
     const tree = create(
-      <MetaHeader siteUrl={siteUrl} title={title} />
+      <MetaHeader siteUrl={mockUrl} title={mockTitle} />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

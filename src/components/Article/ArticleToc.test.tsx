@@ -1,22 +1,23 @@
+import MockData from '@MockData';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import ArticleToc from './ArticleToc';
 
-const toc = 'Post Table of Contents';
-
 describe('ArticleToc', () => {
+  const mockToc = MockData.posts[0].toc;
+
   test('should render correctly (snapshot)', () => {
-    const tree = create(<ArticleToc toc={toc} />).toJSON();
+    const tree = create(<ArticleToc toc={mockToc} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
   test('should expand ToC when clicked', () => {
-    render(<ArticleToc toc={toc} />);
+    render(<ArticleToc toc={mockToc} />);
 
     fireEvent.click(screen.getByRole('button'));
 
-    expect(screen.getByText(toc)).toBeInTheDocument();
+    expect(screen.getByText(mockToc)).toBeInTheDocument();
   });
 });

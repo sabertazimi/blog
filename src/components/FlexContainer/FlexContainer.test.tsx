@@ -21,9 +21,8 @@ describe('FlexContainer', () => {
       </FlexContainer>
     );
 
-    const container = screen.getByRole('main');
-    const header = screen.getByText('FlexContainer');
-
-    expect(container).toContainElement(header);
+    expect(screen.getByRole('main')).toContainElement(
+      screen.getByText('FlexContainer')
+    );
   });
 });

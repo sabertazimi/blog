@@ -3,28 +3,27 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import ErrorBoundary from './ErrorBoundary';
 
-const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
-  if (shouldThrow) {
-    console.error('ComponentWithError');
-    throw new Error('ComponentWithError');
-  } else {
-    return <div>App</div>;
-  }
-};
-
 describe('ErrorBoundary', () => {
-  const OLD_ENV = { ...process.env };
+  const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
+    if (shouldThrow) {
+      console.error('ComponentWithError');
+      throw new Error('ComponentWithError');
+    } else {
+      return <div>App</div>;
+    }
+  };
+  const ENV = { ...process.env };
   let mockConsoleError: jest.SpyInstance;
 
   beforeEach(() => {
-    process.env = { ...OLD_ENV, NODE_ENV: 'development' };
+    process.env = { ...ENV, NODE_ENV: 'development' };
     mockConsoleError = jest
       .spyOn(console, 'error')
       .mockImplementation(jest.fn());
   });
 
   afterEach(() => {
-    process.env = OLD_ENV;
+    process.env = ENV;
     mockConsoleError.mockRestore();
   });
 

@@ -1,14 +1,17 @@
 import type { SocialType } from '@config';
-import { SocialList } from '@config';
+import MockData from '@MockData';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import SocialButton from './SocialButton';
 
-const socialList = Object.keys(SocialList).concat('default');
-
 describe('SocialButton', () => {
-  test.each(socialList)(
+  const mockSocialList = [
+    ...Object.keys(MockData.siteMetadata.socialList),
+    'default',
+  ];
+
+  test.each(mockSocialList)(
     'should render [%s] button correctly (snapshot)',
     social => {
       const tree = create(
@@ -30,7 +33,7 @@ describe('SocialButton', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test.each(socialList)(
+  test.each(mockSocialList)(
     'should render [%s] button with correct structure',
     social => {
       render(
@@ -49,7 +52,7 @@ describe('SocialButton', () => {
     }
   );
 
-  test.each(socialList)(
+  test.each(mockSocialList)(
     'should render [%s] button with correct URL',
     social => {
       render(

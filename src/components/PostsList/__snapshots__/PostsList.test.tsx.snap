@@ -27,28 +27,6 @@ exports[`PostsList should render correctly (snapshot) 1`] = `
               >
                 <a
                   className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
-                  href="/0BasicNotes/"
-                >
-                  0 Basic Notes
-                </a>
-              </h4>
-            </div>
-          </div>
-        </li>
-        <li
-          className="ant-list-item"
-        >
-          <div
-            className="ant-list-item-meta"
-          >
-            <div
-              className="ant-list-item-meta-content"
-            >
-              <h4
-                className="ant-list-item-meta-title"
-              >
-                <a
-                  className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
                   href="/1BasicNotes/"
                 >
                   1 Basic Notes
@@ -118,6 +96,28 @@ exports[`PostsList should render correctly (snapshot) 1`] = `
                   href="/4BasicNotes/"
                 >
                   4 Basic Notes
+                </a>
+              </h4>
+            </div>
+          </div>
+        </li>
+        <li
+          className="ant-list-item"
+        >
+          <div
+            className="ant-list-item-meta"
+          >
+            <div
+              className="ant-list-item-meta-content"
+            >
+              <h4
+                className="ant-list-item-meta-title"
+              >
+                <a
+                  className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
+                  href="/5BasicNotes/"
+                >
+                  5 Basic Notes
                 </a>
               </h4>
             </div>
