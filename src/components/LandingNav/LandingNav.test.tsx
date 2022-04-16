@@ -1,5 +1,6 @@
 import { Routes } from '@config';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import React from 'react';
 import { create } from 'react-test-renderer';
 import LandingNav from './LandingNav';
@@ -9,6 +10,14 @@ describe('LandingNav', () => {
     const tree = create(<LandingNav routes={Routes} />).toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  test('should render accessibility guidelines (AXE)', async () => {
+    const { container } = render(<LandingNav routes={Routes} />);
+
+    const a11y = await axe(container);
+
+    expect(a11y).toHaveNoViolations();
   });
 
   test('should render route with correct structure', () => {

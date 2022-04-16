@@ -31,13 +31,13 @@ describe('Article', () => {
       <Article post={mockPost} commentUrl={mockUrl} socialUrl={mockUrl} />
     );
 
-    const results = await axe(container, {
+    const a11y = await axe(container, {
       rules: {
         'nested-interactive': { enabled: false },
       },
     });
 
-    expect(results).toHaveNoViolations();
+    expect(a11y).toHaveNoViolations();
   });
 
   test('should render accessibility guidelines (AXE) with partial data', async () => {
@@ -45,12 +45,12 @@ describe('Article', () => {
       <Article post={mockBasePost} commentUrl={mockUrl} socialUrl={mockUrl} />
     );
 
-    const results = await axe(container, {
+    const a11y = await axe(container, {
       rules: {
         'nested-interactive': { enabled: false },
       },
     });
 
-    expect(results).toHaveNoViolations();
+    expect(a11y).toHaveNoViolations();
   });
 });

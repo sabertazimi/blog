@@ -7,6 +7,11 @@ import PostsSearchBar from './PostsSearchBar';
 describe('PostsSearchBar', () => {
   const mockPosts = MockData.posts;
 
+  beforeEach(() => {
+    const { getComputedStyle } = window;
+    window.getComputedStyle = element => getComputedStyle(element);
+  });
+
   test('should render correctly (snapshot)', () => {
     const tree = create(<PostsSearchBar posts={mockPosts} />).toJSON();
 
@@ -14,7 +19,7 @@ describe('PostsSearchBar', () => {
   });
 
   test.each(mockPosts)(
-    'should render [%i Basic Notes] options when searching',
+    'should render [%# Basic Notes] options when searching',
     async ({ index, title }) => {
       jest.spyOn(console, 'error').mockImplementation(jest.fn());
       render(<PostsSearchBar posts={mockPosts} />);
