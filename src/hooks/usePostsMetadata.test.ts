@@ -1,5 +1,5 @@
 /* eslint-disable jest/no-conditional-expect */
-import MockData from '@MockData';
+import MockData from '@mocks/data';
 import * as gatsby from 'gatsby';
 import usePostsMetadata from './usePostsMetadata';
 
