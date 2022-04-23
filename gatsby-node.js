@@ -16,7 +16,7 @@ const octokit = new Octokit();
 exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
   switch (node.internal.type) {
     case 'MarkdownRemark': {
-      const slug = createFilePath({ node, getNode, basePath: 'pages' });
+      const slug = createFilePath({ node, getNode, basePath: 'contents' });
       const gitTime = execSync(
         `git log -1 --pretty=format:%aI ${node.fileAbsolutePath}`
       ).toString();
@@ -268,7 +268,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         '@hooks': path.resolve(__dirname, 'src/hooks'),
         '@images': path.resolve(__dirname, 'src/images'),
         '@layouts': path.resolve(__dirname, 'src/layouts'),
-        '@pages': path.resolve(__dirname, 'src/pages'),
         '@styles': path.resolve(__dirname, 'src/styles'),
         '@templates': path.resolve(__dirname, 'src/templates'),
         '@types': path.resolve(__dirname, 'src/types'),
