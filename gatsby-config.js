@@ -1,31 +1,4 @@
-const path = require('node:path');
-
-/** @type {import('gatsby').GatsbyConfig} */
 module.exports = {
-  siteMetadata: {
-    title: 'Sabertaz Blog',
-    author: 'Sabertaz',
-    siteUrl: 'https://tazimi.dev',
-    email: 'sabertazimi@gmail.com',
-    disqusUrl: 'https://sabertaz-blog.disqus.com',
-    landingTitles: [`I'm a coder.`, `I'm a learner.`],
-    socialList: {
-      github: 'sabertazimi',
-      twitter: 'sabertazimi',
-      facebook: 'sabertazimi',
-      linkedin: 'sabertazimi',
-      weibo: 'sabertazimi',
-    },
-    bookList: [
-      {
-        title: 'awesome-notes',
-        author: 'sabertazimi',
-        url: 'https://sabertazimi.github.io/awesome-notes',
-        description: 'Daily I Learned Notes',
-      },
-    ],
-  },
-  pathPrefix: '/blog',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
@@ -78,35 +51,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-typescript',
-      options: {
-        isTSX: true, // defaults to false
-        jsxPragma: 'jsx', // defaults to "React"
-        allExtensions: true, // defaults to false
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-eslint',
-      options: {
-        stages: ['develop'],
-        extensions: ['js', 'jsx', 'ts', 'tsx'],
-        exclude: [
-          'node_modules',
-          '.cache',
-          'public',
-          'build',
-          'dist',
-          'coverage',
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-      options: {
-        devMode: false,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-nprogress',
       options: {
         color: '#40a9ff',
@@ -115,7 +59,6 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-antd',
-    'gatsby-plugin-postcss',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     {

@@ -1,7 +1,9 @@
 module.exports = {
-  mode: 'jit',
-  content: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'media', // or 'media' or 'class'
+  content: [
+    './components/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+  ],
   important: true,
   theme: {
     extend: {
@@ -98,8 +100,4 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
 };
