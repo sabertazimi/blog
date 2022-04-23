@@ -2,6 +2,84 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/sabertazimi/blog/compare/v2.13.0...v2.14.0) (2022-04-23)
+
+
+### :rocket: Building Work
+
+* **deps-bot:** disable lockfile maintenance ([6a1dd18](https://github.com/sabertazimi/blog/commit/6a1dd189bbfcaefc0efb01f8f353c9f4bc3649d3))
+* **yarn:** bump yarn from v3.0.2 to v3.1.0 ([3404223](https://github.com/sabertazimi/blog/commit/3404223445e47400009d2d7c3d7aa12f234fa0e8))
+
+
+### :sparkles: Features
+
+* **Header-DesktopNav:** add frosted glass effect ([#577](https://github.com/sabertazimi/blog/issues/577)) ([2a54dc7](https://github.com/sabertazimi/blog/commit/2a54dc7d5786e437f629652715825abd4fbfc4a4))
+* **react-18:** switch to React v18 ([#574](https://github.com/sabertazimi/blog/issues/574)) ([b9ed17c](https://github.com/sabertazimi/blog/commit/b9ed17c3e506116ab0ca5a98b7b95f564c04635c))
+* **testing:** add AXE a11y testing ([#595](https://github.com/sabertazimi/blog/issues/595)) ([7b67aa7](https://github.com/sabertazimi/blog/commit/7b67aa7e631fccfe9bb62a8d8416805f8e32d1bf))
+
+
+### :wrench: Testing
+
+* **a11y:** add a11y testing (based on axe-core) ([#604](https://github.com/sabertazimi/blog/issues/604)) ([6109ff9](https://github.com/sabertazimi/blog/commit/6109ff9c0b029e8c03d6a058f39f3c3c5dbc60ff))
+* format code ([#600](https://github.com/sabertazimi/blog/issues/600)) ([ef6d548](https://github.com/sabertazimi/blog/commit/ef6d548a7500d6fa1b20684da9fe9fb704a8f3ad))
+* **mocks-data:** setup shared mocks data ([#601](https://github.com/sabertazimi/blog/issues/601)) ([2ca9218](https://github.com/sabertazimi/blog/commit/2ca921805f47b3fc11d452026c087c357431339d))
+* **mocks:** aggregate mocks data for testing ([#603](https://github.com/sabertazimi/blog/issues/603)) ([7e1f08a](https://github.com/sabertazimi/blog/commit/7e1f08a60a617ed7e38c44aa222bcbdc72ceb3b5))
+
+
+### :bug: Bug Fixes
+
+* **Article-ArticleHeader:** add last updated time ([#592](https://github.com/sabertazimi/blog/issues/592)) ([0fcb1f2](https://github.com/sabertazimi/blog/commit/0fcb1f264d860e32ed245a290ac715236c0985ba))
+* **Article-ArticleNav:** add icon to article navigation button ([#591](https://github.com/sabertazimi/blog/issues/591)) ([cb858d5](https://github.com/sabertazimi/blog/commit/cb858d593df202fb1a7aaab8e7c7291842906869))
+* **Article-ArticleNav:** add unique landmark ([#597](https://github.com/sabertazimi/blog/issues/597)) ([0bfa94e](https://github.com/sabertazimi/blog/commit/0bfa94e9fcffdef6c08f3a5fb1e3a76c98f78157))
+* **Article-ArticleNav:** rectify icon position ([#593](https://github.com/sabertazimi/blog/issues/593)) ([9e03747](https://github.com/sabertazimi/blog/commit/9e03747ae303c46e9de5acbc4b7517869d6bbb83))
+* **Article-styles:** add list style and padding styles ([#582](https://github.com/sabertazimi/blog/issues/582)) ([8cf30aa](https://github.com/sabertazimi/blog/commit/8cf30aa064e707c07823ced6b054ce705e2af193))
+* **ArticleToc:** close ToC automaticly when clicking links ([#575](https://github.com/sabertazimi/blog/issues/575)) ([ed7ed1a](https://github.com/sabertazimi/blog/commit/ed7ed1a08bcb441ad82234baa459fabe1038aa32))
+* **deps:** update dependencies (non-major) ([#580](https://github.com/sabertazimi/blog/issues/580)) ([ac2a09c](https://github.com/sabertazimi/blog/commit/ac2a09ce26ff6eccb5d8b6e04680bd622f34b1ab))
+* **deps:** update dependencies (non-major) ([#607](https://github.com/sabertazimi/blog/issues/607)) ([51d818a](https://github.com/sabertazimi/blog/commit/51d818a12bb8f9ce87f39e02af092107c0787f30))
+* **deps:** update dependency antd to ^4.17.2 ([#388](https://github.com/sabertazimi/blog/issues/388)) ([d9dbc48](https://github.com/sabertazimi/blog/commit/d9dbc48a07d52cfeca29c2a0189054a3e0aeb646))
+* **deps:** update dependency antd to ^4.17.3 ([#406](https://github.com/sabertazimi/blog/issues/406)) ([b7999d5](https://github.com/sabertazimi/blog/commit/b7999d52074dadbac8a388c378a1ea5943b4cb22))
+* **deps:** update dependency antd to ^4.17.4 ([#431](https://github.com/sabertazimi/blog/issues/431)) ([c3feae4](https://github.com/sabertazimi/blog/commit/c3feae4e17a8748ca3678590fe1eb783e8b09e94))
+* **deps:** update dependency antd to ^4.18.2 ([#441](https://github.com/sabertazimi/blog/issues/441)) ([55b8972](https://github.com/sabertazimi/blog/commit/55b8972854f3a9554a54a405ba1a2ce8c031a31b))
+* **deps:** update dependency antd to ^4.18.3 ([#457](https://github.com/sabertazimi/blog/issues/457)) ([b3830a2](https://github.com/sabertazimi/blog/commit/b3830a2d4e52ee944778ba69128f08a111f60dad))
+* **deps:** update dependency antd to ^4.18.5 ([#473](https://github.com/sabertazimi/blog/issues/473)) ([541dae7](https://github.com/sabertazimi/blog/commit/541dae78e177597b6047157b0b828ee12ff1fd2b))
+* **deps:** update dependency antd to ^4.18.6 ([#498](https://github.com/sabertazimi/blog/issues/498)) ([ced39f8](https://github.com/sabertazimi/blog/commit/ced39f8ce2c4e34bbd71dcec2688df7b16296fcc))
+* **deps:** update dependency antd to ^4.18.8 ([#514](https://github.com/sabertazimi/blog/issues/514)) ([5647f35](https://github.com/sabertazimi/blog/commit/5647f350e171a8dcfda944867b39155c5b447af6))
+* **deps:** update dependency antd to ^4.18.9 ([#532](https://github.com/sabertazimi/blog/issues/532)) ([a8c5d78](https://github.com/sabertazimi/blog/commit/a8c5d78a9ef009254335816b2258160e0744714d))
+* **deps:** update dependency antd to ^4.19.1 ([#549](https://github.com/sabertazimi/blog/issues/549)) ([c2e107d](https://github.com/sabertazimi/blog/commit/c2e107dcb203b33126aab1fcf357188c1b072888))
+* **deps:** update dependency antd to ^4.19.2 ([#553](https://github.com/sabertazimi/blog/issues/553)) ([a01b1b3](https://github.com/sabertazimi/blog/commit/a01b1b3d38fdf938c6fc9636012350e30977731f))
+* **deps:** update dependency antd to ^4.19.4 ([#568](https://github.com/sabertazimi/blog/issues/568)) ([3eb9928](https://github.com/sabertazimi/blog/commit/3eb99280a21e62d8ce23f89b66defa7c4e98f80b))
+* **deps:** update dependency gatsby to ^4.0.2 ([#342](https://github.com/sabertazimi/blog/issues/342)) ([fd0cd3a](https://github.com/sabertazimi/blog/commit/fd0cd3a72127b9a8d7b42160e4bafce671af436d))
+* **deps:** update dependency gatsby to ^4.6.2 ([#489](https://github.com/sabertazimi/blog/issues/489)) ([eb24d3a](https://github.com/sabertazimi/blog/commit/eb24d3abe8f02f848d145ba8794403a12786b388))
+* **deps:** update dependency gatsby to ^4.7.2 ([#515](https://github.com/sabertazimi/blog/issues/515)) ([e3aca95](https://github.com/sabertazimi/blog/commit/e3aca952032e81ce5864587cfbc6c1915c230825))
+* **deps:** update dependency prismjs to ^1.26.0 ([#452](https://github.com/sabertazimi/blog/issues/452)) ([d6c7cd0](https://github.com/sabertazimi/blog/commit/d6c7cd0cd94d198a4ace08cbd403eec9918d46f8))
+* **deps:** update dependency prismjs to ^1.27.0 ([#520](https://github.com/sabertazimi/blog/issues/520)) ([a65b55f](https://github.com/sabertazimi/blog/commit/a65b55fae2e73be8ec37a4f114bd9579f739e727))
+* **deps:** update dependency react-spring to ^9.3.1 ([#371](https://github.com/sabertazimi/blog/issues/371)) ([022e11c](https://github.com/sabertazimi/blog/commit/022e11c90a3d007c6fa926a2ce8812793fd4cf74))
+* **deps:** update dependency react-spring to ^9.3.2 ([#385](https://github.com/sabertazimi/blog/issues/385)) ([4b7a1bc](https://github.com/sabertazimi/blog/commit/4b7a1bc2c32a5dd208d65b380188a854da5fe94b))
+* **deps:** update dependency react-spring to ^9.3.3 ([#432](https://github.com/sabertazimi/blog/issues/432)) ([a192c87](https://github.com/sabertazimi/blog/commit/a192c878f966daa729d29fa41ad4348c8dfcf36b))
+* **deps:** update dependency react-spring to ^9.4.1 ([#453](https://github.com/sabertazimi/blog/issues/453)) ([cdf2f76](https://github.com/sabertazimi/blog/commit/cdf2f769c160513dd1fd1e54dd843445a9ae13e1))
+* **deps:** update dependency react-spring to ^9.4.2 ([#458](https://github.com/sabertazimi/blog/issues/458)) ([b19252e](https://github.com/sabertazimi/blog/commit/b19252ece8d0aa728742695b851e54881bfd6997))
+* **deps:** update dependency react-spring to ^9.4.3 ([#507](https://github.com/sabertazimi/blog/issues/507)) ([ee06130](https://github.com/sabertazimi/blog/commit/ee06130a74163d7eea46459916e1784a24c206c4))
+* **deps:** update dependency react-spring to ^9.4.4 ([#547](https://github.com/sabertazimi/blog/issues/547)) ([65ec84e](https://github.com/sabertazimi/blog/commit/65ec84ec5a076799175c6781e3a2ce7f4a54dc70))
+* **deps:** update dependency tailwindcss to ^2.2.19 ([#343](https://github.com/sabertazimi/blog/issues/343)) ([8bd362d](https://github.com/sabertazimi/blog/commit/8bd362da13e35f47578f0348ab35de1f9d613635))
+* **deps:** update dependency tailwindcss to ^3.0.12 ([#449](https://github.com/sabertazimi/blog/issues/449)) ([ee02648](https://github.com/sabertazimi/blog/commit/ee026481a2939de8e9a5e0b2e6796c55d4b848f6))
+* **deps:** update dependency tailwindcss to ^3.0.15 ([#459](https://github.com/sabertazimi/blog/issues/459)) ([b90da4b](https://github.com/sabertazimi/blog/commit/b90da4ba2f071e4655c6de0d15ace429d5df5802))
+* **deps:** update dependency tailwindcss to ^3.0.18 ([#479](https://github.com/sabertazimi/blog/issues/479)) ([62e00a7](https://github.com/sabertazimi/blog/commit/62e00a73b46febe5de8c1e5e1f2db9df8582bc5c))
+* **deps:** update dependency tailwindcss to ^3.0.22 ([#499](https://github.com/sabertazimi/blog/issues/499)) ([5ac5964](https://github.com/sabertazimi/blog/commit/5ac596417eb044675c25ac4cb1541dfa25f1be6c))
+* **deps:** update dependency tailwindcss to ^3.0.23 ([#516](https://github.com/sabertazimi/blog/issues/516)) ([9ec01ae](https://github.com/sabertazimi/blog/commit/9ec01ae669f509097302e9d53f5b2250a8533b2a))
+* **deps:** update dependency tailwindcss to ^3.0.7 ([#416](https://github.com/sabertazimi/blog/issues/416)) ([7787cb0](https://github.com/sabertazimi/blog/commit/7787cb000e823ffa5a607fa8e4335545160b27d9))
+* **deps:** update dependency tailwindcss to ^3.0.8 ([#439](https://github.com/sabertazimi/blog/issues/439)) ([76361f2](https://github.com/sabertazimi/blog/commit/76361f23bac4b29ab2a3427bc3205e2ec9cc1705))
+* **deps:** update dependency tailwindcss to v3 ([#409](https://github.com/sabertazimi/blog/issues/409)) ([c77f022](https://github.com/sabertazimi/blog/commit/c77f02249fe6f400bc12cde674ada62880e30af6))
+* **Footer:** change footer description ([#594](https://github.com/sabertazimi/blog/issues/594)) ([9d0e138](https://github.com/sabertazimi/blog/commit/9d0e138157b10a248976beee2cd2f10ec30a25b5))
+* **Footer:** remove dynamic year ([#444](https://github.com/sabertazimi/blog/issues/444)) ([41fab67](https://github.com/sabertazimi/blog/commit/41fab6711d475a8a3ecea18595bf455565ede702))
+* **Header-DesktopNav:** rectify frosted blur in production ([#579](https://github.com/sabertazimi/blog/issues/579)) ([b48500f](https://github.com/sabertazimi/blog/commit/b48500f250fcfbd858fc7878988c2c59bc28d8cc)), closes [tailwindlabs/tailwindcss#7802](https://github.com/tailwindlabs/tailwindcss/issues/7802)
+* **Icons:** add `aria-label` to icons ([#596](https://github.com/sabertazimi/blog/issues/596)) ([91328fb](https://github.com/sabertazimi/blog/commit/91328fb56e694153b7212adb2105cbe302f64f8c))
+* **jest-config:** rectify jest utils path ([#445](https://github.com/sabertazimi/blog/issues/445)) ([d4f0731](https://github.com/sabertazimi/blog/commit/d4f0731ebda8dfc6197731a3f77aedb5da0c17ba))
+* **jest:** rectify jest module mapper ([#508](https://github.com/sabertazimi/blog/issues/508)) ([e14432a](https://github.com/sabertazimi/blog/commit/e14432a8a289d1abc2ea118832524658692add45))
+* **LandingNavLink:** drop antd `Tooltip` component ([#576](https://github.com/sabertazimi/blog/issues/576)) ([b959649](https://github.com/sabertazimi/blog/commit/b959649f1d4482bb1f94fd115aede7360748b938))
+* **markdown:** move blog markdown files to `contents/` ([#611](https://github.com/sabertazimi/blog/issues/611)) ([fab6fbc](https://github.com/sabertazimi/blog/commit/fab6fbc58be6c7c2bd95d6cd2dfe4aa780e75b5c))
+* **pages-markdown:** update new contents ([#564](https://github.com/sabertazimi/blog/issues/564)) ([460a328](https://github.com/sabertazimi/blog/commit/460a328baa922d61449e50d8e7dcfa1cf77f44e6))
+* **tailwindcss:** rectify tailwindcss configuration ([#423](https://github.com/sabertazimi/blog/issues/423)) ([2ad2e24](https://github.com/sabertazimi/blog/commit/2ad2e240664d06354dee7c0121b4d7665e84d519))
+
 ## [2.13.0](https://github.com/sabertazimi/blog/compare/v2.12.0...v2.13.0) (2021-10-23)
 
 
