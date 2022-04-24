@@ -1,22 +1,25 @@
 import { Routes } from '@config';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { axe } from 'jest-axe';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   test('should render routes correctly (snapshot)', () => {
     const { container } = render(<LandingNav routes={Routes} />);
 
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
     expect(container).toMatchSnapshot();
-  });
-
-  test('should render accessibility guidelines (AXE)', async () => {
-    const { container } = render(<LandingNav routes={Routes} />);
-
-    const a11y = await axe(container);
-
-    expect(a11y).toHaveNoViolations();
   });
 
   test('should render route with correct structure', () => {
@@ -41,10 +44,23 @@ describe('LandingNav', () => {
 
   test('should expanded when clicked', () => {
     render(<LandingNav routes={Routes} />);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByRole('navigation')).toHaveStyle(
+      'transform: translateX(-100%) translateZ(0);'
+    );
+    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
 
     fireEvent.click(screen.getByRole('button'));
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
 
-    expect(screen.getByRole('navigation')).toHaveClass('translate-x-0');
-    expect(screen.getByRole('banner')).toHaveClass('bg-opacity-80');
+    expect(screen.getByRole('navigation')).toHaveStyle(
+      'transform: translateX(0%) translateZ(0);'
+    );
+    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0.8');
   });
 });

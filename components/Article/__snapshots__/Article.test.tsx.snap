@@ -129,68 +129,78 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </span>
       </div>
       <div
-        aria-label="footer-nagivation"
+        aria-label="footer-navigation"
         class="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
         role="navigation"
       >
-        <button
-          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-          type="button"
+        <div
+          class="inline-flex flex-1 mr-24"
+          style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <span
-            aria-label="Prev"
-            class="anticon anticon-arrow-left"
-            role="img"
+          <button
+            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+            type="button"
           >
-            <svg
-              aria-hidden="true"
-              data-icon="arrow-left"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            <span
+              aria-label="Prev"
+              class="anticon anticon-arrow-left"
+              role="img"
             >
-              <path
-                d="M872 474H286.9l350.2-304c5.6-4.9 2.2-14-5.2-14h-88.5c-3.9 0-7.6 1.4-10.5 3.9L155 487.8a31.96 31.96 0 000 48.3L535.1 866c1.5 1.3 3.3 2 5.2 2h91.5c7.4 0 10.8-9.2 5.2-14L286.9 550H872c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"
-              />
-            </svg>
-          </span>
-          <a
-            class="m-auto font-extrabold text-light"
-          >
-            2 Basic Notes
-          </a>
-        </button>
-        <button
-          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-          type="button"
+              <svg
+                aria-hidden="true"
+                data-icon="arrow-left"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M872 474H286.9l350.2-304c5.6-4.9 2.2-14-5.2-14h-88.5c-3.9 0-7.6 1.4-10.5 3.9L155 487.8a31.96 31.96 0 000 48.3L535.1 866c1.5 1.3 3.3 2 5.2 2h91.5c7.4 0 10.8-9.2 5.2-14L286.9 550H872c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+            </span>
+            <a
+              class="m-auto font-extrabold text-light"
+            >
+              2 Basic Notes
+            </a>
+          </button>
+        </div>
+        <div
+          class="inline-flex flex-1 ml-24"
+          style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <a
-            class="m-auto font-extrabold text-light"
+          <button
+            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+            type="button"
           >
-            0 Basic Notes
-          </a>
-          <span
-            aria-label="Next"
-            class="anticon anticon-arrow-right"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="arrow-right"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            <a
+              class="m-auto font-extrabold text-light"
             >
-              <path
-                d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z"
-              />
-            </svg>
-          </span>
-        </button>
+              0 Basic Notes
+            </a>
+            <span
+              aria-label="Next"
+              class="anticon anticon-arrow-right"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="arrow-right"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
       </div>
       <div
         class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
@@ -487,68 +497,80 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         </span>
       </div>
       <div
-        aria-label="footer-nagivation"
+        aria-label="footer-navigation"
         class="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
         role="navigation"
       >
-        <button
-          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-          type="button"
+        <div
+          class="inline-flex flex-1 mr-24"
+          data-projection-id="1"
+          style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <span
-            aria-label="Home"
-            class="anticon anticon-home"
-            role="img"
+          <button
+            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+            type="button"
           >
-            <svg
-              aria-hidden="true"
-              data-icon="home"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            <span
+              aria-label="Home"
+              class="anticon anticon-home"
+              role="img"
             >
-              <path
-                d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
-              />
-            </svg>
-          </span>
-          <a
-            class="m-auto font-extrabold text-light"
-          >
-            Back to Home
-          </a>
-        </button>
-        <button
-          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-          type="button"
+              <svg
+                aria-hidden="true"
+                data-icon="home"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+                />
+              </svg>
+            </span>
+            <a
+              class="m-auto font-extrabold text-light"
+            >
+              Back to Home
+            </a>
+          </button>
+        </div>
+        <div
+          class="inline-flex flex-1 ml-24"
+          data-projection-id="2"
+          style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <a
-            class="m-auto font-extrabold text-light"
+          <button
+            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+            type="button"
           >
-            Back to Home
-          </a>
-          <span
-            aria-label="Home"
-            class="anticon anticon-home"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="home"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+            <a
+              class="m-auto font-extrabold text-light"
             >
-              <path
-                d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
-              />
-            </svg>
-          </span>
-        </button>
+              Back to Home
+            </a>
+            <span
+              aria-label="Home"
+              class="anticon anticon-home"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="home"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
       </div>
       <div
         class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
@@ -598,7 +620,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         >
           <div
             class="inline-flex"
-            data-projection-id="1"
+            data-projection-id="3"
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
@@ -635,7 +657,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         >
           <div
             class="inline-flex"
-            data-projection-id="2"
+            data-projection-id="4"
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
@@ -672,7 +694,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         >
           <div
             class="inline-flex"
-            data-projection-id="3"
+            data-projection-id="5"
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
@@ -708,7 +730,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         >
           <div
             class="inline-flex"
-            data-projection-id="4"
+            data-projection-id="6"
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
