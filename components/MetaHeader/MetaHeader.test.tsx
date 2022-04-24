@@ -5,8 +5,8 @@ import React from 'react';
 import MetaHeader from './MetaHeader';
 
 describe('MetaHeader', () => {
-  const mockUrl = MockData.siteMetadata.siteUrl;
-  const mockTitle = MockData.siteMetadata.title;
+  const mockUrl = MockData.siteConfig.siteUrl;
+  const mockTitle = MockData.siteConfig.title;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(

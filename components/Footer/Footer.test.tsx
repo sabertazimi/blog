@@ -6,8 +6,8 @@ import Footer from './Footer';
 
 describe('Footer', () => {
   const mockTime = MockData.time;
-  const mockAuthor = MockData.siteMetadata.author;
-  const mockSocialList = MockData.siteMetadata.socialList;
+  const mockAuthor = MockData.siteConfig.author;
+  const mockSocialList = MockData.siteConfig.socialList;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(

@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest';
 import type { GitHubType } from '@types';
-import getSiteMetadata from './getSiteMetadata';
+import getSiteConfig from './getSiteConfig';
 
 let githubData: GitHubType = {
   profile: {
@@ -39,16 +39,16 @@ let githubData: GitHubType = {
 
 export default async function getGitHubData(): Promise<GitHubType> {
   const octokit = new Octokit();
-  const siteMetadata = getSiteMetadata();
+  const siteConfig = getSiteConfig();
 
   try {
     const { data: profileJSON } = await octokit.rest.users.getByUsername({
-      username: siteMetadata.socialList.github,
+      username: siteConfig.socialList.github,
     });
     const { data: reposJSON } = await octokit.request(
       'GET /users/{username}/repos',
       {
-        username: siteMetadata.socialList.github,
+        username: siteConfig.socialList.github,
       }
     );
 

@@ -7,7 +7,7 @@ export interface Book {
   description: string;
 }
 
-export interface SiteMetadata {
+export interface SiteConfig {
   title: string;
   author: string;
   siteUrl: string;

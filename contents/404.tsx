@@ -1,20 +1,20 @@
 import { MetaHeader } from '@components';
 import { Layout } from '@layouts';
-import type { PostMetaType, SiteMetadata } from '@types';
+import type { PostMetaType, SiteConfig } from '@types';
 import React from 'react';
 
 interface Props {
   posts: PostMetaType[];
   buildTime: string | number | Date;
-  siteMetadata: SiteMetadata;
+  siteConfig: SiteConfig;
 }
 
 const NotFoundPage = ({
   posts,
   buildTime,
-  siteMetadata,
+  siteConfig,
 }: Props): JSX.Element => {
-  const { siteUrl, title, author, socialList } = siteMetadata;
+  const { siteUrl, title, author, socialList } = siteConfig;
 
   return (
     <div>

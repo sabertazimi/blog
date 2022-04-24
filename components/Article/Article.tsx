@@ -31,7 +31,7 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
     html,
   } = post;
 
-  const postMetadata = {
+  const postMeta = {
     slug,
     title,
     subtitle,
@@ -46,12 +46,12 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
 
   return (
     <div>
-      <ArticleHeader post={postMetadata} />
+      <ArticleHeader post={postMeta} />
       <Container className="max-w-screen-lg px-6">
         <ArticleToc toc={toc as string} />
         <ArticleContent content={html as string} />
         <ArticleDivider>{subtitle || 'Blog'}</ArticleDivider>
-        <ArticleNav post={postMetadata} />
+        <ArticleNav post={postMeta} />
         <ArticleDivider>
           <Comment className="text-2xl text-primary" />
         </ArticleDivider>

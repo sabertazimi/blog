@@ -5,7 +5,7 @@ import React from 'react';
 import ArticleComments from './ArticleComments';
 
 describe('ArticleComments', () => {
-  const mockUrl = MockData.siteMetadata.disqusUrl;
+  const mockUrl = MockData.siteConfig.disqusUrl;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<ArticleComments url={mockUrl} />);

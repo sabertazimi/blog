@@ -1,14 +1,14 @@
 import { Container, SocialButton } from '@components';
 import type { SocialType } from '@config';
 import { SocialList } from '@config';
-import type { SiteMetadata } from '@types';
+import type { SiteConfig } from '@types';
 import { Col, Divider, Row } from 'antd';
 import React from 'react';
 
 interface Props {
   buildTime: string | number | Date;
-  author: SiteMetadata['author'];
-  socialList: SiteMetadata['socialList'];
+  author: SiteConfig['author'];
+  socialList: SiteConfig['socialList'];
 }
 
 const Footer = ({ buildTime, author, socialList }: Props): JSX.Element => (

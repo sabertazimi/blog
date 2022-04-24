@@ -2,21 +2,21 @@ import { MetaHeader, PostsList, TagsCloud } from '@components';
 import { Layout } from '@layouts';
 import {
   getBuildTime,
-  getPostsMetadata,
-  getSiteMetadata,
+  getPostsMeta,
+  getSiteConfig,
   getTagsData,
 } from '@lib';
-import type { PostMetaType, SiteMetadata, TagsType, TagType } from '@types';
+import type { PostMetaType, SiteConfig, TagsType, TagType } from '@types';
 import type { GetStaticPaths, GetStaticProps } from 'next/types';
 import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 
 interface Props {
   buildTime: string | number | Date;
-  postsMetadata: PostMetaType[];
+  postsMeta: PostMetaType[];
   tagsData: TagsType;
   activeTag: TagType;
-  siteMetadata: SiteMetadata;
+  siteConfig: SiteConfig;
 }
 
 interface QueryParams extends ParsedUrlQuery {
@@ -40,30 +40,30 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async ({
   params,
 }) => {
   const buildTime = getBuildTime();
-  const postsMetadata = await getPostsMetadata();
+  const postsMeta = await getPostsMeta();
   const tagsData = await getTagsData();
   const activeTag = (params as QueryParams).tag;
-  const siteMetadata = getSiteMetadata();
+  const siteConfig = getSiteConfig();
   return {
     props: {
       buildTime,
-      postsMetadata,
+      postsMeta,
       tagsData,
       activeTag,
-      siteMetadata,
+      siteConfig,
     },
   };
 };
 
 const Tags = ({
   buildTime,
-  postsMetadata,
+  postsMeta,
   tagsData,
   activeTag,
-  siteMetadata,
+  siteConfig,
 }: Props): JSX.Element => {
-  const { siteUrl, title, author, socialList } = siteMetadata;
-  const postsMetadataByTag = postsMetadata.filter(
+  const { siteUrl, title, author, socialList } = siteConfig;
+  const postsMetaByTag = postsMeta.filter(
     ({ tags }) => tags && tags.includes(activeTag)
   );
 
@@ -73,12 +73,12 @@ const Tags = ({
       <Layout
         banner="Tags"
         buildTime={buildTime}
-        posts={postsMetadata}
+        posts={postsMeta}
         author={author}
         socialList={socialList}
       >
         <TagsCloud tags={tagsData} activeTag={activeTag} />
-        <PostsList posts={postsMetadataByTag} />
+        <PostsList posts={postsMetaByTag} />
       </Layout>
     </div>
   );

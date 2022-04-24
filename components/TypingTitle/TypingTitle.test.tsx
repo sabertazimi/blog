@@ -5,7 +5,7 @@ import React from 'react';
 import TypingTitle from './TypingTitle';
 
 describe('TypingTitle', () => {
-  const mockTitles = MockData.siteMetadata.landingTitles;
+  const mockTitles = MockData.siteConfig.landingTitles;
   jest.mock('typed.js');
 
   test('should render correctly (snapshot)', () => {

@@ -97,13 +97,13 @@ async function getPostsData(): Promise<PostType[]> {
   return postsData;
 }
 
-async function getPostsMetadata(): Promise<PostMetaType[]> {
+async function getPostsMeta(): Promise<PostMetaType[]> {
   const postsData = await getPostsData();
-  const postsMetadata = postsData.map(post => {
-    const { source, excerpt, toc, html, ...postMetadata } = post;
-    return postMetadata;
+  const postsMeta = postsData.map(post => {
+    const { source, excerpt, toc, html, ...postMeta } = post;
+    return postMeta;
   });
-  return postsMetadata;
+  return postsMeta;
 }
 
 async function getTagsData(): Promise<TagsType> {
@@ -128,4 +128,4 @@ async function getPostData(
   return postData;
 }
 
-export { getPostData, getPostsData, getPostsMetadata, getTagsData };
+export { getPostData, getPostsData, getPostsMeta, getTagsData };

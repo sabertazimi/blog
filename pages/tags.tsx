@@ -2,43 +2,43 @@ import { MetaHeader, PostsList, TagsCloud } from '@components';
 import { Layout } from '@layouts';
 import {
   getBuildTime,
-  getPostsMetadata,
-  getSiteMetadata,
+  getPostsMeta,
+  getSiteConfig,
   getTagsData,
 } from '@lib';
-import type { PostMetaType, SiteMetadata, TagsType } from '@types';
+import type { PostMetaType, SiteConfig, TagsType } from '@types';
 import type { GetStaticProps } from 'next/types';
 import React from 'react';
 
 interface Props {
   buildTime: string | number | Date;
-  postsMetadata: PostMetaType[];
+  postsMeta: PostMetaType[];
   tagsData: TagsType;
-  siteMetadata: SiteMetadata;
+  siteConfig: SiteConfig;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const buildTime = getBuildTime();
-  const postsMetadata = await getPostsMetadata();
+  const postsMeta = await getPostsMeta();
   const tagsData = await getTagsData();
-  const siteMetadata = getSiteMetadata();
+  const siteConfig = getSiteConfig();
   return {
     props: {
       buildTime,
-      postsMetadata,
+      postsMeta,
       tagsData,
-      siteMetadata,
+      siteConfig,
     },
   };
 };
 
 const Tags = ({
   buildTime,
-  postsMetadata,
+  postsMeta,
   tagsData,
-  siteMetadata,
+  siteConfig,
 }: Props): JSX.Element => {
-  const { siteUrl, title, author, socialList } = siteMetadata;
+  const { siteUrl, title, author, socialList } = siteConfig;
 
   return (
     <div>
@@ -46,12 +46,12 @@ const Tags = ({
       <Layout
         banner="Tags"
         buildTime={buildTime}
-        posts={postsMetadata}
+        posts={postsMeta}
         author={author}
         socialList={socialList}
       >
         <TagsCloud tags={tagsData} />
-        <PostsList posts={postsMetadata} />
+        <PostsList posts={postsMeta} />
       </Layout>
     </div>
   );
