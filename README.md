@@ -25,20 +25,26 @@ A great [blog](https://sabertazimi.github.io/blog) system based on React and Nex
 - Great GitHub information card.
 - Social share buttons.
 - Syntax highlighting in code blocks using PrismJS.
-- Nice animation for page transitions.
+- Nice animation for page transitions and dynamic routing.
+- Disqus comments system.
+- Customized 404 not found page.
 - ...and more.
 
 ### Development Features
 
-- Dynamic route generation for Markdown posts.
+- Lightning fast HMR.
+- Optimized build with `Rust` compiler.
+- Dynamic route generation for `Markdown` posts.
+- Performant `MDX` support, enhance `Markdown` with `React`.
 - Automatically generated sidebar navigation, table of contents, previous/next links.
-- Out of box support for Tailwind.css.
-- Fully customizable through Tailwind.css.
+- Out of box support for `tailwind.css`.
+- Fully customizable through `tailwind.css`.
 - Mobile-first approach in development.
-- Out of box support for GitHub Pages deployment with GitHub Actions.
+- Out of box support for `Vercel` deployment.
 - Separate components for everything.
 - TypeScript static type checking.
-- Disqus comments.
+- Complete `React` components testing with `Jest` and `Testing Library`.
+- Optimization for SEO.
 - Progressive web app: offline support & webapp manifest.
 - ...and more.
 
@@ -108,7 +114,16 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 .
 ├── node_modules
 ├── __mocks__
-├── src
+├── components
+├── config
+├── contents
+├── hooks
+├── layouts
+├── lib
+├── pages
+├── public
+├── styles
+├── types
 ├── .gitignore
 ├── .tokeignore
 ├── .eslintrc.json
@@ -116,6 +131,8 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 ├── .prettierrc.json
 ├── .stylelintrc.json
 ├── .versionrc.json
+├── next-env.d.ts
+├── next.config.js
 ├── jest.config.js
 ├── jest.setup.js
 ├── tsconfig.json
@@ -127,23 +144,34 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 ```
 
 1. **`/node_modules`**: This directory contains all of the modules of code.
-2. **`/__mocks__`**: mock API for 3rd-party libraries for Jest testing.
-3. **`/src`**: This directory contains all of the code related to the front-end.
-4. **`.gitignore`**: This file tells git which files it should not track.
-5. **`.tokeignore`**: This is a configuration file for [Code Lines](https://github.com/XAMPPRocky/tokei).
-6. **`.eslintrc.json`**: This is a configuration file for [ESLint](https://eslint.org).
-7. **`.markdownlint.json`**: This is a configuration file for [MarkdownLint](https://github.com/DavidAnson/markdownlint).
-8. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
-9. **`.stylelintrc.json`**: This is a configuration file for [StyleLint](https://stylelint.io).
-10. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
-11. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
-12. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
-13. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
-14. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
-15. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
-16. **`LICENSE`**: This Next.js starter is licensed under the `MIT` license.
-17. **`package.json`**: A manifest file for Node.js projects.
-18. **`README.md`**: A text file containing useful reference information.
+2. **`/__mocks__`**: Mock API for 3rd-party libraries for Jest testing.
+3. **`components`**: React components building block.
+4. **`config`**: Blog site configuration. (color/metadata/etc.)
+5. **`contents`**: Blog posts (`.md`/`.mdx`).
+6. **`hooks`**: Hooks for shared logic.
+7. **`layouts`**: Layouts components.
+8. **`lib`**: Data fetching helper functions.
+9. **`pages`**: Pages components (SSG).
+10. **`public`**: Static assets.
+11. **`styles`**: CSS stylesheets files.
+12. **`types`**: TypeScript shared type definition.
+13. **`.gitignore`**: This file tells git which files it should not track.
+14. **`.tokeignore`**: This is a configuration file for [Code Lines](https://github.com/XAMPPRocky/tokei).
+15. **`.eslintrc.json`**: This is a configuration file for [ESLint](https://eslint.org).
+16. **`.markdownlint.json`**: This is a configuration file for [MarkdownLint](https://github.com/DavidAnson/markdownlint).
+17. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
+18. **`.stylelintrc.json`**: This is a configuration file for [StyleLint](https://stylelint.io).
+19. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
+20. **`next-env.d.ts`**: `Next.js` internal type definition.
+21. **`next.config.js`**: `Next.js` configuration file.
+22. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
+23. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
+24. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
+25. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
+26. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
+27. **`LICENSE`**: This Next.js starter is licensed under the `MIT` license.
+28. **`package.json`**: A manifest file for Node.js projects.
+29. **`README.md`**: A text file containing useful reference information.
 
 ## Contact
 
