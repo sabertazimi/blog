@@ -3,8 +3,8 @@ export { default as getGitHubData } from './getGitHubData';
 export {
   getPostData,
   getPostsData,
-  getPostsMetadata,
+  getPostsMeta,
   getTagsData
 } from './getPostsData';
-export { default as getSiteMetadata } from './getSiteMetadata';
+export { default as getSiteConfig } from './getSiteConfig';
 

@@ -5,7 +5,7 @@ import React from 'react';
 import Article from './Article';
 
 describe('Article', () => {
-  const mockUrl = MockData.siteMetadata.siteUrl;
+  const mockUrl = MockData.siteConfig.siteUrl;
   const mockBasePost = MockData.basePosts[0];
   const mockPost = MockData.posts[0];
 

@@ -5,7 +5,7 @@ import React from 'react';
 import GithubCard from './GithubCard';
 
 describe('GithubCard', () => {
-  const mockEmail = MockData.siteMetadata.email;
+  const mockEmail = MockData.siteConfig.email;
   const mockBaseProfile = MockData.baseProfile;
   const mockProfile = MockData.profile;
   const mockRepos = MockData.repos;

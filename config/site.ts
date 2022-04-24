@@ -1,4 +1,4 @@
-const metadata = {
+const config = {
   title: 'Sabertaz Blog',
   author: 'Sabertaz',
   siteUrl: 'https://tazimi.dev',
@@ -22,4 +22,4 @@ const metadata = {
   ],
 };
 
-export default metadata;
+export default config;

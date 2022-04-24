@@ -5,7 +5,7 @@ import React from 'react';
 import SocialGroup from './SocialGroup';
 
 describe('SocialGroup', () => {
-  const mockUrl = MockData.siteMetadata.siteUrl;
+  const mockUrl = MockData.siteConfig.siteUrl;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<SocialGroup url={mockUrl} />);

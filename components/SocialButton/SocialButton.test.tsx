@@ -7,7 +7,7 @@ import SocialButton from './SocialButton';
 
 describe('SocialButton', () => {
   const mockSocialList = [
-    ...Object.keys(MockData.siteMetadata.socialList),
+    ...Object.keys(MockData.siteConfig.socialList),
     'default',
   ];
 

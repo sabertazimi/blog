@@ -40,7 +40,7 @@ const repos = [
   },
 ];
 
-const siteMetadata = {
+const siteConfig = {
   title: 'Title',
   author: 'Sabertaz',
   siteUrl: 'https://example.com',
@@ -97,7 +97,7 @@ const MockData = {
   baseProfile,
   profile,
   repos,
-  siteMetadata,
+  siteConfig,
   basePosts,
   posts,
 };

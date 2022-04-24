@@ -1,26 +1,26 @@
 import { LandingNav, MetaHeader, TypingTitle } from '@components';
 import { Routes } from '@config';
 import { LandingLayout } from '@layouts';
-import { getSiteMetadata } from '@lib';
-import type { SiteMetadata } from '@types';
+import { getSiteConfig } from '@lib';
+import type { SiteConfig } from '@types';
 import type { GetStaticProps } from 'next/types';
 import React from 'react';
 
 interface Props {
-  siteMetadata: SiteMetadata;
+  siteConfig: SiteConfig;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const siteMetadata = getSiteMetadata();
+  const siteConfig = getSiteConfig();
   return {
     props: {
-      siteMetadata,
+      siteConfig,
     },
   };
 };
 
-const Home = ({ siteMetadata }: Props): JSX.Element => {
-  const { siteUrl, title, landingTitles } = siteMetadata;
+const Home = ({ siteConfig }: Props): JSX.Element => {
+  const { siteUrl, title, landingTitles } = siteConfig;
 
   return (
     <div>

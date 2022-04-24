@@ -1,35 +1,35 @@
 import { BooksGrid, MetaHeader } from '@components';
 import { Layout } from '@layouts';
-import { getBuildTime, getPostsMetadata, getSiteMetadata } from '@lib';
-import type { PostMetaType, SiteMetadata } from '@types';
+import { getBuildTime, getPostsMeta, getSiteConfig } from '@lib';
+import type { PostMetaType, SiteConfig } from '@types';
 import type { GetStaticProps } from 'next/types';
 import React from 'react';
 
 interface Props {
   buildTime: string | number | Date;
-  postsMetadata: PostMetaType[];
-  siteMetadata: SiteMetadata;
+  postsMeta: PostMetaType[];
+  siteConfig: SiteConfig;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const buildTime = getBuildTime();
-  const postsMetadata = await getPostsMetadata();
-  const siteMetadata = getSiteMetadata();
+  const postsMeta = await getPostsMeta();
+  const siteConfig = getSiteConfig();
   return {
     props: {
       buildTime,
-      postsMetadata,
-      siteMetadata,
+      postsMeta,
+      siteConfig,
     },
   };
 };
 
 const Books = ({
   buildTime,
-  postsMetadata,
-  siteMetadata,
+  postsMeta,
+  siteConfig,
 }: Props): JSX.Element => {
-  const { siteUrl, title, author, bookList, socialList } = siteMetadata;
+  const { siteUrl, title, author, bookList, socialList } = siteConfig;
 
   return (
     <div>
@@ -37,7 +37,7 @@ const Books = ({
       <Layout
         banner="Books"
         buildTime={buildTime}
-        posts={postsMetadata}
+        posts={postsMeta}
         author={author}
         socialList={socialList}
       >

@@ -5,7 +5,7 @@ import React from 'react';
 import BooksGrid from './BooksGrid';
 
 describe('BooksGrid', () => {
-  const mockBooks = MockData.siteMetadata.bookList;
+  const mockBooks = MockData.siteConfig.bookList;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<BooksGrid bookList={mockBooks} />);

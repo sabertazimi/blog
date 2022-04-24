@@ -3,31 +3,31 @@ import { Layout } from '@layouts';
 import {
   getBuildTime,
   getGitHubData,
-  getPostsMetadata,
-  getSiteMetadata,
+  getPostsMeta,
+  getSiteConfig
 } from '@lib';
-import type { GitHubType, PostMetaType, SiteMetadata } from '@types';
+import type { GitHubType, PostMetaType, SiteConfig } from '@types';
 import type { GetStaticProps } from 'next/types';
 import React from 'react';
 
 interface Props {
   buildTime: string | number | Date;
   githubData: GitHubType;
-  postsMetadata: PostMetaType[];
-  siteMetadata: SiteMetadata;
+  postsMeta: PostMetaType[];
+  siteConfig: SiteConfig;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const buildTime = getBuildTime();
   const githubData = await getGitHubData();
-  const postsMetadata = await getPostsMetadata();
-  const siteMetadata = getSiteMetadata();
+  const postsMeta = await getPostsMeta();
+  const siteConfig = getSiteConfig();
   return {
     props: {
       buildTime,
       githubData,
-      postsMetadata,
-      siteMetadata,
+      postsMeta,
+      siteConfig,
     },
   };
 };
@@ -35,10 +35,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const About = ({
   buildTime,
   githubData,
-  postsMetadata,
-  siteMetadata,
+  postsMeta,
+  siteConfig,
 }: Props): JSX.Element => {
-  const { siteUrl, title, author, email, socialList } = siteMetadata;
+  const { siteUrl, title, author, email, socialList } = siteConfig;
   const { profile, repos } = githubData;
 
   return (
@@ -46,7 +46,7 @@ const About = ({
       <MetaHeader siteUrl={siteUrl} title={title} />
       <Layout
         banner="About Me"
-        posts={postsMetadata}
+        posts={postsMeta}
         buildTime={buildTime}
         author={author}
         socialList={socialList}
