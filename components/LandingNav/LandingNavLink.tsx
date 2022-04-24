@@ -18,6 +18,7 @@ const LandingNavLink = ({ title, href, children }: Props): JSX.Element => (
         'text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl',
         'transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110'
       )}
+      role="link"
     >
       <Link href={href}>
         <a>{children}</a>
