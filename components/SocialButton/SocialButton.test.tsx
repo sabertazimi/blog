@@ -3,7 +3,6 @@ import MockData from '@mocks/data';
 import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import SocialButton from './SocialButton';
 
 describe('SocialButton', () => {
@@ -15,23 +14,23 @@ describe('SocialButton', () => {
   test.each(mockSocialList)(
     'should render [%s] button correctly (snapshot)',
     social => {
-      const tree = create(
+      const { container } = render(
         <SocialButton
           type={social as SocialType}
           url={`https://${social}.com`}
         />
-      ).toJSON();
+      );
 
-      expect(tree).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     }
   );
 
   test('should render colorful button correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <SocialButton type="github" url="https://github.com" color="#299954" />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test.each(mockSocialList)(

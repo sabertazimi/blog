@@ -1,6 +1,6 @@
 import MockData from '@mocks/data';
+import { render } from '@testing-library/react';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import Header from './Header';
 
 describe('Header', () => {
@@ -15,8 +15,8 @@ describe('Header', () => {
   });
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<Header posts={mockPosts} />).toJSON();
+    const { container } = render(<Header posts={mockPosts} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

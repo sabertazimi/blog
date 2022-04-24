@@ -2,7 +2,6 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import GithubCard from './GithubCard';
 
 describe('GithubCard', () => {
@@ -12,29 +11,29 @@ describe('GithubCard', () => {
   const mockRepos = MockData.repos;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <GithubCard email={mockEmail} profile={mockProfile} repos={mockRepos} />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render correctly when missing bio and location data (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <GithubCard
         email={mockEmail}
         profile={mockBaseProfile}
         repos={mockRepos}
       />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render correctly when missing GitHub data (snapshot)', () => {
-    const tree = create(<GithubCard email={mockEmail} />).toJSON();
+    const { container } = render(<GithubCard email={mockEmail} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

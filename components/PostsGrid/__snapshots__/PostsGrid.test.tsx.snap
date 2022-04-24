@@ -1,59 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PostsGrid should render correctly (snapshot) 1`] = `
-Array [
+<div>
   <div
-    className="flex-container container relative h-full mx-auto my-0 p-auto flex-col items-start xl:hidden"
+    class="flex-container container relative h-full mx-auto my-0 p-auto flex-col items-start xl:hidden"
   >
     <div
-      className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+      class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
     >
       <div
-        style={
-          Object {
-            "opacity": 0,
-            "transform": " translateX(-200px)",
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
         <span
-          className="ant-tag ant-tag-has-color"
-          style={
-            Object {
-              "backgroundColor": "#f59f00",
-            }
-          }
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(245, 159, 0);"
         >
           <a
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
             href="/tag/JavaScript"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
           >
             JavaScript
           </a>
         </span>
         <h2
-          className="ant-typography my-3"
-          onClick={null}
-          style={
-            Object {
-              "WebkitLineClamp": undefined,
-            }
-          }
+          class="ant-typography my-3"
         >
           1 Basic Notes
         </h2>
         <span
-          className="ant-tag tag-black"
-          style={
-            Object {
-              "backgroundColor": undefined,
-            }
-          }
+          class="ant-tag tag-black"
         >
           <div
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
           >
             Posted on 
             Wed Aug 08 2018
@@ -61,40 +39,33 @@ Array [
           </div>
         </span>
         <div
-          className="container relative block h-full mx-auto my-0 p-auto mt-3"
+          class="container relative block h-full mx-auto my-0 p-auto mt-3"
         >
           <div
-            className="ant-skeleton"
+            class="ant-skeleton"
           >
             <div
-              className="ant-skeleton-content"
+              class="ant-skeleton-content"
             >
               <h3
-                className="ant-skeleton-title"
-                style={
-                  Object {
-                    "width": "38%",
-                  }
-                }
+                class="ant-skeleton-title"
+                style="width: 38%;"
               />
               <ul
-                className="ant-skeleton-paragraph"
+                class="ant-skeleton-paragraph"
               />
             </div>
           </div>
           <button
-            className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-            onClick={[Function]}
+            class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
             type="button"
           >
             <span
               aria-label="read"
-              className="anticon anticon-read"
+              class="anticon anticon-read"
               href="/post/1BasicNotes"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
               role="img"
-              tabIndex={-1}
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"
@@ -115,54 +86,32 @@ Array [
       </div>
     </div>
     <div
-      className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+      class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
     >
       <div
-        style={
-          Object {
-            "opacity": 0,
-            "transform": " translateX(-200px)",
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
         <span
-          className="ant-tag ant-tag-has-color"
-          style={
-            Object {
-              "backgroundColor": "#f59f00",
-            }
-          }
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(245, 159, 0);"
         >
           <a
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
             href="/tag/JavaScript"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
           >
             JavaScript
           </a>
         </span>
         <h2
-          className="ant-typography my-3"
-          onClick={null}
-          style={
-            Object {
-              "WebkitLineClamp": undefined,
-            }
-          }
+          class="ant-typography my-3"
         >
           2 Basic Notes
         </h2>
         <span
-          className="ant-tag tag-black"
-          style={
-            Object {
-              "backgroundColor": undefined,
-            }
-          }
+          class="ant-tag tag-black"
         >
           <div
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
           >
             Posted on 
             Wed Aug 08 2018
@@ -170,48 +119,37 @@ Array [
           </div>
         </span>
         <div
-          className="container relative block h-full mx-auto my-0 p-auto mt-3"
+          class="container relative block h-full mx-auto my-0 p-auto mt-3"
         >
           <div
-            className="ant-skeleton"
+            class="ant-skeleton"
           >
             <div
-              className="ant-skeleton-content"
+              class="ant-skeleton-content"
             >
               <h3
-                className="ant-skeleton-title"
-                style={
-                  Object {
-                    "width": "38%",
-                  }
-                }
+                class="ant-skeleton-title"
+                style="width: 38%;"
               />
               <ul
-                className="ant-skeleton-paragraph"
+                class="ant-skeleton-paragraph"
               >
                 <li
-                  style={
-                    Object {
-                      "width": "61%",
-                    }
-                  }
+                  style="width: 61%;"
                 />
               </ul>
             </div>
           </div>
           <button
-            className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-            onClick={[Function]}
+            class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
             type="button"
           >
             <span
               aria-label="read"
-              className="anticon anticon-read"
+              class="anticon anticon-read"
               href="/post/2BasicNotes"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
               role="img"
-              tabIndex={-1}
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"
@@ -232,54 +170,32 @@ Array [
       </div>
     </div>
     <div
-      className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+      class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
     >
       <div
-        style={
-          Object {
-            "opacity": 0,
-            "transform": " translateX(-200px)",
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
         <span
-          className="ant-tag ant-tag-has-color"
-          style={
-            Object {
-              "backgroundColor": "#f59f00",
-            }
-          }
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(245, 159, 0);"
         >
           <a
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
             href="/tag/JavaScript"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
           >
             JavaScript
           </a>
         </span>
         <h2
-          className="ant-typography my-3"
-          onClick={null}
-          style={
-            Object {
-              "WebkitLineClamp": undefined,
-            }
-          }
+          class="ant-typography my-3"
         >
           3 Basic Notes
         </h2>
         <span
-          className="ant-tag tag-black"
-          style={
-            Object {
-              "backgroundColor": undefined,
-            }
-          }
+          class="ant-tag tag-black"
         >
           <div
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
           >
             Posted on 
             Wed Aug 08 2018
@@ -287,48 +203,37 @@ Array [
           </div>
         </span>
         <div
-          className="container relative block h-full mx-auto my-0 p-auto mt-3"
+          class="container relative block h-full mx-auto my-0 p-auto mt-3"
         >
           <div
-            className="ant-skeleton"
+            class="ant-skeleton"
           >
             <div
-              className="ant-skeleton-content"
+              class="ant-skeleton-content"
             >
               <h3
-                className="ant-skeleton-title"
-                style={
-                  Object {
-                    "width": "38%",
-                  }
-                }
+                class="ant-skeleton-title"
+                style="width: 38%;"
               />
               <ul
-                className="ant-skeleton-paragraph"
+                class="ant-skeleton-paragraph"
               >
                 <li
-                  style={
-                    Object {
-                      "width": "61%",
-                    }
-                  }
+                  style="width: 61%;"
                 />
               </ul>
             </div>
           </div>
           <button
-            className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-            onClick={[Function]}
+            class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
             type="button"
           >
             <span
               aria-label="read"
-              className="anticon anticon-read"
+              class="anticon anticon-read"
               href="/post/3BasicNotes"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
               role="img"
-              tabIndex={-1}
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"
@@ -349,54 +254,32 @@ Array [
       </div>
     </div>
     <div
-      className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+      class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
     >
       <div
-        style={
-          Object {
-            "opacity": 0,
-            "transform": " translateX(-200px)",
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
         <span
-          className="ant-tag ant-tag-has-color"
-          style={
-            Object {
-              "backgroundColor": "#f59f00",
-            }
-          }
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(245, 159, 0);"
         >
           <a
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
             href="/tag/JavaScript"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
           >
             JavaScript
           </a>
         </span>
         <h2
-          className="ant-typography my-3"
-          onClick={null}
-          style={
-            Object {
-              "WebkitLineClamp": undefined,
-            }
-          }
+          class="ant-typography my-3"
         >
           4 Basic Notes
         </h2>
         <span
-          className="ant-tag tag-black"
-          style={
-            Object {
-              "backgroundColor": undefined,
-            }
-          }
+          class="ant-tag tag-black"
         >
           <div
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
           >
             Posted on 
             Wed Aug 08 2018
@@ -404,55 +287,38 @@ Array [
           </div>
         </span>
         <div
-          className="container relative block h-full mx-auto my-0 p-auto mt-3"
+          class="container relative block h-full mx-auto my-0 p-auto mt-3"
         >
           <div
-            className="ant-skeleton"
+            class="ant-skeleton"
           >
             <div
-              className="ant-skeleton-content"
+              class="ant-skeleton-content"
             >
               <h3
-                className="ant-skeleton-title"
-                style={
-                  Object {
-                    "width": "38%",
-                  }
-                }
+                class="ant-skeleton-title"
+                style="width: 38%;"
               />
               <ul
-                className="ant-skeleton-paragraph"
+                class="ant-skeleton-paragraph"
               >
+                <li />
                 <li
-                  style={
-                    Object {
-                      "width": undefined,
-                    }
-                  }
-                />
-                <li
-                  style={
-                    Object {
-                      "width": "61%",
-                    }
-                  }
+                  style="width: 61%;"
                 />
               </ul>
             </div>
           </div>
           <button
-            className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-            onClick={[Function]}
+            class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
             type="button"
           >
             <span
               aria-label="read"
-              className="anticon anticon-read"
+              class="anticon anticon-read"
               href="/post/4BasicNotes"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
               role="img"
-              tabIndex={-1}
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"
@@ -473,54 +339,32 @@ Array [
       </div>
     </div>
     <div
-      className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+      class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
     >
       <div
-        style={
-          Object {
-            "opacity": 0,
-            "transform": " translateX(-200px)",
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
         <span
-          className="ant-tag ant-tag-has-color"
-          style={
-            Object {
-              "backgroundColor": "#f59f00",
-            }
-          }
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(245, 159, 0);"
         >
           <a
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
             href="/tag/JavaScript"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
           >
             JavaScript
           </a>
         </span>
         <h2
-          className="ant-typography my-3"
-          onClick={null}
-          style={
-            Object {
-              "WebkitLineClamp": undefined,
-            }
-          }
+          class="ant-typography my-3"
         >
           5 Basic Notes
         </h2>
         <span
-          className="ant-tag tag-black"
-          style={
-            Object {
-              "backgroundColor": undefined,
-            }
-          }
+          class="ant-tag tag-black"
         >
           <div
-            className="text-base font-extrabold"
+            class="text-base font-extrabold"
           >
             Posted on 
             Wed Aug 08 2018
@@ -528,55 +372,38 @@ Array [
           </div>
         </span>
         <div
-          className="container relative block h-full mx-auto my-0 p-auto mt-3"
+          class="container relative block h-full mx-auto my-0 p-auto mt-3"
         >
           <div
-            className="ant-skeleton"
+            class="ant-skeleton"
           >
             <div
-              className="ant-skeleton-content"
+              class="ant-skeleton-content"
             >
               <h3
-                className="ant-skeleton-title"
-                style={
-                  Object {
-                    "width": "38%",
-                  }
-                }
+                class="ant-skeleton-title"
+                style="width: 38%;"
               />
               <ul
-                className="ant-skeleton-paragraph"
+                class="ant-skeleton-paragraph"
               >
+                <li />
                 <li
-                  style={
-                    Object {
-                      "width": undefined,
-                    }
-                  }
-                />
-                <li
-                  style={
-                    Object {
-                      "width": "61%",
-                    }
-                  }
+                  style="width: 61%;"
                 />
               </ul>
             </div>
           </div>
           <button
-            className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-            onClick={[Function]}
+            class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
             type="button"
           >
             <span
               aria-label="read"
-              className="anticon anticon-read"
+              class="anticon anticon-read"
               href="/post/5BasicNotes"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
               role="img"
-              tabIndex={-1}
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"
@@ -596,62 +423,40 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="flex-container container relative h-full mx-auto my-0 p-auto items-start hidden xl:visible xl:flex"
+    class="flex-container container relative h-full mx-auto my-0 p-auto items-start hidden xl:visible xl:flex"
   >
     <div
-      className="flex-container container relative h-full mx-auto my-0 p-auto flex-col max-w-7/12"
+      class="flex-container container relative h-full mx-auto my-0 p-auto flex-col max-w-7/12"
     >
       <div
-        className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+        class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
       >
         <div
-          style={
-            Object {
-              "opacity": 0,
-              "transform": " translateX(-200px)",
-            }
-          }
+          style="opacity: 0; transform: translateX(-200px);"
         >
           <span
-            className="ant-tag ant-tag-has-color"
-            style={
-              Object {
-                "backgroundColor": "#f59f00",
-              }
-            }
+            class="ant-tag ant-tag-has-color"
+            style="background-color: rgb(245, 159, 0);"
           >
             <a
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
               href="/tag/JavaScript"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               JavaScript
             </a>
           </span>
           <h2
-            className="ant-typography my-3"
-            onClick={null}
-            style={
-              Object {
-                "WebkitLineClamp": undefined,
-              }
-            }
+            class="ant-typography my-3"
           >
             1 Basic Notes
           </h2>
           <span
-            className="ant-tag tag-black"
-            style={
-              Object {
-                "backgroundColor": undefined,
-              }
-            }
+            class="ant-tag tag-black"
           >
             <div
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
             >
               Posted on 
               Wed Aug 08 2018
@@ -659,40 +464,33 @@ Array [
             </div>
           </span>
           <div
-            className="container relative block h-full mx-auto my-0 p-auto mt-3"
+            class="container relative block h-full mx-auto my-0 p-auto mt-3"
           >
             <div
-              className="ant-skeleton"
+              class="ant-skeleton"
             >
               <div
-                className="ant-skeleton-content"
+                class="ant-skeleton-content"
               >
                 <h3
-                  className="ant-skeleton-title"
-                  style={
-                    Object {
-                      "width": "38%",
-                    }
-                  }
+                  class="ant-skeleton-title"
+                  style="width: 38%;"
                 />
                 <ul
-                  className="ant-skeleton-paragraph"
+                  class="ant-skeleton-paragraph"
                 />
               </div>
             </div>
             <button
-              className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-              onClick={[Function]}
+              class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
               type="button"
             >
               <span
                 aria-label="read"
-                className="anticon anticon-read"
+                class="anticon anticon-read"
                 href="/post/1BasicNotes"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
                 role="img"
-                tabIndex={-1}
+                tabindex="-1"
               >
                 <svg
                   aria-hidden="true"
@@ -713,54 +511,32 @@ Array [
         </div>
       </div>
       <div
-        className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+        class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
       >
         <div
-          style={
-            Object {
-              "opacity": 0,
-              "transform": " translateX(-200px)",
-            }
-          }
+          style="opacity: 0; transform: translateX(-200px);"
         >
           <span
-            className="ant-tag ant-tag-has-color"
-            style={
-              Object {
-                "backgroundColor": "#f59f00",
-              }
-            }
+            class="ant-tag ant-tag-has-color"
+            style="background-color: rgb(245, 159, 0);"
           >
             <a
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
               href="/tag/JavaScript"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               JavaScript
             </a>
           </span>
           <h2
-            className="ant-typography my-3"
-            onClick={null}
-            style={
-              Object {
-                "WebkitLineClamp": undefined,
-              }
-            }
+            class="ant-typography my-3"
           >
             2 Basic Notes
           </h2>
           <span
-            className="ant-tag tag-black"
-            style={
-              Object {
-                "backgroundColor": undefined,
-              }
-            }
+            class="ant-tag tag-black"
           >
             <div
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
             >
               Posted on 
               Wed Aug 08 2018
@@ -768,48 +544,37 @@ Array [
             </div>
           </span>
           <div
-            className="container relative block h-full mx-auto my-0 p-auto mt-3"
+            class="container relative block h-full mx-auto my-0 p-auto mt-3"
           >
             <div
-              className="ant-skeleton"
+              class="ant-skeleton"
             >
               <div
-                className="ant-skeleton-content"
+                class="ant-skeleton-content"
               >
                 <h3
-                  className="ant-skeleton-title"
-                  style={
-                    Object {
-                      "width": "38%",
-                    }
-                  }
+                  class="ant-skeleton-title"
+                  style="width: 38%;"
                 />
                 <ul
-                  className="ant-skeleton-paragraph"
+                  class="ant-skeleton-paragraph"
                 >
                   <li
-                    style={
-                      Object {
-                        "width": "61%",
-                      }
-                    }
+                    style="width: 61%;"
                   />
                 </ul>
               </div>
             </div>
             <button
-              className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-              onClick={[Function]}
+              class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
               type="button"
             >
               <span
                 aria-label="read"
-                className="anticon anticon-read"
+                class="anticon anticon-read"
                 href="/post/2BasicNotes"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
                 role="img"
-                tabIndex={-1}
+                tabindex="-1"
               >
                 <svg
                   aria-hidden="true"
@@ -830,54 +595,32 @@ Array [
         </div>
       </div>
       <div
-        className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+        class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
       >
         <div
-          style={
-            Object {
-              "opacity": 0,
-              "transform": " translateX(-200px)",
-            }
-          }
+          style="opacity: 0; transform: translateX(-200px);"
         >
           <span
-            className="ant-tag ant-tag-has-color"
-            style={
-              Object {
-                "backgroundColor": "#f59f00",
-              }
-            }
+            class="ant-tag ant-tag-has-color"
+            style="background-color: rgb(245, 159, 0);"
           >
             <a
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
               href="/tag/JavaScript"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               JavaScript
             </a>
           </span>
           <h2
-            className="ant-typography my-3"
-            onClick={null}
-            style={
-              Object {
-                "WebkitLineClamp": undefined,
-              }
-            }
+            class="ant-typography my-3"
           >
             3 Basic Notes
           </h2>
           <span
-            className="ant-tag tag-black"
-            style={
-              Object {
-                "backgroundColor": undefined,
-              }
-            }
+            class="ant-tag tag-black"
           >
             <div
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
             >
               Posted on 
               Wed Aug 08 2018
@@ -885,48 +628,37 @@ Array [
             </div>
           </span>
           <div
-            className="container relative block h-full mx-auto my-0 p-auto mt-3"
+            class="container relative block h-full mx-auto my-0 p-auto mt-3"
           >
             <div
-              className="ant-skeleton"
+              class="ant-skeleton"
             >
               <div
-                className="ant-skeleton-content"
+                class="ant-skeleton-content"
               >
                 <h3
-                  className="ant-skeleton-title"
-                  style={
-                    Object {
-                      "width": "38%",
-                    }
-                  }
+                  class="ant-skeleton-title"
+                  style="width: 38%;"
                 />
                 <ul
-                  className="ant-skeleton-paragraph"
+                  class="ant-skeleton-paragraph"
                 >
                   <li
-                    style={
-                      Object {
-                        "width": "61%",
-                      }
-                    }
+                    style="width: 61%;"
                   />
                 </ul>
               </div>
             </div>
             <button
-              className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-              onClick={[Function]}
+              class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
               type="button"
             >
               <span
                 aria-label="read"
-                className="anticon anticon-read"
+                class="anticon anticon-read"
                 href="/post/3BasicNotes"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
                 role="img"
-                tabIndex={-1}
+                tabindex="-1"
               >
                 <svg
                   aria-hidden="true"
@@ -948,57 +680,35 @@ Array [
       </div>
     </div>
     <div
-      className="flex-container container relative h-full mx-auto my-0 p-auto flex-col max-w-4/12"
+      class="flex-container container relative h-full mx-auto my-0 p-auto flex-col max-w-4/12"
     >
       <div
-        className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+        class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
       >
         <div
-          style={
-            Object {
-              "opacity": 0,
-              "transform": " translateX(-200px)",
-            }
-          }
+          style="opacity: 0; transform: translateX(-200px);"
         >
           <span
-            className="ant-tag ant-tag-has-color"
-            style={
-              Object {
-                "backgroundColor": "#f59f00",
-              }
-            }
+            class="ant-tag ant-tag-has-color"
+            style="background-color: rgb(245, 159, 0);"
           >
             <a
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
               href="/tag/JavaScript"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               JavaScript
             </a>
           </span>
           <h2
-            className="ant-typography my-3"
-            onClick={null}
-            style={
-              Object {
-                "WebkitLineClamp": undefined,
-              }
-            }
+            class="ant-typography my-3"
           >
             4 Basic Notes
           </h2>
           <span
-            className="ant-tag tag-black"
-            style={
-              Object {
-                "backgroundColor": undefined,
-              }
-            }
+            class="ant-tag tag-black"
           >
             <div
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
             >
               Posted on 
               Wed Aug 08 2018
@@ -1006,55 +716,38 @@ Array [
             </div>
           </span>
           <div
-            className="container relative block h-full mx-auto my-0 p-auto mt-3"
+            class="container relative block h-full mx-auto my-0 p-auto mt-3"
           >
             <div
-              className="ant-skeleton"
+              class="ant-skeleton"
             >
               <div
-                className="ant-skeleton-content"
+                class="ant-skeleton-content"
               >
                 <h3
-                  className="ant-skeleton-title"
-                  style={
-                    Object {
-                      "width": "38%",
-                    }
-                  }
+                  class="ant-skeleton-title"
+                  style="width: 38%;"
                 />
                 <ul
-                  className="ant-skeleton-paragraph"
+                  class="ant-skeleton-paragraph"
                 >
+                  <li />
                   <li
-                    style={
-                      Object {
-                        "width": undefined,
-                      }
-                    }
-                  />
-                  <li
-                    style={
-                      Object {
-                        "width": "61%",
-                      }
-                    }
+                    style="width: 61%;"
                   />
                 </ul>
               </div>
             </div>
             <button
-              className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-              onClick={[Function]}
+              class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
               type="button"
             >
               <span
                 aria-label="read"
-                className="anticon anticon-read"
+                class="anticon anticon-read"
                 href="/post/4BasicNotes"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
                 role="img"
-                tabIndex={-1}
+                tabindex="-1"
               >
                 <svg
                   aria-hidden="true"
@@ -1075,54 +768,32 @@ Array [
         </div>
       </div>
       <div
-        className="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+        class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
       >
         <div
-          style={
-            Object {
-              "opacity": 0,
-              "transform": " translateX(-200px)",
-            }
-          }
+          style="opacity: 0; transform: translateX(-200px);"
         >
           <span
-            className="ant-tag ant-tag-has-color"
-            style={
-              Object {
-                "backgroundColor": "#f59f00",
-              }
-            }
+            class="ant-tag ant-tag-has-color"
+            style="background-color: rgb(245, 159, 0);"
           >
             <a
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
               href="/tag/JavaScript"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
             >
               JavaScript
             </a>
           </span>
           <h2
-            className="ant-typography my-3"
-            onClick={null}
-            style={
-              Object {
-                "WebkitLineClamp": undefined,
-              }
-            }
+            class="ant-typography my-3"
           >
             5 Basic Notes
           </h2>
           <span
-            className="ant-tag tag-black"
-            style={
-              Object {
-                "backgroundColor": undefined,
-              }
-            }
+            class="ant-tag tag-black"
           >
             <div
-              className="text-base font-extrabold"
+              class="text-base font-extrabold"
             >
               Posted on 
               Wed Aug 08 2018
@@ -1130,55 +801,38 @@ Array [
             </div>
           </span>
           <div
-            className="container relative block h-full mx-auto my-0 p-auto mt-3"
+            class="container relative block h-full mx-auto my-0 p-auto mt-3"
           >
             <div
-              className="ant-skeleton"
+              class="ant-skeleton"
             >
               <div
-                className="ant-skeleton-content"
+                class="ant-skeleton-content"
               >
                 <h3
-                  className="ant-skeleton-title"
-                  style={
-                    Object {
-                      "width": "38%",
-                    }
-                  }
+                  class="ant-skeleton-title"
+                  style="width: 38%;"
                 />
                 <ul
-                  className="ant-skeleton-paragraph"
+                  class="ant-skeleton-paragraph"
                 >
+                  <li />
                   <li
-                    style={
-                      Object {
-                        "width": undefined,
-                      }
-                    }
-                  />
-                  <li
-                    style={
-                      Object {
-                        "width": "61%",
-                      }
-                    }
+                    style="width: 61%;"
                   />
                 </ul>
               </div>
             </div>
             <button
-              className="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
-              onClick={[Function]}
+              class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
               type="button"
             >
               <span
                 aria-label="read"
-                className="anticon anticon-read"
+                class="anticon anticon-read"
                 href="/post/5BasicNotes"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
                 role="img"
-                tabIndex={-1}
+                tabindex="-1"
               >
                 <svg
                   aria-hidden="true"
@@ -1199,6 +853,6 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

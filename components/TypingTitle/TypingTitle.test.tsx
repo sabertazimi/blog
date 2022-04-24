@@ -2,7 +2,6 @@ import MockData from '@mocks/data';
 import { render, screen, waitFor } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import TypingTitle from './TypingTitle';
 
 describe('TypingTitle', () => {
@@ -10,9 +9,9 @@ describe('TypingTitle', () => {
   jest.mock('typed.js');
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<TypingTitle titles={mockTitles} />).toJSON();
+    const { container } = render(<TypingTitle titles={mockTitles} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('Should render accessibility guidelines (AXE)', async () => {

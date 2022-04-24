@@ -2,16 +2,15 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import PostsList from './PostsList';
 
 describe('PostsList', () => {
   const mockPosts = MockData.posts;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<PostsList posts={mockPosts} />).toJSON();
+    const { container } = render(<PostsList posts={mockPosts} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

@@ -2,14 +2,13 @@ import { Routes } from '@config';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {
   test('should render routes correctly (snapshot)', () => {
-    const tree = create(<LandingNav routes={Routes} />).toJSON();
+    const { container } = render(<LandingNav routes={Routes} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

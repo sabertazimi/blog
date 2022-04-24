@@ -1,18 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import FlexContainer from './FlexContainer';
 
 describe('FlexContainer', () => {
   test('should render correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <FlexContainer role="main">
         <h1>FlexContainer</h1>
       </FlexContainer>
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render children correctly', () => {

@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import ErrorBoundary from './ErrorBoundary';
 
 describe('ErrorBoundary', () => {
@@ -29,23 +28,23 @@ describe('ErrorBoundary', () => {
   });
 
   test('should render children correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <ErrorBoundary>
         <ComponentWithError />
       </ErrorBoundary>
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render alert message correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <ErrorBoundary>
         <ComponentWithError shouldThrow />
       </ErrorBoundary>
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render children accessibility guidelines (AXE)', async () => {

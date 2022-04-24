@@ -2,7 +2,6 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import Footer from './Footer';
 
 describe('Footer', () => {
@@ -11,15 +10,15 @@ describe('Footer', () => {
   const mockSocialList = MockData.siteMetadata.socialList;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <Footer
         buildTime={mockTime}
         author={mockAuthor}
         socialList={mockSocialList}
       />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

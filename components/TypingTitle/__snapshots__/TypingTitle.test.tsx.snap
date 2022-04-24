@@ -1,11 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TypingTitle should render correctly (snapshot) 1`] = `
-<div
-  className="w-full h-auto px-0 py-0 mx-auto my-0 text-5xl font-extrabold text-center typing-title-container lg:text-9xl"
->
-  <span
-    role="banner"
-  />
+<div>
+  <div
+    class="w-full h-auto px-0 py-0 mx-auto my-0 text-5xl font-extrabold text-center typing-title-container lg:text-9xl"
+  >
+    <span
+      role="banner"
+    />
+    <span
+      aria-hidden="true"
+      class="typed-cursor"
+    >
+      |
+    </span>
+  </div>
 </div>
 `;
