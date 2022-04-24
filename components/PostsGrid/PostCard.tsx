@@ -1,12 +1,11 @@
 import { ReadOutlined } from '@ant-design/icons';
 import { Container } from '@components';
+import { SlideRight } from '@components/Motion';
 import { getColorByName } from '@config';
 import type { PostMetaType } from '@types';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
-import React from 'react';
-import { animated, useSpring } from 'react-spring';
 
 interface Props {
   post: PostMetaType;
@@ -15,11 +14,6 @@ interface Props {
 const PostCard = ({ post }: Props): JSX.Element => {
   const { tags, slug, title, date, timeToRead } = post;
   const tagName = tags ? tags[0] : 'Computer Science';
-  const props = useSpring({
-    from: { opacity: 0, transform: 'translateX(-200px)' },
-    to: { opacity: 1, transform: 'translateX(0)' },
-    delay: 200,
-  });
 
   return (
     <Container
@@ -29,7 +23,7 @@ const PostCard = ({ post }: Props): JSX.Element => {
         'hover:shadow-2xl hover:-translate-y-2'
       )}
     >
-      <animated.div style={props}>
+      <SlideRight delay={0.2}>
         <Tag color={getColorByName(tagName)}>
           <Link href={`/tag/${tagName}`}>
             <a className="text-base font-extrabold">{tagName}</a>
@@ -60,7 +54,7 @@ const PostCard = ({ post }: Props): JSX.Element => {
             </Link>
           </Button>
         </Container>
-      </animated.div>
+      </SlideRight>
     </Container>
   );
 };

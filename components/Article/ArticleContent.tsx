@@ -1,5 +1,4 @@
-import React from 'react';
-import { animated, useSpring } from 'react-spring';
+import { SlideUp } from '@components/Motion';
 import styles from './ArticleContent.module.css';
 
 interface Props {
@@ -7,18 +6,13 @@ interface Props {
 }
 
 const ArticleContent = ({ content }: Props): JSX.Element => {
-  const props = useSpring({
-    from: { opacity: 0, transform: 'translateY(-200px)' },
-    to: { opacity: 1, transform: 'translateY(0)' },
-    delay: 1000,
-  });
-
   return (
-    <animated.div
-      className={styles.markdownBody}
-      style={props}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
+    <SlideUp>
+      <div
+        className={styles.markdownBody}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    </SlideUp>
   );
 };
 

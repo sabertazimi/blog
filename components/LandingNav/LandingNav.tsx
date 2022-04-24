@@ -25,6 +25,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
           'w-full h-full'
         )}
         role="navigation"
+        layout
         animate={expanded ? 'open' : 'close'}
         variants={{
           open: {
@@ -69,6 +70,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
           'transition-all transform-gpu bg-black'
         )}
         role="banner"
+        layout
         animate={expanded ? 'open' : 'close'}
         variants={{
           open: {

@@ -1,10 +1,9 @@
+import { SlideRight } from '@components/Motion';
 import { getColorByName } from '@config';
 import type { PostMetaType } from '@types';
 import { Tag } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
-import React from 'react';
-import { animated, useSpring } from 'react-spring';
 
 interface Props {
   post: PostMetaType;
@@ -12,10 +11,6 @@ interface Props {
 
 const ArticleHeader = ({ post }: Props): JSX.Element => {
   const { tags, title, date, gitTime, timeToRead } = post;
-  const props = useSpring({
-    from: { opacity: 0, transform: 'translateX(-200px)' },
-    to: { opacity: 1, transform: 'translateX(0)' },
-  });
 
   return (
     <div
@@ -25,7 +20,7 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
         'bg-gradient-primary'
       )}
     >
-      <animated.div style={props}>
+      <SlideRight>
         {tags ? (
           tags.map(tag => {
             return (
@@ -58,7 +53,7 @@ const ArticleHeader = ({ post }: Props): JSX.Element => {
         <Tag className="tag-black">
           <div className="text-base font-extrabold">({timeToRead} minutes)</div>
         </Tag>
-      </animated.div>
+      </SlideRight>
     </div>
   );
 };
