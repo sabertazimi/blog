@@ -1287,6 +1287,7 @@ __metadata:
     "@octokit/rest": ^18.12.0
     "@octokit/types": ^6.34.0
     "@react-spring/types": ^9.4.4
+    "@testing-library/dom": ^8.13.0
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.1.1
     "@testing-library/react-hooks": ^8.0.0
@@ -1308,6 +1309,7 @@ __metadata:
     jest-axe: ^6.0.0
     markdownlint-cli: ^0.31.1
     next: 12.1.5
+    next-progress: ^2.2.0
     postcss: ^8.4.12
     postcss-flexbugs-fixes: ^5.0.2
     postcss-preset-env: ^7.4.3
@@ -1347,7 +1349,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.5.0":
+"@testing-library/dom@npm:^8.13.0, @testing-library/dom@npm:^8.5.0":
   version: 8.13.0
   resolution: "@testing-library/dom@npm:8.13.0"
   dependencies:
@@ -6404,6 +6406,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-progress@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "next-progress@npm:2.2.0"
+  dependencies:
+    nprogress: ^0.2.0
+  peerDependencies:
+    next: ">=6.0.0"
+    react: ">=16.0.0"
+  checksum: ef0e2c66c6990a6d0cf20c28896461ab32a3322972d52f3cb3ee2d2d58bdc2b620a402b1d7df9e0340b230d9ec9a9457584871ea0b8b890b1fc334d1886d2b97
+  languageName: node
+  linkType: hard
+
 "next@npm:12.1.5":
   version: 12.1.5
   resolution: "next@npm:12.1.5"
@@ -6590,6 +6604,13 @@ __metadata:
     gauge: ~2.7.3
     set-blocking: ~2.0.0
   checksum: edbda9f95ec20957a892de1839afc6fb735054c3accf6fbefe767bac9a639fd5cea2baeac6bd2bcd50a85cb54924d57d9886c81c7fbc2332c2ddd19227504192
+  languageName: node
+  linkType: hard
+
+"nprogress@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "nprogress@npm:0.2.0"
+  checksum: 66b7bec5d563ecf2d1c3d2815e6d5eb74ed815eee8563e0afa63d3f185ab1b9cf2ddd97e1ded263b9995c5019d26d600320e849e50f3747984daa033744619dc
   languageName: node
   linkType: hard
 
