@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import TagsCloud from './TagsCloud';
 
 describe('TagsCloud', () => {
@@ -15,17 +14,17 @@ describe('TagsCloud', () => {
   };
 
   test('should render correctly with active tag (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <TagsCloud activeTag={mockTag} tags={mockTags} />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render correctly without active tag (snapshot)', () => {
-    const tree = create(<TagsCloud activeTag="" tags={mockTags} />).toJSON();
+    const { container } = render(<TagsCloud activeTag="" tags={mockTags} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('Should render accessibility guidelines (AXE)', async () => {

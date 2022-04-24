@@ -2,16 +2,15 @@ import MockData from '@mocks/data';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import ArticleToc from './ArticleToc';
 
 describe('ArticleToc', () => {
   const mockToc = MockData.posts[0].toc;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<ArticleToc toc={mockToc} />).toJSON();
+    const { container } = render(<ArticleToc toc={mockToc} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('Should render accessibility guidelines (AXE)', async () => {

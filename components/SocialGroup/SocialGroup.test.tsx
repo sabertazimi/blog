@@ -2,16 +2,15 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import SocialGroup from './SocialGroup';
 
 describe('SocialGroup', () => {
   const mockUrl = MockData.siteMetadata.siteUrl;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<SocialGroup url={mockUrl} />).toJSON();
+    const { container } = render(<SocialGroup url={mockUrl} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('Should render accessibility guidelines (AXE)', async () => {

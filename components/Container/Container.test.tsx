@@ -1,18 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import Container from './Container';
 
 describe('Container', () => {
   test('should render correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <Container role="main">
         <h1>Container</h1>
       </Container>
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

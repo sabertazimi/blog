@@ -1,7 +1,6 @@
 import MockData from '@mocks/data';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import PostsSearchBar from './PostsSearchBar';
 
 describe('PostsSearchBar', () => {
@@ -13,9 +12,9 @@ describe('PostsSearchBar', () => {
   });
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<PostsSearchBar posts={mockPosts} />).toJSON();
+    const { container } = render(<PostsSearchBar posts={mockPosts} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test.each(mockPosts)(

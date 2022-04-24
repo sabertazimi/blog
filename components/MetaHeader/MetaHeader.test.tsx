@@ -2,7 +2,6 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import MetaHeader from './MetaHeader';
 
 describe('MetaHeader', () => {
@@ -10,11 +9,11 @@ describe('MetaHeader', () => {
   const mockTitle = MockData.siteMetadata.title;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(
+    const { container } = render(
       <MetaHeader siteUrl={mockUrl} title={mockTitle} />
-    ).toJSON();
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

@@ -2,16 +2,15 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import PostsGrid from './PostsGrid';
 
 describe('PostsGrid', () => {
   const mockPosts = MockData.posts;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<PostsGrid posts={mockPosts} />).toJSON();
+    const { container } = render(<PostsGrid posts={mockPosts} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

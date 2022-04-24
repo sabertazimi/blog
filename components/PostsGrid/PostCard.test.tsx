@@ -2,7 +2,6 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import PostCard from './PostCard';
 
 describe('PostCard', () => {
@@ -10,15 +9,15 @@ describe('PostCard', () => {
   const mockPost = MockData.posts[0];
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<PostCard post={mockPost} />).toJSON();
+    const { container } = render(<PostCard post={mockPost} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render correctly with partial data (snapshot)', () => {
-    const tree = create(<PostCard post={mockBasePost} />).toJSON();
+    const { container } = render(<PostCard post={mockBasePost} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {

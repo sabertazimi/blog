@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FlexContainer should render correctly (snapshot) 1`] = `
-<div
-  className="flex-container container relative h-full mx-auto my-0 p-auto "
-  role="main"
->
-  <h1>
-    FlexContainer
-  </h1>
+<div>
+  <div
+    class="flex-container container relative h-full mx-auto my-0 p-auto "
+    role="main"
+  >
+    <h1>
+      FlexContainer
+    </h1>
+  </div>
 </div>
 `;

@@ -2,16 +2,15 @@ import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
-import { create } from 'react-test-renderer';
 import BooksGrid from './BooksGrid';
 
 describe('BooksGrid', () => {
   const mockBooks = MockData.siteMetadata.bookList;
 
   test('should render correctly (snapshot)', () => {
-    const tree = create(<BooksGrid bookList={mockBooks} />).toJSON();
+    const { container } = render(<BooksGrid bookList={mockBooks} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('Should render accessibility guidelines (AXE)', async () => {

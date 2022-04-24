@@ -2,217 +2,154 @@
 
 exports[`TagsCloud should render correctly with active tag (snapshot) 1`] = `
 <div>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#f59f00",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/JavaScript"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+  <div>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(245, 159, 0);"
     >
-      JavaScript
-         
-      10
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#767676",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/Web%20Development"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/JavaScript"
+      >
+        JavaScript
+           
+        10
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(118, 118, 118);"
     >
-      Web Development
-         
-      30
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#767676",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/Frontend%20Development"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/Web%20Development"
+      >
+        Web Development
+           
+        30
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(118, 118, 118);"
     >
-      Frontend Development
-         
-      20
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#767676",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/React"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/Frontend%20Development"
+      >
+        Frontend Development
+           
+        20
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(118, 118, 118);"
     >
-      React
-         
-      5
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#767676",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/Redux"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/React"
+      >
+        React
+           
+        5
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(118, 118, 118);"
     >
-      Redux
-         
-      1
-    </a>
-  </span>
-  <span
-    className="ant-tag mb-3 bg-primary border-primary"
-    style={
-      Object {
-        "backgroundColor": undefined,
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold text-light"
-      href="/tags"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/Redux"
+      >
+        Redux
+           
+        1
+      </a>
+    </span>
+    <span
+      class="ant-tag mb-3 bg-primary border-primary"
     >
-      All
-    </a>
-  </span>
+      <a
+        class="text-lg font-extrabold text-light"
+        href="/tags"
+      >
+        All
+      </a>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
 <div>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#7048e8",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/Web%20Development"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+  <div>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(112, 72, 232);"
     >
-      Web Development
-         
-      30
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#37b24d",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/Frontend%20Development"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/Web%20Development"
+      >
+        Web Development
+           
+        30
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(55, 178, 77);"
     >
-      Frontend Development
-         
-      20
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#f59f00",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/JavaScript"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/Frontend%20Development"
+      >
+        Frontend Development
+           
+        20
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(245, 159, 0);"
     >
-      JavaScript
-         
-      10
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#1890ff",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/React"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/JavaScript"
+      >
+        JavaScript
+           
+        10
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(24, 144, 255);"
     >
-      React
-         
-      5
-    </a>
-  </span>
-  <span
-    className="ant-tag ant-tag-has-color mb-3"
-    style={
-      Object {
-        "backgroundColor": "#1890ff",
-      }
-    }
-  >
-    <a
-      className="text-lg font-extrabold"
-      href="/tag/Redux"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/React"
+      >
+        React
+           
+        5
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color mb-3"
+      style="background-color: rgb(24, 144, 255);"
     >
-      Redux
-         
-      1
-    </a>
-  </span>
+      <a
+        class="text-lg font-extrabold"
+        href="/tag/Redux"
+      >
+        Redux
+           
+        1
+      </a>
+    </span>
+  </div>
 </div>
 `;

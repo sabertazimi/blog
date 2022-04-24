@@ -2,323 +2,104 @@
 
 exports[`Article should render correctly (snapshot) 1`] = `
 <div>
-  <div
-    className="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
-  >
+  <div>
     <div
-      style={
-        Object {
-          "opacity": 0,
-          "transform": " translateX(-200px)",
-        }
-      }
-    >
-      <span
-        className="ant-tag ant-tag-has-color"
-        style={
-          Object {
-            "backgroundColor": "#f59f00",
-          }
-        }
-      >
-        <a
-          className="text-base font-extrabold"
-          href="/tag/JavaScript"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          JavaScript
-        </a>
-      </span>
-      <span
-        className="ant-tag ant-tag-has-color"
-        style={
-          Object {
-            "backgroundColor": "#37b24d",
-          }
-        }
-      >
-        <a
-          className="text-base font-extrabold"
-          href="/tag/Frontend%20Development"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          Frontend Development
-        </a>
-      </span>
-      <span
-        className="ant-tag ant-tag-has-color"
-        style={
-          Object {
-            "backgroundColor": "#7048e8",
-          }
-        }
-      >
-        <a
-          className="text-base font-extrabold"
-          href="/tag/Web%20Development"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          Web Development
-        </a>
-      </span>
-      <h1
-        className="my-8 text-8xl text-light"
-      >
-        1 Basic Notes
-      </h1>
-      <span
-        className="ant-tag tag-black"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <div
-          className="text-base font-extrabold"
-        >
-          Posted on 
-          Wed Aug 08 2018
-        </div>
-      </span>
-      <span
-        className="ant-tag tag-black"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <div
-          className="text-base font-extrabold"
-        >
-          Last updated on
-           
-          Wed Aug 08 2018
-        </div>
-      </span>
-      <span
-        className="ant-tag tag-black"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <div
-          className="text-base font-extrabold"
-        >
-          (
-          1
-           minutes)
-        </div>
-      </span>
-    </div>
-  </div>
-  <div
-    className="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
-  >
-    <div
-      className="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block"
-      role="navigation"
-    >
-      <button
-        className="ant-btn ant-btn-circle ant-btn-default ant-btn-lg ant-btn-icon-only button-primary"
-        onClick={[Function]}
-        type="button"
-      >
-        <span
-          aria-label="Menu"
-          className="anticon anticon-menu-fold"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="menu-fold"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 000 13.8z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div
-      className="markdownBody"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<h1>1 Basic Notes</h1>",
-        }
-      }
-      style={
-        Object {
-          "opacity": 0,
-          "transform": " translateY(-200px)",
-        }
-      }
-    />
-    <div
-      className="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
-      role="separator"
-    >
-      <span
-        className="ant-divider-inner-text"
-        style={Object {}}
-      >
-        Be a Stupid Learner
-      </span>
-    </div>
-    <div
-      aria-label="footer-nagivation"
-      className="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
-      role="navigation"
-    >
-      <button
-        className="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-        onClick={[Function]}
-        type="button"
-      >
-        <span
-          aria-label="Prev"
-          className="anticon anticon-arrow-left"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="arrow-left"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M872 474H286.9l350.2-304c5.6-4.9 2.2-14-5.2-14h-88.5c-3.9 0-7.6 1.4-10.5 3.9L155 487.8a31.96 31.96 0 000 48.3L535.1 866c1.5 1.3 3.3 2 5.2 2h91.5c7.4 0 10.8-9.2 5.2-14L286.9 550H872c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"
-            />
-          </svg>
-        </span>
-        <a
-          className="m-auto font-extrabold text-light"
-          href="/post/2BasicNotes"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          2 Basic Notes
-        </a>
-      </button>
-      <button
-        className="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-        onClick={[Function]}
-        type="button"
-      >
-        <a
-          className="m-auto font-extrabold text-light"
-          href="/post/0BasicNotes"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          0 Basic Notes
-        </a>
-        <span
-          aria-label="Next"
-          className="anticon anticon-arrow-right"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="arrow-right"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div
-      className="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
-      role="separator"
-    >
-      <span
-        className="ant-divider-inner-text"
-        style={Object {}}
-      >
-        <span
-          aria-label="Comment"
-          className="anticon text-2xl text-primary"
-          role="img"
-        >
-          <svg
-            fill="currentColor"
-            height="2em"
-            p-id="1097"
-            viewBox="0 0 1024 1024"
-            width="2em"
-          >
-            <path
-              d="M573 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40zM293 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
-              p-id="1098"
-            />
-            <path
-              d="M894 345c-48.1-66-115.3-110.1-189-130v0.1c-17.1-19-36.4-36.5-58-52.1-163.7-119-393.5-82.7-513 81-96.3 133-92.2 311.9 6 439l0.8 132.6c0 3.2 0.5 6.4 1.5 9.4 5.3 16.9 23.3 26.2 40.1 20.9L309 806c33.5 11.9 68.1 18.7 102.5 20.6l-0.5 0.4c89.1 64.9 205.9 84.4 313 49l127.1 41.4c3.2 1 6.5 1.6 9.9 1.6 17.7 0 32-14.3 32-32V753c88.1-119.6 90.4-284.9 1-408zM323 735l-12-5-99 31-1-104-8-9c-84.6-103.2-90.2-251.9-11-361 96.4-132.2 281.2-161.4 413-66 132.2 96.1 161.5 280.6 66 412-80.1 109.9-223.5 150.5-348 102z m505-17l-8 10 1 104-98-33-12 5c-56 20.8-115.7 22.5-171 7l-0.2-0.1C613.7 788.2 680.7 742.2 729 676c76.4-105.3 88.8-237.6 44.4-350.4l0.6 0.4c23 16.5 44.1 37.1 62 62 72.6 99.6 68.5 235.2-8 330z"
-              p-id="1099"
-            />
-            <path
-              d="M433 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
-              p-id="1100"
-            />
-          </svg>
-        </span>
-      </span>
-    </div>
-    <div
-      className="disqus"
-      id="disqus_thread"
-    />
-    <div
-      className="ant-space ant-space-vertical ant-space-align-center fixed left-0 top-1/2 transition duration-300 -translate-y-1/2 transform-gpu -translate-x-3/4 hover:translate-x-0"
-      style={Object {}}
+      class="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
     >
       <div
-        className="ant-space-item"
-        style={
-          Object {
-            "marginBottom": 0,
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://twitter.com/intent/tweet?url=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#1da1f2",
-            }
-          }
+        <span
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(245, 159, 0);"
+        >
+          <a
+            class="text-base font-extrabold"
+            href="/tag/JavaScript"
+          >
+            JavaScript
+          </a>
+        </span>
+        <span
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(55, 178, 77);"
+        >
+          <a
+            class="text-base font-extrabold"
+            href="/tag/Frontend%20Development"
+          >
+            Frontend Development
+          </a>
+        </span>
+        <span
+          class="ant-tag ant-tag-has-color"
+          style="background-color: rgb(112, 72, 232);"
+        >
+          <a
+            class="text-base font-extrabold"
+            href="/tag/Web%20Development"
+          >
+            Web Development
+          </a>
+        </span>
+        <h1
+          class="my-8 text-8xl text-light"
+        >
+          1 Basic Notes
+        </h1>
+        <span
+          class="ant-tag tag-black"
+        >
+          <div
+            class="text-base font-extrabold"
+          >
+            Posted on 
+            Wed Aug 08 2018
+          </div>
+        </span>
+        <span
+          class="ant-tag tag-black"
+        >
+          <div
+            class="text-base font-extrabold"
+          >
+            Last updated on
+             
+            Wed Aug 08 2018
+          </div>
+        </span>
+        <span
+          class="ant-tag tag-black"
+        >
+          <div
+            class="text-base font-extrabold"
+          >
+            (
+            1
+             minutes)
+          </div>
+        </span>
+      </div>
+    </div>
+    <div
+      class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
+    >
+      <div
+        class="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block"
+        role="navigation"
+      >
+        <button
+          class="ant-btn ant-btn-circle ant-btn-default ant-btn-lg ant-btn-icon-only button-primary"
+          type="button"
         >
           <span
-            aria-label="twitter"
-            className="anticon anticon-twitter text-4xl"
+            aria-label="Menu"
+            class="anticon anticon-menu-fold"
             role="img"
           >
             <svg
               aria-hidden="true"
-              data-icon="twitter"
+              data-icon="menu-fold"
               fill="currentColor"
               focusable="false"
               height="1em"
@@ -326,115 +107,47 @@ exports[`Article should render correctly (snapshot) 1`] = `
               width="1em"
             >
               <path
-                d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0075-94 336.64 336.64 0 01-108.2 41.2A170.1 170.1 0 00672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 00-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 01-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 01-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+                d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 000 13.8z"
               />
             </svg>
           </span>
-        </a>
+        </button>
       </div>
       <div
-        className="ant-space-item"
-        style={
-          Object {
-            "marginBottom": 0,
-          }
-        }
+        class="markdownBody"
+        style="opacity: 0; transform: translateY(-200px);"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://www.facebook.com/sharer.php?u=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#1877f2",
-            }
-          }
-        >
-          <span
-            aria-label="facebook"
-            className="anticon anticon-facebook text-4xl"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="facebook"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
-            >
-              <path
-                d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"
-              />
-            </svg>
-          </span>
-        </a>
+        <h1>
+          1 Basic Notes
+        </h1>
       </div>
       <div
-        className="ant-space-item"
-        style={
-          Object {
-            "marginBottom": 0,
-          }
-        }
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
+        role="separator"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://www.linkedin.com/shareArticle?mini=true&url=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#0a66c2",
-            }
-          }
+        <span
+          class="ant-divider-inner-text"
         >
-          <span
-            aria-label="linkedin"
-            className="anticon anticon-linkedin text-4xl"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="linkedin"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
-            >
-              <path
-                d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 10-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
-              />
-            </svg>
-          </span>
-        </a>
+          Be a Stupid Learner
+        </span>
       </div>
       <div
-        className="ant-space-item"
-        style={Object {}}
+        aria-label="footer-nagivation"
+        class="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
+        role="navigation"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://service.weibo.com/share/share.php?url=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#e6162d",
-            }
-          }
+        <button
+          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+          type="button"
         >
           <span
-            aria-label="weibo"
-            className="anticon anticon-weibo text-4xl"
+            aria-label="Prev"
+            class="anticon anticon-arrow-left"
             role="img"
           >
             <svg
               aria-hidden="true"
-              data-icon="weibo"
+              data-icon="arrow-left"
               fill="currentColor"
               focusable="false"
               height="1em"
@@ -442,11 +155,213 @@ exports[`Article should render correctly (snapshot) 1`] = `
               width="1em"
             >
               <path
-                d="M457.3 543c-68.1-17.7-145 16.2-174.6 76.2-30.1 61.2-1 129.1 67.8 151.3 71.2 23 155.2-12.2 184.4-78.3 28.7-64.6-7.2-131-77.6-149.2zm-52 156.2c-13.8 22.1-43.5 31.7-65.8 21.6-22-10-28.5-35.7-14.6-57.2 13.7-21.4 42.3-31 64.4-21.7 22.4 9.5 29.6 35 16 57.3zm45.5-58.5c-5 8.6-16.1 12.7-24.7 9.1-8.5-3.5-11.2-13.1-6.4-21.5 5-8.4 15.6-12.4 24.1-9.1 8.7 3.2 11.8 12.9 7 21.5zm334.5-197.2c15 4.8 31-3.4 35.9-18.3 11.8-36.6 4.4-78.4-23.2-109a111.39 111.39 0 00-106-34.3 28.45 28.45 0 00-21.9 33.8 28.39 28.39 0 0033.8 21.8c18.4-3.9 38.3 1.8 51.9 16.7a54.2 54.2 0 0111.3 53.3 28.45 28.45 0 0018.2 36zm99.8-206c-56.7-62.9-140.4-86.9-217.7-70.5a32.98 32.98 0 00-25.4 39.3 33.12 33.12 0 0039.3 25.5c55-11.7 114.4 5.4 154.8 50.1 40.3 44.7 51.2 105.7 34 159.1-5.6 17.4 3.9 36 21.3 41.7 17.4 5.6 36-3.9 41.6-21.2v-.1c24.1-75.4 8.9-161.1-47.9-223.9zM729 499c-12.2-3.6-20.5-6.1-14.1-22.1 13.8-34.7 15.2-64.7.3-86-28-40.1-104.8-37.9-192.8-1.1 0 0-27.6 12.1-20.6-9.8 13.5-43.5 11.5-79.9-9.6-101-47.7-47.8-174.6 1.8-283.5 110.6C127.3 471.1 80 557.5 80 632.2 80 775.1 263.2 862 442.5 862c235 0 391.3-136.5 391.3-245 0-65.5-55.2-102.6-104.8-118zM443 810.8c-143 14.1-266.5-50.5-275.8-144.5-9.3-93.9 99.2-181.5 242.2-195.6 143-14.2 266.5 50.5 275.8 144.4C694.4 709 586 796.6 443 810.8z"
+                d="M872 474H286.9l350.2-304c5.6-4.9 2.2-14-5.2-14h-88.5c-3.9 0-7.6 1.4-10.5 3.9L155 487.8a31.96 31.96 0 000 48.3L535.1 866c1.5 1.3 3.3 2 5.2 2h91.5c7.4 0 10.8-9.2 5.2-14L286.9 550H872c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"
               />
             </svg>
           </span>
-        </a>
+          <a
+            class="m-auto font-extrabold text-light"
+            href="/post/2BasicNotes"
+          >
+            2 Basic Notes
+          </a>
+        </button>
+        <button
+          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+          type="button"
+        >
+          <a
+            class="m-auto font-extrabold text-light"
+            href="/post/0BasicNotes"
+          >
+            0 Basic Notes
+          </a>
+          <span
+            aria-label="Next"
+            class="anticon anticon-arrow-right"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="arrow-right"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
+        role="separator"
+      >
+        <span
+          class="ant-divider-inner-text"
+        >
+          <span
+            aria-label="Comment"
+            class="anticon text-2xl text-primary"
+            role="img"
+          >
+            <svg
+              fill="currentColor"
+              height="2em"
+              p-id="1097"
+              viewBox="0 0 1024 1024"
+              width="2em"
+            >
+              <path
+                d="M573 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40zM293 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
+                p-id="1098"
+              />
+              <path
+                d="M894 345c-48.1-66-115.3-110.1-189-130v0.1c-17.1-19-36.4-36.5-58-52.1-163.7-119-393.5-82.7-513 81-96.3 133-92.2 311.9 6 439l0.8 132.6c0 3.2 0.5 6.4 1.5 9.4 5.3 16.9 23.3 26.2 40.1 20.9L309 806c33.5 11.9 68.1 18.7 102.5 20.6l-0.5 0.4c89.1 64.9 205.9 84.4 313 49l127.1 41.4c3.2 1 6.5 1.6 9.9 1.6 17.7 0 32-14.3 32-32V753c88.1-119.6 90.4-284.9 1-408zM323 735l-12-5-99 31-1-104-8-9c-84.6-103.2-90.2-251.9-11-361 96.4-132.2 281.2-161.4 413-66 132.2 96.1 161.5 280.6 66 412-80.1 109.9-223.5 150.5-348 102z m505-17l-8 10 1 104-98-33-12 5c-56 20.8-115.7 22.5-171 7l-0.2-0.1C613.7 788.2 680.7 742.2 729 676c76.4-105.3 88.8-237.6 44.4-350.4l0.6 0.4c23 16.5 44.1 37.1 62 62 72.6 99.6 68.5 235.2-8 330z"
+                p-id="1099"
+              />
+              <path
+                d="M433 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
+                p-id="1100"
+              />
+            </svg>
+          </span>
+        </span>
+      </div>
+      <div
+        class="disqus"
+        id="disqus_thread"
+      />
+      <div
+        class="ant-space ant-space-vertical ant-space-align-center fixed left-0 top-1/2 transition duration-300 -translate-y-1/2 transform-gpu -translate-x-3/4 hover:translate-x-0"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 0px;"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://twitter.com/intent/tweet?url=https://example.com"
+            role="link"
+            style="background-color: rgb(29, 161, 242);"
+          >
+            <span
+              aria-label="twitter"
+              class="anticon anticon-twitter text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="twitter"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0075-94 336.64 336.64 0 01-108.2 41.2A170.1 170.1 0 00672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 00-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 01-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 01-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 0px;"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://www.facebook.com/sharer.php?u=https://example.com"
+            role="link"
+            style="background-color: rgb(24, 119, 242);"
+          >
+            <span
+              aria-label="facebook"
+              class="anticon anticon-facebook text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="facebook"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 0px;"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https://example.com"
+            role="link"
+            style="background-color: rgb(10, 102, 194);"
+          >
+            <span
+              aria-label="linkedin"
+              class="anticon anticon-linkedin text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="linkedin"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 10-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://service.weibo.com/share/share.php?url=https://example.com"
+            role="link"
+            style="background-color: rgb(230, 22, 45);"
+          >
+            <span
+              aria-label="weibo"
+              class="anticon anticon-weibo text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="weibo"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M457.3 543c-68.1-17.7-145 16.2-174.6 76.2-30.1 61.2-1 129.1 67.8 151.3 71.2 23 155.2-12.2 184.4-78.3 28.7-64.6-7.2-131-77.6-149.2zm-52 156.2c-13.8 22.1-43.5 31.7-65.8 21.6-22-10-28.5-35.7-14.6-57.2 13.7-21.4 42.3-31 64.4-21.7 22.4 9.5 29.6 35 16 57.3zm45.5-58.5c-5 8.6-16.1 12.7-24.7 9.1-8.5-3.5-11.2-13.1-6.4-21.5 5-8.4 15.6-12.4 24.1-9.1 8.7 3.2 11.8 12.9 7 21.5zm334.5-197.2c15 4.8 31-3.4 35.9-18.3 11.8-36.6 4.4-78.4-23.2-109a111.39 111.39 0 00-106-34.3 28.45 28.45 0 00-21.9 33.8 28.39 28.39 0 0033.8 21.8c18.4-3.9 38.3 1.8 51.9 16.7a54.2 54.2 0 0111.3 53.3 28.45 28.45 0 0018.2 36zm99.8-206c-56.7-62.9-140.4-86.9-217.7-70.5a32.98 32.98 0 00-25.4 39.3 33.12 33.12 0 0039.3 25.5c55-11.7 114.4 5.4 154.8 50.1 40.3 44.7 51.2 105.7 34 159.1-5.6 17.4 3.9 36 21.3 41.7 17.4 5.6 36-3.9 41.6-21.2v-.1c24.1-75.4 8.9-161.1-47.9-223.9zM729 499c-12.2-3.6-20.5-6.1-14.1-22.1 13.8-34.7 15.2-64.7.3-86-28-40.1-104.8-37.9-192.8-1.1 0 0-27.6 12.1-20.6-9.8 13.5-43.5 11.5-79.9-9.6-101-47.7-47.8-174.6 1.8-283.5 110.6C127.3 471.1 80 557.5 80 632.2 80 775.1 263.2 862 442.5 862c235 0 391.3-136.5 391.3-245 0-65.5-55.2-102.6-104.8-118zM443 810.8c-143 14.1-266.5-50.5-275.8-144.5-9.3-93.9 99.2-181.5 242.2-195.6 143-14.2 266.5 50.5 275.8 144.4C694.4 709 586 796.6 443 810.8z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -455,289 +370,81 @@ exports[`Article should render correctly (snapshot) 1`] = `
 
 exports[`Article should render correctly with partial data (snapshot) 1`] = `
 <div>
-  <div
-    className="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
-  >
+  <div>
     <div
-      style={
-        Object {
-          "opacity": 0,
-          "transform": " translateX(-200px)",
-        }
-      }
-    >
-      <span
-        className="ant-tag bg-primary border-primary"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <a
-          className="text-light"
-          href="/tags"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          CS
-        </a>
-      </span>
-      <h1
-        className="my-8 text-8xl text-light"
-      >
-        1 Basic Notes
-      </h1>
-      <span
-        className="ant-tag tag-black"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <div
-          className="text-base font-extrabold"
-        >
-          Posted on 
-          Nowadays
-        </div>
-      </span>
-      <span
-        className="ant-tag tag-black"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <div
-          className="text-base font-extrabold"
-        >
-          Last updated on
-           
-          Nowadays
-        </div>
-      </span>
-      <span
-        className="ant-tag tag-black"
-        style={
-          Object {
-            "backgroundColor": undefined,
-          }
-        }
-      >
-        <div
-          className="text-base font-extrabold"
-        >
-          (
-          1
-           minutes)
-        </div>
-      </span>
-    </div>
-  </div>
-  <div
-    className="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
-  >
-    <div
-      className="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block"
-      role="navigation"
-    >
-      <button
-        className="ant-btn ant-btn-circle ant-btn-default ant-btn-lg ant-btn-icon-only button-primary"
-        onClick={[Function]}
-        type="button"
-      >
-        <span
-          aria-label="Menu"
-          className="anticon anticon-menu-fold"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="menu-fold"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 000 13.8z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div
-      className="markdownBody"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": undefined,
-        }
-      }
-      style={
-        Object {
-          "opacity": 0,
-          "transform": " translateY(-200px)",
-        }
-      }
-    />
-    <div
-      className="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
-      role="separator"
-    >
-      <span
-        className="ant-divider-inner-text"
-        style={Object {}}
-      >
-        Blog
-      </span>
-    </div>
-    <div
-      aria-label="footer-nagivation"
-      className="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
-      role="navigation"
-    >
-      <button
-        className="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-        onClick={[Function]}
-        type="button"
-      >
-        <span
-          aria-label="Home"
-          className="anticon anticon-home"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="home"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
-            />
-          </svg>
-        </span>
-        <a
-          className="m-auto font-extrabold text-light"
-          href="/posts"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          Back to Home
-        </a>
-      </button>
-      <button
-        className="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-        onClick={[Function]}
-        type="button"
-      >
-        <a
-          className="m-auto font-extrabold text-light"
-          href="/posts"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          Back to Home
-        </a>
-        <span
-          aria-label="Home"
-          className="anticon anticon-home"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="home"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-    <div
-      className="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
-      role="separator"
-    >
-      <span
-        className="ant-divider-inner-text"
-        style={Object {}}
-      >
-        <span
-          aria-label="Comment"
-          className="anticon text-2xl text-primary"
-          role="img"
-        >
-          <svg
-            fill="currentColor"
-            height="2em"
-            p-id="1097"
-            viewBox="0 0 1024 1024"
-            width="2em"
-          >
-            <path
-              d="M573 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40zM293 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
-              p-id="1098"
-            />
-            <path
-              d="M894 345c-48.1-66-115.3-110.1-189-130v0.1c-17.1-19-36.4-36.5-58-52.1-163.7-119-393.5-82.7-513 81-96.3 133-92.2 311.9 6 439l0.8 132.6c0 3.2 0.5 6.4 1.5 9.4 5.3 16.9 23.3 26.2 40.1 20.9L309 806c33.5 11.9 68.1 18.7 102.5 20.6l-0.5 0.4c89.1 64.9 205.9 84.4 313 49l127.1 41.4c3.2 1 6.5 1.6 9.9 1.6 17.7 0 32-14.3 32-32V753c88.1-119.6 90.4-284.9 1-408zM323 735l-12-5-99 31-1-104-8-9c-84.6-103.2-90.2-251.9-11-361 96.4-132.2 281.2-161.4 413-66 132.2 96.1 161.5 280.6 66 412-80.1 109.9-223.5 150.5-348 102z m505-17l-8 10 1 104-98-33-12 5c-56 20.8-115.7 22.5-171 7l-0.2-0.1C613.7 788.2 680.7 742.2 729 676c76.4-105.3 88.8-237.6 44.4-350.4l0.6 0.4c23 16.5 44.1 37.1 62 62 72.6 99.6 68.5 235.2-8 330z"
-              p-id="1099"
-            />
-            <path
-              d="M433 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
-              p-id="1100"
-            />
-          </svg>
-        </span>
-      </span>
-    </div>
-    <div
-      className="disqus"
-      id="disqus_thread"
-    />
-    <div
-      className="ant-space ant-space-vertical ant-space-align-center fixed left-0 top-1/2 transition duration-300 -translate-y-1/2 transform-gpu -translate-x-3/4 hover:translate-x-0"
-      style={Object {}}
+      class="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
     >
       <div
-        className="ant-space-item"
-        style={
-          Object {
-            "marginBottom": 0,
-          }
-        }
+        style="opacity: 0; transform: translateX(-200px);"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://twitter.com/intent/tweet?url=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#1da1f2",
-            }
-          }
+        <span
+          class="ant-tag bg-primary border-primary"
+        >
+          <a
+            class="text-light"
+            href="/tags"
+          >
+            CS
+          </a>
+        </span>
+        <h1
+          class="my-8 text-8xl text-light"
+        >
+          1 Basic Notes
+        </h1>
+        <span
+          class="ant-tag tag-black"
+        >
+          <div
+            class="text-base font-extrabold"
+          >
+            Posted on 
+            Nowadays
+          </div>
+        </span>
+        <span
+          class="ant-tag tag-black"
+        >
+          <div
+            class="text-base font-extrabold"
+          >
+            Last updated on
+             
+            Nowadays
+          </div>
+        </span>
+        <span
+          class="ant-tag tag-black"
+        >
+          <div
+            class="text-base font-extrabold"
+          >
+            (
+            1
+             minutes)
+          </div>
+        </span>
+      </div>
+    </div>
+    <div
+      class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
+    >
+      <div
+        class="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block"
+        role="navigation"
+      >
+        <button
+          class="ant-btn ant-btn-circle ant-btn-default ant-btn-lg ant-btn-icon-only button-primary"
+          type="button"
         >
           <span
-            aria-label="twitter"
-            className="anticon anticon-twitter text-4xl"
+            aria-label="Menu"
+            class="anticon anticon-menu-fold"
             role="img"
           >
             <svg
               aria-hidden="true"
-              data-icon="twitter"
+              data-icon="menu-fold"
               fill="currentColor"
               focusable="false"
               height="1em"
@@ -745,79 +452,43 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
               width="1em"
             >
               <path
-                d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0075-94 336.64 336.64 0 01-108.2 41.2A170.1 170.1 0 00672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 00-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 01-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 01-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+                d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 000 13.8z"
               />
             </svg>
           </span>
-        </a>
+        </button>
       </div>
       <div
-        className="ant-space-item"
-        style={
-          Object {
-            "marginBottom": 0,
-          }
-        }
+        class="markdownBody"
+        style="opacity: 0; transform: translateY(-200px);"
+      />
+      <div
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
+        role="separator"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://www.facebook.com/sharer.php?u=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#1877f2",
-            }
-          }
+        <span
+          class="ant-divider-inner-text"
         >
-          <span
-            aria-label="facebook"
-            className="anticon anticon-facebook text-4xl"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="facebook"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
-            >
-              <path
-                d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"
-              />
-            </svg>
-          </span>
-        </a>
+          Blog
+        </span>
       </div>
       <div
-        className="ant-space-item"
-        style={
-          Object {
-            "marginBottom": 0,
-          }
-        }
+        aria-label="footer-nagivation"
+        class="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
+        role="navigation"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://www.linkedin.com/shareArticle?mini=true&url=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#0a66c2",
-            }
-          }
+        <button
+          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+          type="button"
         >
           <span
-            aria-label="linkedin"
-            className="anticon anticon-linkedin text-4xl"
+            aria-label="Home"
+            class="anticon anticon-home"
             role="img"
           >
             <svg
               aria-hidden="true"
-              data-icon="linkedin"
+              data-icon="home"
               fill="currentColor"
               focusable="false"
               height="1em"
@@ -825,47 +496,213 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
               width="1em"
             >
               <path
-                d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 10-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+                d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
               />
             </svg>
           </span>
-        </a>
+          <a
+            class="m-auto font-extrabold text-light"
+            href="/posts"
+          >
+            Back to Home
+          </a>
+        </button>
+        <button
+          class="ant-btn ant-btn-default ant-btn-lg flex-container w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
+          type="button"
+        >
+          <a
+            class="m-auto font-extrabold text-light"
+            href="/posts"
+          >
+            Back to Home
+          </a>
+          <span
+            aria-label="Home"
+            class="anticon anticon-home"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="home"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+              />
+            </svg>
+          </span>
+        </button>
       </div>
       <div
-        className="ant-space-item"
-        style={Object {}}
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
+        role="separator"
       >
-        <a
-          className="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
-          href="https://service.weibo.com/share/share.php?url=https://example.com"
-          onClick={[Function]}
-          role="link"
-          style={
-            Object {
-              "backgroundColor": "#e6162d",
-            }
-          }
+        <span
+          class="ant-divider-inner-text"
         >
           <span
-            aria-label="weibo"
-            className="anticon anticon-weibo text-4xl"
+            aria-label="Comment"
+            class="anticon text-2xl text-primary"
             role="img"
           >
             <svg
-              aria-hidden="true"
-              data-icon="weibo"
               fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
+              height="2em"
+              p-id="1097"
+              viewBox="0 0 1024 1024"
+              width="2em"
             >
               <path
-                d="M457.3 543c-68.1-17.7-145 16.2-174.6 76.2-30.1 61.2-1 129.1 67.8 151.3 71.2 23 155.2-12.2 184.4-78.3 28.7-64.6-7.2-131-77.6-149.2zm-52 156.2c-13.8 22.1-43.5 31.7-65.8 21.6-22-10-28.5-35.7-14.6-57.2 13.7-21.4 42.3-31 64.4-21.7 22.4 9.5 29.6 35 16 57.3zm45.5-58.5c-5 8.6-16.1 12.7-24.7 9.1-8.5-3.5-11.2-13.1-6.4-21.5 5-8.4 15.6-12.4 24.1-9.1 8.7 3.2 11.8 12.9 7 21.5zm334.5-197.2c15 4.8 31-3.4 35.9-18.3 11.8-36.6 4.4-78.4-23.2-109a111.39 111.39 0 00-106-34.3 28.45 28.45 0 00-21.9 33.8 28.39 28.39 0 0033.8 21.8c18.4-3.9 38.3 1.8 51.9 16.7a54.2 54.2 0 0111.3 53.3 28.45 28.45 0 0018.2 36zm99.8-206c-56.7-62.9-140.4-86.9-217.7-70.5a32.98 32.98 0 00-25.4 39.3 33.12 33.12 0 0039.3 25.5c55-11.7 114.4 5.4 154.8 50.1 40.3 44.7 51.2 105.7 34 159.1-5.6 17.4 3.9 36 21.3 41.7 17.4 5.6 36-3.9 41.6-21.2v-.1c24.1-75.4 8.9-161.1-47.9-223.9zM729 499c-12.2-3.6-20.5-6.1-14.1-22.1 13.8-34.7 15.2-64.7.3-86-28-40.1-104.8-37.9-192.8-1.1 0 0-27.6 12.1-20.6-9.8 13.5-43.5 11.5-79.9-9.6-101-47.7-47.8-174.6 1.8-283.5 110.6C127.3 471.1 80 557.5 80 632.2 80 775.1 263.2 862 442.5 862c235 0 391.3-136.5 391.3-245 0-65.5-55.2-102.6-104.8-118zM443 810.8c-143 14.1-266.5-50.5-275.8-144.5-9.3-93.9 99.2-181.5 242.2-195.6 143-14.2 266.5 50.5 275.8 144.4C694.4 709 586 796.6 443 810.8z"
+                d="M573 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40zM293 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
+                p-id="1098"
+              />
+              <path
+                d="M894 345c-48.1-66-115.3-110.1-189-130v0.1c-17.1-19-36.4-36.5-58-52.1-163.7-119-393.5-82.7-513 81-96.3 133-92.2 311.9 6 439l0.8 132.6c0 3.2 0.5 6.4 1.5 9.4 5.3 16.9 23.3 26.2 40.1 20.9L309 806c33.5 11.9 68.1 18.7 102.5 20.6l-0.5 0.4c89.1 64.9 205.9 84.4 313 49l127.1 41.4c3.2 1 6.5 1.6 9.9 1.6 17.7 0 32-14.3 32-32V753c88.1-119.6 90.4-284.9 1-408zM323 735l-12-5-99 31-1-104-8-9c-84.6-103.2-90.2-251.9-11-361 96.4-132.2 281.2-161.4 413-66 132.2 96.1 161.5 280.6 66 412-80.1 109.9-223.5 150.5-348 102z m505-17l-8 10 1 104-98-33-12 5c-56 20.8-115.7 22.5-171 7l-0.2-0.1C613.7 788.2 680.7 742.2 729 676c76.4-105.3 88.8-237.6 44.4-350.4l0.6 0.4c23 16.5 44.1 37.1 62 62 72.6 99.6 68.5 235.2-8 330z"
+                p-id="1099"
+              />
+              <path
+                d="M433 421c-23.1 0-41 17.9-41 40s17.9 40 41 40c21.1 0 39-17.9 39-40s-17.9-40-39-40z"
+                p-id="1100"
               />
             </svg>
           </span>
-        </a>
+        </span>
+      </div>
+      <div
+        class="disqus"
+        id="disqus_thread"
+      />
+      <div
+        class="ant-space ant-space-vertical ant-space-align-center fixed left-0 top-1/2 transition duration-300 -translate-y-1/2 transform-gpu -translate-x-3/4 hover:translate-x-0"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 0px;"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://twitter.com/intent/tweet?url=https://example.com"
+            role="link"
+            style="background-color: rgb(29, 161, 242);"
+          >
+            <span
+              aria-label="twitter"
+              class="anticon anticon-twitter text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="twitter"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0075-94 336.64 336.64 0 01-108.2 41.2A170.1 170.1 0 00672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 00-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 01-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 01-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 0px;"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://www.facebook.com/sharer.php?u=https://example.com"
+            role="link"
+            style="background-color: rgb(24, 119, 242);"
+          >
+            <span
+              aria-label="facebook"
+              class="anticon anticon-facebook text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="facebook"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 0px;"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://www.linkedin.com/shareArticle?mini=true&url=https://example.com"
+            role="link"
+            style="background-color: rgb(10, 102, 194);"
+          >
+            <span
+              aria-label="linkedin"
+              class="anticon anticon-linkedin text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="linkedin"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 10-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <a
+            class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none "
+            href="https://service.weibo.com/share/share.php?url=https://example.com"
+            role="link"
+            style="background-color: rgb(230, 22, 45);"
+          >
+            <span
+              aria-label="weibo"
+              class="anticon anticon-weibo text-4xl"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="weibo"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M457.3 543c-68.1-17.7-145 16.2-174.6 76.2-30.1 61.2-1 129.1 67.8 151.3 71.2 23 155.2-12.2 184.4-78.3 28.7-64.6-7.2-131-77.6-149.2zm-52 156.2c-13.8 22.1-43.5 31.7-65.8 21.6-22-10-28.5-35.7-14.6-57.2 13.7-21.4 42.3-31 64.4-21.7 22.4 9.5 29.6 35 16 57.3zm45.5-58.5c-5 8.6-16.1 12.7-24.7 9.1-8.5-3.5-11.2-13.1-6.4-21.5 5-8.4 15.6-12.4 24.1-9.1 8.7 3.2 11.8 12.9 7 21.5zm334.5-197.2c15 4.8 31-3.4 35.9-18.3 11.8-36.6 4.4-78.4-23.2-109a111.39 111.39 0 00-106-34.3 28.45 28.45 0 00-21.9 33.8 28.39 28.39 0 0033.8 21.8c18.4-3.9 38.3 1.8 51.9 16.7a54.2 54.2 0 0111.3 53.3 28.45 28.45 0 0018.2 36zm99.8-206c-56.7-62.9-140.4-86.9-217.7-70.5a32.98 32.98 0 00-25.4 39.3 33.12 33.12 0 0039.3 25.5c55-11.7 114.4 5.4 154.8 50.1 40.3 44.7 51.2 105.7 34 159.1-5.6 17.4 3.9 36 21.3 41.7 17.4 5.6 36-3.9 41.6-21.2v-.1c24.1-75.4 8.9-161.1-47.9-223.9zM729 499c-12.2-3.6-20.5-6.1-14.1-22.1 13.8-34.7 15.2-64.7.3-86-28-40.1-104.8-37.9-192.8-1.1 0 0-27.6 12.1-20.6-9.8 13.5-43.5 11.5-79.9-9.6-101-47.7-47.8-174.6 1.8-283.5 110.6C127.3 471.1 80 557.5 80 632.2 80 775.1 263.2 862 442.5 862c235 0 391.3-136.5 391.3-245 0-65.5-55.2-102.6-104.8-118zM443 810.8c-143 14.1-266.5-50.5-275.8-144.5-9.3-93.9 99.2-181.5 242.2-195.6 143-14.2 266.5 50.5 275.8 144.4C694.4 709 586 796.6 443 810.8z"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
