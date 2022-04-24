@@ -1,13 +1,19 @@
 import classnames from 'classnames';
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
   className?: string;
+  delay?: number;
 }
 
-const Bounce = ({ children, className, ...props }: Props): JSX.Element => (
+const Bounce = ({
+  children,
+  className,
+  delay = 0,
+  ...props
+}: Props): JSX.Element => (
   <motion.div
     className={classnames('inline-flex', className)}
     layout
@@ -17,6 +23,7 @@ const Bounce = ({ children, className, ...props }: Props): JSX.Element => (
     whileTap={{ x: 5 }}
     transition={{
       type: 'spring',
+      delay,
       stiffness: 100,
     }}
     viewport={{ once: true }}
