@@ -8,7 +8,6 @@ import {
 } from '@ant-design/icons';
 import type { SocialType } from '@config';
 import { SocialList } from '@config';
-import React from 'react';
 
 const SocialIcon = (type: SocialType): JSX.Element => {
   switch (type) {

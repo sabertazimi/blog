@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import Close from './Close';
 import Comment from './Comment';
 import Hamburger from './Hamburger';
