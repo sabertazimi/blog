@@ -20,7 +20,7 @@
     "lint:fix": "yarn lint:md:fix && yarn lint:style:fix",
     "lint:md:fix": "markdownlint ./contents --fix",
     "lint:style:fix": "stylelint ./styles/**/*.css --fix",
-    "changesets": "standard-version --dry-run -s",
+    "changeset": "standard-version --dry-run -s",
     "release": "standard-version -s",
     "serve": "next start",
     "start": "yarn dev",
