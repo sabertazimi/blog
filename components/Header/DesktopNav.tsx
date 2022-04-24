@@ -17,7 +17,8 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
     mode="horizontal"
     className={classNames(
-      'fixed top-0 z-100 w-full font-extrabold bg-transparent border-transparent transition transform-gpu hidden md:visible md:flex',
+      'fixed top-0 z-100 w-full font-extrabold bg-transparent border-transparent',
+      'transition transform-gpu hidden md:visible md:flex',
       {
         'bg-gradient-primary': !fixed,
         'bg-white/30': fixed,
@@ -26,19 +27,16 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       }
     )}
   >
-    <Menu.Item
-      key="home"
-      className={classNames('flex-container transition transform-gpu', {
-        'scale-100': !fixed,
-        'scale-0': fixed,
-      })}
-    >
-      <Link href="/">
-        <a>
-          <Image src={logo} alt="Logo" width={96} height={96} />
-        </a>
-      </Link>
-    </Menu.Item>
+    <Link href="/" key="home">
+      <a
+        className={classNames('flex-container ml-6 mr-auto transition transform-gpu', {
+          'scale-100': !fixed,
+          'scale-0': fixed,
+        })}
+      >
+        <Image src={logo} alt="Logo" width={96} height={96} />
+      </a>
+    </Link>
     {Routes.map(route => (
       <Menu.Item
         key={route.id}
@@ -62,7 +60,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
     <Menu.Item
       key="search"
       className={classNames(
-        'flex-container border-transparent transition transform-gpu',
+        'flex-container ml-auto mr-64 border-transparent transition transform-gpu',
         {
           'translate-x-0': !fixed,
           '-translate-x-28': fixed,
