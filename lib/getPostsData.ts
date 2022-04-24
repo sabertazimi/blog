@@ -92,7 +92,9 @@ async function getPostsData(): Promise<PostType[]> {
     };
   });
 
-  return sortedLinkedPostsData;
+  // Cache.
+  postsData = sortedLinkedPostsData;
+  return postsData;
 }
 
 async function getPostsMetadata(): Promise<PostMetaType[]> {
