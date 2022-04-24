@@ -1,6 +1,5 @@
 import Icon from '@ant-design/icons';
 import type { ComponentType, SVGProps } from 'react';
-import React from 'react';
 
 interface Props {
   className?: string;
