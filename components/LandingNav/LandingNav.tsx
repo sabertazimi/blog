@@ -1,6 +1,7 @@
 import { Close, Hamburger } from '@components/Icons';
 import type { RouteType } from '@config';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
 import React, { Fragment, useCallback, useState } from 'react';
 import LandingNavLink from './LandingNavLink';
 
@@ -17,25 +18,34 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
 
   return (
     <Fragment>
-      <nav
+      <motion.nav
         className={classNames(
-          'fixed top-0 left-0',
+          'fixed top-0 left-0 z-20',
           'flex flex-col items-center justify-center',
-          'w-full h-full',
-          'transition-all transform-gpu duration-500 z-100',
-          {
-            'translate-x-0': expanded,
-            '-translate-x-full': !expanded,
-          }
+          'w-full h-full'
         )}
         role="navigation"
+        animate={expanded ? 'open' : 'close'}
+        variants={{
+          open: {
+            x: 0,
+          },
+          close: {
+            x: '-100%',
+          },
+        }}
+        transition={{
+          type: 'tween',
+          ease: 'easeInOut',
+          duration: 0.4,
+        }}
       >
         {routes.map(route => (
           <LandingNavLink key={route.id} title={route.title} href={route.path}>
             {route.name}
           </LandingNavLink>
         ))}
-      </nav>
+      </motion.nav>
       <div
         className={classNames(
           'fixed bg-transparent border-none',
@@ -52,17 +62,26 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
           <Hamburger className="text-lg font-extrabold md:text-4xl text-light" />
         )}
       </div>
-      <div
+      <motion.div
         className={classNames(
           'fixed top-0 left-0 z-10',
           'block w-full h-full',
-          'transition-all transform-gpu bg-black',
-          {
-            'bg-opacity-80': expanded,
-            'bg-opacity-0': !expanded,
-          }
+          'transition-all transform-gpu bg-black'
         )}
         role="banner"
+        animate={expanded ? 'open' : 'close'}
+        variants={{
+          open: {
+            opacity: 0.8,
+          },
+          close: {
+            opacity: 0,
+          },
+        }}
+        transition={{
+          type: 'spring',
+          duration: 0.2,
+        }}
       />
     </Fragment>
   );
