@@ -64,7 +64,7 @@ const siteMetadata = {
 
 const basePosts = Array.from(Array(5).keys()).map(index => ({
   index,
-  slug: `/${index + 1}BasicNotes/`,
+  slug: `${index + 1}BasicNotes`,
   title: `${index + 1} Basic Notes`,
   timeToRead: index + 1,
   prevPost: null,
@@ -80,11 +80,11 @@ const posts = basePosts.map((post, index) => ({
   gitTime: '2018-08-08T00:00:00.000Z',
   tags: ['JavaScript', 'Frontend Development', 'Web Development'],
   prevPost: {
-    slug: `/${index + 2}BasicNotes/`,
+    slug: `${index + 2}BasicNotes`,
     title: `${index + 2} Basic Notes`,
   },
   nextPost: {
-    slug: `/${index}BasicNotes/`,
+    slug: `${index}BasicNotes`,
     title: `${index} Basic Notes`,
   },
   excerpt: `${index + 1} Basic Notes Basic Concepts`,

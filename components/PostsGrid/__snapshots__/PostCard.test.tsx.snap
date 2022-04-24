@@ -14,7 +14,6 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
       >
         <a
           class="text-base font-extrabold"
-          href="/tag/JavaScript"
         >
           JavaScript
         </a>
@@ -60,9 +59,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
           <span
             aria-label="read"
             class="anticon anticon-read"
-            href="/post/1BasicNotes"
             role="img"
-            tabindex="-1"
           >
             <svg
               aria-hidden="true"
@@ -99,7 +96,6 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
       >
         <a
           class="text-base font-extrabold"
-          href="/tag/Computer%20Science"
         >
           Computer Science
         </a>
@@ -145,9 +141,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
           <span
             aria-label="read"
             class="anticon anticon-read"
-            href="/post/1BasicNotes"
             role="img"
-            tabindex="-1"
           >
             <svg
               aria-hidden="true"

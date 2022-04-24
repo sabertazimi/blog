@@ -15,8 +15,34 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+class MockIntersectionObserver {
+  observe = jest.fn();
+  takeRecords = jest.fn();
+  disconnect = jest.fn();
+  unobserve = jest.fn();
+}
+
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+});
+
+Object.defineProperty(global, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+});
+
 window.requestAnimationFrame = function (callback) {
   return setTimeout(callback);
 };
 
 window.cancelAnimationFrame = window.clearTimeout;
+
+jest.mock(
+  'next/link',
+  () =>
+    ({ children }) =>
+      children
+);

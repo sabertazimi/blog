@@ -1,5 +1,5 @@
 import MockData from '@mocks/data';
-import { render } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import React from 'react';
 import Header from './Header';
 
@@ -17,6 +17,10 @@ describe('Header', () => {
   test('should render correctly (snapshot)', () => {
     const { container } = render(<Header posts={mockPosts} />);
 
-    expect(container).toMatchSnapshot();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    waitFor(() => expect(container).toMatchSnapshot());
   });
 });
