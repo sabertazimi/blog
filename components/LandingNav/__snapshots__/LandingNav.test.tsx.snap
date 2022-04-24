@@ -6,30 +6,42 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     class="fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full transition-all transform-gpu duration-500 z-100 -translate-x-full"
     role="navigation"
   >
-    <a
-      class="block px-0 pt-0 pb-3 mx-6 mb-16 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
-      href="/posts"
+    <span
+      class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110 mb-16"
     >
-      Posts
-    </a>
-    <a
-      class="block px-0 pt-0 pb-3 mx-6 mb-16 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
-      href="/tags"
+      <a
+        href="/posts"
+      >
+        Posts
+      </a>
+    </span>
+    <span
+      class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110 mb-16"
     >
-      Tags
-    </a>
-    <a
-      class="block px-0 pt-0 pb-3 mx-6 mb-16 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
-      href="/books"
+      <a
+        href="/tags"
+      >
+        Tags
+      </a>
+    </span>
+    <span
+      class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110 mb-16"
     >
-      Books
-    </a>
-    <a
-      class="block px-0 pt-0 pb-3 mx-6 mb-16 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110"
-      href="/about"
+      <a
+        href="/books"
+      >
+        Books
+      </a>
+    </span>
+    <span
+      class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl transition-all transform-gpu scale-100 opacity-80 hover:opacity-100 hover:scale-110 mb-16"
     >
-      About
-    </a>
+      <a
+        href="/about"
+      >
+        About
+      </a>
+    </span>
   </nav>
   <div
     class="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"

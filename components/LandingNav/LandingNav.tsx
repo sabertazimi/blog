@@ -31,7 +31,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
         role="navigation"
       >
         {routes.map(route => (
-          <LandingNavLink key={route.id} title={route.title} to={route.path}>
+          <LandingNavLink key={route.id} title={route.title} href={route.path}>
             {route.name}
           </LandingNavLink>
         ))}
