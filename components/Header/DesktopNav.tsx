@@ -29,7 +29,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   >
     <Link href="/" key="home">
       <a
-        className={classNames('flex-container ml-6 mr-auto transition transform-gpu', {
+        className={classNames('flex-container ml-auto mr-6 transition transform-gpu', {
           'scale-100': !fixed,
           'scale-0': fixed,
         })}
