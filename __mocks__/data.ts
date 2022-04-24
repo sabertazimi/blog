@@ -64,23 +64,16 @@ const siteMetadata = {
 
 const basePosts = Array.from(Array(5).keys()).map(index => ({
   index,
-  fields: { slug: `/${index + 1}BasicNotes/` },
-  frontmatter: { title: `${index + 1} Basic Notes` },
   slug: `/${index + 1}BasicNotes/`,
-  timeToRead: index + 1,
   title: `${index + 1} Basic Notes`,
+  timeToRead: index + 1,
+  prevPost: null,
+  nextPost: null,
+  source: `## ${index + 1} Basic Notes`,
 }));
 
 const posts = basePosts.map((post, index) => ({
   ...post,
-  fields: { slug: `/${index + 1}BasicNotes/`, gitTime: `${index + 1} time` },
-  frontmatter: {
-    title: `${index + 1} Basic Notes`,
-    subtitle: 'Be a Stupid Learner',
-    author: 'Sabertaz',
-    date: '2018-08-08T00:00:00.000Z',
-    tags: ['JavaScript', 'Frontend Development', 'Web Development'],
-  },
   subtitle: 'Be a Stupid Learner',
   author: 'Sabertaz',
   date: '2018-08-08T00:00:00.000Z',

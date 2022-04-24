@@ -1,19 +1,24 @@
 const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig.json');
+const nextJest = require('next/jest');
 
 const paths = pathsToModuleNameMapper(compilerOptions.paths, {
   prefix: '<rootDir>/',
 });
 
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-module.exports = {
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+/** @type {import('ts-jest').InitialOptionsTsJest} */
+const customJestConfig = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['json-summary', 'lcov', 'text', 'clover'],
   collectCoverageFrom: [
-    'src/components/**/*.{ts,tsx}',
-    'src/config/**/*.{ts,tsx}',
-    'src/hooks/**/*.{ts,tsx}',
+    'components/**/*.{ts,tsx}',
+    'config/**/*.{ts,tsx}',
+    'hooks/**/*.{ts,tsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
     '!**/build/**',
@@ -23,30 +28,11 @@ module.exports = {
     '!**/useVisibility.ts',
     '!**/Header.tsx',
   ],
-  transform: {
-    '^.+\\.[jt]sx?$': '<rootDir>/jest.transformer.js',
-  },
-  transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
   moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/__mocks__/jest.mock.js',
-    '^gatsby-page-utils/(.*)$': 'gatsby-page-utils/dist/$1', // Workaround for https://github.com/facebook/jest/issues/9771.
     ...paths,
   },
-  testPathIgnorePatterns: [
-    'node_modules',
-    '\\.cache',
-    '<rootDir>.*/public',
-    '<rootDir>.*/build',
-    '<rootDir>.*/dist',
-    '<rootDir>.*/coverage',
-  ],
-  globals: {
-    __PATH_PREFIX__: '',
-  },
-  testURL: 'http://localhost',
-  testEnvironment: 'jsdom',
-  setupFiles: ['<rootDir>/jest.env.setup.js'],
+  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };
+
+module.exports = createJestConfig(customJestConfig);
