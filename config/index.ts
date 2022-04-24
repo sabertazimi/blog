@@ -1,4 +1,4 @@
-export { Colors, getColorByName } from './colors';
+export { ColorPalette, Colors, getColorByName } from './colors';
 export type { BaseColor, Color, PaletteColor } from './colors';
 export { Routes } from './routes';
 export type { RouteType } from './routes';
