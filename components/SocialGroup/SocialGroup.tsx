@@ -2,7 +2,6 @@ import { SocialButton } from '@components';
 import type { Color, SocialType } from '@config';
 import { Colors, SocialList, SocialQuery } from '@config';
 import { Space } from 'antd';
-import classNames from 'classnames';
 import React from 'react';
 
 interface Props {
@@ -11,12 +10,7 @@ interface Props {
 
 const SocialGroup = ({ url }: Props): JSX.Element => (
   <Space
-    className={classNames(
-      'fixed left-0 top-1/2',
-      'transition duration-300',
-      '-translate-y-1/2 transform-gpu -translate-x-3/4',
-      'hover:translate-x-0'
-    )}
+    className="fixed left-0  top-1/2 z-10 hidden md:visible md:inline-flex"
     direction="vertical"
     align="center"
     size={0}
