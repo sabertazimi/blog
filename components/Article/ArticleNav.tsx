@@ -51,7 +51,7 @@ const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
       )}
       size="large"
     >
-      <Link href={nextPost ? `/post${nextPost.slug}` : '/posts'}>
+      <Link href={nextPost ? `/post/${nextPost.slug}` : '/posts'}>
         <a className="m-auto font-extrabold text-light">
           {nextPost ? nextPost.title : 'Back to Home'}
         </a>
