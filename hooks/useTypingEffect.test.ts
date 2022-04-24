@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useTypingEffect from './useTypingEffect';
 
 describe('useTypingEffect', () => {
@@ -13,6 +13,6 @@ describe('useTypingEffect', () => {
   test('should process null ref correctly', () => {
     const { result } = renderHook(() => useTypingEffect(mockRef, mockOptions));
 
-    expect(result.error).toBeFalsy();
+    expect(result.current).toBeFalsy();
   });
 });
