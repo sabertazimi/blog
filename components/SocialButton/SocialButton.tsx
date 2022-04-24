@@ -1,4 +1,5 @@
 import { SocialIcon } from '@components/Icons';
+import { Bounce} from '@components/Motion';
 import type { SocialType } from '@config';
 import { Button } from 'antd';
 import type { HTMLProps } from 'react';
@@ -17,15 +18,17 @@ const SocialButton = ({
   color,
   className = '',
 }: Props): JSX.Element => (
-  <Button
-    className={`text-center text-light rounded-none ${className}`}
-    role="link"
-    size="large"
-    type="link"
-    href={`${url}`}
-    icon={SocialIcon(type)}
-    style={{ backgroundColor: color || '' }}
-  />
+  <Bounce>
+    <Button
+      className={`text-center text-light rounded-none ${className}`}
+      role="link"
+      size="large"
+      type="link"
+      href={`${url}`}
+      icon={SocialIcon(type)}
+      style={{ backgroundColor: color || '' }}
+    />
+  </Bounce>
 );
 
 export default SocialButton;
