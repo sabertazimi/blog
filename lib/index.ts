@@ -6,3 +6,4 @@ export {
   getPostsMeta,
   getTagsData,
 } from './getPostsData';
+export { default as getSitemap } from './getSitemap';
