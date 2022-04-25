@@ -1,6 +1,6 @@
 import { Result, Typography } from 'antd';
 import type { ErrorInfo } from 'react';
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 interface Props {
   children: JSX.Element;

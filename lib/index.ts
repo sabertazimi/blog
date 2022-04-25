@@ -6,4 +6,3 @@ export {
   getPostsMeta,
   getTagsData,
 } from './getPostsData';
-export { default as getSiteConfig } from './getSiteConfig';

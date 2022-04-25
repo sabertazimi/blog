@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import FlexContainer from './FlexContainer';
 
 describe('FlexContainer', () => {

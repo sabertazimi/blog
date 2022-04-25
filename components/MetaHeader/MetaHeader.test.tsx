@@ -1,25 +1,16 @@
-import MockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import MetaHeader from './MetaHeader';
 
 describe('MetaHeader', () => {
-  const mockUrl = MockData.siteConfig.siteUrl;
-  const mockTitle = MockData.siteConfig.title;
-
   test('should render correctly (snapshot)', () => {
-    const { container } = render(
-      <MetaHeader siteUrl={mockUrl} title={mockTitle} />
-    );
+    const { container } = render(<MetaHeader />);
 
     expect(container).toMatchSnapshot();
   });
 
   test('should render accessibility guidelines (AXE)', async () => {
-    const { container } = render(
-      <MetaHeader siteUrl={mockUrl} title={mockTitle} />
-    );
+    const { container } = render(<MetaHeader />);
 
     const a11y = await axe(container);
 

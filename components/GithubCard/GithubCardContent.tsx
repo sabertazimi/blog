@@ -5,7 +5,6 @@ import {
 } from '@ant-design/icons';
 import type { Profile } from '@types';
 import { Space } from 'antd';
-import React from 'react';
 
 interface Props {
   profile: Profile;

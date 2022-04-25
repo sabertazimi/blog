@@ -1,17 +1,16 @@
-import type { SocialType } from '@config';
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render, screen } from '@testing-library/react';
+import type { SocialType } from '@types';
 import { axe } from 'jest-axe';
-import React from 'react';
 import SocialButton from './SocialButton';
 
 describe('SocialButton', () => {
-  const mockSocialList = [
-    ...Object.keys(MockData.siteConfig.socialList),
+  const mockSocials= [
+    ...Object.keys(mockData.siteConfig.socials),
     'default',
   ];
 
-  test.each(mockSocialList)(
+  test.each(mockSocials)(
     'should render [%s] button correctly (snapshot)',
     social => {
       const { container } = render(
@@ -33,7 +32,7 @@ describe('SocialButton', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test.each(mockSocialList)(
+  test.each(mockSocials)(
     'should render [%s] button accessibility guidelines (AXE)',
     async social => {
       const { container } = render(
@@ -59,7 +58,7 @@ describe('SocialButton', () => {
     expect(a11y).toHaveNoViolations();
   });
 
-  test.each(mockSocialList)(
+  test.each(mockSocials)(
     'should render [%s] button with correct structure',
     social => {
       render(
@@ -78,7 +77,7 @@ describe('SocialButton', () => {
     }
   );
 
-  test.each(mockSocialList)(
+  test.each(mockSocials)(
     'should render [%s] button with correct URL',
     social => {
       render(

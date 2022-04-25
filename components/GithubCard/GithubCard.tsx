@@ -1,44 +1,31 @@
 import { getColorByName } from '@config';
 import type { Profile, Repo } from '@types';
-import { Avatar, Badge, Card, Typography } from 'antd';
-import React from 'react';
+import { Avatar, Badge, Card } from 'antd';
 import GithubCardContent from './GithubCardContent';
 import GithubCardHeader from './GithubCardHeader';
 import GithubRepoCard from './GithubRepoCard';
 
 interface Props {
-  email: string;
-  profile?: Profile;
-  repos?: Repo[];
+  profile: Profile;
+  repos: Repo[];
 }
 
-const GithubCard = ({ email, profile, repos }: Props): JSX.Element => {
-  if (profile && repos) {
-    return (
-      <Badge.Ribbon
-        text={profile.username}
-        color={getColorByName(profile.username)}
-      >
-        <Card hoverable title={<GithubCardHeader profile={profile} />}>
-          <Card.Meta
-            avatar={<Avatar src={profile.avatar} alt={profile.username} />}
-            title={<GithubCardContent profile={profile} />}
-            description={`Joined in ${profile.createDate}`}
-          />
-          {repos.map((repo, index) => (
-            <GithubRepoCard key={index} repo={repo} />
-          ))}
-        </Card>
-      </Badge.Ribbon>
-    );
-  }
+const GithubCard = ({ profile, repos }: Props): JSX.Element => {
+  const { username, avatar, createDate } = profile;
 
   return (
-    <div className="mx-auto my-0 text-center">
-      <Typography.Title>
-        Please mail to <a href={`mailto:${email}`}>me</a>.
-      </Typography.Title>
-    </div>
+    <Badge.Ribbon text={username} color={getColorByName(username)}>
+      <Card hoverable title={<GithubCardHeader profile={profile} />}>
+        <Card.Meta
+          avatar={<Avatar src={avatar} alt={username} />}
+          title={<GithubCardContent profile={profile} />}
+          description={`Joined in ${createDate}`}
+        />
+        {repos.map((repo, index) => (
+          <GithubRepoCard key={index} repo={repo} />
+        ))}
+      </Card>
+    </Badge.Ribbon>
   );
 };
 

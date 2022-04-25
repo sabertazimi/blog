@@ -3,16 +3,15 @@ import {
   ArrowRightOutlined,
   HomeOutlined,
 } from '@ant-design/icons';
-import { Bounce } from '@components/Motion';
 import { FlexContainer } from '@components';
-import type { PostMetaType } from '@types';
+import { Bounce } from '@components/Motion';
+import type { PostMeta } from '@types';
 import { Button } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
-import React from 'react';
 
 interface Props {
-  post: PostMetaType;
+  post: PostMeta;
 }
 
 const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (

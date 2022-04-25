@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import Container from './Container';
 
 describe('Container', () => {

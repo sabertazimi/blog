@@ -1,11 +1,10 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import PostsList from './PostsList';
 
 describe('PostsList', () => {
-  const mockPosts = MockData.posts;
+  const mockPosts = mockData.posts;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<PostsList posts={mockPosts} />);

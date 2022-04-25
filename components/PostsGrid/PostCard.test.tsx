@@ -1,12 +1,11 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import PostCard from './PostCard';
 
 describe('PostCard', () => {
-  const mockBasePost = MockData.basePosts[0];
-  const mockPost = MockData.posts[0];
+  const mockBasePost = mockData.basePosts[0];
+  const mockPost = mockData.posts[0];
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<PostCard post={mockPost} />);

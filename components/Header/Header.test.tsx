@@ -1,10 +1,9 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { act, render, waitFor } from '@testing-library/react';
-import React from 'react';
 import Header from './Header';
 
 describe('Header', () => {
-  const mockPosts = MockData.posts;
+  const mockPosts = mockData.posts;
 
   beforeAll(() => {
     jest.useFakeTimers();

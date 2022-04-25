@@ -1,11 +1,10 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import ArticleToc from './ArticleToc';
 
 describe('ArticleToc', () => {
-  const mockToc = MockData.posts[0].toc;
+  const mockToc = mockData.posts[0].toc;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<ArticleToc toc={mockToc} />);

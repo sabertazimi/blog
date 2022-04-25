@@ -1,6 +1,5 @@
-import { Routes } from '@config';
+import { routes } from '@config';
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {
@@ -13,7 +12,7 @@ describe('LandingNav', () => {
   });
 
   test('should render routes correctly (snapshot)', () => {
-    const { container } = render(<LandingNav routes={Routes} />);
+    const { container } = render(<LandingNav routes={routes} />);
 
     act(() => {
       jest.advanceTimersByTime(1000);
@@ -23,7 +22,7 @@ describe('LandingNav', () => {
   });
 
   test('should render route with correct structure', () => {
-    render(<LandingNav routes={Routes} />);
+    render(<LandingNav routes={routes} />);
 
     const nav = screen.getByRole('navigation');
     const icon = screen.getByRole('img');
@@ -43,7 +42,7 @@ describe('LandingNav', () => {
   });
 
   test('should expanded when clicked', () => {
-    render(<LandingNav routes={Routes} />);
+    render(<LandingNav routes={routes} />);
     act(() => {
       jest.advanceTimersByTime(1000);
     });

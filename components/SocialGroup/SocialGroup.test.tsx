@@ -1,11 +1,10 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import SocialGroup from './SocialGroup';
 
 describe('SocialGroup', () => {
-  const mockUrl = MockData.siteConfig.siteUrl;
+  const mockUrl = mockData.siteConfig.siteUrl;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<SocialGroup url={mockUrl} />);

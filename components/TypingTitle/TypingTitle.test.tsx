@@ -1,11 +1,10 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render, screen, waitFor } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import TypingTitle from './TypingTitle';
 
 describe('TypingTitle', () => {
-  const mockTitles = MockData.siteConfig.landingTitles;
+  const mockTitles = mockData.siteConfig.landingTitles;
   jest.mock('typed.js');
 
   test('should render correctly (snapshot)', () => {

@@ -1,10 +1,9 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
 import PostsSearchBar from './PostsSearchBar';
 
 describe('PostsSearchBar', () => {
-  const mockPosts = MockData.posts;
+  const mockPosts = mockData.posts;
 
   beforeEach(() => {
     const { getComputedStyle } = window;

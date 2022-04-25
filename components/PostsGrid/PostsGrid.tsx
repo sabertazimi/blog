@@ -1,10 +1,9 @@
-import type { PostMetaType } from '@types';
-import React from 'react';
+import type { PostMeta } from '@types';
 import DesktopPostsGrid from './DesktopPostsGrid';
 import MobilePostsGrid from './MobilePostsGrid';
 
 interface Props {
-  posts: PostMetaType[];
+  posts: PostMeta[];
 }
 
 const PostsGrid = ({ posts }: Props): JSX.Element => (

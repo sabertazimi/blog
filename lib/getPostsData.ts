@@ -1,11 +1,11 @@
-import type { PostMetaType, PostType, TagsType, TagType } from '@types';
+import type { Post, PostMeta, Tag, Tags } from '@types';
 import matter from 'gray-matter';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const contents = path.join(process.cwd(), 'contents');
-let postsData: PostType[] = [];
+const contentsPath = path.join(process.cwd(), 'contents');
+let postsData: Post[] = [];
 
 async function* walk(directoryPath: string): AsyncGenerator<string> {
   const directory = await fs.opendir(directoryPath);
@@ -21,51 +21,58 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
   }
 }
 
-function timeToRead(content: string): number {
+function getTimeToRead(content: string): number {
   return content.split(' ').length / 200;
 }
 
-async function generatePostData(filePath: string): Promise<PostType> {
-  const fileExt = path.extname(filePath);
-  const fileSlug = path.basename(filePath, fileExt);
-  const fileContents = await fs.readFile(filePath, 'utf8');
-  const frontMatter = matter(fileContents, { excerpt: true });
-  const gitTime = execSync(
+async function generatePostData(filePath: string): Promise<Post> {
+  const fileContent = await fs.readFile(filePath, 'utf8');
+  const slug = path.basename(filePath, path.extname(filePath));
+
+  const {
+    content: source,
+    excerpt,
+    data: { title, date, ...fields },
+  } = matter(fileContent, { excerpt: true });
+  const timeToRead = getTimeToRead(source);
+  const createTime = new Date(date).toISOString();
+  const updateTime = execSync(
     `git log -1 --pretty=format:%aI ${filePath}`
   ).toString();
 
   return {
-    ...frontMatter.data,
-    slug: fileSlug,
-    title: frontMatter.data.title,
-    timeToRead: timeToRead(frontMatter.content),
-    gitTime,
-    date: new Date(frontMatter.data.date).toISOString(),
-    source: frontMatter.content,
-    excerpt: frontMatter.excerpt,
+    ...fields,
+    slug,
+    title,
+    timeToRead,
+    createTime,
+    updateTime,
+    source,
+    excerpt,
     prevPost: null,
     nextPost: null,
   };
 }
 
-async function getPostsData(): Promise<PostType[]> {
+async function getPostsData(): Promise<Post[]> {
   if (postsData.length) {
     return postsData;
   }
 
-  for await (const filePath of walk(contents)) {
+  for await (const filePath of walk(contentsPath)) {
     const fileExt = path.extname(filePath);
 
     if (fileExt === '.md') {
       const postData = await generatePostData(filePath);
+      console.log(Object.keys(postData));
       postsData.push(postData);
     }
   }
 
   const sortedPostsData = postsData.sort((a, b) => {
     return (
-      new Date(b.date ?? b.gitTime ?? Date.now()).getTime() -
-      new Date(a.date ?? a.gitTime ?? Date.now()).getTime()
+      new Date(b.createTime ?? b.updateTime ?? Date.now()).getTime() -
+      new Date(a.createTime ?? a.updateTime ?? Date.now()).getTime()
     );
   });
 
@@ -97,7 +104,7 @@ async function getPostsData(): Promise<PostType[]> {
   return postsData;
 }
 
-async function getPostsMeta(): Promise<PostMetaType[]> {
+async function getPostsMeta(): Promise<PostMeta[]> {
   const postsData = await getPostsData();
   const postsMeta = postsData.map(post => {
     const { source, excerpt, toc, html, ...postMeta } = post;
@@ -106,12 +113,12 @@ async function getPostsMeta(): Promise<PostMetaType[]> {
   return postsMeta;
 }
 
-async function getTagsData(): Promise<TagsType> {
+async function getTagsData(): Promise<Tags> {
   const postsData = await getPostsData();
   const tagsData = postsData
     .map(post => post.tags || [])
     .flat()
-    .reduce((tags: TagsType, tag: TagType) => {
+    .reduce((tags: Tags, tag: Tag) => {
       if (!tags[tag]) tags[tag] = 0;
       tags[tag] += 1;
       return tags;
@@ -122,7 +129,7 @@ async function getTagsData(): Promise<TagsType> {
 async function getPostData(
   slug: string,
   ext = 'md'
-): Promise<PostType | undefined> {
+): Promise<Post | undefined> {
   const postsData = await getPostsData();
   const postData = postsData.find(post => post.slug === slug);
   return postData;

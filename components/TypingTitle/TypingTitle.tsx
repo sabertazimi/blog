@@ -1,6 +1,6 @@
 import { useTypingEffect } from '@hooks';
 import classNames from 'classnames';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 interface Props {
   titles: string[];

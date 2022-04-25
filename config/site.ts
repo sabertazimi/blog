@@ -1,18 +1,40 @@
-const config = {
+import { SocialType } from './social';
+
+interface Book {
+  title: string;
+  author: string;
+  url: string;
+  description: string;
+}
+
+interface SiteConfig {
+  title: string;
+  author: string;
+  email: string;
+  siteUrl: string;
+  disqusUrl: string;
+  landingTitles: string[];
+  socials: {
+    [key in SocialType]: string;
+  };
+  books: Book[];
+}
+
+const siteConfig: SiteConfig = {
   title: 'Sabertaz Blog',
   author: 'Sabertaz',
-  siteUrl: 'https://tazimi.dev',
   email: 'sabertazimi@gmail.com',
+  siteUrl: 'https://blog.tazimi.dev',
   disqusUrl: 'https://sabertaz-blog.disqus.com',
   landingTitles: [`I'm a coder.`, `I'm a learner.`],
-  socialList: {
+  socials: {
     github: 'sabertazimi',
     twitter: 'sabertazimi',
     facebook: 'sabertazimi',
     linkedin: 'sabertazimi',
     weibo: 'sabertazimi',
   },
-  bookList: [
+  books: [
     {
       title: 'awesome-notes',
       author: 'sabertazimi',
@@ -22,4 +44,5 @@ const config = {
   ],
 };
 
-export default config;
+export type { Book, SiteConfig };
+export { siteConfig };

@@ -1,11 +1,11 @@
 import { useVisibility } from '@hooks';
-import type { PostMetaType } from '@types';
-import React, { useCallback, useRef, useState } from 'react';
+import type { PostMeta } from '@types';
+import { useCallback, useRef, useState } from 'react';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
 
 interface Props {
-  posts: PostMetaType[];
+  posts: PostMeta[];
 }
 
 const Header = ({ posts }: Props): JSX.Element => {

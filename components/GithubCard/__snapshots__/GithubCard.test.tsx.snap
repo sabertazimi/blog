@@ -527,26 +527,6 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`GithubCard should render correctly when missing GitHub data (snapshot) 1`] = `
-<div>
-  <div
-    class="mx-auto my-0 text-center"
-  >
-    <h1
-      class="ant-typography"
-    >
-      Please mail to 
-      <a
-        href="mailto:example@github.com"
-      >
-        me
-      </a>
-      .
-    </h1>
-  </div>
-</div>
-`;
-
 exports[`GithubCard should render correctly when missing bio and location data (snapshot) 1`] = `
 <div>
   <div

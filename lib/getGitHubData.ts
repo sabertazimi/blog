@@ -1,8 +1,8 @@
+import { siteConfig } from '@config';
 import { Octokit } from '@octokit/rest';
-import type { GitHubType } from '@types';
-import getSiteConfig from './getSiteConfig';
+import type { GitHub } from '@types';
 
-let githubData: GitHubType = {
+let githubData: GitHub = {
   profile: {
     username: 'sabertazimi',
     avatar: 'https://avatars.githubusercontent.com/u/12670482?v=4',
@@ -37,18 +37,18 @@ let githubData: GitHubType = {
   ],
 };
 
-export default async function getGitHubData(): Promise<GitHubType> {
+export default async function getGitHubData(): Promise<GitHub> {
   const octokit = new Octokit();
-  const siteConfig = getSiteConfig();
+  const username = siteConfig.socials.github;
 
   try {
     const { data: profileJSON } = await octokit.rest.users.getByUsername({
-      username: siteConfig.socialList.github,
+      username,
     });
     const { data: reposJSON } = await octokit.request(
       'GET /users/{username}/repos',
       {
-        username: siteConfig.socialList.github,
+        username,
       }
     );
 
@@ -80,7 +80,7 @@ export default async function getGitHubData(): Promise<GitHubType> {
           repoUrl: repo.html_url,
         }))
         .slice(0, 3),
-    } as GitHubType;
+    } as GitHub;
   } catch (error) {
     if (error instanceof Error) {
       console.warn(error.message);

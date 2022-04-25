@@ -1,11 +1,10 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import ArticleComments from './ArticleComments';
 
 describe('ArticleComments', () => {
-  const mockUrl = MockData.siteConfig.disqusUrl;
+  const mockUrl = mockData.siteConfig.disqusUrl;
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(<ArticleComments url={mockUrl} />);
