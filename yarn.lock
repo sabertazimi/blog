@@ -456,6 +456,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@corex/deepmerge@npm:^2.6.148":
+  version: 2.6.148
+  resolution: "@corex/deepmerge@npm:2.6.148"
+  checksum: b80b6b3e408901151de26e27b519a43cda1771a81e5390ff10cd6b47add0139bb315ca44112ff076d68ac887d7cfe237c9fb33868efb04839c4afb7c38864385
+  languageName: node
+  linkType: hard
+
 "@csstools/postcss-color-function@npm:^1.0.3":
   version: 1.1.0
   resolution: "@csstools/postcss-color-function@npm:1.1.0"
@@ -1194,6 +1201,7 @@ __metadata:
     next: 12.1.5
     next-progress: ^2.2.0
     next-seo: ^5.4.0
+    next-sitemap: ^2.5.20
     postcss: ^8.4.12
     postcss-flexbugs-fixes: ^5.0.2
     postcss-preset-env: ^7.4.3
@@ -6310,6 +6318,20 @@ __metadata:
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
   checksum: fe19b4f7237111d6e8c2f3e9128946480f1b6e2d7ffab5902e8a4a1114721142daa187175334fa7d6da25605658e63cd8c6e3a68a9d9678fd7fbd4fb4b061391
+  languageName: node
+  linkType: hard
+
+"next-sitemap@npm:^2.5.20":
+  version: 2.5.20
+  resolution: "next-sitemap@npm:2.5.20"
+  dependencies:
+    "@corex/deepmerge": ^2.6.148
+    minimist: ^1.2.6
+  peerDependencies:
+    next: "*"
+  bin:
+    next-sitemap: bin/next-sitemap
+  checksum: b2a770575117d709bf0c90ca6f6e76a6602980472480cbaa1f60104dae01428ce2491e4e06a19365014dec32629b19b8d627c40df0137ee126390aa8da42c30e
   languageName: node
   linkType: hard
 
