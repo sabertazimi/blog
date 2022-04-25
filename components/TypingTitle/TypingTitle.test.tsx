@@ -1,20 +1,18 @@
-import mockData from '@mocks/data';
 import { render, screen, waitFor } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import TypingTitle from './TypingTitle';
 
 describe('TypingTitle', () => {
-  const mockTitles = mockData.siteConfig.landingTitles;
   jest.mock('typed.js');
 
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<TypingTitle titles={mockTitles} />);
+    const { container } = render(<TypingTitle />);
 
     expect(container).toMatchSnapshot();
   });
 
   test('Should render accessibility guidelines (AXE)', async () => {
-    const { container } = render(<TypingTitle titles={mockTitles} />);
+    const { container } = render(<TypingTitle />);
 
     const a11y = await axe(container);
 
@@ -22,7 +20,7 @@ describe('TypingTitle', () => {
   });
 
   test('should work correctly', async () => {
-    render(<TypingTitle titles={mockTitles} />);
+    render(<TypingTitle />);
 
     await waitFor(() => {
       expect(screen.getByRole('banner')).toBeInTheDocument();

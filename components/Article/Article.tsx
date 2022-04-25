@@ -1,5 +1,6 @@
 import { Container, SocialGroup } from '@components';
 import { Comment } from '@components/Icons';
+import { siteConfig } from '@config';
 import type { Post } from '@types';
 import ArticleComments from './ArticleComments';
 import ArticleContent from './ArticleContent';
@@ -10,11 +11,13 @@ import ArticleToc from './ArticleToc';
 
 interface Props {
   post: Post;
-  commentUrl: string;
-  socialUrl: string;
+  siteUrl?: string;
 }
 
-const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
+const Article = ({
+  post,
+  siteUrl = siteConfig.siteUrl,
+}: Props): JSX.Element => {
   const {
     slug,
     title,
@@ -43,6 +46,8 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
     nextPost,
   };
 
+  const socialUrl = `${siteUrl}/post/${slug}`;
+
   return (
     <div>
       <ArticleHeader post={postMeta} />
@@ -50,11 +55,11 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
         <ArticleToc toc={toc as string} />
         <ArticleContent content={html as string} />
         <ArticleDivider>{subtitle || 'Blog'}</ArticleDivider>
-        <ArticleNav post={postMeta} />
+        <ArticleNav prevPost={prevPost} nextPost={nextPost} />
         <ArticleDivider>
           <Comment className="text-2xl text-primary" />
         </ArticleDivider>
-        <ArticleComments url={commentUrl} />
+        <ArticleComments />
         <SocialGroup url={socialUrl} />
       </Container>
     </div>

@@ -29,7 +29,7 @@ const About = ({
   githubData: { profile, repos },
   postsMeta,
 }: Props): JSX.Element => (
-  <Layout banner="About Me" posts={postsMeta} buildTime={buildTime}>
+  <Layout banner="About Me" buildTime={buildTime} posts={postsMeta}>
     <GithubCard profile={profile} repos={repos} />
   </Layout>
 );

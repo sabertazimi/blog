@@ -9,6 +9,14 @@
     "next",
     "react"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sabertazimi/blog"
+  },
+  "bugs": {
+    "url": "https://github.com/sabertazimi/blog/issues"
+  },
+  "browserslist": "last 2 versions",
   "packageManager": "yarn@3.2.0",
   "scripts": {
     "build": "next build",
@@ -36,9 +44,9 @@
     "framer-motion": "^6.3.1",
     "next": "12.1.5",
     "next-progress": "^2.2.0",
+    "next-seo": "^5.4.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-helmet": "^6.1.0",
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
@@ -54,7 +62,6 @@
     "@types/node": "^16.11.27",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.2",
-    "@types/react-helmet": "^6.1.5",
     "concurrently": "^7.1.0",
     "eslint": "^8.14.0",
     "eslint-config-next": "12.1.5",
@@ -73,13 +80,5 @@
     "ts-jest": "^27.1.4",
     "tslib": "^2.4.0",
     "typescript": "^4.6.3"
-  },
-  "browserslist": "last 2 versions",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sabertazimi/blog"
-  },
-  "bugs": {
-    "url": "https://github.com/sabertazimi/blog/issues"
   }
 }

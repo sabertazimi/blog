@@ -4,14 +4,15 @@ import { BackTop } from 'antd';
 import type { ReactNode } from 'react';
 
 interface Props {
+  banner: string;
   posts: PostMeta[];
   buildTime: string | number | Date;
   children: ReactNode;
 }
 
-const PostLayout = ({ posts, buildTime, children }: Props): JSX.Element => (
+const PostLayout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
   <div>
-    <MetaHeader />
+    <MetaHeader title={`${banner}`}/>
     <Header posts={posts} />
     <Container className="max-w-full">
       {children}

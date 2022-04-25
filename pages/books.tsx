@@ -1,5 +1,4 @@
 import { BooksGrid } from '@components';
-import { siteConfig } from '@config';
 import { Layout } from '@layouts';
 import { getBuildTime, getPostsMeta } from '@lib';
 import type { PostMeta } from '@types';
@@ -24,7 +23,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const Books = ({ buildTime, postsMeta }: Props): JSX.Element => (
   <Layout banner="Books" buildTime={buildTime} posts={postsMeta}>
-    <BooksGrid books={siteConfig.books} />
+    <BooksGrid />
   </Layout>
 );
 

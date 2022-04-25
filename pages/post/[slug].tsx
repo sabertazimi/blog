@@ -1,5 +1,4 @@
 import { Article } from '@components';
-import { siteConfig } from '@config';
 import { PostLayout } from '@layouts';
 import { getBuildTime, getPostData, getPostsMeta } from '@lib';
 import type { Post, PostMeta } from '@types';
@@ -47,15 +46,14 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async ({
   };
 };
 
-const Post = ({ buildTime, postData, postsMeta }: Props): JSX.Element => {
-  const { siteUrl, disqusUrl } = siteConfig;
-  const socialUrl = `${siteUrl}/post/${postData.slug}`;
-
-  return (
-    <PostLayout buildTime={buildTime} posts={postsMeta}>
-      <Article post={postData} commentUrl={disqusUrl} socialUrl={socialUrl} />
-    </PostLayout>
-  );
-};
+const Post = ({ buildTime, postData, postsMeta }: Props): JSX.Element => (
+  <PostLayout
+    banner={`${postData.title}`}
+    buildTime={buildTime}
+    posts={postsMeta}
+  >
+    <Article post={postData} />
+  </PostLayout>
+);
 
 export default Post;

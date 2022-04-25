@@ -10,10 +10,11 @@ import classNames from 'classnames';
 import Link from 'next/link';
 
 interface Props {
-  post: PostMeta;
+  prevPost: PostMeta['prevPost'];
+  nextPost: PostMeta['nextPost'];
 }
 
-const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
+const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
   <FlexContainer
     className="justify-between"
     role="navigation"

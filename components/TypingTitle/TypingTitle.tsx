@@ -1,9 +1,10 @@
+import { siteConfig } from '@config';
 import { useTypingEffect } from '@hooks';
 import classNames from 'classnames';
 import { useRef } from 'react';
 
 interface Props {
-  titles: string[];
+  titles?: string[];
   speed?: number;
   delay?: number;
   loop?: boolean;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const TypingTitle = ({
-  titles,
+  titles = siteConfig.landingTitles,
   speed = 60,
   delay = 600,
   loop = true,
