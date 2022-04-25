@@ -1,17 +1,14 @@
 import { SlideUp } from '@components/Motion';
-import styles from './ArticleContent.module.css';
-
+import type { Post } from '@types';
+import { MDXRemote } from 'next-mdx-remote';
 interface Props {
-  content: string;
+  source: Post['source'];
 }
 
-const ArticleContent = ({ content }: Props): JSX.Element => {
+const ArticleContent = ({ source }: Props): JSX.Element => {
   return (
     <SlideUp>
-      <div
-        className={styles.markdownBody}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <MDXRemote {...source} />
     </SlideUp>
   );
 };

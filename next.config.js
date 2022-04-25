@@ -2,15 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    dirs: [
-      'components',
-      'config',
-      'hooks',
-      'layouts',
-      'lib',
-      'pages',
-      'types',
-    ],
+    dirs: ['components', 'config', 'hooks', 'layouts', 'lib', 'pages', 'types'],
   },
   swcMinify: true,
 };

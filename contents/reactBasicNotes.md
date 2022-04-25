@@ -14,14 +14,15 @@ tags:
 
 # React Basic Notes
 
-## Core of React
+## React Core Packages
 
 - `Scheduler` 调度器: 调度任务的优先级, 高优任务优先进入 `Reconciler`.
 - `Reconciler` 协调器:
   - 装载 `Renderer`.
   - 接收 `ReactDOM` 和 `React` 模块 (用户代码) 发起的更新请求:
-    - `setState`.
-    - `dispatchAction`.
+    - `ReactFiberReconciler.updateContainer`.
+    - `ReactFiberClassComponent.setState`.
+    - `ReactFiberHooks.dispatchAction`.
   - 找出变化组件, 构建 Fiber Tree.
 - `Renderer` 渲染器:
   - 引导 `React` 应用启动 (e.g `ReactDOM.createRoot(rootNode).render(<App />)`).
@@ -29,114 +30,263 @@ tags:
 
 其中 `Reconciler` 构建 Fiber Tree 的过程被包装成一个回调函数, 传入 `Scheduler` 模块等待调度.
 `Scheduler` 将回调函数进一步包装成任务对象, 放入多优先级调度的任务队列, 循环消费任务队列, 直至队列清空.
+Scheduler Work Loop (任务调度循环) 负责调度 `Task`,
+Reconciler Work Loop (`Fiber` 构造循环) 负责实现 `Task`.
+
+`React` runtime main logic:
+
+- Updates: `Add`/`Delete`/`Mutation` updates from `User Code`.
+- Registration:
+  - `Reconciler` receive updates request from `User Code`.
+  - `Scheduler` register new `Task`.
+- Execution:
+  - `Scheduler` consume `Task` in `TaskQueue` in work loop.
+  - `Reconciler` execute `Task` work.
+    - `Fiber` 构造循环: construct `Fiber` tree.
+    - `commitRoot`: render `Fiber` tree with `Renderer`.
+- 任务调度循环与 `Fiber` 构造循环相互配合可实现**可中断渲染**:
+  - 渲染中断 (`Reconciler.renderRootConcurrent().shouldYield()`):
+    - 存在更高优先级任务 (Priority Scheduling).
+    - 当前帧没有剩余时间 (Time Slicing).
+  - 渲染恢复 (`Scheduler.workLoop()`):
+    将 `callback()` 返回的任务放入任务队列, 继续进行调度直至清空任务队列.
 
 [![React Core Packages](./figures/ReactCorePackages.png)](https://7kms.github.io/react-illustration-series/main/macro-structure)
 
-### React Virtual DOM
+## React Virtual DOM
 
 - Reduce rendering times with reconciliation algorithm,
   improving rendering efficiency.
 - Cross platform code.
 - Functional programming without details on DOM manipulation.
-- Virtual Dom 很多时候都不是最优的操作,
+- Virtual DOM 很多时候都不是最优的操作,
   但它具有普适性, 在效率与可维护性之间达到平衡.
 - [SnabbDOM](https://github.com/snabbdom/snabbdom):
   virtual DOM library focus on modularity and performance.
 
-### React Fiber
+## React Core Workflow
 
-- [A Simple React with Fiber Reconciliation](https://github.com/sabertazimi/meact)
+### Create RootContainer
 
-React Fiber 的目标是提高其在动画、布局和手势等领域的适用性.
-它的主要特性是 `Incremental Rendering` : 将渲染任务拆分为小的任务块并将任务分配到多个帧上的能力.
+#### Legacy Root
 
-#### React Fiber Metadata
+- [react-dom/src/client/ReactDOMLegacy](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMLegacy.js):
+  - **render**.
+  - legacyRenderSubtreeIntoContainer.
+  - legacyCreateRootFromDOMContainer.
+- [react-reconciler/src/ReactFiberReconciler](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberReconciler.new.js):
+  - **createContainer**.
+- [react-dom/src/client/ReactDOMComponentTree](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMComponentTree.js):
+  - markContainerAsRoot.
+- [react-reconciler/src/ReactFiberRoot](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.new.js):
+  - **createFiberRoot**.
+- [react-reconciler/src/ReactFiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.new.js):
+  - createHostRootFiber.
+- [react-reconciler/src/ReactUpdateQueue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactUpdateQueue.new.js):
+  - **initializeUpdateQueue**.
+- [react-dom/src/events/DOMPluginEventSystem](https://github.com/facebook/react/blob/main/packages/react-dom/src/events/DOMPluginEventSystem.js):
+  - listenToAllSupportedEvents:
+    事件统一在 rootContainer 上处理 dispatchDiscreteEvent.
 
-[Fiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js):
+#### Concurrent Root
 
-- Component type.
-- Current props and state.
-- Pointers to parent, sibling, and child components.
-- Other internal metadata to track rendering process.
+- [react-dom/src/client/ReactDOMRoot](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js):
+  - **createRoot**.
+- [react-reconciler/src/ReactFiberReconciler](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberReconciler.new.js):
+  - **createContainer**.
+- [react-dom/src/client/ReactDOMComponentTree](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMComponentTree.js):
+  - markContainerAsRoot.
+- [react-reconciler/src/ReactFiberRoot](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberRoot.new.js):
+  - **createFiberRoot**.
+- [react-reconciler/src/ReactFiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiber.new.js):
+  - createHostRootFiber.
+- [react-reconciler/src/ReactUpdateQueue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactUpdateQueue.new.js):
+  - **initializeUpdateQueue**.
+- [react-dom/src/events/DOMPluginEventSystem](https://github.com/facebook/react/blob/main/packages/react-dom/src/events/DOMPluginEventSystem.js):
+  - listenToAllSupportedEvents:
+    事件统一在 rootContainer 上处理 dispatchDiscreteEvent.
+- `ReactDOMRoot.render(<App />)`.
 
-#### React Fiber Effects
+### Update RootContainer
 
-- Insert DOM elements: `Placement` tag.
-- Update DOM elements: `Update` tag.
-- Delete DOM elements: `Deletion` tag.
-- Update Ref property: `Ref` tag.
-- `useEffect` callback: `got Passive` tag.
-  - `useEffect(fn)`: `Mount` and `Update` lifecycle.
-  - `useEffect(fn, [])`: `Mount` lifecycle.
-  - `useEffect(fn, [deps])`:
-    `Mount` lifecycle and
-    `Update` lifecycle with `deps` changed.
+- [react-dom/src/client/ReactDOMLegacy](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMLegacy.js):
+  - render.
+  - legacyRenderSubtreeIntoContainer.
+- [react-dom/src/client/ReactDOMRoot](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMRoot.js):
+  - render.
+- [react-reconciler/src/ReactFiberReconciler](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberReconciler.new.js):
+  - **updateContainer**.
+- [react-reconciler/src/ReactUpdateQueue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactUpdateQueue.new.js):
+  - createUpdate.
+  - enqueueUpdate.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **scheduleUpdateOnFiber**.
+  - **ensureRootIsScheduled**.
+- [react-reconciler/src/ReactFiberSyncTaskQueue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberSyncTaskQueue.new.js):
+  - flushSyncCallbacks.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **performSyncWorkOnRoot**.
+  - renderRootSync.
+  - workLoopSync.
+  - **performUnitOfWork**.
+- [react-reconciler/src/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+  - **beginWork**.
+  - **updateHostRoot**/**updateXXXComponent**.
+  - `ReactDOMComponent.createElement`.
+  - reconcileChildren.
+- [react-reconciler/src/ReactChildFiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.new.js):
+  - reconcileChildFibers.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **completeUnitOfWork**.
+- [react-reconciler/src/ReactFiberCompleteWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCompleteWork.new.js)
+  - **completeWork**.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **commitRoot**.
+- [react-dom/src/client/ReactDOMHostConfig](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMHostConfig.js):
+  - appendChildToContainer.
+  - finalizeInitialChildren.
+- [react-dom/src/client/ReactDOMComponent](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMComponent.js):
+  - setInitialProperties:
+    设置初始化属性, 处理特殊元素和事件.
 
-React create effects when `Render` stage,
-then update effects to real DOM when `Commit` stage.
+```ts
+// Legacy Mode
+import type { ReactElement } from 'react';
+import Reconciler from './reconciler';
+import type { Container } from './types';
 
-#### React Fiber Trees
-
-- current fiber tree: rendered to screen.
-- workInProgress fiber tree: under reconciliation.
-- When workInProgress fiber tree complete `render` + `commit`,
-  swap 2 fiber tree:
-  - reuse fiber objects.
-  - reduce memory usage and GC time.
-
-### React Scheduler
-
-Polyfill for `requestIdleCallback` with priority control.
-
-```js
-const performWork = deadline => {
-  if (!nextUnitOfWork) {
-    resetNextUnitOfWork();
-  }
-
-  // whether current status is idle status or not
-  while (nextUnitOfWork && deadline.timeRemaining() > ENOUGH_TIME) {
-    nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
-  }
-
-  if (pendingCommit) {
-    commitAllWork(pendingCommit);
-  }
-
-  // checks if there's pending work
-  // if exist, performWork in **next frame** when idle
-  if (nextUnitOfWork || updateQueue.length > 0) {
-    requestIdleCallback(performWork);
-  }
+const Renderer = {
+  render: (
+    element: ReactElement,
+    container: Container | null,
+    callback?: Function
+  ): void => {
+    if (container) {
+      const root = Reconciler.createContainer(container, 0, false, null);
+      Reconciler.updateContainer(element, root, null);
+    }
+  },
 };
 
-const scheduleUpdate = (instance, partialState) => {
-  updateQueue.push({
-    from: CLASS_COMPONENT,
-    instance,
-    partialState,
-  });
-
-  requestIdleCallback(performWork);
-};
-
-// React.render function
-const render = (elements, container) => {
-  updateQueue.push({
-    from: HOST_ROOT,
-    dom: container,
-    newProps: {
-      children: elements,
-    },
-  });
-
-  requestIdleCallback(performWork);
-};
+export default Renderer;
 ```
 
-#### Priority Scheduler
+```ts
+// Modern Mode
+import type { ReactElement } from 'react';
+import Reconciler from './reconciler';
+import type { Container, OpaqueRoot } from './types';
 
-React 16, unstable concurrent mode:
+const Renderer = {
+  createRoot: (
+    container: Container | null,
+    callback?: Function
+  ): OpaqueRoot => {
+    if (container) {
+      const root = Reconciler.createContainer(container, 0, false, null);
+
+      root.render = function (element: ReactElement) {
+        Reconciler.updateContainer(element, this, null);
+      };
+
+      return root;
+    }
+  },
+};
+
+export default Renderer;
+```
+
+### ReactComponent SetState
+
+- [react-dom/src/events/ReactDOMEventListener](https://github.com/facebook/react/blob/main/packages/react-dom/src/events/ReactDOMEventListener.js):
+  - dispatchDiscreteEvent.
+- [react/src/ReactBaseClasses](https://github.com/facebook/react/blob/main/packages/react/src/ReactBaseClasses.js):
+  - **setState**.
+- [react-reconciler/src/ReactFiberClassComponent](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberClassComponent.new.js):
+  - enqueueSetState.
+- [react-reconciler/src/ReactUpdateQueue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactUpdateQueue.new.js):
+  - createUpdate.
+  - enqueueUpdate.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **scheduleUpdateOnFiber**.
+  - discreteUpdates.
+- [react-reconciler/src/ReactFiberSyncTaskQueue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberSyncTaskQueue.new.js):
+  - flushSyncCallbacks.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **performSyncWorkOnRoot**.
+  - workLoopSync.
+  - **performUnitOfWork**.
+- [react-reconciler/src/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+  - **beginWork**.
+  - **updateXXXComponent**.
+  - reconcileChildren.
+- [react-reconciler/src/ReactChildFiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.new.js):
+  - reconcileChildFibers.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **completeUnitOfWork**.
+- [react-reconciler/src/ReactFiberCompleteWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCompleteWork.new.js)
+  - **completeWork**.
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - **commitRoot**.
+  - commitMutationEffects.
+- [react-reconciler/src/ReactFiberCommitWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.new.js):
+  - commitWork.
+- [react-dom/src/client/ReactDOMHostConfig](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMHostConfig.js):
+  - commitUpdate.
+- [react-dom/src/client/ReactDOMComponentTree](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMComponentTree.js):
+  - updateFiberProps.
+- [react-dom/src/client/ReactDOMComponent](https://github.com/facebook/react/blob/main/packages/react-dom/src/client/ReactDOMComponent.js):
+  - updateProperties:
+    Apply the diff.
+
+### ClassComponent Update
+
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - performSyncWorkOnRoot.
+  - workLoopSync.
+  - performUnitOfWork.
+- [react-reconciler/src/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+  - beginWork
+  - **updateClassComponent**.
+- [react-reconciler/src/ReactFiberClassComponent](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberClassComponent.new.js):
+  - updateClassInstance.
+- [react-reconciler/src/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+  - finishClassComponent.
+  - **instance.render** (User defined Component).
+  - **reconcileChildren**.
+- [react-reconciler/src/ReactChildFiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.new.js):
+  - reconcileChildFibers.
+
+### FunctionComponent Update
+
+- [react-reconciler/src/ReactFiberWorkLoop](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+  - performSyncWorkOnRoot.
+  - workLoopSync.
+  - performUnitOfWork.
+- [react-reconciler/src/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+  - beginWork.
+  - **updateFunctionComponent**.
+- [react-reconciler/src/ReactFiberHooks](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.new.js):
+  - renderWithHooks.
+  - **FunctionComponent()** (User defined Function).
+  - **Hooks**: useXXX -> mountXXX -> updateXXX.
+- [react-reconciler/src/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+  - **reconcileChildren**.
+- [react-reconciler/src/ReactChildFiber](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactChildFiber.new.js):
+  - reconcileChildFibers.
+
+## React Scheduler
+
+Work loop in scheduler focus on **Task Scheduling**,
+not only including `Reconciler.performSyncWorkOnRoot`/`Reconciler.performConcurrentWorkOnRoot`,
+but also for non-react tasks
+(meaning `Scheduler` module can work standalone without `React`).
+
+### Scheduler Priority
+
+React 16, unstable concurrent mode with
+[`Priorities`](https://github.com/facebook/react/blob/main/packages/scheduler/src/SchedulerPriorities.js):
 
 - ImmediatePriority: 立即执行优先级, 级别最高, `expirationTime = -1`.
 - UserBlockingPriority: 用户阻塞优先级, `expirationTime = 250`.
@@ -144,9 +294,13 @@ React 16, unstable concurrent mode:
 - LowPriority: 低优先级, `expirationTime = 10000`.
 - IdlePriority: 可闲置优先级, `expirationTime = maxSigned31BitInt`.
 
-React 17, stable concurrent mode with `Lanes`:
+React 17, stable concurrent mode with
+[`Lanes`](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.new.js):
 
-```js
+```ts
+export type Lanes = number;
+export type Lane = number;
+
 export const TotalLanes = 31;
 
 export const NoLanes: Lanes = /*                        */ 0b0000000000000000000000000000000;
@@ -198,49 +352,1642 @@ export const IdleLane: Lanes = /*                       */ 0b0100000000000000000
 export const OffscreenLane: Lane = /*                   */ 0b1000000000000000000000000000000;
 ```
 
-### React Diff Phase
+### Scheduler Workflow
+
+Scheduler main [workflow](https://github.com/facebook/react/blob/main/packages/scheduler/src/forks/Scheduler.js):
+
+`scheduleCallback(callback)`
+-> `push(queue, newTask)` (Wrap `callback` into `task`)
+(For delayed task -> `requestHostTimeout(handleTimeout, delayTime)`)
+-> `requestHostCallback(flushWork)`
+-> `messageChannelPort.postMessage(null)`
+-> `performWorkUntilDeadline()`
+-> `flushWork(hasTimeRemaining, currentTime)`:
+-> `workLoop(hasTimeRemaining, currentTime)`:
+
+将 Reconciler 的工作 (Callback)
+包装成 Task 组成 Task Queue,
+按照时间分片机制,
+不断地消费 Task Queue.
+
+对于延时任务 (Delayed Task),
+会将其先放入 Timer Queue,
+等待延时完成后再将其放入 Task Queue.
+
+### Scheduler Time Slicing
+
+```ts
+// 时间切片周期, 默认是 5ms.
+// 如果一个 task 运行超过该周期, 下一个 task 执行前, 会把控制权归还浏览器.
+const yieldInterval = 5;
+const maxYieldInterval = 300;
+
+let deadline = 0; // currentTime + yieldInterval.
+let needsPaint = false;
+let isMessageLoopRunning = false;
+let scheduledHostCallback = null;
+
+const channel = new MessageChannel();
+const port = channel.port2;
+channel.port1.onmessage = performWorkUntilDeadline;
+
+const scheduling = navigator.scheduling;
+const getCurrentTime = performance.now;
+
+// 请求回调:
+const requestHostCallback = callback => {
+  // 1. 保存 callback.
+  scheduledHostCallback = callback;
+
+  if (!isMessageLoopRunning) {
+    isMessageLoopRunning = true;
+    // 2. 通过 MessageChannel 发送消息.
+    port.postMessage(null);
+  }
+};
+
+// 取消回调:
+const cancelHostCallback = () => {
+  scheduledHostCallback = null;
+};
+
+const requestHostTimeout = (callback, ms) => {
+  taskTimeoutID = setTimeout(() => {
+    callback(getCurrentTime());
+  }, ms);
+};
+
+const cancelHostTimeout = () => {
+  clearTimeout(taskTimeoutID);
+  taskTimeoutID = -1;
+};
+
+// 是否让出主线程 (time slice):
+const shouldYieldToHost = () => {
+  const currentTime = getCurrentTime();
+
+  if (currentTime >= deadline) {
+    if (needsPaint || scheduling.isInputPending()) {
+      // There is either a pending paint or a pending input.
+      return true;
+    }
+
+    // There's no pending input.
+    // Only yield if we've reached the max yield interval.
+    return currentTime >= maxYieldInterval;
+  } else {
+    // There's still time left in the frame.
+    return false;
+  }
+};
+
+// 请求绘制:
+const requestPaint = () => {
+  needsPaint = true;
+};
+
+// 实际回调函数处理:
+const performWorkUntilDeadline = () => {
+  if (scheduledHostCallback !== null) {
+    // 1. 设置 currentTime 与 deadline.
+    const currentTime = getCurrentTime();
+    deadline = currentTime + yieldInterval;
+    const hasTimeRemaining = true;
+
+    try {
+      // 2. 执行回调, 返回是否有还有剩余任务.
+      const hasMoreWork = scheduledHostCallback(hasTimeRemaining, currentTime);
+
+      if (!hasMoreWork) {
+        // 没有剩余任务, 退出.
+        isMessageLoopRunning = false;
+        scheduledHostCallback = null;
+      } else {
+        port.postMessage(null); // 有剩余任务, 发起新的调度.
+      }
+    } catch (error) {
+      port.postMessage(null); // 如有异常, 重新发起调度.
+      throw error;
+    }
+  } else {
+    isMessageLoopRunning = false;
+  }
+
+  needsPaint = false; // Reset.
+};
+```
+
+### Scheduler Task Queue
+
+Task queue is [MinHeap](https://github.com/facebook/react/blob/main/packages/scheduler/src/SchedulerMinHeap.js),
+storing Tasks.
+
+```ts
+const newTask = {
+  id: taskIdCounter++,
+  callback, // Work from reconciler.
+  priorityLevel,
+  startTime,
+  expirationTime,
+  sortIndex: -1, // MinHeap queue indexing.
+};
+```
+
+```ts
+const scheduleCallback = (priorityLevel, callback, options) => {
+  const currentTime = getCurrentTime();
+  const startTime = currentTime;
+  const expirationTime = startTime + timeout[priorityLevel]; // -1/250/5000/10000/MAX_INT.
+  const newTask = {
+    id: taskIdCounter++,
+    callback,
+    priorityLevel,
+    startTime,
+    expirationTime,
+    sortIndex: -1,
+  };
+
+  if (startTime > currentTime) {
+    // Delayed task.
+    newTask.sortIndex = startTime;
+    push(timerQueue, newTask);
+
+    // All tasks are delayed, and this is the task with the earliest delay.
+    if (peek(taskQueue) === null && newTask === peek(timerQueue)) {
+      if (isHostTimeoutScheduled) {
+        // Cancel an existing timeout.
+        cancelHostTimeout();
+      } else {
+        isHostTimeoutScheduled = true;
+      }
+
+      // Schedule a timeout.
+      requestHostTimeout(handleTimeout, startTime - currentTime);
+    }
+  } else {
+    // Normal task.
+    newTask.sortIndex = expirationTime;
+    push(taskQueue, newTask);
+
+    if (!isHostCallbackScheduled && !isPerformingWork) {
+      isHostCallbackScheduled = true;
+      requestHostCallback(flushWork);
+    }
+  }
+
+  return newTask;
+};
+
+const handleTimeout = currentTime => {
+  isHostTimeoutScheduled = false;
+  advanceTimers(currentTime);
+
+  if (!isHostCallbackScheduled) {
+    if (peek(taskQueue) !== null) {
+      isHostCallbackScheduled = true;
+      requestHostCallback(flushWork);
+    } else {
+      const firstTimer = peek(timerQueue);
+
+      if (firstTimer !== null) {
+        requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
+      }
+    }
+  }
+};
+```
+
+### Scheduler Work Loop
+
+当 `callback()` 返回函数时, 表明产生连续回调 (e.g 出现更高优先任务/时间分片用完, 渲染中断),
+需将返回的函数再次放入任务队列, 继续进行调度直至清空任务队列 (渲染恢复).
+
+```ts
+function flushWork(hasTimeRemaining, initialTime) {
+  // We'll need a host callback the next time work is scheduled.
+  isHostCallbackScheduled = false;
+
+  if (isHostTimeoutScheduled) {
+    // We scheduled a timeout but it's no longer needed. Cancel it.
+    isHostTimeoutScheduled = false;
+    cancelHostTimeout();
+  }
+
+  isPerformingWork = true; // Lock.
+  const previousPriorityLevel = currentPriorityLevel;
+
+  try {
+    return workLoop(hasTimeRemaining, initialTime);
+  } finally {
+    // Restore context.
+    currentTask = null;
+    currentPriorityLevel = previousPriorityLevel;
+    isPerformingWork = false;
+  }
+}
+
+function workLoop(hasTimeRemaining, initialTime) {
+  let currentTime = initialTime;
+  advanceTimers(currentTime);
+  currentTask = peek(taskQueue);
+
+  while (currentTask !== null) {
+    if (
+      currentTask.expirationTime > currentTime &&
+      (!hasTimeRemaining || shouldYieldToHost())
+    ) {
+      // This currentTask hasn't expired, and we've reached the deadline.
+      break;
+    }
+
+    const callback = currentTask.callback;
+
+    if (typeof callback === 'function') {
+      currentTask.callback = null;
+      currentPriorityLevel = currentTask.priorityLevel;
+      const didUserCallbackTimeout = currentTask.expirationTime <= currentTime;
+      const continuationCallback = callback(didUserCallbackTimeout);
+      currentTime = getCurrentTime();
+
+      if (typeof continuationCallback === 'function') {
+        // 产生了连续回调 (如 Fiber树太大, 出现了中断渲染), 保留 currentTask.
+        currentTask.callback = continuationCallback;
+      } else {
+        if (currentTask === peek(taskQueue)) {
+          pop(taskQueue);
+        }
+      }
+
+      advanceTimers(currentTime);
+    } else {
+      // 如果任务被取消 (currentTask.callback = null), 将其移出队列.
+      pop(taskQueue);
+    }
+
+    currentTask = peek(taskQueue);
+  }
+
+  // Return whether there's additional work.
+  if (currentTask !== null) {
+    return true;
+  } else {
+    const firstTimer = peek(timerQueue);
+
+    // 存在延时任务, 继续进行调度.
+    if (firstTimer !== null) {
+      requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
+    }
+
+    return false;
+  }
+}
+```
+
+## React Fiber
+
+React Fiber 的目标是提高其在动画、布局和手势等领域的适用性.
+它的主要特性是 `Incremental Rendering` : 将渲染任务拆分为小的任务块并将任务分配到多个帧上的能力.
+
+### React Fiber Type
+
+`Fiber` [definition](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactInternalTypes.js):
+
+- Component type.
+- Current props and state.
+- Pointers to parent, sibling, and child components,
+- Pointer to DOM/class instance.
+- Other internal metadata to track rendering process.
+
+```ts
+export interface Fiber {
+  tag: WorkTag;
+  key: string | null;
+  elementType: any;
+  type: any; // Tag/Class/Function.
+  stateNode: any; // DOM/class instance.
+  ref: (((handle: mixed) => void) & { _stringRef: ?string }) | RefObject | null;
+
+  // Singly Linked List Tree Structure.
+  return: Fiber | null; // DFS parent Fiber node.
+  child: Fiber | null;
+  sibling: Fiber | null;
+  index: number;
+
+  // Props and state for output.
+  pendingProps: any;
+  memoizedProps: any;
+  updateQueue: mixed; // Updates from diff(pendingProps, memoizedProps).
+  memoizedState: any;
+
+  // Context API.
+  dependencies: Dependencies | null; // (Contexts, Events) dependencies.
+
+  mode: TypeOfMode; // NoMode/BlockingMode/ConcurrentMode bit.
+
+  // Effects.
+  flags: Flags;
+  subtreeFlags: Flags;
+  deletions: Array<Fiber> | null;
+  nextEffect: Fiber | null; // Next effect Fiber node.
+  firstEffect: Fiber | null; // First effect Fiber node.
+  lastEffect: Fiber | null; // Last effect Fiber node.
+
+  // Priority.
+  lanes: Lanes;
+  childLanes: Lanes;
+  alternate: Fiber | null; // `current` Fiber and `workInpProgress` Fiber.
+
+  // Performance statistics for React DevTool.
+  actualDuration?: number;
+  actualStartTime?: number;
+  selfBaseDuration?: number;
+  treeBaseDuration?: number;
+}
+```
+
+### React Fiber Work Tag
+
+常见的 Fiber [类型](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactWorkTags.js):
+
+- HostComponent: HTML native tag.
+- ClassComponent.
+- FunctionComponent.
+
+```ts
+type WorkTag =
+  | 'FunctionComponent'
+  | 'ClassComponent'
+  | 'IndeterminateComponent'
+  | 'HostRoot'
+  | 'HostPortal'
+  | 'HostComponent'
+  | 'HostText'
+  | 'Fragment'
+  | 'Mode'
+  | 'ContextConsumer'
+  | 'ContextProvider'
+  | 'ForwardRef'
+  | 'Profiler'
+  | 'SuspenseComponent'
+  | 'MemoComponent'
+  | 'SimpleMemoComponent'
+  | 'LazyComponent'
+  | 'IncompleteClassComponent'
+  | 'DehydratedFragment'
+  | 'SuspenseListComponent'
+  | 'FundamentalComponent'
+  | 'ScopeComponent'
+  | 'Block'
+  | 'OffscreenComponent'
+  | 'LegacyHiddenComponent';
+```
+
+### React Fiber Mode
+
+React [运行模式](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactTypeOfMode.js):
+所有 `Fiber.mode` 保持一致 (包括 `FiberRoot`).
+
+```ts
+type TypeOfMode = number;
+
+const NoMode = /*                         */ 0b000000;
+const ConcurrentMode = /*                 */ 0b000001;
+const ProfileMode = /*                    */ 0b000010;
+const DebugTracingMode = /*               */ 0b000100;
+const StrictLegacyMode = /*               */ 0b001000;
+const StrictEffectsMode = /*              */ 0b010000;
+const ConcurrentUpdatesByDefaultMode = /* */ 0b100000;
+```
+
+### React Fiber Effects
+
+- Insert DOM elements: `Placement` tag.
+- Update DOM elements: `Update` tag.
+- Delete DOM elements: `Deletion` tag.
+- Update Ref property: `Ref` tag.
+- `useEffect` callback: `got Passive` tag.
+  - `useEffect(fn)`: `Mount` and `Update` lifecycle.
+  - `useEffect(fn, [])`: `Mount` lifecycle.
+  - `useEffect(fn, [deps])`:
+    `Mount` lifecycle and
+    `Update` lifecycle with `deps` changed.
+
+React create effects when `Render` stage,
+then update effects to real DOM when `Commit` stage.
+
+常见的 Effect [标志位](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberFlags.js):
+
+```ts
+type Flags = number;
+
+const NoFlags = /*                      */ 0b000000000000000000;
+const PerformedWork = /*                */ 0b000000000000000001;
+const Placement = /*                    */ 0b000000000000000010;
+const Update = /*                       */ 0b000000000000000100;
+const PlacementAndUpdate = /*           */ 0b000000000000000110;
+const Deletion = /*                     */ 0b000000000000001000;
+const ContentReset = /*                 */ 0b000000000000010000;
+const Callback = /*                     */ 0b000000000000100000;
+const DidCapture = /*                   */ 0b000000000001000000;
+const Ref = /*                          */ 0b000000000010000000;
+const Snapshot = /*                     */ 0b000000000100000000;
+const Passive = /*                      */ 0b000000001000000000;
+const PassiveUnmountPendingDev = /*     */ 0b000010000000000000;
+const Hydrating = /*                    */ 0b000000010000000000;
+const HydratingAndUpdate = /*           */ 0b000000010000000100;
+const LifecycleEffectMask = /*          */ 0b000000001110100100;
+const HostEffectMask = /*               */ 0b000000011111111111;
+const Incomplete = /*                   */ 0b000000100000000000;
+const ShouldCapture = /*                */ 0b000001000000000000;
+const ForceUpdateForLegacySuspense = /* */ 0b000100000000000000;
+const PassiveStatic = /*                */ 0b001000000000000000;
+const BeforeMutationMask = /*           */ 0b000000001100001010;
+const MutationMask = /*                 */ 0b000000010010011110;
+const LayoutMask = /*                   */ 0b000000000010100100;
+const PassiveMask = /*                  */ 0b000000001000001000;
+const StaticMask = /*                   */ 0b001000000000000000;
+const MountLayoutDev = /*               */ 0b010000000000000000;
+const MountPassiveDev = /*              */ 0b100000000000000000;
+```
+
+### React Fiber Lanes
+
+[Assign `Lane` to `Update`](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+
+- Legacy 模式: 返回 SyncLane.
+- Blocking 模式: 返回 SyncLane.
+- Concurrent 模式:
+  - 正常情况: 根据当前的调度优先级来生成一个 lane.
+  - 处于 Suspense 过程中: 会优先选择 `TransitionLanes` 通道中的空闲通道 (或最高优先级).
+
+```ts
+export function requestUpdateLane(fiber: Fiber): Lane {
+  const mode = fiber.mode;
+
+  if ((mode & BlockingMode) === NoMode) {
+    // Legacy 模式.
+    return SyncLane;
+  } else if ((mode & ConcurrentMode) === NoMode) {
+    // Blocking 模式.
+    return getCurrentPriorityLevel() === ImmediateSchedulerPriority
+      ? SyncLane
+      : SyncBatchedLane;
+  }
+
+  // Concurrent 模式.
+  if (currentEventWipLanes === NoLanes) {
+    currentEventWipLanes = workInProgressRootIncludedLanes;
+  }
+
+  const isTransition = requestCurrentTransition() !== NoTransition;
+
+  if (isTransition) {
+    // 特殊情况, 处于 Suspense 过程中.
+    if (currentEventPendingLanes !== NoLanes) {
+      currentEventPendingLanes =
+        mostRecentlyUpdatedRoot !== null
+          ? mostRecentlyUpdatedRoot.pendingLanes
+          : NoLanes;
+    }
+
+    return findTransitionLane(currentEventWipLanes, currentEventPendingLanes);
+  }
+
+  // 正常情况, 获取调度优先级.
+  let lane;
+  const schedulerPriority = getCurrentPriorityLevel();
+
+  if (
+    (executionContext & DiscreteEventContext) !== NoContext &&
+    schedulerPriority === UserBlockingSchedulerPriority
+  ) {
+    // `executionContext` 存在输入事件, 且调度优先级是用户阻塞性质.
+    lane = findUpdateLane(InputDiscreteLanePriority, currentEventWipLanes);
+  } else {
+    // 调度优先级转换为车道模型.
+    const schedulerLanePriority =
+      schedulerPriorityToLanePriority(schedulerPriority);
+    lane = findUpdateLane(schedulerLanePriority, currentEventWipLanes);
+  }
+
+  return lane;
+}
+```
+
+[Global `renderLanes`](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberLane.new.js):
+
+Fiber 树构造过程中 (`Render Phase`),
+若 Fiber 对象或 Update 对象优先级 (`fiber.lanes`/`update.lane`) 比全局渲染优先级低,
+则将会被忽略 (节点未更新, 可以直接复用).
+
+```ts
+export function getNextLanes(root: FiberRoot, wipLanes: Lanes): Lanes {
+  const pendingLanes = root.pendingLanes;
+
+  if (pendingLanes === NoLanes) {
+    return NoLanes;
+  }
+
+  let nextLanes = NoLanes;
+  const suspendedLanes = root.suspendedLanes;
+  const pingedLanes = root.pingedLanes;
+  const nonIdlePendingLanes = pendingLanes & NonIdleLanes;
+
+  if (nonIdlePendingLanes !== NoLanes) {
+    const nonIdleUnblockedLanes = nonIdlePendingLanes & ~suspendedLanes;
+
+    if (nonIdleUnblockedLanes !== NoLanes) {
+      nextLanes = getHighestPriorityLanes(nonIdleUnblockedLanes);
+    } else {
+      const nonIdlePingedLanes = nonIdlePendingLanes & pingedLanes;
+
+      if (nonIdlePingedLanes !== NoLanes) {
+        nextLanes = getHighestPriorityLanes(nonIdlePingedLanes);
+      }
+    }
+  } else {
+    const unblockedLanes = pendingLanes & ~suspendedLanes;
+
+    if (unblockedLanes !== NoLanes) {
+      nextLanes = getHighestPriorityLanes(unblockedLanes);
+    } else {
+      if (pingedLanes !== NoLanes) {
+        nextLanes = getHighestPriorityLanes(pingedLanes);
+      }
+    }
+  }
+
+  if (nextLanes === NoLanes) {
+    return NoLanes;
+  }
+
+  if (
+    wipLanes !== NoLanes &&
+    wipLanes !== nextLanes &&
+    (wipLanes & suspendedLanes) === NoLanes
+  ) {
+    const nextLane = getHighestPriorityLane(nextLanes);
+    const wipLane = getHighestPriorityLane(wipLanes);
+
+    if (
+      nextLane >= wipLane ||
+      (nextLane === DefaultLane && (wipLane & TransitionLanes) !== NoLanes)
+    ) {
+      return wipLanes;
+    }
+  }
+
+  if (
+    allowConcurrentByDefault &&
+    (root.current.mode & ConcurrentUpdatesByDefaultMode) !== NoMode
+  ) {
+    // Do nothing, use the lanes as they were assigned.
+  } else if ((nextLanes & InputContinuousLane) !== NoLanes) {
+    nextLanes |= pendingLanes & DefaultLane;
+  }
+
+  const entangledLanes = root.entangledLanes;
+
+  if (entangledLanes !== NoLanes) {
+    const entanglements = root.entanglements;
+    let lanes = nextLanes & entangledLanes;
+
+    while (lanes > 0) {
+      const index = pickArbitraryLaneIndex(lanes);
+      const lane = 1 << index;
+      nextLanes |= entanglements[index];
+      lanes &= ~lane;
+    }
+  }
+
+  return nextLanes;
+}
+```
+
+Lanes model [use case](https://github.com/facebook/react/pull/18796):
+
+```ts
+// task 与 batchTask 的优先级是否重叠:
+// 1. expirationTime:
+const isTaskIncludedInBatch = priorityOfTask >= priorityOfBatch;
+// 2. Lanes:
+const isTaskIncludedInBatch = (task & batchOfTasks) !== 0;
+
+// 当同时处理一组任务, 该组内有多个任务, 且每个任务的优先级不一致:
+// 1. expirationTime:
+const isTaskIncludedInBatch =
+  taskPriority <= highestPriorityInRange &&
+  taskPriority >= lowestPriorityInRange;
+// 2. Lanes:
+const isTaskIncludedInBatch = (task & batchOfTasks) !== 0;
+
+// 从 group 中增删 task:
+// 1. expirationTime (need list):
+task.prev.next = task.next;
+
+let current = queue;
+while (task.expirationTime >= current.expirationTime) {
+  current = current.next;
+}
+task.next = current.next;
+current.next = task;
+
+const isTaskIncludedInBatch =
+  taskPriority <= highestPriorityInRange &&
+  taskPriority >= lowestPriorityInRange;
+
+// 2. Lanes:
+batchOfTasks &= ~task; // Delete task.
+batchOfTasks |= task; // Add task.
+const isTaskIncludedInBatch = (task & batchOfTasks) !== 0;
+```
+
+### React Fiber Trees
+
+- `current` Fiber tree: rendered to screen.
+- `workInProgress` Fiber tree: under reconciliation.
+- When `workInProgress` Fiber tree complete `render` + `commit`,
+  swap 2 Fiber tree:
+  - Reuse Fiber objects.
+  - Reduce memory usage and GC time.
+- `FiberRoot`:
+  - `FiberRoot.current = currentHostRootFiber`.
+  - `FiberRoot.finishedWork = workInProgressHostRootFiber`.
+  - `currentHostRootFiber.stateNode = FiberRoot`.
+  - `workInProgressHostRootFiber.stateNode = FiberRoot`.
+  - `currentHostRootFiber.alternate = workInProgressHostRootFiber`
+  - `workInProgressHostRootFiber.alternate = currentHostRootFiber`
+- `ReactElement` tree -> `Fiber` tree -> `DOM` tree.
+
+[![React Fiber Trees](./figures/ReactFiberTrees.png)](https://7kms.github.io/react-illustration-series/main/fibertree-prepare)
+
+### React Fiber Work Loop
+
+[![React Fiber Work Loop](./figures/ReactFiberWorkLoop.png)](https://7kms.github.io/react-illustration-series/main/reconciler-workflow)
+
+## React Reconciler
+
+### Reconciler Render Workflow
+
+Reconciler construct Fiber tree:
+
+- scheduleUpdateOnFiber:
+  - 首次 render 直接调用 `performWorkOnRoot`.
+  - 再次 render 需要调用 `ensureRootIsScheduled`.
+- ensureRootIsScheduled.
+- flushSyncCallbacks.
+- performSyncWorkOnRoot / performConcurrentWorkOnRoot:
+  - `performConcurrentWorkOnRoot` 支持可中断渲染:
+    - 此函数首先检查是否处于 render 过程中,
+      是否需要恢复上一次渲染.
+    - 如果本次渲染被中断,
+      此函数最后返回一个新的 `performConcurrentWorkOnRoot` 函数,
+      等待下一次 Scheduler 调度.
+- renderRootSync / renderRootConcurrent:
+  - 此函数会调用 `prepareFreshStack`, 重置 FiberRoot 上的全局属性, 重置 Fiber Work Loop 全局变量.
+  - 此函数会设置 `workInProgressRoot = FiberRoot`, 表示正在进行 render.
+  - 此函数退出前, 会重置 `workInProgressRoot = null`, 表示没有正在进行中的 render.
+  - 此函数退出前, 会挂载 `FiberRoot.finishedWork = workInProgressHostRootFiber`.
+    此时 `HostRootFiber` 上挂载了副作用队列, 层级越深子节点副作用越靠前.
+- workLoopSync / workLoopConcurrent:
+  循环调用 `performUnitOfWork`,
+  直到 `workInProgress === null` 或用完当前时间分片.
+- **performUnitOfWork(workInProgress)**:
+  - 存在子节点， `beginWork` 与 `completeUnitOfWork` 不在同一次循环里调用:
+    执行完 `beginWork` 后,
+    优先向下遍历, 执行子节点的 `beginWork` 与 `completeUnitOfWork`,
+    在 N 次循环后再向上回溯.
+  - 不存在子节点， `beginWork` 与 `completeUnitOfWork` 在同一次循环里调用.
+  - 若 `beginWork` 返回 `next` 节点,
+    则设置 `workInProgress = next` 进行 DFS 遍历,
+    再次调用此函数.
+  - 若 `beginWork` 返回 `null` 节点,
+    则调用 `completeUnitOfWork` 函数完成节点处理.
+  - 若存在兄弟节点,
+    `completeUnitOfWork` 会设置 `workInProgress = siblingFiber` 进行 DFS 遍历,
+    再次调用此函数.
+  - 若到达子叶节点,
+    `completeUnitOfWork` 会设置 `workInProgress = returnFiber` 进行 DFS 回溯,
+    再次调用此函数.
+- **beginWork**:
+  - 根据 `ReactElement` 对象创建所有的 Fiber 节点, 最终构造出 Fiber 树形结构
+    (设置 `return` 和 `sibling` 指针).
+  - 调用 `updateXXX`, 设置 `fiber.flags`/`fiber.stateNode` 等状态.
+  - 非子叶节点返回子节点, 进行 DFS 遍历; 子叶节点返回 `null`, 直接进入 `completeUnitOfWork` 阶段.
+- **updateHostRoot/updateXXXComponent**:
+  - 根据 `fiber.pendingProps`/`fiber.updateQueue` 等输入数据状态,
+    计算 `fiber.memoizedState` 作为输出状态.
+  - ClassComponent:
+    - 构建 `React.Component` 实例.
+    - 把新实例挂载到 `fiber.stateNode` 上.
+    - 执行 `render` 之前的生命周期函数.
+    - 执行 `render` 方法, 获取下级 `ReactElement`.
+    - 设置 `fiber.flags`, 标记副作用.
+  - FunctionComponent:
+    - 执行 `renderWithHooks()` -> `FunctionComponent()`, 获取下级 `ReactElement`.
+    - 设置 `fiber.flags`, 标记副作用.
+  - HostComponent.
+    - `pendingProps.children` 作为下级 `ReactElement`.
+    - 如果下级节点是文本节点, 则设置下级节点为 `null` (进入 `completeUnitOfWork` 阶段).
+    - 设置 `fiber.flags`, 标记副作用.
+  - 根据实际情况, 设置 `fiber.flags`, 标记副作用.
+  - 根据获取的下级 `ReactElement` 对象, 调用 `reconcileChildren` 生成 `Fiber` 子节点 (只生成次级子节点).
+- `ReactDOMComponent.createElement()` / `ReactClassComponent.render()` / `ReactFunctionComponent()`.
+- **reconcileChildren**.
+- mountChildFibers/reconcileChildFibers:
+  - `mountChildFibers`: similar logic, not tracking side effects.
+  - `reconcileChildFibers`: similar logic, tracking side effects.
+  - `reconcileSingleElement`.
+  - `reconcileSingleTextNode`.
+  - `reconcileSinglePortal`.
+  - `reconcileChildrenArray`.
+  - `reconcileChildrenIterator`.
+- **completeUnitOfWork**:
+  - 当 `reconcileChildren` 返回值为 `null` 时, 表示 DFS 进行到子叶节点,
+    `performUnitOfWork` 会调用 `completeUnitOfWork` 函数.
+  - 调用 `completeWork` 进行 `render`.
+  - 把当前 Fiber 对象的副作用队列 (`firstEffect` 与 `lastEffect`)
+    加到父节点的副作用队列之后, 更新父节点的 `firstEffect` 和 `lastEffect` 指针.
+  - 识别 `beginWork` 阶段设置的 `fiber.flags`,
+    若当前 Fiber 存在副作用 (Effects),
+    则将当前 Fiber 加入到父节点的 Effects 队列,
+    等待 Commit 阶段处理.
+  - 将 `workInProgress` 设置为 `siblingFiber` (DFS 遍历) 或 `returnFiber` (DFS 回溯),
+    继续构建 Fiber 树.
+- **completeWork**:
+  - 创建 DOM 实例, 绑定至 `HostComponent`/`HostText` `fiber.stateNode` (局部状态).
+  - 设置 DOM 节点属性, 绑定事件.
+  - 设置 `fiber.flags`, 收集副作用.
+
+```ts
+export function scheduleUpdateOnFiber(
+  fiber: Fiber,
+  lane: Lane,
+  eventTime: number
+) {
+  const root = markUpdateLaneFromFiberToRoot(fiber, lane);
+
+  if (lane === SyncLane) {
+    if (
+      (executionContext & LegacyUnbatchedContext) !== NoContext &&
+      (executionContext & (RenderContext | CommitContext)) === NoContext
+    ) {
+      // 初次渲染.
+      performSyncWorkOnRoot(root);
+    } else {
+      // 对比更新.
+      ensureRootIsScheduled(root, eventTime);
+    }
+  }
+
+  mostRecentlyUpdatedRoot = root;
+}
+
+function performSyncWorkOnRoot(root) {
+  // 1. 获取本次render的优先级, 初次构造返回 NoLanes.
+  const lanes = getNextLanes(root, NoLanes);
+  // 2. 从root节点开始, 至上而下更新.
+  const exitStatus = renderRootSync(root, lanes);
+  // 3. 将最新的 Fiber 树挂载到 root.finishedWork 节点上.
+  const finishedWork: Fiber = root.current.alternate;
+  root.finishedWork = finishedWork;
+  root.finishedLanes = lanes;
+  // 4. 进入 Commit 阶段.
+  commitRoot(root);
+}
+
+function performConcurrentWorkOnRoot(root) {
+  const originalCallbackNode = root.callbackNode;
+
+  // 1. 刷新 pending 状态的 effects, 有可能某些 effect 会取消本次任务.
+  const didFlushPassiveEffects = flushPassiveEffects();
+
+  if (didFlushPassiveEffects) {
+    if (root.callbackNode !== originalCallbackNode) {
+      // 任务被取消, 退出调用.
+      return null;
+    } else {
+      // Current task was not canceled. Continue.
+    }
+  }
+
+  // 2. 获取本次渲染的优先级.
+  const lanes = getNextLanes(
+    root,
+    root === workInProgressRoot ? workInProgressRootRenderLanes : NoLanes
+  );
+
+  // 3. 构造 Fiber 树.
+  const exitStatus = renderRootConcurrent(root, lanes);
+
+  if (
+    includesSomeLane(
+      workInProgressRootIncludedLanes,
+      workInProgressRootUpdatedLanes
+    )
+  ) {
+    // 如果在 render 过程中产生了新 update, 且新 update 的优先级与最初 render 的优先级有交集.
+    // 那么最初 render 无效, 丢弃最初 render 的结果, 等待下一次调度.
+    prepareFreshStack(root, NoLanes);
+  } else if (exitStatus !== RootIncomplete) {
+    // 4. 异常处理: 有可能fiber构造过程中出现异常.
+    if (exitStatus === RootError) {
+      processError();
+    }
+
+    const finishedWork = root.current.alternate; // Fiber
+    root.finishedWork = finishedWork;
+    root.finishedLanes = lanes;
+
+    // 5. 输出: 渲染 Fiber树.
+    finishConcurrentRender(root, exitStatus, lanes);
+  }
+
+  // 退出前再次检测, 是否还有其他更新, 是否需要发起新调度.
+  ensureRootIsScheduled(root, now());
+
+  if (root.callbackNode === originalCallbackNode) {
+    // 渲染被阻断, 返回一个新的 performConcurrentWorkOnRoot 函数, 等待下一次调度.
+    return performConcurrentWorkOnRoot.bind(null, root);
+  }
+
+  return null;
+}
+
+function renderRootSync(root: FiberRoot, lanes: Lanes) {
+  const prevExecutionContext = executionContext;
+  executionContext |= RenderContext;
+
+  // 如果 FiberRoot 变动, 或者 update.lane 变动, 都会刷新栈帧, 丢弃上一次渲染进度.
+  if (workInProgressRoot !== root || workInProgressRootRenderLanes !== lanes) {
+    // 刷新栈帧.
+    prepareFreshStack(root, lanes);
+  }
+  do {
+    try {
+      workLoopSync();
+      break;
+    } catch (thrownValue) {
+      handleError(root, thrownValue);
+    }
+  } while (true);
+
+  // 重置全局变量, 表明 render 结束.
+  executionContext = prevExecutionContext;
+  workInProgressRoot = null;
+  workInProgressRootRenderLanes = NoLanes;
+  return workInProgressRootExitStatus;
+}
+
+function renderRootConcurrent(root: FiberRoot, lanes: Lanes) {
+  const prevExecutionContext = executionContext;
+  executionContext |= RenderContext;
+  const prevDispatcher = pushDispatcher();
+
+  // 如果 FiberRoot 变动, 或者 update.lane变动, 都会刷新栈帧, 丢弃上一次渲染进度.
+  if (workInProgressRoot !== root || workInProgressRootRenderLanes !== lanes) {
+    resetRenderTimer();
+    // 刷新栈帧.
+    prepareFreshStack(root, lanes);
+    startWorkOnPendingInteractions(root, lanes);
+  }
+
+  const prevInteractions = pushInteractions(root);
+
+  do {
+    try {
+      workLoopConcurrent();
+      break;
+    } catch (thrownValue) {
+      handleError(root, thrownValue);
+    }
+  } while (true);
+
+  // 重置全局变量.
+  resetContextDependencies();
+  popDispatcher(prevDispatcher);
+  executionContext = prevExecutionContext;
+
+  // Check if the tree has completed.
+  if (workInProgress !== null) {
+    // Still work remaining.
+    return RootIncomplete;
+  } else {
+    // Completed the tree.
+    // Set this to null to indicate there's no in-progress render.
+    workInProgressRoot = null;
+    workInProgressRootRenderLanes = NoLanes;
+
+    // Return the final exit status.
+    return workInProgressRootExitStatus;
+  }
+}
+
+function prepareFreshStack(root: FiberRoot, lanes: Lanes) {
+  // 重置 FiberRoot 上的属性.
+  root.finishedWork = null;
+  root.finishedLanes = NoLanes;
+  const timeoutHandle = root.timeoutHandle;
+
+  if (timeoutHandle !== noTimeout) {
+    root.timeoutHandle = noTimeout;
+    cancelTimeout(timeoutHandle);
+  }
+
+  if (workInProgress !== null) {
+    let interruptedWork = workInProgress.return;
+    while (interruptedWork !== null) {
+      unwindInterruptedWork(interruptedWork);
+      interruptedWork = interruptedWork.return;
+    }
+  }
+
+  // 重置全局变量.
+  workInProgressRoot = root;
+  workInProgress = createWorkInProgress(root.current, null); // currentHostRootFiber.alternate.
+  workInProgressRootRenderLanes =
+    subtreeRenderLanes =
+    workInProgressRootIncludedLanes =
+      lanes;
+  workInProgressRootExitStatus = RootIncomplete;
+  workInProgressRootFatalError = null;
+  workInProgressRootSkippedLanes = NoLanes;
+  workInProgressRootUpdatedLanes = NoLanes;
+  workInProgressRootPingedLanes = NoLanes;
+}
+
+function workLoopSync() {
+  while (workInProgress !== null) {
+    performUnitOfWork(workInProgress);
+  }
+}
+
+function workLoopConcurrent() {
+  // Perform work until Scheduler asks us to yield.
+  while (workInProgress !== null && !shouldYield()) {
+    performUnitOfWork(workInProgress);
+  }
+}
+
+function performUnitOfWork(unitOfWork: Fiber): void {
+  // unitOfWork 就是被传入的 workInProgress.
+  const current = unitOfWork.alternate;
+  const next = beginWork(current, unitOfWork, subtreeRenderLanes);
+  unitOfWork.memoizedProps = unitOfWork.pendingProps;
+
+  if (next === null) {
+    // 如果没有派生出新的下级节点, 则进入 completeWork 阶段, 传入的是当前 unitOfWork.
+    completeUnitOfWork(unitOfWork);
+  } else {
+    // 如果派生出新的下级节点, 则递归处理.
+    workInProgress = next;
+  }
+}
+
+function _performUnitOfWork_Recursive(unitOfWork: Fiber): void {
+  beginWork(unitOfWork.alternate, unitOfWork, subtreeRenderLanes);
+  if (unitOfWork.child) _performUnitOfWork_Recursive(unitOfWork.child);
+  completeUnitOfWork(unitOfWork);
+  if (unitOfWork.sibling) _performUnitOfWork_Recursive(unitOfWork.sibling);
+}
+
+function beginWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  // 1. 设置 workInProgress 优先级为 NoLanes (最高优先级).
+  const updateLanes = workInProgress.lanes;
+  didReceiveUpdate = false;
+  workInProgress.lanes = NoLanes;
+
+  // 2. 根据 workInProgress 节点的类型, 用不同的方法派生出子节点.
+  switch (workInProgress.tag) {
+    case ClassComponent: {
+      const Component = workInProgress.type;
+      const unresolvedProps = workInProgress.pendingProps;
+      const resolvedProps =
+        workInProgress.elementType === Component
+          ? unresolvedProps
+          : resolveDefaultProps(Component, unresolvedProps);
+      return updateClassComponent(
+        current,
+        workInProgress,
+        Component,
+        resolvedProps,
+        renderLanes
+      );
+    }
+    case HostRoot:
+      return updateHostRoot(current, workInProgress, renderLanes);
+    case HostComponent:
+      return updateHostComponent(current, workInProgress, renderLanes);
+    case HostText:
+      return updateHostText(current, workInProgress);
+    case Fragment:
+      return updateFragment(current, workInProgress, renderLanes);
+  }
+}
+
+function completeUnitOfWork(unitOfWork: Fiber): void {
+  let completedWork = unitOfWork;
+
+  // 外层循环控制并移动指针 (workInProgress/completedWork).
+  do {
+    const current = completedWork.alternate;
+    const returnFiber = completedWork.return;
+
+    if ((completedWork.flags & Incomplete) === NoFlags) {
+      // 1. 处理 Fiber 节点, 会调用渲染器 (关联 Fiber 节点和 DOM 对象, 绑定事件等).
+      const next = completeWork(current, completedWork, subtreeRenderLanes);
+
+      if (next !== null) {
+        // 如果派生出其他的子节点, 则回到 beginWork 阶段进行处理.
+        workInProgress = next;
+        return;
+      }
+
+      // 重置子节点的优先级.
+      resetChildLanes(completedWork);
+
+      if (
+        returnFiber !== null &&
+        (returnFiber.flags & Incomplete) === NoFlags
+      ) {
+        // 2. 收集当前 Fiber 节点以及其子树的副作用 Effects.
+        // 2.1 把子节点的副作用队列添加到父节点上.
+        if (returnFiber.firstEffect === null) {
+          returnFiber.firstEffect = completedWork.firstEffect;
+        }
+
+        if (completedWork.lastEffect !== null) {
+          if (returnFiber.lastEffect !== null) {
+            returnFiber.lastEffect.nextEffect = completedWork.firstEffect;
+          }
+
+          returnFiber.lastEffect = completedWork.lastEffect;
+        }
+
+        // 2.2 如果当前 Fiber 节点有副作用, 将其添加到子节点的副作用队列之后.
+        const flags = completedWork.flags;
+
+        if (returnFiber.lastEffect !== null) {
+          returnFiber.lastEffect.nextEffect = completedWork;
+        } else {
+          returnFiber.firstEffect = completedWork;
+        }
+
+        returnFiber.lastEffect = completedWork;
+      }
+    }
+
+    const siblingFiber = completedWork.sibling;
+
+    if (siblingFiber !== null) {
+      // 如果有兄弟节点, 返回之后再次进入 beginWork 阶段.
+      workInProgress = siblingFiber;
+      return;
+    }
+
+    // 移动指针, 指向下一个节点.
+    completedWork = returnFiber;
+    workInProgress = completedWork;
+  } while (completedWork !== null);
+
+  // 已回溯到根节点, 设置 workInProgressRootExitStatus = RootCompleted.
+  if (workInProgressRootExitStatus === RootIncomplete) {
+    workInProgressRootExitStatus = RootCompleted;
+  }
+}
+
+function completeWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  const newProps = workInProgress.pendingProps;
+
+  switch (workInProgress.tag) {
+    case HostRoot: {
+      const fiberRoot: FiberRoot = workInProgress.stateNode;
+
+      if (fiberRoot.pendingContext) {
+        fiberRoot.context = fiberRoot.pendingContext;
+        fiberRoot.pendingContext = null;
+      }
+
+      if (current === null || current.child === null) {
+        // 设置 fiber.flags.
+        workInProgress.flags |= Snapshot;
+      }
+
+      return null;
+    }
+    case HostComponent: {
+      popHostContext(workInProgress);
+      const rootContainerInstance = getRootHostContainer();
+      const type = workInProgress.type;
+      const currentHostContext = getHostContext();
+
+      // 1. 创建 DOM 对象.
+      const instance = createInstance(
+        type,
+        newProps,
+        rootContainerInstance,
+        currentHostContext,
+        workInProgress
+      );
+
+      // 2. 把子树中的 DOM 对象 append 到本节点的 DOM 对象之后.
+      appendAllChildren(instance, workInProgress, false, false);
+
+      // 3. 设置 stateNode 属性, 指向 DOM 对象.
+      workInProgress.stateNode = instance;
+
+      if (
+        // 4. 设置DOM对象的属性, 绑定事件等.
+        finalizeInitialChildren(
+          instance,
+          type,
+          newProps,
+          rootContainerInstance,
+          currentHostContext
+        )
+      ) {
+        // 设置 fiber.flags (Update).
+        markUpdate(workInProgress);
+      }
+
+      if (workInProgress.ref !== null) {
+        // 设置 fiber.flags (Ref).
+        markRef(workInProgress);
+      }
+
+      return null;
+    }
+  }
+}
+```
+
+#### Host Root Fiber Rendering
+
+```ts
+function updateHostRoot(current, workInProgress, renderLanes) {
+  // 1. 状态计算, 更新整合到 workInProgress.memoizedState.
+  const updateQueue = workInProgress.updateQueue;
+  const nextProps = workInProgress.pendingProps;
+  const prevState = workInProgress.memoizedState;
+  const prevChildren = prevState !== null ? prevState.element : null;
+  cloneUpdateQueue(current, workInProgress);
+  // 遍历 updateQueue.shared.pending, 提取有足够优先级的 update对象, 计算出最终的状态 workInProgress.memoizedState.
+  processUpdateQueue(workInProgress, nextProps, null, renderLanes);
+  const nextState = workInProgress.memoizedState;
+
+  // 2. 获取下级 ReactElement 对象.
+  const nextChildren = nextState.element;
+  const root: FiberRoot = workInProgress.stateNode;
+
+  // 3. 根据 ReactElement 对象, 调用 reconcileChildren 生成 Fiber 子节点 (只生成次级子节点).
+  reconcileChildren(current, workInProgress, nextChildren, renderLanes);
+  return workInProgress.child;
+}
+```
+
+#### Host Component Fiber Rendering
+
+```ts
+function updateHostComponent(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+) {
+  // 1. 状态计算, 由于 HostComponent 是无状态组件, 只需要收集 nextProps.
+  const type = workInProgress.type;
+  const nextProps = workInProgress.pendingProps;
+  const prevProps = current !== null ? current.memoizedProps : null;
+
+  // 2. 获取下级 ReactElement 对象.
+  let nextChildren = nextProps.children;
+  const isDirectTextChild = shouldSetTextContent(type, nextProps);
+
+  if (isDirectTextChild) {
+    // 如果子节点只有一个文本节点, 不用再创建一个 HostText 类型的 Fiber.
+    nextChildren = null;
+  } else if (prevProps !== null && shouldSetTextContent(type, prevProps)) {
+    // 设置 fiber.flags.
+    workInProgress.flags |= ContentReset;
+  }
+
+  // 设置 fiber.flags.
+  markRef(current, workInProgress);
+
+  // 3. 根据 ReactElement 对象, 调用 reconcileChildren 生成 Fiber 子节点(只生成次级子节点)
+  reconcileChildren(current, workInProgress, nextChildren, renderLanes);
+  return workInProgress.child;
+}
+```
+
+#### Class Component Fiber Rendering
+
+#### Function Component Fiber Rendering
+
+### Reconciler Update Workflow
+
+[Update and Update Queue](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactUpdateQueue.new.js):
+
+- `UpdateQueue` 是一个**循环队列**.
+- 创建 `Update` 时机 (`createUpdate`/`enqueueUpdate`):
+  - `ReactFiberReconciler.updateContainer`.
+  - `ReactFiberClassComponent.setState`.
+  - `ReactFiberHooks.dispatchAction`.
+- `Reconciler.Render` 阶段, 调用 `XXXClassInstance`/`useXXX`,
+  遍历处理 Update Queue (`processUpdateQueue`/`HooksDispatcherOnUpdate`), 计算出 memoizedState,
+  利用 pendingProps 与 memoizedState 产生新的 ReactElement (`ClassComponent.render()`/`FunctionComponent()`).
+
+```ts
+interface Update<State> {
+  lane: Lane;
+  tag: 'UpdateState' | 'ReplaceState' | 'ForceUpdate' | 'CaptureUpdate';
+  payload: any;
+  callback: (() => mixed) | null;
+  next: Update<State> | null;
+  _eventTime: number;
+}
+
+interface SharedQueue<State> {
+  pending: Update<State> | null;
+}
+
+interface UpdateQueue<State> {
+  baseState: State;
+  firstBaseUpdate: Update<State> | null;
+  lastBaseUpdate: Update<State> | null;
+  shared: SharedQueue<State>;
+  effects: Array<Update<State>> | null; // Updates with `callback`.
+}
+```
+
+[ReactFiberClassComponent.setState](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberClassComponent.new.js):
+
+```ts
+const classComponentUpdater = {
+  isMounted,
+  enqueueSetState(inst, payload, callback) {
+    // 1. 获取 ClassComponent 实例对应的 Fiber 节点.
+    const fiber = getInstance(inst);
+    // 2. 创建 Update 对象.
+    const eventTime = requestEventTime();
+    const lane = requestUpdateLane(fiber);
+    const update = createUpdate(eventTime, lane);
+    update.payload = payload;
+
+    if (callback !== undefined && callback !== null) {
+      update.callback = callback;
+    }
+
+    // 3. 将 Update 对象添加到当前 Fiber 节点的 updateQueue.
+    enqueueUpdate(fiber, update);
+    // 4. 请求调度, 进入 Reconciler.
+    scheduleUpdateOnFiber(fiber, lane, eventTime);
+  },
+};
+```
+
+[ReactFiberHooks.dispatchAction](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.new.js):
+
+```ts
+function dispatchAction<S, A>(
+  fiber: Fiber,
+  queue: UpdateQueue<S, A>,
+  action: A
+) {
+  // 1. 创建 Update 对象.
+  const eventTime = requestEventTime();
+  const lane = requestUpdateLane(fiber);
+  const update: Update<S, A> = {
+    lane,
+    action,
+    eagerReducer: null,
+    eagerState: null,
+    next: null,
+  };
+
+  // 2. 将 Update 对象添加到当前 Hook 对象的 updateQueue.
+  const pending = queue.pending;
+
+  if (pending === null) {
+    update.next = update;
+  } else {
+    update.next = pending.next;
+    pending.next = update;
+  }
+
+  queue.pending = update;
+
+  // 3. 请求调度, 进入 Reconciler.
+  scheduleUpdateOnFiber(fiber, lane, eventTime);
+}
+```
+
+- createUpdate.
+- enqueueUpdate.
+- scheduleUpdateOnFiber.
+- **markUpdateLaneFromFiberToRoot**:
+  找出 Fiber 树中受到本次 `Update` 影响的所有节点 (存在更新可能),
+  设置这些节点的 `fiber.lanes` 或 `fiber.childLanes`.
+- ensureRootIsScheduled.
+- flushSyncCallbacks.
+- performSyncWorkOnRoot / performConcurrentWorkOnRoot.
+- renderRootSync / renderRootConcurrent.
+- workLoopSync / workLoopConcurrent.
+- **performUnitOfWork(workInProgress)**.
+- **beginWork**:
+  - 若判断当前 Fiber 节点无需更新, 调用 `bailoutOnAlreadyFinishedWork` 循环检测子节点是否需要更新:
+    - `instance.shouldComponentUpdate() === false`.
+    - `workInProgress.pendingProps === current.memoizedProps`.
+    - `hasLegacyContextChange() === false`.
+    - `checkIfContextChanged(fiber.dependencies) === false`.
+    - `includesSomeLane(fiber.lanes, renderLanes) === false`.
+  - 若判断当前 Fiber 节点需要更新, 调用 `UpdateXXXComponent` 进行更新.
+- **bailoutOnAlreadyFinishedWork**:
+  - 若 `includesSomeLane(renderLanes, workInProgress.childLanes) === false`
+    表明子节点无需更新, 可直接进入回溯阶段 (`completeUnitOfWork`).
+  - 若 `includesSomeLane(renderLanes, workInProgress.childLanes) === true`,
+    表明子节点需要更新, clone 并返回子节点.
+- **updateHostRoot/updateXXXComponent**.
+- `ReactClassComponent.render()` / `ReactFunctionComponent()` / `ReactDOMComponent.createElement()`:
+  遍历处理 Update Queue (`processUpdateQueue`/`HooksDispatcherOnUpdate`), 计算出 memoizedState,
+  利用 pendingProps 与 memoizedState 产生新的 ReactElement.
+- **reconcileChildren**:
+  - 通过 ReactElement 与 OldFiber, 产生或复用 ChildFiber.
+  - 设置 `fiber.flags`, 标记副作用: `Placement`/`Deletion`/etc.
+  - 对于 `Deletion` Fiber, 在 `beginWork` 阶段提前将其添加到父节点的 Effects 队列中
+    (该节点会脱离 Fiber 树, 不会再进入 `completeWork` 阶段, 无法在此阶段收集此节点副作用).
+- reconcileChildFibers.
+- **completeUnitOfWork**: 收集副作用.
+- **completeWork**: 收集副作用.
+
+```ts
+// 标记所有可能存在更新的节点, 并设置 fiber.lanes 与 fiber.childLanes.
+function markUpdateLaneFromFiberToRoot(
+  sourceFiber: Fiber, // 被更新的节点.
+  lane: Lane
+): FiberRoot | null {
+  // 设置 sourceFiber.lanes.
+  sourceFiber.lanes = mergeLanes(sourceFiber.lanes, lane);
+  let alternate = sourceFiber.alternate;
+
+  if (alternate !== null) {
+    // 同时设置 sourceFiber.alternate.lanes.
+    alternate.lanes = mergeLanes(alternate.lanes, lane);
+  }
+
+  // 从 sourceFiber 开始, 向上遍历所有 Fiber, 直到 HostRootFiber.
+  // 设置沿途所有 fiber.childLanes 与 fiber.alternate.childLanes.
+  let node = sourceFiber;
+  let parent = sourceFiber.return;
+
+  while (parent !== null) {
+    parent.childLanes = mergeLanes(parent.childLanes, lane);
+    alternate = parent.alternate;
+
+    if (alternate !== null) {
+      alternate.childLanes = mergeLanes(alternate.childLanes, lane);
+    }
+
+    node = parent;
+    parent = parent.return;
+  }
+
+  if (node.tag === HostRoot) {
+    const root: FiberRoot = node.stateNode;
+    return root;
+  } else {
+    return null;
+  }
+}
+
+function beginWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  const updateLanes = workInProgress.lanes;
+
+  if (current !== null) {
+    // 进入对比.
+    const oldProps = current.memoizedProps;
+    const newProps = workInProgress.pendingProps;
+    if (
+      oldProps !== newProps ||
+      hasLegacyContextChanged() ||
+      (__DEV__ ? workInProgress.type !== current.type : false)
+    ) {
+      didReceiveUpdate = true;
+    } else if (!includesSomeLane(renderLanes, updateLanes)) {
+      // 当前渲染优先级 renderLanes 不包括 fiber.lanes, 表明当前 Fiber 节点无需更新.
+      didReceiveUpdate = false;
+      // 调用 bailoutOnAlreadyFinishedWork 循环检测子节点是否需要更新.
+      return bailoutOnAlreadyFinishedWork(current, workInProgress, renderLanes);
+    }
+  }
+
+  // 当前节点需要更新.
+  workInProgress.lanes = NoLanes; // 最高优先级
+
+  switch (workInProgress.tag) {
+    case ClassComponent: {
+      const Component = workInProgress.type;
+      const unresolvedProps = workInProgress.pendingProps;
+      const resolvedProps =
+        workInProgress.elementType === Component
+          ? unresolvedProps
+          : resolveDefaultProps(Component, unresolvedProps);
+      return updateClassComponent(
+        current,
+        workInProgress,
+        Component,
+        resolvedProps,
+        renderLanes
+      );
+    }
+    case HostRoot:
+      return updateHostRoot(current, workInProgress, renderLanes);
+    case HostComponent:
+      return updateHostComponent(current, workInProgress, renderLanes);
+    case HostText:
+      return updateHostText(current, workInProgress);
+    case Fragment:
+      return updateFragment(current, workInProgress, renderLanes);
+  }
+}
+
+function bailoutOnAlreadyFinishedWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  if (!includesSomeLane(renderLanes, workInProgress.childLanes)) {
+    // 渲染优先级不包括 workInProgress.childLanes, 表明子节点也无需更新.
+    // 返回 null, 直接进入回溯阶段.
+    return null;
+  } else {
+    // Fiber 自身无需更新, 但子节点需要更新, clone 并返回子节点.
+    cloneChildFibers(current, workInProgress);
+    return workInProgress.child;
+  }
+}
+
+function completeWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  const newProps = workInProgress.pendingProps;
+
+  switch (workInProgress.tag) {
+    case HostComponent: {
+      // 非文本节点.
+      popHostContext(workInProgress);
+      const rootContainerInstance = getRootHostContainer();
+      const type = workInProgress.type;
+
+      if (current !== null && workInProgress.stateNode !== null) {
+        // 处理改动.
+        updateHostComponent(
+          current,
+          workInProgress,
+          type,
+          newProps,
+          rootContainerInstance
+        );
+
+        if (current.ref !== workInProgress.ref) {
+          markRef(workInProgress);
+        }
+      }
+
+      return null;
+    }
+    case HostText: {
+      // 文本节点.
+      const newText = newProps;
+
+      if (current !== null && workInProgress.stateNode !== null) {
+        const oldText = current.memoizedProps;
+        // 处理改动.
+        updateHostText(current, workInProgress, oldText, newText);
+      }
+
+      return null;
+    }
+  }
+}
+
+function updateHostComponent(
+  current: Fiber,
+  workInProgress: Fiber,
+  type: Type,
+  newProps: Props,
+  rootContainerInstance: Container
+) {
+  const oldProps = current.memoizedProps;
+
+  if (oldProps === newProps) {
+    return;
+  }
+
+  const instance: Instance = workInProgress.stateNode;
+  const currentHostContext = getHostContext();
+  const updatePayload = prepareUpdate(
+    instance,
+    type,
+    oldProps,
+    newProps,
+    rootContainerInstance,
+    currentHostContext
+  );
+  workInProgress.updateQueue = updatePayload;
+
+  // 如果有属性变动, 设置 fiber.flags |= Update, 等待 Commit 阶段处理.
+  if (updatePayload) {
+    markUpdate(workInProgress);
+  }
+}
+
+function updateHostText(
+  current: Fiber,
+  workInProgress: Fiber,
+  oldText: string,
+  newText: string
+) {
+  // 如果有属性变动, 设置 fiber.flags |= Update, 等待 Commit 阶段处理.
+  if (oldText !== newText) {
+    markUpdate(workInProgress);
+  }
+}
+```
+
+### Reconciler Diff Workflow
 
 Reconciler:
 
 - O(n) incomplete tree comparison: only compare same level nodes.
-- `key` prop to hint for nodes reuse.
+- `ReactElement` + Old Children Fiber -> New Children Fiber.
+- Create new children fiber (non exist/need update),
+  drop useless children fiber,
+  reuse old children fiber,
+  set `fiber.flags`: `Placement`/`Deletion`.
+  prepare for `Commit` stage.
+- `key` prop to hint for Fiber nodes reuse.
+- Detailed diff [algorithm](https://7kms.github.io/react-illustration-series/algorithm/diff).
 
-### React Render Phase
+#### Different Types Elements
 
-Reconciler.
+- Rebuild element and children.
 
-#### Elements of Different Types
+#### Same Type DOM Elements
 
-- rebuild element and children
-- methods: `componentDidMount`/`componentWillUnmount`
-
-#### DOM Elements of Same Type
-
-- only update the changed attributes
-- use `key` attribute to match children
+- Only update the changed attributes.
+- Use `key` attribute to match children.
 
 `Best Practice`: give `key` to `<li>/<tr>/<tc>` elements
-(stable, predictable, unique and not array indexed)
+(stable, predictable, unique and not array indexed).
 
-#### Component Elements of Same Type
+#### Same Type Component Elements
 
-- Update the props to match the new element
-- Methods: `getDerivedStateFromProps`
-- Then `render` called,
-  diff algorithm recursively on the old result and the new result.
+- Update the props to match the new element.
 
-### React Commit Phase
+#### Reconcile Array Elements
 
-Renderer:
+- 第一次循环: 比较公共序列:
+  - 从左到右逐一遍历, 遇到一个无法复用的节点则退出循环.
+- 第二次循环: 比较非公共序列
+  - 在第一次循环的基础上, 如果 oldFiber 队列遍历完成, 证明 newChildren 队列中剩余的对象全部都是新增.
+  - 此时继续遍历剩余的 newChildren 队列即可, 没有额外的 diff 比较.
+  - 在第一次循环的基础上, 如果 oldFiber 队列没有遍历完,
+    需要将 oldFiber 队列中剩余的对象都添加到一个 Map 集合中, 以 oldFiber.key 作为键.
+  - 此时继续遍历剩余的 newChildren 队列, 需要用 newChild.key 到 Map 集合中进行查找,
+    将匹配上的 oldFiber 取出与 newChild 进行 diff 比较.
+- 清理工作:
+  - 在第二次循环结束后,
+    若 Map 集合中还有剩余的 oldFiber,
+    则说明 oldFiber 都是被删除的节点, 需要打上删除标记 (`Deletion`).
+
+### Reconciler Commit Workflow
+
+#### Renderer and HostConfig Protocol
+
+`Renderer`:
 
 - Implementing `HostConfig` [protocol](https://github.com/facebook/react/blob/main/packages/react-reconciler/README.md).
-- Rendering fiber tree to real contents
+- Rendering fiber tree to real contents:
   - Web: DOM node.
   - Native: native UI.
   - Server: SSR strings.
 - Real renderer [demo](https://github.com/sabertazimi/awesome-web/tree/main/packages/react-renderer/src/renderer).
 
-#### HostConfig Protocol
+`HostConfig` protocol:
 
 - `isPrimaryRender: true`.
 - `supportsHydration: true`: SSR renderer.
@@ -275,21 +2022,778 @@ Renderer:
   - resetAfterCommit.
   - preparePortalMount.
 
+#### Commit Root
+
+- `FiberRoot.finishedWork`:
+  - 副作用队列挂载在根节点上 (`finishedWork.firstEffect`).
+  - 最新 DOM 对象挂载在 HostComponent Fiber 上 (`fiber.stateNode`).
+- `BeforeMutation` phase:
+  - Read the state of the host tree right before DOM mutation.
+  - Process
+    `Passive`/`Snapshot`/`Deletion`
+    effects fiber.
+  - `instance.getSnapshotBeforeUpdate`.
+- `Mutation` phase.
+  - Mutate the host tree, render UI.
+  - Process
+    `ContentReset`/`Ref`/`Visibility`/`Placement`/`Update`/`Deletion`/`Hydrating`
+    effects fiber.
+- `Layout` phase.
+  - After DOM mutation.
+  - Process `Update | Callback` effects fiber.
+  - `instance.componentDidMount/componentDidUpdate` (**synchronous**).
+  - `instance` callback for `setState`.
+  - `useLayoutEffect` (**synchronous**).
+- `CommitEffects` functions located in
+  [ReactFiberCommitWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberCommitWork.new.js).
+
+```ts
+function commitRoot(root: FiberRoot, recoverableErrors: null | Array<mixed>) {
+  const previousUpdateLanePriority = getCurrentUpdatePriority();
+  const prevTransition = ReactCurrentBatchConfig.transition;
+
+  try {
+    ReactCurrentBatchConfig.transition = null;
+    setCurrentUpdatePriority(DiscreteEventPriority);
+    commitRootImpl(root, recoverableErrors, previousUpdateLanePriority);
+  } finally {
+    ReactCurrentBatchConfig.transition = prevTransition;
+    setCurrentUpdatePriority(previousUpdateLanePriority);
+  }
+
+  return null;
+}
+
+function commitRootImpl(
+  root: FiberRoot,
+  recoverableErrors: null | Array<mixed>,
+  renderPriorityLevel: EventPriority
+) {
+  do {
+    flushPassiveEffects();
+  } while (rootWithPendingPassiveEffects !== null);
+
+  flushRenderPhaseStrictModeWarningsInDEV();
+
+  if ((executionContext & (RenderContext | CommitContext)) !== NoContext) {
+    throw new Error('Should not already be working.');
+  }
+
+  const finishedWork = root.finishedWork;
+  const lanes = root.finishedLanes;
+
+  if (finishedWork === null) {
+    return null;
+  }
+
+  // 清空 FiberRoot 对象上的属性.
+  root.finishedWork = null;
+  root.finishedLanes = NoLanes;
+  root.callbackNode = null;
+  root.callbackPriority = NoLane;
+
+  // Update the first and last pending times on this root.
+  // The new first pending time is whatever is left on the root fiber.
+  const remainingLanes = mergeLanes(
+    finishedWork.lanes,
+    finishedWork.childLanes
+  );
+
+  if (root === workInProgressRoot) {
+    // We can reset these now that they are finished.
+    workInProgressRoot = null;
+    workInProgress = null;
+    workInProgressRootRenderLanes = NoLanes;
+  }
+
+  // If there are pending passive effects, schedule a callback to process them.
+  // Do this as early as possible before anything else in commit phase.
+  if (
+    (finishedWork.subtreeFlags & PassiveMask) !== NoFlags ||
+    (finishedWork.flags & PassiveMask) !== NoFlags
+  ) {
+    if (!rootDoesHavePassiveEffects) {
+      rootDoesHavePassiveEffects = true;
+      pendingPassiveEffectsRemainingLanes = remainingLanes;
+      scheduleCallback(NormalSchedulerPriority, () => {
+        flushPassiveEffects();
+        return null;
+      });
+    }
+  }
+
+  // Check if there are any effects in the whole tree.
+  const subtreeHasEffects =
+    (finishedWork.subtreeFlags &
+      (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
+    NoFlags;
+  const rootHasEffect =
+    (finishedWork.flags &
+      (BeforeMutationMask | MutationMask | LayoutMask | PassiveMask)) !==
+    NoFlags;
+
+  if (subtreeHasEffects || rootHasEffect) {
+    // Store context.
+    const prevTransition = ReactCurrentBatchConfig.transition;
+    const previousPriority = getCurrentUpdatePriority();
+    const prevExecutionContext = executionContext;
+    ReactCurrentBatchConfig.transition = null;
+    setCurrentUpdatePriority(DiscreteEventPriority);
+    executionContext |= CommitContext;
+
+    // Reset this to null before calling life cycles.
+    ReactCurrentOwner.current = null;
+
+    // `BeforeMutation` phase:
+    // read the state of the host tree right before we mutate it.
+    // `getSnapshotBeforeUpdate` is called.
+    commitBeforeMutationEffects(root, finishedWork);
+
+    // `Mutation` phase:
+    // mutate the host tree.
+    commitMutationEffects(root, finishedWork, lanes);
+
+    resetAfterCommit(root.containerInfo);
+
+    // The workInProgress tree is now the current tree (during `componentDidMount`/`Update`).
+    root.current = finishedWork;
+
+    // `Layout` phase:
+    // `useLayoutEffect` is called.
+    commitLayoutEffects(finishedWork, root, lanes);
+
+    // Tell Scheduler to yield at the end of the frame,
+    // so the browser has an opportunity to paint.
+    requestPaint();
+
+    // Restore context.
+    executionContext = prevExecutionContext;
+    setCurrentUpdatePriority(previousPriority);
+    ReactCurrentBatchConfig.transition = prevTransition;
+  } else {
+    // No effects.
+    root.current = finishedWork;
+  }
+
+  const rootDidHavePassiveEffects = rootDoesHavePassiveEffects;
+
+  if (rootDoesHavePassiveEffects) {
+    // This commit has passive effects:
+    // Stash a reference to them.
+    rootDoesHavePassiveEffects = false;
+    rootWithPendingPassiveEffects = root;
+    pendingPassiveEffectsLanes = lanes;
+  } else {
+    // There were no passive effects:
+    // immediately release the cache pool for this render.
+    releaseRootPooledCache(root, remainingLanes);
+  }
+
+  // Always call this before exiting `commitRoot`,
+  // to ensure that any additional work on this root is scheduled.
+  ensureRootIsScheduled(root, now());
+
+  // If the passive effects are the result of a discrete render,
+  // flush them synchronously at the end of the current task
+  // so that the result is immediately observable.
+  if (
+    includesSomeLane(pendingPassiveEffectsLanes, SyncLane) &&
+    root.tag !== LegacyRoot
+  ) {
+    flushPassiveEffects();
+  }
+
+  // If layout work was scheduled, flush it now.
+  flushSyncCallbacks();
+
+  return null;
+}
+```
+
+```ts
+const BeforeMutationMask = Update | Snapshot | ChildDeletion | Visibility;
+
+const MutationMask =
+  Placement |
+  Update |
+  ChildDeletion |
+  ContentReset |
+  Ref |
+  Hydrating |
+  Visibility;
+
+const LayoutMask = Update | Callback | Ref | Visibility;
+```
+
 #### Before Mutation Phase
+
+- `Passive` effects:
+  - `FunctionComponent` fiber (hooks):
+    If there are pending passive effects,
+    schedule a callback (**asynchronous**) to process them,
+    **as early as possible** before anything else in commit phase.
+  - `useXXX` hooks normally run in **asynchronous** mode.
+  - `useEffect` (**asynchronous**) run after `useLayoutEffect`.
+- `Snapshot` effects:
+  - `HostRoot` fiber: `HostConfig.clearContainer`.
+  - `ClassComponent` fiber: `instance.getSnapShotBeforeUpdate`.
+- `Deletion` effects: `commitBeforeMutationEffectsDeletion` -> `HostConfig.beforeActiveInstanceBlur`.
+
+```ts
+// `Passive` effects.
+scheduleCallback(NormalSchedulerPriority, () => {
+  flushPassiveEffects();
+  return null;
+});
+
+function flushPassiveEffects(): boolean {
+  // Returns whether passive effects were flushed.
+  if (pendingPassiveEffectsRenderPriority !== NoSchedulerPriority) {
+    const priorityLevel =
+      pendingPassiveEffectsRenderPriority > NormalSchedulerPriority
+        ? NormalSchedulerPriority
+        : pendingPassiveEffectsRenderPriority;
+    pendingPassiveEffectsRenderPriority = NoSchedulerPriority;
+    return runWithPriority(priorityLevel, flushPassiveEffectsImpl);
+  }
+
+  return false;
+}
+
+function flushPassiveEffectsImpl() {
+  if (rootWithPendingPassiveEffects === null) {
+    return false;
+  }
+
+  rootWithPendingPassiveEffects = null;
+  pendingPassiveEffectsLanes = NoLanes;
+
+  // 1. 执行 effect.destroy().
+  const unmountEffects = pendingPassiveHookEffectsUnmount;
+  pendingPassiveHookEffectsUnmount = [];
+
+  for (let i = 0; i < unmountEffects.length; i += 2) {
+    const effect = unmountEffects[i];
+    const fiber = unmountEffects[i + 1];
+    const destroy = effect.destroy;
+    effect.destroy = undefined;
+
+    if (typeof destroy === 'function') {
+      destroy();
+    }
+  }
+
+  // 2. 执行新 effect.create(), 重新赋值到 effect.destroy.
+  const mountEffects = pendingPassiveHookEffectsMount;
+  pendingPassiveHookEffectsMount = [];
+
+  for (let i = 0; i < mountEffects.length; i += 2) {
+    const effect = mountEffects[i];
+    const fiber = mountEffects[i + 1];
+    effect.destroy = create();
+  }
+}
+```
+
+```ts
+// `Snapshot` effects.
+function commitBeforeMutationEffects(root: FiberRoot, firstChild: Fiber) {
+  HostConfig.prepareForCommit(root.containerInfo);
+  nextEffect = firstChild;
+
+  // DFS traverse.
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    const deletions = fiber.deletions;
+
+    if (deletions !== null) {
+      for (let i = 0; i < deletions.length; i++) {
+        const deletion = deletions[i];
+        commitBeforeMutationEffectsDeletion(deletion);
+      }
+    }
+
+    const child = fiber.child;
+
+    if (
+      (fiber.subtreeFlags & BeforeMutationMask) !== NoFlags &&
+      child !== null
+    ) {
+      // 1. Visit children.
+      nextEffect = child;
+    } else {
+      while (nextEffect !== null) {
+        const fiber = nextEffect;
+        commitBeforeMutationEffectsOnFiber(fiber);
+        const sibling = fiber.sibling;
+
+        // 2. Visit sibling.
+        if (sibling !== null) {
+          nextEffect = sibling;
+          break;
+        }
+
+        nextEffect = fiber.return;
+      }
+    }
+  }
+}
+
+function commitBeforeMutationEffectsOnFiber(finishedWork: Fiber) {
+  const current = finishedWork.alternate;
+  const flags = finishedWork.flags;
+
+  if ((flags & Snapshot) !== NoFlags) {
+    switch (finishedWork.tag) {
+      case ClassComponent: {
+        if (current !== null) {
+          const prevProps = current.memoizedProps;
+          const prevState = current.memoizedState;
+          const instance = finishedWork.stateNode;
+
+          // We could update instance props and state here,
+          // but instead we rely on them being set during last render.
+          const snapshot = instance.getSnapshotBeforeUpdate(
+            finishedWork.elementType === finishedWork.type
+              ? prevProps
+              : resolveDefaultProps(finishedWork.type, prevProps),
+            prevState
+          );
+          instance.__reactInternalSnapshotBeforeUpdate = snapshot;
+        }
+
+        break;
+      }
+      case HostRoot: {
+        if (supportsMutation) {
+          const root = finishedWork.stateNode;
+          HostConfig.clearContainer(root.containerInfo);
+        }
+
+        break;
+      }
+      case FunctionComponent:
+      case ForwardRef:
+      case SimpleMemoComponent:
+      case HostComponent:
+      case HostText:
+      case HostPortal:
+      case IncompleteClassComponent:
+        // Nothing to do for these component types.
+        break;
+      default: {
+        throw new Error(
+          'This unit of work tag should not have side-effects. This error is ' +
+            'likely caused by a bug in React. Please file an issue.'
+        );
+      }
+    }
+  }
+}
+
+function commitBeforeMutationEffectsDeletion(deletion: Fiber) {
+  if (doesFiberContain(deletion, focusedInstanceHandle)) {
+    shouldFireAfterActiveInstanceBlur = true;
+    beforeActiveInstanceBlur(deletion);
+  }
+}
+```
 
 #### Mutation Phase
 
-- `Placement` effects: `DOM.appendChild` called.
+- `ContentReset` effects: `commitResetTextContent` -> `HostConfig.resetTextContext`.
+- `Ref` effects: `commitAttachRef`/`commitDetachRef` -> `HostConfig.getPublicInstance`.
+- `Visibility` effects:
+  - `SuspenseComponent` fiber:
+    `markCommitTimeOfFallback`.
+  - `OffscreenComponent` fiber:
+    `hideOrUnhideAllChildren` -> `HostConfig.hideInstance/hideTextInstance/unhideInstance/unhideTextInstance`.
+- `Placement` effects:
+  `commitPlacement`
+  -> `insertOrAppendPlacementNode`/`insertOrAppendPlacementNodeIntoContainer`
+  -> `HostConfig.appendChild/insertBefore/appendChildToContainer/insertInContainerBefore`.
+- `Update` effects: `commitWork` -> `HostConfig.commitUpdate/commitTextUpdate/commitHydratedContainer/replaceContainerChildren`.
+- `Deletion` effects: `commitDeletion` -> `HostConfig.removeChild/removeChildFromContainer/clearSuspenseBoundaryFromContainer`.
+- `Hydrating` effects.
+
+```ts
+export function commitMutationEffects(
+  root: FiberRoot,
+  firstChild: Fiber,
+  committedLanes: Lanes
+) {
+  inProgressLanes = committedLanes;
+  inProgressRoot = root;
+  nextEffect = firstChild;
+
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    const deletions = fiber.deletions;
+
+    if (deletions !== null) {
+      for (let i = 0; i < deletions.length; i++) {
+        const childToDelete = deletions[i];
+        commitDeletion(root, childToDelete, fiber);
+      }
+    }
+
+    const child = fiber.child;
+
+    if ((fiber.subtreeFlags & MutationMask) !== NoFlags && child !== null) {
+      // 1. Visit children.
+      nextEffect = child;
+    } else {
+      while (nextEffect !== null) {
+        const fiber = nextEffect;
+        commitMutationEffectsOnFiber(fiber, root, lanes);
+        const sibling = fiber.sibling;
+
+        // 2. Visit sibling.
+        if (sibling !== null) {
+          nextEffect = sibling;
+          break;
+        }
+
+        nextEffect = fiber.return;
+      }
+    }
+  }
+
+  inProgressLanes = null;
+  inProgressRoot = null;
+}
+
+function commitMutationEffectsOnFiber(
+  finishedWork: Fiber,
+  root: FiberRoot,
+  lanes: Lanes
+) {
+  const flags = finishedWork.flags;
+
+  if (flags & ContentReset) {
+    commitResetTextContent(finishedWork);
+  }
+
+  if (flags & Ref) {
+    const current = finishedWork.alternate;
+
+    if (current !== null) {
+      // 先清空 ref, 在第三阶段 (Layout), 再重新赋值.
+      commitDetachRef(current);
+    }
+
+    if (finishedWork.tag === ScopeComponent) {
+      commitAttachRef(finishedWork);
+    }
+  }
+
+  if (flags & Visibility) {
+    switch (finishedWork.tag) {
+      case SuspenseComponent: {
+        const newState: OffscreenState | null = finishedWork.memoizedState;
+        const isHidden = newState !== null;
+
+        if (isHidden) {
+          const current = finishedWork.alternate;
+          const wasHidden = current !== null && current.memoizedState !== null;
+
+          if (!wasHidden) {
+            markCommitTimeOfFallback();
+          }
+        }
+
+        break;
+      }
+      case OffscreenComponent: {
+        const newState: OffscreenState | null = finishedWork.memoizedState;
+        const isHidden = newState !== null;
+        const current = finishedWork.alternate;
+        const wasHidden = current !== null && current.memoizedState !== null;
+        const offscreenBoundary: Fiber = finishedWork;
+
+        if (supportsMutation) {
+          hideOrUnhideAllChildren(offscreenBoundary, isHidden);
+        }
+
+        break;
+      }
+    }
+  }
+
+  const primaryFlags = flags & (Placement | Update | Hydrating);
+
+  switch (primaryFlags) {
+    case Placement: {
+      // Placement
+      commitPlacement(finishedWork);
+      finishedWork.flags &= ~Placement; // Clear bit.
+      break;
+    }
+    case PlacementAndUpdate: {
+      // Placement
+      commitPlacement(finishedWork);
+      finishedWork.flags &= ~Placement; // Clear bit.
+
+      // Update
+      const current = finishedWork.alternate;
+      commitWork(current, finishedWork);
+      break;
+    }
+    case Hydrating: {
+      finishedWork.flags &= ~Hydrating; // Clear bit.
+      break;
+    }
+    case HydratingAndUpdate: {
+      finishedWork.flags &= ~Hydrating; // Clear bit.
+
+      // Update
+      const current = finishedWork.alternate;
+      commitWork(current, finishedWork);
+      break;
+    }
+    case Update: {
+      const current = finishedWork.alternate;
+      commitWork(current, finishedWork);
+      break;
+    }
+  }
+}
+```
 
 #### Layout Phase
 
-- `componentDidMount` lifecycle function called **synchronously**.
-- `useLayoutEffect` callback called **synchronously**.
+- `Update | Callback` effects:
+  - `instance.componentDidMount/componentDidUpdate` (**synchronous**).
+  - `instance` callback for `setState`.
+  - `useLayoutEffect` (**synchronous**).
+  - `HostConfig.getPublicInstance/commitMount`.
 
-#### useEffect Execution Time
+```ts
+function commitLayoutEffects(
+  finishedWork: Fiber,
+  root: FiberRoot,
+  committedLanes: Lanes
+): void {
+  inProgressLanes = committedLanes;
+  inProgressRoot = root;
+  nextEffect = finishedWork;
 
-`useEffect` callback called **asynchronously**
-after three stages of `Commit`.
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    const firstChild = fiber.child;
+
+    if ((fiber.subtreeFlags & LayoutMask) !== NoFlags && firstChild !== null) {
+      // 1. Visit children.
+      nextEffect = firstChild;
+    } else {
+      while (nextEffect !== null) {
+        const fiber = nextEffect;
+
+        if ((fiber.flags & LayoutMask) !== NoFlags) {
+          const current = fiber.alternate;
+          commitLayoutEffectOnFiber(root, current, fiber, committedLanes);
+        }
+
+        // Complete `commitLayoutEffects`.
+        if (fiber === subtreeRoot) {
+          nextEffect = null;
+          break;
+        }
+
+        const sibling = fiber.sibling;
+
+        // 2. Visit sibling.
+        if (sibling !== null) {
+          nextEffect = sibling;
+          break;
+        }
+
+        nextEffect = fiber.return;
+      }
+    }
+  }
+
+  inProgressLanes = null;
+  inProgressRoot = null;
+}
+
+function commitLayoutEffectOnFiber(
+  finishedRoot: FiberRoot,
+  current: Fiber | null,
+  finishedWork: Fiber,
+  committedLanes: Lanes
+): void {
+  if ((finishedWork.flags & LayoutMask) !== NoFlags) {
+    switch (finishedWork.tag) {
+      case FunctionComponent:
+      case ForwardRef:
+      case SimpleMemoComponent: {
+        if (
+          !enableSuspenseLayoutEffectSemantics ||
+          !offscreenSubtreeWasHidden
+        ) {
+          commitHookEffectListMount(HookLayout | HookHasEffect, finishedWork);
+        }
+
+        break;
+      }
+      case ClassComponent: {
+        const instance = finishedWork.stateNode;
+
+        if (finishedWork.flags & Update) {
+          if (!offscreenSubtreeWasHidden) {
+            if (current === null) {
+              instance.componentDidMount();
+            } else {
+              const prevProps =
+                finishedWork.elementType === finishedWork.type
+                  ? current.memoizedProps
+                  : resolveDefaultProps(
+                      finishedWork.type,
+                      current.memoizedProps
+                    );
+              const prevState = current.memoizedState;
+
+              instance.componentDidUpdate(
+                prevProps,
+                prevState,
+                instance.__reactInternalSnapshotBeforeUpdate
+              );
+            }
+          }
+        }
+
+        const updateQueue = finishedWork.updateQueue;
+
+        if (updateQueue !== null) {
+          // 处理 update 回调函数, e.g: `this.setState({}, callback)`.
+          commitUpdateQueue(finishedWork, updateQueue, instance);
+        }
+
+        break;
+      }
+      case HostRoot: {
+        const updateQueue = finishedWork.updateQueue;
+
+        if (updateQueue !== null) {
+          let instance = null;
+
+          if (finishedWork.child !== null) {
+            switch (finishedWork.child.tag) {
+              case HostComponent:
+                instance = getPublicInstance(finishedWork.child.stateNode);
+                break;
+              case ClassComponent:
+                instance = finishedWork.child.stateNode;
+                break;
+            }
+          }
+
+          // 处理 update 回调函数, e.g: `this.setState({}, callback)`.
+          commitUpdateQueue(finishedWork, updateQueue, instance);
+        }
+
+        break;
+      }
+      case HostComponent: {
+        const instance: Instance = finishedWork.stateNode;
+
+        if (current === null && finishedWork.flags & Update) {
+          const type = finishedWork.type;
+          const props = finishedWork.memoizedProps;
+          commitMount(instance, type, props, finishedWork);
+        }
+
+        break;
+      }
+      case SuspenseComponent: {
+        commitSuspenseHydrationCallbacks(finishedRoot, finishedWork);
+        break;
+      }
+      case HostText:
+      case HostPortal:
+      case Profiler:
+      case SuspenseListComponent:
+      case IncompleteClassComponent:
+      case ScopeComponent:
+      case OffscreenComponent:
+      case LegacyHiddenComponent: {
+        break;
+      }
+
+      default:
+        throw new Error(
+          'This unit of work tag should not have side-effects. This error is ' +
+            'likely caused by a bug in React. Please file an issue.'
+        );
+    }
+  }
+
+  // 重新设置ref.
+  if (finishedWork.flags & Ref) {
+    commitAttachRef(finishedWork);
+  }
+}
+```
+
+### Reconciler Performance Tips
+
+- Render: 通过一些启发式算法跳过没有发生变更的子树.
+- Commit:
+  - 维护了一个列表用于记录变化的 Fiber, 不再访问其他 Fiber.
+  - 首次渲染 (Mount) 时只有 `HostRootFiber.flags` 会设置 `Placement`,
+    在 Commit 阶段只会执行一次插入操作.
+- GC:
+  - Reuse `OldFiber` objects when `Bailout`.
+  - `current` Fiber tree and `workInProgress` Fiber tree for `Double Buffering`.
+
+### Minimal Reconciler Implementation
+
+```ts
+const performWork = deadline => {
+  if (!nextUnitOfWork) {
+    resetNextUnitOfWork();
+  }
+
+  // whether current status is idle status or not
+  while (nextUnitOfWork && deadline.timeRemaining() > ENOUGH_TIME) {
+    nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
+  }
+
+  if (pendingCommit) {
+    commitAllWork(pendingCommit);
+  }
+
+  // checks if there's pending work
+  // if exist, performWork in **next frame** when idle
+  if (nextUnitOfWork || updateQueue.length > 0) {
+    requestIdleCallback(performWork);
+  }
+};
+
+const scheduleUpdate = (instance, partialState) => {
+  updateQueue.push({
+    from: CLASS_COMPONENT,
+    instance,
+    partialState,
+  });
+
+  requestIdleCallback(performWork);
+};
+
+// React.render function
+const render = (elements, container) => {
+  updateQueue.push({
+    from: HOST_ROOT,
+    dom: container,
+    newProps: {
+      children: elements,
+    },
+  });
+
+  requestIdleCallback(performWork);
+};
+```
 
 ## Props and States
 
@@ -298,21 +2802,20 @@ after three stages of `Commit`.
 - `setState` Synchronous Way:
   When it comes `blocking mode`
   (`ReactDOM.createBlockingRoot(rootNode).render(<App />)`),
-  setState works in synchronous mode.
+  `setState` works in synchronous mode:
+  `scheduleUpdateOnFiber` -> `ensureRootIsScheduled` -> **`flushSyncCallbackQueue`**.
 - `setState` Asynchronous Way:
-  At most of the other time, setState works in asynchronous mode,
+  At most of the other time, `setState` works in asynchronous mode,
   including `legacy mode`(`ReactDOM.render(<App />, rootNode)`)
   and `concurrent mode`(`ReactDOM.createRoot(rootNode).render(<App />)`).
 - 在异步模式下, 为了防止子组件在处理事件时多次渲染,
-  将多个 setState (包括父组件) 移到浏览器事件之后执行
-  (Batched Updates: 此时 React 内部变量 isBatchingUpdates 变成 true),
+  将多个 `setState` (包括父组件) 移到浏览器事件之后执行
+  (Batched Updates: 此时 React 内部变量 `isBatchingUpdates` 变成 true),
   可以提升 React 性能.
-  未来会在更多的可以 Batched Updates 的场景下将 setState 设为异步执行,
+  未来会在更多的可以 Batched Updates 的场景下将 `setState` 设为异步执行,
   所以编写代码时最好将 setState 总是当做异步执行函数.
-- Batch Update: 事件处理.
-- Not Batch Update: Async Work (setTimeout/Promise.then)
 
-```jsx
+```tsx
 class Example extends React.Component {
   constructor() {
     super();
@@ -338,7 +2841,7 @@ class Example extends React.Component {
   }
 
   render() {
-    return null;
+    return <div>Example</div>;
   }
 }
 
@@ -351,7 +2854,7 @@ class Example extends React.Component {
 - can use `setInterval`/`setTimeout`/AJAX request/`fetch` in this method,
   and call `setState` as `callback` inside these functions
 
-```jsx
+```tsx
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -407,62 +2910,106 @@ class MyComponent extends React.Component {
 
 ### Props Validation
 
-```jsx
-static PropTypes = {
-    arrayProps: React.PropTypes.array
-    // array/bool/func/number/object/string/symbol/node/element
-    // React.PropTypes.instanceOf/oneOf/oneOfType
-    // React.PropTypes.arrayOf(React.PropsTypes.number)
-    // React.PropTypes.objectOf(React.PropsTypes.number)
-    // React.PropTypes.any.isRequired
-}
-```
+- `React.PropTypes.array/bool/func/number/object/string/symbol/node/element`.
+- `React.PropTypes.any.isRequired`.
+- `React.PropTypes.objectOf(React.PropsTypes.number)`.
+- `React.PropTypes.arrayOf(React.PropsTypes.number)`.
+- `React.PropTypes.instanceOf/oneOf/oneOfType(type)`.
 
 ## Element and Component
 
-react element 实际上是纯对象, 可由 React.createElement()/JSX/element factory helper 创建,
-并被 react 在必要时渲染成真实的 DOM 结点
+React Element 实际上是纯对象,
+可由 `React.createElement()`/`JSX`/`Element Factory Helper` 创建,
+并被 React 在必要时渲染成真实的 DOM Nodes.
 
-```jsx
-ReactDOM.render({
-  type: Form,
-  props: {
-    isSubmitted: false,
-    buttonText: 'OK!'
-  }
-}, document.getElementById('root'));
+```ts
+type ReactInternalType =
+  | 'react.element'
+  | 'react.portal'
+  | 'react.fragment'
+  | 'react.strict_mode'
+  | 'react.profiler'
+  | 'react.provider'
+  | 'react.context'
+  | 'react.forward_ref'
+  | 'react.suspense'
+  | 'react.suspense_list'
+  | 'react.memo'
+  | 'react.lazy'
+  | 'react.block'
+  | 'react.server.block'
+  | 'react.fundamental'
+  | 'react.scope'
+  | 'react.opaque.id'
+  | 'react.debug_trace_mode'
+  | 'react.offscreen'
+  | 'react.legacy_hidden';
+
+export interface ReactElement<Props> {
+  $$typeof: any;
+  key: string | number | null;
+  type:
+    | string
+    | ((props: Props) => ReactElement<any>)
+    | (new (props: Props) => ReactComponent<any>)
+    | ReactInternalType;
+  props: Props;
+  ref: Ref;
+
+  // ReactFiber
+  _owner: any;
+
+  // __DEV__
+  _store: { validated: boolean };
+  _self: React$Element<any>;
+  _shadowChildren: any;
+  _source: Source;
+}
+```
+
+```ts
+ReactDOM.render(
+  {
+    type: Form,
+    props: {
+      isSubmitted: false,
+      buttonText: 'OK!',
+    },
+  },
+  document.getElementById('root')
+);
 
 // React: You told me this...
-{
+const FormElement = {
   type: Form,
   props: {
     isSubmitted: false,
-    buttonText: 'OK!'
-  }
-}
+    buttonText: 'OK!',
+  },
+};
 
 // React: ...And Form told me this...
-{
+const ButtonElement = {
   type: Button,
   props: {
     children: 'OK!',
-    color: 'blue'
-  }
-}
+    color: 'blue',
+  },
+};
 
 // React: ...and Button told me this! I guess I'm done.
-{
+const HTMLButtonElement = {
   type: 'button',
   props: {
     className: 'button button-blue',
     children: {
       type: 'b',
       props: {
-        children: 'OK!'
-      }
-    }
-  }
-}
+        children: 'OK!',
+      },
+    },
+  },
+};
 ```
 
 ### JSX
@@ -470,17 +3017,15 @@ ReactDOM.render({
 在 JSX 中, 小写标签被认为是 HTML 标签.
 但是, 含有 `.` 的大写和小写标签名却不是.
 
-```jsx
-<component /> 将被转换为 React.createElement('component') (i.e, HTML 标签)
-<obj.component /> 将被转换为 React.createElement(obj.component)
-<Component /> 将被转换为 React.createElement(Component)
-```
+- `<component />`: 转换为 `React.createElement('component')` (e.g HTML native tag).
+- `<obj.component />`: 转换为 `React.createElement(obj.component)`.
+- `<Component />`: 转换为 `React.createElement(Component)`.
 
 #### JSX Transform
 
 - [New JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
 
-```js
+```ts
 import React from 'react';
 
 function App() {
@@ -488,7 +3033,7 @@ function App() {
 }
 ```
 
-```js
+```ts
 // Inserted by a compiler
 import { jsx as _jsx } from 'react/jsx-runtime';
 
@@ -531,48 +3076,135 @@ TypeScript config for new JSX transform:
 
 ### Stateless and Stateful component
 
+React Component
+[definition](https://github.com/facebook/react/blob/main/packages/react/src/ReactBaseClasses.js):
+
+- `React.Component`.
+- `React.PureComponent`.
+
+```ts
+interface NewLifecycle<P, S, SS> {
+  getSnapshotBeforeUpdate?(
+    prevProps: Readonly<P>,
+    prevState: Readonly<S>
+  ): SS | null;
+
+  componentDidUpdate?(
+    prevProps: Readonly<P>,
+    prevState: Readonly<S>,
+    snapshot?: SS
+  ): void;
+}
+
+interface ComponentLifecycle<P, S, SS = any> extends NewLifecycle<P, S, SS> {
+  componentDidMount?(): void;
+
+  shouldComponentUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any
+  ): boolean;
+
+  componentWillUnmount?(): void;
+
+  componentDidCatch?(error: Error, errorInfo: ErrorInfo): void;
+}
+
+interface Component<P = {}, S = {}, SS = any>
+  extends ComponentLifecycle<P, S, SS> {}
+
+class Component<P, S> {
+  readonly props: Readonly<P> & Readonly<{ children?: ReactNode | undefined }>;
+  state: Readonly<S>;
+
+  static contextType?: Context<any> | undefined;
+  context: any;
+
+  constructor(props: Readonly<P> | P);
+
+  setState<K extends keyof S>(
+    state:
+      | ((prevState: Readonly<S>, props: Readonly<P>) => Pick<S, K> | S | null)
+      | (Pick<S, K> | S | null),
+    callback?: () => void
+  ): void;
+
+  forceUpdate(callback?: () => void): void;
+
+  render(): ReactNode;
+}
+
+class PureComponent<P = {}, S = {}, SS = any> extends Component<P, S, SS> {}
+```
+
 #### Stateless component
 
-采用函数型声明, 不使用 setState(), 一般作为表现型组件
+采用函数型声明, 不使用 `setState()`, 一般作为表现型组件.
 
 #### Stateful component
 
 - 采用类型声明, 使用 setState(), 一般作为容器型组件(containers)
 - 结合 Redux 中的 connect 方法, 将 store 中的 state 作为此类组件的 props
 
-```jsx
-this.setState((prevState, props) => ({
-  counter: prevState.counter + props.increment,
-}));
+```tsx
+class Component {
+  render() {
+    this.setState((prevState, props) => ({
+      counter: prevState.counter + props.increment,
+    }));
+
+    return <div>Component</div>;
+  }
+}
 ```
 
 ### Component Lifecycle
 
-- reconciliation stage:
-  constructor, getDerivedStateFromProps, getDerivedStateFromError,
-  shouldComponentUpdate, render.
-- commit stage:
-  componentDidMount, getSnapshotBeforeUpdate, componentDidUpdate,
-  componentWillUnmount, componentDidCatch.
+- Reconciliation phase:
+  - constructor.
+  - getDerivedStateFromProps.
+  - getDerivedStateFromError.
+  - shouldComponentUpdate.
+  - `ClassComponent` `render` function.
+  - `setState` updater functions.
+  - `FunctionComponent` body function.
+  - `useState`/`useReducer`/`useMemo` updater functions.
+  - `UNSAFE_componentWillMount`.
+  - `UNSAFE_componentWillReceiveProps`.
+  - `UNSAFE_componentWillUpdate`.
+- Commit phase:
+  - componentDidMount.
+  - getSnapshotBeforeUpdate.
+  - componentDidUpdate.
+  - componentWillUnmount.
+  - componentDidCatch.
 
 因为协调阶段可能被中断、恢复，甚至重做,
 React 协调阶段的生命周期钩子可能会被调用多次,
-协调阶段的生命周期钩子不要包含副作用
+**协调阶段的生命周期钩子不要包含副作用**: e.g `fetch` promises, `async` functions.
+通过 [`React.StrictMode`](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects)
+可以自动检测应用中隐藏的问题.
 
 #### Creation and Mounting Phase
 
-constructor(props, context) -> getDerivedStateFromProps() -> render() -> componentDidMount()
+`constructor(props, context)`
+-> `getDerivedStateFromProps()`
+-> `render()`
+-> `componentDidMount()`.
 
 #### Updating Phase
 
-update for three reasons:
+Update for three reasons:
 
-- parent/top (re-)render
-- this.setState() called
-- this.forceUpdate() called
+- Parent/top components (re-)rendering.
+- `this.setState()` called.
+- `this.forceUpdate()` called.
 
-getDerivedStateFromProps() -> shouldComponentUpdate(nextProps, nextState)
--> render() -> getSnapshotBeforeUpdate() -> componentDidUpdate(prevProps, prevState)
+`getDerivedStateFromProps()`
+-> `shouldComponentUpdate(nextProps, nextState)`
+-> `render()`
+-> `getSnapshotBeforeUpdate()`
+-> `componentDidUpdate(prevProps, prevState)`.
 
 getSnapshotBeforeUpdate:
 在最新的渲染输出提交给 DOM 前将会立即调用,
@@ -600,7 +3232,7 @@ componentWillUnmount()
 
 Modify children properties:
 
-```jsx
+```tsx
 const CreateTextWithProps = ({ text, ASCIIChar, ...props }) => {
   return (
     <span {...props}>
@@ -627,7 +3259,7 @@ function App() {
 }
 ```
 
-```jsx
+```tsx
 const RadioGroup = props => {
   const RenderChildren = () =>
     React.Children.map(props.children, child => {
@@ -667,7 +3299,7 @@ function App() {
 - `React.Children.count(children)`.
 - `React.Children.only(children)`.
 
-```jsx
+```tsx
 import { Children, cloneElement } from 'react';
 
 function Breadcrumbs({ children }) {
@@ -713,7 +3345,7 @@ function Breadcrumbs({ children }) {
                 })}
               </div>
             )}
-            {!isLast && <div style={{ marginRight: '5px' }}>></div>}
+            {!isLast && <div style={{ marginRight: '5px' }}></div>}
           </>
         );
       })}
@@ -744,75 +3376,6 @@ export default function App() {
 }
 ```
 
-React `SubComponents` pattern:
-
-```tsx
-import type { CSSProperties, ReactNode } from 'react';
-import React from 'react';
-
-interface Props {
-  children: ReactNode;
-  style?: CSSProperties;
-  rest?: any;
-}
-
-const Header = ({ children, style, ...rest }: Props): JSX.Element => (
-  <div style={{ ...style }} {...rest}>
-    {children}
-  </div>
-);
-
-const Body = ({ children, style, ...rest }: Props): JSX.Element => (
-  <div style={{ ...style }} {...rest}>
-    {children}
-  </div>
-);
-
-const Footer = ({ children, style, ...rest }: Props): JSX.Element => (
-  <div style={{ ...style }} {...rest}>
-    {children}
-  </div>
-);
-
-const getChildrenOnDisplayName = (children: ReactNode[], displayName: string) =>
-  React.Children.map(children, child =>
-    child.displayName === displayName ? child : null
-  );
-
-const Card = ({ children }: { children: ReactNode[] }): JSX.Element => {
-  const header = getChildrenOnDisplayName(children, 'Header');
-  const body = getChildrenOnDisplayName(children, 'Body');
-  const footer = getChildrenOnDisplayName(children, 'Footer');
-
-  return (
-    <div className="card">
-      {header && <div className="card-header">{header}</div>}
-      <div className="card-body">{body}</div>
-      {footer && <div className="card-footer">{footer}</div>}
-    </div>
-  );
-};
-
-Header.displayName = 'Header';
-Body.displayName = 'Body';
-Footer.displayName = 'Footer';
-Card.Header = Header;
-Card.Body = Body;
-Card.Footer = Footer;
-
-const App = () => (
-  <div>
-    <Card>
-      <Card.Header>Header</Card.Header>
-      <Card.Body>Body</Card.Body>
-      <Card.Footer>Footer</Card.Footer>
-    </Card>
-  </div>
-);
-
-export default App;
-```
-
 ### Refs
 
 Refs 用于返回对元素的引用.
@@ -825,9 +3388,9 @@ Refs 用于返回对元素的引用.
 
 `Ref` 通过将 Fiber 树中的 `instance` 赋给 `ref.current` 实现
 
-```jsx
+```ts
 function commitAttachRef(finishedWork: Fiber) {
-  // finishedWork 为含有 Ref effectTag 的 fiber
+  // finishedWork 为含有 Ref effectTag 的 Fiber
   const ref = finishedWork.ref;
 
   // 含有 ref prop, 这里是作为数据结构
@@ -867,25 +3430,28 @@ class CssThemeProvider extends React.PureComponent<Props> {
 
 #### String Refs
 
-- 尽可能不适用 `String Refs`
-- React 无法获取 `this` 引用, 需要持续追踪当前`render`出的组件, 性能变慢
+**不建议使用** [`String Refs`](https://github.com/facebook/react/pull/8333#issuecomment-271648615):
 
-```jsx
+- React 无法获取 `this` 引用, 需要持续追踪当前`render`出的组件, 性能变慢.
+- `String Refs` 不可组合化, `Callback Refs` 可组合化.
+
+```tsx
 class Foo extends Component {
   render() {
     return <input onClick={() => this.action()} ref="input" />;
   }
+
   action() {
     console.log(this.refs.input.value);
   }
 }
 ```
 
-```jsx
+```tsx
 class App extends React.Component {
   renderRow = index => {
     // ref 会绑定到 DataTable 组件实例, 而不是 App 组件实例上
-    return <input ref={'input-' + index} />;
+    return <input ref={`input-${index}`} />;
 
     // 如果使用 function 类型 ref, 则不会有这个问题
     // return <input ref={input => this['input-' + index] = input} />;
@@ -904,7 +3470,7 @@ class App extends React.Component {
 Ref forwarding 是一个特性,
 它允许一些组件获取接收到 ref 对象并将它进一步传递给子组件.
 
-```jsx
+```tsx
 // functional component
 const ButtonElement = React.forwardRef((props, ref) => (
   <button ref={ref} className="CustomButton">
@@ -934,18 +3500,18 @@ const FancyButton = React.forwardRef<Ref, Props>((props, ref) => (
 
 #### Callback Refs
 
-```jsx
+```tsx
 class UserInput extends Component {
-  setSearchInput = (input) => {
+  setSearchInput = input => {
     this.input = input;
-  }
+  };
 
-  render () {
+  render() {
     return (
-      <input
-        type='text'
-        ref={this.setSearchInput} /> // Access DOM input in handle submit
-      <button type='submit'>Submit</button>
+      <>
+        <input type="text" ref={this.setSearchInput} />
+        <button type="submit">Submit</button>
+      </>
     );
   }
 }
@@ -953,7 +3519,7 @@ class UserInput extends Component {
 
 ### Compound Components
 
-[Compound components example](https://dev.to/alexi_be3/react-component-patterns-49ho):
+Compound components [example](https://dev.to/alexi_be3/react-component-patterns-49ho):
 
 ```tsx
 import * as React from 'react';
@@ -1044,10 +3610,376 @@ RadioImageForm.RadioInput = RadioInput;
 export default RadioImageForm;
 ```
 
+- Compound components manage their own internal state,
+  which they share among several child components.
+- When importing a compound component,
+  automatically import child components available on compound component.
+
+```tsx
+import type { CSSProperties, ReactNode } from 'react';
+import React from 'react';
+
+interface Props {
+  children: ReactNode;
+  style?: CSSProperties;
+  rest?: any;
+}
+
+const Header = ({ children, style, ...rest }: Props): JSX.Element => (
+  <div style={{ ...style }} {...rest}>
+    {children}
+  </div>
+);
+
+const Body = ({ children, style, ...rest }: Props): JSX.Element => (
+  <div style={{ ...style }} {...rest}>
+    {children}
+  </div>
+);
+
+const Footer = ({ children, style, ...rest }: Props): JSX.Element => (
+  <div style={{ ...style }} {...rest}>
+    {children}
+  </div>
+);
+
+const getChildrenOnDisplayName = (children: ReactNode[], displayName: string) =>
+  React.Children.map(children, child =>
+    child.displayName === displayName ? child : null
+  );
+
+const Card = ({ children }: { children: ReactNode[] }): JSX.Element => {
+  const header = getChildrenOnDisplayName(children, 'Header');
+  const body = getChildrenOnDisplayName(children, 'Body');
+  const footer = getChildrenOnDisplayName(children, 'Footer');
+
+  return (
+    <div className="card">
+      {header && <div className="card-header">{header}</div>}
+      <div className="card-body">{body}</div>
+      {footer && <div className="card-footer">{footer}</div>}
+    </div>
+  );
+};
+
+Header.displayName = 'Header';
+Body.displayName = 'Body';
+Footer.displayName = 'Footer';
+Card.Header = Header;
+Card.Body = Body;
+Card.Footer = Footer;
+
+const App = () => (
+  <div>
+    <Card>
+      <Card.Header>Header</Card.Header>
+      <Card.Body>Body</Card.Body>
+      <Card.Footer>Footer</Card.Footer>
+    </Card>
+  </div>
+);
+
+export default App;
+```
+
 ## React Synthetic Events
 
-- React 16: delegate events handlers on `document` node.
-- React 17: delegate events handlers on `app` root node.
+- Events Delegation:
+  - React 16: delegate events handlers on `document` DOM node.
+  - React 17: delegate events handlers on `app` root DOM node.
+- Events Dispatching: dispatch native events to `React.onXXX` handlers by `SyntheticEvent`.
+  - 收集监听器: `const listeners = accumulateSinglePhaseListeners(targetFiber, eventName)`.
+  - 派发合成事件: `dispatchQueue.push({ new SyntheticEvent(eventName), listeners })`.
+  - 执行派发:
+    `processDispatchQueue(dispatchQueue, eventSystemFlags)`
+    -> `executeDispatch(event, listener, currentTarget)`.
+  - Capture event: 从上至下调用 Fiber 树中绑定的回调函数.
+  - Bubble event: 从下至上调用 Fiber 树中绑定的回调函数.
+
+[![React Synthetic Events](./figures/ReactSyntheticEvents.png)](https://7kms.github.io/react-illustration-series/main/synthetic-event)
+
+[react-dom/src/events/DOMPluginEventSystem](https://github.com/facebook/react/blob/main/packages/react-dom/src/events/DOMPluginEventSystem.js):
+
+```ts
+function listenToAllSupportedEvents(rootContainerElement: EventTarget) {
+  if (enableEagerRootListeners) {
+    // 1. 节流优化, 保证全局注册只被调用一次.
+    if (rootContainerElement[listeningMarker]) {
+      return;
+    }
+
+    rootContainerElement[listeningMarker] = true;
+
+    // 2. 遍历 allNativeEvents 监听冒泡和捕获阶段的事件.
+    allNativeEvents.forEach(domEventName => {
+      if (!nonDelegatedEvents.has(domEventName)) {
+        listenToNativeEvent(
+          domEventName,
+          false, // 冒泡阶段监听.
+          rootContainerElement,
+          null
+        );
+      }
+
+      listenToNativeEvent(
+        domEventName,
+        true, // 捕获阶段监听.
+        rootContainerElement,
+        null
+      );
+    });
+  }
+}
+
+function listenToNativeEvent(
+  domEventName: DOMEventName,
+  isCapturePhaseListener: boolean,
+  rootContainerElement: EventTarget,
+  targetElement: Element | null,
+  eventSystemFlags?: EventSystemFlags = 0
+): void {
+  const target = rootContainerElement;
+  const listenerSet = getEventListenerSet(target);
+  const listenerSetKey = getListenerSetKey(
+    domEventName,
+    isCapturePhaseListener
+  );
+
+  // 利用 Set 数据结构, 保证相同的事件类型只会被注册一次.
+  if (!listenerSet.has(listenerSetKey)) {
+    if (isCapturePhaseListener) {
+      eventSystemFlags |= IS_CAPTURE_PHASE;
+    }
+
+    // 注册事件监听.
+    addTrappedEventListener(
+      target,
+      domEventName,
+      eventSystemFlags,
+      isCapturePhaseListener
+    );
+    listenerSet.add(listenerSetKey);
+  }
+}
+
+function addTrappedEventListener(
+  targetContainer: EventTarget,
+  domEventName: DOMEventName,
+  eventSystemFlags: EventSystemFlags,
+  isCapturePhaseListener: boolean,
+  isDeferredListenerForLegacyFBSupport?: boolean
+) {
+  // 1. 构造 listener.
+  const listener = createEventListenerWrapperWithPriority(
+    targetContainer,
+    domEventName,
+    eventSystemFlags
+  );
+
+  // 2. 注册事件监听.
+  let unsubscribeListener;
+
+  if (isCapturePhaseListener) {
+    unsubscribeListener = addEventCaptureListener(
+      targetContainer,
+      domEventName,
+      listener
+    );
+  } else {
+    unsubscribeListener = addEventBubbleListener(
+      targetContainer,
+      domEventName,
+      listener
+    );
+  }
+}
+
+// 注册原生冒泡事件.
+function addEventBubbleListener(
+  target: EventTarget,
+  eventType: string,
+  listener: Function
+): Function {
+  target.addEventListener(eventType, listener, false);
+  return listener;
+}
+
+// 注册原生捕获事件.
+function addEventCaptureListener(
+  target: EventTarget,
+  eventType: string,
+  listener: Function
+): Function {
+  target.addEventListener(eventType, listener, true);
+  return listener;
+}
+```
+
+[react-dom/src/events/ReactDOMEventListener](https://github.com/facebook/react/blob/main/packages/react-dom/src/events/ReactDOMEventListener.js):
+
+```ts
+// 派发原生事件至 React.onXXX.
+function createEventListenerWrapperWithPriority(
+  targetContainer: EventTarget,
+  domEventName: DOMEventName,
+  eventSystemFlags: EventSystemFlags
+): Function {
+  // 1. 根据优先级设置 listenerWrapper.
+  const eventPriority = getEventPriorityForPluginSystem(domEventName);
+  let listenerWrapper;
+
+  switch (eventPriority) {
+    case DiscreteEvent:
+      listenerWrapper = dispatchDiscreteEvent;
+      break;
+    case UserBlockingEvent:
+      listenerWrapper = dispatchUserBlockingUpdate;
+      break;
+    case ContinuousEvent:
+    default:
+      listenerWrapper = dispatchEvent;
+      break;
+  }
+
+  // 2. 返回 listenerWrapper.
+  return listenerWrapper.bind(
+    null,
+    domEventName,
+    eventSystemFlags,
+    targetContainer
+  );
+}
+
+function dispatchDiscreteEvent(
+  domEventName,
+  eventSystemFlags,
+  container,
+  nativeEvent
+) {
+  const previousPriority = getCurrentUpdatePriority();
+  const prevTransition = ReactCurrentBatchConfig.transition;
+  ReactCurrentBatchConfig.transition = null;
+
+  try {
+    setCurrentUpdatePriority(DiscreteEventPriority);
+    dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+  } finally {
+    setCurrentUpdatePriority(previousPriority);
+    ReactCurrentBatchConfig.transition = prevTransition;
+  }
+}
+
+function dispatchContinuousEvent(
+  domEventName,
+  eventSystemFlags,
+  container,
+  nativeEvent
+) {
+  const previousPriority = getCurrentUpdatePriority();
+  const prevTransition = ReactCurrentBatchConfig.transition;
+  ReactCurrentBatchConfig.transition = null;
+
+  try {
+    setCurrentUpdatePriority(ContinuousEventPriority);
+    dispatchEvent(domEventName, eventSystemFlags, container, nativeEvent);
+  } finally {
+    setCurrentUpdatePriority(previousPriority);
+    ReactCurrentBatchConfig.transition = prevTransition;
+  }
+}
+
+function dispatchEvent(
+  domEventName: DOMEventName,
+  eventSystemFlags: EventSystemFlags,
+  targetContainer: EventTarget,
+  nativeEvent: AnyNativeEvent
+) {
+  let blockedOn = findInstanceBlockingEvent(
+    domEventName,
+    eventSystemFlags,
+    targetContainer,
+    nativeEvent
+  );
+
+  if (blockedOn === null) {
+    dispatchEventForPluginEventSystem(
+      domEventName,
+      eventSystemFlags,
+      nativeEvent,
+      return_targetInst,
+      targetContainer
+    );
+    clearIfContinuousEvent(domEventName, nativeEvent);
+    return;
+  }
+
+  if (
+    queueIfContinuousEvent(
+      blockedOn,
+      domEventName,
+      eventSystemFlags,
+      targetContainer,
+      nativeEvent
+    )
+  ) {
+    nativeEvent.stopPropagation();
+    return;
+  }
+
+  // We need to clear only if we didn't queue because queueing is accumulative.
+  clearIfContinuousEvent(domEventName, nativeEvent);
+
+  if (
+    eventSystemFlags & IS_CAPTURE_PHASE &&
+    isDiscreteEventThatRequiresHydration(domEventName)
+  ) {
+    while (blockedOn !== null) {
+      const fiber = getInstanceFromNode(blockedOn);
+
+      if (fiber !== null) {
+        attemptSynchronousHydration(fiber);
+      }
+
+      const nextBlockedOn = findInstanceBlockingEvent(
+        domEventName,
+        eventSystemFlags,
+        targetContainer,
+        nativeEvent
+      );
+
+      if (nextBlockedOn === null) {
+        dispatchEventForPluginEventSystem(
+          domEventName,
+          eventSystemFlags,
+          nativeEvent,
+          return_targetInst,
+          targetContainer
+        );
+      }
+
+      if (nextBlockedOn === blockedOn) {
+        break;
+      }
+
+      blockedOn = nextBlockedOn;
+    }
+
+    if (blockedOn !== null) {
+      nativeEvent.stopPropagation();
+    }
+
+    return;
+  }
+
+  dispatchEventForPluginEventSystem(
+    domEventName,
+    eventSystemFlags,
+    nativeEvent,
+    null,
+    targetContainer
+  );
+}
+```
 
 ## React Reusability Patterns
 
@@ -1073,7 +4005,7 @@ Cons:
 - Name collision/overlap props: overwrite the same name prop silently.
 - HOC is not flexible with output data (to WrappedComponent).
 
-```jsx
+```tsx
 // ToggleableMenu.jsx
 function withToggleable(Clickable) {
   return class extends React.Component {
@@ -1111,7 +4043,7 @@ class NormalMenu extends React.Component {
 export default withToggleable(NormalMenu);
 ```
 
-```jsx
+```tsx
 class Menu extends React.Component {
   render() {
     return (
@@ -1160,7 +4092,7 @@ Cons:
 - Render Props is not flexible with input data
   (restricts children components from using the data at outside field).
 
-```jsx
+```tsx
 class Toggleable extends React.Component {
   constructor() {
     super();
@@ -1191,7 +4123,7 @@ const ToggleableMenu = props => (
 );
 ```
 
-```jsx
+```tsx
 class Menu extends React.Component {
   render() {
     return (
@@ -1223,6 +4155,8 @@ class Menu extends React.Component {
   - `useMemo` hook for memorized values.
   - `useCallback` hook for memorized functions.
   - `useRef` hook for lifecycle persistent values.
+- Recap related-logic into separate well-structured hooks.
+- Reuse same stateful logic with custom hooks.
 
 ## React Hooks
 
@@ -1237,38 +4171,84 @@ class Menu extends React.Component {
   more details on
   [Overreacted](https://overreacted.io/how-are-function-components-different-from-classes/).
 
-### Hooks Internal
+### Hooks Types
 
-- useXXX -> mountXXX -> updateXXX.
-- mountXXX: mountWorkInProgressHook -> separated creation logic.
-- updateXXX: updateWorkInProgressHook -> separated update logic.
-- `hooks` 的值都存在组件的 `fiberNode` 的 `memorizedState` 属性上.
+Hooks
+[definition](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.new.js):
 
-```js
-function mountWorkInProgressHook() {
-  // hook 实例
-  const hook = {
-    // hook 保存的数据.
-    memoizedState: null,
-    // 指向下一个 hook.
-    next: hookForB,
-    // 本次更新以 baseState 为基础计算新的 state.
-    baseState: null,
-    // 本次更新开始时已有的 update 队列.
-    baseQueue: null,
-    // 本次更新需要增加的 update 队列.
-    queue: null,
-  };
+- 从 React 内部 (Reconciler) 看, Hooks 可分为三类:
+  - State Hooks (`useState/useReducer/useContext/useRef/useCallback/useMemo`):
+    主要作用于 `Reconciler.Render` 阶段, `fiber.pendingProps/memoizedProps/memoizedState/updateQueue`.
+  - Effect Hooks (`useLayoutEffect`/`useEffect`):
+    在 `Reconciler.Render` 阶段设置 `fiber.flags` (effects flags),
+    主要作用于 `Reconciler.Commit` 阶段, 功能接近 `ClassComponent.LifeCycle`.
+  - Hybrid Hooks (`useDeferredValue/useTransition/useId/useSyncExternalStore`):
+    State + Effect Hooks, 既保存状态, 又产生副作用.
 
-  if (workInProgressHook === null) {
-    // Fist hook in the list.
-    currentlyRenderingFiber.memoizedState = workInProgressHook = hook;
-  } else {
-    // Append to the end of list.
-    workInProgressHook = workInProgressHook.next = hook;
-  }
+```ts
+interface Hook {
+  // hook 保存的数据.
+  memoizedState: any;
+  // 本次更新以 baseState 为基础计算新的 state.
+  baseState: any;
+  // 本次更新开始时已有的 update 队列.
+  baseQueue: Update<any, any> | null;
+  // 本次更新需要增加的 update 队列.
+  queue: UpdateQueue<any, any> | null;
+  // 指向下一个 hook.
+  next: Hook | null;
 }
+
+interface Update<S, A> {
+  lane: Lane;
+  action: A;
+  hasEagerState: boolean;
+  eagerState: S | null;
+  next: Update<S, A>;
+}
+
+interface UpdateQueue<S, A> {
+  pending: Update<S, A> | null;
+  interleaved: Update<S, A> | null;
+  dispatch: ((A) => mixed) | null;
+  lanes: Lanes;
+  lastRenderedReducer: ((S, A) => S) | null;
+  lastRenderedState: S | null;
+}
+
+interface Effect {
+  tag: HookFlags;
+  create: () => (() => void) | void;
+  destroy: (() => void) | void;
+  deps: Array<mixed> | null;
+  next: Effect;
+}
+
+type HookType =
+  | 'useState'
+  | 'useReducer'
+  | 'useContext'
+  | 'useRef'
+  | 'useEffect'
+  | 'useInsertionEffect'
+  | 'useLayoutEffect'
+  | 'useCallback'
+  | 'useMemo'
+  | 'useImperativeHandle'
+  | 'useDebugValue'
+  | 'useDeferredValue'
+  | 'useTransition'
+  | 'useMutableSource'
+  | 'useSyncExternalStore'
+  | 'useId'
+  | 'useCacheRefresh';
 ```
+
+### Hooks Memoized State
+
+- `FunctionComponent` 内部所有 Hooks memoized state
+  组成 `FunctionComponent` `Fiber` memoized state.
+- `FunctionComponent` `Fiber`: `fiber.memoizedState` 指向第一个 `Hook`.
 
 | Hooks       | Memoized State                                 |
 | ----------- | ---------------------------------------------- |
@@ -1278,7 +4258,376 @@ function mountWorkInProgressHook() {
 | useState    | `state`                                        |
 | useEffect   | `effect: { tag, create, destroy, deps, next }` |
 
-```js
+### Hooks Workflow
+
+- `Reconciler.Render`/`Reconciler.Update`:
+  `performUnitOfWork` -> `beginWork` -> `updateFunctionComponent`
+  -> `renderWithHooks` -> `mountXXX`/`updateXXX`/`rerenderXXX`
+  -> `reconcileChildren`.
+- `Reconciler.Commit`:
+  - `Update` layout effect (`useLayoutEffect`):
+    - `Mutation` phase: `commitWork` -> `commitHooKEffectListUnmount` -> `effect.destroy`.
+    - `Layout` phase: `commitLifeCycles` -> `commitHookEffectListMount` -> `effect.create`.
+  - `Update | Passive` passive effect (`useEffect`):
+    - `Layout` phase: `commitLifeCycles` -> `schedulePassiveEffects`, 收集 Effects.
+    - `scheduleCallback` -> `flushPassiveEffects` -> `effect.destroy` -> `effect.create`.
+  - 只有 `effect.tag` 包含 `HasEffect` 时才会调用 `effect.destroy` 和 `effect.create`.
+- `renderWithHooks`:
+  - `HooksDispatcherOnMount`: `mountXXX`.
+  - `HooksDispatcherOnUpdate`: `updateXXX`.
+  - `HooksDispatcherOnRerender`: `updateXXX`/`rerenderXXX`.
+- **`mountXXX`**: `mountWorkInProgressHook` -> respective mount logic.
+- **`updateXXX`**: `updateWorkInProgressHook` -> respective update logic.
+
+[ReactReconciler/ReactFiberBeginWork](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberBeginWork.new.js):
+
+```ts
+function beginWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  const updateLanes = workInProgress.lanes;
+
+  switch (workInProgress.tag) {
+    case FunctionComponent: {
+      const Component = workInProgress.type;
+      const unresolvedProps = workInProgress.pendingProps;
+      const resolvedProps =
+        workInProgress.elementType === Component
+          ? unresolvedProps
+          : resolveDefaultProps(Component, unresolvedProps);
+      return updateFunctionComponent(
+        current,
+        workInProgress,
+        Component,
+        resolvedProps,
+        renderLanes
+      );
+    }
+  }
+}
+
+function updateFunctionComponent(
+  current,
+  workInProgress,
+  Component,
+  nextProps: any,
+  renderLanes
+) {
+  const context = prepareToReadContext(workInProgress, renderLanes);
+
+  // 进入 Hooks 相关逻辑, 最后返回下级 ReactElement 对象.
+  const nextChildren = renderWithHooks(
+    current,
+    workInProgress,
+    Component,
+    nextProps,
+    context,
+    renderLanes
+  );
+
+  const hasId = checkDidRenderIdHook();
+
+  if (current !== null && !didReceiveUpdate) {
+    bailoutHooks(current, workInProgress, renderLanes);
+    return bailoutOnAlreadyFinishedWork(current, workInProgress, renderLanes);
+  }
+
+  if (getIsHydrating() && hasId) {
+    pushMaterializedTreeId(workInProgress);
+  }
+
+  // React DevTools reads this flag.
+  workInProgress.flags |= PerformedWork;
+
+  // 进入 Reconcile 函数, 生成下级 Fiber 节点.
+  reconcileChildren(current, workInProgress, nextChildren, renderLanes);
+  // 返回下级 Fiber 节点.
+  return workInProgress.child;
+}
+```
+
+[ReactReconciler/ReactFiberHooks](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.new.js):
+
+```ts
+// 渲染优先级.
+let renderLanes: Lanes = NoLanes;
+
+// 当前正在构造的 Fiber, 等同于 workInProgress.
+let currentlyRenderingFiber: Fiber = null;
+
+// Hooks 链表被存储在 fiber.memoizedState:
+// currentHook = fiber(current).memoizedState.
+let currentHook: Hook | null = null;
+// workInProgressHook = fiber(workInProgress).memoizedState.
+let workInProgressHook: Hook | null = null;
+
+// 在 FunctionComponent 的执行过程中, 是否再次发起了更新.
+// 只有 FunctionComponent 被完全执行之后才会重置.
+// 当 render 异常时, 通过该变量可以决定是否清除 render 过程中的更新.
+let didScheduleRenderPhaseUpdate = false;
+
+// 在本次 FunctionComponent 的执行过程中, 是否再次发起了更新.
+// 每一次调用 FunctionComponent 都会被重置.
+let didScheduleRenderPhaseUpdateDuringThisPass = false;
+
+// 在本次 FunctionComponent 的执行过程中, 重新发起更新的最大次数.
+const RE_RENDER_LIMIT = 25;
+
+export function renderWithHooks<Props, SecondArg>(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  Component: (p: Props, arg: SecondArg) => any,
+  props: Props,
+  secondArg: SecondArg,
+  nextRenderLanes: Lanes
+): any {
+  // Store context.
+  renderLanes = nextRenderLanes;
+  currentlyRenderingFiber = workInProgress;
+
+  workInProgress.memoizedState = null;
+  workInProgress.updateQueue = null;
+  workInProgress.lanes = NoLanes;
+
+  // Mount or Update hooks dispatcher.
+  ReactCurrentDispatcher.current =
+    current === null || current.memoizedState === null
+      ? HooksDispatcherOnMount
+      : HooksDispatcherOnUpdate;
+
+  // 执行 FunctionComponent 函数, 执行 `useXXX`.
+  let children = Component(props, secondArg);
+
+  // Check if there was a render phase update
+  if (didScheduleRenderPhaseUpdateDuringThisPass) {
+    // Keep rendering in a loop for as long as render phase updates continue.
+    // Use a counter to prevent infinite loops.
+    let numberOfReRenders = 0;
+
+    do {
+      didScheduleRenderPhaseUpdateDuringThisPass = false;
+      localIdCounter = 0;
+
+      if (numberOfReRenders >= RE_RENDER_LIMIT) {
+        throw new Error(
+          'Too many re-renders. React limits the number of renders to prevent ' +
+            'an infinite loop.'
+        );
+      }
+
+      numberOfReRenders += 1;
+
+      // Start over from the beginning of the list
+      currentHook = null;
+      workInProgressHook = null;
+      workInProgress.updateQueue = null;
+      // Rerender hooks dispatcher.
+      ReactCurrentDispatcher.current = HooksDispatcherOnRerender;
+
+      children = Component(props, secondArg);
+    } while (didScheduleRenderPhaseUpdateDuringThisPass);
+  }
+
+  // Restore context.
+  ReactCurrentDispatcher.current = ContextOnlyDispatcher;
+  renderLanes = NoLanes;
+  currentlyRenderingFiber = null;
+  currentHook = null;
+  workInProgressHook = null;
+  didScheduleRenderPhaseUpdate = false;
+
+  return children;
+}
+
+const HooksDispatcherOnMount: Dispatcher = {
+  useCallback: mountCallback,
+  useContext: readContext,
+  useEffect: mountEffect,
+  useImperativeHandle: mountImperativeHandle,
+  useLayoutEffect: mountLayoutEffect,
+  useInsertionEffect: mountInsertionEffect,
+  useMemo: mountMemo,
+  useReducer: mountReducer,
+  useRef: mountRef,
+  useState: mountState,
+  useDebugValue: mountDebugValue,
+  useDeferredValue: mountDeferredValue,
+  useTransition: mountTransition,
+  useMutableSource: mountMutableSource,
+  useSyncExternalStore: mountSyncExternalStore,
+  useId: mountId,
+  unstable_isNewReconciler: enableNewReconciler,
+  readContext,
+};
+
+const HooksDispatcherOnUpdate: Dispatcher = {
+  useCallback: updateCallback,
+  useContext: readContext,
+  useEffect: updateEffect,
+  useImperativeHandle: updateImperativeHandle,
+  useInsertionEffect: updateInsertionEffect,
+  useLayoutEffect: updateLayoutEffect,
+  useMemo: updateMemo,
+  useReducer: updateReducer,
+  useRef: updateRef,
+  useState: updateState,
+  useDebugValue: updateDebugValue,
+  useDeferredValue: updateDeferredValue,
+  useTransition: updateTransition,
+  useMutableSource: updateMutableSource,
+  useSyncExternalStore: updateSyncExternalStore,
+  useId: updateId,
+  unstable_isNewReconciler: enableNewReconciler,
+  readContext,
+};
+
+const HooksDispatcherOnRerender: Dispatcher = {
+  useCallback: updateCallback,
+  useContext: readContext,
+  useEffect: updateEffect,
+  useImperativeHandle: updateImperativeHandle,
+  useInsertionEffect: updateInsertionEffect,
+  useLayoutEffect: updateLayoutEffect,
+  useMemo: updateMemo,
+  useReducer: rerenderReducer,
+  useRef: updateRef,
+  useState: rerenderState,
+  useDebugValue: updateDebugValue,
+  useDeferredValue: rerenderDeferredValue,
+  useTransition: rerenderTransition,
+  useMutableSource: updateMutableSource,
+  useSyncExternalStore: updateSyncExternalStore,
+  useId: updateId,
+  unstable_isNewReconciler: enableNewReconciler,
+  readContext,
+};
+
+// 创建 Hook, 挂载到 Hooks 链表.
+function mountWorkInProgressHook(): Hook {
+  // hook 实例
+  const hook: Hook = {
+    memoizedState: null,
+    baseState: null,
+    baseQueue: null,
+    queue: null,
+    next: hookForB,
+  };
+
+  if (workInProgressHook === null) {
+    // Fist hook in the list.
+    currentlyRenderingFiber.memoizedState = workInProgressHook = hook;
+  } else {
+    // Append to the end of list.
+    workInProgressHook = workInProgressHook.next = hook;
+  }
+
+  return workInProgressHook;
+}
+
+// 移动 Hooks 链表指针, 获取 workInProgressHook.
+function updateWorkInProgressHook(): Hook {
+  let nextCurrentHook: Hook | null;
+  let nextWorkInProgressHook: Hook | null;
+
+  if (currentHook === null) {
+    const current = currentlyRenderingFiber.alternate;
+    nextCurrentHook = current ? current.memoizedState : null;
+  } else {
+    nextCurrentHook = currentHook.next;
+  }
+
+  if (workInProgressHook === null) {
+    nextWorkInProgressHook = currentlyRenderingFiber.memoizedState;
+  } else {
+    nextWorkInProgressHook = workInProgressHook.next;
+  }
+
+  if (nextWorkInProgressHook !== null) {
+    // There's already a work-in-progress. Reuse it.
+    workInProgressHook = nextWorkInProgressHook;
+    nextWorkInProgressHook = workInProgressHook.next;
+    currentHook = nextCurrentHook;
+  } else {
+    // Clone from the current hook.
+    if (nextCurrentHook === null) {
+      throw new Error('Rendered more hooks than during the previous render.');
+    }
+
+    currentHook = nextCurrentHook;
+
+    const newHook: Hook = {
+      memoizedState: currentHook.memoizedState,
+
+      baseState: currentHook.baseState,
+      baseQueue: currentHook.baseQueue,
+      queue: currentHook.queue,
+
+      next: null,
+    };
+
+    if (workInProgressHook === null) {
+      // This is the first hook in the list.
+      currentlyRenderingFiber.memoizedState = workInProgressHook = newHook;
+    } else {
+      // Append to the end of the list.
+      workInProgressHook = workInProgressHook.next = newHook;
+    }
+  }
+
+  return workInProgressHook;
+}
+
+function commitHookEffectListMount(tag: number, finishedWork: Fiber) {
+  const updateQueue: FunctionComponentUpdateQueue | null =
+    finishedWork.updateQueue;
+  const lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
+
+  if (lastEffect !== null) {
+    const firstEffect = lastEffect.next;
+    let effect = firstEffect;
+
+    do {
+      if ((effect.tag & tag) === tag) {
+        const create = effect.create;
+        effect.destroy = create();
+      }
+
+      effect = effect.next;
+    } while (effect !== firstEffect);
+  }
+}
+
+function commitHookEffectListUnmount(tag: number, finishedWork: Fiber) {
+  const updateQueue: FunctionComponentUpdateQueue | null =
+    finishedWork.updateQueue;
+  const lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
+
+  if (lastEffect !== null) {
+    const firstEffect = lastEffect.next;
+    let effect = firstEffect;
+
+    do {
+      if ((effect.tag & tag) === tag) {
+        // 根据传入的 tag 过滤 Effects 链表.
+        const destroy = effect.destroy;
+        effect.destroy = undefined;
+
+        if (destroy !== undefined) {
+          destroy();
+        }
+      }
+
+      effect = effect.next;
+    } while (effect !== firstEffect);
+  }
+}
+```
+
+### Minimal Hooks Implementation
+
+```ts
 const MyReact = (function () {
   const hooks = [];
   let currentHook = 0; // array of hooks, and an iterator!
@@ -1311,7 +4660,7 @@ const MyReact = (function () {
 })();
 ```
 
-```js
+```ts
 function Counter() {
   const [count, setCount] = MyReact.useState(0);
   const [text, setText] = MyReact.useState('foo'); // 2nd state hook!
@@ -1353,7 +4702,7 @@ App = MyReact.render(Counter);
 // render {count: 2, text: 'bar'}
 ```
 
-```js
+```ts
 function Component() {
   const [text, setText] = useSplitURL('www.netlify.com');
   return {
@@ -1378,6 +4727,465 @@ App = MyReact.render(Component);
 // { text: [ 'www', 'reactjs', 'org' ] }}
 ```
 
+### UseState Hook
+
+- Read rendered props/state.
+- Return value of `useState` is `ref` to `hooks[idx]`:
+  direct change to return value doesn't change state value.
+- Return function of `useState` (`setState`) is to change value of `hooks[idx]`.
+- 由于 setState 更新状态 (dispatch action) 时基于 hook.BaseState,
+  `setState(value + 1)` 与 `setState(value => value + 1)` 存在差异.
+- 当在 useEffect 中调用 setState 时, 最好使用 `setState(callback)` 形式,
+  这样可以不用再 Deps List 中显式声明 state, 也可以避免一些 BUG.
+- `dispatchAction`:
+  - 创建 `Update` 对象.
+  - 将 Update 对象添加到 hook.queue.pending 队列.
+  - 根据 reducerEagerState 与 currentState, 决定是否发起新的 Reconciler 调度.
+
+#### UseState Hooks Dispatcher
+
+```ts
+function mountState<T>(initialState: T) {
+  const hook = mountWorkInProgressHook();
+
+  if (typeof initialState === 'function') {
+    initialState = initialState();
+  }
+
+  // Setup Hook.
+  hook.memoizedState = hook.baseState = initialState;
+  const queue = (hook.queue = {
+    pending: null,
+    dispatch: null,
+    lastRenderedReducer: basicStateReducer,
+    lastRenderedState: initialState,
+  });
+  const dispatch = (queue.dispatch = dispatchAction.bind(
+    null,
+    currentlyRenderingFiber,
+    queue
+  ));
+
+  // Return Hook state and dispatch action.
+  return [hook.memoizedState, dispatch];
+}
+
+function updateState<T>(initialState: T) {
+  const basicStateReducer = (state, action) => {
+    return typeof action === 'function' ? action(state) : action;
+  };
+
+  return updateReducer(basicStateReducer);
+}
+
+function dispatchAction<S, A>(
+  fiber: Fiber,
+  queue: UpdateQueue<S, A>,
+  action: A
+) {
+  // 1. 创建 Update 对象.
+  const eventTime = requestEventTime();
+  const lane = requestUpdateLane(fiber);
+  const update: Update<S, A> = {
+    lane,
+    action,
+    eagerReducer: null,
+    eagerState: null,
+    next: null,
+  };
+
+  // 2. 将 Update 对象添加到 hook.queue.pending 队列.
+  const pending = queue.pending;
+  if (pending === null) {
+    // 首个 Update, 创建一个环形链表.
+    update.next = update;
+  } else {
+    update.next = pending.next;
+    pending.next = update;
+  }
+  queue.pending = update;
+
+  const alternate = fiber.alternate;
+  if (
+    fiber === currentlyRenderingFiber ||
+    (alternate !== null && alternate === currentlyRenderingFiber)
+  ) {
+    // 渲染时更新, 做好全局标记.
+    didScheduleRenderPhaseUpdateDuringThisPass = didScheduleRenderPhaseUpdate =
+      true;
+  } else {
+    if (
+      fiber.lanes === NoLanes &&
+      (alternate === null || alternate.lanes === NoLanes)
+    ) {
+      const lastRenderedReducer = queue.lastRenderedReducer;
+
+      if (lastRenderedReducer !== null) {
+        let prevDispatcher;
+        const currentState: S = queue.lastRenderedState;
+        const eagerState = lastRenderedReducer(currentState, action);
+        update.eagerReducer = lastRenderedReducer;
+        update.eagerState = eagerState;
+
+        // 若在 Render 阶段, reducerEagerState === currentState,
+        // 则可以无需再次计算状态, 跳过调度阶段, 后续直接使用 update.eagerState.
+        if (is(eagerState, currentState)) {
+          return;
+        }
+      }
+    }
+
+    // 3. 发起调度更新, 进入 Reconciler.
+    scheduleUpdateOnFiber(fiber, lane, eventTime);
+  }
+}
+```
+
+#### UseState Hooks Usage
+
+```ts
+setState(prevState => {
+  // Object.assign would also work
+  return { ...prevState, ...updatedValues };
+});
+```
+
+```ts
+let newState = baseState;
+const firstUpdate = hook.baseQueue.next;
+let update = firstUpdate;
+
+// setState(value + 1) 与 setState(value => value + 1) 存在差异
+// 遍历 baseQueue 中的每一个 update
+do {
+  if (typeof update.action === 'function') {
+    newState = update.action(newState);
+  } else {
+    newState = action;
+  }
+
+  update = reconciler();
+} while (update !== firstUpdate);
+```
+
+```tsx
+import { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+```ts
+import { useEffect, useState } from 'react';
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+
+  return isOnline ? 'Online' : 'Offline';
+}
+
+// Mount with { friend: { id: 100 } } props
+ChatAPI.subscribeToFriendStatus(100, handleStatusChange); // Run first effect
+
+// Update with { friend: { id: 200 } } props
+// Clean up previous effect
+ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange);
+ChatAPI.subscribeToFriendStatus(200, handleStatusChange); // Run next effect
+
+// Update with { friend: { id: 300 } } props
+// Clean up previous effect
+ChatAPI.unsubscribeFromFriendStatus(200, handleStatusChange);
+ChatAPI.subscribeToFriendStatus(300, handleStatusChange); // Run next effect
+
+// Unmount
+ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
+```
+
+### UseReducer Hook
+
+- Use useState whenever manage a JS **primitive** (e.g. string, boolean, integer).
+- Use useReducer whenever manage an **object** or **array**.
+- It’s best to put states together in one state object
+  when they conditionally dependent on each other (useReducer).
+- Using useReducer over useState gives us predictable state transitions.
+  It comes in very powerful when state changes become more complex.
+
+#### UseReducer Hooks Dispatcher
+
+```ts
+function mountReducer<S, I, A>(
+  reducer: (S, A) => S,
+  initialArg: I,
+  init?: (I) => S
+): [S, Dispatch<A>] {
+  // 1. Create Hook.
+  const hook = mountWorkInProgressHook();
+  let initialState;
+
+  if (init !== undefined) {
+    initialState = init(initialArg);
+  } else {
+    initialState = initialArg;
+  }
+
+  // 2. Setup Hook.
+  // 2.1 Set hook.memoizedState/hook.baseState.
+  hook.memoizedState = hook.baseState = initialState;
+  // 2.2 Set hook.queue.
+  const queue = (hook.queue = {
+    pending: null,
+    dispatch: null,
+    lastRenderedReducer: reducer,
+    lastRenderedState: initialState,
+  });
+  // 2.3 Set hook.dispatch.
+  const dispatch: Dispatch<A> = (queue.dispatch = dispatchAction.bind(
+    null,
+    currentlyRenderingFiber,
+    queue
+  ));
+
+  // 3. Return Hook state and dispatch action.
+  return [hook.memoizedState, dispatch];
+}
+
+function updateReducer<S, I, A>(
+  reducer: (S, A) => S,
+  initialArg: I,
+  init?: (I) => S
+): [S, Dispatch<A>] {
+  // Get workInProgressHook.
+  const hook = updateWorkInProgressHook();
+  const queue = hook.queue;
+  queue.lastRenderedReducer = reducer;
+  const current: Hook = currentHook;
+
+  // The last rebase update that is NOT part of the base state.
+  let baseQueue = current.baseQueue;
+  // The last pending update that hasn't been processed yet.
+  const pendingQueue = queue.pending;
+
+  // Append hook.queue.pending to current.baseQueue.
+  if (pendingQueue !== null) {
+    // We have new updates that haven't been processed yet.
+    // We'll add them to the base queue.
+    if (baseQueue !== null) {
+      // Merge the pending queue and the base queue.
+      const baseFirst = baseQueue.next;
+      const pendingFirst = pendingQueue.next;
+      baseQueue.next = pendingFirst;
+      pendingQueue.next = baseFirst;
+    }
+
+    current.baseQueue = baseQueue = pendingQueue;
+    queue.pending = null;
+  }
+
+  // Calculate Hook state.
+  if (baseQueue !== null) {
+    // We have a queue to process.
+    const first = baseQueue.next;
+    let newState = current.baseState;
+
+    let newBaseState = null;
+    let newBaseQueueFirst = null;
+    let newBaseQueueLast = null;
+    let update = first;
+
+    do {
+      const updateLane = update.lane;
+
+      if (!isSubsetOfLanes(renderLanes, updateLane)) {
+        // 优先级不够: 加入到 baseQueue, 等待下一次 render.
+        const clone: Update<S, A> = {
+          lane: updateLane,
+          action: update.action,
+          hasEagerState: update.hasEagerState,
+          eagerState: update.eagerState,
+          next: null,
+        };
+
+        if (newBaseQueueLast === null) {
+          newBaseQueueFirst = newBaseQueueLast = clone;
+          newBaseState = newState;
+        } else {
+          newBaseQueueLast = newBaseQueueLast.next = clone;
+        }
+
+        // Update the remaining priority in the queue.
+        currentlyRenderingFiber.lanes = mergeLanes(
+          currentlyRenderingFiber.lanes,
+          updateLane
+        );
+        markSkippedUpdateLanes(updateLane);
+      } else {
+        // This update does have sufficient priority (优先级足够).
+        // Merge state.
+        if (newBaseQueueLast !== null) {
+          // Update baseQueue
+          const clone: Update<S, A> = {
+            lane: NoLane,
+            action: update.action,
+            hasEagerState: update.hasEagerState,
+            eagerState: update.eagerState,
+            next: null,
+          };
+          newBaseQueueLast = newBaseQueueLast.next = clone;
+        }
+
+        // Process this update.
+        if (update.hasEagerState) {
+          // 性能优化:
+          // If this update is a state update (not a reducer) and was processed eagerly,
+          // we can use the eagerly computed state
+          newState = update.eagerState;
+        } else {
+          // 调用 Reducer 获取最新状态.
+          const action = update.action;
+          newState = reducer(newState, action);
+        }
+      }
+
+      update = update.next;
+    } while (update !== null && update !== first);
+
+    if (newBaseQueueLast === null) {
+      newBaseState = newState;
+    } else {
+      newBaseQueueLast.next = newBaseQueueFirst;
+    }
+
+    // Mark that the fiber performed work,
+    // but only if the new state is different from the current state.
+    if (!is(newState, hook.memoizedState)) {
+      markWorkInProgressReceivedUpdate();
+    }
+
+    // 把计算后结果更新到 workInProgressHook.
+    hook.memoizedState = newState;
+    hook.baseState = newBaseState;
+    hook.baseQueue = newBaseQueueLast;
+    queue.lastRenderedState = newState;
+  }
+
+  // Return Hook state and dispatch action.
+  const dispatch: Dispatch<A> = queue.dispatch;
+  return [hook.memoizedState, dispatch];
+}
+```
+
+#### UseReducer Hooks Usage
+
+Use useState if:
+
+- manage JavaScript primitives as state
+- have simple state transitions
+- want to have business logic within components
+- have different properties that don’t change in any correlated manner
+  and can be managed by multiple useState hooks
+- state is co-located to your component
+- for a small application
+
+Use useReducer if:
+
+- manage JavaScript objects or arrays as state
+- have complex state transitions
+- want to move business logic into reducers
+- have different properties that are tied together
+  and should be managed in one state object
+- update state deep down in your component tree
+- for a medium size application
+- for easier testing
+- for more predictable and maintainable state architecture
+
+```ts
+function App() {
+  const [state, dispatch] = useState({ count: 0 });
+
+  // 等价于
+  const [state, dispatch] = useReducer(
+    function basicStateReducer(state, action) {
+      return typeof action === 'function' ? action(state) : action;
+    },
+    { count: 0 }
+  );
+
+  // 当需要更新 state 时, 有 2 种方式:
+  // 1. 直接设置:
+  dispatch({ count: 1 });
+  // 2.通过回调函数设置:
+  dispatch(state => ({ count: state.count + 1 }));
+}
+```
+
+```tsx
+const insertToHistory = state => {
+  if (state && Array.isArray(state.history)) {
+    // Do not mutate
+    const newHistory = [...state.history];
+    newHistory.push(state);
+    return newHistory;
+  }
+  console.warn(`
+    WARNING! The state was attempting capture but something went wrong.
+    Please check if the state is controlled correctly.
+  `);
+  return state.history || [];
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'set-theme':
+      return { ...state, theme: action.theme, history: insertToHistory(state) };
+    case 'add-friend':
+      return {
+        ...state,
+        friends: [...state.friends, action.friend],
+        history: insertToHistory(state),
+      };
+    case 'undo': {
+      const isEmpty = !state.history.length;
+      if (isEmpty) return state;
+      return { ...state.history[state.history.length - 1] };
+    }
+    case 'reset':
+      return { ...initialState, history: insertToHistory(state) };
+    default:
+      return state;
+  }
+};
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return <div>App</div>;
+};
+```
+
 ### UseMemo Hook
 
 - Returns a memoized value.
@@ -1388,6 +5196,8 @@ App = MyReact.render(Component);
   (avoid re-render problem):
   - **Good use** for complex objects or expensive calculations.
   - **Donn't use** for primitive values or simple calculations.
+
+#### UseMemo Hooks Dispatcher
 
 ```ts
 function mountMemo<T>(
@@ -1425,7 +5235,9 @@ function updateMemo<T>(
 }
 ```
 
-```jsx
+#### UseMemo Hooks Usage
+
+```tsx
 const Button = ({ color, children }) => {
   const textColor = useMemo(
     () => slowlyCalculateTextColor(color),
@@ -1433,7 +5245,7 @@ const Button = ({ color, children }) => {
   );
 
   return (
-    <button className={'Button-' + color + ' Button-text-' + textColor}>
+    <button className={`Button-${color} Button-text-${textColor}`}>
       {children}
     </button>
   );
@@ -1448,6 +5260,8 @@ const Button = ({ color, children }) => {
   在虚拟 DOM 更新过程中, 如果事件句柄相同, 那么就不用每次都进行
   `removeEventListener` 与 `addEventListener`.
 - `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+
+#### UseCallback Hooks Dispatcher
 
 ```ts
 function mountCallback<T>(callback: T, deps: Array<mixed> | void | null): T {
@@ -1477,13 +5291,15 @@ function updateCallback<T>(callback: T, deps: Array<mixed> | void | null): T {
 }
 ```
 
-```jsx
+#### UseCallback Hooks Usage
+
+```tsx
 function Parent() {
   const [query, setQuery] = useState('react');
 
   // ✅ Preserves identity until query changes
   const fetchData = useCallback(() => {
-    const url = 'https://hn.algolia.com/api/v1/search?query=' + query;
+    const url = `https://hn.algolia.com/api/v1/search?query=${query}`;
     // ... Fetch data and return it ...
   }, [query]); // ✅ Callback deps are OK
 
@@ -1491,7 +5307,7 @@ function Parent() {
 }
 
 function Child({ fetchData }) {
-  let [data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     fetchData().then(setData);
@@ -1501,199 +5317,9 @@ function Child({ fetchData }) {
 }
 ```
 
-### UseState Hook
-
-- read rendered props/state
-- return value of `useState` is `ref` to `hooks[idx]`:
-  direct change to return value doesn't change state value
-- return function of `useState` (`setState`) is to change value of `hooks[idx]`
-- 由于 setState 更新状态 (dispatch action) 时基于 hook.BaseState,
-  `setState(value + 1)` 与 `setState(value => value + 1)` 存在差异
-- 当在 useEffect 中调用 setState 时, 最好使用 `setState(callback)` 形式,
-  这样可以不用再 Deps List 中显式声明 state, 也可以避免一些 BUG
-
-```ts
-function mountState<T>(initialState: T) {
-  const hook = mountWorkInProgressHook();
-
-  if (typeof initialState === 'function') {
-    initialState = initialState();
-  }
-
-  hook.memoizedState = hook.baseState = initialState;
-  const queue = (hook.queue = {
-    pending: null,
-    dispatch: null,
-    lastRenderedReducer: basicStateReducer,
-    lastRenderedState: initialState,
-  });
-  const dispatch = (queue.dispatch = dispatchAction.bind(
-    null,
-    currentlyRenderingFiber,
-    queue
-  ));
-  return [hook.memoizedState, dispatch];
-}
-
-function updateState<T>(initialState: T) {
-  return updateReducer(basicStateReducer);
-}
-```
-
-```js
-setState(prevState => {
-  // Object.assign would also work
-  return { ...prevState, ...updatedValues };
-});
-```
-
-```js
-let newState = baseState;
-const firstUpdate = hook.baseQueue.next;
-let update = firstUpdate;
-
-// setState(value + 1) 与 setState(value => value + 1) 存在差异
-// 遍历 baseQueue 中的每一个 update
-do {
-  if (typeof update.action === 'function') {
-    newState = update.action(newState);
-  } else {
-    newState = action;
-  }
-
-  update = reconciler();
-} while (update !== firstUpdate);
-```
-
-```jsx
-import { useState } from 'react';
-
-function Example() {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </div>
-  );
-}
-```
-
-```jsx
-import { useState, useEffect } from 'react';
-
-function FriendStatus(props) {
-  const [isOnline, setIsOnline] = useState(null);
-
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
-
-  useEffect(() => {
-    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-
-    return () => {
-      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-    };
-  });
-
-  if (isOnline === null) {
-    return 'Loading...';
-  }
-  return isOnline ? 'Online' : 'Offline';
-}
-
-// Mount with { friend: { id: 100 } } props
-ChatAPI.subscribeToFriendStatus(100, handleStatusChange); // Run first effect
-
-// Update with { friend: { id: 200 } } props
-// Clean up previous effect
-ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange);
-ChatAPI.subscribeToFriendStatus(200, handleStatusChange); // Run next effect
-
-// Update with { friend: { id: 300 } } props
-// Clean up previous effect
-ChatAPI.unsubscribeFromFriendStatus(200, handleStatusChange);
-ChatAPI.subscribeToFriendStatus(300, handleStatusChange); // Run next effect
-
-// Unmount
-ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
-```
-
-### UseReducer Hook
-
-- Use useState whenever manage a JS **primitive** (e.g. string, boolean, integer).
-- Use useReducer whenever manage an **object** or **array**.
-- It’s best to put states together in one state object
-  when they conditionally dependent on each other (useReducer).
-- Using useReducer over useState gives us predictable state transitions.
-  It comes in very powerful when state changes become more complex.
-
-Use useState if:
-
-- manage JavaScript primitives as state
-- have simple state transitions
-- want to have business logic within components
-- have different properties that don’t change in any correlated manner
-  and can be managed by multiple useState hooks
-- state is co-located to your component
-- for a small application
-
-Use useReducer if:
-
-- manage JavaScript objects or arrays as state
-- have complex state transitions
-- want to move business logic into reducers
-- have different properties that are tied together
-  and should be managed in one state object
-- update state deep down in your component tree
-- for a medium size application
-- for easier testing
-- for more predictable and maintainable state architecture
-
-```jsx
-const insertToHistory = state => {
-  if (state && Array.isArray(state.history)) {
-    // Do not mutate
-    const newHistory = [...state.history];
-    newHistory.push(state);
-    return newHistory;
-  }
-  console.warn(`
-    WARNING! The state was attempting capture but something went wrong.
-    Please check if the state is controlled correctly.
-  `);
-  return state.history || [];
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'set-theme':
-      return { ...state, theme: action.theme, history: insertToHistory(state) };
-    case 'add-friend':
-      return {
-        ...state,
-        friends: [...state.friends, action.friend],
-        history: insertToHistory(state),
-      };
-    case 'undo': {
-      const isEmpty = !state.history.length;
-      if (isEmpty) return state;
-      return { ...state.history[state.history.length - 1] };
-    }
-    case 'reset':
-      return { ...initialState, history: insertToHistory(state) };
-    default:
-      return state;
-  }
-};
-
-const [state, dispatch] = useReducer(reducer, initialState);
-```
-
 ### UseRef Hook
+
+#### UseRef Hooks Dispatcher
 
 ```ts
 function mountRef<T>(initialValue: T) {
@@ -1735,7 +5361,7 @@ function updateRef<T>(initialValue: T) {
   It's good to get **latest** value of a particular prop or state
   (the updated reference value is available right away).
 
-```jsx
+```tsx
 function Example() {
   const [count, setCount] = useState(0);
   const latestCount = useRef(count);
@@ -1748,6 +5374,8 @@ function Example() {
       console.log(`You clicked ${latestCount.current} times`);
     }, 3000);
   });
+
+  return <div>Example</div>;
 }
 ```
 
@@ -1759,9 +5387,9 @@ function Example() {
   which is more **efficient** than `useState` (which can be expensive)
   when the values are to be updated multiple times within a second.
 
-```jsx
+```tsx
 function UserAvatar(props) {
-  return <img src={props.src} />;
+  return <img src={props.src} alt="User Avatar" />;
 }
 
 function Username(props) {
@@ -1811,7 +5439,178 @@ function User() {
 - Context 中只定义被大多数组件所共用的属性,
   use context to avoid **Prop Drilling**.
 
-```jsx
+#### UseContext Hooks Dispatcher
+
+- `HooksDispatcherOnMount.useContext = readContext`.
+- `HooksDispatcherOnUpdate.useContext = readContext`.
+- `HooksDispatcherOnRerender.useContext = readContext`.
+
+```ts
+export function createContext<T>(
+  defaultValue: T,
+  calculateChangedBits: ?((a: T, b: T) => number)
+): ReactContext<T> {
+  if (calculateChangedBits === undefined) {
+    calculateChangedBits = null;
+  }
+
+  const context: ReactContext<T> = {
+    $$typeof: REACT_CONTEXT_TYPE,
+    _calculateChangedBits: calculateChangedBits,
+    _currentValue: defaultValue,
+    _currentValue2: defaultValue,
+    _threadCount: 0,
+    Provider: null,
+    Consumer: null,
+  };
+  context.Provider = {
+    $$typeof: REACT_PROVIDER_TYPE,
+    _context: context,
+  };
+  context.Consumer = context;
+  return context;
+}
+
+function beginWork(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+): Fiber | null {
+  const updateLanes = workInProgress.lanes;
+  workInProgress.lanes = NoLanes;
+
+  switch (workInProgress.tag) {
+    case ContextProvider:
+      return updateContextProvider(current, workInProgress, renderLanes);
+    case ContextConsumer:
+      return updateContextConsumer(current, workInProgress, renderLanes);
+  }
+}
+
+function updateContextProvider(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+) {
+  const providerType: ReactProviderType<any> = workInProgress.type;
+  const context: ReactContext<any> = providerType._context;
+
+  const newProps = workInProgress.pendingProps;
+  const oldProps = workInProgress.memoizedProps;
+  const newValue = newProps.value; // <Provider value={}>{children}</Provider>
+
+  // 更新 ContextProvider._currentValue:
+  // workInProgress.type._context._currentValue = newValue;
+  pushProvider(workInProgress, newValue);
+
+  if (oldProps !== null) {
+    // 更新阶段.
+    // 对比 newValue 和 oldValue
+    const oldValue = oldProps.value;
+    const changedBits = calculateChangedBits(context, newValue, oldValue);
+
+    if (changedBits === 0) {
+      // value 没有变动, 进入 Bailout 逻辑.
+      if (
+        oldProps.children === newProps.children &&
+        !hasLegacyContextChanged()
+      ) {
+        return bailoutOnAlreadyFinishedWork(
+          current,
+          workInProgress,
+          renderLanes
+        );
+      }
+    } else {
+      // value变动, 查找对应的 Consumers, 并使其能够被更新.
+      // 向下遍历:
+      // 从 ContextProvider 节点开始,
+      // 向下查找所有 fiber.dependencies 依赖该 context 的节点.
+      // 向上遍历:
+      // 从 ContextConsumer 节点开始,
+      // 向上遍历, 修改父路径上所有节点的 fiber.childLanes 属性, 表明其子节点有改动, 子节点会进入更新逻辑.
+      propagateContextChange(workInProgress, context, changedBits, renderLanes);
+    }
+  }
+
+  // 生成下级 Fiber.
+  const newChildren = newProps.children;
+  reconcileChildren(current, workInProgress, newChildren, renderLanes);
+  return workInProgress.child;
+}
+
+function updateContextConsumer(
+  current: Fiber | null,
+  workInProgress: Fiber,
+  renderLanes: Lanes
+) {
+  const context: ReactContext<any> = workInProgress.type;
+  const newProps = workInProgress.pendingProps;
+  const render = newProps.children;
+
+  // 读取 context.
+  prepareToReadContext(workInProgress, renderLanes);
+  const newValue = readContext(context, newProps.unstable_observedBits);
+
+  // 生成下级 Fiber.
+  const newChildren = render(newValue);
+  reconcileChildren(current, workInProgress, newChildren, renderLanes);
+  return workInProgress.child;
+}
+
+function prepareToReadContext(workInProgress: Fiber, renderLanes: Lanes): void {
+  // Setup.
+  currentlyRenderingFiber = workInProgress;
+  lastContextDependency = null;
+  lastContextWithAllBitsObserved = null;
+  const dependencies = workInProgress.dependencies;
+
+  if (dependencies !== null) {
+    const firstContext = dependencies.firstContext;
+
+    if (firstContext !== null) {
+      if (includesSomeLane(dependencies.lanes, renderLanes)) {
+        // Context list has a pending update.
+        // Mark that this fiber performed work.
+        markWorkInProgressReceivedUpdate();
+      }
+
+      // Reset the work-in-progress list
+      dependencies.firstContext = null;
+    }
+  }
+}
+
+function readContext<T>(
+  context: ReactContext<T>,
+  observedBits: void | number | boolean
+): T {
+  const contextItem = {
+    context: context as ReactContext<mixed>,
+    observedBits: resolvedObservedBits,
+    next: null,
+  };
+
+  // 1. 构造一个 contextItem, 加入到 workInProgress.dependencies 链表.
+  if (lastContextDependency === null) {
+    lastContextDependency = contextItem;
+    currentlyRenderingFiber.dependencies = {
+      lanes: NoLanes,
+      firstContext: contextItem,
+      responders: null,
+    };
+  } else {
+    lastContextDependency = lastContextDependency.next = contextItem;
+  }
+
+  // 2. 返回 currentValue.
+  return isPrimaryRenderer ? context._currentValue : context._currentValue2;
+}
+```
+
+#### UseContext Hooks Usage
+
+```tsx
 import React, {
   createContext,
   useCallback,
@@ -1859,24 +5658,41 @@ export { CountProvider, useCount };
 
 ### UseEffect Hook
 
-[Complete Guide](https://overreacted.io/a-complete-guide-to-useeffect)
+#### UseEffect Hooks Dispatcher
 
-Circular effect list:
+```ts
+function mountEffect(
+  create: () => (() => void) | void,
+  deps: Array<mixed> | void | null
+): void {
+  return mountEffectImpl(
+    UpdateEffect | PassiveEffect,
+    HookPassive,
+    create,
+    deps
+  );
+}
 
-```js
-function mountEffect(fiberFlags, hookFlags, create, deps) {
+function mountEffectImpl(fiberFlags, hookFlags, create, deps) {
   const hook = mountWorkInProgressHook();
   const nextDeps = deps === undefined ? null : deps;
-  currentlyRenderingFiber.flags |= fiberFlags;
+  currentlyRenderingFiber.flags |= fiberFlags; // UpdateEffect | PassiveEffect.
   hook.memoizedState = pushEffect(
-    HasEffect | hookFlags,
+    HasEffect | hookFlags, // PassiveHook.
     create,
     undefined,
     nextDeps
   );
 }
 
-function updateEffect(fiberFlags, hookFlags, create, deps) {
+function updateEffect(
+  create: () => (() => void) | void,
+  deps: Array<mixed> | void | null
+): void {
+  return updateEffectImpl(PassiveEffect, HookPassive, create, deps);
+}
+
+function updateEffectImpl(fiberFlags, hookFlags, create, deps) {
   const hook = updateWorkInProgressHook();
   const nextDeps = deps === undefined ? null : deps;
   let destroy;
@@ -1889,12 +5705,16 @@ function updateEffect(fiberFlags, hookFlags, create, deps) {
       const prevDeps = prevEffect.deps;
 
       if (areHookInputsEqual(nextDeps, prevDeps)) {
+        // 如果依赖不变, 新建 Effect (tag 不含 HookHasEffect).
+        // Reconciler.Commit 阶段会跳过此 Effect.
         pushEffect(hookFlags, create, destroy, nextDeps);
         return;
       }
     }
   }
 
+  // 如果依赖改变, 更改 fiber.flags, 新建 Effect.
+  // Reconciler.Commit 阶段会再次执行此 Effect.
   currentlyRenderingFiber.flags |= fiberFlags;
   hook.memoizedState = pushEffect(
     HasEffect | hookFlags,
@@ -1907,9 +5727,9 @@ function updateEffect(fiberFlags, hookFlags, create, deps) {
 function pushEffect(tag, create, destroy, deps) {
   const effect = {
     tag,
-    create,
-    destroy,
-    deps,
+    create, // User code: effect callback.
+    destroy, // User code: destroy callback.
+    deps, // User code: deps list.
     next: null,
   };
 
@@ -1941,7 +5761,8 @@ function pushEffect(tag, create, destroy, deps) {
 
 1. React renders UI for current props/state to screen.
 2. React cleans up the effect for prev props/state.
-3. React runs the effect for current props/state.
+3. React runs the effect for current props/state
+   (`useEffect` got invoked after `componentDidMount`).
 
 #### UseEffect Nasty Loop
 
@@ -1972,9 +5793,9 @@ Functions in useEffect:
   and pull the ones that are used only by an effect inside of that effect.
 - For useCallback function, it should be in deps list `useEffect(() => {}, [callback])`
 
-```jsx
+```ts
 // https://www.robinwieruch.de/react-hooks-fetch-data
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useDataApi = (initialUrl, initialData) => {
@@ -2010,7 +5831,7 @@ const useDataApi = (initialUrl, initialData) => {
 };
 ```
 
-#### Closure in UseEffect
+#### UseEffect Closure
 
 - useEffect Hook 会丢弃上一次渲染结果,
   它会清除上一次 effect,
@@ -2023,23 +5844,24 @@ const useDataApi = (initialUrl, initialData) => {
   导致其与 useEffect 所预期行为不一致.
 - 可以通过 useRef 解决这一现象.
 
-```jsx
+```tsx
 // BUG
 function Counter() {
-  let [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let id = setInterval(() => {
+    const id = setInterval(() => {
       setCount(count + 1); // always 1 regardless `count` value change
     }, 1000);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <h1>{count}</h1>;
 }
 ```
 
-```jsx
+```tsx
 function Counter() {
   const [count, setCount] = useState(0);
 
@@ -2064,19 +5886,19 @@ function useInterval(callback, delay) {
       savedCallback.current();
     }
 
-    let id = setInterval(tick, delay);
+    const id = setInterval(tick, delay);
     return () => clearInterval(id);
   }, [delay]);
 }
 ```
 
-#### UseEffect State vs Class State
+#### UseEffect State
 
-- 如同 `Closure in useEffect`, 每次调用 useEffect 时,
+- 如 `UseEffect Closure` 所述, 每次调用 useEffect 时,
   会捕获那一次 render 时的 props 和 state.
 - Class Component 中的 this.state.xxx 却总是指向最新的 state.
 
-```jsx
+```tsx
 function Counter() {
   const [count, setCount] = useState(0);
 
@@ -2103,11 +5925,24 @@ function Counter() {
 // You clicked 5 times
 ```
 
-```jsx
-componentDidUpdate() {
-  setTimeout(() => {
-    console.log(`You clicked ${this.state.count} times`);
-  }, 3000);
+```tsx
+class Counter {
+  componentDidUpdate() {
+    setTimeout(() => {
+      console.log(`You clicked ${this.state.count} times`);
+    }, 3000);
+  }
+
+  render() {
+    const { count } = this.props;
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => this.setState(count + 1)}>Click me</button>
+      </div>
+    );
+  }
 }
 // Output:
 // Mounted: You clicked 0 times
@@ -2119,14 +5954,130 @@ componentDidUpdate() {
 // You clicked 5 times
 ```
 
+#### UseEffect Cleanup
+
+- Avoid memory leaks.
+- Prevent unexpected errors.
+- Good user experience.
+
+Cleanup API requests:
+
+```ts
+const App = () => {
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    const fetchData = async () => {
+      const response = await fetch('some api here', { signal });
+      // do something with response
+    };
+
+    fetchData();
+
+    return () => controller.abort();
+  }, []);
+};
+```
+
+Cleanup connections:
+
+```ts
+const App = () => {
+  useEffect(() => {
+    const socket = new WebSocket('url', protocols);
+    // do what you want with the socket
+
+    return () => socket.close();
+  }, []);
+};
+```
+
+Cleanup timeouts:
+
+```ts
+const App = () => {
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // do something in the timeout
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+};
+```
+
+:::caution React 18 Development Strict Mode
+
+With `Strict Mode` in React 18,
+React will simulate unmounting and remounting component in development mode:
+
+- React mounts component:
+  - Layout effects are created.
+  - Effect effects are created.
+- React simulates unmounting component:
+  - Layout effects are destroyed.
+  - Effects are destroyed.
+- React simulates mounting component with previous state:
+  - Layout effect setup code runs.
+  - Effect setup code runs.
+
+:::
+
+#### UseEffect Reference
+
+- `useEffect` complete [guide](https://overreacted.io/a-complete-guide-to-useeffect).
+
 ### UseLayoutEffect Hook
 
-`useLayoutEffect` callback called **synchronously**
-(fires synchronously after all DOM mutations),
-substitute for `componentDidMount` lifecycle function.
+- `useLayoutEffect` callback called **synchronously**
+  (fires synchronously after all DOM mutations),
+  substitute for `componentDidMount` lifecycle function:
+  `Update` effect flags, `HasEffect | Layout` hook flags.
+- `useEffect` got invoked after `componentDidMount` **asynchronously**:
+  `Update | Passive` effect flags, `HasEffect | Passive` hook flags.
+- If need to mutate the DOM or do need to perform DOM measurements,
+  `useLayoutEffect` is better than `useEffect`.
 
-If need to mutate the DOM or do need to perform DOM measurements,
-`useLayoutEffect` is better than `useEffect`.
+```ts
+function mountLayoutEffect(
+  create: () => (() => void) | void,
+  deps: Array<mixed> | void | null
+): void {
+  return mountEffectImpl(
+    UpdateEffect, // Fiber Flags
+    HookLayout, // Hook Flags
+    create,
+    deps
+  );
+}
+
+function mountEffect(
+  create: () => (() => void) | void,
+  deps: Array<mixed> | void | null
+): void {
+  return mountEffectImpl(
+    UpdateEffect | PassiveEffect, // Fiber Flags
+    HookPassive, // Hook Flags
+    create,
+    deps
+  );
+}
+
+function updateLayoutEffect(
+  create: () => (() => void) | void,
+  deps: Array<mixed> | void | null
+): void {
+  return updateEffectImpl(UpdateEffect, HookLayout, create, deps);
+}
+
+function updateEffect(
+  create: () => (() => void) | void,
+  deps: Array<mixed> | void | null
+): void {
+  return updateEffectImpl(PassiveEffect, HookPassive, create, deps);
+}
+```
 
 ### UseInsertionEffect Hook
 
@@ -2135,7 +6086,7 @@ issues of injecting styles in render.
 This hook will run after the DOM is mutated,
 but before layout effects read the new layout.
 
-```js
+```tsx
 function useCSS(rule) {
   if (!canUseDOM) {
     collectedRulesSet.add(rule);
@@ -2197,7 +6148,7 @@ export default React.forwardRef(MyInput);
 
 Debounce:
 
-```jsx
+```tsx
 import { useDeferredValue } from 'react';
 
 function App() {
@@ -2223,7 +6174,7 @@ function App() {
 
 Opt-in concurrent features (implementing debounce-like function):
 
-```js
+```tsx
 import { useRef, useState, useTransition } from 'react';
 import Spinner from './Spinner';
 
@@ -2249,7 +6200,7 @@ function App() {
 
 Generating unique IDs on client and server.
 
-```js
+```tsx
 function Checkbox() {
   const id = useId();
 
@@ -2287,7 +6238,7 @@ type UseSyncExternalStore = (
 
 Simple demo from [React Conf 2021](https://www.youtube.com/watch?v=oPfSC5bQPR8):
 
-```jsx
+```tsx
 import { useSyncExternalStore } from 'react';
 
 // We will also publish a backwards compatible shim
@@ -2333,7 +6284,7 @@ function App() {
 Migrate from `useState` + `useEffect` + `useRef` to `useSyncExternalStore`
 for 3rd external stores libraries (e.g `Redux`):
 
-```jsx
+```tsx
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
@@ -2444,26 +6395,27 @@ React.createRoot(document.querySelector('#root')).render(<App />);
 
 ### Custom LifeCycle Hooks
 
-componentDidMount: `useLayoutEffect`.
-`useEffect` got invoked after `componentDidMount`.
+`componentDidMount`:
 
-```jsx
+```ts
 const useMount = fn => {
-  useEffect(() => void fn(), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => fn(), []);
 };
 ```
 
-componentWillUnmount
+componentWillUnmount:
 
-```jsx
+```ts
 const useUnmount = fn => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => fn, []);
 };
 ```
 
-componentDidUpdate
+componentDidUpdate:
 
-```jsx
+```ts
 const useUpdate = fn => {
   const mounting = useRef(true);
 
@@ -2479,14 +6431,13 @@ const useUpdate = fn => {
 };
 ```
 
-Force Update
+Force Update:
 
-```jsx
+```ts
 const useUpdate = () => useState(0)[1];
 ```
 
-```jsx
-// @ts-ignore
+```ts
 import { useState } from 'react';
 
 interface VoidFunction {
@@ -2497,7 +6448,7 @@ interface VoidFunctionCreator {
   (): VoidFunction;
 }
 
-const max: number = 9007199254740990; // Number.MAX_SAFE_INTEGER - 1;
+const max = 9007199254740990; // Number.MAX_SAFE_INTEGER - 1;
 
 const useForceUpdate: VoidFunctionCreator = (): VoidFunction => {
   const [, setState] = useState(0);
@@ -2510,9 +6461,9 @@ const useForceUpdate: VoidFunctionCreator = (): VoidFunction => {
 export default useForceUpdate;
 ```
 
-isMounted
+`isMounted`:
 
-```jsx
+```ts
 const useIsMounted = () => {
   const [isMount, setIsMount] = useState(false);
 
@@ -2521,6 +6472,7 @@ const useIsMounted = () => {
       setIsMount(true);
     }
     return () => setIsMount(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isMount;
@@ -2529,11 +6481,11 @@ const useIsMounted = () => {
 
 ### Custom Async Data Hook
 
-- `useState` to store url and data
-- `useEffect` to trigger async `fetch` actions
+- `useState` to store url and data.
+- `useEffect` to trigger async `fetch` actions.
 
-```jsx
-import { useState, useEffect } from 'react';
+```ts
+import { useEffect, useState } from 'react';
 
 function useFriendStatus(friendID) {
   const [isOnline, setIsOnline] = useState(null);
@@ -2551,7 +6503,9 @@ function useFriendStatus(friendID) {
 
   return isOnline;
 }
+```
 
+```tsx
 function FriendStatus(props) {
   const isOnline = useFriendStatus(props.friend.id);
 
@@ -2570,8 +6524,8 @@ function FriendListItem(props) {
 }
 ```
 
-```jsx
-import React, { Fragment, useState, useEffect } from 'react';
+```ts
+import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useDataApi = (initialUrl, initialData) => {
@@ -2580,7 +6534,7 @@ const useDataApi = (initialUrl, initialData) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setIsError(false);
     setIsLoading(true);
 
@@ -2593,11 +6547,11 @@ const useDataApi = (initialUrl, initialData) => {
     }
 
     setIsLoading(false);
-  };
+  }, [url]);
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [fetchData]);
 
   const doGet = (event, url) => {
     setUrl(url);
@@ -2606,7 +6560,9 @@ const useDataApi = (initialUrl, initialData) => {
 
   return { data, isLoading, isError, doGet };
 };
+```
 
+```tsx
 function App() {
   const [query, setQuery] = useState('redux');
   const { data, isLoading, isError, doGet } = useDataApi(
@@ -2743,7 +6699,7 @@ export default useFetch;
 
 ### Custom Previous Hook
 
-```jsx
+```tsx
 function Counter() {
   const [count, setCount] = useState(0);
   const prevCount = usePrevious(count);
@@ -2794,7 +6750,7 @@ export default useInterval;
 
 ### Custom Debounce Hook
 
-```jsx
+```ts
 // Hook
 function useDebounce(value, delay) {
   // State and setters for debounced value
@@ -2820,19 +6776,23 @@ function useDebounce(value, delay) {
 
   return debouncedValue;
 }
+```
 
-// Usage
-const [searchTerm, setSearchTerm] = useState('');
-const debouncedSearchTerm = useDebounce(searchTerm, 500);
+```tsx
+function App() {
+  // Usage
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-useEffect(() => {
-  ...
-}, [debouncedSearchTerm]);
+  useEffect(() => {}, [debouncedSearchTerm]);
+
+  return <div>App</div>;
+}
 ```
 
 ### Custom EventListener Hook
 
-```js
+```ts
 import { useCallback, useEffect } from 'react';
 
 export default function useKeydown() {
@@ -2849,7 +6809,7 @@ export default function useKeydown() {
 }
 ```
 
-```js
+```ts
 import { useEffect } from 'react';
 
 export default function useEventListener({ event, handler }) {
@@ -2859,6 +6819,66 @@ export default function useEventListener({ event, handler }) {
       document.removeEventListener(event, handler);
     };
   });
+}
+```
+
+### Custom Mouse Hook
+
+```ts
+import { useRef, useState } from 'react';
+
+export default function useLongPress(time = 500) {
+  const [action, setAction] = useState();
+
+  const timerRef = useRef();
+  const isLongPress = useRef();
+
+  function startPressTimer() {
+    isLongPress.current = false;
+    timerRef.current = setTimeout(() => {
+      isLongPress.current = true;
+      setAction('LongPress');
+    }, time);
+  }
+
+  function handleClick() {
+    if (isLongPress.current) {
+      return;
+    }
+
+    setAction('Click');
+  }
+
+  function handleMouseDown() {
+    startPressTimer();
+  }
+
+  function handleMouseUp() {
+    clearTimeout(timerRef.current);
+  }
+
+  function handleTouchStart() {
+    startPressTimer();
+  }
+
+  function handleTouchEnd() {
+    if (action === 'LongPress') {
+      return;
+    }
+
+    clearTimeout(timerRef.current);
+  }
+
+  return {
+    action,
+    handlers: {
+      onClick: handleClick,
+      onMouseDown: handleMouseDown,
+      onMouseUp: handleMouseUp,
+      onTouchStart: handleTouchStart,
+      onTouchEnd: handleTouchEnd,
+    },
+  };
 }
 ```
 
@@ -2912,120 +6932,103 @@ function useIntersectionObserver(
 export default useIntersectionObserver;
 ```
 
-### Custom Router Hook
+```ts
+function useComponentSize() {
+  const [size, setSize] = React.useState({
+    height: 0,
+    width: 0,
+  });
+  const ref = React.useRef<any>();
 
-```jsx
-import { useContext, useEffect } from 'react';
-import { __RouterContext } from 'react-router';
-import useForceUpdate from 'use-force-update';
+  const onResize = React.useCallback(() => {
+    if (!ref.current) {
+      return;
+    }
 
-const useReactRouter = () => {
-  const forceUpdate = useForceUpdate();
-  const routerContext = useContext(__RouterContext);
+    const newHeight = ref.current.offsetHeight;
+    const newWidth = ref.current.offsetWidth;
 
-  useEffect(() => routerContext.history.listen(forceUpdate), [routerContext]);
+    if (newHeight !== size.height || newWidth !== size.width) {
+      setSize({
+        height: newHeight,
+        width: newWidth,
+      });
+    }
+  }, [size.height, size.width]);
 
-  return routerContext;
-};
+  React.useLayoutEffect(() => {
+    if (!ref || !ref.current) {
+      return;
+    }
+
+    const resizeObserver = new ResizeObserver(onResize);
+    resizeObserver.observe(ref.current);
+
+    return () => resizeObserver.disconnect();
+  }, [ref, onResize]);
+
+  return {
+    ref,
+    ...size,
+  };
+}
 ```
 
-### Custom History Hook
+### Custom Locked Body Hook
 
-```jsx
-import { useReducer, useCallback } from 'react';
+```ts
+import { useEffect, useLayoutEffect, useState } from 'react';
 
-// Initial state that we pass into useReducer
-const initialState = {
-  // Array of previous state values updated each time we push a new state
-  past: [],
-  // Current state value
-  present: null,
-  // Will contain "future" state values if we undo (so we can redo)
-  future: [],
-};
+type ReturnType = [boolean, (locked: boolean) => void];
 
-// Our reducer function to handle state changes based on action
-const reducer = (state, action) => {
-  const { past, present, future } = state;
+function useLockedBody(initialLocked = false): ReturnType {
+  const [locked, setLocked] = useState(initialLocked);
 
-  switch (action.type) {
-    case 'UNDO':
-      const previous = past[past.length - 1];
-      const newPast = past.slice(0, past.length - 1);
+  // Do the side effect before render
+  useLayoutEffect(() => {
+    // Key point 1
+    if (!locked) {
+      return;
+    }
 
-      return {
-        past: newPast,
-        present: previous,
-        future: [present, ...future],
-      };
-    case 'REDO':
-      const next = future[0];
-      const newFuture = future.slice(1);
+    // Save initial body style
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
 
-      return {
-        past: [...past, present],
-        present: next,
-        future: newFuture,
-      };
-    case 'SET':
-      const { newPresent } = action;
+    // Lock body scroll
+    document.body.style.overflow = 'hidden';
 
-      if (newPresent === present) {
-        return state;
+    // Get the scrollBar width
+    const root = document.getElementById('___gatsby'); // or root
+    const scrollBarWidth = root ? root.offsetWidth - root.scrollWidth : 0;
+
+    // Avoid width reflow
+    if (scrollBarWidth) {
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    }
+
+    // Key point 2
+    return () => {
+      document.body.style.overflow = originalOverflow;
+
+      if (scrollBarWidth) {
+        document.body.style.paddingRight = originalPaddingRight;
       }
-      return {
-        past: [...past, present],
-        present: newPresent,
-        future: [],
-      };
-    case 'CLEAR':
-      const { initialPresent } = action;
+    };
+  }, [locked]);
 
-      return {
-        ...initialState,
-        present: initialPresent,
-      };
-  }
-};
-
-// Hook
-const useHistory = initialPresent => {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    present: initialPresent,
-  });
-
-  const canUndo = state.past.length !== 0;
-  const canRedo = state.future.length !== 0;
-
-  // Setup our callback functions
-  // We memoize with useCallback to prevent unnecessary re-renders
-
-  const undo = useCallback(() => {
-    if (canUndo) {
-      dispatch({ type: 'UNDO' });
+  // Update state if initialValue changes
+  useEffect(() => {
+    if (locked !== initialLocked) {
+      setLocked(initialLocked);
     }
-  }, [canUndo, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialLocked]);
 
-  const redo = useCallback(() => {
-    if (canRedo) {
-      dispatch({ type: 'REDO' });
-    }
-  }, [canRedo, dispatch]);
+  return [locked, setLocked];
+}
 
-  const set = useCallback(
-    newPresent => dispatch({ type: 'SET', newPresent }),
-    [dispatch]
-  );
-
-  const clear = useCallback(
-    () => dispatch({ type: 'CLEAR', initialPresent }),
-    [dispatch]
-  );
-
-  // If needed we could also return past and future state
-  return { state: state.present, set, undo, redo, clear, canUndo, canRedo };
-};
+export default useLockedBody;
 ```
 
 ### Custom Script Loading Hook
@@ -3104,8 +7107,8 @@ function useScript(src: string): Status {
 export default useScript;
 ```
 
-```jsx
-let cachedScripts = [];
+```ts
+const cachedScripts = [];
 
 const useScript = src => {
   // Keeping track of script loaded and error state
@@ -3128,7 +7131,7 @@ const useScript = src => {
         cachedScripts.push(src);
 
         // Create script
-        let script = document.createElement('script');
+        const script = document.createElement('script');
         script.src = src;
         script.async = true;
 
@@ -3172,66 +7175,9 @@ const useScript = src => {
 };
 ```
 
-### Custom Locked Body Hook
-
-```ts
-import { useEffect, useLayoutEffect, useState } from 'react';
-
-type ReturnType = [boolean, (locked: boolean) => void];
-
-function useLockedBody(initialLocked = false): ReturnType {
-  const [locked, setLocked] = useState(initialLocked);
-
-  // Do the side effect before render
-  useLayoutEffect(() => {
-    // Key point 1
-    if (!locked) {
-      return;
-    }
-
-    // Save initial body style
-    const originalOverflow = document.body.style.overflow;
-    const originalPaddingRight = document.body.style.paddingRight;
-
-    // Lock body scroll
-    document.body.style.overflow = 'hidden';
-
-    // Get the scrollBar width
-    const root = document.getElementById('___gatsby'); // or root
-    const scrollBarWidth = root ? root.offsetWidth - root.scrollWidth : 0;
-
-    // Avoid width reflow
-    if (scrollBarWidth) {
-      document.body.style.paddingRight = `${scrollBarWidth}px`;
-    }
-
-    // Key point 2
-    return () => {
-      document.body.style.overflow = originalOverflow;
-
-      if (scrollBarWidth) {
-        document.body.style.paddingRight = originalPaddingRight;
-      }
-    };
-  }, [locked]);
-
-  // Update state if initialValue changes
-  useEffect(() => {
-    if (locked !== initialLocked) {
-      setLocked(initialLocked);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialLocked]);
-
-  return [locked, setLocked];
-}
-
-export default useLockedBody;
-```
-
 ### Custom Media Query Hook
 
-```tsx
+```ts
 export default function useMedia<T>(
   queries: string[],
   values: T[],
@@ -3259,9 +7205,115 @@ export default function useMedia<T>(
 }
 ```
 
+### Custom Cookie Hook
+
+```ts
+// https://github.com/tylerwolff/useCookie.
+import { useState } from 'react';
+
+const isBrowser = typeof window !== 'undefined';
+
+function stringifyOptions(options) {
+  return Object.keys(options).reduce((acc, key) => {
+    if (key === 'days') {
+      // Skip `days`.
+      return acc;
+    } else {
+      if (options[key] === false) {
+        return acc;
+      } else if (options[key] === true) {
+        return `${acc}; ${key}`;
+      } else {
+        return `${acc}; ${key}=${options[key]}`;
+      }
+    }
+  }, '');
+}
+
+function getCookie(name, initialValue = '') {
+  return (
+    (isBrowser &&
+      document.cookie.split('; ').reduce((r, v) => {
+        const parts = v.split('=');
+        return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+      }, '')) ||
+    initialValue
+  );
+}
+
+function setCookie(name, value, options) {
+  if (!isBrowser) return;
+
+  const optionsWithDefaults = {
+    days: 7,
+    path: '/',
+    ...options,
+  };
+
+  const expires = new Date(
+    Date.now() + optionsWithDefaults.days * 864e5
+  ).toUTCString();
+
+  document.cookie = `${name}=${encodeURIComponent(
+    value
+  )}; expires=${expires}${stringifyOptions(optionsWithDefaults)}`;
+}
+
+function useCookie(key, initialValue) {
+  const [item, setItem] = useState(() => {
+    return getCookie(key, initialValue);
+  });
+
+  const updateItem = (value, options) => {
+    setItem(value);
+    setCookie(key, value, options);
+  };
+
+  return [item, updateItem];
+}
+```
+
+### Custom LocalStorage Hook
+
+```tsx
+// https://www.robinwieruch.de/react-uselocalstorage-hook.
+const useLocalStorage = (storageKey, fallbackState) => {
+  const [value, setValue] = React.useState(
+    JSON.parse(localStorage.getItem(storageKey)) || fallbackState
+  );
+
+  // Update logic.
+  React.useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(value));
+  }, [value, storageKey]);
+
+  return [value, setValue];
+};
+
+const App = () => {
+  const [isOpen, setOpen] = useLocalStorage('is-open', false);
+
+  const handleToggle = () => {
+    setOpen(!isOpen);
+  };
+
+  return (
+    <div>
+      <button onClick={handleToggle}>Toggle</button>
+      {isOpen && <div>Content</div>}
+    </div>
+  );
+};
+```
+
 ### Custom Form Hook
 
-```jsx
+#### UseState Only Form Hook
+
+- `useState` for form entire state and form control data.
+- Custom logic via hooks `params` function.
+
+```ts
 import { useState } from 'react';
 
 const useForm = callback => {
@@ -3290,7 +7342,13 @@ const useForm = callback => {
 export default useForm;
 ```
 
-```jsx
+#### UseState and UseRef Form Hook
+
+- `useState` for form entire state.
+- `useRef` for form control data.
+- Custom logic via hooks `params` function.
+
+```tsx
 export const useField = (
   name,
   form,
@@ -3321,6 +7379,7 @@ export const useField = (
   useEffect(() => {
     if (pristine) return; // Avoid validate on mount
     form.validateFields(fieldsToValidateOnChange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const field = {
@@ -3345,17 +7404,17 @@ export const useField = (
 export const useForm = ({ onSubmit }) => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const fields = [];
+  const fields = useRef([]);
 
   const validateFields = async fieldNames => {
     let fieldsToValidate;
     if (fieldNames instanceof Array) {
-      fieldsToValidate = fields.filter(field =>
+      fieldsToValidate = fields.current.filter(field =>
         fieldNames.includes(field.name)
       );
     } else {
-      //if fieldNames not provided, validate all fields
-      fieldsToValidate = fields;
+      // If fieldNames not provided, validate all fields.
+      fieldsToValidate = fields.current;
     }
     const fieldsValid = await Promise.all(
       fieldsToValidate.map(field => field.validate())
@@ -3364,7 +7423,7 @@ export const useForm = ({ onSubmit }) => {
   };
 
   const getFormData = () => {
-    return fields.reduce((formData, f) => {
+    return fields.current.reduce((formData, f) => {
       formData[f.name] = f.value;
       return formData;
     }, {});
@@ -3380,8 +7439,8 @@ export const useForm = ({ onSubmit }) => {
       setSubmitting(false);
       return returnVal;
     },
-    isValid: () => fields.every(f => f.errors.length === 0),
-    addField: field => fields.push(field),
+    isValid: () => fields.current.every(f => f.errors.length === 0),
+    addField: field => fields.current.push(field),
     getFormData,
     validateFields,
     submitted,
@@ -3433,10 +7492,10 @@ const App = props => {
       if (!valid) return;
       await timeout(2000); // Simulate network time
       if (formData.username.length < 10) {
-        //Simulate 400 response from server
+        // Simulate 400 response from server.
         usernameField.setErrors(['Make a longer username']);
       } else {
-        //Simulate 201 response from server
+        // Simulate 201 response from server.
         window.alert(
           `form valid: ${valid}, form data: ${JSON.stringify(formData)}`
         );
@@ -3511,6 +7570,130 @@ const App = props => {
 };
 ```
 
+#### UseState and UseRef with DOM Refs Form Hook
+
+- `useState` for form entire state.
+- `useRef` for form control data.
+- `Function Refs` bind to native `<input />` elements.
+- Custom logic via hooks `return` function.
+
+```tsx
+// https://github.com/react-hook-form/react-hook-form/blob/v7.29.0/src/logic/createFormControl.ts
+const createFormControl = () => ({
+  register: (name, options = {}) => {
+    // Register input filed.
+    let field = get(_fields, name);
+    const disabledIsDefined = isBoolean(options.disabled);
+
+    set(_fields, name, {
+      _f: {
+        ...(field && field._f ? field._f : { ref: { name } }),
+        name,
+        mount: true,
+        ...options,
+      },
+    });
+    _names.mount.add(name);
+
+    field
+      ? disabledIsDefined &&
+        set(
+          _formValues,
+          name,
+          options.disabled
+            ? undefined
+            : get(_formValues, name, getFieldValue(field._f))
+        )
+      : updateValidAndValue(name, true, options.value);
+
+    return {
+      // Bind to Form Input Element.
+      ref: (ref: HTMLInputElement | null): void => {
+        if (ref) {
+          register(name, options);
+          field = get(_fields, name);
+
+          const fieldRef = isUndefined(ref.value)
+            ? ref.querySelectorAll
+              ? (ref.querySelectorAll('input,select,textarea')[0] as Ref) || ref
+              : ref
+            : ref;
+          const radioOrCheckbox = isRadioOrCheckbox(fieldRef);
+          const refs = field._f.refs || [];
+
+          if (
+            radioOrCheckbox
+              ? refs.find((option: Ref) => option === fieldRef)
+              : fieldRef === field._f.ref
+          ) {
+            return;
+          }
+
+          set(_fields, name, {
+            _f: {
+              ...field._f,
+              ...(radioOrCheckbox
+                ? {
+                    refs: [...refs.filter(live), fieldRef],
+                    ref: { type: fieldRef.type, name },
+                  }
+                : { ref: fieldRef }),
+            },
+          });
+
+          updateValidAndValue(name, false, undefined, fieldRef);
+        } else {
+          field = get(_fields, name, {});
+
+          if (field._f) {
+            field._f.mount = false;
+          }
+
+          (_options.shouldUnregister || options.shouldUnregister) &&
+            !(isNameInFieldArray(_names.array, name) && _stateFlags.action) &&
+            _names.unMount.add(name);
+        }
+      },
+      value,
+      min,
+      max,
+      required,
+      disabled,
+      ...fieldPropValues,
+    };
+  },
+  // Higher order function: onSubmit (Use Code) => onSubmit (Bind to Form Element).
+  handleSubmit: onSubmit => {
+    return (event: SubmitEvent) => {
+      onSubmit(this._getFormData());
+    };
+  },
+});
+
+const useForm = () => {
+  // Detailed logic handlers: DOM refs, field getter/setter, submit handler.
+  const formControl = useRef<FormControl>(createFormControl());
+  // Entire form state: valid, errors etc.
+  const formState = useState<FormState>();
+
+  return {
+    ...formControl.current,
+  };
+};
+
+const App = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => console.log(data);
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register('name')} type="text" />
+      <input {...register('password')} type="password" />
+    </form>
+  );
+};
+```
+
 ### Custom URL Params Hook
 
 Storing state in the URL:
@@ -3550,11 +7733,137 @@ export default function useStateParams<T>(
 }
 ```
 
+### Custom Router Hook
+
+```ts
+import { useContext, useEffect } from 'react';
+import { __RouterContext } from 'react-router';
+import useForceUpdate from 'use-force-update';
+
+const useReactRouter = () => {
+  const forceUpdate = useForceUpdate();
+  const routerContext = useContext(__RouterContext);
+
+  useEffect(
+    () => routerContext.history.listen(forceUpdate),
+    [forceUpdate, routerContext]
+  );
+
+  return routerContext;
+};
+```
+
+### Custom History Hook
+
+```ts
+import { useCallback, useReducer } from 'react';
+
+// Initial state that we pass into useReducer
+const initialState = {
+  // Array of previous state values updated each time we push a new state
+  past: [],
+  // Current state value
+  present: null,
+  // Will contain "future" state values if we undo (so we can redo)
+  future: [],
+};
+
+// Our reducer function to handle state changes based on action
+const reducer = (state, action) => {
+  const { past, present, future } = state;
+
+  switch (action.type) {
+    case 'UNDO': {
+      const previous = past[past.length - 1];
+      const newPast = past.slice(0, past.length - 1);
+
+      return {
+        past: newPast,
+        present: previous,
+        future: [present, ...future],
+      };
+    }
+    case 'REDO': {
+      const next = future[0];
+      const newFuture = future.slice(1);
+
+      return {
+        past: [...past, present],
+        present: next,
+        future: newFuture,
+      };
+    }
+    case 'SET': {
+      const { newPresent } = action;
+
+      if (newPresent === present) {
+        return state;
+      }
+
+      return {
+        past: [...past, present],
+        present: newPresent,
+        future: [],
+      };
+    }
+    case 'CLEAR': {
+      const { initialPresent } = action;
+
+      return {
+        ...initialState,
+        present: initialPresent,
+      };
+    }
+    default:
+      throw new Error('Unsupported action type!');
+  }
+};
+
+// Hook
+const useHistory = initialPresent => {
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    present: initialPresent,
+  });
+
+  const canUndo = state.past.length !== 0;
+  const canRedo = state.future.length !== 0;
+
+  // Setup our callback functions
+  // We memoize with useCallback to prevent unnecessary re-renders
+
+  const undo = useCallback(() => {
+    if (canUndo) {
+      dispatch({ type: 'UNDO' });
+    }
+  }, [dispatch, canUndo]);
+
+  const redo = useCallback(() => {
+    if (canRedo) {
+      dispatch({ type: 'REDO' });
+    }
+  }, [dispatch, canRedo]);
+
+  const set = useCallback(
+    newPresent => dispatch({ type: 'SET', newPresent }),
+    [dispatch]
+  );
+
+  const clear = useCallback(
+    () => dispatch({ type: 'CLEAR', initialPresent }),
+    [dispatch, initialPresent]
+  );
+
+  // If needed we could also return past and future state
+  return { state: state.present, set, undo, redo, clear, canUndo, canRedo };
+};
+```
+
 ### Custom Store Hook
 
 Simple implementation:
 
-```js
+```ts
 import { useState } from 'react';
 
 export const store = {
@@ -3966,10 +8275,10 @@ export const setAtomValue =
   可使用 useCallback 包裹函数, 并设置正确的 Deps List,
   尽可能地减少 render 时重新定义此函数.
 
-```jsx
+```ts
 // ✅ Not affected by the data flow
 function getFetchUrl(query) {
-  return 'https://hn.algolia.com/api/v1/search?query=' + query;
+  return `https://hn.algolia.com/api/v1/search?query=${query}`;
 }
 
 function SearchResults() {
@@ -4006,13 +8315,17 @@ function SearchResults() {
 - use camelCase for component instance reference
 - use camelCase for props name
 
-```jsx
+```ts
 // bad
 import reservationCard from './ReservationCard';
+```
 
+```ts
 // good
 import ReservationCard from './ReservationCard';
+```
 
+```tsx
 // bad
 const ReservationItem = <ReservationCard />;
 
@@ -4020,25 +8333,24 @@ const ReservationItem = <ReservationCard />;
 const reservationItem = <ReservationCard />;
 ```
 
-- setting displayName for HOC
+- Setting displayName for HOC:
 
-```jsx
+```tsx
 // bad
-export default function withFoo(WrappedComponent) {
+function withFoo(WrappedComponent) {
   return function WithFoo(props) {
     return <WrappedComponent {...props} foo />;
-  }
+  };
 }
 
 // good
-export default function withFoo(WrappedComponent) {
+function withFoo(WrappedComponent) {
   function WithFoo(props) {
     return <WrappedComponent {...props} foo />;
   }
 
-  const wrappedComponentName = WrappedComponent.displayName
-    || WrappedComponent.name
-    || 'Component';
+  const wrappedComponentName =
+    WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
   WithFoo.displayName = `withFoo(${wrappedComponentName})`;
   return WithFoo;
@@ -4050,17 +8362,21 @@ export default function withFoo(WrappedComponent) {
 - use `prop` not `prop={true}`
 - filter out unnecessary props
 
-```jsx
+```tsx
 // bad
-render() {
-  const { irrelevantProp, ...relevantProps  } = this.props;
-  return <WrappedComponent {...this.props} />
+class Component {
+  render() {
+    const { irrelevantProp, ...relevantProps } = this.props;
+    return <WrappedComponent {...this.props} />;
+  }
 }
 
 // good
-render() {
-  const { irrelevantProp, ...relevantProps  } = this.props;
-  return <WrappedComponent {...relevantProps} />
+class Component {
+  render() {
+    const { irrelevantProp, ...relevantProps } = this.props;
+    return <WrappedComponent {...relevantProps} />;
+  }
 }
 ```
 
@@ -4068,107 +8384,81 @@ render() {
 
 - use callback refs
 
-```jsx
+```tsx
 // bad
 // deprecated
-<Foo
-  ref="myRef"
-/>
+const Component = <Foo ref="myRef" />;
 
 // good
-<Foo
-  ref={(ref) => { this.myRef = ref; }}
-/>
+const Component = (
+  <Foo
+    ref={ref => {
+      this.myRef = ref;
+    }}
+  />
+);
 ```
 
 ### Alignment Style
 
-```jsx
-// bad
-<Foo superLongParam="bar"
-     anotherSuperLongParam="baz" />
-
+```tsx
 // good
-<Foo
-  superLongParam="bar"
-  anotherSuperLongParam="baz"
-/>
+const Component = <Foo superLongParam="bar" anotherSuperLongParam="baz" />;
 
 // if props fit in one line then keep it on the same line
-<Foo bar="bar" />
+const Component = <Foo bar="bar" />;
 
 // children get indented normally
-<Foo
-  superLongParam="bar"
-  anotherSuperLongParam="baz"
->
-  <Bar />
-</Foo>
-
-// bad
-{showButton &&
-  <Button />
-}
-
-// bad
-{
-  showButton &&
-    <Button />
-}
+const Component = (
+  <Foo superLongParam="bar" anotherSuperLongParam="baz">
+    <Bar />
+  </Foo>
+);
 
 // good
-{showButton && (
-  <Button />
-)}
-
-// good
-{showButton && <Button />}
+const Component = <div>{showButton && <Button />}</div>;
 ```
 
 ### Quotes Style
 
-- use `"` for JSX attributes, use `'` for all other JS
+- Use `"` for JSX attributes, use `'` for all other JS:
 
-```jsx
+```tsx
 // bad
-<Foo bar='bar' />
+// <Foo bar='bar' />
 
 // good
-<Foo bar="bar" />
+const App = <Foo bar="bar" />;
 
 // bad
-<Foo style={{ left: "20px" }} />
+// <Foo style={{ left: "20px" }} />
 
 // good
-<Foo style={{ left: '20px' }} />
+const App = <Foo style={{ left: '20px' }} />;
 ```
 
 ### Spacing Style
 
-- a single space in self-closing tag
-- no pad JSX curly spaces
+- A single space in self-closing tag.
+- No pad JSX curly spaces>.
 
-```jsx
+```tsx
 // bad
-<Foo/>
+// <Foo/>
 
 // very bad
-<Foo                 />
-
-// bad
-<Foo
- />
+// <Foo                 />
 
 // good
-<Foo />
+const App = <Foo />;
 ```
 
-```jsx
+```tsx
 // bad
-<Foo bar={ baz } />
+// <Foo bar={ baz } />
 
 // good
-<Foo bar={baz} />
+const App = <Foo bar={baz} />;
 ```
 
 ### Ordering of Class Component
@@ -4218,21 +8508,24 @@ render() {
 
 ### ES6 Binding for This
 
-```jsx
-constructor() {
-  this.handle = this.handle.bind(this);
-}
+```tsx
+class Component extends React.Component {
+  state = {};
+  handleES6 = event => {};
 
-handle(e) {
-  this.setState({
-    ...
-  });
-}
-```
+  constructor(props) {
+    super(props);
+    this.handleLegacy = this.handleLegacy.bind(this);
+  }
 
-```jsx
-state = {};
-handle = e => {};
+  handleLegacy(event) {
+    this.setState(prev => ({ ...prev }));
+  }
+
+  render() {
+    return <div>Component</div>;
+  }
+}
 ```
 
 ### Context API
@@ -4255,7 +8548,7 @@ Context 中只定义被大多数组件所共用的属性
 穿透 `shouldComponentUpdate`/`React.memo` 进行 `forceUpdate`,
 增加 `render` 次数, 从而导致性能问题.
 
-```jsx
+```tsx
 import React, { createContext, useContext, useMemo, useState } from 'react';
 import { fakeAuth } from './app/services/auth';
 
@@ -4264,19 +8557,19 @@ const authContext = createContext();
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const signIn = cb => {
+  const signIn = useCallback(cb => {
     return fakeAuth.signIn(() => {
       setUser('user');
       cb();
     });
-  };
+  }, []);
 
-  const signOut = cb => {
+  const signOut = useCallback(cb => {
     return fakeAuth.signOut(() => {
       setUser(null);
       cb();
     });
-  };
+  }, []);
 
   const auth = useMemo(() => {
     return {
@@ -4298,7 +8591,7 @@ export { AuthProvider, useAuth };
 
 #### Ref with Context
 
-```jsx
+```tsx
 // Context.js
 import React, { Component, createContext } from 'react';
 
@@ -4335,7 +8628,7 @@ class Provider extends Component {
 }
 ```
 
-```jsx
+```tsx
 // TextArea.jsx
 import React from 'react';
 import { Consumer } from './Context';
@@ -4371,7 +8664,7 @@ const TextArea = () => (
 
 [React Error Boundary](https://github.com/bvaughn/react-error-boundary) library:
 
-```jsx
+```tsx
 class ErrorBoundary extends React.Component {
   state = {
     hasError: false,
@@ -4383,8 +8676,8 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, info) {
     this.setState({
       hasError: true,
-      error: error,
-      info: info,
+      error,
+      info,
     });
   }
 
@@ -4406,7 +8699,7 @@ class ErrorBoundary extends React.Component {
 
 ### React Fragment
 
-```jsx
+```tsx
 class Items extends React.Component {
   render() {
     return (
@@ -4415,7 +8708,7 @@ class Items extends React.Component {
         <Beverages />
         <Drinks />
       </React.Fragment>
-    )
+    );
   }
 }
 
@@ -4428,20 +8721,18 @@ class Fruit extends React.Component {
         <li>Blueberry</li>
         <li>Cherry</li>
       </>
-    )
+    );
   }
 }
 
 class Frameworks extends React.Component {
-  render () {
+  render() {
     return (
-      [
+      <>
         <p>JavaScript:</p>
-        <li>React</li>,
-        <li>Vuejs</li>,
-        <li>Angular</li>
-      ]
-    )
+        <li>React</li>,<li>Vuejs</li>,<li>Angular</li>
+      </>
+    );
   }
 }
 ```
@@ -4457,7 +8748,7 @@ that exists **outside** the DOM hierarchy of the parent component
 <div id="portal"></div>
 ```
 
-```jsx
+```tsx
 const portalRoot = document.getElementById('portal');
 
 class Portal extends React.Component {
@@ -4483,6 +8774,7 @@ class Portal extends React.Component {
 class Modal extends React.Component {
   render() {
     const { children, toggle, on } = this.props;
+
     return (
       <Portal>
         {on ? (
@@ -4535,7 +8827,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 ### Concurrent Features
 
-```js
+```tsx
 import * as ReactDOM from 'react-dom';
 import App from 'App';
 
@@ -4548,11 +8840,11 @@ root.render(<App />);
 
 ### Batching Updates
 
-All updates will be automatically batched,
-including updates inside of
-**promises, async code and native event handlers**:
+- All updates will be automatically batched,
+  including updates inside of **promises, async code and native event handlers**.
+- `ReactDOM.flushSync` can opt-out of automatic batching.
 
-```js
+```ts
 function handleClick() {
   // React 17: Re-rendering happens after both of the states are updated.
   // This is called batching.
@@ -4584,13 +8876,95 @@ element.addEventListener('click', () => {
 });
 ```
 
-`ReactDOM.flushSync` can opt-out of automatic batching.
+Reconciler 注册调度任务时, 会通过节流与防抖提升调度性能:
+
+- 在 Task 注册完成后, 会设置 `FiberRoot` 的属性, 代表现在已经处于调度进行中.
+- 再次进入 `ensureRootIsScheduled` 时
+  (比如连续 2 次 `setState`, 第二次 `setState` 同样会触发 Reconciler 与 Scheduler 执行),
+  如果发现处于调度中, 则会通过节流与防抖, 保证调度性能.
+- 节流:
+  `existingCallbackPriority === newCallbackPriority`,
+  新旧更新的优先级相同, 则无需注册新 Task, 继续沿用上一个优先级相同的 Task, 直接退出调用.
+- 防抖:
+  `existingCallbackPriority !== newCallbackPriority`,
+  新旧更新的优先级不同, 则取消旧 Task, 重新注册新 Task.
+
+[EnsureRootIsScheduled](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberWorkLoop.new.js):
+
+```ts
+function ensureRootIsScheduled(root: FiberRoot, currentTime: number) {
+  const existingCallbackNode = root.callbackNode;
+  const nextLanes = getNextLanes(
+    root,
+    root === workInProgressRoot ? workInProgressRootRenderLanes : NoLanes
+  );
+
+  if (nextLanes === NoLanes) {
+    if (existingCallbackNode !== null) {
+      cancelCallback(existingCallbackNode);
+    }
+
+    root.callbackNode = null;
+    root.callbackPriority = NoLane;
+    return;
+  }
+
+  const newCallbackPriority = getHighestPriorityLane(nextLanes);
+  const existingCallbackPriority = root.callbackPriority;
+
+  // Debounce.
+  if (existingCallbackPriority === newCallbackPriority) {
+    // The priority hasn't changed. We can reuse the existing task. Exit.
+    return;
+  }
+
+  // Throttle.
+  if (existingCallbackNode != null) {
+    // Cancel the existing callback. We'll schedule a new one below.
+    cancelCallback(existingCallbackNode);
+  }
+
+  // Schedule a new callback.
+  let newCallbackNode;
+
+  if (newCallbackPriority === SyncLane) {
+    if (root.tag === LegacyRoot) {
+      scheduleLegacySyncCallback(performSyncWorkOnRoot.bind(null, root));
+    } else {
+      scheduleSyncCallback(performSyncWorkOnRoot.bind(null, root));
+    }
+
+    if (supportsMicroTasks) {
+      scheduleMicroTask(() => {
+        if (executionContext === NoContext) {
+          flushSyncCallbacks();
+        }
+      });
+    } else {
+      scheduleCallback(ImmediateSchedulerPriority, flushSyncCallbacks);
+    }
+
+    newCallbackNode = null;
+  } else {
+    const eventPriority = lanesToEventPriority(nextLanes);
+    const schedulerPriorityLevel =
+      eventPriorityToSchedulePriority(eventPriority);
+    newCallbackNode = scheduleCallback(
+      schedulerPriorityLevel,
+      performConcurrentWorkOnRoot.bind(null, root)
+    );
+  }
+
+  root.callbackPriority = newCallbackPriority;
+  root.callbackNode = newCallbackNode;
+}
+```
 
 ### Suspense
 
 Extract loading/skeleton/placeholder components into single place:
 
-```jsx
+```tsx
 const App = () => (
   <Suspense fallback={<Skeleton />}>
     <Header />
@@ -4603,12 +8977,19 @@ const App = () => (
 );
 ```
 
+:::tip React Bottlenecks
+
+1. CPU bottleneck: Concurrency Feature (Priority Interrupt Mechanism).
+2. I/O bottleneck: Suspense.
+
+:::
+
 #### Suspense and Lazy
 
 Lazy loading and code splitting:
 
-```jsx
-import React, { lazy, Suspense } from 'react';
+```tsx
+import React, { Suspense, lazy } from 'react';
 
 const Product = lazy(() => import('./ProductHandler'));
 
@@ -4627,7 +9008,7 @@ const App = () => (
 );
 ```
 
-```jsx
+```tsx
 const { lazy, Suspense } = React;
 
 const Lazy = lazy(
@@ -4665,7 +9046,7 @@ React v18+: enable `Suspense` on the server:
 - Streaming HTML: show initial HTML early and stream the rest HTML.
 - Enable code splitting for SSR.
 
-```jsx
+```tsx
 const LandingPage = () => (
   <div>
     <FastComponent />
@@ -4696,7 +9077,7 @@ const LandingPage = () => (
 - Lazy loading components (`React.lazy` and `React.Suspense`).
 - Virtualized Lists.
 - Stateless component: less props, less state, less nest (HOC or render props).
-- Immutable.js.
+- `Immutable.js`.
 - Isomorphic rendering.
 - Webpack bundle analyzer.
 - [Progressive React](https://houssein.me/progressive-react).
@@ -4715,7 +9096,7 @@ If component `render()` function renders
 the same result given the same props and state,
 use `React.PureComponent`/`React.memo` for a performance boost in some cases.
 
-```jsx
+```tsx
 import React, { PureComponent } from 'react';
 
 const Unstable = props => {
@@ -4753,7 +9134,7 @@ class App extends PureComponent {
 export default App;
 ```
 
-```jsx
+```tsx
 import React, { Component } from 'react';
 
 const Unstable = React.memo(props => {
@@ -4793,25 +9174,29 @@ export default App;
 
 Prevent useless re-rendering:
 
-- shouldComponentUpdate
-- React.PureComponent: **shallow compare** diff
-- React.memo: **shallow compare** diff,
+- `shouldComponentUpdate`.
+- `React.PureComponent`: **shallow compare** diff.
+- `React.memo`: **shallow compare** diff,
   to memorize stateless components that **props not changed often**,
   `export default React.memo(MyComponent, areEqual)`.
-- memorized values
-- memorized event handlers
-- 在用`memo`或者`useMemo`做优化前
-  ([Before You Memo](https://overreacted.io/before-you-memo/)),
+- Memorized values.
+- Memorized event handlers.
+- 在用 `memo` 或者 `useMemo` 做优化前
+  ([Before You Memo](https://overreacted.io/before-you-memo)),
   可以从不变的部分里分割出变化的部分.
-  通过将变化部分的`state`向下移动从而抽象出变化的子组件,
-  或者将变化内容提升到父组件从而将不变部分独立出来:
+  通过将变化部分的 `state` 向下移动从而抽象出变化的子组件,
+  或者将**变化内容提升** (**Lift Up**) 到父组件从而将不变部分独立出来:
 
-```jsx
+```tsx
 // BAD
+// When <App> re-rendering, <ExpensiveTree> will re-rendering:
+// <ExpensiveTree /> is actually <ExpensiveTree props={}>.
+// Every time <App> re-rendering will pass a new `{}` reference to <ExpensiveTree>.
 import { useState } from 'react';
 
 export default function App() {
-  let [color, setColor] = useState('red');
+  const [color, setColor] = useState('red');
+
   return (
     <div>
       <input value={color} onChange={e => setColor(e.target.value)} />
@@ -4822,16 +9207,19 @@ export default function App() {
 }
 
 function ExpensiveTree() {
-  let now = performance.now();
+  const now = performance.now();
+
   while (performance.now() - now < 100) {
     // Artificial delay -- do nothing for 100ms
   }
+
   return <p>I am a very slow component tree.</p>;
 }
 ```
 
-```jsx
+```tsx
 // GOOD
+// <ExpensiveTree> will not re-rendering.
 export default function App() {
   return (
     <>
@@ -4842,7 +9230,7 @@ export default function App() {
 }
 
 function Form() {
-  let [color, setColor] = useState('red');
+  const [color, setColor] = useState('red');
   return (
     <>
       <input value={color} onChange={e => setColor(e.target.value)} />
@@ -4852,8 +9240,9 @@ function Form() {
 }
 ```
 
-```jsx
+```tsx
 // GOOD
+// <ExpensiveTree> will not re-rendering.
 export default function App() {
   return (
     <ColorPicker>
@@ -4864,7 +9253,7 @@ export default function App() {
 }
 
 function ColorPicker({ children }) {
-  let [color, setColor] = useState('red');
+  const [color, setColor] = useState('red');
   return (
     <div style={{ color }}>
       <input value={color} onChange={e => setColor(e.target.value)} />
@@ -4874,37 +9263,49 @@ function ColorPicker({ children }) {
 }
 ```
 
-```jsx
+```tsx
 // BAD
-function App(items) {
+function App1(items) {
   return <BigListComponent style={{ width: '100%' }} items={items} />;
 }
 
 // GOOD
 const bigListStyle = { width: '100%' };
 
-function App(items) {
+function App2(items) {
   return <BigListComponent style={bigListStyle} items={items} />;
 }
 ```
 
-```jsx
+```tsx
 // BAD: Inline function
-function App(items) {
+function App1(items) {
   return <BigListComponent onClick={() => dispatchEvent()} />;
 }
 
 // GOOD: Reference to a function
 const clickHandler = () => dispatchEvent();
 
-function App(items) {
+function App2(items) {
   return <BigListComponent onClick={clickHandler} />;
+}
+```
+
+```tsx
+function Parent({ children, lastChild }) {
+  return (
+    <div className="parent">
+      <ChildA /> {/* Only ChildA gets re-rendered */}
+      {children} {/* Bailed out */}
+      {lastChild} {/* Bailed out */}
+    </div>
+  );
 }
 ```
 
 ### Code Splitting
 
-```jsx
+```tsx
 import React, { Component } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -4920,7 +9321,7 @@ export default class Form extends Component {
 }
 ```
 
-```jsx
+```tsx
 import React, { Component } from 'react';
 
 export default class App extends Component {
@@ -4988,13 +9389,10 @@ the client takes over and the website becomes a SPA.
 
 Webpack configuration:
 
-```jsx
-module.exports = [
-  webConfig,
-  nodeConfig,
-];
+```ts
+const baseConfig = require('./baseConfig');
 
-const webConfig = {}
+const webConfig = {
   ...baseConfig,
   target: 'web',
 };
@@ -5008,21 +9406,25 @@ const nodeConfig = {
   },
   externals: [require('webpack-node-externals')()],
 };
+
+module.exports = { webConfig, nodeConfig };
 ```
 
 `start.server.js`:
 
-```jsx
+```tsx
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from './App.js';
 
-export default () => ReactDOMServer.renderToString(<App />);
+const render = () => ReactDOMServer.renderToString(<App />);
+
+export default render;
 ```
 
-index.html.js
+`index.html.js`:
 
-```jsx
+```ts
 const startApp = require('../dist/server.js').default;
 
 module.exports = () => `<!DOCTYPE html>
@@ -5037,7 +9439,7 @@ module.exports = () => `<!DOCTYPE html>
 
 `start.client.js`:
 
-```jsx
+```tsx
 import React from 'react';
 import ReactDOMServer from 'react-dom';
 import App from './App.js';
@@ -5047,13 +9449,13 @@ ReactDOM.hydrate(<App />, document.getElementById('app'));
 
 Async fetch out of `<App />`:
 
-```jsx
+```tsx
 const data = await fetchData();
-const app = <App {...data} />
+const App = <App {...data} />;
 
 return {
-  html: ReactDOMServer.renderToString(app);
-  state: { data }
+  html: ReactDOMServer.renderToString(App),
+  state: { data },
 };
 ```
 
@@ -5089,7 +9491,10 @@ class CssThemeProvider extends React.PureComponent<Props> {
 
 Don't use `React.FC`/`React.FunctionComponent`:
 
-- Unnecessary addition of children (hide some run-time error).
+- React 17:
+  Unnecessary addition of `children` (hide some run-time error).
+- React 18:
+  `@types/react` v18 [remove implicit `children` in `React.FunctionComponent`](https://github.com/ant-design/ant-design/pull/34937).
 - `React.FC` doesn't support generic components.
 - Barrier for `<Comp>` with `<Comp.Sub>` types (**component as namespace pattern**).
 - `React.FC` doesn't work correctly with `defaultProps`.
@@ -5218,7 +9623,7 @@ declare module 'react-router-dom' {
 - `JSX.Element`: return value of `React.createElement`.
 - `React.ReactNode`: return value of a component.
 
-```tsx
+```ts
 function foo(bar: string) {
   return { baz: 1 };
 }
@@ -5435,6 +9840,7 @@ import { Modal } from '@components';
 
 function App() {
   const [showModal, setShowModal] = React.useState(false);
+
   return (
     <div>
       <div id="modal-root"></div>
@@ -5534,7 +9940,9 @@ const reducer = (state: State, action: Action): Reducer<State, Action> => {
 ```tsx
 function App() {
   const [user, setUser] = React.useState<IUser>({} as IUser);
-  setUser(newUser);
+  const handleClick = () => setUser(newUser);
+
+  return <div>App</div>;
 }
 ```
 
@@ -5799,7 +10207,7 @@ function useFetch<T = unknown>(
 export default useFetch;
 ```
 
-## Testing
+## React Testing
 
 - [Jest and Enzyme snapshots testing](https://medium.com/codeclan/testing-react-with-jest-and-enzyme-20505fec4675).
 - [Cypress: E2E testing framework](https://github.com/cypress-io/cypress).
@@ -5811,7 +10219,7 @@ export default useFetch;
 浅层渲染 (Shallow Renderer) 对于在 React 中编写单元测试用例很有用.
 它允许渲染一个一级深的组件并断言其渲染方法返回的内容, 而不必担心子组件未实例化或渲染.
 
-```jsx
+```tsx
 function MyComponent() {
   return (
     <div>
@@ -5822,7 +10230,7 @@ function MyComponent() {
 }
 ```
 
-```jsx
+```tsx
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 const renderer = new ShallowRenderer();
@@ -5844,7 +10252,7 @@ expect(result.props.children).toEqual([
 该包可以轻松获取由 ReactDOM 或 React Native 平台所渲染的视图层次结构 (类似于 DOM 树) 的快照,
 而无需使用浏览器或 jsdom.
 
-```jsx
+```tsx
 import TestRenderer from 'react-test-renderer';
 
 const Link = ({ page, children }) => <a href={page}>{children}</a>;
@@ -5861,13 +10269,23 @@ console.log(testRenderer.toJSON());
 // }
 ```
 
-### Enzyme
+### Enzyme Mindset
+
+`React Internals`:
+
+- Enzyme tests ultimately prevent from modifying component without changing the test.
+- Enzyme tests slowed down development speed and productivity,
+  since every small change requires rewriting some part of tests.
+- Enzyme provide access the DOM of the component.
+  So using enzyme,
+  we are not bound to test the internals
+  but we can test the DOM too.
 
 ```bash
-npm install --save-dev enzyme enzyme-adapter-react-16
+npm i -D enzyme enzyme-adapter-react-16 @types/enzyme
 ```
 
-```jsx
+```tsx
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -5933,11 +10351,283 @@ describe(() => {
 });
 ```
 
+### React Testing Library Mindset
+
+`User behavior` and `A11Y`:
+
+- Rather than tests focusing on the **implementation** (props and state) (Enzyme),
+  tests are more focused on **user behavior** (react-testing-library).
+- React testing library enforce to
+  use `placeholder`, `aria`, `test-ids` to access elements,
+  benefiting for a11y components
+  (write tests > build accessible components > tests pass).
+
+But sometimes may need to test the internals of the component
+when just testing the DOM from user’s perspective may not make sense.
+
+So depending on the use cases,
+we can choose between these two libraries
+or just install them all for individual use cases.
+
+> Enzyme for Internal API, React testing library for user behavior.
+
+### React Testing Library Installation
+
+```bash
+npm i -D @testing-library/react @testing-library/dom @testing-library/jest-dom @testing-library/user-event
+```
+
+### React Testing Library Basis
+
+```tsx
+import React from 'react';
+
+/**
+ * render: render the component
+ * screen: finding elements along with user
+ **/
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Checkbox, Welcome } from './';
+
+describe('Welcome should', () => {
+  test('has correct welcome message', () => {
+    render(<Welcome firstName="John" lastName="Doe" />);
+    expect(screen.getByRole('heading')).toHaveTextContent('Welcome, John Doe');
+  });
+
+  test('has correct input value', () => {
+    render(<Welcome firstName="John" lastName="Doe" />);
+    expect(screen.getByRole('form')).toHaveFormValues({
+      firstName: 'John',
+      lastName: 'Doe',
+    });
+  });
+
+  test('handles click correctly', () => {
+    render(<Checkbox />);
+    userEvent.click(screen.getByText('Check'));
+    expect(screen.getByLabelText('Check')).toBeChecked();
+  });
+});
+```
+
+```tsx
+import React from 'react';
+import { fireEvent, render, wait } from '@testing-library/react';
+
+import { App } from './App';
+import { api } from './api';
+
+// Normally you can mock entire module using jest.mock('./api);
+const mockCreateItem = (api.createItem = jest.fn());
+
+test('allows users to add items to their list', async () => {
+  const todoText = 'Learn spanish';
+  mockCreateItem.mockResolvedValueOnce({ id: 123, text: todoText });
+
+  const { getByText, getByLabelText } = render(<App />);
+
+  const input = getByLabelText('What needs to be done?');
+  const button = getByText('Add #1');
+
+  fireEvent.change(input, { target: { value: todoText } });
+  fireEvent.click(button);
+
+  await wait(() => getByText(todoText));
+
+  expect(mockCreateItem).toBeCalledTimes(1);
+  expect(mockCreateItem).toBeCalledWith(
+    '/items',
+    expect.objectContaining({ text: todoText })
+  );
+});
+```
+
+### React Testing Library Events
+
+#### FireEvent API
+
+- `fireEvent` trigger DOM event: `fireEvent(node, event)`.
+- `fireEvent.*` helpers for default event types:
+  - click fireEvent.click(node).
+  - See [all supported events](https://github.com/testing-library/dom-testing-library/blob/main/src/event-map.js).
+
+#### UserEvent API
+
+[User Event](https://testing-library.com/docs/ecosystem-user-event)
+provides more advanced simulation of browser interactions
+than the built-in `fireEvent method`.
+
+```bash
+npm i -D @testing-library/user-event @testing-library/dom
+```
+
+```tsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+test('click', () => {
+  render(
+    <div>
+      <label htmlFor="checkbox">Check</label>
+      <input id="checkbox" type="checkbox" />
+    </div>
+  );
+
+  userEvent.click(screen.getByText('Check'));
+  expect(screen.getByLabelText('Check')).toBeChecked();
+});
+```
+
+### React Hooks Testing Library
+
+#### Basic Hook Testing
+
+```ts
+import { useCallback, useState } from 'react';
+
+export default function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+  const increment = useCallback(() => setCount(x => x + 1), []);
+  const reset = useCallback(() => setCount(initialValue), [initialValue]);
+  return { count, increment, reset };
+}
+```
+
+```ts
+import { act, renderHook } from '@testing-library/react-hooks';
+import useCounter from './useCounter';
+
+test('should reset counter to updated initial value', () => {
+  const { result, rerender } = renderHook(
+    ({ initialValue }) => useCounter(initialValue),
+    {
+      initialProps: { initialValue: 0 },
+    }
+  );
+
+  rerender({ initialValue: 10 });
+
+  act(() => {
+    result.current.reset();
+  });
+
+  expect(result.current.count).toBe(10);
+});
+```
+
+#### Async Hook Testing
+
+```ts
+import React, { useCallback, useContext, useState } from 'react';
+
+export default function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+  const step = useContext(CounterStepContext);
+  const increment = useCallback(() => setCount(x => x + step), [step]);
+  const incrementAsync = useCallback(
+    () => setTimeout(increment, 100),
+    [increment]
+  );
+  const reset = useCallback(() => setCount(initialValue), [initialValue]);
+  return { count, increment, incrementAsync, reset };
+}
+```
+
+```ts
+import { renderHook } from '@testing-library/react-hooks';
+import useCounter from './useCounter';
+
+test('should increment counter after delay', async () => {
+  const { result, waitForNextUpdate } = renderHook(() => useCounter());
+  result.current.incrementAsync();
+  await waitForNextUpdate();
+  expect(result.current.count).toBe(1);
+});
+```
+
+#### Error Hook Testing
+
+```ts
+import React, { useCallback, useContext, useState } from 'react';
+
+export default function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+  const step = useContext(CounterStepContext);
+  const increment = useCallback(() => setCount(x => x + step), [step]);
+  const incrementAsync = useCallback(
+    () => setTimeout(increment, 100),
+    [increment]
+  );
+  const reset = useCallback(() => setCount(initialValue), [initialValue]);
+
+  if (count > 9000) {
+    throw new Error("It's over 9000!");
+  }
+
+  return { count, increment, incrementAsync, reset };
+}
+```
+
+```ts
+import { act, renderHook } from '@testing-library/react-hooks';
+import { useCounter } from './useCounter';
+
+it('should throw when over 9000', () => {
+  const { result } = renderHook(() => useCounter(9000));
+
+  act(() => {
+    result.current.increment();
+  });
+
+  expect(result.error).toEqual(Error("It's over 9000!"));
+});
+```
+
+### React Testing Library API
+
+- `getByXXX` queries: common use case.
+- `queryByXXX` queries: not throw error when nothing match.
+- `findByXXX` queries: `getBy` queries + `waitFor`.
+
+| API        | No Match | 1 Match | 1+ Match | Await |
+| ---------- | -------- | ------- | -------- | ----- |
+| getBy      | throw    | return  | throw    | No    |
+| queryBy    | null     | return  | throw    | No    |
+| findBy     | throw    | return  | throw    | Yes   |
+| getAllBy   | throw    | array   | array    | No    |
+| queryAllBy | []       | array   | array    | No    |
+| findAllBy  | throw    | array   | array    | Yes   |
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import TransactionCreateStepTwo from './TransactionCreateStepTwo';
+
+test('if amount and note is entered, pay button becomes enabled', async () => {
+  render(
+    <TransactionCreateStepTwo sender={{ id: '5' }} receiver={{ id: '5' }} />
+  );
+
+  expect(await screen.findByRole('button', { name: /pay/i })).toBeDisabled();
+
+  userEvent.type(screen.getByPlaceholderText(/amount/i), '50');
+  userEvent.type(screen.getByPlaceholderText(/add a note/i), 'dinner');
+  expect(await screen.findByRole('button', { name: /pay/i })).toBeEnabled();
+});
+```
+
+### React Testing Library Reference
+
+- [React testing library cheat sheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
+
 ## Create React App
 
 - [Custom React Scripts](https://auth0.com/blog/how-to-configure-create-react-app/)
 
-```jsx
+```bash
 npx create-react-app app-name --scripts-version @sabertazimi/react-scripts --use-npm
 npm init react-app app-name --scripts-version @sabertazimi/react-scripts --use-npm
 ```
@@ -5946,8 +10636,11 @@ npm init react-app app-name --scripts-version @sabertazimi/react-scripts --use-n
 
 `createReactApp.js`:
 
-`init` -> commander setup -> `createApp()`
--> process CLI args -> `run()`
+`init`
+-> commander setup
+-> `createApp()`
+-> process CLI args
+-> `run()`
 -> process `react-scripts@version` and `cra-template-xxx@version`
 -> install `react`, `react-dom`, `react-scripts` and `cra-template-xxx`
 -> invoke `react-scripts init` for further process.
@@ -5958,9 +10651,9 @@ npm init react-app app-name --scripts-version @sabertazimi/react-scripts --use-n
 
 Initialization in `react-scripts/scripts/init.js`:
 
-- 可以用于改变默认 registry
+- 可以用于改变默认 registry:
 
-```jsx
+```ts
 'use strict';
 
 const registries = {
@@ -5991,10 +10684,10 @@ module.exports = registries;
 
 Locating in `react-scripts/scripts/`:
 
-- `start.js` for `react-scripts start`
-- `build.js` for `react-scripts build`
-- `test.js` for `react-scripts test`
-- `eject.js` for `react-scripts eject`
+- `start.js` for `react-scripts start`.
+- `build.js` for `react-scripts build`.
+- `test.js` for `react-scripts test`.
+- `eject.js` for `react-scripts eject`.
 
 ##### React Scripts Start
 
@@ -6008,31 +10701,29 @@ to find local template.
 
 Config in `react-scripts/config/` directory:
 
-- `env.js`: static environment variables
-- `getHttpsConfig.js`: get HTTPS(SSL) config
-- `modules.js`: locale modules webpack alias with `baseUrl`
-- `paths.js`: configurable paths variables (most for Webpack config)
-- `webpackDevServer.config.js`: Webpack Dev Server configuration
+- `env.js`: static environment variables.
+- `getHttpsConfig.js`: get HTTPS(SSL) config.
+- `modules.js`: locale modules webpack alias with `baseUrl`.
+- `paths.js`: configurable paths variables (most for Webpack config).
+- `webpackDevServer.config.js`: Webpack Dev Server configuration.
 - `webpack.config.js`: Webpack configuration
-  (paths, deps/devDeps, plugins, loader rules etc.)
+  (paths, deps/devDeps, plugins, loader rules etc.).
 
-```jsx
-// add support for Ant Design UI
-{
+```ts
+// Add support for Ant Design UI.
+const webpackConfig = {
   test: /\.(js|mjs|jsx|ts|tsx)$/,
   include: paths.appSrc,
   loader: require.resolve('babel-loader'),
   options: {
-    customize: require.resolve(
-      'babel-preset-react-app/webpack-overrides'
-    ),
+    customize: require.resolve('babel-preset-react-app/webpack-overrides'),
     plugins: [
       [
         require.resolve('babel-plugin-import'),
         {
-          "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": "css",
+          libraryName: 'antd',
+          libraryDirectory: 'es',
+          style: 'css',
         },
       ],
     ],
@@ -6040,21 +10731,21 @@ Config in `react-scripts/config/` directory:
     cacheCompression: isEnvProduction,
     compact: isEnvProduction,
   },
-}
+};
 ```
 
-```jsx
-// add Webpack bundle analyzer plugin
+```ts
+// Add Webpack bundle analyzer plugin.
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-{
+const webpackConfig = {
   plugins: [
     isEnvDevelopment &&
       new BundleAnalyzerPlugin({
         analyzerPort: 5000,
       }),
-  ];
-}
+  ].filter(Boolean),
+};
 ```
 
 ### CRA Usage
@@ -6113,7 +10804,7 @@ REACT_APP_NOT_SECRET_CODE=abcdef
 <title>%REACT_APP_WEBSITE_NAME%</title>
 ```
 
-```jsx
+```tsx
 const App = () => (
   <div>
     <small>
@@ -6176,15 +10867,19 @@ export default reportWebVitals;
 - Change `homepage` in `package.json`:
   - `"homepage": "."`.
   - `"homepage": "https://example.com/relative/path/"`.
-- Use `path={`${process.env.PUBLIC_URL}/about`}`
+- Use `path={'${process.env.PUBLIC_URL}/about'}`
   in `Routes.js` when using `react-router-dom`.
 - Or use `basename` for `react-router@^4`.
 
-```jsx
+```tsx
 // renders <a href="/calendar/today">
-<BrowserRouter basename="/calendar">
-  <Link to="/today" />
-</BrowserRouter>
+function App() {
+  return (
+    <BrowserRouter basename="/calendar">
+      <Link to="/today" />
+    </BrowserRouter>
+  );
+}
 ```
 
 #### SPA Deployment
@@ -6223,26 +10918,26 @@ ln -s index.html 404.html
 
 ### Custom CRA
 
-- custom `packages/cra-template-*`: change HTML/CSS/JS boilerplate.
-- custom `packages/react-scripts/config/`:
+- Custom `packages/cra-template-*`: change HTML/CSS/JS boilerplate.
+- Custom `packages/react-scripts/config/`:
   change paths, deps/devDeps, plugins, loader rules etc.
-- custom `packages/react-scripts/scripts/`: change react-scripts CLI behaviors.
+- Custom `packages/react-scripts/scripts/`: change react-scripts CLI behaviors.
 
-#### Other Packages in CRA Repo
+#### CRA MonoRepo
 
-- `babel-preset-react-app`: babel preset configuration
-- `cra-template`/`cra-template-typescript`: CRA default templates
-- `eslint-config-react-app`: eslint configuration
-- `react-app-polyfill`: polyfills for various browsers
-- `react-dev-utils`: most utility functions
-  for paths, helpers, middleware, and webpack plugins.
+- `babel-preset-react-app`: babel preset configuration.
+- `cra-template`/`cra-template-typescript`: CRA default templates.
+- `eslint-config-react-app`: eslint configuration.
+- `react-app-polyfill`: polyfills for various browsers.
+- `react-dev-utils`:
+  most utility functions for paths, helpers, middleware, and webpack plugins.
 
 #### Custom React Scripts
 
 In `Create React App`
 [code](https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/createReactApp.js):
 
-```js
+```ts
 const templatesVersionMinimum = '3.3.0';
 
 // Assume compatibility if we can't test the version.
@@ -6278,7 +10973,7 @@ In `react-scripts/scripts/utils/verifyTypeScriptSetup.js`,
 if template `src` don't exist `react-app-env.d.ts` file,
 it will create automatically with `reference` to `react-scripts` types:
 
-```js
+```ts
 // Reference `react-scripts` types
 if (!fs.existsSync(paths.appTypeDeclarations)) {
   fs.writeFileSync(
@@ -6299,19 +10994,23 @@ if (!fs.existsSync(paths.appTypeDeclarations)) {
 
 ### Simple i18n Implementation
 
-```jsx
+```ts
 // locale/zh-CN.js
-export default ({
-   hello: '你好，{name}'
-});
-
-// locale/en-US.js
-export default ({
-   hello: 'Hello，{name}'
-}) ;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  hello: '你好，{name}',
+};
 ```
 
-```jsx
+```ts
+// locale/en-US.js
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  hello: 'Hello，{name}',
+};
+```
+
+```ts
 import IntlMessageFormat from 'intl-messageformat';
 import zh from '../locale/zh';
 import en from '../locale/en';
@@ -6326,6 +11025,7 @@ class Intl {
       if (defaultMessage != null) {
         return defaultMessage;
       }
+
       return key;
     }
 
@@ -6333,6 +11033,7 @@ class Intl {
       msg = new IntlMessageFormat(msg, LOCALE);
       return msg.format(options);
     }
+
     return msg;
   }
 }
@@ -6350,11 +11051,9 @@ export default Intl;
 
 ## Styled Component
 
-### Styled Basic Usage
+### Shared CSS Styles
 
-#### Shared CSS Styles
-
-```jsx
+```tsx
 // Import React.js, styled-components and css
 import React from 'react';
 import styled, { css } from 'styled-components';
@@ -6420,9 +11119,9 @@ const WrapperContainer = () => (
 ReactDOM.render(<WrapperContainer />, container);
 ```
 
-#### Extend Styled Component
+### Styled Component Extension
 
-```jsx
+```tsx
 // Import React.js and styled-components
 import React from 'react';
 import styled from 'styled-components';
@@ -6461,9 +11160,9 @@ const WrapperContainer = () => (
 ReactDOM.render(<WrapperContainer />, container);
 ```
 
-#### Props for Styled Component
+### Styled Component Props
 
-```jsx
+```tsx
 // Import React.js, styled-components and css
 import React from 'react';
 import styled, { css } from 'styled-components';
@@ -6513,58 +11212,7 @@ const WrapperContainer = () => (
 ReactDOM.render(<WrapperContainer />, container);
 ```
 
-## Framework Paradigm
-
-- full-featured frameworks vs composing micro-libs
-- JSX vs templates
-
-> Evan You on Vue.js: Seeking the Balance in Framework Design | JSConf.Asia 2019
-
-- functional vs imperative
-- immutable vs mutable
-- referential equality testing vs change tracking
-
-> 打破框架的范式之争, 其实是改变思路. 从思考不同范式之间的竞争关系, 转变成思考多个范式之间的协同关系.
-> useRef in React, Composition in Vue
-
-### Third-party Libraries Usage
-
-- Look for Libraries that Have Accessibility Built in.
-- Limit the Number of Third-party Libraries Use.
-- Wrap Third-party Dependencies:
-
-```jsx
-import { DatePicker as LibraryXDatePicker } from 'LibraryX';
-
-const DatePicker = props => {
-  return <LibraryXDatePicker {...props} />;
-};
-
-export default DatePicker;
-```
-
-### MVC and MVVM
-
-#### Controller
-
-- 处理请求的参数
-- 渲染和重定向
-- 选择 Model 和 Service
-- 处理 Session 和 Cookies
-
-### Framework Paradigm Comparison
-
-- 初始渲染: Virtual DOM > 脏检查 >= 依赖收集
-- 小量数据更新: 依赖收集 >> Virtual DOM + 优化 > 脏检查（无法优化） > Virtual DOM 无优化
-- 大量数据更新: 脏检查 + 优化 >= 依赖收集 + 优化 > Virtual DOM（无法/无需优化）>> MVVM 无优化
-- Angular: 脏检查, React: Virtual DOM, Vue: Watch.
-
-### Framework Paradigm Reference
-
-- Even You presentation on [JSConf Asia 2019](https://www.youtube.com/watch?v=ANtSWq-zI0s).
-- Framework paradigm [guide](https://mp.weixin.qq.com/s/mZ7KuFjyCWNCAq7HnXg96A).
-
-### Micro Frontend
+## Micro Frontends
 
 通过 `single-spa` 包装的主应用是一个基座,
 它提供相应的协议,
@@ -6573,6 +11221,17 @@ export default DatePicker;
 子应用就像不同的电器,
 只要遵循某种协议就可以轻松实现可插拔操作.
 
+:::tip Single SPA Lifecycle
+
+- Register.
+- Load.
+- Bootstrap.
+- Mount.
+- Unmount.
+- Unload.
+
+:::
+
 `single-spa` 子项目的的挂载、更新、卸载等操作,
 并不是 `single-spa` 原生提供的,
 用户可以根据自己的需要来自行实现子应用的挂载, 卸载及更新等逻辑.
@@ -6580,28 +11239,64 @@ export default DatePicker;
 在 `single-spa` 的开发过程中,
 需要自己手动去写调用子应用的方法.
 
-#### Application EntryPoint
+### Application EntryPoint
 
-- HTML Entry.
+- HTML Entry (`import-html-entry` from `qiankun`).
 - JavaScript Entry.
 
-#### Styles Isolation
+### Styles Isolation
 
 - Shadow DOM container.
 - CSS module.
-- CSS scoped namespace
+- CSS scoped namespace.
 - CSS selector renaming.
 - CSS in JS.
 
-#### Scripts Isolation
+### Scripts Isolation
 
+- Snapshot sandbox: 类似中断恢复机制, 备份快照 -> 子应用挂载/运行/卸载 -> 恢复快照.
+- Proxy sandbox: `window` proxy (`fakeWindow` for every sub-app).
 - Runtime sandbox.
-- `window` proxy.
 
-#### Application Communication
+```ts
+class SnapshotSandbox {
+  constructor() {
+    this.proxy = window; // window属性.
+    this.modifyPropsMap = {}; // 记录在 window 上的修改.
+  }
+
+  active() {
+    this.windowSnapshot = {}; // 快照.
+
+    for (const prop in window) {
+      if (window.hasOwn(prop)) {
+        this.windowSnapshot[prop] = window[prop];
+      }
+
+      Object.keys(this.modifyPropsMap).forEach(p => {
+        window[p] = this.modifyPropsMap[p];
+      });
+    }
+  }
+
+  inactive() {
+    for (const prop in window) {
+      if (window.hasOwn(prop)) {
+        if (window[prop] !== this.windowSnapshot[prop]) {
+          this.modifyPropsMap[prop] = window[prop];
+          window[prop] = this.windowSnapshot[prop];
+        }
+      }
+    }
+  }
+}
+```
+
+### Application Communication
 
 - Pub-Sub Pattern.
 - Callback registration.
+- Global store.
 
 ## Interviews
 

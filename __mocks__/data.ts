@@ -47,7 +47,9 @@ const basePosts = Array.from(Array(5).keys()).map(index => ({
   timeToRead: index + 1,
   prevPost: null,
   nextPost: null,
-  source: `## ${index + 1} Basic Notes`,
+  source: {
+    compiledSource: `## ${index + 1} Basic Notes`,
+  },
 }));
 
 const posts = basePosts.map((post, index) => ({

@@ -1,3 +1,5 @@
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+
 export declare type Tag = string;
 export declare type Tags = Record<Tag, number>;
 
@@ -21,7 +23,7 @@ export interface PostMeta {
 }
 
 export interface PostContent {
-  source: string;
+  source: MDXRemoteSerializeResult;
   excerpt?: string;
   toc?: string;
   html?: string;

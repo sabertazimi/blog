@@ -1282,9 +1282,6 @@ WeakMap/WeakSet 则更加**内存安全**.
 - `var` 表达式和 `function` 声明都将会被提升到当前作用域 (全局作用域/函数作用域) 顶部,
   其余表达式顺序不变.
 
-<!-- eslint-disable vars-on-top -->
-<!-- eslint-disable no-var -->
-
 ```ts
 // 我们知道这个行不通 (假设没有未定义的全局变量)
 function example() {
@@ -1314,11 +1311,6 @@ function example() {
 }
 ```
 
-<!-- eslint-enable vars-on-top -->
-<!-- eslint-enable no-var -->
-<!-- eslint-disable vars-on-top -->
-<!-- eslint-disable no-var -->
-
 ```ts
 function example() {
   console.log(named); // => undefined
@@ -1332,9 +1324,6 @@ function example() {
   };
 }
 ```
-
-<!-- eslint-enable vars-on-top -->
-<!-- eslint-enable no-var -->
 
 ### Let Variable
 
@@ -1642,8 +1631,6 @@ alert(a);
 - `NaN` is not equal to anything, including `NaN`.
 - `null` and `undefined` types are not equal with `===`, but equal with `==`.
 
-<!-- eslint-disable eqeqeq -->
-
 ```ts
 const true1 = 0 == false; // true
 const false1 = 0 === false; // false
@@ -1662,8 +1649,6 @@ const false7 = {} == {}; // false, refer different objects in memory
 // eslint-disable-next-line no-self-compare
 const false8 = {} === {}; // false, refer different objects in memory
 ```
-
-<!-- eslint-enable eqeqeq -->
 
 ### Conditional Expression
 
@@ -5238,9 +5223,6 @@ export * from 'my_module';
 
 Export default value:
 
-<!-- eslint-disable import/no-duplicates -->
-<!-- eslint-disable no-import-assign -->
-
 ```ts
 // module.js
 // main.js
@@ -5264,9 +5246,6 @@ setTimeout(() => {
   console.log(anotherDefaultThing); // "initial"
 }, 1000);
 ```
-
-<!-- eslint-enable import/no-duplicates -->
-<!-- eslint-enable no-import-assign -->
 
 Export normal reference:
 
@@ -5293,9 +5272,6 @@ setTimeout(() => {
 
 To sum up:
 
-<!-- eslint-disable import/export -->
-<!-- eslint-disable import/no-duplicates -->
-
 ```ts
 // These give you a live reference to the exported thing(s):
 import { thing } from './module.js';
@@ -5319,9 +5295,6 @@ export default thing;
 // eslint-disable-next-line import/no-anonymous-default-export
 export default 'hello!';
 ```
-
-<!-- eslint-enable import/export -->
-<!-- eslint-enable import/no-duplicates -->
 
 ## Internationalization
 
