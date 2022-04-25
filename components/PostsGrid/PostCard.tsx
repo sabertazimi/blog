@@ -50,8 +50,10 @@ const PostCard = ({ post }: Props): JSX.Element => {
               'button-primary'
             )}
           >
-            <Link href={`/post/${slug}`} passHref>
-              <ReadOutlined />
+            <Link href={`/post/${slug}`}>
+              <a>
+                <ReadOutlined />
+              </a>
             </Link>
           </Button>
         </Container>
