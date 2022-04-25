@@ -3,7 +3,7 @@ import { PostLayout } from '@layouts';
 import { getBuildTime, getPostData, getPostsMeta } from '@lib';
 import type { Post, PostMeta } from '@types';
 import type { GetStaticPaths, GetStaticProps } from 'next/types';
-import { ParsedUrlQuery } from 'querystring';
+import type { ParsedUrlQuery } from 'querystring';
 
 interface Props {
   buildTime: string | number | Date;
