@@ -1,2 +1,3 @@
 export { default as Bounce } from './Bounce';
-export { SlideRight, SlideUp } from './Slide';
+export { default as Ease } from './Ease';
+export { default as Slide } from './Slide';

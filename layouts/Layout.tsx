@@ -1,5 +1,5 @@
 import { Container, Footer, Header, MetaHeader } from '@components';
-import { SlideRight } from '@components/Motion';
+import { Slide } from '@components/Motion';
 import type { PostMeta } from '@types';
 import { Divider } from 'antd';
 import type { ReactNode } from 'react';
@@ -16,12 +16,12 @@ const Layout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
     <MetaHeader title={`${banner}`} />
     <Header posts={posts} />
     <Container className="min-h-screen px-0 pb-28 pt-0 md:pt-28">
-      <SlideRight>
+      <Slide>
         <Divider className="mx-0 my-12 font-extrabold">
           {banner || 'Life'}
         </Divider>
         {children}
-      </SlideRight>
+      </Slide>
     </Container>
     <Footer buildTime={buildTime} />
   </div>

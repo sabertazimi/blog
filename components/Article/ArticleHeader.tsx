@@ -1,4 +1,4 @@
-import { SlideRight } from '@components/Motion';
+import { Slide } from '@components/Motion';
 import { getColorByName } from '@config';
 import type { PostMeta } from '@types';
 import { Tag } from 'antd';
@@ -19,7 +19,7 @@ const ArticleHeader = ({
       'bg-gradient-primary'
     )}
   >
-    <SlideRight>
+    <Slide>
       {tags ? (
         tags.map(tag => {
           return (
@@ -53,7 +53,7 @@ const ArticleHeader = ({
       <Tag className="tag-black">
         <div className="text-base font-extrabold">({timeToRead} minutes)</div>
       </Tag>
-    </SlideRight>
+    </Slide>
   </div>
 );
 

@@ -69,7 +69,7 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
         className={classNames(
           'fixed top-0 left-0 z-10',
           'block w-full h-full',
-          'transition-all transform-gpu bg-black'
+          'bg-black'
         )}
         role="banner"
         layout

@@ -1,4 +1,4 @@
-import { SlideUp } from '@components/Motion';
+import { Ease } from '@components/Motion';
 import type { Post } from '@types';
 import { MDXRemote } from 'next-mdx-remote';
 interface Props {
@@ -7,9 +7,9 @@ interface Props {
 
 const ArticleContent = ({ source }: Props): JSX.Element => {
   return (
-    <SlideUp>
+    <Ease>
       <MDXRemote {...source} />
-    </SlideUp>
+    </Ease>
   );
 };
 
