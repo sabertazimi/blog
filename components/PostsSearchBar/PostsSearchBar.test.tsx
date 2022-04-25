@@ -19,7 +19,6 @@ describe('PostsSearchBar', () => {
   test.each(mockPosts)(
     'should render [%# Basic Notes] options when searching',
     async ({ index, title }) => {
-      jest.spyOn(console, 'error').mockImplementation(jest.fn());
       render(<PostsSearchBar posts={mockPosts} />);
       const input = screen.getByRole('combobox');
 
