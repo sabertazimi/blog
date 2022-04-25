@@ -1,12 +1,12 @@
 import { Close, Hamburger } from '@components/Icons';
-import type { RouteType } from '@config';
+import type { Route } from '@types';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
-import React, { Fragment, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import LandingNavLink from './LandingNavLink';
 
 interface Props {
-  routes: RouteType[];
+  routes: Route[];
 }
 
 const LandingNav = ({ routes }: Props): JSX.Element => {
@@ -17,7 +17,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <motion.nav
         className={classNames(
           'fixed top-0 left-0 z-20',
@@ -85,7 +85,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
           duration: 0.2,
         }}
       />
-    </Fragment>
+    </>
   );
 };
 

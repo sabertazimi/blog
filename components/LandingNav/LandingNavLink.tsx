@@ -3,7 +3,6 @@ import { Tooltip } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import React from 'react';
 
 interface Props {
   title: string;

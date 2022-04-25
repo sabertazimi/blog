@@ -1,36 +1,14 @@
-import type { SocialType } from '@config';
+export declare type Tag = string;
+export declare type Tags = Record<Tag, number>;
 
-export interface Book {
-  title: string;
-  author: string;
-  url: string;
-  description: string;
-}
-
-export interface SiteConfig {
-  title: string;
-  author: string;
-  siteUrl: string;
-  email: string;
-  disqusUrl: string;
-  landingTitles: string[];
-  socialList: {
-    [key in SocialType]: string;
-  };
-  bookList: Book[];
-}
-
-export declare type TagType = string;
-export declare type TagsType = Record<TagType, number>;
-
-export interface PostMetaType {
+export interface PostMeta {
   slug: string;
   timeToRead: number;
   title: string;
   subtitle?: string;
   author?: string;
-  date?: string;
-  gitTime?: string;
+  createTime?: string;
+  updateTime?: string;
   tags?: TagType[];
   prevPost: {
     slug: string;
@@ -42,14 +20,14 @@ export interface PostMetaType {
   } | null;
 }
 
-interface PostContentType {
+export interface PostContent {
   source: string;
   excerpt?: string;
   toc?: string;
   html?: string;
 }
 
-export declare type PostType = PostMetaType & PostContentType;
+export declare type Post = PostMeta & PostContent;
 
 export interface Profile {
   username: string;
@@ -71,7 +49,16 @@ export interface Repo {
   repoUrl: string;
 }
 
-export interface GitHubType {
+export interface GitHub {
   profile: Profile;
   repos: Repo[];
 }
+
+export type {
+  Book,
+  PaletteColor,
+  Route,
+  SiteConfig,
+  SocialColor,
+  SocialType,
+} from '@config';

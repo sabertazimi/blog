@@ -1,13 +1,12 @@
-import MockData from '@mocks/data';
+import mockData from '@mocks/data';
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import Article from './Article';
 
 describe('Article', () => {
-  const mockUrl = MockData.siteConfig.siteUrl;
-  const mockBasePost = MockData.basePosts[0];
-  const mockPost = MockData.posts[0];
+  const mockUrl = mockData.siteConfig.siteUrl;
+  const mockBasePost = mockData.basePosts[0];
+  const mockPost = mockData.posts[0];
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(

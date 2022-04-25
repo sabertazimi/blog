@@ -2,14 +2,13 @@ import { BookOutlined } from '@ant-design/icons';
 import { getColorByName } from '@config';
 import type { Book } from '@types';
 import { Badge, Card } from 'antd';
-import React from 'react';
 
 interface Props {
-  data: Book;
+  book: Book;
 }
 
-const BookCard = ({ data }: Props): JSX.Element => {
-  const { title, url, author, description } = data;
+const BookCard = ({ book }: Props): JSX.Element => {
+  const { title, url, author, description } = book;
 
   return (
     <Badge.Ribbon text={title} color={getColorByName(title)}>

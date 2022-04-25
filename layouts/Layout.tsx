@@ -1,27 +1,19 @@
-import { Container, Footer, Header } from '@components';
+import { Container, Footer, Header, MetaHeader } from '@components';
 import { SlideRight } from '@components/Motion';
-import type { PostMetaType, SiteConfig } from '@types';
+import type { PostMeta } from '@types';
 import { Divider } from 'antd';
 import type { ReactNode } from 'react';
 
 interface Props {
   banner: string;
-  posts: PostMetaType[];
+  posts: PostMeta[];
   buildTime: string | number | Date;
-  author: SiteConfig['author'];
-  socialList: SiteConfig['socialList'];
   children: ReactNode;
 }
 
-const Layout = ({
-  banner,
-  posts,
-  buildTime,
-  author,
-  socialList,
-  children,
-}: Props): JSX.Element => (
+const Layout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
   <div>
+    <MetaHeader />
     <Header posts={posts} />
     <Container className="min-h-screen px-0 pb-28 pt-0 md:pt-28">
       <SlideRight>
@@ -31,7 +23,7 @@ const Layout = ({
         {children}
       </SlideRight>
     </Container>
-    <Footer buildTime={buildTime} author={author} socialList={socialList} />
+    <Footer buildTime={buildTime} />
   </div>
 );
 

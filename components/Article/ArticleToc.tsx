@@ -1,7 +1,7 @@
 import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
 import classNames from 'classnames';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import styles from './ArticleToc.module.css';
 
 interface Props {

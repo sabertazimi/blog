@@ -1,10 +1,9 @@
 import { BarsOutlined } from '@ant-design/icons';
-import { Routes } from '@config';
+import { routes } from '@config';
 import logo from '@images/logo-full.png';
 import { Col, Menu, Popover, Row } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">
@@ -23,7 +22,7 @@ const MobileNav = (): JSX.Element => (
             className="w-full max-w-md text-2xl font-extrabold text-center min-w-xs"
             mode="vertical"
           >
-            {Routes.map(route => (
+            {routes.map(route => (
               <Menu.Item key={route.id}>
                 <Link href={route.path}>
                   <a>{route.name}</a>

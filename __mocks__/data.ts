@@ -43,18 +43,18 @@ const repos = [
 const siteConfig = {
   title: 'Title',
   author: 'Sabertaz',
-  siteUrl: 'https://example.com',
   email: 'example@github.com',
+  siteUrl: 'https://example.com',
   disqusUrl: 'https://example.com',
   landingTitles: [`I'm a coder.`, `I'm a learner.`],
-  socialList: {
+  socials: {
     github: 'sabertazimi',
     twitter: 'sabertazimi',
     facebook: 'sabertazimi',
     linkedin: 'sabertazimi',
     weibo: 'sabertazimi',
   },
-  bookList: Array.from(Array(3).keys()).map(index => ({
+  books: Array.from(Array(3).keys()).map(index => ({
     title: `Book ${index}`,
     author: 'Sabertaz',
     url: `https://example.com/${index}`,
@@ -76,8 +76,8 @@ const posts = basePosts.map((post, index) => ({
   ...post,
   subtitle: 'Be a Stupid Learner',
   author: 'Sabertaz',
-  date: '2018-08-08T00:00:00.000Z',
-  gitTime: '2018-08-08T00:00:00.000Z',
+  createTime: '2018-08-08T00:00:00.000Z',
+  updateTime: '2018-08-08T00:00:00.000Z',
   tags: ['JavaScript', 'Frontend Development', 'Web Development'],
   prevPost: {
     slug: `${index + 2}BasicNotes`,
@@ -92,7 +92,7 @@ const posts = basePosts.map((post, index) => ({
   html: `<h1>${index + 1} Basic Notes</h1>`,
 }));
 
-const MockData = {
+const mockData = {
   time,
   baseProfile,
   profile,
@@ -102,4 +102,4 @@ const MockData = {
   posts,
 };
 
-export default MockData;
+export default mockData;

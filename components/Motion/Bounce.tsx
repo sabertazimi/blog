@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
@@ -15,7 +15,7 @@ const Bounce = ({
   ...props
 }: Props): JSX.Element => (
   <motion.div
-    className={classnames('inline-flex', className)}
+    className={classNames('inline-flex', className)}
     layout
     initial={{ opacity: 0, x: 20 }}
     whileInView={{ opacity: 1, x: 0 }}

@@ -1,5 +1,4 @@
 import { useDisqus } from '@hooks';
-import React from 'react';
 import styles from './ArticleComments.module.css';
 
 interface Props {

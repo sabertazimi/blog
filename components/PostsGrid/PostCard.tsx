@@ -2,17 +2,17 @@ import { ReadOutlined } from '@ant-design/icons';
 import { Container } from '@components';
 import { SlideRight } from '@components/Motion';
 import { getColorByName } from '@config';
-import type { PostMetaType } from '@types';
+import type { PostMeta } from '@types';
 import { Button, Skeleton, Tag, Typography } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
 
 interface Props {
-  post: PostMetaType;
+  post: PostMeta;
 }
 
 const PostCard = ({ post }: Props): JSX.Element => {
-  const { tags, slug, title, date, timeToRead } = post;
+  const { tags, slug, title, createTime, timeToRead } = post;
   const tagName = tags ? tags[0] : 'Computer Science';
 
   return (
@@ -34,7 +34,8 @@ const PostCard = ({ post }: Props): JSX.Element => {
         </Typography.Title>
         <Tag className="tag-black">
           <div className="text-base font-extrabold">
-            Posted on {date ? new Date(date).toDateString() : 'Nowadays'}{' '}
+            Posted on{' '}
+            {createTime ? new Date(createTime).toDateString() : 'Nowadays'}{' '}
           </div>
         </Tag>
         <Container className="mt-3">

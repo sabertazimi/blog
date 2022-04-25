@@ -1,6 +1,5 @@
 import { Divider } from 'antd';
 import type { ReactNode } from 'react';
-import React from 'react';
 
 interface Props {
   children: ReactNode;

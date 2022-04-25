@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import React from 'react';
 import TagsCloud from './TagsCloud';
 
 describe('TagsCloud', () => {

@@ -1,7 +1,6 @@
 import { Container, SocialGroup } from '@components';
 import { Comment } from '@components/Icons';
-import type { PostType } from '@types';
-import React from 'react';
+import type { Post } from '@types';
 import ArticleComments from './ArticleComments';
 import ArticleContent from './ArticleContent';
 import ArticleDivider from './ArticleDivider';
@@ -10,7 +9,7 @@ import ArticleNav from './ArticleNav';
 import ArticleToc from './ArticleToc';
 
 interface Props {
-  post: PostType;
+  post: Post;
   commentUrl: string;
   socialUrl: string;
 }
@@ -21,8 +20,8 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
     title,
     subtitle,
     author,
-    date,
-    gitTime,
+    createTime,
+    updateTime,
     tags,
     timeToRead,
     prevPost,
@@ -36,8 +35,8 @@ const Article = ({ post, commentUrl, socialUrl }: Props): JSX.Element => {
     title,
     subtitle,
     author,
-    date,
-    gitTime,
+    createTime,
+    updateTime,
     tags,
     timeToRead,
     prevPost,

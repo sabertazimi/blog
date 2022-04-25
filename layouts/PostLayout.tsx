@@ -1,31 +1,23 @@
-import { Container, Footer, Header } from '@components';
-import type { PostMetaType, SiteConfig } from '@types';
+import { Container, Footer, Header, MetaHeader } from '@components';
+import type { PostMeta } from '@types';
 import { BackTop } from 'antd';
 import type { ReactNode } from 'react';
-import React from 'react';
 
 interface Props {
-  posts: PostMetaType[];
+  posts: PostMeta[];
   buildTime: string | number | Date;
-  author: SiteConfig['author'];
-  socialList: SiteConfig['socialList'];
   children: ReactNode;
 }
 
-const PostLayout = ({
-  posts,
-  buildTime,
-  author,
-  socialList,
-  children,
-}: Props): JSX.Element => (
+const PostLayout = ({ posts, buildTime, children }: Props): JSX.Element => (
   <div>
+    <MetaHeader />
     <Header posts={posts} />
     <Container className="max-w-full">
       {children}
       <BackTop />
     </Container>
-    <Footer buildTime={buildTime} author={author} socialList={socialList} />
+    <Footer buildTime={buildTime} />
   </div>
 );
 

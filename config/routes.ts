@@ -1,11 +1,11 @@
-interface RouteType {
+interface Route {
   id: string;
   name: string;
   title: string;
   path: string;
 }
 
-const Routes: RouteType[] = [
+const routes: Route[] = [
   {
     id: 'posts',
     name: 'Posts',
@@ -32,5 +32,5 @@ const Routes: RouteType[] = [
   },
 ];
 
-export type { RouteType };
-export { Routes };
+export type { Route };
+export { routes };

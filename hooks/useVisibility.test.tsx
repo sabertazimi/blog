@@ -1,5 +1,5 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import useVisibility from './useVisibility';
 
 describe('useVisibility', () => {

@@ -1,17 +1,16 @@
 import type { Book } from '@types';
 import { Col, Row } from 'antd';
-import React from 'react';
 import BookCard from './BookCard';
 
 interface Props {
-  bookList: Book[];
+  books: Book[];
 }
 
-const BooksGrid = ({ bookList }: Props): JSX.Element => (
+const BooksGrid = ({ books }: Props): JSX.Element => (
   <Row>
-    {bookList.map((bookData, index) => (
+    {books.map((book, index) => (
       <Col span={24} key={index}>
-        <BookCard data={bookData} />
+        <BookCard book={book} />
       </Col>
     ))}
   </Row>

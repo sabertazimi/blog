@@ -1,12 +1,12 @@
 import { SearchOutlined } from '@ant-design/icons';
-import type { PostMetaType } from '@types';
+import type { PostMeta} from '@types';
 import { AutoComplete, Input } from 'antd';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 interface Props {
-  posts: PostMetaType[];
+  posts: PostMeta[];
 }
 
 interface Option {

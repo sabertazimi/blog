@@ -1,10 +1,9 @@
-import type { PostMetaType } from '@types';
+import type { PostMeta } from '@types';
 import { List } from 'antd';
 import Link from 'next/link';
-import React from 'react';
 
 interface Props {
-  posts: PostMetaType[];
+  posts: PostMeta[];
 }
 
 const PostsList = ({ posts }: Props): JSX.Element => (

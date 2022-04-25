@@ -1,16 +1,15 @@
 import { PostsSearchBar } from '@components';
-import { Routes } from '@config';
+import { routes } from '@config';
 import logo from '@images/logo-full.png';
-import type { PostMetaType } from '@types';
+import type { PostMeta } from '@types';
 import { Menu } from 'antd';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 interface Props {
   fixed: boolean;
-  posts: PostMetaType[];
+  posts: PostMeta[];
 }
 
 const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
@@ -41,7 +40,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
           </Link>
         ),
       },
-      ...Routes.map(route => ({
+      ...routes.map(route => ({
         key: route.id,
         label: (
           <Link href={route.path}>

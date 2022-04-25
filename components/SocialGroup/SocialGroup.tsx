@@ -1,8 +1,7 @@
 import { SocialButton } from '@components';
-import type { Color, SocialType } from '@config';
-import { Colors, SocialList, SocialQuery } from '@config';
+import { socialColors, socialList, socialQuery } from '@config';
+import type { SocialColor, SocialType } from '@types';
 import { Space } from 'antd';
-import React from 'react';
 
 interface Props {
   url: string;
@@ -15,14 +14,14 @@ const SocialGroup = ({ url }: Props): JSX.Element => (
     align="center"
     size={0}
   >
-    {Object.keys(SocialList)
-      .filter(social => social !== SocialList.github)
+    {Object.keys(socialList)
+      .filter(social => social !== socialList.github)
       .map(social => (
         <SocialButton
           key={social}
           type={social as SocialType}
-          url={`${SocialQuery[social as SocialType]}${url}`}
-          color={Colors[social as Color]}
+          url={`${socialQuery[social as SocialType]}${url}`}
+          color={socialColors[social as SocialColor]}
         />
       ))}
   </Space>
