@@ -30,7 +30,7 @@ const Article = ({
     prevPost,
     nextPost,
     toc,
-    html,
+    source,
   } = post;
 
   const postMeta = {
@@ -52,8 +52,8 @@ const Article = ({
     <div>
       <ArticleHeader post={postMeta} />
       <Container className="max-w-screen-lg px-6">
-        <ArticleToc toc={toc as string} />
-        <ArticleContent content={html as string} />
+        <ArticleToc toc={toc} />
+        <ArticleContent source={source} />
         <ArticleDivider>{subtitle || 'Blog'}</ArticleDivider>
         <ArticleNav prevPost={prevPost} nextPost={nextPost} />
         <ArticleDivider>

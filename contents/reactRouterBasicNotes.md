@@ -55,7 +55,7 @@ class App extends Component {
 
 ### Nested Route
 
-Key Notes: In component of parent route, should render {this.props.children}
+Key Notes: In component of parent route, should render `{this.props.children}`.
 
 ```jsx
 import {
@@ -77,8 +77,8 @@ render(
 );
 ```
 
-> In App.js: `render() { return (<div>... {this.props.children}</ div>); }`
-> In Repos.js: `render() { return (<div>... {this.props.children}</ div>); }`
+- In `App.js`: `render() { return (<div>... {this.props.children}</ div>); }`.
+- In `Repos.js`: `render() { return (<div>... {this.props.children}</ div>); }`.
 
 ### Private Route
 

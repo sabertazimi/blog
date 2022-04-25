@@ -5,10 +5,10 @@ import { useCallback, useState } from 'react';
 import styles from './ArticleToc.module.css';
 
 interface Props {
-  toc: string;
+  toc?: string;
 }
 
-const ArticleToc = ({ toc }: Props): JSX.Element => {
+const ArticleToc = ({ toc = '' }: Props): JSX.Element => {
   const [tocVisible, setTocVisible] = useState(false);
 
   const handleClick = useCallback(

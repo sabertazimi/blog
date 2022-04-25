@@ -1,6 +1,8 @@
+// Extend `expect` matchers.
 import '@testing-library/jest-dom';
 import 'jest-axe/extend-expect';
 
+// Mock `window.matchMedia`.
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(query => ({
@@ -15,6 +17,7 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+// Mock `window.IntersectionObserver`
 class MockIntersectionObserver {
   observe = jest.fn();
   takeRecords = jest.fn();
@@ -34,15 +37,22 @@ Object.defineProperty(global, 'IntersectionObserver', {
   value: MockIntersectionObserver,
 });
 
+// Mock window animation frame.
 window.requestAnimationFrame = function (callback) {
   return setTimeout(callback);
 };
 
 window.cancelAnimationFrame = window.clearTimeout;
 
+// Mock Next.js `<Link>` component.
 jest.mock(
   'next/link',
   () =>
     ({ children }) =>
       children
 );
+
+// Mock Next.js `<MDXRemote>` component.
+jest.mock('next-mdx-remote', () => ({
+  MDXRemote: ({ compiledSource }) => compiledSource,
+}));

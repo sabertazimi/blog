@@ -1,5 +1,6 @@
 import type { Post, PostMeta, Tag, Tags } from '@types';
 import matter from 'gray-matter';
+import { serialize } from 'next-mdx-remote/serialize';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -30,15 +31,16 @@ async function generatePostData(filePath: string): Promise<Post> {
   const slug = path.basename(filePath, path.extname(filePath));
 
   const {
-    content: source,
+    content,
     excerpt,
     data: { title, date, ...fields },
   } = matter(fileContent, { excerpt: true });
-  const timeToRead = getTimeToRead(source);
+  const timeToRead = Math.round(getTimeToRead(content));
   const createTime = new Date(date).toISOString();
   const updateTime = execSync(
     `git log -1 --pretty=format:%aI ${filePath}`
   ).toString();
+  const source = await serialize(content);
 
   return {
     ...fields,
@@ -62,7 +64,7 @@ async function getPostsData(): Promise<Post[]> {
   for await (const filePath of walk(contentsPath)) {
     const fileExt = path.extname(filePath);
 
-    if (fileExt === '.md') {
+    if (['.md', '.mdx'].includes(fileExt)) {
       const postData = await generatePostData(filePath);
       postsData.push(postData);
     }
