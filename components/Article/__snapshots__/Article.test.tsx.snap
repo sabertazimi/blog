@@ -138,12 +138,11 @@ exports[`Article should render correctly (snapshot) 1`] = `
         role="navigation"
       >
         <div
-          class="inline-flex flex-1 mr-24"
+          class="inline-flex flex-1 mr-6 md:mr-24"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <button
-            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-            type="button"
+          <a
+            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
           >
             <span
               aria-label="Prev"
@@ -164,26 +163,25 @@ exports[`Article should render correctly (snapshot) 1`] = `
                 />
               </svg>
             </span>
-            <a
-              class="m-auto font-extrabold text-light"
+            <span
+              class="ml-3 hidden md:visible md:inline"
             >
               2 Basic Notes
-            </a>
-          </button>
+            </span>
+          </a>
         </div>
         <div
-          class="inline-flex flex-1 ml-24"
+          class="inline-flex flex-1 ml-6 md:ml-24"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <button
-            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-            type="button"
+          <a
+            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
           >
-            <a
-              class="m-auto font-extrabold text-light"
+            <span
+              class="mr-3 hidden md:visible md:inline"
             >
               0 Basic Notes
-            </a>
+            </span>
             <span
               aria-label="Next"
               class="anticon anticon-arrow-right"
@@ -203,7 +201,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
                 />
               </svg>
             </span>
-          </button>
+          </a>
         </div>
       </div>
       <div
@@ -508,13 +506,12 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         role="navigation"
       >
         <div
-          class="inline-flex flex-1 mr-24"
+          class="inline-flex flex-1 mr-6 md:mr-24"
           data-projection-id="3"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <button
-            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-            type="button"
+          <a
+            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
           >
             <span
               aria-label="Home"
@@ -535,27 +532,26 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
                 />
               </svg>
             </span>
-            <a
-              class="m-auto font-extrabold text-light"
+            <span
+              class="ml-3 hidden md:visible md:inline"
             >
               Back to Home
-            </a>
-          </button>
+            </span>
+          </a>
         </div>
         <div
-          class="inline-flex flex-1 ml-24"
+          class="inline-flex flex-1 ml-6 md:ml-24"
           data-projection-id="4"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
-          <button
-            class="ant-btn ant-btn-default ant-btn-lg flex-container flex-1 w-full h-24 mb-6 text-2xl align-bottom rounded-none md:mb-0 md:w-5/12 button-primary"
-            type="button"
+          <a
+            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
           >
-            <a
-              class="m-auto font-extrabold text-light"
+            <span
+              class="mr-3 hidden md:visible md:inline"
             >
               Back to Home
-            </a>
+            </span>
             <span
               aria-label="Home"
               class="anticon anticon-home"
@@ -575,7 +571,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
                 />
               </svg>
             </span>
-          </button>
+          </a>
         </div>
       </div>
       <div

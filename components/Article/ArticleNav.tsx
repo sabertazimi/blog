@@ -6,7 +6,6 @@ import {
 import { FlexContainer } from '@components';
 import { Bounce } from '@components/Motion';
 import type { PostMeta } from '@types';
-import { Button } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
 
@@ -20,53 +19,51 @@ const ArticleNav = ({ post: { prevPost, nextPost } }: Props): JSX.Element => (
     role="navigation"
     aria-label="footer-navigation"
   >
-    <Bounce className="flex-1 mr-24">
-      <Button
-        className={classNames(
-          'flex-container',
-          'flex-1',
-          'w-full h-24 mb-6',
-          'text-2xl align-bottom rounded-none',
-          'md:mb-0 md:w-5/12',
-          'button-primary'
-        )}
-        size="large"
-      >
-        {prevPost ? (
-          <ArrowLeftOutlined aria-label="Prev" />
-        ) : (
-          <HomeOutlined aria-label="Home" />
-        )}
-        <Link href={prevPost ? `/post/${prevPost.slug}` : '/posts'}>
-          <a className="m-auto font-extrabold text-light">
+    <Bounce className="flex-1 mr-6 md:mr-24">
+      <Link href={prevPost ? `/post/${prevPost.slug}` : '/posts'}>
+        <a
+          className={classNames(
+            'flex-container',
+            'flex-1',
+            'w-full h-24 m-auto',
+            'rounded-full',
+            'font-extrabold text-2xl',
+            'text-light bg-gradient-primary'
+          )}
+        >
+          {prevPost ? (
+            <ArrowLeftOutlined aria-label="Prev" />
+          ) : (
+            <HomeOutlined aria-label="Home" />
+          )}
+          <span className="ml-3 hidden md:visible md:inline">
             {prevPost ? prevPost.title : 'Back to Home'}
-          </a>
-        </Link>
-      </Button>
+          </span>
+        </a>
+      </Link>
     </Bounce>
-    <Bounce className="flex-1 ml-24">
-      <Button
-        className={classNames(
-          'flex-container',
-          'flex-1',
-          'w-full h-24 mb-6',
-          'text-2xl align-bottom rounded-none',
-          'md:mb-0 md:w-5/12',
-          'button-primary'
-        )}
-        size="large"
-      >
-        <Link href={nextPost ? `/post/${nextPost.slug}` : '/posts'}>
-          <a className="m-auto font-extrabold text-light">
+    <Bounce className="flex-1 ml-6 md:ml-24">
+      <Link href={nextPost ? `/post/${nextPost.slug}` : '/posts'}>
+        <a
+          className={classNames(
+            'flex-container',
+            'flex-1',
+            'w-full h-24 m-auto',
+            'rounded-full',
+            'font-extrabold text-2xl',
+            'text-light bg-gradient-primary'
+          )}
+        >
+          <span className="mr-3 hidden md:visible md:inline">
             {nextPost ? nextPost.title : 'Back to Home'}
-          </a>
-        </Link>
-        {nextPost ? (
-          <ArrowRightOutlined aria-label="Next" />
-        ) : (
-          <HomeOutlined aria-label="Home" />
-        )}
-      </Button>
+          </span>
+          {nextPost ? (
+            <ArrowRightOutlined aria-label="Next" />
+          ) : (
+            <HomeOutlined aria-label="Home" />
+          )}
+        </a>
+      </Link>
     </Bounce>
   </FlexContainer>
 );
