@@ -1,5 +1,5 @@
-export { colors, colorPalette, getColorByName, socialColors } from './colors';
-export type { PaletteColor, SocialColor } from './colors';
+export { colors, getColorByName, socialColors } from './colors';
+export type { SocialColor } from './colors';
 export { routes } from './routes';
 export type { Route } from './routes';
 export { siteConfig } from './site';

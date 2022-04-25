@@ -1,4 +1,5 @@
 import { Close, Hamburger } from '@components/Icons';
+import { routes as defaultRoutes } from '@config';
 import type { Route } from '@types';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
@@ -6,10 +7,10 @@ import { useCallback, useState } from 'react';
 import LandingNavLink from './LandingNavLink';
 
 interface Props {
-  routes: Route[];
+  routes?: Route[];
 }
 
-const LandingNav = ({ routes }: Props): JSX.Element => {
+const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = useCallback(() => {

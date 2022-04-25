@@ -1,4 +1,5 @@
-import { SocialType } from './social';
+import { colors } from './colors';
+import type { SocialType } from './social';
 
 interface Book {
   title: string;
@@ -11,6 +12,8 @@ interface SiteConfig {
   title: string;
   author: string;
   email: string;
+  description: string;
+  themeColor: string;
   siteUrl: string;
   disqusUrl: string;
   landingTitles: string[];
@@ -24,6 +27,8 @@ const siteConfig: SiteConfig = {
   title: 'Sabertaz Blog',
   author: 'Sabertaz',
   email: 'sabertazimi@gmail.com',
+  description: 'Sabertaz Blog',
+  themeColor: colors.blue,
   siteUrl: 'https://blog.tazimi.dev',
   disqusUrl: 'https://sabertaz-blog.disqus.com',
   landingTitles: [`I'm a coder.`, `I'm a learner.`],
@@ -46,3 +51,4 @@ const siteConfig: SiteConfig = {
 
 export type { Book, SiteConfig };
 export { siteConfig };
+

@@ -24,8 +24,8 @@ const colorPalette = {
 
 const colors = {
   ...socialColors,
-  ...colorPalette
-}
+  ...colorPalette,
+};
 
 type SocialColor = keyof typeof socialColors;
 type PaletteColor = keyof typeof colorPalette;
@@ -41,6 +41,5 @@ const getColorByName = (name: string): string => {
   return colorPalette[paletteColor];
 };
 
-export type { SocialColor, PaletteColor };
-export { colors, socialColors, colorPalette, getColorByName };
-
+export type { SocialColor };
+export { colors, socialColors, getColorByName };

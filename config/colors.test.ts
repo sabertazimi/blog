@@ -1,25 +1,25 @@
-import { colorPalette, getColorByName } from './colors';
+import { colors, getColorByName } from './colors';
 
 describe('Colors', () => {
   const mockColors = [
-    ['CS', colorPalette.grape],
-    ['CSS', colorPalette.violet],
-    ['Git', colorPalette.violet],
-    ['Gnu', colorPalette.violet],
-    ['Vim', colorPalette.violet],
-    ['HTML', colorPalette.indigo],
-    ['Linux', colorPalette.blue],
-    ['React', colorPalette.blue],
-    ['Redux', colorPalette.blue],
-    ['Security', colorPalette.green],
-    ['JavaScript', colorPalette.yellow],
-    ['Development', colorPalette.orange],
-    ['Architecture', colorPalette.red],
-    ['React Router', colorPalette.red],
-    ['Design Patterns', colorPalette.violet],
-    ['Web Development', colorPalette.violet],
-    ['Computer Science', colorPalette.indigo],
-    ['Frontend Development', colorPalette.green],
+    ['CS', colors.grape],
+    ['CSS', colors.violet],
+    ['Git', colors.violet],
+    ['Gnu', colors.violet],
+    ['Vim', colors.violet],
+    ['HTML', colors.indigo],
+    ['Linux', colors.blue],
+    ['React', colors.blue],
+    ['Redux', colors.blue],
+    ['Security', colors.green],
+    ['JavaScript', colors.yellow],
+    ['Development', colors.orange],
+    ['Architecture', colors.red],
+    ['React Router', colors.red],
+    ['Design Patterns', colors.violet],
+    ['Web Development', colors.violet],
+    ['Computer Science', colors.indigo],
+    ['Frontend Development', colors.green],
   ];
 
   test.each(mockColors)(

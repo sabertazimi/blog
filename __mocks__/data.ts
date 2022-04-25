@@ -40,28 +40,6 @@ const repos = [
   },
 ];
 
-const siteConfig = {
-  title: 'Title',
-  author: 'Sabertaz',
-  email: 'example@github.com',
-  siteUrl: 'https://example.com',
-  disqusUrl: 'https://example.com',
-  landingTitles: [`I'm a coder.`, `I'm a learner.`],
-  socials: {
-    github: 'sabertazimi',
-    twitter: 'sabertazimi',
-    facebook: 'sabertazimi',
-    linkedin: 'sabertazimi',
-    weibo: 'sabertazimi',
-  },
-  books: Array.from(Array(3).keys()).map(index => ({
-    title: `Book ${index}`,
-    author: 'Sabertaz',
-    url: `https://example.com/${index}`,
-    description: `Book ${index} description`,
-  })),
-};
-
 const basePosts = Array.from(Array(5).keys()).map(index => ({
   index,
   slug: `${index + 1}BasicNotes`,
@@ -97,7 +75,6 @@ const mockData = {
   baseProfile,
   profile,
   repos,
-  siteConfig,
   basePosts,
   posts,
 };

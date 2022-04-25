@@ -1,14 +1,11 @@
-import mockData from '@mocks/data';
+import { siteConfig } from '@config';
 import { render, screen } from '@testing-library/react';
 import type { SocialType } from '@types';
 import { axe } from 'jest-axe';
 import SocialButton from './SocialButton';
 
 describe('SocialButton', () => {
-  const mockSocials= [
-    ...Object.keys(mockData.siteConfig.socials),
-    'default',
-  ];
+  const mockSocials = [...Object.keys(siteConfig.socials), 'default'];
 
   test.each(mockSocials)(
     'should render [%s] button correctly (snapshot)',
