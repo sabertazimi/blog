@@ -3,7 +3,6 @@ import { siteConfig } from '@config';
 import { PostLayout } from '@layouts';
 import { getBuildTime, getPostData, getPostsMeta } from '@lib';
 import type { Post, PostMeta } from '@types';
-import { useRouter } from 'next/router';
 import type { GetStaticPaths, GetStaticProps } from 'next/types';
 import { ParsedUrlQuery } from 'querystring';
 
@@ -49,15 +48,12 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async ({
 };
 
 const Post = ({ buildTime, postData, postsMeta }: Props): JSX.Element => {
-  const { pathname: socialUrl } = useRouter();
+  const { siteUrl, disqusUrl } = siteConfig;
+  const socialUrl = `${siteUrl}/post/${postData.slug}`;
 
   return (
     <PostLayout buildTime={buildTime} posts={postsMeta}>
-      <Article
-        post={postData}
-        commentUrl={siteConfig.disqusUrl}
-        socialUrl={socialUrl}
-      />
+      <Article post={postData} commentUrl={disqusUrl} socialUrl={socialUrl} />
     </PostLayout>
   );
 };

@@ -64,7 +64,6 @@ async function getPostsData(): Promise<Post[]> {
 
     if (fileExt === '.md') {
       const postData = await generatePostData(filePath);
-      console.log(Object.keys(postData));
       postsData.push(postData);
     }
   }
