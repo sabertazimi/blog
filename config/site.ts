@@ -51,4 +51,3 @@ const siteConfig: SiteConfig = {
 
 export type { Book, SiteConfig };
 export { siteConfig };
-

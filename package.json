@@ -21,6 +21,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
+    "format": "prettier --write {__mocks__,components,config,contents,hooks,layouts,lib,pages,styles,types}/**/*.{ts,tsx,css}",
     "lint": "next lint && yarn lint:md && yarn lint:style && yarn lint:type-check",
     "lint:md": "markdownlint ./contents",
     "lint:style": "stylelint ./styles/**/*.css",

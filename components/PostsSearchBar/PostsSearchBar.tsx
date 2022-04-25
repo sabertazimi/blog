@@ -1,5 +1,5 @@
 import { SearchOutlined } from '@ant-design/icons';
-import type { PostMeta} from '@types';
+import type { PostMeta } from '@types';
 import { AutoComplete, Input } from 'antd';
 import Link from 'next/link';
 import type { ReactNode } from 'react';

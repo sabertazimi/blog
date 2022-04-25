@@ -10,7 +10,7 @@ describe('GithubCard', () => {
 
   test('should render correctly (snapshot)', () => {
     const { container } = render(
-      <GithubCard  profile={mockProfile} repos={mockRepos} />
+      <GithubCard profile={mockProfile} repos={mockRepos} />
     );
 
     expect(container).toMatchSnapshot();

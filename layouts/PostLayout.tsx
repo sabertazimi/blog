@@ -10,9 +10,14 @@ interface Props {
   children: ReactNode;
 }
 
-const PostLayout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
+const PostLayout = ({
+  banner,
+  posts,
+  buildTime,
+  children,
+}: Props): JSX.Element => (
   <div>
-    <MetaHeader title={`${banner}`}/>
+    <MetaHeader title={`${banner}`} />
     <Header posts={posts} />
     <Container className="max-w-full">
       {children}
