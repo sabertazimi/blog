@@ -26,6 +26,7 @@ const LandingNav = ({ routes }: Props): JSX.Element => {
         )}
         role="navigation"
         layout
+        initial="close"
         animate={expanded ? 'open' : 'close'}
         variants={{
           open: {
