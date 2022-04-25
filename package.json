@@ -19,7 +19,7 @@
   "browserslist": "last 2 versions",
   "packageManager": "yarn@3.2.0",
   "scripts": {
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "dev": "next",
     "format": "prettier --write {__mocks__,components,config,contents,hooks,layouts,lib,pages,styles,types}/**/*.{ts,tsx,css}",
     "lint": "next lint && yarn lint:md && yarn lint:style && yarn lint:type-check",
@@ -71,6 +71,7 @@
     "jest": "^27.5.1",
     "jest-axe": "^6.0.0",
     "markdownlint-cli": "^0.31.1",
+    "next-sitemap": "^2.5.20",
     "postcss": "^8.4.12",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.4.3",
