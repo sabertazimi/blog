@@ -4,6 +4,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import readingTime from 'reading-time';
 
 const contentsPath = path.join(process.cwd(), 'contents');
 let postsData: Post[] = [];
@@ -23,7 +24,7 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
 }
 
 function getTimeToRead(content: string): number {
-  return content.split(' ').length / 200;
+  return readingTime(content).minutes;
 }
 
 async function generatePostData(filePath: string): Promise<Post> {
