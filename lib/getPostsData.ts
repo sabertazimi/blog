@@ -6,6 +6,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeExternalLinks from 'rehype-external-links';
 import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
 import remarkGemoji from 'remark-gemoji';
@@ -52,7 +53,12 @@ async function generatePostData(filePath: string): Promise<Post> {
     parseFrontmatter: false,
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkGitHub, remarkGemoji, remarkMath],
-      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeKatex],
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeAutolinkHeadings,
+        rehypeExternalLinks,
+        rehypeKatex,
+      ],
     },
   });
 
