@@ -1,8 +1,8 @@
 import { ErrorBoundary } from '@components';
 import { siteConfig } from '@config';
+import landingImage from '@images/landing.jpg';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
-import landingImage from '@images/landing.jpg';
 
 interface Props {
   title?: string;
@@ -22,10 +22,6 @@ const MetaHeader = ({
       <Head key={title}>
         <title>{title}</title>
         <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content={themeColor} />
-        <meta name="description" content={description} />
       </Head>
       <NextSeo
         title={title}
@@ -56,10 +52,44 @@ const MetaHeader = ({
           maxVideoPreview: -1,
         }}
         twitter={{
-          handle: '@handle',
-          site: '@site',
+          handle: `@${siteConfig.author}`,
+          site: `@${siteConfig.author}`,
           cardType: 'summary_large_image',
         }}
+        additionalMetaTags={[
+          { name: 'theme-color', content: themeColor },
+          {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1.0',
+          },
+          {
+            httpEquiv: 'x-ua-compatible',
+            content: 'IE=edge; chrome=1',
+          },
+          {
+            name: 'application-name',
+            content: siteConfig.title,
+          },
+          {
+            property: 'dc:creator',
+            content: siteConfig.author,
+          },
+        ]}
+        additionalLinkTags={[
+          {
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
+          {
+            rel: 'icon',
+            href: '/favicon.ico',
+          },
+          {
+            rel: 'apple-touch-icon',
+            href: '/images/logo-full.png',
+            sizes: '200x200',
+          },
+        ]}
       />
     </>
   </ErrorBoundary>
