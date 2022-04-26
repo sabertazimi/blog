@@ -52,8 +52,8 @@ const MetaHeader = ({
           maxVideoPreview: -1,
         }}
         twitter={{
-          handle: `@${siteConfig.author}`,
-          site: `@${siteConfig.author}`,
+          handle: `@${siteConfig.socials.twitter}`,
+          site: `@${siteConfig.socials.twitter}`,
           cardType: 'summary_large_image',
         }}
         additionalMetaTags={[
