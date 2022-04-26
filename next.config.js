@@ -1,3 +1,5 @@
+const NextPwa = require('next-pwa');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -7,8 +9,11 @@ const nextConfig = {
     locales: ['en-US', 'zh-CN'],
     defaultLocale: 'zh-CN',
   },
+  pwa: {
+    dest: 'public',
+  },
   reactStrictMode: true,
   swcMinify: true,
 };
 
-module.exports = nextConfig;
+module.exports = NextPwa(nextConfig);

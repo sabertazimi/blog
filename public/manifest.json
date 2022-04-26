@@ -1,0 +1,27 @@
+{
+  "name": "Sabertaz Blog",
+  "short_name": "Blog",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "200x200",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo-full.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1890ff",
+  "background_color": "#f8f9fa",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
