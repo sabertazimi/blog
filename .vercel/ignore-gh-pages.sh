@@ -2,7 +2,7 @@
 
 # Don't try to build the gh-pages branch.
 
-if [[ "$BRANCH" != "gh-pages" ]] ; then
+if [[ "$VERCEL_GIT_COMMIT_REF" != "gh-pages" ]] ; then
   # Proceed with the build.
   exit 1;
 else
