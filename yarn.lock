@@ -2190,7 +2190,9 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
     reading-time: ^1.5.0
+    rehype-autolink-headings: ^6.1.1
     rehype-katex: ^6.0.2
+    rehype-slug: ^5.0.1
     remark-math: ^5.1.1
     standard-version: ^9.3.2
     stylelint: ^14.7.1
@@ -5995,6 +5997,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"github-slugger@npm:^1.1.1":
+  version: 1.4.0
+  resolution: "github-slugger@npm:1.4.0"
+  checksum: 4f52e7a21f5c6a4c5328f01fe4fe13ae8881fea78bfe31f9e72c4038f97e3e70d52fb85aa7633a52c501dc2486874474d9abd22aa61cbe9b113099a495551c6b
+  languageName: node
+  linkType: hard
+
 "glob-parent@npm:^5.1.2, glob-parent@npm:~5.1.2":
   version: 5.1.2
   resolution: "glob-parent@npm:5.1.2"
@@ -6238,6 +6247,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hast-util-has-property@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "hast-util-has-property@npm:2.0.0"
+  checksum: 6f35c11445a02927a731c34cadce81d1b01db814e336d61624c9a9f78440e555bf1819ea340964f0c283f47aa9c1f50fcd94c1b13f2c73e53bd820efca55f79a
+  languageName: node
+  linkType: hard
+
+"hast-util-heading-rank@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "hast-util-heading-rank@npm:2.1.0"
+  dependencies:
+    "@types/hast": ^2.0.0
+  checksum: 6b0f66bf411cde4bc33f2bb80081cc9be2b7f86aa85a996a4766970ae34510824a93ea774c0ac1f5695b906f27358829939cc38bd7fc6b2965b78c226b82cb3a
+  languageName: node
+  linkType: hard
+
 "hast-util-is-element@npm:^2.0.0":
   version: 2.1.2
   resolution: "hast-util-is-element@npm:2.1.2"
@@ -6276,6 +6301,15 @@ __metadata:
     unist-util-position: ^4.0.0
     zwitch: ^2.0.0
   checksum: 7ac9884c35c0a1dc96c6237f841e0bdd4410746d0a9ab7ddfaaed9cf36adb3186633782b50e45c57bc8825640c5e1db070fd5eeca5061f76fc19bf991df8a520
+  languageName: node
+  linkType: hard
+
+"hast-util-to-string@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "hast-util-to-string@npm:2.0.0"
+  dependencies:
+    "@types/hast": ^2.0.0
+  checksum: 0c087f8dee4238741cbad65d28adb8bf800252c763a3c643df2fcb4ef97232056837928c2ae73f841f310e4d336c3b183ee380a5e6eb24bda5c117f78ed600d4
   languageName: node
   linkType: hard
 
@@ -11134,6 +11168,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rehype-autolink-headings@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "rehype-autolink-headings@npm:6.1.1"
+  dependencies:
+    "@types/hast": ^2.0.0
+    extend: ^3.0.0
+    hast-util-has-property: ^2.0.0
+    hast-util-heading-rank: ^2.0.0
+    hast-util-is-element: ^2.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: 60782fb2e505e70f75b59a3ac43cb5abfeb328485da07b604fcc73d6bc3626e9c3657d536a77c6c6c435b7b3086bae5c7f93d5ded510d74e553fd80fd91c8f97
+  languageName: node
+  linkType: hard
+
 "rehype-katex@npm:^6.0.2":
   version: 6.0.2
   resolution: "rehype-katex@npm:6.0.2"
@@ -11159,6 +11208,21 @@ __metadata:
     parse5: ^6.0.0
     unified: ^10.0.0
   checksum: e678a5f9fa7cb91d5957f5f38bc37bc9fb90b8011a1ed6a90541ba6fff9f243c752c88b7f422cba8f5ba83ccb22942b1825654e8c3040970c703b85a6037efdf
+  languageName: node
+  linkType: hard
+
+"rehype-slug@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "rehype-slug@npm:5.0.1"
+  dependencies:
+    "@types/hast": ^2.0.0
+    github-slugger: ^1.1.1
+    hast-util-has-property: ^2.0.0
+    hast-util-heading-rank: ^2.0.0
+    hast-util-to-string: ^2.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: 33e6e9419fc8ac54d5bdac736fe788e3b1ae71b10a8bf1ea4be4af17c504afda9ae0438ce827a13cde0fe334725e9624d9fbde2f5d9fc061378ec5f0bb4c247d
   languageName: node
   linkType: hard
 

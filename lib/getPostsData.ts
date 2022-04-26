@@ -5,7 +5,9 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import readingTime from 'reading-time';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeKatex from 'rehype-katex';
+import rehypeSlug from 'rehype-slug';
 import remarkMath from 'remark-math';
 
 const contentsPath = path.join(process.cwd(), 'contents');
@@ -47,7 +49,7 @@ async function generatePostData(filePath: string): Promise<Post> {
     parseFrontmatter: false,
     mdxOptions: {
       remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex],
+      rehypePlugins: [rehypeKatex, rehypeSlug, rehypeAutolinkHeadings],
     },
   });
 
