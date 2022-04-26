@@ -64,8 +64,9 @@ dist
 .next/
 out/
 
-# vercel
-.vercel
+# vercel files
+.vercel/*
+!.vercel/ignore-gh-pages.sh
 
 # Mac files
 .DS_Store
