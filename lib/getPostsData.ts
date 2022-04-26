@@ -40,7 +40,7 @@ async function generatePostData(filePath: string): Promise<Post> {
   const updateTime = execSync(
     `git log -1 --pretty=format:%aI ${filePath}`
   ).toString();
-  const source = await serialize(content);
+  const source = await serialize(content, { parseFrontmatter: false });
 
   return {
     ...fields,
