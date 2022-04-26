@@ -24,7 +24,14 @@ A great [blog](https://blog.tazimi.dev) system based on React.js and Next.js.
 - Great tags cloud page: separate page for posts under each tag.
 - Great GitHub information card.
 - Social share buttons.
-- Syntax highlighting in code blocks using PrismJS.
+- Full-featured MDX support:
+  - GFM support.
+  - Katex math support.
+  - Annotation container support.
+  - Emoji short code support.
+  - Syntax highlighting in code blocks using PrismJS.
+  - Automatically generated sidebar navigation,
+    table of contents, previous and next links.
 - Nice animation for page transitions and dynamic routing.
 - Disqus comments system.
 - Customized 404 not found page.
@@ -36,7 +43,6 @@ A great [blog](https://blog.tazimi.dev) system based on React.js and Next.js.
 - Optimized build with `Rust` compiler.
 - Dynamic route generation for `Markdown` posts.
 - Performant `MDX` support, enhance `Markdown` with `React`.
-- Automatically generated sidebar navigation, table of contents, previous/next links.
 - Out of box support for `tailwind.css`.
 - Fully customizable through `tailwind.css`.
 - Mobile-first approach in development.

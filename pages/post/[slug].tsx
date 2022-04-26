@@ -2,6 +2,7 @@ import { Article } from '@components';
 import { PostLayout } from '@layouts';
 import { getBuildTime, getPostData, getPostsMeta } from '@lib';
 import type { Post, PostMeta } from '@types';
+import 'katex/dist/katex.css';
 import type { GetStaticPaths, GetStaticProps } from 'next/types';
 import type { ParsedUrlQuery } from 'querystring';
 
