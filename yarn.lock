@@ -2191,6 +2191,7 @@ __metadata:
     react-dom: ^18.0.0
     reading-time: ^1.5.0
     rehype-autolink-headings: ^6.1.1
+    rehype-external-links: ^1.0.1
     rehype-katex: ^6.0.2
     rehype-slug: ^5.0.1
     remark-gemoji: ^7.0.1
@@ -6598,6 +6599,13 @@ __metadata:
   version: 1.1.5
   resolution: "ip@npm:1.1.5"
   checksum: 30133981f082a060a32644f6a7746e9ba7ac9e2bc07ecc8bbdda3ee8ca9bec1190724c390e45a1ee7695e7edfd2a8f7dda2c104ec5f7ac5068c00648504c7e5a
+  languageName: node
+  linkType: hard
+
+"is-absolute-url@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "is-absolute-url@npm:4.0.1"
+  checksum: de172a718439982a54477fdae55f21be69ec0e6a4b205db5484975d2f4ee749851fd46c28f3790dfc51a274c2ed1d0f8457b6d1fff02ab829069fd9cc761e48c
   languageName: node
   linkType: hard
 
@@ -11378,6 +11386,20 @@ __metadata:
     unified: ^10.0.0
     unist-util-visit: ^4.0.0
   checksum: 60782fb2e505e70f75b59a3ac43cb5abfeb328485da07b604fcc73d6bc3626e9c3657d536a77c6c6c435b7b3086bae5c7f93d5ded510d74e553fd80fd91c8f97
+  languageName: node
+  linkType: hard
+
+"rehype-external-links@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "rehype-external-links@npm:1.0.1"
+  dependencies:
+    "@types/hast": ^2.0.0
+    extend: ^3.0.0
+    is-absolute-url: ^4.0.0
+    space-separated-tokens: ^2.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: db83671c3c477d8c5c158880ccfa3969680895d8e59b7a358bd11baaee10d5c06d93d99cc11b044da0b8a1e6050db425f6c3910ac881b00bf407566d7449a8b4
   languageName: node
   linkType: hard
 
