@@ -38,7 +38,7 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
             <HomeOutlined aria-label="Home" />
           )}
           <span className="ml-3 hidden md:visible md:inline">
-            {prevPost ? prevPost.title : 'Back to Home'}
+            {prevPost ? prevPost.title : 'Back Home'}
           </span>
         </a>
       </Link>
@@ -56,7 +56,7 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
           )}
         >
           <span className="mr-3 hidden md:visible md:inline">
-            {nextPost ? nextPost.title : 'Back to Home'}
+            {nextPost ? nextPost.title : 'Back Home'}
           </span>
           {nextPost ? (
             <ArrowRightOutlined aria-label="Next" />
