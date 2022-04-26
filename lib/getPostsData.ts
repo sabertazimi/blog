@@ -8,6 +8,7 @@ import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
+import remarkGemoji from 'remark-gemoji';
 import remarkGfm from 'remark-gfm';
 import remarkGitHub from 'remark-github';
 import remarkMath from 'remark-math';
@@ -50,7 +51,7 @@ async function generatePostData(filePath: string): Promise<Post> {
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkGitHub, remarkMath],
+      remarkPlugins: [remarkGfm, remarkGitHub, remarkGemoji, remarkMath],
       rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeKatex],
     },
   });
