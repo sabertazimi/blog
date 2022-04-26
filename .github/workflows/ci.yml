@@ -90,6 +90,8 @@ jobs:
       - name: Build application
         run: |
           yarn build
+          # Skip vercel build for `gh-pages`
+          cp -fr .vercel .next/
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
@@ -111,8 +113,7 @@ jobs:
         working-directory: .
       - name: Aggregate production artifacts
         run: |
-          mkdir -p ./build/
-          cp -fr app/* ./build/
+          mv app build
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
