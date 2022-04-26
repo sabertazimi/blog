@@ -1,0 +1,241 @@
+---
+layout: post
+title: 'Implement Fancy MDX'
+subtitle: 'Implement Fancy MDX in Next.js'
+date: 2022-04-26
+author: 'Sabertaz'
+header-img: '/images/landing.jpg'
+tags:
+  - MDX
+  - Markdown
+  - React
+  - Next.js
+  - Frontend Development
+  - Web Development
+---
+
+# H1 Heading
+
+## H2 Heading
+
+### H3 Heading
+
+#### H4 Heading
+
+##### H5 Heading
+
+###### H6 Heading
+
+## Horizontal Rules
+
+Horizontal rule 1
+___
+
+Horizontal rule 2
+
+---
+
+Horizontal rule 3
+
+***
+
+## Typographic replacements
+
+Enable typographer option to see result.
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+"Smartypants, double quotes" and 'single quotes'
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+
+## Blockquotes
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+## Lists
+
+Unordered
+
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+## Code
+
+Inline `code`
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+```markdown
+Sample text here...
+```
+
+Syntax highlighting
+
+```ts
+const foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+
+some.code();
+```
+
+## Tables
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Left aligned columns
+
+| Option | Description |
+| :----- | :---------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Center aligned columns
+
+| Option  | Description  |
+| :-----: | :----------: |
+| data    | path to data files to supply the data that will be passed into templates. |
+| engine  | engine to be used for processing templates. Handlebars is the default. |
+| ext     | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+## Links
+
+[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+
+## Images
+
+Remote image ![Minion](https://octodex.github.com/images/minion.png)
+Remote Alt image ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+Local image ![image](/images/landing.jpg "Local image")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+
+## JSX
+
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>
+  And here is *markdown* in **JSX**!
+</section>
+
+<div># this is not a heading but *this* is emphasis</div>
+
+<div>
+  This is a `p`.
+</div>
+
+Two 🍰 is: {Math.PI * 2}
+
+{(function () {
+  const guess = Math.random()
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+{/* A comment! */}
+
+## GFM
+
+### Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+### Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+### Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+### Table
+
+| a | b  |  c |  d  |
+| - | :- | -: | :-: |
+
+### Tasklist
+
+* [ ] to do
+* [x] done
