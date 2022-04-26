@@ -1,9 +1,13 @@
+import {
+  CalendarOutlined,
+  ClockCircleOutlined,
+  EditOutlined,
+} from '@ant-design/icons';
 import { Slide } from '@components/Motion';
-import { getColorByName } from '@config';
+import { IconTag, LinkTag } from '@components/Tags';
+import { siteConfig } from '@config';
 import type { PostMeta } from '@types';
-import { Tag } from 'antd';
 import classNames from 'classnames';
-import Link from 'next/link';
 
 interface Props {
   post: PostMeta;
@@ -14,7 +18,7 @@ const ArticleHeader = ({
 }: Props): JSX.Element => (
   <div
     className={classNames(
-      'w-full px-32 py-40',
+      'w-full p-3 md:px-32 md:pt-48 md:pb-40',
       'bg-center bg-no-repeat bg-cover',
       'bg-gradient-primary'
     )}
@@ -22,37 +26,21 @@ const ArticleHeader = ({
     <Slide>
       {tags ? (
         tags.map(tag => {
-          return (
-            <Tag key={tag} color={getColorByName(tag)}>
-              <Link href={`/tag/${tag}`}>
-                <a className="text-base font-extrabold">{tag}</a>
-              </Link>
-            </Tag>
-          );
+          return <LinkTag key={tag} tag={tag} />;
         })
       ) : (
-        <Tag className="bg-primary border-primary">
-          <Link href="/tags">
-            <a className="text-light">CS</a>
-          </Link>
-        </Tag>
+        <LinkTag href="/tags" color={siteConfig.themeColor} />
       )}
-      <h1 className="my-8 text-8xl text-light">{title}</h1>
-      <Tag className="tag-black">
-        <div className="text-base font-extrabold">
-          Posted on{' '}
-          {createTime ? new Date(createTime).toDateString() : 'Nowadays'}
-        </div>
-      </Tag>
-      <Tag className="tag-black">
-        <div className="text-base font-extrabold">
-          Last updated on{' '}
-          {updateTime ? new Date(updateTime).toDateString() : 'Nowadays'}
-        </div>
-      </Tag>
-      <Tag className="tag-black">
-        <div className="text-base font-extrabold">({timeToRead} minutes)</div>
-      </Tag>
+      <h1 className="my-8 text-light text-6xl md:text-8xl">{title}</h1>
+      <IconTag
+        tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
+        icon={<CalendarOutlined />}
+      />
+      <IconTag
+        tag={updateTime ? new Date(updateTime).toDateString() : 'Nowadays'}
+        icon={<EditOutlined />}
+      />
+      <IconTag tag={`${timeToRead} minutes`} icon={<ClockCircleOutlined />} />
     </Slide>
   </div>
 );

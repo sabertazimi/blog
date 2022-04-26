@@ -4,78 +4,120 @@ exports[`Article should render correctly (snapshot) 1`] = `
 <div>
   <div>
     <div
-      class="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
+      class="w-full p-3 md:px-32 md:pt-48 md:pb-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
     >
       <div
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(245, 159, 0);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             JavaScript
           </a>
         </span>
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(55, 178, 77);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             Frontend Development
           </a>
         </span>
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(112, 72, 232);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             Web Development
           </a>
         </span>
         <h1
-          class="my-8 text-8xl text-light"
+          class="my-8 text-light text-6xl md:text-8xl"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-          </div>
+          </span>
         </span>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="edit"
+            class="anticon anticon-edit"
+            role="img"
           >
-            Last updated on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="edit"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-          </div>
+          </span>
         </span>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="clock-circle"
+            class="anticon anticon-clock-circle"
+            role="img"
           >
-            (
-            1
-             minutes)
-          </div>
+            <svg
+              aria-hidden="true"
+              data-icon="clock-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+              <path
+                d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+              />
+            </svg>
+          </span>
+          <span>
+            1 minutes
+          </span>
         </span>
       </div>
     </div>
@@ -389,58 +431,105 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
 <div>
   <div>
     <div
-      class="w-full px-32 py-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
+      class="w-full p-3 md:px-32 md:pt-48 md:pb-40 bg-center bg-no-repeat bg-cover bg-gradient-primary"
     >
       <div
         data-projection-id="1"
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag bg-primary border-primary"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
+          style="background-color: rgb(24, 144, 255);"
         >
-          <a
-            class="text-light"
-          >
-            CS
+          <a>
+            Computer Science
           </a>
         </span>
         <h1
-          class="my-8 text-8xl text-light"
+          class="my-8 text-light text-6xl md:text-8xl"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Nowadays
-          </div>
+          </span>
         </span>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="edit"
+            class="anticon anticon-edit"
+            role="img"
           >
-            Last updated on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="edit"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+              />
+            </svg>
+          </span>
+          <span>
             Nowadays
-          </div>
+          </span>
         </span>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="clock-circle"
+            class="anticon anticon-clock-circle"
+            role="img"
           >
-            (
-            1
-             minutes)
-          </div>
+            <svg
+              aria-hidden="true"
+              data-icon="clock-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+              />
+              <path
+                d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+              />
+            </svg>
+          </span>
+          <span>
+            1 minutes
+          </span>
         </span>
       </div>
     </div>

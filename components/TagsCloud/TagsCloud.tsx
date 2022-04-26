@@ -1,7 +1,6 @@
-import { colors, getColorByName } from '@config';
-import type { Tags, Tag } from '@types';
-import { Tag as AntTag } from 'antd';
-import Link from 'next/link';
+import LinkTag from '@components/Tags/LinkTag';
+import { colors, getColorByName, siteConfig } from '@config';
+import type { Tag, Tags } from '@types';
 
 interface Props {
   tags: Tags;
@@ -20,35 +19,24 @@ const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
   return (
     <div>
       {activeTag ? (
-        <AntTag className="mb-3" color={getColorByName(activeTag)}>
-          <Link href={`/tag/${activeTag}`}>
-            <a className="text-lg font-extrabold">
-              {activeTag} &nbsp; {tags[activeTag]}
-            </a>
-          </Link>
-        </AntTag>
+        <LinkTag tag={activeTag} className="md:mb-3 md:text-lg" />
       ) : null}
-      {tagsList.map(tag => {
-        return (
-          <AntTag
-            key={tag}
-            className="mb-3"
-            color={activeTag ? colors.gray : getColorByName(tag)}
-          >
-            <Link href={`/tag/${tag}`}>
-              <a className="text-lg font-extrabold">
-                {tag} &nbsp; {tags[tag]}
-              </a>
-            </Link>
-          </AntTag>
-        );
-      })}
+      {tagsList.map(tag => (
+        <LinkTag
+          key={tag}
+          tag={`${tag} ${tags[tag]}`}
+          href={`/tag/${tag}`}
+          color={activeTag ? colors.gray : getColorByName(tag)}
+          className="md:mb-3 md:text-lg"
+        />
+      ))}
       {activeTag ? (
-        <AntTag className="mb-3 bg-primary border-primary">
-          <Link href="/tags">
-            <a className="text-lg font-extrabold text-light">All</a>
-          </Link>
-        </AntTag>
+        <LinkTag
+          tag="All"
+          href="/tags"
+          color={siteConfig.themeColor}
+          className="md:mb-3 md:text-lg"
+        />
       ) : null}
     </div>
   );

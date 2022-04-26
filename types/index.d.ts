@@ -11,7 +11,7 @@ export interface PostMeta {
   author?: string;
   createTime?: string;
   updateTime?: string;
-  tags?: TagType[];
+  tags?: Tag[];
   prevPost: {
     slug: string;
     title: string;

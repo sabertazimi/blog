@@ -1,9 +1,9 @@
-import { ReadOutlined } from '@ant-design/icons';
+import { CalendarOutlined, ReadOutlined } from '@ant-design/icons';
 import { Container } from '@components';
 import { Slide } from '@components/Motion';
-import { getColorByName } from '@config';
+import { IconTag, LinkTag } from '@components/Tags';
 import type { PostMeta } from '@types';
-import { Button, Skeleton, Tag, Typography } from 'antd';
+import { Button, Skeleton, Typography } from 'antd';
 import classNames from 'classnames';
 import Link from 'next/link';
 
@@ -13,7 +13,7 @@ interface Props {
 
 const PostCard = ({ post }: Props): JSX.Element => {
   const { tags, slug, title, createTime, timeToRead } = post;
-  const tagName = tags ? tags[0] : 'Computer Science';
+  const tag = tags ? tags[0] : 'Computer Science';
 
   return (
     <Container
@@ -24,20 +24,14 @@ const PostCard = ({ post }: Props): JSX.Element => {
       )}
     >
       <Slide delay={0.2}>
-        <Tag color={getColorByName(tagName)}>
-          <Link href={`/tag/${tagName}`}>
-            <a className="text-base font-extrabold">{tagName}</a>
-          </Link>
-        </Tag>
+        <LinkTag tag={tag} />
         <Typography.Title className="my-3" level={2}>
           {title}
         </Typography.Title>
-        <Tag className="tag-black">
-          <div className="text-base font-extrabold">
-            Posted on{' '}
-            {createTime ? new Date(createTime).toDateString() : 'Nowadays'}{' '}
-          </div>
-        </Tag>
+        <IconTag
+          tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
+          icon={<CalendarOutlined />}
+        />
         <Container className="mt-3">
           <Skeleton
             paragraph={{ rows: Math.min(Math.floor(timeToRead / 2), 10) }}
