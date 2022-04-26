@@ -19,7 +19,7 @@
   "browserslist": "last 2 versions",
   "packageManager": "yarn@3.2.0",
   "scripts": {
-    "build": "next build && next-sitemap",
+    "build": "next build && next-sitemap --config sitemap.config.js",
     "dev": "next",
     "format": "prettier --write {__mocks__,components,config,contents,hooks,layouts,lib,pages,styles,types}/**/*.{ts,tsx,css}",
     "lint": "next lint && yarn lint:md && yarn lint:style && yarn lint:type-check",
