@@ -5,6 +5,8 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import readingTime from 'reading-time';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 
 const contentsPath = path.join(process.cwd(), 'contents');
 let postsData: Post[] = [];
@@ -41,7 +43,13 @@ async function generatePostData(filePath: string): Promise<Post> {
   const updateTime = execSync(
     `git log -1 --pretty=format:%aI ${filePath}`
   ).toString();
-  const source = await serialize(content, { parseFrontmatter: false });
+  const source = await serialize(content, {
+    parseFrontmatter: false,
+    mdxOptions: {
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    },
+  });
 
   return {
     ...fields,
