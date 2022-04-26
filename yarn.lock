@@ -2193,6 +2193,7 @@ __metadata:
     rehype-autolink-headings: ^6.1.1
     rehype-katex: ^6.0.2
     rehype-slug: ^5.0.1
+    remark-gemoji: ^7.0.1
     remark-gfm: ^3.0.1
     remark-github: ^11.2.2
     remark-math: ^5.1.1
@@ -5873,6 +5874,13 @@ __metadata:
     strip-ansi: ^3.0.1
     wide-align: ^1.1.0
   checksum: a89b53cee65579b46832e050b5f3a79a832cc422c190de79c6b8e2e15296ab92faddde6ddf2d376875cbba2b043efa99b9e1ed8124e7365f61b04e3cee9d40ee
+  languageName: node
+  linkType: hard
+
+"gemoji@npm:^7.0.0":
+  version: 7.1.0
+  resolution: "gemoji@npm:7.1.0"
+  checksum: aa7302de49fd5c7cbbc1c62b38f00fe3603433931bfc809b1ea8cf54180ecfbba31471e16a89c65c1ba066c00ebe76428563f8a16515f776e2e38f2b5a9630ad
   languageName: node
   linkType: hard
 
@@ -11413,6 +11421,18 @@ __metadata:
     unified: ^10.0.0
     unist-util-visit: ^4.0.0
   checksum: 33e6e9419fc8ac54d5bdac736fe788e3b1ae71b10a8bf1ea4be4af17c504afda9ae0438ce827a13cde0fe334725e9624d9fbde2f5d9fc061378ec5f0bb4c247d
+  languageName: node
+  linkType: hard
+
+"remark-gemoji@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "remark-gemoji@npm:7.0.1"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    gemoji: ^7.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: a19a24fc06904db6ff0bce806b97d492ed03be1ea5d5d212f4985ca706de27623adb0d08144aa84aa8328397cbc192b42696436db3f835ed13959123f6b48515
   languageName: node
   linkType: hard
 
