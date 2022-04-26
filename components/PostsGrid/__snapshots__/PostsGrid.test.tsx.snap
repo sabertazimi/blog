@@ -12,12 +12,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(245, 159, 0);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             JavaScript
           </a>
         </span>
@@ -27,16 +25,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           1 Basic Notes
         </h2>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-             
-          </div>
+          </span>
         </span>
         <div
           class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -92,12 +104,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(245, 159, 0);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             JavaScript
           </a>
         </span>
@@ -107,16 +117,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           2 Basic Notes
         </h2>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-             
-          </div>
+          </span>
         </span>
         <div
           class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -176,12 +200,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(245, 159, 0);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             JavaScript
           </a>
         </span>
@@ -191,16 +213,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           3 Basic Notes
         </h2>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-             
-          </div>
+          </span>
         </span>
         <div
           class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -260,12 +296,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(245, 159, 0);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             JavaScript
           </a>
         </span>
@@ -275,16 +309,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           4 Basic Notes
         </h2>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-             
-          </div>
+          </span>
         </span>
         <div
           class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -345,12 +393,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color"
+          class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
           style="background-color: rgb(245, 159, 0);"
         >
-          <a
-            class="text-base font-extrabold"
-          >
+          <a>
             JavaScript
           </a>
         </span>
@@ -360,16 +406,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           5 Basic Notes
         </h2>
         <span
-          class="ant-tag tag-black"
+          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
         >
-          <div
-            class="text-base font-extrabold"
+          <span
+            aria-label="calendar"
+            class="anticon anticon-calendar"
+            role="img"
           >
-            Posted on
-             
+            <svg
+              aria-hidden="true"
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+          <span>
             Wed Aug 08 2018
-             
-          </div>
+          </span>
         </span>
         <div
           class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -437,12 +497,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(-200px) translateZ(0);"
         >
           <span
-            class="ant-tag ant-tag-has-color"
+            class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
             style="background-color: rgb(245, 159, 0);"
           >
-            <a
-              class="text-base font-extrabold"
-            >
+            <a>
               JavaScript
             </a>
           </span>
@@ -452,16 +510,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
             1 Basic Notes
           </h2>
           <span
-            class="ant-tag tag-black"
+            class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
           >
-            <div
-              class="text-base font-extrabold"
+            <span
+              aria-label="calendar"
+              class="anticon anticon-calendar"
+              role="img"
             >
-              Posted on
-               
+              <svg
+                aria-hidden="true"
+                data-icon="calendar"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+                />
+              </svg>
+            </span>
+            <span>
               Wed Aug 08 2018
-               
-            </div>
+            </span>
           </span>
           <div
             class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -517,12 +589,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(-200px) translateZ(0);"
         >
           <span
-            class="ant-tag ant-tag-has-color"
+            class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
             style="background-color: rgb(245, 159, 0);"
           >
-            <a
-              class="text-base font-extrabold"
-            >
+            <a>
               JavaScript
             </a>
           </span>
@@ -532,16 +602,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
             2 Basic Notes
           </h2>
           <span
-            class="ant-tag tag-black"
+            class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
           >
-            <div
-              class="text-base font-extrabold"
+            <span
+              aria-label="calendar"
+              class="anticon anticon-calendar"
+              role="img"
             >
-              Posted on
-               
+              <svg
+                aria-hidden="true"
+                data-icon="calendar"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+                />
+              </svg>
+            </span>
+            <span>
               Wed Aug 08 2018
-               
-            </div>
+            </span>
           </span>
           <div
             class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -601,12 +685,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(-200px) translateZ(0);"
         >
           <span
-            class="ant-tag ant-tag-has-color"
+            class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
             style="background-color: rgb(245, 159, 0);"
           >
-            <a
-              class="text-base font-extrabold"
-            >
+            <a>
               JavaScript
             </a>
           </span>
@@ -616,16 +698,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
             3 Basic Notes
           </h2>
           <span
-            class="ant-tag tag-black"
+            class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
           >
-            <div
-              class="text-base font-extrabold"
+            <span
+              aria-label="calendar"
+              class="anticon anticon-calendar"
+              role="img"
             >
-              Posted on
-               
+              <svg
+                aria-hidden="true"
+                data-icon="calendar"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+                />
+              </svg>
+            </span>
+            <span>
               Wed Aug 08 2018
-               
-            </div>
+            </span>
           </span>
           <div
             class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -689,12 +785,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(-200px) translateZ(0);"
         >
           <span
-            class="ant-tag ant-tag-has-color"
+            class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
             style="background-color: rgb(245, 159, 0);"
           >
-            <a
-              class="text-base font-extrabold"
-            >
+            <a>
               JavaScript
             </a>
           </span>
@@ -704,16 +798,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
             4 Basic Notes
           </h2>
           <span
-            class="ant-tag tag-black"
+            class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
           >
-            <div
-              class="text-base font-extrabold"
+            <span
+              aria-label="calendar"
+              class="anticon anticon-calendar"
+              role="img"
             >
-              Posted on
-               
+              <svg
+                aria-hidden="true"
+                data-icon="calendar"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+                />
+              </svg>
+            </span>
+            <span>
               Wed Aug 08 2018
-               
-            </div>
+            </span>
           </span>
           <div
             class="container relative block h-full mx-auto my-0 p-auto mt-3"
@@ -774,12 +882,10 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(-200px) translateZ(0);"
         >
           <span
-            class="ant-tag ant-tag-has-color"
+            class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
             style="background-color: rgb(245, 159, 0);"
           >
-            <a
-              class="text-base font-extrabold"
-            >
+            <a>
               JavaScript
             </a>
           </span>
@@ -789,16 +895,30 @@ exports[`PostsGrid should render correctly (snapshot) 1`] = `
             5 Basic Notes
           </h2>
           <span
-            class="ant-tag tag-black"
+            class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
           >
-            <div
-              class="text-base font-extrabold"
+            <span
+              aria-label="calendar"
+              class="anticon anticon-calendar"
+              role="img"
             >
-              Posted on
-               
+              <svg
+                aria-hidden="true"
+                data-icon="calendar"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+                />
+              </svg>
+            </span>
+            <span>
               Wed Aug 08 2018
-               
-            </div>
+            </span>
           </span>
           <div
             class="container relative block h-full mx-auto my-0 p-auto mt-3"

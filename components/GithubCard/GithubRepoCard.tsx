@@ -21,7 +21,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
     >
       <Card.Meta
         title={
-          <Tag className="mb-2" color={getColorByName(repo.language)}>
+          <Tag className="mb-3" color={getColorByName(repo.language)}>
             {repo.language}
           </Tag>
         }
