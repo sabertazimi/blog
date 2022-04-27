@@ -1,4 +1,4 @@
-import { SocialButton } from '@components';
+import SocialButton from '@components/SocialButton';
 import { socialColors, socialList, socialQuery } from '@config';
 import type { SocialColor, SocialType } from '@types';
 import { Space } from 'antd';

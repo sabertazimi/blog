@@ -1,17 +1,15 @@
 import { BarsOutlined } from '@ant-design/icons';
+import Link from '@components/Link';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
 import { Col, Menu, Popover, Row } from 'antd';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">
     <Col className="flex-container" span={8} offset={8}>
       <Link href="/">
-        <a>
-          <Image src={logo} alt="Logo" width={96} height={96} />
-        </a>
+        <Image src={logo} alt="Logo" width={96} height={96} />
       </Link>
     </Col>
     <Col className="flex-container" span={8}>

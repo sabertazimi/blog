@@ -1,4 +1,4 @@
-import LinkTag from '@components/Tags/LinkTag';
+import { LinkTag } from '@components/Tags';
 import { colors, getColorByName, siteConfig } from '@config';
 import type { Tag, Tags } from '@types';
 

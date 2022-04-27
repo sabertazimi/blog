@@ -1,4 +1,4 @@
-import { FlexContainer } from '@components';
+import FlexContainer from '@components/FlexContainer';
 import type { PostMeta } from '@types';
 import PostCard from './PostCard';
 

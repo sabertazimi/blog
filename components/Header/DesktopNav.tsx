@@ -1,11 +1,11 @@
-import { PostsSearchBar } from '@components';
+import Link from '@components/Link';
+import PostsSearchBar from '@components/PostsSearchBar';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
 import type { PostMeta } from '@types';
 import { Menu } from 'antd';
 import classNames from 'classnames';
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface Props {
   fixed: boolean;
@@ -33,28 +33,25 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       {
         key: 'home',
         label: (
-          <Link href="/">
-            <a className="flex-container transition transform-gpu">
-              <Image src={logo} alt="Logo" width={96} height={96} />
-            </a>
+          <Link href="/" className="flex-container transition transform-gpu">
+            <Image src={logo} alt="Logo" width={96} height={96} />
           </Link>
         ),
       },
       ...routes.map(route => ({
         key: route.id,
         label: (
-          <Link href={route.path}>
-            <a
-              className={classNames(
-                'flex-container h-full transition transform-gpu transition-none',
-                {
-                  'text-light': !fixed,
-                  'text-dark': fixed,
-                }
-              )}
-            >
-              {route.name}
-            </a>
+          <Link
+            href={route.path}
+            className={classNames(
+              'flex-container h-full transition transform-gpu transition-none',
+              {
+                'text-light': !fixed,
+                'text-dark': fixed,
+              }
+            )}
+          >
+            {route.name}
           </Link>
         ),
       })),

@@ -1,5 +1,6 @@
-import { Container, SocialGroup } from '@components';
+import Container from '@components/Container';
 import { Comment } from '@components/Icons';
+import SocialGroup from '@components/SocialGroup';
 import { siteConfig } from '@config';
 import type { Post } from '@types';
 import ArticleComments from './ArticleComments';

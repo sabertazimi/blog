@@ -12,7 +12,9 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
         style="background-color: rgb(245, 159, 0);"
       >
-        <a>
+        <a
+          class=""
+        >
           JavaScript
         </a>
       </span>
@@ -69,7 +71,9 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
           class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
           type="button"
         >
-          <a>
+          <a
+            class=""
+          >
             <span
               aria-label="read"
               class="anticon anticon-read"
@@ -110,7 +114,9 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         class="ant-tag ant-tag-has-color mb-1 text-base font-extrabold"
         style="background-color: rgb(66, 99, 235);"
       >
-        <a>
+        <a
+          class=""
+        >
           Computer Science
         </a>
       </span>
@@ -167,7 +173,9 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
           class="ant-btn ant-btn-default float-right m-0 text-2xl rounded-full w-14 h-14 button-primary"
           type="button"
         >
-          <a>
+          <a
+            class=""
+          >
             <span
               aria-label="read"
               class="anticon anticon-read"

@@ -1,7 +1,7 @@
+import Link from '@components/Link';
 import { Bounce } from '@components/Motion';
 import { Tooltip } from 'antd';
 import classNames from 'classnames';
-import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 interface Props {
@@ -20,9 +20,7 @@ const LandingNavLink = ({ title, href, children }: Props): JSX.Element => (
         )}
         role="link"
       >
-        <Link href={href}>
-          <a>{children}</a>
-        </Link>
+        <Link href={href}>{children}</Link>
       </span>
     </Bounce>
   </Tooltip>
