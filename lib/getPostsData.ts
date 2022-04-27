@@ -9,10 +9,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
+import remarkDirective from 'remark-directive';
 import remarkGemoji from 'remark-gemoji';
 import remarkGfm from 'remark-gfm';
 import remarkGitHub from 'remark-github';
 import remarkMath from 'remark-math';
+import remarkAdmonitions from './remark-admonitions';
 
 const contentsPath = path.join(process.cwd(), 'contents');
 let postsData: Post[] = [];
@@ -52,7 +54,14 @@ async function generatePostData(filePath: string): Promise<Post> {
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkGitHub, remarkGemoji, remarkMath],
+      remarkPlugins: [
+        remarkGfm,
+        remarkGitHub,
+        remarkGemoji,
+        remarkMath,
+        remarkDirective,
+        remarkAdmonitions,
+      ],
       rehypePlugins: [
         rehypeSlug,
         rehypeAutolinkHeadings,
