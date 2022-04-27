@@ -43,8 +43,3 @@ window.requestAnimationFrame = function (callback) {
 };
 
 window.cancelAnimationFrame = window.clearTimeout;
-
-// Mock Next.js `<MDXRemote>` component.
-jest.mock('next-mdx-remote', () => ({
-  MDXRemote: ({ compiledSource }) => compiledSource,
-}));

@@ -165,7 +165,9 @@ exports[`Article should render correctly (snapshot) 1`] = `
       <div
         style="opacity: 0;"
       >
-        ## 1 Basic Notes
+        <h2>
+          1 Basic Notes
+        </h2>
       </div>
       <div
         class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"
@@ -583,7 +585,9 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         data-projection-id="2"
         style="opacity: 0;"
       >
-        ## 1 Basic Notes
+        <h2>
+          1 Basic Notes
+        </h2>
       </div>
       <div
         class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-8 font-extrabold"

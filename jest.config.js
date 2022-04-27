@@ -6,10 +6,6 @@ const paths = pathsToModuleNameMapper(compilerOptions.paths, {
   prefix: '<rootDir>/',
 });
 
-const createJestConfig = nextJest({
-  dir: './',
-});
-
 /** @type {import('ts-jest').InitialOptionsTsJest} */
 const customJestConfig = {
   collectCoverage: true,
@@ -29,11 +25,26 @@ const customJestConfig = {
     '!**/useVisibility.ts',
     '!**/Header.tsx',
   ],
+  moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
     ...paths,
   },
-  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testEnvironment: 'jest-environment-jsdom',
 };
 
-module.exports = createJestConfig(customJestConfig);
+const createJestConfig = nextJest({
+  dir: './',
+})(customJestConfig);
+
+module.exports = async () => {
+  const jestConfig = await createJestConfig();
+  const transformIgnorePatterns = [
+    // Transform ESM-only modules in `node_modules`.
+    '/node_modules/(?!next-mdx-remote|@mdx-js)',
+    ...jestConfig.transformIgnorePatterns.filter(
+      pattern => pattern !== '/node_modules/'
+    ),
+  ];
+  return { ...jestConfig, transformIgnorePatterns };
+};
