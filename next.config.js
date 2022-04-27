@@ -1,5 +1,7 @@
 const NextPwa = require('next-pwa');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -11,10 +13,10 @@ const nextConfig = {
   },
   pwa: {
     dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
+    disable: !isProduction,
   },
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: isProduction,
 };
 
 module.exports = NextPwa(nextConfig);
