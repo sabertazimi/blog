@@ -2177,7 +2177,7 @@ __metadata:
     katex: ^0.15.3
     markdownlint-cli: ^0.31.1
     next: 12.1.5
-    next-mdx-remote: 4.0.1
+    next-mdx-remote: ^4.0.3
     next-progress: ^2.2.0
     next-pwa: ^5.5.2
     next-seo: ^5.4.0
@@ -9183,18 +9183,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-mdx-remote@npm:4.0.1":
-  version: 4.0.1
-  resolution: "next-mdx-remote@npm:4.0.1"
+"next-mdx-remote@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "next-mdx-remote@npm:4.0.3"
   dependencies:
     "@mdx-js/mdx": ^2.0.0
     "@mdx-js/react": ^2.0.0
     vfile: ^5.3.0
     vfile-matter: ^3.0.1
   peerDependencies:
-    react: ">=16.x <=17.x"
-    react-dom: ">=16.x <=17.x"
-  checksum: 193b2b86cf98ac734d947762b1b21dc016d971a89588243e0c3be8bb9a9575a53fd983e9873dd2c4dfb09cdb7208d0d18a7488523b0a7cbb81f90d40754b91aa
+    react: ">=16.x <=18.x"
+    react-dom: ">=16.x <=18.x"
+  checksum: 6518d46892b386bacda0badb6032273e8e1fc39ce1e0c37c1565db5aa5af9b3b263151315b1fd08449d95d3f21b74baed119ade5101f8f03d558953e1c7c7336
   languageName: node
   linkType: hard
 
