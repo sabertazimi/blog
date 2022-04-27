@@ -11,6 +11,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
       >
         <a
           class=""
+          href="/"
         >
           <span
             style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
@@ -79,6 +80,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         >
           <a
             class="flex-container transition transform-gpu"
+            href="/"
           >
             <span
               style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
@@ -116,6 +118,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         >
           <a
             class="flex-container h-full transition transform-gpu transition-none text-light"
+            href="/posts"
           >
             Posts
           </a>
@@ -132,6 +135,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         >
           <a
             class="flex-container h-full transition transform-gpu transition-none text-light"
+            href="/tags"
           >
             Tags
           </a>
@@ -148,6 +152,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         >
           <a
             class="flex-container h-full transition transform-gpu transition-none text-light"
+            href="/books"
           >
             Books
           </a>
@@ -164,6 +169,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         >
           <a
             class="flex-container h-full transition transform-gpu transition-none text-light"
+            href="/about"
           >
             About
           </a>
