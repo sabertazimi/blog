@@ -29,79 +29,28 @@ describe('useVisibility', () => {
 
     return (
       <div>
-        <div
-          ref={headerRef}
-          style={{
-            boxSizing: 'border-box',
-            display: 'block',
-            margin: '0 auto',
-            padding: '0',
-            width: '100%',
-            height: '50px',
-          }}
-        >
-          Header
-        </div>
-        <div
-          style={{
-            boxSizing: 'border-box',
-            display: 'block',
-            margin: '0 auto',
-            padding: '0',
-            width: '100%',
-            height: '150vh',
-          }}
-        >
-          Main
-        </div>
-        <div
-          style={{
-            boxSizing: 'border-box',
-            display: 'block',
-            margin: '0 auto',
-            padding: '0',
-            width: '100%',
-            height: '50px',
-          }}
-        >
-          Footer
-        </div>
+        <div ref={headerRef}>Header</div>
+        <div>Main</div>
+        <div>Footer</div>
       </div>
     );
   };
 
-  let mockConsoleError: jest.SpyInstance;
-
-  beforeEach(() => {
-    mockConsoleError = jest
-      .spyOn(console, 'error')
-      .mockImplementation(jest.fn());
-  });
-
-  afterEach(() => {
-    mockConsoleError.mockRestore();
-  });
-
-  test('should log error message when missing ref', async () => {
+  test('should early return when missing ref', () => {
     render(<Header />);
 
     fireEvent.scroll(window, { target: { scrollY: 100 } });
 
-    await waitFor(() => {
-      expect(mockConsoleError).toHaveBeenCalledTimes(1);
-    });
+    waitFor(() => expect(onBottomPassed).not.toBeCalled());
+    waitFor(() => expect(onBottomPassedReverse).not.toBeCalled());
   });
 
-  test('should invoke callbacks when scrolling', async () => {
+  test('should invoke callbacks when scrolling', () => {
     render(<HeaderWithRef />);
 
-    fireEvent.scroll(window, { target: { scrollY: 0 } });
+    fireEvent.scroll(window, { target: { scrollY: 100 } });
 
-    await waitFor(() => {
-      expect(onBottomPassed).not.toBeCalled();
-    });
-    await waitFor(() => {
-      expect(onBottomPassedReverse).not.toBeCalled();
-    });
+    waitFor(() => expect(onBottomPassed).toBeCalled());
+    waitFor(() => expect(onBottomPassedReverse).toBeCalled());
   });
 });

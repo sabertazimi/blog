@@ -46,7 +46,7 @@ class ErrorBoundary extends Component<Props, State> {
             </Typography.Paragraph>
             <Typography.Paragraph>
               <Typography.Text>
-                Please check console output for further details.
+                Please check terminal output for further details.
               </Typography.Text>
             </Typography.Paragraph>
             <Typography.Paragraph>
