@@ -179,6 +179,15 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 28. **`package.json`**: A manifest file for Node.js projects.
 29. **`README.md`**: A text file containing useful reference information.
 
+## Caveats
+
+`import` and `export` statements cannot be used **inside** an MDX file.
+If you need to use components in your MDX files,
+they should be provided to `/components/MDX/index.ts`.
+
+See reason [here](https://github.com/hashicorp/next-mdx-remote#import--export)
+and explanation [here](https://github.com/hashicorp/next-mdx-remote/issues/143#issuecomment-1043067293).
+
 ## Contact
 
 [![Email](https://img.shields.io/badge/-Gmail-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sabertazimi@gmail.com)
