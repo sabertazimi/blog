@@ -48,7 +48,27 @@ const basePosts = Array.from(Array(5).keys()).map(index => ({
   prevPost: null,
   nextPost: null,
   source: {
-    compiledSource: `## ${index + 1} Basic Notes`,
+    compiledSource: `
+      /*@jsxRuntime automatic @jsxImportSource react*/
+      const {jsx: _jsx} = arguments[0];
+      const {useMDXComponents: _provideComponents} = arguments[0];
+      function MDXContent(props = {}) {
+        const {wrapper: MDXLayout} = Object.assign({}, _provideComponents(), props.components);
+        return MDXLayout ? _jsx(MDXLayout, Object.assign({}, props, {
+          children: _jsx(_createMdxContent, {})
+        })) : _createMdxContent();
+        function _createMdxContent() {
+          const _components = Object.assign({
+            h2: "h2"
+          }, _provideComponents(), props.components);
+          return _jsx(_components.h2, {
+            children: "${index + 1} Basic Notes"
+          });
+        }
+      }
+      return {
+        default: MDXContent
+      };`,
   },
 }));
 
