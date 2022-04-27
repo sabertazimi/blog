@@ -1,0 +1,552 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostLayout should render correctly (snapshot) 1`] = `
+<div>
+  <div>
+    <div>
+      <div
+        class="ant-row ant-row-center ant-row-middle md:hidden"
+      >
+        <div
+          class="ant-col ant-col-8 ant-col-offset-8 flex-container"
+        >
+          <a
+            class=""
+          >
+            <span
+              style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+            >
+              <span
+                style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+              >
+                <img
+                  alt=""
+                  aria-hidden="true"
+                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2796%27%20height=%2796%27/%3e"
+                  style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                />
+              </span>
+              <img
+                alt="Logo"
+                data-nimg="intrinsic"
+                decoding="async"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+              />
+              <noscript />
+            </span>
+          </a>
+        </div>
+        <div
+          class="ant-col ant-col-8 flex-container"
+        >
+          <span
+            aria-label="bars"
+            class="anticon anticon-bars text-5xl text-primary"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="bars"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1024 1024"
+              width="1em"
+            >
+              <path
+                d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <ul
+        class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-100 w-full hidden md:visible md:flex font-extrabold bg-transparent border-transparent transition transform-gpu backdrop-blur-none bg-gradient-primary shadow-none"
+        data-menu-list="true"
+        role="menu"
+        tabindex="0"
+      >
+        <li
+          class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+          data-menu-id="rc-menu-uuid-test-home"
+          role="menuitem"
+          style="opacity: 1; order: 0;"
+          tabindex="-1"
+        >
+          <span
+            class="ant-menu-title-content"
+          >
+            <a
+              class="flex-container transition transform-gpu"
+            >
+              <span
+                style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+              >
+                <span
+                  style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2796%27%20height=%2796%27/%3e"
+                    style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                  />
+                </span>
+                <img
+                  alt="Logo"
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                />
+                <noscript />
+              </span>
+            </a>
+          </span>
+        </li>
+        <li
+          class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+          role="menuitem"
+          style="opacity: 1; order: 1;"
+          tabindex="-1"
+        >
+          <span
+            class="ant-menu-title-content"
+          >
+            <a
+              class="flex-container h-full transition transform-gpu transition-none text-light"
+            >
+              Posts
+            </a>
+          </span>
+        </li>
+        <li
+          class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+          role="menuitem"
+          style="opacity: 1; order: 2;"
+          tabindex="-1"
+        >
+          <span
+            class="ant-menu-title-content"
+          >
+            <a
+              class="flex-container h-full transition transform-gpu transition-none text-light"
+            >
+              Tags
+            </a>
+          </span>
+        </li>
+        <li
+          class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+          role="menuitem"
+          style="opacity: 1; order: 3;"
+          tabindex="-1"
+        >
+          <span
+            class="ant-menu-title-content"
+          >
+            <a
+              class="flex-container h-full transition transform-gpu transition-none text-light"
+            >
+              Books
+            </a>
+          </span>
+        </li>
+        <li
+          class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+          role="menuitem"
+          style="opacity: 1; order: 4;"
+          tabindex="-1"
+        >
+          <span
+            class="ant-menu-title-content"
+          >
+            <a
+              class="flex-container h-full transition transform-gpu transition-none text-light"
+            >
+              About
+            </a>
+          </span>
+        </li>
+        <li
+          class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
+          role="menuitem"
+          style="opacity: 1; order: 5;"
+          tabindex="-1"
+        >
+          <span
+            class="ant-menu-title-content"
+          >
+            <span
+              class="flex-container h-full border-transparent transition transform-gpu"
+            >
+              <div
+                class="ant-select ant-select-auto-complete flex-container ant-select-single ant-select-customize-input ant-select-show-search"
+              >
+                <div
+                  class="ant-select-selector"
+                >
+                  <span
+                    class="ant-select-selection-search"
+                  >
+                    <span
+                      class="ant-input-affix-wrapper ant-select-selection-search-input"
+                    >
+                      <span
+                        class="ant-input-prefix"
+                      >
+                        <span
+                          aria-label="search"
+                          class="anticon anticon-search"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="search"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                      <input
+                        aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+                        aria-autocomplete="list"
+                        aria-controls="rc_select_TEST_OR_SSR_list"
+                        aria-haspopup="listbox"
+                        aria-owns="rc_select_TEST_OR_SSR_list"
+                        autocomplete="off"
+                        class="ant-input"
+                        id="rc_select_TEST_OR_SSR"
+                        placeholder="Search Posts ..."
+                        role="combobox"
+                        type="search"
+                        value=""
+                      />
+                      <span
+                        class="ant-input-suffix"
+                      >
+                        <span
+                          class="ant-input-clear-icon ant-input-clear-icon-hidden"
+                          role="button"
+                          tabindex="-1"
+                        >
+                          <span
+                            aria-label="close-circle"
+                            class="anticon anticon-close-circle"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="close-circle"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  />
+                </div>
+              </div>
+            </span>
+          </span>
+        </li>
+        <li
+          aria-hidden="true"
+          class="ant-menu-overflow-item ant-menu-overflow-item-rest ant-menu-submenu ant-menu-submenu-horizontal"
+          role="none"
+          style="opacity: 0; height: 0px; overflow-y: hidden; order: 9007199254740991; pointer-events: none; position: absolute;"
+        >
+          <div
+            aria-controls="rc-menu-uuid-test-rc-menu-more-popup"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="ant-menu-submenu-title"
+            data-menu-id="rc-menu-uuid-test-rc-menu-more"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <span
+              aria-label="ellipsis"
+              class="anticon anticon-ellipsis"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="ellipsis"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                />
+              </svg>
+            </span>
+            <i
+              class="ant-menu-submenu-arrow"
+            />
+          </div>
+        </li>
+      </ul>
+      <div
+        aria-hidden="true"
+        style="display: none;"
+      />
+    </div>
+    <div
+      class="container relative block h-full mx-auto my-0 p-auto max-w-full"
+    >
+      <div>
+        PostLayout
+      </div>
+      <div
+        class="ant-back-top"
+      />
+    </div>
+    <div
+      class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light"
+    >
+      <div
+        class="ant-row ant-row-center ant-row-middle"
+      >
+        <div
+          class="ant-col ant-col-24"
+        >
+          <div
+            class="inline-flex"
+            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+          >
+            <a
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none mx-5 mt-0 mb-4"
+              href="https://github.com/sabertazimi"
+              role="link"
+            >
+              <span
+                aria-label="github"
+                class="anticon anticon-github text-4xl"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="github"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div
+            class="inline-flex"
+            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+          >
+            <a
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none mx-5 mt-0 mb-4"
+              href="https://twitter.com/sabertazimi"
+              role="link"
+            >
+              <span
+                aria-label="twitter"
+                class="anticon anticon-twitter text-4xl"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="twitter"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0075-94 336.64 336.64 0 01-108.2 41.2A170.1 170.1 0 00672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 00-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 01-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 01-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div
+            class="inline-flex"
+            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+          >
+            <a
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none mx-5 mt-0 mb-4"
+              href="https://facebook.com/sabertazimi"
+              role="link"
+            >
+              <span
+                aria-label="facebook"
+                class="anticon anticon-facebook text-4xl"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="facebook"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div
+            class="inline-flex"
+            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+          >
+            <a
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none mx-5 mt-0 mb-4"
+              href="https://linkedin.com/sabertazimi"
+              role="link"
+            >
+              <span
+                aria-label="linkedin"
+                class="anticon anticon-linkedin text-4xl"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="linkedin"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 10-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div
+            class="inline-flex"
+            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+          >
+            <a
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none mx-5 mt-0 mb-4"
+              href="https://weibo.com/sabertazimi"
+              role="link"
+            >
+              <span
+                aria-label="weibo"
+                class="anticon anticon-weibo text-4xl"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="weibo"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M457.3 543c-68.1-17.7-145 16.2-174.6 76.2-30.1 61.2-1 129.1 67.8 151.3 71.2 23 155.2-12.2 184.4-78.3 28.7-64.6-7.2-131-77.6-149.2zm-52 156.2c-13.8 22.1-43.5 31.7-65.8 21.6-22-10-28.5-35.7-14.6-57.2 13.7-21.4 42.3-31 64.4-21.7 22.4 9.5 29.6 35 16 57.3zm45.5-58.5c-5 8.6-16.1 12.7-24.7 9.1-8.5-3.5-11.2-13.1-6.4-21.5 5-8.4 15.6-12.4 24.1-9.1 8.7 3.2 11.8 12.9 7 21.5zm334.5-197.2c15 4.8 31-3.4 35.9-18.3 11.8-36.6 4.4-78.4-23.2-109a111.39 111.39 0 00-106-34.3 28.45 28.45 0 00-21.9 33.8 28.39 28.39 0 0033.8 21.8c18.4-3.9 38.3 1.8 51.9 16.7a54.2 54.2 0 0111.3 53.3 28.45 28.45 0 0018.2 36zm99.8-206c-56.7-62.9-140.4-86.9-217.7-70.5a32.98 32.98 0 00-25.4 39.3 33.12 33.12 0 0039.3 25.5c55-11.7 114.4 5.4 154.8 50.1 40.3 44.7 51.2 105.7 34 159.1-5.6 17.4 3.9 36 21.3 41.7 17.4 5.6 36-3.9 41.6-21.2v-.1c24.1-75.4 8.9-161.1-47.9-223.9zM729 499c-12.2-3.6-20.5-6.1-14.1-22.1 13.8-34.7 15.2-64.7.3-86-28-40.1-104.8-37.9-192.8-1.1 0 0-27.6 12.1-20.6-9.8 13.5-43.5 11.5-79.9-9.6-101-47.7-47.8-174.6 1.8-283.5 110.6C127.3 471.1 80 557.5 80 632.2 80 775.1 263.2 862 442.5 862c235 0 391.3-136.5 391.3-245 0-65.5-55.2-102.6-104.8-118zM443 810.8c-143 14.1-266.5-50.5-275.8-144.5-9.3-93.9 99.2-181.5 242.2-195.6 143-14.2 266.5 50.5 275.8 144.4C694.4 709 586 796.6 443 810.8z"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-divider ant-divider-horizontal my-12 bg-light"
+        role="separator"
+      />
+      <div
+        class="ant-row ant-row-center ant-row-middle"
+      >
+        <div
+          class="ant-col ant-col-24"
+        >
+          <span>
+            Copyright ©
+             
+            <a
+              class="underline"
+              href="https://github.com/sabertazimi"
+            >
+              Sabertaz
+            </a>
+             
+          </span>
+          <div
+            class="ant-divider ant-divider-vertical bg-light"
+            role="separator"
+          />
+          <span>
+            Built with
+             
+            <a
+              class="underline"
+              href="https://reactjs.org"
+            >
+              React
+            </a>
+             
+            and
+             
+            <a
+              class="underline"
+              href="https://nextjs.org"
+            >
+              Next
+            </a>
+          </span>
+          <div
+            class="ant-divider ant-divider-vertical bg-light"
+            role="separator"
+          />
+          <span>
+            Last Built Time
+             
+            <a
+              class="underline"
+              href="https://www.google.com/search?q=time"
+            >
+              2022/1/1 08:00:00
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
