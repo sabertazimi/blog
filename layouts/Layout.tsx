@@ -17,9 +17,7 @@ const Layout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
     <Header posts={posts} />
     <Container className="min-h-screen px-0 pb-28 pt-0 md:pt-28">
       <Slide>
-        <Divider className="mx-0 my-12 font-extrabold">
-          {banner || 'Life'}
-        </Divider>
+        <Divider className="mx-0 my-12 font-extrabold">{banner}</Divider>
         {children}
       </Slide>
     </Container>
