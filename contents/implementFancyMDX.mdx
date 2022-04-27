@@ -14,68 +14,40 @@ tags:
   - Web Development
 ---
 
-# H1 Heading
+# Fancy MDX
 
-## H2 Heading
+All your `.md` and `.mdx` files under the `contents` directory
+will be rendered with [MDX](https://mdxjs.com/about),
+it's an advanced `Markdown` format with `React` component support.
 
-### H3 Heading
+## Heading
 
-#### H4 Heading
+<br />
 
-##### H5 Heading
+# **Hello**, This Is a _Title_ Inside `h1`
 
-###### H6 Heading
+<h2>**Hello**, This Is a _Title_ Inside `h2`</h2>
+{/* using html tag to avoid being rendered in the sidebar */}
 
-## Horizontal Rules
+### **Hello**, This Is a _Title_ Inside `h3`
 
-Horizontal rule 1
-___
+#### **Hello**, This Is a _Title_ Inside `h4`
 
-Horizontal rule 2
+##### **Hello**, This Is a _Title_ Inside `h5`
 
----
+###### **Hello**, This Is a _Title_ Inside `h6`
 
-Horizontal rule 3
+## List
 
-***
+1. one
+2. two
+3. three
 
-## Typographic replacements
+- one
+- two
+- three
 
-Enable typographer option to see result.
-
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
-
-test.. test... test..... test?..... test!....
-
-!!!!!! ???? ,,  -- ---
-
-"Smartypants, double quotes" and 'single quotes'
-
-## Emphasis
-
-**This is bold text**
-
-__This is bold text__
-
-*This is italic text*
-
-_This is italic text_
-
-~~Strikethrough~~
-
-## Blockquotes
-
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
-
-> Blockquotes can also be continued...
-> ...continued...
-> ...continued continued...
-
-## Lists
-
-Unordered
+Unordered list
 
 + Create a list by starting a line with `+`, `-`, or `*`
 + Sub-lists are made by indenting 2 spaces:
@@ -85,7 +57,7 @@ Unordered
     - Nulla volutpat aliquam velit
 + Very easy!
 
-Ordered
+Ordered list
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
@@ -99,112 +71,88 @@ Start numbering with offset:
 57. foo
 1. bar
 
-## Code
+## Task List
 
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-
-Block code "fences"
-
-```markdown
-Sample text here...
+```md
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
 ```
 
-Syntax highlighting
+Renders
 
-```ts
-const foo = function (bar) {
-  return bar++;
-};
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
 
-foo(5);
+## Horizontal Rule
 
-some.code();
+Horizontal rule 1
+___
+
+Horizontal rule 2
+
+---
+
+Horizontal rule 3
+
+***
+
+## Emphasis
+
+### Bold
+
+```md
+**This is bold text**
+
+__This is bold text__
 ```
 
-## Links
+Renders
 
-[link text](http://dev.nodeca.com)
+**This is bold text**
 
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+__This is bold text__
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
+### Italic
 
-## Images
+```md
+*This is italic text*
 
-Remote image ![Minion](https://octodex.github.com/images/minion.png)
-Remote Alt image ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-Local image ![image](/images/landing.jpg "Local image")
+_This is italic text_
+```
 
-Like links, Images also have a footnote style syntax
+Renders
 
-![Alt text][id]
+*This is italic text*
 
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
-
-## JSX
-
-<h2>JSX Heading 2</h2>
-
-<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
-
-<section>
-  And here is *markdown* in **JSX**!
-</section>
-
-<div># this is not a heading but *this* is emphasis</div>
-
-<div>
-  This is a `p`.
-</div>
-
-Two 🍰 is: {Math.PI * 2}
-
-{(function () {
-  const guess = 0.44
-
-  if (guess > 0.66) {
-    return <span style={{color: 'tomato'}}>Look at us.</span>
-  }
-
-  if (guess > 0.33) {
-    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
-  }
-
-  return <span style={{color: 'goldenrod'}}>Not me.</span>
-})()}
-
-I can write **Markdown** alongside my _JSX_!
-
-{/* A comment! */}
-
-## GFM
-
-### Autolink literals
-
-www.example.com, https://example.com, and contact@example.com.
-
-### Footnote
-
-A note[^1]
-
-[^1]: Big note.
+_This is italic text_
 
 ### Strikethrough
 
-~one~ or ~~two~~ tildes.
+```md
+~This is strikethrough text~
 
-### Tables
+~~This is strikethrough text~~
+```
+
+Renders
+
+~This is strikethrough text~
+
+~~This is strikethrough text~~
+
+## Blockquote
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+> Blockquotes can also be continued...
+> ...continued...
+> ...continued continued...
+
+## Table
 
 | a | b  |  c |  d  |
 | - | :- | -: | :-: |
@@ -243,12 +191,165 @@ Right aligned columns
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |
 
-### Tasklist
+## Code
 
-* [ ] to do
-* [x] done
+Inline `code`
 
-### Git
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+```markdown
+Sample text here...
+```
+
+Syntax highlighting
+
+```ts
+const foo = function (bar) {
+  return bar++;
+};
+
+foo(5);
+
+some.code();
+```
+
+## Link
+
+[link text](https://github.com/sabertazimi)
+
+[link with title](https://sabertazimi.github.io/awesome-notes "title text!")
+
+### Autolink Literal
+
+Autoconverted link https://github.com/sabertazimi/blog (enable linkify to see)
+
+www.example.com, https://example.com, and contact@example.com.
+
+### Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+## Image
+
+Remote image ![Minion](https://octodex.github.com/images/minion.png)
+Remote Alt image ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+Local image ![image](/images/landing.jpg "Local image")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+```md
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+```
+
+## JSX
+
+### JSX Element
+
+```md
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>
+  And here is *markdown* in **JSX**!
+</section>
+
+<div># this is not a heading but *this* is emphasis</div>
+
+I can write **Markdown** alongside my _JSX_!
+
+<div>
+  This is a `p`.
+</div>
+```
+
+Renders
+
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>
+  And here is *markdown* in **JSX**!
+</section>
+
+<div># this is not a heading but *this* is emphasis</div>
+
+I can write **Markdown** alongside my _JSX_!
+
+<div>
+  This is a `p`.
+</div>
+
+### JavaScript Expression
+
+```md
+Two 🍰 is: {Math.PI * 2}
+```
+
+Renders
+
+Two 🍰 is: {Math.PI * 2}
+
+```md
+{(function () {
+  const guess = 0.44
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+```
+
+Renders
+
+{(function () {
+  const guess = 0.44
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+### MDX Comments
+
+```md
+{/* A comment! */}
+```
+
+Renders nothing
+
+{/* A comment! */}
+
+## Git
 
 * Commit: 4c5361eca6c9e901139e94563e03aed9531b72fc.
 * Commit (fork): foo@4c5361eca6c9e901139e94563e03aed9531b72fc.
@@ -259,7 +360,7 @@ Right aligned columns
 * Issue or PR (project): remarkjs/remark#1.
 * Mention: @sabertazmi.
 
-### Emoji
+## Emoji
 
 Thumbs up: :+1:, thumbs down: :-1:.
 
@@ -357,7 +458,7 @@ I can write **Markdown** alongside my _JSX_!
 
 :::
 
-:::tip{MDX in admonitions}
+:::tip{MDX in Admonitions}
 
 Two 🍰 is: {Math.PI * 2}
 
@@ -374,7 +475,5 @@ Two 🍰 is: {Math.PI * 2}
 
   return <span style={{color: 'goldenrod'}}>Not me.</span>
 })()}
-
-I can write **Markdown** alongside my _JSX_!
 
 :::
