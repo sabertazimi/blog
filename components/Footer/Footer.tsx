@@ -1,4 +1,5 @@
-import { Container, SocialButton } from '@components';
+import Container from '@components/Container';
+import SocialButton from '@components/SocialButton';
 import { siteConfig, socialList } from '@config';
 import type { SiteConfig, SocialType } from '@types';
 import { Col, Divider, Row } from 'antd';

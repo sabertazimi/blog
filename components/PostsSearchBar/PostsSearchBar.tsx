@@ -1,7 +1,7 @@
 import { SearchOutlined } from '@ant-design/icons';
+import Link from '@components/Link';
 import type { PostMeta } from '@types';
 import { AutoComplete, Input } from 'antd';
-import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { useCallback, useState } from 'react';
 
@@ -29,9 +29,7 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
                 value: title,
                 label: (
                   <div>
-                    <Link href={`/post/${slug}`}>
-                      <a>{title}</a>
-                    </Link>
+                    <Link href={`/post/${slug}`}>{title}</Link>
                   </div>
                 ),
               }))

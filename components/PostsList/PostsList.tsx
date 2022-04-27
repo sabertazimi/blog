@@ -1,6 +1,6 @@
+import Link from '@components/Link';
 import type { PostMeta } from '@types';
 import { List } from 'antd';
-import Link from 'next/link';
 
 interface Props {
   posts: PostMeta[];
@@ -14,10 +14,11 @@ const PostsList = ({ posts }: Props): JSX.Element => (
       <List.Item>
         <List.Item.Meta
           title={
-            <Link href={`/post/${slug}`}>
-              <a className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4">
-                {title}
-              </a>
+            <Link
+              href={`/post/${slug}`}
+              className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
+            >
+              {title}
             </Link>
           }
         />

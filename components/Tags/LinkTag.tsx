@@ -1,8 +1,8 @@
+import Link from '@components/Link';
 import { getColorByName } from '@config';
 import type { Tag } from '@types';
 import { Tag as AntTag } from 'antd';
 import classNames from 'classnames';
-import Link from 'next/link';
 
 interface Props {
   tag?: Tag;
@@ -21,9 +21,7 @@ const LinkTag = ({
     color={color}
     className={classNames('mb-1 text-base font-extrabold', className)}
   >
-    <Link href={href}>
-      <a>{tag}</a>
-    </Link>
+    <Link href={href}>{tag}</Link>
   </AntTag>
 );
 

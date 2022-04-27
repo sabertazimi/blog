@@ -1,11 +1,11 @@
 import { CalendarOutlined, ReadOutlined } from '@ant-design/icons';
-import { Container } from '@components';
+import Container from '@components/Container';
+import Link from '@components/Link';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
 import type { PostMeta } from '@types';
 import { Button, Skeleton, Typography } from 'antd';
 import classNames from 'classnames';
-import Link from 'next/link';
 
 interface Props {
   post: PostMeta;
@@ -45,9 +45,7 @@ const PostCard = ({ post }: Props): JSX.Element => {
             )}
           >
             <Link href={`/post/${slug}`}>
-              <a>
-                <ReadOutlined />
-              </a>
+              <ReadOutlined />
             </Link>
           </Button>
         </Container>

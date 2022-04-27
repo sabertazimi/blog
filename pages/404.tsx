@@ -1,9 +1,9 @@
+import { Link } from '@components';
 import { Layout } from '@layouts';
 import { getBuildTime, getPostsMeta } from '@lib';
 import type { PostMeta } from '@types';
 import { Result } from 'antd';
 import classNames from 'classnames';
-import Link from 'next/link';
 import type { GetStaticProps } from 'next/types';
 
 interface Props {
@@ -31,17 +31,16 @@ const NotFound = ({ buildTime, postsMeta }: Props): JSX.Element => (
         title="404"
         subTitle="Sorry, the page you visited does not exist."
         extra={
-          <Link href="/posts">
-            <a
-              className={classNames(
-                'block m-auto mt-12 py-3 px-6 max-w-fit',
-                'rounded-full',
-                'font-extrabold text-2xl',
-                'text-light bg-gradient-primary'
-              )}
-            >
-              Back Home
-            </a>
+          <Link
+            href="/posts"
+            className={classNames(
+              'block m-auto mt-12 py-3 px-6 max-w-fit',
+              'rounded-full',
+              'font-extrabold text-2xl',
+              'text-light bg-gradient-primary'
+            )}
+          >
+            Back Home
           </Link>
         }
       />

@@ -1,4 +1,4 @@
-import { ErrorBoundary } from '@components';
+import ErrorBoundary from '@components/ErrorBoundary';
 import { siteConfig } from '@config';
 import landingImage from '@images/landing.jpg';
 import { NextSeo } from 'next-seo';
