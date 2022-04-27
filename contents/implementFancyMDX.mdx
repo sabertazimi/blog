@@ -125,38 +125,6 @@ foo(5);
 some.code();
 ```
 
-## Tables
-
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Left aligned columns
-
-| Option | Description |
-| :----- | :---------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Center aligned columns
-
-| Option  | Description  |
-| :-----: | :----------: |
-| data    | path to data files to supply the data that will be passed into templates. |
-| engine  | engine to be used for processing templates. Handlebars is the default. |
-| ext     | extension to be used for dest files. |
-
-Right aligned columns
-
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
 ## Links
 
 [link text](http://dev.nodeca.com)
@@ -212,6 +180,8 @@ Two 🍰 is: {Math.PI * 2}
   return <span style={{color: 'goldenrod'}}>Not me.</span>
 })()}
 
+I can write **Markdown** alongside my _JSX_!
+
 {/* A comment! */}
 
 ## GFM
@@ -230,7 +200,7 @@ A note[^1]
 
 ~one~ or ~~two~~ tildes.
 
-### Table
+### Tables
 
 | a | b  |  c |  d  |
 | - | :- | -: | :-: |
@@ -239,6 +209,35 @@ A note[^1]
 | 3600 | 48000 | 10 | 200 |
 | 48000 | 3600 | 200 | 10 |
 
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Left aligned columns
+
+| Option | Description |
+| :----- | :---------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Center aligned columns
+
+| Option  | Description  |
+| :-----: | :----------: |
+| data    | path to data files to supply the data that will be passed into templates. |
+| engine  | engine to be used for processing templates. Handlebars is the default. |
+| ext     | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
 
 ### Tasklist
 
@@ -314,3 +313,64 @@ $$
   3 &x + &13 &y = 4
 \end{alignat}
 $$
+
+## Admonitions
+
+:::note
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::info
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::note{Your Title}
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+:::
+
+:::tip{MDX in admonitions}
+
+Two 🍰 is: {Math.PI * 2}
+
+{(function () {
+  const guess = Math.random()
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+I can write **Markdown** alongside my _JSX_!
+
+:::

@@ -60,11 +60,13 @@
     "rehype-external-links": "^1.0.1",
     "rehype-katex": "^6.0.2",
     "rehype-slug": "^5.0.1",
+    "remark-directive": "^2.0.1",
     "remark-gemoji": "^7.0.1",
     "remark-gfm": "^3.0.1",
     "remark-github": "^11.2.2",
     "remark-math": "^5.1.1",
-    "typed.js": "^2.0.12"
+    "typed.js": "^2.0.12",
+    "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
     "@dg-scripts/stylelint-config": "^5.9.0",
@@ -73,6 +75,7 @@
     "@testing-library/react": "^13.1.1",
     "@types/jest": "^27.4.1",
     "@types/jest-axe": "^3.5.3",
+    "@types/mdast": "^3.0.10",
     "@types/node": "^16.11.27",
     "@types/react": "^18.0.6",
     "@types/react-dom": "^18.0.2",
