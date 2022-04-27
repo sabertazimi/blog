@@ -46,8 +46,8 @@ const Footer = ({
             React
           </a>{' '}
           and{' '}
-          <a className="underline" href="https://gatsbyjs.org">
-            Gatsby
+          <a className="underline" href="https://nextjs.org">
+            Next
           </a>
         </span>
         <Divider className="bg-light" type="vertical" />

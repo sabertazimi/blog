@@ -12,7 +12,7 @@
 [![CodeQL](https://img.shields.io/github/workflow/status/sabertazimi/blog/CodeQL/main?label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
 [![Jest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
 
-A great [blog](https://blog.tazimi.dev) system based on React.js and Next.js.
+A great [blog](https://blog.tazimi.dev) system based on Next.js.
 
 ## Features
 

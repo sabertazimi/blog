@@ -55,13 +55,11 @@ typings/
 # local dotenv environment variables file
 .env*.local
 
-# gatsby files
+# dist files
 .cache/
+.next/
 build
 dist
-
-# nextjs files
-.next/
 out/
 
 # vercel files
