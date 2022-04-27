@@ -165,7 +165,9 @@ exports[`Article should render correctly (snapshot) 1`] = `
       <div
         style="opacity: 0;"
       >
-        <h2>
+        <h2
+          class="ant-typography"
+        >
           1 Basic Notes
         </h2>
       </div>
@@ -585,7 +587,9 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         data-projection-id="2"
         style="opacity: 0;"
       >
-        <h2>
+        <h2
+          class="ant-typography"
+        >
           1 Basic Notes
         </h2>
       </div>
