@@ -30,8 +30,9 @@ const useVisibility = ({
     // store visibility
     const oldBottomPassed = bottomPassed.current;
 
+    // early return when ref missing (e.g. unmounting when routing or animation)
     if (!ref.current) {
-      throw new Error('Ref to HTML Element missing!');
+      return;
     }
 
     // calculate visibility

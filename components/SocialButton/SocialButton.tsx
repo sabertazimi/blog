@@ -14,7 +14,7 @@ interface Props extends HTMLProps<HTMLButtonElement> {
 const SocialButton = ({
   type,
   url,
-  color,
+  color = '',
   className = '',
 }: Props): JSX.Element => (
   <Bounce>
@@ -25,7 +25,7 @@ const SocialButton = ({
       type="link"
       href={`${url}`}
       icon={SocialIcon(type)}
-      style={{ backgroundColor: color || '' }}
+      style={color ? { backgroundColor: color } : {}}
     />
   </Bounce>
 );
