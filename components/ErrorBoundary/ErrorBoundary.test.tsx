@@ -5,7 +5,6 @@ import ErrorBoundary from './ErrorBoundary';
 describe('ErrorBoundary', () => {
   const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
     if (shouldThrow) {
-      console.error('ComponentWithError');
       throw new Error('ComponentWithError');
     } else {
       return <div>App</div>;
@@ -80,6 +79,6 @@ describe('ErrorBoundary', () => {
     rerender(<ComponentWithError shouldThrow />);
 
     expect(screen.getByRole('alert')).toBeInTheDocument();
-    expect(mockConsoleError).toHaveBeenCalledTimes(7);
+    expect(mockConsoleError).toHaveBeenCalledTimes(3);
   });
 });
