@@ -78,13 +78,13 @@ export default async function getGitHubData(): Promise<GitHub> {
           stars: repo.stargazers_count,
           language: repo.language,
           repoUrl: repo.html_url,
-        }))
-        .slice(0, 3),
+        })),
     } as GitHub;
   } catch (error) {
     if (error instanceof Error) {
-      console.warn(error.message);
-      console.warn('GitHub API request error, fallback to local GitHub data.');
+      throw new Error(
+        'GitHub API request error, fallback to local GitHub data.'
+      );
     }
   }
 
