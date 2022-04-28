@@ -5,9 +5,9 @@ import {
 } from '@ant-design/icons';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
+import { classNames } from '@components/utils';
 import { siteConfig } from '@config';
 import type { PostMeta } from '@types';
-import classNames from 'classnames';
 
 interface Props {
   post: PostMeta;

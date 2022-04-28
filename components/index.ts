@@ -1,4 +1,5 @@
 export { default as Article } from './Article';
+export { default as BackTop } from './BackTop';
 export { default as BooksGrid } from './BooksGrid';
 export { default as Container } from './Container';
 export { default as Divider } from './Divider';

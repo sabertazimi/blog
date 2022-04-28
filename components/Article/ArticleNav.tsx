@@ -6,8 +6,8 @@ import {
 import FlexContainer from '@components/FlexContainer';
 import Link from '@components/Link';
 import { Bounce } from '@components/Motion';
+import { classNames } from '@components/utils';
 import type { PostMeta } from '@types';
-import classNames from 'classnames';
 
 interface Props {
   prevPost: PostMeta['prevPost'];

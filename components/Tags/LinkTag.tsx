@@ -1,8 +1,8 @@
 import Link from '@components/Link';
+import { classNames } from '@components/utils';
 import { getColorByName } from '@config';
 import type { Tag } from '@types';
 import { Tag as AntTag } from 'antd';
-import classNames from 'classnames';
 
 interface Props {
   tag?: Tag;

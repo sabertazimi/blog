@@ -1,6 +1,6 @@
 import { MetaHeader } from '@components';
+import { classNames } from '@components/utils';
 import landingImage from '@images/landing.jpg';
-import classNames from 'classnames';
 import type { ReactNode } from 'react';
 
 interface Props {

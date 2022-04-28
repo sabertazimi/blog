@@ -1,6 +1,6 @@
+import { classNames } from '@components/utils';
 import { siteConfig } from '@config';
 import { useTypingEffect } from '@hooks';
-import classNames from 'classnames';
 import { useRef } from 'react';
 
 interface Props {

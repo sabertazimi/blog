@@ -1,7 +1,7 @@
 import { Close, Hamburger } from '@components/Icons';
+import { classNames } from '@components/utils';
 import { routes as defaultRoutes } from '@config';
 import type { Route } from '@types';
-import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import LandingNavLink from './LandingNavLink';

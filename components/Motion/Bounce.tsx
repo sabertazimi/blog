@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { classNames } from '@components/utils';
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 

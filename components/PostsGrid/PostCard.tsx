@@ -3,9 +3,9 @@ import Container from '@components/Container';
 import Link from '@components/Link';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
+import { classNames } from '@components/utils';
 import type { PostMeta } from '@types';
 import { Button, Skeleton, Typography } from 'antd';
-import classNames from 'classnames';
 
 interface Props {
   post: PostMeta;

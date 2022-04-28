@@ -1,7 +1,7 @@
 import Link from '@components/Link';
 import { Bounce } from '@components/Motion';
+import { classNames } from '@components/utils';
 import { Tooltip } from 'antd';
-import classNames from 'classnames';
 import type { ReactNode } from 'react';
 
 interface Props {
