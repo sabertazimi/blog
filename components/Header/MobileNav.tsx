@@ -1,12 +1,12 @@
 import Col from '@components/Col';
 import { Bars } from '@components/Icons';
+import Image from '@components/Image';
 import Link from '@components/Link';
 import Menu from '@components/Menu';
 import Popover from '@components/Popover';
 import Row from '@components/Row';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
-import Image from 'next/image';
 
 const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">
