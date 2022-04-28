@@ -4,7 +4,7 @@ import { getBuildTime, getPostData, getPostsMeta } from '@lib';
 import type { Post, PostMeta } from '@types';
 import 'katex/dist/katex.css';
 import type { GetStaticPaths, GetStaticProps } from 'next/types';
-import type { ParsedUrlQuery } from 'querystring';
+import type { ParsedUrlQuery } from 'node:querystring';
 
 interface Props {
   buildTime: string | number | Date;
