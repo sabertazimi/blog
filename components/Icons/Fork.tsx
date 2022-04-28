@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from '@components/utils';
 import IconFactory from './IconFactory';
 
 const Svg = () => (
@@ -16,5 +16,5 @@ const Svg = () => (
   </motion.svg>
 );
 
-const Close = IconFactory(Svg, 'Close');
-export default Close;
+const Fork = IconFactory(Svg, 'Fork');
+export default Fork;

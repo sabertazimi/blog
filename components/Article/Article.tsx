@@ -1,52 +1,25 @@
 import Container from '@components/Container';
+import Divider from '@components/Divider';
 import { Comment } from '@components/Icons';
 import SocialGroup from '@components/SocialGroup';
 import { siteConfig } from '@config';
-import type { Post } from '@types';
+import type { Post, SiteConfig } from '@types';
 import ArticleComments from './ArticleComments';
 import ArticleContent from './ArticleContent';
-import ArticleDivider from './ArticleDivider';
 import ArticleHeader from './ArticleHeader';
 import ArticleNav from './ArticleNav';
 import ArticleToc from './ArticleToc';
 
 interface Props {
   post: Post;
-  siteUrl?: string;
+  siteUrl?: SiteConfig['siteUrl'];
 }
 
 const Article = ({
-  post,
+  post: { excerpt, toc, source, ...postMeta },
   siteUrl = siteConfig.siteUrl,
 }: Props): JSX.Element => {
-  const {
-    slug,
-    title,
-    subtitle,
-    author,
-    createTime,
-    updateTime,
-    tags,
-    timeToRead,
-    prevPost,
-    nextPost,
-    toc,
-    source,
-  } = post;
-
-  const postMeta = {
-    slug,
-    title,
-    subtitle,
-    author,
-    createTime,
-    updateTime,
-    tags,
-    timeToRead,
-    prevPost,
-    nextPost,
-  };
-
+  const { slug, subtitle, prevPost, nextPost } = postMeta;
   const socialUrl = `${siteUrl}/post/${slug}`;
 
   return (
@@ -55,11 +28,11 @@ const Article = ({
       <Container className="max-w-screen-lg px-6">
         <ArticleToc toc={toc} />
         <ArticleContent source={source} />
-        <ArticleDivider>{subtitle || 'Blog'}</ArticleDivider>
+        <Divider>{subtitle || 'Blog'}</Divider>
         <ArticleNav prevPost={prevPost} nextPost={nextPost} />
-        <ArticleDivider>
+        <Divider>
           <Comment className="text-2xl text-primary" />
-        </ArticleDivider>
+        </Divider>
         <ArticleComments />
         <SocialGroup url={socialUrl} />
       </Container>

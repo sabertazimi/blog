@@ -1,6 +1,8 @@
+import Avatar from '@components/Avatar';
+import Badge from '@components/Badge';
+import Card from '@components/Card';
 import { getColorByName } from '@config';
 import type { Profile, Repo } from '@types';
-import { Avatar, Badge, Card } from 'antd';
 import GithubCardContent from './GithubCardContent';
 import GithubCardHeader from './GithubCardHeader';
 import GithubRepoCard from './GithubRepoCard';

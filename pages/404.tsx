@@ -1,9 +1,7 @@
-import { Link } from '@components';
+import { NotFoundResult } from '@components';
 import { Layout } from '@layouts';
 import { getBuildTime, getPostsMeta } from '@lib';
 import type { PostMeta } from '@types';
-import { Result } from 'antd';
-import classNames from 'classnames';
 import type { GetStaticProps } from 'next/types';
 
 interface Props {
@@ -26,24 +24,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const NotFound = ({ buildTime, postsMeta }: Props): JSX.Element => (
   <div>
     <Layout banner="Exploring" buildTime={buildTime} posts={postsMeta}>
-      <Result
-        status="404"
-        title="404"
-        subTitle="Sorry, the page you visited does not exist."
-        extra={
-          <Link
-            href="/posts"
-            className={classNames(
-              'block m-auto mt-12 py-3 px-6 max-w-fit',
-              'rounded-full',
-              'font-extrabold text-2xl',
-              'text-light bg-gradient-primary'
-            )}
-          >
-            Back Home
-          </Link>
-        }
-      />
+      <NotFoundResult />
     </Layout>
   </div>
 );

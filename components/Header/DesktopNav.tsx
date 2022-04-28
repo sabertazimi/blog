@@ -1,11 +1,11 @@
+import Image from '@components/Image';
 import Link from '@components/Link';
+import Menu from '@components/Menu';
 import PostsSearchBar from '@components/PostsSearchBar';
+import { classNames } from '@components/utils';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
 import type { PostMeta } from '@types';
-import { Menu } from 'antd';
-import classNames from 'classnames';
-import Image from 'next/image';
 
 interface Props {
   fixed: boolean;

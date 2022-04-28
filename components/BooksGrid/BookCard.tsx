@@ -1,7 +1,8 @@
-import { BookOutlined } from '@ant-design/icons';
+import Badge from '@components/Badge';
+import Card from '@components/Card';
+import { Book as BookIcon } from '@components/Icons';
 import { getColorByName } from '@config';
 import type { Book } from '@types';
-import { Badge, Card } from 'antd';
 
 interface Props {
   book: Book;
@@ -16,7 +17,7 @@ const BookCard = ({ book }: Props): JSX.Element => {
         hoverable
         title={
           <a href={url}>
-            <BookOutlined className="text-6xl align-top" />
+            <BookIcon className="text-6xl align-top" />
             <span className="text-span-xl">{title}</span>
           </a>
         }

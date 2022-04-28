@@ -1,7 +1,8 @@
-import { SearchOutlined } from '@ant-design/icons';
+import AutoComplete from '@components/AutoComplete';
+import { Search } from '@components/Icons';
+import Input from '@components/Input';
 import Link from '@components/Link';
 import type { PostMeta } from '@types';
-import { AutoComplete, Input } from 'antd';
 import type { ReactNode } from 'react';
 import { useCallback, useState } from 'react';
 
@@ -45,11 +46,7 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
       options={options}
       onSearch={handleSearch}
     >
-      <Input
-        allowClear
-        placeholder="Search Posts ..."
-        prefix={<SearchOutlined />}
-      />
+      <Input allowClear placeholder="Search Posts ..." prefix={<Search />} />
     </AutoComplete>
   );
 };

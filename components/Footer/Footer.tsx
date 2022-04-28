@@ -1,8 +1,10 @@
+import Col from '@components/Col';
 import Container from '@components/Container';
+import Divider from '@components/Divider';
+import Row from '@components/Row';
 import SocialButton from '@components/SocialButton';
 import { siteConfig, socialList } from '@config';
 import type { SiteConfig, SocialType } from '@types';
-import { Col, Divider, Row } from 'antd';
 
 interface Props {
   buildTime: string | number | Date;
@@ -40,7 +42,7 @@ const Footer = ({
             {author}
           </a>{' '}
         </span>
-        <Divider className="bg-light" type="vertical" />
+        <Divider type="vertical" className="bg-light" />
         <span>
           Built with{' '}
           <a className="underline" href="https://reactjs.org">
@@ -51,7 +53,7 @@ const Footer = ({
             Next
           </a>
         </span>
-        <Divider className="bg-light" type="vertical" />
+        <Divider type="vertical" className="bg-light" />
         <span>
           Last Built Time{' '}
           <a className="underline" href="https://www.google.com/search?q=time">

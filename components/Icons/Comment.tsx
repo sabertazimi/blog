@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from '@components/utils';
 import IconFactory from './IconFactory';
 
 const Svg = () => (

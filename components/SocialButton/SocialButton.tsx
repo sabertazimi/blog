@@ -1,7 +1,7 @@
+import Button from '@components/Button';
 import { SocialIcon } from '@components/Icons';
 import { Bounce } from '@components/Motion';
 import type { SocialType } from '@types';
-import { Button } from 'antd';
 import type { HTMLProps } from 'react';
 
 interface Props extends HTMLProps<HTMLButtonElement> {
@@ -19,13 +19,13 @@ const SocialButton = ({
 }: Props): JSX.Element => (
   <Bounce>
     <Button
-      className={`text-center text-light rounded-none ${className}`}
       role="link"
       size="large"
       type="link"
-      href={`${url}`}
-      icon={SocialIcon(type)}
+      className={`text-center text-light rounded-none ${className}`}
       style={color ? { backgroundColor: color } : {}}
+      icon={SocialIcon(type)}
+      href={`${url}`}
     />
   </Bounce>
 );

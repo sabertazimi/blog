@@ -1,7 +1,7 @@
 import SocialButton from '@components/SocialButton';
+import Space from '@components/Space';
 import { socialColors, socialList, socialQuery } from '@config';
 import type { SocialColor, SocialType } from '@types';
-import { Space } from 'antd';
 
 interface Props {
   url: string;
@@ -9,10 +9,10 @@ interface Props {
 
 const SocialGroup = ({ url }: Props): JSX.Element => (
   <Space
-    className="fixed left-0  top-1/2 z-10 hidden md:visible md:inline-flex"
     direction="vertical"
     align="center"
     size={0}
+    className="fixed left-0  top-1/2 z-10 hidden md:visible md:inline-flex"
   >
     {Object.keys(socialList)
       .filter(social => social !== socialList.github)

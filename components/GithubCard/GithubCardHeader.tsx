@@ -1,4 +1,4 @@
-import { GithubOutlined } from '@ant-design/icons';
+import { Github } from '@components/Icons';
 import type { Profile } from '@types';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 
 const GithubCardHeader = ({ profile }: Props): JSX.Element => (
   <a href={profile.url}>
-    <GithubOutlined className="text-6xl align-top" />
+    <Github className="text-6xl align-top" />
     <span className="text-span-xl">{profile.username}</span>
   </a>
 );

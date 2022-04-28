@@ -33,8 +33,8 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
   }
 }
 
-function getTimeToRead(content: string): number {
-  return readingTime(content).minutes;
+function getReadingTime(content: string): number {
+  return Math.ceil(readingTime(content).minutes);
 }
 
 async function generatePostData(filePath: string): Promise<Post> {
@@ -46,11 +46,13 @@ async function generatePostData(filePath: string): Promise<Post> {
     excerpt,
     data: { title, date, ...fields },
   } = matter(fileContent, { excerpt: true });
-  const timeToRead = Math.round(getTimeToRead(content));
+
   const createTime = new Date(date).toISOString();
   const updateTime = execSync(
     `git log -1 --pretty=format:%aI ${filePath}`
   ).toString();
+  const readingTime = getReadingTime(content);
+
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
@@ -75,13 +77,13 @@ async function generatePostData(filePath: string): Promise<Post> {
     ...fields,
     slug,
     title,
-    timeToRead,
     createTime,
     updateTime,
-    source,
-    excerpt,
+    readingTime,
     prevPost: null,
     nextPost: null,
+    excerpt,
+    source,
   };
 }
 
@@ -137,7 +139,7 @@ async function getPostsData(): Promise<Post[]> {
 async function getPostsMeta(): Promise<PostMeta[]> {
   const postsData = await getPostsData();
   const postsMeta = postsData.map(post => {
-    const { source, excerpt, toc, html, ...postMeta } = post;
+    const { excerpt, toc, source, ...postMeta } = post;
     return postMeta;
   });
   return postsMeta;

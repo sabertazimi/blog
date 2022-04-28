@@ -1,6 +1,5 @@
-import { Container, Footer, Header, MetaHeader } from '@components';
+import { BackTop, Container, Footer, Header, MetaHeader } from '@components';
 import type { PostMeta } from '@types';
-import { BackTop } from 'antd';
 import type { ReactNode } from 'react';
 
 interface Props {

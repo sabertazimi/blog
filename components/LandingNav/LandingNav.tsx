@@ -1,8 +1,8 @@
-import { Close, Hamburger } from '@components/Icons';
+import { Fork, Hamburger } from '@components/Icons';
+import { Switch } from '@components/Motion';
+import { classNames } from '@components/utils';
 import { routes as defaultRoutes } from '@config';
 import type { Route } from '@types';
-import classNames from 'classnames';
-import { motion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import LandingNavLink from './LandingNavLink';
 
@@ -19,16 +19,14 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
 
   return (
     <>
-      <motion.nav
+      <Switch
         className={classNames(
           'fixed top-0 left-0 z-20',
           'flex flex-col items-center justify-center',
           'w-full h-full'
         )}
         role="navigation"
-        layout
-        initial="close"
-        animate={expanded ? 'open' : 'close'}
+        open={expanded}
         variants={{
           open: {
             x: 0,
@@ -48,7 +46,7 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
             {route.name}
           </LandingNavLink>
         ))}
-      </motion.nav>
+      </Switch>
       <div
         className={classNames(
           'fixed bg-transparent border-none',
@@ -60,20 +58,19 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
         onKeyDown={handleClick}
       >
         {expanded ? (
-          <Close className="text-lg font-extrabold md:text-4xl text-light" />
+          <Fork className="text-lg font-extrabold md:text-4xl text-light" />
         ) : (
           <Hamburger className="text-lg font-extrabold md:text-4xl text-light" />
         )}
       </div>
-      <motion.div
+      <Switch
         className={classNames(
           'fixed top-0 left-0 z-10',
           'block w-full h-full',
           'bg-black'
         )}
         role="banner"
-        layout
-        animate={expanded ? 'open' : 'close'}
+        open={expanded}
         variants={{
           open: {
             opacity: 0.8,

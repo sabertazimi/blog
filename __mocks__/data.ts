@@ -21,16 +21,16 @@ const profile = {
 
 const repos = [
   {
+    name: 'awesome-notes',
+    stars: 23,
+    language: 'TypeScript',
+    repoUrl: 'https://github.com/sabertazimi/awesome-notes',
+  },
+  {
     name: 'hust-lab',
     stars: 22,
     language: 'C',
     repoUrl: 'https://github.com/sabertazimi/hust-lab',
-  },
-  {
-    name: 'awesome-notes',
-    stars: 22,
-    language: 'JavaScript',
-    repoUrl: 'https://github.com/sabertazimi/awesome-notes',
   },
   {
     name: 'dragon-zsh-theme',
@@ -44,7 +44,7 @@ const basePosts = Array.from(Array(5).keys()).map(index => ({
   index,
   slug: `${index + 1}BasicNotes`,
   title: `${index + 1} Basic Notes`,
-  timeToRead: index + 1,
+  readingTime: index + 1,
   prevPost: null,
   nextPost: null,
   source: {
@@ -89,7 +89,6 @@ const posts = basePosts.map((post, index) => ({
   },
   excerpt: `${index + 1} Basic Notes Basic Concepts`,
   toc: `${index + 1} Table of Contents`,
-  html: `<h1>${index + 1} Basic Notes</h1>`,
 }));
 
 const mockData = {

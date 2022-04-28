@@ -1,20 +1,17 @@
-import {
-  CalendarOutlined,
-  ClockCircleOutlined,
-  EditOutlined,
-} from '@ant-design/icons';
+import { H1 } from '@components/Headings';
+import { Calendar, ClockCircle, Edit } from '@components/Icons';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
+import { classNames } from '@components/utils';
 import { siteConfig } from '@config';
 import type { PostMeta } from '@types';
-import classNames from 'classnames';
 
 interface Props {
   post: PostMeta;
 }
 
 const ArticleHeader = ({
-  post: { tags, title, createTime, updateTime, timeToRead },
+  post: { title, createTime, updateTime, readingTime, tags },
 }: Props): JSX.Element => (
   <div
     className={classNames(
@@ -31,16 +28,16 @@ const ArticleHeader = ({
       ) : (
         <LinkTag href="/tags" color={siteConfig.themeColor} />
       )}
-      <h1 className="my-8 text-light text-6xl md:text-8xl">{title}</h1>
+      <H1 className="my-8 text-light text-6xl md:text-8xl">{title}</H1>
       <IconTag
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
-        icon={<CalendarOutlined />}
+        icon={<Calendar />}
       />
       <IconTag
         tag={updateTime ? new Date(updateTime).toDateString() : 'Nowadays'}
-        icon={<EditOutlined />}
+        icon={<Edit />}
       />
-      <IconTag tag={`${timeToRead} minutes`} icon={<ClockCircleOutlined />} />
+      <IconTag tag={`${readingTime} minutes`} icon={<ClockCircle />} />
     </Slide>
   </div>
 );

@@ -1,9 +1,12 @@
-import { BarsOutlined } from '@ant-design/icons';
+import Col from '@components/Col';
+import { Bars } from '@components/Icons';
+import Image from '@components/Image';
 import Link from '@components/Link';
+import Menu from '@components/Menu';
+import Popover from '@components/Popover';
+import Row from '@components/Row';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
-import { Col, Menu, Popover, Row } from 'antd';
-import Image from 'next/image';
 
 const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">
@@ -15,23 +18,25 @@ const MobileNav = (): JSX.Element => (
     <Col className="flex-container" span={8}>
       <Popover
         placement="bottomRight"
+        trigger="click"
         content={
           <Menu
-            className="w-full max-w-md text-2xl font-extrabold text-center min-w-xs"
             mode="vertical"
-          >
-            {routes.map(route => (
-              <Menu.Item key={route.id}>
-                <Link href={route.path}>
-                  <a>{route.name}</a>
-                </Link>
-              </Menu.Item>
-            ))}
-          </Menu>
+            className="w-full max-w-md text-2xl font-extrabold text-center min-w-xs"
+            items={[
+              ...routes.map(route => ({
+                key: route.id,
+                label: (
+                  <Link href={route.path}>
+                    <a>{route.name}</a>
+                  </Link>
+                ),
+              })),
+            ]}
+          />
         }
-        trigger="click"
       >
-        <BarsOutlined className="text-5xl text-primary" />
+        <Bars className="text-5xl text-primary" />
       </Popover>
     </Col>
   </Row>
