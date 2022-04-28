@@ -1,5 +1,5 @@
-import { CalendarOutlined, ReadOutlined } from '@ant-design/icons';
 import Container from '@components/Container';
+import { Calendar, Read } from '@components/Icons';
 import Link from '@components/Link';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
@@ -28,7 +28,7 @@ const PostCard = ({
       </Typography.Title>
       <IconTag
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
-        icon={<CalendarOutlined />}
+        icon={<Calendar />}
       />
       <Container className="mt-3">
         <Skeleton
@@ -43,7 +43,7 @@ const PostCard = ({
           )}
         >
           <Link href={`/post/${slug}`}>
-            <ReadOutlined />
+            <Read />
           </Link>
         </Button>
       </Container>

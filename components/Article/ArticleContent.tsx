@@ -2,6 +2,7 @@ import MDXComponents from '@components/MDX';
 import { Ease } from '@components/Motion';
 import type { Post } from '@types';
 import { MDXRemote } from 'next-mdx-remote';
+
 interface Props {
   source: Post['source'];
 }

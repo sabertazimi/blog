@@ -1,8 +1,4 @@
-import {
-  CalendarOutlined,
-  ClockCircleOutlined,
-  EditOutlined,
-} from '@ant-design/icons';
+import { Calendar, ClockCircle, Edit } from '@components/Icons';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
 import { classNames } from '@components/utils';
@@ -34,13 +30,13 @@ const ArticleHeader = ({
       <h1 className="my-8 text-light text-6xl md:text-8xl">{title}</h1>
       <IconTag
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
-        icon={<CalendarOutlined />}
+        icon={<Calendar />}
       />
       <IconTag
         tag={updateTime ? new Date(updateTime).toDateString() : 'Nowadays'}
-        icon={<EditOutlined />}
+        icon={<Edit />}
       />
-      <IconTag tag={`${readingTime} minutes`} icon={<ClockCircleOutlined />} />
+      <IconTag tag={`${readingTime} minutes`} icon={<ClockCircle />} />
     </Slide>
   </div>
 );

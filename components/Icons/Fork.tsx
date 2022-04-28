@@ -16,5 +16,5 @@ const Svg = () => (
   </motion.svg>
 );
 
-const Close = IconFactory(Svg, 'Close');
-export default Close;
+const Fork = IconFactory(Svg, 'Fork');
+export default Fork;

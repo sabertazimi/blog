@@ -1,9 +1,5 @@
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  HomeOutlined,
-} from '@ant-design/icons';
 import FlexContainer from '@components/FlexContainer';
+import { ArrowLeft, ArrowRight, Home } from '@components/Icons';
 import Link from '@components/Link';
 import { Bounce } from '@components/Motion';
 import { classNames } from '@components/utils';
@@ -33,9 +29,9 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
         )}
       >
         {prevPost ? (
-          <ArrowLeftOutlined aria-label="Prev" />
+          <ArrowLeft aria-label="Prev" />
         ) : (
-          <HomeOutlined aria-label="Home" />
+          <Home aria-label="Home" />
         )}
         <span className="ml-3 hidden md:visible md:inline">
           {prevPost ? prevPost.title : 'Back Home'}
@@ -58,9 +54,9 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
           {nextPost ? nextPost.title : 'Back Home'}
         </span>
         {nextPost ? (
-          <ArrowRightOutlined aria-label="Next" />
+          <ArrowRight aria-label="Next" />
         ) : (
-          <HomeOutlined aria-label="Home" />
+          <Home aria-label="Home" />
         )}
       </Link>
     </Bounce>

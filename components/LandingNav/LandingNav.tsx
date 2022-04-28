@@ -1,4 +1,4 @@
-import { Close, Hamburger } from '@components/Icons';
+import { Fork, Hamburger } from '@components/Icons';
 import { Switch } from '@components/Motion';
 import { classNames } from '@components/utils';
 import { routes as defaultRoutes } from '@config';
@@ -58,7 +58,7 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
         onKeyDown={handleClick}
       >
         {expanded ? (
-          <Close className="text-lg font-extrabold md:text-4xl text-light" />
+          <Fork className="text-lg font-extrabold md:text-4xl text-light" />
         ) : (
           <Hamburger className="text-lg font-extrabold md:text-4xl text-light" />
         )}

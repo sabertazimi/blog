@@ -1,4 +1,4 @@
-import { BranchesOutlined, StarOutlined } from '@ant-design/icons';
+import { Branches, Star } from '@components/Icons';
 import { getColorByName } from '@config';
 import type { Repo } from '@types';
 import { Badge, Card, Tag } from 'antd';
@@ -14,7 +14,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
       hoverable
       title={
         <a href={repo.repoUrl}>
-          <BranchesOutlined className="text-4xl align-top" />
+          <Branches className="text-4xl align-top" />
           <span className="text-span-lg">{repo.name}</span>
         </a>
       }
@@ -26,7 +26,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
           </Tag>
         }
       />
-      <StarOutlined className="text-2xl align-top" />
+      <Star className="text-2xl align-top" />
       <span className="text-span">{repo.stars}</span>
     </Card>
   </Badge.Ribbon>

@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react';
 import { axe } from 'jest-axe';
-import Close from './Close';
 import Comment from './Comment';
+import Fork from './Fork';
 import Hamburger from './Hamburger';
 
 describe('Icons', () => {
-  const Icons = [Close, Comment, Hamburger];
+  const Icons = [Comment, Fork, Hamburger];
 
   test.each(Icons)('should render %# icon correctly (snapshot)', Icon => {
     const { container } = render(<Icon />);

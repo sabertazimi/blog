@@ -1,4 +1,4 @@
-import { CloseOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { Close, MenuFold } from '@components/Icons';
 import { classNames } from '@components/utils';
 import { Button, Drawer } from 'antd';
 import { useCallback, useState } from 'react';
@@ -30,9 +30,9 @@ const ArticleToc = ({ toc = '' }: Props): JSX.Element => {
         shape="circle"
         icon={
           tocVisible ? (
-            <CloseOutlined aria-label="Close" />
+            <Close aria-label="Close" />
           ) : (
-            <MenuFoldOutlined aria-label="Menu" />
+            <MenuFold aria-label="Menu" />
           )
         }
         size="large"

@@ -1,4 +1,4 @@
-import { BarsOutlined } from '@ant-design/icons';
+import { Bars } from '@components/Icons';
 import Link from '@components/Link';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
@@ -31,7 +31,7 @@ const MobileNav = (): JSX.Element => (
         }
         trigger="click"
       >
-        <BarsOutlined className="text-5xl text-primary" />
+        <Bars className="text-5xl text-primary" />
       </Popover>
     </Col>
   </Row>
