@@ -35,28 +35,17 @@ const Footer = ({
       <Col span={24}>
         <span>
           Copyright &copy;{' '}
-          <a
-            className="underline"
-            href={`https://github.com/${socials.github}`}
-          >
-            {author}
-          </a>{' '}
+          <a href={`https://github.com/${socials.github}`}>{author}</a>{' '}
         </span>
         <Divider type="vertical" className="bg-light" />
         <span>
-          Built with{' '}
-          <a className="underline" href="https://reactjs.org">
-            React
-          </a>{' '}
-          and{' '}
-          <a className="underline" href="https://nextjs.org">
-            Next
-          </a>
+          Built with <a href="https://reactjs.org">React</a> and{' '}
+          <a href="https://nextjs.org">Next</a>
         </span>
         <Divider type="vertical" className="bg-light" />
         <span>
           Last Built Time{' '}
-          <a className="underline" href="https://www.google.com/search?q=time">
+          <a href="https://www.google.com/search?q=time">
             {new Date(buildTime).toLocaleString('zh-CN', { hour12: false })}
           </a>
         </span>
