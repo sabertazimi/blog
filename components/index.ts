@@ -3,7 +3,6 @@ export { default as BackTop } from './BackTop';
 export { default as BooksGrid } from './BooksGrid';
 export { default as Container } from './Container';
 export { default as Divider } from './Divider';
-export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as FlexContainer } from './FlexContainer';
 export { default as Footer } from './Footer';
 export { default as GithubCard } from './GithubCard';
