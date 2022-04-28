@@ -16,37 +16,10 @@ interface Props {
 }
 
 const Article = ({
-  post,
+  post: { excerpt, toc, source, ...postMeta },
   siteUrl = siteConfig.siteUrl,
 }: Props): JSX.Element => {
-  const {
-    slug,
-    title,
-    subtitle,
-    author,
-    createTime,
-    updateTime,
-    tags,
-    timeToRead,
-    prevPost,
-    nextPost,
-    toc,
-    source,
-  } = post;
-
-  const postMeta = {
-    slug,
-    title,
-    subtitle,
-    author,
-    createTime,
-    updateTime,
-    tags,
-    timeToRead,
-    prevPost,
-    nextPost,
-  };
-
+  const { slug, subtitle, prevPost, nextPost } = postMeta;
   const socialUrl = `${siteUrl}/post/${slug}`;
 
   return (

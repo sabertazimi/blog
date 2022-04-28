@@ -14,7 +14,7 @@ interface Props {
 }
 
 const ArticleHeader = ({
-  post: { tags, title, createTime, updateTime, timeToRead },
+  post: { title, createTime, updateTime, readingTime, tags },
 }: Props): JSX.Element => (
   <div
     className={classNames(
@@ -40,7 +40,7 @@ const ArticleHeader = ({
         tag={updateTime ? new Date(updateTime).toDateString() : 'Nowadays'}
         icon={<EditOutlined />}
       />
-      <IconTag tag={`${timeToRead} minutes`} icon={<ClockCircleOutlined />} />
+      <IconTag tag={`${readingTime} minutes`} icon={<ClockCircleOutlined />} />
     </Slide>
   </div>
 );

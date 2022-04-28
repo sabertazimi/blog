@@ -5,12 +5,12 @@ export declare type Tags = Record<Tag, number>;
 
 export interface PostMeta {
   slug: string;
-  timeToRead: number;
   title: string;
   subtitle?: string;
   author?: string;
   createTime?: string;
   updateTime?: string;
+  readingTime: number;
   tags?: Tag[];
   prevPost: {
     slug: string;
@@ -23,10 +23,9 @@ export interface PostMeta {
 }
 
 export interface PostContent {
-  source: MDXRemoteSerializeResult;
   excerpt?: string;
   toc?: string;
-  html?: string;
+  source: MDXRemoteSerializeResult;
 }
 
 export declare type Post = PostMeta & PostContent;
