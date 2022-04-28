@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  img {
+    @apply inline-block;
+  }
+}
+
 @layer components {
   .text-span {
     @apply inline-block ml-2 text-xl align-bottom !important;
