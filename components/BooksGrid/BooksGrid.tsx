@@ -1,6 +1,7 @@
+import Col from '@components/Col';
+import Row from '@components/Row';
 import { siteConfig } from '@config';
 import type { Book } from '@types';
-import { Col, Row } from 'antd';
 import BookCard from './BookCard';
 
 interface Props {

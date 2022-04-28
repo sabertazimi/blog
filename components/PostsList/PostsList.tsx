@@ -1,6 +1,6 @@
 import Link from '@components/Link';
+import List from '@components/List';
 import type { PostMeta } from '@types';
-import { List } from 'antd';
 
 interface Props {
   posts: PostMeta[];

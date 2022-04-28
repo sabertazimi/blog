@@ -1,11 +1,11 @@
 import Link from '@components/Link';
 import { classNames } from '@components/utils';
 import { getColorByName } from '@config';
-import type { Tag } from '@types';
-import { Tag as AntTag } from 'antd';
+import type { Tag as TagType } from '@types';
+import Tag from './Tag';
 
 interface Props {
-  tag?: Tag;
+  tag?: TagType;
   href?: string;
   color?: string;
   className?: string;
@@ -17,12 +17,12 @@ const LinkTag = ({
   color = getColorByName(tag),
   className,
 }: Props): JSX.Element => (
-  <AntTag
+  <Tag
     color={color}
     className={classNames('mb-1 text-base font-extrabold', className)}
   >
     <Link href={href}>{tag}</Link>
-  </AntTag>
+  </Tag>
 );
 
 export default LinkTag;

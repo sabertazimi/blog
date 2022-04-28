@@ -1,7 +1,8 @@
+import AutoComplete from '@components/AutoComplete';
 import { Search } from '@components/Icons';
+import Input from '@components/Input';
 import Link from '@components/Link';
 import type { PostMeta } from '@types';
-import { AutoComplete, Input } from 'antd';
 import type { ReactNode } from 'react';
 import { useCallback, useState } from 'react';
 

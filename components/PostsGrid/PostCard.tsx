@@ -1,12 +1,13 @@
 import Button from '@components/Button';
 import Container from '@components/Container';
+import { H2 } from '@components/Headings';
 import { Calendar, Read } from '@components/Icons';
 import Link from '@components/Link';
 import { Slide } from '@components/Motion';
+import Skeleton from '@components/Skeleton';
 import { IconTag, LinkTag } from '@components/Tags';
 import { classNames } from '@components/utils';
 import type { PostMeta } from '@types';
-import { Skeleton, Typography } from 'antd';
 
 interface Props {
   post: PostMeta;
@@ -24,9 +25,7 @@ const PostCard = ({
   >
     <Slide delay={0.2}>
       <LinkTag tag={tags ? tags[0] : 'Computer Science'} />
-      <Typography.Title className="my-3" level={2}>
-        {title}
-      </Typography.Title>
+      <H2 className="my-3">{title}</H2>
       <IconTag
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
         icon={<Calendar />}

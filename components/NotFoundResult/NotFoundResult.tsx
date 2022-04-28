@@ -1,6 +1,6 @@
 import Link from '@components/Link';
+import Result from '@components/Result';
 import { classNames } from '@components/utils';
-import { Result } from 'antd';
 
 interface Props {
   title?: string;

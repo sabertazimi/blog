@@ -1,6 +1,6 @@
 import { Environment, InfoCircle, User } from '@components/Icons';
+import Space from '@components/Space';
 import type { Profile } from '@types';
-import { Space } from 'antd';
 
 interface Props {
   profile: Profile;

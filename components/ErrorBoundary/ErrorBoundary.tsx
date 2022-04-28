@@ -1,4 +1,6 @@
-import { Result, Typography } from 'antd';
+import Paragraph from '@components/Paragraph';
+import Result from '@components/Result';
+import { Text } from '@components/Texts';
 import type { ErrorInfo } from 'react';
 import { Component } from 'react';
 
@@ -36,24 +38,20 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <Result status="error" title="Some Error Happened">
           <div role="alert">
-            <Typography.Paragraph>
-              <Typography.Text className="text-xl font-extrabold">
+            <Paragraph>
+              <Text className="text-xl font-extrabold">
                 Please check the following information:
-              </Typography.Text>
-            </Typography.Paragraph>
-            <Typography.Paragraph>
-              <Typography.Text>{`${error.message}.`}</Typography.Text>
-            </Typography.Paragraph>
-            <Typography.Paragraph>
-              <Typography.Text>
-                Please check terminal output for further details.
-              </Typography.Text>
-            </Typography.Paragraph>
-            <Typography.Paragraph>
-              <Typography.Text>
-                Please reload this page after changing code.
-              </Typography.Text>
-            </Typography.Paragraph>
+              </Text>
+            </Paragraph>
+            <Paragraph>
+              <Text>{`${error.message}.`}</Text>
+            </Paragraph>
+            <Paragraph>
+              <Text>Please check terminal output for further details.</Text>
+            </Paragraph>
+            <Paragraph>
+              <Text>Please reload this page after changing code.</Text>
+            </Paragraph>
           </div>
         </Result>
       );

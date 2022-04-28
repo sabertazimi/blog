@@ -1,5 +1,5 @@
-import { Tag } from 'antd';
 import type { ReactNode } from 'react';
+import Tag from './Tag';
 
 interface Props {
   tag: string;

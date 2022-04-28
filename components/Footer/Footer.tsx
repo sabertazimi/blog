@@ -1,9 +1,10 @@
+import Col from '@components/Col';
 import Container from '@components/Container';
 import Divider from '@components/Divider';
+import Row from '@components/Row';
 import SocialButton from '@components/SocialButton';
 import { siteConfig, socialList } from '@config';
 import type { SiteConfig, SocialType } from '@types';
-import { Col, Row } from 'antd';
 
 interface Props {
   buildTime: string | number | Date;

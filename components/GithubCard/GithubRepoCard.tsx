@@ -1,7 +1,9 @@
+import Badge from '@components/Badge';
+import Card from '@components/Card';
 import { Branches, Star } from '@components/Icons';
+import { Tag } from '@components/Tags';
 import { getColorByName } from '@config';
 import type { Repo } from '@types';
-import { Badge, Card, Tag } from 'antd';
 
 interface Props {
   repo: Repo;
