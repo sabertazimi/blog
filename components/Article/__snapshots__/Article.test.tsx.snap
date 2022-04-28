@@ -134,7 +134,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
       class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
     >
       <div
-        class="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block"
+        class="fixed hidden m-0 bg-transparent top-8 right-28 z-10 md:block"
         role="navigation"
       >
         <button
@@ -555,7 +555,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
       class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
     >
       <div
-        class="fixed hidden m-0 bg-transparent top-8 right-28 z-max md:block"
+        class="fixed hidden m-0 bg-transparent top-8 right-28 z-10 md:block"
         role="navigation"
       >
         <button
