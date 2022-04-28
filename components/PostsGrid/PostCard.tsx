@@ -1,3 +1,4 @@
+import Button from '@components/Button';
 import Container from '@components/Container';
 import { Calendar, Read } from '@components/Icons';
 import Link from '@components/Link';
@@ -5,7 +6,7 @@ import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
 import { classNames } from '@components/utils';
 import type { PostMeta } from '@types';
-import { Button, Skeleton, Typography } from 'antd';
+import { Skeleton, Typography } from 'antd';
 
 interface Props {
   post: PostMeta;
@@ -37,8 +38,8 @@ const PostCard = ({
         <Button
           className={classNames(
             'float-right m-0',
-            'text-2xl rounded-full',
             'w-14 h-14',
+            'text-2xl rounded-full',
             'button-primary'
           )}
         >

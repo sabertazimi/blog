@@ -1,6 +1,7 @@
+import Button from '@components/Button';
+import Drawer from '@components/Drawer';
 import { Close, MenuFold } from '@components/Icons';
 import { classNames } from '@components/utils';
-import { Button, Drawer } from 'antd';
 import { useCallback, useState } from 'react';
 import styles from './ArticleToc.module.css';
 
@@ -26,8 +27,9 @@ const ArticleToc = ({ toc = '' }: Props): JSX.Element => {
       role="navigation"
     >
       <Button
-        className="button-primary"
+        size="large"
         shape="circle"
+        className="button-primary"
         icon={
           tocVisible ? (
             <Close aria-label="Close" />
@@ -35,14 +37,10 @@ const ArticleToc = ({ toc = '' }: Props): JSX.Element => {
             <MenuFold aria-label="Menu" />
           )
         }
-        size="large"
         onClick={handleClick}
       />
       <Drawer
-        className="font-extrabold text-dark"
         title="Table of Contents"
-        placement="right"
-        closable={false}
         onClose={handleClick}
         visible={tocVisible}
       >

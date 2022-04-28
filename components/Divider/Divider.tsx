@@ -1,12 +1,16 @@
+import type { DividerProps } from 'antd';
 import { Divider as AntDivider } from 'antd';
-import type { ReactNode } from 'react';
 
-interface Props {
-  children: ReactNode;
-}
+interface Props extends DividerProps {}
 
-const Divider = ({ children }: Props): JSX.Element => (
-  <AntDivider className="mx-0 my-12 font-extrabold">{children}</AntDivider>
+const Divider = ({
+  type = 'horizontal',
+  className = 'mx-0 my-12 font-extrabold',
+  children,
+}: Props): JSX.Element => (
+  <AntDivider type={type} className={className}>
+    {children}
+  </AntDivider>
 );
 
 export default Divider;
