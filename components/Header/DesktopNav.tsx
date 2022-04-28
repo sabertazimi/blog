@@ -16,7 +16,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
     mode="horizontal"
     className={classNames(
-      'fixed top-0 z-100 w-full',
+      'fixed top-0 z-10 w-full',
       'hidden md:visible md:flex',
       'font-extrabold bg-transparent border-transparent',
       'transition transform-gpu',

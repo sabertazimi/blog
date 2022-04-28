@@ -1,3 +1,4 @@
+import { Close } from '@components/Icons';
 import type { DrawerProps } from 'antd';
 import { Drawer as AntDrawer } from 'antd';
 
@@ -7,7 +8,7 @@ const Drawer = ({ title, visible, onClose, children }: Props): JSX.Element => (
   <AntDrawer
     className="font-extrabold text-dark"
     placement="right"
-    closable={false}
+    closeIcon={<Close aria-label="Close" className="text-primary" />}
     title={title}
     visible={visible}
     onClose={onClose}
