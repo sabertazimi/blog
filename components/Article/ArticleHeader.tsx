@@ -1,3 +1,4 @@
+import { H1 } from '@components/Headings';
 import { Calendar, ClockCircle, Edit } from '@components/Icons';
 import { Slide } from '@components/Motion';
 import { IconTag, LinkTag } from '@components/Tags';
@@ -27,7 +28,7 @@ const ArticleHeader = ({
       ) : (
         <LinkTag href="/tags" color={siteConfig.themeColor} />
       )}
-      <h1 className="my-8 text-light text-6xl md:text-8xl">{title}</h1>
+      <H1 className="my-8 text-light text-6xl md:text-8xl">{title}</H1>
       <IconTag
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
         icon={<Calendar />}
