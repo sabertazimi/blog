@@ -1,5 +1,4 @@
-import { classNames } from '@components/utils';
-import { motion } from 'framer-motion';
+import { classNames, motion } from '@components/utils';
 import type { ReactNode } from 'react';
 
 interface Props {

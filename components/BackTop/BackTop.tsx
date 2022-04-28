@@ -1,5 +1,5 @@
 import { BackTop as AntBackTop } from 'antd';
 
-const BackTop = () => <AntBackTop />;
+const BackTop = (): JSX.Element => <AntBackTop />;
 
 export default BackTop;

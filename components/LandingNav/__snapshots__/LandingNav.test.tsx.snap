@@ -2,7 +2,7 @@
 
 exports[`LandingNav should render routes correctly (snapshot) 1`] = `
 <div>
-  <nav
+  <div
     class="fixed top-0 left-0 z-20 flex flex-col items-center justify-center w-full h-full"
     role="navigation"
     style="transform: translateX(-100%) translateZ(0);"
@@ -71,7 +71,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
         </a>
       </span>
     </div>
-  </nav>
+  </div>
   <div
     class="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"
     role="button"
