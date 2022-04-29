@@ -1,5 +1,5 @@
-import Image from '@components/Image';
 import Link from '@components/Link';
+import LocalImage from '@components/LocalImage';
 import Menu from '@components/Menu';
 import PostsSearchBar from '@components/PostsSearchBar';
 import { classNames } from '@components/utils';
@@ -34,7 +34,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
         key: 'home',
         label: (
           <Link href="/" className="flex-container transition transform-gpu">
-            <Image src={logo} alt="Logo" width={96} height={96} />
+            <LocalImage src={logo} alt="Logo" width={96} height={96} />
           </Link>
         ),
       },
