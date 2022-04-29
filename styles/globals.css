@@ -3,3 +3,8 @@ body {
   font-family: var(--font-stack);
   font-size: var(--font-size);
 }
+
+/* Remove arrow icon from GFM task list item */
+.task-list-item span svg {
+  @apply hidden;
+}
