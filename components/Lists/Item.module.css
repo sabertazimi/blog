@@ -1,0 +1,39 @@
+.item {
+  display: flex;
+  margin-bottom: calc(1rem / 2);
+  line-height: 1.25;
+  letter-spacing: 0.3px;
+  list-style: none;
+}
+
+.item > span {
+  margin-right: 3px;
+  line-height: 1.25;
+}
+
+.item > div {
+  display: inline-block;
+  flex: 1;
+  margin-left: 0.5rem;
+  line-height: 1.25;
+}
+
+.item > div > ul {
+  margin-top: calc(1rem / 2);
+  margin-bottom: 0;
+}
+
+.item > div > ol {
+  margin-top: calc(1rem / 2);
+  margin-bottom: 0;
+}
+
+.item > div > ul > li {
+  margin-top: calc(1rem / 2);
+  margin-bottom: 0;
+}
+
+.item > div > ol > li {
+  margin-top: calc(1rem / 2);
+  margin-bottom: 0;
+}

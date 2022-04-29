@@ -1,0 +1,19 @@
+.ol {
+  color: inherit;
+  list-style-position: outside;
+  list-style-image: none;
+}
+
+.ol > li > span {
+  display: none;
+}
+
+.ol > li {
+  counter-increment: li;
+}
+
+.ol > li::before {
+  margin-right: 3px;
+  color: var(--primary);
+  content: counter(li) '. ';
+}
