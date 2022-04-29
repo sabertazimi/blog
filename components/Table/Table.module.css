@@ -1,0 +1,35 @@
+.table {
+  @apply block;
+  @apply w-full;
+  @apply mt-0 mb-9;
+  @apply overflow-auto;
+  @apply border-collapse;
+
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  @apply py-2 px-4;
+  @apply text-xl;
+  @apply font-normal;
+  @apply leading-loose;
+  @apply border border-solid  border-gray-200;
+}
+
+.table th {
+  @apply font-semibold;
+}
+
+.table tr {
+  @apply bg-white;
+  @apply border-t border-solid border-primary;
+}
+
+.table tr:first-child th {
+  @apply bg-primary text-light;
+}
+
+.table tr:nth-child(2n) {
+  @apply bg-gray-100;
+}

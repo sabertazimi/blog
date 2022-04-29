@@ -18,14 +18,14 @@
 
 @media screen and (prefers-reduced-motion: reduce) {
   .toc a {
-    @apply text-xs font-normal;
+    @apply text-sm font-normal;
     @apply leading-relaxed break-all;
     @apply transition-none;
   }
 }
 
 .toc a {
-  @apply text-xs font-normal;
+  @apply text-sm font-normal;
   @apply leading-relaxed break-all;
   @apply transition-colors;
 }
