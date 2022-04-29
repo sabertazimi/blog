@@ -87,9 +87,9 @@ module.exports = {
         10: '10px',
       },
       lineHeight: {
-        '1': '0.25rem',
-        '2': '0.5rem',
-        '12': '3rem',
+        1: '0.25rem',
+        2: '0.5rem',
+        12: '3rem',
         'extra-loose': '2.5',
       },
       zIndex: {
@@ -104,6 +104,9 @@ module.exports = {
         secondary: 'var(--secondary)',
         light: 'var(--light)',
         dark: 'var(--dark)',
+      },
+      fontFamily: {
+        mono: ['Operator Mono', 'Fira Code', 'monospace'],
       },
     },
   },

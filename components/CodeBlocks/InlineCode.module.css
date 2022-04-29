@@ -1,14 +1,15 @@
 .code {
+  /* Add `!important` to override `antd` styles */
   @apply py-0.5 px-2 !important;
   @apply font-normal !important;
   @apply leading-6 !important;
   @apply break-words !important;
   @apply border border-solid rounded-lg !important;
   @apply shadow-md !important;
+  @apply font-mono !important;
+  @apply text-light !important;
+  @apply bg-primary !important;
+  @apply border-secondary !important;
 
-  font-family: var(--font-mono) !important;
   font-size: var(--font-size) !important;
-  color: var(--light) !important;
-  background-color: var(--primary) !important;
-  border-color: var(--secondary) !important;
 }

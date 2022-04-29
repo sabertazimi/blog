@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import MDXDivider from './MDXDivider';
+import Table from './Table';
 
-describe('MDXDivider', () => {
+describe('Table', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<MDXDivider />);
+    const { container } = render(<Table />);
 
     expect(container).toMatchSnapshot();
   });
