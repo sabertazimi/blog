@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #1890ff;
+  --secondary: #40a9ff;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
 @layer base {
   img {
     @apply inline-block;

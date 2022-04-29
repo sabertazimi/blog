@@ -1,5 +1,5 @@
 import Link from '@components/Link';
-import List from '@components/List';
+import { List } from '@components/Lists';
 import type { PostMeta } from '@types';
 
 interface Props {
