@@ -2,11 +2,11 @@
 
 exports[`Texts should render correctly (snapshot) 1`] = `
 <div>
-  <span
+  <a
     class="ant-typography"
   >
-    <strong />
-  </span>
+    Text
+  </a>
 </div>
 `;
 
@@ -15,7 +15,9 @@ exports[`Texts should render correctly (snapshot) 2`] = `
   <span
     class="ant-typography"
   >
-    <i />
+    <strong>
+      Text
+    </strong>
   </span>
 </div>
 `;
@@ -25,7 +27,21 @@ exports[`Texts should render correctly (snapshot) 3`] = `
   <span
     class="ant-typography"
   >
-    <del />
+    <i>
+      Text
+    </i>
+  </span>
+</div>
+`;
+
+exports[`Texts should render correctly (snapshot) 4`] = `
+<div>
+  <span
+    class="ant-typography"
+  >
+    <del>
+      Text
+    </del>
   </span>
 </div>
 `;
