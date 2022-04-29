@@ -1,6 +1,6 @@
 .blockquote {
-  @apply mx-0 my-6;
-  @apply px-4 py-2;
+  @apply mx-0 mb-9;
+  @apply px-6 pt-3 pb-px;
   @apply bg-gray-100;
   @apply border-l-10  border-solid border-primary;
 
@@ -9,18 +9,20 @@
 
 .blockquote::before {
   @apply mr-2;
-  @apply text-6xl text-primary;
-  @apply leading-2;
+  @apply text-7xl text-primary;
+  @apply leading-4;
   @apply align-bottom;
 
   content: open-quote;
 }
 
-.blockquote div {
+.blockquote div,
+.blockquote p {
   @apply inline;
   @apply italic;
 }
 
+/* Keep nested blockquote keep compacted */
 .blockquote blockquote {
-  @apply ml-2;
+  @apply ml-2 mb-3;
 }

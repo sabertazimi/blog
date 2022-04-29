@@ -1,39 +1,27 @@
 .item {
   @apply flex;
-  @apply mb-2;
-  @apply leading-4;
+  @apply mt-0 mb-3;
+  @apply leading-relaxed;
   @apply tracking-wide;
   @apply list-none;
 }
 
 .item > span {
   @apply mr-1;
-  @apply leading-4;
+  @apply leading-relaxed;
 }
 
 .item > div {
   @apply inline-block;
   @apply flex-1;
   @apply ml-2;
-  @apply leading-4;
+  @apply leading-relaxed;
 }
 
-.item > div > ul {
-  @apply mt-2;
-  @apply mb-0;
-}
-
-.item > div > ol {
-  @apply mt-2;
-  @apply mb-0;
-}
-
-.item > div > ul > li {
-  @apply mt-2;
-  @apply mb-0;
-}
-
+/* Make nested lists keep compacted */
+.item > div > ul,
+.item > div > ol,
+.item > div > ul > li,
 .item > div > ol > li {
-  @apply mt-2;
-  @apply mb-0;
+  @apply mt-3 mb-0;
 }
