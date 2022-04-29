@@ -1,0 +1,9 @@
+.code {
+  @apply mt-0 mb-9;
+  @apply px-2 py-1;
+  @apply bg-dark;
+  @apply rounded-t-none rounded-b-md;
+
+  /* TODO: @sabertazimi - Add language specific syntax highlight */
+  @apply text-light;
+}
