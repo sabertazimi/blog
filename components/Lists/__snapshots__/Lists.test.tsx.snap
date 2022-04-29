@@ -4,7 +4,9 @@ exports[`Lists should render correctly (snapshot) 1`] = `
 <div>
   <ul
     class="ul"
-  />
+  >
+    List
+  </ul>
 </div>
 `;
 
@@ -12,7 +14,9 @@ exports[`Lists should render correctly (snapshot) 2`] = `
 <div>
   <ol
     class="ol"
-  />
+  >
+    List
+  </ol>
 </div>
 `;
 
@@ -41,7 +45,9 @@ exports[`Lists should render correctly (snapshot) 3`] = `
         />
       </svg>
     </span>
-    <div />
+    <div>
+      List
+    </div>
   </li>
 </div>
 `;

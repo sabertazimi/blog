@@ -19,7 +19,7 @@ describe('Headings', () => {
   test.each(Object.values(Headings))(
     'should render correctly (snapshot)',
     Heading => {
-      const { container } = render(<Heading />);
+      const { container } = render(<Heading>Heading</Heading>);
 
       expect(container).toMatchSnapshot();
     }
