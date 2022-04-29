@@ -84,6 +84,13 @@ module.exports = {
       borderWidth: {
         5: '5px',
         6: '6px',
+        10: '10px',
+      },
+      lineHeight: {
+        '1': '0.25rem',
+        '2': '0.5rem',
+        '12': '3rem',
+        'extra-loose': '2.5',
       },
       zIndex: {
         25: 25,

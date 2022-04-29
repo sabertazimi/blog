@@ -1,3 +1,3 @@
-export { default as classNames } from 'classnames';
-export { motion } from 'framer-motion';
-export type { AnimationProps } from 'framer-motion';
+export { default as classNames } from './classNames';
+export { motion } from './motion';
+export type { AnimationProps } from './motion';
