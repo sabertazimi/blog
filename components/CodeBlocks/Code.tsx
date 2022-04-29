@@ -2,9 +2,7 @@ import { classNames } from '@components/utils';
 import type { HTMLProps, ReactElement } from 'react';
 import styles from './Code.module.css';
 
-interface Props extends HTMLProps<HTMLPreElement> {
-  children?: ReactElement;
-}
+interface Props extends HTMLProps<HTMLPreElement> {}
 
 const alias = {
   md: 'Markdown',
@@ -24,8 +22,9 @@ const getAlias = (language: string) =>
   alias[language.toLowerCase() as AliasKey] ?? language;
 
 const Code = ({ children, className, ...props }: Props): JSX.Element => {
+  const childrenElement = children as ReactElement;
   const language = getAlias(
-    (children?.props?.className as string)?.replace('language-', '') || 'Code'
+    (childrenElement?.props?.className as string)?.replace('language-', '') || 'Code'
   );
 
   return (
