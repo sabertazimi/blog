@@ -1,0 +1,26 @@
+.blockquote {
+  @apply mx-0 my-6;
+  @apply px-4 py-2;
+  @apply bg-gray-100;
+  @apply border-l-10  border-solid border-primary;
+
+  quotes: '\201C''\201D';
+}
+
+.blockquote::before {
+  @apply mr-2;
+  @apply text-6xl text-primary;
+  @apply leading-2;
+  @apply align-bottom;
+
+  content: open-quote;
+}
+
+.blockquote div {
+  @apply inline;
+  @apply italic;
+}
+
+.blockquote blockquote {
+  @apply ml-2;
+}

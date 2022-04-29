@@ -1,11 +1,11 @@
 .ol {
-  color: inherit;
-  list-style-position: outside;
-  list-style-image: none;
+  @apply text-inherit;
+  @apply list-outside;
+  @apply list-none;
 }
 
 .ol > li > span {
-  display: none;
+  @apply hidden;
 }
 
 .ol > li {
@@ -13,7 +13,8 @@
 }
 
 .ol > li::before {
-  margin-right: 3px;
-  color: var(--primary);
+  @apply mr-1;
+  @apply text-primary;
+
   content: counter(li) '. ';
 }

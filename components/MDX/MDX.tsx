@@ -1,4 +1,5 @@
 import Anchor from '@components/Anchor';
+import Blockquote from '@components/Blockquote';
 import Button from '@components/Button';
 import { H1, H2, H3, H4, H5, H6 } from '@components/Headings';
 import ImageCard from '@components/ImageCard';
@@ -33,6 +34,7 @@ const MDX = {
   p: Paragraph,
   hr: MDXDivider,
   img: ImageCard,
+  blockquote: Blockquote,
   ...Headings,
   ...Texts,
   ...Lists,

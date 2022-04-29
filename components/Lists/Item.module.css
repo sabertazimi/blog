@@ -1,39 +1,39 @@
 .item {
-  display: flex;
-  margin-bottom: calc(1rem / 2);
-  line-height: 1.25;
-  letter-spacing: 0.3px;
-  list-style: none;
+  @apply flex;
+  @apply mb-2;
+  @apply leading-4;
+  @apply tracking-wide;
+  @apply list-none;
 }
 
 .item > span {
-  margin-right: 3px;
-  line-height: 1.25;
+  @apply mr-1;
+  @apply leading-4;
 }
 
 .item > div {
-  display: inline-block;
-  flex: 1;
-  margin-left: 0.5rem;
-  line-height: 1.25;
+  @apply inline-block;
+  @apply flex-1;
+  @apply ml-2;
+  @apply leading-4;
 }
 
 .item > div > ul {
-  margin-top: calc(1rem / 2);
-  margin-bottom: 0;
+  @apply mt-2;
+  @apply mb-0;
 }
 
 .item > div > ol {
-  margin-top: calc(1rem / 2);
-  margin-bottom: 0;
+  @apply mt-2;
+  @apply mb-0;
 }
 
 .item > div > ul > li {
-  margin-top: calc(1rem / 2);
-  margin-bottom: 0;
+  @apply mt-2;
+  @apply mb-0;
 }
 
 .item > div > ol > li {
-  margin-top: calc(1rem / 2);
-  margin-bottom: 0;
+  @apply mt-2;
+  @apply mb-0;
 }
