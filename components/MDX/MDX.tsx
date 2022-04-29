@@ -1,13 +1,14 @@
 import Blockquote from '@components/Blockquote';
 import Button from '@components/Button';
 import { Code, InlineCode } from '@components/CodeBlocks';
-import Divider from '@components/Divider';
 import { H1, H2, H3, H4, H5, H6 } from '@components/Headings';
 import ImageCard from '@components/ImageCard';
 import { Item, Ol, Ul } from '@components/Lists';
 import Paragraph from '@components/Paragraph';
 import Table from '@components/Table';
 import { Anchor, Delete, Emphasis, Strong } from '@components/Texts';
+import Divider from './Divider';
+import Input from './Input';
 
 const Headings = {
   h1: H1,
@@ -38,12 +39,11 @@ const CodeBlocks = {
 
 const MDX = {
   p: Paragraph,
-  hr: () => (
-    <Divider className="mx-0 my-12 h-1 rounded-full bg-gradient-primary" />
-  ),
+  hr: Divider,
   img: ImageCard,
   blockquote: Blockquote,
   table: Table,
+  input: Input,
   ...Headings,
   ...Texts,
   ...Lists,

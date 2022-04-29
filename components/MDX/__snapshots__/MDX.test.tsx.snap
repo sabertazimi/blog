@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider should render correctly (snapshot) 1`] = `
+<div>
+  <div
+    class="ant-divider ant-divider-horizontal mx-0 my-12 h-1 rounded-full bg-gradient-primary"
+    role="separator"
+  />
+</div>
+`;
+
+exports[`Input should render checkbox correctly (snapshot) 1`] = `
+<div>
+  <label
+    class="ant-checkbox-wrapper mr-1"
+  >
+    <span
+      class="ant-checkbox"
+    >
+      <input
+        class="ant-checkbox-input"
+        type="checkbox"
+        value=""
+      />
+      <span
+        class="ant-checkbox-inner"
+      />
+    </span>
+  </label>
+</div>
+`;
+
+exports[`Input should render input correctly (snapshot) 1`] = `
+<div>
+  <input
+    class="ant-input mr-1"
+    type="text"
+    value=""
+  />
+</div>
+`;
