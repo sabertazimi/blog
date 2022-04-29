@@ -1,9 +1,9 @@
 .code {
   @apply relative;
   @apply mt-0 mb-9;
-  @apply px-2 pb-1 pt-10;
+  @apply px-5 pb-1 pt-10;
   @apply bg-dark;
-  @apply rounded-t-none rounded-b-md;
+  @apply rounded-md;
 
   /* TODO: @sabertazimi - Add language specific syntax highlight */
   @apply text-light;
