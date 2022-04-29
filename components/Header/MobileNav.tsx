@@ -1,7 +1,7 @@
 import Col from '@components/Col';
 import { Bars } from '@components/Icons';
-import Image from '@components/Image';
 import Link from '@components/Link';
+import LocalImage from '@components/LocalImage';
 import Menu from '@components/Menu';
 import Popover from '@components/Popover';
 import Row from '@components/Row';
@@ -12,7 +12,7 @@ const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">
     <Col className="flex-container" span={8} offset={8}>
       <Link href="/">
-        <Image src={logo} alt="Logo" width={96} height={96} />
+        <LocalImage src={logo} alt="Logo" width={96} height={96} />
       </Link>
     </Col>
     <Col className="flex-container" span={8}>
