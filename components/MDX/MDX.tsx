@@ -1,5 +1,6 @@
 import Blockquote from '@components/Blockquote';
 import Button from '@components/Button';
+import { Code, InlineCode } from '@components/CodeBlocks';
 import { H1, H2, H3, H4, H5, H6 } from '@components/Headings';
 import ImageCard from '@components/ImageCard';
 import { Item, Ol, Ul } from '@components/Lists';
@@ -29,6 +30,11 @@ const Lists = {
   li: Item,
 };
 
+const CodeBlocks = {
+  code: InlineCode,
+  pre: Code,
+};
+
 const MDX = {
   p: Paragraph,
   hr: MDXDivider,
@@ -37,6 +43,7 @@ const MDX = {
   ...Headings,
   ...Texts,
   ...Lists,
+  ...CodeBlocks,
   Button,
 };
 
