@@ -1,6 +1,6 @@
 .blockquote {
   @apply mx-0 mb-9;
-  @apply px-6 pt-3 pb-px;
+  @apply px-6 pt-12 pb-6;
   @apply bg-gray-100;
   @apply border-l-10  border-solid border-primary;
 
@@ -9,8 +9,8 @@
 
 .blockquote::before {
   @apply mr-2;
-  @apply text-7xl text-primary;
-  @apply leading-4;
+  @apply text-9xl text-primary;
+  @apply leading-12;
   @apply align-bottom;
 
   content: open-quote;
