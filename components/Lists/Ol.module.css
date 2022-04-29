@@ -5,7 +5,8 @@
   @apply list-none;
 }
 
-.ol span svg {
+.ol li span,
+.ol li span svg {
   @apply hidden;
 }
 
