@@ -1,21 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CodeBlocks should render correctly (snapshot) 1`] = `
+exports[`Code should render children correctly (snapshot) 1`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Code"
+  >
+    <code>
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render correctly (snapshot) 1`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Code"
+  />
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 1`] = `
+<div>
+  <pre
+    class="code"
+    data-language="TypeScript"
+  >
+    <code
+      class="language-ts"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`InlineCode should render children correctly (snapshot) 1`] = `
 <div>
   <code
     class="code"
   >
-    CodeBlock
+    InlineCode
   </code>
 </div>
 `;
 
-exports[`CodeBlocks should render correctly (snapshot) 2`] = `
+exports[`InlineCode should render correctly (snapshot) 1`] = `
 <div>
-  <pre
+  <code
     class="code"
+  />
+</div>
+`;
+
+exports[`InlineCode should render raw code correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="language-ts"
   >
-    CodeBlock
-  </pre>
+    InlineCode
+  </code>
 </div>
 `;
