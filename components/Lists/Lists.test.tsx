@@ -13,7 +13,7 @@ describe('Lists', () => {
   test.each(Object.values(Lists))(
     'should render correctly (snapshot)',
     List => {
-      const { container } = render(<List />);
+      const { container } = render(<List>List</List>);
 
       expect(container).toMatchSnapshot();
     }
