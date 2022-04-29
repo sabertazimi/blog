@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +9,9 @@
   --secondary: #40a9ff;
   --light: #f8f9fa;
   --dark: #343a40;
+  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC',
+    'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
 }
 
 @layer base {

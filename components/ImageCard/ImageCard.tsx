@@ -11,7 +11,6 @@ const ImageCard = ({ src, title, alt }: Props): JSX.Element => {
   if (!src) {
     return (
       <Image
-        width="100%"
         src="error"
         alt="Broken Image"
         title="Broken Image"
@@ -21,7 +20,7 @@ const ImageCard = ({ src, title, alt }: Props): JSX.Element => {
   }
 
   return (
-    <Card size="small" cover={<Image width="100%" src={src} alt={alt} />}>
+    <Card size="small" cover={<Image src={src} alt={alt} />}>
       <Card.Meta title={title} description={alt} />
     </Card>
   );

@@ -5,7 +5,7 @@ interface Props extends DividerProps {}
 
 const Divider = ({
   type = 'horizontal',
-  className = 'mx-0 my-12 font-extrabold',
+  className = 'mx-0 my-12 leading-relaxed tracking-wide font-extrabold',
   children,
 }: Props): JSX.Element => (
   <AntDivider type={type} className={className}>

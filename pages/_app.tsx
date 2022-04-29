@@ -1,9 +1,11 @@
 import { siteConfig } from '@config';
 import NextProgress from 'next-progress';
 import type { AppProps } from 'next/app';
-import '../styles/globals.css';
+
+// Keep stylesheets importing order
 import '../styles/tailwind.css';
 import 'antd/dist/antd.css';
+import '../styles/globals.css';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>

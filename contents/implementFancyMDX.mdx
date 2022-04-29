@@ -22,8 +22,6 @@ it's an advanced `Markdown` format with `React` component support.
 
 ## Heading
 
-<br />
-
 # **Hello**, This Is a _Title_ Inside `h1`
 
 ## **Hello**, This Is a _Title_ Inside `h2`
@@ -38,64 +36,70 @@ it's an advanced `Markdown` format with `React` component support.
 
 ## List
 
-1. one
-2. two
-3. three
+Unordered list:
 
-- one
-- two
-- three
-
-Unordered list
-
-+ Create a list by starting a line with `+`, `-`, or `*`
++ Create a list by starting a line with `+`, `-`, or `*`.
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
+    * Ac tristique libero volutpat at.
+    + Facilisis in pretium nisl aliquet.
+    - Nulla volutpat aliquam velit.
 + Very easy!
 
-Ordered list
+Ordered list:
 
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
+1. Lorem ipsum dolor sit amet.
+2. Consectetur adipiscing elit.
+3. Integer molestie lorem at massa.
 
 Sequential numbering:
 
 1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
+1. ...or keep all the numbers as `1.`.
 
 Start numbering with offset:
 
-57. foo
-1. bar
+57. foo.
+1. bar.
+1. foo bar.
 
 ## Task List
 
 ```md
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
+- [x] Write the press release.
+- [ ] Update the website.
+- [ ] Contact the media.
 ```
 
-Renders
+Renders:
 
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
+- [x] Write the press release.
+- [ ] Update the website.
+- [ ] Contact the media.
 
 ## Horizontal Rule
 
-Horizontal rule 1
+```md
+___
+```
+
+Renders:
+
 ___
 
-Horizontal rule 2
+```md
+---
+```
+
+Renders:
 
 ---
 
-Horizontal rule 3
+```md
+***
+```
+
+Renders:
 
 ***
 
@@ -104,44 +108,44 @@ Horizontal rule 3
 ### Bold
 
 ```md
-**This is bold text**
+**This is bold text**.
 
-__This is bold text__
+__This is bold text__.
 ```
 
-Renders
+Renders:
 
-**This is bold text**
+**This is bold text**.
 
-__This is bold text__
+__This is bold text__.
 
 ### Italic
 
 ```md
-*This is italic text*
+*This is italic text*.
 
-_This is italic text_
+_This is italic text_.
 ```
 
-Renders
+Renders:
 
-*This is italic text*
+*This is italic text*.
 
-_This is italic text_
+_This is italic text_.
 
 ### Strikethrough
 
 ```md
-~This is strikethrough text~
+~This is strikethrough text~.
 
-~~This is strikethrough text~~
+~~This is strikethrough text~~.
 ```
 
-Renders
+Renders:
 
-~This is strikethrough text~
+~This is strikethrough text~.
 
-~~This is strikethrough text~~
+~~This is strikethrough text~~.
 
 ## Blockquote
 
@@ -196,23 +200,15 @@ Right aligned columns
 
 ## Code
 
-Inline `code`
+Inline `code`.
 
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-
-Block code "fences"
+Block code "fences":
 
 ```markdown
 Sample text here...
 ```
 
-Syntax highlighting
+Syntax highlighting:
 
 ```ts
 const foo = function (bar) {
@@ -226,29 +222,46 @@ some.code();
 
 ## Link
 
-[link text](https://github.com/sabertazimi)
+[Link text](https://github.com/sabertazimi).
 
-[link with title](https://sabertazimi.github.io/awesome-notes "title text!")
+[Link with title](https://sabertazimi.github.io/awesome-notes "title text!").
 
 ### Autolink Literal
 
-Autoconverted link https://github.com/sabertazimi/blog (enable linkify to see)
+Auto-converted link https://github.com/sabertazimi/blog (enable linkify to see):
 
-www.example.com, https://example.com, and contact@example.com.
+- www.example.com.
+- https://example.com.
+- contact@example.com.
 
 ### Footnote
 
-A note[^1]
+A note[^1].
 
 [^1]: Big note.
 
+Another note[^2].
+
+Yet another note[^3].
+
+[^2]: Small note.
+[^3]: Smallest note.
+
 ## Image
 
-Remote image ![Minion](https://octodex.github.com/images/minion.png)
-Remote Alt image ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-Local image ![image](/images/landing.jpg "Local image")
+Local image:
 
-Like links, Images also have a footnote style syntax
+![image](/images/landing.jpg "Local image")
+
+Remote image:
+
+![Minion](https://octodex.github.com/images/minion.png)
+
+Remote Alt image:
+
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax:
 
 ![Alt text][id]
 
@@ -282,7 +295,7 @@ I can write **Markdown** alongside my _JSX_!
 </div>
 ```
 
-Renders
+Renders:
 
 <h2>JSX Heading 2</h2>
 
@@ -306,7 +319,7 @@ I can write **Markdown** alongside my _JSX_!
 Two 🍰 is: {Math.PI * 2}
 ```
 
-Renders
+Renders:
 
 Two 🍰 is: {Math.PI * 2}
 
@@ -326,7 +339,7 @@ Two 🍰 is: {Math.PI * 2}
 })()}
 ```
 
-Renders
+Renders:
 
 {(function () {
   const guess = 0.44
@@ -348,7 +361,7 @@ Renders
 {/* A comment! */}
 ```
 
-Renders nothing
+Renders nothing.
 
 {/* A comment! */}
 
@@ -483,8 +496,16 @@ Two 🍰 is: {Math.PI * 2}
 
 <Button>MDX Default Button</Button>
 <Button type="primary">MDX Primary Button</Button>
+
+---
+
 <Button type="dashed">MDX Dashed Button</Button>
 <Button type="text">MDX Text Button</Button>
 <Button type="link">MDX Link Button</Button>
+
+---
+
 <Button type="primary" danger>MDX Danger Button</Button>
 <Button type="primary" ghost>MDX Ghost Button</Button>
+
+---

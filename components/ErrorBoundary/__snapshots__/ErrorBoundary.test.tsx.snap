@@ -42,38 +42,54 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
         <div
           class="ant-typography"
         >
-          <span
-            class="ant-typography text-xl font-extrabold"
+          <p
+            class="mt-0 mb-9 leading-relaxed tracking-wide"
           >
-            Please check the following information:
-          </span>
+            <span
+              class="ant-typography text-xl font-extrabold"
+            >
+              Please check the following information:
+            </span>
+          </p>
         </div>
         <div
           class="ant-typography"
         >
-          <span
-            class="ant-typography"
+          <p
+            class="mt-0 mb-9 leading-relaxed tracking-wide"
           >
-            ComponentWithError.
-          </span>
+            <span
+              class="ant-typography"
+            >
+              ComponentWithError.
+            </span>
+          </p>
         </div>
         <div
           class="ant-typography"
         >
-          <span
-            class="ant-typography"
+          <p
+            class="mt-0 mb-9 leading-relaxed tracking-wide"
           >
-            Please check terminal output for further details.
-          </span>
+            <span
+              class="ant-typography"
+            >
+              Please check terminal output for further details.
+            </span>
+          </p>
         </div>
         <div
           class="ant-typography"
         >
-          <span
-            class="ant-typography"
+          <p
+            class="mt-0 mb-9 leading-relaxed tracking-wide"
           >
-            Please reload this page after changing code.
-          </span>
+            <span
+              class="ant-typography"
+            >
+              Please reload this page after changing code.
+            </span>
+          </p>
         </div>
       </div>
     </div>
