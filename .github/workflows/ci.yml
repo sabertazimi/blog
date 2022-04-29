@@ -98,29 +98,3 @@ jobs:
         with:
           name: app
           path: .next
-
-  deploy:
-    name: Deployment
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
-    needs: [lint, test, build]
-    steps:
-      - name: Download production artifacts
-        uses: actions/download-artifact@v3
-      - name: List production artifacts
-        run: |
-          ls -R
-        working-directory: .
-      - name: Aggregate production artifacts
-        run: |
-          mv app build
-      - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: ${{ github.event.head_commit.message }}
