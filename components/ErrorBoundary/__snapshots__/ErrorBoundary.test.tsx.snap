@@ -40,56 +40,40 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
         role="alert"
       >
         <div
-          class="ant-typography"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
         >
-          <p
-            class="mt-0 mb-9 leading-relaxed tracking-wide"
+          <span
+            class="ant-typography text-xl font-extrabold"
           >
-            <span
-              class="ant-typography text-xl font-extrabold"
-            >
-              Please check the following information:
-            </span>
-          </p>
+            Please check the following information:
+          </span>
         </div>
         <div
-          class="ant-typography"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
         >
-          <p
-            class="mt-0 mb-9 leading-relaxed tracking-wide"
+          <span
+            class="ant-typography"
           >
-            <span
-              class="ant-typography"
-            >
-              ComponentWithError.
-            </span>
-          </p>
+            ComponentWithError.
+          </span>
         </div>
         <div
-          class="ant-typography"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
         >
-          <p
-            class="mt-0 mb-9 leading-relaxed tracking-wide"
+          <span
+            class="ant-typography"
           >
-            <span
-              class="ant-typography"
-            >
-              Please check terminal output for further details.
-            </span>
-          </p>
+            Please check terminal output for further details.
+          </span>
         </div>
         <div
-          class="ant-typography"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
         >
-          <p
-            class="mt-0 mb-9 leading-relaxed tracking-wide"
+          <span
+            class="ant-typography"
           >
-            <span
-              class="ant-typography"
-            >
-              Please reload this page after changing code.
-            </span>
-          </p>
+            Please reload this page after changing code.
+          </span>
         </div>
       </div>
     </div>

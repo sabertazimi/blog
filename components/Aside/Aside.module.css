@@ -5,17 +5,16 @@
 .admonition div,
 .admonition ol,
 .admonition ul {
-  @apply mb-3;
+  @apply mb-3 !important;
 }
 
 .admonition ol li::before {
-  @apply mr-1;
+  @apply mr-1 !important;
 }
 
 .admonition div:last-child,
 .admonition ol:last-child,
 .admonition ul:last-child,
-.admonition li,
-.admonition div p {
+.admonition li {
   @apply my-0 !important;
 }
