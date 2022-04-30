@@ -15,26 +15,12 @@ export default function remarkAdmonitions() {
   return (tree: any) => {
     visit(tree, (node: ContainerDirective) => {
       if (node.type === 'containerDirective') {
-        const title = Object.keys(node.attributes).join(' ');
-
-        // Add `<strong class="admonition-title">{title}</strong>`
-        if (title) {
-          node.children.unshift({
-            type: 'strong',
-            children: [{ type: 'text', value: title }],
-            data: {
-              hName: 'strong',
-              hProperties: {
-                className: 'admonition-title',
-              },
-            },
-          });
-        }
-
-        // Change container html element to `<aside class="admonition admonition-*">`,
+        // Change container html element to `<aside type="*" title="*" class="admonition admonition-*">`,
         node.data = {
           hName: 'aside',
           hProperties: {
+            type: node.name,
+            title: Object.keys(node.attributes).join(' '),
             className: `admonition admonition-${node.name}`,
           },
         };
