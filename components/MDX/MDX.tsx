@@ -1,7 +1,7 @@
 import Aside from '@components/Aside';
 import Blockquote from '@components/Blockquote';
 import Button from '@components/Button';
-import { Code, InlineCode } from '@components/CodeBlocks';
+import { Code, Pre } from '@components/CodeBlocks';
 import Footnote from '@components/Footnote';
 import { H1, H2, H3, H4, H5, H6 } from '@components/Headings';
 import ImageCard from '@components/ImageCard';
@@ -35,8 +35,8 @@ const Lists = {
 };
 
 const CodeBlocks = {
-  code: InlineCode,
-  pre: Code,
+  code: Code,
+  pre: Pre,
 };
 
 const MDX = {

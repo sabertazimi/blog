@@ -2,8 +2,36 @@
 
 exports[`Code should render children correctly (snapshot) 1`] = `
 <div>
+  <code
+    class="inline"
+  >
+    Code
+  </code>
+</div>
+`;
+
+exports[`Code should render correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="inline"
+  />
+</div>
+`;
+
+exports[`Code should render raw code correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="language-ts"
+  >
+    Code
+  </code>
+</div>
+`;
+
+exports[`Pre should render children correctly (snapshot) 1`] = `
+<div>
   <pre
-    class="code"
+    class="pre"
     data-language="Code"
   >
     <code>
@@ -13,19 +41,19 @@ exports[`Code should render children correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`Code should render correctly (snapshot) 1`] = `
+exports[`Pre should render correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Code"
   />
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 1`] = `
+exports[`Pre should render language correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="HTML"
   >
     <code
@@ -37,10 +65,10 @@ exports[`Code should render language correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 2`] = `
+exports[`Pre should render language correctly (snapshot) 2`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="CSS"
   >
     <code
@@ -52,10 +80,10 @@ exports[`Code should render language correctly (snapshot) 2`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 3`] = `
+exports[`Pre should render language correctly (snapshot) 3`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="JSON"
   >
     <code
@@ -67,10 +95,10 @@ exports[`Code should render language correctly (snapshot) 3`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 4`] = `
+exports[`Pre should render language correctly (snapshot) 4`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Markdown"
   >
     <code
@@ -82,10 +110,10 @@ exports[`Code should render language correctly (snapshot) 4`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 5`] = `
+exports[`Pre should render language correctly (snapshot) 5`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Markdown"
   >
     <code
@@ -97,10 +125,10 @@ exports[`Code should render language correctly (snapshot) 5`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 6`] = `
+exports[`Pre should render language correctly (snapshot) 6`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="JavaScript"
   >
     <code
@@ -112,10 +140,10 @@ exports[`Code should render language correctly (snapshot) 6`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 7`] = `
+exports[`Pre should render language correctly (snapshot) 7`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="JavaScript"
   >
     <code
@@ -127,10 +155,10 @@ exports[`Code should render language correctly (snapshot) 7`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 8`] = `
+exports[`Pre should render language correctly (snapshot) 8`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="TypeScript"
   >
     <code
@@ -142,10 +170,10 @@ exports[`Code should render language correctly (snapshot) 8`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 9`] = `
+exports[`Pre should render language correctly (snapshot) 9`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="TypeScript"
   >
     <code
@@ -157,10 +185,10 @@ exports[`Code should render language correctly (snapshot) 9`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 10`] = `
+exports[`Pre should render language correctly (snapshot) 10`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="React"
   >
     <code
@@ -172,10 +200,10 @@ exports[`Code should render language correctly (snapshot) 10`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 11`] = `
+exports[`Pre should render language correctly (snapshot) 11`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="React"
   >
     <code
@@ -187,10 +215,10 @@ exports[`Code should render language correctly (snapshot) 11`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 12`] = `
+exports[`Pre should render language correctly (snapshot) 12`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Vue"
   >
     <code
@@ -202,10 +230,10 @@ exports[`Code should render language correctly (snapshot) 12`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 13`] = `
+exports[`Pre should render language correctly (snapshot) 13`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Go"
   >
     <code
@@ -217,10 +245,10 @@ exports[`Code should render language correctly (snapshot) 13`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 14`] = `
+exports[`Pre should render language correctly (snapshot) 14`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Java"
   >
     <code
@@ -232,10 +260,10 @@ exports[`Code should render language correctly (snapshot) 14`] = `
 </div>
 `;
 
-exports[`Code should render language correctly (snapshot) 15`] = `
+exports[`Pre should render language correctly (snapshot) 15`] = `
 <div>
   <pre
-    class="code"
+    class="pre"
     data-language="Rust"
   >
     <code
@@ -244,33 +272,5 @@ exports[`Code should render language correctly (snapshot) 15`] = `
       Code
     </code>
   </pre>
-</div>
-`;
-
-exports[`InlineCode should render children correctly (snapshot) 1`] = `
-<div>
-  <code
-    class="code"
-  >
-    InlineCode
-  </code>
-</div>
-`;
-
-exports[`InlineCode should render correctly (snapshot) 1`] = `
-<div>
-  <code
-    class="code"
-  />
-</div>
-`;
-
-exports[`InlineCode should render raw code correctly (snapshot) 1`] = `
-<div>
-  <code
-    class="language-ts"
-  >
-    InlineCode
-  </code>
 </div>
 `;
