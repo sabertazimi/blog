@@ -1,3 +1,4 @@
+import Aside from '@components/Aside';
 import Blockquote from '@components/Blockquote';
 import Button from '@components/Button';
 import { Code, InlineCode } from '@components/CodeBlocks';
@@ -44,6 +45,7 @@ const MDX = {
   blockquote: Blockquote,
   table: Table,
   input: Input,
+  aside: Aside,
   ...Headings,
   ...Texts,
   ...Lists,

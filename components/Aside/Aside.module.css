@@ -1,0 +1,8 @@
+.admonition {
+  @apply mt-0 mb-9;
+}
+
+.admonition div:last-child,
+.admonition div p {
+  @apply mb-0 !important;
+}
