@@ -1,13 +1,15 @@
 import Card from '@components/Card';
 import Image from '@components/Image';
+import { classNames } from '@components/utils';
 
 interface Props {
   src?: string;
   title?: string;
   alt?: string;
+  className?: string;
 }
 
-const ImageCard = ({ src, title, alt }: Props): JSX.Element => {
+const ImageCard = ({ src, title, alt, className }: Props): JSX.Element => {
   if (!src) {
     return (
       <Image
@@ -20,7 +22,11 @@ const ImageCard = ({ src, title, alt }: Props): JSX.Element => {
   }
 
   return (
-    <Card size="small" cover={<Image src={src} alt={alt} />}>
+    <Card
+      size="small"
+      cover={<Image src={src} alt={alt} />}
+      className={classNames(className, 'text-center')}
+    >
       <Card.Meta title={title} description={alt} />
     </Card>
   );

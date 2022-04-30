@@ -1,13 +1,18 @@
+import { classNames } from '@components/utils';
 import { Typography } from 'antd';
 import type { ReactNode } from 'react';
 
 interface Props {
   children?: ReactNode;
+  className?: string;
 }
 
-const Paragraph = ({ children, ...props }: Props): JSX.Element => (
-  <Typography.Paragraph {...props}>
-    <p className="mt-0 mb-9 leading-relaxed tracking-wide">{children}</p>
+const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
+  <Typography.Paragraph
+    {...props}
+    className={classNames(className, 'mt-0 mb-9 leading-relaxed tracking-wide')}
+  >
+    {children}
   </Typography.Paragraph>
 );
 
