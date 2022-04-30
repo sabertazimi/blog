@@ -1,0 +1,10 @@
+.header {
+  @apply w-full p-3 md:px-32 md:pt-48 md:pb-40 !important;
+  @apply bg-center bg-no-repeat bg-cover !important;
+  @apply bg-gradient-primary !important;
+}
+
+.title {
+  @apply my-12 text-light text-6xl !important;
+  @apply md:my-24 md:text-8xl !important;
+}

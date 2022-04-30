@@ -3,7 +3,7 @@
 exports[`PostCard should render correctly (snapshot) 1`] = `
 <div>
   <div
-    class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+    class="container relative block h-full mx-auto my-0 p-auto card"
   >
     <div
       style="opacity: 0; transform: translateX(-200px) translateZ(0);"
@@ -20,7 +20,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         </a>
       </span>
       <h2
-        class="ant-typography mb-6 my-3 mt-24"
+        class="ant-typography mb-6 title mt-24"
       >
         1 Basic Notes
       </h2>
@@ -51,7 +51,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         </span>
       </span>
       <div
-        class="container relative block h-full mx-auto my-0 p-auto mt-3"
+        class="container relative block h-full mx-auto my-0 p-auto skeleton"
       >
         <div
           class="ant-skeleton"
@@ -69,7 +69,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
           </div>
         </div>
         <button
-          class="ant-btn ant-btn-default float-right m-0 w-14 h-14 text-2xl rounded-full button-primary"
+          class="ant-btn ant-btn-default button"
           type="button"
         >
           <a
@@ -106,7 +106,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
 exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
 <div>
   <div
-    class="container relative block h-full mx-auto my-0 p-auto px-5 py-4 mt-0 mb-16 transition duration-300 shadow-xl transform-gpu hover:shadow-2xl hover:-translate-y-2"
+    class="container relative block h-full mx-auto my-0 p-auto card"
   >
     <div
       data-projection-id="1"
@@ -124,7 +124,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         </a>
       </span>
       <h2
-        class="ant-typography mb-6 my-3 mt-24"
+        class="ant-typography mb-6 title mt-24"
       >
         1 Basic Notes
       </h2>
@@ -155,7 +155,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         </span>
       </span>
       <div
-        class="container relative block h-full mx-auto my-0 p-auto mt-3"
+        class="container relative block h-full mx-auto my-0 p-auto skeleton"
       >
         <div
           class="ant-skeleton"
@@ -173,7 +173,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
           </div>
         </div>
         <button
-          class="ant-btn ant-btn-default float-right m-0 w-14 h-14 text-2xl rounded-full button-primary"
+          class="ant-btn ant-btn-default button"
           type="button"
         >
           <a

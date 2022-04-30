@@ -1,0 +1,20 @@
+.card {
+  @apply px-5 py-4 mt-0 mb-16 !important;
+  @apply transition duration-300 shadow-xl transform-gpu !important;
+  @apply hover:shadow-2xl hover:-translate-y-2 !important;
+}
+
+.title {
+  @apply my-3 !important;
+}
+
+.skeleton {
+  @apply mt-3 !important;
+}
+
+.button {
+  @apply float-right m-0 !important;
+  @apply w-14 h-14 !important;
+  @apply text-2xl rounded-full !important;
+  @apply button-primary !important;
+}
