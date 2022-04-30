@@ -8,7 +8,14 @@ const Heading = ({
   className,
   ...props
 }: TitleProps): JSX.Element => (
-  <Typography.Title {...props} className={classNames('mb-6', className)}>
+  <Typography.Title
+    {...props}
+    className={classNames(
+      'mb-6',
+      `after:ml-1 hover:after:content-['#'] hover:after:text-primary`,
+      className
+    )}
+  >
     {children}
   </Typography.Title>
 );

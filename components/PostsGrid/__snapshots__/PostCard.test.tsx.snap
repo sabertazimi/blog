@@ -20,7 +20,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         </a>
       </span>
       <h2
-        class="ant-typography mb-6 title mt-24"
+        class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary title mt-24"
       >
         1 Basic Notes
       </h2>
@@ -124,7 +124,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         </a>
       </span>
       <h2
-        class="ant-typography mb-6 title mt-24"
+        class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary title mt-24"
       >
         1 Basic Notes
       </h2>

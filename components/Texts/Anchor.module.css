@@ -1,0 +1,31 @@
+.anchor {
+  @apply relative;
+}
+
+.anchor::before {
+  @apply absolute left-1/2 bottom-0;
+  @apply w-0 h-0.5;
+  @apply bg-primary;
+  @apply transition-all;
+
+  content: '';
+}
+
+.anchor:active,
+.anchor:hover,
+.anchor:focus {
+  @apply outline-none;
+}
+
+.anchor:active::before,
+.anchor:hover::before,
+.anchor:focus::before {
+  @apply left-0;
+  @apply w-full;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .anchor::before {
+    @apply transition-none;
+  }
+}

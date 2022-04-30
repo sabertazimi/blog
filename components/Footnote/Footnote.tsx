@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import {classNames}from '@components/utils';
+import { classNames } from '@components/utils';
+import type { ReactNode } from 'react';
 import styles from './Footnote.module.css';
 
 interface Props {
@@ -7,10 +7,10 @@ interface Props {
   className?: string;
 }
 
-const Footnote = ({children, className, ...props}:Props):JSX.Element => (
+const Footnote = ({ children, className, ...props }: Props): JSX.Element => (
   <div {...props} className={classNames(className, styles.footnote)}>
     {children}
   </div>
-)
+);
 
 export default Footnote;
