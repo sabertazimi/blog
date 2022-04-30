@@ -1445,17 +1445,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dg-scripts/stylelint-config@npm:^5.9.0":
-  version: 5.9.0
-  resolution: "@dg-scripts/stylelint-config@npm:5.9.0"
+"@dg-scripts/stylelint-config@npm:^5.10.0":
+  version: 5.10.0
+  resolution: "@dg-scripts/stylelint-config@npm:5.10.0"
   dependencies:
-    stylelint-config-bod: ^5.9.0
+    stylelint-config-bod: ^5.10.0
     stylelint-config-prettier: ^9.0.3
     stylelint-prettier: ^2.0.0
   peerDependencies:
     prettier: ^2.4.0
     stylelint: ^13.13.0 || ^14.0.0
-  checksum: 37d81025ad01c76f06d31e89e551474a646c44933fc9c13f1d9151e5408ffb9e590f40d7313f5d84065f1dce2e0f9cba5c16153739350f51515cc41beb90ca25
+  checksum: c1bb54a9c658511697b8f4b61be933cdb521e231ab4fa0606a4d1a9059f9acb8608c374d106099d11d1d3da97436b69d124c13fe5525617ec2e78881d7d3c2df
   languageName: node
   linkType: hard
 
@@ -2199,7 +2199,7 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^4.7.0
-    "@dg-scripts/stylelint-config": ^5.9.0
+    "@dg-scripts/stylelint-config": ^5.10.0
     "@octokit/rest": ^18.12.0
     "@octokit/types": ^6.34.0
     "@testing-library/jest-dom": ^5.16.4
@@ -12435,9 +12435,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint-config-bod@npm:^5.9.0":
-  version: 5.9.0
-  resolution: "stylelint-config-bod@npm:5.9.0"
+"stylelint-config-bod@npm:^5.10.0":
+  version: 5.10.0
+  resolution: "stylelint-config-bod@npm:5.10.0"
   dependencies:
     postcss-html: ^1.4.1
     postcss-markdown: ^1.2.0
@@ -12447,7 +12447,7 @@ resolve@^2.0.0-next.3:
     stylelint-config-standard-scss: ^3.0.0
   peerDependencies:
     stylelint: ^13.13.0 || ^14.0.0
-  checksum: d66c9c6b3a8c0eddc4d540c59ce39619eecc534ad57ed66fbd9c0f6cfd08c146a73c2c99ae208623d2e4196b8b8dbb020c208aa140afb85fc666fb4f3fe5f549
+  checksum: 469ceff2fe7358150ac8d04f031334385bf8759ea5fc97a1dbf13f5442662b9415e4eb5d3ca3cb64e9204e0107c4bea4e02b54ac689cd7a962eac3bfd119f266
   languageName: node
   linkType: hard
 
