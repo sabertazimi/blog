@@ -1,3 +1,4 @@
+import { classNames } from '@components/utils';
 import type { ReactNode } from 'react';
 import Heading from './Heading';
 
@@ -6,6 +7,8 @@ interface Props {
   children?: ReactNode;
 }
 
-const H5 = (props: Props): JSX.Element => <Heading {...props} level={5} />;
+const H5 = ({ className, ...props }: Props): JSX.Element => (
+  <Heading {...props} level={5} className={classNames(className, 'mt-3')} />
+);
 
 export default H5;
