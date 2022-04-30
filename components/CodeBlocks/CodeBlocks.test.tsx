@@ -1,30 +1,28 @@
 import { render } from '@testing-library/react';
 import Code from './Code';
-import InlineCode from './InlineCode';
+import Pre from './Pre';
 
-describe('InlineCode', () => {
+describe('Code', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<InlineCode />);
+    const { container } = render(<Code />);
 
     expect(container).toMatchSnapshot();
   });
 
   test('should render children correctly (snapshot)', () => {
-    const { container } = render(<InlineCode>InlineCode</InlineCode>);
+    const { container } = render(<Code>Code</Code>);
 
     expect(container).toMatchSnapshot();
   });
 
   test('should render raw code correctly (snapshot)', () => {
-    const { container } = render(
-      <InlineCode className="language-ts">InlineCode</InlineCode>
-    );
+    const { container } = render(<Code className="language-ts">Code</Code>);
 
     expect(container).toMatchSnapshot();
   });
 });
 
-describe('Code', () => {
+describe('Pre', () => {
   const languages = [
     'html',
     'css',
@@ -44,16 +42,16 @@ describe('Code', () => {
   ];
 
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<Code />);
+    const { container } = render(<Pre />);
 
     expect(container).toMatchSnapshot();
   });
 
   test('should render children correctly (snapshot)', () => {
     const { container } = render(
-      <Code>
+      <Pre>
         <code>Code</code>
-      </Code>
+      </Pre>
     );
 
     expect(container).toMatchSnapshot();
@@ -63,9 +61,9 @@ describe('Code', () => {
     'should render language correctly (snapshot)',
     language => {
       const { container } = render(
-        <Code>
+        <Pre>
           <code className={`language-${language}`}>Code</code>
-        </Code>
+        </Pre>
       );
 
       expect(container).toMatchSnapshot();
