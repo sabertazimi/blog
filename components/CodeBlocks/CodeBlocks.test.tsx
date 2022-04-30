@@ -25,6 +25,24 @@ describe('InlineCode', () => {
 });
 
 describe('Code', () => {
+  const languages = [
+    'html',
+    'css',
+    'json',
+    'md',
+    'markdown',
+    'js',
+    'javascript',
+    'ts',
+    'typescript',
+    'jsx',
+    'tsx',
+    'vue',
+    'go',
+    'java',
+    'rust',
+  ];
+
   test('should render correctly (snapshot)', () => {
     const { container } = render(<Code />);
 
@@ -41,13 +59,16 @@ describe('Code', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should render language correctly (snapshot)', () => {
-    const { container } = render(
-      <Code>
-        <code className="language-ts">Code</code>
-      </Code>
-    );
+  test.each(languages)(
+    'should render language correctly (snapshot)',
+    language => {
+      const { container } = render(
+        <Code>
+          <code className={`language-${language}`}>Code</code>
+        </Code>
+      );
 
-    expect(container).toMatchSnapshot();
-  });
+      expect(container).toMatchSnapshot();
+    }
+  );
 });

@@ -26,10 +26,220 @@ exports[`Code should render language correctly (snapshot) 1`] = `
 <div>
   <pre
     class="code"
+    data-language="HTML"
+  >
+    <code
+      class="language-html"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 2`] = `
+<div>
+  <pre
+    class="code"
+    data-language="CSS"
+  >
+    <code
+      class="language-css"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 3`] = `
+<div>
+  <pre
+    class="code"
+    data-language="JSON"
+  >
+    <code
+      class="language-json"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 4`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Markdown"
+  >
+    <code
+      class="language-md"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 5`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Markdown"
+  >
+    <code
+      class="language-markdown"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 6`] = `
+<div>
+  <pre
+    class="code"
+    data-language="JavaScript"
+  >
+    <code
+      class="language-js"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 7`] = `
+<div>
+  <pre
+    class="code"
+    data-language="JavaScript"
+  >
+    <code
+      class="language-javascript"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 8`] = `
+<div>
+  <pre
+    class="code"
     data-language="TypeScript"
   >
     <code
       class="language-ts"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 9`] = `
+<div>
+  <pre
+    class="code"
+    data-language="TypeScript"
+  >
+    <code
+      class="language-typescript"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 10`] = `
+<div>
+  <pre
+    class="code"
+    data-language="React"
+  >
+    <code
+      class="language-jsx"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 11`] = `
+<div>
+  <pre
+    class="code"
+    data-language="React"
+  >
+    <code
+      class="language-tsx"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 12`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Vue"
+  >
+    <code
+      class="language-vue"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 13`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Go"
+  >
+    <code
+      class="language-go"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 14`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Java"
+  >
+    <code
+      class="language-java"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Code should render language correctly (snapshot) 15`] = `
+<div>
+  <pre
+    class="code"
+    data-language="Rust"
+  >
+    <code
+      class="language-rust"
     >
       Code
     </code>

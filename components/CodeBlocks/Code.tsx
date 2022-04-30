@@ -4,27 +4,35 @@ import styles from './Code.module.css';
 
 interface Props extends HTMLProps<HTMLPreElement> {}
 
-const alias = {
-  md: 'Markdown',
-  markdown: 'Markdown',
-  js: 'JavaScript',
-  jsx: 'React',
-  javascript: 'JavaScript',
-  ts: 'TypeScript',
-  tsx: 'React',
-  typescript: 'TypeScript',
-  vue: 'Vue',
+const getAlias = (language: string) => {
+  switch (language) {
+    case 'html':
+      return 'HTML';
+    case 'css':
+      return 'CSS';
+    case 'json':
+      return 'JSON';
+    case 'md':
+    case 'markdown':
+      return 'Markdown';
+    case 'js':
+    case 'javascript':
+      return 'JavaScript';
+    case 'ts':
+    case 'typescript':
+      return 'TypeScript';
+    case 'jsx':
+    case 'tsx':
+      return 'React';
+    default:
+      return language?.charAt(0)?.toUpperCase() + language?.slice(1) || 'Code';
+  }
 };
-
-type AliasKey = keyof typeof alias;
-
-const getAlias = (language: string) =>
-  alias[language.toLowerCase() as AliasKey] ?? language;
 
 const Code = ({ children, className, ...props }: Props): JSX.Element => {
   const childrenElement = children as ReactElement;
   const language = getAlias(
-    (childrenElement?.props?.className as string)?.replace('language-', '') || 'Code'
+    (childrenElement?.props?.className as string)?.replace('language-', '')
   );
 
   return (
