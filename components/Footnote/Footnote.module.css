@@ -1,0 +1,11 @@
+.footnote {
+  @apply mt-72 mb-9 !important;
+}
+
+.footnote h2,
+.footnote div,
+.footnote p,
+.footnote li {
+  @apply my-0 !important;
+  @apply text-gray-500 text-sm !important;
+}
