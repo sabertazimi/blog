@@ -3,20 +3,18 @@
   @apply text-inherit;
   @apply list-outside;
   @apply list-none;
+
+  counter-reset: li;
 }
 
-.ol li span,
-.ol li span svg {
+.ol li > span {
   @apply hidden;
 }
 
-.ol > li {
-  counter-increment: li;
-}
-
 .ol > li::before {
-  @apply mr-1;
+  @apply mr-2;
   @apply text-primary;
 
   content: counter(li) '. ';
+  counter-increment: li;
 }

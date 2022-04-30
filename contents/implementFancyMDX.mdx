@@ -36,7 +36,7 @@ it's an advanced `Markdown` format with `React` component support.
 
 ## List
 
-Unordered list:
+### Unordered List
 
 + Create a list by starting a line with `+`, `-`, or `*`.
 + Sub-lists are made by indenting 2 spaces:
@@ -46,24 +46,57 @@ Unordered list:
     - Nulla volutpat aliquam velit.
 + Very easy!
 
-Ordered list:
-
-1. Lorem ipsum dolor sit amet.
-2. Consectetur adipiscing elit.
-3. Integer molestie lorem at massa.
+### Ordered List
 
 Sequential numbering:
 
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`.
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+    3. Integer molestie lorem at massa:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+2. Consectetur adipiscing elit:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+3. Integer molestie lorem at massa:
+    1. Lorem ipsum dolor sit amet.
+    2. Consectetur adipiscing elit.
+    3. Integer molestie lorem at massa.
+
+Same numbering:
+
+1. You can keep all the numbers as `1.`:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
 
 Start numbering with offset:
 
-57. foo.
-1. bar.
-1. foo bar.
+108. 108 numbering list.
+1. 1 numbering list.
+1. 1 numbering list.
 
-## Task List
+### Task List
 
 ```md
 - [x] Write the press release.
@@ -149,17 +182,25 @@ Renders:
 
 ## Blockquote
 
+### Nested Blockquote
+
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
+
+### Continued Blockquote
 
 > Blockquotes can also be continued...
 > ...continued...
 > ...continued continued...
 
+### Long Blockquote
+
 > Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
 
 ## Table
+
+### Basic Table
 
 | a | b  |  c |  d  |
 | - | :- | -: | :-: |
@@ -168,15 +209,13 @@ Renders:
 | 3600 | 48000 | 10 | 200 |
 | 48000 | 3600 | 200 | 10 |
 
-Default columns:
-
 | Option | Description |
 | ------ | ----------- |
 | data   | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |
 
-Left aligned columns:
+### Left Aligned Table
 
 | Option | Description |
 | :----- | :---------- |
@@ -184,7 +223,7 @@ Left aligned columns:
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to be used for dest files. |
 
-Center aligned columns:
+### Center Aligned Table
 
 | Option  | Description  |
 | :-----: | :----------: |
@@ -192,7 +231,7 @@ Center aligned columns:
 | engine  | engine to be used for processing templates. Handlebars is the default. |
 | ext     | extension to be used for dest files. |
 
-Right aligned columns:
+### Right Aligned Table
 
 | Option | Description |
 | ------:| -----------:|
@@ -224,6 +263,8 @@ some.code();
 
 ## Link
 
+### Basic Link
+
 [Link text](https://github.com/sabertazimi).
 
 [Link with title](https://sabertazimi.github.io/awesome-notes "title text!").
@@ -251,17 +292,19 @@ Yet another note[^3].
 
 ## Image
 
-Local image:
+### Local Image
 
-![image](/images/landing.jpg "Local image")
+![image](/images/landing.jpg)
 
-Remote image:
+### Remote Image
 
 ![Minion](https://octodex.github.com/images/minion.png)
 
-Remote Alt image:
+### Image Title
 
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+### Image Footnote
 
 Like links, Images also have a footnote style syntax:
 
@@ -318,12 +361,12 @@ I can write **Markdown** alongside my _JSX_!
 ### JavaScript Expression
 
 ```md
-Two 🍰 is: {Math.PI * 2}
+Two 🍰 is: {Math.PI * 2}.
 ```
 
 Renders:
 
-Two 🍰 is: {Math.PI * 2}
+Two 🍰 is: {Math.PI * 2}.
 
 ```md
 {(function () {
@@ -357,7 +400,7 @@ Renders:
   return <span style={{color: 'goldenrod'}}>Not me.</span>
 })()}
 
-### MDX Comments
+### MDX Comment
 
 ```md
 {/* A comment! */}
@@ -382,7 +425,7 @@ Renders nothing.
 
 Thumbs up: :+1:, thumbs down: :-1:.
 
-Families: :family_man_man_boy_boy:
+Families: :family_man_man_boy_boy:.
 
 Some flags: :cn:, :us:, :ru:, :uk:, :fr:.
 
@@ -392,13 +435,13 @@ Bug :bug:, wrench :wrench:, zap :zap:.
 
 ## Math
 
-Inline math formulas
+### Inline Math Formula
 
 $\sqrt{a^2 + b^2}$
 
 $c = \pm\sqrt{a^2 + b^2}$
 
-Block math formulas
+### Block Math Formula
 
 $$
 L = \frac{1}{2} \rho v^2 S C_L
@@ -437,7 +480,7 @@ $$
 \end{alignat}
 $$
 
-## Admonitions
+## Admonition
 
 :::note
 
@@ -478,7 +521,7 @@ I can write **Markdown** alongside my _JSX_!
 
 :::tip{MDX in Admonitions}
 
-Two 🍰 is: {Math.PI * 2}
+Two 🍰 is: {Math.PI * 2}.
 
 {(function () {
   const guess = 0.88
@@ -495,6 +538,8 @@ Two 🍰 is: {Math.PI * 2}
 })()}
 
 :::
+
+## MDX Component
 
 <Button>MDX Default Button</Button>
 <Button type="primary">MDX Primary Button</Button>

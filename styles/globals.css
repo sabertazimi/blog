@@ -5,7 +5,15 @@ body {
 }
 
 /* Remove arrow icon from GFM task list item */
-.task-list-item span,
-.task-list-item span svg {
+li.task-list-item > span {
   @apply hidden;
+}
+
+li.task-list-item > div {
+  @apply ml-0;
+}
+
+/* Center aligning image preview icon */
+.ant-image-mask-info {
+  @apply flex items-center;
 }
