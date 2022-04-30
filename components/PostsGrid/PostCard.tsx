@@ -6,8 +6,8 @@ import Link from '@components/Link';
 import { Slide } from '@components/Motion';
 import Skeleton from '@components/Skeleton';
 import { IconTag, LinkTag } from '@components/Tags';
-import { classNames } from '@components/utils';
 import type { PostMeta } from '@types';
+import styles from './PostCard.module.css';
 
 interface Props {
   post: PostMeta;
@@ -16,32 +16,19 @@ interface Props {
 const PostCard = ({
   post: { slug, title, createTime, readingTime, tags },
 }: Props): JSX.Element => (
-  <Container
-    className={classNames(
-      'px-5 py-4 mt-0 mb-16',
-      'transition duration-300 shadow-xl transform-gpu',
-      'hover:shadow-2xl hover:-translate-y-2'
-    )}
-  >
+  <Container className={styles.card}>
     <Slide delay={0.2}>
       <LinkTag tag={tags ? tags[0] : 'Computer Science'} />
-      <H2 className="my-3">{title}</H2>
+      <H2 className={styles.title}>{title}</H2>
       <IconTag
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
         icon={<Calendar />}
       />
-      <Container className="mt-3">
+      <Container className={styles.skeleton}>
         <Skeleton
           paragraph={{ rows: Math.min(Math.floor(readingTime / 2), 10) }}
         />
-        <Button
-          className={classNames(
-            'float-right m-0',
-            'w-14 h-14',
-            'text-2xl rounded-full',
-            'button-primary'
-          )}
-        >
+        <Button className={styles.button}>
           <Link href={`/post/${slug}`}>
             <Read />
           </Link>
