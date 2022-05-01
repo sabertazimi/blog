@@ -1,26 +1,5 @@
 import { render } from '@testing-library/react';
-import Code from './Code';
 import Pre from './Pre';
-
-describe('Code', () => {
-  test('should render correctly (snapshot)', () => {
-    const { container } = render(<Code />);
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render children correctly (snapshot)', () => {
-    const { container } = render(<Code>Code</Code>);
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render raw code correctly (snapshot)', () => {
-    const { container } = render(<Code className="language-ts">Code</Code>);
-
-    expect(container).toMatchSnapshot();
-  });
-});
 
 describe('Pre', () => {
   const languages = [
