@@ -12,7 +12,7 @@ const normalizeLanguage = (language: string) => {
       return 'XML';
     case 'yml':
     case 'yaml':
-        return 'YAML';
+      return 'YAML';
     case 'css':
       return 'CSS';
     case 'json':
@@ -26,7 +26,7 @@ const normalizeLanguage = (language: string) => {
     case 'ts':
     case 'typescript':
       return 'TypeScript';
-    case "coffee":
+    case 'coffee':
     case 'coffeescript':
       return 'CoffeeScript';
     case 'jsx':
