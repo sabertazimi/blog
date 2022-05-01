@@ -55,16 +55,20 @@ const BlockCode = ({
     language={normalizeLanguage(className.replace('language-', '')) as Language}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <code {...props} className={className} style={style}>
+      <pre
+        {...props}
+        className={classNames(className, styles.block)}
+        style={style}
+      >
         {tokens.map((line, index) => (
           <div key={index} {...getLineProps({ line, key: index })}>
-            <span className="mr-3 text-secondary select-none">{index + 1}</span>
+            <span className={styles['line-number']}>{index + 1}</span>
             {line.map((token, key) => (
               <span key={key} {...getTokenProps({ token, key })} />
             ))}
           </div>
         ))}
-      </code>
+      </pre>
     )}
   </Highlight>
 );
