@@ -7,7 +7,7 @@ interface Props {
   className?: string;
 }
 
-const Link = ({ href, children, className = '' }: Props): JSX.Element => (
+const Link = ({ href, children, className }: Props): JSX.Element => (
   <NextLink href={href}>
     <a className={className}>{children}</a>
   </NextLink>

@@ -1,3 +1,4 @@
+import type { MotionProps } from '@components/utils';
 import { motion } from '@components/utils';
 import type { ReactNode } from 'react';
 
@@ -8,6 +9,18 @@ interface Props {
   duration?: number;
 }
 
+const initialVariants: MotionProps['initial'] = {
+  opacity: 0,
+};
+
+const animateVariants: MotionProps['animate'] = {
+  opacity: 1,
+};
+
+const viewport: MotionProps['viewport'] = {
+  once: true,
+};
+
 const Ease = ({
   children,
   className,
@@ -17,13 +30,13 @@ const Ease = ({
 }: Props): JSX.Element => (
   <motion.div
     className={className}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
+    initial={initialVariants}
+    animate={animateVariants}
     transition={{
       delay,
       duration,
     }}
-    viewport={{ once: true }}
+    viewport={viewport}
     {...props}
   >
     {children}

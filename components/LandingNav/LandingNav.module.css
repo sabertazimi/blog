@@ -1,0 +1,21 @@
+.nav {
+  @apply fixed top-0 left-0 z-20;
+  @apply flex flex-col items-center justify-center;
+  @apply w-full h-full;
+}
+
+.banner {
+  @apply fixed top-0 left-0 z-10;
+  @apply block w-full h-full;
+  @apply bg-black;
+}
+
+.button {
+  @apply fixed top-12 left-12 z-100;
+  @apply bg-transparent border-none;
+  @apply cursor-pointer;
+}
+
+.icon {
+  @apply text-lg font-extrabold md:text-4xl text-light;
+}

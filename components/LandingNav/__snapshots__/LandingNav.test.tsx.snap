@@ -3,20 +3,19 @@
 exports[`LandingNav should render routes correctly (snapshot) 1`] = `
 <div>
   <div
-    class="fixed top-0 left-0 z-20 flex flex-col items-center justify-center w-full h-full"
+    class="nav"
     role="navigation"
     style="transform: translateX(-100%) translateZ(0);"
   >
     <div
-      class="inline-flex mb-16"
+      class="inline-flex tooltip"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
     >
       <span
-        class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl"
+        class="link"
         role="link"
       >
         <a
-          class=""
           href="/posts"
         >
           Posts
@@ -24,15 +23,14 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
       </span>
     </div>
     <div
-      class="inline-flex mb-16"
+      class="inline-flex tooltip"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
     >
       <span
-        class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl"
+        class="link"
         role="link"
       >
         <a
-          class=""
           href="/tags"
         >
           Tags
@@ -40,15 +38,14 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
       </span>
     </div>
     <div
-      class="inline-flex mb-16"
+      class="inline-flex tooltip"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
     >
       <span
-        class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl"
+        class="link"
         role="link"
       >
         <a
-          class=""
           href="/books"
         >
           Books
@@ -56,15 +53,14 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
       </span>
     </div>
     <div
-      class="inline-flex mb-16"
+      class="inline-flex tooltip"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
     >
       <span
-        class="block px-0 pt-0 pb-3 mx-6 my-0 border-solid border-b-6 border-light text-4xl font-extrabold leading-none cursor-pointer text-light md:text-7xl"
+        class="link"
         role="link"
       >
         <a
-          class=""
           href="/about"
         >
           About
@@ -73,29 +69,35 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     </div>
   </div>
   <div
-    class="fixed bg-transparent border-none cursor-pointer top-12 left-12 z-100"
+    class="wrapper button"
     role="button"
     tabindex="0"
   >
     <span
-      aria-label="Hamburger"
-      class="anticon text-lg font-extrabold md:text-4xl text-light"
-      role="img"
+      aria-current="true"
+      class="span"
+      style="opacity: 1; transform: none;"
     >
-      <svg
-        fill="currentColor"
-        height="2em"
-        viewBox="0 0 1024 1024"
-        width="2em"
+      <span
+        aria-label="Hamburger"
+        class="anticon icon"
+        role="img"
       >
-        <path
-          d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 784H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 472H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
-        />
-      </svg>
+        <svg
+          fill="currentColor"
+          height="2em"
+          viewBox="0 0 1024 1024"
+          width="2em"
+        >
+          <path
+            d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 784H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 472H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+          />
+        </svg>
+      </span>
     </span>
   </div>
   <div
-    class="fixed top-0 left-0 z-10 block w-full h-full bg-black"
+    class="banner"
     role="banner"
     style="opacity: 0;"
   />

@@ -1,4 +1,4 @@
-import type { AnimationProps } from '@components/utils';
+import type { MotionProps } from '@components/utils';
 import { motion } from '@components/utils';
 import type { AriaRole } from 'react';
 
@@ -7,27 +7,34 @@ interface Props {
   className?: string;
   role?: AriaRole;
   open?: boolean;
-  variants?: AnimationProps['variants'];
-  transition?: AnimationProps['transition'];
+  onClick?: () => void;
+  variants?: MotionProps['variants'];
+  transition?: MotionProps['transition'];
 }
+
+const defaultVariants: MotionProps['variants'] = {
+  open: {
+    opacity: 1,
+  },
+  close: {
+    opacity: 0,
+  },
+};
+
+const defaultTransition: MotionProps['transition'] = {
+  type: 'spring',
+  duration: 0.2,
+};
 
 const Switch = ({
   children,
   className,
   role = 'switch',
   open = true,
-  variants = {
-    open: {
-      opacity: 1,
-    },
-    close: {
-      opacity: 0,
-    },
-  },
-  transition = {
-    type: 'spring',
-    duration: 0.2,
-  },
+  variants = defaultVariants,
+  transition = defaultTransition,
+  onClick,
+  ...props
 }: Props): JSX.Element => (
   <motion.div
     className={className}
@@ -36,6 +43,8 @@ const Switch = ({
     animate={open ? 'open' : 'close'}
     variants={variants}
     transition={transition}
+    onClick={onClick}
+    {...props}
   >
     {children}
   </motion.div>
