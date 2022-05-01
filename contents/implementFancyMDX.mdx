@@ -185,7 +185,7 @@ Renders:
 ### Nested Blockquote
 
 > Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
+> > ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
 
 ### Continued Blockquote
@@ -202,12 +202,12 @@ Renders:
 
 ### Basic Table
 
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-| 10 | 200 | 3600 | 48000 |
-| 200 | 10 | 48000 | 3600 |
-| 3600 | 48000 | 10 | 200 |
-| 48000 | 3600 | 200 | 10 |
+| a     | b     |     c |   d   |
+| ----- | :---- | ----: | :---: |
+| 10    | 200   |  3600 | 48000 |
+| 200   | 10    | 48000 | 3600  |
+| 3600  | 48000 |    10 |  200  |
+| 48000 | 3600  |   200 |  10   |
 
 | Option | Description |
 | ------ | ----------- |
@@ -267,7 +267,7 @@ some.code();
 
 [Link text](https://github.com/sabertazimi).
 
-[Link with title](https://sabertazimi.github.io/awesome-notes "title text!").
+[Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
 
 ### Autolink Literal
 
@@ -302,7 +302,7 @@ Yet another note[^3].
 
 ### Image Title
 
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
 
 ### Image Footnote
 
@@ -312,10 +312,10 @@ Like links, Images also have a footnote style syntax:
 
 With a reference later in the document defining the URL location:
 
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+[id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
 
 ```md
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+[id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
 ```
 
 ## JSX
@@ -327,17 +327,13 @@ With a reference later in the document defining the URL location:
 
 <abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
 
-<section>
-  And here is *markdown* in **JSX**!
-</section>
+<section>And here is *markdown* in **JSX**!</section>
 
 <div># this is not a heading but *this* is emphasis</div>
 
 I can write **Markdown** alongside my _JSX_!
 
-<div>
-  This is a `p`.
-</div>
+<div>This is a `p`.</div>
 ```
 
 Renders:
@@ -346,17 +342,13 @@ Renders:
 
 <abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
 
-<section>
-  And here is *markdown* in **JSX**!
-</section>
+<section>And here is *markdown* in **JSX**!</section>
 
 <div># this is not a heading but *this* is emphasis</div>
 
 I can write **Markdown** alongside my _JSX_!
 
-<div>
-  This is a `p`.
-</div>
+<div>This is a `p`.</div>
 
 ### JavaScript Expression
 
@@ -580,7 +572,7 @@ I can write **Markdown** alongside my _JSX_!
 
 :::
 
-:::note{MDX in Admonitions}
+:::note{MDX in Admonition}
 
 Two 🍰 is: {Math.PI * 2}.
 

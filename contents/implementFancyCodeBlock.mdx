@@ -1,0 +1,87 @@
+---
+layout: post
+title: 'Implement Fancy Code Block'
+subtitle: 'Implement Fancy Code Block in Next.js'
+date: 2022-05-1
+author: 'Sabertaz'
+header-img: '/images/landing.jpg'
+tags:
+  - MDX
+  - Markdown
+  - Prism
+  - Code Playground
+  - Code Editor
+  - React
+  - Next.js
+  - Frontend Development
+  - Web Development
+---
+
+# Fancy Code Block
+
+## Markup Code Block
+
+```html
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>And here is *markdown* in **JSX**!</section>
+```
+
+```xml
+<div># this is not a heading but *this* is emphasis</div>
+
+<div>This is a `p`.</div>
+```
+
+## CSS Code Block
+
+```css
+:root {
+  --primary: #1890ff;
+  --secondary: #40a9ff;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC',
+    'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
+  --font-size: 18px;
+}
+
+body {
+  width: 100%;
+  font-family: var(--font-stack);
+  font-size: var(--font-size);
+}
+```
+
+## TypeScript Code Block
+
+```ts
+const foo = function (bar) {
+  return bar++;
+};
+
+foo(5);
+
+some.code();
+```
+
+```tsx
+{
+  (function () {
+    const guess = 0.44;
+
+    if (guess > 0.66) {
+      return <span style={{ color: 'tomato' }}>Look at us.</span>;
+    }
+
+    if (guess > 0.33) {
+      return <span style={{ color: 'violet' }}>Who would have guessed?!</span>;
+    }
+
+    return <span style={{ color: 'goldenrod' }}>Not me.</span>;
+  })();
+}
+```

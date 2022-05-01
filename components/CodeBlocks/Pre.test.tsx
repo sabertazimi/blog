@@ -4,6 +4,7 @@ import Pre from './Pre';
 describe('Pre', () => {
   const languages = [
     'html',
+    'xml',
     'css',
     'json',
     'md',
@@ -12,8 +13,12 @@ describe('Pre', () => {
     'javascript',
     'ts',
     'typescript',
+    'cs',
+    'coffeescript',
     'jsx',
     'tsx',
+    'oc',
+    'objectivec',
     'vue',
     'go',
     'java',
