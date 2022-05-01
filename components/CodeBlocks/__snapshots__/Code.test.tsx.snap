@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code should render block code correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="prism-code language-typescript"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token maybe-class-name"
+      >
+        Block
+      </span>
+      <span
+        class="token plain"
+      >
+         
+      </span>
+      <span
+        class="token maybe-class-name"
+      >
+        Code
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="prism-code language-markup"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token plain"
+      >
+        const foo = bar();
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 2`] = `
+<div>
+  <code
+    class="prism-code language-markup"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token plain"
+      >
+        const foo = bar();
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 3`] = `
+<div>
+  <code
+    class="prism-code language-markdown"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token plain"
+      >
+        const foo = bar();
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 4`] = `
+<div>
+  <code
+    class="prism-code language-javaScript"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token plain"
+      >
+        const foo = bar();
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 5`] = `
+<div>
+  <code
+    class="prism-code language-typescript"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token keyword"
+        style="color: rgb(189, 147, 249); font-style: italic;"
+      >
+        const
+      </span>
+      <span
+        class="token plain"
+      >
+         foo 
+      </span>
+      <span
+        class="token operator"
+      >
+        =
+      </span>
+      <span
+        class="token plain"
+      >
+         
+      </span>
+      <span
+        class="token function"
+        style="color: rgb(80, 250, 123);"
+      >
+        bar
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        (
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        )
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        ;
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 6`] = `
+<div>
+  <code
+    class="prism-code language-objectivec"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token keyword"
+        style="color: rgb(189, 147, 249); font-style: italic;"
+      >
+        const
+      </span>
+      <span
+        class="token plain"
+      >
+         foo 
+      </span>
+      <span
+        class="token operator"
+      >
+        =
+      </span>
+      <span
+        class="token plain"
+      >
+         
+      </span>
+      <span
+        class="token function"
+        style="color: rgb(80, 250, 123);"
+      >
+        bar
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        (
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        )
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        ;
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 7`] = `
+<div>
+  <code
+    class="prism-code language-yaml"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="token plain"
+      >
+        const foo = bar();
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render inline code correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="inline"
+  >
+    Inline Code
+  </code>
+</div>
+`;

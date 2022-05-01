@@ -4,7 +4,7 @@ import styles from './Pre.module.css';
 
 interface Props extends HTMLProps<HTMLPreElement> {}
 
-const getAlias = (language: string) => {
+const normalizeLanguage = (language: string) => {
   switch (language) {
     case 'html':
       return 'HTML';
@@ -31,14 +31,13 @@ const getAlias = (language: string) => {
 
 const Pre = ({ children, className, ...props }: Props): JSX.Element => {
   const childrenElement = children as ReactElement;
-  const language = getAlias(
-    (childrenElement?.props?.className as string)?.replace('language-', '')
-  );
+  const languageClass: string = childrenElement?.props?.className;
+  const language = normalizeLanguage(languageClass?.replace('language-', ''));
 
   return (
     <pre
       {...props}
-      className={classNames(className, styles.pre)}
+      className={classNames(className, languageClass, styles.pre)}
       data-language={language}
     >
       {children}
