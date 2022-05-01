@@ -1,9 +1,9 @@
 import { classNames } from '@components/utils';
 import type { Language } from 'prism-react-renderer';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/dracula';
 import type { ReactNode } from 'react';
 import styles from './Code.module.css';
+import theme from './monokai';
 
 interface Props {
   className?: string;
