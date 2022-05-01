@@ -32,7 +32,6 @@ const Switch = ({
   <motion.div
     className={className}
     role={role}
-    layout
     initial="close"
     animate={open ? 'open' : 'close'}
     variants={variants}

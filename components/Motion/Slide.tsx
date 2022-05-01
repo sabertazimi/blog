@@ -15,7 +15,6 @@ const Slide = ({
 }: Props): JSX.Element => (
   <motion.div
     className={className}
-    layout
     initial={{ opacity: 0, x: -200 }}
     whileInView={{ opacity: 1, x: 0 }}
     transition={{
