@@ -8,6 +8,8 @@ const normalizeLanguage = (language: string) => {
   switch (language) {
     case 'html':
       return 'HTML';
+    case 'xml':
+      return 'XML';
     case 'css':
       return 'CSS';
     case 'json':
@@ -21,9 +23,15 @@ const normalizeLanguage = (language: string) => {
     case 'ts':
     case 'typescript':
       return 'TypeScript';
+    case 'cs':
+    case 'coffeescript':
+      return 'CoffeeScript';
     case 'jsx':
     case 'tsx':
       return 'React';
+    case 'oc':
+    case 'objectivec':
+      return 'Objective-C';
     default:
       return language?.charAt(0)?.toUpperCase() + language?.slice(1) || 'Code';
   }

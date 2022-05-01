@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import Code from './Code';
 
 describe('Code', () => {
-  const languages = ['html', 'xml', 'md', 'js', 'ts', 'oc', 'yml'];
+  const languages = ['html', 'xml', 'md', 'js', 'ts', 'cs', 'oc', 'yml'];
 
   test('should render inline code correctly (snapshot)', () => {
     const { container } = render(<Code>Inline Code</Code>);

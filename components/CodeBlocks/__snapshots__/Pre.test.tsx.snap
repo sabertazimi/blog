@@ -40,6 +40,21 @@ exports[`Pre should render language correctly (snapshot) 1`] = `
 exports[`Pre should render language correctly (snapshot) 2`] = `
 <div>
   <pre
+    class="language-xml pre"
+    data-language="XML"
+  >
+    <code
+      class="language-xml"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Pre should render language correctly (snapshot) 3`] = `
+<div>
+  <pre
     class="language-css pre"
     data-language="CSS"
   >
@@ -52,7 +67,7 @@ exports[`Pre should render language correctly (snapshot) 2`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 3`] = `
+exports[`Pre should render language correctly (snapshot) 4`] = `
 <div>
   <pre
     class="language-json pre"
@@ -67,7 +82,7 @@ exports[`Pre should render language correctly (snapshot) 3`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 4`] = `
+exports[`Pre should render language correctly (snapshot) 5`] = `
 <div>
   <pre
     class="language-md pre"
@@ -82,7 +97,7 @@ exports[`Pre should render language correctly (snapshot) 4`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 5`] = `
+exports[`Pre should render language correctly (snapshot) 6`] = `
 <div>
   <pre
     class="language-markdown pre"
@@ -97,7 +112,7 @@ exports[`Pre should render language correctly (snapshot) 5`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 6`] = `
+exports[`Pre should render language correctly (snapshot) 7`] = `
 <div>
   <pre
     class="language-js pre"
@@ -112,7 +127,7 @@ exports[`Pre should render language correctly (snapshot) 6`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 7`] = `
+exports[`Pre should render language correctly (snapshot) 8`] = `
 <div>
   <pre
     class="language-javascript pre"
@@ -127,7 +142,7 @@ exports[`Pre should render language correctly (snapshot) 7`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 8`] = `
+exports[`Pre should render language correctly (snapshot) 9`] = `
 <div>
   <pre
     class="language-ts pre"
@@ -142,7 +157,7 @@ exports[`Pre should render language correctly (snapshot) 8`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 9`] = `
+exports[`Pre should render language correctly (snapshot) 10`] = `
 <div>
   <pre
     class="language-typescript pre"
@@ -157,7 +172,37 @@ exports[`Pre should render language correctly (snapshot) 9`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 10`] = `
+exports[`Pre should render language correctly (snapshot) 11`] = `
+<div>
+  <pre
+    class="language-cs pre"
+    data-language="CoffeeScript"
+  >
+    <code
+      class="language-cs"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Pre should render language correctly (snapshot) 12`] = `
+<div>
+  <pre
+    class="language-coffeescript pre"
+    data-language="CoffeeScript"
+  >
+    <code
+      class="language-coffeescript"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Pre should render language correctly (snapshot) 13`] = `
 <div>
   <pre
     class="language-jsx pre"
@@ -172,7 +217,7 @@ exports[`Pre should render language correctly (snapshot) 10`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 11`] = `
+exports[`Pre should render language correctly (snapshot) 14`] = `
 <div>
   <pre
     class="language-tsx pre"
@@ -187,7 +232,37 @@ exports[`Pre should render language correctly (snapshot) 11`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 12`] = `
+exports[`Pre should render language correctly (snapshot) 15`] = `
+<div>
+  <pre
+    class="language-oc pre"
+    data-language="Objective-C"
+  >
+    <code
+      class="language-oc"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Pre should render language correctly (snapshot) 16`] = `
+<div>
+  <pre
+    class="language-objectivec pre"
+    data-language="Objective-C"
+  >
+    <code
+      class="language-objectivec"
+    >
+      Code
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Pre should render language correctly (snapshot) 17`] = `
 <div>
   <pre
     class="language-vue pre"
@@ -202,7 +277,7 @@ exports[`Pre should render language correctly (snapshot) 12`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 13`] = `
+exports[`Pre should render language correctly (snapshot) 18`] = `
 <div>
   <pre
     class="language-go pre"
@@ -217,7 +292,7 @@ exports[`Pre should render language correctly (snapshot) 13`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 14`] = `
+exports[`Pre should render language correctly (snapshot) 19`] = `
 <div>
   <pre
     class="language-java pre"
@@ -232,7 +307,7 @@ exports[`Pre should render language correctly (snapshot) 14`] = `
 </div>
 `;
 
-exports[`Pre should render language correctly (snapshot) 15`] = `
+exports[`Pre should render language correctly (snapshot) 20`] = `
 <div>
   <pre
     class="language-rust pre"

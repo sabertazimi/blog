@@ -3,7 +3,7 @@
 exports[`Code should render block code correctly (snapshot) 1`] = `
 <div>
   <code
-    class="prism-code language-typescript"
+    class="prism-code language-type"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -11,19 +11,14 @@ exports[`Code should render block code correctly (snapshot) 1`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="token maybe-class-name"
+        class="mr-3 text-secondary select-none"
       >
-        Block
+        1
       </span>
       <span
         class="token plain"
       >
-         
-      </span>
-      <span
-        class="token maybe-class-name"
-      >
-        Code
+        Block Code
       </span>
     </div>
   </code>
@@ -40,6 +35,11 @@ exports[`Code should render different language correctly (snapshot) 1`] = `
       class="token-line"
       style="color: rgb(248, 248, 242);"
     >
+      <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
       <span
         class="token plain"
       >
@@ -61,6 +61,11 @@ exports[`Code should render different language correctly (snapshot) 2`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
+      <span
         class="token plain"
       >
         const foo = bar();
@@ -81,6 +86,11 @@ exports[`Code should render different language correctly (snapshot) 3`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
+      <span
         class="token plain"
       >
         const foo = bar();
@@ -93,7 +103,7 @@ exports[`Code should render different language correctly (snapshot) 3`] = `
 exports[`Code should render different language correctly (snapshot) 4`] = `
 <div>
   <code
-    class="prism-code language-javaScript"
+    class="prism-code language-javascript"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -101,9 +111,54 @@ exports[`Code should render different language correctly (snapshot) 4`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
+      <span
+        class="token keyword"
+        style="color: rgb(189, 147, 249); font-style: italic;"
+      >
+        const
+      </span>
+      <span
         class="token plain"
       >
-        const foo = bar();
+         foo 
+      </span>
+      <span
+        class="token operator"
+      >
+        =
+      </span>
+      <span
+        class="token plain"
+      >
+         
+      </span>
+      <span
+        class="token function"
+        style="color: rgb(80, 250, 123);"
+      >
+        bar
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        (
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        )
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        ;
       </span>
     </div>
   </code>
@@ -120,6 +175,11 @@ exports[`Code should render different language correctly (snapshot) 5`] = `
       class="token-line"
       style="color: rgb(248, 248, 242);"
     >
+      <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
       <span
         class="token keyword"
         style="color: rgb(189, 147, 249); font-style: italic;"
@@ -173,6 +233,65 @@ exports[`Code should render different language correctly (snapshot) 5`] = `
 exports[`Code should render different language correctly (snapshot) 6`] = `
 <div>
   <code
+    class="prism-code language-coffeescript"
+    style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(248, 248, 242);"
+    >
+      <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
+      <span
+        class="token plain"
+      >
+        const foo 
+      </span>
+      <span
+        class="token operator"
+      >
+        =
+      </span>
+      <span
+        class="token plain"
+      >
+         
+      </span>
+      <span
+        class="token function"
+        style="color: rgb(80, 250, 123);"
+      >
+        bar
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        (
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        )
+      </span>
+      <span
+        class="token punctuation"
+        style="color: rgb(248, 248, 242);"
+      >
+        ;
+      </span>
+    </div>
+  </code>
+</div>
+`;
+
+exports[`Code should render different language correctly (snapshot) 7`] = `
+<div>
+  <code
     class="prism-code language-objectivec"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
@@ -180,6 +299,11 @@ exports[`Code should render different language correctly (snapshot) 6`] = `
       class="token-line"
       style="color: rgb(248, 248, 242);"
     >
+      <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
       <span
         class="token keyword"
         style="color: rgb(189, 147, 249); font-style: italic;"
@@ -230,7 +354,7 @@ exports[`Code should render different language correctly (snapshot) 6`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 7`] = `
+exports[`Code should render different language correctly (snapshot) 8`] = `
 <div>
   <code
     class="prism-code language-yaml"
@@ -240,6 +364,11 @@ exports[`Code should render different language correctly (snapshot) 7`] = `
       class="token-line"
       style="color: rgb(248, 248, 242);"
     >
+      <span
+        class="mr-3 text-secondary select-none"
+      >
+        1
+      </span>
       <span
         class="token plain"
       >

@@ -18,15 +18,17 @@ const normalizeLanguage = (language: string) => {
     case 'md':
       return 'markdown';
     case 'js':
-      return 'javaScript';
+      return 'javascript';
     case 'ts':
       return 'typescript';
+    case 'cs':
+      return 'coffeescript';
     case 'oc':
       return 'objectivec';
     case 'yml':
       return 'yaml';
     default:
-      return 'typescript';
+      return language;
   }
 };
 
@@ -56,6 +58,7 @@ const BlockCode = ({
       <code {...props} className={className} style={style}>
         {tokens.map((line, index) => (
           <div key={index} {...getLineProps({ line, key: index })}>
+            <span className="mr-3 text-secondary select-none">{index + 1}</span>
             {line.map((token, key) => (
               <span key={key} {...getTokenProps({ token, key })} />
             ))}
