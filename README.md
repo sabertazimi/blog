@@ -14,7 +14,7 @@
 
 A great [blog](https://blog.tazimi.dev) system based on Next.js.
 
-## Features
+## :sparkles: Features
 
 ### Visual Features
 
@@ -54,7 +54,7 @@ A great [blog](https://blog.tazimi.dev) system based on Next.js.
 - Progressive web app: offline support & webapp manifest.
 - ...and more.
 
-## Post Template
+## :bookmark_tabs: Post Template
 
 `Yaml` Front + `Markdown` Body:
 
@@ -80,7 +80,7 @@ tags:
 <... more contents>
 ```
 
-## 🚀 Quick start
+## :rocket: Quick start
 
 ### Installation
 
@@ -101,7 +101,7 @@ npm start
 
 Your site is now running at `http://localhost:3000`!
 
-## 💫 Deployment
+## :stars: Deployment
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsabertazimi%2Fblog&project-name=blog&repo-name=blog&demo-title=Sabertaz%20Blog&demo-url=https%3A%2F%2Fblog.tazimi.dev)
 
@@ -112,7 +112,7 @@ Build for `/` path:
 npm run build
 ```
 
-## Fold Structure
+## :open_file_folder: Fold Structure
 
 A quick look at the top-level files and directories you'll see in a Next.js project.
 
@@ -179,7 +179,7 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 28. **`package.json`**: A manifest file for Node.js projects.
 29. **`README.md`**: A text file containing useful reference information.
 
-## Caveats
+## :construction: Caveats
 
 `import` and `export` statements cannot be used **inside** an MDX file.
 If you need to use components in your MDX files,
@@ -188,7 +188,7 @@ they should be provided to `/components/MDX/index.ts`.
 See reason [here](https://github.com/hashicorp/next-mdx-remote#import--export)
 and explanation [here](https://github.com/hashicorp/next-mdx-remote/issues/143#issuecomment-1043067293).
 
-## Contact
+## :bookmark: Contact
 
 [![Email](https://img.shields.io/badge/-Gmail-ea4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sabertazimi@gmail.com)
 [![Twitter](https://img.shields.io/badge/-Twitter-1da1f2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/sabertazimi)
