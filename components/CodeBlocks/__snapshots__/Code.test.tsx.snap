@@ -2,8 +2,8 @@
 
 exports[`Code should render block code correctly (snapshot) 1`] = `
 <div>
-  <code
-    class="prism-code language-type"
+  <pre
+    class="prism-code language-type block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -11,7 +11,7 @@ exports[`Code should render block code correctly (snapshot) 1`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -21,14 +21,14 @@ exports[`Code should render block code correctly (snapshot) 1`] = `
         Block Code
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 1`] = `
 <div>
-  <code
-    class="prism-code language-markup"
+  <pre
+    class="prism-code language-markup block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -36,7 +36,7 @@ exports[`Code should render different language correctly (snapshot) 1`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -46,14 +46,14 @@ exports[`Code should render different language correctly (snapshot) 1`] = `
         const foo = bar();
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 2`] = `
 <div>
-  <code
-    class="prism-code language-markup"
+  <pre
+    class="prism-code language-markup block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -61,7 +61,7 @@ exports[`Code should render different language correctly (snapshot) 2`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -71,14 +71,14 @@ exports[`Code should render different language correctly (snapshot) 2`] = `
         const foo = bar();
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 3`] = `
 <div>
-  <code
-    class="prism-code language-markdown"
+  <pre
+    class="prism-code language-markdown block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -86,7 +86,7 @@ exports[`Code should render different language correctly (snapshot) 3`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -96,14 +96,14 @@ exports[`Code should render different language correctly (snapshot) 3`] = `
         const foo = bar();
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 4`] = `
 <div>
-  <code
-    class="prism-code language-javascript"
+  <pre
+    class="prism-code language-javascript block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -111,7 +111,7 @@ exports[`Code should render different language correctly (snapshot) 4`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -161,14 +161,14 @@ exports[`Code should render different language correctly (snapshot) 4`] = `
         ;
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 5`] = `
 <div>
-  <code
-    class="prism-code language-typescript"
+  <pre
+    class="prism-code language-typescript block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -176,7 +176,7 @@ exports[`Code should render different language correctly (snapshot) 5`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -226,14 +226,14 @@ exports[`Code should render different language correctly (snapshot) 5`] = `
         ;
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 6`] = `
 <div>
-  <code
-    class="prism-code language-coffeescript"
+  <pre
+    class="prism-code language-coffeescript block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -241,7 +241,7 @@ exports[`Code should render different language correctly (snapshot) 6`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -285,14 +285,14 @@ exports[`Code should render different language correctly (snapshot) 6`] = `
         ;
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 7`] = `
 <div>
-  <code
-    class="prism-code language-objectivec"
+  <pre
+    class="prism-code language-objectivec block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -300,7 +300,7 @@ exports[`Code should render different language correctly (snapshot) 7`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -350,14 +350,14 @@ exports[`Code should render different language correctly (snapshot) 7`] = `
         ;
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
 exports[`Code should render different language correctly (snapshot) 8`] = `
 <div>
-  <code
-    class="prism-code language-yaml"
+  <pre
+    class="prism-code language-yaml block"
     style="color: rgb(248, 248, 242); background-color: rgb(40, 42, 54);"
   >
     <div
@@ -365,7 +365,7 @@ exports[`Code should render different language correctly (snapshot) 8`] = `
       style="color: rgb(248, 248, 242);"
     >
       <span
-        class="mr-3 text-secondary select-none"
+        class="line-number"
       >
         1
       </span>
@@ -375,7 +375,7 @@ exports[`Code should render different language correctly (snapshot) 8`] = `
         const foo = bar();
       </span>
     </div>
-  </code>
+  </pre>
 </div>
 `;
 
