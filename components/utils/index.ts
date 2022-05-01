@@ -1,3 +1,3 @@
 export { default as classNames } from './classNames';
-export { motion } from './motion';
-export type { AnimationProps } from './motion';
+export { AnimatePresence, motion } from './motion';
+export type { MotionProps } from './motion';

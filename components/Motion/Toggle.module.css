@@ -1,0 +1,18 @@
+.wrapper {
+  @apply relative;
+  @apply grid justify-center items-center;
+  @apply w-min h-min;
+  @apply m-0 p-0;
+  @apply text-base font-semibold;
+  @apply cursor-pointer;
+}
+
+.span {
+  @apply inline-block;
+  @apply row-start-1 col-start-1;
+  @apply w-min h-min;
+  @apply m-auto;
+
+  max-width: 3rem;
+  max-height: 3rem;
+}

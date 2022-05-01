@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle should render reduced close animation correctly (snapshot) 1`] = `
+<div>
+  <div
+    class="wrapper"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      aria-current="true"
+      class="span"
+      style="opacity: 0; transform: scale(0) rotate(180deg) translateZ(0);"
+    >
+      <div>
+        Close
+      </div>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Toggle should render reduced open animation correctly (snapshot) 1`] = `
+<div>
+  <div
+    class="wrapper"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      aria-current="true"
+      class="span"
+      style="opacity: 0; transform: scale(0) rotate(180deg) translateZ(0);"
+    >
+      <div>
+        Open
+      </div>
+    </span>
+  </div>
+</div>
+`;

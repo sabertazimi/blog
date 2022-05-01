@@ -1,3 +1,4 @@
+import type { MotionProps } from '@components/utils';
 import { motion } from '@components/utils';
 import type { ReactNode } from 'react';
 
@@ -7,6 +8,20 @@ interface Props {
   delay?: number;
 }
 
+const initialVariants: MotionProps['initial'] = {
+  opacity: 0,
+  x: -200,
+};
+
+const inViewVariants: MotionProps['whileInView'] = {
+  opacity: 1,
+  x: 0,
+};
+
+const viewport: MotionProps['viewport'] = {
+  once: true,
+};
+
 const Slide = ({
   children,
   className,
@@ -15,13 +30,13 @@ const Slide = ({
 }: Props): JSX.Element => (
   <motion.div
     className={className}
-    initial={{ opacity: 0, x: -200 }}
-    whileInView={{ opacity: 1, x: 0 }}
+    initial={initialVariants}
+    whileInView={inViewVariants}
     transition={{
       type: 'spring',
       delay,
     }}
-    viewport={{ once: true }}
+    viewport={viewport}
     {...props}
   >
     {children}

@@ -1,2 +1,2 @@
-export { motion } from 'framer-motion';
-export type { AnimationProps } from 'framer-motion';
+export { AnimatePresence, motion } from 'framer-motion';
+export type { MotionProps } from 'framer-motion';
