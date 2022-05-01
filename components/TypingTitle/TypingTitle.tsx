@@ -16,7 +16,7 @@ const TypingTitle = ({
   speed = 60,
   delay = 600,
   loop = true,
-  className = '',
+  className,
 }: Props): JSX.Element => {
   const ref = useRef<HTMLSpanElement>(null);
   useTypingEffect(ref, { titles, speed, delay, loop });
