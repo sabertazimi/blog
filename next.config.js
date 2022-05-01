@@ -8,7 +8,7 @@ const nextConfig = {
     dirs: ['components', 'config', 'hooks', 'layouts', 'lib', 'pages', 'types'],
   },
   i18n: {
-    locales: ['en-US', 'zh-CN'],
+    locales: ['en-US'],
     defaultLocale: 'en-US',
   },
   pwa: {
