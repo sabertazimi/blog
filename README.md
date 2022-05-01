@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="https://www.nextjs.org">
+    <img
+      src="./.github/banner.png"
+      alt="Next.js"
+    />
+  </a>
+</p>
 <h1 align="center">
   Next.js Blog Starter
 </h1>
