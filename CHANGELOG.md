@@ -2,6 +2,107 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/sabertazimi/blog/compare/v2.14.0...v3.0.0) (2022-05-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **next:** switch from `gatsby` to `next`
+
+### :wrench: Testing
+
+* **act:** wrap all state change manipulation into `act()` ([#639](https://github.com/sabertazimi/blog/issues/639)) ([2e17bd9](https://github.com/sabertazimi/blog/commit/2e17bd9291b7048bd41ac2c2f044cfe667104386)), closes [#618](https://github.com/sabertazimi/blog/issues/618)
+* **console:** remove console mock ([#689](https://github.com/sabertazimi/blog/issues/689)) ([06c2f52](https://github.com/sabertazimi/blog/commit/06c2f527ccfd0b7cab86e3fb343aa1b670a98663))
+* **layouts:** add snapshot testing for layout components ([#688](https://github.com/sabertazimi/blog/issues/688)) ([5f9ec13](https://github.com/sabertazimi/blog/commit/5f9ec13fe96a6cf2ddf2edd2f72aafd3b04ac281))
+* **link-mocks:** remove useless `next/link` mock ([#694](https://github.com/sabertazimi/blog/issues/694)) ([7cc7ca4](https://github.com/sabertazimi/blog/commit/7cc7ca4be39fa851ea6de788ce64fcda134e509d)), closes [#618](https://github.com/sabertazimi/blog/issues/618)
+* **mdx:** add mdx example page ([#674](https://github.com/sabertazimi/blog/issues/674)) ([040c400](https://github.com/sabertazimi/blog/commit/040c4000bca6b4905a74f062fa08f0d97feda1c7)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx:** update snapshot testing ([#733](https://github.com/sabertazimi/blog/issues/733)) ([8e6f94e](https://github.com/sabertazimi/blog/commit/8e6f94efee0b66baeef934e9776dcf2ce458081e))
+* **PostsSearchBar:** remove redundant function mocks ([#660](https://github.com/sabertazimi/blog/issues/660)) ([fa1d2ca](https://github.com/sabertazimi/blog/commit/fa1d2ca77187cd4694f6702c04da80cb8920cb5c))
+* **react-hooks:** drop `@testing-library/react-hooks` ([#636](https://github.com/sabertazimi/blog/issues/636)) ([19a4e1a](https://github.com/sabertazimi/blog/commit/19a4e1a99794d8f44f57f6fb4d3eae2555e39e8a)), closes [#623](https://github.com/sabertazimi/blog/issues/623)
+* **snapshot:** drop react-test-renderer snapshot testing ([#620](https://github.com/sabertazimi/blog/issues/620)) ([616521a](https://github.com/sabertazimi/blog/commit/616521a826d20ed33440b675fba40ea37452113e)), closes [#616](https://github.com/sabertazimi/blog/issues/616)
+
+
+### :zap: Performance
+
+* **motion:** remove `layout` motion for performance ([#758](https://github.com/sabertazimi/blog/issues/758)) ([a33b145](https://github.com/sabertazimi/blog/commit/a33b145e03aa9714b442e0400bbfacb711968df1)), closes [#701](https://github.com/sabertazimi/blog/issues/701)
+
+
+### :bug: Bug Fixes
+
+* **a11y:** add `lang` to `<html>` tag ([#664](https://github.com/sabertazimi/blog/issues/664)) ([e7cccdd](https://github.com/sabertazimi/blog/commit/e7cccddb5b22da7dad1afda418b772264a800cae))
+* **ArticleNav:** change link description ([#667](https://github.com/sabertazimi/blog/issues/667)) ([858da7a](https://github.com/sabertazimi/blog/commit/858da7a5ff6670996fa2662e4e73e4a55e5a7b98))
+* **ArticleNav:** setup `prevPost` and `nextPost` links ([#625](https://github.com/sabertazimi/blog/issues/625)) ([2ed3863](https://github.com/sabertazimi/blog/commit/2ed38638cbed88e61118600369708f6ddd4dadcc)), closes [#615](https://github.com/sabertazimi/blog/issues/615)
+* **Blockquote:** adjust Blockquote vertical and horizontal rhythm ([#727](https://github.com/sabertazimi/blog/issues/727)) ([439ffb3](https://github.com/sabertazimi/blog/commit/439ffb349b783f3f859b6185c5f1ccac788136c7)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **button:** add `IconButton` component ([#713](https://github.com/sabertazimi/blog/issues/713)) ([19c48d0](https://github.com/sabertazimi/blog/commit/19c48d01b8d21dfead57cfd00a07f2a2c02dcdac)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **components:** rectify margin space ([#748](https://github.com/sabertazimi/blog/issues/748)) ([ecc32e1](https://github.com/sabertazimi/blog/commit/ecc32e1ec43035c941b90fd960e411eeead67c7c)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **deps-antd:** compatibility for React 18 ([#621](https://github.com/sabertazimi/blog/issues/621)) ([c863338](https://github.com/sabertazimi/blog/commit/c863338b51b10dc330b51dcc139c5cd096c1af14)), closes [#576](https://github.com/sabertazimi/blog/issues/576) [#587](https://github.com/sabertazimi/blog/issues/587)
+* **deps:** update dependency antd to ^4.20.2 ([#740](https://github.com/sabertazimi/blog/issues/740)) ([d21ea5e](https://github.com/sabertazimi/blog/commit/d21ea5e02be8d4aeb7fb0f91205be85722c87dbf))
+* **DesktopNav-Menu:** drop legacy `<Menu.item>` compound component ([#637](https://github.com/sabertazimi/blog/issues/637)) ([3afd842](https://github.com/sabertazimi/blog/commit/3afd8421f20f02d4d050bdd1c72ad66745a64f4e))
+* **DesktopNav:** justify navigation logo position ([#634](https://github.com/sabertazimi/blog/issues/634)) ([b77cabc](https://github.com/sabertazimi/blog/commit/b77cabcab089ebb7fe36bda9a654f9277b4f3e19))
+* **DesktopNav:** remove redundant nested `<div>` flexbox ([#626](https://github.com/sabertazimi/blog/issues/626)) ([e48e95c](https://github.com/sabertazimi/blog/commit/e48e95c7d7c5ff6b50d6c929b3d2d571a933e280)), closes [#624](https://github.com/sabertazimi/blog/issues/624)
+* **gatsby:** remove all `gatsby-*` things ([#684](https://github.com/sabertazimi/blog/issues/684)) ([f328819](https://github.com/sabertazimi/blog/commit/f3288190a498dd1ba4744b568b611971436e8a2a))
+* **github:** fetch all stared github repos ([#691](https://github.com/sabertazimi/blog/issues/691)) ([cb2f1d4](https://github.com/sabertazimi/blog/commit/cb2f1d44a1e316d282202592a9f6a1efb53835cf)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **Icons-motion:** inject `motion` into SVG icons ([#644](https://github.com/sabertazimi/blog/issues/644)) ([f0f74bd](https://github.com/sabertazimi/blog/commit/f0f74bd76c09dcd31de901f40ebe57b3c5a984d7)), closes [#619](https://github.com/sabertazimi/blog/issues/619)
+* **jest:** transform ESM `node_modules` via `swc` ([#695](https://github.com/sabertazimi/blog/issues/695)) ([b5b5b2c](https://github.com/sabertazimi/blog/commit/b5b5b2cdef0f580f073da414f31ba4849080bc69))
+* **LandingNav:** set navigation hidden initially ([#650](https://github.com/sabertazimi/blog/issues/650)) ([ea43033](https://github.com/sabertazimi/blog/commit/ea43033b27dec09ef23cfcb0d4ad94bc2905e794)), closes [#646](https://github.com/sabertazimi/blog/issues/646)
+* **mdx-Code:** add more languages alias to `Code` ([#747](https://github.com/sabertazimi/blog/issues/747)) ([971ee6f](https://github.com/sabertazimi/blog/commit/971ee6f8f9b4de011d1861f122be2e73475859af)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx-code:** adjust alignment and border radius of code block ([#736](https://github.com/sabertazimi/blog/issues/736)) ([ce6d283](https://github.com/sabertazimi/blog/commit/ce6d2835241c8b587e50e60bec409f760489ecc7)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx-code:** remove useless language name transformation ([#761](https://github.com/sabertazimi/blog/issues/761)) ([f140463](https://github.com/sabertazimi/blog/commit/f1404639a965e12ab89c49d0b1204acf373a6a43)), closes [#701](https://github.com/sabertazimi/blog/issues/701)
+* **mdx-code:** use prism theme color as code block `background-color` ([#760](https://github.com/sabertazimi/blog/issues/760)) ([f2a0b60](https://github.com/sabertazimi/blog/commit/f2a0b601d4f025a8fc6c14f061c464db89b4da8e)), closes [#701](https://github.com/sabertazimi/blog/issues/701) [#759](https://github.com/sabertazimi/blog/issues/759)
+* **mdx-front matter:** disable `next-mdx-remote` built-in front matter ([#671](https://github.com/sabertazimi/blog/issues/671)) ([dd24749](https://github.com/sabertazimi/blog/commit/dd24749574d97151af1c99c5b58123bcf4114588)), closes [#614](https://github.com/sabertazimi/blog/issues/614) [#670](https://github.com/sabertazimi/blog/issues/670)
+* **mdx-headings:** adjust headings vertical rhythm ([#745](https://github.com/sabertazimi/blog/issues/745)) ([9683717](https://github.com/sabertazimi/blog/commit/9683717c7915462dd73d3aba0f8f961de8179b31)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#725](https://github.com/sabertazimi/blog/issues/725)
+* **mdx-input:** add `input` and `checkbox` support ([#735](https://github.com/sabertazimi/blog/issues/735)) ([f443e1c](https://github.com/sabertazimi/blog/commit/f443e1c7ea777f92152d11e9ec88022e0584b937)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx-link:** open blank new tab when click mdx `<a>` links ([#681](https://github.com/sabertazimi/blog/issues/681)) ([5577a6e](https://github.com/sabertazimi/blog/commit/5577a6e7be32c0d16787ea37405956ab5bd49262)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-list:** remove arrow icon from ordered/task list ([#737](https://github.com/sabertazimi/blog/issues/737)) ([0f74257](https://github.com/sabertazimi/blog/commit/0f7425777dd2cebda6fa723795ae304c49ded6c9)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx-paragraph:** remove nested `img` and `div` in `p` ([#753](https://github.com/sabertazimi/blog/issues/753)) ([eccdb3d](https://github.com/sabertazimi/blog/commit/eccdb3d93f4bbcc92d4f38175a31711524b386ff)), closes [#701](https://github.com/sabertazimi/blog/issues/701) [#752](https://github.com/sabertazimi/blog/issues/752)
+* **mdx-styles:** re-design `InlineCode`, `Code` and `Divider` ([#751](https://github.com/sabertazimi/blog/issues/751)) ([14d787e](https://github.com/sabertazimi/blog/commit/14d787e63dd9335b08922e2f36088bd287977c3b)), closes [#700](https://github.com/sabertazimi/blog/issues/700) [#701](https://github.com/sabertazimi/blog/issues/701)
+* **mdx-time:** get concise reading time ([#672](https://github.com/sabertazimi/blog/issues/672)) ([93fa1a9](https://github.com/sabertazimi/blog/commit/93fa1a9e6a3e6c34a2e9e1fbe2046894c02e5165)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-typography:** adjust typography vertical rhythm ([#726](https://github.com/sabertazimi/blog/issues/726)) ([98ceae1](https://github.com/sabertazimi/blog/commit/98ceae13778f44a1e1961a173cde791c5c67552c)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#725](https://github.com/sabertazimi/blog/issues/725)
+* **mdx:** adjust margin space ([#744](https://github.com/sabertazimi/blog/issues/744)) ([7d3339b](https://github.com/sabertazimi/blog/commit/7d3339b6819ae05caabdfafcd53613649cbd3359)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#725](https://github.com/sabertazimi/blog/issues/725) [#742](https://github.com/sabertazimi/blog/issues/742) [#743](https://github.com/sabertazimi/blog/issues/743)
+* **MetaHeader-SEO:** set correct twitter name ([#669](https://github.com/sabertazimi/blog/issues/669)) ([22b9fc9](https://github.com/sabertazimi/blog/commit/22b9fc9bf7d920d5d957667d3b48af8a58bd91d4))
+* **motion-bounce:** add `className` prop to `Bounce` ([#642](https://github.com/sabertazimi/blog/issues/642)) ([ef2d5df](https://github.com/sabertazimi/blog/commit/ef2d5df2cf4aca730c275478a3090ddeb8e882f9)), closes [#619](https://github.com/sabertazimi/blog/issues/619)
+* **motion:** reduce post motion ([#661](https://github.com/sabertazimi/blog/issues/661)) ([f96a9bc](https://github.com/sabertazimi/blog/commit/f96a9bcce74402ca74ded7448f63ecfe21174cd1))
+* **PostCard:** rectify clicable place for routing ([#662](https://github.com/sabertazimi/blog/issues/662)) ([7ccf39d](https://github.com/sabertazimi/blog/commit/7ccf39d1968ea51995e526338e4d776cc4170769))
+* **Post:** generate complete post page link ([#649](https://github.com/sabertazimi/blog/issues/649)) ([6eb9b8b](https://github.com/sabertazimi/blog/commit/6eb9b8bdb7063c6bd4850936ac30eaef9539d4c0)), closes [#640](https://github.com/sabertazimi/blog/issues/640)
+* **pwa:** disable development service worker setup ([#673](https://github.com/sabertazimi/blog/issues/673)) ([02e8bb3](https://github.com/sabertazimi/blog/commit/02e8bb35d4a5662afc9ba38e25b12b60869c4877))
+* **react-hydrate:** reactify hydrate mismatching ([#704](https://github.com/sabertazimi/blog/issues/704)) ([fab4444](https://github.com/sabertazimi/blog/commit/fab444442096a808792fe867f82cb46b4680324d)), closes [#703](https://github.com/sabertazimi/blog/issues/703)
+* **sitemap:** switch from dynamic generation to static generation ([#657](https://github.com/sabertazimi/blog/issues/657)) ([b229f02](https://github.com/sabertazimi/blog/commit/b229f023485de1698d677ca8ae9750a09bf9ba5c)), closes [#654](https://github.com/sabertazimi/blog/issues/654)
+* **styles:** keep `antd` styles take precedence over `tailwind` styles. ([#715](https://github.com/sabertazimi/blog/issues/715)) ([53a52b2](https://github.com/sabertazimi/blog/commit/53a52b2005b87a786ad4036cd496b8d2c0576db6))
+* **Tag:** add custom `Tag` components ([#665](https://github.com/sabertazimi/blog/issues/665)) ([e9c7454](https://github.com/sabertazimi/blog/commit/e9c7454ba5a913c326e6f80b2399c1bc6b890241))
+
+
+### :sparkles: Features
+
+* **404:** custom 404 not found component ([#666](https://github.com/sabertazimi/blog/issues/666)) ([b57ab71](https://github.com/sabertazimi/blog/commit/b57ab7108eb8303c14f596c1f1de3c300b22e8db)), closes [#630](https://github.com/sabertazimi/blog/issues/630)
+* **animation:** switch from react-spring to framer-motion ([#645](https://github.com/sabertazimi/blog/issues/645)) ([cb3be2b](https://github.com/sabertazimi/blog/commit/cb3be2bd6bb0e0dd7dcabded03e8c8f65a43dbef)), closes [#619](https://github.com/sabertazimi/blog/issues/619)
+* **ArticleNav:** brand new navigation button ([#651](https://github.com/sabertazimi/blog/issues/651)) ([37911b2](https://github.com/sabertazimi/blog/commit/37911b251479667bcede7d442b1bf5172998924e)), closes [#647](https://github.com/sabertazimi/blog/issues/647)
+* **LandingNav:** add framer motion to landing page ([#643](https://github.com/sabertazimi/blog/issues/643)) ([00763be](https://github.com/sabertazimi/blog/commit/00763be114a93bba8d84d4cb56b77f2a4e7d3a69)), closes [#619](https://github.com/sabertazimi/blog/issues/619)
+* **mdx-admonitions:** add admonition component support ([#746](https://github.com/sabertazimi/blog/issues/746)) ([bd9ac7d](https://github.com/sabertazimi/blog/commit/bd9ac7dacef0e155a40bd35040d6c7b560c109d4)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#725](https://github.com/sabertazimi/blog/issues/725)
+* **mdx-admonitions:** add admonitions syntax support ([#696](https://github.com/sabertazimi/blog/issues/696)) ([36af3e0](https://github.com/sabertazimi/blog/commit/36af3e091ac0ae316e5ce5b15bfc601aa0bc6879)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-code:** add basic `pre` and `code` support ([#728](https://github.com/sabertazimi/blog/issues/728)) ([fa3a9d5](https://github.com/sabertazimi/blog/commit/fa3a9d52d801ffffa3e15dbbee8af3013366b1f3)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#725](https://github.com/sabertazimi/blog/issues/725)
+* **mdx-code:** add custom `Monokai` syntax highlight theme ([#763](https://github.com/sabertazimi/blog/issues/763)) ([12f375e](https://github.com/sabertazimi/blog/commit/12f375ee1877411bf9cdd752f8b8cc22bd44c214)), closes [#701](https://github.com/sabertazimi/blog/issues/701) [#759](https://github.com/sabertazimi/blog/issues/759)
+* **mdx-code:** add line number support ([#757](https://github.com/sabertazimi/blog/issues/757)) ([45b9cf5](https://github.com/sabertazimi/blog/commit/45b9cf580294704ebdcd13dea808db0bb1d9ab5b)), closes [#701](https://github.com/sabertazimi/blog/issues/701) [#755](https://github.com/sabertazimi/blog/issues/755)
+* **mdx-code:** add MacOS style flag and language detection support ([#730](https://github.com/sabertazimi/blog/issues/730)) ([7f8fea5](https://github.com/sabertazimi/blog/commit/7f8fea5af1655bcde2124f71244403296211bf95)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#700](https://github.com/sabertazimi/blog/issues/700)
+* **mdx-code:** add prism syntax highlight to code blocks ([#756](https://github.com/sabertazimi/blog/issues/756)) ([d65c571](https://github.com/sabertazimi/blog/commit/d65c5718b0efcdb5afbc2cfe61a1c6ce4262a228)), closes [#700](https://github.com/sabertazimi/blog/issues/700)
+* **mdx-components:** add `hr`, `img` and `Button` support ([#714](https://github.com/sabertazimi/blog/issues/714)) ([46f7e59](https://github.com/sabertazimi/blog/commit/46f7e597ce952447a0de265ec533b56ac34260ff)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx-components:** add preview image card support ([#718](https://github.com/sabertazimi/blog/issues/718)) ([696a9b4](https://github.com/sabertazimi/blog/commit/696a9b4aa720436a51cf41d68357bbb5b4920eb1)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#716](https://github.com/sabertazimi/blog/issues/716)
+* **mdx-emoji:** add GitHub emoji shortcode support ([#680](https://github.com/sabertazimi/blog/issues/680)) ([1587767](https://github.com/sabertazimi/blog/commit/158776704a07ed71d6c8a4ee5157fa4b621da94b)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-footnote:** add footnote component ([#749](https://github.com/sabertazimi/blog/issues/749)) ([3db41c7](https://github.com/sabertazimi/blog/commit/3db41c738e108300c91b8721c8ba1e2a63d942d1)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx-gfm:** add GitHub Flavored Markdown support ([#679](https://github.com/sabertazimi/blog/issues/679)) ([c37db70](https://github.com/sabertazimi/blog/commit/c37db7049ae5d3c51b40e69bd30228bfb8f23143)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-headings:** add `<a>` link to `<heading>` ([#678](https://github.com/sabertazimi/blog/issues/678)) ([7a30b86](https://github.com/sabertazimi/blog/commit/7a30b86370b37af6393104b789979c75d3654049)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-math:** add katex math support ([#675](https://github.com/sabertazimi/blog/issues/675)) ([e92e4ea](https://github.com/sabertazimi/blog/commit/e92e4eaf33fddf756656b907e13f160faee94c92)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx-table:** add table support ([#729](https://github.com/sabertazimi/blog/issues/729)) ([26e03af](https://github.com/sabertazimi/blog/commit/26e03af8d858b3948dc71dd9107e45b2e047f15f)), closes [#699](https://github.com/sabertazimi/blog/issues/699) [#725](https://github.com/sabertazimi/blog/issues/725)
+* **mdx-typography:** add basic typography support ([#705](https://github.com/sabertazimi/blog/issues/705)) ([76e6143](https://github.com/sabertazimi/blog/commit/76e6143d349ba1a41f05d5bde91dfd1dca49ec31)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx:** add `blockquote` support ([#723](https://github.com/sabertazimi/blog/issues/723)) ([cb9908a](https://github.com/sabertazimi/blog/commit/cb9908ab8a3dc0d0bbe0fff14a9256022b62165b)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **mdx:** add `ul`, `ol` and `li` supoort ([#719](https://github.com/sabertazimi/blog/issues/719)) ([362fd4e](https://github.com/sabertazimi/blog/commit/362fd4e5373c952ae89b4793339bcb9a84cf231f)), closes [#699](https://github.com/sabertazimi/blog/issues/699)
+* **MDX:** add basic MDX support ([#659](https://github.com/sabertazimi/blog/issues/659)) ([4c5361e](https://github.com/sabertazimi/blog/commit/4c5361eca6c9e901139e94563e03aed9531b72fc)), closes [#614](https://github.com/sabertazimi/blog/issues/614)
+* **mdx:** add hoverable animation for heading and anchor ([#750](https://github.com/sabertazimi/blog/issues/750)) ([9094762](https://github.com/sabertazimi/blog/commit/909476279a2478002c34394f68ab1e2ab7602d9b)), closes [#701](https://github.com/sabertazimi/blog/issues/701)
+* **Motion-Bounce:** implement `Bounce` motion component ([#638](https://github.com/sabertazimi/blog/issues/638)) ([e1a98c2](https://github.com/sabertazimi/blog/commit/e1a98c2a5317174d99f26aa65dd8287d362c37e6)), closes [#619](https://github.com/sabertazimi/blog/issues/619)
+* **next:** switch from `gatsby` to `next` ([#612](https://github.com/sabertazimi/blog/issues/612)) ([3c4a151](https://github.com/sabertazimi/blog/commit/3c4a151b3409762c592dfd101f5d22679fa6fbe0))
+* **PWA:** add PWA support via workbox ([#668](https://github.com/sabertazimi/blog/issues/668)) ([3ddaf01](https://github.com/sabertazimi/blog/commit/3ddaf014325dbd2f7c388fbe539333a89a7cce0a)), closes [#631](https://github.com/sabertazimi/blog/issues/631)
+* **SEO:** SEO optimization with `next/seo` ([#652](https://github.com/sabertazimi/blog/issues/652)) ([c3fb5b1](https://github.com/sabertazimi/blog/commit/c3fb5b17ac09ebe0550efec7017b9737c994e38b)), closes [#622](https://github.com/sabertazimi/blog/issues/622)
+* **sitemap:** add basic sitemap generation ([#655](https://github.com/sabertazimi/blog/issues/655)) ([477707b](https://github.com/sabertazimi/blog/commit/477707b7ce7b529e0499d679a7a381d730d46bdd)), closes [#654](https://github.com/sabertazimi/blog/issues/654)
+
 ## [2.14.0](https://github.com/sabertazimi/blog/compare/v2.13.0...v2.14.0) (2022-04-23)
 
 
