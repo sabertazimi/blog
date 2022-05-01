@@ -2,7 +2,30 @@ import { render } from '@testing-library/react';
 import Code from './Code';
 
 describe('Code', () => {
-  const languages = ['html', 'xml', 'md', 'js', 'ts', 'cs', 'oc', 'yml'];
+  const languages = [
+    'html',
+    'xml',
+    'yml',
+    'yaml',
+    'css',
+    'json',
+    'md',
+    'markdown',
+    'js',
+    'javascript',
+    'ts',
+    'typescript',
+    'coffee',
+    'coffeescript',
+    'jsx',
+    'tsx',
+    'objc',
+    'objectivec',
+    'vue',
+    'go',
+    'java',
+    'rust',
+  ];
 
   test('should render inline code correctly (snapshot)', () => {
     const { container } = render(<Code>Inline Code</Code>);

@@ -10,28 +10,6 @@ interface Props {
   children?: ReactNode;
 }
 
-const normalizeLanguage = (language: string) => {
-  switch (language) {
-    case 'html':
-    case 'xml':
-      return 'markup';
-    case 'md':
-      return 'markdown';
-    case 'js':
-      return 'javascript';
-    case 'ts':
-      return 'typescript';
-    case 'cs':
-      return 'coffeescript';
-    case 'oc':
-      return 'objectivec';
-    case 'yml':
-      return 'yaml';
-    default:
-      return language;
-  }
-};
-
 const normalizeCode = (code: string) => code.replace(/\n+$/, '');
 
 const InlineCode = ({ children, className, ...props }: Props): JSX.Element => (
@@ -52,7 +30,7 @@ const BlockCode = ({
     {...defaultProps}
     theme={theme}
     code={normalizeCode(children)}
-    language={normalizeLanguage(className.replace('language-', '')) as Language}
+    language={className.replace('language-', '') as Language}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre
