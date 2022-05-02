@@ -1,5 +1,5 @@
-import { Fork, Hamburger } from '@components/Icons';
-import { Switch, Toggle } from '@components/Motion';
+import { Hamburger } from '@components/Icons';
+import { Switch } from '@components/Motion';
 import type { MotionProps } from '@components/utils';
 import { routes as defaultRoutes } from '@config';
 import type { Route } from '@types';
@@ -49,6 +49,11 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
 
   return (
     <>
+      <Hamburger
+        onClick={handleToggle}
+        className={styles.button}
+        data-testid="hamburger-button"
+      />
       <Switch
         className={styles.nav}
         role="navigation"
@@ -62,13 +67,6 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
           </LandingNavLink>
         ))}
       </Switch>
-      <Toggle
-        className={styles.button}
-        isToggled={expanded}
-        onToggle={handleToggle}
-        iconClose={<Hamburger className={styles.icon} />}
-        iconOpen={<Fork className={styles.icon} />}
-      />
       <Switch
         className={styles.banner}
         role="banner"

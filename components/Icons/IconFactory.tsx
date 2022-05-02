@@ -1,19 +1,31 @@
 import Icon from '@ant-design/icons';
-import type { ComponentType, SVGProps } from 'react';
+import type { SVGProps } from 'react';
 
 interface Props {
+  onClick?: () => void;
   className?: string;
 }
 
 type IconType = (props: Props) => JSX.Element;
 
 const IconFactory = (
-  svg: ComponentType<SVGProps<SVGSVGElement>>,
+  svg: (props: SVGProps<SVGSVGElement>) => JSX.Element,
   ariaLabel: string
 ): IconType => {
-  const IconComponent = ({ className }: Props): JSX.Element => (
-    <Icon component={svg} className={className} aria-label={ariaLabel} />
+  const IconComponent = ({
+    onClick,
+    className,
+    ...props
+  }: Props): JSX.Element => (
+    <Icon
+      {...props}
+      component={svg}
+      aria-label={ariaLabel}
+      onClick={onClick}
+      className={className}
+    />
   );
+
   return IconComponent;
 };
 

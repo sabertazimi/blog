@@ -1,10 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toggle should render reduced close animation correctly (snapshot) 1`] = `
+exports[`Toggle should render animation correctly (snapshot) 1`] = `
 <div>
   <div
     class="wrapper"
-    role="button"
+    tabindex="0"
+  >
+    <span
+      aria-current="true"
+      class="span"
+      style="opacity: 1; transform: none;"
+    >
+      <div>
+        Close
+      </div>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Toggle should render animation correctly (snapshot) 2`] = `
+<div>
+  <div
+    class="wrapper"
     tabindex="0"
   >
     <span
@@ -20,11 +38,29 @@ exports[`Toggle should render reduced close animation correctly (snapshot) 1`] =
 </div>
 `;
 
-exports[`Toggle should render reduced open animation correctly (snapshot) 1`] = `
+exports[`Toggle should render animation correctly (snapshot) 3`] = `
 <div>
   <div
     class="wrapper"
-    role="button"
+    tabindex="0"
+  >
+    <span
+      aria-current="true"
+      class="span"
+      style="opacity: 1; transform: none;"
+    >
+      <div>
+        Open
+      </div>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Toggle should render animation correctly (snapshot) 4`] = `
+<div>
+  <div
+    class="wrapper"
     tabindex="0"
   >
     <span

@@ -19,6 +19,5 @@ export {
   UserOutlined as User,
 } from '@ant-design/icons';
 export { default as Comment } from './Comment';
-export { default as Fork } from './Fork';
 export { default as Hamburger } from './Hamburger';
 export { default as SocialIcon } from './SocialIcon';

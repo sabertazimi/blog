@@ -29,7 +29,7 @@ describe('LandingNav', () => {
     expect(nav).toBeInTheDocument();
     expect(icon).toBeInTheDocument();
 
-    const navButton = screen.getByRole('button');
+    const navButton = screen.getByTestId('hamburger-button');
 
     expect(navButton).toBeInTheDocument();
     expect(navButton).toContainElement(icon);
@@ -51,7 +51,7 @@ describe('LandingNav', () => {
     );
     expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
 
-    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByTestId('hamburger-icon'));
     act(() => {
       jest.advanceTimersByTime(1000);
     });
@@ -60,5 +60,15 @@ describe('LandingNav', () => {
       'transform: translateX(0%) translateZ(0);'
     );
     expect(screen.getByRole('banner')).toHaveStyle('opacity: 0.8');
+
+    fireEvent.click(screen.getByTestId('hamburger-button'));
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByRole('navigation')).toHaveStyle(
+      'transform: translateX(-100%) translateZ(0);'
+    );
+    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
   });
 });
