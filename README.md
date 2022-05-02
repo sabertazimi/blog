@@ -59,14 +59,15 @@ A great [blog](https://blog.tazimi.dev) system based on Next.js.
 ### Development Features
 
 - Lightning fast `HMR`.
-- Optimized build using `Rust` compiler.
 - Dynamic route generation for `Markdown` posts.
+- Optimized build using `Rust` compiler.
+- `TypeScript` static type checking.
+- `ESLint`, `StyleLint` and `Prettier` style checking.
 - Out of box support for `tailwind.css`.
 - Fully customizable styles through `tailwind.css`.
 - Mobile-first approach in development.
 - Out of box support for `Vercel` deployment.
 - Separate components for everything.
-- TypeScript static type checking.
 - Complete `React` components testing using `Jest` and `Testing Library`.
 - E2E website testing using `Cypress`.
 - Optimization for `SEO`: meta heading, sitemap and `robots.txt` support.
