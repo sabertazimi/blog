@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Divider should render correctly (snapshot) 1`] = `
+exports[`MDXCode should render correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="inline"
+  />
+</div>
+`;
+
+exports[`MDXDivider should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="ant-divider ant-divider-horizontal mx-0 my-12 h-1 bg-gradient-primary"
@@ -9,7 +17,7 @@ exports[`Divider should render correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`Input should render checkbox correctly (snapshot) 1`] = `
+exports[`MDXInput should render checkbox correctly (snapshot) 1`] = `
 <div>
   <label
     class="ant-checkbox-wrapper mr-1"
@@ -30,12 +38,21 @@ exports[`Input should render checkbox correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`Input should render input correctly (snapshot) 1`] = `
+exports[`MDXInput should render input correctly (snapshot) 1`] = `
 <div>
   <input
     class="ant-input mr-1"
     type="text"
     value=""
+  />
+</div>
+`;
+
+exports[`MDXPre should render correctly (snapshot) 1`] = `
+<div>
+  <pre
+    class="pre"
+    data-language="Code"
   />
 </div>
 `;
