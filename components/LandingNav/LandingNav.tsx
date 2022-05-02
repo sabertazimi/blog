@@ -51,7 +51,7 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
     <>
       <Hamburger
         onClick={handleToggle}
-        className={styles.button}
+        className={styles.icon}
         data-testid="hamburger-button"
       />
       <Switch

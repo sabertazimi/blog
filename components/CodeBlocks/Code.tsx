@@ -1,3 +1,4 @@
+import CopyButton from '@components/CopyButton';
 import { classNames } from '@components/utils';
 import type { Language } from 'prism-react-renderer';
 import Highlight, { defaultProps } from 'prism-react-renderer';
@@ -38,6 +39,7 @@ const BlockCode = ({
         className={classNames(className, styles.block)}
         style={style}
       >
+        <CopyButton code={normalizeCode(children)} />
         {tokens.map((line, index) => (
           <div key={index} {...getLineProps({ line, key: index })}>
             <span className={styles['line-number']}>{index + 1}</span>

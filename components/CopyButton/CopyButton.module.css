@@ -1,0 +1,9 @@
+.button {
+  @apply absolute top-5 right-5;
+}
+
+.icon {
+  @apply font-extrabold;
+  @apply text-xl md:text-2xl;
+  @apply text-secondary;
+}
