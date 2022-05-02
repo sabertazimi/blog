@@ -2,12 +2,16 @@ import { Anchor, Link } from '@components/Anchor';
 import { useEffect, useState } from 'react';
 import styles from './ArticleToc.module.css';
 
+interface Props {
+  slug: string;
+}
+
 interface TocItem {
   id: string;
   title: string;
 }
 
-const ArticleToc = (): JSX.Element => {
+const ArticleToc = ({ slug }: Props): JSX.Element => {
   const [tocItems, setTocItems] = useState<TocItem[]>([]);
 
   useEffect(() => {
@@ -17,7 +21,7 @@ const ArticleToc = (): JSX.Element => {
       title: item.textContent,
     })) as TocItem[];
     setTocItems(tocItems);
-  }, []);
+  }, [slug]);
 
   return (
     <Anchor className={styles.toc}>
