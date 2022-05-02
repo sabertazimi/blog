@@ -32,34 +32,45 @@ A great [blog](https://blog.tazimi.dev) system based on Next.js.
 - Great tags cloud page: separate page for posts under each tag.
 - Great GitHub information card.
 - Social share buttons.
-- Full-featured MDX support:
-  - GFM support.
-  - Katex math support.
-  - Annotation container support.
+- Full-featured `MDX` support:
+  - Optimized vertical rhythm for headings and paragraphs.
+  - Custom almost all `Markdown` built-in components.
+  - `GFM` syntax support.
+  - `Katex` math support.
+  - Admonition container support.
   - Emoji short code support.
-  - Syntax highlighting in code blocks using PrismJS.
+  - Image preview card support.
+  - Pretty code blocks support:
+    - Syntax highlight using `PrismJS`.
+    - MacOS style code box.
+    - Line number support.
+    - Lines highlight support.
+    - Custom code title support.
+    - Quick code copy support.
+  - Out of box support for live code editor.
   - Automatically generated sidebar navigation,
-    table of contents, previous and next links.
+    table of contents, previous and next post navigation links.
 - Nice animation for page transitions and dynamic routing.
+- Motion almost everything.
 - Disqus comments system.
 - Customized 404 not found page.
 - ...and more.
 
 ### Development Features
 
-- Lightning fast HMR.
-- Optimized build with `Rust` compiler.
+- Lightning fast `HMR`.
+- Optimized build using `Rust` compiler.
 - Dynamic route generation for `Markdown` posts.
-- Performant `MDX` support, enhance `Markdown` with `React`.
 - Out of box support for `tailwind.css`.
-- Fully customizable through `tailwind.css`.
+- Fully customizable styles through `tailwind.css`.
 - Mobile-first approach in development.
 - Out of box support for `Vercel` deployment.
 - Separate components for everything.
 - TypeScript static type checking.
-- Complete `React` components testing with `Jest` and `Testing Library`.
-- Optimization for SEO.
-- Progressive web app: offline support & webapp manifest.
+- Complete `React` components testing using `Jest` and `Testing Library`.
+- E2E website testing using `Cypress`.
+- Optimization for `SEO`: meta heading, sitemap and `robots.txt` support.
+- Progressive web app (`PWA`): offline support and webapp manifest support.
 - ...and more.
 
 ## :bookmark_tabs: Post Template
@@ -111,12 +122,12 @@ Your site is now running at `http://localhost:3000`!
 
 ## :stars: Deployment
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsabertazimi%2Fblog&project-name=blog&repo-name=blog&demo-title=Sabertaz%20Blog&demo-url=https%3A%2F%2Fblog.tazimi.dev)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsabertazimi%2Fblog&project-name=blog&repo-name=blog&demo-title=Sabertaz%20Blog&demo-url=https%3A%2F%2Fblog.tazimi.dev)
 
 Build for `/` path:
 
 ```bash
-# Deploy with Vercel.
+# Deploy to Vercel.
 npm run build
 ```
 
