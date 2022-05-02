@@ -25,7 +25,7 @@ const Article = ({
   return (
     <div>
       <ArticleHeader post={postMeta} />
-      <ArticleToc />
+      <ArticleToc slug={slug} />
       <Container className="max-w-screen-lg px-6">
         <ArticleContent source={source} />
         <Divider>{subtitle || 'Blog'}</Divider>
