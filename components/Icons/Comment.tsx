@@ -1,7 +1,7 @@
 import { motion } from '@components/utils';
 import IconFactory from './IconFactory';
 
-const Svg = () => (
+const Svg = (): JSX.Element => (
   <motion.svg
     viewBox="0 0 1024 1024"
     p-id="1097"

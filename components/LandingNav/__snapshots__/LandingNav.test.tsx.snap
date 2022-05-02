@@ -2,6 +2,37 @@
 
 exports[`LandingNav should render routes correctly (snapshot) 1`] = `
 <div>
+  <span
+    aria-label="Hamburger"
+    class="anticon button"
+    data-testid="hamburger-button"
+    role="img"
+    tabindex="-1"
+  >
+    <svg
+      data-testid="hamburger-icon"
+      fill="currentColor"
+      height="2em"
+      viewBox="0 0 1024 1024"
+      width="2em"
+    >
+      <path
+        d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+        style="transform: none; transform-origin: 0px 0px;"
+        transform-origin="0px 0px"
+      />
+      <path
+        d="M904 472H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+        style="transform: none; transform-origin: 0px 0px;"
+        transform-origin="0px 0px"
+      />
+      <path
+        d="M904 784H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+        style="transform: none; transform-origin: 0px 0px;"
+        transform-origin="0px 0px"
+      />
+    </svg>
+  </span>
   <div
     class="nav"
     role="navigation"
@@ -67,34 +98,6 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
         </a>
       </span>
     </div>
-  </div>
-  <div
-    class="wrapper button"
-    role="button"
-    tabindex="0"
-  >
-    <span
-      aria-current="true"
-      class="span"
-      style="opacity: 1; transform: none;"
-    >
-      <span
-        aria-label="Hamburger"
-        class="anticon icon"
-        role="img"
-      >
-        <svg
-          fill="currentColor"
-          height="2em"
-          viewBox="0 0 1024 1024"
-          width="2em"
-        >
-          <path
-            d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 784H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zM904 472H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
-          />
-        </svg>
-      </span>
-    </span>
   </div>
   <div
     class="banner"

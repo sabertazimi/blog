@@ -8,8 +8,8 @@ interface Props {
   onToggle: () => void;
   iconClose: ReactNode;
   iconOpen: ReactNode;
+  shouldReduceMotion: boolean;
   className?: string;
-  shouldReduceMotion?: boolean;
 }
 
 const closeVariants: MotionProps['initial'] & MotionProps['animate'] = {
@@ -40,13 +40,12 @@ const Toggle = ({
   iconClose,
   iconOpen,
   className,
-  shouldReduceMotion = false,
+  shouldReduceMotion,
   ...props
 }: Props): JSX.Element => (
   <div
     key="toggle-wrapper"
     tabIndex={0}
-    role="button"
     onClick={onToggle}
     onKeyDown={onToggle}
     className={classNames(styles.wrapper, className)}
