@@ -1,7 +1,6 @@
 import Aside from '@components/Aside';
 import Blockquote from '@components/Blockquote';
 import Button from '@components/Button';
-import { Code, Pre } from '@components/CodeBlocks';
 import Footnote from '@components/Footnote';
 import { H1, H2, H3, H4, H5, H6 } from '@components/Headings';
 import ImageCard from '@components/ImageCard';
@@ -9,8 +8,10 @@ import { Item, Ol, Ul } from '@components/Lists';
 import Paragraph from '@components/Paragraph';
 import Table from '@components/Table';
 import { Anchor, Delete, Emphasis, Strong } from '@components/Texts';
-import Divider from './Divider';
-import Input from './Input';
+import Code from './MDXCode';
+import Divider from './MDXDivider';
+import Input from './MDXInput';
+import Pre from './MDXPre';
 
 const Headings = {
   h1: H1,
