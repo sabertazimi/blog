@@ -88,7 +88,6 @@ const posts = basePosts.map((post, index) => ({
     title: `${index} Basic Notes`,
   },
   excerpt: `${index + 1} Basic Notes Basic Concepts`,
-  toc: `${index + 1} Table of Contents`,
 }));
 
 const mockData = {

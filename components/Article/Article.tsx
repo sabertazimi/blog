@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Article = ({
-  post: { excerpt, toc, source, ...postMeta },
+  post: { excerpt, source, ...postMeta },
   siteUrl = siteConfig.siteUrl,
 }: Props): JSX.Element => {
   const { slug, subtitle, prevPost, nextPost } = postMeta;
@@ -25,8 +25,8 @@ const Article = ({
   return (
     <div>
       <ArticleHeader post={postMeta} />
+      <ArticleToc />
       <Container className="max-w-screen-lg px-6">
-        <ArticleToc toc={toc} />
         <ArticleContent source={source} />
         <Divider>{subtitle || 'Blog'}</Divider>
         <ArticleNav prevPost={prevPost} nextPost={nextPost} />

@@ -1,31 +1,6 @@
-.toc ul,
-.toc li,
-.toc p {
-  @apply my-0;
-  @apply text-left;
-}
-
-.toc ul {
-  @apply pl-4;
-  @apply mt-0 mb-1;
-  @apply text-left;
-  @apply list-none;
-}
-
-.toc ul ul {
-  @apply my-0;
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-  .toc a {
-    @apply text-sm font-normal;
-    @apply leading-relaxed break-all;
-    @apply transition-none;
-  }
-}
-
-.toc a {
-  @apply text-sm font-normal;
-  @apply leading-relaxed break-all;
-  @apply transition-colors;
+.toc {
+  @apply hidden md:block;
+  @apply absolute;
+  @apply w-min;
+  @apply mt-36 ml-24;
 }
