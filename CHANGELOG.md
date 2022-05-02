@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/sabertazimi/blog/compare/v3.0.0...v3.1.0) (2022-05-02)
+
+
+### :sparkles: Features
+
+* **components-CopyButton:** implement CopyButton component ([#771](https://github.com/sabertazimi/blog/issues/771)) ([7a1f49b](https://github.com/sabertazimi/blog/commit/7a1f49b4d59037c9093ccb3dbf5c74ab53ea45fe)), closes [#701](https://github.com/sabertazimi/blog/issues/701) [#762](https://github.com/sabertazimi/blog/issues/762)
+* **components-toc:** re-implement `ArticleToc` component ([#774](https://github.com/sabertazimi/blog/issues/774)) ([1ef8800](https://github.com/sabertazimi/blog/commit/1ef8800409f2139168afbfad5c595fe32fb95bda)), closes [#701](https://github.com/sabertazimi/blog/issues/701) [#773](https://github.com/sabertazimi/blog/issues/773)
+* **motion-toggle:** implement icons toggle animation for `LandingNav` ([#767](https://github.com/sabertazimi/blog/issues/767)) ([4a60aae](https://github.com/sabertazimi/blog/commit/4a60aaeebbed98d703ddf034de33ef33fbc1b68d)), closes [#683](https://github.com/sabertazimi/blog/issues/683) [#701](https://github.com/sabertazimi/blog/issues/701)
+
+
+### :bug: Bug Fixes
+
+* **components-toc:** change toc items when routing change ([#775](https://github.com/sabertazimi/blog/issues/775)) ([167c66a](https://github.com/sabertazimi/blog/commit/167c66a87b2ff27f9c7cb7e7e78bb7597802639f)), closes [#701](https://github.com/sabertazimi/blog/issues/701)
+* **mdx-anchor:** adjust bottom space ([#770](https://github.com/sabertazimi/blog/issues/770)) ([6271b56](https://github.com/sabertazimi/blog/commit/6271b56284cc5736d26729cc5abda86a06cd49a0))
+* **motion-icons:** re-design `LandingNav` hamburger button motion ([#769](https://github.com/sabertazimi/blog/issues/769)) ([d908726](https://github.com/sabertazimi/blog/commit/d90872694d2d98f3d55030c79d971a4f8641745a)), closes [#683](https://github.com/sabertazimi/blog/issues/683) [#701](https://github.com/sabertazimi/blog/issues/701)
+
 ## [3.0.0](https://github.com/sabertazimi/blog/compare/v2.14.0...v3.0.0) (2022-05-01)
 
 
