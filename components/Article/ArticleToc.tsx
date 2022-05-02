@@ -1,47 +1,30 @@
-import Drawer from '@components/Drawer';
-import IconButton from '@components/IconButton';
-import { MenuFold } from '@components/Icons';
-import { classNames } from '@components/utils';
-import { useCallback, useState } from 'react';
+import { Anchor, Link } from '@components/Anchor';
+import { useEffect, useState } from 'react';
 import styles from './ArticleToc.module.css';
 
-interface Props {
-  toc?: string;
+interface TocItem {
+  id: string;
+  title: string;
 }
 
-const ArticleToc = ({ toc = '' }: Props): JSX.Element => {
-  const [tocVisible, setTocVisible] = useState(false);
+const ArticleToc = (): JSX.Element => {
+  const [tocItems, setTocItems] = useState<TocItem[]>([]);
 
-  const handleClick = useCallback(
-    () => setTocVisible(tocVisible => !tocVisible),
-    []
-  );
+  useEffect(() => {
+    const items = document.querySelectorAll('h2.ant-typography');
+    const tocItems = Array.from(items).map(item => ({
+      id: `#${item.id}`,
+      title: item.textContent,
+    })) as TocItem[];
+    setTocItems(tocItems);
+  }, []);
 
   return (
-    <div
-      className={classNames(
-        'fixed hidden m-0 bg-transparent',
-        'top-8 right-28 z-10',
-        'md:block'
-      )}
-      role="navigation"
-    >
-      <IconButton icon={<MenuFold aria-label="Menu" />} onClick={handleClick} />
-      <Drawer
-        title="Table of Contents"
-        onClose={handleClick}
-        visible={tocVisible}
-      >
-        <div
-          className={classNames('transition transform-gpu', styles.toc, {
-            'scale-100': tocVisible,
-            'scale-0': !tocVisible,
-          })}
-          dangerouslySetInnerHTML={{ __html: toc }}
-          onClick={handleClick}
-        />
-      </Drawer>
-    </div>
+    <Anchor className={styles.toc}>
+      {tocItems.map(item => (
+        <Link key={item.id} href={item.id} title={item.title} />
+      ))}
+    </Anchor>
   );
 };
 

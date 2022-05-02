@@ -24,7 +24,6 @@ export interface PostMeta {
 
 export interface PostContent {
   excerpt?: string;
-  toc?: string;
   source: MDXRemoteSerializeResult;
 }
 

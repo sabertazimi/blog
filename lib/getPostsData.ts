@@ -139,7 +139,7 @@ async function getPostsData(): Promise<Post[]> {
 async function getPostsMeta(): Promise<PostMeta[]> {
   const postsData = await getPostsData();
   const postsMeta = postsData.map(post => {
-    const { excerpt, toc, source, ...postMeta } = post;
+    const { excerpt, source, ...postMeta } = post;
     return postMeta;
   });
   return postsMeta;
