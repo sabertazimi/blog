@@ -34,8 +34,26 @@ describe('Code', () => {
   });
 
   test('should render block code correctly (snapshot)', () => {
+    const { container } = render(<Code className="language-type" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render live code correctly (snapshot)', () => {
     const { container } = render(
-      <Code className="language-type">Block Code</Code>
+      <Code live={true} className="language-type">
+        Live Code
+      </Code>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should hidden line number and copy button according code block metadata (snapshot)', () => {
+    const { container } = render(
+      <Code noline={true} nocopy={true} className="language-type">
+        const foo = bar();
+      </Code>
     );
 
     expect(container).toMatchSnapshot();

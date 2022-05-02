@@ -6,7 +6,9 @@ exports[`Pre should render children correctly (snapshot) 1`] = `
     class="pre"
     data-language="Code"
   >
-    <code>
+    <code
+      class="inline"
+    >
       Code
     </code>
   </pre>
@@ -18,7 +20,11 @@ exports[`Pre should render correctly (snapshot) 1`] = `
   <pre
     class="pre"
     data-language="Code"
-  />
+  >
+    <code
+      class="inline"
+    />
+  </pre>
 </div>
 `;
 
@@ -28,11 +34,63 @@ exports[`Pre should render language correctly (snapshot) 1`] = `
     class="language-html pre"
     data-language="HTML"
   >
-    <code
-      class="language-html"
+    <pre
+      class="prism-code language-html block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -43,11 +101,63 @@ exports[`Pre should render language correctly (snapshot) 2`] = `
     class="language-xml pre"
     data-language="XML"
   >
-    <code
-      class="language-xml"
+    <pre
+      class="prism-code language-xml block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -58,11 +168,63 @@ exports[`Pre should render language correctly (snapshot) 3`] = `
     class="language-yml pre"
     data-language="YAML"
   >
-    <code
-      class="language-yml"
+    <pre
+      class="prism-code language-yml block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -73,11 +235,63 @@ exports[`Pre should render language correctly (snapshot) 4`] = `
     class="language-yaml pre"
     data-language="YAML"
   >
-    <code
-      class="language-yaml"
+    <pre
+      class="prism-code language-yaml block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -88,11 +302,63 @@ exports[`Pre should render language correctly (snapshot) 5`] = `
     class="language-css pre"
     data-language="CSS"
   >
-    <code
-      class="language-css"
+    <pre
+      class="prism-code language-css block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -103,11 +369,63 @@ exports[`Pre should render language correctly (snapshot) 6`] = `
     class="language-json pre"
     data-language="JSON"
   >
-    <code
-      class="language-json"
+    <pre
+      class="prism-code language-json block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -118,11 +436,63 @@ exports[`Pre should render language correctly (snapshot) 7`] = `
     class="language-md pre"
     data-language="Markdown"
   >
-    <code
-      class="language-md"
+    <pre
+      class="prism-code language-md block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -133,11 +503,63 @@ exports[`Pre should render language correctly (snapshot) 8`] = `
     class="language-markdown pre"
     data-language="Markdown"
   >
-    <code
-      class="language-markdown"
+    <pre
+      class="prism-code language-markdown block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -148,11 +570,63 @@ exports[`Pre should render language correctly (snapshot) 9`] = `
     class="language-js pre"
     data-language="JavaScript"
   >
-    <code
-      class="language-js"
+    <pre
+      class="prism-code language-js block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -163,11 +637,63 @@ exports[`Pre should render language correctly (snapshot) 10`] = `
     class="language-javascript pre"
     data-language="JavaScript"
   >
-    <code
-      class="language-javascript"
+    <pre
+      class="prism-code language-javascript block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -178,11 +704,63 @@ exports[`Pre should render language correctly (snapshot) 11`] = `
     class="language-ts pre"
     data-language="TypeScript"
   >
-    <code
-      class="language-ts"
+    <pre
+      class="prism-code language-ts block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -193,11 +771,63 @@ exports[`Pre should render language correctly (snapshot) 12`] = `
     class="language-typescript pre"
     data-language="TypeScript"
   >
-    <code
-      class="language-typescript"
+    <pre
+      class="prism-code language-typescript block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -208,11 +838,63 @@ exports[`Pre should render language correctly (snapshot) 13`] = `
     class="language-coffee pre"
     data-language="CoffeeScript"
   >
-    <code
-      class="language-coffee"
+    <pre
+      class="prism-code language-coffee block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -223,11 +905,63 @@ exports[`Pre should render language correctly (snapshot) 14`] = `
     class="language-coffeescript pre"
     data-language="CoffeeScript"
   >
-    <code
-      class="language-coffeescript"
+    <pre
+      class="prism-code language-coffeescript block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -238,11 +972,63 @@ exports[`Pre should render language correctly (snapshot) 15`] = `
     class="language-jsx pre"
     data-language="React"
   >
-    <code
-      class="language-jsx"
+    <pre
+      class="prism-code language-jsx block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -253,11 +1039,63 @@ exports[`Pre should render language correctly (snapshot) 16`] = `
     class="language-tsx pre"
     data-language="React"
   >
-    <code
-      class="language-tsx"
+    <pre
+      class="prism-code language-tsx block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token maybe-class-name"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -268,11 +1106,63 @@ exports[`Pre should render language correctly (snapshot) 17`] = `
     class="language-objc pre"
     data-language="Objective-C"
   >
-    <code
-      class="language-objc"
+    <pre
+      class="prism-code language-objc block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -283,11 +1173,63 @@ exports[`Pre should render language correctly (snapshot) 18`] = `
     class="language-objectivec pre"
     data-language="Objective-C"
   >
-    <code
-      class="language-objectivec"
+    <pre
+      class="prism-code language-objectivec block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -298,11 +1240,63 @@ exports[`Pre should render language correctly (snapshot) 19`] = `
     class="language-vue pre"
     data-language="Vue"
   >
-    <code
-      class="language-vue"
+    <pre
+      class="prism-code language-vue block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -313,11 +1307,63 @@ exports[`Pre should render language correctly (snapshot) 20`] = `
     class="language-go pre"
     data-language="Go"
   >
-    <code
-      class="language-go"
+    <pre
+      class="prism-code language-go block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -328,11 +1374,63 @@ exports[`Pre should render language correctly (snapshot) 21`] = `
     class="language-java pre"
     data-language="Java"
   >
-    <code
-      class="language-java"
+    <pre
+      class="prism-code language-java block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;
@@ -343,11 +1441,63 @@ exports[`Pre should render language correctly (snapshot) 22`] = `
     class="language-rust pre"
     data-language="Rust"
   >
-    <code
-      class="language-rust"
+    <pre
+      class="prism-code language-rust block"
+      style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      Code
-    </code>
+      <button
+        aria-label="CopyButton"
+        class="button"
+        title="Copy"
+        type="button"
+      >
+        <div
+          class="wrapper"
+          tabindex="0"
+        >
+          <span
+            aria-current="true"
+            class="span"
+            style="opacity: 1; transform: none;"
+          >
+            <span
+              aria-label="copy"
+              class="anticon anticon-copy icon"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="copy"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </button>
+      <div
+        class="token-line"
+        style="color: rgb(118, 217, 230);"
+      >
+        <span
+          class="line-number"
+        >
+          1
+        </span>
+        <span
+          class="token plain"
+        >
+          Code
+        </span>
+      </div>
+    </pre>
   </pre>
 </div>
 `;

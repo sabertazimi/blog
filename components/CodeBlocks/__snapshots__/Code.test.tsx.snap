@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Code should hidden line number and copy button according code block metadata (snapshot) 1`] = `
+<div>
+  <pre
+    class="prism-code language-type block"
+    style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
+  >
+    <div
+      class="token-line"
+      style="color: rgb(118, 217, 230);"
+    >
+      <span
+        class="token plain"
+      >
+        const foo = bar();
+      </span>
+    </div>
+  </pre>
+</div>
+`;
+
 exports[`Code should render block code correctly (snapshot) 1`] = `
 <div>
   <pre
@@ -54,8 +74,10 @@ exports[`Code should render block code correctly (snapshot) 1`] = `
       </span>
       <span
         class="token plain"
+        style="display: inline-block;"
       >
-        Block Code
+        
+
       </span>
     </div>
   </pre>
@@ -1896,5 +1918,15 @@ exports[`Code should render inline code correctly (snapshot) 1`] = `
   >
     Inline Code
   </code>
+</div>
+`;
+
+exports[`Code should render live code correctly (snapshot) 1`] = `
+<div>
+  <pre
+    class="language-type"
+  >
+    Live Code
+  </pre>
 </div>
 `;
