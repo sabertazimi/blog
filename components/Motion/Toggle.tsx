@@ -5,10 +5,10 @@ import styles from './Toggle.module.css';
 
 interface Props {
   isToggled: boolean;
-  onToggle: () => void;
+  onToggle?: () => void;
   iconClose: ReactNode;
   iconOpen: ReactNode;
-  shouldReduceMotion: boolean;
+  shouldReduceMotion: boolean | null;
   className?: string;
 }
 
