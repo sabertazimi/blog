@@ -3,13 +3,13 @@ import styles from './LiveCode.module.css';
 import { normalizeCode } from './utils';
 
 interface Props {
-  children?: string;
+  code?: string;
   className?: string;
 }
 
-const LiveCode = ({ children, className }: Props): JSX.Element => (
+const LiveCode = ({ code, className }: Props): JSX.Element => (
   <pre className={classNames(className, styles.code)}>
-    {normalizeCode(children)}
+    {normalizeCode(code)}
   </pre>
 );
 

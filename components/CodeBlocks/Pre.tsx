@@ -38,7 +38,7 @@ const Pre = ({
     >
       {!nocopy ? <CopyButton code={code} /> : null}
       {live ? (
-        <LiveCode className={languageClass}>{code}</LiveCode>
+        <LiveCode code={code} className={languageClass} />
       ) : (
         <BlockCode
           enableLine={!noline}

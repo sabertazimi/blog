@@ -26,12 +26,14 @@ const BlockCode = ({
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={classNames(className, styles.code)} style={style}>
           {tokens.map((line, index) => (
-            <div key={index} {...getLineProps({ line, key: index })}>
-              {lines.has(index + 1) ? (
-                <span className={styles.highlight}></span>
-              ) : (
-                <span className={styles.hover}></span>
+            <div
+              key={index}
+              {...getLineProps({ line, key: index })}
+              className={classNames(
+                'token-line',
+                lines.has(index + 1) ? styles.highlight : styles.hover
               )}
+            >
               {enableLine ? (
                 <span className={styles.number}>{index + 1}</span>
               ) : (

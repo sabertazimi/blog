@@ -1,5 +1,4 @@
 .code {
-  @apply static;
   @apply mb-0 px-0 py-5;
 }
 
@@ -9,8 +8,15 @@
 
 .hover,
 .highlight {
-  @apply absolute;
-  @apply w-full h-full;
+  @apply border-l-4 border-solid;
+}
+
+.hover {
+  @apply border-transparent;
+}
+
+.highlight {
+  @apply border-l-primary;
 }
 
 .hover:hover,
@@ -18,17 +24,13 @@
   @apply bg-gray-100/10;
 }
 
-.highlight {
-  @apply border-l-4 border-solid border-l-primary;
-}
-
 .number {
   @apply inline-block;
   @apply w-6;
-  @apply ml-5 mr-3;
+  @apply ml-4 mr-3;
   @apply text-secondary select-none;
 }
 
 .placeholder {
-  @apply ml-5;
+  @apply ml-4;
 }
