@@ -1,6 +1,5 @@
 import CopyButton from '@components/CopyButton';
-import { classNames } from '@components/utils';
-import dynamic from 'next/dynamic';
+import { classNames, dynamic } from '@components/utils';
 import type { HTMLProps, ReactElement } from 'react';
 import BlockCode from './BlockCode';
 import styles from './Pre.module.css';
