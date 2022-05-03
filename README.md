@@ -42,7 +42,7 @@ A great [blog](https://blog.tazimi.dev) system based on Next.js.
   - Image preview card support.
   - Pretty code blocks support:
     - Syntax highlight using `PrismJS`.
-    - MacOS style code box.
+    - macOS style code box.
     - Line number support.
     - Lines highlight support.
     - Custom code title support.
