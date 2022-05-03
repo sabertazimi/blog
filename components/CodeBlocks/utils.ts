@@ -1,3 +1,5 @@
+import parseNumericRange from 'parse-numeric-range';
+
 const normalizeCode = (code: string = '') => code.replace(/\n+$/, '');
 
 const normalizeLanguage = (language: string) => {
@@ -36,4 +38,7 @@ const normalizeLanguage = (language: string) => {
   }
 };
 
-export { normalizeCode, normalizeLanguage };
+const normalizeLines = (expression: string): Set<number> =>
+  new Set(parseNumericRange(expression));
+
+export { normalizeCode, normalizeLanguage, normalizeLines };
