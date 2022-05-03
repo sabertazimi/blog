@@ -126,7 +126,6 @@ export default function remarkAdmonitions() {
   return (tree: any) => {
     visit(tree, (node: ContainerDirective) => {
       if (node.type === 'containerDirective') {
-        // Change container html element to `<aside type="*" title="*" class="admonition admonition-*">`,
         node.data = {
           hName: 'aside',
           hProperties: {
