@@ -1,8 +1,11 @@
 import { classNames } from '@components/utils';
 import type { HTMLProps, ReactElement } from 'react';
+import Code from './Code';
 import styles from './Pre.module.css';
 
-interface Props extends HTMLProps<HTMLPreElement> {}
+interface Props extends HTMLProps<HTMLPreElement> {
+  title?: string;
+}
 
 const normalizeLanguage = (language: string) => {
   switch (language) {
@@ -40,18 +43,27 @@ const normalizeLanguage = (language: string) => {
   }
 };
 
-const Pre = ({ children, className, ...props }: Props): JSX.Element => {
-  const childrenElement = children as ReactElement;
-  const languageClass: string = childrenElement?.props?.className;
-  const language = normalizeLanguage(languageClass?.replace('language-', ''));
+const Pre = ({
+  title,
+  children,
+  className,
+  ...props
+}: Props): JSX.Element => {
+  const codeElement = children as ReactElement;
+  const code: string = codeElement?.props?.children;
+  const languageClass: string = codeElement?.props?.className;
+  const languageName = normalizeLanguage(
+    languageClass?.replace('language-', '')
+  );
 
   return (
     <pre
-      {...props}
       className={classNames(className, languageClass, styles.pre)}
-      data-language={language}
+      data-language={title || languageName}
     >
-      {children}
+      <Code {...props} className={languageClass}>
+        {code}
+      </Code>
     </pre>
   );
 };

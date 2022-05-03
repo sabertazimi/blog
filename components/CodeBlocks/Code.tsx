@@ -2,47 +2,60 @@ import CopyButton from '@components/CopyButton';
 import { classNames } from '@components/utils';
 import type { Language } from 'prism-react-renderer';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import type { ReactNode } from 'react';
 import styles from './Code.module.css';
 import theme from './monokai';
 
 interface Props {
+  live?: boolean;
+  noline?: boolean;
+  nocopy?: boolean;
+  children?: string;
   className?: string;
-  children?: ReactNode;
 }
 
-const normalizeCode = (code: string) => code.replace(/\n+$/, '');
+interface InlineProps {
+  code?: string;
+  className?: string;
+}
 
-const InlineCode = ({ children, className, ...props }: Props): JSX.Element => (
-  <code {...props} className={classNames(className, styles.inline)}>
-    {children}
-  </code>
+interface BlockProps {
+  enableLine?: boolean;
+  enableCopy?: boolean;
+  code?: string;
+  className: string;
+}
+
+interface LiveProps {
+  code?: string;
+  className?: string;
+}
+
+const normalizeCode = (code: string = '') => code.replace(/\n+$/, '');
+
+const InlineCode = ({ code, className }: InlineProps): JSX.Element => (
+  <code className={classNames(className, styles.inline)}>{code}</code>
 );
 
 const BlockCode = ({
-  children,
+  enableLine,
+  enableCopy,
+  code,
   className,
-  ...props
-}: {
-  children: string;
-  className: string;
-}): JSX.Element => (
+}: BlockProps): JSX.Element => (
   <Highlight
     {...defaultProps}
     theme={theme}
-    code={normalizeCode(children)}
+    code={normalizeCode(code)}
     language={className.replace('language-', '') as Language}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre
-        {...props}
-        className={classNames(className, styles.block)}
-        style={style}
-      >
-        <CopyButton code={normalizeCode(children)} />
+      <pre className={classNames(className, styles.block)} style={style}>
+        {enableCopy ? <CopyButton code={normalizeCode(code)} /> : null}
         {tokens.map((line, index) => (
           <div key={index} {...getLineProps({ line, key: index })}>
-            <span className={styles['line-number']}>{index + 1}</span>
+            {enableLine ? (
+              <span className={styles['line-number']}>{index + 1}</span>
+            ) : null}
             {line.map((token, key) => (
               <span key={key} {...getTokenProps({ token, key })} />
             ))}
@@ -53,15 +66,28 @@ const BlockCode = ({
   </Highlight>
 );
 
-const Code = ({ children, className, ...props }: Props): JSX.Element =>
-  className?.includes('language-') ? (
-    <BlockCode {...props} className={className}>
-      {children as string}
-    </BlockCode>
+const LiveCode = ({ code, className }: LiveProps): JSX.Element => (
+  <pre className={className}>{code}</pre>
+);
+
+const Code = ({
+  live = false,
+  noline = false,
+  nocopy = false,
+  children,
+  className,
+}: Props): JSX.Element =>
+  live ? (
+    <LiveCode code={children} className={className} />
+  ) : className?.includes('language-') ? (
+    <BlockCode
+      enableLine={!noline}
+      enableCopy={!nocopy}
+      code={children}
+      className={className}
+    />
   ) : (
-    <InlineCode {...props} className={className}>
-      {children}
-    </InlineCode>
+    <InlineCode code={children} className={className} />
   );
 
 export default Code;
