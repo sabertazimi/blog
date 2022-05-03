@@ -83,8 +83,25 @@ console.log('Awesome!');
 
 Live code editor `live`:
 
-```ts live title="Live Code"
-console.log('Live!');
+```tsx live title="Live Code"
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div
+      onClick={() => setCount(count => count + 1)}
+      style={{
+        paddingTop: '3rem',
+        textAlign: 'center',
+        cursor: 'pointer',
+      }}
+    >
+      {count}
+    </div>
+  );
+};
+
+export default App;
 ```
 
 ## Language

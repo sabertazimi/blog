@@ -26,9 +26,8 @@ const Pre = ({
   const codeElement = children as ReactElement;
   const code = normalizeCode(codeElement?.props?.children);
   const languageClass = codeElement?.props?.className as string;
-  const languageName = normalizeLanguage(
-    languageClass?.replace('language-', '')
-  );
+  const language = languageClass?.replace('language-', '');
+  const languageName = normalizeLanguage(language);
   const highlightLines = normalizeLines(lines);
 
   return (
@@ -36,14 +35,14 @@ const Pre = ({
       className={classNames(className, languageClass, styles.pre)}
       data-language={title || languageName}
     >
-      {!nocopy ? <CopyButton code={code} /> : null}
+      {!nocopy && !live ? <CopyButton code={code} /> : null}
       {live ? (
-        <LiveCode code={code} className={languageClass} />
+        <LiveCode language={language}>{code}</LiveCode>
       ) : (
         <BlockCode
           enableLine={!noline}
           lines={highlightLines}
-          className={languageClass}
+          language={language}
         >
           {code}
         </BlockCode>

@@ -36,7 +36,7 @@ describe('Pre', () => {
   test('should render empty className correctly (snapshot)', () => {
     const { container } = render(
       <Pre>
-        <code>Code</code>
+        <code>const foo = bar();</code>
       </Pre>
     );
 
@@ -46,7 +46,7 @@ describe('Pre', () => {
   test('should hidden line number correctly (snapshot)', () => {
     const { container } = render(
       <Pre noline={true}>
-        <code>Code</code>
+        <code>const foo = bar();</code>
       </Pre>
     );
 
@@ -56,17 +56,7 @@ describe('Pre', () => {
   test('should hidden copy button correctly (snapshot)', () => {
     const { container } = render(
       <Pre nocopy={true}>
-        <code>Code</code>
-      </Pre>
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render code title correctly (snapshot)', () => {
-    const { container } = render(
-      <Pre title="Code Title">
-        <code>Code</code>
+        <code>const foo = bar();</code>
       </Pre>
     );
 
@@ -76,7 +66,17 @@ describe('Pre', () => {
   test('should render highlight lines correctly (snapshot)', () => {
     const { container } = render(
       <Pre lines="1">
-        <code>Code</code>
+        <code>const foo = bar();</code>
+      </Pre>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render code title correctly (snapshot)', () => {
+    const { container } = render(
+      <Pre title="Code Title">
+        <code>const foo = bar();</code>
       </Pre>
     );
 
@@ -86,7 +86,7 @@ describe('Pre', () => {
   test('should render live code correctly (snapshot)', () => {
     const { container } = render(
       <Pre live={true}>
-        <code>Code</code>
+        <code>const foo = bar();</code>
       </Pre>
     );
 
@@ -98,7 +98,7 @@ describe('Pre', () => {
     language => {
       const { container } = render(
         <Pre>
-          <code className={`language-${language}`}>Code</code>
+          <code className={`language-${language}`}>const foo = bar();</code>
         </Pre>
       );
 

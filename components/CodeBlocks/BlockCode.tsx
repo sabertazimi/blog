@@ -5,23 +5,23 @@ import styles from './BlockCode.module.css';
 import theme from './monokai';
 
 interface Props {
-  enableLine?: boolean;
-  lines?: Set<number>;
+  enableLine: boolean;
+  lines: Set<number>;
+  language?: string;
   children: string;
-  className?: string;
 }
 
 const BlockCode = ({
-  enableLine = true,
-  lines = new Set(),
+  enableLine,
+  lines,
+  language,
   children,
-  className,
 }: Props): JSX.Element => (
   <Highlight
     {...defaultProps}
-    theme={theme}
     code={children}
-    language={className?.replace('language-', '') as Language}
+    language={language as Language}
+    theme={theme}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre className={classNames(className, styles.code)} style={style}>
