@@ -1,3 +1,4 @@
-export { default as classNames } from './classNames';
-export { AnimatePresence, motion, useReducedMotion } from './motion';
-export type { MotionProps } from './motion';
+export { default as classNames } from 'classnames';
+export { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+export type { MotionProps } from 'framer-motion';
+export { default as dynamic } from 'next/dynamic';
