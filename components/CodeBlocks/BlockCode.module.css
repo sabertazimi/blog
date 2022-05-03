@@ -1,0 +1,11 @@
+.code {
+  @apply static !important;
+  @apply mb-0 p-5 !important;
+}
+
+.line {
+  @apply inline-block !important;
+  @apply w-6 !important;
+  @apply mr-3 !important;
+  @apply text-secondary select-none !important;
+}
