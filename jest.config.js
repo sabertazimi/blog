@@ -41,7 +41,7 @@ module.exports = async () => {
   const jestConfig = await createJestConfig();
   const transformIgnorePatterns = [
     // Transform ESM-only modules in `node_modules`.
-    '/node_modules/(?!next-mdx-remote|@mdx-js)',
+    '/node_modules/(?!next-mdx-remote|@mdx-js|@react-hook)',
     ...jestConfig.transformIgnorePatterns.filter(
       pattern => pattern !== '/node_modules/'
     ),

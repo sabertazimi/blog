@@ -104,6 +104,41 @@ const App = () => {
 export default App;
 ```
 
+Live code editor `<Editor>`:
+
+<Editor>
+
+```tsx
+import Greet from './Greet';
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Greet />
+    </div>
+  );
+}
+```
+
+```tsx filename="Greet.tsx"
+function Greeting({ name }) {
+  return <h3>Hello, {name}!</h3>;
+}
+
+export default function Greet() {
+  return (
+    <div>
+      <Greeting name="Nintendo" />
+      <Greeting name="Sony" />
+      <Greeting name="Microsoft" />
+    </div>
+  );
+}
+```
+
+</Editor>
+
 ## Language
 
 ### Markup Code
