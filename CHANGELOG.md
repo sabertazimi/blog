@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/sabertazimi/blog/compare/v3.1.0...v3.2.0) (2022-05-03)
+
+
+### :sparkles: Features
+
+* **CodeBlocks:** add lines highlight support ([#784](https://github.com/sabertazimi/blog/issues/784)) ([501ef50](https://github.com/sabertazimi/blog/commit/501ef50bc1422a910c57be251163a76b4ca8babc)), closes [#776](https://github.com/sabertazimi/blog/issues/776)
+* **mdx-code:** add code block meta parser support ([#782](https://github.com/sabertazimi/blog/issues/782)) ([2917a54](https://github.com/sabertazimi/blog/commit/2917a54a913b105f94aa4597623655b763bc5dbf)), closes [#776](https://github.com/sabertazimi/blog/issues/776)
+
+
+### :bug: Bug Fixes
+
+* **CodeBlocks:** make highlight lines become selective ([#786](https://github.com/sabertazimi/blog/issues/786)) ([7de385a](https://github.com/sabertazimi/blog/commit/7de385ae1e5b8efea493847aa0671208be2f783a)), closes [#776](https://github.com/sabertazimi/blog/issues/776)
+* **CodeBlocks:** normalize code before passing to code blocks ([#788](https://github.com/sabertazimi/blog/issues/788)) ([e59cfc5](https://github.com/sabertazimi/blog/commit/e59cfc582050ecd197f64f83fda148fff502ba50))
+* **components-CopyButton:** rectify CopyButton position ([#780](https://github.com/sabertazimi/blog/issues/780)) ([0dbae69](https://github.com/sabertazimi/blog/commit/0dbae694a44baec5f4c2416a2aa08e5795701f77)), closes [#779](https://github.com/sabertazimi/blog/issues/779)
+* **mdx-admonitions:** change code text size in admonitions ([#790](https://github.com/sabertazimi/blog/issues/790)) ([918d06b](https://github.com/sabertazimi/blog/commit/918d06b7adbf28999468a9f5e597461c072ab2fc))
+
 ## [3.1.0](https://github.com/sabertazimi/blog/compare/v3.0.0...v3.1.0) (2022-05-02)
 
 
