@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Code should hidden line number and copy button according code block metadata (snapshot) 1`] = `
+exports[`BlockCode should hidden line number and copy button according code block metadata (snapshot) 1`] = `
 <div>
   <pre
-    class="prism-code language-type block"
+    class="prism-code language-type code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <div
@@ -20,10 +20,10 @@ exports[`Code should hidden line number and copy button according code block met
 </div>
 `;
 
-exports[`Code should render block code correctly (snapshot) 1`] = `
+exports[`BlockCode should render different language correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="prism-code language-type block"
+    class="prism-code language-html code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -68,71 +68,7 @@ exports[`Code should render block code correctly (snapshot) 1`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
-      >
-        1
-      </span>
-      <span
-        class="token plain"
-        style="display: inline-block;"
-      >
-        
-
-      </span>
-    </div>
-  </pre>
-</div>
-`;
-
-exports[`Code should render different language correctly (snapshot) 1`] = `
-<div>
-  <pre
-    class="prism-code language-html block"
-    style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
-  >
-    <button
-      aria-label="CopyButton"
-      class="button"
-      title="Copy"
-      type="button"
-    >
-      <div
-        class="wrapper"
-        tabindex="0"
-      >
-        <span
-          aria-current="true"
-          class="span"
-          style="opacity: 1; transform: none;"
-        >
-          <span
-            aria-label="copy"
-            class="anticon anticon-copy icon"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="copy"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
-            >
-              <path
-                d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
-              />
-            </svg>
-          </span>
-        </span>
-      </div>
-    </button>
-    <div
-      class="token-line"
-      style="color: rgb(118, 217, 230);"
-    >
-      <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -146,10 +82,10 @@ exports[`Code should render different language correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 2`] = `
+exports[`BlockCode should render different language correctly (snapshot) 2`] = `
 <div>
   <pre
-    class="prism-code language-xml block"
+    class="prism-code language-xml code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -194,7 +130,7 @@ exports[`Code should render different language correctly (snapshot) 2`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -208,10 +144,10 @@ exports[`Code should render different language correctly (snapshot) 2`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 3`] = `
+exports[`BlockCode should render different language correctly (snapshot) 3`] = `
 <div>
   <pre
-    class="prism-code language-yml block"
+    class="prism-code language-yml code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -256,7 +192,7 @@ exports[`Code should render different language correctly (snapshot) 3`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -270,10 +206,10 @@ exports[`Code should render different language correctly (snapshot) 3`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 4`] = `
+exports[`BlockCode should render different language correctly (snapshot) 4`] = `
 <div>
   <pre
-    class="prism-code language-yaml block"
+    class="prism-code language-yaml code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -318,7 +254,7 @@ exports[`Code should render different language correctly (snapshot) 4`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -332,10 +268,10 @@ exports[`Code should render different language correctly (snapshot) 4`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 5`] = `
+exports[`BlockCode should render different language correctly (snapshot) 5`] = `
 <div>
   <pre
-    class="prism-code language-css block"
+    class="prism-code language-css code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -380,7 +316,7 @@ exports[`Code should render different language correctly (snapshot) 5`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -418,10 +354,10 @@ exports[`Code should render different language correctly (snapshot) 5`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 6`] = `
+exports[`BlockCode should render different language correctly (snapshot) 6`] = `
 <div>
   <pre
-    class="prism-code language-json block"
+    class="prism-code language-json code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -466,7 +402,7 @@ exports[`Code should render different language correctly (snapshot) 6`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -480,10 +416,10 @@ exports[`Code should render different language correctly (snapshot) 6`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 7`] = `
+exports[`BlockCode should render different language correctly (snapshot) 7`] = `
 <div>
   <pre
-    class="prism-code language-md block"
+    class="prism-code language-md code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -528,7 +464,7 @@ exports[`Code should render different language correctly (snapshot) 7`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -542,10 +478,10 @@ exports[`Code should render different language correctly (snapshot) 7`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 8`] = `
+exports[`BlockCode should render different language correctly (snapshot) 8`] = `
 <div>
   <pre
-    class="prism-code language-markdown block"
+    class="prism-code language-markdown code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -590,7 +526,7 @@ exports[`Code should render different language correctly (snapshot) 8`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -604,10 +540,10 @@ exports[`Code should render different language correctly (snapshot) 8`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 9`] = `
+exports[`BlockCode should render different language correctly (snapshot) 9`] = `
 <div>
   <pre
-    class="prism-code language-js block"
+    class="prism-code language-js code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -652,7 +588,7 @@ exports[`Code should render different language correctly (snapshot) 9`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -707,10 +643,10 @@ exports[`Code should render different language correctly (snapshot) 9`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 10`] = `
+exports[`BlockCode should render different language correctly (snapshot) 10`] = `
 <div>
   <pre
-    class="prism-code language-javascript block"
+    class="prism-code language-javascript code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -755,7 +691,7 @@ exports[`Code should render different language correctly (snapshot) 10`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -810,10 +746,10 @@ exports[`Code should render different language correctly (snapshot) 10`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 11`] = `
+exports[`BlockCode should render different language correctly (snapshot) 11`] = `
 <div>
   <pre
-    class="prism-code language-ts block"
+    class="prism-code language-ts code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -858,7 +794,7 @@ exports[`Code should render different language correctly (snapshot) 11`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -913,10 +849,10 @@ exports[`Code should render different language correctly (snapshot) 11`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 12`] = `
+exports[`BlockCode should render different language correctly (snapshot) 12`] = `
 <div>
   <pre
-    class="prism-code language-typescript block"
+    class="prism-code language-typescript code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -961,7 +897,7 @@ exports[`Code should render different language correctly (snapshot) 12`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1016,10 +952,10 @@ exports[`Code should render different language correctly (snapshot) 12`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 13`] = `
+exports[`BlockCode should render different language correctly (snapshot) 13`] = `
 <div>
   <pre
-    class="prism-code language-coffee block"
+    class="prism-code language-coffee code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1064,7 +1000,7 @@ exports[`Code should render different language correctly (snapshot) 13`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1113,10 +1049,10 @@ exports[`Code should render different language correctly (snapshot) 13`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 14`] = `
+exports[`BlockCode should render different language correctly (snapshot) 14`] = `
 <div>
   <pre
-    class="prism-code language-coffeescript block"
+    class="prism-code language-coffeescript code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1161,7 +1097,7 @@ exports[`Code should render different language correctly (snapshot) 14`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1210,10 +1146,10 @@ exports[`Code should render different language correctly (snapshot) 14`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 15`] = `
+exports[`BlockCode should render different language correctly (snapshot) 15`] = `
 <div>
   <pre
-    class="prism-code language-jsx block"
+    class="prism-code language-jsx code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1258,7 +1194,7 @@ exports[`Code should render different language correctly (snapshot) 15`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1313,10 +1249,10 @@ exports[`Code should render different language correctly (snapshot) 15`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 16`] = `
+exports[`BlockCode should render different language correctly (snapshot) 16`] = `
 <div>
   <pre
-    class="prism-code language-tsx block"
+    class="prism-code language-tsx code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1361,7 +1297,7 @@ exports[`Code should render different language correctly (snapshot) 16`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1416,10 +1352,10 @@ exports[`Code should render different language correctly (snapshot) 16`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 17`] = `
+exports[`BlockCode should render different language correctly (snapshot) 17`] = `
 <div>
   <pre
-    class="prism-code language-objc block"
+    class="prism-code language-objc code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1464,7 +1400,7 @@ exports[`Code should render different language correctly (snapshot) 17`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1519,10 +1455,10 @@ exports[`Code should render different language correctly (snapshot) 17`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 18`] = `
+exports[`BlockCode should render different language correctly (snapshot) 18`] = `
 <div>
   <pre
-    class="prism-code language-objectivec block"
+    class="prism-code language-objectivec code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1567,7 +1503,7 @@ exports[`Code should render different language correctly (snapshot) 18`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1622,10 +1558,10 @@ exports[`Code should render different language correctly (snapshot) 18`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 19`] = `
+exports[`BlockCode should render different language correctly (snapshot) 19`] = `
 <div>
   <pre
-    class="prism-code language-vue block"
+    class="prism-code language-vue code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1670,7 +1606,7 @@ exports[`Code should render different language correctly (snapshot) 19`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1684,10 +1620,10 @@ exports[`Code should render different language correctly (snapshot) 19`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 20`] = `
+exports[`BlockCode should render different language correctly (snapshot) 20`] = `
 <div>
   <pre
-    class="prism-code language-go block"
+    class="prism-code language-go code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1732,7 +1668,7 @@ exports[`Code should render different language correctly (snapshot) 20`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1787,10 +1723,10 @@ exports[`Code should render different language correctly (snapshot) 20`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 21`] = `
+exports[`BlockCode should render different language correctly (snapshot) 21`] = `
 <div>
   <pre
-    class="prism-code language-java block"
+    class="prism-code language-java code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1835,7 +1771,7 @@ exports[`Code should render different language correctly (snapshot) 21`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1849,10 +1785,10 @@ exports[`Code should render different language correctly (snapshot) 21`] = `
 </div>
 `;
 
-exports[`Code should render different language correctly (snapshot) 22`] = `
+exports[`BlockCode should render different language correctly (snapshot) 22`] = `
 <div>
   <pre
-    class="prism-code language-rust block"
+    class="prism-code language-rust code"
     style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
   >
     <button
@@ -1897,7 +1833,7 @@ exports[`Code should render different language correctly (snapshot) 22`] = `
       style="color: rgb(118, 217, 230);"
     >
       <span
-        class="line-number"
+        class="line"
       >
         1
       </span>
@@ -1907,26 +1843,6 @@ exports[`Code should render different language correctly (snapshot) 22`] = `
         const foo = bar();
       </span>
     </div>
-  </pre>
-</div>
-`;
-
-exports[`Code should render inline code correctly (snapshot) 1`] = `
-<div>
-  <code
-    class="inline"
-  >
-    Inline Code
-  </code>
-</div>
-`;
-
-exports[`Code should render live code correctly (snapshot) 1`] = `
-<div>
-  <pre
-    class="language-type"
-  >
-    Live Code
   </pre>
 </div>
 `;

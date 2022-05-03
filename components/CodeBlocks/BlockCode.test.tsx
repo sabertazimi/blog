@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import Pre from './Pre';
+import BlockCode from './BlockCode';
 
-describe('Pre', () => {
+describe('BlockCode', () => {
   const languages = [
     'html',
     'xml',
@@ -27,27 +27,15 @@ describe('Pre', () => {
     'rust',
   ];
 
-  test('should render empty children correctly (snapshot)', () => {
-    const { container } = render(<Pre />);
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render empty className correctly (snapshot)', () => {
+  test('should hidden line number and copy button according code block metadata (snapshot)', () => {
     const { container } = render(
-      <Pre>
-        <code>Code</code>
-      </Pre>
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render live code correctly (snapshot)', () => {
-    const { container } = render(
-      <Pre live={true}>
-        <code>Code</code>
-      </Pre>
+      <BlockCode
+        enableLine={false}
+        enableCopy={false}
+        className="language-type"
+      >
+        const foo = bar();
+      </BlockCode>
     );
 
     expect(container).toMatchSnapshot();
@@ -57,9 +45,13 @@ describe('Pre', () => {
     'should render different language correctly (snapshot)',
     language => {
       const { container } = render(
-        <Pre>
-          <code className={`language-${language}`}>Code</code>
-        </Pre>
+        <BlockCode
+          enableLine={true}
+          enableCopy={true}
+          className={`language-${language}`}
+        >
+          const foo = bar();
+        </BlockCode>
       );
 
       expect(container).toMatchSnapshot();
