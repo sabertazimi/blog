@@ -86,7 +86,9 @@ some.code();
 }
 ```
 
-## Meta Code Block
+## Code Block Configuration
+
+### Line Number
 
 Disable line number `noline`:
 
@@ -94,11 +96,52 @@ Disable line number `noline`:
 console.log('No line number!');
 ```
 
+### Copy Button
+
 Disable copy button `nocopy`:
 
 ```ts nocopy
 console.log('No copy button!');
 ```
+
+### Lines Highlight
+
+Set highlight lines `lines="2,5,8-10,12,14..16,19,22...25"`:
+
+```ts lines="2,5,8-10,12,14..16,19,22...25"
+import type { Parent } from 'mdast';
+import { visit } from 'unist-util-visit';
+
+/**
+ * Markdown abstract syntax tree node definition.
+ * @see https://github.com/syntax-tree/mdast
+ */
+interface ContainerDirective extends Parent {
+  name: string;
+  attributes: Record<string, string>;
+  value?: string;
+}
+
+export default function remarkAdmonitions() {
+  return (tree: any) => {
+    visit(tree, (node: ContainerDirective) => {
+      if (node.type === 'containerDirective') {
+        // Change container html element to `<aside type="*" title="*" class="admonition admonition-*">`,
+        node.data = {
+          hName: 'aside',
+          hProperties: {
+            type: node.name,
+            title: Object.keys(node.attributes).join(' '),
+            className: `admonition admonition-${node.name}`,
+          },
+        };
+      }
+    });
+  };
+}
+```
+
+### Code Title
 
 Show code title `title="Awesome Code"`:
 
@@ -106,7 +149,9 @@ Show code title `title="Awesome Code"`:
 console.log('Awesome!');
 ```
 
-Live code block `live`:
+### Live Code
+
+Live code editor `live`:
 
 ```ts live title="Live Code"
 console.log('Live!');

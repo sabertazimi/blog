@@ -27,29 +27,11 @@ describe('BlockCode', () => {
     'rust',
   ];
 
-  test('should hidden line number and copy button according code block metadata (snapshot)', () => {
-    const { container } = render(
-      <BlockCode
-        enableLine={false}
-        enableCopy={false}
-        className="language-type"
-      >
-        const foo = bar();
-      </BlockCode>
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
   test.each(languages)(
     'should render different language correctly (snapshot)',
     language => {
       const { container } = render(
-        <BlockCode
-          enableLine={true}
-          enableCopy={true}
-          className={`language-${language}`}
-        >
+        <BlockCode className={`language-${language}`}>
           const foo = bar();
         </BlockCode>
       );

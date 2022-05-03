@@ -1,22 +1,25 @@
+import CopyButton from '@components/CopyButton';
 import { classNames } from '@components/utils';
 import type { HTMLProps, ReactElement } from 'react';
 import BlockCode from './BlockCode';
 import LiveCode from './LiveCode';
 import styles from './Pre.module.css';
-import { normalizeLanguage } from './utils';
+import { normalizeLanguage, normalizeLines } from './utils';
 
 interface Props extends HTMLProps<HTMLPreElement> {
   live?: boolean;
   noline?: boolean;
   nocopy?: boolean;
   title?: string;
+  lines?: string;
 }
 
 const Pre = ({
   live = false,
   noline = false,
   nocopy = false,
-  title,
+  title = '',
+  lines = '',
   children,
   className,
 }: Props): JSX.Element => {
@@ -26,18 +29,20 @@ const Pre = ({
   const languageName = normalizeLanguage(
     languageClass?.replace('language-', '')
   );
+  const highlightLines = normalizeLines(lines);
 
   return (
     <pre
       className={classNames(className, languageClass, styles.pre)}
       data-language={title || languageName}
     >
+      {!nocopy ? <CopyButton code={code} /> : null}
       {live ? (
         <LiveCode className={languageClass}>{code}</LiveCode>
       ) : (
         <BlockCode
           enableLine={!noline}
-          enableCopy={!nocopy}
+          lines={highlightLines}
           className={languageClass}
         >
           {code}

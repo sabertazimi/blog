@@ -1,4 +1,3 @@
-import CopyButton from '@components/CopyButton';
 import { classNames } from '@components/utils';
 import type { Language } from 'prism-react-renderer';
 import Highlight, { defaultProps } from 'prism-react-renderer';
@@ -7,40 +6,46 @@ import theme from './monokai';
 import { normalizeCode } from './utils';
 
 interface Props {
-  enableLine: boolean;
-  enableCopy: boolean;
+  enableLine?: boolean;
+  lines?: Set<number>;
   children?: string;
   className?: string;
 }
 
 const BlockCode = ({
-  enableLine,
-  enableCopy,
+  enableLine = true,
+  lines = new Set(),
   children,
   className,
-}: Props): JSX.Element => (
-  <Highlight
-    {...defaultProps}
-    theme={theme}
-    code={normalizeCode(children)}
-    language={className?.replace('language-', '') as Language}
-  >
-    {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre className={classNames(className, styles.code)} style={style}>
-        {enableCopy ? <CopyButton code={normalizeCode(children)} /> : null}
-        {tokens.map((line, index) => (
-          <div key={index} {...getLineProps({ line, key: index })}>
-            {enableLine ? (
-              <span className={styles.line}>{index + 1}</span>
-            ) : null}
-            {line.map((token, key) => (
-              <span key={key} {...getTokenProps({ token, key })} />
-            ))}
-          </div>
-        ))}
-      </pre>
-    )}
-  </Highlight>
-);
+}: Props): JSX.Element => {
+  const code = normalizeCode(children);
+  const language = className?.replace('language-', '') as Language;
+
+  return (
+    <Highlight {...defaultProps} theme={theme} code={code} language={language}>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={classNames(className, styles.code)} style={style}>
+          {tokens.map((line, index) => (
+            <div key={index} {...getLineProps({ line, key: index })}>
+              {lines.has(index + 1) ? (
+                <span className={styles.highlight}></span>
+              ) : (
+                <span className={styles.hover}></span>
+              )}
+              {enableLine ? (
+                <span className={styles.number}>{index + 1}</span>
+              ) : (
+                <span className={styles.placeholder}></span>
+              )}
+              {line.map((token, key) => (
+                <span key={key} {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
+  );
+};
 
 export default BlockCode;

@@ -43,6 +43,46 @@ describe('Pre', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('should hidden line number correctly (snapshot)', () => {
+    const { container } = render(
+      <Pre noline={true}>
+        <code>Code</code>
+      </Pre>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should hidden copy button correctly (snapshot)', () => {
+    const { container } = render(
+      <Pre nocopy={true}>
+        <code>Code</code>
+      </Pre>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render code title correctly (snapshot)', () => {
+    const { container } = render(
+      <Pre title="Code Title">
+        <code>Code</code>
+      </Pre>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render highlight lines correctly (snapshot)', () => {
+    const { container } = render(
+      <Pre lines="1">
+        <code>Code</code>
+      </Pre>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   test('should render live code correctly (snapshot)', () => {
     const { container } = render(
       <Pre live={true}>
