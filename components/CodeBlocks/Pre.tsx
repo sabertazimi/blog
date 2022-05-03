@@ -4,7 +4,7 @@ import type { HTMLProps, ReactElement } from 'react';
 import BlockCode from './BlockCode';
 import LiveCode from './LiveCode';
 import styles from './Pre.module.css';
-import { normalizeLanguage, normalizeLines } from './utils';
+import { normalizeCode, normalizeLanguage, normalizeLines } from './utils';
 
 interface Props extends HTMLProps<HTMLPreElement> {
   live?: boolean;
@@ -24,8 +24,8 @@ const Pre = ({
   className,
 }: Props): JSX.Element => {
   const codeElement = children as ReactElement;
-  const code: string = codeElement?.props?.children;
-  const languageClass: string = codeElement?.props?.className;
+  const code = normalizeCode(codeElement?.props?.children);
+  const languageClass = codeElement?.props?.className as string;
   const languageName = normalizeLanguage(
     languageClass?.replace('language-', '')
   );
