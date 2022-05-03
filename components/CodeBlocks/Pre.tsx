@@ -1,8 +1,8 @@
 import CopyButton from '@components/CopyButton';
 import { classNames } from '@components/utils';
+import dynamic from 'next/dynamic';
 import type { HTMLProps, ReactElement } from 'react';
 import BlockCode from './BlockCode';
-import LiveCode from './LiveCode';
 import styles from './Pre.module.css';
 import { normalizeCode, normalizeLanguage, normalizeLines } from './utils';
 
@@ -13,6 +13,8 @@ interface Props extends HTMLProps<HTMLPreElement> {
   title?: string;
   lines?: string;
 }
+
+const LiveCode = dynamic(() => import('./LiveCode'));
 
 const Pre = ({
   live = false,

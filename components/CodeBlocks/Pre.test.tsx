@@ -83,16 +83,6 @@ describe('Pre', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should render live code correctly (snapshot)', () => {
-    const { container } = render(
-      <Pre live={true}>
-        <code>const foo = bar();</code>
-      </Pre>
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
   test.each(languages)(
     'should render different language correctly (snapshot)',
     language => {
