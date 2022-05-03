@@ -1,4 +1,15 @@
-.code {
-  @apply relative;
-  @apply m-0 p-5;
+.container {
+  @apply flex flex-wrap flex-col md:flex-row;
+  @apply m-0 p-0;
+}
+
+.editor,
+.preview {
+  @apply flex-auto;
+  @apply w-full md:w-1/2;
+}
+
+.error {
+  @apply w-full;
+  @apply bg-red-100 text-red-700;
 }

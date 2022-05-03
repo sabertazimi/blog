@@ -1,16 +1,36 @@
-import { classNames } from '@components/utils';
+import type { Language } from 'prism-react-renderer';
+import React from 'react';
+import {
+  LiveEditor,
+  LiveError,
+  LivePreview,
+  LiveProvider,
+} from 'react-live-runner';
 import styles from './LiveCode.module.css';
-import { normalizeCode } from './utils';
+import theme from './monokai';
 
 interface Props {
-  code?: string;
-  className?: string;
+  language?: string;
+  children?: string;
 }
 
-const LiveCode = ({ code, className }: Props): JSX.Element => (
-  <pre className={classNames(className, styles.code)}>
-    {normalizeCode(code)}
-  </pre>
+const scope = {
+  ...React,
+};
+
+const LiveCode = ({ language, children }: Props): JSX.Element => (
+  <div className={styles.container}>
+    <LiveProvider
+      scope={scope}
+      code={children}
+      language={language as Language}
+      theme={theme}
+    >
+      <LiveEditor padding="1.25rem" className={styles.editor} />
+      <LivePreview className={styles.preview} />
+      <LiveError className={styles.error} />
+    </LiveProvider>
+  </div>
 );
 
 export default LiveCode;
