@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/sabertazimi/blog/compare/v3.3.0...v3.4.0) (2022-05-04)
+
+
+### :sparkles: Features
+
+* **dark mode:** add `ThemeSwitch` component ([#800](https://github.com/sabertazimi/blog/issues/800)) ([b168313](https://github.com/sabertazimi/blog/commit/b168313e773aca4d3d2dcc31ebb23aa0809d7361)), closes [#799](https://github.com/sabertazimi/blog/issues/799)
+* **dark mode:** add dark mode for books and about page ([#802](https://github.com/sabertazimi/blog/issues/802)) ([298d7eb](https://github.com/sabertazimi/blog/commit/298d7eb6de6a8e86d786b50daeb12635328afde8)), closes [#799](https://github.com/sabertazimi/blog/issues/799)
+* **dark mode:** add dark mode for post page ([#803](https://github.com/sabertazimi/blog/issues/803)) ([bb9a359](https://github.com/sabertazimi/blog/commit/bb9a3595bea2ccbcbf3f12a8da9c7f3ea2d020aa)), closes [#799](https://github.com/sabertazimi/blog/issues/799)
+* **dark mode:** add dark theme for posts and tags page ([#801](https://github.com/sabertazimi/blog/issues/801)) ([76b58f4](https://github.com/sabertazimi/blog/commit/76b58f4e5ee1b416efe62d00ea891bf208dcc6cc)), closes [#799](https://github.com/sabertazimi/blog/issues/799)
+
+
+### :bug: Bug Fixes
+
+* **code-theme:** rectify dark mode styles ([#804](https://github.com/sabertazimi/blog/issues/804)) ([1442079](https://github.com/sabertazimi/blog/commit/1442079e78b6e679c6f35034a26699e747d0dae5))
+
 ## [3.3.0](https://github.com/sabertazimi/blog/compare/v3.2.0...v3.3.0) (2022-05-04)
 
 
