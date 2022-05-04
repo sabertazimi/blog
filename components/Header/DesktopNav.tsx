@@ -2,6 +2,7 @@ import Link from '@components/Link';
 import LocalImage from '@components/LocalImage';
 import Menu from '@components/Menu';
 import PostsSearchBar from '@components/PostsSearchBar';
+import ThemeSwitch from '@components/ThemeSwitch';
 import { classNames } from '@components/utils';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
@@ -62,6 +63,10 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
             <PostsSearchBar posts={posts} />
           </span>
         ),
+      },
+      {
+        key: 'theme',
+        label: <ThemeSwitch className={fixed ? 'text-dark' : 'text-light'} />,
       },
     ]}
   />

@@ -1,6 +1,5 @@
 import type { MotionProps } from '@components/utils';
 import { motion } from '@components/utils';
-import type { MouseEvent } from 'react';
 import { useCallback, useState } from 'react';
 import IconFactory from './IconFactory';
 
@@ -22,7 +21,7 @@ const thirdVariants: MotionProps['variants'] = {
 const Svg = (): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
   const handleClick = useCallback(
-    (event: MouseEvent) => setIsChecked(isChecked => !isChecked),
+    () => setIsChecked(isChecked => !isChecked),
     []
   );
 
