@@ -4,8 +4,8 @@ module.exports = {
     './layouts/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
-  important: true,
   darkMode: 'class',
+  important: true,
   theme: {
     extend: {
       minWidth: {

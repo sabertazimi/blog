@@ -3,7 +3,7 @@
 exports[`Footer should render correctly (snapshot) 1`] = `
 <div>
   <div
-    class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light"
+    class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light"
   >
     <div
       class="ant-row ant-row-center ant-row-middle"
@@ -164,7 +164,7 @@ exports[`Footer should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="ant-divider ant-divider-horizontal my-12 bg-light"
+      class="ant-divider ant-divider-horizontal my-12 border-light"
       role="separator"
     />
     <div
@@ -184,7 +184,7 @@ exports[`Footer should render correctly (snapshot) 1`] = `
            
         </span>
         <div
-          class="ant-divider ant-divider-vertical bg-light"
+          class="ant-divider ant-divider-vertical border-light"
           role="separator"
         />
         <span>
@@ -203,7 +203,7 @@ exports[`Footer should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <div
-          class="ant-divider ant-divider-vertical bg-light"
+          class="ant-divider ant-divider-vertical border-light"
           role="separator"
         />
         <span>

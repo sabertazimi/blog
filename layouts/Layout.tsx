@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Layout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
-  <div>
+  <div className="dark:bg-black">
     <MetaHeader title={`${banner}`} />
     <Header posts={posts} />
     <Container className="min-h-screen px-0 pb-28 pt-0 md:pt-28">

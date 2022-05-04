@@ -40,12 +40,12 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <h1
-          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary title mt-48"
+          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light title mt-48"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
+          class="ant-tag inline-flex justify-center items-center mt-1  bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark text-base font-extrabold"
         >
           <span
             aria-label="calendar"
@@ -71,7 +71,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
+          class="ant-tag inline-flex justify-center items-center mt-1  bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark text-base font-extrabold"
         >
           <span
             aria-label="edit"
@@ -97,7 +97,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
+          class="ant-tag inline-flex justify-center items-center mt-1  bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark text-base font-extrabold"
         >
           <span
             aria-label="clock-circle"
@@ -167,13 +167,13 @@ exports[`Article should render correctly (snapshot) 1`] = `
         style="opacity: 0;"
       >
         <h2
-          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary mt-24"
+          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
         >
           1 Basic Notes
         </h2>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -257,7 +257,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -463,12 +463,12 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </a>
         </span>
         <h1
-          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary title mt-48"
+          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light title mt-48"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
+          class="ant-tag inline-flex justify-center items-center mt-1  bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark text-base font-extrabold"
         >
           <span
             aria-label="calendar"
@@ -494,7 +494,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
+          class="ant-tag inline-flex justify-center items-center mt-1  bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark text-base font-extrabold"
         >
           <span
             aria-label="edit"
@@ -520,7 +520,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 tag-black text-base font-extrabold"
+          class="ant-tag inline-flex justify-center items-center mt-1  bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark text-base font-extrabold"
         >
           <span
             aria-label="clock-circle"
@@ -590,13 +590,13 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         style="opacity: 0;"
       >
         <h2
-          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary mt-24"
+          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
         >
           1 Basic Notes
         </h2>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -680,7 +680,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
         role="separator"
       >
         <span

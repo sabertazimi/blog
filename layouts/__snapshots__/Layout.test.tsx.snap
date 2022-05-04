@@ -2,7 +2,9 @@
 
 exports[`Layout should render correctly (snapshot) 1`] = `
 <div>
-  <div>
+  <div
+    class="dark:bg-black"
+  >
     <div>
       <div
         class="ant-row ant-row-center ant-row-middle md:hidden"
@@ -63,7 +65,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <ul
-        class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 w-full hidden md:visible md:flex font-extrabold bg-transparent border-transparent transition transform-gpu backdrop-blur-none bg-gradient-primary shadow-none"
+        class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 w-full hidden md:visible md:flex transition transform-gpu bg-transparent border-transparent font-extrabold backdrop-blur-none bg-gradient-primary shadow-none"
         data-menu-list="true"
         role="menu"
         tabindex="0"
@@ -117,7 +119,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none text-light"
+              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
               href="/posts"
             >
               Posts
@@ -134,7 +136,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none text-light"
+              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
               href="/tags"
             >
               Tags
@@ -151,7 +153,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none text-light"
+              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
               href="/books"
             >
               Books
@@ -168,7 +170,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none text-light"
+              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
               href="/about"
             >
               About
@@ -296,7 +298,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
               >
                 <span
                   aria-label="Sun"
-                  class="anticon text-light"
+                  class="anticon dark:text-light text-light"
                   role="img"
                 >
                   <svg
@@ -366,7 +368,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <div
-          class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold"
+          class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
           role="separator"
         >
           <span
@@ -381,7 +383,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light"
+      class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light"
     >
       <div
         class="ant-row ant-row-center ant-row-middle"
@@ -542,7 +544,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal my-12 bg-light"
+        class="ant-divider ant-divider-horizontal my-12 border-light"
         role="separator"
       />
       <div
@@ -562,7 +564,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
              
           </span>
           <div
-            class="ant-divider ant-divider-vertical bg-light"
+            class="ant-divider ant-divider-vertical border-light"
             role="separator"
           />
           <span>
@@ -581,7 +583,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             </a>
           </span>
           <div
-            class="ant-divider ant-divider-vertical bg-light"
+            class="ant-divider ant-divider-vertical border-light"
             role="separator"
           />
           <span>

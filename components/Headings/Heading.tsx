@@ -13,6 +13,7 @@ const Heading = ({
     className={classNames(
       'mb-6',
       `after:ml-1 hover:after:content-['#'] hover:after:text-primary`,
+      'dark:text-light',
       className
     )}
   >
