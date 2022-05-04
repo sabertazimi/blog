@@ -14,7 +14,6 @@
   @apply text-xl;
   @apply font-normal;
   @apply leading-loose;
-  @apply border border-solid  border-gray-200;
 }
 
 .table th {
@@ -22,7 +21,7 @@
 }
 
 .table tr {
-  @apply bg-white;
+  @apply bg-dark text-light;
   @apply border-t border-solid border-primary;
 }
 
@@ -31,5 +30,5 @@
 }
 
 .table tr:nth-child(2n) {
-  @apply bg-gray-100;
+  @apply bg-gray-800 text-light;
 }

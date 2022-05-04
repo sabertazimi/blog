@@ -1,3 +1,19 @@
+/* Add dark mode support for Markdown HTML tags */
+h1,
+h2,
+h3,
+h4,
+h5,
+div,
+section {
+  @apply dark:text-light;
+}
+
+/* Add dark mode support for table of contents links */
+.ant-anchor-link-title {
+  @apply dark:text-light;
+}
+
 /* Remove arrow icon from GFM task list item */
 li.task-list-item > span {
   @apply hidden;

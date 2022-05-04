@@ -40,37 +40,37 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
         role="alert"
       >
         <div
-          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide dark:text-light"
         >
           <span
-            class="ant-typography text-xl font-extrabold"
+            class="ant-typography text-xl font-extrabold dark:text-light"
           >
             Please check the following information:
           </span>
         </div>
         <div
-          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide dark:text-light"
         >
           <span
-            class="ant-typography"
+            class="ant-typography dark:text-light"
           >
             ComponentWithError.
           </span>
         </div>
         <div
-          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide dark:text-light"
         >
           <span
-            class="ant-typography"
+            class="ant-typography dark:text-light"
           >
             Please check terminal output for further details.
           </span>
         </div>
         <div
-          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide"
+          class="ant-typography mt-0 mb-9 leading-relaxed tracking-wide dark:text-light"
         >
           <span
-            class="ant-typography"
+            class="ant-typography dark:text-light"
           >
             Please reload this page after changing code.
           </span>

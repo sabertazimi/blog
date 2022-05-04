@@ -10,7 +10,10 @@ interface Props {
 const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
   <Typography.Paragraph
     {...props}
-    className={classNames(className, 'mt-0 mb-9 leading-relaxed tracking-wide')}
+    className={classNames(
+      className,
+      'mt-0 mb-9 leading-relaxed tracking-wide dark:text-light'
+    )}
   >
     {children}
   </Typography.Paragraph>
