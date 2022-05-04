@@ -7,6 +7,8 @@
 .preview {
   @apply flex-auto;
   @apply w-full md:w-1/2;
+  @apply border-solid border-dark;
+  @apply border-l border-r border-b;
 }
 
 .error {
