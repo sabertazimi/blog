@@ -19,8 +19,8 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
     className={classNames(
       'fixed top-0 z-10 w-full',
       'hidden md:visible md:flex',
-      'font-extrabold bg-transparent border-transparent',
       'transition transform-gpu',
+      'bg-transparent border-transparent font-extrabold',
       {
         'backdrop-blur-none': !fixed,
         'bg-gradient-primary': !fixed,
@@ -45,7 +45,9 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
           <Link
             href={route.path}
             className={classNames(
-              'flex-container h-full transition transform-gpu transition-none',
+              'flex-container h-full',
+              'transition transform-gpu transition-none',
+              'dark:text-light',
               {
                 'text-light': !fixed,
                 'text-dark': fixed,
@@ -66,7 +68,14 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       },
       {
         key: 'theme',
-        label: <ThemeSwitch className={fixed ? 'text-dark' : 'text-light'} />,
+        label: (
+          <ThemeSwitch
+            className={classNames('dark:text-light', {
+              'text-light': !fixed,
+              'text-dark': fixed,
+            })}
+          />
+        ),
       },
     ]}
   />

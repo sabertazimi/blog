@@ -17,7 +17,7 @@ const Footer = ({
   author = siteConfig.author,
   socials = siteConfig.socials,
 }: Props): JSX.Element => (
-  <Container className="max-w-full p-8 text-center bg-gray-900 lg:p-20 text-light">
+  <Container className="max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light">
     <Row align="middle" justify="center">
       <Col span={24}>
         {Object.keys(socialList).map(social => (
@@ -30,19 +30,19 @@ const Footer = ({
         ))}
       </Col>
     </Row>
-    <Divider className="my-12 bg-light" />
+    <Divider className="my-12 border-light" />
     <Row align="middle" justify="center">
       <Col span={24}>
         <span>
           Copyright &copy;{' '}
           <a href={`https://github.com/${socials.github}`}>{author}</a>{' '}
         </span>
-        <Divider type="vertical" className="bg-light" />
+        <Divider type="vertical" className="border-light" />
         <span>
           Built with <a href="https://reactjs.org">React</a> and{' '}
           <a href="https://nextjs.org">Next</a>
         </span>
-        <Divider type="vertical" className="bg-light" />
+        <Divider type="vertical" className="border-light" />
         <span>
           Last Built Time{' '}
           <a href="https://www.google.com/search?q=time">

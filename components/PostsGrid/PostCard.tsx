@@ -6,6 +6,7 @@ import Link from '@components/Link';
 import { Slide } from '@components/Motion';
 import Skeleton from '@components/Skeleton';
 import { IconTag, LinkTag } from '@components/Tags';
+import { classNames } from '@components/utils';
 import type { PostMeta } from '@types';
 import styles from './PostCard.module.css';
 
@@ -16,7 +17,14 @@ interface Props {
 const PostCard = ({
   post: { slug, title, createTime, readingTime, tags },
 }: Props): JSX.Element => (
-  <Container className={styles.card}>
+  <Container
+    className={classNames(
+      styles.card,
+      'dark:bg-black',
+      'dark:border dark:border-solid dark:border-light',
+      'dark:shadow-dark dark:hover:shadow-primary'
+    )}
+  >
     <Slide delay={0.2}>
       <LinkTag tag={tags ? tags[0] : 'Computer Science'} />
       <H2 className={styles.title}>{title}</H2>
