@@ -14,6 +14,15 @@ section {
   @apply dark:text-light;
 }
 
+.ant-anchor-link-title-active {
+  @apply dark:text-primary;
+}
+
+/* Add dark mode support for admonition title */
+.ant-alert-message {
+  @apply dark:text-light;
+}
+
 /* Remove arrow icon from GFM task list item */
 li.task-list-item > span {
   @apply hidden;
