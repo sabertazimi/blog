@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 type CopiedResult = boolean;
 type CopyFunction = () => Promise<boolean>;
 
-function useCopyToClipboard(text: string): [CopiedResult, CopyFunction] {
+const useCopyToClipboard = (text: string): [CopiedResult, CopyFunction] => {
   const [isCopied, setIsCopied] = useState(false);
   const copyTimeout = useRef<number | undefined>(undefined);
 
@@ -28,6 +28,6 @@ function useCopyToClipboard(text: string): [CopiedResult, CopyFunction] {
   useEffect(() => () => window.clearTimeout(copyTimeout.current), []);
 
   return [isCopied, copy];
-}
+};
 
 export default useCopyToClipboard;

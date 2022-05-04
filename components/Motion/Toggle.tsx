@@ -45,6 +45,7 @@ const Toggle = ({
 }: Props): JSX.Element => (
   <div
     key="toggle-wrapper"
+    data-testid="toggle-wrapper"
     tabIndex={0}
     onClick={onToggle}
     onKeyDown={onToggle}

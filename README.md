@@ -54,6 +54,7 @@ A great [blog](https://blog.tazimi.dev) system based on Next.js.
 - Motion almost everything.
 - Disqus comments system.
 - Customized 404 not found page.
+- Dark mode support.
 - ...and more.
 
 ### Development Features
