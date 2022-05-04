@@ -17,3 +17,8 @@ li.task-list-item > div {
 .ant-image-mask-info {
   @apply flex items-center;
 }
+
+/* Remove border radius for sandpack editor */
+.sp-wrapper .sp-layout {
+  @apply rounded-none;
+}
