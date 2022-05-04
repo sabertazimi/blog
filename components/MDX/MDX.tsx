@@ -8,10 +8,13 @@ import { Item, Ol, Ul } from '@components/Lists';
 import Paragraph from '@components/Paragraph';
 import Table from '@components/Table';
 import { Anchor, Delete, Emphasis, Strong } from '@components/Texts';
+import { dynamic } from '@components/utils';
 import Code from './MDXCode';
 import Divider from './MDXDivider';
 import Input from './MDXInput';
 import Pre from './MDXPre';
+
+const Editor = dynamic(() => import('@components/Editor')) as any;
 
 const Headings = {
   h1: H1,
@@ -40,6 +43,11 @@ const CodeBlocks = {
   pre: Pre,
 };
 
+const customComponents = {
+  Button,
+  Editor,
+};
+
 const MDX = {
   p: Paragraph,
   hr: Divider,
@@ -53,7 +61,7 @@ const MDX = {
   ...Texts,
   ...Lists,
   ...CodeBlocks,
-  Button,
+  ...customComponents,
 };
 
 export default MDX;
