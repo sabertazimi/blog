@@ -1,6 +1,6 @@
 import Avatar from '@components/Avatar';
 import Badge from '@components/Badge';
-import Card from '@components/Card';
+import { Card, Meta } from '@components/Card';
 import { getColorByName } from '@config';
 import type { Profile, Repo } from '@types';
 import GithubCardContent from './GithubCardContent';
@@ -17,8 +17,8 @@ const GithubCard = ({ profile, repos }: Props): JSX.Element => {
 
   return (
     <Badge.Ribbon text={username} color={getColorByName(username)}>
-      <Card hoverable title={<GithubCardHeader profile={profile} />}>
-        <Card.Meta
+      <Card title={<GithubCardHeader profile={profile} />}>
+        <Meta
           avatar={<Avatar src={avatar} alt={username} />}
           title={<GithubCardContent profile={profile} />}
           description={`Joined in ${createDate}`}

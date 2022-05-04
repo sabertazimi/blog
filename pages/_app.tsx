@@ -6,6 +6,10 @@ import type { AppProps } from 'next/app';
 import '../styles/tailwind.css';
 import 'antd/dist/antd.css';
 import '../styles/globals.css';
+import '../components/Article/Article.css';
+import '../components/Card/Card.css';
+import '../components/Editor/Editor.css';
+import '../components/Image/Image.css';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>

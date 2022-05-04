@@ -1,5 +1,5 @@
 import Badge from '@components/Badge';
-import Card from '@components/Card';
+import { Card, Meta } from '@components/Card';
 import { Branches, Star } from '@components/Icons';
 import { Tag } from '@components/Tags';
 import { getColorByName } from '@config';
@@ -13,7 +13,6 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
   <Badge.Ribbon text={repo.name} color={getColorByName(repo.name)}>
     <Card
       className="mt-8"
-      hoverable
       title={
         <a href={repo.repoUrl}>
           <Branches className="text-4xl align-top" />
@@ -21,14 +20,14 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
         </a>
       }
     >
-      <Card.Meta
+      <Meta
         title={
           <Tag className="mb-3" color={getColorByName(repo.language)}>
             {repo.language}
           </Tag>
         }
       />
-      <Star className="text-2xl align-top" />
+      <Star className="text-2xl align-top dark:text-light" />
       <span className="text-span">{repo.stars}</span>
     </Card>
   </Badge.Ribbon>

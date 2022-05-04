@@ -10,10 +10,10 @@ interface Props {
 const IconTag = ({ tag, icon }: Props): JSX.Element => (
   <Tag
     className={classNames(
-      'inline-flex justify-center items-center mt-1 ',
+      'inline-flex justify-center items-center mt-1',
+      'text-base font-extrabold',
       'bg-black border-black text-light',
-      'dark:bg-light dark:border-light dark:text-dark',
-      'text-base font-extrabold'
+      'dark:bg-light dark:border-light dark:text-dark'
     )}
   >
     {icon}

@@ -1,4 +1,4 @@
-import Card from '@components/Card';
+import { Card, Meta } from '@components/Card';
 import Image from '@components/Image';
 import { classNames } from '@components/utils';
 
@@ -27,7 +27,7 @@ const ImageCard = ({ src, title, alt, className }: Props): JSX.Element => {
       cover={<Image src={src} alt={alt} />}
       className={classNames(className, 'text-center')}
     >
-      <Card.Meta title={title} description={alt} />
+      <Meta title={title} description={alt} />
     </Card>
   );
 };

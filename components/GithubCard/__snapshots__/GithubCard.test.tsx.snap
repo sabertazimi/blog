@@ -6,7 +6,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
     class="ant-ribbon-wrapper"
   >
     <div
-      class="ant-card ant-card-bordered ant-card-hoverable"
+      class="ant-card ant-card-bordered card"
     >
       <div
         class="ant-card-head"
@@ -82,7 +82,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
                   <div>
                     <span
                       aria-label="info-circle"
-                      class="anticon anticon-info-circle text-2xl align-top"
+                      class="anticon anticon-info-circle text-2xl align-top dark:text-light"
                       role="img"
                     >
                       <svg
@@ -116,7 +116,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
                   <div>
                     <span
                       aria-label="environment"
-                      class="anticon anticon-environment text-2xl align-top"
+                      class="anticon anticon-environment text-2xl align-top dark:text-light"
                       role="img"
                     >
                       <svg
@@ -167,7 +167,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
                         </svg>
                       </span>
                       <span
-                        class="text-span"
+                        class="inline-block ml-2 text-xl align-bottom"
                       >
                         42 Followers
                       </span>
@@ -187,7 +187,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
           class="ant-ribbon-wrapper"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable mt-8"
+            class="ant-card ant-card-bordered mt-8 card"
           >
             <div
               class="ant-card-head"
@@ -252,7 +252,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
               </div>
               <span
                 aria-label="star"
-                class="anticon anticon-star text-2xl align-top"
+                class="anticon anticon-star text-2xl align-top dark:text-light"
                 role="img"
               >
                 <svg
@@ -295,7 +295,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
           class="ant-ribbon-wrapper"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable mt-8"
+            class="ant-card ant-card-bordered mt-8 card"
           >
             <div
               class="ant-card-head"
@@ -360,7 +360,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
               </div>
               <span
                 aria-label="star"
-                class="anticon anticon-star text-2xl align-top"
+                class="anticon anticon-star text-2xl align-top dark:text-light"
                 role="img"
               >
                 <svg
@@ -403,7 +403,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
           class="ant-ribbon-wrapper"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable mt-8"
+            class="ant-card ant-card-bordered mt-8 card"
           >
             <div
               class="ant-card-head"
@@ -468,7 +468,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
               </div>
               <span
                 aria-label="star"
-                class="anticon anticon-star text-2xl align-top"
+                class="anticon anticon-star text-2xl align-top dark:text-light"
                 role="img"
               >
                 <svg
@@ -533,7 +533,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
     class="ant-ribbon-wrapper"
   >
     <div
-      class="ant-card ant-card-bordered ant-card-hoverable"
+      class="ant-card ant-card-bordered card"
     >
       <div
         class="ant-card-head"
@@ -609,7 +609,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
                   <div>
                     <span
                       aria-label="info-circle"
-                      class="anticon anticon-info-circle text-2xl align-top"
+                      class="anticon anticon-info-circle text-2xl align-top dark:text-light"
                       role="img"
                     >
                       <svg
@@ -643,7 +643,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
                   <div>
                     <span
                       aria-label="environment"
-                      class="anticon anticon-environment text-2xl align-top"
+                      class="anticon anticon-environment text-2xl align-top dark:text-light"
                       role="img"
                     >
                       <svg
@@ -694,7 +694,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
                         </svg>
                       </span>
                       <span
-                        class="text-span"
+                        class="inline-block ml-2 text-xl align-bottom"
                       >
                         42 Followers
                       </span>
@@ -714,7 +714,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
           class="ant-ribbon-wrapper"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable mt-8"
+            class="ant-card ant-card-bordered mt-8 card"
           >
             <div
               class="ant-card-head"
@@ -779,7 +779,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
               </div>
               <span
                 aria-label="star"
-                class="anticon anticon-star text-2xl align-top"
+                class="anticon anticon-star text-2xl align-top dark:text-light"
                 role="img"
               >
                 <svg
@@ -822,7 +822,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
           class="ant-ribbon-wrapper"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable mt-8"
+            class="ant-card ant-card-bordered mt-8 card"
           >
             <div
               class="ant-card-head"
@@ -887,7 +887,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
               </div>
               <span
                 aria-label="star"
-                class="anticon anticon-star text-2xl align-top"
+                class="anticon anticon-star text-2xl align-top dark:text-light"
                 role="img"
               >
                 <svg
@@ -930,7 +930,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
           class="ant-ribbon-wrapper"
         >
           <div
-            class="ant-card ant-card-bordered ant-card-hoverable mt-8"
+            class="ant-card ant-card-bordered mt-8 card"
           >
             <div
               class="ant-card-head"
@@ -995,7 +995,7 @@ exports[`GithubCard should render correctly when missing bio and location data (
               </div>
               <span
                 aria-label="star"
-                class="anticon anticon-star text-2xl align-top"
+                class="anticon anticon-star text-2xl align-top dark:text-light"
                 role="img"
               >
                 <svg

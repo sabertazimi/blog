@@ -1,0 +1,8 @@
+/* Add dark mode support for ant design card */
+.ant-card-meta-title {
+  @apply dark:text-light;
+}
+
+.ant-card-meta-description {
+  @apply dark:text-gray-50/50;
+}
