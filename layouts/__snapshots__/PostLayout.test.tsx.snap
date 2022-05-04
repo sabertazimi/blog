@@ -2,7 +2,9 @@
 
 exports[`PostLayout should render correctly (snapshot) 1`] = `
 <div>
-  <div>
+  <div
+    class="dark:bg-black"
+  >
     <div>
       <div
         class="ant-row ant-row-center ant-row-middle md:hidden"

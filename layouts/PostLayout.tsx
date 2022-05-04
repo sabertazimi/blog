@@ -15,7 +15,7 @@ const PostLayout = ({
   buildTime,
   children,
 }: Props): JSX.Element => (
-  <div>
+  <div className="dark:bg-black">
     <MetaHeader title={`${banner}`} />
     <Header posts={posts} />
     <Container className="max-w-full">

@@ -7,7 +7,15 @@ interface Props {
 }
 
 const InlineCode = ({ children, className }: Props): JSX.Element => (
-  <code className={classNames(className, styles.code)}>{children}</code>
+  <code
+    className={classNames(
+      className,
+      styles.code,
+      'dark:text-light dark:shadow-primary dark:shadow-xl'
+    )}
+  >
+    {children}
+  </code>
 );
 
 export default InlineCode;

@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-const getAlias = (type?: string) => {
+const normalizeType = (type?: string) => {
   switch (type) {
     case 'success':
     case 'tip':
@@ -38,11 +38,15 @@ const Aside = ({
 }: Props): JSX.Element => (
   <Alert
     {...props}
-    type={getAlias(type)}
+    type={normalizeType(type)}
     message={title}
     description={children}
     showIcon
-    className={classNames(className, styles.admonition)}
+    className={classNames(
+      className,
+      styles.admonition,
+      'dark:bg-black dark:shadow-primary dark:shadow-xl'
+    )}
   />
 );
 
