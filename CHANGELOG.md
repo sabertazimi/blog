@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/sabertazimi/blog/compare/v3.2.0...v3.3.0) (2022-05-04)
+
+
+### :zap: Performance
+
+* **CodeBlocks:** lazy loading `LiveCode` component ([#793](https://github.com/sabertazimi/blog/issues/793)) ([b2347e6](https://github.com/sabertazimi/blog/commit/b2347e68aee0832603e7f9a2f1f50b5fc82b2e30)), closes [#777](https://github.com/sabertazimi/blog/issues/777)
+
+
+### :sparkles: Features
+
+* **CodeBlocks:** add live code editor support ([#791](https://github.com/sabertazimi/blog/issues/791)) ([7f81d99](https://github.com/sabertazimi/blog/commit/7f81d99153992596e131aab082245c01c82730dd)), closes [#777](https://github.com/sabertazimi/blog/issues/777)
+* **mdx-code:** add sandpack live code editor support ([#794](https://github.com/sabertazimi/blog/issues/794)) ([1f7945e](https://github.com/sabertazimi/blog/commit/1f7945ecab9dea2b5f3c1a11a1220d1de87f043f)), closes [#777](https://github.com/sabertazimi/blog/issues/777)
+
+
+### :bug: Bug Fixes
+
+* **code-styles:** add tough border to code blocks ([#798](https://github.com/sabertazimi/blog/issues/798)) ([1ba97ae](https://github.com/sabertazimi/blog/commit/1ba97ae917618b14c28c4eb0dce6d59cf49e3d3b))
+* **components-Editor:** disable SWC minifier ([#797](https://github.com/sabertazimi/blog/issues/797)) ([c497ac5](https://github.com/sabertazimi/blog/commit/c497ac5fa9bd328e501498a6d2849d2b4993082d)), closes [#796](https://github.com/sabertazimi/blog/issues/796)
+
 ## [3.2.0](https://github.com/sabertazimi/blog/compare/v3.1.0...v3.2.0) (2022-05-03)
 
 
