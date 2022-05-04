@@ -23,7 +23,7 @@
 
 @layer components {
   .text-span {
-    @apply inline-block ml-2 text-xl align-bottom !important;
+    @apply inline-block ml-2 text-xl align-bottom dark:text-light !important;
   }
 
   .text-span-lg {
@@ -44,5 +44,13 @@
 
   .flex-container {
     @apply flex flex-row flex-wrap justify-center items-center content-center !important;
+  }
+
+  .card {
+    @apply transition duration-300 transform-gpu !important;
+    @apply shadow-xl hover:shadow-2xl hover:-translate-y-2 !important;
+    @apply dark:shadow-dark dark:hover:shadow-primary !important;
+    @apply dark:border dark:border-solid dark:border-light !important;
+    @apply dark:bg-black !important;
   }
 }

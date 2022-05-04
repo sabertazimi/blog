@@ -1,0 +1,8 @@
+/* Remove arrow icon from GFM task list item */
+li.task-list-item > span {
+  @apply hidden;
+}
+
+li.task-list-item > div {
+  @apply ml-0;
+}

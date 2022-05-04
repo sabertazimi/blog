@@ -1,5 +1,5 @@
 import Badge from '@components/Badge';
-import Card from '@components/Card';
+import { Card, Meta } from '@components/Card';
 import { Book as BookIcon } from '@components/Icons';
 import { getColorByName } from '@config';
 import type { Book } from '@types';
@@ -14,7 +14,6 @@ const BookCard = ({ book }: Props): JSX.Element => {
   return (
     <Badge.Ribbon text={title} color={getColorByName(title)}>
       <Card
-        hoverable
         title={
           <a href={url}>
             <BookIcon className="text-6xl align-top" />
@@ -22,7 +21,7 @@ const BookCard = ({ book }: Props): JSX.Element => {
           </a>
         }
       >
-        <Card.Meta title={description} description={`Written by ${author}`} />
+        <Meta title={description} description={`Written by ${author}`} />
       </Card>
     </Badge.Ribbon>
   );

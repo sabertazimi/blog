@@ -1,1 +1,1 @@
-export { Card as default } from 'antd';
+export { Card, Meta } from './Card';

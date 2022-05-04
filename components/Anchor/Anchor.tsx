@@ -1,10 +1,12 @@
 import type { AnchorLinkProps, AnchorProps } from 'antd';
 import { Anchor as AntAnchor } from 'antd';
 
-interface AProps extends AnchorProps {}
-interface LProps extends AnchorLinkProps {}
+interface Props extends AnchorProps {}
 
-const Anchor = (props: AProps): JSX.Element => <AntAnchor {...props} />;
-const Link = (props: LProps): JSX.Element => <AntAnchor.Link {...props} />;
+interface LinkProps extends AnchorLinkProps {}
+
+const Anchor = (props: Props): JSX.Element => <AntAnchor {...props} />;
+
+const Link = (props: LinkProps): JSX.Element => <AntAnchor.Link {...props} />;
 
 export { Anchor, Link };
