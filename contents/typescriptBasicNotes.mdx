@@ -1,0 +1,1403 @@
+---
+layout: post
+title: 'TypeScript Basic Notes'
+subtitle: 'TypeScript Basic Notes'
+date: 2022-05-05
+author: 'Sabertaz'
+header-img: '/images/landing.jpg'
+tags:
+  - TypeScript
+  - JavaScript
+  - Frontend Development
+  - Web Development
+---
+
+# TypeScript Basic Notes
+
+## Modules
+
+### Classic Module Resolution
+
+`import { a } from './module'`:
+
+- `/root/src/folder/module.ts`.
+- `/root/src/folder/module.d.ts`.
+
+`import { a } from 'module'`:
+
+- `/root/src/folder/module.ts`.
+- `/root/src/folder/module.d.ts`.
+- `/root/src/module.ts`.
+- `/root/src/module.d.ts`.
+- `/root/module.ts`.
+- `/root/module.d.ts`.
+- `/module.ts`.
+- `/module.d.ts`.
+
+### Node Module Resolution
+
+`const x = require('./module')`:
+
+- `/root/src/module.ts`.
+- `/root/src/module.tsx`.
+- `/root/src/module.d.ts`.
+- `/root/src/module/package.json` + `{ "types": "lib/mainModule.ts" }`
+  = `/root/src/module/lib/mainModule.ts`.
+- `/root/src/module/index.ts`.
+- `/root/src/module/index.tsx`.
+- `/root/src/module/index.d.ts`.
+
+`const x = require('module')`:
+
+- `/root/src/node_modules/module.ts`.
+- `/root/src/node_modules/module.tsx`.
+- `/root/src/node_modules/module.d.ts`.
+- `/root/src/node_modules/module/package.json` (if it specifies a `types` property).
+- `/root/src/node_modules/@types/module.d.ts`.
+- `/root/src/node_modules/module/index.ts`.
+- `/root/src/node_modules/module/index.tsx`.
+- `/root/src/node_modules/module/index.d.ts`.
+- `/root/node_modules/module.ts`.
+- `/root/node_modules/module.tsx`.
+- `/root/node_modules/module.d.ts`.
+- `/root/node_modules/module/package.json` (if it specifies a `types` property).
+- `/root/node_modules/@types/module.d.ts`.
+- `/root/node_modules/module/index.ts`.
+- `/root/node_modules/module/index.tsx`.
+- `/root/node_modules/module/index.d.ts`.
+- `/node_modules/module.ts`.
+- `/node_modules/module.tsx`.
+- `/node_modules/module.d.ts`.
+- `/node_modules/module/package.json` (if it specifies a `types` property).
+- `/node_modules/@types/module.d.ts`.
+- `/node_modules/module/index.ts`.
+- `/node_modules/module/index.tsx`.
+- `/node_modules/module/index.d.ts`.
+
+## Enum Types
+
+### Enum Flags
+
+```ts
+enum AnimalFlags {
+  None = 0,
+  HasClaws = 1 << 0,
+  CanFly = 1 << 1,
+  EatsFish = 1 << 2,
+  Endangered = 1 << 3,
+  EndangeredFlyingClawedFishEating = HasClaws | CanFly | EatsFish | Endangered,
+}
+
+interface Animal {
+  flags: AnimalFlags;
+  [key: string]: any;
+}
+
+function printAnimalAbilities(animal: Animal) {
+  const animalFlags = animal.flags;
+  if (animalFlags & AnimalFlags.HasClaws) {
+    console.log('animal has claws');
+  }
+  if (animalFlags & AnimalFlags.CanFly) {
+    console.log('animal can fly');
+  }
+  if (animalFlags === AnimalFlags.None) {
+    console.log('nothing');
+  }
+}
+
+const animal = { flags: AnimalFlags.None };
+printAnimalAbilities(animal); // nothing
+animal.flags |= AnimalFlags.HasClaws;
+printAnimalAbilities(animal); // animal has claws
+animal.flags &= ~AnimalFlags.HasClaws;
+printAnimalAbilities(animal); // nothing
+animal.flags |= AnimalFlags.HasClaws | AnimalFlags.CanFly;
+printAnimalAbilities(animal); // animal has claws, animal can fly
+```
+
+### Enum Index Signature
+
+`keyof typeof EnumType`:
+
+```ts
+enum ColorPalette {
+  red = '#f03e3e',
+  pink = '#d7336c',
+  grape = '#ae3ec9',
+  violet = '#7048e8',
+  indigo = '#4263eb',
+  blue = '#1890ff',
+  cyan = '#1098ad',
+  teal = '#0ca678',
+  green = '#37b24d',
+  lime = '#74b816',
+  yellow = '#f59f00',
+  orange = '#f76707',
+}
+
+const hashString = (name = '') => {
+  return name.length;
+};
+
+const getColorByName = (name = ''): string => {
+  const palette = Object.keys(ColorPalette);
+  const colorIdx = hashString(name) % palette.length;
+  const paletteIdx = palette[colorIdx] as keyof typeof ColorPalette;
+  return ColorPalette[paletteIdx];
+};
+```
+
+### Enum Internals
+
+`const` enums don’t have representation at runtime,
+its member values are used directly.
+
+```ts
+// Source code:
+const enum NoYes {
+  No,
+  Yes,
+}
+
+function toGerman(value: NoYes) {
+  switch (value) {
+    case NoYes.No:
+      return 'Neither';
+    case NoYes.Yes:
+      return 'Ja';
+  }
+}
+
+// Compiles to:
+function toGerman(value) {
+  switch (value) {
+    case 'No' /* No */:
+      return 'Neither';
+    case 'Yes' /* Yes */:
+      return 'Ja';
+  }
+}
+```
+
+Non-const enums are objects:
+
+```ts
+// Source code:
+enum Tristate {
+  False,
+  True,
+  Unknown,
+}
+
+// Compiles to:
+let Tristate;
+(function (Tristate) {
+  Tristate[(Tristate.False = 0)] = 'False';
+  Tristate[(Tristate.True = 1)] = 'True';
+  Tristate[(Tristate.Unknown = 2)] = 'Unknown';
+})(Tristate || (Tristate = {}));
+
+console.log(Tristate[0]); // 'False'
+console.log(Tristate.False); // 0
+console.log(Tristate[Tristate.False]); // 'False' because `Tristate.False == 0`
+```
+
+```ts
+enum NoYes {
+  No = 'NO!',
+  Yes = 'YES!',
+}
+
+let NoYes;
+(function (NoYes) {
+  NoYes.No = 'NO!';
+  NoYes.Yes = 'YES!';
+})(NoYes || (NoYes = {}));
+```
+
+## Interface
+
+- Type aliases may not participate in declaration merging, but interfaces can.
+- Interfaces may only be used to declare the shapes of object, not re-name primitives.
+- The key distinction is that a type cannot be re-opened to add new properties,
+  an interface which is always extendable.
+
+```ts
+interface Window {
+  title: string;
+}
+
+interface Window {
+  ts: TypeScriptAPI;
+}
+
+// Error: Duplicate identifier 'Window'.
+```
+
+```ts
+interface Window {
+  title: string;
+}
+
+interface Window {
+  ts: TypeScriptAPI;
+}
+
+const src = 'const a = "Hello World"';
+window.ts.transpileModule(src, {});
+```
+
+## Access Modifiers
+
+### Member Access Modifiers
+
+`public`, `protected` and `private`:
+
+```ts
+class Singleton {
+  private static instance: Singleton;
+  private constructor() {
+    // ..
+  }
+
+  public static getInstance() {
+    if (!Singleton.instance) {
+      Singleton.instance = new Singleton();
+    }
+
+    return Singleton.instance;
+  }
+
+  someMethod() {}
+}
+
+const someThing = new Singleton(); // Error: constructor of 'singleton' is private
+
+const instance = Singleton.getInstance(); // do some thing with the instance
+```
+
+### Readonly Types
+
+`readonly`:
+
+```ts
+interface Foo {
+  readonly bar: number;
+  readonly bas: number;
+}
+
+// 初始化
+const foo: Foo = { bar: 123, bas: 456 };
+
+// 不能被改变
+foo.bar = 456; // Error: foo.bar 为仅读属性
+```
+
+`readonly` indexable signature:
+
+```ts
+type Foo = Readonly<Record<number, number>>;
+
+// 使用
+
+const foo: Foo = { 0: 123, 2: 345 };
+console.log(foo[0]); // ok（读取）
+foo[0] = 456; // Error: 属性只读
+```
+
+`readonly` class properties:
+
+```ts
+class Foo {
+  readonly bar = 1; // OK
+  readonly baz: string;
+  constructor() {
+    this.baz = 'hello'; // OK
+  }
+}
+```
+
+`readonly` generic type:
+
+```ts
+interface Foo {
+  bar: number;
+  bas: number;
+}
+
+type FooReadonly = Readonly<Foo>;
+
+const foo: Foo = { bar: 123, bas: 456 };
+const fooReadonly: FooReadonly = { bar: 123, bas: 456 };
+
+foo.bar = 456; // ok
+fooReadonly.bar = 456; // Error: bar 属性只读
+```
+
+`readonly` `React` props:
+
+```ts
+class Something extends React.Component<{ foo: number }, { baz: number }> {
+  someMethod() {
+    this.props.foo = 123; // Error: props 是不可变的
+    // eslint-disable-next-line react/no-direct-mutation-state
+    this.state.baz = 456; // Error: 你应该使用 this.setState()
+  }
+}
+```
+
+## Index Signature
+
+For `JavaScript`,
+implicitly calls `toString` on any object index signature:
+
+```ts
+const obj = {
+  toString() {
+    console.log('toString called');
+    return 'Hello';
+  },
+};
+
+const foo: any = {};
+foo[obj] = 'World'; // toString called
+console.log(foo[obj]); // toString called, World
+console.log(foo.Hello); // World
+```
+
+TypeScript will give an error to prevent beginners
+from doing such things.
+
+**Index signature error**:
+
+```bash
+Element implicitly has an 'any' type
+because expression of type 'string' can't be used to index type XXX.
+```
+
+Can fixed with:
+
+- `Record<string, T>`.
+- Explicit `const` `propertyName` type.
+
+```ts
+// propertyName should be extends keyof T
+function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] {
+  return o[propertyName]; // o[propertyName] is of type T[K]
+}
+```
+
+### Index Signature Type Checking
+
+```ts
+const x: { foo: number; [x: string]: any };
+x = { foo: 1, baz: 2 }; // ok, 'baz' 属性匹配于索引签名
+```
+
+当你声明一个索引签名时，所有明确的成员都必须符合索引签名:
+
+```ts
+// ok
+interface Foo {
+  [key: string]: number;
+  x: number;
+  y: number;
+}
+
+// Error
+interface Bar {
+  [key: string]: number;
+  x: number;
+  y: string; // Error: y 属性必须为 number 类型
+}
+```
+
+使用交叉类型可以解决上述问题:
+
+```ts
+interface FieldState {
+  value: string;
+}
+
+type FormState = { isValid: boolean } & Record<string, FieldState>;
+```
+
+### Select Index Types
+
+```ts
+type Index = 'a' | 'b' | 'c';
+type FromIndex = { [k in Index]?: number };
+
+const good: FromIndex = { b: 1, c: 2 };
+
+// Error:
+// `{ b: 1, c: 2, d: 3 }` 不能分配给 'FromIndex'
+// 对象字面量只能指定已知类型，'d' 不存在 'FromIndex' 类型上
+const bad: FromIndex = { b: 1, c: 2, d: 3 };
+```
+
+```ts
+type FromSomeIndex<K extends string> = { [key in K]: number };
+```
+
+### Symbol Index Types
+
+Since [typescript v4.4.0](https://github.com/microsoft/TypeScript/pull/44512):
+
+```ts
+type SymbolMap<T> = Record<symbol, T>;
+```
+
+```ts
+interface PropertyMap {
+  [key: string]: string;
+  [key: number]: string;
+  [key: symbol]: string;
+}
+```
+
+```ts
+type Colors = Record<symbol, number>;
+
+const red = Symbol('red');
+const green = Symbol('green');
+const blue = Symbol('blue');
+
+const colors: Colors = {};
+
+colors[red] = 255; // Assignment of a number is allowed
+const redVal = colors[red]; // 'redVal' has the type 'number'
+
+colors[blue] = 'da ba dee'; // Error: Type 'string' is not assignable to type 'number'.
+```
+
+### Template Literal Index Types
+
+Since [typescript v4.4.0](https://github.com/microsoft/TypeScript/pull/44512):
+
+```ts
+type DataProps = Record<`data-${string}`, string>;
+
+// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
+interface OptionsWithDataProps extends Options {
+  // Permit any property starting with 'data-'.
+  [optName: `data-${string}`]: unknown;
+}
+
+const b: OptionsWithDataProps = {
+  width: 100,
+  height: 100,
+  'data-blah': true, // Works!
+  'unknown-property': true, // Error! 'unknown-property' wasn't declared in 'OptionsWithDataProps'.
+};
+```
+
+```ts
+type Thing<T> = Record<'a' | `foo${T}` | symbol, string>;
+
+type StringThing = Thing<string>;
+// => { [a: string, [x: `foo${string}`]: string, [x: symbol]: string }
+type BarThing = Thing<'bar'>;
+// => { [a: string, foobar: string, [x: symbol]: string }
+```
+
+### Indexed Access Types
+
+```ts
+const MyArray = [
+  { name: 'Alice', age: 15 },
+  { name: 'Bob', age: 23 },
+  { name: 'Eve', age: 38 },
+];
+
+type Person = typeof MyArray[number];
+// type Person = {
+//   name: string;
+//   age: number;
+// }
+
+type Age = typeof MyArray[number]['age'];
+// type Age = number
+
+type Age2 = Person['age'];
+// type Age2 = number
+```
+
+`{ [K in keyof T]: indexedType }[keyof T]` 返回键名 (键名组成的联合类型):
+
+```ts
+type PickByValueType<T, ValueType> = Pick<
+  T,
+  { [K in keyof T]-?: T[K] extends ValueType ? K : never }[keyof T]
+>;
+
+type OmitByValueType<T, ValueType> = Pick<
+  T,
+  { [K in keyof T]-?: T[K] extends ValueType ? never : K }[keyof T]
+>;
+
+type RequiredKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
+}[keyof T];
+
+type OptionalKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? K : never;
+}[keyof T];
+
+type FunctionTypeKeys<T extends object> = {
+  [K in keyof T]-?: T[K] extends Function ? K : never;
+}[keyof T];
+
+type Filter<T extends object, ValueType> = {
+  [K in keyof T as ValueType extends T[K] ? K : never]: T[K];
+}; // Filter<{name: string; id: number;}, string> => {name: string;}
+```
+
+## Template Literal Types
+
+- Based on literal types.
+- 4 intrinsic String Manipulation Types:
+  - `Uppercase<StringType>`.
+  - `Lowercase<StringType>`.
+  - `Capitalize<StringType>`.
+  - `Uncapitalize<StringType>`.
+
+```ts
+interface PropEventSource<Type> {
+  on<Key extends string & keyof Type>(
+    eventName: `${Key}Changed`,
+    callback: (newValue: Type[Key]) => void
+  ): void;
+}
+
+// Create a "watched object" with an 'on' method
+// so that you can watch for changes to properties.
+declare function makeWatchedObject<Type>(
+  obj: Type
+): Type & PropEventSource<Type>;
+
+const person = makeWatchedObject({
+  firstName: 'Yi',
+  lastName: 'Long',
+  age: 26,
+});
+
+person.on('firstNameChanged', newName => {
+  // (parameter) newName: string
+  console.log(`new name is ${newName.toUpperCase()}`);
+});
+
+person.on('ageChanged', newAge => {
+  // (parameter) newAge: number
+  if (newAge < 0) {
+    console.warn('warning! negative age');
+  }
+});
+
+// It's typo-resistent
+person.on('firstName', () => {});
+// Argument of type '"firstName"' is not assignable to
+// parameter of type '"firstNameChanged" | "lastNameChanged" | "ageChanged"'.
+
+person.on('fstNameChanged', () => {});
+// Argument of type '"fstNameChanged"' is not assignable to
+// parameter of type '"firstNameChanged" | "lastNameChanged" | "ageChanged"'.
+```
+
+## Generic Types
+
+### Generic Function
+
+```ts
+function reverse<T>(items: T[]): T[] {
+  const toReturn = [];
+  for (let i = items.length - 1; i >= 0; i--) {
+    toReturn.push(items[i]);
+  }
+  return toReturn;
+}
+```
+
+### Generic Class
+
+```ts
+// 创建一个泛型类
+class Queue<T> {
+  private data = [];
+  push = (item: T) => this.data.push(item);
+  pop = (): T => this.data.shift();
+}
+
+// 简单的使用
+const queue = new Queue<number>();
+queue.push(0);
+queue.push('1'); // Error：不能推入一个 `string`，只有 number 类型被允许
+```
+
+```ts
+interface Listener<T> {
+  (event: T): any;
+}
+
+interface Disposable {
+  dispose(): any;
+}
+
+class TypedEvent<T> {
+  private listeners: Listener<T>[] = [];
+  private listenersOnce: Listener<T>[] = [];
+
+  public on = (listener: Listener<T>): Disposable => {
+    this.listeners.push(listener);
+
+    return {
+      dispose: () => this.off(listener),
+    };
+  };
+
+  public once = (listener: Listener<T>): void => {
+    this.listenersOnce.push(listener);
+  };
+
+  public off = (listener: Listener<T>) => {
+    const callbackIndex = this.listeners.indexOf(listener);
+    if (callbackIndex > -1) this.listeners.splice(callbackIndex, 1);
+  };
+
+  public emit = (event: T) => {
+    this.listeners.forEach(listener => listener(event));
+
+    this.listenersOnce.forEach(listener => listener(event));
+    this.listenersOnce = [];
+  };
+
+  public pipe = (te: TypedEvent<T>): Disposable => {
+    return this.on(e => te.emit(e));
+  };
+}
+```
+
+### Specific Instances from Generic Types
+
+```ts
+class Foo<T> {
+  foo: T;
+}
+
+const FooNumber = Foo as { new (): Foo<number> }; // ref 1
+
+function id<T>(x: T) {
+  return x;
+}
+
+const idNum = id as { (x: number): number };
+```
+
+### Generic Types Constraints
+
+```ts
+interface Lengthwise {
+  length: number;
+}
+
+function createList<T extends number | Lengthwise>(): T[] {
+  return [] as T[];
+}
+
+const numberList = createList<number>(); // ok
+const stringList = createList<string>(); // ok
+const arrayList = createList<any[]>(); // ok
+const boolList = createList<boolean>(); // error
+```
+
+### Generic Types Programming
+
+在类型编程里, 泛型就是变量:
+
+```ts
+function pick<T extends object, U extends keyof T>(obj: T, keys: U[]): T[U][] {
+  return keys.map(key => obj[key]);
+}
+```
+
+## Union Types
+
+### Basic Union
+
+```ts
+function formatCommandLine(command: string[] | string) {
+  let line = '';
+
+  if (typeof command === 'string') {
+    line = command.trim();
+  } else {
+    line = command.join(' ').trim();
+  }
+
+  // Do stuff with line: string
+}
+```
+
+### Discriminated Union
+
+```ts
+interface Square {
+  kind: 'square';
+  size: number;
+}
+
+interface Rectangle {
+  kind: 'rectangle';
+  width: number;
+  height: number;
+}
+
+interface Circle {
+  kind: 'circle';
+  radius: number;
+}
+
+type Shape = Square | Rectangle | Circle;
+
+function area(s: Shape) {
+  switch (s.kind) {
+    case 'square':
+      return s.size * s.size;
+    case 'rectangle':
+      return s.width * s.height;
+    case 'circle':
+      return Math.PI * s.radius ** 2;
+    default: {
+      const _exhaustiveCheck: never = s;
+      return _exhaustiveCheck;
+    }
+  }
+}
+```
+
+`IteratorResult` discriminated union:
+
+```ts
+interface IteratorYieldResult<TYield> {
+  done?: false; // boolean literal type
+  value: TYield;
+}
+
+interface IteratorReturnResult<TReturn> {
+  done: true; // boolean literal type
+  value: TReturn;
+}
+
+type IteratorResult<T, TReturn = any> =
+  | IteratorYieldResult<T>
+  | IteratorReturnResult<TReturn>;
+```
+
+## Intersection Types
+
+`intersection` type 具有所有类型的功能:
+
+```ts
+function extend<T, U>(first: T, second: U): T & U {
+  const result = {} as T & U;
+  for (const id in first) {
+    (result as T)[id] = first[id];
+  }
+  for (const id in second) {
+    if (!Object.prototype.hasOwnProperty.call(result, id)) {
+      (result as U)[id] = second[id];
+    }
+  }
+
+  return result;
+}
+
+const x = extend({ a: 'hello' }, { b: 42 });
+
+// 现在 x 拥有了 a 属性与 b 属性
+const a = x.a;
+const b = x.b;
+```
+
+## Conditional Types
+
+- Basic conditional types
+  just like `if else` statement.
+- Nested conditional types
+  just like `switch case` statement.
+- Distributive conditional types
+  just like `map` statement (`loop` statement) on `union` type.
+- Conditional types make TypeScript become real programing type system:
+  TypeScript type system is [Turing Complete](https://github.com/microsoft/TypeScript/issues/14833).
+
+### Basic Conditional Types
+
+```ts
+interface Animal {
+  live(): void;
+}
+interface Dog extends Animal {
+  woof(): void;
+}
+
+type Example1 = Dog extends Animal ? number : string;
+// => type Example1 = number
+
+type Example2 = RegExp extends Animal ? number : string;
+// => type Example2 = string
+```
+
+### Nested Conditional Types
+
+- Conditional types can be nested.
+- 通过嵌套条件类型, 可以将类型约束收拢到精确范围.
+
+```ts
+type TypeName<T> = T extends string
+  ? 'string'
+  : T extends number
+  ? 'number'
+  : T extends boolean
+  ? 'boolean'
+  : T extends undefined
+  ? 'undefined'
+  : T extends Function
+  ? 'function'
+  : 'object';
+```
+
+### Distributive Conditional Types
+
+- Conditional types in which checked type is `naked type parameter` are called DCT.
+- DCT are automatically distributed over union types during instantiation.
+- When conditional types act on a generic type,
+  they become distributive when given a union type.
+- `( A | B | C ) extends T ? X : Y` 相当于
+  `(A extends T ? X : Y) | (B extends T ? X : Y) | (B extends T ? X : Y)`.
+- 没有被额外包装的联合类型参数, 在条件类型进行判定时会将联合类型分发, 分别进行判断.
+
+```ts
+// "string" | "function"
+type T1 = TypeName<string | (() => void)>;
+
+// "string" | "object"
+type T2 = TypeName<string | string[]>;
+
+// "object"
+type T3 = TypeName<string[] | number[]>;
+```
+
+```ts
+type Naked<T> = T extends boolean ? 'Y' : 'N';
+type Wrapped<T> = [T] extends [boolean] ? 'Y' : 'N';
+
+/*
+ * 先分发到 Naked<number> | Naked<boolean>
+ * 结果是 "N" | "Y"
+ */
+type Distributed = Naked<number | boolean>;
+
+/*
+ * 不会分发 直接是 [number | boolean] extends [boolean]
+ * 结果是 "N"
+ */
+type NotDistributed = Wrapped<number | boolean>;
+```
+
+## Mapped Types
+
+### Builtin Mapped Types
+
+- [Builtin mapped types](https://github.com/microsoft/TypeScript/blob/7d60dc1f5db04cc01cba2e1def292432fa41a7ee/src/lib/es5.d.ts#L1468-L1612).
+
+### Basic Mapped Types
+
+```ts
+type Readonly<T> = { readonly [P in keyof T]: T[P] };
+type Partial<T> = { [P in keyof T]?: T[P] };
+type ReadonlyPartial<T> = { readonly [P in keyof T]?: T[P] };
+type Required<T> = { [P in keyof T]-?: T[P] };
+type Nullable<T> = { [P in keyof T]: T[P] | null };
+type NonNullable<T> = T extends null | undefined ? never : T;
+type Clone<T> = { [P in keyof T]: T[P] };
+type Stringify<T> = { [P in keyof T]: string };
+```
+
+### Union Mapped Types
+
+With distributive conditional type:
+
+```ts
+type Extract<T, U> = T extends U ? T : never;
+type Exclude<T, U> = T extends U ? never : T;
+```
+
+### Key Mapped Types
+
+```ts
+type Pick<T, K extends keyof T> = { [P in K]: T[P] };
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+type Record<K extends keyof any, T> = { [P in K]: T };
+```
+
+### Function Mapped Types
+
+```ts
+type Parameters<T extends (...args: any) => any> = T extends (
+  ...args: infer P
+) => any
+  ? P
+  : never;
+
+type ConstructorParameters<T extends new (...args: any) => any> =
+  T extends new (...args: infer P) => any ? P : never;
+
+type ReturnType<T extends (...args: any) => any> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : any;
+
+type InstanceType<T extends new (...args: any) => any> = T extends new (
+  ...args: any
+) => infer R
+  ? R
+  : any;
+
+type ThisParameterType<T> = T extends (this: infer U, ...args: any[]) => any
+  ? U
+  : unknown;
+```
+
+### Custom Mapped Types
+
+Combine with:
+
+- `in keyof`.
+- `readonly`.
+- `?`.
+- `-`.
+- `as`.
+- Template literal types.
+- Conditional types.
+- Builtin types.
+- Other mapped types.
+- Other custom types.
+
+```ts
+// Removes 'readonly' attributes from a type's properties
+type Mutable<Type> = {
+  -readonly [Property in keyof Type]: Type[Property];
+};
+
+interface LockedAccount {
+  readonly id: string;
+  readonly name: string;
+}
+
+type UnlockedAccount = Mutable<LockedAccount>;
+// type UnlockedAccount = {
+//   id: string;
+//   name: string;
+// };
+```
+
+```ts
+// Mapped types via `as` type
+type Getters<Type> = {
+  [Property in keyof Type as `get${Capitalize<
+    string & Property
+  >}`]: () => Type[Property];
+};
+
+interface Person {
+  name: string;
+  age: number;
+  location: string;
+}
+
+type LazyPerson = Getters<Person>;
+// type LazyPerson = {
+//   getName: () => string;
+//   getAge: () => number;
+//   getLocation: () => string;
+// }
+```
+
+```ts
+// Remove the 'kind' property
+type RemoveKindField<Type> = {
+  [Property in keyof Type as Exclude<Property, 'kind'>]: Type[Property];
+};
+
+interface Circle {
+  kind: 'circle';
+  radius: number;
+}
+
+type KindlessCircle = RemoveKindField<Circle>;
+// type KindlessCircle = {
+//   radius: number;
+// }
+```
+
+```ts
+// Mapped type via conditional type
+type ExtractPII<Type> = {
+  [Property in keyof Type]: Type[Property] extends { pii: true } ? true : false;
+};
+
+interface DBFields {
+  id: { format: 'incrementing' };
+  name: { type: string; pii: true };
+}
+
+type ObjectsNeedingGDPRDeletion = ExtractPII<DBFields>;
+// type ObjectsNeedingGDPRDeletion = {
+//   id: false;
+//   name: true;
+// }
+```
+
+## Utility Types
+
+### Null Types
+
+```ts
+type Nullish = null | undefined;
+type Nullable<T> = T | null;
+type NonUndefinedable<A> = A extends undefined ? never : A;
+type NonNullable<T> = T extends null | undefined ? never : T;
+```
+
+### Boolean Types
+
+```ts
+type Falsy = false | '' | 0 | null | undefined;
+const isFalsy = (val: unknown): val is Falsy => !val;
+```
+
+### Primitive Types
+
+```ts
+type Primitive = string | number | boolean | bigint | symbol | null | undefined;
+
+const isPrimitive = (val: unknown): val is Primitive => {
+  if (val === null || val === undefined) {
+    return true;
+  }
+
+  const typeDef = typeof val;
+
+  const primitiveNonNullishTypes = [
+    'string',
+    'number',
+    'bigint',
+    'boolean',
+    'symbol',
+  ];
+
+  return primitiveNonNullishTypes.includes(typeDef);
+};
+```
+
+### Promise Types
+
+```ts
+// TypeScript 4.5.
+// Get naked Promise<T> type.
+type Awaited<T> = T extends Promise<infer U> ? Awaited<U> : T;
+
+// A = string.
+type A = Awaited<Promise<string>>;
+
+// B = number.
+type B = Awaited<Promise<Promise<number>>>;
+
+// C = boolean | number.
+type C = Awaited<boolean | Promise<number>>;
+```
+
+### Proxy Types
+
+```ts
+interface Proxy<T> {
+  get(): T;
+  set(value: T): void;
+}
+
+type Proxify<T> = { [P in keyof T]: Proxy<T[P]> };
+```
+
+### Recursive Types
+
+```ts
+type DeepReadonly<T> = {
+  +readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P];
+};
+
+type DeepMutable<T> = {
+  -readonly [P in keyof T]: T[P] extends object ? DeepMutable<T[P]> : T[P];
+};
+
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
+
+type DeepRequired<T> = {
+  [P in keyof T]-?: T[P] extends object | undefined ? DeepRequired<T[P]> : T[P];
+};
+```
+
+- [`PathOf<Form>` complex recursive types](https://mp.weixin.qq.com/s/KJdUdwbLN4g4M7xy34m-fA).
+
+### Lodash Types
+
+```ts
+type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
+```
+
+## Type Inference
+
+类型系统在获得足够的信息后,
+能将 infer 后跟随的类型参数推导出来,
+最后返回这个推导结果:
+
+```ts
+type Parameters<T extends (...args: any) => any> = T extends (
+  ...args: infer P
+) => any
+  ? P
+  : never;
+
+type ConstructorParameters<T extends new (...args: any) => any> =
+  T extends new (...args: infer P) => any ? P : never;
+
+type ReturnType<T extends (...args: any) => any> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : any;
+
+type InstanceType<T extends new (...args: any) => any> = T extends new (
+  ...args: any
+) => infer R
+  ? R
+  : any;
+```
+
+```ts
+const foo = (): string => {
+  return 'sabertaz';
+};
+
+// string
+type FooReturnType = ReturnType<typeof foo>;
+```
+
+## Type Guards
+
+### Type Predicates
+
+- `is` keyword for type predicate.
+
+```ts
+type Falsy = false | '' | 0 | null | undefined;
+const isFalsy = (val: unknown): val is Falsy => !val;
+```
+
+### In Type Guard
+
+```ts
+interface Fish {
+  swim: () => void;
+}
+interface Bird {
+  fly: () => void;
+}
+
+function move(animal: Fish | Bird) {
+  if ('swim' in animal) {
+    return animal.swim();
+  }
+
+  return animal.fly();
+}
+```
+
+### TypeOf Type Guard
+
+```ts
+function fn(x: string | number) {
+  if (typeof x === 'string') {
+    return x.length;
+  } else {
+    return x + 1;
+  }
+}
+```
+
+### Instance Type Guard
+
+```ts
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString());
+  } else {
+    console.log(x.toUpperCase());
+  }
+}
+```
+
+### Never Type
+
+- The `never` type is assignable to every type.
+- No type is assignable to `never` (except `never` itself).
+
+```ts
+interface Triangle {
+  kind: 'triangle';
+  sideLength: number;
+}
+
+type Shape = Circle | Square | Triangle;
+
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2;
+    case 'square':
+      return shape.sideLength ** 2;
+    default: {
+      // Type 'Triangle' is not assignable to type 'never'.
+      const _exhaustiveCheck: never = shape;
+      return _exhaustiveCheck;
+    }
+  }
+}
+```
+
+Exhaustiveness checks:
+
+```ts
+class UnsupportedValueError extends Error {
+  constructor(value: never) {
+    super(`Unsupported value: ${value}`);
+  }
+}
+
+function toGerman4(value: NoYesStrings): string {
+  switch (value) {
+    case 'Yes':
+      return 'Ja';
+    default:
+      // @ts-expect-error: Argument of type '"No"'
+      // is not assignable to parameter of type 'never'. (2345)
+      throw new UnsupportedValueError(value);
+  }
+}
+```
+
+## Type Assertion
+
+- `<type>`.
+- `as type`.
+
+> `as` is better in `.jsx`
+
+```ts
+let foo: any;
+const bar = foo as string; // 现在 bar 的类型是 'string'
+```
+
+```ts
+function handler(event: Event) {
+  const mouseEvent = event as MouseEvent;
+}
+```
+
+## Type System
+
+TypeScript type system:
+
+- [Turing complete](https://github.com/microsoft/TypeScript/issues/14833) type system.
+- Structural type system: type checking focuses on shape (`Duck Typing`).
+
+### Covariant
+
+Covariant (协变性):
+
+Type `T` is **covariant** if having `S <: P`,
+then `T<S> <: T<P>`.
+
+```ts
+type IsSubtype<S, P> = S extends P ? true : false;
+
+type T1 = IsSubtype<Admin, User>;
+// type T1 = true
+
+type T2 = IsSubtype<Promise<Admin>, Promise<User>>;
+// type T2 = true
+
+type T3 = IsSubtype<'Hello', string>;
+// type T3 = true
+
+type T4 = IsSubtype<Capitalize<'Hello'>, Capitalize<string>>;
+// type T4 = true
+```
+
+### Contravariant
+
+Contravariant (逆变性):
+
+Type `T` is **contravariant** if having `S <: P`,
+then `T<P> <: T<S>`.
+
+```ts
+type IsSubtype<S, P> = S extends P ? true : false;
+
+type Func<Param> = (param: Param) => void;
+
+type T1 = IsSubtype<Admin, User>;
+// type T1 = true
+
+type T2 = IsSubtype<Func<Admin>, Func<User>>;
+// type T2 = false
+
+type T3 = IsSubtype<Func<User>, Func<Admin>>;
+// type T3 = true
+```
+
+```ts
+const logAdmin: Func<Admin> = (admin: Admin): void => {
+  console.log(`Name: ${admin.userName}`);
+  console.log(`Is super admin: ${admin.isSuperAdmin.toString()}`);
+};
+
+const logUser: Func<User> = (user: User): void => {
+  console.log(`Name: ${user.userName}`);
+};
+
+const admin = new Admin('admin1', true);
+
+let logger: Func<Admin>;
+
+logger = logUser;
+logger(admin); // OK
+
+logger = logAdmin;
+logger(admin); // OK
+
+const user = new User('user1');
+
+let logger: Func<User>;
+
+logger = logUser;
+logger(user); // OK
+
+logger = logAdmin;
+// Type 'Func<Admin>' is not assignable to type 'Func<User>'.
+//   Property 'isSuperAdmin' is missing in type 'User' but required in type 'Admin'.
+logger(user); // Oops! `user.isSuperAdmin` is undefined.
+```
