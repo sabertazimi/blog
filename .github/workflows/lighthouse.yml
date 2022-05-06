@@ -1,0 +1,66 @@
+name: Lighthouse
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Waiting for the Vercel preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: vercel
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
+      - name: Audit using Lighthouse
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            ${{ steps.vercel.outputs.url }}
+          configPath: ./.github/workflows/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+      - name: Format audit result
+        id: result
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const links = ${{ steps.lighthouse.outputs.links }}
+            const results = (${{ steps.lighthouse.outputs.manifest }}).filter(result => result.isRepresentativeRun);
+            const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
+            const comment = results.map((result) => {
+              const summary = result.summary;
+              const url = result.url;
+
+              return `
+              🌎 [${url}](${url})
+              ⚡️ [Lighthouse report](${links[url]})
+
+              | Category | Score |
+              | --- | --- |
+              ${Object.keys(summary).map((key) => {
+                const percentage = Math.round(summary[key] * 100);
+                return `| ${score(percentage)} ${key} | ${percentage} |`;
+              }).join('\n')}
+
+              `;
+            }).join('---');
+
+            core.setOutput("comment", comment);
+      - name: Comment audit result
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ github.event.pull_request.number }}
+          header: lighthouse
+          message: |
+            ${{ steps.result.outputs.comment }}
