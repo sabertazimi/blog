@@ -15,12 +15,26 @@ jobs:
         with:
           submodules: true
           fetch-depth: 1
+      - name: Comment pull request
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ github.event.pull_request.number }}
+          header: lighthouse
+          message: |
+            :vertical_traffic_light: Waiting for the Vercel preview ...
       - name: Waiting for the Vercel preview
         uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
         id: vercel
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
+      - name: Comment preview result
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ github.event.pull_request.number }}
+          header: lighthouse
+          message: |
+            :hammer_and_wrench: Running Lighthouse audit on ${{ steps.vercel.outputs.url }} ...
       - name: Audit using Lighthouse
         id: lighthouse
         uses: treosh/lighthouse-ci-action@v9
@@ -47,7 +61,9 @@ jobs:
               const url = result.url;
 
               return `
-              :earth_asia: [${url}](${url})
+              ## :sparkles: ${url}
+
+              :rocket: [Vercel preview deployment](${url})
               :zap: [Lighthouse report](${links[url]})
 
               | Category | Score |
@@ -58,7 +74,7 @@ jobs:
               }).join('\n')}
 
               `;
-            }).join('---');
+            }).join('');
 
             core.setOutput("comment", comment);
       - name: Comment audit result
