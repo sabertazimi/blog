@@ -27,6 +27,10 @@ jobs:
         with:
           urls: |
             ${{ steps.vercel.outputs.url }}
+            ${{ steps.vercel.outputs.url }}/posts
+            ${{ steps.vercel.outputs.url }}/tags
+            ${{ steps.vercel.outputs.url }}/books
+            ${{ steps.vercel.outputs.url }}/about
           configPath: ./.github/workflows/lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true
@@ -37,14 +41,14 @@ jobs:
           script: |
             const links = ${{ steps.lighthouse.outputs.links }}
             const results = (${{ steps.lighthouse.outputs.manifest }}).filter(result => result.isRepresentativeRun);
-            const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴';
+            const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:';
             const comment = results.map((result) => {
               const summary = result.summary;
               const url = result.url;
 
               return `
-              🌎 [${url}](${url})
-              ⚡️ [Lighthouse report](${links[url]})
+              :earth_asia: [${url}](${url})
+              :zap: [Lighthouse report](${links[url]})
 
               | Category | Score |
               | --- | --- |
