@@ -5,6 +5,8 @@ import BlockCode from './BlockCode';
 import styles from './Pre.module.css';
 import { normalizeCode, normalizeLanguage, normalizeLines } from './utils';
 
+const LiveCode = dynamic(() => import('./LiveCode'));
+
 interface Props extends HTMLProps<HTMLPreElement> {
   live?: boolean;
   noline?: boolean;
@@ -12,8 +14,6 @@ interface Props extends HTMLProps<HTMLPreElement> {
   title?: string;
   lines?: string;
 }
-
-const LiveCode = dynamic(() => import('./LiveCode'));
 
 const Pre = ({
   live = false,
