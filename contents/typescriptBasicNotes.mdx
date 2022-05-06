@@ -76,80 +76,6 @@ tags:
 
 ## Enum Types
 
-### Enum Flags
-
-```ts
-enum AnimalFlags {
-  None = 0,
-  HasClaws = 1 << 0,
-  CanFly = 1 << 1,
-  EatsFish = 1 << 2,
-  Endangered = 1 << 3,
-  EndangeredFlyingClawedFishEating = HasClaws | CanFly | EatsFish | Endangered,
-}
-
-interface Animal {
-  flags: AnimalFlags;
-  [key: string]: any;
-}
-
-function printAnimalAbilities(animal: Animal) {
-  const animalFlags = animal.flags;
-  if (animalFlags & AnimalFlags.HasClaws) {
-    console.log('animal has claws');
-  }
-  if (animalFlags & AnimalFlags.CanFly) {
-    console.log('animal can fly');
-  }
-  if (animalFlags === AnimalFlags.None) {
-    console.log('nothing');
-  }
-}
-
-const animal = { flags: AnimalFlags.None };
-printAnimalAbilities(animal); // nothing
-animal.flags |= AnimalFlags.HasClaws;
-printAnimalAbilities(animal); // animal has claws
-animal.flags &= ~AnimalFlags.HasClaws;
-printAnimalAbilities(animal); // nothing
-animal.flags |= AnimalFlags.HasClaws | AnimalFlags.CanFly;
-printAnimalAbilities(animal); // animal has claws, animal can fly
-```
-
-### Enum Index Signature
-
-`keyof typeof EnumType`:
-
-```ts
-enum ColorPalette {
-  red = '#f03e3e',
-  pink = '#d7336c',
-  grape = '#ae3ec9',
-  violet = '#7048e8',
-  indigo = '#4263eb',
-  blue = '#1890ff',
-  cyan = '#1098ad',
-  teal = '#0ca678',
-  green = '#37b24d',
-  lime = '#74b816',
-  yellow = '#f59f00',
-  orange = '#f76707',
-}
-
-const hashString = (name = '') => {
-  return name.length;
-};
-
-const getColorByName = (name = ''): string => {
-  const palette = Object.keys(ColorPalette);
-  const colorIdx = hashString(name) % palette.length;
-  const paletteIdx = palette[colorIdx] as keyof typeof ColorPalette;
-  return ColorPalette[paletteIdx];
-};
-```
-
-### Enum Internals
-
 `const` enums don’t have representation at runtime,
 its member values are used directly.
 
@@ -236,261 +162,7 @@ const src = 'const a = "Hello World"';
 window.ts.transpileModule(src, {});
 ```
 
-## Access Modifiers
-
-### Member Access Modifiers
-
-`public`, `protected` and `private`:
-
-```ts
-class Singleton {
-  private static instance: Singleton;
-  private constructor() {
-    // ..
-  }
-
-  public static getInstance() {
-    if (!Singleton.instance) {
-      Singleton.instance = new Singleton();
-    }
-
-    return Singleton.instance;
-  }
-
-  someMethod() {}
-}
-
-const someThing = new Singleton(); // Error: constructor of 'singleton' is private
-
-const instance = Singleton.getInstance(); // do some thing with the instance
-```
-
-### Readonly Types
-
-`readonly`:
-
-```ts
-interface Foo {
-  readonly bar: number;
-  readonly bas: number;
-}
-
-// 初始化
-const foo: Foo = { bar: 123, bas: 456 };
-
-// 不能被改变
-foo.bar = 456; // Error: foo.bar 为仅读属性
-```
-
-`readonly` indexable signature:
-
-```ts
-type Foo = Readonly<Record<number, number>>;
-
-// 使用
-
-const foo: Foo = { 0: 123, 2: 345 };
-console.log(foo[0]); // ok（读取）
-foo[0] = 456; // Error: 属性只读
-```
-
-`readonly` class properties:
-
-```ts
-class Foo {
-  readonly bar = 1; // OK
-  readonly baz: string;
-  constructor() {
-    this.baz = 'hello'; // OK
-  }
-}
-```
-
-`readonly` generic type:
-
-```ts
-interface Foo {
-  bar: number;
-  bas: number;
-}
-
-type FooReadonly = Readonly<Foo>;
-
-const foo: Foo = { bar: 123, bas: 456 };
-const fooReadonly: FooReadonly = { bar: 123, bas: 456 };
-
-foo.bar = 456; // ok
-fooReadonly.bar = 456; // Error: bar 属性只读
-```
-
-`readonly` `React` props:
-
-```ts
-class Something extends React.Component<{ foo: number }, { baz: number }> {
-  someMethod() {
-    this.props.foo = 123; // Error: props 是不可变的
-    // eslint-disable-next-line react/no-direct-mutation-state
-    this.state.baz = 456; // Error: 你应该使用 this.setState()
-  }
-}
-```
-
 ## Index Signature
-
-For `JavaScript`,
-implicitly calls `toString` on any object index signature:
-
-```ts
-const obj = {
-  toString() {
-    console.log('toString called');
-    return 'Hello';
-  },
-};
-
-const foo: any = {};
-foo[obj] = 'World'; // toString called
-console.log(foo[obj]); // toString called, World
-console.log(foo.Hello); // World
-```
-
-TypeScript will give an error to prevent beginners
-from doing such things.
-
-**Index signature error**:
-
-```bash
-Element implicitly has an 'any' type
-because expression of type 'string' can't be used to index type XXX.
-```
-
-Can fixed with:
-
-- `Record<string, T>`.
-- Explicit `const` `propertyName` type.
-
-```ts
-// propertyName should be extends keyof T
-function getProperty<T, K extends keyof T>(o: T, propertyName: K): T[K] {
-  return o[propertyName]; // o[propertyName] is of type T[K]
-}
-```
-
-### Index Signature Type Checking
-
-```ts
-const x: { foo: number; [x: string]: any };
-x = { foo: 1, baz: 2 }; // ok, 'baz' 属性匹配于索引签名
-```
-
-当你声明一个索引签名时，所有明确的成员都必须符合索引签名:
-
-```ts
-// ok
-interface Foo {
-  [key: string]: number;
-  x: number;
-  y: number;
-}
-
-// Error
-interface Bar {
-  [key: string]: number;
-  x: number;
-  y: string; // Error: y 属性必须为 number 类型
-}
-```
-
-使用交叉类型可以解决上述问题:
-
-```ts
-interface FieldState {
-  value: string;
-}
-
-type FormState = { isValid: boolean } & Record<string, FieldState>;
-```
-
-### Select Index Types
-
-```ts
-type Index = 'a' | 'b' | 'c';
-type FromIndex = { [k in Index]?: number };
-
-const good: FromIndex = { b: 1, c: 2 };
-
-// Error:
-// `{ b: 1, c: 2, d: 3 }` 不能分配给 'FromIndex'
-// 对象字面量只能指定已知类型，'d' 不存在 'FromIndex' 类型上
-const bad: FromIndex = { b: 1, c: 2, d: 3 };
-```
-
-```ts
-type FromSomeIndex<K extends string> = { [key in K]: number };
-```
-
-### Symbol Index Types
-
-Since [typescript v4.4.0](https://github.com/microsoft/TypeScript/pull/44512):
-
-```ts
-type SymbolMap<T> = Record<symbol, T>;
-```
-
-```ts
-interface PropertyMap {
-  [key: string]: string;
-  [key: number]: string;
-  [key: symbol]: string;
-}
-```
-
-```ts
-type Colors = Record<symbol, number>;
-
-const red = Symbol('red');
-const green = Symbol('green');
-const blue = Symbol('blue');
-
-const colors: Colors = {};
-
-colors[red] = 255; // Assignment of a number is allowed
-const redVal = colors[red]; // 'redVal' has the type 'number'
-
-colors[blue] = 'da ba dee'; // Error: Type 'string' is not assignable to type 'number'.
-```
-
-### Template Literal Index Types
-
-Since [typescript v4.4.0](https://github.com/microsoft/TypeScript/pull/44512):
-
-```ts
-type DataProps = Record<`data-${string}`, string>;
-
-// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-interface OptionsWithDataProps extends Options {
-  // Permit any property starting with 'data-'.
-  [optName: `data-${string}`]: unknown;
-}
-
-const b: OptionsWithDataProps = {
-  width: 100,
-  height: 100,
-  'data-blah': true, // Works!
-  'unknown-property': true, // Error! 'unknown-property' wasn't declared in 'OptionsWithDataProps'.
-};
-```
-
-```ts
-type Thing<T> = Record<'a' | `foo${T}` | symbol, string>;
-
-type StringThing = Thing<string>;
-// => { [a: string, [x: `foo${string}`]: string, [x: symbol]: string }
-type BarThing = Thing<'bar'>;
-// => { [a: string, foobar: string, [x: symbol]: string }
-```
-
-### Indexed Access Types
 
 ```ts
 const MyArray = [
@@ -595,95 +267,6 @@ person.on('fstNameChanged', () => {});
 
 ## Generic Types
 
-### Generic Function
-
-```ts
-function reverse<T>(items: T[]): T[] {
-  const toReturn = [];
-  for (let i = items.length - 1; i >= 0; i--) {
-    toReturn.push(items[i]);
-  }
-  return toReturn;
-}
-```
-
-### Generic Class
-
-```ts
-// 创建一个泛型类
-class Queue<T> {
-  private data = [];
-  push = (item: T) => this.data.push(item);
-  pop = (): T => this.data.shift();
-}
-
-// 简单的使用
-const queue = new Queue<number>();
-queue.push(0);
-queue.push('1'); // Error：不能推入一个 `string`，只有 number 类型被允许
-```
-
-```ts
-interface Listener<T> {
-  (event: T): any;
-}
-
-interface Disposable {
-  dispose(): any;
-}
-
-class TypedEvent<T> {
-  private listeners: Listener<T>[] = [];
-  private listenersOnce: Listener<T>[] = [];
-
-  public on = (listener: Listener<T>): Disposable => {
-    this.listeners.push(listener);
-
-    return {
-      dispose: () => this.off(listener),
-    };
-  };
-
-  public once = (listener: Listener<T>): void => {
-    this.listenersOnce.push(listener);
-  };
-
-  public off = (listener: Listener<T>) => {
-    const callbackIndex = this.listeners.indexOf(listener);
-    if (callbackIndex > -1) this.listeners.splice(callbackIndex, 1);
-  };
-
-  public emit = (event: T) => {
-    this.listeners.forEach(listener => listener(event));
-
-    this.listenersOnce.forEach(listener => listener(event));
-    this.listenersOnce = [];
-  };
-
-  public pipe = (te: TypedEvent<T>): Disposable => {
-    return this.on(e => te.emit(e));
-  };
-}
-```
-
-### Specific Instances from Generic Types
-
-```ts
-class Foo<T> {
-  foo: T;
-}
-
-const FooNumber = Foo as { new (): Foo<number> }; // ref 1
-
-function id<T>(x: T) {
-  return x;
-}
-
-const idNum = id as { (x: number): number };
-```
-
-### Generic Types Constraints
-
 ```ts
 interface Lengthwise {
   length: number;
@@ -699,8 +282,6 @@ const arrayList = createList<any[]>(); // ok
 const boolList = createList<boolean>(); // error
 ```
 
-### Generic Types Programming
-
 在类型编程里, 泛型就是变量:
 
 ```ts
@@ -710,24 +291,6 @@ function pick<T extends object, U extends keyof T>(obj: T, keys: U[]): T[U][] {
 ```
 
 ## Union Types
-
-### Basic Union
-
-```ts
-function formatCommandLine(command: string[] | string) {
-  let line = '';
-
-  if (typeof command === 'string') {
-    line = command.trim();
-  } else {
-    line = command.join(' ').trim();
-  }
-
-  // Do stuff with line: string
-}
-```
-
-### Discriminated Union
 
 ```ts
 interface Square {
@@ -762,24 +325,6 @@ function area(s: Shape) {
     }
   }
 }
-```
-
-`IteratorResult` discriminated union:
-
-```ts
-interface IteratorYieldResult<TYield> {
-  done?: false; // boolean literal type
-  value: TYield;
-}
-
-interface IteratorReturnResult<TReturn> {
-  done: true; // boolean literal type
-  value: TReturn;
-}
-
-type IteratorResult<T, TReturn = any> =
-  | IteratorYieldResult<T>
-  | IteratorReturnResult<TReturn>;
 ```
 
 ## Intersection Types
@@ -818,45 +363,6 @@ const b = x.b;
   just like `map` statement (`loop` statement) on `union` type.
 - Conditional types make TypeScript become real programing type system:
   TypeScript type system is [Turing Complete](https://github.com/microsoft/TypeScript/issues/14833).
-
-### Basic Conditional Types
-
-```ts
-interface Animal {
-  live(): void;
-}
-interface Dog extends Animal {
-  woof(): void;
-}
-
-type Example1 = Dog extends Animal ? number : string;
-// => type Example1 = number
-
-type Example2 = RegExp extends Animal ? number : string;
-// => type Example2 = string
-```
-
-### Nested Conditional Types
-
-- Conditional types can be nested.
-- 通过嵌套条件类型, 可以将类型约束收拢到精确范围.
-
-```ts
-type TypeName<T> = T extends string
-  ? 'string'
-  : T extends number
-  ? 'number'
-  : T extends boolean
-  ? 'boolean'
-  : T extends undefined
-  ? 'undefined'
-  : T extends Function
-  ? 'function'
-  : 'object';
-```
-
-### Distributive Conditional Types
-
 - Conditional types in which checked type is `naked type parameter` are called DCT.
 - DCT are automatically distributed over union types during instantiation.
 - When conditional types act on a generic type,
@@ -1186,59 +692,36 @@ type FooReturnType = ReturnType<typeof foo>;
 
 ## Type Guards
 
-### Type Predicates
-
-- `is` keyword for type predicate.
+### Discriminated Union Type Guard
 
 ```ts
-type Falsy = false | '' | 0 | null | undefined;
-const isFalsy = (val: unknown): val is Falsy => !val;
-```
-
-### In Type Guard
-
-```ts
-interface Fish {
-  swim: () => void;
-}
-interface Bird {
-  fly: () => void;
+interface Teacher {
+  kind: 'Teacher';
+  teacherId: string;
 }
 
-function move(animal: Fish | Bird) {
-  if ('swim' in animal) {
-    return animal.swim();
-  }
-
-  return animal.fly();
+interface Student {
+  kind: 'Student';
+  studentId: string;
 }
-```
 
-### TypeOf Type Guard
+type Attendee = Teacher | Student;
 
-```ts
-function fn(x: string | number) {
-  if (typeof x === 'string') {
-    return x.length;
-  } else {
-    return x + 1;
+function getId(attendee: Attendee) {
+  switch (attendee.kind) {
+    case 'Teacher':
+      // %inferred-type: { kind: "Teacher"; teacherId: string; }
+      return attendee.teacherId;
+    case 'Student':
+      // %inferred-type: { kind: "Student"; studentId: string; }
+      return attendee.studentId;
+    default:
+      throw new Error('Unsupported type');
   }
 }
 ```
 
-### Instance Type Guard
-
-```ts
-function logValue(x: Date | string) {
-  if (x instanceof Date) {
-    console.log(x.toUTCString());
-  } else {
-    console.log(x.toUpperCase());
-  }
-}
-```
-
-### Never Type
+### Never Type Guard
 
 - The `never` type is assignable to every type.
 - No type is assignable to `never` (except `never` itself).
@@ -1284,6 +767,46 @@ function toGerman4(value: NoYesStrings): string {
       // is not assignable to parameter of type 'never'. (2345)
       throw new UnsupportedValueError(value);
   }
+}
+```
+
+### Type Predicates
+
+`is` keyword for `value` type predicate:
+
+```ts
+type Falsy = false | '' | 0 | null | undefined;
+const isFalsy = (val: unknown): val is Falsy => !val;
+```
+
+```ts
+function isNotNullish<T>(value: T): value is NonNullable<T> {
+  return value !== undefined && value !== null;
+}
+
+// %inferred-type: (number | null | undefined)[]
+const mixedValues = [1, undefined, 2, null];
+
+// %inferred-type: number[]
+const numbers = mixedValues.filter(isNotNullish);
+```
+
+```ts
+/**
+ * A partial implementation of the `typeof` operator.
+ */
+function isTypeof(value: any, typeString: 'boolean'): value is boolean;
+function isTypeof(value: any, typeString: 'number'): value is number;
+function isTypeof(value: any, typeString: 'string'): value is string;
+function isTypeof(value: any, typeString: string): boolean {
+  return typeof value === typeString;
+}
+
+const value: unknown = {};
+
+if (isTypeof(value, 'boolean')) {
+  // %inferred-type: boolean
+  console.log(value);
 }
 ```
 
@@ -1389,3 +912,12 @@ logger = logAdmin;
 //   Property 'isSuperAdmin' is missing in type 'User' but required in type 'Admin'.
 logger(user); // Oops! `user.isSuperAdmin` is undefined.
 ```
+
+### Type Gymnastics
+
+[Type programming](https://exploringjs.com/tackling-ts/ch_computing-with-types-overview.html):
+
+| Level         | Environment  | Operands       | Operations    |
+| ------------- | ------------ | -------------- | ------------- |
+| Program level | Runtime      | Values         | Functions     |
+| Type level    | Compile time | Specific types | Generic types |
