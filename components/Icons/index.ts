@@ -14,7 +14,6 @@ export {
   HomeOutlined as Home,
   InfoCircleOutlined as InfoCircle,
   ReadOutlined as Read,
-  SearchOutlined as Search,
   StarOutlined as Star,
   UserOutlined as User,
 } from '@ant-design/icons';
