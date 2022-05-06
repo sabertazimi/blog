@@ -1,5 +1,4 @@
 import AutoComplete from '@components/AutoComplete';
-import { Search } from '@components/Icons';
 import Input from '@components/Input';
 import Link from '@components/Link';
 import type { PostMeta } from '@types';
@@ -41,12 +40,12 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
   );
 
   return (
-    <AutoComplete
-      className="flex-container"
-      options={options}
-      onSearch={handleSearch}
-    >
-      <Input allowClear placeholder="Search Posts ..." prefix={<Search />} />
+    <AutoComplete options={options} onSearch={handleSearch}>
+      <Input.Search
+        allowClear
+        enterButton="Search"
+        placeholder="Search Posts ..."
+      />
     </AutoComplete>
   );
 };

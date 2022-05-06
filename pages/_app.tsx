@@ -10,6 +10,7 @@ import '../components/Article/Article.css';
 import '../components/Card/Card.css';
 import '../components/Editor/Editor.css';
 import '../components/Image/Image.css';
+import '../components/PostsSearchBar/PostsSearchBar.css';
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>
