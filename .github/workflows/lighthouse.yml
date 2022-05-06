@@ -21,6 +21,7 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           header: lighthouse
           message: |
+            # Lighthouse Report
             :vertical_traffic_light: Waiting for the Vercel preview ...
       - name: Waiting for the Vercel preview
         uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
@@ -34,6 +35,7 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           header: lighthouse
           message: |
+            # Lighthouse Report
             :hammer_and_wrench: Running Lighthouse audit on ${{ steps.vercel.outputs.url }} ...
       - name: Audit using Lighthouse
         id: lighthouse
@@ -83,4 +85,5 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           header: lighthouse
           message: |
+            # Lighthouse Report
             ${{ steps.result.outputs.comment }}
