@@ -1,4 +1,4 @@
-import type { Post, PostMeta, Tag, Tags } from '@types';
+import type { MDXFrontMatter, Post, PostMeta, Tag, Tags } from '@types';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import { execSync } from 'node:child_process';
@@ -42,13 +42,10 @@ async function generatePostData(filePath: string): Promise<Post> {
   const fileContent = await fs.readFile(filePath, 'utf8');
   const slug = path.basename(filePath, path.extname(filePath));
 
-  const {
-    content,
-    excerpt,
-    data: { title, date, ...fields },
-  } = matter(fileContent, { excerpt: true });
+  const { content, excerpt, data } = matter(fileContent, { excerpt: true });
+  const { title, date, ...fields } = data as MDXFrontMatter;
 
-  const createTime = new Date(date).toISOString();
+  const createTime = new Date(date ?? Date.now()).toISOString();
   const updateTime = execSync(
     `git log -1 --pretty=format:%aI ${filePath}`
   ).toString();

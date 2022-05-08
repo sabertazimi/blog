@@ -10,7 +10,7 @@ import styles from './LiveCode.module.css';
 import theme from './monokai';
 
 interface Props {
-  language?: string;
+  language?: Language;
   children?: string;
 }
 
@@ -23,7 +23,7 @@ const LiveCode = ({ language, children }: Props): JSX.Element => (
     <LiveProvider
       scope={scope}
       code={children}
-      language={language as Language}
+      language={language}
       theme={theme}
     >
       <LiveEditor padding="1.25rem" className={styles.editor} />

@@ -3,7 +3,12 @@ import { classNames, dynamic } from '@components/utils';
 import type { HTMLProps, ReactElement } from 'react';
 import BlockCode from './BlockCode';
 import styles from './Pre.module.css';
-import { normalizeCode, normalizeLanguage, normalizeLines } from './utils';
+import {
+  normalizeCode,
+  normalizeLanguage,
+  normalizeLanguageName,
+  normalizeLines,
+} from './utils';
 
 const LiveCode = dynamic(() => import('./LiveCode'));
 
@@ -15,6 +20,11 @@ interface Props extends HTMLProps<HTMLPreElement> {
   lines?: string;
 }
 
+interface CodeProps {
+  children?: string;
+  className?: string;
+}
+
 const Pre = ({
   live = false,
   noline = false,
@@ -24,11 +34,11 @@ const Pre = ({
   children,
   className,
 }: Props): JSX.Element => {
-  const codeElement = children as ReactElement;
+  const codeElement = children as ReactElement<CodeProps>;
   const code = normalizeCode(codeElement?.props?.children);
-  const languageClass = codeElement?.props?.className as string;
-  const language = languageClass?.replace('language-', '');
-  const languageName = normalizeLanguage(language);
+  const languageClass = codeElement?.props?.className;
+  const language = normalizeLanguage(languageClass);
+  const languageName = normalizeLanguageName(language);
   const highlightLines = normalizeLines(lines);
 
   return (

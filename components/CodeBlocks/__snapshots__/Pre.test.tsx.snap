@@ -4,10 +4,10 @@ exports[`Pre should hidden copy button correctly (snapshot) 1`] = `
 <div>
   <pre
     class="pre"
-    data-language="Code"
+    data-language="TypeScript"
   >
     <pre
-      class="prism-code language-undefined code"
+      class="prism-code language-typescript code"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
@@ -20,9 +20,50 @@ exports[`Pre should hidden copy button correctly (snapshot) 1`] = `
           1
         </span>
         <span
+          class="token keyword"
+          style="color: rgb(249, 38, 114);"
+        >
+          const
+        </span>
+        <span
           class="token plain"
         >
-          const foo = bar();
+           foo 
+        </span>
+        <span
+          class="token operator"
+          style="color: rgb(167, 122, 254);"
+        >
+          =
+        </span>
+        <span
+          class="token plain"
+        >
+           
+        </span>
+        <span
+          class="token function"
+          style="color: rgb(166, 226, 45);"
+        >
+          bar
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          (
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          )
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          ;
         </span>
       </div>
     </pre>
@@ -34,7 +75,7 @@ exports[`Pre should hidden line number correctly (snapshot) 1`] = `
 <div>
   <pre
     class="pre"
-    data-language="Code"
+    data-language="TypeScript"
   >
     <button
       aria-label="CopyButton"
@@ -75,7 +116,7 @@ exports[`Pre should hidden line number correctly (snapshot) 1`] = `
       </div>
     </button>
     <pre
-      class="prism-code language-undefined code"
+      class="prism-code language-typescript code"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
@@ -86,9 +127,50 @@ exports[`Pre should hidden line number correctly (snapshot) 1`] = `
           class="placeholder"
         />
         <span
+          class="token keyword"
+          style="color: rgb(249, 38, 114);"
+        >
+          const
+        </span>
+        <span
           class="token plain"
         >
-          const foo = bar();
+           foo 
+        </span>
+        <span
+          class="token operator"
+          style="color: rgb(167, 122, 254);"
+        >
+          =
+        </span>
+        <span
+          class="token plain"
+        >
+           
+        </span>
+        <span
+          class="token function"
+          style="color: rgb(166, 226, 45);"
+        >
+          bar
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          (
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          )
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          ;
         </span>
       </div>
     </pre>
@@ -141,7 +223,7 @@ exports[`Pre should render code title correctly (snapshot) 1`] = `
       </div>
     </button>
     <pre
-      class="prism-code language-undefined code"
+      class="prism-code language-typescript code"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
@@ -154,9 +236,50 @@ exports[`Pre should render code title correctly (snapshot) 1`] = `
           1
         </span>
         <span
+          class="token keyword"
+          style="color: rgb(249, 38, 114);"
+        >
+          const
+        </span>
+        <span
           class="token plain"
         >
-          const foo = bar();
+           foo 
+        </span>
+        <span
+          class="token operator"
+          style="color: rgb(167, 122, 254);"
+        >
+          =
+        </span>
+        <span
+          class="token plain"
+        >
+           
+        </span>
+        <span
+          class="token function"
+          style="color: rgb(166, 226, 45);"
+        >
+          bar
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          (
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          )
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          ;
         </span>
       </div>
     </pre>
@@ -2127,7 +2250,7 @@ exports[`Pre should render empty children correctly (snapshot) 1`] = `
 <div>
   <pre
     class="pre"
-    data-language="Code"
+    data-language="TypeScript"
   >
     <button
       aria-label="CopyButton"
@@ -2168,7 +2291,7 @@ exports[`Pre should render empty children correctly (snapshot) 1`] = `
       </div>
     </button>
     <pre
-      class="prism-code language-undefined code"
+      class="prism-code language-typescript code"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
@@ -2197,7 +2320,7 @@ exports[`Pre should render empty className correctly (snapshot) 1`] = `
 <div>
   <pre
     class="pre"
-    data-language="Code"
+    data-language="TypeScript"
   >
     <button
       aria-label="CopyButton"
@@ -2238,7 +2361,7 @@ exports[`Pre should render empty className correctly (snapshot) 1`] = `
       </div>
     </button>
     <pre
-      class="prism-code language-undefined code"
+      class="prism-code language-typescript code"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
@@ -2251,9 +2374,50 @@ exports[`Pre should render empty className correctly (snapshot) 1`] = `
           1
         </span>
         <span
+          class="token keyword"
+          style="color: rgb(249, 38, 114);"
+        >
+          const
+        </span>
+        <span
           class="token plain"
         >
-          const foo = bar();
+           foo 
+        </span>
+        <span
+          class="token operator"
+          style="color: rgb(167, 122, 254);"
+        >
+          =
+        </span>
+        <span
+          class="token plain"
+        >
+           
+        </span>
+        <span
+          class="token function"
+          style="color: rgb(166, 226, 45);"
+        >
+          bar
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          (
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          )
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          ;
         </span>
       </div>
     </pre>
@@ -2265,7 +2429,7 @@ exports[`Pre should render highlight lines correctly (snapshot) 1`] = `
 <div>
   <pre
     class="pre"
-    data-language="Code"
+    data-language="TypeScript"
   >
     <button
       aria-label="CopyButton"
@@ -2306,7 +2470,7 @@ exports[`Pre should render highlight lines correctly (snapshot) 1`] = `
       </div>
     </button>
     <pre
-      class="prism-code language-undefined code"
+      class="prism-code language-typescript code"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
@@ -2319,9 +2483,50 @@ exports[`Pre should render highlight lines correctly (snapshot) 1`] = `
           1
         </span>
         <span
+          class="token keyword"
+          style="color: rgb(249, 38, 114);"
+        >
+          const
+        </span>
+        <span
           class="token plain"
         >
-          const foo = bar();
+           foo 
+        </span>
+        <span
+          class="token operator"
+          style="color: rgb(167, 122, 254);"
+        >
+          =
+        </span>
+        <span
+          class="token plain"
+        >
+           
+        </span>
+        <span
+          class="token function"
+          style="color: rgb(166, 226, 45);"
+        >
+          bar
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          (
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          )
+        </span>
+        <span
+          class="token punctuation"
+          style="color: rgb(248, 248, 242);"
+        >
+          ;
         </span>
       </div>
     </pre>

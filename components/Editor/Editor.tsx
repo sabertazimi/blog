@@ -10,18 +10,21 @@ interface Props {
   children?: ReactNode;
 }
 
+interface CodeProps {
+  children: string;
+  className: string;
+}
+
+interface PreProps {
+  children: ReactElement<CodeProps>;
+  filename: string;
+}
+
 const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
   const codeSnippets = React.Children.toArray(children);
   const files = codeSnippets.reduce(
-    (
-      result: {
-        [key in string]: {
-          code: any;
-        };
-      },
-      codeSnippet
-    ) => {
-      const preElement = codeSnippet as ReactElement;
+    (result: Record<string, { code: string }>, codeSnippet) => {
+      const preElement = codeSnippet as ReactElement<PreProps>;
       const codeElement = preElement.props.children;
 
       const filename = preElement.props.filename;

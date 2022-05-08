@@ -1,8 +1,24 @@
 import parseNumericRange from 'parse-numeric-range';
+import type { Language } from 'prism-react-renderer';
 
 const normalizeCode = (code: string = '') => code.replace(/\n+$/, '');
 
-const normalizeLanguage = (language: string) => {
+const isLanguage = (language: string): language is Language =>
+  language.length > 0;
+
+const normalizeLanguage = (languageClass?: string): Language => {
+  if (languageClass) {
+    const language = languageClass.replace('language-', '');
+
+    if (isLanguage(language)) {
+      return language;
+    }
+  }
+
+  return 'typescript';
+};
+
+const normalizeLanguageName = (language: string): string => {
   switch (language) {
     case 'html':
       return 'HTML';
@@ -34,11 +50,16 @@ const normalizeLanguage = (language: string) => {
     case 'objectivec':
       return 'Objective-C';
     default:
-      return language?.charAt(0)?.toUpperCase() + language?.slice(1) || 'Code';
+      return language.charAt(0).toUpperCase() + language.slice(1);
   }
 };
 
 const normalizeLines = (expression: string): Set<number> =>
   new Set(parseNumericRange(expression));
 
-export { normalizeCode, normalizeLanguage, normalizeLines };
+export {
+  normalizeCode,
+  normalizeLanguage,
+  normalizeLanguageName,
+  normalizeLines,
+};

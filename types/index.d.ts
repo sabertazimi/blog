@@ -3,6 +3,16 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 export declare type Tag = string;
 export declare type Tags = Record<Tag, number>;
 
+export interface MDXFrontMatter {
+  layout: string;
+  title: string;
+  subtitle?: string;
+  author?: string;
+  date?: string;
+  'header-img'?: string;
+  tags?: Tag[];
+}
+
 export interface PostMeta {
   slug: string;
   title: string;
