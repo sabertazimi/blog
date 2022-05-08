@@ -1,5 +1,4 @@
 import MDX from '@components/MDX';
-import { Ease } from '@components/Motion';
 import type { Post } from '@types';
 import { MDXRemote } from 'next-mdx-remote';
 
@@ -8,9 +7,7 @@ interface Props {
 }
 
 const ArticleContent = ({ source }: Props): JSX.Element => (
-  <Ease>
-    <MDXRemote {...source} components={MDX} />
-  </Ease>
+  <MDXRemote {...source} components={MDX} />
 );
 
 export default ArticleContent;
