@@ -12,12 +12,12 @@ interface Props {
 
 interface CodeProps {
   children: string;
-  className: string;
+  className?: string;
 }
 
 interface PreProps {
   children: ReactElement<CodeProps>;
-  filename: string;
+  filename?: string;
 }
 
 const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
@@ -28,7 +28,7 @@ const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
       const codeElement = preElement.props.children;
 
       const filename = preElement.props.filename;
-      const language = codeElement.props.className.replace('language-', '');
+      const language = codeElement.props.className?.replace('language-', '');
       const filePath =
         normalizeFilepath(filename) || languageToFilepath(language);
       const code = codeElement.props.children;
