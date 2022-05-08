@@ -7,7 +7,7 @@ import theme from './monokai';
 interface Props {
   enableLine: boolean;
   lines: Set<number>;
-  language?: string;
+  language: Language;
   children: string;
 }
 
@@ -20,7 +20,7 @@ const BlockCode = ({
   <Highlight
     {...defaultProps}
     code={children}
-    language={language as Language}
+    language={language}
     theme={theme}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
