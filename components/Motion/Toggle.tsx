@@ -1,6 +1,7 @@
 import type { MotionProps } from '@components/utils';
 import { AnimatePresence, classNames, motion } from '@components/utils';
-import type { ReactNode } from 'react';
+import type { KeyboardEvent, ReactNode } from 'react';
+import { useCallback } from 'react';
 import styles from './Toggle.module.css';
 
 interface Props {
@@ -42,42 +43,53 @@ const Toggle = ({
   className,
   shouldReduceMotion,
   ...props
-}: Props): JSX.Element => (
-  <div
-    key="toggle-wrapper"
-    data-testid="toggle-wrapper"
-    tabIndex={0}
-    onClick={onToggle}
-    onKeyDown={onToggle}
-    className={classNames(styles.wrapper, className)}
-    {...props}
-  >
-    <AnimatePresence initial={false}>
-      {!isToggled ? (
-        <motion.span
-          key="toggle-span-close"
-          initial={closeVariants}
-          animate={!shouldReduceMotion ? openVariants : closeVariants}
-          exit={closeVariants}
-          aria-current={!isToggled}
-          className={styles.span}
-        >
-          {iconClose}
-        </motion.span>
-      ) : (
-        <motion.span
-          key="toggle-span-open"
-          initial={closeVariants}
-          animate={!shouldReduceMotion ? openVariants : closeVariants}
-          exit={closeVariants}
-          aria-current={isToggled}
-          className={styles.span}
-        >
-          {iconOpen}
-        </motion.span>
-      )}
-    </AnimatePresence>
-  </div>
-);
+}: Props): JSX.Element => {
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Enter' && onToggle) {
+        onToggle();
+      }
+    },
+    [onToggle]
+  );
+
+  return (
+    <div
+      key="toggle-wrapper"
+      data-testid="toggle-wrapper"
+      tabIndex={0}
+      onClick={onToggle}
+      onKeyDown={handleKeyDown}
+      className={classNames(styles.wrapper, className)}
+      {...props}
+    >
+      <AnimatePresence initial={false}>
+        {!isToggled ? (
+          <motion.span
+            key="toggle-span-close"
+            initial={closeVariants}
+            animate={!shouldReduceMotion ? openVariants : closeVariants}
+            exit={closeVariants}
+            aria-current={!isToggled}
+            className={styles.span}
+          >
+            {iconClose}
+          </motion.span>
+        ) : (
+          <motion.span
+            key="toggle-span-open"
+            initial={closeVariants}
+            animate={!shouldReduceMotion ? openVariants : closeVariants}
+            exit={closeVariants}
+            aria-current={isToggled}
+            className={styles.span}
+          >
+            {iconOpen}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default Toggle;
