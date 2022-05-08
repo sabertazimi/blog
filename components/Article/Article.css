@@ -4,7 +4,7 @@ h2,
 h3,
 h4,
 h5,
-div,
+div:not(.sp-error-message),
 section {
   @apply dark:text-light;
 }
