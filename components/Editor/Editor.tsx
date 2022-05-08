@@ -3,7 +3,7 @@ import { monokaiProTheme, Sandpack } from '@codesandbox/sandpack-react';
 import '@codesandbox/sandpack-react/dist/index.css';
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
-import { languageToFilepath, normalizeFilepath } from './utils';
+import { normalizeFilepath } from './utils';
 
 interface Props {
   template?: SandpackPredefinedTemplate;
@@ -29,8 +29,7 @@ const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
 
       const filename = preElement.props.filename;
       const language = codeElement.props.className?.replace('language-', '');
-      const filePath =
-        normalizeFilepath(filename) || languageToFilepath(language);
+      const filePath = normalizeFilepath(filename, language);
       const code = codeElement.props.children;
 
       result[filePath] = {

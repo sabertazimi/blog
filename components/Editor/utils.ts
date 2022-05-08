@@ -1,15 +1,3 @@
-const normalizeFilepath = (filename?: string): string => {
-  if (!filename) {
-    return '';
-  }
-
-  if (!filename.startsWith('/')) {
-    return `/${filename}`;
-  }
-
-  return filename;
-};
-
 const languageToFilepath = (language?: string): string => {
   switch (language) {
     case 'css':
@@ -31,4 +19,16 @@ const languageToFilepath = (language?: string): string => {
   }
 };
 
-export { languageToFilepath, normalizeFilepath };
+const normalizeFilepath = (filename?: string, language?: string): string => {
+  if (!filename) {
+    return languageToFilepath(language);
+  }
+
+  if (!filename.startsWith('/')) {
+    return `/${filename}`;
+  }
+
+  return filename;
+};
+
+export { normalizeFilepath };
