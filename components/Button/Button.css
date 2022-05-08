@@ -1,0 +1,4 @@
+/* Add dark mode support for antd Button component */
+.ant-btn-text {
+  @apply dark:text-light;
+}
