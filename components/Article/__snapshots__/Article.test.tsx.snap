@@ -163,15 +163,11 @@ exports[`Article should render correctly (snapshot) 1`] = `
     <div
       class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
     >
-      <div
-        style="opacity: 0;"
+      <h2
+        class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
       >
-        <h2
-          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
-        >
-          1 Basic Notes
-        </h2>
-      </div>
+        1 Basic Notes
+      </h2>
       <div
         class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
         role="separator"
@@ -586,15 +582,11 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
     <div
       class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
     >
-      <div
-        style="opacity: 0;"
+      <h2
+        class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
       >
-        <h2
-          class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
-        >
-          1 Basic Notes
-        </h2>
-      </div>
+        1 Basic Notes
+      </h2>
       <div
         class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
         role="separator"
