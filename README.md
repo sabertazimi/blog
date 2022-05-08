@@ -154,7 +154,6 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 ├── .gitignore
 ├── .tokeignore
 ├── .eslintrc.json
-├── .markdownlint.json
 ├── .prettierrc.json
 ├── .stylelintrc.json
 ├── .versionrc.json
@@ -185,20 +184,19 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 13. **`.gitignore`**: This file tells git which files it should not track.
 14. **`.tokeignore`**: This is a configuration file for [Code Lines](https://github.com/XAMPPRocky/tokei).
 15. **`.eslintrc.json`**: This is a configuration file for [ESLint](https://eslint.org).
-16. **`.markdownlint.json`**: This is a configuration file for [MarkdownLint](https://github.com/DavidAnson/markdownlint).
-17. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
-18. **`.stylelintrc.json`**: This is a configuration file for [StyleLint](https://stylelint.io).
-19. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
-20. **`next-env.d.ts`**: `Next.js` internal type definition.
-21. **`next.config.js`**: `Next.js` configuration file.
-22. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
-23. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
-24. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
-25. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
-26. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
-27. **`LICENSE`**: This Next.js starter is licensed under the `MIT` license.
-28. **`package.json`**: A manifest file for Node.js projects.
-29. **`README.md`**: A text file containing useful reference information.
+16. **`.prettierrc.json`**: This is a configuration file for [Prettier](https://prettier.io).
+17. **`.stylelintrc.json`**: This is a configuration file for [StyleLint](https://stylelint.io).
+18. **`.versionrc.json`**: This is a configuration file for [Standard Version](https://github.com/conventional-changelog/standard-version).
+19. **`next-env.d.ts`**: `Next.js` internal type definition.
+20. **`next.config.js`**: `Next.js` configuration file.
+21. **`jest.config.js`**: This is configuration file for [Jest](https://jestjs.io).
+22. **`jest.setup.js`**: This is Jest basic setup script (after environment setup).
+23. **`tsconfig.json`**: This is a configuration file for [TypeScript](https://www.typescriptlang.org).
+24. **`postcss.config.js`**: This is a configuration file for [PostCSS](https://postcss.org).
+25. **`tailwind.config.js`**: This is a configuration file for [Tailwind.css](https://tailwindcss.com).
+26. **`LICENSE`**: This Next.js starter is licensed under the `MIT` license.
+27. **`package.json`**: A manifest file for Node.js projects.
+28. **`README.md`**: A text file containing useful reference information.
 
 ## :construction: Caveats
 
