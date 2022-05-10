@@ -26,6 +26,7 @@
     "e2e": "start-server-and-test e2e:prepare http://localhost:3000 e2e:headless",
     "e2e:prepare": "yarn build && yarn serve",
     "e2e:headless": "cypress run",
+    "e2e:ui": "cypress open",
     "format": "prettier --write {__mocks__,components,config,contents,hooks,layouts,lib,pages,styles,types}/**/*.{ts,tsx,css}",
     "lint": "next lint && yarn lint:style && yarn lint:type-check",
     "lint:style": "stylelint ./styles/**/*.css",
