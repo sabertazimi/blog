@@ -16,9 +16,9 @@ describe('Editor', () => {
     );
 
     expect(screen.getByRole('tablist')).toBeInTheDocument();
-    expect(screen.getByText('App.tsx')).toBeInTheDocument();
-    expect(screen.getByText('bar.tsx')).toBeInTheDocument();
+    expect(screen.getByRole('tablist')).toContainElement(screen.getByText('App.tsx'));
+    expect(screen.getByRole('tablist')).toContainElement(screen.getByText('bar.tsx'));
     expect(screen.getByRole('group')).toBeInTheDocument();
-    expect(screen.getByText('const foo = bar();')).toBeInTheDocument();
+    expect(screen.getByRole('group')).toContainElement(screen.getByText('const foo = bar();'));
   });
 });
