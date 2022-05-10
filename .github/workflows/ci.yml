@@ -32,8 +32,8 @@ jobs:
         run: |
           yarn lint
 
-  test:
-    name: Testing
+  unit:
+    name: Unit Testing
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -62,6 +62,34 @@ jobs:
       - name: Perform code coverage report action
         uses: codecov/codecov-action@v3
         if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
+
+  e2e:
+    name: E2E Testing
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [16]
+        architecture: [x64]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Setup Node environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          architecture: ${{ matrix.architecture }}
+          registry-url: https://registry.npmjs.org/
+          cache: 'yarn'
+      - name: Install dependencies
+        run: |
+          yarn
+      - name: Run e2e tests
+        run: |
+          yarn e2e
 
   build:
     name: Building
