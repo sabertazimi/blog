@@ -6,13 +6,13 @@ describe('Layout', () => {
   const mockTime = mockData.time;
   const mockPosts = mockData.posts;
 
-  test('should render correctly (snapshot)', () => {
+  test('should render correctly (snapshot)', async () => {
     const { container } = render(
       <Layout banner="layout" buildTime={mockTime} posts={mockPosts}>
         <div>Layout</div>
       </Layout>
     );
 
-    waitFor(() => expect(container).toMatchSnapshot());
+    await waitFor(() => expect(container).toMatchSnapshot());
   });
 });
