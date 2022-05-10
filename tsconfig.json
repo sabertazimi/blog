@@ -1,19 +1,11 @@
 {
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "public",
-    "coverage",
-    "__mocks__"
-  ],
+  "exclude": ["node_modules", "build", "dist", "public", "coverage", "cypress"],
   "compilerOptions": {
     "target": "ES5",
     "module": "ESNext",
     "moduleResolution": "node",
     "lib": ["DOM", "DOM.Iterable", "ES2021", "ESNext"],
-    "allowJs": true,
     "jsx": "preserve",
     "outDir": "./build",
     "removeComments": true,

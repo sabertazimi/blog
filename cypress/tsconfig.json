@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["global.d.ts", "**/*.ts"],
+  "exclude": [],
+  "compilerOptions": {
+    "target": "ES6",
+    "types": ["cypress"],
+    "isolatedModules": false,
+    "noEmit": true
+  }
+}
