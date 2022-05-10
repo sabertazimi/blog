@@ -36,13 +36,13 @@ describe('useVisibility', () => {
     );
   };
 
-  test('should early return when missing ref', () => {
+  test('should early return when missing ref', async () => {
     render(<Header />);
 
     fireEvent.scroll(window, { target: { scrollY: 100 } });
 
-    waitFor(() => expect(onBottomPassed).not.toBeCalled());
-    waitFor(() => expect(onBottomPassedReverse).not.toBeCalled());
+    await waitFor(() => expect(onBottomPassed).not.toBeCalled());
+    await waitFor(() => expect(onBottomPassedReverse).not.toBeCalled());
   });
 
   test('should invoke callbacks when scrolling', () => {

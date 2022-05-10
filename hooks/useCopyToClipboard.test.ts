@@ -3,19 +3,20 @@ import { act, renderHook, waitFor } from '@testing-library/react';
 import useCopyToClipboard from './useCopyToClipboard';
 
 describe('useCopyToClipboard', () => {
-  test('should work correctly when clipboard missed', async () => {
+  test('should early return when clipboard missed', async () => {
     const {
       result: {
         current: [result, copy],
       },
     } = renderHook(() => useCopyToClipboard('Hello'));
 
-    await copy();
+    const copyFnResult = await copy();
 
+    expect(copyFnResult).toBe(false);
     expect(result).toBe(false);
   });
 
-  test('should work correctly when copy failed', async () => {
+  test('should return false when copy failed', async () => {
     const { writeTextMock } = mockNavigatorClipboard();
     writeTextMock.mockImplementation(() => Promise.reject('Error'));
     const {
@@ -24,12 +25,13 @@ describe('useCopyToClipboard', () => {
       },
     } = renderHook(() => useCopyToClipboard('Hello'));
 
-    await copy();
+    const copyFnResult = await copy();
 
+    expect(copyFnResult).toBe(false);
     expect(result).toBe(false);
   });
 
-  test('should work correctly when copy failed', async () => {
+  test('should return true when copy success', async () => {
     const { writeTextMock } = mockNavigatorClipboard();
     writeTextMock.mockImplementation(() => Promise.resolve('Success'));
     const {
@@ -39,9 +41,10 @@ describe('useCopyToClipboard', () => {
     } = renderHook(() => useCopyToClipboard('Hello'));
 
     await act(async () => {
-      await copy();
+      const copyFnResult = await copy();
+      expect(copyFnResult).toBe(true);
     });
 
-    waitFor(() => expect(result).toBe(true));
+    await waitFor(() => expect(result).toBe(false));
   });
 });
