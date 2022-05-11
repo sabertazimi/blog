@@ -30,7 +30,7 @@ const TypingTitle = ({
         className
       )}
     >
-      <span role="banner" ref={ref} />
+      <span role="main" ref={ref} />
     </div>
   );
 };
