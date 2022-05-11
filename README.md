@@ -70,7 +70,7 @@ A great [blog](https://blog.tazimi.dev) system based on Next.js.
 - Out of box support for `Vercel` deployment.
 - Separate components for everything.
 - Complete `React` components testing using `Jest` and `Testing Library`.
-- E2E website testing using `Cypress`.
+- E2E visual testing using `Cypress` for `Chrome` and `Firefox`.
 - Optimization for `SEO`: meta heading, sitemap and `robots.txt` support.
 - Progressive web app (`PWA`): offline support and webapp manifest support.
 - ...and more.
