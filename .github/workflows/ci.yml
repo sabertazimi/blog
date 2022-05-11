@@ -71,6 +71,7 @@ jobs:
         os: [ubuntu-latest]
         node-version: [16]
         architecture: [x64]
+        browser: [chrome, firefox]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -87,9 +88,12 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
+      - name: List installed browsers
+        run: |
+          yarn cypress info
       - name: Run e2e tests
         run: |
-          yarn e2e
+          yarn e2e:${{ matrix.browser }}
 
   build:
     name: Building
