@@ -1,5 +1,6 @@
 import type { MotionProps } from '@components/utils';
 import { motion } from '@components/utils';
+import type { KeyboardEvent } from 'react';
 import { useCallback, useState } from 'react';
 import IconFactory from './IconFactory';
 
@@ -24,6 +25,11 @@ const Svg = (): JSX.Element => {
     () => setIsChecked(isChecked => !isChecked),
     []
   );
+  const handleKeyDown = useCallback((event: KeyboardEvent<SVGSVGElement>) => {
+    if (event.key === 'Enter') {
+      setIsChecked(isChecked => !isChecked);
+    }
+  }, []);
 
   return (
     <motion.svg
@@ -32,9 +38,11 @@ const Svg = (): JSX.Element => {
       width="2em"
       height="2em"
       fill="currentColor"
+      tabIndex={0}
       initial={false}
       animate={isChecked ? 'checked' : 'unchecked'}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       data-testid="hamburger-icon"
     >
       <motion.path

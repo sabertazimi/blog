@@ -3,6 +3,7 @@ import { Switch } from '@components/Motion';
 import type { MotionProps } from '@components/utils';
 import { routes as defaultRoutes } from '@config';
 import type { Route } from '@types';
+import type { KeyboardEvent } from 'react';
 import { useCallback, useState } from 'react';
 import styles from './LandingNav.module.css';
 import LandingNavLink from './LandingNavLink';
@@ -43,14 +44,21 @@ const bannerTransition: MotionProps['transition'] = {
 const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const handleToggle = useCallback(() => {
+  const handleClick = useCallback(() => {
     setExpanded(expanded => !expanded);
+  }, []);
+
+  const handleKeyDown = useCallback((event: KeyboardEvent<HTMLSpanElement>) => {
+    if (event.key === 'Enter') {
+      setExpanded(expanded => !expanded);
+    }
   }, []);
 
   return (
     <>
       <Hamburger
-        onClick={handleToggle}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
         className={styles.icon}
         data-testid="hamburger-button"
       />
