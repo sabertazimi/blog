@@ -40,7 +40,39 @@ describe('LandingNav', () => {
     navLinks.forEach(navLink => expect(nav).toContainElement(navLink));
   });
 
-  test('should expanded when clicked', () => {
+  test('should expanded when navigation button toggled', () => {
+    render(<LandingNav />);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByRole('navigation')).toHaveStyle(
+      'transform: translateX(-100%) translateZ(0);'
+    );
+    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
+
+    fireEvent.click(screen.getByTestId('hamburger-button'));
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByRole('navigation')).toHaveStyle(
+      'transform: translateX(0%) translateZ(0);'
+    );
+    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0.8');
+
+    fireEvent.keyDown(screen.getByTestId('hamburger-button'), { key: 'Enter' });
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByRole('navigation')).toHaveStyle(
+      'transform: translateX(-100%) translateZ(0);'
+    );
+    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
+  });
+
+  test('should expanded when navigation icon toggled', () => {
     render(<LandingNav />);
     act(() => {
       jest.advanceTimersByTime(1000);
@@ -61,7 +93,7 @@ describe('LandingNav', () => {
     );
     expect(screen.getByRole('banner')).toHaveStyle('opacity: 0.8');
 
-    fireEvent.click(screen.getByTestId('hamburger-button'));
+    fireEvent.keyDown(screen.getByTestId('hamburger-icon'), { key: 'Enter' });
     act(() => {
       jest.advanceTimersByTime(1000);
     });
