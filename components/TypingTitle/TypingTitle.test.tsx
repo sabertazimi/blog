@@ -23,7 +23,7 @@ describe('TypingTitle', () => {
     render(<TypingTitle />);
 
     await waitFor(() => {
-      expect(screen.getByRole('banner')).toBeInTheDocument();
+      expect(screen.getByRole('main')).toBeInTheDocument();
     });
   });
 });
