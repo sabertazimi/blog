@@ -12,7 +12,7 @@ Cypress.Commands.add(
   'findByRole',
   { prevSubject: 'element' },
   (subject, role) => {
-    return cy.wrap(subject).find(`[role="${role}"]`);
+    return cy.wrap(subject, { log: false }).find(`[role="${role}"]`);
   }
 );
 
@@ -20,7 +20,7 @@ Cypress.Commands.add(
   'findByTestId',
   { prevSubject: 'element' },
   (subject, testId) => {
-    return cy.wrap(subject).find(`[data-testid="${testId}"]`);
+    return cy.wrap(subject, { log: false }).find(`[data-testid="${testId}"]`);
   }
 );
 
