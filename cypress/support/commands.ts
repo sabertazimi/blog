@@ -26,10 +26,37 @@ Cypress.Commands.add(
   }
 );
 
+Cypress.Commands.add(
+  'findByLabel',
+  { prevSubject: 'element' },
+  (subject, label, options) => {
+    return cy
+      .wrap(subject, { log: false })
+      .find(`[aria-label="${label}"]`, options);
+  }
+);
+
 Cypress.Commands.add('getByRole', (role, options) => {
   return cy.get(`[role="${role}"]`, options);
 });
 
 Cypress.Commands.add('getByTestId', (testId, options) => {
   return cy.get(`[data-testid="${testId}"]`, options);
+});
+
+Cypress.Commands.add('getByLabel', (label, options) => {
+  return cy.get(`[aria-label="${label}"]`, options);
+});
+
+Cypress.Commands.add('validRoute', (path, title) => {
+  cy.url().should('include', path);
+
+  if (title) {
+    cy.title().should('include', title);
+  }
+});
+
+Cypress.Commands.add('visitRoute', (path, title) => {
+  cy.visit(path);
+  cy.validRoute(path, title);
 });

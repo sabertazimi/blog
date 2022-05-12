@@ -1,16 +1,11 @@
 import { routes, siteConfig } from '@config';
 
-describe('Home', () => {
+describe('Home Page', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visitRoute('/', siteConfig.title);
   });
 
-  it('should contain home page route', () => {
-    cy.url().should('include', '/');
-    cy.title().should('include', siteConfig.title);
-  });
-
-  it('should display home page title', () => {
+  it('should display page title', () => {
     cy.getByRole('main').should('be.visible');
   });
 

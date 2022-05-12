@@ -15,6 +15,11 @@ declare global {
         options?: Parameters<Cypress.ChainableMethods['find']>[1]
       ): Chainable<JQuery<HTMLElement>>;
 
+      findByLabel(
+        label: Parameters<Cypress.ChainableMethods['find']>[0],
+        options?: Parameters<Cypress.ChainableMethods['find']>[1]
+      ): Chainable<JQuery<HTMLElement>>;
+
       getByRole(
         role: Parameters<Cypress.ChainableMethods['get']>[0],
         options?: Parameters<Cypress.ChainableMethods['get']>[1]
@@ -24,6 +29,14 @@ declare global {
         testId: Parameters<Cypress.ChainableMethods['get']>[0],
         options?: Parameters<Cypress.ChainableMethods['get']>[1]
       ): Chainable<JQuery<HTMLElement>>;
+
+      getByLabel(
+        label: Parameters<Cypress.ChainableMethods['get']>[0],
+        options?: Parameters<Cypress.ChainableMethods['get']>[1]
+      ): Chainable<JQuery<HTMLElement>>;
+
+      validRoute(path: string, title?: string): void;
+      visitRoute(path: string, title?: string): void;
     }
   }
 }
