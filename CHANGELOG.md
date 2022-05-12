@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/sabertazimi/blog/compare/v3.4.0...v3.5.0) (2022-05-12)
+
+
+### :zap: Performance
+
+* **mdx:** optimize mdx related components render performance ([#827](https://github.com/sabertazimi/blog/issues/827)) ([4854f81](https://github.com/sabertazimi/blog/commit/4854f81ee3395e76141c9ede3abdf7972f62ae27)), closes [#826](https://github.com/sabertazimi/blog/issues/826)
+
+
+### :sparkles: Features
+
+* **test-e2e:** setup cypress e2e testing ([#831](https://github.com/sabertazimi/blog/issues/831)) ([7616760](https://github.com/sabertazimi/blog/commit/7616760922598e366aafc414f90bec4197ab77e1)), closes [#712](https://github.com/sabertazimi/blog/issues/712)
+
+
+### :wrench: Testing
+
+* **async:** await asynchrounous `waitFor` expecttions ([#835](https://github.com/sabertazimi/blog/issues/835)) ([173045c](https://github.com/sabertazimi/blog/commit/173045c692daa07f44a56cf1bc2bbf0d0b284d1c))
+* **components-Editor:** add `Editor` structure testing ([#834](https://github.com/sabertazimi/blog/issues/834)) ([f14b657](https://github.com/sabertazimi/blog/commit/f14b65798376526c106a25512d72f1e809c4c016))
+* **e2e-commands:** add `options` to custom traversal commands ([#851](https://github.com/sabertazimi/blog/issues/851)) ([d6b9c8a](https://github.com/sabertazimi/blog/commit/d6b9c8ab9e47c2ea96e2aa138c15382312912e74))
+* **e2e:** add e2e testing for landing home page ([#840](https://github.com/sabertazimi/blog/issues/840)) ([290dda9](https://github.com/sabertazimi/blog/commit/290dda9be80d61f90e9eb928cdcf9b3b22b1ae9f))
+* **e2e:** add testing for `Header` menu items ([#852](https://github.com/sabertazimi/blog/issues/852)) ([3fe248f](https://github.com/sabertazimi/blog/commit/3fe248f1561261b475fbf797b0e4972dbaf72c0f)), closes [#849](https://github.com/sabertazimi/blog/issues/849)
+* **e2e:** add testing for routes title ([#850](https://github.com/sabertazimi/blog/issues/850)) ([1d3682c](https://github.com/sabertazimi/blog/commit/1d3682c1e70737f35ff17647803f841f3777840c)), closes [#849](https://github.com/sabertazimi/blog/issues/849)
+* **e2e:** reduce custom command log ([#847](https://github.com/sabertazimi/blog/issues/847)) ([f521616](https://github.com/sabertazimi/blog/commit/f52161664a2f46c988ba5712d312705c59340850))
+
+
+### :bug: Bug Fixes
+
+* **components-Button:** rectify dark mode styles for `Button` ([#821](https://github.com/sabertazimi/blog/issues/821)) ([a69e678](https://github.com/sabertazimi/blog/commit/a69e678bbf2acb06d8ff2eae996ca652fde4703c))
+* **components-Icons:** change icons label to lower case ([#853](https://github.com/sabertazimi/blog/issues/853)) ([b7761e4](https://github.com/sabertazimi/blog/commit/b7761e4935da351b012066e59cb157225fa15f97))
+* **components-LandingNav:** add navigation `Enter` keydown handler ([#838](https://github.com/sabertazimi/blog/issues/838)) ([6e94c3a](https://github.com/sabertazimi/blog/commit/6e94c3a4cfcf703a443a7fcce7a24237b84f770e))
+* **components-PostsSearchBar:** rectify a11y error ([#812](https://github.com/sabertazimi/blog/issues/812)) ([c766041](https://github.com/sabertazimi/blog/commit/c7660411752d4e9378f03ea500c105584ef5b938))
+* **components-Toggle:** only invoke `onToggle` when `Enter` key down ([#830](https://github.com/sabertazimi/blog/issues/830)) ([9d9f0ce](https://github.com/sabertazimi/blog/commit/9d9f0ce6320002a7c9a61a68808746d8b2a529e6))
+* **components-TypingTitle:** change role for typing title ([#845](https://github.com/sabertazimi/blog/issues/845)) ([8534399](https://github.com/sabertazimi/blog/commit/85343998bf277d8cf9a37ae845e9151834824c31))
+* **cypress-commands:** add `testing-library` style query commands ([#846](https://github.com/sabertazimi/blog/issues/846)) ([d9edb46](https://github.com/sabertazimi/blog/commit/d9edb46b5d79f5538e4be0f9d4cf0a09b44566de))
+* **jest-next.js:** rectify broken jest `moduleNameMapper` configuration ([#816](https://github.com/sabertazimi/blog/issues/816)) ([ff832f3](https://github.com/sabertazimi/blog/commit/ff832f338b39fdefd114c259f011d6aad3a18b04)), closes [#814](https://github.com/sabertazimi/blog/issues/814) [#815](https://github.com/sabertazimi/blog/issues/815)
+* **mdx-styles:** keep sandpack dark font color style ([#829](https://github.com/sabertazimi/blog/issues/829)) ([9f6b348](https://github.com/sabertazimi/blog/commit/9f6b348fe3297f9fdcc9ae3fb94fb9036eaf3f44))
+* **ts-types:** add type guards to `any` type ([#819](https://github.com/sabertazimi/blog/issues/819)) ([66acbaa](https://github.com/sabertazimi/blog/commit/66acbaa36dbcdd1db00cbf6523e71b7383c9bdb4))
+
 ## [3.4.0](https://github.com/sabertazimi/blog/compare/v3.3.0...v3.4.0) (2022-05-04)
 
 
