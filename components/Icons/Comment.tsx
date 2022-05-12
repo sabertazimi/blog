@@ -24,5 +24,5 @@ const Svg = (): JSX.Element => (
   </motion.svg>
 );
 
-const Comment = IconFactory(Svg, 'Comment');
+const Comment = IconFactory(Svg, 'comment');
 export default Comment;

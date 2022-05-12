@@ -99,7 +99,7 @@ describe('Header', () => {
       cy.getByRole('menu')
         .findByRole('menuitem')
         .eq(themeSwitchIndex)
-        .findByLabel('Sun')
+        .findByLabel('sun')
         .click();
 
       cy.window().then(window => {
@@ -110,7 +110,7 @@ describe('Header', () => {
       cy.getByRole('menu')
         .findByRole('menuitem')
         .eq(themeSwitchIndex)
-        .findByLabel('Moon')
+        .findByLabel('moon')
         .click();
 
       cy.window().then(window => {
