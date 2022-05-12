@@ -11,23 +11,25 @@
 Cypress.Commands.add(
   'findByRole',
   { prevSubject: 'element' },
-  (subject, role) => {
-    return cy.wrap(subject, { log: false }).find(`[role="${role}"]`);
+  (subject, role, options) => {
+    return cy.wrap(subject, { log: false }).find(`[role="${role}"]`, options);
   }
 );
 
 Cypress.Commands.add(
   'findByTestId',
   { prevSubject: 'element' },
-  (subject, testId) => {
-    return cy.wrap(subject, { log: false }).find(`[data-testid="${testId}"]`);
+  (subject, testId, options) => {
+    return cy
+      .wrap(subject, { log: false })
+      .find(`[data-testid="${testId}"]`, options);
   }
 );
 
-Cypress.Commands.add('getByRole', role => {
-  return cy.get(`[role="${role}"]`);
+Cypress.Commands.add('getByRole', (role, options) => {
+  return cy.get(`[role="${role}"]`, options);
 });
 
-Cypress.Commands.add('getByTestId', testId => {
-  return cy.get(`[data-testid="${testId}"]`);
+Cypress.Commands.add('getByTestId', (testId, options) => {
+  return cy.get(`[data-testid="${testId}"]`, options);
 });
