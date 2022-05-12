@@ -7,5 +7,5 @@ const Svg = (): JSX.Element => (
   </motion.svg>
 );
 
-const Sun = IconFactory(Svg, 'Sun');
+const Sun = IconFactory(Svg, 'sun');
 export default Sun;

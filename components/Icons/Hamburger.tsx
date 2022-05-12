@@ -61,5 +61,5 @@ const Svg = (): JSX.Element => {
   );
 };
 
-const Hamburger = IconFactory(Svg, 'Hamburger');
+const Hamburger = IconFactory(Svg, 'hamburger');
 export default Hamburger;

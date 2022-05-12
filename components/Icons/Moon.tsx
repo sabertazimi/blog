@@ -7,5 +7,5 @@ const Svg = (): JSX.Element => (
   </motion.svg>
 );
 
-const Moon = IconFactory(Svg, 'Moon');
+const Moon = IconFactory(Svg, 'moon');
 export default Moon;
