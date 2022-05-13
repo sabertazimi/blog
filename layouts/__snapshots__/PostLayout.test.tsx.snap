@@ -5,12 +5,16 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
   <div
     class="dark:bg-black"
   >
-    <div>
+    <div
+      role="grid"
+    >
       <div
         class="ant-row ant-row-center ant-row-middle md:hidden"
+        role="row"
       >
         <div
           class="ant-col ant-col-8 ant-col-offset-8 flex-container"
+          role="cell"
         >
           <a
             href="/"
@@ -41,6 +45,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
         </div>
         <div
           class="ant-col ant-col-8 flex-container"
+          role="cell"
         >
           <span
             aria-label="bars"
@@ -370,12 +375,15 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
     </div>
     <div
       class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light"
+      role="grid"
     >
       <div
         class="ant-row ant-row-center ant-row-middle"
+        role="row"
       >
         <div
           class="ant-col ant-col-24"
+          role="cell"
         >
           <div
             class="inline-flex"
@@ -535,9 +543,11 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
       />
       <div
         class="ant-row ant-row-center ant-row-middle"
+        role="row"
       >
         <div
           class="ant-col ant-col-24"
+          role="cell"
         >
           <span>
             Copyright ©

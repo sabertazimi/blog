@@ -4,12 +4,15 @@ exports[`Footer should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="container relative block h-full mx-auto my-0 p-auto max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light"
+    role="grid"
   >
     <div
       class="ant-row ant-row-center ant-row-middle"
+      role="row"
     >
       <div
         class="ant-col ant-col-24"
+        role="cell"
       >
         <div
           class="inline-flex"
@@ -169,9 +172,11 @@ exports[`Footer should render correctly (snapshot) 1`] = `
     />
     <div
       class="ant-row ant-row-center ant-row-middle"
+      role="row"
     >
       <div
         class="ant-col ant-col-24"
+        role="cell"
       >
         <span>
           Copyright ©

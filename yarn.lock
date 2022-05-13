@@ -2629,14 +2629,14 @@ __metadata:
     "@octokit/types": ^6.34.0
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.2.0
-    "@types/jest": ^27.5.0
+    "@types/jest": ^27.5.1
     "@types/jest-axe": ^3.5.3
     "@types/mdast": ^3.0.10
-    "@types/node": ^16.11.33
+    "@types/node": ^16.11.35
     "@types/react": ^18.0.9
-    "@types/react-dom": ^18.0.3
+    "@types/react-dom": ^18.0.4
     "@types/unist": ^2.0.6
-    antd: ^4.20.2
+    antd: ^4.20.4
     classnames: ^2.3.1
     cypress: ^9.6.1
     eslint: ^8.15.0
@@ -2672,7 +2672,7 @@ __metadata:
     remark-directive: ^2.0.1
     remark-gemoji: ^7.0.1
     remark-gfm: ^3.0.1
-    remark-github: ^11.2.2
+    remark-github: ^11.2.3
     remark-math: ^5.1.1
     remark-mdx-code-meta: ^1.0.0
     standard-version: ^9.3.2
@@ -2987,13 +2987,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:*, @types/jest@npm:^27.5.0":
-  version: 27.5.0
-  resolution: "@types/jest@npm:27.5.0"
+"@types/jest@npm:*, @types/jest@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "@types/jest@npm:27.5.1"
   dependencies:
     jest-matcher-utils: ^27.0.0
     pretty-format: ^27.0.0
-  checksum: ca09ac3a17972e18683c57b681a6866c7a56c67f429810ece00425d948da62f207d271becb5cc759da3630f120596ec3c8e0ceb0eecefbe26daffba168b82879
+  checksum: be20e39f7aaf17179109c0060d0a0489cec2034d4e2e28a631284c7ecd13c5ae52f62697a33a0e89b03b6cfe54e9d5e8c2bd387ab2bd90d6071d68c63b86d1e3
   languageName: node
   linkType: hard
 
@@ -3087,10 +3087,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.11.33":
-  version: 16.11.33
-  resolution: "@types/node@npm:16.11.33"
-  checksum: 5c86d3f1e3b996607b41405d368d2e19d410eee0054595cef73d230368a609a2863926e75ad19f5091f0fd742cd018b667d54c51292018dd8020a202a5b29fa9
+"@types/node@npm:*, @types/node@npm:^16.11.35":
+  version: 16.11.35
+  resolution: "@types/node@npm:16.11.35"
+  checksum: c06e8716f579ba41e65f27bfc8a90276f2b0c3324f33372dab75ca73a11971da12dbfb89fffd2289d890b3ec31136c55c2bf6afdf5ae06183d0f4590512ec3db
   languageName: node
   linkType: hard
 
@@ -3136,12 +3136,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.0.3":
-  version: 18.0.3
-  resolution: "@types/react-dom@npm:18.0.3"
+"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.0.4":
+  version: 18.0.4
+  resolution: "@types/react-dom@npm:18.0.4"
   dependencies:
     "@types/react": "*"
-  checksum: 5c87fb610e212f0942ebbf522dfca4c9dc2ac8afa4c601454415e7c42f993518868207faff7658d11974142937ba7af2f80e274c3a3f5e0e697bdd5547dbe1b0
+  checksum: decde42d02a90ac2fe94fd6bfd9c78d002c03762a2d940df9422bf61af89c03d05e2113fd55fe45521fe27fa872a79dfd654b7d6b89652b455425efdcb763c58
   languageName: node
   linkType: hard
 
@@ -3697,9 +3697,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^4.20.2":
-  version: 4.20.2
-  resolution: "antd@npm:4.20.2"
+"antd@npm:^4.20.4":
+  version: 4.20.4
+  resolution: "antd@npm:4.20.4"
   dependencies:
     "@ant-design/colors": ^6.0.0
     "@ant-design/icons": ^4.7.0
@@ -3748,7 +3748,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: b85aee4e0d324fe4b8aa5ac139b81bb115ec9e9e9530283fdba4c9d7550bfa1caef326cc0ac6cad1144da6993d55c72f4a92a9b63bdcf254af98fc16e89e0d85
+  checksum: 31d86113a5cc77d4ea96b7bce662af321c5534e88e5fd0f7ef5ab437764eec3162f3203999a564c722dc2e95cabd1e308c5a43e4e767d2d4a2ea28337792eccf
   languageName: node
   linkType: hard
 
@@ -5416,14 +5416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.x":
-  version: 1.11.1
-  resolution: "dayjs@npm:1.11.1"
-  checksum: d5fefd79935f64a3c262e67af7ebeca180bc402b3e99be4e12d20b6d438af3f86d507ba1cbaff95dc0b4e67f1067cea3eaf37b6b74f5494fdd4a6a2909514cd1
-  languageName: node
-  linkType: hard
-
-"dayjs@npm:^1.10.4":
+"dayjs@npm:1.x, dayjs@npm:^1.10.4":
   version: 1.11.2
   resolution: "dayjs@npm:1.11.2"
   checksum: 78f8bd04a9e5f5554aa06eacda65a7d59e162d39f621a46fd34fb3b51367c3662426d86b4e2f4ac535f81e0c4d5af3e8a83b37e672412eb556267d726c61f8f3
@@ -12972,16 +12965,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-github@npm:^11.2.2":
-  version: 11.2.2
-  resolution: "remark-github@npm:11.2.2"
+"remark-github@npm:^11.2.3":
+  version: 11.2.3
+  resolution: "remark-github@npm:11.2.3"
   dependencies:
     "@types/mdast": ^3.0.0
     mdast-util-find-and-replace: ^2.0.0
     mdast-util-to-string: ^3.0.0
     unified: ^10.0.0
     unist-util-visit: ^4.0.0
-  checksum: 6287a840746be2cafdca9b40046040d9c7e2691547b2896c21feb598a3c06db731d741ca804eff05482e60c07fa135b5c4a0e2177ccc7f79288ac808f100a064
+  checksum: 359bf7b96df85025274eec1f2b651b36330df8864156657ab3e72d7861e4edc7bfc87d085bc4042a7a9624d4643a854039a9d324d117c35b91b43cf1076e083a
   languageName: node
   linkType: hard
 
@@ -14881,7 +14874,7 @@ resolve@^2.0.0-next.3:
 
 "typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
   version: 4.6.4
-  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
