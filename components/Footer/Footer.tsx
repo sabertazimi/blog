@@ -17,7 +17,10 @@ const Footer = ({
   author = siteConfig.author,
   socials = siteConfig.socials,
 }: Props): JSX.Element => (
-  <Container className="max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light">
+  <Container
+    role="grid"
+    className="max-w-full p-8 lg:p-20 text-center bg-gray-900 dark:bg-black text-light"
+  >
     <Row align="middle" justify="center">
       <Col span={24}>
         {Object.keys(socialList).map(social => (

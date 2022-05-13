@@ -27,7 +27,7 @@ const Header = ({ posts }: Props): JSX.Element => {
   });
 
   return (
-    <div ref={headerRef}>
+    <div role="grid" ref={headerRef}>
       <MobileNav />
       <DesktopNav fixed={navFixed} posts={posts} />
     </div>
