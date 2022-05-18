@@ -7,7 +7,9 @@ interface Props {
 }
 
 const ArticleContent = ({ source }: Props): JSX.Element => (
-  <MDXRemote {...source} components={MDX} />
+  <article>
+    <MDXRemote {...source} components={MDX} />
+  </article>
 );
 
 export default ArticleContent;
