@@ -15,6 +15,6 @@
   @apply mr-2;
   @apply text-primary;
 
-  content: counter(li) '. ';
+  content: counters(li, '.') '. ';
   counter-increment: li;
 }
