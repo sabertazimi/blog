@@ -42,20 +42,22 @@ const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
   );
 
   return (
-    <Sandpack
-      template={template}
-      theme={monokaiProTheme}
-      customSetup={{
-        files,
-        dependencies: {},
-      }}
-      options={{
-        showLineNumbers: true,
-        showInlineErrors: false,
-        showTabs: true,
-        externalResources: [],
-      }}
-    />
+    <div className="dark:shadow-primary dark:shadow-xl">
+      <Sandpack
+        template={template}
+        theme={monokaiProTheme}
+        customSetup={{
+          files,
+          dependencies: {},
+        }}
+        options={{
+          showLineNumbers: true,
+          showInlineErrors: false,
+          showTabs: true,
+          externalResources: [],
+        }}
+      />
+    </div>
   );
 };
 
