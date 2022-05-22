@@ -2659,7 +2659,7 @@ __metadata:
     "@types/react": ^18.0.9
     "@types/react-dom": ^18.0.4
     "@types/unist": ^2.0.6
-    antd: ^4.20.5
+    antd: ^4.20.6
     classnames: ^2.3.1
     cypress: ^9.6.1
     eslint: ^8.16.0
@@ -3156,6 +3156,13 @@ __metadata:
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
   checksum: ef6e1899e59b876c273811b1bd845022fc66d5a3d11cb38a25b6c566b30514ae38fe20a40f67622f362a4f4f7f9224e22d8da101cff3d6e97e11d7b4c307cfc1
+  languageName: node
+  linkType: hard
+
+"@types/qs@npm:^6.9.7":
+  version: 6.9.7
+  resolution: "@types/qs@npm:6.9.7"
+  checksum: 7fd6f9c25053e9b5bb6bc9f9f76c1d89e6c04f7707a7ba0e44cc01f17ef5284adb82f230f542c2d5557d69407c9a40f0f3515e8319afd14e1e16b5543ac6cdba
   languageName: node
   linkType: hard
 
@@ -3720,15 +3727,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^4.20.5":
-  version: 4.20.5
-  resolution: "antd@npm:4.20.5"
+"antd@npm:^4.20.6":
+  version: 4.20.6
+  resolution: "antd@npm:4.20.6"
   dependencies:
     "@ant-design/colors": ^6.0.0
     "@ant-design/icons": ^4.7.0
     "@ant-design/react-slick": ~0.28.1
     "@babel/runtime": ^7.12.5
     "@ctrl/tinycolor": ^3.4.0
+    "@types/qs": ^6.9.7
     classnames: ^2.2.6
     copy-to-clipboard: ^3.2.0
     lodash: ^4.17.21
@@ -3771,7 +3779,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 974e6f3ce1b2d38ee0c250d119a3d83740f6c0ef4ed637206e3cf57059e0f3017a37c12259a7a3f03e563a91ed77f86bf5dc9db20454a1e5168f305983a236a0
+  checksum: 73fd7b420ec9508f919389570204550b2537b796739e8e1a4045b1f4bb6b649ea00ec8df70fa82c788588c0aa4f40e0bd019ebbf674841bb514aff84a00e0ea4
   languageName: node
   linkType: hard
 
