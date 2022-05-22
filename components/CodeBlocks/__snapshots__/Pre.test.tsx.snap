@@ -3,7 +3,7 @@
 exports[`Pre should hidden copy button correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre"
+    class="pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <pre
@@ -74,7 +74,7 @@ exports[`Pre should hidden copy button correctly (snapshot) 1`] = `
 exports[`Pre should hidden line number correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre"
+    class="pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <button
@@ -181,7 +181,7 @@ exports[`Pre should hidden line number correctly (snapshot) 1`] = `
 exports[`Pre should render code title correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre"
+    class="pre dark:shadow-primary dark:shadow-xl"
     data-language="Code Title"
   >
     <button
@@ -290,7 +290,7 @@ exports[`Pre should render code title correctly (snapshot) 1`] = `
 exports[`Pre should render different language correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="language-html pre"
+    class="language-html pre dark:shadow-primary dark:shadow-xl"
     data-language="HTML"
   >
     <button
@@ -358,7 +358,7 @@ exports[`Pre should render different language correctly (snapshot) 1`] = `
 exports[`Pre should render different language correctly (snapshot) 2`] = `
 <div>
   <pre
-    class="language-xml pre"
+    class="language-xml pre dark:shadow-primary dark:shadow-xl"
     data-language="XML"
   >
     <button
@@ -426,7 +426,7 @@ exports[`Pre should render different language correctly (snapshot) 2`] = `
 exports[`Pre should render different language correctly (snapshot) 3`] = `
 <div>
   <pre
-    class="language-yml pre"
+    class="language-yml pre dark:shadow-primary dark:shadow-xl"
     data-language="YAML"
   >
     <button
@@ -494,7 +494,7 @@ exports[`Pre should render different language correctly (snapshot) 3`] = `
 exports[`Pre should render different language correctly (snapshot) 4`] = `
 <div>
   <pre
-    class="language-yaml pre"
+    class="language-yaml pre dark:shadow-primary dark:shadow-xl"
     data-language="YAML"
   >
     <button
@@ -562,7 +562,7 @@ exports[`Pre should render different language correctly (snapshot) 4`] = `
 exports[`Pre should render different language correctly (snapshot) 5`] = `
 <div>
   <pre
-    class="language-css pre"
+    class="language-css pre dark:shadow-primary dark:shadow-xl"
     data-language="CSS"
   >
     <button
@@ -654,7 +654,7 @@ exports[`Pre should render different language correctly (snapshot) 5`] = `
 exports[`Pre should render different language correctly (snapshot) 6`] = `
 <div>
   <pre
-    class="language-json pre"
+    class="language-json pre dark:shadow-primary dark:shadow-xl"
     data-language="JSON"
   >
     <button
@@ -722,7 +722,7 @@ exports[`Pre should render different language correctly (snapshot) 6`] = `
 exports[`Pre should render different language correctly (snapshot) 7`] = `
 <div>
   <pre
-    class="language-md pre"
+    class="language-md pre dark:shadow-primary dark:shadow-xl"
     data-language="Markdown"
   >
     <button
@@ -790,7 +790,7 @@ exports[`Pre should render different language correctly (snapshot) 7`] = `
 exports[`Pre should render different language correctly (snapshot) 8`] = `
 <div>
   <pre
-    class="language-markdown pre"
+    class="language-markdown pre dark:shadow-primary dark:shadow-xl"
     data-language="Markdown"
   >
     <button
@@ -858,7 +858,7 @@ exports[`Pre should render different language correctly (snapshot) 8`] = `
 exports[`Pre should render different language correctly (snapshot) 9`] = `
 <div>
   <pre
-    class="language-js pre"
+    class="language-js pre dark:shadow-primary dark:shadow-xl"
     data-language="JavaScript"
   >
     <button
@@ -967,7 +967,7 @@ exports[`Pre should render different language correctly (snapshot) 9`] = `
 exports[`Pre should render different language correctly (snapshot) 10`] = `
 <div>
   <pre
-    class="language-javascript pre"
+    class="language-javascript pre dark:shadow-primary dark:shadow-xl"
     data-language="JavaScript"
   >
     <button
@@ -1076,7 +1076,7 @@ exports[`Pre should render different language correctly (snapshot) 10`] = `
 exports[`Pre should render different language correctly (snapshot) 11`] = `
 <div>
   <pre
-    class="language-ts pre"
+    class="language-ts pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <button
@@ -1185,7 +1185,7 @@ exports[`Pre should render different language correctly (snapshot) 11`] = `
 exports[`Pre should render different language correctly (snapshot) 12`] = `
 <div>
   <pre
-    class="language-typescript pre"
+    class="language-typescript pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <button
@@ -1294,7 +1294,7 @@ exports[`Pre should render different language correctly (snapshot) 12`] = `
 exports[`Pre should render different language correctly (snapshot) 13`] = `
 <div>
   <pre
-    class="language-coffee pre"
+    class="language-coffee pre dark:shadow-primary dark:shadow-xl"
     data-language="CoffeeScript"
   >
     <button
@@ -1397,7 +1397,7 @@ exports[`Pre should render different language correctly (snapshot) 13`] = `
 exports[`Pre should render different language correctly (snapshot) 14`] = `
 <div>
   <pre
-    class="language-coffeescript pre"
+    class="language-coffeescript pre dark:shadow-primary dark:shadow-xl"
     data-language="CoffeeScript"
   >
     <button
@@ -1500,7 +1500,7 @@ exports[`Pre should render different language correctly (snapshot) 14`] = `
 exports[`Pre should render different language correctly (snapshot) 15`] = `
 <div>
   <pre
-    class="language-jsx pre"
+    class="language-jsx pre dark:shadow-primary dark:shadow-xl"
     data-language="React"
   >
     <button
@@ -1609,7 +1609,7 @@ exports[`Pre should render different language correctly (snapshot) 15`] = `
 exports[`Pre should render different language correctly (snapshot) 16`] = `
 <div>
   <pre
-    class="language-tsx pre"
+    class="language-tsx pre dark:shadow-primary dark:shadow-xl"
     data-language="React"
   >
     <button
@@ -1718,7 +1718,7 @@ exports[`Pre should render different language correctly (snapshot) 16`] = `
 exports[`Pre should render different language correctly (snapshot) 17`] = `
 <div>
   <pre
-    class="language-objc pre"
+    class="language-objc pre dark:shadow-primary dark:shadow-xl"
     data-language="Objective-C"
   >
     <button
@@ -1827,7 +1827,7 @@ exports[`Pre should render different language correctly (snapshot) 17`] = `
 exports[`Pre should render different language correctly (snapshot) 18`] = `
 <div>
   <pre
-    class="language-objectivec pre"
+    class="language-objectivec pre dark:shadow-primary dark:shadow-xl"
     data-language="Objective-C"
   >
     <button
@@ -1936,7 +1936,7 @@ exports[`Pre should render different language correctly (snapshot) 18`] = `
 exports[`Pre should render different language correctly (snapshot) 19`] = `
 <div>
   <pre
-    class="language-vue pre"
+    class="language-vue pre dark:shadow-primary dark:shadow-xl"
     data-language="Vue"
   >
     <button
@@ -2004,7 +2004,7 @@ exports[`Pre should render different language correctly (snapshot) 19`] = `
 exports[`Pre should render different language correctly (snapshot) 20`] = `
 <div>
   <pre
-    class="language-go pre"
+    class="language-go pre dark:shadow-primary dark:shadow-xl"
     data-language="Go"
   >
     <button
@@ -2113,7 +2113,7 @@ exports[`Pre should render different language correctly (snapshot) 20`] = `
 exports[`Pre should render different language correctly (snapshot) 21`] = `
 <div>
   <pre
-    class="language-java pre"
+    class="language-java pre dark:shadow-primary dark:shadow-xl"
     data-language="Java"
   >
     <button
@@ -2181,7 +2181,7 @@ exports[`Pre should render different language correctly (snapshot) 21`] = `
 exports[`Pre should render different language correctly (snapshot) 22`] = `
 <div>
   <pre
-    class="language-rust pre"
+    class="language-rust pre dark:shadow-primary dark:shadow-xl"
     data-language="Rust"
   >
     <button
@@ -2249,7 +2249,7 @@ exports[`Pre should render different language correctly (snapshot) 22`] = `
 exports[`Pre should render empty children correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre"
+    class="pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <button
@@ -2319,7 +2319,7 @@ exports[`Pre should render empty children correctly (snapshot) 1`] = `
 exports[`Pre should render empty className correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre"
+    class="pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <button
@@ -2428,7 +2428,7 @@ exports[`Pre should render empty className correctly (snapshot) 1`] = `
 exports[`Pre should render highlight lines correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre"
+    class="pre dark:shadow-primary dark:shadow-xl"
     data-language="TypeScript"
   >
     <button

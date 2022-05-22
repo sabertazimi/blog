@@ -43,7 +43,12 @@ const Pre = ({
 
   return (
     <pre
-      className={classNames(className, languageClass, styles.pre)}
+      className={classNames(
+        className,
+        languageClass,
+        styles.pre,
+        'dark:shadow-primary dark:shadow-xl'
+      )}
       data-language={title || languageName}
     >
       {!nocopy && !live ? <CopyButton code={code} /> : null}
