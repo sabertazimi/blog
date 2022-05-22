@@ -2,23 +2,27 @@
 
 exports[`ArticleToc should render correctly (snapshot) 1`] = `
 <div>
-  <div>
-    <div
-      class=""
-    >
+  <div
+    class="toc"
+  >
+    <div>
       <div
-        class="ant-anchor-wrapper toc"
-        style="max-height: 100vh;"
+        class=""
       >
         <div
-          class="ant-anchor"
+          class="ant-anchor-wrapper"
+          style="max-height: calc(100vh - 150px);"
         >
           <div
-            class="ant-anchor-ink"
+            class="ant-anchor"
           >
-            <span
-              class="ant-anchor-ink-ball"
-            />
+            <div
+              class="ant-anchor-ink"
+            >
+              <span
+                class="ant-anchor-ink-ball"
+              />
+            </div>
           </div>
         </div>
       </div>

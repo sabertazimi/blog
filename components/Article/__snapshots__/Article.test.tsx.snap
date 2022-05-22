@@ -127,41 +127,45 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </span>
       </div>
     </div>
-    <div>
-      <div
-        class=""
-      >
+    <div
+      class="toc"
+    >
+      <div>
         <div
-          class="ant-anchor-wrapper toc"
-          style="max-height: 100vh;"
+          class=""
         >
           <div
-            class="ant-anchor"
+            class="ant-anchor-wrapper"
+            style="max-height: calc(100vh - 150px);"
           >
             <div
-              class="ant-anchor-ink"
+              class="ant-anchor"
             >
-              <span
-                class="ant-anchor-ink-ball"
-              />
-            </div>
-            <div
-              class="ant-anchor-link"
-            >
-              <a
-                class="ant-anchor-link-title"
-                href="#"
-                title="1 Basic Notes"
+              <div
+                class="ant-anchor-ink"
               >
-                1 Basic Notes
-              </a>
+                <span
+                  class="ant-anchor-ink-ball"
+                />
+              </div>
+              <div
+                class="ant-anchor-link"
+              >
+                <a
+                  class="ant-anchor-link-title"
+                  href="#"
+                  title="1 Basic Notes"
+                >
+                  1 Basic Notes
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
+      class="container relative block h-full mx-auto my-0 p-auto px-6 max-w-screen-lg md:max-w-9/12 xl:max-w-7/12"
     >
       <article>
         <h2
@@ -290,7 +294,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 left-0 z-10 -translate-y-1/2 hidden md:visible md:inline-flex"
+        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 -translate-y-1/2 hidden md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
@@ -548,41 +552,45 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         </span>
       </div>
     </div>
-    <div>
-      <div
-        class=""
-      >
+    <div
+      class="toc"
+    >
+      <div>
         <div
-          class="ant-anchor-wrapper toc"
-          style="max-height: 100vh;"
+          class=""
         >
           <div
-            class="ant-anchor"
+            class="ant-anchor-wrapper"
+            style="max-height: calc(100vh - 150px);"
           >
             <div
-              class="ant-anchor-ink"
+              class="ant-anchor"
             >
-              <span
-                class="ant-anchor-ink-ball"
-              />
-            </div>
-            <div
-              class="ant-anchor-link"
-            >
-              <a
-                class="ant-anchor-link-title"
-                href="#"
-                title="1 Basic Notes"
+              <div
+                class="ant-anchor-ink"
               >
-                1 Basic Notes
-              </a>
+                <span
+                  class="ant-anchor-ink-ball"
+                />
+              </div>
+              <div
+                class="ant-anchor-link"
+              >
+                <a
+                  class="ant-anchor-link-title"
+                  href="#"
+                  title="1 Basic Notes"
+                >
+                  1 Basic Notes
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="container relative block h-full mx-auto my-0 p-auto max-w-screen-lg px-6"
+      class="container relative block h-full mx-auto my-0 p-auto px-6 max-w-screen-lg md:max-w-9/12 xl:max-w-7/12"
     >
       <article>
         <h2
@@ -711,7 +719,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 left-0 z-10 -translate-y-1/2 hidden md:visible md:inline-flex"
+        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 -translate-y-1/2 hidden md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"

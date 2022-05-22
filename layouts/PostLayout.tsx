@@ -20,7 +20,7 @@ const PostLayout = ({
     <Header posts={posts} />
     <Container className="max-w-full">
       {children}
-      <BackTop />
+      <BackTop className="right-12 bottom-12 md:right-16 md:bottom-16" />
     </Container>
     <Footer buildTime={buildTime} />
   </div>

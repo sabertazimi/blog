@@ -26,7 +26,7 @@ const Article = ({
     <div>
       <ArticleHeader post={postMeta} />
       <ArticleToc slug={slug} />
-      <Container className="max-w-screen-lg px-6">
+      <Container className="px-6 max-w-screen-lg md:max-w-9/12 xl:max-w-7/12">
         <ArticleContent source={source} />
         <Divider>{subtitle || 'Blog'}</Divider>
         <ArticleNav prevPost={prevPost} nextPost={nextPost} />
