@@ -22,6 +22,7 @@
   "packageManager": "yarn@3.2.1",
   "scripts": {
     "build": "next build && next-sitemap --config sitemap.config.js",
+    "clone": "git clone https://$VERCEL_GIT_PROVIDER.com/$VERCEL_GIT_REPO_OWNER/$VERCEL_GIT_REPO_SLUG && rm -fr .git && cp -fr $VERCEL_GIT_REPO_SLUG/.git . && rm -fr $VERCEL_GIT_REPO_SLUG",
     "dev": "next",
     "e2e:chrome": "start-server-and-test e2e:prepare http://localhost:3000 cypress:chrome",
     "e2e:firefox": "start-server-and-test e2e:prepare http://localhost:3000 cypress:firefox",
