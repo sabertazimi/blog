@@ -1,5 +1,5 @@
 import CopyButton from '@components/CopyButton';
-import { classNames, dynamic } from '@components/utils';
+import { cx, dynamic } from '@components/utils';
 import type { HTMLProps, ReactElement } from 'react';
 import BlockCode from './BlockCode';
 import styles from './Pre.module.css';
@@ -43,7 +43,7 @@ const Pre = ({
 
   return (
     <pre
-      className={classNames(
+      className={cx(
         className,
         languageClass,
         styles.pre,

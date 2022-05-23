@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { CSSProperties, HTMLProps, ReactNode } from 'react';
 
 interface Props extends HTMLProps<HTMLDivElement> {
@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
 
 const Container = ({ children, className, ...props }: Props): JSX.Element => (
   <div
-    className={classNames(
+    className={cx(
       'container relative block h-full mx-auto my-0 p-auto',
       className
     )}

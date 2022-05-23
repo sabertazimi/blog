@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import { Typography } from 'antd';
 import type { TitleProps } from 'antd/lib/typography/Title';
 
@@ -10,7 +10,7 @@ const Heading = ({
 }: TitleProps): JSX.Element => (
   <Typography.Title
     {...props}
-    className={classNames(
+    className={cx(
       'mb-6',
       `after:ml-1 hover:after:content-['#'] hover:after:text-primary`,
       'dark:text-light',

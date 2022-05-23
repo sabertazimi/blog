@@ -1,5 +1,5 @@
 import type { MotionProps } from '@components/utils';
-import { AnimatePresence, classNames, motion } from '@components/utils';
+import { AnimatePresence, cx, motion } from '@components/utils';
 import type { KeyboardEvent, ReactNode } from 'react';
 import { useCallback } from 'react';
 import styles from './Toggle.module.css';
@@ -60,7 +60,7 @@ const Toggle = ({
       tabIndex={0}
       onClick={onToggle}
       onKeyDown={handleKeyDown}
-      className={classNames(styles.wrapper, className)}
+      className={cx(styles.wrapper, className)}
       {...props}
     >
       <AnimatePresence initial={false}>

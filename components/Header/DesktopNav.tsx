@@ -3,7 +3,7 @@ import LocalImage from '@components/LocalImage';
 import Menu from '@components/Menu';
 import PostsSearchBar from '@components/PostsSearchBar';
 import ThemeSwitch from '@components/ThemeSwitch';
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
 import type { PostMeta } from '@types';
@@ -16,7 +16,7 @@ interface Props {
 const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
     mode="horizontal"
-    className={classNames(
+    className={cx(
       'fixed top-0 z-10 w-full',
       'hidden md:visible md:flex',
       'transition transform-gpu',
@@ -44,7 +44,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
         label: (
           <Link
             href={route.path}
-            className={classNames(
+            className={cx(
               'flex-container h-full',
               'transition transform-gpu transition-none',
               'dark:text-light',
@@ -70,7 +70,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
         key: 'theme',
         label: (
           <ThemeSwitch
-            className={classNames('dark:text-light', {
+            className={cx('dark:text-light', {
               'text-light': !fixed,
               'text-dark': fixed,
             })}

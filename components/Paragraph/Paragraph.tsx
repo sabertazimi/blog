@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import { Typography } from 'antd';
 import type { ReactNode } from 'react';
 
@@ -10,7 +10,7 @@ interface Props {
 const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
   <Typography.Paragraph
     {...props}
-    className={classNames(
+    className={cx(
       className,
       'mt-0 mb-9 leading-relaxed tracking-wide dark:text-light'
     )}

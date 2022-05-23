@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import styles from './InlineCode.module.css';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 
 const InlineCode = ({ children, className }: Props): JSX.Element => (
   <code
-    className={classNames(
+    className={cx(
       className,
       styles.code,
       'dark:text-light dark:shadow-primary dark:shadow-xl'

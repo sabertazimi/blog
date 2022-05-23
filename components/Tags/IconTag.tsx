@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { ReactNode } from 'react';
 import Tag from './Tag';
 
@@ -9,7 +9,7 @@ interface Props {
 
 const IconTag = ({ tag, icon }: Props): JSX.Element => (
   <Tag
-    className={classNames(
+    className={cx(
       'inline-flex justify-center items-center mt-1',
       'text-base font-extrabold',
       'bg-black border-black text-light',

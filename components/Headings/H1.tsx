@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { ReactNode } from 'react';
 import Heading from './Heading';
 
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const H1 = ({ className, ...props }: Props): JSX.Element => (
-  <Heading {...props} level={1} className={classNames(className, 'mt-48')} />
+  <Heading {...props} level={1} className={cx(className, 'mt-48')} />
 );
 
 export default H1;
