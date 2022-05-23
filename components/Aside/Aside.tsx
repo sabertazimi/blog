@@ -1,5 +1,5 @@
 import Alert from '@components/Alert';
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { ReactNode } from 'react';
 import styles from './Aside.module.css';
 
@@ -42,7 +42,7 @@ const Aside = ({
     message={title}
     description={children}
     showIcon
-    className={classNames(
+    className={cx(
       className,
       styles.admonition,
       'dark:bg-black dark:shadow-primary dark:shadow-xl'

@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { CSSProperties, HTMLProps, ReactNode } from 'react';
 
 interface Props extends HTMLProps<HTMLDivElement> {
@@ -13,7 +13,7 @@ const FlexContainer = ({
   ...props
 }: Props): JSX.Element => (
   <div
-    className={classNames(
+    className={cx(
       'flex-container container relative h-full mx-auto my-0 p-auto',
       className
     )}

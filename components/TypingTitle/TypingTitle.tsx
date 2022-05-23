@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import { siteConfig } from '@config';
 import { useTypingEffect } from '@hooks';
 import { useRef } from 'react';
@@ -23,7 +23,7 @@ const TypingTitle = ({
 
   return (
     <div
-      className={classNames(
+      className={cx(
         'w-full h-auto px-0 py-0 mx-auto my-0',
         'text-5xl font-extrabold text-center',
         'typing-title-container lg:text-9xl',

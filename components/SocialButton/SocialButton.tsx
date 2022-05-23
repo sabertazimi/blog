@@ -1,7 +1,7 @@
 import Button from '@components/Button';
 import { SocialIcon } from '@components/Icons';
 import { Bounce } from '@components/Motion';
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { SocialType } from '@types';
 import type { HTMLProps } from 'react';
 
@@ -23,7 +23,7 @@ const SocialButton = ({
       role="link"
       size="large"
       type="link"
-      className={classNames('text-center text-light rounded-none', className)}
+      className={cx('text-center text-light rounded-none', className)}
       style={color ? { backgroundColor: color } : {}}
       icon={SocialIcon(type)}
       href={`${url}`}

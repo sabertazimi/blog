@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { ReactNode } from 'react';
 import styles from './Footnote.module.css';
 
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Footnote = ({ children, className, ...props }: Props): JSX.Element => (
-  <div {...props} className={classNames(className, styles.footnote)}>
+  <div {...props} className={cx(className, styles.footnote)}>
     {children}
   </div>
 );

@@ -1,5 +1,5 @@
 import type { MotionProps } from '@components/utils';
-import { classNames, motion } from '@components/utils';
+import { cx, motion } from '@components/utils';
 import type { ReactNode } from 'react';
 
 interface Props {
@@ -37,7 +37,7 @@ const Bounce = ({
   ...props
 }: Props): JSX.Element => (
   <motion.div
-    className={classNames('inline-flex', className)}
+    className={cx('inline-flex', className)}
     initial={initialVariants}
     whileInView={inViewVariants}
     whileHover={hoverVariants}

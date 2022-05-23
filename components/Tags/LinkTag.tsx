@@ -1,5 +1,5 @@
 import Link from '@components/Link';
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import { getColorByName } from '@config';
 import type { Tag as TagType } from '@types';
 import Tag from './Tag';
@@ -17,10 +17,7 @@ const LinkTag = ({
   color = getColorByName(tag),
   className,
 }: Props): JSX.Element => (
-  <Tag
-    color={color}
-    className={classNames('mb-1 text-base font-extrabold', className)}
-  >
+  <Tag color={color} className={cx('mb-1 text-base font-extrabold', className)}>
     <Link href={href}>{tag}</Link>
   </Tag>
 );

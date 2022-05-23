@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import { Typography } from 'antd';
 import type { ReactNode } from 'react';
 import styles from './Anchor.module.css';
@@ -9,10 +9,7 @@ interface Props {
 }
 
 const Anchor = ({ className, ...props }: Props): JSX.Element => (
-  <Typography.Link
-    {...props}
-    className={classNames(className, styles.anchor)}
-  />
+  <Typography.Link {...props} className={cx(className, styles.anchor)} />
 );
 
 export default Anchor;

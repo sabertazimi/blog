@@ -2,7 +2,7 @@ import FlexContainer from '@components/FlexContainer';
 import { ArrowLeft, ArrowRight, Home } from '@components/Icons';
 import Link from '@components/Link';
 import { Bounce } from '@components/Motion';
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { PostMeta } from '@types';
 
 interface Props {
@@ -19,7 +19,7 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
     <Bounce className="flex-1 mr-6 md:mr-24">
       <Link
         href={prevPost ? `/post/${prevPost.slug}` : '/posts'}
-        className={classNames(
+        className={cx(
           'flex-container',
           'flex-1',
           'w-full h-24 m-auto',
@@ -41,7 +41,7 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
     <Bounce className="flex-1 ml-6 md:ml-24">
       <Link
         href={nextPost ? `/post/${nextPost.slug}` : '/posts'}
-        className={classNames(
+        className={cx(
           'flex-container',
           'flex-1',
           'w-full h-24 m-auto',

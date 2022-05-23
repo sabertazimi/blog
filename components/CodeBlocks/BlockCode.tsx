@@ -1,4 +1,4 @@
-import { classNames } from '@components/utils';
+import { cx } from '@components/utils';
 import type { Language } from 'prism-react-renderer';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import styles from './BlockCode.module.css';
@@ -24,12 +24,12 @@ const BlockCode = ({
     theme={theme}
   >
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre className={classNames(className, styles.code)} style={style}>
+      <pre className={cx(className, styles.code)} style={style}>
         {tokens.map((line, index) => (
           <div
             key={index}
             {...getLineProps({ line, key: index })}
-            className={classNames(
+            className={cx(
               'token-line',
               lines.has(index + 1) ? styles.highlight : styles.hover
             )}

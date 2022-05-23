@@ -1,6 +1,6 @@
 import { Check, Copy } from '@components/Icons';
 import { Toggle } from '@components/Motion';
-import { classNames, useReducedMotion } from '@components/utils';
+import { cx, useReducedMotion } from '@components/utils';
 import { useCopyToClipboard } from '@hooks';
 import styles from './CopyButton.module.css';
 
@@ -18,7 +18,7 @@ const CopyButton = ({ code, className }: Props): JSX.Element => {
       type="button"
       aria-label="CopyButton"
       title="Copy"
-      className={classNames(className, styles.button)}
+      className={cx(className, styles.button)}
       onClick={copy}
     >
       <Toggle
