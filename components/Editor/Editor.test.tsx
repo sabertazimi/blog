@@ -24,7 +24,9 @@ describe('Editor', () => {
     );
     expect(screen.getByRole('group')).toBeInTheDocument();
     expect(screen.getByRole('group')).toContainElement(
-      screen.getByText('const foo = bar();')
+      screen.getByText('const')
     );
+    expect(screen.getByRole('group')).toContainElement(screen.getByText('foo'));
+    expect(screen.getByRole('group')).toContainElement(screen.getByText('bar'));
   });
 });

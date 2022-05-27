@@ -1,8 +1,8 @@
 import type { SandpackPredefinedTemplate } from '@codesandbox/sandpack-react';
-import { monokaiProTheme, Sandpack } from '@codesandbox/sandpack-react';
-import '@codesandbox/sandpack-react/dist/index.css';
+import { Sandpack } from '@codesandbox/sandpack-react';
+import { monokaiPro } from '@codesandbox/sandpack-themes';
 import type { ReactElement, ReactNode } from 'react';
-import React from 'react';
+import { Children } from 'react';
 import { normalizeFilepath } from './utils';
 
 interface Props {
@@ -21,7 +21,7 @@ interface PreProps {
 }
 
 const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
-  const codeSnippets = React.Children.toArray(children);
+  const codeSnippets = Children.toArray(children);
   const files = codeSnippets.reduce(
     (result: Record<string, { code: string }>, codeSnippet) => {
       const preElement = codeSnippet as ReactElement<PreProps>;
@@ -44,18 +44,18 @@ const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
   return (
     <div className="dark:shadow-primary dark:shadow-xl">
       <Sandpack
-        template={template}
-        theme={monokaiProTheme}
         customSetup={{
-          files,
           dependencies: {},
         }}
+        files={files}
         options={{
           showLineNumbers: true,
           showInlineErrors: false,
           showTabs: true,
           externalResources: [],
         }}
+        template={template}
+        theme={monokaiPro}
       />
     </div>
   );
