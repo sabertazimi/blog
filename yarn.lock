@@ -2685,7 +2685,7 @@ __metadata:
     next-progress: ^2.2.0
     next-pwa: ^5.5.2
     next-seo: ^5.4.0
-    next-sitemap: ^2.5.25
+    next-sitemap: ^2.5.26
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.14
     postcss-flexbugs-fixes: ^5.0.2
@@ -4970,7 +4970,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-conventionalcommits@npm:4.6.3":
+"conventional-changelog-conventionalcommits@npm:4.6.3, conventional-changelog-conventionalcommits@npm:^4.5.0":
   version: 4.6.3
   resolution: "conventional-changelog-conventionalcommits@npm:4.6.3"
   dependencies:
@@ -4978,17 +4978,6 @@ __metadata:
     lodash: ^4.17.15
     q: ^1.5.1
   checksum: 7b8e8a21ebb56f9aaa510e12917b7c609202072c3e71089e0a09630c37c2e8146cdb04364809839b0e3eb55f807fe84d03b2079500b37f6186d505848be5c562
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-conventionalcommits@npm:^4.5.0":
-  version: 4.6.1
-  resolution: "conventional-changelog-conventionalcommits@npm:4.6.1"
-  dependencies:
-    compare-func: ^2.0.0
-    lodash: ^4.17.15
-    q: ^1.5.1
-  checksum: f866616c8f6f21cea005b42792451bfbd16bd4d82872867d1218f67a7993a53c5d87e26d6b483d9252e8022f2e4570e6cf9fa2a409aae5a3d73eea92ccf78b13
   languageName: node
   linkType: hard
 
@@ -10643,9 +10632,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^2.5.25":
-  version: 2.5.25
-  resolution: "next-sitemap@npm:2.5.25"
+"next-sitemap@npm:^2.5.26":
+  version: 2.5.26
+  resolution: "next-sitemap@npm:2.5.26"
   dependencies:
     "@corex/deepmerge": ^2.6.148
     minimist: ^1.2.6
@@ -10653,7 +10642,7 @@ __metadata:
     next: "*"
   bin:
     next-sitemap: bin/next-sitemap
-  checksum: eec016acfcb164f6ad4d52278ba5e9d2f435d5476c0488a568c174dc612eaff5be22edad72473719dfcecc6c7f21aa39eb6131f62c3e41a71ad5bfaca3c4c248
+  checksum: 4b75760d4e34ffd904aaf5abb810abd89f5550983deee1416147ab1660accf083554d140e2067f53c53adaf100b1cbb991e0f163fe7b0a78a4311dbb2398c7fc
   languageName: node
   linkType: hard
 
