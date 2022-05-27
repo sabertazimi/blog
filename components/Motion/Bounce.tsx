@@ -18,6 +18,10 @@ const inViewVariants: MotionProps['whileInView'] = {
   x: 0,
 };
 
+const focusVariants: MotionProps['whileFocus'] = {
+  x: -5,
+};
+
 const hoverVariants: MotionProps['whileHover'] = {
   x: -5,
 };
@@ -40,6 +44,7 @@ const Bounce = ({
     className={cx('inline-flex', className)}
     initial={initialVariants}
     whileInView={inViewVariants}
+    whileFocus={focusVariants}
     whileHover={hoverVariants}
     whileTap={tapVariants}
     transition={{
