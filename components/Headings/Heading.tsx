@@ -11,8 +11,8 @@ const Heading = ({
   <Typography.Title
     {...props}
     className={cx(
-      'mb-6',
-      `after:ml-1 hover:after:content-['#'] hover:after:text-primary`,
+      'relative mb-6',
+      'after:ml-1 after:text-primary hover:after:content-["#"]',
       'dark:text-light',
       className
     )}
