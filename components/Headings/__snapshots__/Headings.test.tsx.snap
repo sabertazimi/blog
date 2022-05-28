@@ -3,7 +3,7 @@
 exports[`Headings should render correctly (snapshot) 1`] = `
 <div>
   <h1
-    class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-48"
+    class="ant-typography relative mb-6 after:ml-1 after:text-primary hover:after:content-[\\"#\\"] dark:text-light mt-48"
   >
     Heading
   </h1>
@@ -13,7 +13,7 @@ exports[`Headings should render correctly (snapshot) 1`] = `
 exports[`Headings should render correctly (snapshot) 2`] = `
 <div>
   <h2
-    class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-24"
+    class="ant-typography relative mb-6 after:ml-1 after:text-primary hover:after:content-[\\"#\\"] dark:text-light mt-24"
   >
     Heading
   </h2>
@@ -23,7 +23,7 @@ exports[`Headings should render correctly (snapshot) 2`] = `
 exports[`Headings should render correctly (snapshot) 3`] = `
 <div>
   <h3
-    class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-12"
+    class="ant-typography relative mb-6 after:ml-1 after:text-primary hover:after:content-[\\"#\\"] dark:text-light mt-12"
   >
     Heading
   </h3>
@@ -33,7 +33,7 @@ exports[`Headings should render correctly (snapshot) 3`] = `
 exports[`Headings should render correctly (snapshot) 4`] = `
 <div>
   <h4
-    class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-6"
+    class="ant-typography relative mb-6 after:ml-1 after:text-primary hover:after:content-[\\"#\\"] dark:text-light mt-6"
   >
     Heading
   </h4>
@@ -43,7 +43,7 @@ exports[`Headings should render correctly (snapshot) 4`] = `
 exports[`Headings should render correctly (snapshot) 5`] = `
 <div>
   <h5
-    class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-3"
+    class="ant-typography relative mb-6 after:ml-1 after:text-primary hover:after:content-[\\"#\\"] dark:text-light mt-3"
   >
     Heading
   </h5>
@@ -53,7 +53,7 @@ exports[`Headings should render correctly (snapshot) 5`] = `
 exports[`Headings should render correctly (snapshot) 6`] = `
 <div>
   <h5
-    class="ant-typography mb-6 after:ml-1 hover:after:content-['#'] hover:after:text-primary dark:text-light mt-1.5"
+    class="ant-typography relative mb-6 after:ml-1 after:text-primary hover:after:content-[\\"#\\"] dark:text-light mt-1.5"
   >
     Heading
   </h5>

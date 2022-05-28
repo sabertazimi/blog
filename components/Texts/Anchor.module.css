@@ -29,3 +29,12 @@
     @apply transition-none;
   }
 }
+
+.anchor[aria-hidden] {
+  @apply absolute;
+  @apply w-full h-full md:w-1/4;
+}
+
+.anchor[aria-hidden]::before {
+  @apply hidden;
+}
