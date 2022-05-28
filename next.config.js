@@ -16,8 +16,7 @@ const nextConfig = {
     disable: !isProduction,
   },
   reactStrictMode: true,
-  // TODO: enable SWC minifier when it's ready.
-  // swcMinify: isProduction,
+  swcMinify: isProduction,
 };
 
 module.exports = NextPwa(nextConfig);
