@@ -15,9 +15,11 @@ interface Props {
 const navVariants: MotionProps['variants'] = {
   open: {
     x: 0,
+    opacity: 1,
   },
   close: {
     x: '-100%',
+    opacity: 0,
   },
 };
 
@@ -29,16 +31,19 @@ const navTransition: MotionProps['transition'] = {
 
 const bannerVariants: MotionProps['variants'] = {
   open: {
-    opacity: 0.8,
+    x: 0,
+    opacity: 0.7,
   },
   close: {
+    x: '-100%',
     opacity: 0,
   },
 };
 
 const bannerTransition: MotionProps['transition'] = {
-  type: 'spring',
-  duration: 0.2,
+  type: 'tween',
+  ease: 'circInOut',
+  duration: 0.4,
 };
 
 const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
