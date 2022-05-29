@@ -12,7 +12,6 @@ describe('Home Page', () => {
   it('should toggle navigation menu when navigation button toggled', () => {
     cy.getByTestId('hamburger-button').click();
 
-    cy.getByRole('banner').should('be.visible');
     cy.getByRole('navigation')
       .should('be.visible')
       .findByRole('link')
@@ -21,7 +20,6 @@ describe('Home Page', () => {
 
     cy.getByTestId('hamburger-icon').type('{enter}');
 
-    cy.getByRole('banner').should('not.be.visible');
     cy.getByRole('navigation')
       .should('not.be.visible')
       .findByRole('link')

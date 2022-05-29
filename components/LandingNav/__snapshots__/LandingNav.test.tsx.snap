@@ -37,7 +37,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
   <div
     class="nav"
     role="navigation"
-    style="transform: translateX(-100%) translateZ(0);"
+    style="opacity: 0; transform: translateX(-100%) translateZ(0);"
   >
     <div
       class="inline-flex tooltip"
@@ -103,7 +103,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
   <div
     class="banner"
     role="banner"
-    style="opacity: 0;"
+    style="opacity: 0; transform: translateX(-100%) translateZ(0);"
   />
 </div>
 `;

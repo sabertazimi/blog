@@ -2,6 +2,15 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {
+  const navigationOpenStyle =
+    'opacity: 1; transform: translateX(0%) translateZ(0);';
+  const navigationCloseStyle =
+    'opacity: 0; transform: translateX(-100%) translateZ(0);';
+  const bannerOpenStyle =
+    'opacity: 0.7; transform: translateX(0%) translateZ(0);';
+  const bannerCloseStyle =
+    'opacity: 0; transform: translateX(-100%) translateZ(0);';
+
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -46,30 +55,24 @@ describe('LandingNav', () => {
       jest.advanceTimersByTime(1000);
     });
 
-    expect(screen.getByRole('navigation')).toHaveStyle(
-      'transform: translateX(-100%) translateZ(0);'
-    );
-    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
+    expect(screen.getByRole('navigation')).toHaveStyle(navigationCloseStyle);
+    expect(screen.getByRole('banner')).toHaveStyle(bannerCloseStyle);
 
     fireEvent.click(screen.getByTestId('hamburger-button'));
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    expect(screen.getByRole('navigation')).toHaveStyle(
-      'transform: translateX(0%) translateZ(0);'
-    );
-    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0.8');
+    expect(screen.getByRole('navigation')).toHaveStyle(navigationOpenStyle);
+    expect(screen.getByRole('banner')).toHaveStyle(bannerOpenStyle);
 
     fireEvent.keyDown(screen.getByTestId('hamburger-button'), { key: 'Enter' });
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    expect(screen.getByRole('navigation')).toHaveStyle(
-      'transform: translateX(-100%) translateZ(0);'
-    );
-    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
+    expect(screen.getByRole('navigation')).toHaveStyle(navigationCloseStyle);
+    expect(screen.getByRole('banner')).toHaveStyle(bannerCloseStyle);
   });
 
   test('should expanded when navigation icon toggled', () => {
@@ -78,29 +81,23 @@ describe('LandingNav', () => {
       jest.advanceTimersByTime(1000);
     });
 
-    expect(screen.getByRole('navigation')).toHaveStyle(
-      'transform: translateX(-100%) translateZ(0);'
-    );
-    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
+    expect(screen.getByRole('navigation')).toHaveStyle(navigationCloseStyle);
+    expect(screen.getByRole('banner')).toHaveStyle(bannerCloseStyle);
 
     fireEvent.click(screen.getByTestId('hamburger-icon'));
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    expect(screen.getByRole('navigation')).toHaveStyle(
-      'transform: translateX(0%) translateZ(0);'
-    );
-    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0.8');
+    expect(screen.getByRole('navigation')).toHaveStyle(navigationOpenStyle);
+    expect(screen.getByRole('banner')).toHaveStyle(bannerOpenStyle);
 
     fireEvent.keyDown(screen.getByTestId('hamburger-icon'), { key: 'Enter' });
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    expect(screen.getByRole('navigation')).toHaveStyle(
-      'transform: translateX(-100%) translateZ(0);'
-    );
-    expect(screen.getByRole('banner')).toHaveStyle('opacity: 0');
+    expect(screen.getByRole('navigation')).toHaveStyle(navigationCloseStyle);
+    expect(screen.getByRole('banner')).toHaveStyle(bannerCloseStyle);
   });
 });
