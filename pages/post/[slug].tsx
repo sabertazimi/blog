@@ -5,6 +5,10 @@ import type { Post, PostMeta } from '@types';
 import 'katex/dist/katex.css';
 import type { GetStaticPaths, GetStaticProps } from 'next/types';
 import type { ParsedUrlQuery } from 'node:querystring';
+import '../../components/Article/Article.css';
+import '../../components/Button/Button.css';
+import '../../components/Editor/Editor.css';
+import '../../components/Image/Image.css';
 
 interface Props {
   buildTime: string | number | Date;
