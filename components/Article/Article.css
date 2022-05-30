@@ -12,6 +12,7 @@ section {
 /* Add dark mode support for table of contents links */
 .ant-anchor-link-title {
   @apply dark:text-light;
+  @apply dark:hover:text-secondary;
 }
 
 .ant-anchor-link-title-active {
