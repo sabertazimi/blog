@@ -65,7 +65,7 @@ async function generatePostData(filePath: string): Promise<Post> {
       ],
       rehypePlugins: [
         rehypeSlug,
-        rehypeAutolinkHeadings,
+        [rehypeAutolinkHeadings, { behavior: 'append' }],
         rehypeExternalLinks,
         rehypeKatex,
       ],

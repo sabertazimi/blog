@@ -32,3 +32,8 @@ li.task-list-item > span {
 li.task-list-item > div {
   @apply ml-0;
 }
+
+/* Heading link transition */
+.mdx-heading:hover > .mdx-hash-link {
+  @apply opacity-100;
+}

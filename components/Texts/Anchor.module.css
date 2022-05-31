@@ -31,10 +31,14 @@
 }
 
 .anchor[aria-hidden] {
-  @apply absolute;
-  @apply w-full h-full md:w-1/4;
+  @apply pl-1;
+  @apply opacity-0;
+  @apply transition-opacity;
 }
 
 .anchor[aria-hidden]::before {
-  @apply hidden;
+  @apply static;
+  @apply bg-transparent;
+
+  content: '#';
 }

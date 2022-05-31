@@ -10,12 +10,7 @@ const Heading = ({
 }: TitleProps): JSX.Element => (
   <Typography.Title
     {...props}
-    className={cx(
-      'relative mb-6',
-      'after:ml-1 after:text-primary hover:after:content-["#"]',
-      'dark:text-light',
-      className
-    )}
+    className={cx('mdx-heading mb-6 dark:text-light', className)}
   >
     {children}
   </Typography.Title>
