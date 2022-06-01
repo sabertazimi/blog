@@ -2,6 +2,7 @@
   /* Add `!important` to override `antd` styles */
   @apply px-1.5 py-px !important;
   @apply border border-solid border-secondary !important;
+  @apply box-decoration-clone !important;
   @apply break-words !important;
   @apply font-mono font-normal leading-6 !important;
   @apply text-dark !important;
