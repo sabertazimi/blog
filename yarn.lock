@@ -1635,10 +1635,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@corex/deepmerge@npm:^2.6.148":
-  version: 2.6.148
-  resolution: "@corex/deepmerge@npm:2.6.148"
-  checksum: b80b6b3e408901151de26e27b519a43cda1771a81e5390ff10cd6b47add0139bb315ca44112ff076d68ac887d7cfe237c9fb33868efb04839c4afb7c38864385
+"@corex/deepmerge@npm:^4.0.14":
+  version: 4.0.16
+  resolution: "@corex/deepmerge@npm:4.0.16"
+  checksum: 4d0aeca1a2a9237780c3491729a668a8b8432984ef8b3a2ecc59e86c003eeed93d6009bbe41f55653d7e28f5cecc78ffae702cc478b48de1d5166f70eb1aeb39
   languageName: node
   linkType: hard
 
@@ -2685,7 +2685,7 @@ __metadata:
     next-progress: ^2.2.0
     next-pwa: ^5.5.2
     next-seo: ^5.4.0
-    next-sitemap: ^2.5.28
+    next-sitemap: ^3.0.5
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.14
     postcss-flexbugs-fixes: ^5.0.2
@@ -10632,17 +10632,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^2.5.28":
-  version: 2.5.28
-  resolution: "next-sitemap@npm:2.5.28"
+"next-sitemap@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "next-sitemap@npm:3.0.5"
   dependencies:
-    "@corex/deepmerge": ^2.6.148
+    "@corex/deepmerge": ^4.0.14
     minimist: ^1.2.6
   peerDependencies:
+    "@next/env": "*"
     next: "*"
   bin:
-    next-sitemap: bin/next-sitemap
-  checksum: 8d60a645df3e67da68a649bec0e839f4308124286456f051513ef74103bf6914ab370ebb2b57ff79db1f685988b6c35053fd6679324edd9a9426ca9f7d1c84bd
+    next-sitemap: bin/next-sitemap.mjs
+    next-sitemap-cjs: bin/next-sitemap.cjs
+  checksum: 6c6a74917d8fe43e1e7043fdd993d6e4069c0e84c2548c6689e9922314fec704c9e60246fcc462d298037278bc03542d8e0181ee2e0731dd9ebc77e7953042e7
   languageName: node
   linkType: hard
 
