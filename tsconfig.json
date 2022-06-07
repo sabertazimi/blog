@@ -1,6 +1,14 @@
 {
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "build", "dist", "public", "coverage", "cypress"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "public",
+    "coverage",
+    "cypress",
+    "cypress.config.ts"
+  ],
   "compilerOptions": {
     "target": "ES5",
     "module": "ESNext",
