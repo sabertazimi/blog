@@ -49,7 +49,13 @@ const Footer = ({
         <span>
           Last Built Time{' '}
           <a href="https://www.google.com/search?q=time">
-            {new Date(buildTime).toLocaleString('zh-CN', { hour12: false })}
+            <time
+              dateTime={new Date(buildTime).toLocaleString('zh-CN', {
+                hour12: false,
+              })}
+            >
+              {new Date(buildTime).toLocaleString('zh-CN', { hour12: false })}
+            </time>
           </a>
         </span>
       </Col>
