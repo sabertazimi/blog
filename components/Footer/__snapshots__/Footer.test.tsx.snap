@@ -217,7 +217,11 @@ exports[`Footer should render correctly (snapshot) 1`] = `
           <a
             href="https://www.google.com/search?q=time"
           >
-            2022/1/1 08:00:00
+            <time
+              datetime="2022/1/1 08:00:00"
+            >
+              2022/1/1 08:00:00
+            </time>
           </a>
         </span>
       </div>
