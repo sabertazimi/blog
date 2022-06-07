@@ -1,11 +1,11 @@
 import { GithubCard } from '@components';
 import { Layout } from '@layouts';
 import { getBuildTime, getGitHubData, getPostsMeta } from '@lib';
-import type { GitHub, PostMeta } from '@types';
+import type { BuildTime, GitHub, PostMeta } from '@types';
 import type { GetStaticProps } from 'next/types';
 
 interface Props {
-  buildTime: string | number | Date;
+  buildTime: BuildTime;
   githubData: GitHub;
   postsMeta: PostMeta[];
 }

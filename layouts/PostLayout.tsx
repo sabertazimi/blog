@@ -1,11 +1,11 @@
 import { BackTop, Container, Footer, Header, MetaHeader } from '@components';
-import type { PostMeta } from '@types';
+import type { BuildTime, PostMeta } from '@types';
 import type { ReactNode } from 'react';
 
 interface Props {
   banner: string;
   posts: PostMeta[];
-  buildTime: string | number | Date;
+  buildTime: BuildTime;
   children: ReactNode;
 }
 

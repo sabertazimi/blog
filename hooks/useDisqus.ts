@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const loadScript = (url: string) => {
   const script = document.createElement('script');
   script.src = `${url}/embed.js`;
-  script.setAttribute('data-timestamp', (+new Date()).toString());
+  script.setAttribute('data-timestamp', Date.now().toString());
   document.body.appendChild(script);
 };
 

@@ -1,5 +1,7 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
+export declare type BuildTime = string | number | Date;
+
 export declare type Tag = string;
 export declare type Tags = Record<Tag, number>;
 
