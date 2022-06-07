@@ -1,11 +1,11 @@
 import { PostsList, TagsCloud } from '@components';
 import { Layout } from '@layouts';
 import { getBuildTime, getPostsMeta, getTagsData } from '@lib';
-import type { PostMeta, Tags } from '@types';
+import type { BuildTime, PostMeta, Tags } from '@types';
 import type { GetStaticProps } from 'next/types';
 
 interface Props {
-  buildTime: string | number | Date;
+  buildTime: BuildTime;
   postsMeta: PostMeta[];
   tagsData: Tags;
 }

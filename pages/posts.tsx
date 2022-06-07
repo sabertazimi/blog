@@ -1,11 +1,11 @@
 import { PostsGrid } from '@components';
 import { Layout } from '@layouts';
 import { getBuildTime, getPostsMeta } from '@lib';
-import type { PostMeta } from '@types';
+import type { BuildTime, PostMeta } from '@types';
 import type { GetStaticProps } from 'next/types';
 
 interface Props {
-  buildTime: string | number | Date;
+  buildTime: BuildTime;
   postsMeta: PostMeta[];
 }
 
