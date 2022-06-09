@@ -1,8 +1,5 @@
 .ol {
-  @apply mt-0 mb-6;
-  @apply text-inherit;
-  @apply list-outside;
-  @apply list-none;
+  @apply mt-0 mb-6 list-outside list-none text-inherit;
 
   counter-reset: li;
 }
@@ -12,8 +9,7 @@
 }
 
 .ol > li::before {
-  @apply mr-2;
-  @apply text-primary;
+  @apply mr-2 text-primary;
 
   content: counters(li, '.') '. ';
   counter-increment: li;

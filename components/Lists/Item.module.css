@@ -1,21 +1,13 @@
 .item {
-  @apply flex;
-  @apply mt-0 mb-3;
-  @apply leading-relaxed;
-  @apply tracking-wide;
-  @apply list-none;
+  @apply mt-0 mb-3 flex list-none leading-relaxed tracking-wide;
 }
 
 .item > span {
-  @apply mr-1;
-  @apply leading-relaxed;
+  @apply mr-1 leading-relaxed;
 }
 
 .item > div {
-  @apply inline-block;
-  @apply flex-1;
-  @apply ml-2;
-  @apply leading-relaxed;
+  @apply ml-2 inline-block flex-1 leading-relaxed;
 }
 
 /* Make nested lists keep compacted */

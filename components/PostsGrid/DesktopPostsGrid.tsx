@@ -11,13 +11,13 @@ const DesktopPostsGrid = ({ posts }: Props): JSX.Element => {
   const rightPosts = posts.slice(Math.ceil(posts.length / 2));
 
   return (
-    <FlexContainer className="items-start hidden xl:visible xl:flex">
-      <FlexContainer className="flex-col max-w-7/12">
+    <FlexContainer className="hidden items-start xl:visible xl:flex">
+      <FlexContainer className="max-w-7/12 flex-col">
         {leftPosts.map((post, index) => {
           return <PostCard key={index} post={post} />;
         })}
       </FlexContainer>
-      <FlexContainer className="flex-col max-w-4/12">
+      <FlexContainer className="max-w-4/12 flex-col">
         {rightPosts.map((post, index) => {
           return <PostCard key={index} post={post} />;
         })}

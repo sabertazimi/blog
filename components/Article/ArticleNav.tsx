@@ -2,7 +2,6 @@ import FlexContainer from '@components/FlexContainer';
 import { ArrowLeft, ArrowRight, Home } from '@components/Icons';
 import Link from '@components/Link';
 import { Bounce } from '@components/Motion';
-import { cx } from '@components/utils';
 import type { PostMeta } from '@types';
 
 interface Props {
@@ -12,16 +11,10 @@ interface Props {
 
 const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
   <FlexContainer role="navigation" aria-label="footer-navigation">
-    <Bounce className="flex-1 mr-6 md:mr-24">
+    <Bounce className="mr-6 flex-1 md:mr-24">
       <Link
         href={prevPost ? `/post/${prevPost.slug}` : '/posts'}
-        className={cx(
-          'flex-container',
-          'w-full py-8',
-          'rounded-full',
-          'text-4xl',
-          'text-light bg-gradient-primary'
-        )}
+        className="flex-container bg-gradient-primary w-full rounded-full py-8 text-4xl text-light"
       >
         {prevPost ? (
           <ArrowLeft aria-label="Prev" />
@@ -30,16 +23,10 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
         )}
       </Link>
     </Bounce>
-    <Bounce className="flex-1 ml-6 md:ml-24">
+    <Bounce className="ml-6 flex-1 md:ml-24">
       <Link
         href={nextPost ? `/post/${nextPost.slug}` : '/posts'}
-        className={cx(
-          'flex-container',
-          'w-full py-8',
-          'rounded-full',
-          'text-4xl',
-          'text-light bg-gradient-primary'
-        )}
+        className="flex-container bg-gradient-primary w-full rounded-full py-8 text-4xl text-light"
       >
         {nextPost ? (
           <ArrowRight aria-label="Next" />

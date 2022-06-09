@@ -9,17 +9,17 @@ interface Props {
 const GithubCardContent = ({ profile }: Props): JSX.Element => (
   <Space direction="vertical">
     <div>
-      <InfoCircle className="text-2xl align-top dark:text-light" />
+      <InfoCircle className="align-top text-2xl dark:text-light" />
       <span className="text-span">{profile.bio || 'No Description'}</span>
     </div>
     <div>
-      <Environment className="text-2xl align-top dark:text-light" />
+      <Environment className="align-top text-2xl dark:text-light" />
       <span className="text-span">{profile.location || 'Earth'}</span>
     </div>
     <div>
       <a href={profile.followersUrl}>
-        <User className="text-2xl align-top" />
-        <span className="inline-block ml-2 text-xl align-bottom">{`${profile.followers} Followers`}</span>
+        <User className="align-top text-2xl" />
+        <span className="ml-2 inline-block align-bottom text-xl">{`${profile.followers} Followers`}</span>
       </a>
     </div>
   </Space>

@@ -10,7 +10,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
 const Container = ({ children, className, ...props }: Props): JSX.Element => (
   <div
     className={cx(
-      'container relative block h-full mx-auto my-0 p-auto',
+      'p-auto container relative mx-auto my-0 block h-full',
       className
     )}
     {...props}

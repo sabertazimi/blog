@@ -12,9 +12,8 @@ const LandingLayout = ({ children }: Props): JSX.Element => (
     <MetaHeader />
     <div
       className={cx(
-        'flex-col w-full h-screen p-0 m-0 overflow-x-hidden overflow-y-auto',
-        'bg-center bg-no-repeat bg-cover text-light ',
-        'flex-container'
+        'flex-container m-0 h-screen w-full flex-col overflow-y-auto overflow-x-hidden',
+        'bg-cover bg-center bg-no-repeat p-0 text-light'
       )}
       style={{
         backgroundImage: `url("${landingImage.src}")`,

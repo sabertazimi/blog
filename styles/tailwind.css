@@ -23,15 +23,15 @@
 
 @layer components {
   .text-span {
-    @apply inline-block ml-2 text-xl align-bottom dark:text-light !important;
+    @apply ml-2 inline-block align-bottom text-xl dark:text-light !important;
   }
 
   .text-span-lg {
-    @apply inline-block ml-2 text-3xl font-extrabold align-bottom !important;
+    @apply ml-2 inline-block align-bottom text-3xl font-extrabold !important;
   }
 
   .text-span-xl {
-    @apply inline-block ml-2 text-5xl font-extrabold align-bottom !important;
+    @apply ml-2 inline-block align-bottom text-5xl font-extrabold !important;
   }
 
   .bg-gradient-primary {
@@ -39,18 +39,17 @@
   }
 
   .button-primary {
-    @apply text-light border-primary bg-primary hover:bg-secondary !important;
+    @apply border-primary bg-primary text-light hover:bg-secondary !important;
   }
 
   .flex-container {
-    @apply flex flex-row flex-wrap justify-center items-center content-center !important;
+    @apply flex flex-row flex-wrap content-center items-center justify-center !important;
   }
 
   .card {
-    @apply transition duration-300 transform-gpu !important;
-    @apply shadow-xl hover:shadow-2xl hover:-translate-y-2 !important;
-    @apply dark:shadow-dark dark:hover:shadow-primary !important;
+    @apply transform-gpu shadow-xl transition duration-300 !important;
+    @apply hover:-translate-y-2 hover:shadow-2xl !important;
     @apply dark:border dark:border-solid dark:border-light !important;
-    @apply dark:bg-black !important;
+    @apply dark:bg-black dark:shadow-dark dark:hover:shadow-primary !important;
   }
 }

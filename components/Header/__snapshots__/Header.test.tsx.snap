@@ -100,7 +100,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <ul
-      class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 w-full hidden md:visible md:flex md:justify-center transition transform-gpu font-extrabold bg-transparent border-transparent backdrop-blur-md bg-gradient-primary"
+      class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center bg-gradient-primary shadow-none"
       data-menu-list="true"
       role="menu"
       tabindex="0"
@@ -116,7 +116,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container transition transform-gpu"
+            class="flex-container transform-gpu transition"
             href="/"
           >
             <span
@@ -154,7 +154,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container h-full transition transform-gpu dark:text-light text-light"
+            class="flex-container h-full transform-gpu transition dark:text-light text-light"
             href="/posts"
           >
             Posts
@@ -171,7 +171,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container h-full transition transform-gpu dark:text-light text-light"
+            class="flex-container h-full transform-gpu transition dark:text-light text-light"
             href="/tags"
           >
             Tags
@@ -188,7 +188,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container h-full transition transform-gpu dark:text-light text-light"
+            class="flex-container h-full transform-gpu transition dark:text-light text-light"
             href="/books"
           >
             Books
@@ -205,7 +205,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container h-full transition transform-gpu dark:text-light text-light"
+            class="flex-container h-full transform-gpu transition dark:text-light text-light"
             href="/about"
           >
             About
@@ -222,7 +222,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <span
-            class="flex-container md:w-52 lg:w-60 xl:w-max h-full border-transparent transition transform-gpu"
+            class="flex-container h-full transform-gpu border-transparent transition md:w-52 lg:w-60 xl:w-max"
           >
             <div
               class="ant-select ant-select-auto-complete ant-select-single ant-select-customize-input ant-select-show-search"

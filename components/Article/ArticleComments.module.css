@@ -4,10 +4,7 @@
 
 /* hidden disqus footer ADs */
 .disqus::after {
-  @apply absolute;
-  @apply bottom-0;
-  @apply block;
-  @apply w-full h-14;
+  @apply absolute bottom-0 block h-14 w-full;
 
   content: '';
 }

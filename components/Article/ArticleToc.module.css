@@ -1,5 +1,3 @@
 .toc {
-  @apply hidden xl:block;
-  @apply absolute left-12;
-  @apply w-min;
+  @apply absolute left-12 hidden w-min xl:block;
 }

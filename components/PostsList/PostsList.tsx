@@ -16,7 +16,7 @@ const PostsList = ({ posts }: Props): JSX.Element => (
           title={
             <Link
               href={`/post/${slug}`}
-              className="text-blue-400 transition text-span-lg transform-gpu hover:translate-x-4"
+              className="text-span-lg transform-gpu text-blue-400 transition hover:translate-x-4"
             >
               {title}
             </Link>

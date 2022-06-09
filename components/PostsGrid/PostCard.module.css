@@ -7,8 +7,5 @@
 }
 
 .button {
-  @apply float-right m-0 !important;
-  @apply w-14 h-14 !important;
-  @apply text-2xl rounded-full !important;
-  @apply button-primary !important;
+  @apply button-primary float-right m-0 h-14 w-14 rounded-full text-2xl !important;
 }

@@ -1,9 +1,5 @@
 .link {
-  @apply block px-0 pt-0 pb-3 mx-6 my-0;
-  @apply border-solid border-b-6 border-light;
-  @apply text-4xl font-extrabold leading-none text-light;
-  @apply cursor-pointer;
-  @apply md:text-7xl;
+  @apply mx-6 my-0 block cursor-pointer border-b-6 border-solid border-light px-0 pt-0 pb-3 text-4xl font-extrabold leading-none text-light md:text-7xl;
 }
 
 .tooltip {

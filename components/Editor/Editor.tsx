@@ -42,7 +42,7 @@ const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
   );
 
   return (
-    <div className="dark:shadow-primary dark:shadow-xl">
+    <div className="dark:shadow-xl dark:shadow-primary">
       <Sandpack
         customSetup={{
           dependencies: {},

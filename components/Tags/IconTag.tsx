@@ -10,10 +10,9 @@ interface Props {
 const IconTag = ({ tag, icon }: Props): JSX.Element => (
   <Tag
     className={cx(
-      'inline-flex justify-center items-center mt-1',
-      'text-base font-extrabold',
-      'bg-black border-black text-light',
-      'dark:bg-light dark:border-light dark:text-dark'
+      'mt-1 inline-flex items-center justify-center',
+      'border-black bg-black text-base font-extrabold text-light',
+      'dark:border-light dark:bg-light dark:text-dark'
     )}
   >
     {icon}

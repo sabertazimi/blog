@@ -16,7 +16,7 @@ interface Props {
 const PostCard = ({
   post: { slug, title, createTime, readingTime, tags },
 }: Props): JSX.Element => (
-  <Container className="px-5 py-4 mt-0 mb-16 card">
+  <Container className="card mt-0 mb-16 px-5 py-4">
     <Slide delay={0.2}>
       <LinkTag tag={tags ? tags[0] : 'Computer Science'} />
       <H2 className={styles.title}>{title}</H2>

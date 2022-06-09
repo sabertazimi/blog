@@ -15,7 +15,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
       className="mt-8"
       title={
         <a href={repo.repoUrl}>
-          <Branches className="text-4xl align-top" />
+          <Branches className="align-top text-4xl" />
           <span className="text-span-lg">{repo.name}</span>
         </a>
       }
@@ -27,7 +27,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
           </Tag>
         }
       />
-      <Star className="text-2xl align-top dark:text-light" />
+      <Star className="align-top text-2xl dark:text-light" />
       <span className="text-span">{repo.stars}</span>
     </Card>
   </Badge.Ribbon>

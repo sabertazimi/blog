@@ -1,6 +1,5 @@
 import Link from '@components/Link';
 import Result from '@components/Result';
-import { cx } from '@components/utils';
 
 interface Props {
   title?: string;
@@ -16,12 +15,7 @@ const NotFoundResult = ({
     extra={
       <Link
         href="/posts"
-        className={cx(
-          'block m-auto mt-12 py-3 px-6 max-w-fit',
-          'rounded-full',
-          'font-extrabold text-2xl',
-          'text-light bg-gradient-primary'
-        )}
+        className="bg-gradient-primary m-auto mt-12 block max-w-fit rounded-full py-3 px-6 text-2xl font-extrabold text-light"
       >
         Back Home
       </Link>

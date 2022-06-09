@@ -3,7 +3,7 @@
 exports[`MDXCode should render correctly (snapshot) 1`] = `
 <div>
   <code
-    class="code dark:text-light dark:shadow-primary dark:shadow-xl"
+    class="code dark:text-light dark:shadow-xl dark:shadow-primary"
   />
 </div>
 `;
@@ -11,7 +11,7 @@ exports[`MDXCode should render correctly (snapshot) 1`] = `
 exports[`MDXDivider should render correctly (snapshot) 1`] = `
 <div>
   <div
-    class="ant-divider ant-divider-horizontal mx-0 my-12 h-1 bg-gradient-primary"
+    class="ant-divider ant-divider-horizontal bg-gradient-primary mx-0 my-12 h-1"
     role="separator"
   />
 </div>
@@ -51,7 +51,7 @@ exports[`MDXInput should render input correctly (snapshot) 1`] = `
 exports[`MDXPre should render correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre dark:shadow-primary dark:shadow-xl"
+    class="pre dark:shadow-xl dark:shadow-primary"
     data-language="TypeScript"
   >
     <button

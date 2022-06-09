@@ -10,8 +10,7 @@ const Blockquote = ({ children, className, ...props }: Props): JSX.Element => (
     className={cx(
       className,
       styles.blockquote,
-      'dark:bg-black dark:border',
-      'dark:shadow-primary dark:shadow-xl'
+      'dark:border dark:bg-black dark:shadow-xl dark:shadow-primary'
     )}
   >
     {children}
