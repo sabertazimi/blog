@@ -11,20 +11,15 @@ interface Props {
 }
 
 const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
-  <FlexContainer
-    className="justify-between"
-    role="navigation"
-    aria-label="footer-navigation"
-  >
+  <FlexContainer role="navigation" aria-label="footer-navigation">
     <Bounce className="flex-1 mr-6 md:mr-24">
       <Link
         href={prevPost ? `/post/${prevPost.slug}` : '/posts'}
         className={cx(
           'flex-container',
-          'flex-1',
-          'w-full h-24 m-auto',
+          'w-full py-8',
           'rounded-full',
-          'font-extrabold text-2xl',
+          'text-4xl',
           'text-light bg-gradient-primary'
         )}
       >
@@ -33,9 +28,6 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
         ) : (
           <Home aria-label="Home" />
         )}
-        <span className="ml-3 hidden md:visible md:inline">
-          {prevPost ? prevPost.title : 'Back Home'}
-        </span>
       </Link>
     </Bounce>
     <Bounce className="flex-1 ml-6 md:ml-24">
@@ -43,16 +35,12 @@ const ArticleNav = ({ prevPost, nextPost }: Props): JSX.Element => (
         href={nextPost ? `/post/${nextPost.slug}` : '/posts'}
         className={cx(
           'flex-container',
-          'flex-1',
-          'w-full h-24 m-auto',
+          'w-full py-8',
           'rounded-full',
-          'font-extrabold text-2xl',
+          'text-4xl',
           'text-light bg-gradient-primary'
         )}
       >
-        <span className="mr-3 hidden md:visible md:inline">
-          {nextPost ? nextPost.title : 'Back Home'}
-        </span>
         {nextPost ? (
           <ArrowRight aria-label="Next" />
         ) : (

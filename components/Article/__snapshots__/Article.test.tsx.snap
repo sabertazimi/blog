@@ -186,7 +186,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
       </div>
       <div
         aria-label="footer-navigation"
-        class="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
+        class="flex-container container relative h-full mx-auto my-0 p-auto"
         role="navigation"
       >
         <div
@@ -194,7 +194,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
+            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
             href="/post/2BasicNotes"
           >
             <span
@@ -216,11 +216,6 @@ exports[`Article should render correctly (snapshot) 1`] = `
                 />
               </svg>
             </span>
-            <span
-              class="ml-3 hidden md:visible md:inline"
-            >
-              2 Basic Notes
-            </span>
           </a>
         </div>
         <div
@@ -228,14 +223,9 @@ exports[`Article should render correctly (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
+            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
             href="/post/0BasicNotes"
           >
-            <span
-              class="mr-3 hidden md:visible md:inline"
-            >
-              0 Basic Notes
-            </span>
             <span
               aria-label="Next"
               class="anticon anticon-arrow-right"
@@ -611,7 +601,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
       </div>
       <div
         aria-label="footer-navigation"
-        class="flex-container container relative h-full mx-auto my-0 p-auto justify-between"
+        class="flex-container container relative h-full mx-auto my-0 p-auto"
         role="navigation"
       >
         <div
@@ -619,7 +609,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
+            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
             href="/posts"
           >
             <span
@@ -641,11 +631,6 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
                 />
               </svg>
             </span>
-            <span
-              class="ml-3 hidden md:visible md:inline"
-            >
-              Back Home
-            </span>
           </a>
         </div>
         <div
@@ -653,14 +638,9 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container flex-1 w-full h-24 m-auto rounded-full font-extrabold text-2xl text-light bg-gradient-primary"
+            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
             href="/posts"
           >
-            <span
-              class="mr-3 hidden md:visible md:inline"
-            >
-              Back Home
-            </span>
             <span
               aria-label="Home"
               class="anticon anticon-home"
