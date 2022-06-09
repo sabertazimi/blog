@@ -5,16 +5,12 @@ import LocalImage from '@components/LocalImage';
 import Menu from '@components/Menu';
 import Popover from '@components/Popover';
 import Row from '@components/Row';
+import ThemeSwitch from '@components/ThemeSwitch';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
 
 const MobileNav = (): JSX.Element => (
   <Row className="md:hidden" justify="center" align="middle">
-    <Col className="flex-container" span={8} offset={8}>
-      <Link href="/">
-        <LocalImage src={logo} alt="Logo" width={96} height={96} />
-      </Link>
-    </Col>
     <Col className="flex-container" span={8}>
       <Popover
         placement="bottomRight"
@@ -22,15 +18,11 @@ const MobileNav = (): JSX.Element => (
         content={
           <Menu
             mode="vertical"
-            className="w-full max-w-md text-2xl font-extrabold text-center min-w-xs"
+            className="w-full max-w-md min-w-xs text-center font-extrabold text-2xl"
             items={[
               ...routes.map(route => ({
                 key: route.id,
-                label: (
-                  <Link href={route.path}>
-                    <a>{route.name}</a>
-                  </Link>
-                ),
+                label: <Link href={route.path}>{route.name}</Link>,
               })),
             ]}
           />
@@ -38,6 +30,14 @@ const MobileNav = (): JSX.Element => (
       >
         <Bars className="text-5xl text-primary" />
       </Popover>
+    </Col>
+    <Col className="flex-container" span={8}>
+      <Link href="/">
+        <LocalImage src={logo} alt="Logo" width={96} height={96} />
+      </Link>
+    </Col>
+    <Col className="flex-container" span={8}>
+      <ThemeSwitch className="dark:text-light" />
     </Col>
   </Row>
 );

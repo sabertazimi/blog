@@ -13,7 +13,32 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         role="row"
       >
         <div
-          class="ant-col ant-col-8 ant-col-offset-8 flex-container"
+          class="ant-col ant-col-8 flex-container"
+          role="cell"
+        >
+          <span
+            aria-label="bars"
+            class="anticon anticon-bars text-5xl text-primary"
+            role="img"
+            tabindex="-1"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="bars"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1024 1024"
+              width="1em"
+            >
+              <path
+                d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          class="ant-col ant-col-8 flex-container"
           role="cell"
         >
           <a
@@ -47,26 +72,34 @@ exports[`Layout should render correctly (snapshot) 1`] = `
           class="ant-col ant-col-8 flex-container"
           role="cell"
         >
-          <span
-            aria-label="bars"
-            class="anticon anticon-bars text-5xl text-primary"
-            role="img"
-            tabindex="-1"
+          <div
+            class="wrapper button"
+            data-testid="toggle-wrapper"
+            tabindex="0"
           >
-            <svg
-              aria-hidden="true"
-              data-icon="bars"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="0 0 1024 1024"
-              width="1em"
+            <span
+              aria-current="true"
+              class="span"
+              style="opacity: 1; transform: none;"
             >
-              <path
-                d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z"
-              />
-            </svg>
-          </span>
+              <span
+                aria-label="sun"
+                class="anticon dark:text-light"
+                role="img"
+              >
+                <svg
+                  fill="currentColor"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path
+                    d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"
+                  />
+                </svg>
+              </span>
+            </span>
+          </div>
         </div>
       </div>
       <ul
@@ -124,7 +157,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
+              class="flex-container h-full transition transform-gpu dark:text-light text-light"
               href="/posts"
             >
               Posts
@@ -141,7 +174,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
+              class="flex-container h-full transition transform-gpu dark:text-light text-light"
               href="/tags"
             >
               Tags
@@ -158,7 +191,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
+              class="flex-container h-full transition transform-gpu dark:text-light text-light"
               href="/books"
             >
               Books
@@ -175,7 +208,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transition transform-gpu transition-none dark:text-light text-light"
+              class="flex-container h-full transition transform-gpu dark:text-light text-light"
               href="/about"
             >
               About
@@ -192,7 +225,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <span
-              class="flex-container h-full border-transparent transition transform-gpu"
+              class="flex-container md:w-52 lg:w-60 xl:w-max h-full border-transparent transition transform-gpu"
             >
               <div
                 class="ant-select ant-select-auto-complete ant-select-single ant-select-customize-input ant-select-show-search"
