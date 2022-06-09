@@ -32,11 +32,9 @@ const navTransition: MotionProps['transition'] = {
 const bannerVariants: MotionProps['variants'] = {
   open: {
     x: 0,
-    opacity: 0.7,
   },
   close: {
     x: '-100%',
-    opacity: 0,
   },
 };
 
