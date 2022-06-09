@@ -18,7 +18,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
     mode="horizontal"
     className={cx(
       'fixed top-0 z-10 w-full',
-      'hidden md:visible md:flex',
+      'hidden md:visible md:flex md:justify-center',
       'transition transform-gpu',
       'font-extrabold',
       'bg-transparent border-transparent backdrop-blur-md',
