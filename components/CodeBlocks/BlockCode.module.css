@@ -25,10 +25,7 @@
 }
 
 .number {
-  @apply inline-block;
-  @apply w-6;
-  @apply ml-4 mr-3;
-  @apply text-secondary select-none;
+  @apply ml-4 mr-3 inline-block w-6 select-none text-secondary;
 }
 
 .placeholder {

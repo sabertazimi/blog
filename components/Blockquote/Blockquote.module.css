@@ -1,25 +1,18 @@
 .blockquote {
-  @apply mx-0 mb-9;
-  @apply px-6 pt-12 pb-6;
-  @apply bg-gray-100;
-  @apply border-l-10  border-solid border-primary;
+  @apply mx-0 mb-9 border-l-10 border-solid border-primary bg-gray-100 px-6  pt-12 pb-6;
 
   quotes: '\201C''\201D';
 }
 
 .blockquote::before {
-  @apply mr-2;
-  @apply text-9xl text-primary;
-  @apply leading-12;
-  @apply align-bottom;
+  @apply mr-2 align-bottom text-9xl leading-12 text-primary;
 
   content: open-quote;
 }
 
 .blockquote div,
 .blockquote p {
-  @apply inline;
-  @apply italic;
+  @apply inline italic;
 }
 
 /* Keep nested blockquote keep compacted */

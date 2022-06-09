@@ -47,7 +47,7 @@ const Pre = ({
         className,
         languageClass,
         styles.pre,
-        'dark:shadow-primary dark:shadow-xl'
+        'dark:shadow-xl dark:shadow-primary'
       )}
       data-language={title || languageName}
     >

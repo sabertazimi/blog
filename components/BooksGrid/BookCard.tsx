@@ -16,7 +16,7 @@ const BookCard = ({ book }: Props): JSX.Element => {
       <Card
         title={
           <a href={url}>
-            <BookIcon className="text-6xl align-top" />
+            <BookIcon className="align-top text-6xl" />
             <span className="text-span-xl">{title}</span>
           </a>
         }

@@ -24,9 +24,8 @@ const TypingTitle = ({
   return (
     <div
       className={cx(
-        'w-full h-auto px-0 py-0 mx-auto my-0',
-        'text-5xl font-extrabold text-center',
-        'typing-title-container lg:text-9xl',
+        'typing-title-container mx-auto my-0 h-auto w-full px-0 py-0',
+        'text-center text-5xl font-extrabold lg:text-9xl',
         className
       )}
     >

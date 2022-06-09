@@ -17,13 +17,12 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
   <Menu
     mode="horizontal"
     className={cx(
-      'fixed top-0 z-10 w-full',
-      'hidden md:visible md:flex md:justify-center',
-      'transition transform-gpu',
-      'font-extrabold',
-      'bg-transparent border-transparent backdrop-blur-md',
+      'fixed top-0 z-10 hidden w-full transform-gpu',
+      'border-transparent bg-transparent font-extrabold backdrop-blur-md transition',
+      'md:visible md:flex md:justify-center',
       {
         'bg-gradient-primary': !fixed,
+        'shadow-none': !fixed,
         'bg-white/30': fixed,
         'shadow-lg': fixed,
       }
@@ -32,7 +31,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       {
         key: 'home',
         label: (
-          <Link href="/" className="flex-container transition transform-gpu">
+          <Link href="/" className="flex-container transform-gpu transition">
             <LocalImage src={logo} alt="Logo" width={96} height={96} />
           </Link>
         ),
@@ -43,9 +42,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
           <Link
             href={route.path}
             className={cx(
-              'flex-container h-full',
-              'transition transform-gpu',
-              'dark:text-light',
+              'flex-container h-full transform-gpu transition dark:text-light',
               {
                 'text-light': !fixed,
                 'text-dark': fixed,
@@ -59,7 +56,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       {
         key: 'search',
         label: (
-          <span className="flex-container md:w-52 lg:w-60 xl:w-max h-full border-transparent transition transform-gpu">
+          <span className="flex-container h-full transform-gpu border-transparent transition md:w-52 lg:w-60 xl:w-max">
             <PostsSearchBar posts={posts} />
           </span>
         ),

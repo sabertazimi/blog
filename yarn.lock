@@ -2702,6 +2702,7 @@ __metadata:
     postcss-flexbugs-fixes: ^5.0.2
     postcss-preset-env: ^7.7.1
     prettier: ^2.6.2
+    prettier-plugin-tailwindcss: ^0.1.11
     prism-react-renderer: ^1.3.3
     react: ^18.1.0
     react-dom: ^18.1.0
@@ -11854,6 +11855,15 @@ __metadata:
   dependencies:
     fast-diff: ^1.1.2
   checksum: 00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-tailwindcss@npm:^0.1.11":
+  version: 0.1.11
+  resolution: "prettier-plugin-tailwindcss@npm:0.1.11"
+  peerDependencies:
+    prettier: ">=2.2.0"
+  checksum: b06a81a22242407676de7b69342c1d69078e731e6363c7abd5877b044f2ddd83eba7281b085ea77754a49de88dcde164f394c31ae724a99fd46c0f9a4d4547a0
   languageName: node
   linkType: hard
 

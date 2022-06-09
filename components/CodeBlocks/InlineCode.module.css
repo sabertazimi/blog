@@ -1,13 +1,7 @@
 .code {
   /* Add `!important` to override `antd` styles */
-  @apply px-1.5 py-px !important;
-  @apply border border-solid border-secondary !important;
-  @apply box-decoration-clone !important;
-  @apply break-words !important;
-  @apply font-mono font-normal leading-6 !important;
-  @apply text-dark !important;
-  @apply bg-transparent !important;
-  @apply shadow-xl !important;
+  @apply break-words border border-solid border-secondary bg-transparent box-decoration-clone px-1.5 py-px !important;
+  @apply font-mono font-normal leading-6 text-dark shadow-xl !important;
 
   font-size: var(--font-size) !important;
 }

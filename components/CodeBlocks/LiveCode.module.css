@@ -1,17 +1,12 @@
 .container {
-  @apply flex flex-wrap flex-col md:flex-row;
-  @apply m-0 p-0;
+  @apply m-0 flex flex-col flex-wrap p-0 md:flex-row;
 }
 
 .editor,
 .preview {
-  @apply flex-auto;
-  @apply w-full md:w-1/2;
-  @apply border-solid border-dark;
-  @apply border-l border-r border-b;
+  @apply w-full flex-auto border-l border-r border-b border-solid border-dark md:w-1/2;
 }
 
 .error {
-  @apply w-full;
-  @apply bg-red-100 text-red-700;
+  @apply w-full bg-red-100 text-red-700;
 }

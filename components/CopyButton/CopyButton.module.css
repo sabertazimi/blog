@@ -1,11 +1,7 @@
 .button {
-  @apply absolute;
-  @apply right-5;
-  @apply top-1.5 md:top-1;
+  @apply absolute right-5 top-1.5 md:top-1;
 }
 
 .icon {
-  @apply font-extrabold;
-  @apply text-xl md:text-2xl;
-  @apply text-secondary;
+  @apply text-xl font-extrabold text-secondary md:text-2xl;
 }

@@ -45,7 +45,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 text-base font-extrabold bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="calendar"
@@ -71,7 +71,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 text-base font-extrabold bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="edit"
@@ -97,7 +97,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 text-base font-extrabold bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="clock-circle"
@@ -165,7 +165,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="container relative block h-full mx-auto my-0 p-auto px-6 max-w-screen-lg md:max-w-3xl"
+      class="p-auto container relative mx-auto my-0 block h-full max-w-screen-lg px-6 md:max-w-3xl"
     >
       <article>
         <h2
@@ -186,15 +186,15 @@ exports[`Article should render correctly (snapshot) 1`] = `
       </div>
       <div
         aria-label="footer-navigation"
-        class="flex-container container relative h-full mx-auto my-0 p-auto"
+        class="flex-container p-auto container relative mx-auto my-0 h-full"
         role="navigation"
       >
         <div
-          class="inline-flex flex-1 mr-6 md:mr-24"
+          class="inline-flex mr-6 flex-1 md:mr-24"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
+            class="flex-container bg-gradient-primary w-full rounded-full py-8 text-4xl text-light"
             href="/post/2BasicNotes"
           >
             <span
@@ -219,11 +219,11 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </div>
         <div
-          class="inline-flex flex-1 ml-6 md:ml-24"
+          class="inline-flex ml-6 flex-1 md:ml-24"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
+            class="flex-container bg-gradient-primary w-full rounded-full py-8 text-4xl text-light"
             href="/post/0BasicNotes"
           >
             <span
@@ -284,7 +284,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 -translate-y-1/2 hidden md:visible md:inline-flex"
+        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
@@ -295,7 +295,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(29, 161, 242);"
@@ -331,7 +331,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(24, 119, 242);"
@@ -367,7 +367,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(10, 102, 194);"
@@ -402,7 +402,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(230, 22, 45);"
@@ -460,7 +460,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 text-base font-extrabold bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="calendar"
@@ -486,7 +486,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 text-base font-extrabold bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="edit"
@@ -512,7 +512,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag inline-flex justify-center items-center mt-1 text-base font-extrabold bg-black border-black text-light dark:bg-light dark:border-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="clock-circle"
@@ -580,7 +580,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="container relative block h-full mx-auto my-0 p-auto px-6 max-w-screen-lg md:max-w-3xl"
+      class="p-auto container relative mx-auto my-0 block h-full max-w-screen-lg px-6 md:max-w-3xl"
     >
       <article>
         <h2
@@ -601,15 +601,15 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
       </div>
       <div
         aria-label="footer-navigation"
-        class="flex-container container relative h-full mx-auto my-0 p-auto"
+        class="flex-container p-auto container relative mx-auto my-0 h-full"
         role="navigation"
       >
         <div
-          class="inline-flex flex-1 mr-6 md:mr-24"
+          class="inline-flex mr-6 flex-1 md:mr-24"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
+            class="flex-container bg-gradient-primary w-full rounded-full py-8 text-4xl text-light"
             href="/posts"
           >
             <span
@@ -634,11 +634,11 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </a>
         </div>
         <div
-          class="inline-flex flex-1 ml-6 md:ml-24"
+          class="inline-flex ml-6 flex-1 md:ml-24"
           style="opacity: 0; transform: translateX(20px) translateZ(0);"
         >
           <a
-            class="flex-container w-full py-8 rounded-full text-4xl text-light bg-gradient-primary"
+            class="flex-container bg-gradient-primary w-full rounded-full py-8 text-4xl text-light"
             href="/posts"
           >
             <span
@@ -699,7 +699,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 -translate-y-1/2 hidden md:visible md:inline-flex"
+        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
@@ -710,7 +710,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(29, 161, 242);"
@@ -746,7 +746,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(24, 119, 242);"
@@ -782,7 +782,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(10, 102, 194);"
@@ -817,7 +817,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only text-center text-light rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
               href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(230, 22, 45);"

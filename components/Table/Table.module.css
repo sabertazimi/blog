@@ -1,18 +1,12 @@
 .table {
-  @apply w-fit;
-  @apply mt-0 mb-9;
-  @apply overflow-auto;
-  @apply border-collapse;
+  @apply mt-0 mb-9 w-fit border-collapse overflow-auto;
 
   border-spacing: 0;
 }
 
 .table th,
 .table td {
-  @apply py-2 px-4;
-  @apply text-xl;
-  @apply font-normal;
-  @apply leading-loose;
+  @apply py-2 px-4 text-xl font-normal leading-loose;
 }
 
 .table th {
@@ -20,8 +14,7 @@
 }
 
 .table tr {
-  @apply bg-dark text-light;
-  @apply border-t border-solid border-primary;
+  @apply border-t border-solid border-primary bg-dark text-light;
 }
 
 .table tr:first-child th {

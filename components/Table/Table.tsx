@@ -10,7 +10,7 @@ const Table = ({ children, className, ...props }: Props): JSX.Element => (
     className={cx(
       className,
       styles.table,
-      'dark:shadow-primary dark:shadow-xl'
+      'dark:shadow-xl dark:shadow-primary'
     )}
   >
     {children}

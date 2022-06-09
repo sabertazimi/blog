@@ -14,7 +14,7 @@ const FlexContainer = ({
 }: Props): JSX.Element => (
   <div
     className={cx(
-      'flex-container container relative h-full mx-auto my-0 p-auto',
+      'flex-container p-auto container relative mx-auto my-0 h-full',
       className
     )}
     {...props}

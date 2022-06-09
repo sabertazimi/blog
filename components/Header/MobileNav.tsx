@@ -18,7 +18,7 @@ const MobileNav = (): JSX.Element => (
         content={
           <Menu
             mode="vertical"
-            className="w-full max-w-md min-w-xs text-center font-extrabold text-2xl"
+            className="w-full min-w-xs max-w-md text-center text-2xl font-extrabold"
             items={[
               ...routes.map(route => ({
                 key: route.id,

@@ -11,7 +11,7 @@ const InlineCode = ({ children, className }: Props): JSX.Element => (
     className={cx(
       className,
       styles.code,
-      'dark:text-light dark:shadow-primary dark:shadow-xl'
+      'dark:text-light dark:shadow-xl dark:shadow-primary'
     )}
   >
     {children}

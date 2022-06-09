@@ -1,18 +1,11 @@
 .nav {
-  @apply fixed top-0 left-0 z-20;
-  @apply flex flex-col items-center justify-center;
-  @apply w-full h-full;
+  @apply fixed top-0 left-0 z-20 flex h-full w-full flex-col items-center justify-center;
 }
 
 .banner {
-  @apply fixed top-0 left-0 z-10;
-  @apply block w-full h-full;
-  @apply bg-black/50 backdrop-blur-sm;
+  @apply fixed top-0 left-0 z-10 block h-full w-full bg-black/50 backdrop-blur-sm;
 }
 
 .icon {
-  @apply fixed top-12 left-12 z-100;
-  @apply bg-transparent border-none;
-  @apply text-lg font-extrabold md:text-4xl text-light;
-  @apply cursor-pointer;
+  @apply fixed top-12 left-12 z-100 cursor-pointer border-none bg-transparent text-lg font-extrabold text-light md:text-4xl;
 }
