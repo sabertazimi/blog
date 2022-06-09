@@ -6,10 +6,8 @@ describe('LandingNav', () => {
     'opacity: 1; transform: translateX(0%) translateZ(0);';
   const navigationCloseStyle =
     'opacity: 0; transform: translateX(-100%) translateZ(0);';
-  const bannerOpenStyle =
-    'opacity: 0.7; transform: translateX(0%) translateZ(0);';
-  const bannerCloseStyle =
-    'opacity: 0; transform: translateX(-100%) translateZ(0);';
+  const bannerOpenStyle = 'transform: translateX(0%) translateZ(0);';
+  const bannerCloseStyle = 'transform: translateX(-100%) translateZ(0);';
 
   beforeAll(() => {
     jest.useFakeTimers();

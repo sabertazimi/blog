@@ -7,7 +7,7 @@
 .banner {
   @apply fixed top-0 left-0 z-10;
   @apply block w-full h-full;
-  @apply bg-black;
+  @apply bg-black/50 backdrop-blur-sm;
 }
 
 .icon {
