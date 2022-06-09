@@ -44,7 +44,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
             href={route.path}
             className={cx(
               'flex-container h-full',
-              'transition transform-gpu transition-none',
+              'transition transform-gpu',
               'dark:text-light',
               {
                 'text-light': !fixed,
@@ -59,7 +59,7 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       {
         key: 'search',
         label: (
-          <span className="flex-container h-full border-transparent transition transform-gpu">
+          <span className="flex-container md:w-52 lg:w-60 xl:w-max h-full border-transparent transition transform-gpu">
             <PostsSearchBar posts={posts} />
           </span>
         ),
