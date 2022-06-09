@@ -20,12 +20,10 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       'fixed top-0 z-10 w-full',
       'hidden md:visible md:flex',
       'transition transform-gpu',
-      'bg-transparent border-transparent font-extrabold',
+      'font-extrabold',
+      'bg-transparent border-transparent backdrop-blur-md',
       {
-        'backdrop-blur-none': !fixed,
         'bg-gradient-primary': !fixed,
-        'shadow-none': !fixed,
-        'backdrop-blur-sm': fixed,
         'bg-white/30': fixed,
         'shadow-lg': fixed,
       }
