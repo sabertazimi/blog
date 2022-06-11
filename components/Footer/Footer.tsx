@@ -33,19 +33,21 @@ const Footer = ({
         ))}
       </Col>
     </Row>
-    <Divider className="my-12 border-light" />
+    <Divider className="border-light" />
     <Row align="middle" justify="center">
-      <Col span={24}>
+      <Col className="mx-6">
         <span>
           Copyright &copy;{' '}
           <a href={`https://github.com/${socials.github}`}>{author}</a>{' '}
         </span>
-        <Divider type="vertical" className="border-light" />
+      </Col>
+      <Col className="mx-6">
         <span>
           Built with <a href="https://reactjs.org">React</a> and{' '}
           <a href="https://nextjs.org">Next</a>
         </span>
-        <Divider type="vertical" className="border-light" />
+      </Col>
+      <Col className="mx-6">
         <span>
           Last Built Time{' '}
           <a href="https://www.google.com/search?q=time">

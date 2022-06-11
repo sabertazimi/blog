@@ -2,3 +2,8 @@
 .ant-btn-text {
   @apply dark:text-light;
 }
+
+/* Remove tailwind button reset styles */
+.ant-btn-primary {
+  @apply bg-primary;
+}

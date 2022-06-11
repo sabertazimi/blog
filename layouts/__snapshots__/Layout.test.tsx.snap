@@ -403,7 +403,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <div
-          class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center mx-0 my-12 leading-relaxed tracking-wide font-extrabold dark:border-light dark:text-light"
+          class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
           role="separator"
         >
           <span
@@ -434,13 +434,13 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light mx-5 mt-0 mb-4"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://github.com/sabertazimi"
               role="link"
             >
               <span
                 aria-label="github"
-                class="anticon anticon-github text-4xl"
+                class="anticon anticon-github icon"
                 role="img"
               >
                 <svg
@@ -464,13 +464,13 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light mx-5 mt-0 mb-4"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://twitter.com/sabertazimi"
               role="link"
             >
               <span
                 aria-label="twitter"
-                class="anticon anticon-twitter text-4xl"
+                class="anticon anticon-twitter icon"
                 role="img"
               >
                 <svg
@@ -494,13 +494,13 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light mx-5 mt-0 mb-4"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://facebook.com/sabertazimi"
               role="link"
             >
               <span
                 aria-label="facebook"
-                class="anticon anticon-facebook text-4xl"
+                class="anticon anticon-facebook icon"
                 role="img"
               >
                 <svg
@@ -524,13 +524,13 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light mx-5 mt-0 mb-4"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://linkedin.com/sabertazimi"
               role="link"
             >
               <span
                 aria-label="linkedin"
-                class="anticon anticon-linkedin text-4xl"
+                class="anticon anticon-linkedin icon"
                 role="img"
               >
                 <svg
@@ -554,13 +554,13 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             style="opacity: 0; transform: translateX(20px) translateZ(0);"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light mx-5 mt-0 mb-4"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://weibo.com/sabertazimi"
               role="link"
             >
               <span
                 aria-label="weibo"
-                class="anticon anticon-weibo text-4xl"
+                class="anticon anticon-weibo icon"
                 role="img"
               >
                 <svg
@@ -582,7 +582,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal my-12 border-light"
+        class="ant-divider ant-divider-horizontal divider border-light dark:border-light dark:text-light"
         role="separator"
       />
       <div
@@ -590,7 +590,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         role="row"
       >
         <div
-          class="ant-col ant-col-24"
+          class="ant-col mx-6"
           role="cell"
         >
           <span>
@@ -603,10 +603,11 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             </a>
              
           </span>
-          <div
-            class="ant-divider ant-divider-vertical border-light"
-            role="separator"
-          />
+        </div>
+        <div
+          class="ant-col mx-6"
+          role="cell"
+        >
           <span>
             Built with 
             <a
@@ -622,10 +623,11 @@ exports[`Layout should render correctly (snapshot) 1`] = `
               Next
             </a>
           </span>
-          <div
-            class="ant-divider ant-divider-vertical border-light"
-            role="separator"
-          />
+        </div>
+        <div
+          class="ant-col mx-6"
+          role="cell"
+        >
           <span>
             Last Built Time
              

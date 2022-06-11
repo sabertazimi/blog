@@ -6,7 +6,6 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
-  important: true,
   theme: {
     extend: {
       minWidth: {
