@@ -1787,7 +1787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/selector-specificity@npm:^2.0.0":
+"@csstools/selector-specificity@npm:^2.0.1":
   version: 2.0.1
   resolution: "@csstools/selector-specificity@npm:2.0.1"
   peerDependencies:
@@ -2732,7 +2732,7 @@ __metadata:
     remark-mdx-code-meta: ^1.0.0
     standard-version: ^9.5.0
     start-server-and-test: ^1.14.0
-    stylelint: ^14.9.0
+    stylelint: ^14.9.1
     tailwindcss: ^3.1.2
     ts-jest: ^28.0.4
     tslib: ^2.4.0
@@ -14282,11 +14282,11 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^14.9.0":
-  version: 14.9.0
-  resolution: "stylelint@npm:14.9.0"
+"stylelint@npm:^14.9.1":
+  version: 14.9.1
+  resolution: "stylelint@npm:14.9.1"
   dependencies:
-    "@csstools/selector-specificity": ^2.0.0
+    "@csstools/selector-specificity": ^2.0.1
     balanced-match: ^2.0.0
     colord: ^2.9.2
     cosmiconfig: ^7.0.1
@@ -14328,7 +14328,7 @@ resolve@^2.0.0-next.3:
     write-file-atomic: ^4.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: 9996238740feb045c2f14def7152ed2a1a512c4cfd632c02bf136193f8be1c24f1357e53c27cd3c59876a73897f0f7bd5a1df0ee5af614050574ac8fc6ea179a
+  checksum: 53c65c9a1d0009ba15847905afc34efc2f4820edc989f8c2aeecf6b7873b2de3040a1969761ef0983caca2e773947482962df5c25216cb9e3f21af241675bb50
   languageName: node
   linkType: hard
 
