@@ -3,7 +3,8 @@
 }
 
 .banner {
-  @apply fixed top-0 left-0 z-10 block h-full w-full bg-black/50 backdrop-blur-sm;
+  @apply fixed top-0 left-0 z-10 block h-full w-full bg-black/50;
+  @apply backdrop-brightness-110 backdrop-contrast-125 backdrop-saturate-150;
 }
 
 .icon {
