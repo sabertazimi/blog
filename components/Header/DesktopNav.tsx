@@ -7,6 +7,7 @@ import { cx } from '@components/utils';
 import { routes } from '@config';
 import logo from '@images/logo-full.png';
 import type { PostMeta } from '@types';
+import styles from './DesktopNav.module.css';
 
 interface Props {
   fixed: boolean;
@@ -42,10 +43,10 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
           <Link
             href={route.path}
             className={cx(
-              'flex-container h-full transform-gpu transition hover:!text-primary dark:!text-light dark:hover:!text-primary',
+              'flex-container dark-menu-link h-full transform-gpu transition',
               {
-                '!text-light': !fixed,
-                '!text-dark': fixed,
+                [styles.light]: !fixed,
+                [styles.dark]: fixed,
               }
             )}
           >
