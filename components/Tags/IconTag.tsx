@@ -11,7 +11,7 @@ const IconTag = ({ tag, icon }: Props): JSX.Element => (
   <Tag
     className={cx(
       'mt-1 inline-flex items-center justify-center',
-      'border-black bg-black text-base font-extrabold text-light',
+      'rounded-none border-black bg-black text-base font-extrabold text-light',
       'dark:border-light dark:bg-light dark:text-dark'
     )}
   >
