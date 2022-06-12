@@ -27,7 +27,7 @@ const ImageCard = ({ src, title, alt, className }: Props): JSX.Element => {
       cover={<Image src={src} alt={alt} />}
       className={cx(className, 'text-center')}
     >
-      <Meta title={title} description={alt} />
+      <Meta title={title} description={alt} className="justify-center" />
     </Card>
   );
 };

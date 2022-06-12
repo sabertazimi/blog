@@ -6,5 +6,13 @@
 .footnote div,
 .footnote p,
 .footnote li {
-  @apply my-0 text-sm text-gray-500;
+  @apply text-sm text-gray-500;
+}
+
+/* Override margin for heading and paragraph */
+.footnote.footnote h2,
+.footnote.footnote div,
+.footnote.footnote p,
+.footnote.footnote li {
+  @apply my-0;
 }

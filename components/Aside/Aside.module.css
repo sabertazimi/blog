@@ -2,8 +2,7 @@
   @apply mt-0 mb-9;
 }
 
-.admonition div,
-.admonition div:first-child,
+.admonition[role='alert'] div,
 .admonition ol,
 .admonition ul {
   @apply mb-3;

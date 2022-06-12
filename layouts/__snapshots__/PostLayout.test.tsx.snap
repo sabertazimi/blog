@@ -157,7 +157,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transform-gpu transition dark:text-light text-light"
+              class="flex-container h-full transform-gpu transition hover:!text-primary dark:!text-light dark:hover:!text-primary !text-light"
               href="/posts"
             >
               Posts
@@ -174,7 +174,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transform-gpu transition dark:text-light text-light"
+              class="flex-container h-full transform-gpu transition hover:!text-primary dark:!text-light dark:hover:!text-primary !text-light"
               href="/tags"
             >
               Tags
@@ -191,7 +191,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transform-gpu transition dark:text-light text-light"
+              class="flex-container h-full transform-gpu transition hover:!text-primary dark:!text-light dark:hover:!text-primary !text-light"
               href="/books"
             >
               Books
@@ -208,7 +208,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             class="ant-menu-title-content"
           >
             <a
-              class="flex-container h-full transform-gpu transition dark:text-light text-light"
+              class="flex-container h-full transform-gpu transition hover:!text-primary dark:!text-light dark:hover:!text-primary !text-light"
               href="/about"
             >
               About

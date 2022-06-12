@@ -42,10 +42,10 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
           <Link
             href={route.path}
             className={cx(
-              'flex-container h-full transform-gpu transition dark:text-light',
+              'flex-container h-full transform-gpu transition hover:!text-primary dark:!text-light dark:hover:!text-primary',
               {
-                'text-light': !fixed,
-                'text-dark': fixed,
+                '!text-light': !fixed,
+                '!text-dark': fixed,
               }
             )}
           >
