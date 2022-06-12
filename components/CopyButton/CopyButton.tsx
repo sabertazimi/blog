@@ -26,6 +26,7 @@ const CopyButton = ({ code, className }: Props): JSX.Element => {
         iconClose={<Copy className={styles.icon} />}
         iconOpen={<Check className={styles.icon} />}
         shouldReduceMotion={shouldReduceMotion}
+        tabIndex={-1}
       />
     </button>
   );

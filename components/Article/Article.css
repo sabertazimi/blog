@@ -11,7 +11,7 @@ section {
 
 /* Add dark mode support for table of contents links */
 .ant-anchor-link-title {
-  @apply dark:text-light dark:hover:text-secondary;
+  @apply dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
 }
 
 .ant-anchor-link-title-active {
@@ -33,6 +33,13 @@ li.task-list-item > div {
 }
 
 /* Heading link transition */
-.mdx-heading:hover > .mdx-hash-link {
+.mdx-heading:hover > .mdx-hash-link,
+.mdx-heading:focus > .mdx-hash-link {
   @apply opacity-100;
+}
+
+@media (hover: none) {
+  .mdx-hash-link[aria-hidden][href] {
+    @apply opacity-100;
+  }
 }
