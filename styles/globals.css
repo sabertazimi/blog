@@ -53,7 +53,7 @@
   }
 
   .button-primary {
-    @apply border-primary bg-primary text-light hover:bg-secondary;
+    @apply border-primary bg-primary text-light hover:bg-secondary hover:text-light;
   }
 
   .flex-container {
