@@ -1,0 +1,12 @@
+a.light[href],
+a.dark[href] {
+  @apply hover:text-primary focus:text-primary;
+}
+
+a.light[href] {
+  @apply text-light;
+}
+
+a.dark[href] {
+  @apply text-dark;
+}

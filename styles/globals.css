@@ -62,4 +62,8 @@
     @apply dark:border dark:border-solid dark:border-light;
     @apply dark:bg-black dark:shadow-dark dark:hover:shadow-primary;
   }
+
+  a.dark-menu-link[href] {
+    @apply dark:text-light dark:hover:text-primary dark:focus:text-primary;
+  }
 }
