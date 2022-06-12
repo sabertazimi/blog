@@ -52,10 +52,6 @@
     @apply bg-gradient-to-r from-indigo-700 to-red-500;
   }
 
-  .button-primary {
-    @apply border-primary bg-primary text-light hover:bg-secondary hover:text-light;
-  }
-
   .flex-container {
     @apply flex flex-row flex-wrap content-center items-center justify-center;
   }
