@@ -1,6 +1,7 @@
 import { cx } from '@components/utils';
 import { Typography } from 'antd';
 import type { ReactNode } from 'react';
+import styles from './Paragraph.module.css';
 
 interface Props {
   children?: ReactNode;
@@ -10,10 +11,7 @@ interface Props {
 const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
   <Typography.Paragraph
     {...props}
-    className={cx(
-      className,
-      'mt-0 mb-9 leading-relaxed tracking-wide dark:text-light'
-    )}
+    className={cx(className, styles.p, 'dark:text-light')}
   >
     {children}
   </Typography.Paragraph>

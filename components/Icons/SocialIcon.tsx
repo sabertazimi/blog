@@ -8,21 +8,22 @@ import {
 } from '@ant-design/icons';
 import { socialList } from '@config';
 import type { SocialType } from '@types';
+import styles from './SocialIcon.module.css';
 
 const SocialIcon = (type: SocialType): JSX.Element => {
   switch (type) {
     case socialList.github:
-      return <GithubOutlined className="text-4xl" />;
+      return <GithubOutlined className={styles.icon} />;
     case socialList.twitter:
-      return <TwitterOutlined className="text-4xl" />;
+      return <TwitterOutlined className={styles.icon} />;
     case socialList.facebook:
-      return <FacebookOutlined className="text-4xl" />;
+      return <FacebookOutlined className={styles.icon} />;
     case socialList.linkedin:
-      return <LinkedinOutlined className="text-4xl" />;
+      return <LinkedinOutlined className={styles.icon} />;
     case socialList.weibo:
-      return <WeiboOutlined className="text-4xl" />;
+      return <WeiboOutlined className={styles.icon} />;
     default:
-      return <RocketOutlined className="text-4xl" />;
+      return <RocketOutlined className={styles.icon} />;
   }
 };
 

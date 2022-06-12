@@ -1,5 +1,69 @@
-body {
-  width: 100%;
-  font-family: var(--font-stack);
-  font-size: var(--font-size);
+@import 'antd/dist/antd.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'https://fonts.googleapis.com/css?family=Raleway:400,500';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1890ff;
+  --secondary: #40a9ff;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC',
+    'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
+  --font-size: 18px;
+}
+
+@layer base {
+  body {
+    width: 100%;
+    font-family: var(--font-stack);
+    font-size: var(--font-size);
+  }
+
+  a {
+    @apply text-primary;
+  }
+
+  img {
+    @apply inline-block;
+  }
+}
+
+@layer components {
+  .text-span {
+    @apply ml-2 inline-block align-bottom text-xl dark:text-light;
+  }
+
+  .text-span-lg {
+    @apply ml-2 inline-block align-bottom text-3xl font-extrabold;
+  }
+
+  .text-span-xl {
+    @apply ml-2 inline-block align-bottom text-5xl font-extrabold;
+  }
+
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-indigo-700 to-red-500;
+  }
+
+  .button-primary {
+    @apply border-primary bg-primary text-light hover:bg-secondary;
+  }
+
+  .flex-container {
+    @apply flex flex-row flex-wrap content-center items-center justify-center;
+  }
+
+  .card {
+    @apply transform-gpu shadow-xl transition duration-300;
+    @apply hover:-translate-y-2 hover:shadow-2xl;
+    @apply dark:border dark:border-solid dark:border-light;
+    @apply dark:bg-black dark:shadow-dark dark:hover:shadow-primary;
+  }
 }

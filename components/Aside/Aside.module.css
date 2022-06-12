@@ -2,23 +2,23 @@
   @apply mt-0 mb-9;
 }
 
-.admonition div,
+.admonition[role='alert'] div,
 .admonition ol,
 .admonition ul {
-  @apply mb-3 !important;
+  @apply mb-3;
 }
 
 .admonition ol li::before {
-  @apply mr-1 !important;
+  @apply mr-1;
 }
 
 .admonition div:last-child,
 .admonition ol:last-child,
 .admonition ul:last-child,
-.admonition li {
-  @apply my-0 !important;
+.admonition[role='alert'] li {
+  @apply my-0;
 }
 
-.admonition code {
-  @apply text-sm !important;
+.admonition[role='alert'] code {
+  @apply text-sm;
 }

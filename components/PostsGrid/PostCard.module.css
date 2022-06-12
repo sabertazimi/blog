@@ -1,11 +1,11 @@
-.title {
-  @apply my-3 !important;
+h2.title {
+  @apply my-3;
 }
 
 .skeleton {
-  @apply mt-3 !important;
+  @apply mt-3;
 }
 
 .button {
-  @apply button-primary float-right m-0 h-14 w-14 rounded-full text-2xl !important;
+  @apply button-primary float-right m-0 h-14 w-14 rounded-full text-2xl;
 }

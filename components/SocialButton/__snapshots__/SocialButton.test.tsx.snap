@@ -7,13 +7,13 @@ exports[`SocialButton should render [default] button correctly (snapshot) 1`] = 
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://default.com"
       role="link"
     >
       <span
         aria-label="rocket"
-        class="anticon anticon-rocket text-4xl"
+        class="anticon anticon-rocket icon"
         role="img"
       >
         <svg
@@ -42,13 +42,13 @@ exports[`SocialButton should render [facebook] button correctly (snapshot) 1`] =
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://facebook.com"
       role="link"
     >
       <span
         aria-label="facebook"
-        class="anticon anticon-facebook text-4xl"
+        class="anticon anticon-facebook icon"
         role="img"
       >
         <svg
@@ -77,13 +77,13 @@ exports[`SocialButton should render [github] button correctly (snapshot) 1`] = `
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://github.com"
       role="link"
     >
       <span
         aria-label="github"
-        class="anticon anticon-github text-4xl"
+        class="anticon anticon-github icon"
         role="img"
       >
         <svg
@@ -112,13 +112,13 @@ exports[`SocialButton should render [linkedin] button correctly (snapshot) 1`] =
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://linkedin.com"
       role="link"
     >
       <span
         aria-label="linkedin"
-        class="anticon anticon-linkedin text-4xl"
+        class="anticon anticon-linkedin icon"
         role="img"
       >
         <svg
@@ -147,13 +147,13 @@ exports[`SocialButton should render [twitter] button correctly (snapshot) 1`] = 
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://twitter.com"
       role="link"
     >
       <span
         aria-label="twitter"
-        class="anticon anticon-twitter text-4xl"
+        class="anticon anticon-twitter icon"
         role="img"
       >
         <svg
@@ -182,13 +182,13 @@ exports[`SocialButton should render [weibo] button correctly (snapshot) 1`] = `
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://weibo.com"
       role="link"
     >
       <span
         aria-label="weibo"
-        class="anticon anticon-weibo text-4xl"
+        class="anticon anticon-weibo icon"
         role="img"
       >
         <svg
@@ -217,14 +217,14 @@ exports[`SocialButton should render colorful button correctly (snapshot) 1`] = `
     style="opacity: 0; transform: translateX(20px) translateZ(0);"
   >
     <a
-      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only rounded-none text-center text-light"
+      class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
       href="https://github.com"
       role="link"
       style="background-color: rgb(41, 153, 84);"
     >
       <span
         aria-label="github"
-        class="anticon anticon-github text-4xl"
+        class="anticon anticon-github icon"
         role="img"
       >
         <svg

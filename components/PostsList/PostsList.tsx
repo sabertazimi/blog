@@ -1,6 +1,7 @@
 import Link from '@components/Link';
 import { List } from '@components/Lists';
 import type { PostMeta } from '@types';
+import styles from './PostsList.module.css';
 
 interface Props {
   posts: PostMeta[];
@@ -14,10 +15,7 @@ const PostsList = ({ posts }: Props): JSX.Element => (
       <List.Item>
         <List.Item.Meta
           title={
-            <Link
-              href={`/post/${slug}`}
-              className="text-span-lg transform-gpu text-blue-400 transition hover:translate-x-4"
-            >
+            <Link href={`/post/${slug}`} className={styles.link}>
               {title}
             </Link>
           }

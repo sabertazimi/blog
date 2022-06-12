@@ -2,3 +2,13 @@
 .ant-btn-text {
   @apply dark:text-light;
 }
+
+.ant-btn-default,
+.ant-btn-dashed {
+  @apply bg-transparent hover:bg-transparent dark:text-light dark:hover:text-secondary;
+}
+
+/* Remove tailwind button reset styles */
+.ant-btn-primary {
+  @apply bg-primary;
+}

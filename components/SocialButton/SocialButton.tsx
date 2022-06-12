@@ -4,6 +4,7 @@ import { Bounce } from '@components/Motion';
 import { cx } from '@components/utils';
 import type { SocialType } from '@types';
 import type { HTMLProps } from 'react';
+import styles from './SocialButton.module.css';
 
 interface Props extends HTMLProps<HTMLButtonElement> {
   type: SocialType;
@@ -23,7 +24,7 @@ const SocialButton = ({
       role="link"
       size="large"
       type="link"
-      className={cx('rounded-none text-center text-light', className)}
+      className={cx(styles.button, className)}
       style={color ? { backgroundColor: color } : {}}
       icon={SocialIcon(type)}
       href={`${url}`}
