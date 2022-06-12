@@ -19,7 +19,10 @@ const LinkTag = ({
 }: Props): JSX.Element => (
   <Tag
     color={color}
-    className={cx('mb-1 rounded-none text-base font-extrabold', className)}
+    className={cx(
+      'mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary',
+      className
+    )}
   >
     <Link href={href}>{tag}</Link>
   </Tag>
