@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/sabertazimi/blog/compare/v3.5.0...v3.6.0) (2022-06-12)
+
+
+### :sparkles: Features
+
+* **MDX-Anchor:** add click-able link for headings ([#877](https://github.com/sabertazimi/blog/issues/877)) ([ac813bc](https://github.com/sabertazimi/blog/commit/ac813bc1e3f1ebb6819ac31f1d64003c61dbfbbe))
+* **tailwind:** remove all `important` styles ([#909](https://github.com/sabertazimi/blog/issues/909)) ([2ccb388](https://github.com/sabertazimi/blog/commit/2ccb3889718bf717a1a7437c879baa749e680a45)), closes [vercel/next.js#16630](https://github.com/vercel/next.js/issues/16630)
+
+
+### :bug: Bug Fixes
+
+* **components-a11y:** add keyboard a11y styles ([#913](https://github.com/sabertazimi/blog/issues/913)) ([2a857a5](https://github.com/sabertazimi/blog/commit/2a857a55b90fc85610df5c22746f381b0c055282)), closes [#912](https://github.com/sabertazimi/blog/issues/912)
+* **components-Article:** add a11y `<article>` wrapper to post content ([#856](https://github.com/sabertazimi/blog/issues/856)) ([daef2ab](https://github.com/sabertazimi/blog/commit/daef2ab8955e31c1eaca49ecfe201554c78a6f94))
+* **components-Article:** adjust line length ([#894](https://github.com/sabertazimi/blog/issues/894)) ([d235b63](https://github.com/sabertazimi/blog/commit/d235b63546920b0f172e95a32d4a0568e34aa22f))
+* **components-Article:** adjust max width size ([#900](https://github.com/sabertazimi/blog/issues/900)) ([a46966b](https://github.com/sabertazimi/blog/commit/a46966b645e298d952ba4277da6debbec0958fb3))
+* **components-ArticleNav:** adjust navigation button styles ([#896](https://github.com/sabertazimi/blog/issues/896)) ([aeeab92](https://github.com/sabertazimi/blog/commit/aeeab92e288b846dc2d010cc6115818a4a07e8ef))
+* **components-ArticleToc:** scroll to fixed header below position ([#861](https://github.com/sabertazimi/blog/issues/861)) ([b04e94a](https://github.com/sabertazimi/blog/commit/b04e94ad78366e82d6383499825e3ced3bfa5c8a))
+* **components-DesktopNav:** adjust blur size ([#895](https://github.com/sabertazimi/blog/issues/895)) ([c607117](https://github.com/sabertazimi/blog/commit/c607117274550180d08f0c889c9d278d781a12ce))
+* **components-DesktopNav:** horizontal centering navigation ([#899](https://github.com/sabertazimi/blog/issues/899)) ([2762258](https://github.com/sabertazimi/blog/commit/27622588a56cbac9c42224bb06461305f7c5c162))
+* **components-DesktopNav:** remove `!important` tailwind styles ([#911](https://github.com/sabertazimi/blog/issues/911)) ([a8f3577](https://github.com/sabertazimi/blog/commit/a8f35772529fc64947effe643dc72851f803d5a7))
+* **components-Footer:** add semantic `<time>` tag ([#892](https://github.com/sabertazimi/blog/issues/892)) ([f2dd652](https://github.com/sabertazimi/blog/commit/f2dd652f8b75dadadd63d068f5f6fc898b199449))
+* **components-Header:** adjust `<Header />` navigation styles ([#901](https://github.com/sabertazimi/blog/issues/901)) ([48edcab](https://github.com/sabertazimi/blog/commit/48edcabfaef88b2d30a136e431933236afe627fd))
+* **components-InlineCode:** clone box decoration ([#886](https://github.com/sabertazimi/blog/issues/886)) ([928e5cb](https://github.com/sabertazimi/blog/commit/928e5cb1fd5ff7577a3a6c4a5a9614af2d863f81))
+* **components-LandingNav:** add frosted glass effect ([#897](https://github.com/sabertazimi/blog/issues/897)) ([a2b3ed7](https://github.com/sabertazimi/blog/commit/a2b3ed7f42c8cd3b16a35c4d6a5b633760642ce6))
+* **components-LandingNav:** change landing page filter effect ([#908](https://github.com/sabertazimi/blog/issues/908)) ([064a920](https://github.com/sabertazimi/blog/commit/064a92086b4b0a6ad682070d0751aca0880cc386))
+* **components-LandingNav:** polish animation effect ([#879](https://github.com/sabertazimi/blog/issues/879)) ([f93fb9d](https://github.com/sabertazimi/blog/commit/f93fb9d85c226eea73721e7765c2f085b09e2c98))
+* **components-LinkTag:** add hover box shadow ([#915](https://github.com/sabertazimi/blog/issues/915)) ([7d04cf1](https://github.com/sabertazimi/blog/commit/7d04cf14c76280487397514050577c46d5fb2348))
+* **components-Lists:** add nested counter for `ol` ([#860](https://github.com/sabertazimi/blog/issues/860)) ([a4f2138](https://github.com/sabertazimi/blog/commit/a4f213807e803dd6c7fcb518d6a66d4db6c5ce06))
+* **components-motion:** add focus a11y style for `Bounce` motion ([#873](https://github.com/sabertazimi/blog/issues/873)) ([97e01d8](https://github.com/sabertazimi/blog/commit/97e01d8a6833e2ddc33cef55d856958521b093d5))
+* **components-Tags:** remove border radius ([#914](https://github.com/sabertazimi/blog/issues/914)) ([e0942b6](https://github.com/sabertazimi/blog/commit/e0942b65e7a14e0bce0d5866c23dc70c2534f142))
+* **components:** add hover style for `Anchor` link ([#882](https://github.com/sabertazimi/blog/issues/882)) ([5dceb54](https://github.com/sabertazimi/blog/commit/5dceb54c7ecd16992b09360a99cc694450d7e6c5))
+* **components:** rectify broken styles ([#910](https://github.com/sabertazimi/blog/issues/910)) ([ddb31f3](https://github.com/sabertazimi/blog/commit/ddb31f3defa1f72a59e60b4e62621e2c3ed81a22))
+* **components:** update heading link styles ([#883](https://github.com/sabertazimi/blog/issues/883)) ([0918d39](https://github.com/sabertazimi/blog/commit/0918d39a412b59c36eb51a698d5eca3499f015e6))
+* **deps:** update dependencies (non-major) ([#857](https://github.com/sabertazimi/blog/issues/857)) ([efe8cbd](https://github.com/sabertazimi/blog/commit/efe8cbd71a5a3f207fa3163586c0591da0a32aeb))
+* **deps:** update dependencies (non-major) ([#869](https://github.com/sabertazimi/blog/issues/869)) ([6d9fd8b](https://github.com/sabertazimi/blog/commit/6d9fd8bdf84037b6eef1053b1219b2d15bb5bf6f))
+* **deps:** update dependencies (non-major) ([#887](https://github.com/sabertazimi/blog/issues/887)) ([7c63f0a](https://github.com/sabertazimi/blog/commit/7c63f0adb6d6aa748feef7d1d514353cdd20c33d))
+* **deps:** update dependencies (non-major) ([#905](https://github.com/sabertazimi/blog/issues/905)) ([8400b2d](https://github.com/sabertazimi/blog/commit/8400b2d556fb1a9d0aef5b8e1dda50d02adff988))
+* **deps:** update dependency @codesandbox/sandpack-react to v1 ([#870](https://github.com/sabertazimi/blog/issues/870)) ([731cd8a](https://github.com/sabertazimi/blog/commit/731cd8a54b4c7c9518de9f666fa43a062ec3fdcf))
+* **deps:** update dependency antd to ^4.20.5 ([#855](https://github.com/sabertazimi/blog/issues/855)) ([ec2eabc](https://github.com/sabertazimi/blog/commit/ec2eabc9cd18c2cc4e65a704b230d0d17749d73d))
+* **deps:** update dependency antd to ^4.20.6 ([#864](https://github.com/sabertazimi/blog/issues/864)) ([9628660](https://github.com/sabertazimi/blog/commit/962866070ccc032c1d1c36c74eeda27645bb6f94))
+* **deps:** update dependency next-sitemap to ^2.5.26 ([#872](https://github.com/sabertazimi/blog/issues/872)) ([cbb8ac2](https://github.com/sabertazimi/blog/commit/cbb8ac2e16e99e75b3346df2c737f09d9c01203b))
+* **deps:** update dependency next-sitemap to ^2.5.27 ([#876](https://github.com/sabertazimi/blog/issues/876)) ([5f33855](https://github.com/sabertazimi/blog/commit/5f33855511bf8985d3ad4e863ef79c346b3600ed))
+* **deps:** update dependency next-sitemap to ^2.5.28 ([#880](https://github.com/sabertazimi/blog/issues/880)) ([39caa95](https://github.com/sabertazimi/blog/commit/39caa95e80475e6cfa78f59f4924b1dc1d610fe2))
+* **deps:** update dependency next-sitemap to v3 ([#890](https://github.com/sabertazimi/blog/issues/890)) ([f55be31](https://github.com/sabertazimi/blog/commit/f55be31d4b53741d35619c005a5c9d07045da88e))
+* **layouts:** add horizontal padding to default layout ([#904](https://github.com/sabertazimi/blog/issues/904)) ([124a595](https://github.com/sabertazimi/blog/commit/124a595a636aaec26aa6b2262f9f2d020eb7cabb))
+* **mdx-layout:** adjust floating widgets layout ([#862](https://github.com/sabertazimi/blog/issues/862)) ([ed31d20](https://github.com/sabertazimi/blog/commit/ed31d20af1ecf7b8ef9dd90b11bb0937058b79a2))
+* **mdx-shadow:** add shadow to code blocks and tables ([#863](https://github.com/sabertazimi/blog/issues/863)) ([15b5162](https://github.com/sabertazimi/blog/commit/15b5162f66447aa621d38060c830b1bfa8edb61c))
+* **types-time:** update build time type ([#893](https://github.com/sabertazimi/blog/issues/893)) ([597dbdf](https://github.com/sabertazimi/blog/commit/597dbdfc98c22c8fdbb81fdda014c6444d1d8451))
+
 ## [3.5.0](https://github.com/sabertazimi/blog/compare/v3.4.0...v3.5.0) (2022-05-12)
 
 
