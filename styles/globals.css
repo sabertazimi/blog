@@ -19,22 +19,6 @@
   --font-size: 18px;
 }
 
-@layer base {
-  body {
-    width: 100%;
-    font-family: var(--font-stack);
-    font-size: var(--font-size);
-  }
-
-  a {
-    @apply text-primary;
-  }
-
-  img {
-    @apply inline-block;
-  }
-}
-
 @layer components {
   .text-span {
     @apply ml-2 inline-block align-bottom text-xl dark:text-light;
@@ -58,12 +42,30 @@
 
   .card {
     @apply transform-gpu shadow-xl transition duration-300;
-    @apply hover:-translate-y-2 hover:shadow-2xl;
+    @apply focus-within:-translate-y-2 focus-within:shadow-2xl hover:-translate-y-2 hover:shadow-2xl;
     @apply dark:border dark:border-solid dark:border-light;
-    @apply dark:bg-black dark:shadow-dark dark:hover:shadow-primary;
+    @apply dark:bg-black dark:shadow-dark dark:focus-within:shadow-primary dark:hover:shadow-primary;
+  }
+
+  .outline-focus-visible {
+    @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-secondary;
   }
 
   a.dark-menu-link[href] {
     @apply dark:text-light dark:hover:text-primary dark:focus:text-primary;
   }
+}
+
+body {
+  width: 100%;
+  font-family: var(--font-stack);
+  font-size: var(--font-size);
+}
+
+a {
+  @apply outline-focus-visible text-primary hover:text-secondary;
+}
+
+img {
+  @apply inline-block;
 }

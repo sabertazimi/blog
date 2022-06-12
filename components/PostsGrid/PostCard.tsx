@@ -1,4 +1,3 @@
-import Button from '@components/Button';
 import Container from '@components/Container';
 import { H2 } from '@components/Headings';
 import { Calendar, Read } from '@components/Icons';
@@ -28,11 +27,9 @@ const PostCard = ({
         <Skeleton
           paragraph={{ rows: Math.min(Math.floor(readingTime / 2), 10) }}
         />
-        <Button className={styles.button}>
-          <Link href={`/post/${slug}`}>
-            <Read />
-          </Link>
-        </Button>
+        <Link href={`/post/${slug}`} className={styles.link}>
+          <Read />
+        </Link>
       </Container>
     </Slide>
   </Container>

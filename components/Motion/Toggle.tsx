@@ -11,6 +11,7 @@ interface Props {
   iconOpen: ReactNode;
   shouldReduceMotion: boolean | null;
   className?: string;
+  tabIndex?: number;
 }
 
 const closeVariants: MotionProps['initial'] & MotionProps['animate'] = {
@@ -42,6 +43,7 @@ const Toggle = ({
   iconOpen,
   className,
   shouldReduceMotion,
+  tabIndex = 0,
   ...props
 }: Props): JSX.Element => {
   const handleKeyDown = useCallback(
@@ -57,7 +59,7 @@ const Toggle = ({
     <div
       key="toggle-wrapper"
       data-testid="toggle-wrapper"
-      tabIndex={0}
+      tabIndex={tabIndex}
       onClick={onToggle}
       onKeyDown={handleKeyDown}
       className={cx(styles.wrapper, className)}
