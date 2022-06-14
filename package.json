@@ -1,9 +1,8 @@
 {
   "name": "@sabertazimi/blog",
   "version": "3.6.0",
+  "packageManager": "yarn@3.2.1",
   "description": "A blog system based on React and Next",
-  "author": "sabertazimi",
-  "license": "MIT",
   "keywords": [
     "blog",
     "next",
@@ -11,6 +10,8 @@
     "starter",
     "typescript"
   ],
+  "license": "MIT",
+  "author": "sabertazimi",
   "repository": {
     "type": "git",
     "url": "https://github.com/sabertazimi/blog"
@@ -19,7 +20,6 @@
     "url": "https://github.com/sabertazimi/blog/issues"
   },
   "browserslist": "last 2 versions",
-  "packageManager": "yarn@3.2.1",
   "scripts": {
     "build": "next build && next-sitemap --config sitemap.config.js",
     "clone": "git clone https://$VERCEL_GIT_PROVIDER.com/$VERCEL_GIT_REPO_OWNER/$VERCEL_GIT_REPO_SLUG && rm -fr .git && cp -fr $VERCEL_GIT_REPO_SLUG/.git . && rm -fr $VERCEL_GIT_REPO_SLUG",
