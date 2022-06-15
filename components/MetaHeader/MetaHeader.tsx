@@ -1,4 +1,3 @@
-import { getSandpackCssText } from '@codesandbox/sandpack-react';
 import ErrorBoundary from '@components/ErrorBoundary';
 import { siteConfig } from '@config';
 import landingImage from '@images/landing.jpg';
@@ -23,12 +22,6 @@ const MetaHeader = ({
       <Head key={title}>
         <title>{title}</title>
         <meta charSet="UTF-8" />
-        <style
-          id="sandpack"
-          dangerouslySetInnerHTML={{
-            __html: getSandpackCssText(),
-          }}
-        />
       </Head>
       <NextSeo
         title={title}
