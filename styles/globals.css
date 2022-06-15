@@ -95,7 +95,7 @@
   }
 
   .card {
-    @apply transform-gpu shadow-xl transition duration-300;
+    @apply transform-gpu rounded-none shadow-xl transition duration-300;
     @apply focus-within:-translate-y-2 focus-within:shadow-2xl hover:-translate-y-2 hover:shadow-2xl;
     @apply dark:border dark:border-solid dark:border-light;
     @apply dark:bg-black dark:shadow-dark dark:focus-within:shadow-primary dark:hover:shadow-primary;

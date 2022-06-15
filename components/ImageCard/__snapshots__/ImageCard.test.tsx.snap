@@ -3,7 +3,7 @@
 exports[`ImageCard should render local image correctly (snapshot) 1`] = `
 <div>
   <div
-    class="ant-card ant-card-bordered ant-card-small text-center card"
+    class="ant-card ant-card-bordered ant-card-small rounded-none text-center card"
   >
     <div
       class="ant-card-cover"
@@ -64,7 +64,7 @@ exports[`ImageCard should render placeholder image correctly (snapshot) 1`] = `
   >
     <img
       alt="Broken Image"
-      class="ant-image-img"
+      class="ant-image-img rounded-none"
       src="error"
     />
     <div
