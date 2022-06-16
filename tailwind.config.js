@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -111,4 +113,28 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    plugin(({ addUtilities, matchUtilities, theme }) => {
+      addUtilities({
+        '.content-auto': {
+          'content-visibility': 'auto',
+        },
+        '.content-hidden': {
+          'content-visibility': 'hidden',
+        },
+        '.content-visible': {
+          'content-visibility': 'visible',
+        },
+      });
+
+      matchUtilities(
+        {
+          'contain-size': value => ({
+            'contain-intrinsic-size': value,
+          }),
+        },
+        { values: theme('height') }
+      );
+    }),
+  ],
 };
