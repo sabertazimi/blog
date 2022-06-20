@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["global.d.ts", "**/*.ts"],
+  "include": ["globals.d.ts", "**/*.ts"],
   "exclude": [],
   "compilerOptions": {
     "target": "ES6",
