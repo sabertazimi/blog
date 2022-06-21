@@ -19,7 +19,7 @@ const Footer = ({
 }: Props): JSX.Element => (
   <Container
     role="grid"
-    className="max-w-full bg-gray-900 p-8 text-center text-light dark:bg-black lg:p-20"
+    className="bg-gradient-secondary max-w-full p-8 text-center text-light lg:p-20"
   >
     <Row align="middle" justify="center">
       <Col span={24}>
