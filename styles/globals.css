@@ -105,7 +105,7 @@
     @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-secondary;
   }
 
-  a.dark-menu-link[href] {
+  .dark-menu-link.dark-menu-link[class] {
     @apply dark:text-light dark:hover:text-primary dark:focus:text-primary;
   }
 }

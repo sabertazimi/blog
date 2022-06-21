@@ -66,9 +66,9 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
         key: 'theme',
         label: (
           <ThemeSwitch
-            className={cx('dark:text-light', {
-              'text-light': !fixed,
-              'text-dark': fixed,
+            className={cx('dark-menu-link', {
+              [styles.light]: !fixed,
+              [styles.dark]: fixed,
             })}
           />
         ),
