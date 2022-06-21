@@ -1,12 +1,12 @@
-a.light[href],
-a.dark[href] {
+.light.light[class],
+.dark.dark[class] {
   @apply hover:text-primary focus:text-primary;
 }
 
-a.light[href] {
+.light.light[class] {
   @apply text-light;
 }
 
-a.dark[href] {
+.dark.dark[class] {
   @apply text-dark;
 }
