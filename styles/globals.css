@@ -90,6 +90,22 @@
     @apply bg-gradient-to-r from-indigo-700 to-red-500;
   }
 
+  .bg-gradient-secondary {
+    @apply border-b-5 border-solid border-primary;
+
+    background: linear-gradient(63deg, #262626 23%, transparent 0) 7px 0,
+      linear-gradient(63deg, transparent 73%, #262626 76%),
+      linear-gradient(
+        63deg,
+        transparent 34%,
+        #262626 38%,
+        #262626 58%,
+        transparent 62%
+      ),
+      #222;
+    background-size: 16px 48px;
+  }
+
   .flex-container {
     @apply flex flex-row flex-wrap content-center items-center justify-center;
   }
