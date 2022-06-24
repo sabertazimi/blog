@@ -1840,17 +1840,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dg-scripts/stylelint-config@npm:^5.10.0":
-  version: 5.10.0
-  resolution: "@dg-scripts/stylelint-config@npm:5.10.0"
+"@dg-scripts/stylelint-config@npm:^5.11.0":
+  version: 5.11.0
+  resolution: "@dg-scripts/stylelint-config@npm:5.11.0"
   dependencies:
-    stylelint-config-bod: ^5.10.0
+    stylelint-config-bod: ^5.11.0
     stylelint-config-prettier: ^9.0.3
     stylelint-prettier: ^2.0.0
   peerDependencies:
     prettier: ^2.4.0
     stylelint: ^13.13.0 || ^14.0.0
-  checksum: c1bb54a9c658511697b8f4b61be933cdb521e231ab4fa0606a4d1a9059f9acb8608c374d106099d11d1d3da97436b69d124c13fe5525617ec2e78881d7d3c2df
+  checksum: 432ee4f7ea1a0ab29267a17db7310f28e2db3598779e24af79ca9604befc33b58deb184b601b9323ab9e5cb81d58b8c1a0db56762c7a04b82960e202c108d34a
   languageName: node
   linkType: hard
 
@@ -2678,7 +2678,7 @@ __metadata:
     "@ant-design/icons": ^4.7.0
     "@codesandbox/sandpack-react": ^1.1.5
     "@codesandbox/sandpack-themes": ^1.0.0
-    "@dg-scripts/stylelint-config": ^5.10.0
+    "@dg-scripts/stylelint-config": ^5.11.0
     "@octokit/rest": ^18.12.0
     "@octokit/types": ^6.35.0
     "@testing-library/jest-dom": ^5.16.4
@@ -14117,19 +14117,19 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint-config-bod@npm:^5.10.0":
-  version: 5.10.0
-  resolution: "stylelint-config-bod@npm:5.10.0"
+"stylelint-config-bod@npm:^5.11.0":
+  version: 5.11.0
+  resolution: "stylelint-config-bod@npm:5.11.0"
   dependencies:
     postcss-html: ^1.4.1
     postcss-markdown: ^1.2.0
     stylelint-config-html: ^1.0.0
     stylelint-config-recess-order: ^3.0.0
-    stylelint-config-standard: ^25.0.0
-    stylelint-config-standard-scss: ^3.0.0
+    stylelint-config-standard: ^26.0.0
+    stylelint-config-standard-scss: ^4.0.0
   peerDependencies:
     stylelint: ^13.13.0 || ^14.0.0
-  checksum: 469ceff2fe7358150ac8d04f031334385bf8759ea5fc97a1dbf13f5442662b9415e4eb5d3ca3cb64e9204e0107c4bea4e02b54ac689cd7a962eac3bfd119f266
+  checksum: 2717fae6e59ab0e9194863ddb09d6465b61b068e670f472afddf87a822139e7cd203721df12ca38e192a4d2af6647a6ecd5643db625854b0a89f24f4404f49be
   languageName: node
   linkType: hard
 
@@ -14166,25 +14166,16 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended-scss@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "stylelint-config-recommended-scss@npm:5.0.2"
+"stylelint-config-recommended-scss@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "stylelint-config-recommended-scss@npm:6.0.0"
   dependencies:
     postcss-scss: ^4.0.2
-    stylelint-config-recommended: ^6.0.0
+    stylelint-config-recommended: ^7.0.0
     stylelint-scss: ^4.0.0
   peerDependencies:
-    stylelint: ^14.0.0
-  checksum: e882bde8a0846c421e2662f9e7a9c2646120c492528f7ad715d927db6954b8a2499476de0792b15f0044217f72c81edc97afc640c5b4d7618a9f96dc7045e4c1
-  languageName: node
-  linkType: hard
-
-"stylelint-config-recommended@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "stylelint-config-recommended@npm:6.0.0"
-  peerDependencies:
-    stylelint: ^14.0.0
-  checksum: 103b3c122253a908f91f5728d39eff6fed3866157e29a6e550da051cfc207b0d159b7434e0806126e3c3939e6528a0a1cd5a1cf00b835dd49b3a18ba4a007fa1
+    stylelint: ^14.4.0
+  checksum: a7254f4e8fc8c25990ad0fade6c3a7e663e867d4f4f92175919de26315a7283e7dd7dc10ef5f7f3a2f7fb76b3aeb5b428c4f3417b2d526868bb9db40c85270b3
   languageName: node
   linkType: hard
 
@@ -14197,26 +14188,24 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint-config-standard-scss@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "stylelint-config-standard-scss@npm:3.0.0"
-  dependencies:
-    stylelint-config-recommended-scss: ^5.0.2
-    stylelint-config-standard: ^24.0.0
+"stylelint-config-recommended@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "stylelint-config-recommended@npm:8.0.0"
   peerDependencies:
-    stylelint: ^14.0.0
-  checksum: b9be47e256e28e8f3e31ca51de53fc48d688b264f74d870b97c553cb3f799f3003a458d521644efc4feda0a1345da4e82d0595cfcba540dbb253f12c645234a0
+    stylelint: ^14.8.0
+  checksum: 0c5ca94625e5308a7afb8315bb350a2b48f46fdd8d8922dd9a8c2e37b3407f2294794d930726ad6bf2007abcde1abd34084808cf83adf150efe3a643e0eb5ac4
   languageName: node
   linkType: hard
 
-"stylelint-config-standard@npm:^24.0.0":
-  version: 24.0.0
-  resolution: "stylelint-config-standard@npm:24.0.0"
+"stylelint-config-standard-scss@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "stylelint-config-standard-scss@npm:4.0.0"
   dependencies:
-    stylelint-config-recommended: ^6.0.0
+    stylelint-config-recommended-scss: ^6.0.0
+    stylelint-config-standard: ^25.0.0
   peerDependencies:
-    stylelint: ^14.0.0
-  checksum: 5993ede913d81410830639db054a7a3f5c87e56254368be45ce876321106fad1c11ee4cb77247049aaf22e283a393dd90d93dec8f796f8f139ed21eb86a9a168
+    stylelint: ^14.4.0
+  checksum: 1f65f8f3c8e5a7706f41d27f5983a88bc4b2cf0d31bd10cc2ef4250eb4a55d46fa4ccac4411c5be57b681a7ddc5c7d0c4c57dfda01769a7b2b41499a16873a12
   languageName: node
   linkType: hard
 
@@ -14228,6 +14217,17 @@ resolve@^2.0.0-next.3:
   peerDependencies:
     stylelint: ^14.4.0
   checksum: bfd5773f47ea7fcddba972037d6dd32d1fb900c2ca592a313fe1a28df054ef465b11e6e53fe6e87bbf0c356ab33a7a4eecc447cf7a1bd39c9b50c7b4bfb48d81
+  languageName: node
+  linkType: hard
+
+"stylelint-config-standard@npm:^26.0.0":
+  version: 26.0.0
+  resolution: "stylelint-config-standard@npm:26.0.0"
+  dependencies:
+    stylelint-config-recommended: ^8.0.0
+  peerDependencies:
+    stylelint: ^14.9.0
+  checksum: c1fe44df1755bcccc740b385a24acffa922d331d9f9ba39dafad81cc9643e6c1f870abd1ee73b2737d6903e06efb83b2a1ee26d786faef0123fc22e1f09c13fe
   languageName: node
   linkType: hard
 
