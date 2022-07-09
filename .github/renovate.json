@@ -27,6 +27,10 @@
       "matchPackageNames": ["@sabertazimi/react-scripts"],
       "matchPackagePatterns": ["^@dg-scripts/"],
       "groupName": "bod monorepo"
+    },
+    {
+      "matchPackageNames": ["next"],
+      "groupName": "nextjs"
     }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"],
