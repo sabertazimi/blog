@@ -50,7 +50,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         </span>
       </span>
       <div
-        class="p-auto container relative mx-auto my-0 block h-full skeleton"
+        class="p-auto container relative mx-auto my-0 block h-full mt-3"
       >
         <div
           class="ant-skeleton"
@@ -68,7 +68,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
           </div>
         </div>
         <a
-          class="link"
+          class="flex-container float-right m-0 h-14 w-14 rounded-full border-primary bg-primary text-2xl text-light transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light"
           href="/post/1BasicNotes"
         >
           <span
@@ -147,7 +147,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         </span>
       </span>
       <div
-        class="p-auto container relative mx-auto my-0 block h-full skeleton"
+        class="p-auto container relative mx-auto my-0 block h-full mt-3"
       >
         <div
           class="ant-skeleton"
@@ -165,7 +165,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
           </div>
         </div>
         <a
-          class="link"
+          class="flex-container float-right m-0 h-14 w-14 rounded-full border-primary bg-primary text-2xl text-light transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light"
           href="/post/1BasicNotes"
         >
           <span

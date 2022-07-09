@@ -1,6 +1,6 @@
 import { Moon, Sun } from '@components/Icons';
 import { Toggle } from '@components/Motion';
-import { useReducedMotion } from '@components/utils';
+import { cx, useReducedMotion } from '@components/utils';
 import { useDarkMode } from '@hooks';
 import { useCallback } from 'react';
 import styles from './ThemeSwitch.module.css';
@@ -18,7 +18,7 @@ const ThemeSwitch = ({ className }: Props): JSX.Element => {
 
   return (
     <Toggle
-      className={styles.button}
+      className={cx('outline-focus-visible', styles.button)}
       isToggled={darkMode}
       onToggle={handleClick}
       iconClose={<Sun className={className} />}

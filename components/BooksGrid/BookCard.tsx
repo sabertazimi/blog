@@ -1,6 +1,7 @@
 import Badge from '@components/Badge';
 import { Card, Meta } from '@components/Card';
 import { Book as BookIcon } from '@components/Icons';
+import { Span } from '@components/Texts';
 import { getColorByName } from '@config';
 import type { Book } from '@types';
 
@@ -17,7 +18,7 @@ const BookCard = ({ book }: Props): JSX.Element => {
         title={
           <a href={url}>
             <BookIcon className="align-top text-6xl" />
-            <span className="text-span-xl">{title}</span>
+            <Span size="xl">{title}</Span>
           </a>
         }
       >

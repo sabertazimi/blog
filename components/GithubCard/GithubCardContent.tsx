@@ -1,5 +1,6 @@
 import { Environment, InfoCircle, User } from '@components/Icons';
 import Space from '@components/Space';
+import { Span } from '@components/Texts';
 import type { Profile } from '@types';
 
 interface Props {
@@ -10,16 +11,16 @@ const GithubCardContent = ({ profile }: Props): JSX.Element => (
   <Space direction="vertical">
     <div>
       <InfoCircle className="align-top text-2xl dark:text-light" />
-      <span className="text-span">{profile.bio || 'No Description'}</span>
+      <Span className="dark:text-light">{profile.bio || 'No Description'}</Span>
     </div>
     <div>
       <Environment className="align-top text-2xl dark:text-light" />
-      <span className="text-span">{profile.location || 'Earth'}</span>
+      <Span className="dark:text-light">{profile.location || 'Earth'}</Span>
     </div>
     <div>
       <a href={profile.followersUrl}>
         <User className="align-top text-2xl" />
-        <span className="ml-2 inline-block align-bottom text-xl">{`${profile.followers} Followers`}</span>
+        <Span>{`${profile.followers} Followers`}</Span>
       </a>
     </div>
   </Space>
