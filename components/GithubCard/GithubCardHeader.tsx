@@ -1,4 +1,5 @@
 import { Github } from '@components/Icons';
+import { Span } from '@components/Texts';
 import type { Profile } from '@types';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 const GithubCardHeader = ({ profile }: Props): JSX.Element => (
   <a href={profile.url}>
     <Github className="align-top text-6xl" />
-    <span className="text-span-xl">{profile.username}</span>
+    <Span size="xl">{profile.username}</Span>
   </a>
 );
 

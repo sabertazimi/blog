@@ -1,3 +1,4 @@
 a.link {
-  @apply text-span-lg transform-gpu text-primary transition hover:translate-x-4 hover:text-secondary focus:translate-x-4 focus:text-secondary;
+  @apply ml-2 inline-block align-bottom text-3xl font-extrabold;
+  @apply transform-gpu text-primary transition hover:translate-x-4 hover:text-secondary focus:translate-x-4 focus:text-secondary;
 }

@@ -2,6 +2,7 @@ import Badge from '@components/Badge';
 import { Card, Meta } from '@components/Card';
 import { Branches, Star } from '@components/Icons';
 import { Tag } from '@components/Tags';
+import { Span } from '@components/Texts';
 import { getColorByName } from '@config';
 import type { Repo } from '@types';
 
@@ -16,7 +17,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
       title={
         <a href={repo.repoUrl}>
           <Branches className="align-top text-4xl" />
-          <span className="text-span-lg">{repo.name}</span>
+          <Span size="lg">{repo.name}</Span>
         </a>
       }
     >
@@ -28,7 +29,7 @@ const GithubRepoCard = ({ repo }: Props): JSX.Element => (
         }
       />
       <Star className="align-top text-2xl dark:text-light" />
-      <span className="text-span">{repo.stars}</span>
+      <Span className="dark:text-light">{repo.stars}</Span>
     </Card>
   </Badge.Ribbon>
 );

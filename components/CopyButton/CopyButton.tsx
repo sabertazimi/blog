@@ -18,7 +18,10 @@ const CopyButton = ({ code, className }: Props): JSX.Element => {
       type="button"
       aria-label="CopyButton"
       title="Copy"
-      className={cx(className, styles.button)}
+      className={cx(
+        className,
+        'outline-focus-visible absolute right-5 top-1.5 md:top-1'
+      )}
       onClick={copy}
     >
       <Toggle

@@ -74,18 +74,6 @@
 }
 
 @layer components {
-  .text-span {
-    @apply ml-2 inline-block align-bottom text-xl dark:text-light;
-  }
-
-  .text-span-lg {
-    @apply ml-2 inline-block align-bottom text-3xl font-extrabold;
-  }
-
-  .text-span-xl {
-    @apply ml-2 inline-block align-bottom text-5xl font-extrabold;
-  }
-
   .bg-gradient-primary {
     @apply bg-gradient-to-r from-indigo-700 to-red-500;
   }

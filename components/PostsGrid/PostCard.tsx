@@ -5,6 +5,7 @@ import Link from '@components/Link';
 import { Slide } from '@components/Motion';
 import Skeleton from '@components/Skeleton';
 import { IconTag, LinkTag } from '@components/Tags';
+import { cx } from '@components/utils';
 import type { PostMeta } from '@types';
 import styles from './PostCard.module.css';
 
@@ -23,11 +24,18 @@ const PostCard = ({
         tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
         icon={<Calendar />}
       />
-      <Container className={styles.skeleton}>
+      <Container className="mt-3">
         <Skeleton
           paragraph={{ rows: Math.min(Math.floor(readingTime / 2), 10) }}
         />
-        <Link href={`/post/${slug}`} className={styles.link}>
+        <Link
+          href={`/post/${slug}`}
+          className={cx(
+            'flex-container float-right m-0 h-14 w-14 rounded-full border-primary',
+            'bg-primary text-2xl text-light',
+            'transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light'
+          )}
+        >
           <Read />
         </Link>
       </Container>

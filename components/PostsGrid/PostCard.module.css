@@ -2,13 +2,3 @@
 .title.title.title {
   @apply my-3;
 }
-
-.skeleton {
-  @apply mt-3;
-}
-
-.link {
-  @apply flex-container float-right m-0 h-14 w-14 rounded-full border-primary;
-  @apply bg-primary text-2xl text-light;
-  @apply transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light;
-}
