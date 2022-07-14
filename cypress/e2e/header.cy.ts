@@ -18,16 +18,6 @@ describe('Header', () => {
     });
   });
 
-  it('should route to home page when logo clicked', () => {
-    cy.wrap(routes).each((route: Route) => {
-      cy.visitRoute(route.path, route.name);
-
-      cy.getByRole('menu').findByRole('menuitem').eq(logoIndex).click();
-
-      cy.validRoute('/', siteConfig.title);
-    });
-  });
-
   it('should route to pages when links clicked', () => {
     cy.wrap(routes).each((route: Route, index) => {
       cy.visitRoute(route.path, route.name);
@@ -41,82 +31,31 @@ describe('Header', () => {
     });
   });
 
-  it('should focus search bar when search bar clicked', () => {
+  it('should have search bar', () => {
     cy.wrap(routes).each((route: Route) => {
       cy.visitRoute(route.path, route.name);
 
       cy.getByRole('menu')
         .findByRole('menuitem')
         .eq(searchBarIndex)
-        .click()
-        .should('have.class', 'ant-menu-item-selected');
+        .findByRole('combobox');
     });
   });
 
-  it('should search posts when search bar worked', () => {
-    cy.wrap(routes).each((route: Route) => {
-      cy.visitRoute(route.path, route.name);
-
-      cy.getByRole('menu')
-        .findByRole('menuitem')
-        .eq(searchBarIndex)
-        .findByRole('combobox')
-        .type('Notes')
-        .should('have.value', 'Notes');
-    });
-  });
-
-  it('should clear input when search bar clear button clicked', () => {
-    cy.wrap(routes).each((route: Route) => {
-      cy.visitRoute(route.path, route.name);
-
-      cy.getByRole('menu')
-        .findByRole('menuitem')
-        .eq(searchBarIndex)
-        .findByRole('combobox')
-        .type('Notes')
-        .should('have.value', 'Notes');
-
-      cy.getByRole('menu')
-        .findByRole('menuitem')
-        .eq(searchBarIndex)
-        .findByLabel('close-circle')
-        .click();
-
-      cy.getByRole('menu')
-        .findByRole('menuitem')
-        .eq(searchBarIndex)
-        .findByRole('combobox')
-        .should('have.value', '');
-    });
-  });
-
-  it('should switch theme when theme switch button clicked', () => {
+  it('should have theme switch', () => {
     cy.wrap(routes).each((route: Route) => {
       cy.visitRoute(route.path, route.name);
       cy.clearLocalStorage();
 
-      cy.getByRole('menu')
-        .findByRole('menuitem')
-        .eq(themeSwitchIndex)
-        .findByLabel('sun')
-        .click();
-
       cy.window().then(window => {
-        expect(window.localStorage.getItem('dark-mode')).to.equal('true');
-        expect(window.document.body.classList.contains('dark')).to.equal(true);
-      });
-
-      cy.getByRole('menu')
-        .findByRole('menuitem')
-        .eq(themeSwitchIndex)
-        .findByLabel('moon')
-        .click();
-
-      cy.window().then(window => {
-        expect(window.localStorage.getItem('dark-mode')).to.equal('false');
+        expect(window.localStorage.getItem('dark-mode')).to.equal(null);
         expect(window.document.body.classList.contains('dark')).to.equal(false);
       });
+
+      cy.getByRole('menu')
+        .findByRole('menuitem')
+        .eq(themeSwitchIndex)
+        .findByLabel('sun');
     });
   });
 });
