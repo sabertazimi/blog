@@ -2562,10 +2562,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^12.7.0":
-  version: 12.8.0
-  resolution: "@octokit/openapi-types@npm:12.8.0"
-  checksum: 66058ebb9aabfeafaf61cd205487edd14b8f3eac7c6aa796cd7489fe948657912514d9b02918c1bca9d88a07dbb2deed5763e2ca61a6a8f6503caee32429a7b1
+"@octokit/openapi-types@npm:^12.10.0":
+  version: 12.10.0
+  resolution: "@octokit/openapi-types@npm:12.10.0"
+  checksum: 379a97d54570cff3bb15f1a8e2b326773ab1d9ecb07c138cc038eb04062cbf78ebb4f85d3bc81b4fd77333af9cb45173e52d152540626caf96845b842cf3d6f6
   languageName: node
   linkType: hard
 
@@ -2638,12 +2638,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.39.0":
-  version: 6.39.0
-  resolution: "@octokit/types@npm:6.39.0"
+"@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.39.0, @octokit/types@npm:^6.40.0":
+  version: 6.40.0
+  resolution: "@octokit/types@npm:6.40.0"
   dependencies:
-    "@octokit/openapi-types": ^12.7.0
-  checksum: 0e3d55e4bdef41e652a2e99a304cebada90f23a90619c49ab892a76ae908c4281316738453348c9ba30b32250ef5eda0a939c2af3aec5ca808acdf9922da420c
+    "@octokit/openapi-types": ^12.10.0
+  checksum: e8854fefd24003423bb03c3530449d1b390d340dc21f078a34adfa89a356138e9ab8f02493c6aa1e1bd101f630658dce24877e0615c130911fac8adc721eac42
   languageName: node
   linkType: hard
 
@@ -2742,7 +2742,7 @@ __metadata:
     "@codesandbox/sandpack-themes": ^1.0.0
     "@dg-scripts/stylelint-config": ^5.11.0
     "@octokit/rest": ^19.0.3
-    "@octokit/types": ^6.39.0
+    "@octokit/types": ^6.40.0
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
     "@types/jest": ^28.1.5
@@ -2758,7 +2758,7 @@ __metadata:
     eslint: ^8.19.0
     eslint-config-next: ^12.2.2
     eslint-config-prettier: ^8.5.0
-    framer-motion: ^6.5.0
+    framer-motion: ^6.5.1
     gray-matter: ^4.0.3
     jest: ^28.1.3
     jest-axe: ^6.0.0
@@ -2769,7 +2769,7 @@ __metadata:
     next-progress: ^2.2.0
     next-pwa: ^5.5.4
     next-seo: ^5.4.0
-    next-sitemap: ^3.1.10
+    next-sitemap: ^3.1.11
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.14
     postcss-flexbugs-fixes: ^5.0.2
@@ -6944,9 +6944,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "framer-motion@npm:6.5.0"
+"framer-motion@npm:^6.5.1":
+  version: 6.5.1
+  resolution: "framer-motion@npm:6.5.1"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.12.0
@@ -6961,7 +6961,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: d4d11a216f08e918195b38ab4edf86762d09cd023051a7e481ca9cee403f6bd5675eab0c1f8b2fce43800ebaac270077e2fe23c8e2b3cd4b84365e4bca7e6112
+  checksum: 737959063137b4ccafe01e0ac0c9e5a9531bf3f729f62c34ca7a5d7955e6664f70affd22b044f7db51df41acb21d120a4f71a860e17a80c4db766ad66f2153a1
   languageName: node
   linkType: hard
 
@@ -10717,9 +10717,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^3.1.10":
-  version: 3.1.10
-  resolution: "next-sitemap@npm:3.1.10"
+"next-sitemap@npm:^3.1.11":
+  version: 3.1.11
+  resolution: "next-sitemap@npm:3.1.11"
   dependencies:
     "@corex/deepmerge": ^4.0.29
     minimist: ^1.2.6
@@ -10729,7 +10729,7 @@ __metadata:
   bin:
     next-sitemap: bin/next-sitemap.mjs
     next-sitemap-cjs: bin/next-sitemap.cjs
-  checksum: 029b8c39686de9b5d96523cba53b66f0e5ce9e4c28702938a242986f8710116e405ac6ef61721e5b09060269a8918ca52b02120ce5884a024216673db9e8c8e1
+  checksum: 578bda7542cf1ee86ca0729e3afaaa5838856eb0c1a39b5588664e1f89d4d21d564b063a8695c99c48064b215aea40dbc5f0a32ed6deaef931d0a7eff80d8173
   languageName: node
   linkType: hard
 
