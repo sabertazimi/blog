@@ -2816,7 +2816,7 @@ __metadata:
     remark-gfm: ^3.0.1
     remark-github: ^11.2.4
     remark-math: ^5.1.1
-    remark-mdx-code-meta: ^1.0.0
+    remark-mdx-code-meta: ^2.0.0
     standard-version: ^9.5.0
     start-server-and-test: ^1.14.0
     stylelint: ^14.9.1
@@ -3685,7 +3685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-jsx@npm:^5.0.0, acorn-jsx@npm:^5.3.1, acorn-jsx@npm:^5.3.2":
+"acorn-jsx@npm:^5.0.0, acorn-jsx@npm:^5.3.2":
   version: 5.3.2
   resolution: "acorn-jsx@npm:5.3.2"
   peerDependencies:
@@ -3721,7 +3721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.0.0, acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.1":
+"acorn@npm:^8.0.0, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.1":
   version: 8.7.1
   resolution: "acorn@npm:8.7.1"
   bin:
@@ -6514,13 +6514,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estree-util-is-identifier-name@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "estree-util-is-identifier-name@npm:1.1.0"
-  checksum: ec55a74708b2fdac7de8d5a1dd82caf36783993608f11b8bc0dcd3b426746ccf21ee7da86ab94e4500c292dc1dde48b7ce65e5dc41f3dc4363a499ea15db32cc
-  languageName: node
-  linkType: hard
-
 "estree-util-is-identifier-name@npm:^2.0.0":
   version: 2.0.0
   resolution: "estree-util-is-identifier-name@npm:2.0.0"
@@ -7560,13 +7553,6 @@ __metadata:
     unist-util-position: ^4.0.0
     zwitch: ^2.0.0
   checksum: 7ac9884c35c0a1dc96c6237f841e0bdd4410746d0a9ab7ddfaaed9cf36adb3186633782b50e45c57bc8825640c5e1db070fd5eeca5061f76fc19bf991df8a520
-  languageName: node
-  linkType: hard
-
-"hast-util-to-string@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "hast-util-to-string@npm:1.0.4"
-  checksum: 8132508d5c08d542b64979ad558e474f481011c29d5fce9b1a1fe779fc97e151b734b5c6d94f4937c4ec978b1d641977ee7f9f5ed61ea0611600764abdff7cbb
   languageName: node
   linkType: hard
 
@@ -13157,16 +13143,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-mdx-code-meta@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "remark-mdx-code-meta@npm:1.0.0"
+"remark-mdx-code-meta@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "remark-mdx-code-meta@npm:2.0.0"
   dependencies:
-    acorn: ^8.2.4
-    acorn-jsx: ^5.3.1
-    estree-util-is-identifier-name: ^1.1.0
-    hast-util-to-string: ^1.0.4
-    unist-util-visit: ^2.0.3
-  checksum: 6146c87296c49b7bd8ba717fefda7c4074e96fbc920b6d6e979cdbbbecadcbd528bf3d2ec404db0bca22e31ba51d18ae4247a85c0f7ee9d4259052bd3a6c78f1
+    "@types/mdast": ^3.0.0
+    acorn: ^8.0.0
+    acorn-jsx: ^5.0.0
+    estree-util-is-identifier-name: ^2.0.0
+    hast-util-to-string: ^2.0.0
+    unified: ^10.0.0
+    unist-util-visit: ^4.0.0
+  checksum: 2f3dd0b7e312aa41fa8f80007c62d2a07353dd577811e60f391b157b7341e83b6ef40f2a6411ae1d9eb846a2f3288b8fc199fe7c8feb651cbce04610d92f0241
   languageName: node
   linkType: hard
 
@@ -15152,13 +15140,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"unist-util-is@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "unist-util-is@npm:4.1.0"
-  checksum: 726484cd2adc9be75a939aeedd48720f88294899c2e4a3143da413ae593f2b28037570730d5cf5fd910ff41f3bc1501e3d636b6814c478d71126581ef695f7ea
-  languageName: node
-  linkType: hard
-
 "unist-util-is@npm:^5.0.0":
   version: 5.1.1
   resolution: "unist-util-is@npm:5.1.1"
@@ -15212,16 +15193,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"unist-util-visit-parents@npm:^3.0.0":
-  version: 3.1.1
-  resolution: "unist-util-visit-parents@npm:3.1.1"
-  dependencies:
-    "@types/unist": ^2.0.0
-    unist-util-is: ^4.0.0
-  checksum: 1170e397dff88fab01e76d5154981666eb0291019d2462cff7a2961a3e76d3533b42eaa16b5b7e2d41ad42a5ea7d112301458283d255993e660511387bf67bc3
-  languageName: node
-  linkType: hard
-
 "unist-util-visit-parents@npm:^4.0.0":
   version: 4.1.1
   resolution: "unist-util-visit-parents@npm:4.1.1"
@@ -15239,17 +15210,6 @@ resolve@^2.0.0-next.3:
     "@types/unist": ^2.0.0
     unist-util-is: ^5.0.0
   checksum: 7c413dbb3dfcb679109fa8f0965d9abf117c3c53fa7b8823f68cac0ea53adbe98c1ce954d36c034e086c966b48b1d44d42c85f7bf6b42a032f728ac338929513
-  languageName: node
-  linkType: hard
-
-"unist-util-visit@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "unist-util-visit@npm:2.0.3"
-  dependencies:
-    "@types/unist": ^2.0.0
-    unist-util-is: ^4.0.0
-    unist-util-visit-parents: ^3.0.0
-  checksum: 1fe19d500e212128f96d8c3cfa3312846e586b797748a1fd195fe6479f06bc90a6f6904deb08eefc00dd58e83a1c8a32fb8677252d2273ad7a5e624525b69b8f
   languageName: node
   linkType: hard
 
