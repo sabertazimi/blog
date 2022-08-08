@@ -2788,7 +2788,7 @@ __metadata:
     "@types/jest-axe": ^3.5.4
     "@types/mdast": ^3.0.10
     "@types/node": ^18.0.3
-    "@types/react": ^18.0.15
+    "@types/react": ^18.0.16
     "@types/react-dom": ^18.0.6
     "@types/unist": ^2.0.6
     antd: ^4.22.3
@@ -2810,7 +2810,7 @@ __metadata:
     next-seo: ^5.5.0
     next-sitemap: ^3.1.16
     parse-numeric-range: ^1.3.0
-    postcss: ^8.4.14
+    postcss: ^8.4.16
     postcss-flexbugs-fixes: ^5.0.2
     postcss-preset-env: ^7.7.2
     prettier: ^2.7.1
@@ -2834,7 +2834,7 @@ __metadata:
     standard-version: ^9.5.0
     start-server-and-test: ^1.14.0
     stylelint: ^14.9.1
-    tailwindcss: ^3.1.7
+    tailwindcss: ^3.1.8
     ts-jest: ^28.0.7
     tslib: ^2.4.0
     typed.js: ^2.0.12
@@ -3317,14 +3317,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.15":
-  version: 18.0.15
-  resolution: "@types/react@npm:18.0.15"
+"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.16":
+  version: 18.0.16
+  resolution: "@types/react@npm:18.0.16"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: e22cc388d1c145aa184787e44dc28db4789976c704cd5db475c170bb76a560eb81def5f346cfe750949bb3d43ad88822b8cbb9f19b1286e3795892a8263e7715
+  checksum: 47853419adbf7f35f302cd4ef804c5a50498a0917a34e696caa693fc60b9c52c644ca2ecf64cbba4a5efd963771167d241906f117d16d59e20e84b882215b6bd
   languageName: node
   linkType: hard
 
@@ -11923,7 +11923,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:*, postcss@npm:8.4.14, postcss@npm:^8.3.11, postcss@npm:^8.4.0, postcss@npm:^8.4.14":
+"postcss@npm:*, postcss@npm:^8.3.11, postcss@npm:^8.4.0, postcss@npm:^8.4.14, postcss@npm:^8.4.16":
+  version: 8.4.16
+  resolution: "postcss@npm:8.4.16"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 10eee25efd77868036403858577da0cefaf2e0905feeaba5770d5438ccdddba3d01cba8063e96b8aac4c6daa0ed413dd5ae0554a433a3c4db38df1d134cffc1f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:8.4.14":
   version: 8.4.14
   resolution: "postcss@npm:8.4.14"
   dependencies:
@@ -14494,9 +14505,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.1.7":
-  version: 3.1.7
-  resolution: "tailwindcss@npm:3.1.7"
+"tailwindcss@npm:^3.1.8":
+  version: 3.1.8
+  resolution: "tailwindcss@npm:3.1.8"
   dependencies:
     arg: ^5.0.2
     chokidar: ^3.5.3
@@ -14525,7 +14536,7 @@ resolve@^2.0.0-next.3:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: adbc9869b72f741e9a0fc281b79710863617a588fd5d897316b676f789b6482c79f46f324223300ca962afbe55bed3ec16a37a6ccf4bb2c99c53cf8c5dd9700d
+  checksum: 86480301fc6ae1e392c2aba8264ab425bd919078176b010fda724518a7c265e950da5f4120c69c9041509c318207985fa9d680b6f5021e23f8214135a61a54b6
   languageName: node
   linkType: hard
 
