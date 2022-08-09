@@ -11,13 +11,12 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
-  pwa: {
-    dest: 'public',
-    disable: !isProduction,
-  },
   reactStrictMode: true,
   // TODO: enable SWC minifier when it's ready.
   // swcMinify: isProduction,
 };
 
-module.exports = NextPwa(nextConfig);
+module.exports = NextPwa(nextConfig, {
+  dest: 'public',
+  disable: !isProduction,
+});
