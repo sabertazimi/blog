@@ -1611,19 +1611,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-client@npm:^1.5.4":
-  version: 1.5.4
-  resolution: "@codesandbox/sandpack-client@npm:1.5.4"
+"@codesandbox/sandpack-client@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@codesandbox/sandpack-client@npm:1.7.0"
   dependencies:
     codesandbox-import-utils: ^1.2.3
     lodash.isequal: ^4.5.0
-  checksum: d99367308af8d1f2b5fd9609a219a8bc3de09b3c9395b424d2c3bf6229245f85ae8979078a1178cf49b556d962545fb337db4df2d85fa393462906f08ef53a49
+  checksum: bbf7d887456fab9ea1de12a493b957301904b711921d26e48fb838d84615b7066cc08f7f3a6389f24ac8a93acd8b94f88aedde7fd5408617417de4355b85d30f
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^1.5.5":
-  version: 1.5.5
-  resolution: "@codesandbox/sandpack-react@npm:1.5.5"
+"@codesandbox/sandpack-react@npm:^1.7.2":
+  version: 1.7.2
+  resolution: "@codesandbox/sandpack-react@npm:1.7.2"
   dependencies:
     "@code-hike/classer": ^0.0.0-aa6efee
     "@codemirror/closebrackets": ^0.19.0
@@ -1640,9 +1640,10 @@ __metadata:
     "@codemirror/matchbrackets": ^0.19.3
     "@codemirror/state": ^0.19.6
     "@codemirror/view": ^0.19.32
-    "@codesandbox/sandpack-client": ^1.5.4
+    "@codesandbox/sandpack-client": ^1.7.0
     "@react-hook/intersection-observer": ^3.1.1
     "@stitches/core": ^1.2.6
+    clean-set: ^1.1.2
     codesandbox-import-util-types: ^2.2.3
     lodash.isequal: ^4.5.0
     lz-string: ^1.4.4
@@ -1651,14 +1652,14 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 37b96ebf349f3943731aeae1b1626bce5917cbacdf6c23294e0196ff6527c99f4157b9b654abf75f6441dcd95d518bc04d35574c6891fa92bc42dc9eb23c097b
+  checksum: 56745a6df295c050a4bb3c635167a75f168405b9a3a316b31fc77042dec804ccc55a81217f40a24879fd3952cc93616fd34c866387af9a9576eb9a651bfd9be2
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-themes@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@codesandbox/sandpack-themes@npm:1.5.0"
-  checksum: 3c04370b32a9b214ff1ad30553eabcf5fcf58dbcd112149bc332eb39f917b6da1244b77e74425b2908677a4e90f45258fab31d4285ac9c0d32901d31b0e35c05
+"@codesandbox/sandpack-themes@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@codesandbox/sandpack-themes@npm:1.6.0"
+  checksum: c64d584d27266203564bc84391818a5145cc2619d004eb315dc33867118671f44db08ba9a07e745396adeb0540afc4f5acc2317770389b579197ce7e4336e73a
   languageName: node
   linkType: hard
 
@@ -2680,10 +2681,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^13.4.0":
-  version: 13.4.0
-  resolution: "@octokit/openapi-types@npm:13.4.0"
-  checksum: e5bb4573f065d0847c783db818eaa28fe2f8ec160334060e606c65dbf96a8c2108bcfed03da457e25b5dd9c0847b09cccf1206c709ee45c43108bb5d29808e9e
+"@octokit/openapi-types@npm:^13.6.0":
+  version: 13.7.0
+  resolution: "@octokit/openapi-types@npm:13.7.0"
+  checksum: ca872f64eb9967c66dea08c9e60343e1ee7f93839d86f5ef57b9d58ae19af301a49bac548a1e09c4ee53686b34b8b84eb61d5356faf632c8c2fbd89d0e32a954
   languageName: node
   linkType: hard
 
@@ -2765,12 +2766,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^7.0.0, @octokit/types@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "@octokit/types@npm:7.1.1"
+"@octokit/types@npm:^7.0.0, @octokit/types@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@octokit/types@npm:7.2.0"
   dependencies:
-    "@octokit/openapi-types": ^13.4.0
-  checksum: fe7847fe996b14761d1ca3e6dbb1b33bb180fc9b28ac602fab939fcdb729d99ec30a210f9ede6cd88a41cd04b3b49126ec3794220724a3be3d7863cdfbd9d490
+    "@octokit/openapi-types": ^13.6.0
+  checksum: e647e20ad46cc0899d16a7c621a54857c64f6579becfedc6788b3a0759fff5ca53722309cb51e51cc34312705df6edc084a2dd6ef5850e7668e39f3ed95ba5aa
   languageName: node
   linkType: hard
 
@@ -2865,23 +2866,23 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^4.7.0
-    "@codesandbox/sandpack-react": ^1.5.5
-    "@codesandbox/sandpack-themes": ^1.5.0
+    "@codesandbox/sandpack-react": ^1.7.2
+    "@codesandbox/sandpack-themes": ^1.6.0
     "@dg-scripts/stylelint-config": ^5.11.0
     "@octokit/rest": ^19.0.4
-    "@octokit/types": ^7.1.1
+    "@octokit/types": ^7.2.0
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
     "@types/jest": ^28.1.8
     "@types/jest-axe": ^3.5.4
     "@types/mdast": ^3.0.10
     "@types/node": ^18.0.3
-    "@types/react": ^18.0.17
+    "@types/react": ^18.0.18
     "@types/react-dom": ^18.0.6
     "@types/unist": ^2.0.6
     antd: ^4.22.8
     classnames: ^2.3.1
-    cypress: ^10.6.0
+    cypress: ^10.7.0
     eslint: ^8.23.0
     eslint-config-next: ^12.2.5
     eslint-config-prettier: ^8.5.0
@@ -2890,7 +2891,7 @@ __metadata:
     jest: ^29.0.1
     jest-axe: ^6.0.0
     jest-environment-jsdom: ^29.0.1
-    katex: ^0.16.1
+    katex: ^0.16.2
     next: ^12.2.5
     next-mdx-remote: ^4.1.0
     next-progress: ^2.2.0
@@ -3405,14 +3406,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.17":
-  version: 18.0.17
-  resolution: "@types/react@npm:18.0.17"
+"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.18":
+  version: 18.0.18
+  resolution: "@types/react@npm:18.0.18"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 18cae64f5bfd6bb58fbd8ee2ba52ec82de844f114254e26de7b513e4b86621f643f9b71d7066958cd571b0d78cb86cbceda449c5289f9349ca573df29ab69252
+  checksum: 6d72d35ab3eecf382a5e0f225923f5a2c753045fce02e4e29713f36c99a24f0f770666a49dde96167f37c86271f93339d1b7e2b8969d011b137a9ebd24ee6806
   languageName: node
   linkType: hard
 
@@ -4875,6 +4876,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clean-set@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "clean-set@npm:1.1.2"
+  checksum: 1bd86cc20a1f5834b2e081f96b4336c4619b8eb842392b496b748d63e1ee58aa1959aa13cd392e96988600e105b9067d29082a13ae80f3b92d55c0474c0fda08
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -5536,9 +5544,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^10.6.0":
-  version: 10.6.0
-  resolution: "cypress@npm:10.6.0"
+"cypress@npm:^10.7.0":
+  version: 10.7.0
+  resolution: "cypress@npm:10.7.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -5584,7 +5592,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 53993d2d712222df13ef4802db051fee8a7ac59b180ed11b22e6f10d36f5d9b2c2622f1bbfa012f61c7756139287a976abd075275ddd37191b13f40ec8deaa85
+  checksum: ef8a5ae54f3404f7926e1e248ba7a27c7f66e654a9603bf9df6366731d8dd75455f6ec9cc34d7e55e1a8c3cb8e0e36ce59add81b7b14466f2063cfe45e6c00f4
   languageName: node
   linkType: hard
 
@@ -9330,14 +9338,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:^0.16.1":
-  version: 0.16.1
-  resolution: "katex@npm:0.16.1"
+"katex@npm:^0.16.2":
+  version: 0.16.2
+  resolution: "katex@npm:0.16.2"
   dependencies:
     commander: ^8.0.0
   bin:
     katex: cli.js
-  checksum: a99d735197cee27ed7a63afe4de08839ce4a5e1b0ffcba754199b400160f918ab62b8b1cc74b737d7487de017325d8fe411d9aa0d82121234f76b4f9715b3a2e
+  checksum: c0031c2e1287bb13102d733dcc3dada50752cf0d45b48a536c09937633ce8d6b438d18cbf382e64d4d237b957d8b3a8bd6414845720c7a8e1079c352b4ebf487
   languageName: node
   linkType: hard
 
