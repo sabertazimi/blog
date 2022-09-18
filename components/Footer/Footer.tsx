@@ -50,7 +50,7 @@ const Footer = ({
       <Col className="mx-6">
         <span>
           Last Built Time{' '}
-          <a href="https://www.google.com/search?q=time">
+          <a href="https://github.com/sabertazimi/blog/actions">
             <time
               dateTime={new Date(buildTime).toLocaleString('zh-CN', {
                 hour12: false,
