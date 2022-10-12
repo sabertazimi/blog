@@ -1596,19 +1596,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-client@npm:^1.8.7":
-  version: 1.8.7
-  resolution: "@codesandbox/sandpack-client@npm:1.8.7"
+"@codesandbox/sandpack-client@npm:^1.12.1":
+  version: 1.12.1
+  resolution: "@codesandbox/sandpack-client@npm:1.12.1"
   dependencies:
     codesandbox-import-utils: ^1.2.3
     lodash.isequal: ^4.5.0
-  checksum: 96c45b44d336edd8138971dd4d77f4c8abb9113c1b8e964d6ba803e422bbab95c0d413122e4960291b18c9ee384e2d879b477f3506a325e4c93a2a819fd662c5
+  checksum: bfe607831e2d33b25c07fd30be9fbb6e3982e52cbc197ccbc9d7241dc9844d3f6682520cbd4b2dab0c268b07b86d638be53f5ea5d965f360ef4786b3809e5721
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^1.8.8":
-  version: 1.8.8
-  resolution: "@codesandbox/sandpack-react@npm:1.8.8"
+"@codesandbox/sandpack-react@npm:^1.14.2":
+  version: 1.14.2
+  resolution: "@codesandbox/sandpack-react@npm:1.14.2"
   dependencies:
     "@code-hike/classer": ^0.0.0-aa6efee
     "@codemirror/closebrackets": ^0.19.0
@@ -1624,7 +1624,7 @@ __metadata:
     "@codemirror/matchbrackets": ^0.19.3
     "@codemirror/state": ^0.19.6
     "@codemirror/view": ^0.19.32
-    "@codesandbox/sandpack-client": ^1.8.7
+    "@codesandbox/sandpack-client": ^1.12.1
     "@react-hook/intersection-observer": ^3.1.1
     "@stitches/core": ^1.2.6
     clean-set: ^1.1.2
@@ -1636,14 +1636,14 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 4f3d0dd59b89d74d47cdc2cd7707911c4cb55a1db1de6163ba77b882b8837150871800935f9fcb9aa6f890c2e537fbd202a133938f58912f09c4b92b92e1c25c
+  checksum: 95493f25333f9d088d516378c95e8da7a12a1e093240b06e0ebaa91e6966e07699732d71fe1e1399ccfc3b042b7a2b8f20db2a6e15382c05a15fcf439391b14e
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-themes@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@codesandbox/sandpack-themes@npm:1.6.0"
-  checksum: c64d584d27266203564bc84391818a5145cc2619d004eb315dc33867118671f44db08ba9a07e745396adeb0540afc4f5acc2317770389b579197ce7e4336e73a
+"@codesandbox/sandpack-themes@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "@codesandbox/sandpack-themes@npm:1.13.0"
+  checksum: 3703a022cdaa58e7852e5d6a9dd59e63db25964d137c278ce163f1a651546db513d1b11c52fa791e7b3e1f45c4a5be00fab30b95cb24c5b344f62ebb713eb318
   languageName: node
   linkType: hard
 
@@ -1901,9 +1901,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "@eslint/eslintrc@npm:1.3.2"
+"@eslint/eslintrc@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@eslint/eslintrc@npm:1.3.3"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.3.2
@@ -1914,7 +1914,7 @@ __metadata:
     js-yaml: ^4.1.0
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
-  checksum: 2074dca47d7e1c5c6323ff353f690f4b25d3ab53fe7d27337e2592d37a894cf60ca0e85ca66b50ff2db0bc7e630cc1e9c7347d65bb185b61416565584c38999c
+  checksum: f03e9d6727efd3e0719da2051ea80c0c73d20e28c171121527dbb868cd34232ca9c1d0525a66e517a404afea26624b1e47895b6a92474678418c2f50c9566694
   languageName: node
   linkType: hard
 
@@ -1949,13 +1949,6 @@ __metadata:
     debug: ^4.1.1
     minimatch: ^3.0.4
   checksum: af4fa2633c57414be22ddba0a072cc611ef9a07104542fa24bde918a0153b89b6e08ca6a20ccc9079de6079e219e2406e38414d1b662db8bb59a3ba9d6eee6e3
-  languageName: node
-  linkType: hard
-
-"@humanwhocodes/gitignore-to-minimatch@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@humanwhocodes/gitignore-to-minimatch@npm:1.0.2"
-  checksum: aba5c40c9e3770ed73a558b0bfb53323842abfc2ce58c91d7e8b1073995598e6374456d38767be24ab6176915f0a8d8b23eaae5c85e2b488c0dccca6d795e2ad
   languageName: node
   linkType: hard
 
@@ -2809,27 +2802,27 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^4.7.0
-    "@codesandbox/sandpack-react": ^1.8.8
-    "@codesandbox/sandpack-themes": ^1.6.0
+    "@codesandbox/sandpack-react": ^1.14.2
+    "@codesandbox/sandpack-themes": ^1.13.0
     "@dg-scripts/stylelint-config": ^5.11.0
     "@octokit/rest": ^19.0.4
     "@octokit/types": ^7.5.1
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
-    "@types/jest": ^29.1.1
+    "@types/jest": ^29.1.2
     "@types/jest-axe": ^3.5.5
     "@types/mdast": ^3.0.10
     "@types/node": ^18.0.3
     "@types/react": ^18.0.21
     "@types/react-dom": ^18.0.6
     "@types/unist": ^2.0.6
-    antd: ^4.23.4
+    antd: ^4.23.5
     classnames: ^2.3.2
-    cypress: ^10.9.0
-    eslint: ^8.24.0
+    cypress: ^10.10.0
+    eslint: ^8.25.0
     eslint-config-next: ^12.3.1
     eslint-config-prettier: ^8.5.0
-    framer-motion: ^7.5.1
+    framer-motion: ^7.5.3
     gray-matter: ^4.0.3
     jest: ^29.1.2
     jest-axe: ^6.0.0
@@ -2840,7 +2833,7 @@ __metadata:
     next-progress: ^2.2.0
     next-pwa: ^5.6.0
     next-seo: ^5.5.0
-    next-sitemap: ^3.1.23
+    next-sitemap: ^3.1.24
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.17
     postcss-flexbugs-fixes: ^5.0.2
@@ -3191,13 +3184,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:*, @types/jest@npm:^29.1.1":
-  version: 29.1.1
-  resolution: "@types/jest@npm:29.1.1"
+"@types/jest@npm:*, @types/jest@npm:^29.1.2":
+  version: 29.1.2
+  resolution: "@types/jest@npm:29.1.2"
   dependencies:
     expect: ^29.0.0
     pretty-format: ^29.0.0
-  checksum: d9e6f7d6ab64cf45535369d0a3dc4640cbe6b37ab6f8927e874eacc199581338ebf6ff544f7c2cd188c5fc7cd0b3197aa72cb2b826f0a1352b93b89993711413
+  checksum: a6761b5ac132c641740886f9c0714607255ebffb6add5989f51ea9e392fc3c5cd474e7590f12b003d5b67ce177dfbc8d3d60d0baa335c48c50deeee6b755a473
   languageName: node
   linkType: hard
 
@@ -3901,9 +3894,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^4.23.4":
-  version: 4.23.4
-  resolution: "antd@npm:4.23.4"
+"antd@npm:^4.23.5":
+  version: 4.23.5
+  resolution: "antd@npm:4.23.5"
   dependencies:
     "@ant-design/colors": ^6.0.0
     "@ant-design/icons": ^4.7.0
@@ -3925,7 +3918,7 @@ __metadata:
     rc-image: ~5.7.0
     rc-input: ~0.1.2
     rc-input-number: ~7.3.9
-    rc-mentions: ~1.9.1
+    rc-mentions: ~1.10.0
     rc-menu: ~9.6.3
     rc-motion: ^2.6.1
     rc-notification: ~4.6.0
@@ -3941,7 +3934,7 @@ __metadata:
     rc-switch: ~3.2.0
     rc-table: ~7.26.0
     rc-tabs: ~12.1.0-alpha.1
-    rc-textarea: ~0.3.0
+    rc-textarea: ~0.4.3
     rc-tooltip: ~5.2.0
     rc-tree: ~5.7.0
     rc-tree-select: ~5.5.0
@@ -3952,7 +3945,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 32f2fada5314cc0b5231ac1abd72fed2944e18e2efecf30f249913a784795e84e35ea620b7fd491df029d309634b970b82e538ac9e83cc9aae93af5a1d854cf7
+  checksum: 07ce3e12bb4e7da9a0e859702d80d511adee59c87d4f4bd83fc9f0832e0831f26dedf3ce6b9776353079df77032c18df09f20838d2b6f3609b5d1f6d78398300
   languageName: node
   linkType: hard
 
@@ -5488,9 +5481,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^10.9.0":
-  version: 10.9.0
-  resolution: "cypress@npm:10.9.0"
+"cypress@npm:^10.10.0":
+  version: 10.10.0
+  resolution: "cypress@npm:10.10.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -5536,7 +5529,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 79e3dccbb82d0b0c92bb8888682766a9738374f473cf2e9a04825a6b3dbe4420c57948cabaf757af0929192a8e61b7f08b32d7f6ee0c3cddf2736cf4f408edc1
+  checksum: 668a32534a527dba79754abbf98af176b80c539a12ec00058932ba2a19c794c7888323e59e738c30f726ad740c5451c31d02548a0cb7c1b1c8ad01c55a984ca2
   languageName: node
   linkType: hard
 
@@ -6435,13 +6428,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.24.0":
-  version: 8.24.0
-  resolution: "eslint@npm:8.24.0"
+"eslint@npm:^8.25.0":
+  version: 8.25.0
+  resolution: "eslint@npm:8.25.0"
   dependencies:
-    "@eslint/eslintrc": ^1.3.2
+    "@eslint/eslintrc": ^1.3.3
     "@humanwhocodes/config-array": ^0.10.5
-    "@humanwhocodes/gitignore-to-minimatch": ^1.0.2
     "@humanwhocodes/module-importer": ^1.0.1
     ajv: ^6.10.0
     chalk: ^4.0.0
@@ -6480,7 +6472,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: ca293ce7116599b742d7ab4d43db469beec22f40dd272092d809498be3cff3a7c567769f9763bdf6799aac13dd53447b93a99629b7b54092783046eb57eaced6
+  checksum: 7acf2693b522b573657b53d2245b5522d3a131e4224b1cbf01e2c3579632fdbf62599284f68bc483e6e4eba23ae3643c9544744e0214a86e727cc361cedcd0fa
   languageName: node
   linkType: hard
 
@@ -6996,9 +6988,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^7.5.1":
-  version: 7.5.1
-  resolution: "framer-motion@npm:7.5.1"
+"framer-motion@npm:^7.5.3":
+  version: 7.5.3
+  resolution: "framer-motion@npm:7.5.3"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.13.1
@@ -7013,7 +7005,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 7785459f34b09b9c0d6534b39f7a0f5ba5748d061a0d9c5ba68fa1bc5a3e0873205f628347218873948be187b8c4e6f037837a35e73d642ea18c509253dcda02
+  checksum: 5b038ecb44e355916cef2310a1f0df7937f7e38e36b91e35a1dc0425b7717f8e5dd76b5cbf0acd38b81027ba0d8fc33d9148d901ecee7017adc76e2ae466bfea
   languageName: node
   linkType: hard
 
@@ -10788,9 +10780,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^3.1.23":
-  version: 3.1.23
-  resolution: "next-sitemap@npm:3.1.23"
+"next-sitemap@npm:^3.1.24":
+  version: 3.1.24
+  resolution: "next-sitemap@npm:3.1.24"
   dependencies:
     "@corex/deepmerge": ^4.0.29
     minimist: ^1.2.6
@@ -10800,7 +10792,7 @@ __metadata:
   bin:
     next-sitemap: bin/next-sitemap.mjs
     next-sitemap-cjs: bin/next-sitemap.cjs
-  checksum: 35dafaaf28ab24e9d40a9382b0fa44c0c9abbf5040d057b57ba969c20de4634e414651888b8999c39291161a397a32c11ae9f281702c3a3a3e45b4ffdf384e2a
+  checksum: 0f26eb5a155cd192ac686b640f76871ac8c27b067906a2ef3889289f658d1141a50b3693fdf4cb5fc663f0670f9170551c1f52f8bab86e2409a9379c41ea733a
   languageName: node
   linkType: hard
 
@@ -12402,20 +12394,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-mentions@npm:~1.9.1":
-  version: 1.9.1
-  resolution: "rc-mentions@npm:1.9.1"
+"rc-mentions@npm:~1.10.0":
+  version: 1.10.0
+  resolution: "rc-mentions@npm:1.10.0"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: ^2.2.6
     rc-menu: ~9.6.0
-    rc-textarea: ^0.3.0
+    rc-textarea: ^0.4.0
     rc-trigger: ^5.0.4
     rc-util: ^5.22.5
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 348088f54382d7938e7e9847e9055d6ab9519af30d9a4114d70686e29be6aed85945a0a38614571724d1bcb3de56f3c4f530e0edd8f7be95e0aba792c7750ef2
+  checksum: 0464c5132ceceaec048d2fba63c654ecbc7f17284543bfb7c9582b3f0ebd034fbb1ace228bb0698d5beeac0b068da6ed4b9668b67c51f5ce5274307a38fe42e0
   languageName: node
   linkType: hard
 
@@ -12667,9 +12659,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-textarea@npm:^0.3.0, rc-textarea@npm:~0.3.0":
-  version: 0.3.7
-  resolution: "rc-textarea@npm:0.3.7"
+"rc-textarea@npm:^0.4.0, rc-textarea@npm:~0.4.3":
+  version: 0.4.5
+  resolution: "rc-textarea@npm:0.4.5"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: ^2.2.1
@@ -12679,7 +12671,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 1a588f2b2b86c74127ebc114401b30b6f3627d0eca7cd9fef7966ad497ddf0534b2ec2405e43f02e20c1e0f20f2af976419a88eb20b0c645f65d05a555bdf676
+  checksum: 029bb4102b14c9ab27f05b5104ecbaa7ee9fbf2616e506be050e882d04b8d0d159da70c93a30c5724241305ba487f64a22f3cda8bb57b439a201cf3d38a46411
   languageName: node
   linkType: hard
 
@@ -15099,11 +15091,11 @@ resolve@^2.0.0-next.3:
 
 "typescript@patch:typescript@^4.8.4#~builtin<compat/typescript>":
   version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=a1c5e5"
+  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
+  checksum: 301459fc3eb3b1a38fe91bf96d98eb55da88a9cb17b4ef80b4d105d620f4d547ba776cc27b44cc2ef58b66eda23fe0a74142feb5e79a6fb99f54fc018a696afa
   languageName: node
   linkType: hard
 
