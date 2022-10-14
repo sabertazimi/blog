@@ -2616,13 +2616,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^13.11.0":
-  version: 13.11.0
-  resolution: "@octokit/openapi-types@npm:13.11.0"
-  checksum: c6f5a82c920bd86203ca42f503afc928bc47c341449fcfe1564d2bbe643debe7cad7c402e9bf2df922debdb8144818bce9d7bfa4cd9d2ba92d27b09a9c5add47
-  languageName: node
-  linkType: hard
-
 "@octokit/openapi-types@npm:^14.0.0":
   version: 14.0.0
   resolution: "@octokit/openapi-types@npm:14.0.0"
@@ -2705,15 +2698,6 @@ __metadata:
   dependencies:
     "@octokit/openapi-types": ^12.11.0
   checksum: fd6f75e0b19b90d1a3d244d2b0c323ed8f2f05e474a281f60a321986683548ef2e0ec2b3a946aa9405d6092e055344455f69f58957c60f58368c8bdda5b7d2ab
-  languageName: node
-  linkType: hard
-
-"@octokit/types@npm:^7.5.1":
-  version: 7.5.1
-  resolution: "@octokit/types@npm:7.5.1"
-  dependencies:
-    "@octokit/openapi-types": ^13.11.0
-  checksum: eaa9aac2f4760aef5e69e4f663450fce34d4fab5a6a8c26cba49257ce0c4b621fd8f19ddad0ce9764b64cc6b3ef5d6fe631ff518832d3e09affbc96b7432fae5
   languageName: node
   linkType: hard
 
@@ -2821,7 +2805,7 @@ __metadata:
     "@codesandbox/sandpack-themes": ^1.13.0
     "@dg-scripts/stylelint-config": ^5.11.0
     "@octokit/rest": ^19.0.5
-    "@octokit/types": ^7.5.1
+    "@octokit/types": ^8.0.0
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
     "@types/jest": ^29.1.2
