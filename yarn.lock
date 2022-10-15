@@ -2831,7 +2831,7 @@ __metadata:
     next-mdx-remote: ^4.1.0
     next-progress: ^2.2.0
     next-pwa: ^5.6.0
-    next-seo: ^5.5.0
+    next-seo: ^5.6.0
     next-sitemap: ^3.1.25
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.18
@@ -2857,7 +2857,7 @@ __metadata:
     remark-mdx-code-meta: ^2.0.0
     standard-version: ^9.5.0
     start-server-and-test: ^1.14.0
-    stylelint: ^14.13.0
+    stylelint: ^14.14.0
     tailwindcss: ^3.1.8
     ts-jest: ^29.0.3
     tslib: ^2.4.0
@@ -10773,14 +10773,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-seo@npm:^5.5.0":
-  version: 5.5.0
-  resolution: "next-seo@npm:5.5.0"
+"next-seo@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "next-seo@npm:5.6.0"
   peerDependencies:
     next: ^8.1.1-canary.54 || >=9.0.0
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
-  checksum: 3202c4e84db533ad116d629482e766eb954053d5630275eb75c3e4234cf3ae354e4c2284a7659c0480570670f292b122ee3d11e9b2f23588030d0d5b1f9cb37d
+  checksum: 1fc5ee3284d048b05d8e3e0ab23224b23b442e2f24d0173cd0185cb4443697f5347c9d2ba5c1ca950147e04414915493ff4b48cfdf03891d54e536c1cf4fc42c
   languageName: node
   linkType: hard
 
@@ -11994,7 +11994,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:*, postcss@npm:^8.3.11, postcss@npm:^8.4.0, postcss@npm:^8.4.14, postcss@npm:^8.4.16, postcss@npm:^8.4.18":
+"postcss@npm:*, postcss@npm:^8.3.11, postcss@npm:^8.4.0, postcss@npm:^8.4.14, postcss@npm:^8.4.17, postcss@npm:^8.4.18":
   version: 8.4.18
   resolution: "postcss@npm:8.4.18"
   dependencies:
@@ -14435,9 +14435,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^14.13.0":
-  version: 14.13.0
-  resolution: "stylelint@npm:14.13.0"
+"stylelint@npm:^14.14.0":
+  version: 14.14.0
+  resolution: "stylelint@npm:14.14.0"
   dependencies:
     "@csstools/selector-specificity": ^2.0.2
     balanced-match: ^2.0.0
@@ -14462,7 +14462,7 @@ resolve@^2.0.0-next.3:
     micromatch: ^4.0.5
     normalize-path: ^3.0.0
     picocolors: ^1.0.0
-    postcss: ^8.4.16
+    postcss: ^8.4.17
     postcss-media-query-parser: ^0.2.3
     postcss-resolve-nested-selector: ^0.1.1
     postcss-safe-parser: ^6.0.0
@@ -14479,7 +14479,7 @@ resolve@^2.0.0-next.3:
     write-file-atomic: ^4.0.2
   bin:
     stylelint: bin/stylelint.js
-  checksum: 81efcb2ea015fe490651f0976a927c51efa493a32b2b8e681d68aba8a275a1d8d0ebf8eaf50ef3233e3dc367077db63792e7e69bf6abb18940d63fd6c9f772df
+  checksum: 3196f5992262d82f3c8dea1d710a3dda1b6c890697eba7df58a3bc8fcd681d509449fa4be3f03e91155f5014df82973b57266ddbc34f41130aa27cc046113b8b
   languageName: node
   linkType: hard
 
