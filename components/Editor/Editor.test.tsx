@@ -22,11 +22,15 @@ describe('Editor', () => {
     expect(screen.getByRole('tablist')).toContainElement(
       screen.getByText('bar.tsx')
     );
-    expect(screen.getByRole('group')).toBeInTheDocument();
-    expect(screen.getByRole('group')).toContainElement(
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toContainElement(
       screen.getByText('const')
     );
-    expect(screen.getByRole('group')).toContainElement(screen.getByText('foo'));
-    expect(screen.getByRole('group')).toContainElement(screen.getByText('bar'));
+    expect(screen.getByRole('textbox')).toContainElement(
+      screen.getByText('foo')
+    );
+    expect(screen.getByRole('textbox')).toContainElement(
+      screen.getByText('bar')
+    );
   });
 });
