@@ -2846,7 +2846,7 @@ __metadata:
     next-progress: ^2.2.0
     next-pwa: ^5.6.0
     next-seo: ^5.14.1
-    next-sitemap: ^3.1.30
+    next-sitemap: ^3.1.31
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.19
     postcss-flexbugs-fixes: ^5.0.2
@@ -2871,7 +2871,7 @@ __metadata:
     remark-mdx-code-meta: ^2.0.0
     standard-version: ^9.5.0
     start-server-and-test: ^1.14.0
-    stylelint: ^14.14.1
+    stylelint: ^14.15.0
     tailwindcss: ^3.2.4
     ts-jest: ^29.0.3
     tslib: ^2.4.1
@@ -5345,16 +5345,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "cosmiconfig@npm:7.0.1"
+"cosmiconfig@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "cosmiconfig@npm:7.1.0"
   dependencies:
     "@types/parse-json": ^4.0.0
     import-fresh: ^3.2.1
     parse-json: ^5.0.0
     path-type: ^4.0.0
     yaml: ^1.10.0
-  checksum: 4be63e7117955fd88333d7460e4c466a90f556df6ef34efd59034d2463484e339666c41f02b523d574a797ec61f4a91918c5b89a316db2ea2f834e0d2d09465b
+  checksum: c53bf7befc1591b2651a22414a5e786cd5f2eeaa87f3678a3d49d6069835a9d8d1aef223728e98aa8fec9a95bf831120d245096db12abe019fecb51f5696c96f
   languageName: node
   linkType: hard
 
@@ -10798,9 +10798,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^3.1.30":
-  version: 3.1.30
-  resolution: "next-sitemap@npm:3.1.30"
+"next-sitemap@npm:^3.1.31":
+  version: 3.1.31
+  resolution: "next-sitemap@npm:3.1.31"
   dependencies:
     "@corex/deepmerge": ^4.0.29
     minimist: ^1.2.6
@@ -10810,7 +10810,7 @@ __metadata:
   bin:
     next-sitemap: bin/next-sitemap.mjs
     next-sitemap-cjs: bin/next-sitemap.cjs
-  checksum: 93b50fae229bc693d8ae0e58d65af90a6d2034a1f9c0a3afa61aeffbe02f4240e9faf20859c17a39b73675e16425944ff5b237986570a206aed319fcd2316b21
+  checksum: d8013502edc2679a9d6afb21acdf2524aebc62486952cce9bab1b56bcca43088fa4b53f1d67deb519f4bf8c9edb7e5f98c7ce20ab0cd97d640657c9b7f022812
   languageName: node
   linkType: hard
 
@@ -14452,14 +14452,14 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^14.14.1":
-  version: 14.14.1
-  resolution: "stylelint@npm:14.14.1"
+"stylelint@npm:^14.15.0":
+  version: 14.15.0
+  resolution: "stylelint@npm:14.15.0"
   dependencies:
     "@csstools/selector-specificity": ^2.0.2
     balanced-match: ^2.0.0
     colord: ^2.9.3
-    cosmiconfig: ^7.0.1
+    cosmiconfig: ^7.1.0
     css-functions-list: ^3.1.0
     debug: ^4.3.4
     fast-glob: ^3.2.12
@@ -14479,7 +14479,7 @@ resolve@^2.0.0-next.3:
     micromatch: ^4.0.5
     normalize-path: ^3.0.0
     picocolors: ^1.0.0
-    postcss: ^8.4.18
+    postcss: ^8.4.19
     postcss-media-query-parser: ^0.2.3
     postcss-resolve-nested-selector: ^0.1.1
     postcss-safe-parser: ^6.0.0
@@ -14496,7 +14496,7 @@ resolve@^2.0.0-next.3:
     write-file-atomic: ^4.0.2
   bin:
     stylelint: bin/stylelint.js
-  checksum: be35a419e181ccf31410091d3a92766ffd17c71e8b6dda481343e2c589cbde96be539472783477f7f2907802bd9d79cc8322c3d22fb62c0fbd42fefd4ba66435
+  checksum: a3b4593a35a2303987305ca5147ea31e92a47e1994d393be8d1a07a6dc8720b9eee1fed62aafaca618cd8f06e0b3ca601af4fa6618967f1f359ea36ade4c2550
   languageName: node
   linkType: hard
 
