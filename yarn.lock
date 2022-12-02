@@ -1596,19 +1596,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-client@npm:^1.12.1":
-  version: 1.12.1
-  resolution: "@codesandbox/sandpack-client@npm:1.12.1"
+"@codesandbox/sandpack-client@npm:^1.17.1":
+  version: 1.17.1
+  resolution: "@codesandbox/sandpack-client@npm:1.17.1"
   dependencies:
     codesandbox-import-utils: ^1.2.3
     lodash.isequal: ^4.5.0
-  checksum: bfe607831e2d33b25c07fd30be9fbb6e3982e52cbc197ccbc9d7241dc9844d3f6682520cbd4b2dab0c268b07b86d638be53f5ea5d965f360ef4786b3809e5721
+  checksum: 1b0c99d1ac2ad78d3d53e5b9279091a343e4c0bed10e986e6cb8117a54c03c31bca076938f00e1135cecc6d3c3f9dbce04165053ae33f9f73d9cd896930a0edd
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^1.17.0":
-  version: 1.17.0
-  resolution: "@codesandbox/sandpack-react@npm:1.17.0"
+"@codesandbox/sandpack-react@npm:^1.17.1":
+  version: 1.17.1
+  resolution: "@codesandbox/sandpack-react@npm:1.17.1"
   dependencies:
     "@code-hike/classer": ^0.0.0-aa6efee
     "@codemirror/closebrackets": ^0.19.0
@@ -1624,7 +1624,7 @@ __metadata:
     "@codemirror/matchbrackets": ^0.19.3
     "@codemirror/state": ^0.19.6
     "@codemirror/view": ^0.19.32
-    "@codesandbox/sandpack-client": ^1.12.1
+    "@codesandbox/sandpack-client": ^1.17.1
     "@react-hook/intersection-observer": ^3.1.1
     "@stitches/core": ^1.2.6
     clean-set: ^1.1.2
@@ -1636,7 +1636,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 527796153802fb3d064b99847154bbc42dfe791566c5bb717cbad65e451c5e0a3afe24be76c3b53edb3961ef7021220327b0a5da4bd37c92e60fb83a092d15f0
+  checksum: e0bff5fbd4647c391c650eef6bd3d91ba98a8489eb3390c3d70c8ca13b4c7d7188f2bab4ddaa5dfe7f82e9c2dc0283aa96df4b518f93fa2bd2d431bb1da76e34
   languageName: node
   linkType: hard
 
@@ -2416,12 +2416,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:13.0.5":
-  version: 13.0.5
-  resolution: "@next/eslint-plugin-next@npm:13.0.5"
+"@next/eslint-plugin-next@npm:13.0.6":
+  version: 13.0.6
+  resolution: "@next/eslint-plugin-next@npm:13.0.6"
   dependencies:
     glob: 7.1.7
-  checksum: 94d60dd108325db191fc3a2cf53a07984f18c98f92e62c7383e75eade72b0696d1abe27d12d20cc4b1bab365243f279c2cf0faa5009043c5890bb57b0cb5275f
+  checksum: 0f6964513af4fd6051974e6c1542d2660ac9cc0e89c4774e793ede0e3e3f8e158826bf9ae06aa29741c4c4a22bed7ddf3db265ee21a8593ba7d53f39014764f0
   languageName: node
   linkType: hard
 
@@ -2829,7 +2829,7 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^4.8.0
-    "@codesandbox/sandpack-react": ^1.17.0
+    "@codesandbox/sandpack-react": ^1.17.1
     "@codesandbox/sandpack-themes": ^1.17.0
     "@dg-scripts/stylelint-config": ^5.11.0
     "@octokit/rest": ^19.0.5
@@ -2839,17 +2839,17 @@ __metadata:
     "@types/jest": ^29.2.3
     "@types/jest-axe": ^3.5.5
     "@types/mdast": ^3.0.10
-    "@types/node": ^18.11.9
-    "@types/react": ^18.0.25
+    "@types/node": ^18.11.10
+    "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.9
     "@types/unist": ^2.0.6
     antd: ^4.24.4
     classnames: ^2.3.2
     cypress: ^11.2.0
     eslint: ^8.28.0
-    eslint-config-next: ^13.0.5
+    eslint-config-next: ^13.0.6
     eslint-config-prettier: ^8.5.0
-    framer-motion: ^7.6.12
+    framer-motion: ^7.6.18
     gray-matter: ^4.0.3
     jest: ^29.3.1
     jest-axe: ^6.0.1
@@ -3311,10 +3311,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.11.9":
-  version: 18.11.9
-  resolution: "@types/node@npm:18.11.9"
-  checksum: cc0aae109e9b7adefc32eecb838d6fad931663bb06484b5e9cbbbf74865c721b03d16fd8d74ad90e31dbe093d956a7c2c306ba5429ba0c00f3f7505103d7a496
+"@types/node@npm:*, @types/node@npm:^18.11.10":
+  version: 18.11.10
+  resolution: "@types/node@npm:18.11.10"
+  checksum: 0f60cb090b2ee91fcd3dc4311bc1ed7889b92f14644c0069f100776f86474c12eebbcc6c75bc0d7d96b975a103b4d5d6b3c22b4e88bea6e7f4e2b1bb0daf5ea8
   languageName: node
   linkType: hard
 
@@ -3369,14 +3369,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.25":
-  version: 18.0.25
-  resolution: "@types/react@npm:18.0.25"
+"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.0.26":
+  version: 18.0.26
+  resolution: "@types/react@npm:18.0.26"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 231d658c45abdef044a716b4502774f1585d8336d73b2f5bd68f181acbfc874b7a457686ecd29b415b43ed0922c309bab7e2cf96832d188a3f4f1b02f2af760a
+  checksum: b62f0ea3cdfa68e106391728325057ad36f1bde7ba2dfae029472c47e01e482bc77c6ba4f1dad59f3f04ee81cb597618ff7c30a33c157c0a20462b6dd6aa2d4d
   languageName: node
   linkType: hard
 
@@ -6275,11 +6275,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^13.0.5":
-  version: 13.0.5
-  resolution: "eslint-config-next@npm:13.0.5"
+"eslint-config-next@npm:^13.0.6":
+  version: 13.0.6
+  resolution: "eslint-config-next@npm:13.0.6"
   dependencies:
-    "@next/eslint-plugin-next": 13.0.5
+    "@next/eslint-plugin-next": 13.0.6
     "@rushstack/eslint-patch": ^1.1.3
     "@typescript-eslint/parser": ^5.42.0
     eslint-import-resolver-node: ^0.3.6
@@ -6294,7 +6294,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 645939ed8fc77732346136771a7f9797cb595cbde7c824013283025cc9778a621a1fde57642f2c33b42f3685b9755a65b67c2704e0561312dd2d53c4e96c2c17
+  checksum: 3d12c5f0cc3a8aeb9d56ca151de3a8a4157cee9a7223ee4ca96f331f8b72974f1c7a9eed441d6df22f5b2c8488a7d5f00435127960a747b5509aa95bbbe5e4fa
   languageName: node
   linkType: hard
 
@@ -7031,15 +7031,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^7.6.12":
-  version: 7.6.12
-  resolution: "framer-motion@npm:7.6.12"
+"framer-motion@npm:^7.6.18":
+  version: 7.6.18
+  resolution: "framer-motion@npm:7.6.18"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.13.1
     framesync: 6.1.2
     hey-listen: ^1.0.8
-    popmotion: 11.0.5
     style-value-types: 5.1.2
     tslib: 2.4.0
   peerDependencies:
@@ -7048,7 +7047,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 928980cff35360bc962c74d7d2cf7e88ec5e4dd3303352f3f8b60097445c28c770dcf262a73ccf942ce5e409b534cb8874c03e284b770977eb88bd937c5b6831
+  checksum: b09b1d6edfa687fa5ac0c41cd45aab7a9ea83f1b6c4c910faa9b9aa74867da3bab86d09d6aea48fb445562abfda361a98924be2bd39a4b9075a102e8179578cc
   languageName: node
   linkType: hard
 
@@ -11583,18 +11582,6 @@ __metadata:
   dependencies:
     find-up: ^4.0.0
   checksum: 9863e3f35132bf99ae1636d31ff1e1e3501251d480336edb1c211133c8d58906bed80f154a1d723652df1fda91e01c7442c2eeaf9dc83157c7ae89087e43c8d6
-  languageName: node
-  linkType: hard
-
-"popmotion@npm:11.0.5":
-  version: 11.0.5
-  resolution: "popmotion@npm:11.0.5"
-  dependencies:
-    framesync: 6.1.2
-    hey-listen: ^1.0.8
-    style-value-types: 5.1.2
-    tslib: 2.4.0
-  checksum: f6990d7a59eff402356efd3c9874c3b32bdfd0890ef1da97c71b20ea5ca8f85c17e2daaf11d1328d2756999b0f8222b3b4ec73b4558246843f100053b5a389d7
   languageName: node
   linkType: hard
 
