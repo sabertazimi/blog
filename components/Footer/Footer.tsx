@@ -33,7 +33,11 @@ const Footer = ({
         ))}
       </Col>
     </Row>
-    <Divider className="border-light" />
+    <Row>
+      <Col span={24}>
+        <Divider className="border-light" />
+      </Col>
+    </Row>
     <Row align="middle" justify="center">
       <Col className="mx-6">
         <span>
