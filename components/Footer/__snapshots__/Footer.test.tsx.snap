@@ -167,9 +167,19 @@ exports[`Footer should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="ant-divider ant-divider-horizontal divider border-light dark:border-light dark:text-light"
-      role="separator"
-    />
+      class="ant-row"
+      role="row"
+    >
+      <div
+        class="ant-col"
+        role="cell"
+      >
+        <div
+          class="ant-divider ant-divider-horizontal divider border-light dark:border-light dark:text-light"
+          role="separator"
+        />
+      </div>
+    </div>
     <div
       class="ant-row ant-row-center ant-row-middle"
       role="row"
