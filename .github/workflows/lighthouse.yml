@@ -24,7 +24,7 @@ jobs:
             # Lighthouse Report
             :vertical_traffic_light: Waiting for the Vercel preview ...
       - name: Waiting for the Vercel preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.0
         id: vercel
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
