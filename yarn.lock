@@ -2867,13 +2867,13 @@ __metadata:
     "@types/jest": ^29.4.0
     "@types/jest-axe": ^3.5.5
     "@types/mdast": ^3.0.10
-    "@types/node": ^18.11.18
+    "@types/node": ^18.11.19
     "@types/react": ^18.0.27
     "@types/react-dom": ^18.0.10
     "@types/unist": ^2.0.6
     antd: ^4.24.7
     classnames: ^2.3.2
-    cypress: ^12.4.1
+    cypress: ^12.5.1
     eslint: ^8.33.0
     eslint-config-next: ^13.1.6
     eslint-config-prettier: ^8.6.0
@@ -2888,7 +2888,7 @@ __metadata:
     next-progress: ^2.2.0
     next-pwa: ^5.6.0
     next-seo: ^5.15.0
-    next-sitemap: ^3.1.48
+    next-sitemap: ^3.1.49
     parse-numeric-range: ^1.3.0
     postcss: ^8.4.21
     postcss-flexbugs-fixes: ^5.0.2
@@ -3348,10 +3348,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.11.18":
-  version: 18.11.18
-  resolution: "@types/node@npm:18.11.18"
-  checksum: 03f17f9480f8d775c8a72da5ea7e9383db5f6d85aa5fefde90dd953a1449bd5e4ffde376f139da4f3744b4c83942166d2a7603969a6f8ea826edfb16e6e3b49d
+"@types/node@npm:*, @types/node@npm:^18.11.19":
+  version: 18.11.19
+  resolution: "@types/node@npm:18.11.19"
+  checksum: d7cd19fcfc59cbdd3f9ba0b4072cb7adc21bd575bd8eb7d7e698975e63564aaa83f03434f32b12331f84f73d0b369d9cbe2371e359d9d7f5c3361f4987f4f7da
   languageName: node
   linkType: hard
 
@@ -5538,9 +5538,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^12.4.1":
-  version: 12.4.1
-  resolution: "cypress@npm:12.4.1"
+"cypress@npm:^12.5.1":
+  version: 12.5.1
+  resolution: "cypress@npm:12.5.1"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -5586,7 +5586,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 92693734e2a2e044effae8319315e2bd66a53e4c590caad36199f8b3b92a56189dcc41cbb2636b8a8a88ac20b91dd899897f873af4b26f106c9ea2e3d47caf35
+  checksum: acea08c933084bbdffe8e0d8f24ecdc3be52731824f09cf2e720c974a153d808f5af1c665d977e46f171e275c590065aeadf729022d1338a6a424e5ec8b119af
   languageName: node
   linkType: hard
 
@@ -10859,9 +10859,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-sitemap@npm:^3.1.48":
-  version: 3.1.48
-  resolution: "next-sitemap@npm:3.1.48"
+"next-sitemap@npm:^3.1.49":
+  version: 3.1.49
+  resolution: "next-sitemap@npm:3.1.49"
   dependencies:
     "@corex/deepmerge": ^4.0.29
     minimist: ^1.2.7
@@ -10871,7 +10871,7 @@ __metadata:
   bin:
     next-sitemap: bin/next-sitemap.mjs
     next-sitemap-cjs: bin/next-sitemap.cjs
-  checksum: 84a3983c400cf67705757434b87f28a63a4fa57a71185076d0653a2082488cb402e4c4b981f04cff0da28da3f4f09d47a058822bb45a83613c6d48998641dff6
+  checksum: bc74ad4a5584562f8a67ff1da5f7b4673a72d6b53b0613475ff4096ad0bef2307d07ed0d551e31a2ea1277543c6e6d13bc1d99f7d277f3587b89c97fffc0c654
   languageName: node
   linkType: hard
 
@@ -15231,11 +15231,11 @@ resolve@^2.0.0-next.3:
 
 "typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
   version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=ad5954"
+  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8f6260acc86b56bfdda6004bc53f32ea548f543e8baef7071c8e34d29d292f3e375c8416556c8de10b24deef6933cd1c16a8233dc84a3dd43a13a13265d0faab
+  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
   languageName: node
   linkType: hard
 
