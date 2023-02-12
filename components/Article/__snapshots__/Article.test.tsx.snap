@@ -10,7 +10,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary"
+          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary css-dev-only-do-not-override-j0nf2s"
           style="background-color: rgb(245, 159, 0);"
         >
           <a
@@ -20,7 +20,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <span
-          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary"
+          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary css-dev-only-do-not-override-j0nf2s"
           style="background-color: rgb(55, 178, 77);"
         >
           <a
@@ -30,7 +30,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <span
-          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary"
+          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary css-dev-only-do-not-override-j0nf2s"
           style="background-color: rgb(112, 72, 232);"
         >
           <a
@@ -40,12 +40,12 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <h1
-          class="ant-typography mdx-heading dark:text-light heading title h1"
+          class="ant-typography mdx-heading dark:text-light heading title h1 css-dev-only-do-not-override-j0nf2s"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark css-dev-only-do-not-override-j0nf2s"
         >
           <span
             aria-label="calendar"
@@ -71,7 +71,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark css-dev-only-do-not-override-j0nf2s"
         >
           <span
             aria-label="edit"
@@ -97,7 +97,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark css-dev-only-do-not-override-j0nf2s"
         >
           <span
             aria-label="clock-circle"
@@ -135,19 +135,15 @@ exports[`Article should render correctly (snapshot) 1`] = `
           class=""
         >
           <div
-            class="ant-anchor-wrapper"
+            class="css-dev-only-do-not-override-j0nf2s ant-anchor-wrapper"
             style="max-height: calc(100vh - 150px);"
           >
             <div
               class="ant-anchor"
             >
-              <div
+              <span
                 class="ant-anchor-ink"
-              >
-                <span
-                  class="ant-anchor-ink-ball"
-                />
-              </div>
+              />
               <div
                 class="ant-anchor-link"
               >
@@ -169,13 +165,13 @@ exports[`Article should render correctly (snapshot) 1`] = `
     >
       <article>
         <h2
-          class="ant-typography mdx-heading dark:text-light heading h2"
+          class="ant-typography mdx-heading dark:text-light heading h2 css-dev-only-do-not-override-j0nf2s"
         >
           1 Basic Notes
         </h2>
       </article>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
+        class="ant-divider css-dev-only-do-not-override-j0nf2s ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -251,7 +247,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
+        class="ant-divider css-dev-only-do-not-override-j0nf2s ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -286,7 +282,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
+        class="ant-space css-dev-only-do-not-override-j0nf2s ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
@@ -298,7 +294,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(29, 161, 242);"
@@ -335,7 +331,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(24, 119, 242);"
@@ -372,7 +368,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(10, 102, 194);"
@@ -408,7 +404,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(230, 22, 45);"
@@ -451,7 +447,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary"
+          class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary css-dev-only-do-not-override-j0nf2s"
           style="background-color: rgb(24, 144, 255);"
         >
           <a
@@ -461,12 +457,12 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </a>
         </span>
         <h1
-          class="ant-typography mdx-heading dark:text-light heading title h1"
+          class="ant-typography mdx-heading dark:text-light heading title h1 css-dev-only-do-not-override-j0nf2s"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark css-dev-only-do-not-override-j0nf2s"
         >
           <span
             aria-label="calendar"
@@ -492,7 +488,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark css-dev-only-do-not-override-j0nf2s"
         >
           <span
             aria-label="edit"
@@ -518,7 +514,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark css-dev-only-do-not-override-j0nf2s"
         >
           <span
             aria-label="clock-circle"
@@ -556,19 +552,15 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           class=""
         >
           <div
-            class="ant-anchor-wrapper"
+            class="css-dev-only-do-not-override-j0nf2s ant-anchor-wrapper"
             style="max-height: calc(100vh - 150px);"
           >
             <div
               class="ant-anchor"
             >
-              <div
+              <span
                 class="ant-anchor-ink"
-              >
-                <span
-                  class="ant-anchor-ink-ball"
-                />
-              </div>
+              />
               <div
                 class="ant-anchor-link"
               >
@@ -590,13 +582,13 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
     >
       <article>
         <h2
-          class="ant-typography mdx-heading dark:text-light heading h2"
+          class="ant-typography mdx-heading dark:text-light heading h2 css-dev-only-do-not-override-j0nf2s"
         >
           1 Basic Notes
         </h2>
       </article>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
+        class="ant-divider css-dev-only-do-not-override-j0nf2s ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -672,7 +664,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
+        class="ant-divider css-dev-only-do-not-override-j0nf2s ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:border-light dark:text-light"
         role="separator"
       >
         <span
@@ -707,7 +699,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
+        class="ant-space css-dev-only-do-not-override-j0nf2s ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
@@ -719,7 +711,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(29, 161, 242);"
@@ -756,7 +748,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(24, 119, 242);"
@@ -793,7 +785,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(10, 102, 194);"
@@ -829,7 +821,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
+              class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-link ant-btn-lg ant-btn-icon-only button rounded-none"
               href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(230, 22, 45);"

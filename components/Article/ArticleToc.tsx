@@ -1,4 +1,4 @@
-import { Anchor, Link } from '@components/Anchor';
+import Anchor from '@components/Anchor';
 import { useEffect, useState } from 'react';
 import styles from './ArticleToc.module.css';
 
@@ -8,7 +8,8 @@ interface Props {
 }
 
 interface TocItem {
-  id: string;
+  key: string | number;
+  href: string;
   title: string;
 }
 
@@ -18,7 +19,8 @@ const ArticleToc = ({ slug, offset = 150 }: Props): JSX.Element => {
   useEffect(() => {
     const items = document.querySelectorAll('h2.ant-typography');
     const tocItems = Array.from(items).map(item => ({
-      id: `#${item.id}`,
+      key: `#${item.id}`,
+      href: `#${item.id}`,
       title: item.textContent,
     })) as TocItem[];
     setTocItems(tocItems);
@@ -26,11 +28,7 @@ const ArticleToc = ({ slug, offset = 150 }: Props): JSX.Element => {
 
   return (
     <div className={styles.toc}>
-      <Anchor offsetTop={offset}>
-        {tocItems.map(item => (
-          <Link key={item.id} href={item.id} title={item.title} />
-        ))}
-      </Anchor>
+      <Anchor offsetTop={offset} items={tocItems} />
     </div>
   );
 };
