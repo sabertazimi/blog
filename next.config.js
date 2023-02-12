@@ -15,8 +15,7 @@ const nextConfig = {
     defaultLocale: 'en-US',
   },
   reactStrictMode: true,
-  // TODO: enable SWC minifier when it's ready.
-  swcMinify: false,
+  swcMinify: isProduction,
 };
 
 module.exports = NextPwa(nextConfig);
