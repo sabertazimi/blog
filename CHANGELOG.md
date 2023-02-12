@@ -2,6 +2,86 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.0](https://github.com/sabertazimi/blog/compare/v3.6.0...v3.7.0) (2023-02-12)
+
+
+### :wrench: Testing
+
+* **e2e:** remove redundant e2e UI testing ([#939](https://github.com/sabertazimi/blog/issues/939)) ([fbc38d2](https://github.com/sabertazimi/blog/commit/fbc38d2bc41e4c6c1874aa1a30013837003c8d56))
+
+
+### :sparkles: Features
+
+* **swc:** enable swc minifier from next.js v12.3 ([#973](https://github.com/sabertazimi/blog/issues/973)) ([24a7507](https://github.com/sabertazimi/blog/commit/24a75077cfeca5c083b79959dcc6b771b9b63976))
+* **tailwind:** add `content-visibility` and `contain-intrinsic-size` ([#924](https://github.com/sabertazimi/blog/issues/924)) ([8eb9d86](https://github.com/sabertazimi/blog/commit/8eb9d86fcf090576907b746ef1dc7f6d509930e7))
+
+
+### :bug: Bug Fixes
+
+* **components-Article:** remove redundant max width class ([#919](https://github.com/sabertazimi/blog/issues/919)) ([d54e9ea](https://github.com/sabertazimi/blog/commit/d54e9eaf042b5f89f66f528199c737a884eb9f03))
+* **components-DesktopNav:** add hover style to `ThemeSwitch` icons ([#928](https://github.com/sabertazimi/blog/issues/928)) ([78f3c87](https://github.com/sabertazimi/blog/commit/78f3c8712c4a93f3333539826a636be807d257c6))
+* **components-Editor:** rectify SSR for sandpack styles ([#923](https://github.com/sabertazimi/blog/issues/923)) ([185e290](https://github.com/sabertazimi/blog/commit/185e290af0ce7fa5184889cad03c6c878e158b6e))
+* **components-Footer:** change `Footer` background gradient style ([#929](https://github.com/sabertazimi/blog/issues/929)) ([aec654f](https://github.com/sabertazimi/blog/commit/aec654fb520b251645f13237c035c1aa4cdc1d47))
+* **components-InlineCode:** remove border radius ([#920](https://github.com/sabertazimi/blog/issues/920)) ([ff9a21c](https://github.com/sabertazimi/blog/commit/ff9a21c219d3545e40d4107b4b48244d6981ab42))
+* **components-tailwind:** rectify custom class error ([#936](https://github.com/sabertazimi/blog/issues/936)) ([13fc3bc](https://github.com/sabertazimi/blog/commit/13fc3bcde95ee7e4af1d8acee79db5df32e86b4b))
+* **components:** rectify broken theme for antd v5 ([#1035](https://github.com/sabertazimi/blog/issues/1035)) ([0ad7e6d](https://github.com/sabertazimi/blog/commit/0ad7e6da5f5471f10a3c6d796ec692400e7bdfe8))
+* **components:** remove built-in border radius ([#922](https://github.com/sabertazimi/blog/issues/922)) ([386b068](https://github.com/sabertazimi/blog/commit/386b06851fa717bfd2e5bc9a1ab28c7a991e092e))
+* **deps:** update dependencies (non-major) ([#1000](https://github.com/sabertazimi/blog/issues/1000)) ([3d8f018](https://github.com/sabertazimi/blog/commit/3d8f0180028833f6ecc0bccc7ca299b4e92a797d))
+* **deps:** update dependencies (non-major) ([#1003](https://github.com/sabertazimi/blog/issues/1003)) ([82f8949](https://github.com/sabertazimi/blog/commit/82f8949b9021aa75e090a3d7b1213f48061e61d2))
+* **deps:** update dependencies (non-major) ([#1005](https://github.com/sabertazimi/blog/issues/1005)) ([8857075](https://github.com/sabertazimi/blog/commit/8857075f045cfdea1f8037ee4abb48d4cf11f565))
+* **deps:** update dependencies (non-major) ([#1009](https://github.com/sabertazimi/blog/issues/1009)) ([e9c1df9](https://github.com/sabertazimi/blog/commit/e9c1df9e005c9e868cfd0be9b74581c02c3b12c5))
+* **deps:** update dependencies (non-major) ([#1012](https://github.com/sabertazimi/blog/issues/1012)) ([53c52b6](https://github.com/sabertazimi/blog/commit/53c52b6f6c4efb8e1cb8fc5c680f08bb27736cf7))
+* **deps:** update dependencies (non-major) ([#1015](https://github.com/sabertazimi/blog/issues/1015)) ([133d86e](https://github.com/sabertazimi/blog/commit/133d86e6d61a7103f14c0307f06e54f820c2192e))
+* **deps:** update dependencies (non-major) ([#1022](https://github.com/sabertazimi/blog/issues/1022)) ([3cbef65](https://github.com/sabertazimi/blog/commit/3cbef6524e285b6e86763a45e859c9f826ee37f0))
+* **deps:** update dependencies (non-major) ([#1025](https://github.com/sabertazimi/blog/issues/1025)) ([2921f19](https://github.com/sabertazimi/blog/commit/2921f19b308e51f164a100d8486e72e07ad45360))
+* **deps:** update dependencies (non-major) ([#1027](https://github.com/sabertazimi/blog/issues/1027)) ([3636cd9](https://github.com/sabertazimi/blog/commit/3636cd9982f095a953bc69f8778afbdad17c7e27))
+* **deps:** update dependencies (non-major) ([#1032](https://github.com/sabertazimi/blog/issues/1032)) ([179f458](https://github.com/sabertazimi/blog/commit/179f458df8cfce868cc71673fa64719a257985c2))
+* **deps:** update dependencies (non-major) ([#925](https://github.com/sabertazimi/blog/issues/925)) ([8efb526](https://github.com/sabertazimi/blog/commit/8efb52654625230ecae7576e334275f1d8f5e281))
+* **deps:** update dependencies (non-major) ([#931](https://github.com/sabertazimi/blog/issues/931)) ([8b02d3b](https://github.com/sabertazimi/blog/commit/8b02d3bc4d87bbbacf0837de512b79cfc1c1b2e7))
+* **deps:** update dependencies (non-major) ([#933](https://github.com/sabertazimi/blog/issues/933)) ([e878a2b](https://github.com/sabertazimi/blog/commit/e878a2b38aaf70b004284c16a2460dca998bbd17))
+* **deps:** update dependencies (non-major) ([#935](https://github.com/sabertazimi/blog/issues/935)) ([5c12cba](https://github.com/sabertazimi/blog/commit/5c12cba24de75948b45f922d02240047d62ac0be))
+* **deps:** update dependencies (non-major) ([#944](https://github.com/sabertazimi/blog/issues/944)) ([3a7e93e](https://github.com/sabertazimi/blog/commit/3a7e93e2815771aa5354dc3599dd1287e907d742))
+* **deps:** update dependencies (non-major) ([#956](https://github.com/sabertazimi/blog/issues/956)) ([7df7817](https://github.com/sabertazimi/blog/commit/7df7817d9281f5ea29261105be81810ff853425f))
+* **deps:** update dependencies (non-major) ([#958](https://github.com/sabertazimi/blog/issues/958)) ([1b44141](https://github.com/sabertazimi/blog/commit/1b44141b6bb92894955744eb4b84e5d3b4fb879a))
+* **deps:** update dependencies (non-major) ([#960](https://github.com/sabertazimi/blog/issues/960)) ([1687805](https://github.com/sabertazimi/blog/commit/1687805e012c5f91b4db919020e7f00589710f1f))
+* **deps:** update dependencies (non-major) ([#962](https://github.com/sabertazimi/blog/issues/962)) ([717308c](https://github.com/sabertazimi/blog/commit/717308cd3001edd9cc9b50702b7cd59d198f4fd0))
+* **deps:** update dependencies (non-major) ([#965](https://github.com/sabertazimi/blog/issues/965)) ([bec3e2f](https://github.com/sabertazimi/blog/commit/bec3e2fc2473addaafacb1534562fe947e8a9d63))
+* **deps:** update dependencies (non-major) ([#974](https://github.com/sabertazimi/blog/issues/974)) ([04328ee](https://github.com/sabertazimi/blog/commit/04328eea409e06b55dfd500c49d91977ff0803f4))
+* **deps:** update dependencies (non-major) ([#980](https://github.com/sabertazimi/blog/issues/980)) ([48b47bf](https://github.com/sabertazimi/blog/commit/48b47bfdc36b01194a392f0a8db9516af266ddfc))
+* **deps:** update dependencies (non-major) ([#982](https://github.com/sabertazimi/blog/issues/982)) ([763f1a6](https://github.com/sabertazimi/blog/commit/763f1a62ebffdcdea635e0267522d6d008c57ede))
+* **deps:** update dependencies (non-major) ([#983](https://github.com/sabertazimi/blog/issues/983)) ([8c16681](https://github.com/sabertazimi/blog/commit/8c1668138dfa447de6ae0e088d7cb263aff44f52))
+* **deps:** update dependencies (non-major) ([#985](https://github.com/sabertazimi/blog/issues/985)) ([60f6f99](https://github.com/sabertazimi/blog/commit/60f6f996d1dc009ad5a8761530a5cddfdd705a87))
+* **deps:** update dependencies (non-major) ([#986](https://github.com/sabertazimi/blog/issues/986)) ([f56ee51](https://github.com/sabertazimi/blog/commit/f56ee51e390362416e0746a867b9beb1e46a55e2))
+* **deps:** update dependencies (non-major) ([#988](https://github.com/sabertazimi/blog/issues/988)) ([55e484a](https://github.com/sabertazimi/blog/commit/55e484abaf1ce735c243c759312820e753b93be5))
+* **deps:** update dependencies (non-major) ([#993](https://github.com/sabertazimi/blog/issues/993)) ([4742681](https://github.com/sabertazimi/blog/commit/4742681e0c63fd85ae5d3e432adf28d7b6b8cf46))
+* **deps:** update dependencies (non-major) ([#996](https://github.com/sabertazimi/blog/issues/996)) ([5baca2b](https://github.com/sabertazimi/blog/commit/5baca2b451c9dcb07d2d6f8f50ed686cf1bd5230))
+* **deps:** update dependencies (non-major) ([#999](https://github.com/sabertazimi/blog/issues/999)) ([357449d](https://github.com/sabertazimi/blog/commit/357449d4f3b5367036124e617ab2eb1c24fdbb16))
+* **deps:** update dependency @ant-design/icons to v5 ([#1023](https://github.com/sabertazimi/blog/issues/1023)) ([f1c848c](https://github.com/sabertazimi/blog/commit/f1c848c2616f9a4d149751edb5505810721e2f79))
+* **deps:** update dependency @octokit/rest to v19 ([#934](https://github.com/sabertazimi/blog/issues/934)) ([929e656](https://github.com/sabertazimi/blog/commit/929e656dc8d204b64e448ef5aca79defb38cf20f))
+* **deps:** update dependency antd to ^4.23.2 ([#975](https://github.com/sabertazimi/blog/issues/975)) ([6190c9a](https://github.com/sabertazimi/blog/commit/6190c9ad4e50b8957d2c77228fe4619ac1e325dd))
+* **deps:** update dependency antd to ^4.23.4 ([#981](https://github.com/sabertazimi/blog/issues/981)) ([db88a58](https://github.com/sabertazimi/blog/commit/db88a580c3e6f84f4d9f048481271b9a7331df89))
+* **deps:** update dependency antd to v5 ([#1001](https://github.com/sabertazimi/blog/issues/1001)) ([9247681](https://github.com/sabertazimi/blog/commit/9247681b2c58b2dbf937560831dc3841c0869893))
+* **deps:** update dependency framer-motion to v7 ([#952](https://github.com/sabertazimi/blog/issues/952)) ([47a4d84](https://github.com/sabertazimi/blog/commit/47a4d846e1a2c2900c45f0b8ed631ebf63ce5d73))
+* **deps:** update dependency framer-motion to v8 ([#1016](https://github.com/sabertazimi/blog/issues/1016)) ([8bedd14](https://github.com/sabertazimi/blog/commit/8bedd141c21286c25377dab91906ea2e977310a5))
+* **deps:** update dependency framer-motion to v9 ([#1031](https://github.com/sabertazimi/blog/issues/1031)) ([d62a2df](https://github.com/sabertazimi/blog/commit/d62a2df1d4754b37af97a46cd362340d556bee6b))
+* **deps:** update dependency next to ^12.2.2 ([#938](https://github.com/sabertazimi/blog/issues/938)) ([c1630c4](https://github.com/sabertazimi/blog/commit/c1630c4b4ccc5ac2fef19c0fee50232d2c7889b9))
+* **deps:** update dependency next to ^12.2.3 ([#943](https://github.com/sabertazimi/blog/issues/943)) ([d9ddc66](https://github.com/sabertazimi/blog/commit/d9ddc66242ca0275dc98ad84896f41eb6bd33821))
+* **deps:** update dependency next to ^12.2.4 ([#951](https://github.com/sabertazimi/blog/issues/951)) ([0ed3068](https://github.com/sabertazimi/blog/commit/0ed3068ccb5fb4b6903b746141040004e48edf33))
+* **deps:** update dependency next to ^12.3.1 ([#979](https://github.com/sabertazimi/blog/issues/979)) ([31fc534](https://github.com/sabertazimi/blog/commit/31fc534669a6f532d36557013c618c6f118a100a)), closes [#796](https://github.com/sabertazimi/blog/issues/796) [vercel/nextjs#40889](https://github.com/vercel/nextjs/issues/40889)
+* **deps:** update dependency next to ^12.3.2 ([#991](https://github.com/sabertazimi/blog/issues/991)) ([793beb2](https://github.com/sabertazimi/blog/commit/793beb28d31753289d3f076e378c7dc12d46e3f7))
+* **deps:** update dependency next to ^12.3.3 ([#997](https://github.com/sabertazimi/blog/issues/997)) ([b5f1725](https://github.com/sabertazimi/blog/commit/b5f1725334489067359168e2b723538058e02102))
+* **deps:** update dependency next to ^12.3.4 ([#1004](https://github.com/sabertazimi/blog/issues/1004)) ([57feef4](https://github.com/sabertazimi/blog/commit/57feef40fea4b19881f63743badef3540be169b7))
+* **deps:** update dependency next to v13 ([#990](https://github.com/sabertazimi/blog/issues/990)) ([00e7629](https://github.com/sabertazimi/blog/commit/00e7629591b0bf9681ae24a4191eb32e7123d628))
+* **deps:** update dependency next-seo to ^5.15.0 ([#1008](https://github.com/sabertazimi/blog/issues/1008)) ([3b725be](https://github.com/sabertazimi/blog/commit/3b725be4444743bf7345adfda96ff889513b1d40))
+* **deps:** update dependency next-sitemap to ^3.1.1 ([#926](https://github.com/sabertazimi/blog/issues/926)) ([e4fb30c](https://github.com/sabertazimi/blog/commit/e4fb30ce93209225b979f09889ddfc309cbd8e3f))
+* **deps:** update dependency rehype-external-links to v2 ([#945](https://github.com/sabertazimi/blog/issues/945)) ([2be67a8](https://github.com/sabertazimi/blog/commit/2be67a829b5aed5f211d9a76d391d21311f3e7fd))
+* **deps:** update dependency remark-mdx-code-meta to v2 ([#946](https://github.com/sabertazimi/blog/issues/946)) ([1205e24](https://github.com/sabertazimi/blog/commit/1205e241d7223384ac3587c8f2647f577c0a860c))
+* **deps:** update nextjs and next-pwa ([#955](https://github.com/sabertazimi/blog/issues/955)) ([d6bd9c3](https://github.com/sabertazimi/blog/commit/d6bd9c3deb7726eb437836756073c8a528c699dd))
+* **fonts:** add `Raleway` font face ([#916](https://github.com/sabertazimi/blog/issues/916)) ([492ff25](https://github.com/sabertazimi/blog/commit/492ff2593036643f715272c478767181945e5e8c))
+* **footer:** change build link ([#976](https://github.com/sabertazimi/blog/issues/976)) ([b302935](https://github.com/sabertazimi/blog/commit/b3029356c8bb94a36b78e8d3b83f223c0cb430ed))
+* **swc:** enable swc minifier ([#1036](https://github.com/sabertazimi/blog/issues/1036)) ([6463ef1](https://github.com/sabertazimi/blog/commit/6463ef1a1e21408c368042a8545f7a772def8b60))
+* **theme:** rectify broken dark theme ([#1034](https://github.com/sabertazimi/blog/issues/1034)) ([dd82bda](https://github.com/sabertazimi/blog/commit/dd82bda1d8fdb9a89eb9d0d5b7a4a6087fd4b343))
+
 ## [3.6.0](https://github.com/sabertazimi/blog/compare/v3.5.0...v3.6.0) (2022-06-12)
 
 
