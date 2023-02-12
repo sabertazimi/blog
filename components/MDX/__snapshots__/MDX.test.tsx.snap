@@ -11,7 +11,7 @@ exports[`MDXCode should render correctly (snapshot) 1`] = `
 exports[`MDXDivider should render correctly (snapshot) 1`] = `
 <div>
   <div
-    class="ant-divider ant-divider-horizontal divider bg-gradient-primary h-1 rounded-full border-0 dark:border-light dark:text-light"
+    class="ant-divider css-dev-only-do-not-override-j0nf2s ant-divider-horizontal divider bg-gradient-primary h-1 rounded-full border-0 dark:border-light dark:text-light"
     role="separator"
   />
 </div>
@@ -20,10 +20,10 @@ exports[`MDXDivider should render correctly (snapshot) 1`] = `
 exports[`MDXInput should render checkbox correctly (snapshot) 1`] = `
 <div>
   <label
-    class="ant-checkbox-wrapper mr-1"
+    class="ant-checkbox-wrapper mr-1 css-dev-only-do-not-override-j0nf2s"
   >
     <span
-      class="ant-checkbox"
+      class="ant-checkbox css-dev-only-do-not-override-j0nf2s"
     >
       <input
         class="ant-checkbox-input"
@@ -41,7 +41,7 @@ exports[`MDXInput should render checkbox correctly (snapshot) 1`] = `
 exports[`MDXInput should render input correctly (snapshot) 1`] = `
 <div>
   <input
-    class="ant-input mr-1"
+    class="ant-input css-dev-only-do-not-override-j0nf2s mr-1"
     type="text"
     value=""
   />

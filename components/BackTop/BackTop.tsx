@@ -1,8 +1,8 @@
 import type { BackTopProps } from 'antd';
-import { BackTop as AntBackTop } from 'antd';
+import { FloatButton } from 'antd';
 
 interface Props extends BackTopProps {}
 
-const BackTop = (props: Props): JSX.Element => <AntBackTop {...props} />;
+const BackTop = (props: Props): JSX.Element => <FloatButton.BackTop {...props} />;
 
 export default BackTop;
