@@ -9,16 +9,18 @@ section {
   @apply dark:text-light;
 }
 
-/* Change ant design default font size */
+/* Reset ant design font family and font size */
 [class^='ant-typography'],
-[class*=' ant-typography'] {
+[class*=' ant-typography'],
+.ant-anchor-link-title.ant-anchor-link-title,
+.ant-anchor-link-title-active.ant-anchor-link-title-active {
   font-family: var(--font-stack);
-  font-size: var(--font-size);
+  font-size: inherit;
 }
 
 /* Add dark mode support for table of contents links */
-.ant-anchor-link-title {
-  @apply dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
+.ant-anchor-link-title.ant-anchor-link-title {
+  @apply hover:text-secondary dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
 }
 
 .ant-anchor-link-title-active {
