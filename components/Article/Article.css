@@ -9,6 +9,13 @@ section {
   @apply dark:text-light;
 }
 
+/* Change ant design default font size */
+[class^='ant-typography'],
+[class*=' ant-typography'] {
+  font-family: var(--font-stack);
+  font-size: var(--font-size);
+}
+
 /* Add dark mode support for table of contents links */
 .ant-anchor-link-title {
   @apply dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
