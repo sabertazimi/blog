@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Link = ({ href, children, className }: Props): JSX.Element => (
-  <NextLink href={href}>
+  <NextLink href={href} legacyBehavior>
     <a className={className}>{children}</a>
   </NextLink>
 );
