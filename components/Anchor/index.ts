@@ -1,1 +1,1 @@
-export { Anchor, Link } from './Anchor';
+export { default } from './Anchor';
