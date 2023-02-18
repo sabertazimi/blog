@@ -6,11 +6,11 @@ exports[`Header should render correctly (snapshot) 1`] = `
     role="grid"
   >
     <div
-      class="ant-row ant-row-center ant-row-middle md:hidden css-dev-only-do-not-override-j0nf2s"
+      class="ant-row ant-row-center ant-row-middle md:hidden"
       role="row"
     >
       <div
-        class="ant-col ant-col-8 flex-container css-dev-only-do-not-override-j0nf2s"
+        class="ant-col ant-col-8 flex-container"
         role="cell"
       >
         <span
@@ -35,7 +35,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         </span>
       </div>
       <div
-        class="ant-col ant-col-8 flex-container css-dev-only-do-not-override-j0nf2s"
+        class="ant-col ant-col-8 flex-container"
         role="cell"
       >
         <a
@@ -55,7 +55,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
         </a>
       </div>
       <div
-        class="ant-col ant-col-8 flex-container css-dev-only-do-not-override-j0nf2s"
+        class="ant-col ant-col-8 flex-container"
         role="cell"
       >
         <div
@@ -89,7 +89,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <ul
-      class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center bg-gradient-primary shadow-none css-dev-only-do-not-override-j0nf2s"
+      class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center bg-gradient-primary shadow-none"
       data-menu-list="true"
       role="menu"
       tabindex="0"
@@ -203,7 +203,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
             class="flex-container h-full transform-gpu border-transparent transition md:w-52 lg:w-60 xl:w-max"
           >
             <div
-              class="ant-select ant-select-auto-complete css-dev-only-do-not-override-j0nf2s ant-select-single ant-select-customize-input ant-select-show-search"
+              class="ant-select ant-select-auto-complete ant-select-single ant-select-customize-input ant-select-show-search"
             >
               <div
                 class="ant-select-selector"
@@ -212,13 +212,13 @@ exports[`Header should render correctly (snapshot) 1`] = `
                   class="ant-select-selection-search"
                 >
                   <span
-                    class="ant-input-group-wrapper ant-input-search ant-input-search-with-button ant-select-selection-search-input css-dev-only-do-not-override-j0nf2s"
+                    class="ant-input-group-wrapper ant-input-search ant-input-search-with-button ant-select-selection-search-input"
                   >
                     <span
-                      class="ant-input-wrapper ant-input-group css-dev-only-do-not-override-j0nf2s"
+                      class="ant-input-wrapper ant-input-group"
                     >
                       <span
-                        class="ant-input-affix-wrapper css-dev-only-do-not-override-j0nf2s"
+                        class="ant-input-affix-wrapper"
                       >
                         <input
                           aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
@@ -227,7 +227,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
                           aria-haspopup="listbox"
                           aria-owns="rc_select_TEST_OR_SSR_list"
                           autocomplete="off"
-                          class="ant-input css-dev-only-do-not-override-j0nf2s"
+                          class="ant-input"
                           id="rc_select_TEST_OR_SSR"
                           placeholder="Search Posts ..."
                           role="combobox"
@@ -268,7 +268,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
                         class="ant-input-group-addon"
                       >
                         <button
-                          class="ant-btn css-dev-only-do-not-override-j0nf2s ant-btn-primary ant-input-search-button"
+                          class="ant-btn ant-btn-primary ant-input-search-button"
                           type="button"
                         >
                           <span>

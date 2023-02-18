@@ -43,3 +43,26 @@ window.requestAnimationFrame = function (callback) {
 };
 
 window.cancelAnimationFrame = window.clearTimeout;
+
+// Mock React portal.
+function mockCreatePortal(element, target) {
+  return (
+    <div>
+      <div id="content">{element}</div>
+      <div id="target" data-target-tag-name={target.tagName}></div>
+    </div>
+  );
+}
+
+jest.mock('react-dom', () => {
+  const reactDom = jest.requireActual('react-dom');
+  reactDom.createPortal = mockCreatePortal;
+  return reactDom;
+});
+
+// Disable ant design hashed CSS-in-JS class name.
+jest.mock('antd', () => {
+  const antd = jest.requireActual('antd');
+  antd.theme.defaultConfig.hashed = false;
+  return antd;
+});
