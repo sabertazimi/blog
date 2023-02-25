@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node environment
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: 'yarn'
@@ -38,7 +38,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16]
+        node-version: [18]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -60,7 +60,7 @@ jobs:
           yarn test:all
       - name: Perform code coverage report action
         uses: codecov/codecov-action@v3
-        if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' }}
 
   e2e:
     name: E2E Testing
@@ -68,7 +68,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16]
+        node-version: [18]
         browser: [chrome, firefox]
     steps:
       - name: Checkout repository
@@ -99,7 +99,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16]
+        node-version: [18]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -121,7 +121,7 @@ jobs:
           yarn build
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
-        if: ${{ matrix.node-version == 16 && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' }}
         with:
           name: app
           path: .next
