@@ -69,6 +69,8 @@ const basePosts = Array.from(Array(5).keys()).map(index => ({
       return {
         default: MDXContent
       };`,
+    scope: {},
+    frontmatter: {},
   },
 }));
 
