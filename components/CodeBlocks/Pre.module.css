@@ -1,9 +1,9 @@
 .pre {
-  @apply relative mt-0 mb-9 bg-transparent pt-10 pb-0;
+  @apply relative mt-0 mb-9 rounded-lg bg-transparent pt-10 pb-0;
 }
 
 .pre::before {
-  @apply absolute top-0 left-0 float-left h-10 w-full;
+  @apply absolute top-0 left-0 float-left h-10 w-full rounded-t-lg;
   @apply bg-dark px-20 py-0 indent-4 text-base font-bold leading-10 text-light;
 
   content: attr(data-language);
