@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.0](https://github.com/sabertazimi/blog/compare/v3.7.0...v3.8.0) (2023-03-08)
+
+
+### :wrench: Testing
+
+* **antd:** disable antd hashed class name in testing suites ([#1043](https://github.com/sabertazimi/blog/issues/1043)) ([130009d](https://github.com/sabertazimi/blog/commit/130009d9a31fa3f4bf482d4b691711a2e55344d2))
+
+
+### :bug: Bug Fixes
+
+* **antd-css:** extract styles to avoid flush ([#1057](https://github.com/sabertazimi/blog/issues/1057)) ([6fcbd8d](https://github.com/sabertazimi/blog/commit/6fcbd8d8a15a16e81f7388670b45396b56d087f9)), closes [ant-design/ant-design#40285](https://github.com/ant-design/ant-design/issues/40285)
+* **components-LiveCode:** add bottom border radius ([#1060](https://github.com/sabertazimi/blog/issues/1060)) ([56d3fb8](https://github.com/sabertazimi/blog/commit/56d3fb8d2a654c41f13c9fde6c79bb68c0624040))
+* **components-styles:** rectify broken styles ([#1058](https://github.com/sabertazimi/blog/issues/1058)) ([a7bb3ce](https://github.com/sabertazimi/blog/commit/a7bb3ceee487ec7d5fb09c3c06922fa6433d9707))
+* **deps:** update dependencies (non-major) ([#1045](https://github.com/sabertazimi/blog/issues/1045)) ([22808c5](https://github.com/sabertazimi/blog/commit/22808c54eb441045460ac02a563bd991e6ad5696))
+* **deps:** update dependencies (non-major) ([#1050](https://github.com/sabertazimi/blog/issues/1050)) ([954752e](https://github.com/sabertazimi/blog/commit/954752e39426d13c8db51b96e972d427925b572f))
+* **deps:** update dependency @codesandbox/sandpack-react to v2 ([#1041](https://github.com/sabertazimi/blog/issues/1041)) ([a6b8630](https://github.com/sabertazimi/blog/commit/a6b86305919db0c8e5565754c7c4f37df57c9ebb))
+* **deps:** update dependency @codesandbox/sandpack-themes to v2 ([#1042](https://github.com/sabertazimi/blog/issues/1042)) ([62a4b26](https://github.com/sabertazimi/blog/commit/62a4b26a19666fe37af489bfdf9911a8c7f1c3cc))
+* **deps:** update dependency framer-motion to ^10.0.2 ([#1056](https://github.com/sabertazimi/blog/issues/1056)) ([c7cc329](https://github.com/sabertazimi/blog/commit/c7cc32933cdf54d86be90bbeb51c2b66bd3d094d))
+* **deps:** update dependency framer-motion to v10 ([#1046](https://github.com/sabertazimi/blog/issues/1046)) ([863d96f](https://github.com/sabertazimi/blog/commit/863d96ff68c84707e1f870b38ba95ea93d599871))
+* **deps:** update dependency next-sitemap to ^4.0.2 ([#1055](https://github.com/sabertazimi/blog/issues/1055)) ([e317899](https://github.com/sabertazimi/blog/commit/e31789970051537280ab304d42ae96919b145542))
+* **deps:** update dependency next-sitemap to v4 ([#1052](https://github.com/sabertazimi/blog/issues/1052)) ([a21c415](https://github.com/sabertazimi/blog/commit/a21c415a091148dcc37a8f3a2f43d9d20dfaf7a2))
+* **styles-scrollbar:** custom scrollbar ([#1061](https://github.com/sabertazimi/blog/issues/1061)) ([ef2e2af](https://github.com/sabertazimi/blog/commit/ef2e2af4688b0e8ad841a00b19ed4efc5e395abd))
+
+
+### :sparkles: Features
+
+* switch to rounded style ([#1062](https://github.com/sabertazimi/blog/issues/1062)) ([61ccdba](https://github.com/sabertazimi/blog/commit/61ccdbab92eacb535906ff4f1cfe17347f729918))
+
 ## [3.7.0](https://github.com/sabertazimi/blog/compare/v3.6.0...v3.7.0) (2023-02-12)
 
 
