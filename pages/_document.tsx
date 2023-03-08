@@ -1,12 +1,12 @@
+import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 import { getSandpackCssText } from '@codesandbox/sandpack-react';
 import Document, {
+  DocumentContext,
   Head,
   Html,
   Main,
   NextScript,
-  DocumentContext,
 } from 'next/document';
-import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
