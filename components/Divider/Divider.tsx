@@ -15,7 +15,7 @@ const Divider = ({
     className={cx(
       styles.divider,
       className,
-      'dark:border-light dark:text-light'
+      'dark:!border-light dark:text-light'
     )}
   >
     {children}
