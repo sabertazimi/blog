@@ -1,0 +1,9 @@
+/* Add dark mode support for antd Skeleton component */
+.ant-skeleton {
+  @apply pt-2;
+}
+
+.ant-skeleton .ant-skeleton-content .ant-skeleton-title,
+.ant-skeleton .ant-skeleton-content .ant-skeleton-paragraph li {
+  @apply dark:bg-gray-500;
+}
