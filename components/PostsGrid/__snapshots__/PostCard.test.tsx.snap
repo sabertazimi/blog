@@ -9,7 +9,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
       style="opacity: 0; transform: translateX(-200px) translateZ(0);"
     >
       <span
-        class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary"
+        class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
         style="background-color: rgb(245, 159, 0);"
       >
         <a
@@ -24,7 +24,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
         1 Basic Notes
       </h2>
       <span
-        class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
       >
         <span
           aria-label="calendar"
@@ -106,7 +106,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
       style="opacity: 0; transform: translateX(-200px) translateZ(0);"
     >
       <span
-        class="ant-tag ant-tag-has-color mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary"
+        class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
         style="background-color: rgb(66, 99, 235);"
       >
         <a
@@ -121,7 +121,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
         1 Basic Notes
       </h2>
       <span
-        class="ant-tag mt-1 inline-flex items-center justify-center rounded-none border-black bg-black text-base font-extrabold text-light dark:border-light dark:bg-light dark:text-dark"
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
       >
         <span
           aria-label="calendar"
