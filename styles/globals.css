@@ -73,10 +73,6 @@
 }
 
 @layer components {
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-indigo-700 to-red-500;
-  }
-
   .bg-gradient-secondary {
     @apply border-b-5 border-solid border-primary;
 

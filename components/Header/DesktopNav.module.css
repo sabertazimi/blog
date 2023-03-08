@@ -1,3 +1,11 @@
+.primary[class] {
+  @apply bg-gradient-primary shadow-none;
+}
+
+.transparent[class] {
+  @apply bg-white/30 shadow-lg;
+}
+
 .light.light[class],
 .dark.dark[class] {
   @apply hover:text-primary focus:text-primary;

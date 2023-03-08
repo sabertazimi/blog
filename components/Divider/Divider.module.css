@@ -1,7 +1,7 @@
-.divider {
+.divider.divider {
   @apply leading-relaxed tracking-wide;
 }
 
-.divider[role='separator'] {
+.divider.divider[role='separator'] {
   @apply mx-0 my-12 font-extrabold;
 }

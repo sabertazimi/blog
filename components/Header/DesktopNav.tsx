@@ -22,10 +22,8 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       'border-transparent bg-transparent font-extrabold backdrop-blur-md transition',
       'md:visible md:flex md:justify-center',
       {
-        'bg-gradient-primary': !fixed,
-        'shadow-none': !fixed,
-        'bg-white/30': fixed,
-        'shadow-lg': fixed,
+        [styles.primary]: !fixed,
+        [styles.transparent]: fixed,
       }
     )}
     items={[
