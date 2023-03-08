@@ -7,6 +7,14 @@
   @apply w-full flex-auto border-l border-r border-b border-solid border-dark md:w-1/2;
 }
 
+.editor {
+  @apply rounded-bl-lg;
+}
+
+.preview {
+  @apply rounded-br-lg;
+}
+
 .error {
   @apply w-full bg-red-100 text-red-700;
 }
