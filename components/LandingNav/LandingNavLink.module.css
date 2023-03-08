@@ -1,5 +1,16 @@
 .link {
-  @apply mx-6 my-0 block cursor-pointer border-b-6 border-solid border-light px-0 pt-0 pb-3 text-4xl font-extrabold leading-none text-light md:text-7xl;
+  @apply relative mx-6 my-0 block cursor-pointer px-0 pt-0 pb-3;
+}
+
+.link a {
+  @apply text-4xl font-extrabold leading-none text-light md:text-7xl;
+}
+
+.link::after {
+  @apply absolute left-0 top-full h-2 w-full;
+  @apply bg-gradient-primary rounded-lg;
+
+  content: '';
 }
 
 .tooltip {
