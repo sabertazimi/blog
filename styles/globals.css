@@ -122,3 +122,11 @@ a {
 img {
   @apply inline-block;
 }
+
+::-webkit-scrollbar {
+  @apply h-2.5 w-2.5;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-primary dark:bg-secondary;
+}
