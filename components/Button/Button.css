@@ -1,14 +1,14 @@
 /* Add dark mode support for antd Button component */
-.ant-btn-text {
-  @apply dark:text-light;
+button.ant-btn-text {
+  @apply dark:text-light dark:hover:text-gray-400;
 }
 
-.ant-btn-default,
-.ant-btn-dashed {
+button.ant-btn-default,
+button.ant-btn-dashed {
   @apply bg-transparent hover:bg-transparent focus:bg-transparent dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
 }
 
 /* Remove tailwind button reset styles */
-.ant-btn-primary {
+button.ant-btn-primary {
   @apply bg-primary;
 }

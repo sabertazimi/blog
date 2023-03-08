@@ -114,7 +114,13 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(({ addUtilities, matchUtilities, theme }) => {
+    plugin(({ addComponents, addUtilities, matchUtilities, theme }) => {
+      addComponents({
+        '.bg-gradient-primary': {
+          '@apply bg-gradient-to-r from-indigo-700 to-red-500': {},
+        },
+      });
+
       addUtilities({
         '.content-auto': {
           'content-visibility': 'auto',

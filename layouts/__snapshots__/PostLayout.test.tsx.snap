@@ -92,7 +92,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <ul
-        class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center bg-gradient-primary shadow-none"
+        class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center primary"
         data-menu-list="true"
         role="menu"
         tabindex="0"
@@ -399,7 +399,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4 rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://github.com/sabertazimi"
               role="link"
             >
@@ -430,7 +430,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4 rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://twitter.com/sabertazimi"
               role="link"
             >
@@ -461,7 +461,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4 rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://facebook.com/sabertazimi"
               role="link"
             >
@@ -492,7 +492,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4 rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://linkedin.com/sabertazimi"
               role="link"
             >
@@ -523,7 +523,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4 rounded-none"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button mx-5 mt-0 mb-4"
               href="https://weibo.com/sabertazimi"
               role="link"
             >
@@ -559,7 +559,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           role="cell"
         >
           <div
-            class="ant-divider ant-divider-horizontal divider border-light dark:border-light dark:text-light"
+            class="ant-divider ant-divider-horizontal divider bg-light dark:!border-light dark:text-light"
             role="separator"
           />
         </div>

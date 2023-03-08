@@ -1,4 +1,4 @@
-.button[role='link'] {
-  @apply rounded-none text-center text-light;
+.button.button[role='link'] {
+  @apply rounded-full text-sm text-light;
   @apply focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-secondary;
 }

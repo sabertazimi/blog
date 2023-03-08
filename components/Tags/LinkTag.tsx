@@ -2,6 +2,7 @@ import Link from '@components/Link';
 import { cx } from '@components/utils';
 import { getColorByName } from '@config';
 import type { Tag as TagType } from '@types';
+import styles from './LinkTag.module.css';
 import Tag from './Tag';
 
 interface Props {
@@ -19,10 +20,7 @@ const LinkTag = ({
 }: Props): JSX.Element => (
   <Tag
     color={color}
-    className={cx(
-      'mb-1 rounded-none text-base font-extrabold hover:shadow-lg dark:shadow-primary',
-      className
-    )}
+    className={cx(styles.link, 'dark:hover:shadow-primary', className)}
   >
     <Link href={href}>{tag}</Link>
   </Tag>

@@ -1,27 +1,29 @@
-.heading.heading {
+.heading.heading.heading {
   @apply mb-6;
+
+  font-family: var(--font-stack);
 }
 
-h1.h1.h1 {
+h1.h1.h1.h1 {
   @apply mt-48;
 }
 
-h2.h2.h2 {
+h2.h2.h2.h2 {
   @apply mt-24;
 }
 
-h3.h3.h3 {
+h3.h3.h3.h3 {
   @apply mt-12;
 }
 
-h4.h4.h4 {
+h4.h4.h4.h4 {
   @apply mt-6;
 }
 
-h5.h5.h5 {
+h5.h5.h5.h5 {
   @apply mt-3;
 }
 
-h6.h6.h6 {
+h6.h6.h6.h6 {
   @apply mt-1.5;
 }
