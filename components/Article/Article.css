@@ -58,10 +58,3 @@ li.task-list-item > div {
     @apply opacity-100;
   }
 }
-
-/* Remove border radius */
-.ant-checkbox-inner,
-.ant-ribbon,
-.ant-card-cover img {
-  @apply rounded-none;
-}

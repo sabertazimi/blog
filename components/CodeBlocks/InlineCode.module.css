@@ -1,6 +1,4 @@
-code.code {
-  @apply break-words rounded-none border border-solid border-secondary bg-transparent box-decoration-clone px-1.5 py-px;
-  @apply font-mono font-normal leading-6 text-dark shadow-xl;
-
-  font-size: var(--font-size);
+.code {
+  @apply break-words box-decoration-clone px-1.5 py-px;
+  @apply font-normal leading-6 text-dark shadow-xl;
 }
