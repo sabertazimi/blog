@@ -7,8 +7,8 @@ div[class^='ant-typography'],
 div[class*=' ant-typography'],
 span[class^='ant-typography'],
 span[class*=' ant-typography'],
-.ant-anchor-link-title.ant-anchor-link-title.ant-anchor-link-title,
-.ant-anchor-link-title-active.ant-anchor-link-title-active.ant-anchor-link-title-active {
+.ant-anchor-link-title,
+.ant-anchor-link-title-active {
   font-family: var(--font-stack);
   font-size: inherit;
 }
@@ -25,12 +25,8 @@ section {
 }
 
 /* Add dark mode support for table of contents links */
-.ant-anchor-link-title.ant-anchor-link-title.ant-anchor-link-title {
+.ant-anchor-link-title.ant-anchor-link-title {
   @apply hover:text-secondary dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
-}
-
-.ant-anchor-link-title-active {
-  @apply dark:text-primary;
 }
 
 /* Add dark mode support for admonition title */
