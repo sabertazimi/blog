@@ -53,7 +53,7 @@ const Footer = ({
       </Col>
       <Col className="mx-6">
         <span>
-          Last Built Time{' '}
+          Last Build Time{' '}
           <a href="https://github.com/sabertazimi/blog/actions">
             <time
               dateTime={new Date(buildTime).toLocaleString('zh-CN', {
