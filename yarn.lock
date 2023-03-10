@@ -1884,16 +1884,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dg-scripts/stylelint-config@npm:^5.13.3":
-  version: 5.13.3
-  resolution: "@dg-scripts/stylelint-config@npm:5.13.3"
+"@dg-scripts/stylelint-config@npm:^5.13.4":
+  version: 5.13.4
+  resolution: "@dg-scripts/stylelint-config@npm:5.13.4"
   dependencies:
-    stylelint-config-bod: ^5.13.3
-    stylelint-prettier: ^2.0.0
+    stylelint-config-bod: ^5.13.4
+    stylelint-prettier: ^3.0.0
   peerDependencies:
     prettier: ^2.4.0
     stylelint: ^13.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 7f01dff9765af664500117d9e24e5516e45e8ad23b5f49e0835a51185aa323acffb2c8c69d46fa74fbd7f4093a56997af24639da793c3b1d27f1cb44b39b52ba
+  checksum: c382df4468f2a264d793a2586bbdbda4c1544a5d169b2f14e5070d25d530cbc997868641588958176940afcc8f495c8b392f0ad479a24a073ff87ba13f3675d1
   languageName: node
   linkType: hard
 
@@ -2880,7 +2880,7 @@ __metadata:
     "@ant-design/icons": ^5.0.1
     "@codesandbox/sandpack-react": ^2.0.27
     "@codesandbox/sandpack-themes": ^2.0.21
-    "@dg-scripts/stylelint-config": ^5.13.3
+    "@dg-scripts/stylelint-config": ^5.13.4
     "@octokit/rest": ^19.0.7
     "@octokit/types": ^9.0.0
     "@testing-library/jest-dom": ^5.16.5
@@ -14436,9 +14436,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint-config-bod@npm:^5.13.3":
-  version: 5.13.3
-  resolution: "stylelint-config-bod@npm:5.13.3"
+"stylelint-config-bod@npm:^5.13.4":
+  version: 5.13.4
+  resolution: "stylelint-config-bod@npm:5.13.4"
   dependencies:
     postcss-html: ^1.5.0
     postcss-markdown: ^1.2.0
@@ -14448,7 +14448,7 @@ resolve@^2.0.0-next.3:
     stylelint-config-standard-scss: ^7.0.1
   peerDependencies:
     stylelint: ^13.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 9ac165c4fb92140f48b6374e2f5b7c0b8bea29200e5293752f20dfbec26824c3b0d6460320f1a9e91959b8e33e4480c941ca19e3cbd4f47a7ac2335e07e608d9
+  checksum: bb5b954bd6677ad836c44e7c36286a42d18c6b349cc8a10bd4e6065974a840f7747d57cb905c92dd859f125198d36a268ad8da04aeac4fcc05366650c47514de
   languageName: node
   linkType: hard
 
@@ -14538,15 +14538,15 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"stylelint-prettier@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "stylelint-prettier@npm:2.0.0"
+"stylelint-prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "stylelint-prettier@npm:3.0.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
     prettier: ">=2.0.0"
     stylelint: ">=14.0.0"
-  checksum: 6ce7628517a492e0c2e6104f654c9bc710f1aaf035c8b5274e187b68e8d510e70bae5ded2cb65df76aa01096460b9dfe02f844fea13bfba7e3dcca13baec2ff4
+  checksum: 094f53ef5dbe3806524db7f580b9312ceca444651803fc08c8baa48cd9a270985c709fa4f083681a685310dc347b8e55aa93d462554ba7d4ae6258a3bdf6a278
   languageName: node
   linkType: hard
 
@@ -16184,14 +16184,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:^21.0.0, yargs-parser@npm:^21.0.1":
-  version: 21.0.1
-  resolution: "yargs-parser@npm:21.0.1"
-  checksum: c3ea2ed12cad0377ce3096b3f138df8267edf7b1aa7d710cd502fe16af417bafe4443dd71b28158c22fcd1be5dfd0e86319597e47badf42ff83815485887323a
-  languageName: node
-  linkType: hard
-
-"yargs-parser@npm:^21.1.1":
+"yargs-parser@npm:^21.0.1, yargs-parser@npm:^21.1.1":
   version: 21.1.1
   resolution: "yargs-parser@npm:21.1.1"
   checksum: ed2d96a616a9e3e1cc7d204c62ecc61f7aaab633dcbfab2c6df50f7f87b393993fe6640d017759fe112d0cb1e0119f2b4150a87305cc873fd90831c6a58ccf1c
@@ -16213,7 +16206,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.0.0":
+"yargs@npm:^17.0.0, yargs@npm:^17.3.1":
   version: 17.7.1
   resolution: "yargs@npm:17.7.1"
   dependencies:
@@ -16225,21 +16218,6 @@ resolve@^2.0.0-next.3:
     y18n: ^5.0.5
     yargs-parser: ^21.1.1
   checksum: 3d8a43c336a4942bc68080768664aca85c7bd406f018bad362fd255c41c8f4e650277f42fd65d543fce99e084124ddafee7bbfc1a5c6a8fda4cec78609dcf8d4
-  languageName: node
-  linkType: hard
-
-"yargs@npm:^17.3.1":
-  version: 17.4.1
-  resolution: "yargs@npm:17.4.1"
-  dependencies:
-    cliui: ^7.0.2
-    escalade: ^3.1.1
-    get-caller-file: ^2.0.5
-    require-directory: ^2.1.1
-    string-width: ^4.2.3
-    y18n: ^5.0.5
-    yargs-parser: ^21.0.0
-  checksum: e9012322870d7e4e912a6ae1f63b203e365f911c0cf158be92c36edefddfb3bd38ce17eb9ef0d18858a4777f047c50589ea22dacb44bd949169ba37dc6d34bee
   languageName: node
   linkType: hard
 
