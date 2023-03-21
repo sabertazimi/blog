@@ -2956,7 +2956,7 @@ __metadata:
     prism-react-renderer: ^1.3.5
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-live-runner: ^1.0.4
+    react-live-runner: ^1.0.5
     react-use: ^17.4.0
     reading-time: ^1.5.0
     rehype-autolink-headings: ^6.1.1
@@ -13034,17 +13034,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-live-runner@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "react-live-runner@npm:1.0.4"
+"react-live-runner@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "react-live-runner@npm:1.0.5"
   dependencies:
     prism-react-renderer: ^1.2.1
     react-runner: ^1.0.3
-    react-simple-code-editor: ^0.11.0
+    react-simple-code-editor: ^0.13.1
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 334115d858d681088f02cee62cd2d7ba3e53eca15a5a9c6d0143147852dda0476856a3dbaa4a10b3cc6fb6200f8e6f600069d4c6411c951d81c49c07b40526cc
+  checksum: fb34cc43d9fa3037f1afce5a0689ababcc244399b960c94f9cfb468abbbb5ea50676eb41fdb017bf02cd8df17614710dd2c2c458f9cf3dae8d0d31f122f1fb16
   languageName: node
   linkType: hard
 
@@ -13060,13 +13060,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-simple-code-editor@npm:^0.11.0":
-  version: 0.11.0
-  resolution: "react-simple-code-editor@npm:0.11.0"
+"react-simple-code-editor@npm:^0.13.1":
+  version: 0.13.1
+  resolution: "react-simple-code-editor@npm:0.13.1"
   peerDependencies:
-    react: ^16.0.0
-    react-dom: ^16.0.0
-  checksum: 20d9381c77c7a7ef256e2d871e1b0ab95cc0b025b3933467840f6608ce37835f98785d50b6709df7e4daf75889f3c95a0d80b1809f8399b2361ec282a063196b
+    react: "*"
+    react-dom: "*"
+  checksum: 1d223e34ccac5d7f91318f28d5edab6ccb13c51b1afb502094b8475214321263bb44258d355978e1714e9360c9081fb9f38d3ae89071a06628407627c362cc45
   languageName: node
   linkType: hard
 

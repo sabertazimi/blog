@@ -9,17 +9,6 @@ exports[`LiveCode should render live code correctly (snapshot) 1`] = `
       class="editor"
       style="position: relative; text-align: left; box-sizing: border-box; padding: 0px; overflow: hidden; color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
-      <textarea
-        autocapitalize="off"
-        autocomplete="off"
-        autocorrect="off"
-        class="npm__react-simple-code-editor__textarea"
-        data-gramm="false"
-        spellcheck="false"
-        style="margin: 0px; border: 0px; background: none; box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: pre-wrap; word-break: keep-all; overflow-wrap: break-word; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; resize: none; overflow: hidden; padding: 1.25rem 1.25rem 1.25rem 1.25rem;"
-      >
-        const foo = bar();
-      </textarea>
       <pre
         aria-hidden="true"
         style="margin: 0px; border: 0px; background: none; box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: pre-wrap; word-break: keep-all; overflow-wrap: break-word; position: relative; pointer-events: none; padding: 1.25rem 1.25rem 1.25rem 1.25rem;"
@@ -78,9 +67,18 @@ exports[`LiveCode should render live code correctly (snapshot) 1`] = `
         
 
       </pre>
-      <style
-        type="text/css"
+      <textarea
+        autocapitalize="off"
+        autocomplete="off"
+        autocorrect="off"
+        class="npm__react-simple-code-editor__textarea"
+        data-gramm="false"
+        spellcheck="false"
+        style="margin: 0px; border: 0px; background: none; box-sizing: inherit; display: inherit; font-family: inherit; font-style: inherit; font-variant-ligatures: inherit; font-weight: inherit; letter-spacing: inherit; line-height: inherit; tab-size: inherit; text-indent: inherit; text-rendering: inherit; text-transform: inherit; white-space: pre-wrap; word-break: keep-all; overflow-wrap: break-word; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; resize: none; overflow: hidden; padding: 1.25rem 1.25rem 1.25rem 1.25rem;"
       >
+        const foo = bar();
+      </textarea>
+      <style>
         
 /**
  * Reset the text fill color so that placeholder is visible
