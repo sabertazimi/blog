@@ -47,7 +47,7 @@ const Footer = ({
       </Col>
       <Col className="mx-6">
         <span>
-          Built with <a href="https://reactjs.org">React</a> and{' '}
+          Built with <a href="https://react.dev">React</a> and{' '}
           <a href="https://nextjs.org">Next</a>
         </span>
       </Col>
