@@ -26,7 +26,7 @@ const Footer = ({
         {Object.keys(socialList).map(social => (
           <SocialButton
             key={social}
-            className="mx-5 mt-0 mb-4"
+            className="mx-5 mb-4 mt-0"
             type={social as SocialType}
             url={`https://${social}.com/${socials[social as SocialType]}`}
           />

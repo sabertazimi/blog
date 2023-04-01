@@ -1,5 +1,5 @@
 .blockquote {
-  @apply mx-0 mb-9 rounded-lg border-l-10 border-solid border-primary bg-gray-100 px-6 pt-12 pb-6;
+  @apply mx-0 mb-9 rounded-lg border-l-10 border-solid border-primary bg-gray-100 px-6 pb-6 pt-12;
 
   quotes: '\201C''\201D';
 }
@@ -17,5 +17,5 @@
 
 /* Keep nested blockquote keep compacted */
 .blockquote blockquote {
-  @apply ml-2 mb-3;
+  @apply mb-3 ml-2;
 }

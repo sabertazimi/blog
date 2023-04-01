@@ -15,7 +15,7 @@ const NotFoundResult = ({
     extra={
       <Link
         href="/posts"
-        className="bg-gradient-primary m-auto mt-12 block max-w-fit rounded-full py-3 px-6 text-2xl font-extrabold text-light"
+        className="bg-gradient-primary m-auto mt-12 block max-w-fit rounded-full px-6 py-3 text-2xl font-extrabold text-light"
       >
         Back Home
       </Link>

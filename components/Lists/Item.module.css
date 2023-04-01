@@ -1,5 +1,5 @@
 .item {
-  @apply mt-0 mb-3 flex list-none leading-relaxed tracking-wide;
+  @apply mb-3 mt-0 flex list-none leading-relaxed tracking-wide;
 }
 
 .item > span {
@@ -15,5 +15,5 @@
 .item > div > ol,
 .item > div > ul > li,
 .item > div > ol > li {
-  @apply mt-3 mb-0;
+  @apply mb-0 mt-3;
 }
