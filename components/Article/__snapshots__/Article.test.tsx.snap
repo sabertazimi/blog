@@ -4,7 +4,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
 <div>
   <div>
     <div
-      class="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pt-48 md:pb-40"
+      class="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48"
     >
       <div
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
@@ -282,7 +282,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
+        class="ant-space ant-space-vertical ant-space-align-center fixed right-0 top-1/2 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
@@ -441,7 +441,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
 <div>
   <div>
     <div
-      class="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pt-48 md:pb-40"
+      class="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48"
     >
       <div
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
@@ -699,7 +699,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         id="disqus_thread"
       />
       <div
-        class="ant-space ant-space-vertical ant-space-align-center fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
+        class="ant-space ant-space-vertical ant-space-align-center fixed right-0 top-1/2 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
       >
         <div
           class="ant-space-item"
