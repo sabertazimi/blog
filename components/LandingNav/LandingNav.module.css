@@ -1,12 +1,12 @@
 .nav {
-  @apply fixed top-0 left-0 z-20 flex h-full w-full flex-col items-center justify-center;
+  @apply fixed left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center;
 }
 
 .banner {
-  @apply fixed top-0 left-0 z-10 block h-full w-full bg-black/50;
+  @apply fixed left-0 top-0 z-10 block h-full w-full bg-black/50;
   @apply backdrop-brightness-110 backdrop-contrast-125 backdrop-saturate-150;
 }
 
 .icon {
-  @apply fixed top-12 left-12 z-100 cursor-pointer border-none bg-transparent text-lg font-extrabold text-light md:text-4xl;
+  @apply fixed left-12 top-12 z-100 cursor-pointer border-none bg-transparent text-lg font-extrabold text-light md:text-4xl;
 }

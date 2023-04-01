@@ -1,12 +1,12 @@
 .table {
-  @apply mt-0 mb-9 w-fit border-collapse overflow-auto rounded-lg;
+  @apply mb-9 mt-0 w-fit border-collapse overflow-auto rounded-lg;
 
   border-spacing: 0;
 }
 
 .table th,
 .table td {
-  @apply py-2 px-4 text-xl font-normal leading-loose;
+  @apply px-4 py-2 text-xl font-normal leading-loose;
 }
 
 .table thead tr {

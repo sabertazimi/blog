@@ -12,7 +12,7 @@ const SocialGroup = ({ url }: Props): JSX.Element => (
     direction="vertical"
     align="center"
     size={0}
-    className="fixed top-1/2 right-0 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
+    className="fixed right-0 top-1/2 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
   >
     {Object.keys(socialList)
       .filter(social => social !== socialList.github)
