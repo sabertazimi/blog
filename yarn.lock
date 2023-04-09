@@ -1510,22 +1510,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-client@npm:^2.4.5":
-  version: 2.4.5
-  resolution: "@codesandbox/sandpack-client@npm:2.4.5"
+"@codesandbox/sandpack-client@npm:^2.4.7":
+  version: 2.4.7
+  resolution: "@codesandbox/sandpack-client@npm:2.4.7"
   dependencies:
     "@codesandbox/nodebox": 0.1.4
     buffer: ^6.0.3
     dequal: ^2.0.2
     outvariant: 1.3.0
     static-browser-server: 1.0.3
-  checksum: 875d7611f66201a2c372e5e70825d2069f0e4bccb7e08a5206bd414b70a8c5f8b531d4b032346c8b03d327614bd8dd5545d2c6a6d3033a88f4e1ce215f03e78d
+  checksum: c5a3418e4bf340ee500a2cd8ea7ca95836817a05913970d9cc413ec736cee4a5fec7fb8a39f7a72d57f0845ed68a9fb65d03023c5d8b9ce269d1353c35e765f3
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^2.4.6":
-  version: 2.4.6
-  resolution: "@codesandbox/sandpack-react@npm:2.4.6"
+"@codesandbox/sandpack-react@npm:^2.4.7":
+  version: 2.4.7
+  resolution: "@codesandbox/sandpack-react@npm:2.4.7"
   dependencies:
     "@codemirror/autocomplete": ^6.4.0
     "@codemirror/commands": ^6.1.3
@@ -1535,7 +1535,7 @@ __metadata:
     "@codemirror/language": ^6.3.2
     "@codemirror/state": ^6.2.0
     "@codemirror/view": ^6.7.1
-    "@codesandbox/sandpack-client": ^2.4.5
+    "@codesandbox/sandpack-client": ^2.4.7
     "@lezer/highlight": ^1.1.3
     "@react-hook/intersection-observer": ^3.1.1
     "@stitches/core": ^1.2.6
@@ -1550,7 +1550,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 47f71b4befe9992ae391014ba51de70eeab751e328323cc2e742d1c5191b60e9e307dc805d482493c9f4d60fd60e54d01a392a47c7a8317d5f5ab036f882d9da
+  checksum: 2058ae9e0fc96e0aad4fc6f49b707db1f4476f118c455c0037c871626101ef1f6b84b91d793d304de4eb03f46512c6624afe00b8cbe89f54e5551ec46bdc1411
   languageName: node
   linkType: hard
 
@@ -2974,7 +2974,7 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^5.0.1
-    "@codesandbox/sandpack-react": ^2.4.6
+    "@codesandbox/sandpack-react": ^2.4.7
     "@codesandbox/sandpack-themes": ^2.0.21
     "@dg-scripts/stylelint-config": ^5.13.5
     "@octokit/rest": ^19.0.7
