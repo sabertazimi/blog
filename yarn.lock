@@ -3037,7 +3037,7 @@ __metadata:
     "@testing-library/react": ^14.0.0
     "@types/jest": ^29.5.2
     "@types/jest-axe": ^3.5.5
-    "@types/mdast": ^3.0.11
+    "@types/mdast": ^4.0.0
     "@types/node": ^18.16.19
     "@types/react": ^18.2.14
     "@types/react-dom": ^18.2.6
@@ -3473,12 +3473,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdast@npm:^3.0.0, @types/mdast@npm:^3.0.11":
+"@types/mdast@npm:^3.0.0":
   version: 3.0.11
   resolution: "@types/mdast@npm:3.0.11"
   dependencies:
     "@types/unist": "*"
   checksum: 3b04cf465535553b47a1811c247668bd6cfeb54d99a2c9dbb82ccd0f5145d271d10c3169f929701d8cd55fd569f0d2e459a50845813ba3261f1fb0395a288cea
+  languageName: node
+  linkType: hard
+
+"@types/mdast@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/mdast@npm:4.0.0"
+  dependencies:
+    "@types/unist": "*"
+  checksum: d3d81818feec4ad1c48c4cd1edee627c75c1a60949e23425839339d7f89ff6df21f7b1f5740ac88cd7246419dd26794ee7229f249856d3e568c38521d004f2f7
   languageName: node
   linkType: hard
 
