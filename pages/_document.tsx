@@ -15,12 +15,11 @@ export default class CustomDocument extends Document {
 
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: App => props =>
-          (
-            <StyleProvider cache={cache}>
-              <App {...props} />
-            </StyleProvider>
-          ),
+        enhanceApp: App => props => (
+          <StyleProvider cache={cache}>
+            <App {...props} />
+          </StyleProvider>
+        ),
       });
 
     const initialProps = await Document.getInitialProps(ctx);

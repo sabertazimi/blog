@@ -4,7 +4,7 @@ import { useLocalStorage, useMedia } from 'react-use';
 
 const useDarkMode = (): [
   boolean,
-  Dispatch<SetStateAction<boolean | undefined>>
+  Dispatch<SetStateAction<boolean | undefined>>,
 ] => {
   const [darkMode, setDarkMode] = useLocalStorage<boolean>('dark-mode', false);
   const prefersDarkMode = useMedia('(prefers-color-scheme: dark)', false);

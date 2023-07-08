@@ -76,7 +76,8 @@
   .bg-gradient-secondary {
     @apply border-b-5 border-solid border-primary;
 
-    background: linear-gradient(63deg, #262626 23%, transparent 0) 7px 0,
+    background:
+      linear-gradient(63deg, #262626 23%, transparent 0) 7px 0,
       linear-gradient(63deg, transparent 73%, #262626 76%),
       linear-gradient(
         63deg,
