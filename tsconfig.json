@@ -23,6 +23,7 @@
     "noEmit": true,
     "strict": true,
     "baseUrl": "./",
+    "types": ["@testing-library/jest-dom"],
     "paths": {
       "@components": ["components"],
       "@components/*": ["components/*"],
