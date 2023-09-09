@@ -3044,7 +3044,7 @@ __metadata:
     react-use: ^17.4.0
     reading-time: ^1.5.0
     rehype-autolink-headings: ^6.1.1
-    rehype-external-links: ^2.1.0
+    rehype-external-links: ^3.0.0
     rehype-katex: ^6.0.3
     rehype-slug: ^6.0.0
     remark-directive: ^2.0.1
@@ -3716,6 +3716,13 @@ __metadata:
     "@typescript-eslint/types": 6.4.1
     eslint-visitor-keys: ^3.4.1
   checksum: bd9cd56fc793e1d880c24193f939c4992b2653f330baece41cd461d1fb48edb2c53696987cba0e29074bbb452dd181fd009db92dd19060fdcc417ad76768f18a
+  languageName: node
+  linkType: hard
+
+"@ungap/structured-clone@npm:^1.0.0":
+  version: 1.2.0
+  resolution: "@ungap/structured-clone@npm:1.2.0"
+  checksum: 4f656b7b4672f2ce6e272f2427d8b0824ed11546a601d8d5412b9d7704e83db38a8d9f402ecdf2b9063fc164af842ad0ec4a55819f621ed7e7ea4d1efcc74524
   languageName: node
   linkType: hard
 
@@ -7924,6 +7931,15 @@ __metadata:
     "@types/hast": ^2.0.0
     "@types/unist": ^2.0.0
   checksum: c5fe9f7cde3775d4cbe19a9a55631a80b7a4ea0131fc2e3d097ebe228a35f09b9219f64b788b7a9cf819e6dcb6d1fc7830fd2f10ad536649e436e8c83da41e00
+  languageName: node
+  linkType: hard
+
+"hast-util-is-element@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "hast-util-is-element@npm:3.0.0"
+  dependencies:
+    "@types/hast": ^3.0.0
+  checksum: 82569a420eda5877c52fdbbdbe26675f012c02d70813dfd19acffdee328e42e4bd0b7ae34454cfcbcb932b2bedbd7ddc119f943a0cfb234120f9456d6c0c4331
   languageName: node
   linkType: hard
 
@@ -13533,18 +13549,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-external-links@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "rehype-external-links@npm:2.1.0"
+"rehype-external-links@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "rehype-external-links@npm:3.0.0"
   dependencies:
-    "@types/hast": ^2.0.0
-    extend: ^3.0.0
-    hast-util-is-element: ^2.0.0
+    "@types/hast": ^3.0.0
+    "@ungap/structured-clone": ^1.0.0
+    hast-util-is-element: ^3.0.0
     is-absolute-url: ^4.0.0
     space-separated-tokens: ^2.0.0
-    unified: ^10.0.0
-    unist-util-visit: ^4.0.0
-  checksum: 3c2bb50f02dbea09b2769b4255fc1258a2b8041ee9b81f1594e09b61e3988ffc9cd2ce65dff76de628354fe8d1ab6182abbf12ba7f79081fc3a1c1fa38076a41
+    unist-util-visit: ^5.0.0
+  checksum: f776f306a2698a67b03665280fcc00448a5bf59b997d83fbb70fc3d71acff2c3025c70ee1840f48ca7dff209217ebe9adad085dc7caf9e5907badf8b104898b6
   languageName: node
   linkType: hard
 
