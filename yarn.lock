@@ -3047,7 +3047,7 @@ __metadata:
     rehype-katex: ^6.0.3
     rehype-slug: ^6.0.0
     remark-directive: ^2.0.1
-    remark-gemoji: ^7.0.1
+    remark-gemoji: ^8.0.0
     remark-gfm: ^3.0.1
     remark-github: ^11.2.4
     remark-math: ^5.1.1
@@ -7534,10 +7534,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gemoji@npm:^7.0.0":
-  version: 7.1.0
-  resolution: "gemoji@npm:7.1.0"
-  checksum: aa7302de49fd5c7cbbc1c62b38f00fe3603433931bfc809b1ea8cf54180ecfbba31471e16a89c65c1ba066c00ebe76428563f8a16515f776e2e38f2b5a9630ad
+"gemoji@npm:^8.0.0":
+  version: 8.1.0
+  resolution: "gemoji@npm:8.1.0"
+  checksum: 89ef0708e77bbb938c3f87af8263e9e42891fb15b0f5d78e5d3b204a3430e82f8931a2459c912562f46cacb2addc9e8570857f1a3304d4307ebff7c32b126373
   languageName: node
   linkType: hard
 
@@ -10329,6 +10329,18 @@ __metadata:
     unist-util-is: ^5.0.0
     unist-util-visit-parents: ^4.0.0
   checksum: 2df955899edb71fdd9f09a639572b281ec6e9be1533469cdbd7f1f16232a576adbd423f914182684f9516897143a5a797c45182848c0f83807d2c30a582a3c03
+  languageName: node
+  linkType: hard
+
+"mdast-util-find-and-replace@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "mdast-util-find-and-replace@npm:3.0.1"
+  dependencies:
+    "@types/mdast": ^4.0.0
+    escape-string-regexp: ^5.0.0
+    unist-util-is: ^6.0.0
+    unist-util-visit-parents: ^6.0.0
+  checksum: 05d5c4ff02e31db2f8a685a13bcb6c3f44e040bd9dfa54c19a232af8de5268334c8755d79cb456ed4cced1300c4fb83e88444c7ae8ee9ff16869a580f29d08cd
   languageName: node
   linkType: hard
 
@@ -13881,15 +13893,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-gemoji@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "remark-gemoji@npm:7.0.1"
+"remark-gemoji@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "remark-gemoji@npm:8.0.0"
   dependencies:
-    "@types/mdast": ^3.0.0
-    gemoji: ^7.0.0
-    unified: ^10.0.0
-    unist-util-visit: ^4.0.0
-  checksum: a19a24fc06904db6ff0bce806b97d492ed03be1ea5d5d212f4985ca706de27623adb0d08144aa84aa8328397cbc192b42696436db3f835ed13959123f6b48515
+    "@types/mdast": ^4.0.0
+    gemoji: ^8.0.0
+    mdast-util-find-and-replace: ^3.0.0
+  checksum: 244689a678f1e06e1306620b85e3029beccc659df6c966084da70bdbc09988013357ed04e5b38ce21c316cd5b8b01420fa38ac9be62f943ab3bb532372cdc8dc
   languageName: node
   linkType: hard
 
