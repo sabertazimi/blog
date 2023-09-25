@@ -3065,7 +3065,7 @@ __metadata:
     remark-directive: ^2.0.1
     remark-gemoji: ^8.0.0
     remark-gfm: ^3.0.1
-    remark-github: ^11.2.4
+    remark-github: ^12.0.0
     remark-math: ^5.1.1
     remark-mdx-code-meta: ^2.0.0
     start-server-and-test: ^2.0.1
@@ -10573,6 +10573,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mdast-util-to-string@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "mdast-util-to-string@npm:4.0.0"
+  dependencies:
+    "@types/mdast": ^4.0.0
+  checksum: 35489fb5710d58cbc2d6c8b6547df161a3f81e0f28f320dfb3548a9393555daf07c310c0c497708e67ed4dfea4a06e5655799e7d631ca91420c288b4525d6c29
+  languageName: node
+  linkType: hard
+
 "mdn-data@npm:2.0.14":
   version: 2.0.14
   resolution: "mdn-data@npm:2.0.14"
@@ -13920,16 +13929,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-github@npm:^11.2.4":
-  version: 11.2.4
-  resolution: "remark-github@npm:11.2.4"
+"remark-github@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "remark-github@npm:12.0.0"
   dependencies:
-    "@types/mdast": ^3.0.0
-    mdast-util-find-and-replace: ^2.0.0
-    mdast-util-to-string: ^3.0.0
-    unified: ^10.0.0
-    unist-util-visit: ^4.0.0
-  checksum: 580f56ab9113d40e99b3cc31f869f4a0a006b66f806ab99ef2293b004e24c20f4b5c08e6f3f8677022a491d86b7fb4e3908cfb1c30c66c5fa1a04a83c03b46c8
+    "@types/mdast": ^4.0.0
+    mdast-util-find-and-replace: ^3.0.0
+    mdast-util-to-string: ^4.0.0
+    to-vfile: ^8.0.0
+    unist-util-visit: ^5.0.0
+    vfile: ^6.0.0
+  checksum: 0da878b3fcbdeffd42e7d55701afe5595bad1a175d9123fe36dfc8174c5afd01c9e7b2cf0fc4ecea6d2aff93caac6479a25059891c23b938bb9fd001aee382a4
   languageName: node
   linkType: hard
 
@@ -15596,6 +15606,15 @@ __metadata:
   dependencies:
     is-number: ^7.0.0
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
+"to-vfile@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "to-vfile@npm:8.0.0"
+  dependencies:
+    vfile: ^6.0.0
+  checksum: 5d06278de55659ef16e933d8179a23b84f260f2d1bdbd049486f0f9408c06ed7d4e3950e518ee5892b04957877b6680154c930b1e711371a0db43fda85d62d2c
   languageName: node
   linkType: hard
 
