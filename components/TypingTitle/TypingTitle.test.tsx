@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@utils';
 import { axe } from 'jest-axe';
 import TypingTitle from './TypingTitle';
 

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import Footnote from './Footnote';
 
 describe('Footnote', () => {

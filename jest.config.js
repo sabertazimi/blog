@@ -18,6 +18,8 @@ const customJestConfig = {
     '!**/dist/**',
     '!**/coverage/**',
     '!**/public/**',
+    '!**/utils/testing.ts',
+    '!**/utils/index.ts',
     '!**/useVisibility.ts',
     '!**/Header.tsx',
   ],

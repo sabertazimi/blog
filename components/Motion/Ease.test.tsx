@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import Ease from './Ease';
 
 describe('Ease', () => {

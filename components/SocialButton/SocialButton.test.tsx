@@ -1,6 +1,6 @@
 import { siteConfig } from '@config';
-import { render, screen } from '@testing-library/react';
 import type { SocialType } from '@types';
+import { render, screen } from '@utils';
 import { axe } from 'jest-axe';
 import SocialButton from './SocialButton';
 

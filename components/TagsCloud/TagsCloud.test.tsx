@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import { axe } from 'jest-axe';
 import TagsCloud from './TagsCloud';
 

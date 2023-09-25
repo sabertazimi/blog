@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import MDXCode from './MDXCode';
 import MDXDivider from './MDXDivider';
 import MDXInput from './MDXInput';

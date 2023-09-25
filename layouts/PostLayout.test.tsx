@@ -1,5 +1,5 @@
 import mockData from '@mocks/data';
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@utils';
 import PostLayout from './PostLayout';
 
 describe('PostLayout', () => {

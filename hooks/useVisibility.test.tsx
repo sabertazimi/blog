@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@utils';
 import { useRef } from 'react';
 import useVisibility from './useVisibility';
 

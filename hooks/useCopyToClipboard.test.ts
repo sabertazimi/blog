@@ -1,5 +1,5 @@
 import { mockNavigatorClipboard } from '@mocks/utils';
-import { act, renderHook, waitFor } from '@testing-library/react';
+import { act, renderHook, waitFor } from '@utils';
 import useCopyToClipboard from './useCopyToClipboard';
 
 describe('useCopyToClipboard', () => {

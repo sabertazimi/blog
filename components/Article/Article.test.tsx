@@ -1,5 +1,5 @@
 import mockData from '@mocks/data';
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import Article from './Article';
 
 describe('Article', () => {
