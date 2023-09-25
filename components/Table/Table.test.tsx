@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import Table from './Table';
 
 describe('Table', () => {

@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@utils';
 import LandingNav from './LandingNav';
 
 describe('LandingNav', () => {
