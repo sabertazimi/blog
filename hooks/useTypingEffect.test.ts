@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook } from '@utils';
 import useTypingEffect from './useTypingEffect';
 
 describe('useTypingEffect', () => {

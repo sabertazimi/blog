@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@utils';
 import { axe } from 'jest-axe';
 import ErrorBoundary from './ErrorBoundary';
 

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils';
 import Anchor from './Anchor';
 import Delete from './Delete';
 import Emphasis from './Emphasis';
