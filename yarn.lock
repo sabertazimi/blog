@@ -1514,22 +1514,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-client@npm:^2.7.1":
-  version: 2.7.1
-  resolution: "@codesandbox/sandpack-client@npm:2.7.1"
+"@codesandbox/sandpack-client@npm:^2.9.0":
+  version: 2.9.0
+  resolution: "@codesandbox/sandpack-client@npm:2.9.0"
   dependencies:
     "@codesandbox/nodebox": 0.1.8
     buffer: ^6.0.3
     dequal: ^2.0.2
     outvariant: 1.4.0
     static-browser-server: 1.0.3
-  checksum: 4a6d607d4b57df62289145e50a93436c98d94a942cbf9cce6884294275a5a537271369281944210581d54220ee6da62b826cc5d11043ecd78fc9d089ff61c5cc
+  checksum: ee4ef9b344f2d84e9ca34fbf4049dab196b32070953b63e6f32acb91cea95dcb00025adb0a0d859c09ff5e845fc5547ec006121faf7a6cbe520c7b3104dbc510
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^2.8.0":
-  version: 2.8.0
-  resolution: "@codesandbox/sandpack-react@npm:2.8.0"
+"@codesandbox/sandpack-react@npm:^2.9.0":
+  version: 2.9.0
+  resolution: "@codesandbox/sandpack-react@npm:2.9.0"
   dependencies:
     "@codemirror/autocomplete": ^6.4.0
     "@codemirror/commands": ^6.1.3
@@ -1539,7 +1539,7 @@ __metadata:
     "@codemirror/language": ^6.3.2
     "@codemirror/state": ^6.2.0
     "@codemirror/view": ^6.7.1
-    "@codesandbox/sandpack-client": ^2.7.1
+    "@codesandbox/sandpack-client": ^2.9.0
     "@lezer/highlight": ^1.1.3
     "@react-hook/intersection-observer": ^3.1.1
     "@stitches/core": ^1.2.6
@@ -1554,7 +1554,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 2953b4d3d80caabde35d319d0d6d34bf9d359c47d1dd162467e89e2345a1a13a6277fbb32d7682f20de723070745f32ca295c7cab95345efb82753241b7fa6b1
+  checksum: 29d79b5400cee4502d5ccb2e27c1c7d638756d6c0794b25751c20d35573a54503fcf81fb77e7c2ea6d877b126599ccad7ba4dee45d2acba7e0cf598036fe3157
   languageName: node
   linkType: hard
 
@@ -2076,10 +2076,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:8.50.0":
-  version: 8.50.0
-  resolution: "@eslint/js@npm:8.50.0"
-  checksum: 302478f2acaaa7228729ec6a04f56641590185e1d8cd1c836a6db8a6b8009f80a57349341be9fbb9aa1721a7a569d1be3ffc598a33300d22816f11832095386c
+"@eslint/js@npm:8.51.0":
+  version: 8.51.0
+  resolution: "@eslint/js@npm:8.51.0"
+  checksum: 0228bf1e1e0414843e56d9ff362a2a72d579c078f93174666f29315690e9e30a8633ad72c923297f7fd7182381b5a476805ff04dac8debe638953eb1ded3ac73
   languageName: node
   linkType: hard
 
@@ -2540,12 +2540,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:13.5.3":
-  version: 13.5.3
-  resolution: "@next/eslint-plugin-next@npm:13.5.3"
+"@next/eslint-plugin-next@npm:13.5.4":
+  version: 13.5.4
+  resolution: "@next/eslint-plugin-next@npm:13.5.4"
   dependencies:
     glob: 7.1.7
-  checksum: a496a194154b84c7178832ed5ecd51f7727cc9967bab91c8898310e422c27ec1774a21cc60399f72a1e7a23241b4eb5f0fe4b6357071d91c9c820790188504ba
+  checksum: 17a502cec987768bfa99ee42d9072a9a3bdd32b32bde04bd97a04868b56252352a5c38b571ee5ee8f86ff4c27844984a3c737461ebd91d6ca32a2ce2bd5b8af2
   languageName: node
   linkType: hard
 
@@ -3013,7 +3013,7 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": ^5.2.6
-    "@codesandbox/sandpack-react": ^2.8.0
+    "@codesandbox/sandpack-react": ^2.9.0
     "@codesandbox/sandpack-themes": ^2.0.21
     "@dg-scripts/stylelint-config": ^5.14.0
     "@octokit/rest": ^20.0.2
@@ -3023,23 +3023,23 @@ __metadata:
     "@types/jest": ^29.5.5
     "@types/jest-axe": ^3.5.6
     "@types/mdast": ^4.0.1
-    "@types/node": ^20.8.0
-    "@types/react": ^18.2.24
-    "@types/react-dom": ^18.2.8
+    "@types/node": ^20.8.3
+    "@types/react": ^18.2.25
+    "@types/react-dom": ^18.2.11
     "@types/unist": ^3.0.0
     antd: ^5.9.4
     classnames: ^2.3.2
-    commit-and-tag-version: ^11.2.3
+    commit-and-tag-version: ^11.2.4
     cypress: ^13.3.0
-    eslint: ^8.50.0
-    eslint-config-next: ^13.5.3
+    eslint: ^8.51.0
+    eslint-config-next: ^13.5.4
     eslint-config-prettier: ^9.0.0
     framer-motion: ^10.16.4
     gray-matter: ^4.0.3
     jest: ^29.7.0
     jest-axe: ^8.0.0
     jest-environment-jsdom: ^29.7.0
-    katex: ^0.16.8
+    katex: ^0.16.9
     next: ^13.5.4
     next-mdx-remote: ^4.4.1
     next-progress: ^2.3.1
@@ -3051,7 +3051,7 @@ __metadata:
     postcss-flexbugs-fixes: ^5.0.2
     postcss-preset-env: ^9.1.4
     prettier: ^3.0.3
-    prettier-plugin-tailwindcss: ^0.5.4
+    prettier-plugin-tailwindcss: ^0.5.5
     prism-react-renderer: ^1.3.5
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -3526,10 +3526,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.8.0":
-  version: 20.8.0
-  resolution: "@types/node@npm:20.8.0"
-  checksum: ebad6342d54238a24bf980d7750117a5d67749c9b72cbb7a974a1e932c39034aa3a810d669e007e8a5071782a253aa069a187b614407a382403c9826e837c849
+"@types/node@npm:*, @types/node@npm:^20.8.3":
+  version: 20.8.3
+  resolution: "@types/node@npm:20.8.3"
+  checksum: bfb88b341faeb19f8fd37306a3bf433721b876c6491d10fcb0b13fd26601fa36ee45113dd82b1e1c23e3c957dff5b99f81a16493cefa03abe797e41a2487a4f7
   languageName: node
   linkType: hard
 
@@ -3554,23 +3554,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.2.8":
-  version: 18.2.8
-  resolution: "@types/react-dom@npm:18.2.8"
+"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.2.11":
+  version: 18.2.11
+  resolution: "@types/react-dom@npm:18.2.11"
   dependencies:
     "@types/react": "*"
-  checksum: d36264631028d021b73cd9e015f10b95c4959ae1ce8f7a7419f318d1f05b1d063e6afffcd2a349a6bccd64ccc9ee9d2d976e1f0437643f0e7db621fa035bca65
+  checksum: 70dbdd2f8836a797ab8a3771c773f51023aab187d4d88ed3733bb3f2cbc2146057788a0095a03637101aeab9a48fce0ea369f96a35fc07e785ef53b8ab870885
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.24":
-  version: 18.2.24
-  resolution: "@types/react@npm:18.2.24"
+"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.25":
+  version: 18.2.25
+  resolution: "@types/react@npm:18.2.25"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: ea5d8204e71b1c9c6631f429a93f8e7be0614cdbdb464e92b3181bdccd8a7c45e30ded8b13da726684b6393f651317c36d54832e3d3cdea0da480a3f26268909
+  checksum: 177515cd44135d56191ec6c5c10edd490c96c175d37624d9c37bc2007c3abcf6cc2d2137d2a073d692cdc5129d5d5785bd60a6ddd315f695da5d8b989fa2afc5
   languageName: node
   linkType: hard
 
@@ -5328,9 +5328,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commit-and-tag-version@npm:^11.2.3":
-  version: 11.2.3
-  resolution: "commit-and-tag-version@npm:11.2.3"
+"commit-and-tag-version@npm:^11.2.4":
+  version: 11.2.4
+  resolution: "commit-and-tag-version@npm:11.2.4"
   dependencies:
     chalk: ^2.4.2
     conventional-changelog: 3.1.25
@@ -5347,7 +5347,7 @@ __metadata:
     yargs: ^17.0.0
   bin:
     commit-and-tag-version: bin/cli.js
-  checksum: f1691a84faad0ceaad8bb5970ac3d217e3eea9e8ad4a516f7b33c18f00fc01b9ccc4b3f3fc0e32ae4593658f90262e04fae5d6b891e6256290adb8566b3a080d
+  checksum: 0edd62df5abde857b82c21d4aa79a56c70177d62ece3b766d0c723aa0619c7fb2cb6e7878e30fef7c2cfa7c84fec81a6460156a7cda259498cf3dc913c39948b
   languageName: node
   linkType: hard
 
@@ -6655,11 +6655,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^13.5.3":
-  version: 13.5.3
-  resolution: "eslint-config-next@npm:13.5.3"
+"eslint-config-next@npm:^13.5.4":
+  version: 13.5.4
+  resolution: "eslint-config-next@npm:13.5.4"
   dependencies:
-    "@next/eslint-plugin-next": 13.5.3
+    "@next/eslint-plugin-next": 13.5.4
     "@rushstack/eslint-patch": ^1.3.3
     "@typescript-eslint/parser": ^5.4.2 || ^6.0.0
     eslint-import-resolver-node: ^0.3.6
@@ -6674,7 +6674,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 0990e262bc93060fba7dd77296ae4c775ac10cede2c78b50183810b08da917010d7e6d5283afc3fb0d026336121818ccf96629b94eb919981161496bf39d57c6
+  checksum: 6eba03fed5e460981ed3fc59cf40aa210ea1d69852e0facfc02ba2cf950ab4adf09a76f162ee142eb68a4322bb8c1f128d75018f00d0e959401a6441b45f96c0
   languageName: node
   linkType: hard
 
@@ -6845,14 +6845,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.50.0":
-  version: 8.50.0
-  resolution: "eslint@npm:8.50.0"
+"eslint@npm:^8.51.0":
+  version: 8.51.0
+  resolution: "eslint@npm:8.51.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.2.0
     "@eslint-community/regexpp": ^4.6.1
     "@eslint/eslintrc": ^2.1.2
-    "@eslint/js": 8.50.0
+    "@eslint/js": 8.51.0
     "@humanwhocodes/config-array": ^0.11.11
     "@humanwhocodes/module-importer": ^1.0.1
     "@nodelib/fs.walk": ^1.2.8
@@ -6888,7 +6888,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 9ebfe5615dc84700000d218e32ddfdcfc227ca600f65f18e5541ec34f8902a00356a9a8804d9468fd6c8637a5ef6a3897291dad91ba6579d5b32ffeae5e31768
+  checksum: 214fa5d1fcb67af1b8992ce9584ccd85e1aa7a482f8b8ea5b96edc28fa838a18a3b69456db45fc1ed3ef95f1e9efa9714f737292dc681e572d471d02fda9649c
   languageName: node
   linkType: hard
 
@@ -9893,14 +9893,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:^0.16.0, katex@npm:^0.16.8":
-  version: 0.16.8
-  resolution: "katex@npm:0.16.8"
+"katex@npm:^0.16.0, katex@npm:^0.16.9":
+  version: 0.16.9
+  resolution: "katex@npm:0.16.9"
   dependencies:
     commander: ^8.3.0
   bin:
     katex: cli.js
-  checksum: 4e75b4786101cc5eca0404bb814b2985bec506846f9015e9bf00207a3af14215e341ee62b6e7af2455a1032f8244e47a754642f250eea43d7b8007146ac01fae
+  checksum: 861194dfd4d86505e657f688fb73048d46ac498edafce71199502a35b03c0ecc35ba930c631be79c4a09d90a0d23476673cd52f6bc367c7a161854d64005fa95
   languageName: node
   linkType: hard
 
@@ -12655,9 +12655,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.5.4":
-  version: 0.5.4
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.4"
+"prettier-plugin-tailwindcss@npm:^0.5.5":
+  version: 0.5.5
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.5"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -12704,7 +12704,7 @@ __metadata:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: b4380e03a9f7aaf25f5d352fd145618497b5e9281bbd8c1a43e90a9a72daaf0585f8ac8bf5608e41481441caa4eb568c74556164a384de6a5533a196edab52b0
+  checksum: 4032a6b9258564100b77bb04f36a7342556591b8b69eefaa23a5e2a50d5111ed637c8e1ab94b5102c0eccdc39d67e6cdd379d7c8a9f9f6e15a1aa6c864d953da
   languageName: node
   linkType: hard
 
