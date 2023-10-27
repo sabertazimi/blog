@@ -16,7 +16,7 @@ jobs:
         run: |
           git checkout gatsby
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           architecture: x64
@@ -46,7 +46,7 @@ jobs:
         run: |
           git checkout gatsby
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
@@ -84,7 +84,7 @@ jobs:
         run: |
           git checkout gatsby
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
