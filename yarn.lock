@@ -3042,7 +3042,7 @@ __metadata:
     "@types/unist": ^3.0.0
     antd: ^5.10.0
     classnames: ^2.3.2
-    commit-and-tag-version: ^11.3.0
+    commit-and-tag-version: ^12.0.0
     cypress: ^13.3.1
     eslint: ^8.51.0
     eslint-config-next: ^13.5.4
@@ -5343,9 +5343,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commit-and-tag-version@npm:^11.3.0":
-  version: 11.3.0
-  resolution: "commit-and-tag-version@npm:11.3.0"
+"commit-and-tag-version@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "commit-and-tag-version@npm:12.0.0"
   dependencies:
     chalk: ^2.4.2
     conventional-changelog: 3.1.25
@@ -5358,11 +5358,11 @@ __metadata:
     figures: ^3.1.0
     find-up: ^5.0.0
     git-semver-tags: ^5.0.0
-    semver: ^7.1.1
-    yargs: ^17.0.0
+    semver: ^7.5.4
+    yargs: ^17.7.2
   bin:
     commit-and-tag-version: bin/cli.js
-  checksum: c91f71069dd320b00343fa4ef2096b3c1f463b3f149dd9983f3bda86446e1a53d4646eb72117060e412ba7bcf776db367ee9a619b6c6c6595d133de3e410b201
+  checksum: 4697c4e02b4cfaecfdad5d8bdbdb2f46f331e1b8e7c4633f859d3399f3aeae92974512a3b70e30c86bee23aca4f43df8681d99d1729d3f304a5b954ae846c9d6
   languageName: node
   linkType: hard
 
@@ -14377,7 +14377,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.1.1, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.5.4":
+"semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.5.4":
   version: 7.5.4
   resolution: "semver@npm:7.5.4"
   dependencies:
@@ -17001,9 +17001,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.0.0, yargs@npm:^17.3.1":
-  version: 17.7.1
-  resolution: "yargs@npm:17.7.1"
+"yargs@npm:^17.3.1, yargs@npm:^17.7.2":
+  version: 17.7.2
+  resolution: "yargs@npm:17.7.2"
   dependencies:
     cliui: ^8.0.1
     escalade: ^3.1.1
@@ -17012,7 +17012,7 @@ __metadata:
     string-width: ^4.2.3
     y18n: ^5.0.5
     yargs-parser: ^21.1.1
-  checksum: 3d8a43c336a4942bc68080768664aca85c7bd406f018bad362fd255c41c8f4e650277f42fd65d543fce99e084124ddafee7bbfc1a5c6a8fda4cec78609dcf8d4
+  checksum: 73b572e863aa4a8cbef323dd911d79d193b772defd5a51aab0aca2d446655216f5002c42c5306033968193bdbf892a7a4c110b0d77954a7fdf563e653967b56a
   languageName: node
   linkType: hard
 
