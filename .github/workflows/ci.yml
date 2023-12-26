@@ -19,7 +19,7 @@ jobs:
           submodules: true
           fetch-depth: 1
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           architecture: x64
@@ -46,7 +46,7 @@ jobs:
           submodules: true
           fetch-depth: 1
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: x64
@@ -77,7 +77,7 @@ jobs:
           submodules: true
           fetch-depth: 1
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: x64
@@ -107,7 +107,7 @@ jobs:
           submodules: true
           fetch-depth: 0 # Keep `0` for git time
       - name: Setup Node environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: x64
