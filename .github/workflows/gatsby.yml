@@ -60,7 +60,7 @@ jobs:
           yarn test:all
           yarn badge
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: badges
@@ -97,7 +97,7 @@ jobs:
         run: |
           yarn build:gh-pages
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: demos
