@@ -36,16 +36,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/colors@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "@ant-design/colors@npm:7.0.0"
+"@ant-design/colors@npm:^7.0.0, @ant-design/colors@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@ant-design/colors@npm:7.0.1"
   dependencies:
-    "@ctrl/tinycolor": "npm:^3.4.0"
-  checksum: 8c64d185c31cb3ff8148bc9155db8a30923b813afa7c412db8047e1b4ded34e73ed8bcaea37011e325d2d0fdf5e506aa27d8a10bdd2dd31c63bfe7123c22830d
+    "@ctrl/tinycolor": "npm:^4.0.2"
+  checksum: 209cdb6fee7323445ac9aa92474c596d14d7fca2ca75b55bd20ec9741174a01ab80d8dae553d117fef27844ed0d6ecbf08e95ec859b10d33db4447f14f084015
   languageName: node
   linkType: hard
 
-"@ant-design/cssinjs@npm:^1.18.1":
+"@ant-design/cssinjs@npm:^1.18.2":
   version: 1.18.2
   resolution: "@ant-design/cssinjs@npm:1.18.2"
   dependencies:
@@ -1403,12 +1403,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.0, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.4, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
-  version: 7.23.6
-  resolution: "@babel/runtime@npm:7.23.6"
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.0, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+  version: 7.23.7
+  resolution: "@babel/runtime@npm:7.23.7"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
-  checksum: d886954e985ef8e421222f7a2848884d96a752e0020d3078b920dd104e672fdf23bcc6f51a44313a048796319f1ac9d09c2c88ec8cbb4e1f09174bcd3335b9ff
+  checksum: 3e304133ee55b0750e03e53cb4efb47fb2bdcdb5795f85bbffa10595196c34b9be60eb65bd6d833c87f49fc827f0365f86f95f51d85b188004d3128bb5129c93
   languageName: node
   linkType: hard
 
@@ -2058,10 +2058,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ctrl/tinycolor@npm:^3.4.0, @ctrl/tinycolor@npm:^3.6.0, @ctrl/tinycolor@npm:^3.6.1":
-  version: 3.6.1
-  resolution: "@ctrl/tinycolor@npm:3.6.1"
-  checksum: 444d81612cd8c5c802a3d1253df83d5f77d3db87f351861655683a4743990e6b38976bf2e4129591c5a258607b63574b3c7bed702cf6a0eb7912222edf4570e9
+"@ctrl/tinycolor@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@ctrl/tinycolor@npm:4.0.2"
+  checksum: 4f04f28a5163a12d7692a3dbb017f7ea5659c0bb1c2b60b274aa873c9b91b0a5f81773f26aa62d8b0663f99979edfadb833c937a53ccc831d8243b6facb9b708
   languageName: node
   linkType: hard
 
@@ -2910,18 +2910,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rc-component/color-picker@npm:~1.4.1":
-  version: 1.4.1
-  resolution: "@rc-component/color-picker@npm:1.4.1"
+"@rc-component/color-picker@npm:~1.5.0":
+  version: 1.5.0
+  resolution: "@rc-component/color-picker@npm:1.5.0"
   dependencies:
-    "@babel/runtime": "npm:^7.10.1"
-    "@ctrl/tinycolor": "npm:^3.6.0"
+    "@babel/runtime": "npm:^7.23.6"
+    "@ctrl/tinycolor": "npm:^4.0.2"
     classnames: "npm:^2.2.6"
-    rc-util: "npm:^5.30.0"
+    rc-util: "npm:^5.38.1"
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 10ae49bff2796190af838b993ad39be64858fed9cdd55ab8a36b2c0612004a84ca74a74bcf1f49a1503b31a67f659abff25ce4234e8bb9b20b96102cdc9af05e
+  checksum: 7b293659a63347de016c5ae8f0f0f7de4f15d32eefe3e6cdd4316f20f4a02c1c8e9d0e0b8a90cdf4726216d121ab0f959f4e13d077ad1407fab4441bf8f0b8f1
   languageName: node
   linkType: hard
 
@@ -3113,7 +3113,7 @@ __metadata:
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
     "@types/unist": "npm:^3.0.2"
-    antd: "npm:^5.12.5"
+    antd: "npm:^5.12.6"
     classnames: "npm:^2.5.1"
     commit-and-tag-version: "npm:^12.0.0"
     cypress: "npm:^13.6.2"
@@ -4183,23 +4183,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^5.12.5":
-  version: 5.12.5
-  resolution: "antd@npm:5.12.5"
+"antd@npm:^5.12.6":
+  version: 5.12.6
+  resolution: "antd@npm:5.12.6"
   dependencies:
-    "@ant-design/colors": "npm:^7.0.0"
-    "@ant-design/cssinjs": "npm:^1.18.1"
+    "@ant-design/colors": "npm:^7.0.1"
+    "@ant-design/cssinjs": "npm:^1.18.2"
     "@ant-design/icons": "npm:^5.2.6"
     "@ant-design/react-slick": "npm:~1.0.2"
-    "@babel/runtime": "npm:^7.23.4"
-    "@ctrl/tinycolor": "npm:^3.6.1"
-    "@rc-component/color-picker": "npm:~1.4.1"
+    "@babel/runtime": "npm:^7.23.6"
+    "@ctrl/tinycolor": "npm:^4.0.2"
+    "@rc-component/color-picker": "npm:~1.5.0"
     "@rc-component/mutate-observer": "npm:^1.1.0"
     "@rc-component/tour": "npm:~1.11.1"
     "@rc-component/trigger": "npm:^1.18.2"
-    classnames: "npm:^2.3.2"
+    classnames: "npm:^2.5.0"
     copy-to-clipboard: "npm:^3.3.3"
-    dayjs: "npm:^1.11.1"
+    dayjs: "npm:^1.11.10"
     qrcode.react: "npm:^3.1.0"
     rc-cascader: "npm:~3.20.0"
     rc-checkbox: "npm:~3.1.0"
@@ -4215,7 +4215,7 @@ __metadata:
     rc-menu: "npm:~9.12.4"
     rc-motion: "npm:^2.9.0"
     rc-notification: "npm:~5.3.0"
-    rc-pagination: "npm:~4.0.3"
+    rc-pagination: "npm:~4.0.4"
     rc-picker: "npm:~3.14.6"
     rc-progress: "npm:~3.5.1"
     rc-rate: "npm:~2.12.0"
@@ -4231,14 +4231,14 @@ __metadata:
     rc-tooltip: "npm:~6.1.3"
     rc-tree: "npm:~5.8.2"
     rc-tree-select: "npm:~5.15.0"
-    rc-upload: "npm:~4.3.5"
+    rc-upload: "npm:~4.5.2"
     rc-util: "npm:^5.38.1"
     scroll-into-view-if-needed: "npm:^3.1.0"
     throttle-debounce: "npm:^5.0.0"
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: ff01e3b3123e9feccc939b3fbbe8d4668e28a690a1e0f94c6192daeeba216651b3c121e4c2ca2283fa61a497228627ae722b5d5af9a77de767c2a11f98133a06
+  checksum: edd8b2f4f6dbefaee70a166fd29fcfe8879ab23f95b4a651284fefd225b9e36121a219dad7e781b39e63a31d3d8148f869f4b0ae529c5579555a5aeb0806fc87
   languageName: node
   linkType: hard
 
@@ -5143,7 +5143,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.x, classnames@npm:^2.2.1, classnames@npm:^2.2.3, classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2, classnames@npm:^2.5.1":
+"classnames@npm:2.x, classnames@npm:^2.2.1, classnames@npm:^2.2.3, classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2, classnames@npm:^2.5.0, classnames@npm:^2.5.1":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
@@ -5986,7 +5986,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.10.4, dayjs@npm:^1.11.1":
+"dayjs@npm:^1.10.4, dayjs@npm:^1.11.10":
   version: 1.11.10
   resolution: "dayjs@npm:1.11.10"
   checksum: 4de9af50639d47df87f2e15fa36bb07e0f9ed1e9c52c6caa1482788ee9a384d668f1dbd00c54f82aaab163db07d61d2899384b8254da3a9184fc6deca080e2fe
@@ -13213,9 +13213,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-pagination@npm:~4.0.3":
-  version: 4.0.3
-  resolution: "rc-pagination@npm:4.0.3"
+"rc-pagination@npm:~4.0.4":
+  version: 4.0.4
+  resolution: "rc-pagination@npm:4.0.4"
   dependencies:
     "@babel/runtime": "npm:^7.10.1"
     classnames: "npm:^2.3.2"
@@ -13223,7 +13223,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 756c5968622eaf688e42c713f49372500ceff8ff103ea73fef468c23e703bee58ce3d04319b85e1731ea02dc0a351bc727b39afd7aea5d6d74e090be435cbc1b
+  checksum: b54bdd2989686aa16ed253c9d4823601f6b1895fdc6e81b5516a9a3d5850155d0a9d12da1f0ed75e5ea7b7de133f289db105673ca0245c86845060c6839465fb
   languageName: node
   linkType: hard
 
@@ -13470,9 +13470,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-upload@npm:~4.3.5":
-  version: 4.3.6
-  resolution: "rc-upload@npm:4.3.6"
+"rc-upload@npm:~4.5.2":
+  version: 4.5.2
+  resolution: "rc-upload@npm:4.5.2"
   dependencies:
     "@babel/runtime": "npm:^7.18.3"
     classnames: "npm:^2.2.5"
@@ -13480,7 +13480,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 7938c9810a100bc460e799121ea35734f3bcb70cb5b770471195a1b54c3c482f5baf340ecf49e7c9c5674156aa924039772f0e00431846b97cb0e7b421f09931
+  checksum: 28012a51fc31195990c64c52bcbded9296e083bb3d071b480fa46195398ce1072c869c1c5cea740661b817700de720ec51da55e818270f8b0cb181d6f8afaff7
   languageName: node
   linkType: hard
 
