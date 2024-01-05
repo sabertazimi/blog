@@ -36,12 +36,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/colors@npm:^7.0.0, @ant-design/colors@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@ant-design/colors@npm:7.0.1"
+"@ant-design/colors@npm:^7.0.0, @ant-design/colors@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "@ant-design/colors@npm:7.0.2"
   dependencies:
-    "@ctrl/tinycolor": "npm:^4.0.2"
-  checksum: 209cdb6fee7323445ac9aa92474c596d14d7fca2ca75b55bd20ec9741174a01ab80d8dae553d117fef27844ed0d6ecbf08e95ec859b10d33db4447f14f084015
+    "@ctrl/tinycolor": "npm:^3.6.1"
+  checksum: b44f7136a9f8edead342c05945fa338be68a61d6de3255bc6fcf90f38fa011a6f0ebadd2746f9557fe74ccdb71b424aa7c6daef0e81e2ff94514f5e7c8cf46ff
   languageName: node
   linkType: hard
 
@@ -1599,9 +1599,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^2.10.0":
-  version: 2.10.0
-  resolution: "@codesandbox/sandpack-react@npm:2.10.0"
+"@codesandbox/sandpack-react@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "@codesandbox/sandpack-react@npm:2.11.0"
   dependencies:
     "@codemirror/autocomplete": "npm:^6.4.0"
     "@codemirror/commands": "npm:^6.1.3"
@@ -1626,7 +1626,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 961afedcef29ad1996cb1374184d65d3835e3e9440b2faca9bc5d985a3427a2bbff7c6a46e890ae9b07568469de35bd5ed22f2d9df17181038547d34988abf5d
+  checksum: c158e851acca929816bb926f67d45ec671d7b4c5b51013750b685038accef362031234b4a9eb38eb04c129e9e93cf03ae9c063a942196d25d792c65a7d40ccc9
   languageName: node
   linkType: hard
 
@@ -2058,10 +2058,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ctrl/tinycolor@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@ctrl/tinycolor@npm:4.0.2"
-  checksum: 4f04f28a5163a12d7692a3dbb017f7ea5659c0bb1c2b60b274aa873c9b91b0a5f81773f26aa62d8b0663f99979edfadb833c937a53ccc831d8243b6facb9b708
+"@ctrl/tinycolor@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "@ctrl/tinycolor@npm:3.6.1"
+  checksum: 444d81612cd8c5c802a3d1253df83d5f77d3db87f351861655683a4743990e6b38976bf2e4129591c5a258607b63574b3c7bed702cf6a0eb7912222edf4570e9
   languageName: node
   linkType: hard
 
@@ -2910,18 +2910,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rc-component/color-picker@npm:~1.5.0":
-  version: 1.5.0
-  resolution: "@rc-component/color-picker@npm:1.5.0"
+"@rc-component/color-picker@npm:~1.5.1":
+  version: 1.5.1
+  resolution: "@rc-component/color-picker@npm:1.5.1"
   dependencies:
     "@babel/runtime": "npm:^7.23.6"
-    "@ctrl/tinycolor": "npm:^4.0.2"
+    "@ctrl/tinycolor": "npm:^3.6.1"
     classnames: "npm:^2.2.6"
     rc-util: "npm:^5.38.1"
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 7b293659a63347de016c5ae8f0f0f7de4f15d32eefe3e6cdd4316f20f4a02c1c8e9d0e0b8a90cdf4726216d121ab0f959f4e13d077ad1407fab4441bf8f0b8f1
+  checksum: b713567de0d9aa903cc89ba7ea73b15cb523361f5f6ae0aea6e20d112a7787bcf62ab1177dda2e9c1f38ef82e031c2baf679a63619644f201247b7451d71f2f3
   languageName: node
   linkType: hard
 
@@ -3099,12 +3099,12 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": "npm:^5.2.6"
-    "@codesandbox/sandpack-react": "npm:^2.10.0"
+    "@codesandbox/sandpack-react": "npm:^2.11.0"
     "@codesandbox/sandpack-themes": "npm:^2.0.21"
     "@dg-scripts/stylelint-config": "npm:^5.14.1"
     "@octokit/rest": "npm:^20.0.2"
     "@octokit/types": "npm:^12.4.0"
-    "@testing-library/jest-dom": "npm:^6.1.6"
+    "@testing-library/jest-dom": "npm:^6.2.0"
     "@testing-library/react": "npm:^14.1.2"
     "@types/jest": "npm:^29.5.11"
     "@types/jest-axe": "npm:^3.5.9"
@@ -3113,14 +3113,14 @@ __metadata:
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
     "@types/unist": "npm:^3.0.2"
-    antd: "npm:^5.12.6"
+    antd: "npm:^5.12.8"
     classnames: "npm:^2.5.1"
     commit-and-tag-version: "npm:^12.0.0"
     cypress: "npm:^13.6.2"
     eslint: "npm:^8.56.0"
     eslint-config-next: "npm:^14.0.4"
     eslint-config-prettier: "npm:^9.1.0"
-    framer-motion: "npm:^10.16.16"
+    framer-motion: "npm:^10.17.9"
     gray-matter: "npm:^4.0.3"
     jest: "npm:^29.7.0"
     jest-axe: "npm:^8.0.0"
@@ -3133,7 +3133,7 @@ __metadata:
     next-seo: "npm:^6.4.0"
     next-sitemap: "npm:^4.2.3"
     parse-numeric-range: "npm:^1.3.0"
-    postcss: "npm:^8.4.32"
+    postcss: "npm:^8.4.33"
     postcss-flexbugs-fixes: "npm:^5.0.2"
     postcss-preset-env: "npm:^9.3.0"
     prettier: "npm:^3.1.1"
@@ -3257,16 +3257,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^6.1.6":
-  version: 6.1.6
-  resolution: "@testing-library/jest-dom@npm:6.1.6"
+"@testing-library/jest-dom@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@testing-library/jest-dom@npm:6.2.0"
   dependencies:
     "@adobe/css-tools": "npm:^4.3.2"
     "@babel/runtime": "npm:^7.9.2"
     aria-query: "npm:^5.0.0"
     chalk: "npm:^3.0.0"
     css.escape: "npm:^1.5.1"
-    dom-accessibility-api: "npm:^0.5.6"
+    dom-accessibility-api: "npm:^0.6.3"
     lodash: "npm:^4.17.15"
     redent: "npm:^3.0.0"
   peerDependencies:
@@ -3283,7 +3283,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: f98f79f3e470517469c86947d0ff1bb83ac2e59fd2a29728ab306eca5fba63c948084ec06b7b531642e6002d1f0211d918c298c628f0d386c0ef63ba881c47ba
+  checksum: 71421693e0ad6a46be7d16f00b58a45725c238693972b8b5b1fd9ab797902ccf1209cf259afe8da1bf59d7c958762c46ee85d1aa5b164a5ec330981ea2376b08
   languageName: node
   linkType: hard
 
@@ -4183,21 +4183,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^5.12.6":
-  version: 5.12.6
-  resolution: "antd@npm:5.12.6"
+"antd@npm:^5.12.8":
+  version: 5.12.8
+  resolution: "antd@npm:5.12.8"
   dependencies:
-    "@ant-design/colors": "npm:^7.0.1"
+    "@ant-design/colors": "npm:^7.0.2"
     "@ant-design/cssinjs": "npm:^1.18.2"
     "@ant-design/icons": "npm:^5.2.6"
     "@ant-design/react-slick": "npm:~1.0.2"
-    "@babel/runtime": "npm:^7.23.6"
-    "@ctrl/tinycolor": "npm:^4.0.2"
-    "@rc-component/color-picker": "npm:~1.5.0"
+    "@ctrl/tinycolor": "npm:^3.6.1"
+    "@rc-component/color-picker": "npm:~1.5.1"
     "@rc-component/mutate-observer": "npm:^1.1.0"
     "@rc-component/tour": "npm:~1.11.1"
     "@rc-component/trigger": "npm:^1.18.2"
-    classnames: "npm:^2.5.0"
+    classnames: "npm:^2.5.1"
     copy-to-clipboard: "npm:^3.3.3"
     dayjs: "npm:^1.11.10"
     qrcode.react: "npm:^3.1.0"
@@ -4238,7 +4237,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: edd8b2f4f6dbefaee70a166fd29fcfe8879ab23f95b4a651284fefd225b9e36121a219dad7e781b39e63a31d3d8148f869f4b0ae529c5579555a5aeb0806fc87
+  checksum: 2aa77a89d89e170834a718ccb5d216d06fdfc32f51185ed45cf435330b32c425a42819c5affcf03bf53c7f2bd1d1f624b24fc4c7fa8ee3133c8c58bf6d1fc4ef
   languageName: node
   linkType: hard
 
@@ -5143,7 +5142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.x, classnames@npm:^2.2.1, classnames@npm:^2.2.3, classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2, classnames@npm:^2.5.0, classnames@npm:^2.5.1":
+"classnames@npm:2.x, classnames@npm:^2.2.1, classnames@npm:^2.2.3, classnames@npm:^2.2.5, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2, classnames@npm:^2.5.1":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
@@ -6235,10 +6234,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom-accessibility-api@npm:^0.5.6, dom-accessibility-api@npm:^0.5.9":
+"dom-accessibility-api@npm:^0.5.9":
   version: 0.5.16
   resolution: "dom-accessibility-api@npm:0.5.16"
   checksum: b2c2eda4fae568977cdac27a9f0c001edf4f95a6a6191dfa611e3721db2478d1badc01db5bb4fa8a848aeee13e442a6c2a4386d65ec65a1436f24715a2f8d053
+  languageName: node
+  linkType: hard
+
+"dom-accessibility-api@npm:^0.6.3":
+  version: 0.6.3
+  resolution: "dom-accessibility-api@npm:0.6.3"
+  checksum: 10bee5aa514b2a9a37c87cd81268db607a2e933a050074abc2f6fa3da9080ebed206a320cbc123567f2c3087d22292853bdfdceaffdd4334ffe2af9510b29360
   languageName: node
   linkType: hard
 
@@ -7495,9 +7501,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^10.16.16":
-  version: 10.16.16
-  resolution: "framer-motion@npm:10.16.16"
+"framer-motion@npm:^10.17.9":
+  version: 10.17.9
+  resolution: "framer-motion@npm:10.17.9"
   dependencies:
     "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
@@ -7512,7 +7518,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 4cd620971e6ac044461783ee94d8fe39dafd11d658f1b2fb06f025c0c502d022bb3bf24dd95b9486325fce27e437ce575b8f033c7770539b4fb3af62a5742e71
+  checksum: c27932b62c2d1971ba1117d54946b3bdafdd2b7fff5e932753ad130c7de8d5c746cd5b2eadb260f0a2718af52f0faed6dc55161b22202b26712a79d13e223a3f
   languageName: node
   linkType: hard
 
@@ -12674,14 +12680,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:*, postcss@npm:^8.4.0, postcss@npm:^8.4.23, postcss@npm:^8.4.32":
-  version: 8.4.32
-  resolution: "postcss@npm:8.4.32"
+"postcss@npm:*, postcss@npm:^8.4.0, postcss@npm:^8.4.23, postcss@npm:^8.4.32, postcss@npm:^8.4.33":
+  version: 8.4.33
+  resolution: "postcss@npm:8.4.33"
   dependencies:
     nanoid: "npm:^3.3.7"
     picocolors: "npm:^1.0.0"
     source-map-js: "npm:^1.0.2"
-  checksum: 39308a9195fa34d4dbdd7b58a896cff0c7809f84f7a4ac1b95b68ca86c9138a395addff33075668ed3983d41b90aac05754c445237a9365eb1c3a5602ebd03ad
+  checksum: 16eda83458fcd8a91bece287b5920c7f57164c3ea293e6c80d0ea71ce7843007bcd8592260a5160b9a7f02693e6ac93e2495b02d8c7596d3f3f72c1447e3ba79
   languageName: node
   linkType: hard
 
