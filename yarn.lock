@@ -1586,22 +1586,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-client@npm:^2.10.0":
-  version: 2.10.0
-  resolution: "@codesandbox/sandpack-client@npm:2.10.0"
+"@codesandbox/sandpack-client@npm:^2.11.2":
+  version: 2.11.2
+  resolution: "@codesandbox/sandpack-client@npm:2.11.2"
   dependencies:
     "@codesandbox/nodebox": "npm:0.1.8"
     buffer: "npm:^6.0.3"
     dequal: "npm:^2.0.2"
     outvariant: "npm:1.4.0"
     static-browser-server: "npm:1.0.3"
-  checksum: 493454098a9d07fcab08097535239f0bb336a37cff49c7b0d89a20fc37859cca8ebadaa803945e44ac0c9875fc46c6bd08e7e26f306b4fc29817cf0b4ff99b67
+  checksum: f5f2a8e4d78d1640fc0a7f8eeb88f36b34b66df56157c0be781c5b831f9b99002095ded40cb979701e79554b2bd0c9997c1a6e43601537bf243ba80e0acfce17
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^2.11.0":
-  version: 2.11.0
-  resolution: "@codesandbox/sandpack-react@npm:2.11.0"
+"@codesandbox/sandpack-react@npm:^2.11.2":
+  version: 2.11.2
+  resolution: "@codesandbox/sandpack-react@npm:2.11.2"
   dependencies:
     "@codemirror/autocomplete": "npm:^6.4.0"
     "@codemirror/commands": "npm:^6.1.3"
@@ -1611,7 +1611,7 @@ __metadata:
     "@codemirror/language": "npm:^6.3.2"
     "@codemirror/state": "npm:^6.2.0"
     "@codemirror/view": "npm:^6.7.1"
-    "@codesandbox/sandpack-client": "npm:^2.10.0"
+    "@codesandbox/sandpack-client": "npm:^2.11.2"
     "@lezer/highlight": "npm:^1.1.3"
     "@react-hook/intersection-observer": "npm:^3.1.1"
     "@stitches/core": "npm:^1.2.6"
@@ -1626,7 +1626,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: c158e851acca929816bb926f67d45ec671d7b4c5b51013750b685038accef362031234b4a9eb38eb04c129e9e93cf03ae9c063a942196d25d792c65a7d40ccc9
+  checksum: f5daa96ae30e67d96355f82e849cb96f2b399a295f94e57097f922af4e9ded71b8a708aa490ac6baf4547acaecf7ac9f3701ce3e48534d6498f1fb65438fb316
   languageName: node
   linkType: hard
 
@@ -3099,7 +3099,7 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@ant-design/icons": "npm:^5.2.6"
-    "@codesandbox/sandpack-react": "npm:^2.11.0"
+    "@codesandbox/sandpack-react": "npm:^2.11.2"
     "@codesandbox/sandpack-themes": "npm:^2.0.21"
     "@dg-scripts/stylelint-config": "npm:^5.14.1"
     "@octokit/rest": "npm:^20.0.2"
@@ -3109,18 +3109,18 @@ __metadata:
     "@types/jest": "npm:^29.5.11"
     "@types/jest-axe": "npm:^3.5.9"
     "@types/mdast": "npm:^4.0.3"
-    "@types/node": "npm:^20.10.6"
+    "@types/node": "npm:^20.11.0"
     "@types/react": "npm:^18.2.47"
     "@types/react-dom": "npm:^18.2.18"
     "@types/unist": "npm:^3.0.2"
     antd: "npm:^5.12.8"
     classnames: "npm:^2.5.1"
-    commit-and-tag-version: "npm:^12.0.0"
+    commit-and-tag-version: "npm:^12.1.0"
     cypress: "npm:^13.6.2"
     eslint: "npm:^8.56.0"
     eslint-config-next: "npm:^14.0.4"
     eslint-config-prettier: "npm:^9.1.0"
-    framer-motion: "npm:^10.17.9"
+    framer-motion: "npm:^10.18.0"
     gray-matter: "npm:^4.0.3"
     jest: "npm:^29.7.0"
     jest-axe: "npm:^8.0.0"
@@ -3136,7 +3136,7 @@ __metadata:
     postcss: "npm:^8.4.33"
     postcss-flexbugs-fixes: "npm:^5.0.2"
     postcss-preset-env: "npm:^9.3.0"
-    prettier: "npm:^3.1.1"
+    prettier: "npm:^3.2.1"
     prettier-plugin-tailwindcss: "npm:^0.5.11"
     prism-react-renderer: "npm:^1.3.5"
     react: "npm:^18.2.0"
@@ -3591,12 +3591,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.10.6":
-  version: 20.10.6
-  resolution: "@types/node@npm:20.10.6"
+"@types/node@npm:*, @types/node@npm:^20.11.0":
+  version: 20.11.0
+  resolution: "@types/node@npm:20.11.0"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 6692ccfa8552ef60c4069fda3c8de726c23e8d403cdf788e3c7efa769987e80fbda5f02723dd857f9de7df24a5fa40b3ed4580ec3c5cbac04eba44cf7b2ab1dc
+  checksum: 560aa850dfccb83326f9cba125459f6c3fb0c71ec78f22c61e4d248f1df78bd25fd6792cef573dfbdc49c882f8e38bb1a82ca87e0e28ff2513629c704c2b02af
   languageName: node
   linkType: hard
 
@@ -5346,9 +5346,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commit-and-tag-version@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "commit-and-tag-version@npm:12.0.0"
+"commit-and-tag-version@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "commit-and-tag-version@npm:12.1.0"
   dependencies:
     chalk: "npm:^2.4.2"
     conventional-changelog: "npm:3.1.25"
@@ -5365,7 +5365,7 @@ __metadata:
     yargs: "npm:^17.7.2"
   bin:
     commit-and-tag-version: bin/cli.js
-  checksum: 5e5ed5d5badd5296d1e2923555ae9c25d1b2497864b12219be1203757d5622b6f76882c8cf24ed2ce9ecc2efb9f7031f7b81d53c597100b43fdbabb9a8e7ba5b
+  checksum: 790d1459f356d2cb3b296f9ec325c5f645bb9d2ecbb202056b78f95d073d99709d462f4bf3f3660281c86d262bd05aa86478437b10f4f8d4f9d4f58cdfe5228c
   languageName: node
   linkType: hard
 
@@ -7501,9 +7501,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^10.17.9":
-  version: 10.17.9
-  resolution: "framer-motion@npm:10.17.9"
+"framer-motion@npm:^10.18.0":
+  version: 10.18.0
+  resolution: "framer-motion@npm:10.18.0"
   dependencies:
     "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
@@ -7518,7 +7518,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: c27932b62c2d1971ba1117d54946b3bdafdd2b7fff5e932753ad130c7de8d5c746cd5b2eadb260f0a2718af52f0faed6dc55161b22202b26712a79d13e223a3f
+  checksum: 0aea1b3dc5cf06687e31f3b6c0b6b1a2cd070afdd4a9d38ebf15715c662ca1d6d1c25e6778695e5ebff37a6ce92b031d036c02570370e6057e66aa9de9f9370f
   languageName: node
   linkType: hard
 
@@ -12769,12 +12769,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "prettier@npm:3.1.1"
+"prettier@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "prettier@npm:3.2.1"
   bin:
     prettier: bin/prettier.cjs
-  checksum: facc944ba20e194ff4db765e830ffbcb642803381f0d2033ed397e79904fa4ccc877dc25ad68f42d36985c01d051c990ca1b905fb83d2d7d65fe69e4386fa1a3
+  checksum: e01284f25c1e9a96dfaf4f7d0bfdf0726b26afc732b0e645a2653174d4ad5a1e85ae21ec4d327c71536f1acf8fee1dff5ea35c5b4b8e5b83ff00fe1dd6fef146
   languageName: node
   linkType: hard
 
