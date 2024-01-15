@@ -3,7 +3,7 @@
 exports[`PostsSearchBar should render correctly (snapshot) 1`] = `
 <div>
   <div
-    class="ant-select ant-select-auto-complete ant-select-single ant-select-customize-input ant-select-show-search"
+    class="ant-select ant-select-outlined ant-select-auto-complete ant-select-single ant-select-customize-input ant-select-show-search"
   >
     <div
       class="ant-select-selector"
@@ -12,13 +12,13 @@ exports[`PostsSearchBar should render correctly (snapshot) 1`] = `
         class="ant-select-selection-search"
       >
         <span
-          class="ant-input-group-wrapper ant-input-search ant-input-search-with-button ant-select-selection-search-input"
+          class="ant-input-group-wrapper ant-input-group-wrapper-outlined ant-input-search ant-input-search-with-button ant-select-selection-search-input"
         >
           <span
             class="ant-input-wrapper ant-input-group"
           >
             <span
-              class="ant-input-affix-wrapper"
+              class="ant-input-affix-wrapper ant-input-outlined"
             >
               <input
                 aria-autocomplete="list"
