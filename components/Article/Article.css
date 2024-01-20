@@ -25,7 +25,7 @@ section {
 }
 
 /* Add dark mode support for table of contents links */
-.ant-anchor-link-title.ant-anchor-link-title {
+.ant-anchor-link-title.ant-anchor-link-title.ant-anchor-link-title {
   @apply hover:text-secondary dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
 }
 
