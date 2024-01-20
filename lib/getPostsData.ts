@@ -1,6 +1,6 @@
+import { serialize } from '@alisowski/next-mdx-remote/serialize';
 import type { MDXFrontMatter, Post, PostMeta, Tag, Tags } from '@types';
 import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
 import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
