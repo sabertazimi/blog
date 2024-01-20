@@ -1,4 +1,4 @@
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import type { MDXRemoteSerializeResult } from '@alisowski/next-mdx-remote';
 
 export declare type BuildTime = string | number | Date;
 
