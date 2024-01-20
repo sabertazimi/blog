@@ -16,6 +16,17 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: isProduction,
+  transpilePackages: [
+    // @see https://github.com/vercel/next.js/issues/40183
+    // @see https://github.com/vercel/next.js/issues/58817
+    '@ant-design',
+    '@mdx-js',
+    '@react-hook',
+    'next-mdx-remote',
+    'rc-pagination',
+    'rc-picker',
+    'rc-util',
+  ],
 };
 
 module.exports = NextPwa(nextConfig);
