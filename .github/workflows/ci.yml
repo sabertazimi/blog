@@ -59,7 +59,7 @@ jobs:
         run: |
           yarn test:all
       - name: Perform code coverage report action
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' }}
 
   e2e:
