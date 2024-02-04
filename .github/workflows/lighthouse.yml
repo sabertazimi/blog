@@ -40,7 +40,7 @@ jobs:
             :hammer_and_wrench: Running Lighthouse audit on ${{ steps.vercel.outputs.url }} ...
       - name: Audit using Lighthouse
         id: lighthouse
-        uses: treosh/lighthouse-ci-action@v10
+        uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
             ${{ steps.vercel.outputs.url }}
