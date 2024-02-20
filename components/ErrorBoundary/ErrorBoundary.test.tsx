@@ -1,5 +1,6 @@
 import { render, screen } from '@utils';
 import { axe } from 'jest-axe';
+import type { JSXElementConstructor, ReactNode } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 
 describe('ErrorBoundary', () => {
@@ -71,7 +72,7 @@ describe('ErrorBoundary', () => {
 
   test('should render alert message when error happened', () => {
     const { rerender } = render(<ComponentWithError />, {
-      wrapper: ErrorBoundary,
+      wrapper: ErrorBoundary as JSXElementConstructor<{ children: ReactNode }>,
     });
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
