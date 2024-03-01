@@ -86,9 +86,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@ant-design/icons@npm:5.3.0"
+"@ant-design/icons@npm:^5.3.0, @ant-design/icons@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@ant-design/icons@npm:5.3.1"
   dependencies:
     "@ant-design/colors": "npm:^7.0.0"
     "@ant-design/icons-svg": "npm:^4.4.0"
@@ -98,7 +98,7 @@ __metadata:
   peerDependencies:
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
-  checksum: 10c0/564bae8360f44606214722d4a29c5f9a98a03539af11ba1ea9dec34d46e5ddd5abcb2bd1f78e274323b78b55357b07e52b54357203841fbf2aabdd1e294be72c
+  checksum: 10c0/31fa1f1db8daa2f32911ff6b761fcee4622cb46cd446694ad5c07df354a20bac84f43e8ab2b9e58417d801b37f4729a0296e4eb8244aaca77adb5f778ddc8b0b
   languageName: node
   linkType: hard
 
@@ -1626,9 +1626,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codesandbox/sandpack-react@npm:^2.13.2":
-  version: 2.13.2
-  resolution: "@codesandbox/sandpack-react@npm:2.13.2"
+"@codesandbox/sandpack-react@npm:^2.13.5":
+  version: 2.13.5
+  resolution: "@codesandbox/sandpack-react@npm:2.13.5"
   dependencies:
     "@codemirror/autocomplete": "npm:^6.4.0"
     "@codemirror/commands": "npm:^6.1.3"
@@ -1652,7 +1652,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
-  checksum: 10c0/69c2304f2fbd60400bf74bdd4776e184c0e6dd45d0e1f0e355be4a1ce6c81b4d3845b5a4a0945829b74754a6b9053b76458f3a9c0fa6a81252bdd092ba6327cf
+  checksum: 10c0/214dec8ad50adb1ceefa36320d59b02303b16d238ccd8d50a39b03934d239bbfc68e2abd7a0f8505b6ff700140d9c27857da5e9f7895938d9bdc6af121a22781
   languageName: node
   linkType: hard
 
@@ -2760,12 +2760,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:14.1.0":
-  version: 14.1.0
-  resolution: "@next/eslint-plugin-next@npm:14.1.0"
+"@next/eslint-plugin-next@npm:14.1.1":
+  version: 14.1.1
+  resolution: "@next/eslint-plugin-next@npm:14.1.1"
   dependencies:
     glob: "npm:10.3.10"
-  checksum: 10c0/d8753d8258bef471ba1296f760b092c0a17e89ddc937bf16b9399725d05b6426e58e3c8eb4efb8e8f027025804ecea3b714a7b7c75682d019e53ea8d181b8632
+  checksum: 10c0/daaecb4d248add07a0adeefbd7eba6f4054afe7ee93be40c16173b930b0ea93af15af0dff12a8095849eb77e98c6a85935cfa276721e64c93a62b4e79ac5ba40
   languageName: node
   linkType: hard
 
@@ -3209,8 +3209,8 @@ __metadata:
   resolution: "@sabertazimi/blog@workspace:."
   dependencies:
     "@alisowski/next-mdx-remote": "npm:^4.4.3"
-    "@ant-design/icons": "npm:^5.3.0"
-    "@codesandbox/sandpack-react": "npm:^2.13.2"
+    "@ant-design/icons": "npm:^5.3.1"
+    "@codesandbox/sandpack-react": "npm:^2.13.5"
     "@codesandbox/sandpack-themes": "npm:^2.0.21"
     "@dg-scripts/stylelint-config": "npm:^5.14.2"
     "@octokit/rest": "npm:^20.0.2"
@@ -3220,8 +3220,8 @@ __metadata:
     "@types/jest": "npm:^29.5.12"
     "@types/jest-axe": "npm:^3.5.9"
     "@types/mdast": "npm:^4.0.3"
-    "@types/node": "npm:^20.11.20"
-    "@types/react": "npm:^18.2.58"
+    "@types/node": "npm:^20.11.24"
+    "@types/react": "npm:^18.2.61"
     "@types/react-dom": "npm:^18.2.19"
     "@types/unist": "npm:^3.0.2"
     antd: "npm:^5.14.2"
@@ -3229,9 +3229,9 @@ __metadata:
     commit-and-tag-version: "npm:^12.2.0"
     cypress: "npm:^13.6.6"
     eslint: "npm:^8.57.0"
-    eslint-config-next: "npm:^14.1.0"
+    eslint-config-next: "npm:^14.1.1"
     eslint-config-prettier: "npm:^9.1.0"
-    framer-motion: "npm:^11.0.6"
+    framer-motion: "npm:^11.0.8"
     gray-matter: "npm:^4.0.3"
     jest: "npm:^29.7.0"
     jest-axe: "npm:^8.0.0"
@@ -3705,12 +3705,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.20":
-  version: 20.11.20
-  resolution: "@types/node@npm:20.11.20"
+"@types/node@npm:*, @types/node@npm:^20.11.24":
+  version: 20.11.24
+  resolution: "@types/node@npm:20.11.24"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/8e8de211e6d54425c603388a9b5cc9c434101985d0a1c88aabbf65d10df2b1fccd71855c20e61ae8a75c7aea56cb0f64e722cf7914cff1247d0b62ce21996ac4
+  checksum: 10c0/5a62225eb4797b41e6953f9c08c4611d607b5422ddd153312fc81ed6ed37115228ae27e3e3caa1a3bf52d88310306a196ba1cfbd8b2ec918a20f64d80dfa22c9
   languageName: node
   linkType: hard
 
@@ -3737,14 +3737,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.58":
-  version: 18.2.58
-  resolution: "@types/react@npm:18.2.58"
+"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.61":
+  version: 18.2.61
+  resolution: "@types/react@npm:18.2.61"
   dependencies:
     "@types/prop-types": "npm:*"
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/80145b707b780d682092b51d520f58a0171c4067ff36cf488d3346d92b715b27fd334acd0fabb8eb21a4eb6c4061f1535e8bfa6642a7f4025e63ebec868fb6d1
+  checksum: 10c0/a03fbb6ca8108bbccf12ac616e77e1457ae9324040c4a5d1293caaa62c187300b4eb38ec78c4724fb43d40d4c6fb909803db057c8b69ae441e2aab7b2acdc29a
   languageName: node
   linkType: hard
 
@@ -6818,11 +6818,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^14.1.0":
-  version: 14.1.0
-  resolution: "eslint-config-next@npm:14.1.0"
+"eslint-config-next@npm:^14.1.1":
+  version: 14.1.1
+  resolution: "eslint-config-next@npm:14.1.1"
   dependencies:
-    "@next/eslint-plugin-next": "npm:14.1.0"
+    "@next/eslint-plugin-next": "npm:14.1.1"
     "@rushstack/eslint-patch": "npm:^1.3.3"
     "@typescript-eslint/parser": "npm:^5.4.2 || ^6.0.0"
     eslint-import-resolver-node: "npm:^0.3.6"
@@ -6837,7 +6837,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/8e3fc5fb99d8d8d03651a44487bd7739fd880cf6698292f548ebdb3886c52b3030758018970401f6220430e7d003a1100a62de47f86f7216d3c86ba0e1cd9cd1
+  checksum: 10c0/75c908c9ace2a99fc40927913a8d465c72dd9b89affecde33458270bed2481077e639c8f0172faa5bc05e6681d0bd1d2f1978361107a4438de387fb6f35846f6
   languageName: node
   linkType: hard
 
@@ -7684,9 +7684,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.0.6":
-  version: 11.0.6
-  resolution: "framer-motion@npm:11.0.6"
+"framer-motion@npm:^11.0.8":
+  version: 11.0.8
+  resolution: "framer-motion@npm:11.0.8"
   dependencies:
     "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
@@ -7701,7 +7701,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/ba987848120847157eb2d8c7669808aa04081b753002c7d57b2adfca92da5de50470117a73e377476b3eec42d13b4c91456f649b97b7900dcc72cb980262af48
+  checksum: 10c0/098776e277b1707116c511f62261ed421381071258a6174c51bf1cdbb7ed436b5789fa114144426253d1719e6426d51e3f1812a9cbc1ca773361b63aacda8056
   languageName: node
   linkType: hard
 
