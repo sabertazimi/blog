@@ -18,19 +18,26 @@ jobs:
         with:
           submodules: true
           fetch-depth: 1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: Run linter tests
         run: |
-          yarn lint
+          pnpm lint
 
   unit:
     name: Unit Testing
@@ -38,29 +45,36 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [18]
+        node-version: [20]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: Run unit tests
         run: |
-          yarn test:all
+          pnpm test:all
       - name: Perform code coverage report action
         uses: codecov/codecov-action@v4
-        if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' }}
 
   e2e:
     name: E2E Testing
@@ -68,7 +82,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [18]
+        node-version: [20]
         browser: [chrome, firefox]
     steps:
       - name: Checkout repository
@@ -76,22 +90,29 @@ jobs:
         with:
           submodules: true
           fetch-depth: 1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: List installed browsers
         run: |
-          yarn cypress info
+          pnpm cypress info
       - name: Run e2e tests
         run: |
-          yarn e2e:${{ matrix.browser }}
+          pnpm e2e:${{ matrix.browser }}
 
   build:
     name: Building
@@ -99,29 +120,36 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [18]
+        node-version: [20]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0 # Keep `0` for git time
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: Build application
         run: |
-          yarn build
+          pnpm build
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' }}
         with:
           name: app
           path: .next

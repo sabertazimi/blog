@@ -8,13 +8,13 @@ import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeKatex from 'rehype-katex';
+import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import rehypeSlug from 'rehype-slug';
 import remarkDirective from 'remark-directive';
 import remarkGemoji from 'remark-gemoji';
 import remarkGfm from 'remark-gfm';
 import remarkGitHub from 'remark-github';
 import remarkMath from 'remark-math';
-import remarkMdxCodeMeta from 'remark-mdx-code-meta';
 import remarkAdmonitions from './remark-admonitions';
 
 const contentsPath = path.join(process.cwd(), 'contents');
@@ -61,13 +61,13 @@ async function generatePostData(filePath: string): Promise<Post> {
         remarkMath,
         remarkDirective,
         remarkAdmonitions,
-        remarkMdxCodeMeta,
       ],
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
         rehypeExternalLinks,
         rehypeKatex,
+        rehypeMdxCodeProps,
       ],
     },
   });
