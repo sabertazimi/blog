@@ -20,13 +20,11 @@ const nextConfig = {
     // @see https://github.com/vercel/next.js/issues/40183
     // @see https://github.com/vercel/next.js/issues/58817
     '@alisowski/next-mdx-remote',
-    '@ant-design',
-    '@mdx-js',
-    '@react-hook',
+    '@ant-design/icons',
+    '@mdx-js/react',
+    '@react-hook/intersection-observer',
+    '@react-hook/passive-layout-effect',
     'next-mdx-remote',
-    'rc-pagination',
-    'rc-picker',
-    'rc-util',
   ],
 };
 

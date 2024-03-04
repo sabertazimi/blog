@@ -12,29 +12,31 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Checkout to Gatsby version
         run: |
           git checkout gatsby
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           architecture: x64
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: Run linter tests
         run: |
-          yarn lint
+          pnpm lint
   test:
     name: Testing
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [18]
+        node-version: [20]
         architecture: [x64]
     steps:
       - name: Checkout repository
@@ -42,6 +44,8 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Checkout to Gatsby version
         run: |
           git checkout gatsby
@@ -51,17 +55,17 @@ jobs:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: Run unit tests
         run: |
-          yarn test:all
-          yarn badge
+          pnpm test:all
+          pnpm badge
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
+        if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: badges
           path: public
@@ -72,7 +76,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [18]
+        node-version: [20]
         architecture: [x64]
     steps:
       - name: Checkout repository
@@ -80,6 +84,8 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0 # Keep `0` for git time
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
       - name: Checkout to Gatsby version
         run: |
           git checkout gatsby
@@ -89,16 +95,16 @@ jobs:
           node-version: ${{ matrix.node-version }}
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install dependencies
         run: |
-          yarn
+          pnpm install
       - name: Build application
         run: |
-          yarn build:gh-pages
+          pnpm build:gh-pages
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.node-version == 18 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
+        if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: demos
           path: public
