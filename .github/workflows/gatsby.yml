@@ -24,6 +24,11 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
@@ -56,6 +61,11 @@ jobs:
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
           cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
@@ -96,6 +106,11 @@ jobs:
           architecture: ${{ matrix.architecture }}
           registry-url: https://registry.npmjs.org/
           cache: 'pnpm'
+      - name: Set up Cypress binary cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
