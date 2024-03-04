@@ -90,6 +90,9 @@ dependencies:
   rehype-katex:
     specifier: ^7.0.0
     version: 7.0.0
+  rehype-mdx-code-props:
+    specifier: ^2.0.0
+    version: 2.0.0
   rehype-slug:
     specifier: ^6.0.0
     version: 6.0.0
@@ -108,9 +111,6 @@ dependencies:
   remark-math:
     specifier: ^6.0.0
     version: 6.0.0
-  remark-mdx-code-meta:
-    specifier: ^2.0.0
-    version: 2.0.0
   typed.js:
     specifier: ^2.1.0
     version: 2.1.0
@@ -6821,12 +6821,6 @@ packages:
       - supports-color
     dev: false
 
-  /hast-util-to-string@2.0.0:
-    resolution: {integrity: sha512-02AQ3vLhuH3FisaMM+i/9sm4OXGSq1UhOOCpTLLQtHdL3tZt7qil69r8M8iDkZYyC0HCFylcYoP+8IO7ddta1A==}
-    dependencies:
-      '@types/hast': 2.3.10
-    dev: false
-
   /hast-util-to-string@3.0.0:
     resolution: {integrity: sha512-OGkAxX1Ua3cbcW6EJ5pT/tslVb90uViVkcJ4ZZIMW/R33DX/AkcJcRrPebPwJkHYwlDHXz4aIwvAAaAdtrACFA==}
     dependencies:
@@ -11596,6 +11590,19 @@ packages:
       vfile: 6.0.1
     dev: false
 
+  /rehype-mdx-code-props@2.0.0:
+    resolution: {integrity: sha512-dGjba9oF6DrY6xKDxOuiHp2BtaWaF7hNhxPbtzDcPqRNRjw8fNhRD5Geqf8X8HRowzkykOJkqEX03CKYVpsHTw==}
+    dependencies:
+      '@types/hast': 3.0.4
+      acorn: 8.11.3
+      acorn-jsx: 5.3.2(acorn@8.11.3)
+      hast-util-to-estree: 3.1.0
+      unified: 11.0.4
+      unist-util-visit-parents: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /rehype-slug@6.0.0:
     resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
     dependencies:
@@ -11658,20 +11665,6 @@ packages:
       unified: 11.0.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /remark-mdx-code-meta@2.0.0:
-    resolution: {integrity: sha512-UA7i3ooevNEmgr5DAVtUY+KRIkvbVe5OOysvJcNXEjS2ZiT3gaibPHN57JPbbiT1kq4x8+e3viy88svrReuLfw==}
-    engines: {node: '>=14'}
-    deprecated: Use rehype-mdx-code-props instead
-    dependencies:
-      '@types/mdast': 3.0.15
-      acorn: 8.11.3
-      acorn-jsx: 5.3.2(acorn@8.11.3)
-      estree-util-is-identifier-name: 2.1.0
-      hast-util-to-string: 2.0.0
-      unified: 11.0.4
-      unist-util-visit: 4.1.2
     dev: false
 
   /remark-mdx@2.3.0:
