@@ -1,16 +1,16 @@
-import Button from '@components/Button';
-import { SocialIcon } from '@components/Icons';
-import { Bounce } from '@components/Motion';
-import { cx } from '@components/utils';
-import type { SocialType } from '@types';
-import type { HTMLProps } from 'react';
-import styles from './SocialButton.module.css';
+import Button from '@components/Button'
+import { SocialIcon } from '@components/Icons'
+import { Bounce } from '@components/Motion'
+import { cx } from '@components/utils'
+import type { SocialType } from '@types'
+import type { HTMLProps } from 'react'
+import styles from './SocialButton.module.css'
 
 interface Props extends HTMLProps<HTMLButtonElement> {
-  type: SocialType;
-  url: string;
-  className?: string;
-  color?: string;
+  type: SocialType
+  url: string
+  className?: string
+  color?: string
 }
 
 const SocialButton = ({
@@ -30,6 +30,6 @@ const SocialButton = ({
       href={`${url}`}
     />
   </Bounce>
-);
+)
 
-export default SocialButton;
+export default SocialButton

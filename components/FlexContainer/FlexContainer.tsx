@@ -1,10 +1,10 @@
-import { cx } from '@components/utils';
-import type { CSSProperties, HTMLProps, ReactNode } from 'react';
+import { cx } from '@components/utils'
+import type { CSSProperties, HTMLProps, ReactNode } from 'react'
 
 interface Props extends HTMLProps<HTMLDivElement> {
-  children: ReactNode;
-  className?: string;
-  style?: CSSProperties;
+  children: ReactNode
+  className?: string
+  style?: CSSProperties
 }
 
 const FlexContainer = ({
@@ -21,6 +21,6 @@ const FlexContainer = ({
   >
     {children}
   </div>
-);
+)
 
-export default FlexContainer;
+export default FlexContainer

@@ -1,19 +1,19 @@
-import { render } from '@utils';
-import { axe } from 'jest-axe';
-import BooksGrid from './BooksGrid';
+import { render } from '@utils'
+import { axe } from 'jest-axe'
+import BooksGrid from './BooksGrid'
 
 describe('BooksGrid', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<BooksGrid />);
+    const { container } = render(<BooksGrid />)
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(container).toMatchSnapshot()
+  })
 
   test('Should render accessibility guidelines (AXE)', async () => {
-    const { container } = render(<BooksGrid />);
+    const { container } = render(<BooksGrid />)
 
-    const a11y = await axe(container);
+    const a11y = await axe(container)
 
-    expect(a11y).toHaveNoViolations();
-  });
-});
+    expect(a11y).toHaveNoViolations()
+  })
+})

@@ -1,15 +1,15 @@
-import Col from '@components/Col';
-import Container from '@components/Container';
-import Divider from '@components/Divider';
-import Row from '@components/Row';
-import SocialButton from '@components/SocialButton';
-import { siteConfig, socialList } from '@config';
-import type { BuildTime, SiteConfig, SocialType } from '@types';
+import Col from '@components/Col'
+import Container from '@components/Container'
+import Divider from '@components/Divider'
+import Row from '@components/Row'
+import SocialButton from '@components/SocialButton'
+import { siteConfig, socialList } from '@config'
+import type { BuildTime, SiteConfig, SocialType } from '@types'
 
 interface Props {
-  buildTime: BuildTime;
-  author?: string;
-  socials?: SiteConfig['socials'];
+  buildTime: BuildTime
+  author?: string
+  socials?: SiteConfig['socials']
 }
 
 const Footer = ({
@@ -67,6 +67,6 @@ const Footer = ({
       </Col>
     </Row>
   </Container>
-);
+)
 
-export default Footer;
+export default Footer

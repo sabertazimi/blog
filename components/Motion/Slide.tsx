@@ -1,26 +1,26 @@
-import type { MotionProps } from '@components/utils';
-import { motion } from '@components/utils';
-import type { ReactNode } from 'react';
+import type { MotionProps } from '@components/utils'
+import { motion } from '@components/utils'
+import type { ReactNode } from 'react'
 
 interface Props {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
+  children: ReactNode
+  className?: string
+  delay?: number
 }
 
 const initialVariants: MotionProps['initial'] = {
   opacity: 0,
   x: -200,
-};
+}
 
 const inViewVariants: MotionProps['whileInView'] = {
   opacity: 1,
   x: 0,
-};
+}
 
 const viewport: MotionProps['viewport'] = {
   once: true,
-};
+}
 
 const Slide = ({
   children,
@@ -41,6 +41,6 @@ const Slide = ({
   >
     {children}
   </motion.div>
-);
+)
 
-export default Slide;
+export default Slide

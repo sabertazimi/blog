@@ -1,11 +1,11 @@
-import { cx } from '@components/utils';
-import { Typography } from 'antd';
-import type { ReactNode } from 'react';
-import styles from './Paragraph.module.css';
+import { cx } from '@components/utils'
+import { Typography } from 'antd'
+import type { ReactNode } from 'react'
+import styles from './Paragraph.module.css'
 
 interface Props {
-  children?: ReactNode;
-  className?: string;
+  children?: ReactNode
+  className?: string
 }
 
 const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
@@ -15,6 +15,6 @@ const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
   >
     {children}
   </Typography.Paragraph>
-);
+)
 
-export default Paragraph;
+export default Paragraph

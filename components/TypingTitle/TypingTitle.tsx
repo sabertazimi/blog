@@ -1,14 +1,14 @@
-import { cx } from '@components/utils';
-import { siteConfig } from '@config';
-import { useTypingEffect } from '@hooks';
-import { useRef } from 'react';
+import { cx } from '@components/utils'
+import { siteConfig } from '@config'
+import { useTypingEffect } from '@hooks'
+import { useRef } from 'react'
 
 interface Props {
-  titles?: string[];
-  speed?: number;
-  delay?: number;
-  loop?: boolean;
-  className?: string;
+  titles?: string[]
+  speed?: number
+  delay?: number
+  loop?: boolean
+  className?: string
 }
 
 const TypingTitle = ({
@@ -18,8 +18,8 @@ const TypingTitle = ({
   loop = true,
   className,
 }: Props): JSX.Element => {
-  const ref = useRef<HTMLSpanElement>(null);
-  useTypingEffect(ref, { titles, speed, delay, loop });
+  const ref = useRef<HTMLSpanElement>(null)
+  useTypingEffect(ref, { titles, speed, delay, loop })
 
   return (
     <div
@@ -31,7 +31,7 @@ const TypingTitle = ({
     >
       <span role="main" ref={ref} />
     </div>
-  );
-};
+  )
+}
 
-export default TypingTitle;
+export default TypingTitle

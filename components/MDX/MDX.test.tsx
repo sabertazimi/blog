@@ -1,43 +1,43 @@
-import { render } from '@utils';
-import MDXCode from './MDXCode';
-import MDXDivider from './MDXDivider';
-import MDXInput from './MDXInput';
-import MDXPre from './MDXPre';
+import { render } from '@utils'
+import MDXCode from './MDXCode'
+import MDXDivider from './MDXDivider'
+import MDXInput from './MDXInput'
+import MDXPre from './MDXPre'
 
 describe('MDXDivider', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<MDXDivider />);
+    const { container } = render(<MDXDivider />)
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})
 
 describe('MDXInput', () => {
   test('should render input correctly (snapshot)', () => {
-    const { container } = render(<MDXInput />);
+    const { container } = render(<MDXInput />)
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(container).toMatchSnapshot()
+  })
 
   test('should render checkbox correctly (snapshot)', () => {
-    const { container } = render(<MDXInput type="checkbox" />);
+    const { container } = render(<MDXInput type="checkbox" />)
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})
 
 describe('MDXPre', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<MDXPre />);
+    const { container } = render(<MDXPre />)
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})
 
 describe('MDXCode', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<MDXCode />);
+    const { container } = render(<MDXCode />)
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})

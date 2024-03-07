@@ -1,7 +1,7 @@
-import Text from './Text';
+import Text from './Text'
 
 interface Props {}
 
-const Emphasis = (props: Props): JSX.Element => <Text {...props} italic />;
+const Emphasis = (props: Props): JSX.Element => <Text {...props} italic />
 
-export default Emphasis;
+export default Emphasis

@@ -2,6 +2,6 @@
 const config = {
   siteUrl: 'https://blog.tazimi.dev',
   generateRobotsTxt: true,
-};
+}
 
-module.exports = config;
+module.exports = config

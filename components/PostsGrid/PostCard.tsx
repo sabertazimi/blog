@@ -1,16 +1,16 @@
-import Container from '@components/Container';
-import { H2 } from '@components/Headings';
-import { Calendar, Read } from '@components/Icons';
-import Link from '@components/Link';
-import { Slide } from '@components/Motion';
-import Skeleton from '@components/Skeleton';
-import { IconTag, LinkTag } from '@components/Tags';
-import { cx } from '@components/utils';
-import type { PostMeta } from '@types';
-import styles from './PostCard.module.css';
+import Container from '@components/Container'
+import { H2 } from '@components/Headings'
+import { Calendar, Read } from '@components/Icons'
+import Link from '@components/Link'
+import { Slide } from '@components/Motion'
+import Skeleton from '@components/Skeleton'
+import { IconTag, LinkTag } from '@components/Tags'
+import { cx } from '@components/utils'
+import type { PostMeta } from '@types'
+import styles from './PostCard.module.css'
 
 interface Props {
-  post: PostMeta;
+  post: PostMeta
 }
 
 const PostCard = ({
@@ -41,6 +41,6 @@ const PostCard = ({
       </Container>
     </Slide>
   </Container>
-);
+)
 
-export default PostCard;
+export default PostCard

@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@utils';
-import Toggle from './Toggle';
+import { fireEvent, render, screen } from '@utils'
+import Toggle from './Toggle'
 
 describe('Toggle', () => {
   const cases = [
@@ -7,7 +7,7 @@ describe('Toggle', () => {
     [false, true],
     [true, false],
     [true, true],
-  ];
+  ]
 
   test.each(cases)(
     'should render animation correctly (snapshot)',
@@ -20,14 +20,14 @@ describe('Toggle', () => {
           iconOpen={<div>Open</div>}
           shouldReduceMotion={shouldReduceMotion}
         />
-      );
+      )
 
-      expect(container).toMatchSnapshot();
+      expect(container).toMatchSnapshot()
     }
-  );
+  )
 
   test('should invoke `onToggle` when clicked', () => {
-    const mockToggle = jest.fn();
+    const mockToggle = jest.fn()
 
     render(
       <Toggle
@@ -37,15 +37,15 @@ describe('Toggle', () => {
         iconOpen={<div>Open</div>}
         shouldReduceMotion={false}
       />
-    );
+    )
 
-    fireEvent.click(screen.getByTestId('toggle-wrapper'));
+    fireEvent.click(screen.getByTestId('toggle-wrapper'))
 
-    expect(mockToggle).toHaveBeenCalledTimes(1);
-  });
+    expect(mockToggle).toHaveBeenCalledTimes(1)
+  })
 
   test('should invoke `onToggle` when `Enter` key down', () => {
-    const mockToggle = jest.fn();
+    const mockToggle = jest.fn()
 
     render(
       <Toggle
@@ -55,15 +55,15 @@ describe('Toggle', () => {
         iconOpen={<div>Open</div>}
         shouldReduceMotion={false}
       />
-    );
+    )
 
-    fireEvent.keyDown(screen.getByTestId('toggle-wrapper'), { key: 'Enter' });
+    fireEvent.keyDown(screen.getByTestId('toggle-wrapper'), { key: 'Enter' })
 
-    expect(mockToggle).toHaveBeenCalledTimes(1);
-  });
+    expect(mockToggle).toHaveBeenCalledTimes(1)
+  })
 
   test('should not invoke `onToggle` when `Tab` key down', () => {
-    const mockToggle = jest.fn();
+    const mockToggle = jest.fn()
 
     render(
       <Toggle
@@ -73,10 +73,10 @@ describe('Toggle', () => {
         iconOpen={<div>Open</div>}
         shouldReduceMotion={false}
       />
-    );
+    )
 
-    fireEvent.keyDown(screen.getByTestId('toggle-wrapper'), { key: 'Tab' });
+    fireEvent.keyDown(screen.getByTestId('toggle-wrapper'), { key: 'Tab' })
 
-    expect(mockToggle).not.toBeCalled();
-  });
-});
+    expect(mockToggle).not.toBeCalled()
+  })
+})

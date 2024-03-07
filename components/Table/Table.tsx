@@ -1,6 +1,6 @@
-import { cx } from '@components/utils';
-import { HTMLProps } from 'react';
-import styles from './Table.module.css';
+import { cx } from '@components/utils'
+import { HTMLProps } from 'react'
+import styles from './Table.module.css'
 
 interface Props extends HTMLProps<HTMLTableElement> {}
 
@@ -15,6 +15,6 @@ const Table = ({ children, className, ...props }: Props): JSX.Element => (
   >
     {children}
   </table>
-);
+)
 
-export default Table;
+export default Table

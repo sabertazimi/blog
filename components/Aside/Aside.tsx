@@ -1,33 +1,33 @@
-import Alert from '@components/Alert';
-import { cx } from '@components/utils';
-import type { ReactNode } from 'react';
-import styles from './Aside.module.css';
+import Alert from '@components/Alert'
+import { cx } from '@components/utils'
+import type { ReactNode } from 'react'
+import styles from './Aside.module.css'
 
 interface Props {
-  type?: string;
-  title?: string;
-  children?: ReactNode;
-  className?: string;
+  type?: string
+  title?: string
+  children?: ReactNode
+  className?: string
 }
 
 const normalizeType = (type?: string) => {
   switch (type) {
     case 'success':
     case 'tip':
-      return 'success';
+      return 'success'
     case 'info':
     case 'note':
-      return 'info';
+      return 'info'
     case 'warning':
     case 'caution':
-      return 'warning';
+      return 'warning'
     case 'error':
     case 'danger':
-      return 'error';
+      return 'error'
     default:
-      return 'info';
+      return 'info'
   }
-};
+}
 
 const Aside = ({
   type,
@@ -48,6 +48,6 @@ const Aside = ({
       'dark:bg-black dark:shadow-xl dark:shadow-primary'
     )}
   />
-);
+)
 
-export default Aside;
+export default Aside

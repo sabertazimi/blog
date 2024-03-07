@@ -1,25 +1,25 @@
-import { render } from '@utils';
-import { axe } from 'jest-axe';
-import Comment from './Comment';
-import Hamburger from './Hamburger';
+import { render } from '@utils'
+import { axe } from 'jest-axe'
+import Comment from './Comment'
+import Hamburger from './Hamburger'
 
 describe('Icons', () => {
-  const Icons = [Comment, Hamburger];
+  const Icons = [Comment, Hamburger]
 
   test.each(Icons)('should render %# icon correctly (snapshot)', Icon => {
-    const { container } = render(<Icon />);
+    const { container } = render(<Icon />)
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(container).toMatchSnapshot()
+  })
 
   test.each(Icons)(
     'should render %# icon accessibility guidelines (AXE)',
     async Icon => {
-      const { container } = render(<Icon />);
+      const { container } = render(<Icon />)
 
-      const a11y = await axe(container);
+      const a11y = await axe(container)
 
-      expect(a11y).toHaveNoViolations();
+      expect(a11y).toHaveNoViolations()
     }
-  );
-});
+  )
+})

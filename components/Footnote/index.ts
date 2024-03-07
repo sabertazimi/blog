@@ -1,1 +1,1 @@
-export { default } from './Footnote';
+export { default } from './Footnote'

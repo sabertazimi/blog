@@ -1,24 +1,24 @@
-import { siteConfig } from '@config';
-import { Octokit } from '@octokit/rest';
-import type { GitHub } from '@types';
+import { siteConfig } from '@config'
+import { Octokit } from '@octokit/rest'
+import type { GitHub } from '@types'
 
 export default async function getGitHubData(): Promise<GitHub> {
-  const isVercel = process.env.VERCEL && process.env.NODE_ENV === 'production';
-  const octokit = new Octokit();
-  const username = siteConfig.socials.github;
-  let githubData = siteConfig.githubData;
+  const isVercel = process.env.VERCEL && process.env.NODE_ENV === 'production'
+  const octokit = new Octokit()
+  const username = siteConfig.socials.github
+  let githubData = siteConfig.githubData
 
   if (isVercel) {
     try {
       const { data: profileJSON } = await octokit.rest.users.getByUsername({
         username,
-      });
+      })
       const { data: reposJSON } = await octokit.request(
         'GET /users/{username}/repos',
         {
           username,
         }
-      );
+      )
 
       githubData = {
         profile: {
@@ -47,18 +47,18 @@ export default async function getGitHubData(): Promise<GitHub> {
             language: repo.language || '',
             repoUrl: repo.html_url,
           })),
-      };
+      }
     } catch (error) {
       if (error instanceof Error) {
-        console.error(error.message);
+        console.error(error.message)
         console.error(
           'GitHub API request error, fallback to local GitHub data.'
-        );
+        )
       }
     }
   } else {
-    console.info('Not for Vercel build, fallback to local GitHub data.');
+    console.info('Not for Vercel build, fallback to local GitHub data.')
   }
 
-  return githubData;
+  return githubData
 }

@@ -1,17 +1,17 @@
-import Link from '@components/Link';
-import LocalImage from '@components/LocalImage';
-import Menu from '@components/Menu';
-import PostsSearchBar from '@components/PostsSearchBar';
-import ThemeSwitch from '@components/ThemeSwitch';
-import { cx } from '@components/utils';
-import { routes } from '@config';
-import logo from '@images/logo-full.png';
-import type { PostMeta } from '@types';
-import styles from './DesktopNav.module.css';
+import Link from '@components/Link'
+import LocalImage from '@components/LocalImage'
+import Menu from '@components/Menu'
+import PostsSearchBar from '@components/PostsSearchBar'
+import ThemeSwitch from '@components/ThemeSwitch'
+import { cx } from '@components/utils'
+import { routes } from '@config'
+import logo from '@images/logo-full.png'
+import type { PostMeta } from '@types'
+import styles from './DesktopNav.module.css'
 
 interface Props {
-  fixed: boolean;
-  posts: PostMeta[];
+  fixed: boolean
+  posts: PostMeta[]
 }
 
 const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
@@ -73,6 +73,6 @@ const DesktopNav = ({ fixed, posts }: Props): JSX.Element => (
       },
     ]}
   />
-);
+)
 
-export default DesktopNav;
+export default DesktopNav

@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin');
+const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -119,7 +119,7 @@ module.exports = {
         '.bg-gradient-primary': {
           '@apply bg-gradient-to-r from-indigo-700 to-red-500': {},
         },
-      });
+      })
 
       addUtilities({
         '.content-auto': {
@@ -131,7 +131,7 @@ module.exports = {
         '.content-visible': {
           'content-visibility': 'visible',
         },
-      });
+      })
 
       matchUtilities(
         {
@@ -140,7 +140,7 @@ module.exports = {
           }),
         },
         { values: theme('height') }
-      );
+      )
     }),
   ],
-};
+}

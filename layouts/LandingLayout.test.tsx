@@ -1,5 +1,5 @@
-import { render } from '@utils';
-import LandingLayout from './LandingLayout';
+import { render } from '@utils'
+import LandingLayout from './LandingLayout'
 
 describe('LandingLayout', () => {
   test('should render correctly (snapshot)', () => {
@@ -7,8 +7,8 @@ describe('LandingLayout', () => {
       <LandingLayout>
         <div>LandingLayout</div>
       </LandingLayout>
-    );
+    )
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})

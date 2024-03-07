@@ -1,26 +1,26 @@
-import Container from '@components/Container';
-import Divider from '@components/Divider';
-import { Comment } from '@components/Icons';
-import SocialGroup from '@components/SocialGroup';
-import { siteConfig } from '@config';
-import type { Post, SiteConfig } from '@types';
-import ArticleComments from './ArticleComments';
-import ArticleContent from './ArticleContent';
-import ArticleHeader from './ArticleHeader';
-import ArticleNav from './ArticleNav';
-import ArticleToc from './ArticleToc';
+import Container from '@components/Container'
+import Divider from '@components/Divider'
+import { Comment } from '@components/Icons'
+import SocialGroup from '@components/SocialGroup'
+import { siteConfig } from '@config'
+import type { Post, SiteConfig } from '@types'
+import ArticleComments from './ArticleComments'
+import ArticleContent from './ArticleContent'
+import ArticleHeader from './ArticleHeader'
+import ArticleNav from './ArticleNav'
+import ArticleToc from './ArticleToc'
 
 interface Props {
-  post: Post;
-  siteUrl?: SiteConfig['siteUrl'];
+  post: Post
+  siteUrl?: SiteConfig['siteUrl']
 }
 
 const Article = ({
   post: { excerpt, source, ...postMeta },
   siteUrl = siteConfig.siteUrl,
 }: Props): JSX.Element => {
-  const { slug, subtitle, prevPost, nextPost } = postMeta;
-  const socialUrl = `${siteUrl}/post/${slug}`;
+  const { slug, subtitle, prevPost, nextPost } = postMeta
+  const socialUrl = `${siteUrl}/post/${slug}`
 
   return (
     <div>
@@ -37,7 +37,7 @@ const Article = ({
         <SocialGroup url={socialUrl} />
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default Article;
+export default Article

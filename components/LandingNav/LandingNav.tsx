@@ -1,15 +1,15 @@
-import { Hamburger } from '@components/Icons';
-import { Switch } from '@components/Motion';
-import type { MotionProps } from '@components/utils';
-import { routes as defaultRoutes } from '@config';
-import type { Route } from '@types';
-import type { KeyboardEvent } from 'react';
-import { useCallback, useState } from 'react';
-import styles from './LandingNav.module.css';
-import LandingNavLink from './LandingNavLink';
+import { Hamburger } from '@components/Icons'
+import { Switch } from '@components/Motion'
+import type { MotionProps } from '@components/utils'
+import { routes as defaultRoutes } from '@config'
+import type { Route } from '@types'
+import type { KeyboardEvent } from 'react'
+import { useCallback, useState } from 'react'
+import styles from './LandingNav.module.css'
+import LandingNavLink from './LandingNavLink'
 
 interface Props {
-  routes?: Route[];
+  routes?: Route[]
 }
 
 const navVariants: MotionProps['variants'] = {
@@ -21,13 +21,13 @@ const navVariants: MotionProps['variants'] = {
     x: '-100%',
     opacity: 0,
   },
-};
+}
 
 const navTransition: MotionProps['transition'] = {
   type: 'tween',
   ease: 'easeInOut',
   duration: 0.4,
-};
+}
 
 const bannerVariants: MotionProps['variants'] = {
   open: {
@@ -36,26 +36,26 @@ const bannerVariants: MotionProps['variants'] = {
   close: {
     x: '-100%',
   },
-};
+}
 
 const bannerTransition: MotionProps['transition'] = {
   type: 'tween',
   ease: 'circInOut',
   duration: 0.4,
-};
+}
 
 const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
 
   const handleClick = useCallback(() => {
-    setExpanded(expanded => !expanded);
-  }, []);
+    setExpanded(expanded => !expanded)
+  }, [])
 
   const handleKeyDown = useCallback((event: KeyboardEvent<HTMLSpanElement>) => {
     if (event.key === 'Enter') {
-      setExpanded(expanded => !expanded);
+      setExpanded(expanded => !expanded)
     }
-  }, []);
+  }, [])
 
   return (
     <>
@@ -86,7 +86,7 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
         transition={bannerTransition}
       />
     </>
-  );
-};
+  )
+}
 
-export default LandingNav;
+export default LandingNav

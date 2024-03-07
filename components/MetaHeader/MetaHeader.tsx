@@ -1,14 +1,14 @@
-import ErrorBoundary from '@components/ErrorBoundary';
-import { siteConfig } from '@config';
-import landingImage from '@images/landing.jpg';
-import { NextSeo } from 'next-seo';
-import Head from 'next/head';
+import ErrorBoundary from '@components/ErrorBoundary'
+import { siteConfig } from '@config'
+import landingImage from '@images/landing.jpg'
+import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 
 interface Props {
-  title?: string;
-  description?: string;
-  siteUrl?: string;
-  themeColor?: string;
+  title?: string
+  description?: string
+  siteUrl?: string
+  themeColor?: string
 }
 
 const MetaHeader = ({
@@ -93,6 +93,6 @@ const MetaHeader = ({
       />
     </>
   </ErrorBoundary>
-);
+)
 
-export default MetaHeader;
+export default MetaHeader

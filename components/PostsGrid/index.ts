@@ -1,1 +1,1 @@
-export { default } from './PostsGrid';
+export { default } from './PostsGrid'

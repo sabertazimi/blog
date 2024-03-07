@@ -1,13 +1,13 @@
-import { BuildTime } from '@types';
+import { BuildTime } from '@types'
 
-let buildTime = '';
+let buildTime = ''
 
 export default function getBuildTime(preset?: BuildTime): string {
   if (buildTime.length) {
-    return buildTime;
+    return buildTime
   }
 
-  buildTime = new Date(preset ?? Date.now()).toISOString();
+  buildTime = new Date(preset ?? Date.now()).toISOString()
 
-  return buildTime;
+  return buildTime
 }

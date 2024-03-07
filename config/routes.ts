@@ -1,8 +1,8 @@
 interface Route {
-  id: string;
-  name: string;
-  title: string;
-  path: string;
+  id: string
+  name: string
+  title: string
+  path: string
 }
 
 const routes: Route[] = [
@@ -30,7 +30,7 @@ const routes: Route[] = [
     title: 'About Me',
     path: '/about',
   },
-];
+]
 
-export type { Route };
-export { routes };
+export type { Route }
+export { routes }

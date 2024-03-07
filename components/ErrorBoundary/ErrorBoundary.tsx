@@ -1,17 +1,17 @@
-import Paragraph from '@components/Paragraph';
-import Result from '@components/Result';
-import { Text } from '@components/Texts';
-import type { ErrorInfo } from 'react';
-import { Component } from 'react';
+import Paragraph from '@components/Paragraph'
+import Result from '@components/Result'
+import { Text } from '@components/Texts'
+import type { ErrorInfo } from 'react'
+import { Component } from 'react'
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element
 }
 
 interface State {
-  hasError: boolean;
-  error: Error;
-  errorInfo: ErrorInfo;
+  hasError: boolean
+  error: Error
+  errorInfo: ErrorInfo
 }
 
 class ErrorBoundary extends Component<Props, State> {
@@ -19,20 +19,20 @@ class ErrorBoundary extends Component<Props, State> {
     hasError: false,
     error: Error('Error'),
     errorInfo: { componentStack: '' },
-  };
+  }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({
       hasError: true,
       error,
       errorInfo,
-    });
+    })
   }
 
   public render() {
-    const { hasError, error } = this.state;
-    const { children } = this.props;
-    const isDevelopment = process.env.NODE_ENV === 'development';
+    const { hasError, error } = this.state
+    const { children } = this.props
+    const isDevelopment = process.env.NODE_ENV === 'development'
 
     if (hasError && isDevelopment) {
       return (
@@ -54,11 +54,11 @@ class ErrorBoundary extends Component<Props, State> {
             </Paragraph>
           </div>
         </Result>
-      );
+      )
     }
 
-    return children;
+    return children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary

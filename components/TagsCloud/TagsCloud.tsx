@@ -1,19 +1,19 @@
-import { LinkTag } from '@components/Tags';
-import { colors, getColorByName, siteConfig } from '@config';
-import type { Tag, Tags } from '@types';
+import { LinkTag } from '@components/Tags'
+import { colors, getColorByName, siteConfig } from '@config'
+import type { Tag, Tags } from '@types'
 
 interface Props {
-  tags: Tags;
-  activeTag?: Tag;
+  tags: Tags
+  activeTag?: Tag
 }
 
 const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
   let tagsList = Object.keys(tags).sort((a, b) => {
-    return tags[b] - tags[a];
-  });
+    return tags[b] - tags[a]
+  })
 
   if (activeTag) {
-    tagsList = tagsList.filter(tag => tag !== activeTag);
+    tagsList = tagsList.filter(tag => tag !== activeTag)
   }
 
   return (
@@ -39,7 +39,7 @@ const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
         />
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default TagsCloud;
+export default TagsCloud

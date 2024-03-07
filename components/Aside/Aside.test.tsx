@@ -1,5 +1,5 @@
-import { render } from '@utils';
-import Aside from './Aside';
+import { render } from '@utils'
+import Aside from './Aside'
 
 describe('Aside', () => {
   const types = [
@@ -12,13 +12,13 @@ describe('Aside', () => {
     'error',
     'danger',
     'default',
-  ];
+  ]
 
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<Aside title="Aside">Aside</Aside>);
+    const { container } = render(<Aside title="Aside">Aside</Aside>)
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(container).toMatchSnapshot()
+  })
 
   test.each(types)(
     'should render different type correctly (snapshot)',
@@ -27,9 +27,9 @@ describe('Aside', () => {
         <Aside type={type} title="Aside">
           Aside
         </Aside>
-      );
+      )
 
-      expect(container).toMatchSnapshot();
+      expect(container).toMatchSnapshot()
     }
-  );
-});
+  )
+})

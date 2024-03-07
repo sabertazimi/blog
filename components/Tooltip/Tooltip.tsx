@@ -1,8 +1,8 @@
-import type { TooltipProps } from 'antd';
-import { Tooltip as AntTooltip } from 'antd';
+import type { TooltipProps } from 'antd'
+import { Tooltip as AntTooltip } from 'antd'
 
-type Props = TooltipProps;
+type Props = TooltipProps
 
-const Tooltip = (props: Props): JSX.Element => <AntTooltip {...props} />;
+const Tooltip = (props: Props): JSX.Element => <AntTooltip {...props} />
 
-export default Tooltip;
+export default Tooltip

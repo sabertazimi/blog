@@ -1,1 +1,1 @@
-export { Input as default } from 'antd';
+export { Input as default } from 'antd'

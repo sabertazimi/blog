@@ -1,13 +1,13 @@
-import { H1 } from '@components/Headings';
-import { Calendar, ClockCircle, Edit } from '@components/Icons';
-import { Slide } from '@components/Motion';
-import { IconTag, LinkTag } from '@components/Tags';
-import { siteConfig } from '@config';
-import type { PostMeta } from '@types';
-import styles from './ArticleHeader.module.css';
+import { H1 } from '@components/Headings'
+import { Calendar, ClockCircle, Edit } from '@components/Icons'
+import { Slide } from '@components/Motion'
+import { IconTag, LinkTag } from '@components/Tags'
+import { siteConfig } from '@config'
+import type { PostMeta } from '@types'
+import styles from './ArticleHeader.module.css'
 
 interface Props {
-  post: PostMeta;
+  post: PostMeta
 }
 
 const ArticleHeader = ({
@@ -17,7 +17,7 @@ const ArticleHeader = ({
     <Slide>
       {tags ? (
         tags.map(tag => {
-          return <LinkTag key={tag} tag={tag} />;
+          return <LinkTag key={tag} tag={tag} />
         })
       ) : (
         <LinkTag href="/tags" color={siteConfig.themeColor} />
@@ -34,6 +34,6 @@ const ArticleHeader = ({
       <IconTag tag={`${readingTime} minutes`} icon={<ClockCircle />} />
     </Slide>
   </div>
-);
+)
 
-export default ArticleHeader;
+export default ArticleHeader

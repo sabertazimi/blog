@@ -1,28 +1,28 @@
-import type { GitHub } from '@types';
-import { colors } from './colors';
-import type { SocialType } from './social';
+import type { GitHub } from '@types'
+import { colors } from './colors'
+import type { SocialType } from './social'
 
 interface Book {
-  title: string;
-  author: string;
-  url: string;
-  description: string;
+  title: string
+  author: string
+  url: string
+  description: string
 }
 
 interface SiteConfig {
-  title: string;
-  author: string;
-  email: string;
-  description: string;
-  themeColor: string;
-  siteUrl: string;
-  disqusUrl: string;
-  landingTitles: string[];
+  title: string
+  author: string
+  email: string
+  description: string
+  themeColor: string
+  siteUrl: string
+  disqusUrl: string
+  landingTitles: string[]
   socials: {
-    [key in SocialType]: string;
-  };
-  books: Book[];
-  githubData: GitHub;
+    [key in SocialType]: string
+  }
+  books: Book[]
+  githubData: GitHub
 }
 
 const siteConfig: SiteConfig = {
@@ -95,7 +95,7 @@ const siteConfig: SiteConfig = {
       },
     ],
   },
-};
+}
 
-export type { Book, SiteConfig };
-export { siteConfig };
+export type { Book, SiteConfig }
+export { siteConfig }

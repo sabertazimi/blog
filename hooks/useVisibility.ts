@@ -3,80 +3,80 @@
  * forked from `<Visibility />` React Semantic UI component,
  * https://github.com/Semantic-Org/Semantic-UI-React/blob/master/src/behaviors/Visibility/Visibility.js
  */
-import type { RefObject } from 'react';
-import { useCallback, useEffect, useRef } from 'react';
+import type { RefObject } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 const useVisibility = ({
   ref,
   onBottomPassed,
   onBottomPassedReverse,
 }: {
-  ref: RefObject<HTMLElement>;
-  onBottomPassed: () => void;
-  onBottomPassedReverse: () => void;
+  ref: RefObject<HTMLElement>
+  onBottomPassed: () => void
+  onBottomPassedReverse: () => void
 }): void => {
-  const frameId = useRef(0);
-  const ticking = useRef(false);
-  const pageYOffset = useRef(0);
-  const bottomPassed = useRef(false);
+  const frameId = useRef(0)
+  const ticking = useRef(false)
+  const pageYOffset = useRef(0)
+  const bottomPassed = useRef(false)
 
   const update = useCallback(() => {
     const getPageYOffset = () => {
-      return window.pageYOffset;
-    };
+      return window.pageYOffset
+    }
 
-    ticking.current = false;
+    ticking.current = false
 
     // store visibility
-    const oldBottomPassed = bottomPassed.current;
+    const oldBottomPassed = bottomPassed.current
 
     // early return when ref missing (e.g. unmounting when routing or animation)
     if (!ref.current) {
-      return;
+      return
     }
 
     // calculate visibility
-    const { bottom } = ref.current.getBoundingClientRect();
-    const newOffset = getPageYOffset();
-    const direction = newOffset > pageYOffset.current ? 'down' : 'up';
-    const newBottomPassed = bottom < 0;
+    const { bottom } = ref.current.getBoundingClientRect()
+    const newOffset = getPageYOffset()
+    const direction = newOffset > pageYOffset.current ? 'down' : 'up'
+    const newBottomPassed = bottom < 0
 
     // update visibility
-    bottomPassed.current = newBottomPassed;
-    pageYOffset.current = newOffset;
+    bottomPassed.current = newBottomPassed
+    pageYOffset.current = newOffset
 
     // fire callbacks according to visibility
     if (bottomPassed.current !== oldBottomPassed) {
       if (direction === 'up') {
-        Boolean(onBottomPassedReverse) && onBottomPassedReverse();
+        Boolean(onBottomPassedReverse) && onBottomPassedReverse()
       }
 
       if (direction === 'down') {
-        Boolean(onBottomPassed) && onBottomPassed();
+        Boolean(onBottomPassed) && onBottomPassed()
       }
     }
-  }, [ref, onBottomPassed, onBottomPassedReverse]);
+  }, [ref, onBottomPassed, onBottomPassedReverse])
 
   const handleUpdate = useCallback(() => {
-    if (ticking.current) return;
+    if (ticking.current) return
 
-    ticking.current = true;
-    frameId.current = requestAnimationFrame(update);
-  }, [update]);
+    ticking.current = true
+    frameId.current = requestAnimationFrame(update)
+  }, [update])
 
   useEffect(() => {
-    window.addEventListener('resize', handleUpdate);
-    window.addEventListener('scroll', handleUpdate);
+    window.addEventListener('resize', handleUpdate)
+    window.addEventListener('scroll', handleUpdate)
 
     return () => {
-      window.removeEventListener('resize', handleUpdate);
-      window.removeEventListener('scroll', handleUpdate);
+      window.removeEventListener('resize', handleUpdate)
+      window.removeEventListener('scroll', handleUpdate)
 
       if (frameId.current) {
-        cancelAnimationFrame(frameId.current);
+        cancelAnimationFrame(frameId.current)
       }
-    };
-  }, [handleUpdate]);
-};
+    }
+  }, [handleUpdate])
+}
 
-export default useVisibility;
+export default useVisibility

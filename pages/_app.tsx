@@ -1,19 +1,19 @@
-import { siteConfig } from '@config';
-import NextProgress from 'next-progress';
-import type { AppProps } from 'next/app';
+import { siteConfig } from '@config'
+import NextProgress from 'next-progress'
+import type { AppProps } from 'next/app'
 
 // Keep stylesheets importing order
-import '../styles/globals.css';
-import '../components/Article/Article.css';
-import '../components/Button/Button.css';
-import '../components/Card/Card.css';
-import '../components/Skeleton/Skeleton.css';
+import '../styles/globals.css'
+import '../components/Article/Article.css'
+import '../components/Button/Button.css'
+import '../components/Card/Card.css'
+import '../components/Skeleton/Skeleton.css'
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>
     <NextProgress height={3} color={siteConfig.themeColor} />
     <Component className="min-h-screen" {...pageProps} />
   </>
-);
+)
 
-export default App;
+export default App

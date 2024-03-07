@@ -1,6 +1,6 @@
 // Extend `expect` matchers.
-import '@testing-library/jest-dom';
-import 'jest-axe/extend-expect';
+import '@testing-library/jest-dom'
+import 'jest-axe/extend-expect'
 
 // Mock `window.matchMedia`.
 Object.defineProperty(window, 'matchMedia', {
@@ -15,34 +15,34 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   })),
-});
+})
 
 // Mock `window.IntersectionObserver`
 class MockIntersectionObserver {
-  observe = jest.fn();
-  takeRecords = jest.fn();
-  disconnect = jest.fn();
-  unobserve = jest.fn();
+  observe = jest.fn()
+  takeRecords = jest.fn()
+  disconnect = jest.fn()
+  unobserve = jest.fn()
 }
 
 Object.defineProperty(window, 'IntersectionObserver', {
   writable: true,
   configurable: true,
   value: MockIntersectionObserver,
-});
+})
 
 Object.defineProperty(global, 'IntersectionObserver', {
   writable: true,
   configurable: true,
   value: MockIntersectionObserver,
-});
+})
 
 // Mock window animation frame.
 window.requestAnimationFrame = function (callback) {
-  return setTimeout(callback);
-};
+  return setTimeout(callback)
+}
 
-window.cancelAnimationFrame = window.clearTimeout;
+window.cancelAnimationFrame = window.clearTimeout
 
 // Mock React portal.
 function mockCreatePortal(element, target) {
@@ -51,18 +51,18 @@ function mockCreatePortal(element, target) {
       <div id="content">{element}</div>
       <div id="target" data-target-tag-name={target.tagName}></div>
     </div>
-  );
+  )
 }
 
 jest.mock('react-dom', () => {
-  const reactDom = jest.requireActual('react-dom');
-  reactDom.createPortal = mockCreatePortal;
-  return reactDom;
-});
+  const reactDom = jest.requireActual('react-dom')
+  reactDom.createPortal = mockCreatePortal
+  return reactDom
+})
 
 // Disable ant design hashed CSS-in-JS class name.
 jest.mock('antd', () => {
-  const antd = jest.requireActual('antd');
-  antd.theme.defaultConfig.hashed = false;
-  return antd;
-});
+  const antd = jest.requireActual('antd')
+  antd.theme.defaultConfig.hashed = false
+  return antd
+})

@@ -1,69 +1,69 @@
-import type { MDXRemoteSerializeResult } from '@alisowski/next-mdx-remote';
+import type { MDXRemoteSerializeResult } from '@alisowski/next-mdx-remote'
 
-export declare type BuildTime = string | number | Date;
+export declare type BuildTime = string | number | Date
 
-export declare type Tag = string;
-export declare type Tags = Record<Tag, number>;
+export declare type Tag = string
+export declare type Tags = Record<Tag, number>
 
 export interface MDXFrontMatter {
-  layout: string;
-  title: string;
-  subtitle?: string;
-  author?: string;
-  date?: string;
-  'header-img'?: string;
-  tags?: Tag[];
+  layout: string
+  title: string
+  subtitle?: string
+  author?: string
+  date?: string
+  'header-img'?: string
+  tags?: Tag[]
 }
 
 export interface PostMeta {
-  slug: string;
-  title: string;
-  subtitle?: string;
-  author?: string;
-  createTime?: string;
-  updateTime?: string;
-  readingTime: number;
-  tags?: Tag[];
+  slug: string
+  title: string
+  subtitle?: string
+  author?: string
+  createTime?: string
+  updateTime?: string
+  readingTime: number
+  tags?: Tag[]
   prevPost: {
-    slug: string;
-    title: string;
-  } | null;
+    slug: string
+    title: string
+  } | null
   nextPost: {
-    slug: string;
-    title: string;
-  } | null;
+    slug: string
+    title: string
+  } | null
 }
 
 export interface PostContent {
-  excerpt?: string;
-  source: MDXRemoteSerializeResult;
+  excerpt?: string
+  source: MDXRemoteSerializeResult
 }
 
-export declare type Post = PostMeta & PostContent;
+export declare type Post = PostMeta & PostContent
 
 export interface Profile {
-  username: string;
-  avatar: string;
-  bio?: string;
-  location?: string;
-  url: string;
-  followers: number;
-  followersUrl: string;
-  following: number;
-  followingUrl: string;
-  createDate: string;
+  username: string
+  avatar: string
+  bio?: string
+  location?: string
+  url: string
+  followers: number
+  followersUrl: string
+  following: number
+  followingUrl: string
+  createDate: string
 }
 
 export interface Repo {
-  name: string;
-  stars: number;
-  language: string;
-  repoUrl: string;
+  name: string
+  stars: number
+  language: string
+  repoUrl: string
 }
 
 export interface GitHub {
-  profile: Profile;
-  repos: Repo[];
+  profile: Profile
+  repos: Repo[]
 }
 
 export type {
@@ -73,4 +73,4 @@ export type {
   SiteConfig,
   SocialColor,
   SocialType,
-} from '@config';
+} from '@config'

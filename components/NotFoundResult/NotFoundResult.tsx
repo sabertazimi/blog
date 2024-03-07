@@ -1,8 +1,8 @@
-import Link from '@components/Link';
-import Result from '@components/Result';
+import Link from '@components/Link'
+import Result from '@components/Result'
 
 interface Props {
-  title?: string;
+  title?: string
 }
 
 const NotFoundResult = ({
@@ -21,6 +21,6 @@ const NotFoundResult = ({
       </Link>
     }
   />
-);
+)
 
-export default NotFoundResult;
+export default NotFoundResult

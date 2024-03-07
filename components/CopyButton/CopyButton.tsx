@@ -1,17 +1,17 @@
-import { Check, Copy } from '@components/Icons';
-import { Toggle } from '@components/Motion';
-import { cx, useReducedMotion } from '@components/utils';
-import { useCopyToClipboard } from '@hooks';
-import styles from './CopyButton.module.css';
+import { Check, Copy } from '@components/Icons'
+import { Toggle } from '@components/Motion'
+import { cx, useReducedMotion } from '@components/utils'
+import { useCopyToClipboard } from '@hooks'
+import styles from './CopyButton.module.css'
 
 interface Props {
-  code: string;
-  className?: string;
+  code: string
+  className?: string
 }
 
 const CopyButton = ({ code, className }: Props): JSX.Element => {
-  const [isCopied, copy] = useCopyToClipboard(code);
-  const shouldReduceMotion = useReducedMotion();
+  const [isCopied, copy] = useCopyToClipboard(code)
+  const shouldReduceMotion = useReducedMotion()
 
   return (
     <button
@@ -32,7 +32,7 @@ const CopyButton = ({ code, className }: Props): JSX.Element => {
         tabIndex={-1}
       />
     </button>
-  );
-};
+  )
+}
 
-export default CopyButton;
+export default CopyButton

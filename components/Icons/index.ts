@@ -16,9 +16,9 @@ export {
   ReadOutlined as Read,
   StarOutlined as Star,
   UserOutlined as User,
-} from '@ant-design/icons';
-export { default as Comment } from './Comment';
-export { default as Hamburger } from './Hamburger';
-export { default as Moon } from './Moon';
-export { default as SocialIcon } from './SocialIcon';
-export { default as Sun } from './Sun';
+} from '@ant-design/icons'
+export { default as Comment } from './Comment'
+export { default as Hamburger } from './Hamburger'
+export { default as Moon } from './Moon'
+export { default as SocialIcon } from './SocialIcon'
+export { default as Sun } from './Sun'

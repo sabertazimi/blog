@@ -1,5 +1,5 @@
-import { render, screen } from '@utils';
-import Editor from './Editor';
+import { render, screen } from '@utils'
+import Editor from './Editor'
 
 describe('Editor', () => {
   test('should render sandpack correctly', () => {
@@ -13,24 +13,24 @@ describe('Editor', () => {
           <code className="tsx">const bar = foo();</code>
         </pre>
       </Editor>
-    );
+    )
 
-    expect(screen.getByRole('tablist')).toBeInTheDocument();
+    expect(screen.getByRole('tablist')).toBeInTheDocument()
     expect(screen.getByRole('tablist')).toContainElement(
       screen.getByText('App.tsx')
-    );
+    )
     expect(screen.getByRole('tablist')).toContainElement(
       screen.getByText('bar.tsx')
-    );
-    expect(screen.getByRole('textbox')).toBeInTheDocument();
+    )
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(screen.getByRole('textbox')).toContainElement(
       screen.getByText('const')
-    );
+    )
     expect(screen.getByRole('textbox')).toContainElement(
       screen.getByText('foo')
-    );
+    )
     expect(screen.getByRole('textbox')).toContainElement(
       screen.getByText('bar')
-    );
-  });
-});
+    )
+  })
+})

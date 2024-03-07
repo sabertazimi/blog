@@ -1,10 +1,10 @@
-import { MetaHeader } from '@components';
-import { cx } from '@components/utils';
-import landingImage from '@images/landing.jpg';
-import type { ReactNode } from 'react';
+import { MetaHeader } from '@components'
+import { cx } from '@components/utils'
+import landingImage from '@images/landing.jpg'
+import type { ReactNode } from 'react'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const LandingLayout = ({ children }: Props): JSX.Element => (
@@ -22,6 +22,6 @@ const LandingLayout = ({ children }: Props): JSX.Element => (
       {children}
     </div>
   </div>
-);
+)
 
-export default LandingLayout;
+export default LandingLayout

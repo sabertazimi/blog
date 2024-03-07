@@ -1,16 +1,16 @@
-import Badge from '@components/Badge';
-import { Card, Meta } from '@components/Card';
-import { Book as BookIcon } from '@components/Icons';
-import { Span } from '@components/Texts';
-import { getColorByName } from '@config';
-import type { Book } from '@types';
+import Badge from '@components/Badge'
+import { Card, Meta } from '@components/Card'
+import { Book as BookIcon } from '@components/Icons'
+import { Span } from '@components/Texts'
+import { getColorByName } from '@config'
+import type { Book } from '@types'
 
 interface Props {
-  book: Book;
+  book: Book
 }
 
 const BookCard = ({ book }: Props): JSX.Element => {
-  const { title, url, author, description } = book;
+  const { title, url, author, description } = book
 
   return (
     <Badge.Ribbon text={title} color={getColorByName(title)}>
@@ -25,7 +25,7 @@ const BookCard = ({ book }: Props): JSX.Element => {
         <Meta title={description} description={`Written by ${author}`} />
       </Card>
     </Badge.Ribbon>
-  );
-};
+  )
+}
 
-export default BookCard;
+export default BookCard

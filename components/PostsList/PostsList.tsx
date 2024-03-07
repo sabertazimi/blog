@@ -1,10 +1,10 @@
-import Link from '@components/Link';
-import { List } from '@components/Lists';
-import type { PostMeta } from '@types';
-import styles from './PostsList.module.css';
+import Link from '@components/Link'
+import { List } from '@components/Lists'
+import type { PostMeta } from '@types'
+import styles from './PostsList.module.css'
 
 interface Props {
-  posts: PostMeta[];
+  posts: PostMeta[]
 }
 
 const PostsList = ({ posts }: Props): JSX.Element => (
@@ -23,6 +23,6 @@ const PostsList = ({ posts }: Props): JSX.Element => (
       </List.Item>
     )}
   />
-);
+)
 
-export default PostsList;
+export default PostsList

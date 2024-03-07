@@ -1,11 +1,11 @@
-import { cx } from '@components/utils';
-import { Typography } from 'antd';
-import type { ReactNode } from 'react';
-import styles from './Anchor.module.css';
+import { cx } from '@components/utils'
+import { Typography } from 'antd'
+import type { ReactNode } from 'react'
+import styles from './Anchor.module.css'
 
 interface Props {
-  children?: ReactNode;
-  className?: string;
+  children?: ReactNode
+  className?: string
 }
 
 const Anchor = ({ className, ...props }: Props): JSX.Element => (
@@ -13,6 +13,6 @@ const Anchor = ({ className, ...props }: Props): JSX.Element => (
     {...props}
     className={cx('mdx-hash-link', className, styles.anchor)}
   />
-);
+)
 
-export default Anchor;
+export default Anchor

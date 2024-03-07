@@ -1,4 +1,4 @@
-import { colors, getColorByName } from './colors';
+import { colors, getColorByName } from './colors'
 
 describe('Colors', () => {
   const mockColors = [
@@ -20,12 +20,12 @@ describe('Colors', () => {
     ['Web Development', colors.violet],
     ['Computer Science', colors.indigo],
     ['Frontend Development', colors.green],
-  ];
+  ]
 
   test.each(mockColors)(
     'should set color of tag [%s] to [%s]',
     (tag, color) => {
-      expect(getColorByName(tag)).toBe(color);
+      expect(getColorByName(tag)).toBe(color)
     }
-  );
-});
+  )
+})

@@ -1,11 +1,11 @@
-import Col from '@components/Col';
-import Row from '@components/Row';
-import { siteConfig } from '@config';
-import type { Book } from '@types';
-import BookCard from './BookCard';
+import Col from '@components/Col'
+import Row from '@components/Row'
+import { siteConfig } from '@config'
+import type { Book } from '@types'
+import BookCard from './BookCard'
 
 interface Props {
-  books?: Book[];
+  books?: Book[]
 }
 
 const BooksGrid = ({ books = siteConfig.books }: Props): JSX.Element => (
@@ -18,6 +18,6 @@ const BooksGrid = ({ books = siteConfig.books }: Props): JSX.Element => (
       ))}
     </Row>
   </div>
-);
+)
 
-export default BooksGrid;
+export default BooksGrid
