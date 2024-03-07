@@ -1,13 +1,13 @@
-import Icon from '@ant-design/icons';
-import type { KeyboardEvent, SVGProps } from 'react';
+import Icon from '@ant-design/icons'
+import type { KeyboardEvent, SVGProps } from 'react'
 
 interface Props {
-  onClick?: () => void;
-  onKeyDown?: (event: KeyboardEvent<HTMLSpanElement>) => void;
-  className?: string;
+  onClick?: () => void
+  onKeyDown?: (event: KeyboardEvent<HTMLSpanElement>) => void
+  className?: string
 }
 
-type IconType = (props: Props) => JSX.Element;
+type IconType = (props: Props) => JSX.Element
 
 const IconFactory = (
   svg: (props: SVGProps<SVGSVGElement>) => JSX.Element,
@@ -27,9 +27,9 @@ const IconFactory = (
       onKeyDown={onKeyDown}
       className={className}
     />
-  );
+  )
 
-  return IconComponent;
-};
+  return IconComponent
+}
 
-export default IconFactory;
+export default IconFactory

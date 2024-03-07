@@ -1,17 +1,17 @@
-import type { MotionProps } from '@components/utils';
-import { AnimatePresence, cx, motion } from '@components/utils';
-import type { KeyboardEvent, ReactNode } from 'react';
-import { useCallback } from 'react';
-import styles from './Toggle.module.css';
+import type { MotionProps } from '@components/utils'
+import { AnimatePresence, cx, motion } from '@components/utils'
+import type { KeyboardEvent, ReactNode } from 'react'
+import { useCallback } from 'react'
+import styles from './Toggle.module.css'
 
 interface Props {
-  isToggled: boolean;
-  onToggle?: () => void;
-  iconClose: ReactNode;
-  iconOpen: ReactNode;
-  shouldReduceMotion: boolean | null;
-  className?: string;
-  tabIndex?: number;
+  isToggled: boolean
+  onToggle?: () => void
+  iconClose: ReactNode
+  iconOpen: ReactNode
+  shouldReduceMotion: boolean | null
+  className?: string
+  tabIndex?: number
 }
 
 const closeVariants: MotionProps['initial'] & MotionProps['animate'] = {
@@ -23,7 +23,7 @@ const closeVariants: MotionProps['initial'] & MotionProps['animate'] = {
     ease: 'easeInOut',
     duration: 0.3,
   },
-};
+}
 
 const openVariants: MotionProps['animate'] = {
   rotate: 0,
@@ -34,7 +34,7 @@ const openVariants: MotionProps['animate'] = {
     ease: 'easeInOut',
     duration: 0.3,
   },
-};
+}
 
 const Toggle = ({
   isToggled,
@@ -49,11 +49,11 @@ const Toggle = ({
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'Enter' && onToggle) {
-        onToggle();
+        onToggle()
       }
     },
     [onToggle]
-  );
+  )
 
   return (
     <div
@@ -91,7 +91,7 @@ const Toggle = ({
         )}
       </AnimatePresence>
     </div>
-  );
-};
+  )
+}
 
-export default Toggle;
+export default Toggle

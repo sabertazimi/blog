@@ -1,7 +1,7 @@
-import Text from './Text';
+import Text from './Text'
 
 interface Props {}
 
-const Strong = (props: Props): JSX.Element => <Text {...props} strong />;
+const Strong = (props: Props): JSX.Element => <Text {...props} strong />
 
-export default Strong;
+export default Strong

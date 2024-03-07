@@ -1,9 +1,9 @@
-import { cx } from '@components/utils';
-import styles from './InlineCode.module.css';
+import { cx } from '@components/utils'
+import styles from './InlineCode.module.css'
 
 interface Props {
-  children?: string;
-  className?: string;
+  children?: string
+  className?: string
 }
 
 const InlineCode = ({ children, className }: Props): JSX.Element => (
@@ -16,6 +16,6 @@ const InlineCode = ({ children, className }: Props): JSX.Element => (
   >
     {children}
   </code>
-);
+)
 
-export default InlineCode;
+export default InlineCode

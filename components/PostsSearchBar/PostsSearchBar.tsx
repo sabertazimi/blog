@@ -1,21 +1,21 @@
-import AutoComplete from '@components/AutoComplete';
-import Input from '@components/Input';
-import Link from '@components/Link';
-import type { PostMeta } from '@types';
-import type { ReactNode } from 'react';
-import { useCallback, useState } from 'react';
+import AutoComplete from '@components/AutoComplete'
+import Input from '@components/Input'
+import Link from '@components/Link'
+import type { PostMeta } from '@types'
+import type { ReactNode } from 'react'
+import { useCallback, useState } from 'react'
 
 interface Props {
-  posts: PostMeta[];
+  posts: PostMeta[]
 }
 
 interface Option {
-  value: string;
-  label: ReactNode;
+  value: string
+  label: ReactNode
 }
 
 const PostsSearchBar = ({ posts }: Props): JSX.Element => {
-  const [options, setOptions] = useState<Option[]>([]);
+  const [options, setOptions] = useState<Option[]>([])
 
   const handleSearch = useCallback(
     (value: string) => {
@@ -34,10 +34,10 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
                 ),
               }))
           : []
-      );
+      )
     },
     [posts]
-  );
+  )
 
   return (
     <AutoComplete options={options} onSearch={handleSearch}>
@@ -47,7 +47,7 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
         placeholder="Search Posts ..."
       />
     </AutoComplete>
-  );
-};
+  )
+}
 
-export default PostsSearchBar;
+export default PostsSearchBar

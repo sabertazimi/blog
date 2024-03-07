@@ -1,1 +1,1 @@
-export { Badge as default } from 'antd';
+export { Badge as default } from 'antd'

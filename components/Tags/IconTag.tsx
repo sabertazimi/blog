@@ -1,11 +1,11 @@
-import { cx } from '@components/utils';
-import type { ReactNode } from 'react';
-import styles from './IconTag.module.css';
-import Tag from './Tag';
+import { cx } from '@components/utils'
+import type { ReactNode } from 'react'
+import styles from './IconTag.module.css'
+import Tag from './Tag'
 
 interface Props {
-  tag: string;
-  icon: ReactNode;
+  tag: string
+  icon: ReactNode
 }
 
 const IconTag = ({ tag, icon }: Props): JSX.Element => (
@@ -18,6 +18,6 @@ const IconTag = ({ tag, icon }: Props): JSX.Element => (
     {icon}
     <span>{tag}</span>
   </Tag>
-);
+)
 
-export default IconTag;
+export default IconTag

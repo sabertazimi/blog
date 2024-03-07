@@ -1,7 +1,7 @@
-import { InlineCode } from '@components/CodeBlocks';
+import { InlineCode } from '@components/CodeBlocks'
 
 interface Props {}
 
-const MDXCode = (props: Props) => <InlineCode {...props} />;
+const MDXCode = (props: Props) => <InlineCode {...props} />
 
-export default MDXCode;
+export default MDXCode

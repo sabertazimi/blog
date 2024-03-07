@@ -1,15 +1,15 @@
-import type { MotionProps } from '@components/utils';
-import { motion } from '@components/utils';
-import type { AriaRole } from 'react';
+import type { MotionProps } from '@components/utils'
+import { motion } from '@components/utils'
+import type { AriaRole } from 'react'
 
 interface Props {
-  children?: React.ReactNode;
-  className?: string;
-  role?: AriaRole;
-  open?: boolean;
-  onClick?: () => void;
-  variants?: MotionProps['variants'];
-  transition?: MotionProps['transition'];
+  children?: React.ReactNode
+  className?: string
+  role?: AriaRole
+  open?: boolean
+  onClick?: () => void
+  variants?: MotionProps['variants']
+  transition?: MotionProps['transition']
 }
 
 const defaultVariants: MotionProps['variants'] = {
@@ -19,12 +19,12 @@ const defaultVariants: MotionProps['variants'] = {
   close: {
     opacity: 0,
   },
-};
+}
 
 const defaultTransition: MotionProps['transition'] = {
   type: 'spring',
   duration: 0.2,
-};
+}
 
 const Switch = ({
   children,
@@ -48,6 +48,6 @@ const Switch = ({
   >
     {children}
   </motion.div>
-);
+)
 
-export default Switch;
+export default Switch

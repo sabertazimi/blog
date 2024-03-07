@@ -1,25 +1,25 @@
-import type { MotionProps } from '@components/utils';
-import { motion } from '@components/utils';
-import type { ReactNode } from 'react';
+import type { MotionProps } from '@components/utils'
+import { motion } from '@components/utils'
+import type { ReactNode } from 'react'
 
 interface Props {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-  duration?: number;
+  children: ReactNode
+  className?: string
+  delay?: number
+  duration?: number
 }
 
 const initialVariants: MotionProps['initial'] = {
   opacity: 0,
-};
+}
 
 const animateVariants: MotionProps['animate'] = {
   opacity: 1,
-};
+}
 
 const viewport: MotionProps['viewport'] = {
   once: true,
-};
+}
 
 const Ease = ({
   children,
@@ -41,6 +41,6 @@ const Ease = ({
   >
     {children}
   </motion.div>
-);
+)
 
-export default Ease;
+export default Ease

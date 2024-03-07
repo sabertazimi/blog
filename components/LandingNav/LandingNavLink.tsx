@@ -1,13 +1,13 @@
-import Link from '@components/Link';
-import { Bounce } from '@components/Motion';
-import Tooltip from '@components/Tooltip';
-import type { ReactNode } from 'react';
-import styles from './LandingNavLink.module.css';
+import Link from '@components/Link'
+import { Bounce } from '@components/Motion'
+import Tooltip from '@components/Tooltip'
+import type { ReactNode } from 'react'
+import styles from './LandingNavLink.module.css'
 
 interface Props {
-  title: string;
-  href: string;
-  children: ReactNode;
+  title: string
+  href: string
+  children: ReactNode
 }
 
 const LandingNavLink = ({ title, href, children }: Props): JSX.Element => (
@@ -18,6 +18,6 @@ const LandingNavLink = ({ title, href, children }: Props): JSX.Element => (
       </span>
     </Bounce>
   </Tooltip>
-);
+)
 
-export default LandingNavLink;
+export default LandingNavLink

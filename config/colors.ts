@@ -5,7 +5,7 @@ const socialColors = {
   facebook: '#1877f2',
   linkedin: '#0a66c2',
   weibo: '#e6162d',
-};
+}
 
 const colorPalette = {
   red: '#f03e3e',
@@ -20,26 +20,26 @@ const colorPalette = {
   lime: '#74b816',
   yellow: '#f59f00',
   orange: '#f76707',
-};
+}
 
 const colors = {
   ...socialColors,
   ...colorPalette,
-};
+}
 
-type SocialColor = keyof typeof socialColors;
-type PaletteColor = keyof typeof colorPalette;
+type SocialColor = keyof typeof socialColors
+type PaletteColor = keyof typeof colorPalette
 
 const hashString = (name: string) => {
-  return name.length;
-};
+  return name.length
+}
 
 const getColorByName = (name: string): string => {
-  const palette = Object.keys(colorPalette);
-  const colorIdx = hashString(name) % palette.length;
-  const paletteColor = palette[colorIdx] as PaletteColor;
-  return colorPalette[paletteColor];
-};
+  const palette = Object.keys(colorPalette)
+  const colorIdx = hashString(name) % palette.length
+  const paletteColor = palette[colorIdx] as PaletteColor
+  return colorPalette[paletteColor]
+}
 
-export type { SocialColor };
-export { colors, socialColors, getColorByName };
+export type { SocialColor }
+export { colors, socialColors, getColorByName }

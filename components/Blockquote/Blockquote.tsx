@@ -1,6 +1,6 @@
-import { cx } from '@components/utils';
-import type { BlockquoteHTMLAttributes } from 'react';
-import styles from './Blockquote.module.css';
+import { cx } from '@components/utils'
+import type { BlockquoteHTMLAttributes } from 'react'
+import styles from './Blockquote.module.css'
 
 interface Props extends BlockquoteHTMLAttributes<HTMLElement> {}
 
@@ -15,6 +15,6 @@ const Blockquote = ({ children, className, ...props }: Props): JSX.Element => (
   >
     {children}
   </blockquote>
-);
+)
 
-export default Blockquote;
+export default Blockquote

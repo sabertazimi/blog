@@ -1,20 +1,20 @@
-import { Moon, Sun } from '@components/Icons';
-import { Toggle } from '@components/Motion';
-import { cx, useReducedMotion } from '@components/utils';
-import { useDarkMode } from '@hooks';
-import { useCallback } from 'react';
-import styles from './ThemeSwitch.module.css';
+import { Moon, Sun } from '@components/Icons'
+import { Toggle } from '@components/Motion'
+import { cx, useReducedMotion } from '@components/utils'
+import { useDarkMode } from '@hooks'
+import { useCallback } from 'react'
+import styles from './ThemeSwitch.module.css'
 
 interface Props {
-  className?: string;
+  className?: string
 }
 
 const ThemeSwitch = ({ className }: Props): JSX.Element => {
-  const [darkMode, setDarkMode] = useDarkMode();
-  const shouldReduceMotion = useReducedMotion();
+  const [darkMode, setDarkMode] = useDarkMode()
+  const shouldReduceMotion = useReducedMotion()
   const handleClick = useCallback(() => {
-    setDarkMode(!darkMode);
-  }, [darkMode, setDarkMode]);
+    setDarkMode(!darkMode)
+  }, [darkMode, setDarkMode])
 
   return (
     <Toggle
@@ -25,7 +25,7 @@ const ThemeSwitch = ({ className }: Props): JSX.Element => {
       iconOpen={<Moon className={className} />}
       shouldReduceMotion={shouldReduceMotion}
     />
-  );
-};
+  )
+}
 
-export default ThemeSwitch;
+export default ThemeSwitch

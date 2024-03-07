@@ -1,10 +1,10 @@
-import { cx } from '@components/utils';
-import type { ReactNode } from 'react';
+import { cx } from '@components/utils'
+import type { ReactNode } from 'react'
 
 interface SpanProps {
-  children: ReactNode;
-  size?: 'md' | 'lg' | 'xl';
-  className?: string;
+  children: ReactNode
+  size?: 'md' | 'lg' | 'xl'
+  className?: string
 }
 
 const Span = ({
@@ -22,7 +22,7 @@ const Span = ({
       >
         {children}
       </span>
-    );
+    )
   }
 
   if (size === 'lg') {
@@ -35,14 +35,14 @@ const Span = ({
       >
         {children}
       </span>
-    );
+    )
   }
 
   return (
     <span className={cx('ml-2 inline-block align-bottom text-xl', className)}>
       {children}
     </span>
-  );
-};
+  )
+}
 
-export default Span;
+export default Span

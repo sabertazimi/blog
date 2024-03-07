@@ -1,10 +1,10 @@
-import Checkbox from '@components/Checkbox';
-import Input from '@components/Input';
+import Checkbox from '@components/Checkbox'
+import Input from '@components/Input'
 
 interface Props {
-  type?: string;
-  checked?: boolean;
-  disabled?: boolean;
+  type?: string
+  checked?: boolean
+  disabled?: boolean
 }
 
 const MDXInput = ({
@@ -14,7 +14,7 @@ const MDXInput = ({
   ...props
 }: Props): JSX.Element => {
   if (type?.includes('checkbox')) {
-    return <Checkbox checked={checked} className="mr-1" {...props} />;
+    return <Checkbox checked={checked} className="mr-1" {...props} />
   }
 
   return (
@@ -25,7 +25,7 @@ const MDXInput = ({
       className="mr-1"
       {...props}
     />
-  );
-};
+  )
+}
 
-export default MDXInput;
+export default MDXInput

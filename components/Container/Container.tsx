@@ -1,10 +1,10 @@
-import { cx } from '@components/utils';
-import type { CSSProperties, HTMLProps, ReactNode } from 'react';
+import { cx } from '@components/utils'
+import type { CSSProperties, HTMLProps, ReactNode } from 'react'
 
 interface Props extends HTMLProps<HTMLDivElement> {
-  children: ReactNode;
-  className?: string;
-  style?: CSSProperties;
+  children: ReactNode
+  className?: string
+  style?: CSSProperties
 }
 
 const Container = ({ children, className, ...props }: Props): JSX.Element => (
@@ -17,6 +17,6 @@ const Container = ({ children, className, ...props }: Props): JSX.Element => (
   >
     {children}
   </div>
-);
+)
 
-export default Container;
+export default Container

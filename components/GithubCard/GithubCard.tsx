@@ -1,19 +1,19 @@
-import Avatar from '@components/Avatar';
-import Badge from '@components/Badge';
-import { Card, Meta } from '@components/Card';
-import { getColorByName } from '@config';
-import type { Profile, Repo } from '@types';
-import GithubCardContent from './GithubCardContent';
-import GithubCardHeader from './GithubCardHeader';
-import GithubRepoCard from './GithubRepoCard';
+import Avatar from '@components/Avatar'
+import Badge from '@components/Badge'
+import { Card, Meta } from '@components/Card'
+import { getColorByName } from '@config'
+import type { Profile, Repo } from '@types'
+import GithubCardContent from './GithubCardContent'
+import GithubCardHeader from './GithubCardHeader'
+import GithubRepoCard from './GithubRepoCard'
 
 interface Props {
-  profile: Profile;
-  repos: Repo[];
+  profile: Profile
+  repos: Repo[]
 }
 
 const GithubCard = ({ profile, repos }: Props): JSX.Element => {
-  const { username, avatar, createDate } = profile;
+  const { username, avatar, createDate } = profile
 
   return (
     <Badge.Ribbon text={username} color={getColorByName(username)}>
@@ -28,7 +28,7 @@ const GithubCard = ({ profile, repos }: Props): JSX.Element => {
         ))}
       </Card>
     </Badge.Ribbon>
-  );
-};
+  )
+}
 
-export default GithubCard;
+export default GithubCard

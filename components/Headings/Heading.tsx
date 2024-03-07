@@ -1,7 +1,7 @@
-import { cx } from '@components/utils';
-import { Typography } from 'antd';
-import type { TitleProps } from 'antd/lib/typography/Title';
-import styles from './Headings.module.css';
+import { cx } from '@components/utils'
+import { Typography } from 'antd'
+import type { TitleProps } from 'antd/lib/typography/Title'
+import styles from './Headings.module.css'
 
 // Keep `H3` `margin-top`.
 const Heading = ({
@@ -15,6 +15,6 @@ const Heading = ({
   >
     {children}
   </Typography.Title>
-);
+)
 
-export default Heading;
+export default Heading

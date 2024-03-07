@@ -1,29 +1,29 @@
-import { render, screen, waitFor } from '@utils';
-import { axe } from 'jest-axe';
-import TypingTitle from './TypingTitle';
+import { render, screen, waitFor } from '@utils'
+import { axe } from 'jest-axe'
+import TypingTitle from './TypingTitle'
 
 describe('TypingTitle', () => {
-  jest.mock('typed.js');
+  jest.mock('typed.js')
 
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<TypingTitle />);
+    const { container } = render(<TypingTitle />)
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(container).toMatchSnapshot()
+  })
 
   test('Should render accessibility guidelines (AXE)', async () => {
-    const { container } = render(<TypingTitle />);
+    const { container } = render(<TypingTitle />)
 
-    const a11y = await axe(container);
+    const a11y = await axe(container)
 
-    expect(a11y).toHaveNoViolations();
-  });
+    expect(a11y).toHaveNoViolations()
+  })
 
   test('should work correctly', async () => {
-    render(<TypingTitle />);
+    render(<TypingTitle />)
 
     await waitFor(() => {
-      expect(screen.getByRole('main')).toBeInTheDocument();
-    });
-  });
-});
+      expect(screen.getByRole('main')).toBeInTheDocument()
+    })
+  })
+})

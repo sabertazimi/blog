@@ -1,7 +1,7 @@
-import { cx } from '@components/utils';
-import type { DividerProps } from 'antd';
-import { Divider as AntDivider } from 'antd';
-import styles from './Divider.module.css';
+import { cx } from '@components/utils'
+import type { DividerProps } from 'antd'
+import { Divider as AntDivider } from 'antd'
+import styles from './Divider.module.css'
 
 interface Props extends DividerProps {}
 
@@ -20,6 +20,6 @@ const Divider = ({
   >
     {children}
   </AntDivider>
-);
+)
 
-export default Divider;
+export default Divider

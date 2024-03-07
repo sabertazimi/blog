@@ -1,15 +1,15 @@
-import Link from '@components/Link';
-import { cx } from '@components/utils';
-import { getColorByName } from '@config';
-import type { Tag as TagType } from '@types';
-import styles from './LinkTag.module.css';
-import Tag from './Tag';
+import Link from '@components/Link'
+import { cx } from '@components/utils'
+import { getColorByName } from '@config'
+import type { Tag as TagType } from '@types'
+import styles from './LinkTag.module.css'
+import Tag from './Tag'
 
 interface Props {
-  tag?: TagType;
-  href?: string;
-  color?: string;
-  className?: string;
+  tag?: TagType
+  href?: string
+  color?: string
+  className?: string
 }
 
 const LinkTag = ({
@@ -24,6 +24,6 @@ const LinkTag = ({
   >
     <Link href={href}>{tag}</Link>
   </Tag>
-);
+)
 
-export default LinkTag;
+export default LinkTag

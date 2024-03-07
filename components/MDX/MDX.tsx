@@ -1,20 +1,20 @@
-import Aside from '@components/Aside';
-import Blockquote from '@components/Blockquote';
-import Button from '@components/Button';
-import Footnote from '@components/Footnote';
-import { H1, H2, H3, H4, H5, H6 } from '@components/Headings';
-import ImageCard from '@components/ImageCard';
-import { Item, Ol, Ul } from '@components/Lists';
-import Paragraph from '@components/Paragraph';
-import Table from '@components/Table';
-import { Anchor, Delete, Emphasis, Strong } from '@components/Texts';
-import { dynamic } from '@components/utils';
-import Code from './MDXCode';
-import Divider from './MDXDivider';
-import Input from './MDXInput';
-import Pre from './MDXPre';
+import Aside from '@components/Aside'
+import Blockquote from '@components/Blockquote'
+import Button from '@components/Button'
+import Footnote from '@components/Footnote'
+import { H1, H2, H3, H4, H5, H6 } from '@components/Headings'
+import ImageCard from '@components/ImageCard'
+import { Item, Ol, Ul } from '@components/Lists'
+import Paragraph from '@components/Paragraph'
+import Table from '@components/Table'
+import { Anchor, Delete, Emphasis, Strong } from '@components/Texts'
+import { dynamic } from '@components/utils'
+import Code from './MDXCode'
+import Divider from './MDXDivider'
+import Input from './MDXInput'
+import Pre from './MDXPre'
 
-const Editor = dynamic(() => import('@components/Editor')) as any;
+const Editor = dynamic(() => import('@components/Editor')) as any
 
 const Headings = {
   h1: H1,
@@ -23,30 +23,30 @@ const Headings = {
   h4: H4,
   h5: H5,
   h6: H6,
-};
+}
 
 const Texts = {
   a: Anchor,
   strong: Strong,
   em: Emphasis,
   del: Delete,
-};
+}
 
 const Lists = {
   ul: Ul,
   ol: Ol,
   li: Item,
-};
+}
 
 const CodeBlocks = {
   code: Code,
   pre: Pre,
-};
+}
 
 const customComponents = {
   Button,
   Editor,
-};
+}
 
 const MDX = {
   p: Paragraph,
@@ -62,6 +62,6 @@ const MDX = {
   ...Lists,
   ...CodeBlocks,
   ...customComponents,
-};
+}
 
-export default MDX;
+export default MDX

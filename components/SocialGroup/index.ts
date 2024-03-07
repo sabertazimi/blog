@@ -1,1 +1,1 @@
-export { default } from './SocialGroup';
+export { default } from './SocialGroup'

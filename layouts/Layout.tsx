@@ -1,13 +1,13 @@
-import { Container, Divider, Footer, Header, MetaHeader } from '@components';
-import { Slide } from '@components/Motion';
-import type { BuildTime, PostMeta } from '@types';
-import type { ReactNode } from 'react';
+import { Container, Divider, Footer, Header, MetaHeader } from '@components'
+import { Slide } from '@components/Motion'
+import type { BuildTime, PostMeta } from '@types'
+import type { ReactNode } from 'react'
 
 interface Props {
-  banner: string;
-  posts: PostMeta[];
-  buildTime: BuildTime;
-  children: ReactNode;
+  banner: string
+  posts: PostMeta[]
+  buildTime: BuildTime
+  children: ReactNode
 }
 
 const Layout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
@@ -22,6 +22,6 @@ const Layout = ({ banner, posts, buildTime, children }: Props): JSX.Element => (
     </Container>
     <Footer buildTime={buildTime} />
   </div>
-);
+)
 
-export default Layout;
+export default Layout

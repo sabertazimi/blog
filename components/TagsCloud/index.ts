@@ -1,1 +1,1 @@
-export { default } from './TagsCloud';
+export { default } from './TagsCloud'

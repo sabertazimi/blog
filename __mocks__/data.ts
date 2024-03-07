@@ -1,6 +1,6 @@
 const time = new Date(2022, 0, 1, 8, 0, 0).toLocaleString('zh-CN', {
   hour12: false,
-});
+})
 
 const baseProfile = {
   username: 'sabertazimi',
@@ -11,13 +11,13 @@ const baseProfile = {
   following: 185,
   followingUrl: 'https://github.com/sabertazimi/following',
   createDate: 'Sat May 30 2015',
-};
+}
 
 const profile = {
   ...baseProfile,
   bio: 'CS',
   location: 'Wuhan',
-};
+}
 
 const repos = [
   {
@@ -38,7 +38,7 @@ const repos = [
     language: 'Zsh',
     repoUrl: 'https://github.com/sabertazimi/dragon-zsh-theme',
   },
-];
+]
 
 const basePosts = Array.from(Array(5).keys()).map(index => ({
   index,
@@ -72,7 +72,7 @@ const basePosts = Array.from(Array(5).keys()).map(index => ({
     scope: {},
     frontmatter: {},
   },
-}));
+}))
 
 const posts = basePosts.map((post, index) => ({
   ...post,
@@ -90,7 +90,7 @@ const posts = basePosts.map((post, index) => ({
     title: `${index} Basic Notes`,
   },
   excerpt: `${index + 1} Basic Notes Basic Concepts`,
-}));
+}))
 
 const mockData = {
   time,
@@ -99,6 +99,6 @@ const mockData = {
   repos,
   basePosts,
   posts,
-};
+}
 
-export default mockData;
+export default mockData

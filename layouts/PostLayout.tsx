@@ -1,12 +1,12 @@
-import { BackTop, Container, Footer, Header, MetaHeader } from '@components';
-import type { BuildTime, PostMeta } from '@types';
-import type { ReactNode } from 'react';
+import { BackTop, Container, Footer, Header, MetaHeader } from '@components'
+import type { BuildTime, PostMeta } from '@types'
+import type { ReactNode } from 'react'
 
 interface Props {
-  banner: string;
-  posts: PostMeta[];
-  buildTime: BuildTime;
-  children: ReactNode;
+  banner: string
+  posts: PostMeta[]
+  buildTime: BuildTime
+  children: ReactNode
 }
 
 const PostLayout = ({
@@ -24,6 +24,6 @@ const PostLayout = ({
     </Container>
     <Footer buildTime={buildTime} />
   </div>
-);
+)
 
-export default PostLayout;
+export default PostLayout

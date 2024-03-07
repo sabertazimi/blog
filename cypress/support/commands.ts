@@ -12,9 +12,9 @@ Cypress.Commands.add(
   'findByRole',
   { prevSubject: 'element' },
   (subject, role, options) => {
-    return cy.wrap(subject, { log: false }).find(`[role="${role}"]`, options);
+    return cy.wrap(subject, { log: false }).find(`[role="${role}"]`, options)
   }
-);
+)
 
 Cypress.Commands.add(
   'findByTestId',
@@ -22,9 +22,9 @@ Cypress.Commands.add(
   (subject, testId, options) => {
     return cy
       .wrap(subject, { log: false })
-      .find(`[data-testid="${testId}"]`, options);
+      .find(`[data-testid="${testId}"]`, options)
   }
-);
+)
 
 Cypress.Commands.add(
   'findByLabel',
@@ -32,31 +32,31 @@ Cypress.Commands.add(
   (subject, label, options) => {
     return cy
       .wrap(subject, { log: false })
-      .find(`[aria-label="${label}"]`, options);
+      .find(`[aria-label="${label}"]`, options)
   }
-);
+)
 
 Cypress.Commands.add('getByRole', (role, options) => {
-  return cy.get(`[role="${role}"]`, options);
-});
+  return cy.get(`[role="${role}"]`, options)
+})
 
 Cypress.Commands.add('getByTestId', (testId, options) => {
-  return cy.get(`[data-testid="${testId}"]`, options);
-});
+  return cy.get(`[data-testid="${testId}"]`, options)
+})
 
 Cypress.Commands.add('getByLabel', (label, options) => {
-  return cy.get(`[aria-label="${label}"]`, options);
-});
+  return cy.get(`[aria-label="${label}"]`, options)
+})
 
 Cypress.Commands.add('validRoute', (path, title) => {
-  cy.url().should('include', path);
+  cy.url().should('include', path)
 
   if (title) {
-    cy.title().should('include', title);
+    cy.title().should('include', title)
   }
-});
+})
 
 Cypress.Commands.add('visitRoute', (path, title) => {
-  cy.visit(path);
-  cy.validRoute(path, title);
-});
+  cy.visit(path)
+  cy.validRoute(path, title)
+})

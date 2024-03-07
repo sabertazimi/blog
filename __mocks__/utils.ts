@@ -1,5 +1,5 @@
-let navigatorClipboardMocked = false;
-const writeTextMock = jest.fn();
+let navigatorClipboardMocked = false
+const writeTextMock = jest.fn()
 
 const mockNavigatorClipboard = () => {
   if (!navigatorClipboardMocked) {
@@ -7,12 +7,12 @@ const mockNavigatorClipboard = () => {
       value: {
         writeText: writeTextMock,
       },
-    });
+    })
 
-    navigatorClipboardMocked = true;
+    navigatorClipboardMocked = true
   }
 
-  return { writeTextMock };
-};
+  return { writeTextMock }
+}
 
-export { mockNavigatorClipboard };
+export { mockNavigatorClipboard }

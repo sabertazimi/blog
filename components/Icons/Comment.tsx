@@ -1,5 +1,5 @@
-import { motion } from '@components/utils';
-import IconFactory from './IconFactory';
+import { motion } from '@components/utils'
+import IconFactory from './IconFactory'
 
 const Svg = (): JSX.Element => (
   <motion.svg
@@ -22,7 +22,7 @@ const Svg = (): JSX.Element => (
       p-id="1100"
     />
   </motion.svg>
-);
+)
 
-const Comment = IconFactory(Svg, 'comment');
-export default Comment;
+const Comment = IconFactory(Svg, 'comment')
+export default Comment

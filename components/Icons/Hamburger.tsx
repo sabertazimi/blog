@@ -1,35 +1,35 @@
-import type { MotionProps } from '@components/utils';
-import { motion } from '@components/utils';
-import type { KeyboardEvent } from 'react';
-import { useCallback, useState } from 'react';
-import IconFactory from './IconFactory';
+import type { MotionProps } from '@components/utils'
+import { motion } from '@components/utils'
+import type { KeyboardEvent } from 'react'
+import { useCallback, useState } from 'react'
+import IconFactory from './IconFactory'
 
 const firstVariants: MotionProps['variants'] = {
   checked: { y: '30%', rotate: 45 },
   unchecked: { y: 0, rotate: 0 },
-};
+}
 
 const secondVariants: MotionProps['variants'] = {
   checked: { scaleX: 0 },
   unchecked: { scaleX: 1 },
-};
+}
 
 const thirdVariants: MotionProps['variants'] = {
   checked: { y: '-30%', rotate: -45 },
   unchecked: { y: 0, rotate: 0 },
-};
+}
 
 const Svg = (): JSX.Element => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false)
   const handleClick = useCallback(
     () => setIsChecked(isChecked => !isChecked),
     []
-  );
+  )
   const handleKeyDown = useCallback((event: KeyboardEvent<SVGSVGElement>) => {
     if (event.key === 'Enter') {
-      setIsChecked(isChecked => !isChecked);
+      setIsChecked(isChecked => !isChecked)
     }
-  }, []);
+  }, [])
 
   return (
     <motion.svg
@@ -58,8 +58,8 @@ const Svg = (): JSX.Element => {
         variants={thirdVariants}
       />
     </motion.svg>
-  );
-};
+  )
+}
 
-const Hamburger = IconFactory(Svg, 'hamburger');
-export default Hamburger;
+const Hamburger = IconFactory(Svg, 'hamburger')
+export default Hamburger

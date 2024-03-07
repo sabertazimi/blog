@@ -1,1 +1,1 @@
-export { default } from './GithubCard';
+export { default } from './GithubCard'

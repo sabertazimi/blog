@@ -1,10 +1,10 @@
-import { Environment, InfoCircle, User } from '@components/Icons';
-import Space from '@components/Space';
-import { Span } from '@components/Texts';
-import type { Profile } from '@types';
+import { Environment, InfoCircle, User } from '@components/Icons'
+import Space from '@components/Space'
+import { Span } from '@components/Texts'
+import type { Profile } from '@types'
 
 interface Props {
-  profile: Profile;
+  profile: Profile
 }
 
 const GithubCardContent = ({ profile }: Props): JSX.Element => (
@@ -24,6 +24,6 @@ const GithubCardContent = ({ profile }: Props): JSX.Element => (
       </a>
     </div>
   </Space>
-);
+)
 
-export default GithubCardContent;
+export default GithubCardContent

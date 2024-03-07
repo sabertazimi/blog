@@ -1,9 +1,9 @@
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production'
 
 const NextPwa = require('next-pwa')({
   dest: 'public',
   disable: !isProduction,
-});
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -26,6 +26,6 @@ const nextConfig = {
     '@react-hook/passive-layout-effect',
     'next-mdx-remote',
   ],
-};
+}
 
-module.exports = NextPwa(nextConfig);
+module.exports = NextPwa(nextConfig)

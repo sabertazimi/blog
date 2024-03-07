@@ -1,14 +1,14 @@
-import { cx } from '@components/utils';
-import type { Language } from 'prism-react-renderer';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import styles from './BlockCode.module.css';
-import theme from './monokai';
+import { cx } from '@components/utils'
+import type { Language } from 'prism-react-renderer'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import styles from './BlockCode.module.css'
+import theme from './monokai'
 
 interface Props {
-  enableLine: boolean;
-  lines: Set<number>;
-  language: Language;
-  children: string;
+  enableLine: boolean
+  lines: Set<number>
+  language: Language
+  children: string
 }
 
 const BlockCode = ({
@@ -47,6 +47,6 @@ const BlockCode = ({
       </pre>
     )}
   </Highlight>
-);
+)
 
-export default BlockCode;
+export default BlockCode

@@ -1,5 +1,5 @@
-import { render } from '@utils';
-import Ease from './Ease';
+import { render } from '@utils'
+import Ease from './Ease'
 
 describe('Ease', () => {
   test('should render correctly (snapshot)', () => {
@@ -7,8 +7,8 @@ describe('Ease', () => {
       <Ease>
         <div>Ease</div>
       </Ease>
-    );
+    )
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})

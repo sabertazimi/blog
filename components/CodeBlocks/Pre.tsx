@@ -1,28 +1,28 @@
-import CopyButton from '@components/CopyButton';
-import { cx, dynamic } from '@components/utils';
-import type { HTMLProps, ReactElement } from 'react';
-import BlockCode from './BlockCode';
-import styles from './Pre.module.css';
+import CopyButton from '@components/CopyButton'
+import { cx, dynamic } from '@components/utils'
+import type { HTMLProps, ReactElement } from 'react'
+import BlockCode from './BlockCode'
+import styles from './Pre.module.css'
 import {
   normalizeCode,
   normalizeLanguage,
   normalizeLanguageName,
   normalizeLines,
-} from './utils';
+} from './utils'
 
-const LiveCode = dynamic(() => import('./LiveCode'));
+const LiveCode = dynamic(() => import('./LiveCode'))
 
 interface Props extends HTMLProps<HTMLPreElement> {
-  live?: boolean;
-  noline?: boolean;
-  nocopy?: boolean;
-  title?: string;
-  lines?: string;
+  live?: boolean
+  noline?: boolean
+  nocopy?: boolean
+  title?: string
+  lines?: string
 }
 
 interface CodeProps {
-  children?: string;
-  className?: string;
+  children?: string
+  className?: string
 }
 
 const Pre = ({
@@ -34,12 +34,12 @@ const Pre = ({
   children,
   className,
 }: Props): JSX.Element => {
-  const codeElement = children as ReactElement<CodeProps>;
-  const code = normalizeCode(codeElement?.props?.children);
-  const languageClass = codeElement?.props?.className;
-  const language = normalizeLanguage(languageClass);
-  const languageName = normalizeLanguageName(language);
-  const highlightLines = normalizeLines(lines);
+  const codeElement = children as ReactElement<CodeProps>
+  const code = normalizeCode(codeElement?.props?.children)
+  const languageClass = codeElement?.props?.className
+  const language = normalizeLanguage(languageClass)
+  const languageName = normalizeLanguageName(language)
+  const highlightLines = normalizeLines(lines)
 
   return (
     <pre
@@ -64,7 +64,7 @@ const Pre = ({
         </BlockCode>
       )}
     </pre>
-  );
-};
+  )
+}
 
-export default Pre;
+export default Pre

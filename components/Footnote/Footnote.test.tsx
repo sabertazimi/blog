@@ -1,10 +1,10 @@
-import { render } from '@utils';
-import Footnote from './Footnote';
+import { render } from '@utils'
+import Footnote from './Footnote'
 
 describe('Footnote', () => {
   test('should render correctly (snapshot)', () => {
-    const { container } = render(<Footnote />);
+    const { container } = render(<Footnote />)
 
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(container).toMatchSnapshot()
+  })
+})
