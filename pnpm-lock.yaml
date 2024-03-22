@@ -91,8 +91,8 @@ dependencies:
     specifier: ^7.0.0
     version: 7.0.0
   rehype-mdx-code-props:
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^3.0.0
+    version: 3.0.0
   rehype-slug:
     specifier: ^6.0.0
     version: 6.0.0
@@ -5956,6 +5956,14 @@ packages:
       source-map: 0.7.4
     dev: false
 
+  /estree-util-value-to-estree@3.0.1:
+    resolution: {integrity: sha512-b2tdzTurEIbwRh+mKrEcaWfu1wgb8J1hVsgREg7FFiecWwK/PhO8X0kyc+0bIcKNtD4sqxIdNoRy6/p/TvECEA==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@types/estree': 1.0.5
+      is-plain-obj: 4.1.0
+    dev: false
+
   /estree-util-visit@1.2.1:
     resolution: {integrity: sha512-xbgqcrkIVbIG+lI/gzbvd9SGTJL4zqJKBFttUl5pP27KhAjtMKbX/mQXJ7qgyXpMgVy/zvpm0xoQQaGL8OloOw==}
     dependencies:
@@ -11586,13 +11594,18 @@ packages:
       vfile: 6.0.1
     dev: false
 
-  /rehype-mdx-code-props@2.0.0:
-    resolution: {integrity: sha512-dGjba9oF6DrY6xKDxOuiHp2BtaWaF7hNhxPbtzDcPqRNRjw8fNhRD5Geqf8X8HRowzkykOJkqEX03CKYVpsHTw==}
+  /rehype-mdx-code-props@3.0.0:
+    resolution: {integrity: sha512-Nw8gFlrc51tK+5jz9XhI31J6lniGLpgyM0xIYteDHWEx0rlqosguVMasSMiQXkjov19j66mP9fgl09iCV+AYTA==}
     dependencies:
       '@types/hast': 3.0.4
-      acorn: 8.11.3
-      acorn-jsx: 5.3.2(acorn@8.11.3)
-      hast-util-to-estree: 3.1.0
+      comma-separated-tokens: 2.0.3
+      estree-util-value-to-estree: 3.0.1
+      mdast-util-from-markdown: 2.0.0
+      mdast-util-mdx: 3.0.0
+      micromark-extension-mdxjs: 3.0.0
+      property-information: 6.4.1
+      space-separated-tokens: 2.0.2
+      style-to-js: 1.1.11
       unified: 11.0.4
       unist-util-visit-parents: 6.0.1
     transitivePeerDependencies:
@@ -12391,6 +12404,12 @@ packages:
 
   /style-mod@4.1.2:
     resolution: {integrity: sha512-wnD1HyVqpJUI2+eKZ+eo1UwghftP6yuFheBqqe+bWCotBjC2K1YnteJILRMs3SM4V/0dLEW1SC27MWP5y+mwmw==}
+    dev: false
+
+  /style-to-js@1.1.11:
+    resolution: {integrity: sha512-yHpYzXzEkx7iDjGEmE8Eyl4K/hWIm36FXPdRsl2NHEpbigLeawLVsv6tcYp+2xNhfpCrut4w08dYqeCxWMdRxw==}
+    dependencies:
+      style-to-object: 1.0.5
     dev: false
 
   /style-to-object@0.4.4:
