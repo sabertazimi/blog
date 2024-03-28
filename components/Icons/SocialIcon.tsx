@@ -3,8 +3,8 @@ import {
   GithubOutlined,
   LinkedinOutlined,
   RocketOutlined,
-  TwitterOutlined,
   WeiboOutlined,
+  XOutlined,
 } from '@ant-design/icons'
 import { socialList } from '@config'
 import type { SocialType } from '@types'
@@ -15,7 +15,7 @@ const SocialIcon = (type: SocialType): JSX.Element => {
     case socialList.github:
       return <GithubOutlined className={styles.icon} />
     case socialList.twitter:
-      return <TwitterOutlined className={styles.icon} />
+      return <XOutlined className={styles.icon} />
     case socialList.facebook:
       return <FacebookOutlined className={styles.icon} />
     case socialList.linkedin:
