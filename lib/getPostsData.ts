@@ -1,4 +1,4 @@
-import { serialize } from '@alisowski/next-mdx-remote/serialize'
+import { serialize } from 'next-mdx-remote/serialize'
 import type { MDXFrontMatter, Post, PostMeta, Tag, Tags } from '@types'
 import matter from 'gray-matter'
 import { execSync } from 'node:child_process'

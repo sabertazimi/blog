@@ -52,7 +52,6 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@alisowski/next-mdx-remote": "^4.4.3",
     "@ant-design/cssinjs": "^1.18.5",
     "@ant-design/icons": "^5.3.5",
     "@codesandbox/sandpack-react": "^2.13.5",
@@ -64,7 +63,7 @@
     "gray-matter": "^4.0.3",
     "katex": "^0.16.9",
     "next": "^14.1.4",
-    "next-mdx-remote": "^4.4.1",
+    "next-mdx-remote": "0.0.0-canary-20240314011020",
     "next-progress": "^2.3.1",
     "next-pwa": "^5.6.0",
     "next-seo": "^6.5.0",
@@ -120,9 +119,5 @@
     "ts-jest": "^29.1.2",
     "tslib": "^2.6.2",
     "typescript": "^5.4.3"
-  },
-  "resolutions": {
-    "unified": "^11.0.4",
-    "vfile": "^6.0.1"
   }
 }
