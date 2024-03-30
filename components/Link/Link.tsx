@@ -7,10 +7,12 @@ interface Props {
   className?: string
 }
 
-const Link = ({ href, children, className }: Props): JSX.Element => (
-  <NextLink href={href} legacyBehavior>
-    <a className={className}>{children}</a>
-  </NextLink>
-)
+function Link({ href, children, className }: Props): JSX.Element {
+  return (
+    <NextLink href={href} legacyBehavior>
+      <a className={className}>{children}</a>
+    </NextLink>
+  )
+}
 
 export default Link

@@ -9,7 +9,7 @@ interface Props {
   className?: string
 }
 
-const ThemeSwitch = ({ className }: Props): JSX.Element => {
+function ThemeSwitch({ className }: Props): JSX.Element {
   const [darkMode, setDarkMode] = useDarkMode()
   const shouldReduceMotion = useReducedMotion()
   const handleClick = useCallback(() => {

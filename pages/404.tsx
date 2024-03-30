@@ -21,12 +21,14 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const NotFound = ({ buildTime, postsMeta }: Props): JSX.Element => (
-  <div>
-    <Layout banner="Exploring" buildTime={buildTime} posts={postsMeta}>
-      <NotFoundResult />
-    </Layout>
-  </div>
-)
+function NotFound({ buildTime, postsMeta }: Props): JSX.Element {
+  return (
+    <div>
+      <Layout banner="Exploring" buildTime={buildTime} posts={postsMeta}>
+        <NotFoundResult />
+      </Layout>
+    </div>
+  )
+}
 
 export default NotFound

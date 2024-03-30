@@ -19,9 +19,9 @@ export default function getSitemap(posts: PostMeta[]) {
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
         <lastmod>${new Date(
-          post.createTime ?? Date.now()
+          post.createTime ?? Date.now(),
         ).toISOString()}</lastmod>
-      </url>`
+      </url>`,
       )
       .join('')}
     </urlset>

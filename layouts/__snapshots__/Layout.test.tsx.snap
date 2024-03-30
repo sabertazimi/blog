@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Layout should render correctly (snapshot) 1`] = `
+exports[`layout should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="dark:bg-black"
@@ -629,13 +629,15 @@ exports[`Layout should render correctly (snapshot) 1`] = `
           role="cell"
         >
           <span>
-            Built with 
+            Built with
+             
             <a
               href="https://react.dev"
             >
               React
             </a>
-             and
+             
+            and
              
             <a
               href="https://nextjs.org"

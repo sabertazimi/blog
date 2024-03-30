@@ -1,9 +1,9 @@
 let navigatorClipboardMocked = false
 const writeTextMock = jest.fn()
 
-const mockNavigatorClipboard = () => {
+function mockNavigatorClipboard() {
   if (!navigatorClipboardMocked) {
-    Object.defineProperty(global.navigator, 'clipboard', {
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
       value: {
         writeText: writeTextMock,
       },

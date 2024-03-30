@@ -32,6 +32,7 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     const { hasError, error } = this.state
     const { children } = this.props
+    // eslint-disable-next-line node/prefer-global/process
     const isDevelopment = process.env.NODE_ENV === 'development'
 
     if (hasError && isDevelopment) {

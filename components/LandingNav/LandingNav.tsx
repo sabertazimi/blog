@@ -44,7 +44,7 @@ const bannerTransition: MotionProps['transition'] = {
   duration: 0.4,
 }
 
-const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
+function LandingNav({ routes = defaultRoutes }: Props): JSX.Element {
   const [expanded, setExpanded] = useState(false)
 
   const handleClick = useCallback(() => {
@@ -52,9 +52,8 @@ const LandingNav = ({ routes = defaultRoutes }: Props): JSX.Element => {
   }, [])
 
   const handleKeyDown = useCallback((event: KeyboardEvent<HTMLSpanElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter')
       setExpanded(expanded => !expanded)
-    }
   }, [])
 
   return (

@@ -3,16 +3,16 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import Footer from './Footer'
 
-describe('Footer', () => {
+describe('footer', () => {
   const mockTime = mockData.time
 
-  test('should render correctly (snapshot)', () => {
+  it('should render correctly (snapshot)', () => {
     const { container } = render(<Footer buildTime={mockTime} />)
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should render accessibility guidelines (AXE)', async () => {
+  it('should render accessibility guidelines (AXE)', async () => {
     const { container } = render(<Footer buildTime={mockTime} />)
 
     const a11y = await axe(container)

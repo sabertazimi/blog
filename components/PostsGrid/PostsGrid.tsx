@@ -6,11 +6,13 @@ interface Props {
   posts: PostMeta[]
 }
 
-const PostsGrid = ({ posts }: Props): JSX.Element => (
-  <>
-    <MobilePostsGrid posts={posts} />
-    <DesktopPostsGrid posts={posts} />
-  </>
-)
+function PostsGrid({ posts }: Props): JSX.Element {
+  return (
+    <>
+      <MobilePostsGrid posts={posts} />
+      <DesktopPostsGrid posts={posts} />
+    </>
+  )
+}
 
 export default PostsGrid

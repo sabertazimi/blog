@@ -5,21 +5,23 @@ import styles from './Divider.module.css'
 
 interface Props extends DividerProps {}
 
-const Divider = ({
+function Divider({
   type = 'horizontal',
   className,
   children,
-}: Props): JSX.Element => (
-  <AntDivider
-    type={type}
-    className={cx(
-      styles.divider,
-      className,
-      'dark:!border-light dark:text-light'
-    )}
-  >
-    {children}
-  </AntDivider>
-)
+}: Props): JSX.Element {
+  return (
+    <AntDivider
+      type={type}
+      className={cx(
+        styles.divider,
+        className,
+        'dark:!border-light dark:text-light',
+      )}
+    >
+      {children}
+    </AntDivider>
+  )
+}
 
 export default Divider

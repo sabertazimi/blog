@@ -8,16 +8,18 @@ interface Props {
   icon: ReactNode
 }
 
-const IconTag = ({ tag, icon }: Props): JSX.Element => (
-  <Tag
-    className={cx(
-      styles.icon,
-      'dark:border-light dark:bg-light dark:text-dark'
-    )}
-  >
-    {icon}
-    <span>{tag}</span>
-  </Tag>
-)
+function IconTag({ tag, icon }: Props): JSX.Element {
+  return (
+    <Tag
+      className={cx(
+        styles.icon,
+        'dark:border-light dark:bg-light dark:text-dark',
+      )}
+    >
+      {icon}
+      <span>{tag}</span>
+    </Tag>
+  )
+}
 
 export default IconTag

@@ -6,9 +6,9 @@ interface Props extends CardProps {}
 
 interface MetaProps extends CardMetaProps {}
 
-const Card = ({ className, ...props }: Props): JSX.Element => (
-  <AntCard {...props} className={cx(className, 'card')} />
-)
+function Card({ className, ...props }: Props): JSX.Element {
+  return <AntCard {...props} className={cx(className, 'card')} />
+}
 
 const Meta = (props: MetaProps): JSX.Element => <AntCard.Meta {...props} />
 

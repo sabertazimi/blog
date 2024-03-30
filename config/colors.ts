@@ -30,11 +30,11 @@ const colors = {
 type SocialColor = keyof typeof socialColors
 type PaletteColor = keyof typeof colorPalette
 
-const hashString = (name: string) => {
+function hashString(name: string) {
   return name.length
 }
 
-const getColorByName = (name: string): string => {
+function getColorByName(name: string): string {
   const palette = Object.keys(colorPalette)
   const colorIdx = hashString(name) % palette.length
   const paletteColor = palette[colorIdx] as PaletteColor

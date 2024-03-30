@@ -26,7 +26,7 @@ const defaultTransition: MotionProps['transition'] = {
   duration: 0.2,
 }
 
-const Switch = ({
+function Switch({
   children,
   className,
   role = 'switch',
@@ -35,19 +35,21 @@ const Switch = ({
   transition = defaultTransition,
   onClick,
   ...props
-}: Props): JSX.Element => (
-  <motion.div
-    className={className}
-    role={role}
-    initial="close"
-    animate={open ? 'open' : 'close'}
-    variants={variants}
-    transition={transition}
-    onClick={onClick}
-    {...props}
-  >
-    {children}
-  </motion.div>
-)
+}: Props): JSX.Element {
+  return (
+    <motion.div
+      className={className}
+      role={role}
+      initial="close"
+      animate={open ? 'open' : 'close'}
+      variants={variants}
+      transition={transition}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export default Switch

@@ -11,13 +11,13 @@ interface Props {
   className?: string
 }
 
-const TypingTitle = ({
+function TypingTitle({
   titles = siteConfig.landingTitles,
   speed = 60,
   delay = 600,
   loop = true,
   className,
-}: Props): JSX.Element => {
+}: Props): JSX.Element {
   const ref = useRef<HTMLSpanElement>(null)
   useTypingEffect(ref, { titles, speed, delay, loop })
 
@@ -26,7 +26,7 @@ const TypingTitle = ({
       className={cx(
         'typing-title-container mx-auto my-0 h-auto w-full px-0 py-0',
         'text-center text-5xl font-extrabold lg:text-9xl',
-        className
+        className,
       )}
     >
       <span role="main" ref={ref} />

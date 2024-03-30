@@ -8,16 +8,18 @@ interface Props {
   books?: Book[]
 }
 
-const BooksGrid = ({ books = siteConfig.books }: Props): JSX.Element => (
-  <div role="grid">
-    <Row>
-      {books.map((book, index) => (
-        <Col span={24} key={index}>
-          <BookCard book={book} />
-        </Col>
-      ))}
-    </Row>
-  </div>
-)
+function BooksGrid({ books = siteConfig.books }: Props): JSX.Element {
+  return (
+    <div role="grid">
+      <Row>
+        {books.map((book, index) => (
+          <Col span={24} key={index}>
+            <BookCard book={book} />
+          </Col>
+        ))}
+      </Row>
+    </div>
+  )
+}
 
 export default BooksGrid

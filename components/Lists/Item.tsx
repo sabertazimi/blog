@@ -6,11 +6,13 @@ import styles from './Item.module.css'
 
 interface Props extends HTMLProps<HTMLLIElement> {}
 
-const Item = ({ children, className, ...props }: Props): JSX.Element => (
-  <li {...props} className={cx(className, styles.item, 'dark:text-light')}>
-    <ArrowRight style={{ color: siteConfig.themeColor }} />
-    <div>{children}</div>
-  </li>
-)
+function Item({ children, className, ...props }: Props): JSX.Element {
+  return (
+    <li {...props} className={cx(className, styles.item, 'dark:text-light')}>
+      <ArrowRight style={{ color: siteConfig.themeColor }} />
+      <div>{children}</div>
+    </li>
+  )
+}
 
 export default Item

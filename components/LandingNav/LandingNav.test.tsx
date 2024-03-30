@@ -1,7 +1,7 @@
 import { act, render, screen } from '@utils'
 import LandingNav from './LandingNav'
 
-describe('LandingNav', () => {
+describe('landingNav', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
@@ -10,7 +10,7 @@ describe('LandingNav', () => {
     jest.useRealTimers()
   })
 
-  test('should render routes correctly (snapshot)', () => {
+  it('should render routes correctly (snapshot)', () => {
     const { container } = render(<LandingNav />)
 
     act(() => {
@@ -20,7 +20,7 @@ describe('LandingNav', () => {
     expect(container).toMatchSnapshot()
   })
 
-  test('should render route with correct structure', () => {
+  it('should render route with correct structure', () => {
     render(<LandingNav />)
 
     const nav = screen.getByRole('navigation')

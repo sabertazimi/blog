@@ -7,17 +7,17 @@ interface SpanProps {
   className?: string
 }
 
-const Span = ({
+function Span({
   children,
   size = 'md',
   className = '',
-}: SpanProps): JSX.Element => {
+}: SpanProps): JSX.Element {
   if (size === 'xl') {
     return (
       <span
         className={cx(
           'ml-2 inline-block align-bottom text-5xl font-extrabold',
-          className
+          className,
         )}
       >
         {children}
@@ -30,7 +30,7 @@ const Span = ({
       <span
         className={cx(
           'ml-2 inline-block align-bottom text-3xl font-extrabold',
-          className
+          className,
         )}
       >
         {children}

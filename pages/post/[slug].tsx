@@ -1,14 +1,14 @@
+import type { ParsedUrlQuery } from 'node:querystring'
 import { Article } from '@components'
 import { PostLayout } from '@layouts'
 import { getBuildTime, getPostData, getPostsMeta } from '@lib'
-import type { BuildTime, Post, PostMeta } from '@types'
+import type { BuildTime, PostMeta, PostType } from '@types'
 import 'katex/dist/katex.css'
 import type { GetStaticPaths, GetStaticProps } from 'next/types'
-import type { ParsedUrlQuery } from 'node:querystring'
 
 interface Props {
   buildTime: BuildTime
-  postData: Post
+  postData: PostType
   postsMeta: PostMeta[]
 }
 
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async ({
 }) => {
   const slug = (params as QueryParams).slug
   const buildTime = getBuildTime()
-  const postData = (await getPostData(slug)) as Post
+  const postData = (await getPostData(slug)) as PostType
   const postsMeta = await getPostsMeta()
 
   return {
@@ -47,14 +47,16 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async ({
   }
 }
 
-const Post = ({ buildTime, postData, postsMeta }: Props): JSX.Element => (
-  <PostLayout
-    banner={`${postData.title}`}
-    buildTime={buildTime}
-    posts={postsMeta}
-  >
-    <Article post={postData} />
-  </PostLayout>
-)
+function Post({ buildTime, postData, postsMeta }: Props): JSX.Element {
+  return (
+    <PostLayout
+      banner={`${postData.title}`}
+      buildTime={buildTime}
+      posts={postsMeta}
+    >
+      <Article post={postData} />
+    </PostLayout>
+  )
+}
 
 export default Post

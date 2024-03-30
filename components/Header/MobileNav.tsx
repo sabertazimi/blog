@@ -9,37 +9,39 @@ import ThemeSwitch from '@components/ThemeSwitch'
 import { routes } from '@config'
 import logo from '@images/logo-full.png'
 
-const MobileNav = (): JSX.Element => (
-  <Row className="md:hidden" justify="center" align="middle">
-    <Col className="flex-container" span={8}>
-      <Popover
-        placement="bottomRight"
-        trigger="click"
-        content={
-          <Menu
-            mode="vertical"
-            className="w-full min-w-xs max-w-md text-center text-2xl font-extrabold"
-            items={[
-              ...routes.map(route => ({
-                key: route.id,
-                label: <Link href={route.path}>{route.name}</Link>,
-              })),
-            ]}
-          />
-        }
-      >
-        <Bars className="text-5xl text-primary" />
-      </Popover>
-    </Col>
-    <Col className="flex-container" span={8}>
-      <Link href="/">
-        <LocalImage src={logo} alt="Logo" width={96} height={96} />
-      </Link>
-    </Col>
-    <Col className="flex-container" span={8}>
-      <ThemeSwitch className="dark:text-light" />
-    </Col>
-  </Row>
-)
+function MobileNav(): JSX.Element {
+  return (
+    <Row className="md:hidden" justify="center" align="middle">
+      <Col className="flex-container" span={8}>
+        <Popover
+          placement="bottomRight"
+          trigger="click"
+          content={(
+            <Menu
+              mode="vertical"
+              className="w-full min-w-xs max-w-md text-center text-2xl font-extrabold"
+              items={[
+                ...routes.map(route => ({
+                  key: route.id,
+                  label: <Link href={route.path}>{route.name}</Link>,
+                })),
+              ]}
+            />
+          )}
+        >
+          <Bars className="text-5xl text-primary" />
+        </Popover>
+      </Col>
+      <Col className="flex-container" span={8}>
+        <Link href="/">
+          <LocalImage src={logo} alt="Logo" width={96} height={96} />
+        </Link>
+      </Col>
+      <Col className="flex-container" span={8}>
+        <ThemeSwitch className="dark:text-light" />
+      </Col>
+    </Row>
+  )
+}
 
 export default MobileNav

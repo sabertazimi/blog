@@ -10,7 +10,7 @@ import { socialList } from '@config'
 import type { SocialType } from '@types'
 import styles from './SocialIcon.module.css'
 
-const SocialIcon = (type: SocialType): JSX.Element => {
+function SocialIcon(type: SocialType): JSX.Element {
   switch (type) {
     case socialList.github:
       return <GithubOutlined className={styles.icon} />

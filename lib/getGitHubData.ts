@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { siteConfig } from '@config'
 import { Octokit } from '@octokit/rest'
 import type { GitHub } from '@types'
@@ -17,7 +18,7 @@ export default async function getGitHubData(): Promise<GitHub> {
         'GET /users/{username}/repos',
         {
           username,
-        }
+        },
       )
 
       githubData = {
@@ -38,8 +39,8 @@ export default async function getGitHubData(): Promise<GitHub> {
           .sort(
             (
               { stargazers_count: stargazers_count1 = 0 },
-              { stargazers_count: stargazers_count2 = 0 }
-            ) => (stargazers_count1 < stargazers_count2 ? 1 : -1)
+              { stargazers_count: stargazers_count2 = 0 },
+            ) => (stargazers_count1 < stargazers_count2 ? 1 : -1),
           )
           .map(repo => ({
             name: repo.name,
@@ -52,11 +53,12 @@ export default async function getGitHubData(): Promise<GitHub> {
       if (error instanceof Error) {
         console.error(error.message)
         console.error(
-          'GitHub API request error, fallback to local GitHub data.'
+          'GitHub API request error, fallback to local GitHub data.',
         )
       }
     }
   } else {
+    // eslint-disable-next-line no-console
     console.info('Not for Vercel build, fallback to local GitHub data.')
   }
 

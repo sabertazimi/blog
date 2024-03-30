@@ -6,7 +6,7 @@
 import type { RefObject } from 'react'
 import { useCallback, useEffect, useRef } from 'react'
 
-const useVisibility = ({
+function useVisibility({
   ref,
   onBottomPassed,
   onBottomPassedReverse,
@@ -14,7 +14,7 @@ const useVisibility = ({
   ref: RefObject<HTMLElement>
   onBottomPassed: () => void
   onBottomPassedReverse: () => void
-}): void => {
+}): void {
   const frameId = useRef(0)
   const ticking = useRef(false)
   const pageYOffset = useRef(0)
@@ -31,9 +31,8 @@ const useVisibility = ({
     const oldBottomPassed = bottomPassed.current
 
     // early return when ref missing (e.g. unmounting when routing or animation)
-    if (!ref.current) {
+    if (!ref.current)
       return
-    }
 
     // calculate visibility
     const { bottom } = ref.current.getBoundingClientRect()
@@ -47,18 +46,17 @@ const useVisibility = ({
 
     // fire callbacks according to visibility
     if (bottomPassed.current !== oldBottomPassed) {
-      if (direction === 'up') {
+      if (direction === 'up')
         Boolean(onBottomPassedReverse) && onBottomPassedReverse()
-      }
 
-      if (direction === 'down') {
+      if (direction === 'down')
         Boolean(onBottomPassed) && onBottomPassed()
-      }
     }
   }, [ref, onBottomPassed, onBottomPassedReverse])
 
   const handleUpdate = useCallback(() => {
-    if (ticking.current) return
+    if (ticking.current)
+      return
 
     ticking.current = true
     frameId.current = requestAnimationFrame(update)
@@ -72,9 +70,8 @@ const useVisibility = ({
       window.removeEventListener('resize', handleUpdate)
       window.removeEventListener('scroll', handleUpdate)
 
-      if (frameId.current) {
+      if (frameId.current)
         cancelAnimationFrame(frameId.current)
-      }
     }
   }, [handleUpdate])
 }

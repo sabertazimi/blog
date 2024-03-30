@@ -18,19 +18,21 @@ const scope = {
   ...React,
 }
 
-const LiveCode = ({ language, children }: Props): JSX.Element => (
-  <div className={styles.container}>
-    <LiveProvider
-      scope={scope}
-      code={children}
-      language={language}
-      theme={theme}
-    >
-      <LiveEditor padding="1.25rem" className={styles.editor} />
-      <LivePreview className={styles.preview} />
-      <LiveError className={styles.error} />
-    </LiveProvider>
-  </div>
-)
+function LiveCode({ language, children }: Props): JSX.Element {
+  return (
+    <div className={styles.container}>
+      <LiveProvider
+        scope={scope}
+        code={children}
+        language={language}
+        theme={theme}
+      >
+        <LiveEditor padding="1.25rem" className={styles.editor} />
+        <LivePreview className={styles.preview} />
+        <LiveError className={styles.error} />
+      </LiveProvider>
+    </div>
+  )
+}
 
 export default LiveCode

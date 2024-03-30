@@ -13,7 +13,7 @@ interface TocItem {
   title: string
 }
 
-const ArticleToc = ({ slug, offset = 150 }: Props): JSX.Element => {
+function ArticleToc({ slug, offset = 150 }: Props): JSX.Element {
   const [tocItems, setTocItems] = useState<TocItem[]>([])
 
   useEffect(() => {

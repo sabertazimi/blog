@@ -6,7 +6,7 @@ import H4 from './H4'
 import H5 from './H5'
 import H6 from './H6'
 
-describe('Headings', () => {
+describe('headings', () => {
   const Headings = {
     h1: H1,
     h2: H2,
@@ -16,12 +16,12 @@ describe('Headings', () => {
     h6: H6,
   }
 
-  test.each(Object.values(Headings))(
+  it.each(Object.values(Headings))(
     'should render correctly (snapshot)',
-    Heading => {
+    (Heading) => {
       const { container } = render(<Heading>Heading</Heading>)
 
       expect(container).toMatchSnapshot()
-    }
+    },
   )
 })

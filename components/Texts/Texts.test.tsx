@@ -4,7 +4,7 @@ import Delete from './Delete'
 import Emphasis from './Emphasis'
 import Strong from './Strong'
 
-describe('Texts', () => {
+describe('texts', () => {
   const Texts = {
     a: Anchor,
     strong: Strong,
@@ -12,12 +12,12 @@ describe('Texts', () => {
     del: Delete,
   }
 
-  test.each(Object.values(Texts))(
+  it.each(Object.values(Texts))(
     'should render correctly (snapshot)',
-    Text => {
+    (Text) => {
       const { container } = render(<Text>Text</Text>)
 
       expect(container).toMatchSnapshot()
-    }
+    },
   )
 })

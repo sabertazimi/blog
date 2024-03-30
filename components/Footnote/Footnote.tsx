@@ -7,10 +7,12 @@ interface Props {
   className?: string
 }
 
-const Footnote = ({ children, className, ...props }: Props): JSX.Element => (
-  <div {...props} className={cx(className, styles.footnote)}>
-    {children}
-  </div>
-)
+function Footnote({ children, className, ...props }: Props): JSX.Element {
+  return (
+    <div {...props} className={cx(className, styles.footnote)}>
+      {children}
+    </div>
+  )
+}
 
 export default Footnote

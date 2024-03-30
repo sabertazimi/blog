@@ -2,14 +2,14 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import ArticleComments from './ArticleComments'
 
-describe('ArticleComments', () => {
-  test('should render correctly (snapshot)', () => {
+describe('articleComments', () => {
+  it('should render correctly (snapshot)', () => {
     const { container } = render(<ArticleComments />)
 
     expect(container).toMatchSnapshot()
   })
 
-  test('Should render accessibility guidelines (AXE)', async () => {
+  it('should render accessibility guidelines (AXE)', async () => {
     const { container } = render(<ArticleComments />)
 
     const a11y = await axe(container)

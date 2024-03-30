@@ -3,14 +3,13 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 type CopiedResult = boolean
 type CopyFunction = () => Promise<boolean>
 
-const useCopyToClipboard = (text: string): [CopiedResult, CopyFunction] => {
+function useCopyToClipboard(text: string): [CopiedResult, CopyFunction] {
   const [isCopied, setIsCopied] = useState(false)
   const copyTimeout = useRef<number | undefined>(undefined)
 
   const copy: CopyFunction = useCallback(async () => {
-    if (!navigator?.clipboard) {
+    if (!navigator?.clipboard)
       return false
-    }
 
     try {
       await navigator.clipboard.writeText(text)

@@ -12,18 +12,20 @@ interface Props {
   className?: string
 }
 
-const LinkTag = ({
+function LinkTag({
   tag = 'Computer Science',
   href = `/tag/${tag}`,
   color = getColorByName(tag),
   className,
-}: Props): JSX.Element => (
-  <Tag
-    color={color}
-    className={cx(styles.link, 'dark:hover:shadow-primary', className)}
-  >
-    <Link href={href}>{tag}</Link>
-  </Tag>
-)
+}: Props): JSX.Element {
+  return (
+    <Tag
+      color={color}
+      className={cx(styles.link, 'dark:hover:shadow-primary', className)}
+    >
+      <Link href={href}>{tag}</Link>
+    </Tag>
+  )
+}
 
 export default LinkTag

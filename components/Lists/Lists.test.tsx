@@ -3,19 +3,19 @@ import Item from './Item'
 import Ol from './Ol'
 import Ul from './Ul'
 
-describe('Lists', () => {
+describe('lists', () => {
   const Lists = {
     ul: Ul,
     ol: Ol,
     li: Item,
   }
 
-  test.each(Object.values(Lists))(
+  it.each(Object.values(Lists))(
     'should render correctly (snapshot)',
-    List => {
+    (List) => {
       const { container } = render(<List>List</List>)
 
       expect(container).toMatchSnapshot()
-    }
+    },
   )
 })

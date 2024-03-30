@@ -3,22 +3,22 @@ import type { Language } from 'prism-react-renderer'
 
 const normalizeCode = (code: string = '') => code.replace(/\n+$/, '')
 
-const isLanguage = (language: string): language is Language =>
-  language.length > 0
+function isLanguage(language: string): language is Language {
+  return language.length > 0
+}
 
-const normalizeLanguage = (languageClass?: string): Language => {
+function normalizeLanguage(languageClass?: string): Language {
   if (languageClass) {
     const language = languageClass.replace('language-', '')
 
-    if (isLanguage(language)) {
+    if (isLanguage(language))
       return language
-    }
   }
 
   return 'typescript'
 }
 
-const normalizeLanguageName = (language: string): string => {
+function normalizeLanguageName(language: string): string {
   switch (language) {
     case 'html':
       return 'HTML'
@@ -54,8 +54,9 @@ const normalizeLanguageName = (language: string): string => {
   }
 }
 
-const normalizeLines = (expression: string): Set<number> =>
-  new Set(parseNumericRange(expression))
+function normalizeLines(expression: string): Set<number> {
+  return new Set(parseNumericRange(expression))
+}
 
 export {
   normalizeCode,

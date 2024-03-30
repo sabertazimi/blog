@@ -3,13 +3,12 @@ import { axe } from 'jest-axe'
 import type { JSXElementConstructor, ReactNode } from 'react'
 import ErrorBoundary from './ErrorBoundary'
 
-describe('ErrorBoundary', () => {
+describe('errorBoundary', () => {
   const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
-    if (shouldThrow) {
+    if (shouldThrow)
       throw new Error('ComponentWithError')
-    } else {
+    else
       return <div>App</div>
-    }
   }
   const ENV = { ...process.env }
   let mockConsoleError: jest.SpyInstance
@@ -26,31 +25,31 @@ describe('ErrorBoundary', () => {
     mockConsoleError.mockRestore()
   })
 
-  test('should render children correctly (snapshot)', () => {
+  it('should render children correctly (snapshot)', () => {
     const { container } = render(
       <ErrorBoundary>
         <ComponentWithError />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should render alert message correctly (snapshot)', () => {
+  it('should render alert message correctly (snapshot)', () => {
     const { container } = render(
       <ErrorBoundary>
         <ComponentWithError shouldThrow />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should render children accessibility guidelines (AXE)', async () => {
+  it('should render children accessibility guidelines (AXE)', async () => {
     const { container } = render(
       <ErrorBoundary>
         <ComponentWithError />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     )
 
     const a11y = await axe(container)
@@ -58,11 +57,11 @@ describe('ErrorBoundary', () => {
     expect(a11y).toHaveNoViolations()
   })
 
-  test('should render alert message accessibility guidelines (AXE)', async () => {
+  it('should render alert message accessibility guidelines (AXE)', async () => {
     const { container } = render(
       <ErrorBoundary>
         <ComponentWithError shouldThrow />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     )
 
     const a11y = await axe(container)
@@ -70,7 +69,7 @@ describe('ErrorBoundary', () => {
     expect(a11y).toHaveNoViolations()
   })
 
-  test('should render alert message when error happened', () => {
+  it('should render alert message when error happened', () => {
     const { rerender } = render(<ComponentWithError />, {
       wrapper: ErrorBoundary as JSXElementConstructor<{ children: ReactNode }>,
     })

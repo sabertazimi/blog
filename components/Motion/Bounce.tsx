@@ -34,29 +34,31 @@ const viewport: MotionProps['viewport'] = {
   once: true,
 }
 
-const Bounce = ({
+function Bounce({
   children,
   className,
   delay = 0,
   ...props
-}: Props): JSX.Element => (
-  <motion.div
-    className={cx('inline-flex', className)}
-    initial={initialVariants}
-    whileInView={inViewVariants}
-    whileFocus={focusVariants}
-    whileHover={hoverVariants}
-    whileTap={tapVariants}
-    transition={{
-      type: 'spring',
-      delay,
-      stiffness: 100,
-    }}
-    viewport={viewport}
-    {...props}
-  >
-    {children}
-  </motion.div>
-)
+}: Props): JSX.Element {
+  return (
+    <motion.div
+      className={cx('inline-flex', className)}
+      initial={initialVariants}
+      whileInView={inViewVariants}
+      whileFocus={focusVariants}
+      whileHover={hoverVariants}
+      whileTap={tapVariants}
+      transition={{
+        type: 'spring',
+        delay,
+        stiffness: 100,
+      }}
+      viewport={viewport}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export default Bounce

@@ -3,7 +3,7 @@ import Divider from '@components/Divider'
 import { Comment } from '@components/Icons'
 import SocialGroup from '@components/SocialGroup'
 import { siteConfig } from '@config'
-import type { Post, SiteConfig } from '@types'
+import type { PostType, SiteConfig } from '@types'
 import ArticleComments from './ArticleComments'
 import ArticleContent from './ArticleContent'
 import ArticleHeader from './ArticleHeader'
@@ -11,14 +11,14 @@ import ArticleNav from './ArticleNav'
 import ArticleToc from './ArticleToc'
 
 interface Props {
-  post: Post
+  post: PostType
   siteUrl?: SiteConfig['siteUrl']
 }
 
-const Article = ({
-  post: { excerpt, source, ...postMeta },
+function Article({
+  post: { excerpt: _, source, ...postMeta },
   siteUrl = siteConfig.siteUrl,
-}: Props): JSX.Element => {
+}: Props): JSX.Element {
   const { slug, subtitle, prevPost, nextPost } = postMeta
   const socialUrl = `${siteUrl}/post/${slug}`
 

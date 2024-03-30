@@ -3,7 +3,7 @@ import { act, renderHook, waitFor } from '@utils'
 import useCopyToClipboard from './useCopyToClipboard'
 
 describe('useCopyToClipboard', () => {
-  test('should early return when clipboard missed', async () => {
+  it('should early return when clipboard missed', async () => {
     const {
       result: {
         current: [result, copy],
@@ -16,9 +16,9 @@ describe('useCopyToClipboard', () => {
     expect(result).toBe(false)
   })
 
-  test('should return false when copy failed', async () => {
+  it('should return false when copy failed', async () => {
     const { writeTextMock } = mockNavigatorClipboard()
-    writeTextMock.mockImplementation(() => Promise.reject('Error'))
+    writeTextMock.mockImplementation(() => Promise.reject(new Error('Error')))
     const {
       result: {
         current: [result, copy],
@@ -31,7 +31,7 @@ describe('useCopyToClipboard', () => {
     expect(result).toBe(false)
   })
 
-  test('should return true when copy success', async () => {
+  it('should return true when copy success', async () => {
     const { writeTextMock } = mockNavigatorClipboard()
     writeTextMock.mockImplementation(() => Promise.resolve('Success'))
     const {

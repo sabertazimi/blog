@@ -9,10 +9,7 @@ interface TypingOptions {
   loop: boolean
 }
 
-const useTypingEffect = (
-  ref: RefObject<HTMLElement>,
-  options: TypingOptions
-): void => {
+function useTypingEffect(ref: RefObject<HTMLElement>, options: TypingOptions): void {
   const { titles, speed, delay, loop } = options
   const typed = useRef<Typed | null>(null)
 
@@ -26,14 +23,12 @@ const useTypingEffect = (
       loop,
     }
 
-    if (ref.current) {
+    if (ref.current)
       typed.current = new Typed(ref.current, options)
-    }
 
     return () => {
-      if (typed.current) {
+      if (typed.current)
         typed.current.destroy()
-      }
     }
   }, [ref, titles, speed, delay, loop])
 }

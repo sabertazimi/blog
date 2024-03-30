@@ -13,23 +13,25 @@ interface Props extends HTMLProps<HTMLButtonElement> {
   color?: string
 }
 
-const SocialButton = ({
+function SocialButton({
   type,
   url,
   className,
   color = '',
-}: Props): JSX.Element => (
-  <Bounce>
-    <Button
-      role="link"
-      size="large"
-      type="link"
-      className={cx(styles.button, className)}
-      style={color ? { backgroundColor: color } : {}}
-      icon={SocialIcon(type)}
-      href={`${url}`}
-    />
-  </Bounce>
-)
+}: Props): JSX.Element {
+  return (
+    <Bounce>
+      <Button
+        role="link"
+        size="large"
+        type="link"
+        className={cx(styles.button, className)}
+        style={color ? { backgroundColor: color } : {}}
+        icon={SocialIcon(type)}
+        href={`${url}`}
+      />
+    </Bounce>
+  )
+}
 
 export default SocialButton

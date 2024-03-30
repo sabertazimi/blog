@@ -1,5 +1,5 @@
 import type { Route } from '@config'
-import { routes, siteConfig } from '@config'
+import { routes } from '@config'
 
 describe('Header', () => {
   const menuItems = ['/', ...routes, 'SearchBar', 'ThemeSwitch', 'Ellipsis']
@@ -47,7 +47,7 @@ describe('Header', () => {
       cy.visitRoute(route.path, route.name)
       cy.clearLocalStorage()
 
-      cy.window().then(window => {
+      cy.window().then((window) => {
         expect(window.localStorage.getItem('dark-mode')).to.equal(null)
         expect(window.document.body.classList.contains('dark')).to.equal(false)
       })

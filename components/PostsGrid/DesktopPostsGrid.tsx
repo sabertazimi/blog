@@ -6,7 +6,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-const DesktopPostsGrid = ({ posts }: Props): JSX.Element => {
+function DesktopPostsGrid({ posts }: Props): JSX.Element {
   const leftPosts = posts.slice(0, Math.ceil(posts.length / 2))
   const rightPosts = posts.slice(Math.ceil(posts.length / 2))
 

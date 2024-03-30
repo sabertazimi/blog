@@ -2,6 +2,8 @@
  * @see https://on.cypress.io/configuration
  */
 
+import './commands'
+
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -40,5 +42,3 @@ declare global {
     }
   }
 }
-
-import './commands'
