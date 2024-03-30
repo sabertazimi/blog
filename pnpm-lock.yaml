@@ -116,8 +116,8 @@ dependencies:
 
 devDependencies:
   '@dg-scripts/stylelint-config':
-    specifier: ^5.14.3
-    version: 5.14.3(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1)
+    specifier: ^5.16.0
+    version: 5.16.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1)
   '@octokit/types':
     specifier: ^12.6.0
     version: 12.6.0
@@ -2106,8 +2106,8 @@ packages:
       - supports-color
     dev: true
 
-  /@dg-scripts/stylelint-config@5.14.3(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1):
-    resolution: {integrity: sha512-E9UF6P3KYHWZjM0/e6W7CnytfhETbKuAWb2Bsy8yKCt8hEZSt/kKA3JYZflOA+/R8jOpzoa22RIal6X9JUkp2A==}
+  /@dg-scripts/stylelint-config@5.16.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1):
+    resolution: {integrity: sha512-dD8I7AJ87JMVBtuqi3E8X9DDYmh1Jodh67dlzf1xVzZx16SIRqXZRoDD5aHyoxKd/fHFp+4MesYjApkQJpiV2w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       prettier: ^3.0.0
@@ -2115,7 +2115,7 @@ packages:
     dependencies:
       prettier: 3.2.5
       stylelint: 16.3.1(typescript@5.4.3)
-      stylelint-config-bod: 5.14.3(postcss@8.4.38)(stylelint@16.3.1)
+      stylelint-config-bod: 5.16.0(postcss@8.4.38)(stylelint@16.3.1)
       stylelint-prettier: 5.0.0(prettier@3.2.5)(stylelint@16.3.1)
     transitivePeerDependencies:
       - postcss
@@ -12442,8 +12442,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /stylelint-config-bod@5.14.3(postcss@8.4.38)(stylelint@16.3.1):
-    resolution: {integrity: sha512-xCkZuGUqGUEoFNfg8SLARV5ixntftDiXcAHO68ok5FMyCcLodXxjXe/V5LSbjDsegfCmpJus6DP1sVXOMAcPIw==}
+  /stylelint-config-bod@5.16.0(postcss@8.4.38)(stylelint@16.3.1):
+    resolution: {integrity: sha512-iCvYMcPxbj6cdpaZePpehRrTqsW/zvXyfjJx44lu1Lu/wIyWP9FcVOeA4eXa8PbbV4IwgEMvVNc3YT5y2UEkGA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       stylelint: ^15.0.0 || ^16.0.0
@@ -12452,7 +12452,7 @@ packages:
       postcss-markdown: 1.2.0
       stylelint: 16.3.1(typescript@5.4.3)
       stylelint-config-html: 1.1.0(postcss-html@1.6.0)(stylelint@16.3.1)
-      stylelint-config-recess-order: 4.6.0(stylelint@16.3.1)
+      stylelint-config-recess-order: 5.0.0(stylelint@16.3.1)
       stylelint-config-standard: 36.0.0(stylelint@16.3.1)
       stylelint-config-standard-scss: 13.0.0(postcss@8.4.38)(stylelint@16.3.1)
     transitivePeerDependencies:
@@ -12471,10 +12471,10 @@ packages:
       stylelint: 16.3.1(typescript@5.4.3)
     dev: true
 
-  /stylelint-config-recess-order@4.6.0(stylelint@16.3.1):
-    resolution: {integrity: sha512-V76fhv3YtcNXh/hyAuAdSzi5FmcrG54Mp2AThJ3D/PTMTSYzUPd7GIhP6z9mTqnRhmkk6YTfcu/JWB8h+Yrcaw==}
+  /stylelint-config-recess-order@5.0.0(stylelint@16.3.1):
+    resolution: {integrity: sha512-D+/Got844O96No2mj/H2NhLjj555iKAy/Mea+JCerfKB9TBKQW3/IudSVkTCxE4QiRDLldfH15x6FH1D1Anjhw==}
     peerDependencies:
-      stylelint: '>=15'
+      stylelint: '>=16'
     dependencies:
       stylelint: 16.3.1(typescript@5.4.3)
       stylelint-order: 6.0.4(stylelint@16.3.1)
