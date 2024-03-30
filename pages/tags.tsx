@@ -1,13 +1,13 @@
 import { PostsList, TagsCloud } from '@components'
 import { Layout } from '@layouts'
 import { getBuildTime, getPostsMeta, getTagsData } from '@lib'
-import type { BuildTime, PostMeta, Tags } from '@types'
+import type { BuildTime, PostMeta, TagsType } from '@types'
 import type { GetStaticProps } from 'next/types'
 
 interface Props {
   buildTime: BuildTime
   postsMeta: PostMeta[]
-  tagsData: Tags
+  tagsData: TagsType
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -24,11 +24,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const Tags = ({ buildTime, postsMeta, tagsData }: Props): JSX.Element => (
-  <Layout banner="Tags" buildTime={buildTime} posts={postsMeta}>
-    <TagsCloud tags={tagsData} />
-    <PostsList posts={postsMeta} />
-  </Layout>
-)
+function Tags({ buildTime, postsMeta, tagsData }: Props): JSX.Element {
+  return (
+    <Layout banner="Tags" buildTime={buildTime} posts={postsMeta}>
+      <TagsCloud tags={tagsData} />
+      <PostsList posts={postsMeta} />
+    </Layout>
+  )
+}
 
 export default Tags

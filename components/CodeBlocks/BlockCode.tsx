@@ -11,42 +11,46 @@ interface Props {
   children: string
 }
 
-const BlockCode = ({
+function BlockCode({
   enableLine,
   lines,
   language,
   children,
-}: Props): JSX.Element => (
-  <Highlight
-    {...defaultProps}
-    code={children}
-    language={language}
-    theme={theme}
-  >
-    {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre className={cx(className, styles.code)} style={style}>
-        {tokens.map((line, index) => (
-          <div
-            key={index}
-            {...getLineProps({ line, key: index })}
-            className={cx(
-              'token-line',
-              lines.has(index + 1) ? styles.highlight : styles.hover
-            )}
-          >
-            {enableLine ? (
-              <span className={styles.number}>{index + 1}</span>
-            ) : (
-              <span className={styles.placeholder}></span>
-            )}
-            {line.map((token, key) => (
-              <span key={key} {...getTokenProps({ token, key })} />
-            ))}
-          </div>
-        ))}
-      </pre>
-    )}
-  </Highlight>
-)
+}: Props): JSX.Element {
+  return (
+    <Highlight
+      {...defaultProps}
+      code={children}
+      language={language}
+      theme={theme}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={cx(className, styles.code)} style={style}>
+          {tokens.map((line, index) => (
+            <div
+              key={index}
+              {...getLineProps({ line, key: index })}
+              className={cx(
+                'token-line',
+                lines.has(index + 1) ? styles.highlight : styles.hover,
+              )}
+            >
+              {enableLine
+                ? (
+                  <span className={styles.number}>{index + 1}</span>
+                  )
+                : (
+                  <span className={styles.placeholder}></span>
+                  )}
+              {line.map((token, key) => (
+                <span key={key} {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
+  )
+}
 
 export default BlockCode

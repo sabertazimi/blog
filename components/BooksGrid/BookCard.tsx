@@ -9,18 +9,18 @@ interface Props {
   book: Book
 }
 
-const BookCard = ({ book }: Props): JSX.Element => {
+function BookCard({ book }: Props): JSX.Element {
   const { title, url, author, description } = book
 
   return (
     <Badge.Ribbon text={title} color={getColorByName(title)}>
       <Card
-        title={
+        title={(
           <a href={url}>
             <BookIcon className="align-top text-6xl" />
             <Span size="xl">{title}</Span>
           </a>
-        }
+        )}
       >
         <Meta title={description} description={`Written by ${author}`} />
       </Card>

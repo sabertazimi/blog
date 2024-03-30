@@ -3,8 +3,8 @@ import { FloatButton } from 'antd'
 
 interface Props extends BackTopProps {}
 
-const BackTop = (props: Props): JSX.Element => (
-  <FloatButton.BackTop {...props} />
-)
+function BackTop(props: Props): JSX.Element {
+  return <FloatButton.BackTop {...props} />
+}
 
 export default BackTop

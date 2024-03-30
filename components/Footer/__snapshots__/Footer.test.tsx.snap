@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer should render correctly (snapshot) 1`] = `
+exports[`footer should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="p-auto container relative mx-auto my-0 block h-full bg-gradient-secondary max-w-full p-8 text-center text-light lg:p-20"
@@ -235,13 +235,15 @@ exports[`Footer should render correctly (snapshot) 1`] = `
         role="cell"
       >
         <span>
-          Built with 
+          Built with
+           
           <a
             href="https://react.dev"
           >
             React
           </a>
-           and
+           
+          and
            
           <a
             href="https://nextjs.org"

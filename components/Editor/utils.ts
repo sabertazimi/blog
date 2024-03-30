@@ -1,4 +1,4 @@
-const languageToFilepath = (language?: string): string => {
+function languageToFilepath(language?: string): string {
   switch (language) {
     case 'css':
       return '/styles.css'
@@ -19,14 +19,12 @@ const languageToFilepath = (language?: string): string => {
   }
 }
 
-const normalizeFilepath = (filename?: string, language?: string): string => {
-  if (!filename) {
+function normalizeFilepath(filename?: string, language?: string): string {
+  if (!filename)
     return languageToFilepath(language)
-  }
 
-  if (!filename.startsWith('/')) {
+  if (!filename.startsWith('/'))
     return `/${filename}`
-  }
 
   return filename
 }

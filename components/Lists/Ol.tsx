@@ -8,10 +8,12 @@ interface Props
     HTMLOListElement
   > {}
 
-const Ol = ({ children, className, ...props }: Props): JSX.Element => (
-  <ol {...props} className={cx(className, styles.ol)}>
-    {children}
-  </ol>
-)
+function Ol({ children, className, ...props }: Props): JSX.Element {
+  return (
+    <ol {...props} className={cx(className, styles.ol)}>
+      {children}
+    </ol>
+  )
+}
 
 export default Ol

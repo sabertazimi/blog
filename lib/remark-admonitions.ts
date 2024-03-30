@@ -12,12 +12,13 @@ interface ContainerDirective extends Parent {
   value?: string
 }
 
-const isContainerDirective = (node: Node): node is ContainerDirective =>
-  node.type === 'containerDirective'
+function isContainerDirective(node: Node): node is ContainerDirective {
+  return node.type === 'containerDirective'
+}
 
 export default function remarkAdmonitions() {
   return (tree: Root) => {
-    visit(tree, node => {
+    visit(tree, (node) => {
       if (isContainerDirective(node)) {
         // Change container html element to `<aside type="*" title="*" class="admonition admonition-*">`,
         node.data = {

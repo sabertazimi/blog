@@ -7,15 +7,14 @@ interface Props {
   disabled?: boolean
 }
 
-const MDXInput = ({
+function MDXInput({
   type,
   checked,
   disabled,
   ...props
-}: Props): JSX.Element => {
-  if (type?.includes('checkbox')) {
+}: Props): JSX.Element {
+  if (type?.includes('checkbox'))
     return <Checkbox checked={checked} className="mr-1" {...props} />
-  }
 
   return (
     <Input

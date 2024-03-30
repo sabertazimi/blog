@@ -7,20 +7,22 @@ interface Props extends HTMLProps<HTMLDivElement> {
   style?: CSSProperties
 }
 
-const FlexContainer = ({
+function FlexContainer({
   children,
   className,
   ...props
-}: Props): JSX.Element => (
-  <div
-    className={cx(
-      'flex-container p-auto container relative mx-auto my-0 h-full',
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </div>
-)
+}: Props): JSX.Element {
+  return (
+    <div
+      className={cx(
+        'flex-container p-auto container relative mx-auto my-0 h-full',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
 
 export default FlexContainer

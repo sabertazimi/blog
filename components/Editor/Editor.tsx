@@ -20,7 +20,7 @@ interface PreProps {
   filename?: string
 }
 
-const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
+function Editor({ template = 'react-ts', children }: Props): JSX.Element {
   const codeSnippets = Children.toArray(children)
   const files = codeSnippets.reduce(
     (result: Record<string, { code: string }>, codeSnippet) => {
@@ -38,7 +38,7 @@ const Editor = ({ template = 'react-ts', children }: Props): JSX.Element => {
 
       return result
     },
-    {}
+    {},
   )
 
   return (

@@ -9,10 +9,7 @@ interface Props {
 
 type IconType = (props: Props) => JSX.Element
 
-const IconFactory = (
-  svg: (props: SVGProps<SVGSVGElement>) => JSX.Element,
-  ariaLabel: string
-): IconType => {
+function IconFactory(svg: (props: SVGProps<SVGSVGElement>) => JSX.Element, ariaLabel: string): IconType {
   const IconComponent = ({
     onClick,
     onKeyDown,

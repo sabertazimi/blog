@@ -10,7 +10,7 @@ describe('useTypingEffect', () => {
     loop: true,
   }
 
-  test('should process null ref correctly', () => {
+  it('should process null ref correctly', () => {
     const { result } = renderHook(() => useTypingEffect(mockRef, mockOptions))
 
     expect(result.current).toBeFalsy()

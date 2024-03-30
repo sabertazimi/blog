@@ -7,9 +7,9 @@ interface Props {
   url?: string
 }
 
-const ArticleComments = ({
+function ArticleComments({
   url = siteConfig.disqusUrl,
-}: Props): JSX.Element => {
+}: Props): JSX.Element {
   useDisqus(url)
 
   return (

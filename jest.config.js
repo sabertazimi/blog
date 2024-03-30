@@ -1,6 +1,6 @@
 const { pathsToModuleNameMapper } = require('ts-jest')
-const { compilerOptions } = require('./tsconfig.json')
 const nextJest = require('next/jest')
+const { compilerOptions } = require('./tsconfig.json')
 
 const createJestConfig = nextJest({
   dir: './',

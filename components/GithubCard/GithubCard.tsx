@@ -12,7 +12,7 @@ interface Props {
   repos: Repo[]
 }
 
-const GithubCard = ({ profile, repos }: Props): JSX.Element => {
+function GithubCard({ profile, repos }: Props): JSX.Element {
   const { username, avatar, createDate } = profile
 
   return (

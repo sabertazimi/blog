@@ -19,16 +19,15 @@ const thirdVariants: MotionProps['variants'] = {
   unchecked: { y: 0, rotate: 0 },
 }
 
-const Svg = (): JSX.Element => {
+function Svg(): JSX.Element {
   const [isChecked, setIsChecked] = useState(false)
   const handleClick = useCallback(
     () => setIsChecked(isChecked => !isChecked),
-    []
+    [],
   )
   const handleKeyDown = useCallback((event: KeyboardEvent<SVGSVGElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter')
       setIsChecked(isChecked => !isChecked)
-    }
   }, [])
 
   return (

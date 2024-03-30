@@ -1,3 +1,5 @@
+const process = require('node:process')
+
 const isProduction = process.env.NODE_ENV === 'production'
 
 const NextPwa = require('next-pwa')({

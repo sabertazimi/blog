@@ -1,14 +1,14 @@
+import type { ParsedUrlQuery } from 'node:querystring'
 import { PostsList, TagsCloud } from '@components'
 import { Layout } from '@layouts'
 import { getBuildTime, getPostsMeta, getTagsData } from '@lib'
-import type { BuildTime, PostMeta, Tag, Tags } from '@types'
+import type { BuildTime, PostMeta, Tag, TagsType } from '@types'
 import type { GetStaticPaths, GetStaticProps } from 'next/types'
-import type { ParsedUrlQuery } from 'node:querystring'
 
 interface Props {
   buildTime: BuildTime
   postsMeta: PostMeta[]
-  tagsData: Tags
+  tagsData: TagsType
   activeTag: Tag
 }
 
@@ -48,14 +48,14 @@ export const getStaticProps: GetStaticProps<Props, QueryParams> = async ({
   }
 }
 
-const Tags = ({
+function Tags({
   buildTime,
   postsMeta,
   tagsData,
   activeTag,
-}: Props): JSX.Element => {
+}: Props): JSX.Element {
   const postsMetaByTag = postsMeta.filter(
-    ({ tags }) => tags && tags.includes(activeTag)
+    ({ tags }) => tags && tags.includes(activeTag),
   )
 
   return (

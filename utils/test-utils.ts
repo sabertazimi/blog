@@ -1,13 +1,10 @@
-import { render as testingRender } from '@testing-library/react';
-import { ConfigProvider } from 'antd';
-import { createElement } from 'react';
+import { render as testingRender } from '@testing-library/react'
+import { ConfigProvider } from 'antd'
+import { createElement } from 'react'
 
-export * from '@testing-library/react';
+export * from '@testing-library/react'
 
-export const render = (
-  ui: Parameters<typeof testingRender>[0],
-  options?: Parameters<typeof testingRender>[1]
-): ReturnType<typeof testingRender> => {
+export function render(ui: Parameters<typeof testingRender>[0], options?: Parameters<typeof testingRender>[1]): ReturnType<typeof testingRender> {
   return testingRender(
     createElement(
       ConfigProvider,
@@ -16,8 +13,8 @@ export const render = (
           hashed: false,
         },
       },
-      ui
+      ui,
     ),
-    options
-  );
-};
+    options,
+  )
+}

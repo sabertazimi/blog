@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import Aside from './Aside'
 
-describe('Aside', () => {
+describe('aside', () => {
   const types = [
     'success',
     'tip',
@@ -14,22 +14,22 @@ describe('Aside', () => {
     'default',
   ]
 
-  test('should render correctly (snapshot)', () => {
+  it('should render correctly (snapshot)', () => {
     const { container } = render(<Aside title="Aside">Aside</Aside>)
 
     expect(container).toMatchSnapshot()
   })
 
-  test.each(types)(
+  it.each(types)(
     'should render different type correctly (snapshot)',
-    type => {
+    (type) => {
       const { container } = render(
         <Aside type={type} title="Aside">
           Aside
-        </Aside>
+        </Aside>,
       )
 
       expect(container).toMatchSnapshot()
-    }
+    },
   )
 })

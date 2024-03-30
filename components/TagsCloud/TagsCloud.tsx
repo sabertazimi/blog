@@ -1,26 +1,27 @@
 import { LinkTag } from '@components/Tags'
 import { colors, getColorByName, siteConfig } from '@config'
-import type { Tag, Tags } from '@types'
+import type { Tag, TagsType } from '@types'
 
 interface Props {
-  tags: Tags
+  tags: TagsType
   activeTag?: Tag
 }
 
-const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
+function TagsCloud({ tags, activeTag }: Props): JSX.Element {
   let tagsList = Object.keys(tags).sort((a, b) => {
     return tags[b] - tags[a]
   })
 
-  if (activeTag) {
+  if (activeTag)
     tagsList = tagsList.filter(tag => tag !== activeTag)
-  }
 
   return (
     <div>
-      {activeTag ? (
-        <LinkTag tag={activeTag} className="md:mb-3 md:text-lg" />
-      ) : null}
+      {activeTag
+        ? (
+          <LinkTag tag={activeTag} className="md:mb-3 md:text-lg" />
+          )
+        : null}
       {tagsList.map(tag => (
         <LinkTag
           key={tag}
@@ -30,14 +31,16 @@ const TagsCloud = ({ tags, activeTag }: Props): JSX.Element => {
           className="md:mb-3 md:text-lg"
         />
       ))}
-      {activeTag ? (
-        <LinkTag
-          tag="All"
-          href="/tags"
-          color={siteConfig.themeColor}
-          className="md:mb-3 md:text-lg"
-        />
-      ) : null}
+      {activeTag
+        ? (
+          <LinkTag
+            tag="All"
+            href="/tags"
+            color={siteConfig.themeColor}
+            className="md:mb-3 md:text-lg"
+          />
+          )
+        : null}
     </div>
   )
 }

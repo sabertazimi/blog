@@ -1,11 +1,13 @@
 import { LandingNav, TypingTitle } from '@components'
 import { LandingLayout } from '@layouts'
 
-const Home = (): JSX.Element => (
-  <LandingLayout>
-    <LandingNav />
-    <TypingTitle />
-  </LandingLayout>
-)
+function Home(): JSX.Element {
+  return (
+    <LandingLayout>
+      <LandingNav />
+      <TypingTitle />
+    </LandingLayout>
+  )
+}
 
 export default Home

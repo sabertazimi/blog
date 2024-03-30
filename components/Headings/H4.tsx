@@ -8,8 +8,8 @@ interface Props {
   children?: ReactNode
 }
 
-const H4 = ({ className, ...props }: Props): JSX.Element => (
-  <Heading {...props} level={4} className={cx(className, styles.h4)} />
-)
+function H4({ className, ...props }: Props): JSX.Element {
+  return <Heading {...props} level={4} className={cx(className, styles.h4)} />
+}
 
 export default H4

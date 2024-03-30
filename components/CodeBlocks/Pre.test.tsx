@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import Pre from './Pre'
 
-describe('Pre', () => {
+describe('pre', () => {
   const languages = [
     'html',
     'xml',
@@ -27,72 +27,72 @@ describe('Pre', () => {
     'rust',
   ]
 
-  test('should render empty children correctly (snapshot)', () => {
+  it('should render empty children correctly (snapshot)', () => {
     const { container } = render(<Pre />)
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should render empty className correctly (snapshot)', () => {
+  it('should render empty className correctly (snapshot)', () => {
     const { container } = render(
       <Pre>
         <code>const foo = bar();</code>
-      </Pre>
+      </Pre>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should hidden line number correctly (snapshot)', () => {
+  it('should hidden line number correctly (snapshot)', () => {
     const { container } = render(
       <Pre noline={true}>
         <code>const foo = bar();</code>
-      </Pre>
+      </Pre>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should hidden copy button correctly (snapshot)', () => {
+  it('should hidden copy button correctly (snapshot)', () => {
     const { container } = render(
       <Pre nocopy={true}>
         <code>const foo = bar();</code>
-      </Pre>
+      </Pre>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should render highlight lines correctly (snapshot)', () => {
+  it('should render highlight lines correctly (snapshot)', () => {
     const { container } = render(
       <Pre lines="1">
         <code>const foo = bar();</code>
-      </Pre>
+      </Pre>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test('should render code title correctly (snapshot)', () => {
+  it('should render code title correctly (snapshot)', () => {
     const { container } = render(
       <Pre title="Code Title">
         <code>const foo = bar();</code>
-      </Pre>
+      </Pre>,
     )
 
     expect(container).toMatchSnapshot()
   })
 
-  test.each(languages)(
+  it.each(languages)(
     'should render different language correctly (snapshot)',
-    language => {
+    (language) => {
       const { container } = render(
         <Pre>
           <code className={`language-${language}`}>const foo = bar();</code>
-        </Pre>
+        </Pre>,
       )
 
       expect(container).toMatchSnapshot()
-    }
+    },
   )
 })

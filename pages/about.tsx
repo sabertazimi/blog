@@ -24,14 +24,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const About = ({
+function About({
   buildTime,
   githubData: { profile, repos },
   postsMeta,
-}: Props): JSX.Element => (
-  <Layout banner="About Me" buildTime={buildTime} posts={postsMeta}>
-    <GithubCard profile={profile} repos={repos} />
-  </Layout>
-)
+}: Props): JSX.Element {
+  return (
+    <Layout banner="About Me" buildTime={buildTime} posts={postsMeta}>
+      <GithubCard profile={profile} repos={repos} />
+    </Layout>
+  )
+}
 
 export default About

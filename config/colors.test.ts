@@ -1,6 +1,6 @@
 import { colors, getColorByName } from './colors'
 
-describe('Colors', () => {
+describe('colors', () => {
   const mockColors = [
     ['CS', colors.grape],
     ['CSS', colors.violet],
@@ -22,10 +22,10 @@ describe('Colors', () => {
     ['Frontend Development', colors.green],
   ]
 
-  test.each(mockColors)(
+  it.each(mockColors)(
     'should set color of tag [%s] to [%s]',
     (tag, color) => {
       expect(getColorByName(tag)).toBe(color)
-    }
+    },
   )
 })

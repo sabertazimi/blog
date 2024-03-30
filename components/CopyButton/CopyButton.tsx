@@ -9,7 +9,7 @@ interface Props {
   className?: string
 }
 
-const CopyButton = ({ code, className }: Props): JSX.Element => {
+function CopyButton({ code, className }: Props): JSX.Element {
   const [isCopied, copy] = useCopyToClipboard(code)
   const shouldReduceMotion = useReducedMotion()
 
@@ -20,8 +20,9 @@ const CopyButton = ({ code, className }: Props): JSX.Element => {
       title="Copy"
       className={cx(
         className,
-        'outline-focus-visible absolute right-5 top-1.5 md:top-1'
+        'outline-focus-visible absolute right-5 top-1.5 md:top-1',
       )}
+      // eslint-disable-next-line ts/no-misused-promises
       onClick={copy}
     >
       <Toggle

@@ -8,11 +8,13 @@ interface Props {
   className?: string
 }
 
-const Anchor = ({ className, ...props }: Props): JSX.Element => (
-  <Typography.Link
-    {...props}
-    className={cx('mdx-hash-link', className, styles.anchor)}
-  />
-)
+function Anchor({ className, ...props }: Props): JSX.Element {
+  return (
+    <Typography.Link
+      {...props}
+      className={cx('mdx-hash-link', className, styles.anchor)}
+    />
+  )
+}
 
 export default Anchor

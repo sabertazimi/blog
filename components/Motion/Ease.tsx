@@ -21,26 +21,28 @@ const viewport: MotionProps['viewport'] = {
   once: true,
 }
 
-const Ease = ({
+function Ease({
   children,
   className,
   delay = 0,
   duration = 1,
   ...props
-}: Props): JSX.Element => (
-  <motion.div
-    className={className}
-    initial={initialVariants}
-    animate={animateVariants}
-    transition={{
-      delay,
-      duration,
-    }}
-    viewport={viewport}
-    {...props}
-  >
-    {children}
-  </motion.div>
-)
+}: Props): JSX.Element {
+  return (
+    <motion.div
+      className={className}
+      initial={initialVariants}
+      animate={animateVariants}
+      transition={{
+        delay,
+        duration,
+      }}
+      viewport={viewport}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export default Ease

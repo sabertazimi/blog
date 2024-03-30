@@ -25,7 +25,7 @@ interface CodeProps {
   className?: string
 }
 
-const Pre = ({
+function Pre({
   live = false,
   noline = false,
   nocopy = false,
@@ -33,7 +33,7 @@ const Pre = ({
   lines = '',
   children,
   className,
-}: Props): JSX.Element => {
+}: Props): JSX.Element {
   const codeElement = children as ReactElement<CodeProps>
   const code = normalizeCode(codeElement?.props?.children)
   const languageClass = codeElement?.props?.className
@@ -47,22 +47,24 @@ const Pre = ({
         className,
         languageClass,
         styles.pre,
-        'dark:shadow-xl dark:shadow-primary'
+        'dark:shadow-xl dark:shadow-primary',
       )}
       data-language={title || languageName}
     >
       {!nocopy && !live ? <CopyButton code={code} /> : null}
-      {live ? (
-        <LiveCode language={language}>{code}</LiveCode>
-      ) : (
-        <BlockCode
-          enableLine={!noline}
-          lines={highlightLines}
-          language={language}
-        >
-          {code}
-        </BlockCode>
-      )}
+      {live
+        ? (
+          <LiveCode language={language}>{code}</LiveCode>
+          )
+        : (
+          <BlockCode
+            enableLine={!noline}
+            lines={highlightLines}
+            language={language}
+          >
+            {code}
+          </BlockCode>
+          )}
     </pre>
   )
 }

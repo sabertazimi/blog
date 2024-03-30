@@ -21,10 +21,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   }
 }
 
-const Posts = ({ buildTime, postsMeta }: Props): JSX.Element => (
-  <Layout banner="Posts" buildTime={buildTime} posts={postsMeta}>
-    <PostsGrid posts={postsMeta} />
-  </Layout>
-)
+function Posts({ buildTime, postsMeta }: Props): JSX.Element {
+  return (
+    <Layout banner="Posts" buildTime={buildTime} posts={postsMeta}>
+      <PostsGrid posts={postsMeta} />
+    </Layout>
+  )
+}
 
 export default Posts

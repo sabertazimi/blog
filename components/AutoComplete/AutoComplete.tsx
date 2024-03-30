@@ -3,8 +3,8 @@ import { AutoComplete as AntAutoComplete } from 'antd'
 
 interface Props extends AutoCompleteProps {}
 
-const AutoComplete = (props: Props): JSX.Element => (
-  <AntAutoComplete {...props} />
-)
+function AutoComplete(props: Props): JSX.Element {
+  return <AntAutoComplete {...props} />
+}
 
 export default AutoComplete

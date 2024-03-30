@@ -14,7 +14,7 @@ interface Option {
   label: ReactNode
 }
 
-const PostsSearchBar = ({ posts }: Props): JSX.Element => {
+function PostsSearchBar({ posts }: Props): JSX.Element {
   const [options, setOptions] = useState<Option[]>([])
 
   const handleSearch = useCallback(
@@ -22,21 +22,21 @@ const PostsSearchBar = ({ posts }: Props): JSX.Element => {
       setOptions(
         value
           ? posts
-              .filter(({ title }) =>
-                title.toLowerCase().includes(value.toLowerCase())
-              )
-              .map(({ slug, title }) => ({
-                value: title,
-                label: (
-                  <div>
-                    <Link href={`/post/${slug}`}>{title}</Link>
-                  </div>
-                ),
-              }))
-          : []
+            .filter(({ title }) =>
+              title.toLowerCase().includes(value.toLowerCase()),
+            )
+            .map(({ slug, title }) => ({
+              value: title,
+              label: (
+                <div>
+                  <Link href={`/post/${slug}`}>{title}</Link>
+                </div>
+              ),
+            }))
+          : [],
       )
     },
-    [posts]
+    [posts],
   )
 
   return (

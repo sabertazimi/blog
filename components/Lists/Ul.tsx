@@ -8,10 +8,12 @@ interface Props
     HTMLUListElement
   > {}
 
-const Ul = ({ children, className, ...props }: Props): JSX.Element => (
-  <ul {...props} className={cx(className, styles.ul)}>
-    {children}
-  </ul>
-)
+function Ul({ children, className, ...props }: Props): JSX.Element {
+  return (
+    <ul {...props} className={cx(className, styles.ul)}>
+      {children}
+    </ul>
+  )
+}
 
 export default Ul

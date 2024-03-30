@@ -8,13 +8,15 @@ interface Props {
   className?: string
 }
 
-const Paragraph = ({ children, className, ...props }: Props): JSX.Element => (
-  <Typography.Paragraph
-    {...props}
-    className={cx(className, styles.p, 'dark:text-light')}
-  >
-    {children}
-  </Typography.Paragraph>
-)
+function Paragraph({ children, className, ...props }: Props): JSX.Element {
+  return (
+    <Typography.Paragraph
+      {...props}
+      className={cx(className, styles.p, 'dark:text-light')}
+    >
+      {children}
+    </Typography.Paragraph>
+  )
+}
 
 export default Paragraph

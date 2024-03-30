@@ -2,7 +2,7 @@ import mockData from '@mocks/data'
 import { fireEvent, render, screen } from '@utils'
 import PostsSearchBar from './PostsSearchBar'
 
-describe('PostsSearchBar', () => {
+describe('postsSearchBar', () => {
   const mockPosts = mockData.posts
 
   beforeEach(() => {
@@ -10,13 +10,13 @@ describe('PostsSearchBar', () => {
     window.getComputedStyle = element => getComputedStyle(element)
   })
 
-  test('should render correctly (snapshot)', () => {
+  it('should render correctly (snapshot)', () => {
     const { container } = render(<PostsSearchBar posts={mockPosts} />)
 
     expect(container).toMatchSnapshot()
   })
 
-  test.each(mockPosts)(
+  it.each(mockPosts)(
     'should render [%# Basic Notes] options when searching',
     async ({ index, title }) => {
       render(<PostsSearchBar posts={mockPosts} />)
@@ -29,6 +29,6 @@ describe('PostsSearchBar', () => {
       fireEvent.change(input, { target: { value: '' } })
 
       expect(await screen.findAllByText(title)).toHaveLength(2)
-    }
+    },
   )
 })

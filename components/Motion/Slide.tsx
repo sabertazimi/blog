@@ -22,25 +22,27 @@ const viewport: MotionProps['viewport'] = {
   once: true,
 }
 
-const Slide = ({
+function Slide({
   children,
   className,
   delay = 0,
   ...props
-}: Props): JSX.Element => (
-  <motion.div
-    className={className}
-    initial={initialVariants}
-    whileInView={inViewVariants}
-    transition={{
-      type: 'spring',
-      delay,
-    }}
-    viewport={viewport}
-    {...props}
-  >
-    {children}
-  </motion.div>
-)
+}: Props): JSX.Element {
+  return (
+    <motion.div
+      className={className}
+      initial={initialVariants}
+      whileInView={inViewVariants}
+      transition={{
+        type: 'spring',
+        delay,
+      }}
+      viewport={viewport}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export default Slide

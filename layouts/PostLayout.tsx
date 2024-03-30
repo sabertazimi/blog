@@ -9,21 +9,23 @@ interface Props {
   children: ReactNode
 }
 
-const PostLayout = ({
+function PostLayout({
   banner,
   posts,
   buildTime,
   children,
-}: Props): JSX.Element => (
-  <div className="dark:bg-black">
-    <MetaHeader title={`${banner}`} />
-    <Header posts={posts} />
-    <Container className="max-w-full">
-      {children}
-      <BackTop className="bottom-12 right-12 md:bottom-16 md:right-16" />
-    </Container>
-    <Footer buildTime={buildTime} />
-  </div>
-)
+}: Props): JSX.Element {
+  return (
+    <div className="dark:bg-black">
+      <MetaHeader title={`${banner}`} />
+      <Header posts={posts} />
+      <Container className="max-w-full">
+        {children}
+        <BackTop className="bottom-12 right-12 md:bottom-16 md:right-16" />
+      </Container>
+      <Footer buildTime={buildTime} />
+    </div>
+  )
+}
 
 export default PostLayout

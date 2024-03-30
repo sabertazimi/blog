@@ -9,7 +9,7 @@ interface Props {
   className?: string
 }
 
-const ImageCard = ({ src, title, alt, className }: Props): JSX.Element => {
+function ImageCard({ src, title, alt, className }: Props): JSX.Element {
   if (!src) {
     return (
       <Image

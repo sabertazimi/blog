@@ -2,15 +2,15 @@ import mockData from '@mocks/data'
 import { render, waitFor } from '@utils'
 import Layout from './Layout'
 
-describe('Layout', () => {
+describe('layout', () => {
   const mockTime = mockData.time
   const mockPosts = mockData.posts
 
-  test('should render correctly (snapshot)', async () => {
+  it('should render correctly (snapshot)', async () => {
     const { container } = render(
       <Layout banner="layout" buildTime={mockTime} posts={mockPosts}>
         <div>Layout</div>
-      </Layout>
+      </Layout>,
     )
 
     await waitFor(() => expect(container).toMatchSnapshot())

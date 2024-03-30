@@ -1,15 +1,17 @@
 import { MDXRemote } from '@alisowski/next-mdx-remote'
 import MDX from '@components/MDX'
-import type { Post } from '@types'
+import type { PostType } from '@types'
 
 interface Props {
-  source: Post['source']
+  source: PostType['source']
 }
 
-const ArticleContent = ({ source }: Props): JSX.Element => (
-  <article>
-    <MDXRemote {...source} components={MDX} />
-  </article>
-)
+function ArticleContent({ source }: Props): JSX.Element {
+  return (
+    <article>
+      <MDXRemote {...source} components={MDX} />
+    </article>
+  )
+}
 
 export default ArticleContent

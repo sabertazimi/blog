@@ -7,16 +7,18 @@ interface Props extends HTMLProps<HTMLDivElement> {
   style?: CSSProperties
 }
 
-const Container = ({ children, className, ...props }: Props): JSX.Element => (
-  <div
-    className={cx(
-      'p-auto container relative mx-auto my-0 block h-full',
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </div>
-)
+function Container({ children, className, ...props }: Props): JSX.Element {
+  return (
+    <div
+      className={cx(
+        'p-auto container relative mx-auto my-0 block h-full',
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
 
 export default Container

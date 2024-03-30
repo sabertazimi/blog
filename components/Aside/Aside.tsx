@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-const normalizeType = (type?: string) => {
+function normalizeType(type?: string) {
   switch (type) {
     case 'success':
     case 'tip':
@@ -29,25 +29,27 @@ const normalizeType = (type?: string) => {
   }
 }
 
-const Aside = ({
+function Aside({
   type,
   title,
   children,
   className,
   ...props
-}: Props): JSX.Element => (
-  <Alert
-    {...props}
-    type={normalizeType(type)}
-    message={title}
-    description={children}
-    showIcon
-    className={cx(
-      className,
-      styles.admonition,
-      'dark:bg-black dark:shadow-xl dark:shadow-primary'
-    )}
-  />
-)
+}: Props): JSX.Element {
+  return (
+    <Alert
+      {...props}
+      type={normalizeType(type)}
+      message={title}
+      description={children}
+      showIcon
+      className={cx(
+        className,
+        styles.admonition,
+        'dark:bg-black dark:shadow-xl dark:shadow-primary',
+      )}
+    />
+  )
+}
 
 export default Aside

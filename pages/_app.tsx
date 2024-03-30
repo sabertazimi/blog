@@ -9,11 +9,13 @@ import '../components/Button/Button.css'
 import '../components/Card/Card.css'
 import '../components/Skeleton/Skeleton.css'
 
-const App = ({ Component, pageProps }: AppProps): JSX.Element => (
-  <>
-    <NextProgress height={3} color={siteConfig.themeColor} />
-    <Component className="min-h-screen" {...pageProps} />
-  </>
-)
+function App({ Component, pageProps }: AppProps): JSX.Element {
+  return (
+    <>
+      <NextProgress height={3} color={siteConfig.themeColor} />
+      <Component className="min-h-screen" {...pageProps} />
+    </>
+  )
+}
 
 export default App
