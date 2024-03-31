@@ -75,6 +75,9 @@ jobs:
       - name: Perform code coverage report action
         uses: codecov/codecov-action@v4
         if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' }}
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   e2e:
     name: E2E Testing
