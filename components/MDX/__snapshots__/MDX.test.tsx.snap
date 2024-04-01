@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MDXCode should render correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="code dark:text-light dark:shadow-xl dark:shadow-primary"
+  />
+</div>
+`;
+
 exports[`MDXDivider should render correctly (snapshot) 1`] = `
 <div>
   <div
@@ -9,15 +17,7 @@ exports[`MDXDivider should render correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`mDXCode should render correctly (snapshot) 1`] = `
-<div>
-  <code
-    class="code dark:text-light dark:shadow-xl dark:shadow-primary"
-  />
-</div>
-`;
-
-exports[`mDXInput should render checkbox correctly (snapshot) 1`] = `
+exports[`MDXInput should render checkbox correctly (snapshot) 1`] = `
 <div>
   <label
     class="ant-checkbox-wrapper mr-1"
@@ -37,7 +37,7 @@ exports[`mDXInput should render checkbox correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`mDXInput should render input correctly (snapshot) 1`] = `
+exports[`MDXInput should render input correctly (snapshot) 1`] = `
 <div>
   <input
     class="ant-input ant-input-outlined mr-1"
@@ -47,7 +47,7 @@ exports[`mDXInput should render input correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`mDXPre should render correctly (snapshot) 1`] = `
+exports[`MDXPre should render correctly (snapshot) 1`] = `
 <div>
   <pre
     class="pre dark:shadow-xl dark:shadow-primary"

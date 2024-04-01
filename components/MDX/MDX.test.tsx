@@ -12,7 +12,7 @@ describe('MDXDivider', () => {
   })
 })
 
-describe('mDXInput', () => {
+describe('MDXInput', () => {
   it('should render input correctly (snapshot)', () => {
     const { container } = render(<MDXInput />)
 
@@ -26,7 +26,7 @@ describe('mDXInput', () => {
   })
 })
 
-describe('mDXPre', () => {
+describe('MDXPre', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<MDXPre />)
 
@@ -34,7 +34,7 @@ describe('mDXPre', () => {
   })
 })
 
-describe('mDXCode', () => {
+describe('MDXCode', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<MDXCode />)
 
