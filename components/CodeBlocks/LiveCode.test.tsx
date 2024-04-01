@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import LiveCode from './LiveCode'
 
-describe('liveCode', () => {
+describe('LiveCode', () => {
   it('should render live code correctly (snapshot)', () => {
     const { container } = render(
       <LiveCode language="typescript">const foo = bar();</LiveCode>,

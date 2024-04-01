@@ -3,7 +3,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import Footer from './Footer'
 
-describe('footer', () => {
+describe('Footer', () => {
   const mockTime = mockData.time
 
   it('should render correctly (snapshot)', () => {

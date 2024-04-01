@@ -2,7 +2,7 @@ import mockData from '@mocks/data'
 import { render, waitFor } from '@utils'
 import Layout from './Layout'
 
-describe('layout', () => {
+describe('Layout', () => {
   const mockTime = mockData.time
   const mockPosts = mockData.posts
 

@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import Ease from './Ease'
 
-describe('ease', () => {
+describe('Ease', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(
       <Ease>

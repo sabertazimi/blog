@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@utils'
 import Toggle from './Toggle'
 
-describe('toggle', () => {
+describe('Toggle', () => {
   const cases = [
     [false, false],
     [false, true],

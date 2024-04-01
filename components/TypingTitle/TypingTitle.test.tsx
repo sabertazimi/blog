@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@utils'
 import { axe } from 'jest-axe'
 import TypingTitle from './TypingTitle'
 
-describe('typingTitle', () => {
+describe('TypingTitle', () => {
   jest.mock('typed.js')
 
   it('should render correctly (snapshot)', () => {

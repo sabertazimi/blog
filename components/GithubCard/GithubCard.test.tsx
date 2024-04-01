@@ -3,7 +3,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import GithubCard from './GithubCard'
 
-describe('githubCard', () => {
+describe('GithubCard', () => {
   const mockBaseProfile = mockData.baseProfile
   const mockProfile = mockData.profile
   const mockRepos = mockData.repos

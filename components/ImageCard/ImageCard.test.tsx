@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import ImageCard from './ImageCard'
 
-describe('imageCard', () => {
+describe('ImageCard', () => {
   it('should render placeholder image correctly (snapshot)', () => {
     const { container } = render(<ImageCard />)
 

@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import ArticleToc from './ArticleToc'
 
-describe('articleToc', () => {
+describe('ArticleToc', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<ArticleToc slug="slug" />)
 

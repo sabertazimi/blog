@@ -3,7 +3,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import PostsList from './PostsList'
 
-describe('postsList', () => {
+describe('PostsList', () => {
   const mockPosts = mockData.posts
 
   it('should render correctly (snapshot)', () => {

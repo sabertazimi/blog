@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import Pre from './Pre'
 
-describe('pre', () => {
+describe('Pre', () => {
   const languages = [
     'html',
     'xml',

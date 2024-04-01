@@ -2,7 +2,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import MetaHeader from './MetaHeader'
 
-describe('metaHeader', () => {
+describe('MetaHeader', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<MetaHeader />)
 

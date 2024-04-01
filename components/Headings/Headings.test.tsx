@@ -6,7 +6,7 @@ import H4 from './H4'
 import H5 from './H5'
 import H6 from './H6'
 
-describe('headings', () => {
+describe('Headings', () => {
   const Headings = {
     h1: H1,
     h2: H2,

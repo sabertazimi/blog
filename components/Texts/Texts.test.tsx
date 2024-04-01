@@ -4,7 +4,7 @@ import Delete from './Delete'
 import Emphasis from './Emphasis'
 import Strong from './Strong'
 
-describe('texts', () => {
+describe('Texts', () => {
   const Texts = {
     a: Anchor,
     strong: Strong,

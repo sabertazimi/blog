@@ -2,7 +2,7 @@ import { render, screen } from '@utils'
 import { axe } from 'jest-axe'
 import Container from './Container'
 
-describe('container', () => {
+describe('Container', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(
       <Container role="main">

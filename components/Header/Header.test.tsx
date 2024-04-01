@@ -2,7 +2,7 @@ import mockData from '@mocks/data'
 import { render, waitFor } from '@utils'
 import Header from './Header'
 
-describe('header', () => {
+describe('Header', () => {
   const mockPosts = mockData.posts
 
   it('should render correctly (snapshot)', async () => {
