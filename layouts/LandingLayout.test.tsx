@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import LandingLayout from './LandingLayout'
 
-describe('landingLayout', () => {
+describe('LandingLayout', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(
       <LandingLayout>

@@ -3,7 +3,7 @@ import { axe } from 'jest-axe'
 import type { JSXElementConstructor, ReactNode } from 'react'
 import ErrorBoundary from './ErrorBoundary'
 
-describe('errorBoundary', () => {
+describe('ErrorBoundary', () => {
   const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {
     if (shouldThrow)
       throw new Error('ComponentWithError')

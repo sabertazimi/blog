@@ -2,7 +2,7 @@ import mockData from '@mocks/data'
 import { render } from '@utils'
 import Article from './Article'
 
-describe('article', () => {
+describe('Article', () => {
   const mockBasePost = mockData.basePosts[0]
   const mockPost = mockData.posts[0]
 

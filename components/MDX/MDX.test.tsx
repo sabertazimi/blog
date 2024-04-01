@@ -4,7 +4,7 @@ import MDXDivider from './MDXDivider'
 import MDXInput from './MDXInput'
 import MDXPre from './MDXPre'
 
-describe('mDXDivider', () => {
+describe('MDXDivider', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<MDXDivider />)
 

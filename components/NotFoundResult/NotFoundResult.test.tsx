@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import NotFoundResult from './NotFoundResult'
 
-describe('notFoundResult', () => {
+describe('NotFoundResult', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<NotFoundResult />)
 

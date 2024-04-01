@@ -2,7 +2,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import BooksGrid from './BooksGrid'
 
-describe('booksGrid', () => {
+describe('BooksGrid', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<BooksGrid />)
 

@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mDXCode should render correctly (snapshot) 1`] = `
-<div>
-  <code
-    class="code dark:text-light dark:shadow-xl dark:shadow-primary"
-  />
-</div>
-`;
-
-exports[`mDXDivider should render correctly (snapshot) 1`] = `
+exports[`MDXDivider should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="ant-divider ant-divider-horizontal divider bg-gradient-primary h-1 rounded-full dark:border-0 dark:!border-light dark:text-light"
     role="separator"
+  />
+</div>
+`;
+
+exports[`mDXCode should render correctly (snapshot) 1`] = `
+<div>
+  <code
+    class="code dark:text-light dark:shadow-xl dark:shadow-primary"
   />
 </div>
 `;

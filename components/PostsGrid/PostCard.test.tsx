@@ -3,7 +3,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import PostCard from './PostCard'
 
-describe('postCard', () => {
+describe('PostCard', () => {
   const mockBasePost = mockData.basePosts[0]
   const mockPost = mockData.posts[0]
 

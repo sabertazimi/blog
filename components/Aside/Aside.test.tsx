@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import Aside from './Aside'
 
-describe('aside', () => {
+describe('Aside', () => {
   const types = [
     'success',
     'tip',

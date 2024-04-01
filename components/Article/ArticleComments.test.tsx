@@ -2,7 +2,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import ArticleComments from './ArticleComments'
 
-describe('articleComments', () => {
+describe('ArticleComments', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<ArticleComments />)
 

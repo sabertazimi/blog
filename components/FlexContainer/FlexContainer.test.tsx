@@ -2,7 +2,7 @@ import { render, screen } from '@utils'
 import { axe } from 'jest-axe'
 import FlexContainer from './FlexContainer'
 
-describe('flexContainer', () => {
+describe('FlexContainer', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(
       <FlexContainer role="main">

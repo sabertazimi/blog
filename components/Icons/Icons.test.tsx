@@ -3,7 +3,7 @@ import { axe } from 'jest-axe'
 import Comment from './Comment'
 import Hamburger from './Hamburger'
 
-describe('icons', () => {
+describe('Icons', () => {
   const Icons = [Comment, Hamburger]
 
   it.each(Icons)('should render %# icon correctly (snapshot)', (Icon) => {

@@ -3,7 +3,7 @@ import { render } from '@utils'
 import { axe } from 'jest-axe'
 import SocialGroup from './SocialGroup'
 
-describe('socialGroup', () => {
+describe('SocialGroup', () => {
   const mockUrl = siteConfig.siteUrl
 
   it('should render correctly (snapshot)', () => {

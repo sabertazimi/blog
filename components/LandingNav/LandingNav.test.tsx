@@ -1,7 +1,7 @@
 import { act, render, screen } from '@utils'
 import LandingNav from './LandingNav'
 
-describe('landingNav', () => {
+describe('LandingNav', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })

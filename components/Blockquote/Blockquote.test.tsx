@@ -1,7 +1,7 @@
 import { render } from '@utils'
 import Blockquote from './Blockquote'
 
-describe('blockquote', () => {
+describe('Blockquote', () => {
   it('should render correctly (snapshot)', () => {
     const { container } = render(<Blockquote>Blockquote</Blockquote>)
 

@@ -2,7 +2,7 @@
 import { render, screen } from '@utils'
 import Editor from './Editor'
 
-describe('editor', () => {
+describe('Editor', () => {
   it('should render sandpack correctly', () => {
     render(
       <Editor>

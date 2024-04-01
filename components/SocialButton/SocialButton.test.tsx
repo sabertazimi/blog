@@ -4,7 +4,7 @@ import { render, screen } from '@utils'
 import { axe } from 'jest-axe'
 import SocialButton from './SocialButton'
 
-describe('socialButton', () => {
+describe('SocialButton', () => {
   const mockSocials = [...Object.keys(siteConfig.socials), 'default']
 
   it.each(mockSocials)(
