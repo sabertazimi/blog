@@ -14,7 +14,10 @@ function ArticleHeader({
   post: { title, createTime, updateTime, readingTime, tags },
 }: Props): JSX.Element {
   return (
-    <div className="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48">
+    <div
+      className="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48"
+      data-testid="article-header"
+    >
       <Slide>
         {tags
           ? (

@@ -16,6 +16,7 @@ function ArticleComments({
     <div
       id="disqus_thread"
       className={cx(styles.disqus, 'after:bg-white dark:after:bg-black')}
+      data-testid="article-comments"
     />
   )
 }

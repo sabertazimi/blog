@@ -8,7 +8,7 @@ interface Props {
 
 function ArticleContent({ source }: Props): JSX.Element {
   return (
-    <article>
+    <article data-testid="article-content">
       <MDXRemote {...source} components={MDX} />
     </article>
   )

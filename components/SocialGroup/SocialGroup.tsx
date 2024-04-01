@@ -14,6 +14,7 @@ function SocialGroup({ url }: Props): JSX.Element {
       align="center"
       size={0}
       className="fixed right-0 top-1/2 z-10 hidden -translate-y-1/2 md:visible md:inline-flex"
+      data-testid="social-group"
     >
       {Object.keys(socialList)
         .filter(social => social !== socialList.github)

@@ -27,7 +27,7 @@ function ArticleToc({ slug, offset = 150 }: Props): JSX.Element {
   }, [slug])
 
   return (
-    <div className={styles.toc}>
+    <div className={styles.toc}data-testid="article-toc">
       <Anchor offsetTop={offset} items={tocItems} />
     </div>
   )
