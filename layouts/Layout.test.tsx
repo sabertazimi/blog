@@ -13,6 +13,7 @@ describe('Layout', () => {
       </Layout>,
     )
 
+    // eslint-disable-next-line testing-library/no-wait-for-snapshot
     await waitFor(() => expect(container).toMatchSnapshot())
   })
 })

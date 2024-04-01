@@ -116,11 +116,11 @@ dependencies:
 
 devDependencies:
   '@dg-scripts/eslint-config':
-    specifier: ^5.17.0
-    version: 5.17.0(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.1.4)(eslint@8.57.0)(next@14.1.4)(prettier@3.2.5)(typescript@5.4.3)
+    specifier: ^5.19.0
+    version: 5.19.0(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.1.4)(eslint@8.57.0)(next@14.1.4)(prettier@3.2.5)(typescript@5.4.3)
   '@dg-scripts/stylelint-config':
-    specifier: ^5.17.0
-    version: 5.17.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1)
+    specifier: ^5.19.0
+    version: 5.19.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1)
   '@octokit/types':
     specifier: ^12.6.0
     version: 12.6.0
@@ -2215,8 +2215,8 @@ packages:
       - supports-color
     dev: true
 
-  /@dg-scripts/eslint-config@5.17.0(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.1.4)(eslint@8.57.0)(next@14.1.4)(prettier@3.2.5)(typescript@5.4.3):
-    resolution: {integrity: sha512-J2tLVHXMk6oQIf5i2BKM2wQMIquRbSHaXfFhxSqwTKl7+j+PJsGUqkHfuVjvvznkwAyotUfHoKxUw/G+gMXP/w==}
+  /@dg-scripts/eslint-config@5.19.0(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.1.4)(eslint@8.57.0)(next@14.1.4)(prettier@3.2.5)(typescript@5.4.3):
+    resolution: {integrity: sha512-W9sJ1Z0PT9FD3fTTTUIBN8OHF0WViH9/d6QABl3ivnylesw14ISfajabX3eQSsohEaa2M+UWjNGeA6Gkt3miSw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^8.0.0
@@ -2238,6 +2238,7 @@ packages:
       eslint-plugin-react: 7.34.1(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
       eslint-plugin-react-refresh: 0.4.6(eslint@8.57.0)
+      eslint-plugin-testing-library: 6.2.0(eslint@8.57.0)(typescript@5.4.3)
       local-pkg: 0.5.0
       next: 14.1.4(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0)
       prettier: 3.2.5
@@ -2256,8 +2257,8 @@ packages:
       - vitest
     dev: true
 
-  /@dg-scripts/stylelint-config@5.17.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1):
-    resolution: {integrity: sha512-V/1UwisoQYWG3Dr5QH6xCL5E6Lcd497rBcxN6+XMsbaZ2jc5amNasZ9eAjoQRTiepahGrey4rabfB0Jfa+CeTQ==}
+  /@dg-scripts/stylelint-config@5.19.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1):
+    resolution: {integrity: sha512-iJADWv3UiS3TCYubyGw9TV5Ej8KEQ3Z1ezvBJutzz+SPsTtDv0EG3zZhGr4c0ueZaPjcaXwxM0tOt5Pw3ETA1A==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       prettier: ^3.0.0
@@ -2265,7 +2266,7 @@ packages:
     dependencies:
       prettier: 3.2.5
       stylelint: 16.3.1(typescript@5.4.3)
-      stylelint-config-bod: 5.17.0(postcss@8.4.38)(stylelint@16.3.1)
+      stylelint-config-bod: 5.19.0(postcss@8.4.38)(stylelint@16.3.1)
       stylelint-prettier: 5.0.0(prettier@3.2.5)(stylelint@16.3.1)
     transitivePeerDependencies:
       - postcss
@@ -6561,6 +6562,19 @@ packages:
       resolve: 2.0.0-next.5
       semver: 6.3.1
       string.prototype.matchall: 4.0.10
+    dev: true
+
+  /eslint-plugin-testing-library@6.2.0(eslint@8.57.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-+LCYJU81WF2yQ+Xu4A135CgK8IszcFcyMF4sWkbiu6Oj+Nel0TrkZq/HvDw0/1WuO3dhDQsZA/OpEMGd0NfcUw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
+    peerDependencies:
+      eslint: ^7.5.0 || ^8.0.0
+    dependencies:
+      '@typescript-eslint/utils': 5.62.0(eslint@8.57.0)(typescript@5.4.3)
+      eslint: 8.57.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /eslint-plugin-toml@0.10.0(eslint@8.57.0):
@@ -13575,8 +13589,8 @@ packages:
       client-only: 0.0.1
       react: 18.2.0
 
-  /stylelint-config-bod@5.17.0(postcss@8.4.38)(stylelint@16.3.1):
-    resolution: {integrity: sha512-oPinZqj3JUcj17SyXw8b+P+CiywQC+0cNL9F9Sqm2CrCHMEUgEssiO49S4fD+sPKBWtVIMDmOKURfSOcgEIC4g==}
+  /stylelint-config-bod@5.19.0(postcss@8.4.38)(stylelint@16.3.1):
+    resolution: {integrity: sha512-Z04Tvprsn0wf+T4GZbTGLHgaVgKsn7Aa9FvGh7toM8Bzuvei7082USkhP/54XEIyPBnSrTcZBDOuekCcV8L16w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       stylelint: ^15.0.0 || ^16.0.0

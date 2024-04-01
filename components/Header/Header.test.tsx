@@ -8,6 +8,7 @@ describe('Header', () => {
   it('should render correctly (snapshot)', async () => {
     const { container } = render(<Header posts={mockPosts} />)
 
+    // eslint-disable-next-line testing-library/no-wait-for-snapshot
     await waitFor(() => expect(container).toMatchSnapshot())
   })
 })

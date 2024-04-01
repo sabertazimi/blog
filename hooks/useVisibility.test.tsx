@@ -50,7 +50,9 @@ describe('useVisibility', () => {
 
     fireEvent.scroll(window, { target: { scrollY: 100 } })
 
+    // eslint-disable-next-line testing-library/await-async-utils
     void waitFor(() => expect(onBottomPassed).toHaveBeenCalled())
+    // eslint-disable-next-line testing-library/await-async-utils
     void waitFor(() => expect(onBottomPassedReverse).toHaveBeenCalled())
   })
 })
