@@ -11,11 +11,5 @@ export default eslintConfig
   .append({
     rules: {
       'react-refresh/only-export-components': 'off',
-      'test/prefer-lowercase-title': [
-        'error',
-        {
-          ignoreTopLevelDescribe: true,
-        },
-      ],
     },
   })
