@@ -39,6 +39,7 @@ function getReadingTime(content: string): number {
 }
 
 async function generatePostData(filePath: string): Promise<PostType> {
+  // eslint-disable-next-line security/detect-non-literal-fs-filename -- filePath is safe.
   const fileContent = await fs.readFile(filePath, 'utf8')
   const slug = path.basename(filePath, path.extname(filePath))
 
@@ -149,8 +150,13 @@ async function getTagsData(): Promise<TagsType> {
     .map(post => post.tags || [])
     .flat()
     .reduce((tags: TagsType, tag: Tag) => {
-      if (!tags[tag])
+      // eslint-disable-next-line security/detect-object-injection -- key is safe.
+      if (!tags[tag]) {
+        // eslint-disable-next-line security/detect-object-injection -- key is safe.
         tags[tag] = 0
+      }
+
+      // eslint-disable-next-line security/detect-object-injection -- key is safe.
       tags[tag] += 1
       return tags
     }, {})

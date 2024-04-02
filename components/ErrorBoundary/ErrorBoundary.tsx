@@ -32,7 +32,7 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     const { hasError, error } = this.state
     const { children } = this.props
-    // eslint-disable-next-line node/prefer-global/process
+    // eslint-disable-next-line node/prefer-global/process -- SWC/Webpack supports process.env.NODE_ENV.
     const isDevelopment = process.env.NODE_ENV === 'development'
 
     if (hasError && isDevelopment) {

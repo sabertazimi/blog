@@ -9,6 +9,7 @@ interface Props {
 
 function TagsCloud({ tags, activeTag }: Props): JSX.Element {
   let tagsList = Object.keys(tags).sort((a, b) => {
+    // eslint-disable-next-line security/detect-object-injection -- key is safe.
     return tags[b] - tags[a]
   })
 
@@ -25,6 +26,7 @@ function TagsCloud({ tags, activeTag }: Props): JSX.Element {
       {tagsList.map(tag => (
         <LinkTag
           key={tag}
+          // eslint-disable-next-line security/detect-object-injection -- key is safe.
           tag={`${tag} ${tags[tag]}`}
           href={`/tag/${tag}`}
           color={activeTag ? colors.gray : getColorByName(tag)}
