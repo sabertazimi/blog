@@ -6,7 +6,7 @@
 import type { RefObject } from 'react'
 import { useCallback, useEffect, useRef } from 'react'
 
-function useVisibility({
+export default function useVisibility({
   ref,
   onBottomPassed,
   onBottomPassedReverse,
@@ -16,50 +16,46 @@ function useVisibility({
   onBottomPassedReverse: () => void
 }): void {
   const frameId = useRef(0)
-  const ticking = useRef(false)
+  const isUpdating = useRef(false)
   const pageYOffset = useRef(0)
   const bottomPassed = useRef(false)
 
+  const getPageYOffset = useCallback(() => window.pageYOffset, [])
+
   const update = useCallback(() => {
-    const getPageYOffset = () => {
-      return window.pageYOffset
-    }
+    isUpdating.current = false
 
-    ticking.current = false
-
-    // store visibility
+    // Store visibility.
     const oldBottomPassed = bottomPassed.current
 
-    // early return when ref missing (e.g. unmounting when routing or animation)
+    // Early return when ref missing (e.g unmounting when routing or animation).
     if (!ref.current)
       return
 
-    // calculate visibility
+    // Calculate visibility.
     const { bottom } = ref.current.getBoundingClientRect()
     const newOffset = getPageYOffset()
     const direction = newOffset > pageYOffset.current ? 'down' : 'up'
     const newBottomPassed = bottom < 0
 
-    // update visibility
+    // Update visibility.
     bottomPassed.current = newBottomPassed
     pageYOffset.current = newOffset
 
-    // fire callbacks according to visibility
+    // Fire callbacks according to visibility.
     if (bottomPassed.current !== oldBottomPassed) {
-      if (direction === 'up')
-        Boolean(onBottomPassedReverse) && onBottomPassedReverse()
-
-      if (direction === 'down')
-        Boolean(onBottomPassed) && onBottomPassed()
+      if (direction === 'up' && onBottomPassedReverse)
+        onBottomPassedReverse()
+      else if (direction === 'down' && onBottomPassed)
+        onBottomPassed()
     }
-  }, [ref, onBottomPassed, onBottomPassedReverse])
+  }, [ref, onBottomPassed, onBottomPassedReverse, getPageYOffset])
 
   const handleUpdate = useCallback(() => {
-    if (ticking.current)
-      return
-
-    ticking.current = true
-    frameId.current = requestAnimationFrame(update)
+    if (!isUpdating.current) {
+      isUpdating.current = true
+      frameId.current = requestAnimationFrame(update)
+    }
   }, [update])
 
   useEffect(() => {
@@ -75,5 +71,3 @@ function useVisibility({
     }
   }, [handleUpdate])
 }
-
-export default useVisibility

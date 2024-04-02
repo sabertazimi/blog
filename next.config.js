@@ -17,7 +17,6 @@ const nextConfig = {
     defaultLocale: 'en-US',
   },
   reactStrictMode: true,
-  swcMinify: isProduction,
   transpilePackages: [
     // @see https://github.com/vercel/next.js/issues/40183
     // @see https://github.com/vercel/next.js/issues/58817

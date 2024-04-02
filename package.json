@@ -43,7 +43,8 @@
     "changeset": "commit-and-tag-version --dry-run -s",
     "release": "commit-and-tag-version -s",
     "serve": "next start",
-    "start": "start-server-and-test dev http://127.0.0.1:3000 cypress:open",
+    "start": "pnpm dev",
+    "start:cypress": "start-server-and-test dev http://127.0.0.1:3000 cypress:open",
     "test": "jest -o",
     "test:all": "jest",
     "test:watch": "jest --watch"
