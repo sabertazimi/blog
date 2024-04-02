@@ -32,6 +32,7 @@ function Editor({ template = 'react-ts', children }: Props): JSX.Element {
       const filePath = normalizeFilepath(filename, language)
       const code = codeElement.props.children
 
+      // eslint-disable-next-line security/detect-object-injection -- `result` is not to execute.
       result[filePath] = {
         code,
       }

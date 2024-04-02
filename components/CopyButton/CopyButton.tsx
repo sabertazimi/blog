@@ -22,7 +22,7 @@ function CopyButton({ code, className }: Props): JSX.Element {
         className,
         'outline-focus-visible absolute right-5 top-1.5 md:top-1',
       )}
-      // eslint-disable-next-line ts/no-misused-promises
+      // eslint-disable-next-line ts/no-misused-promises -- no need to handle promise.
       onClick={copy}
     >
       <Toggle

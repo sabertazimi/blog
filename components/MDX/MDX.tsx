@@ -14,7 +14,7 @@ import Divider from './MDXDivider'
 import Input from './MDXInput'
 import Pre from './MDXPre'
 
-// eslint-disable-next-line ts/no-unsafe-assignment
+// eslint-disable-next-line ts/no-unsafe-assignment -- dynamic import.
 const Editor = dynamic(() => import('@components/Editor')) as any
 
 const Headings = {
@@ -46,7 +46,7 @@ const CodeBlocks = {
 
 const customComponents = {
   Button,
-  // eslint-disable-next-line ts/no-unsafe-assignment
+  // eslint-disable-next-line ts/no-unsafe-assignment -- dynamic import.
   Editor,
 }
 

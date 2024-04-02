@@ -58,7 +58,7 @@ export default async function getGitHubData(): Promise<GitHub> {
       }
     }
   } else {
-    // eslint-disable-next-line no-console
+    // eslint-disable-next-line no-console -- need for CLI output.
     console.info('Not for Vercel build, fallback to local GitHub data.')
   }
 

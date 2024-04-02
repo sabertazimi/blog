@@ -13,7 +13,7 @@ describe('PostLayout', () => {
       </PostLayout>,
     )
 
-    // eslint-disable-next-line testing-library/no-wait-for-snapshot
+    // eslint-disable-next-line testing-library/no-wait-for-snapshot -- Wait for the snapshot to be taken.
     await waitFor(() => expect(container).toMatchSnapshot())
   })
 })
