@@ -15,7 +15,7 @@ describe('Toggle', () => {
       const { container } = render(
         <Toggle
           isToggled={isToggled}
-          onToggle={jest.fn()}
+          onToggle={vi.fn()}
           iconClose={<div>Close</div>}
           iconOpen={<div>Open</div>}
           shouldReduceMotion={shouldReduceMotion}
@@ -27,7 +27,7 @@ describe('Toggle', () => {
   )
 
   it('should invoke `onToggle` when clicked', () => {
-    const mockToggle = jest.fn()
+    const mockToggle = vi.fn()
 
     render(
       <Toggle
@@ -45,7 +45,7 @@ describe('Toggle', () => {
   })
 
   it('should invoke `onToggle` when `Enter` key down', () => {
-    const mockToggle = jest.fn()
+    const mockToggle = vi.fn()
 
     render(
       <Toggle
@@ -63,7 +63,7 @@ describe('Toggle', () => {
   })
 
   it('should not invoke `onToggle` when `Tab` key down', () => {
-    const mockToggle = jest.fn()
+    const mockToggle = vi.fn()
 
     render(
       <Toggle

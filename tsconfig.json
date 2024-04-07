@@ -21,7 +21,7 @@
       "@mocks/*": ["__mocks__/*"]
     },
     "resolveJsonModule": true,
-    "types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom", "vitest/globals"],
     "allowJs": true,
     "strict": true,
     "importHelpers": true,
@@ -34,7 +34,7 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "vitest.setup.tsx", "vitest.config.mts"],
   "exclude": [
     "node_modules",
     "build",

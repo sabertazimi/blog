@@ -1,5 +1,5 @@
 let navigatorClipboardMocked = false
-const writeTextMock = jest.fn()
+const writeTextMock = vi.fn()
 
 function mockNavigatorClipboard() {
   if (!navigatorClipboardMocked) {

@@ -3,8 +3,8 @@ import { useRef } from 'react'
 import useVisibility from './useVisibility'
 
 describe('useVisibility', () => {
-  const onBottomPassed = jest.fn()
-  const onBottomPassedReverse = jest.fn()
+  const onBottomPassed = vi.fn()
+  const onBottomPassedReverse = vi.fn()
 
   const Header = (): JSX.Element => {
     const headerRef = useRef<HTMLDivElement>(null)

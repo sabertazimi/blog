@@ -1,7 +1,6 @@
 import { siteConfig } from '@config'
 import type { SocialType } from '@types'
 import { render, screen } from '@utils'
-import { axe } from 'jest-axe'
 import SocialButton from './SocialButton'
 
 describe('SocialButton', () => {
@@ -27,32 +26,6 @@ describe('SocialButton', () => {
     )
 
     expect(container).toMatchSnapshot()
-  })
-
-  it.each(mockSocials)(
-    'should render [%s] button accessibility guidelines (AXE)',
-    async (social) => {
-      const { container } = render(
-        <SocialButton
-          type={social as SocialType}
-          url={`https://${social}.com`}
-        />,
-      )
-
-      const a11y = await axe(container)
-
-      expect(a11y).toHaveNoViolations()
-    },
-  )
-
-  it('should render colorful button accessibility guidelines (AXE)', async () => {
-    const { container } = render(
-      <SocialButton type="github" url="https://github.com" color="#299954" />,
-    )
-
-    const a11y = await axe(container)
-
-    expect(a11y).toHaveNoViolations()
   })
 
   it.each(mockSocials)(

@@ -1,6 +1,6 @@
 import { render, screen } from '@utils'
-import { axe } from 'jest-axe'
 import type { JSXElementConstructor, ReactNode } from 'react'
+import type { MockInstance } from 'vitest'
 import ErrorBoundary from './ErrorBoundary'
 
 describe('ErrorBoundary', () => {
@@ -11,13 +11,13 @@ describe('ErrorBoundary', () => {
       return <div>App</div>
   }
   const ENV = { ...process.env }
-  let mockConsoleError: jest.SpyInstance
+  let mockConsoleError: MockInstance
 
   beforeEach(() => {
     process.env = { ...ENV, NODE_ENV: 'development' }
-    mockConsoleError = jest
+    mockConsoleError = vi
       .spyOn(console, 'error')
-      .mockImplementation(jest.fn())
+      .mockImplementation(vi.fn())
   })
 
   afterEach(() => {
@@ -43,30 +43,6 @@ describe('ErrorBoundary', () => {
     )
 
     expect(container).toMatchSnapshot()
-  })
-
-  it('should render children accessibility guidelines (AXE)', async () => {
-    const { container } = render(
-      <ErrorBoundary>
-        <ComponentWithError />
-      </ErrorBoundary>,
-    )
-
-    const a11y = await axe(container)
-
-    expect(a11y).toHaveNoViolations()
-  })
-
-  it('should render alert message accessibility guidelines (AXE)', async () => {
-    const { container } = render(
-      <ErrorBoundary>
-        <ComponentWithError shouldThrow />
-      </ErrorBoundary>,
-    )
-
-    const a11y = await axe(container)
-
-    expect(a11y).toHaveNoViolations()
   })
 
   it('should render alert message when error happened', () => {

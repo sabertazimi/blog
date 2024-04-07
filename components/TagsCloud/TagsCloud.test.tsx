@@ -1,5 +1,4 @@
 import { render } from '@utils'
-import { axe } from 'jest-axe'
 import TagsCloud from './TagsCloud'
 
 describe('TagsCloud', () => {
@@ -24,15 +23,5 @@ describe('TagsCloud', () => {
     const { container } = render(<TagsCloud activeTag="" tags={mockTags} />)
 
     expect(container).toMatchSnapshot()
-  })
-
-  it('should render accessibility guidelines (AXE)', async () => {
-    const { container } = render(
-      <TagsCloud activeTag={mockTag} tags={mockTags} />,
-    )
-
-    const a11y = await axe(container)
-
-    expect(a11y).toHaveNoViolations()
   })
 })

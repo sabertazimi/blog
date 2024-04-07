@@ -3,18 +3,18 @@ import LandingNav from './LandingNav'
 
 describe('LandingNav', () => {
   beforeAll(() => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
   })
 
   afterAll(() => {
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   it('should render routes correctly (snapshot)', () => {
     const { container } = render(<LandingNav />)
 
     act(() => {
-      jest.advanceTimersByTime(1000)
+      vi.advanceTimersByTime(1000)
     })
 
     expect(container).toMatchSnapshot()
