@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TypingTitle should render correctly (snapshot) 1`] = `
+exports[`TypingTitle > should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="typing-title-container mx-auto my-0 h-auto w-full px-0 py-0 text-center text-5xl font-extrabold lg:text-9xl"
@@ -8,12 +8,6 @@ exports[`TypingTitle should render correctly (snapshot) 1`] = `
     <span
       role="main"
     />
-    <span
-      aria-hidden="true"
-      class="typed-cursor"
-    >
-      |
-    </span>
   </div>
 </div>
 `;

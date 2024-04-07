@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Article should render correctly (snapshot) 1`] = `
+exports[`Article > should render correctly (snapshot) 1`] = `
 <div>
   <div>
     <div
@@ -10,7 +10,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+          class="ant-tag ant-tag-has-color _link_7b1cdc dark:hover:shadow-primary"
           style="background-color: rgb(245, 159, 0);"
         >
           <a
@@ -20,7 +20,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <span
-          class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+          class="ant-tag ant-tag-has-color _link_7b1cdc dark:hover:shadow-primary"
           style="background-color: rgb(55, 178, 77);"
         >
           <a
@@ -30,7 +30,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <span
-          class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+          class="ant-tag ant-tag-has-color _link_7b1cdc dark:hover:shadow-primary"
           style="background-color: rgb(112, 72, 232);"
         >
           <a
@@ -40,12 +40,12 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </a>
         </span>
         <h1
-          class="ant-typography mdx-heading dark:text-light heading title h1"
+          class="ant-typography mdx-heading dark:text-light _heading_a87fd0 _title_dd0c25 _h1_a87fd0"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag _icon_8751bb dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="calendar"
@@ -71,7 +71,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag _icon_8751bb dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="edit"
@@ -97,7 +97,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag _icon_8751bb dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="clock-circle"
@@ -128,7 +128,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="toc"
+      class="_toc_0c7ff5"
     >
       <div>
         <div
@@ -165,13 +165,13 @@ exports[`Article should render correctly (snapshot) 1`] = `
     >
       <article>
         <h2
-          class="ant-typography mdx-heading dark:text-light heading h2"
+          class="ant-typography mdx-heading dark:text-light _heading_a87fd0 _h2_a87fd0"
         >
           1 Basic Notes
         </h2>
       </article>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:!border-light dark:text-light"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center _divider_f47fc6 dark:!border-light dark:text-light"
         role="separator"
       >
         <span
@@ -247,7 +247,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:!border-light dark:text-light"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center _divider_f47fc6 dark:!border-light dark:text-light"
         role="separator"
       >
         <span
@@ -282,7 +282,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
         </span>
       </div>
       <div
-        class="disqus after:bg-white dark:after:bg-black"
+        class="_disqus_5d6e31 after:bg-white dark:after:bg-black"
         id="disqus_thread"
       />
       <div
@@ -297,7 +297,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(0, 0, 0);"
@@ -308,7 +308,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
               >
                 <span
                   aria-label="x"
-                  class="anticon anticon-x icon"
+                  class="anticon anticon-x _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -339,7 +339,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(24, 119, 242);"
@@ -350,7 +350,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
               >
                 <span
                   aria-label="facebook"
-                  class="anticon anticon-facebook icon"
+                  class="anticon anticon-facebook _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -380,7 +380,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(10, 102, 194);"
@@ -391,7 +391,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
               >
                 <span
                   aria-label="linkedin"
-                  class="anticon anticon-linkedin icon"
+                  class="anticon anticon-linkedin _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -421,7 +421,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(230, 22, 45);"
@@ -432,7 +432,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
               >
                 <span
                   aria-label="weibo"
-                  class="anticon anticon-weibo icon"
+                  class="anticon anticon-weibo _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -459,7 +459,7 @@ exports[`Article should render correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`Article should render correctly with partial data (snapshot) 1`] = `
+exports[`Article > should render correctly with partial data (snapshot) 1`] = `
 <div>
   <div>
     <div
@@ -469,7 +469,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         style="opacity: 0; transform: translateX(-200px) translateZ(0);"
       >
         <span
-          class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+          class="ant-tag ant-tag-has-color _link_7b1cdc dark:hover:shadow-primary"
           style="background-color: rgb(22, 119, 255);"
         >
           <a
@@ -479,12 +479,12 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </a>
         </span>
         <h1
-          class="ant-typography mdx-heading dark:text-light heading title h1"
+          class="ant-typography mdx-heading dark:text-light _heading_a87fd0 _title_dd0c25 _h1_a87fd0"
         >
           1 Basic Notes
         </h1>
         <span
-          class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag _icon_8751bb dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="calendar"
@@ -510,7 +510,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag _icon_8751bb dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="edit"
@@ -536,7 +536,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
           </span>
         </span>
         <span
-          class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+          class="ant-tag _icon_8751bb dark:border-light dark:bg-light dark:text-dark"
         >
           <span
             aria-label="clock-circle"
@@ -567,7 +567,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
       </div>
     </div>
     <div
-      class="toc"
+      class="_toc_0c7ff5"
     >
       <div>
         <div
@@ -604,13 +604,13 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
     >
       <article>
         <h2
-          class="ant-typography mdx-heading dark:text-light heading h2"
+          class="ant-typography mdx-heading dark:text-light _heading_a87fd0 _h2_a87fd0"
         >
           1 Basic Notes
         </h2>
       </article>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:!border-light dark:text-light"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center _divider_f47fc6 dark:!border-light dark:text-light"
         role="separator"
       >
         <span
@@ -686,7 +686,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         </div>
       </div>
       <div
-        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider dark:!border-light dark:text-light"
+        class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center _divider_f47fc6 dark:!border-light dark:text-light"
         role="separator"
       >
         <span
@@ -721,7 +721,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
         </span>
       </div>
       <div
-        class="disqus after:bg-white dark:after:bg-black"
+        class="_disqus_5d6e31 after:bg-white dark:after:bg-black"
         id="disqus_thread"
       />
       <div
@@ -736,7 +736,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(0, 0, 0);"
@@ -747,7 +747,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
               >
                 <span
                   aria-label="x"
-                  class="anticon anticon-x icon"
+                  class="anticon anticon-x _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -778,7 +778,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(24, 119, 242);"
@@ -789,7 +789,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
               >
                 <span
                   aria-label="facebook"
-                  class="anticon anticon-facebook icon"
+                  class="anticon anticon-facebook _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -819,7 +819,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(10, 102, 194);"
@@ -830,7 +830,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
               >
                 <span
                   aria-label="linkedin"
-                  class="anticon anticon-linkedin icon"
+                  class="anticon anticon-linkedin _icon_fa24fe"
                   role="img"
                 >
                   <svg
@@ -860,7 +860,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
             tabindex="0"
           >
             <a
-              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only button"
+              class="ant-btn ant-btn-link ant-btn-lg ant-btn-icon-only _button_602221"
               href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev/post/1BasicNotes"
               role="link"
               style="background-color: rgb(230, 22, 45);"
@@ -871,7 +871,7 @@ exports[`Article should render correctly with partial data (snapshot) 1`] = `
               >
                 <span
                   aria-label="weibo"
-                  class="anticon anticon-weibo icon"
+                  class="anticon anticon-weibo _icon_fa24fe"
                   role="img"
                 >
                   <svg

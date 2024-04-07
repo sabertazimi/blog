@@ -1,29 +1,29 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Lists should render correctly (snapshot) 1`] = `
+exports[`Lists > should render correctly (snapshot) 1`] = `
 <div>
   <ul
-    class="ul"
+    class="_ul_9ba0dc"
   >
     List
   </ul>
 </div>
 `;
 
-exports[`Lists should render correctly (snapshot) 2`] = `
+exports[`Lists > should render correctly (snapshot) 2`] = `
 <div>
   <ol
-    class="ol"
+    class="_ol_68ea5b"
   >
     List
   </ol>
 </div>
 `;
 
-exports[`Lists should render correctly (snapshot) 3`] = `
+exports[`Lists > should render correctly (snapshot) 3`] = `
 <div>
   <li
-    class="item dark:text-light"
+    class="_item_951244 dark:text-light"
   >
     <span
       aria-label="arrow-right"

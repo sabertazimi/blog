@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
+exports[`ErrorBoundary > should render alert message correctly (snapshot) 1`] = `
 <div>
   <div
     class="ant-result ant-result-error"
@@ -41,7 +41,7 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
         role="alert"
       >
         <div
-          class="ant-typography p dark:text-light"
+          class="ant-typography _p_e26990 dark:text-light"
         >
           <span
             class="ant-typography text-xl font-extrabold dark:text-light"
@@ -50,7 +50,7 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
           </span>
         </div>
         <div
-          class="ant-typography p dark:text-light"
+          class="ant-typography _p_e26990 dark:text-light"
         >
           <span
             class="ant-typography dark:text-light"
@@ -59,7 +59,7 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
           </span>
         </div>
         <div
-          class="ant-typography p dark:text-light"
+          class="ant-typography _p_e26990 dark:text-light"
         >
           <span
             class="ant-typography dark:text-light"
@@ -68,7 +68,7 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
           </span>
         </div>
         <div
-          class="ant-typography p dark:text-light"
+          class="ant-typography _p_e26990 dark:text-light"
         >
           <span
             class="ant-typography dark:text-light"
@@ -82,7 +82,7 @@ exports[`ErrorBoundary should render alert message correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`ErrorBoundary should render children correctly (snapshot) 1`] = `
+exports[`ErrorBoundary > should render children correctly (snapshot) 1`] = `
 <div>
   <div>
     App

@@ -1,23 +1,23 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MDXCode should render correctly (snapshot) 1`] = `
+exports[`MDXCode > should render correctly (snapshot) 1`] = `
 <div>
   <code
-    class="code dark:text-light dark:shadow-xl dark:shadow-primary"
+    class="_code_fdda2e dark:text-light dark:shadow-xl dark:shadow-primary"
   />
 </div>
 `;
 
-exports[`MDXDivider should render correctly (snapshot) 1`] = `
+exports[`MDXDivider > should render correctly (snapshot) 1`] = `
 <div>
   <div
-    class="ant-divider ant-divider-horizontal divider bg-gradient-primary h-1 rounded-full dark:border-0 dark:!border-light dark:text-light"
+    class="ant-divider ant-divider-horizontal _divider_f47fc6 bg-gradient-primary h-1 rounded-full dark:border-0 dark:!border-light dark:text-light"
     role="separator"
   />
 </div>
 `;
 
-exports[`MDXInput should render checkbox correctly (snapshot) 1`] = `
+exports[`MDXInput > should render checkbox correctly (snapshot) 1`] = `
 <div>
   <label
     class="ant-checkbox-wrapper mr-1"
@@ -37,7 +37,7 @@ exports[`MDXInput should render checkbox correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`MDXInput should render input correctly (snapshot) 1`] = `
+exports[`MDXInput > should render input correctly (snapshot) 1`] = `
 <div>
   <input
     class="ant-input ant-input-outlined mr-1"
@@ -47,10 +47,10 @@ exports[`MDXInput should render input correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`MDXPre should render correctly (snapshot) 1`] = `
+exports[`MDXPre > should render correctly (snapshot) 1`] = `
 <div>
   <pre
-    class="pre dark:shadow-xl dark:shadow-primary"
+    class="_pre_11e576 dark:shadow-xl dark:shadow-primary"
     data-language="TypeScript"
   >
     <button
@@ -60,18 +60,18 @@ exports[`MDXPre should render correctly (snapshot) 1`] = `
       type="button"
     >
       <div
-        class="wrapper"
+        class="_wrapper_61e080"
         data-testid="toggle-wrapper"
         tabindex="-1"
       >
         <span
           aria-current="true"
-          class="span"
+          class="_span_61e080"
           style="opacity: 1; transform: none;"
         >
           <span
             aria-label="copy"
-            class="anticon anticon-copy icon"
+            class="anticon anticon-copy _icon_5c5d0d"
             role="img"
           >
             <svg
@@ -92,15 +92,15 @@ exports[`MDXPre should render correctly (snapshot) 1`] = `
       </div>
     </button>
     <pre
-      class="prism-code language-typescript code"
+      class="prism-code language-typescript _code_8fdb83"
       style="color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <div
-        class="token-line hover"
+        class="token-line _hover_8fdb83"
         style="color: rgb(118, 217, 230);"
       >
         <span
-          class="number"
+          class="_number_8fdb83"
         >
           1
         </span>

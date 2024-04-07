@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GithubCard should render correctly (snapshot) 1`] = `
+exports[`GithubCard > should render correctly (snapshot) 1`] = `
 <div>
   <div
     class="ant-ribbon-wrapper"
@@ -525,7 +525,7 @@ exports[`GithubCard should render correctly (snapshot) 1`] = `
 </div>
 `;
 
-exports[`GithubCard should render correctly when missing bio and location data (snapshot) 1`] = `
+exports[`GithubCard > should render correctly when missing bio and location data (snapshot) 1`] = `
 <div>
   <div
     class="ant-ribbon-wrapper"

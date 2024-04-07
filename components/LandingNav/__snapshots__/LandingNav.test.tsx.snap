@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LandingNav should render routes correctly (snapshot) 1`] = `
+exports[`LandingNav > should render routes correctly (snapshot) 1`] = `
 <div>
   <span
     aria-label="hamburger"
-    class="anticon icon"
+    class="anticon _icon_023bb5"
     data-testid="hamburger-button"
     role="img"
     tabindex="-1"
@@ -33,17 +33,17 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     </svg>
   </span>
   <div
-    class="nav"
+    class="_nav_023bb5"
     role="navigation"
     style="opacity: 0; transform: translateX(-100%) translateZ(0);"
   >
     <div
-      class="inline-flex tooltip"
+      class="inline-flex _tooltip_d49c19"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
       tabindex="0"
     >
       <span
-        class="link"
+        class="_link_d49c19"
         role="link"
       >
         <a
@@ -54,12 +54,12 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
       </span>
     </div>
     <div
-      class="inline-flex tooltip"
+      class="inline-flex _tooltip_d49c19"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
       tabindex="0"
     >
       <span
-        class="link"
+        class="_link_d49c19"
         role="link"
       >
         <a
@@ -70,12 +70,12 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
       </span>
     </div>
     <div
-      class="inline-flex tooltip"
+      class="inline-flex _tooltip_d49c19"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
       tabindex="0"
     >
       <span
-        class="link"
+        class="_link_d49c19"
         role="link"
       >
         <a
@@ -86,12 +86,12 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
       </span>
     </div>
     <div
-      class="inline-flex tooltip"
+      class="inline-flex _tooltip_d49c19"
       style="opacity: 0; transform: translateX(20px) translateZ(0);"
       tabindex="0"
     >
       <span
-        class="link"
+        class="_link_d49c19"
         role="link"
       >
         <a
@@ -103,7 +103,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     </div>
   </div>
   <div
-    class="banner"
+    class="_banner_023bb5"
     role="banner"
     style="transform: translateX(-100%) translateZ(0);"
   />

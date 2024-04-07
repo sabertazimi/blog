@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Header should render correctly (snapshot) 1`] = `
+exports[`Header > should render correctly (snapshot) 1`] = `
 <div>
   <div
     role="grid"
@@ -47,8 +47,8 @@ exports[`Header should render correctly (snapshot) 1`] = `
             decoding="async"
             height="96"
             loading="lazy"
-            src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
-            srcset="/_next/image?url=%2Fimg.jpg&w=96&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
+            src="/_next/image?url=%2Fpublic%2Fimages%2Flogo-full.png&w=256&q=75"
+            srcset="/_next/image?url=%2Fpublic%2Fimages%2Flogo-full.png&w=96&q=75 1x, /_next/image?url=%2Fpublic%2Fimages%2Flogo-full.png&w=256&q=75 2x"
             style="color: transparent;"
             width="96"
           />
@@ -59,13 +59,13 @@ exports[`Header should render correctly (snapshot) 1`] = `
         role="cell"
       >
         <div
-          class="wrapper outline-focus-visible button"
+          class="_wrapper_61e080 outline-focus-visible _button_9feed7"
           data-testid="toggle-wrapper"
           tabindex="0"
         >
           <span
             aria-current="true"
-            class="span"
+            class="_span_61e080"
             style="opacity: 1; transform: none;"
           >
             <span
@@ -89,7 +89,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
       </div>
     </div>
     <ul
-      class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center primary"
+      class="ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light fixed top-0 z-10 hidden w-full transform-gpu border-transparent bg-transparent font-extrabold backdrop-blur-md transition md:visible md:flex md:justify-center _primary_1e2fe8"
       data-menu-list="true"
       role="menu"
       tabindex="0"
@@ -114,8 +114,8 @@ exports[`Header should render correctly (snapshot) 1`] = `
               decoding="async"
               height="96"
               loading="lazy"
-              src="/_next/image?url=%2Fimg.jpg&w=256&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=96&q=75 1x, /_next/image?url=%2Fimg.jpg&w=256&q=75 2x"
+              src="/_next/image?url=%2Fpublic%2Fimages%2Flogo-full.png&w=256&q=75"
+              srcset="/_next/image?url=%2Fpublic%2Fimages%2Flogo-full.png&w=96&q=75 1x, /_next/image?url=%2Fpublic%2Fimages%2Flogo-full.png&w=256&q=75 2x"
               style="color: transparent;"
               width="96"
             />
@@ -132,7 +132,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container dark-menu-link h-full transform-gpu transition light"
+            class="flex-container dark-menu-link h-full transform-gpu transition _light_1e2fe8"
             href="/posts"
           >
             Posts
@@ -149,7 +149,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container dark-menu-link h-full transform-gpu transition light"
+            class="flex-container dark-menu-link h-full transform-gpu transition _light_1e2fe8"
             href="/tags"
           >
             Tags
@@ -166,7 +166,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container dark-menu-link h-full transform-gpu transition light"
+            class="flex-container dark-menu-link h-full transform-gpu transition _light_1e2fe8"
             href="/books"
           >
             Books
@@ -183,7 +183,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <a
-            class="flex-container dark-menu-link h-full transform-gpu transition light"
+            class="flex-container dark-menu-link h-full transform-gpu transition _light_1e2fe8"
             href="/about"
           >
             About
@@ -298,18 +298,18 @@ exports[`Header should render correctly (snapshot) 1`] = `
           class="ant-menu-title-content"
         >
           <div
-            class="wrapper outline-focus-visible button"
+            class="_wrapper_61e080 outline-focus-visible _button_9feed7"
             data-testid="toggle-wrapper"
             tabindex="0"
           >
             <span
               aria-current="true"
-              class="span"
+              class="_span_61e080"
               style="opacity: 1; transform: none;"
             >
               <span
                 aria-label="sun"
-                class="anticon dark-menu-link light"
+                class="anticon dark-menu-link _light_1e2fe8"
                 role="img"
               >
                 <svg

@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LiveCode should render live code correctly (snapshot) 1`] = `
+exports[`LiveCode > should render live code correctly (snapshot) 1`] = `
 <div>
   <div
-    class="container"
+    class="_container_164da3"
   >
     <div
-      class="editor"
+      class="_editor_164da3"
       style="position: relative; text-align: left; box-sizing: border-box; padding: 0px; overflow: hidden; color: rgb(118, 217, 230); background-color: rgb(42, 42, 42);"
     >
       <pre
@@ -109,10 +109,10 @@ exports[`LiveCode should render live code correctly (snapshot) 1`] = `
       </style>
     </div>
     <div
-      class="preview"
+      class="_preview_164da3"
     />
     <pre
-      class="error"
+      class="_error_164da3"
     >
       ReferenceError: bar is not defined
     </pre>
