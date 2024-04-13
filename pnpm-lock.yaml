@@ -117,7 +117,7 @@ dependencies:
 devDependencies:
   '@dg-scripts/eslint-config':
     specifier: ^5.20.1
-    version: 5.20.1(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.0)(eslint@8.57.0)(next@14.2.1)(prettier@3.2.5)(typescript@5.4.5)
+    version: 5.20.1(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.1)(eslint@8.57.0)(next@14.2.1)(prettier@3.2.5)(typescript@5.4.5)
   '@dg-scripts/stylelint-config':
     specifier: ^5.20.1
     version: 5.20.1(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1)
@@ -161,8 +161,8 @@ devDependencies:
     specifier: ^8.57.0
     version: 8.57.0
   eslint-config-next:
-    specifier: ^14.2.0
-    version: 14.2.0(eslint@8.57.0)(typescript@5.4.5)
+    specifier: ^14.2.1
+    version: 14.2.1(eslint@8.57.0)(typescript@5.4.5)
   jest:
     specifier: ^29.7.0
     version: 29.7.0(@types/node@20.12.7)
@@ -2215,7 +2215,7 @@ packages:
       - supports-color
     dev: true
 
-  /@dg-scripts/eslint-config@5.20.1(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.0)(eslint@8.57.0)(next@14.2.1)(prettier@3.2.5)(typescript@5.4.5):
+  /@dg-scripts/eslint-config@5.20.1(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.1)(eslint@8.57.0)(next@14.2.1)(prettier@3.2.5)(typescript@5.4.5):
     resolution: {integrity: sha512-vDLy9pVD56lSYiN43mdV4aKbUDRx8uuBvOVUX8LOWXKoW0Gv4Pa53kTblXCRoQhob4iiMfc9wBwumFx4K+Kw+g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -2233,7 +2233,7 @@ packages:
       '@antfu/eslint-config': 2.11.6(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.0)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react-refresh@0.4.6)(eslint-plugin-react@7.34.1)(eslint@8.57.0)(typescript@5.4.5)
       '@eslint/eslintrc': 3.0.2
       eslint: 8.57.0
-      eslint-config-next: 14.2.0(eslint@8.57.0)(typescript@5.4.5)
+      eslint-config-next: 14.2.1(eslint@8.57.0)(typescript@5.4.5)
       eslint-plugin-format: 0.1.0(eslint@8.57.0)
       eslint-plugin-promise: 6.1.1(eslint@8.57.0)
       eslint-plugin-react: 7.34.1(eslint@8.57.0)
@@ -2792,8 +2792,8 @@ packages:
   /@next/env@14.2.1:
     resolution: {integrity: sha512-qsHJle3GU3CmVx7pUoXcghX4sRN+vINkbLdH611T8ZlsP//grzqVW87BSUgOZeSAD4q7ZdZicdwNe/20U2janA==}
 
-  /@next/eslint-plugin-next@14.2.0:
-    resolution: {integrity: sha512-QkM01VPhwcupezVevy9Uyl1rmpg2PimhMjkb+ySmnPgSKUUM/PGGRQxdFgMpHv/JzQoC8kRySgKeM441GiizcA==}
+  /@next/eslint-plugin-next@14.2.1:
+    resolution: {integrity: sha512-Fp+mthEBjkn8r9qd6o4JgxKp0IDEzW0VYHD8ZC05xS5/lFNwHKuOdr2kVhWG7BQCO9L6eeepshM1Wbs2T+LgSg==}
     dependencies:
       glob: 10.3.10
     dev: true
@@ -6122,8 +6122,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: true
 
-  /eslint-config-next@14.2.0(eslint@8.57.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-N0eQkn/wz557mIpW4JQWGEv4wGU8zvJ7emLHMS15uC18jjaU4kx6leR4U9QYT/eNghUZT7N9lBlfd8E4N0cp1w==}
+  /eslint-config-next@14.2.1(eslint@8.57.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-BgD0kPCWMlqoItRf3xe9fG0MqwObKfVch+f2ccwDpZiCJA8ghkz2wrASH+bI6nLZzGcOJOpMm1v1Q1euhfpt4Q==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -6131,7 +6131,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 14.2.0
+      '@next/eslint-plugin-next': 14.2.1
       '@rushstack/eslint-patch': 1.7.2
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
