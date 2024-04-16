@@ -1,3 +1,5 @@
+'use client'
+
 import Badge from '@/components/Badge'
 import { Card, Meta } from '@/components/Card'
 import { Book as BookIcon } from '@/components/Icons'

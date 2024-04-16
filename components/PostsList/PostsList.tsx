@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './PostsList.module.css'
 import Link from '@/components/Link'
 import { List } from '@/components/Lists'

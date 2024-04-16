@@ -1,3 +1,5 @@
+'use client'
+
 import GithubCardContent from './GithubCardContent'
 import GithubCardHeader from './GithubCardHeader'
 import GithubRepoCard from './GithubRepoCard'

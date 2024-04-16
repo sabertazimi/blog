@@ -1,21 +1,19 @@
 import type { Metadata } from 'next'
-import { NotFoundResult } from '@/components'
+import { BooksGrid } from '@/components'
 import { Layout } from '@/layouts'
 import { getBuildTime, getPostsMeta } from '@/lib'
 
 export const metadata: Metadata = {
-  title: 'Exploring',
+  title: 'Books',
 }
 
-export default async function NotFound() {
+export default async function Books() {
   const buildTime = getBuildTime()
   const postsMeta = await getPostsMeta()
 
   return (
-    <div>
-      <Layout banner="Exploring" buildTime={buildTime} posts={postsMeta}>
-        <NotFoundResult />
-      </Layout>
-    </div>
+    <Layout banner="Books" buildTime={buildTime} posts={postsMeta}>
+      <BooksGrid />
+    </Layout>
   )
 }

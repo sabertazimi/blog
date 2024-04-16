@@ -1,3 +1,5 @@
+'use client'
+
 import { Typography } from 'antd'
 import type { TitleProps } from 'antd/lib/typography/Title'
 import cx from 'classnames'
