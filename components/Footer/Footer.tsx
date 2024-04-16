@@ -1,3 +1,4 @@
+import FooterTime from './FooterTime'
 import Col from '@/components/Col'
 import Container from '@/components/Container'
 import Divider from '@/components/Divider'
@@ -12,7 +13,7 @@ interface Props {
   socials?: SiteConfig['socials']
 }
 
-function Footer({
+export default function Footer({
   buildTime,
   author = siteConfig.author,
   socials = siteConfig.socials,
@@ -60,23 +61,9 @@ function Footer({
           </span>
         </Col>
         <Col className="mx-6">
-          <span>
-            Last Build Time
-            {' '}
-            <a href="https://github.com/sabertazimi/blog/actions">
-              <time
-                dateTime={new Date(buildTime).toLocaleString('zh-CN', {
-                  hour12: false,
-                })}
-              >
-                {new Date(buildTime).toLocaleString('zh-CN', { hour12: false })}
-              </time>
-            </a>
-          </span>
+          <FooterTime buildTime={buildTime} />
         </Col>
       </Row>
     </Container>
   )
 }
-
-export default Footer
