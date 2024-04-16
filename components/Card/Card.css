@@ -6,3 +6,8 @@
 .ant-card-meta-description {
   @apply dark:text-gray-50/50;
 }
+
+/* Add padding to card title */
+.ant-card-head-title {
+  @apply py-3;
+}
