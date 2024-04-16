@@ -1,4 +1,4 @@
-import { InlineCode } from '@components/CodeBlocks'
+import { InlineCode } from '@/components/CodeBlocks'
 
 interface Props {}
 

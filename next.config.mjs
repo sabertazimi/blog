@@ -1,11 +1,7 @@
-const process = require('node:process')
+import process from 'node:process'
+import NextPwa from 'next-pwa'
 
 const isProduction = process.env.NODE_ENV === 'production'
-
-const NextPwa = require('next-pwa')({
-  dest: 'public',
-  disable: !isProduction,
-})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -29,4 +25,7 @@ const nextConfig = {
   ],
 }
 
-module.exports = NextPwa(nextConfig)
+export default NextPwa({
+  dest: 'public',
+  disable: !isProduction,
+})(nextConfig)

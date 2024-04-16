@@ -1,6 +1,6 @@
-import { render, screen, waitFor } from '@utils'
 import { axe } from 'jest-axe'
 import TypingTitle from './TypingTitle'
+import { render, screen, waitFor } from '@/utils'
 
 describe('TypingTitle', () => {
   jest.mock('typed.js')

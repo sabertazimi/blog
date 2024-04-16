@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import Table from './Table'
+import { render } from '@/utils'
 
 describe('Table', () => {
   it('should render correctly (snapshot)', () => {

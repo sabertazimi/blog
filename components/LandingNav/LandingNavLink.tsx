@@ -1,8 +1,8 @@
-import Link from '@components/Link'
-import { Bounce } from '@components/Motion'
-import Tooltip from '@components/Tooltip'
 import type { ReactNode } from 'react'
 import styles from './LandingNavLink.module.css'
+import Link from '@/components/Link'
+import { Bounce } from '@/components/Motion'
+import Tooltip from '@/components/Tooltip'
 
 interface Props {
   title: string

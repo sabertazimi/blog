@@ -1,5 +1,5 @@
-import Link from '@components/Link'
-import Result from '@components/Result'
+import Link from '@/components/Link'
+import Result from '@/components/Result'
 
 interface Props {
   title?: string

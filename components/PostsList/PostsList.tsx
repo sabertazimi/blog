@@ -1,7 +1,9 @@
-import Link from '@components/Link'
-import { List } from '@components/Lists'
-import type { PostMeta } from '@types'
+'use client'
+
 import styles from './PostsList.module.css'
+import Link from '@/components/Link'
+import { List } from '@/components/Lists'
+import type { PostMeta } from '@/types'
 
 interface Props {
   posts: PostMeta[]

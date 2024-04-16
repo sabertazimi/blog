@@ -6,9 +6,9 @@ import {
   WeiboOutlined,
   XOutlined,
 } from '@ant-design/icons'
-import { socialList } from '@config'
-import type { SocialType } from '@types'
 import styles from './SocialIcon.module.css'
+import { socialList } from '@/config'
+import type { SocialType } from '@/types'
 
 function SocialIcon(type: SocialType): JSX.Element {
   switch (type) {

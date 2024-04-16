@@ -1,5 +1,5 @@
-import CopyButton from '@components/CopyButton'
-import { cx, dynamic } from '@components/utils'
+import cx from 'classnames'
+import dynamic from 'next/dynamic'
 import type { HTMLProps, ReactElement } from 'react'
 import BlockCode from './BlockCode'
 import styles from './Pre.module.css'
@@ -9,6 +9,7 @@ import {
   normalizeLanguageName,
   normalizeLines,
 } from './utils'
+import CopyButton from '@/components/CopyButton'
 
 const LiveCode = dynamic(() => import('./LiveCode'))
 

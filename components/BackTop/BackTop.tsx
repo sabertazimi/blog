@@ -1,3 +1,5 @@
+'use client'
+
 import type { BackTopProps } from 'antd'
 import { FloatButton } from 'antd'
 

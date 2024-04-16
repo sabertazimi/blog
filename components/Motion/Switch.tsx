@@ -1,5 +1,7 @@
-import type { MotionProps } from '@components/utils'
-import { motion } from '@components/utils'
+'use client'
+
+import type { MotionProps } from 'framer-motion'
+import { motion } from 'framer-motion'
 import type { AriaRole } from 'react'
 
 interface Props {

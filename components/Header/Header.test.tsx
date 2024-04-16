@@ -1,6 +1,6 @@
-import mockData from '@mocks/data'
-import { render, waitFor } from '@utils'
 import Header from './Header'
+import mockData from '@/mocks/data'
+import { render, waitFor } from '@/utils'
 
 describe('Header', () => {
   const mockPosts = mockData.posts

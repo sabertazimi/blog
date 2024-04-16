@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@utils'
 import Toggle from './Toggle'
+import { fireEvent, render, screen } from '@/utils'
 
 describe('Toggle', () => {
   const cases = [

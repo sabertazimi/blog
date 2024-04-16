@@ -1,6 +1,6 @@
-import mockData from '@mocks/data'
-import { fireEvent, render, screen } from '@utils'
 import PostsSearchBar from './PostsSearchBar'
+import mockData from '@/mocks/data'
+import { fireEvent, render, screen } from '@/utils'
 
 describe('PostsSearchBar', () => {
   const mockPosts = mockData.posts

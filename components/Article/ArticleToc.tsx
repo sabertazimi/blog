@@ -1,6 +1,8 @@
-import Anchor from '@components/Anchor'
+'use client'
+
 import { useEffect, useState } from 'react'
 import styles from './ArticleToc.module.css'
+import Anchor from '@/components/Anchor'
 
 interface Props {
   slug: string

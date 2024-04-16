@@ -1,4 +1,4 @@
-import { routes, siteConfig } from '@config'
+import { routes, siteConfig } from '@/config'
 
 describe('Home Page', () => {
   beforeEach(() => {

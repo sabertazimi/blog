@@ -1,5 +1,5 @@
-import { siteConfig } from '@config'
-import type { PostMeta } from '@types'
+import { siteConfig } from '@/config'
+import type { PostMeta } from '@/types'
 
 export default function getSitemap(posts: PostMeta[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>

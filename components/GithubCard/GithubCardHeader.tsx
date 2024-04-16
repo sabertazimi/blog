@@ -1,6 +1,6 @@
-import { Github } from '@components/Icons'
-import { Span } from '@components/Texts'
-import type { Profile } from '@types'
+import { Github } from '@/components/Icons'
+import { Span } from '@/components/Texts'
+import type { Profile } from '@/types'
 
 interface Props {
   profile: Profile

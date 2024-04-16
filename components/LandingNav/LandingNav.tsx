@@ -1,12 +1,14 @@
-import { Hamburger } from '@components/Icons'
-import { Switch } from '@components/Motion'
-import type { MotionProps } from '@components/utils'
-import { routes as defaultRoutes } from '@config'
-import type { Route } from '@types'
+'use client'
+
+import type { MotionProps } from 'framer-motion'
 import type { KeyboardEvent } from 'react'
 import { useCallback, useState } from 'react'
 import styles from './LandingNav.module.css'
 import LandingNavLink from './LandingNavLink'
+import type { Route } from '@/types'
+import { routes as defaultRoutes } from '@/config'
+import { Switch } from '@/components/Motion'
+import { Hamburger } from '@/components/Icons'
 
 interface Props {
   routes?: Route[]

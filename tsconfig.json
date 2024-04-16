@@ -3,22 +3,13 @@
     "incremental": true,
     "target": "ES5",
     "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable", "ES2021", "ESNext"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "baseUrl": "./",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "paths": {
-      "@components": ["components"],
-      "@components/*": ["components/*"],
-      "@config": ["config"],
-      "@hooks": ["hooks"],
-      "@images/*": ["public/images/*"],
-      "@layouts": ["layouts"],
-      "@lib": ["lib"],
-      "@styles": ["styles"],
-      "@types": ["types"],
-      "@utils": ["utils"],
-      "@mocks/*": ["__mocks__/*"]
+      "@/*": ["./*"],
+      "@/images/*": ["public/images/*"]
     },
     "resolveJsonModule": true,
     "types": ["@testing-library/jest-dom"],
@@ -32,9 +23,14 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": [
     "node_modules",
     "build",

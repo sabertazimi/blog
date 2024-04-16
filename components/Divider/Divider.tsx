@@ -1,6 +1,6 @@
-import { cx } from '@components/utils'
 import type { DividerProps } from 'antd'
 import { Divider as AntDivider } from 'antd'
+import cx from 'classnames'
 import styles from './Divider.module.css'
 
 interface Props extends DividerProps {}

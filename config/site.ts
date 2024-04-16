@@ -1,6 +1,6 @@
-import type { GitHub } from '@types'
 import { colors } from './colors'
 import type { SocialType } from './social'
+import type { GitHub } from '@/types'
 
 interface Book {
   title: string
@@ -97,5 +97,5 @@ const siteConfig: SiteConfig = {
   },
 }
 
-export type { Book, SiteConfig }
 export { siteConfig }
+export type { Book, SiteConfig }

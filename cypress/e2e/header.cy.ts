@@ -1,5 +1,5 @@
-import type { Route } from '@config'
-import { routes } from '@config'
+import type { Route } from '@/config'
+import { routes } from '@/config'
 
 describe('Header', () => {
   const menuItems = ['/', ...routes, 'SearchBar', 'ThemeSwitch', 'Ellipsis']

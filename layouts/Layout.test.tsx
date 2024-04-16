@@ -1,6 +1,6 @@
-import mockData from '@mocks/data'
-import { render, waitFor } from '@utils'
 import Layout from './Layout'
+import mockData from '@/mocks/data'
+import { render, waitFor } from '@/utils'
 
 describe('Layout', () => {
   const mockTime = mockData.time

@@ -1,6 +1,6 @@
-import { mockNavigatorClipboard } from '@mocks/utils'
-import { act, renderHook, waitFor } from '@utils'
 import useCopyToClipboard from './useCopyToClipboard'
+import { mockNavigatorClipboard } from '@/mocks/utils'
+import { act, renderHook, waitFor } from '@/utils'
 
 describe('useCopyToClipboard', () => {
   it('should early return when clipboard missed', async () => {

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property -- Custom code metadata */
-import { render, screen } from '@utils'
 import Editor from './Editor'
+import { render, screen } from '@/utils'
 
 describe('Editor', () => {
   it('should render sandpack correctly', () => {

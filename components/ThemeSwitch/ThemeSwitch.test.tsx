@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@utils'
 import ThemeSwitch from './ThemeSwitch'
+import { fireEvent, render, screen } from '@/utils'
 
 describe('ThemeSwitch', () => {
   it('should switch dark mode when clicked', () => {

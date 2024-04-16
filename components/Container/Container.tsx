@@ -1,4 +1,4 @@
-import { cx } from '@components/utils'
+import cx from 'classnames'
 import type { CSSProperties, HTMLProps, ReactNode } from 'react'
 
 interface Props extends HTMLProps<HTMLDivElement> {

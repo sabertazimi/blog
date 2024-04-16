@@ -1,8 +1,11 @@
-import { Check, Copy } from '@components/Icons'
-import { Toggle } from '@components/Motion'
-import { cx, useReducedMotion } from '@components/utils'
-import { useCopyToClipboard } from '@hooks'
+'use client'
+
+import cx from 'classnames'
+import { useReducedMotion } from 'framer-motion'
 import styles from './CopyButton.module.css'
+import { Check, Copy } from '@/components/Icons'
+import { Toggle } from '@/components/Motion'
+import { useCopyToClipboard } from '@/hooks'
 
 interface Props {
   code: string

@@ -32,5 +32,5 @@ const routes: Route[] = [
   },
 ]
 
-export type { Route }
 export { routes }
+export type { Route }
