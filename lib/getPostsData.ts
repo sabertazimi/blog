@@ -131,8 +131,8 @@ async function getPostsData(): Promise<PostType[]> {
   return sortedLinkedPostsData
 }
 
-async function getPostsMeta(): Promise<PostMeta[]> {
-  const postsData = await getPostsData()
+async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
+  const postsData = cachedData ?? await getPostsData()
   const postsMeta = postsData.map((post) => {
     const { excerpt: _, source: __, ...postMeta } = post
     return postMeta
@@ -140,8 +140,8 @@ async function getPostsMeta(): Promise<PostMeta[]> {
   return postsMeta
 }
 
-async function getTagsData(): Promise<TagsType> {
-  const postsData = await getPostsData()
+async function getTagsData(cachedData?: PostType[]): Promise<TagsType> {
+  const postsData = cachedData ?? await getPostsData()
   const tagsData = postsData
     .map(post => post.tags || [])
     .flat()
@@ -161,8 +161,9 @@ async function getTagsData(): Promise<TagsType> {
 
 async function getPostData(
   slug: string,
+  cachedData?: PostType[],
 ): Promise<PostType | undefined> {
-  const postsData = await getPostsData()
+  const postsData = cachedData ?? await getPostsData()
   const postData = postsData.find(post => post.slug === slug)
   return postData
 }

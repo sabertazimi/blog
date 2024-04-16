@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { PostsList, TagsCloud } from '@/components'
 import { Layout } from '@/layouts'
-import { getBuildTime, getPostsMeta, getTagsData } from '@/lib'
+import { getBuildTime, getPostsData, getPostsMeta, getTagsData } from '@/lib'
 
 export const metadata: Metadata = {
   title: 'Tags',
@@ -9,8 +9,9 @@ export const metadata: Metadata = {
 
 export default async function Tags() {
   const buildTime = getBuildTime()
-  const postsMeta = await getPostsMeta()
-  const tagsData = await getTagsData()
+  const postsData = await getPostsData()
+  const postsMeta = await getPostsMeta(postsData)
+  const tagsData = await getTagsData(postsData)
 
   return (
     <Layout banner="Tags" buildTime={buildTime} posts={postsMeta}>

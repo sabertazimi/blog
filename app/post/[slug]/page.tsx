@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Article } from '@/components'
 import { getMetadata } from '@/config'
 import { PostLayout } from '@/layouts'
-import { getBuildTime, getPostData, getPostsMeta } from '@/lib'
+import { getBuildTime, getPostData, getPostsData, getPostsMeta } from '@/lib'
 import 'katex/dist/katex.css'
 
 interface QueryParams extends ParsedUrlQuery {
@@ -24,8 +24,9 @@ export async function generateMetadata({ params }: { params: QueryParams }): Pro
 
 export default async function Post({ params }: { params: QueryParams }) {
   const buildTime = getBuildTime()
-  const postsMeta = await getPostsMeta()
-  const postData = await getPostData(params.slug)
+  const postsData = await getPostsData()
+  const postsMeta = await getPostsMeta(postsData)
+  const postData = await getPostData(params.slug, postsData)
 
   return (
     postData && (
