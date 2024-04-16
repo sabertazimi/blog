@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { PostsList, TagsCloud } from '@/components'
 import { getMetadata } from '@/config'
 import { Layout } from '@/layouts'
-import { getBuildTime, getPostsMeta, getTagsData } from '@/lib'
+import { getBuildTime, getPostsData, getPostsMeta, getTagsData } from '@/lib'
 
 interface QueryParams extends ParsedUrlQuery {
   tag: string
@@ -22,8 +22,9 @@ export async function generateMetadata({ params }: { params: QueryParams }): Pro
 
 export default async function Tags({ params }: { params: QueryParams }) {
   const buildTime = getBuildTime()
-  const postsMeta = await getPostsMeta()
-  const tagsData = await getTagsData()
+  const postsData = await getPostsData()
+  const postsMeta = await getPostsMeta(postsData)
+  const tagsData = await getTagsData(postsData)
   const activeTag = decodeURI(params.tag)
 
   const postsMetaByTag = postsMeta.filter(

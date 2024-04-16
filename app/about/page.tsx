@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default async function About() {
   const buildTime = getBuildTime()
-  const { profile, repos } = await getGitHubData()
   const postsMeta = await getPostsMeta()
+  const { profile, repos } = await getGitHubData()
 
   return (
     <Layout banner="About Me" buildTime={buildTime} posts={postsMeta}>
