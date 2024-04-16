@@ -1,6 +1,6 @@
 import { Card, Meta } from '@components/Card'
 import Image from '@components/Image'
-import { cx } from '@components/utils'
+import cx from 'classnames'
 
 interface Props {
   src?: string

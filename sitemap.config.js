@@ -2,6 +2,7 @@
 const config = {
   siteUrl: 'https://blog.tazimi.dev',
   generateRobotsTxt: true,
+  outDir: 'app',
 }
 
 module.exports = config

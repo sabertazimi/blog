@@ -1,3 +1,5 @@
+'use client'
+
 import Anchor from '@components/Anchor'
 import { useEffect, useState } from 'react'
 import styles from './ArticleToc.module.css'

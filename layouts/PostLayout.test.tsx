@@ -8,7 +8,7 @@ describe('PostLayout', () => {
 
   it('should render correctly (snapshot)', async () => {
     const { container } = render(
-      <PostLayout banner="post layout" buildTime={mockTime} posts={mockPosts}>
+      <PostLayout buildTime={mockTime} posts={mockPosts}>
         <div>PostLayout</div>
       </PostLayout>,
     )

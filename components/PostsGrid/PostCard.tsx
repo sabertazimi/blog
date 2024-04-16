@@ -5,8 +5,8 @@ import Link from '@components/Link'
 import { Slide } from '@components/Motion'
 import Skeleton from '@components/Skeleton'
 import { IconTag, LinkTag } from '@components/Tags'
-import { cx } from '@components/utils'
 import type { PostMeta } from '@types'
+import cx from 'classnames'
 import styles from './PostCard.module.css'
 
 interface Props {

@@ -1,4 +1,4 @@
-import { cx } from '@components/utils'
+import cx from 'classnames'
 import type { DetailedHTMLProps, OlHTMLAttributes } from 'react'
 import styles from './Ul.module.css'
 

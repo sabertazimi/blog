@@ -1,3 +1,5 @@
+'use client'
+
 import { useVisibility } from '@hooks'
 import type { PostMeta } from '@types'
 import { useCallback, useRef, useState } from 'react'

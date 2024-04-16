@@ -1,6 +1,6 @@
 import { ArrowRight } from '@components/Icons'
-import { cx } from '@components/utils'
 import { siteConfig } from '@config'
+import cx from 'classnames'
 import type { HTMLProps } from 'react'
 import styles from './Item.module.css'
 

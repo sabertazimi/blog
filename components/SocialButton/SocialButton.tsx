@@ -1,8 +1,8 @@
 import Button from '@components/Button'
 import { SocialIcon } from '@components/Icons'
 import { Bounce } from '@components/Motion'
-import { cx } from '@components/utils'
 import type { SocialType } from '@types'
+import cx from 'classnames'
 import type { HTMLProps } from 'react'
 import styles from './SocialButton.module.css'
 

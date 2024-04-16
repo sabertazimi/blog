@@ -1,5 +1,5 @@
-import { cx } from '@components/utils'
 import { Typography } from 'antd'
+import cx from 'classnames'
 import type { ReactNode } from 'react'
 import styles from './Anchor.module.css'
 

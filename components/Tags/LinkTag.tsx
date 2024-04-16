@@ -1,7 +1,7 @@
 import Link from '@components/Link'
-import { cx } from '@components/utils'
 import { getColorByName } from '@config'
 import type { Tag as TagType } from '@types'
+import cx from 'classnames'
 import styles from './LinkTag.module.css'
 import Tag from './Tag'
 

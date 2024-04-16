@@ -1,23 +1,20 @@
-import { BackTop, Container, Footer, Header, MetaHeader } from '@components'
+import { BackTop, Container, Footer, Header } from '@components'
 import type { BuildTime, PostMeta } from '@types'
 import type { ReactNode } from 'react'
 
 interface Props {
-  banner: string
   posts: PostMeta[]
   buildTime: BuildTime
   children: ReactNode
 }
 
 function PostLayout({
-  banner,
   posts,
   buildTime,
   children,
 }: Props): JSX.Element {
   return (
     <div className="dark:bg-black">
-      <MetaHeader title={`${banner}`} />
       <Header posts={posts} />
       <Container className="max-w-full">
         {children}

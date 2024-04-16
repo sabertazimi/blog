@@ -1,5 +1,8 @@
-import type { MotionProps } from '@components/utils'
-import { cx, motion } from '@components/utils'
+'use client'
+
+import cx from 'classnames'
+import type { MotionProps } from 'framer-motion'
+import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 interface Props {

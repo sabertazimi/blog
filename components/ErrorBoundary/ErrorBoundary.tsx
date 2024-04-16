@@ -1,3 +1,5 @@
+'use client'
+
 import Paragraph from '@components/Paragraph'
 import Result from '@components/Result'
 import { Text } from '@components/Texts'

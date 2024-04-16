@@ -1,5 +1,5 @@
 import Alert from '@components/Alert'
-import { cx } from '@components/utils'
+import cx from 'classnames'
 import type { ReactNode } from 'react'
 import styles from './Aside.module.css'
 

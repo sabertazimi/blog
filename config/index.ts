@@ -1,5 +1,6 @@
 export { colors, getColorByName, socialColors } from './colors'
 export type { SocialColor } from './colors'
+export * from './seo'
 export { routes } from './routes'
 export type { Route } from './routes'
 export { siteConfig } from './site'

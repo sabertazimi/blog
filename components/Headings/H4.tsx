@@ -1,4 +1,4 @@
-import { cx } from '@components/utils'
+import cx from 'classnames'
 import type { ReactNode } from 'react'
 import Heading from './Heading'
 import styles from './Headings.module.css'

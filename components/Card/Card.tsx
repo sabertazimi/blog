@@ -1,6 +1,6 @@
-import { cx } from '@components/utils'
 import { Card as AntCard } from 'antd'
 import type { CardMetaProps, CardProps } from 'antd/lib/card'
+import cx from 'classnames'
 
 interface Props extends CardProps {}
 

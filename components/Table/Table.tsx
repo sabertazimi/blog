@@ -1,4 +1,4 @@
-import { cx } from '@components/utils'
+import cx from 'classnames'
 import type { HTMLProps } from 'react'
 import styles from './Table.module.css'
 

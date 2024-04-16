@@ -1,6 +1,8 @@
-import { cx } from '@components/utils'
+'use client'
+
 import { siteConfig } from '@config'
 import { useTypingEffect } from '@hooks'
+import cx from 'classnames'
 import { useRef } from 'react'
 
 interface Props {

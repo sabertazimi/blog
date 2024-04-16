@@ -1,4 +1,4 @@
-import { cx } from '@components/utils'
+import cx from 'classnames'
 import styles from './InlineCode.module.css'
 
 interface Props {

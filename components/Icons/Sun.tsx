@@ -1,4 +1,6 @@
-import { motion } from '@components/utils'
+'use client'
+
+import { motion } from 'framer-motion'
 import IconFactory from './IconFactory'
 
 function Svg(): JSX.Element {
