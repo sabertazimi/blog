@@ -67,9 +67,13 @@ function Footer({
               <time
                 dateTime={new Date(buildTime).toLocaleString('zh-CN', {
                   hour12: false,
+                  timeZone: 'Asia/Shanghai',
                 })}
               >
-                {new Date(buildTime).toLocaleString('zh-CN', { hour12: false })}
+                {new Date(buildTime).toLocaleString('zh-CN', {
+                  hour12: false,
+                  timeZone: 'Asia/Shanghai',
+                })}
               </time>
             </a>
           </span>
