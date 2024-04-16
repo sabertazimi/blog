@@ -1,6 +1,4 @@
-const time = new Date(2022, 0, 1, 8, 0, 0).toLocaleString('zh-CN', {
-  hour12: false,
-})
+const time = Date.UTC(2022, 0, 1, 8, 0, 0)
 
 const baseProfile = {
   username: 'sabertazimi',
