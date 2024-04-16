@@ -1,8 +1,8 @@
-import { render } from '@utils'
 import Anchor from './Anchor'
 import Delete from './Delete'
 import Emphasis from './Emphasis'
 import Strong from './Strong'
+import { render } from '@/utils'
 
 describe('Texts', () => {
   const Texts = {

@@ -1,7 +1,7 @@
-import { render } from '@utils'
 import Item from './Item'
 import Ol from './Ol'
 import Ul from './Ul'
+import { render } from '@/utils'
 
 describe('Lists', () => {
   const Lists = {

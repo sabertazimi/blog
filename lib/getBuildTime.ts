@@ -1,4 +1,4 @@
-import type { BuildTime } from '@types'
+import type { BuildTime } from '@/types'
 
 let buildTime = ''
 

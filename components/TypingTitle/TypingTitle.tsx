@@ -1,9 +1,9 @@
 'use client'
 
-import { siteConfig } from '@config'
-import { useTypingEffect } from '@hooks'
 import cx from 'classnames'
 import { useRef } from 'react'
+import { siteConfig } from '@/config'
+import { useTypingEffect } from '@/hooks'
 
 interface Props {
   titles?: string[]

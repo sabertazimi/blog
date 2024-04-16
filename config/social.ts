@@ -16,5 +16,5 @@ const socialList = {
 
 type SocialType = keyof typeof socialList
 
-export type { SocialType }
 export { socialList, socialQuery }
+export type { SocialType }

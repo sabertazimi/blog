@@ -1,11 +1,11 @@
 'use client'
 
-import AutoComplete from '@components/AutoComplete'
-import Input from '@components/Input'
-import Link from '@components/Link'
-import type { PostMeta } from '@types'
 import type { ReactNode } from 'react'
 import { useCallback, useState } from 'react'
+import AutoComplete from '@/components/AutoComplete'
+import Input from '@/components/Input'
+import Link from '@/components/Link'
+import type { PostMeta } from '@/types'
 
 interface Props {
   posts: PostMeta[]

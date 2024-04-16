@@ -1,5 +1,5 @@
-import Checkbox from '@components/Checkbox'
-import Input from '@components/Input'
+import Checkbox from '@/components/Checkbox'
+import Input from '@/components/Input'
 
 interface Props {
   type?: string

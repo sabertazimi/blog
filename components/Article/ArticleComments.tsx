@@ -1,9 +1,9 @@
 'use client'
 
-import { siteConfig } from '@config'
-import { useDisqus } from '@hooks'
 import cx from 'classnames'
 import styles from './ArticleComments.module.css'
+import { siteConfig } from '@/config'
+import { useDisqus } from '@/hooks'
 
 interface Props {
   url?: string

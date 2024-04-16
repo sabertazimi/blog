@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@utils'
+import { fireEvent, render, screen } from '@/utils'
 import Toggle from './Toggle'
 
 describe('Toggle', () => {

@@ -1,10 +1,10 @@
 'use client'
 
-import Paragraph from '@components/Paragraph'
-import Result from '@components/Result'
-import { Text } from '@components/Texts'
 import type { ErrorInfo } from 'react'
 import { Component } from 'react'
+import Paragraph from '@/components/Paragraph'
+import Result from '@/components/Result'
+import { Text } from '@/components/Texts'
 
 interface Props {
   children: JSX.Element

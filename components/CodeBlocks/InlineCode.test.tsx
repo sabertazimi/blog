@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import InlineCode from './InlineCode'
+import { render } from '@/utils'
 
 describe('InlineCode', () => {
   it('should render correctly (snapshot)', () => {

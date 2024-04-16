@@ -1,10 +1,10 @@
-import { H1 } from '@components/Headings'
-import { Calendar, ClockCircle, Edit } from '@components/Icons'
-import { Slide } from '@components/Motion'
-import { IconTag, LinkTag } from '@components/Tags'
-import { siteConfig } from '@config'
-import type { PostMeta } from '@types'
 import styles from './ArticleHeader.module.css'
+import { H1 } from '@/components/Headings'
+import { Calendar, ClockCircle, Edit } from '@/components/Icons'
+import { Slide } from '@/components/Motion'
+import { IconTag, LinkTag } from '@/components/Tags'
+import { siteConfig } from '@/config'
+import type { PostMeta } from '@/types'
 
 interface Props {
   post: PostMeta

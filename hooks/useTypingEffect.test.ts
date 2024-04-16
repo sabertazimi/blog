@@ -1,5 +1,5 @@
-import { renderHook } from '@utils'
 import useTypingEffect from './useTypingEffect'
+import { renderHook } from '@/utils'
 
 describe('useTypingEffect', () => {
   const mockRef = { current: null }

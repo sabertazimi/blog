@@ -1,7 +1,7 @@
-const plugin = require('tailwindcss/plugin')
+import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config: Config = {
   content: [
     './components/**/*.{js,ts,jsx,tsx}',
     './layouts/**/*.{js,ts,jsx,tsx}',
@@ -96,11 +96,11 @@ module.exports = {
         'extra-loose': '2.5',
       },
       zIndex: {
-        25: 25,
-        75: 75,
-        100: 100,
-        1000: 1000,
-        max: 9999,
+        25: '25',
+        75: '75',
+        100: '100',
+        1000: '1000',
+        max: '9999',
       },
       colors: {
         primary: 'var(--primary)',
@@ -135,7 +135,7 @@ module.exports = {
 
       matchUtilities(
         {
-          'contain-size': value => ({
+          'contain-size': (value: string) => ({
             'contain-intrinsic-size': value,
           }),
         },
@@ -144,3 +144,5 @@ module.exports = {
     }),
   ],
 }
+
+export default config

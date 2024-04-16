@@ -1,8 +1,8 @@
-import Col from '@components/Col'
-import Row from '@components/Row'
-import { siteConfig } from '@config'
-import type { Book } from '@types'
 import BookCard from './BookCard'
+import Col from '@/components/Col'
+import Row from '@/components/Row'
+import { siteConfig } from '@/config'
+import type { Book } from '@/types'
 
 interface Props {
   books?: Book[]

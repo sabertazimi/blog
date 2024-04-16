@@ -1,9 +1,9 @@
-import Link from '@components/Link'
-import { getColorByName } from '@config'
-import type { Tag as TagType } from '@types'
 import cx from 'classnames'
 import styles from './LinkTag.module.css'
 import Tag from './Tag'
+import Link from '@/components/Link'
+import { getColorByName } from '@/config'
+import type { Tag as TagType } from '@/types'
 
 interface Props {
   tag?: TagType

@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import Blockquote from './Blockquote'
+import { render } from '@/utils'
 
 describe('Blockquote', () => {
   it('should render correctly (snapshot)', () => {

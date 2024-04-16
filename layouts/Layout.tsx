@@ -1,7 +1,7 @@
-import { Container, Divider, Footer, Header } from '@components'
-import { Slide } from '@components/Motion'
-import type { BuildTime, PostMeta } from '@types'
 import type { ReactNode } from 'react'
+import { Container, Divider, Footer, Header } from '@/components'
+import { Slide } from '@/components/Motion'
+import type { BuildTime, PostMeta } from '@/types'
 
 interface Props {
   banner: string

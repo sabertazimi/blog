@@ -1,4 +1,4 @@
-import { Pre } from '@components/CodeBlocks'
+import { Pre } from '@/components/CodeBlocks'
 
 interface Props {}
 

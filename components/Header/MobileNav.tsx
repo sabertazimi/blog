@@ -1,13 +1,13 @@
-import Col from '@components/Col'
-import { Bars } from '@components/Icons'
-import Link from '@components/Link'
-import LocalImage from '@components/LocalImage'
-import Menu from '@components/Menu'
-import Popover from '@components/Popover'
-import Row from '@components/Row'
-import ThemeSwitch from '@components/ThemeSwitch'
-import { routes } from '@config'
-import logo from '@images/logo-full.png'
+import Col from '@/components/Col'
+import { Bars } from '@/components/Icons'
+import Link from '@/components/Link'
+import LocalImage from '@/components/LocalImage'
+import Menu from '@/components/Menu'
+import Popover from '@/components/Popover'
+import Row from '@/components/Row'
+import ThemeSwitch from '@/components/ThemeSwitch'
+import { routes } from '@/config'
+import logo from '@/images/logo-full.png'
 
 function MobileNav(): JSX.Element {
   return (

@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import LandingLayout from './LandingLayout'
+import { render } from '@/utils'
 
 describe('LandingLayout', () => {
   it('should render correctly (snapshot)', () => {

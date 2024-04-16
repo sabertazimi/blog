@@ -1,6 +1,6 @@
-import FlexContainer from '@components/FlexContainer'
-import type { PostMeta } from '@types'
 import PostCard from './PostCard'
+import FlexContainer from '@/components/FlexContainer'
+import type { PostMeta } from '@/types'
 
 interface Props {
   posts: PostMeta[]

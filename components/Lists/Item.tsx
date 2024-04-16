@@ -1,8 +1,8 @@
-import { ArrowRight } from '@components/Icons'
-import { siteConfig } from '@config'
 import cx from 'classnames'
 import type { HTMLProps } from 'react'
 import styles from './Item.module.css'
+import { siteConfig } from '@/config'
+import { ArrowRight } from '@/components/Icons'
 
 interface Props extends HTMLProps<HTMLLIElement> {}
 

@@ -43,5 +43,5 @@ function getColorByName(name: string): string {
   return colorPalette[paletteColor]
 }
 
+export { colors, getColorByName, socialColors }
 export type { SocialColor }
-export { colors, socialColors, getColorByName }

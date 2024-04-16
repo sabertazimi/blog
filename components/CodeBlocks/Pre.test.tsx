@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import Pre from './Pre'
+import { render } from '@/utils'
 
 describe('Pre', () => {
   const languages = [

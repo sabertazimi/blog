@@ -1,6 +1,6 @@
-import mockData from '@mocks/data'
-import { render } from '@utils'
 import PostsGrid from './PostsGrid'
+import mockData from '@/mocks/data'
+import { render } from '@/utils'
 
 describe('PostsGrid', () => {
   const mockPosts = mockData.posts

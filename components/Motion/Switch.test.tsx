@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import Switch from './Switch'
+import { render } from '@/utils'
 
 describe('Switch', () => {
   it('should render correctly (snapshot)', () => {

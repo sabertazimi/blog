@@ -1,6 +1,6 @@
-import type { PostMeta } from '@types'
 import DesktopPostsGrid from './DesktopPostsGrid'
 import MobilePostsGrid from './MobilePostsGrid'
+import type { PostMeta } from '@/types'
 
 interface Props {
   posts: PostMeta[]

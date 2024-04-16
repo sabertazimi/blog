@@ -1,8 +1,8 @@
-import FlexContainer from '@components/FlexContainer'
-import { ArrowLeft, ArrowRight, Home } from '@components/Icons'
-import Link from '@components/Link'
-import { Bounce } from '@components/Motion'
-import type { PostMeta } from '@types'
+import FlexContainer from '@/components/FlexContainer'
+import { ArrowLeft, ArrowRight, Home } from '@/components/Icons'
+import Link from '@/components/Link'
+import { Bounce } from '@/components/Motion'
+import type { PostMeta } from '@/types'
 
 interface Props {
   prevPost: PostMeta['prevPost']

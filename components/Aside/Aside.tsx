@@ -1,7 +1,7 @@
-import Alert from '@components/Alert'
 import cx from 'classnames'
 import type { ReactNode } from 'react'
 import styles from './Aside.module.css'
+import Alert from '@/components/Alert'
 
 interface Props {
   type?: string

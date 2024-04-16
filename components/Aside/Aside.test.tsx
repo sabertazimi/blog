@@ -1,5 +1,5 @@
-import { render } from '@utils'
 import Aside from './Aside'
+import { render } from '@/utils'
 
 describe('Aside', () => {
   const types = [

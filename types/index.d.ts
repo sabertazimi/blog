@@ -73,4 +73,4 @@ export type {
   SiteConfig,
   SocialColor,
   SocialType,
-} from '@config'
+} from '@/config'
