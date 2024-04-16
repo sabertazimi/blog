@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: QueryParams }): Promise<Metadata> {
-  return getMetadata({ title: params.tag })
+  return getMetadata({ title: decodeURI(params.tag) })
 }
 
 export default async function Tags({ params }: { params: QueryParams }) {
