@@ -24,7 +24,7 @@ export default async function Tags({ params }: { params: QueryParams }) {
   const buildTime = getBuildTime()
   const postsMeta = await getPostsMeta()
   const tagsData = await getTagsData()
-  const activeTag = params.tag
+  const activeTag = decodeURI(params.tag)
 
   const postsMetaByTag = postsMeta.filter(
     ({ tags }) => tags && tags.includes(activeTag),

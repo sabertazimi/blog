@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: QueryParams }): Pro
 export default async function Post({ params }: { params: QueryParams }) {
   const buildTime = getBuildTime()
   const postsMeta = await getPostsMeta()
-  const postData = (await getPostData(params.slug))
+  const postData = await getPostData(params.slug)
 
   return (
     postData && (
