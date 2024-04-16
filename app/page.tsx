@@ -1,7 +1,7 @@
 import { LandingNav, TypingTitle } from '@/components'
 import { LandingLayout } from '@/layouts'
 
-function Home(): JSX.Element {
+export default function Home() {
   return (
     <LandingLayout>
       <LandingNav />
@@ -9,5 +9,3 @@ function Home(): JSX.Element {
     </LandingLayout>
   )
 }
-
-export default Home
