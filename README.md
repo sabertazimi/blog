@@ -108,14 +108,14 @@ tags:
 ```bash
 git clone --depth=1 https://github.com/sabertazimi/blog
 cd blog
-npm install
+pnpm install
 ```
 
 ### Development
 
 ```bash
 # http://localhost:3000
-npm start
+pnpm start
 ```
 
 **Open the source code and start editing!**
@@ -130,7 +130,7 @@ Build for `/` path:
 
 ```bash
 # Deploy to Vercel.
-npm run build
+pnpm run build
 ```
 
 ## :open_file_folder: Fold Structure
