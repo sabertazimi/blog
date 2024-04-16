@@ -19,7 +19,6 @@ import remarkAdmonitions from './remark-admonitions'
 import type { MDXFrontMatter, PostMeta, PostType, Tag, TagsType } from '@/types'
 
 const contentsPath = path.join(process.cwd(), 'contents')
-let postsData: PostType[] = []
 
 async function* walk(directoryPath: string): AsyncGenerator<string> {
   const directory = await fs.opendir(directoryPath)
@@ -88,8 +87,7 @@ async function generatePostData(filePath: string): Promise<PostType> {
 }
 
 async function getPostsData(): Promise<PostType[]> {
-  if (postsData.length)
-    return postsData
+  const postsData: PostType[] = []
 
   for await (const filePath of walk(contentsPath)) {
     const fileExt = path.extname(filePath)
@@ -130,9 +128,7 @@ async function getPostsData(): Promise<PostType[]> {
     }
   })
 
-  // Cache.
-  postsData = sortedLinkedPostsData
-  return postsData
+  return sortedLinkedPostsData
 }
 
 async function getPostsMeta(): Promise<PostMeta[]> {
