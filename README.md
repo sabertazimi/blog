@@ -140,7 +140,7 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 ```bash
 .
 ├── node_modules
-├── __mocks__
+├── app
 ├── components
 ├── config
 ├── contents
@@ -148,33 +148,33 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 ├── hooks
 ├── layouts
 ├── lib
-├── pages
+├── mocks
 ├── public
 ├── styles
 ├── types
 ├── .gitignore
 ├── .tokeignore
-├── .eslintrc.json
 ├── .prettierrc.json
 ├── .stylelintrc.json
 ├── .versionrc.json
 ├── codecov.yml
-├── cypress.json
+├── cypress.config.ts
+├── eslint.config.mjs
 ├── jest.config.js
 ├── jest.setup.js
 ├── next-env.d.ts
-├── next.config.js
+├── next.config.mjs
 ├── package.json
-├── postcss.config.js
+├── postcss.config.mjs
 ├── sitemap.config.js
-├── tailwind.config.js
+├── tailwind.config.ts
 ├── tsconfig.json
 ├── LICENSE
 └── README.md
 ```
 
 1. **`/node_modules`**: This directory contains all of the modules of code.
-2. **`/__mocks__`**: Mock API for 3rd-party libraries for Jest testing.
+2. **`app`**: Pages components (SSG) based on Next.js [App Router](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration).
 3. **`components`**: React components building block.
 4. **`config`**: Blog site configuration (color/metadata/etc.).
 5. **`contents`**: Blog posts (`.md`/`.mdx`).
@@ -182,26 +182,26 @@ A quick look at the top-level files and directories you'll see in a Next.js proj
 7. **`hooks`**: Hooks for shared logic.
 8. **`layouts`**: Layouts components.
 9. **`lib`**: Data fetching helper functions.
-10. **`pages`**: Pages components (SSG).
+10. **`mocks`**: Mock API for 3rd-party libraries for Jest testing.
 11. **`public`**: Static assets.
 12. **`styles`**: CSS stylesheets files.
 13. **`types`**: TypeScript shared type definition.
 14. **`.gitignore`**: This file tells git which files it should not track.
 15. **`.tokeignore`**: [Code Lines](https://github.com/XAMPPRocky/tokei) configuration file.
-16. **`.eslintrc.json`**: [ESLint](https://eslint.org) configuration file.
-17. **`.prettierrc.json`**: [Prettier](https://prettier.io) configuration file.
-18. **`.stylelintrc.json`**: [StyleLint](https://stylelint.io) configuration file.
-19. **`.versionrc.json`**: [Standard Version](https://github.com/conventional-changelog/standard-version) configuration file.
-20. **`codecov.yml`**: [Codecov](https://codecov.io) CI configuration file.
-21. **`cypress.json`**: [Cypress](https://cypress.io) E2E testing configuration file.
+16. **`.prettierrc.json`**: [Prettier](https://prettier.io) configuration file.
+17. **`.stylelintrc.json`**: [StyleLint](https://stylelint.io) configuration file.
+18. **`.versionrc.json`**: [Standard Version](https://github.com/conventional-changelog/standard-version) configuration file.
+19. **`codecov.yml`**: [Codecov](https://codecov.io) CI configuration file.
+20. **`cypress.config.ts`**: [Cypress](https://cypress.io) E2E testing configuration file.
+21. **`eslint.config.mjs`**: [ESLint](https://eslint.org) Flat configuration file.
 22. **`jest.config.js`**: [Jest](https://jestjs.io) configuration file.
 23. **`jest.setup.js`**: Jest basic setup script (after environment setup).
 24. **`next-env.d.ts`**: `Next.js` internal type definition.
-25. **`next.config.js`**: `Next.js` configuration file.
+25. **`next.config.mjs`**: `Next.js` configuration file.
 26. **`package.json`**: A manifest file for Node.js projects.
-27. **`postcss.config.js`**: [PostCSS](https://postcss.org) configuration file.
+27. **`postcss.config.mjs`**: [PostCSS](https://postcss.org) configuration file.
 28. **`sitemap.config.js`**: `next-sitemap` configuration file.
-29. **`tailwind.config.js`**: [Tailwind.css](https://tailwindcss.com) configuration file.
+29. **`tailwind.config.ts`**: [Tailwind.css](https://tailwindcss.com) configuration file.
 30. **`tsconfig.json`**: [TypeScript](https://www.typescriptlang.org) configuration file.
 31. **`LICENSE`**: This Next.js starter is licensed under the `MIT` license.
 32. **`README.md`**: A text file containing useful reference information.
