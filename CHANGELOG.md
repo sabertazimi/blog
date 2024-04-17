@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.0](https://github.com/sabertazimi/blog/compare/v3.8.1...v4.0.0) (2024-04-17)
+
+
+### :sparkles: Features
+
+* **app-router:** switch to app router ([#1252](https://github.com/sabertazimi/blog/issues/1252)) ([849a184](https://github.com/sabertazimi/blog/commit/849a1848e4758d0dd8a168fd04d5aec7035151cb))
+
+
+### :bug: Bug Fixes
+
+* **app-Tag:** decodeURI tag in metadata generation ([#1254](https://github.com/sabertazimi/blog/issues/1254)) ([9cc540f](https://github.com/sabertazimi/blog/commit/9cc540fdd341af5dee6384b81422b2c979824694))
+* **app-time:** enable dynamic time zone ([#1257](https://github.com/sabertazimi/blog/issues/1257)) ([56228d2](https://github.com/sabertazimi/blog/commit/56228d2915307a9eb1880a9eda55acf40f65c586))
+* **components-Card:** fix card spacing styles ([#1255](https://github.com/sabertazimi/blog/issues/1255)) ([ec79630](https://github.com/sabertazimi/blog/commit/ec79630b93b93d9a38cee0ee35d141c0e3a1f952))
+* **deps:** update dependencies (non-major) ([#1240](https://github.com/sabertazimi/blog/issues/1240)) ([531a071](https://github.com/sabertazimi/blog/commit/531a0718e350e3b204e847b0a2de63a0a0fc7946))
+* **deps:** update dependencies (non-major) ([#1245](https://github.com/sabertazimi/blog/issues/1245)) ([9500dba](https://github.com/sabertazimi/blog/commit/9500dba2ff38127c59db9996ae1e36e4de4a7737))
+* **deps:** update dependency next to ^14.2.1 ([#1246](https://github.com/sabertazimi/blog/issues/1246)) ([9c0c31f](https://github.com/sabertazimi/blog/commit/9c0c31f1ab08aa91c76272fa0b9dadf755ee9c60))
+* **security:** disable eslint security output temporarily ([#1238](https://github.com/sabertazimi/blog/issues/1238)) ([476bfba](https://github.com/sabertazimi/blog/commit/476bfba082151bb467260700d1df87129a731eba))
+
+
+### :zap: Performance
+
+* **lib:** cache posts data ([#1253](https://github.com/sabertazimi/blog/issues/1253)) ([7279565](https://github.com/sabertazimi/blog/commit/72795650f8380657e3653180f0e35baeb059c37d))
+
+
+### :wrench: Testing
+
+* allow uppercase title for components testing ([#1235](https://github.com/sabertazimi/blog/issues/1235)) ([0817195](https://github.com/sabertazimi/blog/commit/0817195a59da5ef7875d2b82e8910276b0d1b953))
+* **snapshots:** update uppercase title ([bf05827](https://github.com/sabertazimi/blog/commit/bf05827207e8437fce034cab1cfb1ca7e25f500e))
+
 ## [3.8.1](https://github.com/sabertazimi/blog/compare/v3.8.0...v3.8.1) (2024-04-01)
 
 
