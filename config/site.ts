@@ -33,7 +33,7 @@ const siteConfig: SiteConfig = {
   themeColor: colors.blue,
   siteUrl: 'https://blog.tazimi.dev',
   disqusUrl: 'https://sabertaz-blog.disqus.com',
-  landingTitles: [`I'm a coder.`, `I'm a learner.`],
+  landingTitles: [`I'm a coder.`, `I'm a learner.`, `I'm a web developer.`],
   socials: {
     github: 'sabertazimi',
     twitter: 'sabertazimi',
