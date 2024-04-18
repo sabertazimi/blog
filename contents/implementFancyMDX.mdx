@@ -55,24 +55,24 @@ Renders:
 ### Unordered List
 
 ```md noline
-+ Create a list by starting a line with `+`, `-`, or `*`.
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
+- Create a list by starting a line with `+`, `-`, or `*`.
+- Sub-lists are made by indenting 2 spaces:
+  + Marker character change forces new list start:
     * Ac tristique libero volutpat at.
-    + Facilisis in pretium nisl aliquet.
-    - Nulla volutpat aliquam velit.
-+ Very easy!
+    - Facilisis in pretium nisl aliquet.
+    + Nulla volutpat aliquam velit.
+- Very easy!
 ```
 
 Renders:
 
-+ Create a list by starting a line with `+`, `-`, or `*`.
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
+- Create a list by starting a line with `+`, `-`, or `*`.
+- Sub-lists are made by indenting 2 spaces:
+  + Marker character change forces new list start:
     * Ac tristique libero volutpat at.
-    + Facilisis in pretium nisl aliquet.
-    - Nulla volutpat aliquam velit.
-+ Very easy!
+    - Facilisis in pretium nisl aliquet.
+    + Nulla volutpat aliquam velit.
+- Very easy!
 
 ### Ordered List
 
@@ -383,21 +383,11 @@ Renders:
 
 ### Autolink Literal
 
-```md noline
-Auto-converted link https://github.com/sabertazimi/blog (enable linkify to see):
+Auto-converted link (enable linkify to see):
 
-- www.example.com.
-- https://example.com.
-- contact@example.com.
-```
-
-Renders:
-
-Auto-converted link https://github.com/sabertazimi/blog (enable linkify to see):
-
-- www.example.com.
-- https://example.com.
-- contact@example.com.
+- `www.example.com`: www.example.com.
+- `https://example.com`: https://example.com.
+- `contact@example.com`: contact@example.com.
 
 ### Footnote
 
@@ -565,27 +555,14 @@ Renders nothing.
 
 ## Git
 
-```md noline
-* Commit: 4c5361eca6c9e901139e94563e03aed9531b72fc.
-* Commit (fork): foo@4c5361eca6c9e901139e94563e03aed9531b72fc.
-* Commit (repo): remarkjs/remark@e1aa9f6c02de18b9459b7d269712bcb50183ce89.
-* Issue or PR (`#`): #1.
-* Issue or PR (`GH-`): GH-1.
-* Issue or PR (fork): foo#1.
-* Issue or PR (project): remarkjs/remark#1.
-* Mention: @sabertazimi.
-```
-
-Renders:
-
-* Commit: 4c5361eca6c9e901139e94563e03aed9531b72fc.
-* Commit (fork): foo@4c5361eca6c9e901139e94563e03aed9531b72fc.
-* Commit (repo): remarkjs/remark@e1aa9f6c02de18b9459b7d269712bcb50183ce89.
-* Issue or PR (`#`): #1.
-* Issue or PR (`GH-`): GH-1.
-* Issue or PR (fork): foo#1.
-* Issue or PR (project): remarkjs/remark#1.
-* Mention: @sabertazimi.
+- Commit `4c5361e`: 4c5361e.
+- Commit (fork) `foo@4c5361e`: foo@4c5361e.
+- Commit (project) `remarkjs/remark@e1aa9f6`: remarkjs/remark@e1aa9f6.
+- Issue or PR (`#`) `#1`: #1.
+- Issue or PR (`GH-`) `GH-100`: GH-100.
+- Issue or PR (fork) `foo#1`: foo#1.
+- Issue or PR (project) `remarkjs/remark#1`: remarkjs/remark#1.
+- Mention `@sabertazimi`: @sabertazimi.
 
 ## Emoji
 
