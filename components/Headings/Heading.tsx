@@ -14,7 +14,7 @@ function Heading({
   return (
     <Typography.Title
       {...props}
-      className={cx('mdx-heading dark:text-light', styles.heading, className)}
+      className={cx('mdx-heading', styles.heading, className)}
     >
       {children}
     </Typography.Title>

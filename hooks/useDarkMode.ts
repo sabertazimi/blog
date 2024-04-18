@@ -1,3 +1,4 @@
+import { useThemeMode } from 'antd-style'
 import type { Dispatch, SetStateAction } from 'react'
 import { useEffect } from 'react'
 import { useLocalStorage, useMedia } from 'react-use'
@@ -8,12 +9,17 @@ function useDarkMode(): [
 ] {
   const [darkMode, setDarkMode] = useLocalStorage<boolean>('dark-mode', false)
   const prefersDarkMode = useMedia('(prefers-color-scheme: dark)', false)
+  const { setThemeMode } = useThemeMode()
   const enabled = darkMode ?? prefersDarkMode
 
   useEffect(() => {
-    enabled
-      ? window.document.body.classList.add('dark')
-      : window.document.body.classList.remove('dark')
+    if (enabled) {
+      window.document.body.classList.add('dark')
+      setThemeMode('dark')
+    } else {
+      window.document.body.classList.remove('dark')
+      setThemeMode('light')
+    }
   }, [enabled])
 
   return [enabled, setDarkMode]

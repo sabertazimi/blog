@@ -46,7 +46,7 @@ function Aside({
       className={cx(
         className,
         styles.admonition,
-        'dark:bg-black dark:shadow-xl dark:shadow-primary',
+        'dark:shadow-xl dark:shadow-primary',
       )}
     />
   )

@@ -1,6 +1,6 @@
-import { AntdRegistry } from '@ant-design/nextjs-registry'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
+import AntdProvider from '@/components/AntdProvider'
 import ProgressBarProvider from '@/components/ProgressBarProvider'
 import SandpackProvider from '@/components/SandpackProvider'
 import { getMetadata, getViewport } from '@/config'
@@ -8,9 +8,7 @@ import { getMetadata, getViewport } from '@/config'
 // Keep stylesheets importing order
 import '@/styles/globals.css'
 import '@/components/Article/Article.css'
-import '@/components/Button/Button.css'
 import '@/components/Card/Card.css'
-import '@/components/Skeleton/Skeleton.css'
 
 export function generateMetadata(): Metadata {
   return getMetadata()
@@ -31,11 +29,11 @@ export default function RootLayout({
         <SandpackProvider />
       </head>
       <body>
-        <AntdRegistry>
+        <AntdProvider>
           <ProgressBarProvider>
             {children}
           </ProgressBarProvider>
-        </AntdRegistry>
+        </AntdProvider>
       </body>
     </html>
   )

@@ -11,12 +11,12 @@ function GithubCardContent({ profile }: Props): JSX.Element {
   return (
     <Space direction="vertical">
       <div>
-        <InfoCircle className="align-top text-2xl dark:text-light" />
-        <Span className="dark:text-light">{profile.bio || 'No Description'}</Span>
+        <InfoCircle className="align-top text-2xl" />
+        <Span>{profile.bio || 'No Description'}</Span>
       </div>
       <div>
-        <Environment className="align-top text-2xl dark:text-light" />
-        <Span className="dark:text-light">{profile.location || 'Earth'}</Span>
+        <Environment className="align-top text-2xl" />
+        <Span>{profile.location || 'Earth'}</Span>
       </div>
       <div>
         <a href={profile.followersUrl}>
