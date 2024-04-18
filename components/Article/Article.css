@@ -1,3 +1,15 @@
+/* Add dark mode support for Markdown HTML tags */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+section,
+div:not(.sp-error-message) {
+  @apply dark:text-light;
+}
+
 /* Reset ant design font family and font size */
 [class^='ant-typography'],
 [class*=' ant-typography'],
