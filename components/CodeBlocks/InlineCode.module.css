@@ -1,4 +1,4 @@
-.code {
-  @apply break-words box-decoration-clone px-1.5 py-px;
-  @apply font-normal leading-6 text-dark shadow-xl;
+.code.code {
+  @apply break-words box-decoration-clone px-1.5 py-px rounded;
+  @apply font-normal text-[85%] leading-6 text-light bg-dark;
 }
