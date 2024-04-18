@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
-import AntdProvider from '@/components/AntdProvider'
-import ProgressBarProvider from '@/components/ProgressBarProvider'
-import SandpackProvider from '@/components/SandpackProvider'
+import { AntdProvider, ProgressBarProvider, SandpackProvider } from '@/components'
 import { getMetadata, getViewport } from '@/config'
 
 // Keep stylesheets importing order
