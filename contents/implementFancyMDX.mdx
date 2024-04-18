@@ -22,6 +22,22 @@ it's an advanced `Markdown` format with `React` component support.
 
 ## Heading
 
+```md noline
+# **Hello**, This Is a _Title_ Inside `h1`
+
+## **Hello**, This Is a _Title_ Inside `h2`
+
+### **Hello**, This Is a _Title_ Inside `h3`
+
+#### **Hello**, This Is a _Title_ Inside `h4`
+
+##### **Hello**, This Is a _Title_ Inside `h5`
+
+###### **Hello**, This Is a _Title_ Inside `h6`
+```
+
+Renders:
+
 # **Hello**, This Is a _Title_ Inside `h1`
 
 ## **Hello**, This Is a _Title_ Inside `h2`
@@ -38,6 +54,18 @@ it's an advanced `Markdown` format with `React` component support.
 
 ### Unordered List
 
+```md noline
++ Create a list by starting a line with `+`, `-`, or `*`.
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at.
+    + Facilisis in pretium nisl aliquet.
+    - Nulla volutpat aliquam velit.
++ Very easy!
+```
+
+Renders:
+
 + Create a list by starting a line with `+`, `-`, or `*`.
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
@@ -49,6 +77,33 @@ it's an advanced `Markdown` format with `React` component support.
 ### Ordered List
 
 Sequential numbering:
+
+```md noline
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+    3. Integer molestie lorem at massa:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+2. Consectetur adipiscing elit:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+3. Integer molestie lorem at massa:
+    1. Lorem ipsum dolor sit amet.
+    2. Consectetur adipiscing elit.
+    3. Integer molestie lorem at massa.
+```
+
+Renders:
 
 1. Lorem ipsum dolor sit amet:
     1. Lorem ipsum dolor sit amet:
@@ -75,6 +130,25 @@ Sequential numbering:
 
 Same numbering:
 
+```md noline
+1. You can keep all the numbers as `1.`:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+```
+
+Renders:
+
 1. You can keep all the numbers as `1.`:
     1. Lorem ipsum dolor sit amet:
         1. Lorem ipsum dolor sit amet.
@@ -92,13 +166,21 @@ Same numbering:
 
 Start numbering with offset:
 
+```md noline
+108. 108 numbering list.
+1. 1 numbering list.
+1. 1 numbering list.
+```
+
+Renders:
+
 108. 108 numbering list.
 1. 1 numbering list.
 1. 1 numbering list.
 
 ### Task List
 
-```md
+```md noline
 - [x] Write the press release.
 - [ ] Update the website.
 - [ ] Contact the media.
@@ -112,7 +194,7 @@ Renders:
 
 ## Horizontal Rule
 
-```md
+```md noline
 ___
 ```
 
@@ -120,7 +202,7 @@ Renders:
 
 ___
 
-```md
+```md noline
 ---
 ```
 
@@ -128,7 +210,7 @@ Renders:
 
 ---
 
-```md
+```md noline
 ***
 ```
 
@@ -140,7 +222,7 @@ Renders:
 
 ### Bold
 
-```md
+```md noline
 **This is bold text**.
 
 __This is bold text__.
@@ -154,7 +236,7 @@ __This is bold text__.
 
 ### Italic
 
-```md
+```md noline
 *This is italic text*.
 
 _This is italic text_.
@@ -168,7 +250,7 @@ _This is italic text_.
 
 ### Strikethrough
 
-```md
+```md noline
 ~This is strikethrough text~.
 
 ~~This is strikethrough text~~.
@@ -184,17 +266,39 @@ Renders:
 
 ### Nested Blockquote
 
+```md noline
+> Blockquotes can also be nested...
+> > ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+```
+
+Renders:
+
 > Blockquotes can also be nested...
 > > ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
 
 ### Continued Blockquote
 
+```md noline
+> Blockquotes can also be continued...
+> ...continued...
+> ...continued continued...
+```
+
+Renders:
+
 > Blockquotes can also be continued...
 > ...continued...
 > ...continued continued...
 
 ### Long Blockquote
+
+```md noline
+> Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
+```
+
+Renders:
 
 > Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
 
@@ -245,7 +349,7 @@ Inline `code`.
 
 Block code "fences":
 
-```md
+```md noline
 Sample text here...
 ```
 
@@ -265,11 +369,29 @@ some.code();
 
 ### Basic Link
 
+```md noline
+[Link text](https://github.com/sabertazimi).
+
+[Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
+```
+
+Renders:
+
 [Link text](https://github.com/sabertazimi).
 
 [Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
 
 ### Autolink Literal
+
+```md noline
+Auto-converted link https://github.com/sabertazimi/blog (enable linkify to see):
+
+- www.example.com.
+- https://example.com.
+- contact@example.com.
+```
+
+Renders:
 
 Auto-converted link https://github.com/sabertazimi/blog (enable linkify to see):
 
@@ -278,6 +400,21 @@ Auto-converted link https://github.com/sabertazimi/blog (enable linkify to see):
 - contact@example.com.
 
 ### Footnote
+
+```md noline
+A note[^1].
+
+[^1]: Big note.
+
+Another note[^2].
+
+Yet another note[^3].
+
+[^2]: Small note.
+[^3]: Smallest note.
+```
+
+Renders (footnote renders at the end of the document):
 
 A note[^1].
 
@@ -294,13 +431,31 @@ Yet another note[^3].
 
 ### Local Image
 
-![image](/images/landing.jpg)
+```md noline
+![Local image](/images/landing.jpg)
+```
+
+Renders:
+
+![Local image](/images/landing.jpg)
 
 ### Remote Image
+
+```md noline
+![Minion](https://octodex.github.com/images/minion.png)
+```
+
+Renders:
 
 ![Minion](https://octodex.github.com/images/minion.png)
 
 ### Image Title
+
+```md noline
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+```
+
+Renders:
 
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
 
@@ -308,21 +463,27 @@ Yet another note[^3].
 
 Like links, Images also have a footnote style syntax:
 
+```md noline
 ![Alt text][id]
+```
 
 With a reference later in the document defining the URL location:
 
-[id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
-
-```md
+```md noline
 [id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
 ```
+
+Renders:
+
+![Alt text][id]
+
+[id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
 
 ## JSX
 
 ### JSX Element
 
-```md
+```md noline
 <h2>JSX Heading 2</h2>
 
 <abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
@@ -352,7 +513,7 @@ I can write **Markdown** alongside my _JSX_!
 
 ### JavaScript Expression
 
-```md
+```md noline
 Two 🍰 is: {Math.PI * 2}.
 ```
 
@@ -360,7 +521,7 @@ Renders:
 
 Two 🍰 is: {Math.PI * 2}.
 
-```md lines="9"
+```md noline lines="9"
 {(function () {
   const guess = 0.44
 
@@ -394,7 +555,7 @@ Renders:
 
 ### MDX Comment
 
-```md
+```md noline
 {/* A comment! */}
 ```
 
@@ -403,6 +564,19 @@ Renders nothing.
 {/* A comment! */}
 
 ## Git
+
+```md noline
+* Commit: 4c5361eca6c9e901139e94563e03aed9531b72fc.
+* Commit (fork): foo@4c5361eca6c9e901139e94563e03aed9531b72fc.
+* Commit (repo): remarkjs/remark@e1aa9f6c02de18b9459b7d269712bcb50183ce89.
+* Issue or PR (`#`): #1.
+* Issue or PR (`GH-`): GH-1.
+* Issue or PR (fork): foo#1.
+* Issue or PR (project): remarkjs/remark#1.
+* Mention: @sabertazimi.
+```
+
+Renders:
 
 * Commit: 4c5361eca6c9e901139e94563e03aed9531b72fc.
 * Commit (fork): foo@4c5361eca6c9e901139e94563e03aed9531b72fc.
@@ -415,25 +589,64 @@ Renders nothing.
 
 ## Emoji
 
-Thumbs up: :+1:, thumbs down: :-1:.
+Thumbs up `:+1:` :+1:, thumbs down `:-1:` :-1:.
 
-Families: :family_man_man_boy_boy:.
+Families `:family_man_man_boy_boy:` :family_man_man_boy_boy:.
 
-Some flags: :cn:, :us:, :ru:, :uk:, :fr:.
+Some flags `:cn:, :us:, :ru:, :uk:, :fr:` :cn:, :us:, :ru:, :uk:, :fr:.
 
-Tada :tada:, sparkles :sparkles:, rocket :rocket:.
+Tada `:tada:` :tada:, sparkles `:sparkles:` :sparkles:, rocket `:rocket:` :rocket:.
 
-Bug :bug:, wrench :wrench:, zap :zap:.
+Bug `:bug:` :bug:, wrench `:wrench:` :wrench:, zap `:zap:` :zap:.
 
 ## Math
 
 ### Inline Math Formula
 
-This is a math formula $\sqrt{a^2 + b^2}$.
+This is a math formula `$\sqrt{a^2 + b^2}$` $\sqrt{a^2 + b^2}$.
 
-This is another math formula $c = \pm\sqrt{a^2 + b^2}$.
+This is another math formula `$c = \pm\sqrt{a^2 + b^2}$` $c = \pm\sqrt{a^2 + b^2}$.
 
 ### Block Math Formula
+
+```md noline title="Math Formula"
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+$$
+\def\arraystretch{1.5}
+  \begin{array}{c:c:c}
+    a & b & c \\ \hline
+    d & e & f \\
+    \hdashline
+    g & h & i
+  \end{array}
+$$
+
+$$
+\begin{equation}
+  \begin{split}
+    a &= b + c \\
+      &= e + f
+  \end{split}
+\end{equation}
+$$
+
+$$
+\begin{align}
+  a &= b + c \\
+  d + e &= f
+\end{align}
+$$
+
+$$
+\begin{alignat}{2}
+  10 &x + &3 &y = 2 \\
+  3 &x + &13 &y = 4
+\end{alignat}
+$$
+```
 
 $$
 L = \frac{1}{2} \rho v^2 S C_L
@@ -476,6 +689,22 @@ $$
 
 ### Green Admonition
 
+```md noline
+:::success
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
 :::success
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -489,6 +718,22 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 :::
 
 ### Blue Admonition
+
+```md noline
+:::info
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::note
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
 
 :::info
 
@@ -504,6 +749,22 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 ### Yellow Admonition
 
+```md noline
+::warning
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
 :::warning
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -518,6 +779,22 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 ### Red Admonition
 
+```md noline
+:::error
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
 :::error
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -531,6 +808,50 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 :::
 
 ### Title Admonition
+
+```md noline
+:::tip{Your Title}
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+- List.
+  - List.
+    - List.
+    - List.
+    - List.
+  - List.
+    - List.
+  - List.
+    - List.
+    - List.
+- List.
+- List.
+
+1. List.
+    1. List.
+        1. List.
+        2. List.
+        3. List.
+    2. List.
+        1. List.
+    3. List.
+        1. List.
+        2. List.
+2. List.
+3. List.
+
+:::
+```
+
+Renders:
 
 :::tip{Your Title}
 
@@ -572,6 +893,30 @@ I can write **Markdown** alongside my _JSX_!
 
 :::
 
+```md noline
+:::note{MDX in Admonition}
+
+Two 🍰 is: {Math.PI * 2}.
+
+{(function () {
+  const guess = 0.88
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+:::
+```
+
+Renders:
+
 :::note{MDX in Admonition}
 
 Two 🍰 is: {Math.PI * 2}.
@@ -594,18 +939,38 @@ Two 🍰 is: {Math.PI * 2}.
 
 ## MDX Component
 
+```md noline
+<Button>MDX Default Button</Button>
+<Button type="primary">MDX Primary Button</Button>
+```
+
+Renders:
+
 <Button>MDX Default Button</Button>
 <Button type="primary">MDX Primary Button</Button>
 
----
+___
+
+```md noline
+<Button type="dashed">MDX Dashed Button</Button>
+<Button type="text">MDX Text Button</Button>
+<Button type="link">MDX Link Button</Button>
+```
+
+Renders:
 
 <Button type="dashed">MDX Dashed Button</Button>
 <Button type="text">MDX Text Button</Button>
 <Button type="link">MDX Link Button</Button>
 
----
+___
+
+```md noline
+<Button type="primary" danger>MDX Danger Button</Button>
+<Button type="primary" ghost>MDX Ghost Button</Button>
+```
+
+Renders:
 
 <Button type="primary" danger>MDX Danger Button</Button>
 <Button type="primary" ghost>MDX Ghost Button</Button>
-
----
