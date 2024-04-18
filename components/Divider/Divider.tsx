@@ -13,11 +13,7 @@ function Divider({
   return (
     <AntDivider
       type={type}
-      className={cx(
-        styles.divider,
-        className,
-        'dark:!border-light dark:text-light',
-      )}
+      className={cx(styles.divider, className)}
     >
       {children}
     </AntDivider>

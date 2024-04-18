@@ -29,8 +29,8 @@ function GithubRepoCard({ repo }: Props): JSX.Element {
             </Tag>
           )}
         />
-        <Star className="align-top text-2xl dark:text-light" />
-        <Span className="dark:text-light">{repo.stars}</Span>
+        <Star className="align-top text-2xl" />
+        <Span>{repo.stars}</Span>
       </Card>
     </Badge.Ribbon>
   )

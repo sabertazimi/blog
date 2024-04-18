@@ -12,7 +12,7 @@ function InlineCode({ children, className }: Props): JSX.Element {
       className={cx(
         className,
         styles.code,
-        'shadow-md dark:shadow-primary',
+        'dark:shadow-md dark:shadow-primary',
       )}
     >
       {children}

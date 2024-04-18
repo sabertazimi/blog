@@ -12,7 +12,7 @@ function Paragraph({ children, className, ...props }: Props): JSX.Element {
   return (
     <Typography.Paragraph
       {...props}
-      className={cx(className, styles.p, 'dark:text-light')}
+      className={cx(className, styles.p)}
     >
       {children}
     </Typography.Paragraph>
