@@ -20,7 +20,7 @@
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/codeql-analysis.yml?branch=main&label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
 [![Jest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
 
-A great [blog](https://blog.tazimi.dev) system based on Next.js.
+An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
 ## :sparkles: Features
 
