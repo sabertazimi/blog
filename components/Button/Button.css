@@ -1,9 +1,0 @@
-/* Add dark mode support for antd Button component */
-button.ant-btn.ant-btn-text {
-  @apply dark:text-light dark:hover:text-gray-400;
-}
-
-button.ant-btn.ant-btn-default,
-button.ant-btn.ant-btn-dashed {
-  @apply bg-transparent hover:bg-transparent focus:bg-transparent dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
-}

@@ -13,25 +13,9 @@ span[class*=' ant-typography'],
   font-size: inherit;
 }
 
-/* Add dark mode support for Markdown HTML tags */
-h1,
-h2,
-h3,
-h4,
-h5,
-div:not(.sp-error-message),
-section {
-  @apply dark:text-light;
-}
-
-/* Add dark mode support for table of contents links */
+/* Add hover style to table of contents links */
 .ant-anchor-link-title.ant-anchor-link-title.ant-anchor-link-title {
-  @apply hover:text-secondary dark:text-light dark:hover:text-secondary dark:focus:text-secondary;
-}
-
-/* Add dark mode support for admonition title */
-.ant-alert-message {
-  @apply dark:text-light;
+  @apply hover:text-secondary;
 }
 
 /* Remove arrow icon from GFM task list item */
