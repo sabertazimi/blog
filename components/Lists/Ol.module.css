@@ -9,7 +9,7 @@
 }
 
 .ol > li::before {
-  @apply mr-2 text-primary;
+  @apply -mt-0.5 mr-2 text-primary;
 
   content: counters(li, '.') '. ';
   counter-increment: li;
