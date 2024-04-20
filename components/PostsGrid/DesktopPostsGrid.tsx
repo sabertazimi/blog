@@ -13,13 +13,13 @@ function DesktopPostsGrid({ posts }: Props): JSX.Element {
   return (
     <FlexContainer className="hidden items-start xl:visible xl:flex">
       <FlexContainer className="max-w-7/12 flex-col">
-        {leftPosts.map((post, index) => {
-          return <PostCard key={index} post={post} />
+        {leftPosts.map((post) => {
+          return <PostCard key={post.slug} post={post} />
         })}
       </FlexContainer>
       <FlexContainer className="max-w-4/12 flex-col">
-        {rightPosts.map((post, index) => {
-          return <PostCard key={index} post={post} />
+        {rightPosts.map((post) => {
+          return <PostCard key={post.slug} post={post} />
         })}
       </FlexContainer>
     </FlexContainer>

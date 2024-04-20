@@ -28,6 +28,7 @@ function BlockCode({
         <pre className={cx(className, styles.code)} style={style}>
           {tokens.map((line, index) => (
             <div
+              // eslint-disable-next-line react/no-array-index-key -- No other unique key.
               key={index}
               {...getLineProps({ line, key: index })}
               className={cx(
@@ -43,6 +44,7 @@ function BlockCode({
                   <span className={styles.placeholder}></span>
                   )}
               {line.map((token, key) => (
+                // eslint-disable-next-line react/no-array-index-key -- No other unique key.
                 <span key={key} {...getTokenProps({ token, key })} />
               ))}
             </div>

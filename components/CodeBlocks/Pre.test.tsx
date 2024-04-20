@@ -45,7 +45,7 @@ describe('Pre', () => {
 
   it('should hidden line number correctly (snapshot)', () => {
     const { container } = render(
-      <Pre noline={true}>
+      <Pre noline>
         <code>const foo = bar();</code>
       </Pre>,
     )
@@ -55,7 +55,7 @@ describe('Pre', () => {
 
   it('should hidden copy button correctly (snapshot)', () => {
     const { container } = render(
-      <Pre nocopy={true}>
+      <Pre nocopy>
         <code>const foo = bar();</code>
       </Pre>,
     )

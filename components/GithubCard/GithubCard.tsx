@@ -25,8 +25,8 @@ function GithubCard({ profile, repos }: Props): JSX.Element {
           title={<GithubCardContent profile={profile} />}
           description={`Joined in ${createDate}`}
         />
-        {repos.map((repo, index) => (
-          <GithubRepoCard key={index} repo={repo} />
+        {repos.map(repo => (
+          <GithubRepoCard key={repo.name} repo={repo} />
         ))}
       </Card>
     </Badge.Ribbon>
