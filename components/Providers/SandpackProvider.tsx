@@ -9,6 +9,7 @@ import { useServerInsertedHTML } from 'next/navigation'
 export default function SandPackCSS() {
   useServerInsertedHTML(() => {
     return (
+      // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml -- Sandpack CSS is safe.
       <style
         dangerouslySetInnerHTML={{ __html: getSandpackCssText() }}
         id="sandpack"

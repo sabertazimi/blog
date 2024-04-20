@@ -20,6 +20,7 @@ function useDarkMode(): [
       window.document.body.classList.remove('dark')
       setThemeMode('light')
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- `setThemeMode` should not in deps.
   }, [enabled])
 
   return [enabled, setDarkMode]

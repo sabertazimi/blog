@@ -12,8 +12,8 @@ function BooksGrid({ books = siteConfig.books }: Props): JSX.Element {
   return (
     <div role="grid">
       <Row>
-        {books.map((book, index) => (
-          <Col span={24} key={index}>
+        {books.map(book => (
+          <Col span={24} key={book.title}>
             <BookCard book={book} />
           </Col>
         ))}

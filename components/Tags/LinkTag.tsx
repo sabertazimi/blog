@@ -15,6 +15,7 @@ interface Props {
 function LinkTag({
   tag = 'Computer Science',
   href = `/tag/${tag}`,
+  // eslint-disable-next-line react/no-unstable-default-props -- `getColorByName` returns primitive value
   color = getColorByName(tag),
   className,
 }: Props): JSX.Element {
