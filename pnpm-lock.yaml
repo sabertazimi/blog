@@ -118,11 +118,11 @@ importers:
         version: 5.0.0
     devDependencies:
       '@dg-scripts/eslint-config':
-        specifier: ^5.21.0
-        version: 5.21.0(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.2(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(next@14.2.2(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(prettier@3.2.5)(typescript@5.4.5)
+        specifier: ^5.21.1
+        version: 5.21.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.2(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(next@14.2.2(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(prettier@3.2.5)(typescript@5.4.5)
       '@dg-scripts/stylelint-config':
-        specifier: ^5.21.0
-        version: 5.21.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1(typescript@5.4.5))
+        specifier: ^5.21.1
+        version: 5.21.1(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1(typescript@5.4.5))
       '@octokit/types':
         specifier: ^13.4.1
         version: 13.4.1
@@ -1217,8 +1217,8 @@ packages:
   '@cypress/xvfb@1.2.4':
     resolution: {integrity: sha512-skbBzPggOVYCbnGgV+0dmBdW/s77ZkAOXIC1knS8NagwDjBrNC1LuXtQJeiN6l+m7lzmHtaoUw/ctJKdqkG57Q==}
 
-  '@dg-scripts/eslint-config@5.21.0':
-    resolution: {integrity: sha512-hTRMRIQTicwmrfcRCGA3cm0c36Ng+ePNcPuO3dIE9BKupnyLuOP1YX/dh6FybMRT157tpj7LyVf+FLZYecGE6A==}
+  '@dg-scripts/eslint-config@5.21.1':
+    resolution: {integrity: sha512-seFvM9rjKv37EnRhSHW7TbFWS8b63sdKFUUkQHzZMqtgDMWxVeJJuD2Rp7dxwNBNmx0l73kAX6V+VmOK3mbQQw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^8.0.0
@@ -1232,12 +1232,12 @@ packages:
       next:
         optional: true
 
-  '@dg-scripts/stylelint-config@5.21.0':
-    resolution: {integrity: sha512-IfaHdKko/zVJ9FscXcwdi2xbZDBv2jhOVGyfJzNJkR0FP49i2G8FdzK8+NR0/ziGMrhNjlKpfnNO+CADEFVAHQ==}
+  '@dg-scripts/stylelint-config@5.21.1':
+    resolution: {integrity: sha512-aP7Cfu5YBkLwjYyBIDinEbG6mMdUj47+4minEHhl8MyPnQl8VAQdT2P+VlAiV3CF2eoHTbyvcbSFOoJWE9ntng==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       prettier: ^3.0.0
-      stylelint: ^15.0.0 || ^16.0.0
+      stylelint: ^16.0.0
 
   '@dprint/formatter@0.2.1':
     resolution: {integrity: sha512-GCzgRt2o4mhZLy8L47k2A+q9EMG/jWhzZebE29EqKsxmjDrSfv2VisEj/Q+39OOf04jTkEfB/TRO+IZSyxHdYg==}
@@ -6987,11 +6987,11 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  stylelint-config-bod@5.21.0:
-    resolution: {integrity: sha512-ZvUMOfi9lp4s7IDMH9FqhV3/3IxEvx35LD9KTPREldNDxzBD8Eim5i3QnyvfMmWouxxGRbqRQ9WfDquN6P0IfQ==}
+  stylelint-config-bod@5.21.1:
+    resolution: {integrity: sha512-/tyLqJoiaLX4UUU9Cq/2dJFxYgQV260earR4xebrIL2o2f9LoH6YGzPYJUwa2fFyffq05vL3AUaFC4yj4rlyWA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      stylelint: ^15.0.0 || ^16.0.0
+      stylelint: ^16.0.0
 
   stylelint-config-html@1.1.0:
     resolution: {integrity: sha512-IZv4IVESjKLumUGi+HWeb7skgO6/g4VMuAYrJdlqQFndgbj6WJAXPhaysvBiXefX79upBdQVumgYcdd17gCpjQ==}
@@ -9046,7 +9046,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@dg-scripts/eslint-config@5.21.0(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.2(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(next@14.2.2(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(prettier@3.2.5)(typescript@5.4.5)':
+  '@dg-scripts/eslint-config@5.21.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(@vue/compiler-sfc@3.4.21)(eslint-config-next@14.2.2(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(next@14.2.2(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(prettier@3.2.5)(typescript@5.4.5)':
     dependencies:
       '@antfu/eslint-config': 2.15.0(@eslint-react/eslint-plugin@1.5.9(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5))(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.1(eslint@8.57.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.57.0))(eslint-plugin-react-refresh@0.4.6(eslint@8.57.0))(eslint@8.57.0)(typescript@5.4.5)
       '@eslint-react/eslint-plugin': 1.5.9(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
@@ -9079,11 +9079,11 @@ snapshots:
       - svelte-eslint-parser
       - vitest
 
-  '@dg-scripts/stylelint-config@5.21.0(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1(typescript@5.4.5))':
+  '@dg-scripts/stylelint-config@5.21.1(postcss@8.4.38)(prettier@3.2.5)(stylelint@16.3.1(typescript@5.4.5))':
     dependencies:
       prettier: 3.2.5
       stylelint: 16.3.1(typescript@5.4.5)
-      stylelint-config-bod: 5.21.0(postcss@8.4.38)(stylelint@16.3.1(typescript@5.4.5))
+      stylelint-config-bod: 5.21.1(postcss@8.4.38)(stylelint@16.3.1(typescript@5.4.5))
       stylelint-prettier: 5.0.0(prettier@3.2.5)(stylelint@16.3.1(typescript@5.4.5))
     transitivePeerDependencies:
       - postcss
@@ -16770,7 +16770,7 @@ snapshots:
       '@babel/core': 7.24.0
       babel-plugin-macros: 3.1.0
 
-  stylelint-config-bod@5.21.0(postcss@8.4.38)(stylelint@16.3.1(typescript@5.4.5)):
+  stylelint-config-bod@5.21.1(postcss@8.4.38)(stylelint@16.3.1(typescript@5.4.5)):
     dependencies:
       postcss-html: 1.6.0
       postcss-markdown: 1.2.0
