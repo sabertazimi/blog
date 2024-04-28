@@ -16,7 +16,7 @@ importers:
         version: 5.3.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ant-design/nextjs-registry':
         specifier: ^1.0.0
-        version: 1.0.0(@ant-design/cssinjs@1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.0.0(@ant-design/cssinjs@1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@codesandbox/sandpack-react':
         specifier: ^2.13.10
         version: 2.13.10(@lezer/common@1.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -27,11 +27,11 @@ importers:
         specifier: ^20.1.0
         version: 20.1.0
       antd:
-        specifier: ^5.16.4
-        version: 5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.16.5
+        version: 5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       antd-style:
         specifier: ^3.6.2
-        version: 3.6.2(@types/react@18.3.1)(antd@5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.6.2(@types/react@18.3.1)(antd@5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -2287,8 +2287,8 @@ packages:
       antd: '>=5.8.1'
       react: '>=18'
 
-  antd@5.16.4:
-    resolution: {integrity: sha512-H3LtVz5hiNgs0lL8U6pzi11rluR6RDRw1cm2pWX6CsvgZmybWsaTBV2h+d+zmgFfuch53TWs5uztLdAldIoYYw==}
+  antd@5.16.5:
+    resolution: {integrity: sha512-8MGjf2ejlii2iVH4F960jwpdGiU+ISWPdiMA2O1AJSFJFA3eCxVLHkKRGiagsRmdo3AUU8tuPfQsqbLuEIlswA==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -7859,10 +7859,10 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@ant-design/nextjs-registry@1.0.0(@ant-design/cssinjs@1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@ant-design/nextjs-registry@1.0.0(@ant-design/cssinjs@1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ant-design/cssinjs': 1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      antd: 5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd: 5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next: 14.2.3(@babel/core@7.24.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -10527,7 +10527,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd-style@3.6.2(@types/react@18.3.1)(antd@5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  antd-style@3.6.2(@types/react@18.3.1)(antd@5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@ant-design/cssinjs': 1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@babel/runtime': 7.24.4
@@ -10537,14 +10537,14 @@ snapshots:
       '@emotion/serialize': 1.1.4
       '@emotion/server': 11.11.0(@emotion/css@11.11.2)
       '@emotion/utils': 1.2.1
-      antd: 5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      antd: 5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       use-merge-value: 1.2.0(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
       - react-dom
 
-  antd@5.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  antd@5.16.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@ant-design/colors': 7.0.2
       '@ant-design/cssinjs': 1.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
