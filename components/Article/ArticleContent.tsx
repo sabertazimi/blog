@@ -1,6 +1,6 @@
 'use client'
 
-import { MDXRemote } from '@alisowski/next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import MDX from '@/components/MDX'
 import type { PostType } from '@/types'
 
