@@ -28,24 +28,24 @@ function BlockCode({
         <pre className={cx(className, styles.code)} style={style}>
           {tokens.map((line, index) => (
             <div
-              // eslint-disable-next-line react/no-array-index-key -- No other unique key.
-              key={index}
               {...getLineProps({ line, key: index })}
               className={cx(
                 'token-line',
                 lines.has(index + 1) ? styles.highlight : styles.hover,
               )}
+              // eslint-disable-next-line react/no-array-index-key -- No other unique key.
+              key={index}
             >
               {enableLine
                 ? (
-                  <span className={styles.number}>{index + 1}</span>
+                  <span className={styles.number} key={0}>{index + 1}</span>
                   )
                 : (
-                  <span className={styles.placeholder}></span>
+                  <span className={styles.placeholder} key={0}></span>
                   )}
               {line.map((token, key) => (
                 // eslint-disable-next-line react/no-array-index-key -- No other unique key.
-                <span key={key} {...getTokenProps({ token, key })} />
+                <span {...getTokenProps({ token, key })} key={key + Number(enableLine)} />
               ))}
             </div>
           ))}
