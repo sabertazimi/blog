@@ -14,8 +14,7 @@ import Paragraph from '@/components/Paragraph'
 import Table from '@/components/Table'
 import { Anchor, Delete, Emphasis, Strong } from '@/components/Texts'
 
-// eslint-disable-next-line ts/no-unsafe-assignment -- dynamic import.
-const Editor = dynamic(() => import('@/components/Editor')) as any
+const Editor = dynamic(async () => import('@/components/Editor'))
 
 const Headings = {
   h1: H1,
@@ -46,7 +45,7 @@ const CodeBlocks = {
 
 const customComponents = {
   Button,
-  // eslint-disable-next-line ts/no-unsafe-assignment -- dynamic import.
+
   Editor,
 }
 

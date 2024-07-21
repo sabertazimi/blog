@@ -19,10 +19,10 @@ function ArticleNav({ prevPost, nextPost }: Props): JSX.Element {
         >
           {prevPost
             ? (
-              <ArrowLeft aria-label="Prev" />
+                <ArrowLeft aria-label="Prev" />
               )
             : (
-              <Home aria-label="Home" />
+                <Home aria-label="Home" />
               )}
         </Link>
       </Bounce>
@@ -33,10 +33,10 @@ function ArticleNav({ prevPost, nextPost }: Props): JSX.Element {
         >
           {nextPost
             ? (
-              <ArrowRight aria-label="Next" />
+                <ArrowRight aria-label="Next" />
               )
             : (
-              <Home aria-label="Home" />
+                <Home aria-label="Home" />
               )}
         </Link>
       </Bounce>

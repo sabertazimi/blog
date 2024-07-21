@@ -8,6 +8,7 @@ function useCopyToClipboard(text: string): [CopiedResult, CopyFunction] {
   const copyTimeout = useRef<number | undefined>(undefined)
 
   const copy: CopyFunction = useCallback(async () => {
+    // eslint-disable-next-line ts/strict-boolean-expressions -- navigator.clipboard is optional
     if (!navigator?.clipboard)
       return false
 
@@ -18,7 +19,7 @@ function useCopyToClipboard(text: string): [CopiedResult, CopyFunction] {
         setIsCopied(false)
       }, 1000)
       return true
-    } catch (error) {
+    } catch {
       setIsCopied(false)
       return false
     }

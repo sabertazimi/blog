@@ -72,7 +72,15 @@ exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
   <div>
     <span
       class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
-      style="background-color: rgb(112, 72, 232);"
+      style="background-color: rgb(240, 62, 62);"
+    >
+      <a
+        href="/tag"
+      />
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
+      style="background-color: rgb(118, 118, 118);"
     >
       <a
         href="/tag/Web Development"
@@ -82,7 +90,7 @@ exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
     </span>
     <span
       class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
-      style="background-color: rgb(55, 178, 77);"
+      style="background-color: rgb(118, 118, 118);"
     >
       <a
         href="/tag/Frontend Development"
@@ -92,7 +100,7 @@ exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
     </span>
     <span
       class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
-      style="background-color: rgb(245, 159, 0);"
+      style="background-color: rgb(118, 118, 118);"
     >
       <a
         href="/tag/JavaScript"
@@ -102,7 +110,7 @@ exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
     </span>
     <span
       class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
-      style="background-color: rgb(22, 119, 255);"
+      style="background-color: rgb(118, 118, 118);"
     >
       <a
         href="/tag/React"
@@ -112,12 +120,22 @@ exports[`TagsCloud should render correctly without active tag (snapshot) 1`] = `
     </span>
     <span
       class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
-      style="background-color: rgb(22, 119, 255);"
+      style="background-color: rgb(118, 118, 118);"
     >
       <a
         href="/tag/Redux"
       >
         Redux 1
+      </a>
+    </span>
+    <span
+      class="ant-tag ant-tag-has-color link dark:hover:shadow-primary md:mb-3 md:text-lg"
+      style="background-color: rgb(22, 119, 255);"
+    >
+      <a
+        href="/tags"
+      >
+        All
       </a>
     </span>
   </div>

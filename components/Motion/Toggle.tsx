@@ -70,28 +70,28 @@ function Toggle({
       <AnimatePresence initial={false}>
         {!isToggled
           ? (
-            <motion.span
-              key="toggle-span-close"
-              initial={closeVariants}
-              animate={!shouldReduceMotion ? openVariants : closeVariants}
-              exit={closeVariants}
-              aria-current={!isToggled}
-              className={styles.span}
-            >
-              {iconClose}
-            </motion.span>
+              <motion.span
+                key="toggle-span-close"
+                initial={closeVariants}
+                animate={!shouldReduceMotion ? openVariants : closeVariants}
+                exit={closeVariants}
+                aria-current={!isToggled}
+                className={styles.span}
+              >
+                {iconClose}
+              </motion.span>
             )
           : (
-            <motion.span
-              key="toggle-span-open"
-              initial={closeVariants}
-              animate={!shouldReduceMotion ? openVariants : closeVariants}
-              exit={closeVariants}
-              aria-current={isToggled}
-              className={styles.span}
-            >
-              {iconOpen}
-            </motion.span>
+              <motion.span
+                key="toggle-span-open"
+                initial={closeVariants}
+                animate={!shouldReduceMotion ? openVariants : closeVariants}
+                exit={closeVariants}
+                aria-current={isToggled}
+                className={styles.span}
+              >
+                {iconOpen}
+              </motion.span>
             )}
       </AnimatePresence>
     </div>

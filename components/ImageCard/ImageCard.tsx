@@ -10,7 +10,7 @@ interface Props {
 }
 
 function ImageCard({ src, title, alt, className }: Props): JSX.Element {
-  if (!src) {
+  if (src == null) {
     return (
       <Image
         src="error"

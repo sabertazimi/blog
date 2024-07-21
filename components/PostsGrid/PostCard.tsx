@@ -22,7 +22,7 @@ function PostCard({
         <LinkTag tag={tags ? tags[0] : 'Computer Science'} />
         <H2 className={styles.title}>{title}</H2>
         <IconTag
-          tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
+          tag={(createTime != null) ? new Date(createTime).toDateString() : 'Nowadays'}
           icon={<Calendar />}
         />
         <Container className="mt-3">

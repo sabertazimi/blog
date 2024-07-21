@@ -12,11 +12,11 @@ function GithubCardContent({ profile }: Props): JSX.Element {
     <Space direction="vertical">
       <div>
         <InfoCircle className="align-top text-2xl" />
-        <Span>{profile.bio || 'No Description'}</Span>
+        <Span>{profile.bio ?? 'No Description'}</Span>
       </div>
       <div>
         <Environment className="align-top text-2xl" />
-        <Span>{profile.location || 'Earth'}</Span>
+        <Span>{profile.location ?? 'Earth'}</Span>
       </div>
       <div>
         <a href={profile.followersUrl}>

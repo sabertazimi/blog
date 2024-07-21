@@ -4,7 +4,7 @@ import { siteConfig } from '@/config'
 import type { GitHub } from '@/types'
 
 export default async function getGitHubData(): Promise<GitHub> {
-  const isVercel = process.env.VERCEL && process.env.NODE_ENV === 'production'
+  const isVercel = Boolean(process.env.VERCEL) && process.env.NODE_ENV === 'production'
   const octokit = new Octokit()
   const username = siteConfig.socials.github
   let githubData = siteConfig.githubData
@@ -25,8 +25,8 @@ export default async function getGitHubData(): Promise<GitHub> {
         profile: {
           username: profileJSON.login,
           avatar: profileJSON.avatar_url,
-          bio: profileJSON.bio || '',
-          location: profileJSON.location || '',
+          bio: profileJSON.bio ?? '',
+          location: profileJSON.location ?? '',
           url: profileJSON.html_url,
           followers: profileJSON.followers,
           followersUrl: `${profileJSON.html_url}/followers`,
@@ -44,8 +44,8 @@ export default async function getGitHubData(): Promise<GitHub> {
           )
           .map(repo => ({
             name: repo.name,
-            stars: repo.stargazers_count || 0,
-            language: repo.language || '',
+            stars: repo.stargazers_count ?? 0,
+            language: repo.language ?? '',
             repoUrl: repo.html_url,
           })),
       }

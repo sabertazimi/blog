@@ -20,7 +20,7 @@ function languageToFilepath(language?: string): string {
 }
 
 function normalizeFilepath(filename?: string, language?: string): string {
-  if (!filename)
+  if (filename == null || filename === '')
     return languageToFilepath(language)
 
   if (!filename.startsWith('/'))
