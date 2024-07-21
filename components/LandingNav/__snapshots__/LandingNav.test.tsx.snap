@@ -35,11 +35,11 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
   <div
     class="nav"
     role="navigation"
-    style="opacity: 0; transform: translateX(-100%) translateZ(0);"
+    style="opacity: 0; will-change: transform,opacity; transform: translateX(-100%);"
   >
     <div
       class="inline-flex tooltip"
-      style="opacity: 0; transform: translateX(20px) translateZ(0);"
+      style="opacity: 0; transform: translateX(20px);"
       tabindex="0"
     >
       <span
@@ -55,7 +55,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     </div>
     <div
       class="inline-flex tooltip"
-      style="opacity: 0; transform: translateX(20px) translateZ(0);"
+      style="opacity: 0; transform: translateX(20px);"
       tabindex="0"
     >
       <span
@@ -71,7 +71,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     </div>
     <div
       class="inline-flex tooltip"
-      style="opacity: 0; transform: translateX(20px) translateZ(0);"
+      style="opacity: 0; transform: translateX(20px);"
       tabindex="0"
     >
       <span
@@ -87,7 +87,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
     </div>
     <div
       class="inline-flex tooltip"
-      style="opacity: 0; transform: translateX(20px) translateZ(0);"
+      style="opacity: 0; transform: translateX(20px);"
       tabindex="0"
     >
       <span
@@ -105,7 +105,7 @@ exports[`LandingNav should render routes correctly (snapshot) 1`] = `
   <div
     class="banner"
     role="banner"
-    style="transform: translateX(-100%) translateZ(0);"
+    style="will-change: transform; transform: translateX(-100%);"
   />
 </div>
 `;

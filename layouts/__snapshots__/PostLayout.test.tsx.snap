@@ -69,7 +69,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
             <span
               aria-current="true"
               class="span"
-              style="opacity: 1; transform: none;"
+              style="opacity: 1; will-change: transform,opacity; transform: none;"
             >
               <span
                 aria-label="sun"
@@ -308,7 +308,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
               <span
                 aria-current="true"
                 class="span"
-                style="opacity: 1; transform: none;"
+                style="opacity: 1; will-change: transform,opacity; transform: none;"
               >
                 <span
                   aria-label="sun"
@@ -396,7 +396,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
         >
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -432,7 +432,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -469,7 +469,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -505,7 +505,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -541,7 +541,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
