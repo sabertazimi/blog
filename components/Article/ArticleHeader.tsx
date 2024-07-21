@@ -23,15 +23,15 @@ function ArticleHeader({
               })
             )
           : (
-            <LinkTag href="/tags" color={siteConfig.themeColor} />
+              <LinkTag href="/tags" color={siteConfig.themeColor} />
             )}
         <H1 className={styles.title}>{title}</H1>
         <IconTag
-          tag={createTime ? new Date(createTime).toDateString() : 'Nowadays'}
+          tag={(createTime != null) ? new Date(createTime).toDateString() : 'Nowadays'}
           icon={<Calendar />}
         />
         <IconTag
-          tag={updateTime ? new Date(updateTime).toDateString() : 'Nowadays'}
+          tag={(updateTime != null) ? new Date(updateTime).toDateString() : 'Nowadays'}
           icon={<Edit />}
         />
         <IconTag tag={`${readingTime} minutes`} icon={<ClockCircle />} />

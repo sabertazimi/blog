@@ -8,7 +8,7 @@ function isLanguage(language: string): language is Language {
 }
 
 function normalizeLanguage(languageClass?: string): Language {
-  if (languageClass) {
+  if (languageClass != null) {
     const language = languageClass.replace('language-', '')
 
     if (isLanguage(language))

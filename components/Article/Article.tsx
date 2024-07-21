@@ -28,7 +28,7 @@ function Article({
       <ArticleToc slug={slug} />
       <Container className="max-w-3xl px-6">
         <ArticleContent source={source} />
-        <Divider>{subtitle || 'Blog'}</Divider>
+        <Divider>{subtitle ?? 'Blog'}</Divider>
         <ArticleNav prevPost={prevPost} nextPost={nextPost} />
         <Divider>
           <Comment className="text-2xl text-primary" />

@@ -12,8 +12,8 @@ export default function useVisibility({
   onBottomPassedReverse,
 }: {
   ref: RefObject<HTMLElement>
-  onBottomPassed: () => void
-  onBottomPassedReverse: () => void
+  onBottomPassed?: () => void
+  onBottomPassedReverse?: () => void
 }): void {
   const frameId = useRef(0)
   const isUpdating = useRef(false)

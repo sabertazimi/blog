@@ -5,7 +5,16 @@ export default eslintConfig
     // Ignore cypress folder and cypress.config.ts
     // to avoid type violation to Jest.
     {
-      ignores: ['cypress', 'cypress.config.ts'],
+      ignores: [
+        'cypress',
+        'cypress.config.ts',
+        'eslint.config.mjs',
+        'jest.config.js',
+        'jest.setup.js',
+        'next.config.mjs',
+        'postcss.config.mjs',
+        'sitemap.config.js',
+      ],
     },
   )
   .append({

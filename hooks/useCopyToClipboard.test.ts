@@ -18,7 +18,7 @@ describe('useCopyToClipboard', () => {
 
   it('should return false when copy failed', async () => {
     const { writeTextMock } = mockNavigatorClipboard()
-    writeTextMock.mockImplementation(() => Promise.reject(new Error('Error')))
+    writeTextMock.mockImplementation(async () => Promise.reject(new Error('Error')))
     const {
       result: {
         current: [result, copy],
@@ -33,7 +33,7 @@ describe('useCopyToClipboard', () => {
 
   it('should return true when copy success', async () => {
     const { writeTextMock } = mockNavigatorClipboard()
-    writeTextMock.mockImplementation(() => Promise.resolve('Success'))
+    writeTextMock.mockImplementation(async () => Promise.resolve('Success'))
     const {
       result: {
         current: [result, copy],

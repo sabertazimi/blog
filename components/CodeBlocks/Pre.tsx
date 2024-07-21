@@ -11,7 +11,7 @@ import {
 } from './utils'
 import CopyButton from '@/components/CopyButton'
 
-const LiveCode = dynamic(() => import('./LiveCode'))
+const LiveCode = dynamic(async () => import('./LiveCode'))
 
 interface Props extends HTMLProps<HTMLPreElement> {
   live?: boolean
@@ -55,16 +55,16 @@ function Pre({
       {!nocopy && !live ? <CopyButton code={code} /> : null}
       {live
         ? (
-          <LiveCode language={language}>{code}</LiveCode>
+            <LiveCode language={language}>{code}</LiveCode>
           )
         : (
-          <BlockCode
-            enableLine={!noline}
-            lines={highlightLines}
-            language={language}
-          >
-            {code}
-          </BlockCode>
+            <BlockCode
+              enableLine={!noline}
+              lines={highlightLines}
+              language={language}
+            >
+              {code}
+            </BlockCode>
           )}
     </pre>
   )

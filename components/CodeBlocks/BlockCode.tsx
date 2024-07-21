@@ -38,10 +38,10 @@ function BlockCode({
             >
               {enableLine
                 ? (
-                  <span className={styles.number} key={0}>{index + 1}</span>
+                    <span className={styles.number} key={0}>{index + 1}</span>
                   )
                 : (
-                  <span className={styles.placeholder} key={0}></span>
+                    <span className={styles.placeholder} key={0}></span>
                   )}
               {line.map((token, key) => (
                 // eslint-disable-next-line react/no-array-index-key -- No other unique key.
