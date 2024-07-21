@@ -69,7 +69,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
             <span
               aria-current="true"
               class="span"
-              style="opacity: 1; transform: none;"
+              style="opacity: 1; will-change: transform,opacity; transform: none;"
             >
               <span
                 aria-label="sun"
@@ -308,7 +308,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
               <span
                 aria-current="true"
                 class="span"
-                style="opacity: 1; transform: none;"
+                style="opacity: 1; will-change: transform,opacity; transform: none;"
               >
                 <span
                   aria-label="sun"
@@ -379,7 +379,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
       class="p-auto container relative mx-auto my-0 block h-full min-h-screen px-6 pb-28 pt-0 md:pt-28"
     >
       <div
-        style="opacity: 0; transform: translateX(-200px) translateZ(0);"
+        style="opacity: 0; transform: translateX(-200px);"
       >
         <div
           class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center divider"
@@ -410,7 +410,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
         >
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -446,7 +446,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -483,7 +483,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -519,7 +519,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a
@@ -555,7 +555,7 @@ exports[`Layout should render correctly (snapshot) 1`] = `
           </div>
           <div
             class="inline-flex"
-            style="opacity: 0; transform: translateX(20px) translateZ(0);"
+            style="opacity: 0; transform: translateX(20px);"
             tabindex="0"
           >
             <a

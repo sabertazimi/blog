@@ -10,7 +10,7 @@ exports[`Toggle should render animation correctly (snapshot) 1`] = `
     <span
       aria-current="true"
       class="span"
-      style="opacity: 1; transform: none;"
+      style="opacity: 1; will-change: transform,opacity; transform: none;"
     >
       <div>
         Close
@@ -30,7 +30,7 @@ exports[`Toggle should render animation correctly (snapshot) 2`] = `
     <span
       aria-current="true"
       class="span"
-      style="opacity: 0; transform: scale(0) rotate(180deg) translateZ(0);"
+      style="opacity: 0; will-change: transform,opacity; transform: scale(0) rotate(180deg);"
     >
       <div>
         Close
@@ -50,7 +50,7 @@ exports[`Toggle should render animation correctly (snapshot) 3`] = `
     <span
       aria-current="true"
       class="span"
-      style="opacity: 1; transform: none;"
+      style="opacity: 1; will-change: transform,opacity; transform: none;"
     >
       <div>
         Open
@@ -70,7 +70,7 @@ exports[`Toggle should render animation correctly (snapshot) 4`] = `
     <span
       aria-current="true"
       class="span"
-      style="opacity: 0; transform: scale(0) rotate(180deg) translateZ(0);"
+      style="opacity: 0; will-change: transform,opacity; transform: scale(0) rotate(180deg);"
     >
       <div>
         Open
