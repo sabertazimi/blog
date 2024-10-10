@@ -10,7 +10,7 @@ exports[`ThemeSwitch should switch dark mode when clicked 1`] = `
     <span
       aria-current="true"
       class="span"
-      style="opacity: 1; will-change: transform,opacity; transform: none;"
+      style="opacity: 1; will-change: transform; transform: none;"
     >
       <span
         aria-label="sun"
@@ -32,7 +32,7 @@ exports[`ThemeSwitch should switch dark mode when clicked 1`] = `
     <span
       aria-current="true"
       class="span"
-      style="opacity: 0; will-change: transform,opacity; transform: scale(0) rotate(180deg);"
+      style="opacity: 0; will-change: transform; transform: scale(0) rotate(180deg);"
     >
       <span
         aria-label="moon"
