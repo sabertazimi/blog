@@ -2,7 +2,7 @@
 
 import type { PostType } from '@/types'
 import MDX from '@/components/MDX'
-import { MDXRemote } from '@alisowski/next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 
 interface Props {
   source: PostType['source']

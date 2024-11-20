@@ -16,7 +16,6 @@ const nextConfig = {
   transpilePackages: [
     // @see https://github.com/vercel/next.js/issues/40183
     // @see https://github.com/vercel/next.js/issues/58817
-    '@alisowski/next-mdx-remote',
     '@ant-design/icons',
     '@mdx-js/react',
     '@react-hook/intersection-observer',

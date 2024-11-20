@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleHeader should render correctly (snapshot) 1`] = `
+<div>
+  <div
+    class="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48"
+  >
+    <div
+      style="opacity: 0; transform: translateX(-200px);"
+    >
+      <span
+        class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+        style="background-color: rgb(245, 159, 0);"
+      >
+        <a
+          href="/tag/JavaScript"
+        >
+          JavaScript
+        </a>
+      </span>
+      <span
+        class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+        style="background-color: rgb(55, 178, 77);"
+      >
+        <a
+          href="/tag/Frontend Development"
+        >
+          Frontend Development
+        </a>
+      </span>
+      <span
+        class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+        style="background-color: rgb(112, 72, 232);"
+      >
+        <a
+          href="/tag/Web Development"
+        >
+          Web Development
+        </a>
+      </span>
+      <h1
+        class="ant-typography mdx-heading heading title h1"
+      >
+        1 Basic Notes
+      </h1>
+      <span
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+      >
+        <span
+          aria-label="calendar"
+          class="anticon anticon-calendar"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="calendar"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+            />
+          </svg>
+        </span>
+        <span>
+          Wed Aug 08 2018
+        </span>
+      </span>
+      <span
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+      >
+        <span
+          aria-label="edit"
+          class="anticon anticon-edit"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="edit"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+            />
+          </svg>
+        </span>
+        <span>
+          Wed Aug 08 2018
+        </span>
+      </span>
+      <span
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+        <span>
+          1 minutes
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ArticleHeader should render correctly with partial data (snapshot) 1`] = `
+<div>
+  <div
+    class="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48"
+  >
+    <div
+      style="opacity: 0; transform: translateX(-200px);"
+    >
+      <span
+        class="ant-tag ant-tag-has-color link dark:hover:shadow-primary"
+        style="background-color: rgb(22, 119, 255);"
+      >
+        <a
+          href="/tags"
+        >
+          Computer Science
+        </a>
+      </span>
+      <h1
+        class="ant-typography mdx-heading heading title h1"
+      >
+        1 Basic Notes
+      </h1>
+      <span
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+      >
+        <span
+          aria-label="calendar"
+          class="anticon anticon-calendar"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="calendar"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+            />
+          </svg>
+        </span>
+        <span>
+          Nowadays
+        </span>
+      </span>
+      <span
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+      >
+        <span
+          aria-label="edit"
+          class="anticon anticon-edit"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="edit"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+            />
+          </svg>
+        </span>
+        <span>
+          Nowadays
+        </span>
+      </span>
+      <span
+        class="ant-tag icon dark:border-light dark:bg-light dark:text-dark"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+        <span>
+          1 minutes
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
