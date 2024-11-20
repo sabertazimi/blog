@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import type { ReactNode } from 'react'
+import cx from 'classnames'
 import Heading from './Heading'
 import styles from './Headings.module.css'
 

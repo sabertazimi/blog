@@ -1,9 +1,9 @@
 'use client'
 
-import cx from 'classnames'
 import type { MotionProps } from 'framer-motion'
-import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import cx from 'classnames'
+import { motion } from 'framer-motion'
 
 interface Props {
   children: ReactNode

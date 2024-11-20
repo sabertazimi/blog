@@ -1,6 +1,6 @@
+import { fireEvent, render, waitFor } from '@/utils'
 import { useRef } from 'react'
 import useVisibility from './useVisibility'
-import { fireEvent, render, waitFor } from '@/utils'
 
 describe('useVisibility', () => {
   const onBottomPassed = jest.fn()

@@ -1,9 +1,10 @@
+import type { MDXFrontMatter, PostMeta, PostType, Tag, TagsType } from '@/types'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import matter from 'gray-matter'
 import { serialize } from '@alisowski/next-mdx-remote/serialize'
+import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
@@ -16,7 +17,6 @@ import remarkGfm from 'remark-gfm'
 import remarkGitHub from 'remark-github'
 import remarkMath from 'remark-math'
 import remarkAdmonitions from './remark-admonitions'
-import type { MDXFrontMatter, PostMeta, PostType, Tag, TagsType } from '@/types'
 
 const contentsPath = path.join(process.cwd(), 'contents')
 

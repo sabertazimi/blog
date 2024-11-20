@@ -1,6 +1,6 @@
+import { render } from '@/utils'
 import { axe } from 'jest-axe'
 import TagsCloud from './TagsCloud'
-import { render } from '@/utils'
 
 describe('TagsCloud', () => {
   const mockTag = 'JavaScript'

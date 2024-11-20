@@ -1,7 +1,7 @@
 'use client'
 
-import { Typography } from 'antd'
 import type { TitleProps } from 'antd/lib/typography/Title'
+import { Typography } from 'antd'
 import cx from 'classnames'
 import styles from './Headings.module.css'
 

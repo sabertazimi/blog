@@ -1,5 +1,5 @@
-import { Card as AntCard } from 'antd'
 import type { CardMetaProps, CardProps } from 'antd/lib/card'
+import { Card as AntCard } from 'antd'
 import cx from 'classnames'
 
 interface Props extends CardProps {}

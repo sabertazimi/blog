@@ -1,14 +1,14 @@
-import ArticleComments from './ArticleComments'
-import ArticleContent from './ArticleContent'
-import ArticleHeader from './ArticleHeader'
-import ArticleNav from './ArticleNav'
-import ArticleToc from './ArticleToc'
+import type { PostType, SiteConfig } from '@/types'
 import Container from '@/components/Container'
 import Divider from '@/components/Divider'
 import { Comment } from '@/components/Icons'
 import SocialGroup from '@/components/SocialGroup'
 import { siteConfig } from '@/config'
-import type { PostType, SiteConfig } from '@/types'
+import ArticleComments from './ArticleComments'
+import ArticleContent from './ArticleContent'
+import ArticleHeader from './ArticleHeader'
+import ArticleNav from './ArticleNav'
+import ArticleToc from './ArticleToc'
 
 interface Props {
   post: PostType

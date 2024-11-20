@@ -1,5 +1,5 @@
-import ImageCard from './ImageCard'
 import { render } from '@/utils'
+import ImageCard from './ImageCard'
 
 describe('ImageCard', () => {
   it('should render placeholder image correctly (snapshot)', () => {

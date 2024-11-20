@@ -14,6 +14,7 @@ function languageToFilepath(language?: string): string {
       return '/App.tsx'
     case 'vue':
       return '/src/App.vue'
+    case undefined:
     default:
       return '/App.tsx'
   }

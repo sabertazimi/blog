@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import type { DetailedHTMLProps, OlHTMLAttributes } from 'react'
+import cx from 'classnames'
 import styles from './Ul.module.css'
 
 interface Props

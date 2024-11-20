@@ -1,7 +1,7 @@
-import { axe } from 'jest-axe'
 import type { JSXElementConstructor, ReactNode } from 'react'
-import ErrorBoundary from './ErrorBoundary'
 import { render, screen } from '@/utils'
+import { axe } from 'jest-axe'
+import ErrorBoundary from './ErrorBoundary'
 
 describe('ErrorBoundary', () => {
   const ComponentWithError = ({ shouldThrow }: { shouldThrow?: boolean }) => {

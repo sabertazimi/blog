@@ -1,7 +1,7 @@
-import { axe } from 'jest-axe'
-import GithubCard from './GithubCard'
 import mockData from '@/mocks/data'
 import { render } from '@/utils'
+import { axe } from 'jest-axe'
+import GithubCard from './GithubCard'
 
 describe('GithubCard', () => {
   const mockBaseProfile = mockData.baseProfile

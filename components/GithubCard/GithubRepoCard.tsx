@@ -1,10 +1,10 @@
+import type { Repo } from '@/types'
 import Badge from '@/components/Badge'
 import { Card, Meta } from '@/components/Card'
 import { Branches, Star } from '@/components/Icons'
 import { Tag } from '@/components/Tags'
 import { Span } from '@/components/Texts'
 import { getColorByName } from '@/config'
-import type { Repo } from '@/types'
 
 interface Props {
   repo: Repo

@@ -1,3 +1,5 @@
+import type { SocialType } from '@/types'
+import { socialList } from '@/config'
 import {
   FacebookOutlined,
   GithubOutlined,
@@ -7,19 +9,22 @@ import {
   XOutlined,
 } from '@ant-design/icons'
 import styles from './SocialIcon.module.css'
-import { socialList } from '@/config'
-import type { SocialType } from '@/types'
 
 function SocialIcon(type: SocialType): JSX.Element {
   switch (type) {
+    case 'github':
     case socialList.github:
       return <GithubOutlined className={styles.icon} />
+    case 'twitter':
     case socialList.twitter:
       return <XOutlined className={styles.icon} />
+    case 'facebook':
     case socialList.facebook:
       return <FacebookOutlined className={styles.icon} />
+    case 'linkedin':
     case socialList.linkedin:
       return <LinkedinOutlined className={styles.icon} />
+    case 'weibo':
     case socialList.weibo:
       return <WeiboOutlined className={styles.icon} />
     default:

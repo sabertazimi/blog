@@ -1,7 +1,7 @@
+import type { SocialColor, SocialType } from '@/types'
 import SocialButton from '@/components/SocialButton'
 import Space from '@/components/Space'
 import { socialColors, socialList, socialQuery } from '@/config'
-import type { SocialColor, SocialType } from '@/types'
 
 interface Props {
   url: string

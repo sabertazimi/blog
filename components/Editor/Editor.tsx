@@ -1,7 +1,7 @@
 import type { SandpackPredefinedTemplate } from '@codesandbox/sandpack-react'
+import type { ReactElement, ReactNode } from 'react'
 import { Sandpack } from '@codesandbox/sandpack-react'
 import { monokaiPro } from '@codesandbox/sandpack-themes'
-import type { ReactElement, ReactNode } from 'react'
 import { Children } from 'react'
 import { normalizeFilepath } from './utils'
 

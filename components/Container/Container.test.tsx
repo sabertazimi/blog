@@ -1,6 +1,6 @@
+import { render, screen } from '@/utils'
 import { axe } from 'jest-axe'
 import Container from './Container'
-import { render, screen } from '@/utils'
 
 describe('Container', () => {
   it('should render correctly (snapshot)', () => {

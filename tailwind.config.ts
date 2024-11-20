@@ -114,6 +114,7 @@ const config: Config = {
     },
   },
   plugins: [
+    // eslint-disable-next-line ts/unbound-method -- Tailwind API.
     plugin(({ addComponents, addUtilities, matchUtilities, theme }) => {
       addComponents({
         '.bg-gradient-primary': {

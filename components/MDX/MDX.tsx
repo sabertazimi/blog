@@ -1,8 +1,3 @@
-import dynamic from 'next/dynamic'
-import Code from './MDXCode'
-import Divider from './MDXDivider'
-import Input from './MDXInput'
-import Pre from './MDXPre'
 import Aside from '@/components/Aside'
 import Blockquote from '@/components/Blockquote'
 import Button from '@/components/Button'
@@ -13,6 +8,11 @@ import { Item, Ol, Ul } from '@/components/Lists'
 import Paragraph from '@/components/Paragraph'
 import Table from '@/components/Table'
 import { Anchor, Delete, Emphasis, Strong } from '@/components/Texts'
+import dynamic from 'next/dynamic'
+import Code from './MDXCode'
+import Divider from './MDXDivider'
+import Input from './MDXInput'
+import Pre from './MDXPre'
 
 const Editor = dynamic(async () => import('@/components/Editor'))
 

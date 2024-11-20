@@ -1,7 +1,7 @@
-import { axe } from 'jest-axe'
-import Footer from './Footer'
 import mockData from '@/mocks/data'
 import { render } from '@/utils'
+import { axe } from 'jest-axe'
+import Footer from './Footer'
 
 describe('Footer', () => {
   const mockTime = mockData.time

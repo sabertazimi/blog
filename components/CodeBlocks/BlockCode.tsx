@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import type { Language } from 'prism-react-renderer'
+import cx from 'classnames'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import styles from './BlockCode.module.css'
 import theme from './monokai'

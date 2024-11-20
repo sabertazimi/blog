@@ -1,5 +1,5 @@
-import Footnote from './Footnote'
 import { render } from '@/utils'
+import Footnote from './Footnote'
 
 describe('Footnote', () => {
   it('should render correctly (snapshot)', () => {

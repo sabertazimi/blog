@@ -1,6 +1,6 @@
+import { render } from '@/utils'
 import { axe } from 'jest-axe'
 import ArticleComments from './ArticleComments'
-import { render } from '@/utils'
 
 describe('ArticleComments', () => {
   it('should render correctly (snapshot)', () => {

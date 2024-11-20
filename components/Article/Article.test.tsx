@@ -1,6 +1,6 @@
-import Article from './Article'
 import mockData from '@/mocks/data'
 import { render } from '@/utils'
+import Article from './Article'
 
 describe('Article', () => {
   const mockBasePost = mockData.basePosts[0]

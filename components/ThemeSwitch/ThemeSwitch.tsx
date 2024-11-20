@@ -1,12 +1,12 @@
 'use client'
 
+import { Moon, Sun } from '@/components/Icons'
+import { Toggle } from '@/components/Motion'
+import { useDarkMode } from '@/hooks'
 import cx from 'classnames'
 import { useReducedMotion } from 'framer-motion'
 import { useCallback } from 'react'
 import styles from './ThemeSwitch.module.css'
-import { useDarkMode } from '@/hooks'
-import { Toggle } from '@/components/Motion'
-import { Moon, Sun } from '@/components/Icons'
 
 interface Props {
   className?: string

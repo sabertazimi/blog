@@ -1,7 +1,7 @@
+import type { Profile } from '@/types'
 import { Environment, InfoCircle, User } from '@/components/Icons'
 import Space from '@/components/Space'
 import { Span } from '@/components/Texts'
-import type { Profile } from '@/types'
 
 interface Props {
   profile: Profile

@@ -1,8 +1,8 @@
 'use client'
 
 import type { MotionProps } from 'framer-motion'
-import { motion } from 'framer-motion'
 import type { AriaRole } from 'react'
+import { motion } from 'framer-motion'
 
 interface Props {
   children?: React.ReactNode

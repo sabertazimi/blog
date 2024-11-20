@@ -1,6 +1,6 @@
+import { render } from '@/utils'
 import { axe } from 'jest-axe'
 import BooksGrid from './BooksGrid'
-import { render } from '@/utils'
 
 describe('BooksGrid', () => {
   it('should render correctly (snapshot)', () => {

@@ -1,5 +1,5 @@
-import LandingNav from './LandingNav'
 import { act, render, screen } from '@/utils'
+import LandingNav from './LandingNav'
 
 describe('LandingNav', () => {
   beforeAll(() => {

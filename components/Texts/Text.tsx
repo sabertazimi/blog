@@ -1,5 +1,5 @@
-import { Typography } from 'antd'
 import type { TextProps } from 'antd/lib/typography/Text'
+import { Typography } from 'antd'
 import cx from 'classnames'
 
 interface Props extends TextProps {}

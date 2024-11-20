@@ -1,8 +1,8 @@
 'use client'
 
+import type { ThemeProviderProps } from 'antd-style'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { ThemeProvider } from 'antd-style'
-import type { ThemeProviderProps } from 'antd-style'
 
 interface Props<T, S = Record<string, string>> extends ThemeProviderProps<T, S> {}
 
