@@ -1,6 +1,6 @@
-import { colors } from './colors'
-import type { SocialType } from './social'
 import type { GitHub } from '@/types'
+import type { SocialType } from './social'
+import { colors } from './colors'
 
 interface Book {
   title: string

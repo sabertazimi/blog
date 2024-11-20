@@ -1,5 +1,5 @@
-import LiveCode from './LiveCode'
 import { render } from '@/utils'
+import LiveCode from './LiveCode'
 
 describe('LiveCode', () => {
   it('should render live code correctly (snapshot)', () => {

@@ -1,5 +1,5 @@
-import Icon from '@ant-design/icons'
 import type { KeyboardEvent, SVGProps } from 'react'
+import Icon from '@ant-design/icons'
 
 interface Props {
   onClick?: () => void

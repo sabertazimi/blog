@@ -1,10 +1,10 @@
 'use client'
 
+import type { PostMeta } from '@/types'
+import { useVisibility } from '@/hooks'
 import { useCallback, useRef, useState } from 'react'
 import DesktopNav from './DesktopNav'
 import MobileNav from './MobileNav'
-import type { PostMeta } from '@/types'
-import { useVisibility } from '@/hooks'
 
 interface Props {
   posts: PostMeta[]

@@ -1,5 +1,5 @@
-import parseNumericRange from 'parse-numeric-range'
 import type { Language } from 'prism-react-renderer'
+import parseNumericRange from 'parse-numeric-range'
 
 const normalizeCode = (code: string = '') => code.replace(/\n+$/, '')
 

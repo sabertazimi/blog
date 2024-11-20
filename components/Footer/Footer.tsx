@@ -1,11 +1,11 @@
-import FooterTime from './FooterTime'
+import type { BuildTime, SiteConfig, SocialType } from '@/types'
 import Col from '@/components/Col'
 import Container from '@/components/Container'
 import Divider from '@/components/Divider'
 import Row from '@/components/Row'
 import SocialButton from '@/components/SocialButton'
 import { siteConfig, socialList } from '@/config'
-import type { BuildTime, SiteConfig, SocialType } from '@/types'
+import FooterTime from './FooterTime'
 
 interface Props {
   buildTime: BuildTime

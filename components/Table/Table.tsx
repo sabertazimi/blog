@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import type { HTMLProps } from 'react'
+import cx from 'classnames'
 import styles from './Table.module.css'
 
 interface Props extends HTMLProps<HTMLTableElement> {}

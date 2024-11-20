@@ -1,7 +1,7 @@
+import { render } from '@/utils'
 import { axe } from 'jest-axe'
 import Comment from './Comment'
 import Hamburger from './Hamburger'
-import { render } from '@/utils'
 
 describe('Icons', () => {
   const Icons = [Comment, Hamburger]

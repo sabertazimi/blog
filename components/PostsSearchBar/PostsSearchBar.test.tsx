@@ -1,11 +1,12 @@
-import PostsSearchBar from './PostsSearchBar'
 import mockData from '@/mocks/data'
 import { fireEvent, render, screen } from '@/utils'
+import PostsSearchBar from './PostsSearchBar'
 
 describe('PostsSearchBar', () => {
   const mockPosts = mockData.posts
 
   beforeEach(() => {
+    // eslint-disable-next-line ts/unbound-method -- jest mock.
     const { getComputedStyle } = window
     window.getComputedStyle = element => getComputedStyle(element)
   })

@@ -1,9 +1,9 @@
 'use client'
 
-import cx from 'classnames'
 import type { MotionProps } from 'framer-motion'
-import { AnimatePresence, motion } from 'framer-motion'
 import type { KeyboardEvent, ReactNode } from 'react'
+import cx from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback } from 'react'
 import styles from './Toggle.module.css'
 

@@ -1,6 +1,6 @@
+import type { BuildTime, PostMeta } from '@/types'
 import type { ReactNode } from 'react'
 import { BackTop, Container, Footer, Header } from '@/components'
-import type { BuildTime, PostMeta } from '@/types'
 
 interface Props {
   posts: PostMeta[]

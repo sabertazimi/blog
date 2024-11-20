@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import type { BlockquoteHTMLAttributes } from 'react'
+import cx from 'classnames'
 import styles from './Blockquote.module.css'
 
 interface Props extends BlockquoteHTMLAttributes<HTMLElement> {}

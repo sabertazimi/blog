@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react'
 import { Typography } from 'antd'
 import cx from 'classnames'
-import type { ReactNode } from 'react'
 import styles from './Anchor.module.css'
 
 interface Props {

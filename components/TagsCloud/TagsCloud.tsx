@@ -1,6 +1,6 @@
+import type { Tag, TagsType } from '@/types'
 import { LinkTag } from '@/components/Tags'
 import { colors, getColorByName, siteConfig } from '@/config'
-import type { Tag, TagsType } from '@/types'
 
 interface Props {
   tags: TagsType

@@ -1,5 +1,5 @@
-import Editor from './Editor'
 import { render, screen } from '@/utils'
+import Editor from './Editor'
 
 describe('Editor', () => {
   it('should render sandpack correctly', () => {

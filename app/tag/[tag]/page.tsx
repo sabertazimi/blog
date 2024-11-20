@@ -1,5 +1,5 @@
-import type { ParsedUrlQuery } from 'node:querystring'
 import type { Metadata } from 'next'
+import type { ParsedUrlQuery } from 'node:querystring'
 import { PostsList, TagsCloud } from '@/components'
 import { getMetadata } from '@/config'
 import { Layout } from '@/layouts'

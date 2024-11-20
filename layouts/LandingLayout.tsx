@@ -1,6 +1,6 @@
-import cx from 'classnames'
 import type { ReactNode } from 'react'
 import landingImage from '@/images/landing.jpg'
+import cx from 'classnames'
 
 interface Props {
   children: ReactNode

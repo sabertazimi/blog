@@ -1,13 +1,13 @@
 'use client'
 
-import GithubCardContent from './GithubCardContent'
-import GithubCardHeader from './GithubCardHeader'
-import GithubRepoCard from './GithubRepoCard'
+import type { Profile, Repo } from '@/types'
 import Avatar from '@/components/Avatar'
 import Badge from '@/components/Badge'
 import { Card, Meta } from '@/components/Card'
 import { getColorByName } from '@/config'
-import type { Profile, Repo } from '@/types'
+import GithubCardContent from './GithubCardContent'
+import GithubCardHeader from './GithubCardHeader'
+import GithubRepoCard from './GithubRepoCard'
 
 interface Props {
   profile: Profile

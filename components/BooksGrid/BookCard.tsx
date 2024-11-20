@@ -1,11 +1,11 @@
 'use client'
 
+import type { Book } from '@/types'
 import Badge from '@/components/Badge'
 import { Card, Meta } from '@/components/Card'
 import { Book as BookIcon } from '@/components/Icons'
 import { Span } from '@/components/Texts'
 import { getColorByName } from '@/config'
-import type { Book } from '@/types'
 
 interface Props {
   book: Book

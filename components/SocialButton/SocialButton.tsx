@@ -1,10 +1,10 @@
-import cx from 'classnames'
+import type { SocialType } from '@/types'
 import type { HTMLProps } from 'react'
-import styles from './SocialButton.module.css'
 import Button from '@/components/Button'
 import { SocialIcon } from '@/components/Icons'
 import { Bounce } from '@/components/Motion'
-import type { SocialType } from '@/types'
+import cx from 'classnames'
+import styles from './SocialButton.module.css'
 
 interface Props extends HTMLProps<HTMLButtonElement> {
   type: SocialType

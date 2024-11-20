@@ -13,8 +13,7 @@
   font-weight: 400;
   src: url('/fonts/Raleway.woff2') format('woff2');
   font-display: swap;
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 /* cyrillic */
@@ -34,8 +33,7 @@
   font-weight: 400;
   src: url('/fonts/Raleway.woff2') format('woff2');
   font-display: swap;
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
-    U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
 
 /* latin-ext */
@@ -45,8 +43,7 @@
   font-weight: 400;
   src: url('/fonts/Raleway.woff2') format('woff2');
   font-display: swap;
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 /* latin */
@@ -56,9 +53,8 @@
   font-weight: 400;
   src: url('/fonts/RalewayLatin.woff2') format('woff2');
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
@@ -66,9 +62,8 @@
   --secondary: #40a9ff;
   --light: #f8f9fa;
   --dark: #343a40;
-  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC',
-    'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
+  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
   --font-size: 18px;
 }
 
@@ -79,13 +74,7 @@
     background:
       linear-gradient(63deg, #262626 23%, transparent 0) 7px 0,
       linear-gradient(63deg, transparent 73%, #262626 76%),
-      linear-gradient(
-        63deg,
-        transparent 34%,
-        #262626 38%,
-        #262626 58%,
-        transparent 62%
-      ),
+      linear-gradient(63deg, transparent 34%, #262626 38%, #262626 58%, transparent 62%),
       #222;
     background-size: 16px 48px;
   }

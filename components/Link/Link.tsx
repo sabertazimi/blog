@@ -1,5 +1,5 @@
-import NextLink from 'next/link'
 import type { ReactNode } from 'react'
+import NextLink from 'next/link'
 
 interface Props {
   href: string

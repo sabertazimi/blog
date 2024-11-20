@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import type { CSSProperties, HTMLProps, ReactNode } from 'react'
+import cx from 'classnames'
 
 interface Props extends HTMLProps<HTMLDivElement> {
   children: ReactNode

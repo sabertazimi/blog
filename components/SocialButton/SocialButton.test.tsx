@@ -1,8 +1,8 @@
+import type { SocialType } from '@/types'
+import { siteConfig } from '@/config'
+import { render, screen } from '@/utils'
 import { axe } from 'jest-axe'
 import SocialButton from './SocialButton'
-import { siteConfig } from '@/config'
-import type { SocialType } from '@/types'
-import { render, screen } from '@/utils'
 
 describe('SocialButton', () => {
   const mockSocials = [...Object.keys(siteConfig.socials), 'default']

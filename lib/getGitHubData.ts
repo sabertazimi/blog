@@ -1,7 +1,7 @@
-import process from 'node:process'
-import { Octokit } from '@octokit/rest'
-import { siteConfig } from '@/config'
 import type { GitHub } from '@/types'
+import process from 'node:process'
+import { siteConfig } from '@/config'
+import { Octokit } from '@octokit/rest'
 
 export default async function getGitHubData(): Promise<GitHub> {
   const isVercel = Boolean(process.env.VERCEL) && process.env.NODE_ENV === 'production'

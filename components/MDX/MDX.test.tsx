@@ -1,8 +1,8 @@
+import { render } from '@/utils'
 import MDXCode from './MDXCode'
 import MDXDivider from './MDXDivider'
 import MDXInput from './MDXInput'
 import MDXPre from './MDXPre'
-import { render } from '@/utils'
 
 describe('MDXDivider', () => {
   it('should render correctly (snapshot)', () => {

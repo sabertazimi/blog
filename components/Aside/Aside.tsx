@@ -1,7 +1,7 @@
-import cx from 'classnames'
 import type { ReactNode } from 'react'
-import styles from './Aside.module.css'
 import Alert from '@/components/Alert'
+import cx from 'classnames'
+import styles from './Aside.module.css'
 
 interface Props {
   type?: string
@@ -24,6 +24,7 @@ function normalizeType(type?: string) {
     case 'error':
     case 'danger':
       return 'error'
+    case undefined:
     default:
       return 'info'
   }

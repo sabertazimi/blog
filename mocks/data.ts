@@ -40,7 +40,7 @@ const repos = [
   },
 ]
 
-const basePosts = Array.from(Array(5).keys()).map(index => ({
+const basePosts = Array.from(Array.from({ length: 5 }).keys()).map(index => ({
   index,
   slug: `${index + 1}BasicNotes`,
   title: `${index + 1} Basic Notes`,
