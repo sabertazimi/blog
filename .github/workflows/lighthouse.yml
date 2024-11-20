@@ -28,7 +28,7 @@ jobs:
         id: vercel
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 600
+          max_timeout: 1200
           check_interval: 15
       - name: Comment preview result
         uses: marocchino/sticky-pull-request-comment@v2
