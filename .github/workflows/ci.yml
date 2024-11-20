@@ -75,7 +75,7 @@ jobs:
         run: |
           pnpm test:all
       - name: Perform code coverage report action
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' }}
         with:
           fail_ci_if_error: true
