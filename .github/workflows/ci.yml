@@ -25,7 +25,8 @@ jobs:
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: lts/*
+          check-latest: true
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
@@ -47,7 +48,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [20]
+        node-version: [lts/*]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -60,6 +61,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          check-latest: true
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
@@ -76,7 +78,7 @@ jobs:
           pnpm test:all
       - name: Perform code coverage report action
         uses: codecov/codecov-action@v5
-        if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' }}
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -87,7 +89,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [20]
+        node-version: [lts/*]
         browser: [chrome, firefox]
     steps:
       - name: Checkout repository
@@ -101,6 +103,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          check-latest: true
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
@@ -125,7 +128,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [20]
+        node-version: [lts/*]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -138,6 +141,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          check-latest: true
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
@@ -154,7 +158,7 @@ jobs:
           pnpm build
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.node-version == 20 && matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' }}
         with:
           name: app
           path: .next
@@ -173,7 +177,8 @@ jobs:
       - name: Setup Node environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: lts/*
+          check-latest: true
           architecture: x64
           registry-url: https://registry.npmjs.org/
       - name: Release to GitHub
