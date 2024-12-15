@@ -24,17 +24,17 @@ function PostsSearchBar({ posts }: Props): JSX.Element {
       setOptions(
         value
           ? posts
-            .filter(({ title }) =>
-              title.toLowerCase().includes(value.toLowerCase()),
-            )
-            .map(({ slug, title }) => ({
-              value: title,
-              label: (
-                <div>
-                  <Link href={`/post/${slug}`}>{title}</Link>
-                </div>
-              ),
-            }))
+              .filter(({ title }) =>
+                title.toLowerCase().includes(value.toLowerCase()),
+              )
+              .map(({ slug, title }) => ({
+                value: title,
+                label: (
+                  <div>
+                    <Link href={`/post/${slug}`}>{title}</Link>
+                  </div>
+                ),
+              }))
           : [],
       )
     },
