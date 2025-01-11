@@ -240,10 +240,9 @@ exports[`Header should render correctly (snapshot) 1`] = `
                           <span
                             class="ant-input-suffix"
                           >
-                            <span
+                            <button
                               class="ant-input-clear-icon ant-input-clear-icon-hidden"
-                              role="button"
-                              tabindex="-1"
+                              type="button"
                             >
                               <span
                                 aria-label="close-circle"
@@ -265,7 +264,7 @@ exports[`Header should render correctly (snapshot) 1`] = `
                                   />
                                 </svg>
                               </span>
-                            </span>
+                            </button>
                           </span>
                         </span>
                         <span
