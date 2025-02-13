@@ -17,6 +17,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           role="cell"
         >
           <span
+            aria-describedby="test-id"
             aria-label="bars"
             class="anticon anticon-bars text-5xl text-primary"
             role="img"
@@ -98,6 +99,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
         tabindex="0"
       >
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           data-menu-id="rc-menu-uuid-test-home"
           role="menuitem"
@@ -126,6 +128,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </span>
         </li>
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           role="menuitem"
           style="opacity: 1; order: 1;"
@@ -143,6 +146,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </span>
         </li>
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           role="menuitem"
           style="opacity: 1; order: 2;"
@@ -160,6 +164,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </span>
         </li>
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           role="menuitem"
           style="opacity: 1; order: 3;"
@@ -177,6 +182,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </span>
         </li>
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           role="menuitem"
           style="opacity: 1; order: 4;"
@@ -194,6 +200,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </span>
         </li>
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           role="menuitem"
           style="opacity: 1; order: 5;"
@@ -295,6 +302,7 @@ exports[`PostLayout should render correctly (snapshot) 1`] = `
           </span>
         </li>
         <li
+          aria-describedby="test-id"
           class="ant-menu-overflow-item ant-menu-item ant-menu-item-only-child"
           role="menuitem"
           style="opacity: 1; order: 6;"
