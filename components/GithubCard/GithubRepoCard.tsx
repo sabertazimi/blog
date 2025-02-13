@@ -14,7 +14,7 @@ function GithubRepoCard({ repo }: Props): JSX.Element {
   return (
     <Badge.Ribbon text={repo.name} color={getColorByName(repo.name)}>
       <Card
-        className="!mt-5"
+        className="mt-5!"
         title={(
           <a href={repo.repoUrl}>
             <Branches className="align-top text-4xl" />
@@ -24,7 +24,7 @@ function GithubRepoCard({ repo }: Props): JSX.Element {
       >
         <Meta
           title={(
-            <Tag className="!mb-3" color={getColorByName(repo.language)}>
+            <Tag className="mb-3!" color={getColorByName(repo.language)}>
               {repo.language}
             </Tag>
           )}
