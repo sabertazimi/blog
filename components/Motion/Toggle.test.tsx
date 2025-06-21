@@ -77,6 +77,6 @@ describe('Toggle', () => {
 
     fireEvent.keyDown(screen.getByTestId('toggle-wrapper'), { key: 'Tab' })
 
-    expect(mockToggle).not.toBeCalled()
+    expect(mockToggle).not.toHaveBeenCalled()
   })
 })
