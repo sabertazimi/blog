@@ -134,7 +134,7 @@ jobs:
     needs: [lint, test, build]
     steps:
       - name: Download production artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
       - name: List production artifacts
         run: |
           ls -R
