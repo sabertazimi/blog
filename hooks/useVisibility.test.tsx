@@ -1,5 +1,5 @@
-import { fireEvent, render, waitFor } from '@/utils'
 import { useRef } from 'react'
+import { fireEvent, render, waitFor } from '@/utils'
 import useVisibility from './useVisibility'
 
 describe('useVisibility', () => {

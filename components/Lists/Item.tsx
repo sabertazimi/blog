@@ -1,7 +1,7 @@
 import type { HTMLProps } from 'react'
+import cx from 'classnames'
 import { ArrowRight } from '@/components/Icons'
 import { siteConfig } from '@/config'
-import cx from 'classnames'
 import styles from './Item.module.css'
 
 interface Props extends HTMLProps<HTMLLIElement> {}

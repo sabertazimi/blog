@@ -1,5 +1,5 @@
-import type { BuildTime, PostMeta } from '@/types'
 import type { ReactNode } from 'react'
+import type { BuildTime, PostMeta } from '@/types'
 import { BackTop, Container, Footer, Header } from '@/components'
 
 interface Props {

@@ -1,5 +1,5 @@
-import type { GitHub } from '@/types'
 import type { SocialType } from './social'
+import type { GitHub } from '@/types'
 import { colors } from './colors'
 
 interface Book {

@@ -1,7 +1,7 @@
 'use client'
 
-import Anchor from '@/components/Anchor'
 import { useEffect, useState } from 'react'
+import Anchor from '@/components/Anchor'
 import styles from './ArticleToc.module.css'
 
 interface Props {
@@ -25,6 +25,7 @@ function ArticleToc({ slug, offset = 150 }: Props): JSX.Element {
       href: `#${item.id}`,
       title: item.textContent,
     })) as TocItem[]
+    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- set tocItems
     setTocItems(tocItems)
   }, [slug])
 

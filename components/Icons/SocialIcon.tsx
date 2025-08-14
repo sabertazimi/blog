@@ -1,5 +1,4 @@
 import type { SocialType } from '@/types'
-import { socialList } from '@/config'
 import {
   FacebookOutlined,
   GithubOutlined,
@@ -8,6 +7,7 @@ import {
   WeiboOutlined,
   XOutlined,
 } from '@ant-design/icons'
+import { socialList } from '@/config'
 import styles from './SocialIcon.module.css'
 
 function SocialIcon(type: SocialType): JSX.Element {

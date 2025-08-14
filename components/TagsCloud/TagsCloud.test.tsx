@@ -1,5 +1,5 @@
-import { render } from '@/utils'
 import { axe } from 'jest-axe'
+import { render } from '@/utils'
 import TagsCloud from './TagsCloud'
 
 describe('TagsCloud', () => {

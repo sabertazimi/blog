@@ -39,6 +39,7 @@ describe('Toggle', () => {
       />,
     )
 
+    // eslint-disable-next-line testing-library/no-node-access -- allow fire click event
     fireEvent.click(screen.getByTestId('toggle-wrapper'))
 
     expect(mockToggle).toHaveBeenCalledTimes(1)

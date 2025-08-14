@@ -1,5 +1,5 @@
-import type { BuildTime, PostMeta } from '@/types'
 import type { ReactNode } from 'react'
+import type { BuildTime, PostMeta } from '@/types'
 import { Container, Divider, Footer, Header } from '@/components'
 import { Slide } from '@/components/Motion'
 

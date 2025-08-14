@@ -1,12 +1,12 @@
 'use client'
 
-import type { Route } from '@/types'
 import type { MotionProps } from 'framer-motion'
 import type { KeyboardEvent } from 'react'
+import type { Route } from '@/types'
+import { useCallback, useState } from 'react'
 import { Hamburger } from '@/components/Icons'
 import { Switch } from '@/components/Motion'
 import { routes as defaultRoutes } from '@/config'
-import { useCallback, useState } from 'react'
 import styles from './LandingNav.module.css'
 import LandingNavLink from './LandingNavLink'
 

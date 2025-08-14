@@ -1,4 +1,5 @@
 import type { PostMeta } from '@/types'
+import cx from 'classnames'
 import Link from '@/components/Link'
 import LocalImage from '@/components/LocalImage'
 import Menu from '@/components/Menu'
@@ -6,7 +7,6 @@ import PostsSearchBar from '@/components/PostsSearchBar'
 import ThemeSwitch from '@/components/ThemeSwitch'
 import { routes } from '@/config'
 import logo from '@/images/logo-full.png'
-import cx from 'classnames'
 import styles from './DesktopNav.module.css'
 
 interface Props {

@@ -1,7 +1,7 @@
 'use client'
 
-import { siteConfig } from '@/config'
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
+import { siteConfig } from '@/config'
 
 export default function ProgressBarProvider({ children }: { children: React.ReactNode }) {
   return (

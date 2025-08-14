@@ -1,5 +1,5 @@
-import { render, screen, waitFor } from '@/utils'
 import { axe } from 'jest-axe'
+import { render, screen, waitFor } from '@/utils'
 import TypingTitle from './TypingTitle'
 
 describe('TypingTitle', () => {

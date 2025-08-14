@@ -1,6 +1,6 @@
+import cx from 'classnames'
 import { Card, Meta } from '@/components/Card'
 import Image from '@/components/Image'
-import cx from 'classnames'
 
 interface Props {
   src?: string
