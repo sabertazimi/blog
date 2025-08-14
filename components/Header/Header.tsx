@@ -1,8 +1,8 @@
 'use client'
 
 import type { PostMeta } from '@/types'
-import { useVisibility } from '@/hooks'
 import { useCallback, useRef, useState } from 'react'
+import { useVisibility } from '@/hooks'
 import DesktopNav from './DesktopNav'
 import MobileNav from './MobileNav'
 

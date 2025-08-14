@@ -1,6 +1,6 @@
+import { axe } from 'jest-axe'
 import mockData from '@/mocks/data'
 import { render } from '@/utils'
-import { axe } from 'jest-axe'
 import PostsList from './PostsList'
 
 describe('PostsList', () => {

@@ -1,6 +1,6 @@
 import type { JSXElementConstructor, ReactNode } from 'react'
-import { render, screen } from '@/utils'
 import { axe } from 'jest-axe'
+import { render, screen } from '@/utils'
 import ErrorBoundary from './ErrorBoundary'
 
 describe('ErrorBoundary', () => {

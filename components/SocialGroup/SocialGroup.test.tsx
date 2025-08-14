@@ -1,6 +1,6 @@
+import { axe } from 'jest-axe'
 import { siteConfig } from '@/config'
 import { render } from '@/utils'
-import { axe } from 'jest-axe'
 import SocialGroup from './SocialGroup'
 
 describe('SocialGroup', () => {

@@ -1,8 +1,8 @@
 'use client'
 
 import type { PostType } from '@/types'
-import MDX from '@/components/MDX'
 import { MDXRemote } from 'next-mdx-remote'
+import MDX from '@/components/MDX'
 
 interface Props {
   source: PostType['source']

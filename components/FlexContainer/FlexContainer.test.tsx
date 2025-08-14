@@ -1,5 +1,5 @@
-import { render, screen } from '@/utils'
 import { axe } from 'jest-axe'
+import { render, screen } from '@/utils'
 import FlexContainer from './FlexContainer'
 
 describe('FlexContainer', () => {

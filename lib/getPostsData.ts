@@ -27,7 +27,7 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
     const filePath = path.join(directoryPath, entry.name)
 
     if (entry.isDirectory())
-      yield * walk(filePath)
+      yield* walk(filePath)
     else if (entry.isFile())
       yield filePath
   }

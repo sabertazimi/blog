@@ -1,7 +1,7 @@
 import type { HTMLProps, ReactElement } from 'react'
-import CopyButton from '@/components/CopyButton'
 import cx from 'classnames'
 import dynamic from 'next/dynamic'
+import CopyButton from '@/components/CopyButton'
 import BlockCode from './BlockCode'
 import styles from './Pre.module.css'
 import {
