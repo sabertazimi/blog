@@ -23,7 +23,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
       - name: Setup Node environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: lts/*
           check-latest: true
@@ -58,7 +58,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
       - name: Setup Node environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
@@ -100,7 +100,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
       - name: Setup Node environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
@@ -138,7 +138,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
       - name: Setup Node environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
@@ -175,7 +175,7 @@ jobs:
           submodules: true
           fetch-depth: 0
       - name: Setup Node environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: lts/*
           check-latest: true
