@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`SocialGroup should render correctly (snapshot) 1`] = `
 <div>
@@ -14,6 +14,7 @@ exports[`SocialGroup should render correctly (snapshot) 1`] = `
         tabindex="0"
       >
         <a
+          aria-disabled="false"
           class="ant-btn ant-btn-link ant-btn-color-link ant-btn-variant-link ant-btn-lg ant-btn-icon-only button"
           href="https://twitter.com/intent/tweet?url=https://blog.tazimi.dev"
           role="link"
@@ -56,6 +57,7 @@ exports[`SocialGroup should render correctly (snapshot) 1`] = `
         tabindex="0"
       >
         <a
+          aria-disabled="false"
           class="ant-btn ant-btn-link ant-btn-color-link ant-btn-variant-link ant-btn-lg ant-btn-icon-only button"
           href="https://www.facebook.com/sharer.php?u=https://blog.tazimi.dev"
           role="link"
@@ -97,6 +99,7 @@ exports[`SocialGroup should render correctly (snapshot) 1`] = `
         tabindex="0"
       >
         <a
+          aria-disabled="false"
           class="ant-btn ant-btn-link ant-btn-color-link ant-btn-variant-link ant-btn-lg ant-btn-icon-only button"
           href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.tazimi.dev"
           role="link"
@@ -138,6 +141,7 @@ exports[`SocialGroup should render correctly (snapshot) 1`] = `
         tabindex="0"
       >
         <a
+          aria-disabled="false"
           class="ant-btn ant-btn-link ant-btn-color-link ant-btn-variant-link ant-btn-lg ant-btn-icon-only button"
           href="https://service.weibo.com/share/share.php?url=https://blog.tazimi.dev"
           role="link"
