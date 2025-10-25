@@ -157,7 +157,7 @@ jobs:
         run: |
           pnpm build
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' }}
         with:
           name: app

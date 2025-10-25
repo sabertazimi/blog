@@ -76,7 +76,7 @@ jobs:
           pnpm test:all
           pnpm badge
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: badges
@@ -121,7 +121,7 @@ jobs:
         run: |
           pnpm build:gh-pages
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' && matrix.architecture == 'x64' }}
         with:
           name: demos
@@ -134,7 +134,7 @@ jobs:
     needs: [lint, test, build]
     steps:
       - name: Download production artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
       - name: List production artifacts
         run: |
           ls -R
