@@ -7,7 +7,7 @@ interface Props {
 
 function NotFoundResult({
   title = 'Sorry, the page you visited does not exist.',
-}: Props): JSX.Element {
+}: Props) {
   return (
     <Result
       status="404"

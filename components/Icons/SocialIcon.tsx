@@ -10,7 +10,7 @@ import {
 import { socialList } from '@/config'
 import styles from './SocialIcon.module.css'
 
-function SocialIcon(type: SocialType): JSX.Element {
+function SocialIcon(type: SocialType) {
   switch (type) {
     case 'github':
     case socialList.github:

@@ -8,7 +8,7 @@ interface Props {
   source: PostType['source']
 }
 
-function ArticleContent({ source }: Props): JSX.Element {
+function ArticleContent({ source }: Props) {
   return (
     <article>
       <MDXRemote {...source} components={MDX} />

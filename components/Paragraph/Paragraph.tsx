@@ -8,7 +8,7 @@ interface Props {
   className?: string
 }
 
-function Paragraph({ children, className, ...props }: Props): JSX.Element {
+function Paragraph({ children, className, ...props }: Props) {
   return (
     <Typography.Paragraph
       {...props}

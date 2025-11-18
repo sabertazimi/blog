@@ -7,7 +7,7 @@ interface Props {
   activeTag?: Tag
 }
 
-function TagsCloud({ tags, activeTag }: Props): JSX.Element {
+function TagsCloud({ tags, activeTag }: Props) {
   let tagsList = Object.keys(tags).sort((a, b) => {
     // eslint-disable-next-line security/detect-object-injection -- key is safe.
     return tags[b] - tags[a]

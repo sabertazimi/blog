@@ -16,7 +16,7 @@ function BlockCode({
   lines,
   language,
   children,
-}: Props): JSX.Element {
+}: Props) {
   return (
     <Highlight
       {...defaultProps}

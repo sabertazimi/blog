@@ -12,7 +12,7 @@ interface Props {
   className?: string
 }
 
-function ThemeSwitch({ className }: Props): JSX.Element {
+function ThemeSwitch({ className }: Props) {
   const [darkMode, setDarkMode] = useDarkMode()
   const shouldReduceMotion = useReducedMotion()
   const handleClick = useCallback(() => {

@@ -3,6 +3,6 @@ import { Row as AntRow } from 'antd'
 
 interface Props extends RowProps {}
 
-const Row = (props: Props): JSX.Element => <AntRow {...props} role="row" />
+const Row = (props: Props) => <AntRow {...props} role="row" />
 
 export default Row

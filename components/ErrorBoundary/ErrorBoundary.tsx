@@ -7,7 +7,7 @@ import Result from '@/components/Result'
 import { Text } from '@/components/Texts'
 
 interface Props {
-  children: JSX.Element
+  children: React.ReactElement
 }
 
 interface State {

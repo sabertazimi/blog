@@ -12,7 +12,7 @@ function MDXInput({
   checked,
   disabled,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   if (type?.includes('checkbox'))
     return <Checkbox checked={checked} className="mr-1" {...props} />
 

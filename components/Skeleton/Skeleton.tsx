@@ -3,6 +3,6 @@ import { Skeleton as AntSkeleton } from 'antd'
 
 interface Props extends SkeletonProps {}
 
-const Skeleton = (props: Props): JSX.Element => <AntSkeleton {...props} />
+const Skeleton = (props: Props) => <AntSkeleton {...props} />
 
 export default Skeleton

@@ -6,7 +6,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-function PostsGrid({ posts }: Props): JSX.Element {
+function PostsGrid({ posts }: Props) {
   return (
     <>
       <MobilePostsGrid posts={posts} />

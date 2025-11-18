@@ -18,7 +18,7 @@ const scope = {
   ...React,
 }
 
-function LiveCode({ language, children }: Props): JSX.Element {
+function LiveCode({ language, children }: Props) {
   return (
     <div className={styles.container}>
       <LiveProvider

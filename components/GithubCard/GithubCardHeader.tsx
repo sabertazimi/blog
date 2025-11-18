@@ -6,7 +6,7 @@ interface Props {
   profile: Profile
 }
 
-function GithubCardHeader({ profile }: Props): JSX.Element {
+function GithubCardHeader({ profile }: Props) {
   return (
     <a href={profile.url}>
       <Github className="align-top text-6xl" />

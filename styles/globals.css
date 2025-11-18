@@ -152,7 +152,7 @@
 }
 
 @utility bg-gradient-primary {
-  @apply bg-gradient-to-r from-indigo-700 to-red-500;
+  @apply bg-linear-to-r from-indigo-700 to-red-500;
 }
 
 @utility bg-gradient-secondary {

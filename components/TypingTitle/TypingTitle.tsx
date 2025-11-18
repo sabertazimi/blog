@@ -19,8 +19,9 @@ function TypingTitle({
   delay = 600,
   loop = true,
   className,
-}: Props): JSX.Element {
-  const ref = useRef<HTMLSpanElement>(null)
+}: Props) {
+  const ref = useRef<HTMLElement>(null)
+  // @ts-expect-error - ref is not null
   useTypingEffect(ref, { titles, speed, delay, loop })
 
   return (

@@ -9,7 +9,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-function PostsList({ posts }: Props): JSX.Element {
+function PostsList({ posts }: Props) {
   return (
     <List
       className="mt-6"

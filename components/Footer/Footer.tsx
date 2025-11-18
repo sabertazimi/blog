@@ -17,7 +17,7 @@ export default function Footer({
   buildTime,
   author = siteConfig.author,
   socials = siteConfig.socials,
-}: Props): JSX.Element {
+}: Props) {
   return (
     <Container
       role="grid"

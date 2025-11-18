@@ -29,7 +29,7 @@ function Slide({
   className,
   delay = 0,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   return (
     <motion.div
       className={className}

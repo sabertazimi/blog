@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode
 }
 
-function LandingLayout({ children }: Props): JSX.Element {
+function LandingLayout({ children }: Props) {
   return (
     <div
       className={cx(

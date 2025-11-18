@@ -34,7 +34,7 @@ function Pre({
   lines = '',
   children,
   className,
-}: Props): JSX.Element {
+}: Props) {
   const codeElement = children as ReactElement<CodeProps>
   const code = normalizeCode(codeElement?.props?.children)
   const languageClass = codeElement?.props?.className

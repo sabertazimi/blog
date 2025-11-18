@@ -11,7 +11,7 @@ interface Props {
   book: Book
 }
 
-function BookCard({ book }: Props): JSX.Element {
+function BookCard({ book }: Props) {
   const { title, url, author, description } = book
 
   return (

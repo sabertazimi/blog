@@ -11,7 +11,7 @@ function Span({
   children,
   size = 'md',
   className = '',
-}: SpanProps): JSX.Element {
+}: SpanProps) {
   if (size === 'xl') {
     return (
       <span

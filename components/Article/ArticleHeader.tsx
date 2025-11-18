@@ -12,7 +12,7 @@ interface Props {
 
 function ArticleHeader({
   post: { title, createTime, updateTime, readingTime, tags },
-}: Props): JSX.Element {
+}: Props) {
   return (
     <div className="bg-gradient-primary w-full bg-cover bg-center bg-no-repeat p-3 md:px-32 md:pb-40 md:pt-48">
       <Slide>

@@ -36,7 +36,7 @@ function Aside({
   children,
   className,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   return (
     <Alert
       {...props}

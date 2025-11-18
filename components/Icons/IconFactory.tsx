@@ -7,15 +7,15 @@ interface Props {
   className?: string
 }
 
-type IconType = (props: Props) => JSX.Element
+type IconType = (props: Props) => React.ReactElement
 
-function IconFactory(svg: (props: SVGProps<SVGSVGElement>) => JSX.Element, ariaLabel: string): IconType {
+function IconFactory(svg: (props: SVGProps<SVGSVGElement>) => React.ReactElement, ariaLabel: string): IconType {
   const IconComponent = ({
     onClick,
     onKeyDown,
     className,
     ...props
-  }: Props): JSX.Element => (
+  }: Props) => (
     <Icon
       {...props}
       component={svg}

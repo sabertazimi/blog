@@ -46,7 +46,7 @@ const bannerTransition: MotionProps['transition'] = {
   duration: 0.4,
 }
 
-function LandingNav({ routes = defaultRoutes }: Props): JSX.Element {
+function LandingNav({ routes = defaultRoutes }: Props) {
   const [expanded, setExpanded] = useState(false)
 
   const handleClick = useCallback(() => {

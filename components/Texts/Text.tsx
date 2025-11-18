@@ -4,7 +4,7 @@ import cx from 'classnames'
 
 interface Props extends TextProps {}
 
-function Text({ className, ...props }: Props): JSX.Element {
+function Text({ className, ...props }: Props) {
   return <Typography.Text {...props} className={cx(className)} />
 }
 

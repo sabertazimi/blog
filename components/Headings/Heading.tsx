@@ -10,7 +10,7 @@ function Heading({
   children,
   className,
   ...props
-}: TitleProps): JSX.Element {
+}: TitleProps) {
   return (
     <Typography.Title
       {...props}

@@ -16,7 +16,7 @@ interface Option {
   label: ReactNode
 }
 
-function PostsSearchBar({ posts }: Props): JSX.Element {
+function PostsSearchBar({ posts }: Props) {
   const [options, setOptions] = useState<Option[]>([])
 
   const handleSearch = useCallback(

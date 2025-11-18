@@ -20,7 +20,7 @@ interface PreProps {
   filename?: string
 }
 
-function Editor({ template = 'react-ts', children }: Props): JSX.Element {
+function Editor({ template = 'react-ts', children }: Props) {
   // eslint-disable-next-line react/no-children-to-array -- Transform children to array.
   const codeSnippets = Children.toArray(children)
   const files = codeSnippets.reduce(

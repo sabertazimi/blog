@@ -11,7 +11,7 @@ interface Props {
 
 function ArticleComments({
   url = siteConfig.disqusUrl,
-}: Props): JSX.Element {
+}: Props) {
   useDisqus(url)
 
   return (

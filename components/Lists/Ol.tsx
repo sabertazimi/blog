@@ -8,7 +8,7 @@ interface Props
     HTMLOListElement
   > {}
 
-function Ol({ children, className, ...props }: Props): JSX.Element {
+function Ol({ children, className, ...props }: Props) {
   return (
     <ol {...props} className={cx(className, styles.ol)}>
       {children}

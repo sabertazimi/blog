@@ -12,7 +12,7 @@ interface Props {
   className?: string
 }
 
-function CopyButton({ code, className }: Props): JSX.Element {
+function CopyButton({ code, className }: Props) {
   const [isCopied, copy] = useCopyToClipboard(code)
   const shouldReduceMotion = useReducedMotion()
 

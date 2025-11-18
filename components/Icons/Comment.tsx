@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import IconFactory from './IconFactory'
 
-function Svg(): JSX.Element {
+function Svg() {
   return (
     <motion.svg
       viewBox="0 0 1024 1024"

@@ -18,7 +18,7 @@ function SocialButton({
   url,
   className,
   color = '',
-}: Props): JSX.Element {
+}: Props) {
   return (
     <Bounce>
       <Button

@@ -37,7 +37,7 @@ function Switch({
   transition = defaultTransition,
   onClick,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   return (
     <motion.div
       className={className}

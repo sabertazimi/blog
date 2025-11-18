@@ -14,7 +14,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-function DesktopNav({ fixed, posts }: Props): JSX.Element {
+function DesktopNav({ fixed, posts }: Props) {
   return (
     <Menu
       mode="horizontal"

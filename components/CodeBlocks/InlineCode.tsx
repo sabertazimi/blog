@@ -6,7 +6,7 @@ interface Props {
   className?: string
 }
 
-function InlineCode({ children, className }: Props): JSX.Element {
+function InlineCode({ children, className }: Props) {
   return (
     <code
       className={cx(

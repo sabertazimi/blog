@@ -9,7 +9,7 @@ function Divider({
   type = 'horizontal',
   className,
   children,
-}: Props): JSX.Element {
+}: Props) {
   return (
     <AntDivider
       type={type}
