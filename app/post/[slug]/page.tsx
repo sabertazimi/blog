@@ -17,16 +17,18 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: QueryParams }): Promise<Metadata> {
-  const postData = await getPostData(params.slug)
+export async function generateMetadata({ params }: { params: Promise<QueryParams> }): Promise<Metadata> {
+  const { slug } = await params
+  const postData = await getPostData(slug)
   return postData ? getMetadata({ title: postData.title }) : getMetadata()
 }
 
-export default async function Post({ params }: { params: QueryParams }) {
+export default async function Post({ params }: { params: Promise<QueryParams> }) {
+  const { slug } = await params
   const buildTime = getBuildTime()
   const postsData = await getPostsData()
   const postsMeta = await getPostsMeta(postsData)
-  const postData = await getPostData(params.slug, postsData)
+  const postData = await getPostData(slug, postsData)
 
   return (
     postData && (

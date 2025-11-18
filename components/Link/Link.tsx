@@ -9,10 +9,10 @@ interface Props {
 
 function Link({ href, children, className }: Props): JSX.Element {
   return (
-    <NextLink href={href} legacyBehavior>
-      <a className={className}>{children}</a>
+    <NextLink href={href} className={className}>
+      {children}
     </NextLink>
-  )
+  );
 }
 
 export default Link
