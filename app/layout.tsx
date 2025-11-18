@@ -5,8 +5,6 @@ import { getMetadata, getViewport } from '@/config'
 
 // Keep stylesheets importing order
 import '@/styles/globals.css'
-import '@/components/Article/Article.css'
-import '@/components/Card/Card.css'
 
 export function generateMetadata(): Metadata {
   return getMetadata()
