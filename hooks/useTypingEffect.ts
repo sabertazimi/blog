@@ -23,12 +23,15 @@ function useTypingEffect(ref: RefObject<HTMLElement>, options: TypingOptions): v
       loop,
     }
 
-    if (ref.current)
+    // eslint-disable-next-line ts/strict-boolean-expressions -- condition isn't always true
+    if (ref.current) {
       typed.current = new Typed(ref.current, options)
+    }
 
     return () => {
-      if (typed.current)
+      if (typed.current) {
         typed.current.destroy()
+      }
     }
   }, [ref, titles, speed, delay, loop])
 }

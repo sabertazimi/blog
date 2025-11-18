@@ -12,7 +12,7 @@ function Link({ href, children, className }: Props) {
     <NextLink href={href} className={className}>
       {children}
     </NextLink>
-  );
+  )
 }
 
 export default Link
