@@ -13,7 +13,6 @@ export default async function Posts() {
 
   return (
     <DefaultLayout banner="Posts" buildTime={buildTime} posts={postsMeta}>
-      <section>Posts</section>
       <section>
         {postsMeta.map(post => (
           <div key={post.slug}>{post.title}</div>

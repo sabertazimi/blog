@@ -15,7 +15,6 @@ export default async function Tags() {
 
   return (
     <DefaultLayout banner="Tags" buildTime={buildTime} posts={postsMeta}>
-      <section>Tags</section>
       <section>
         {Object.entries(tagsData).map(([name, count]) => (
           <div key={name}>

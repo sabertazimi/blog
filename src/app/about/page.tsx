@@ -15,7 +15,6 @@ export default async function About() {
 
   return (
     <DefaultLayout banner="About Me" buildTime={buildTime} posts={postsMeta}>
-      <div>About Me</div>
       <div>
         GitHub:
         {profile.username}
