@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { DefaultLayout } from '@/layouts'
-import { getBuildTime, getPostsData, getPostsMeta, getTagsData } from '@/lib'
+import DefaultLayout from '@/layouts/default-layout'
+import getBuildTime from '@/lib/get-build-time'
+import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
   title: 'Tags',

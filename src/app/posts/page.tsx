@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { DefaultLayout } from '@/layouts'
-import { getBuildTime, getPostsMeta } from '@/lib'
+import DefaultLayout from '@/layouts/default-layout'
+import getBuildTime from '@/lib/get-build-time'
+import { getPostsMeta } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
   title: 'Posts',

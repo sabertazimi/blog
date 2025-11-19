@@ -2,13 +2,6 @@ import type { SocialType } from './social'
 import type { GitHub } from '@/types'
 import { colors } from './colors'
 
-interface Book {
-  title: string
-  author: string
-  url: string
-  description: string
-}
-
 interface SiteConfig {
   title: string
   author: string
@@ -95,4 +88,4 @@ const siteConfig: SiteConfig = {
 }
 
 export { siteConfig }
-export type { Book, SiteConfig }
+export type { SiteConfig }

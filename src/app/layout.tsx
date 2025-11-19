@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import { ProgressBarProvider, SandpackProvider } from '@/components/providers'
-import { getMetadata, getViewport } from '@/config'
+import ProgressBarProvider from '@/components/providers/progress-bar-provider'
+import SandpackProvider from '@/components/providers/sandpack-provider'
+import { getMetadata, getViewport } from '@/lib/seo'
 import './globals.css'
 
 const geistSans = Geist({
