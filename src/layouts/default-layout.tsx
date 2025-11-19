@@ -1,6 +1,7 @@
 import type { BuildTime, PostMeta } from '@/types'
 import * as React from 'react'
 import Banner from '@/components/banner'
+import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 
 interface Props {
@@ -18,7 +19,7 @@ function Layout({ banner, posts, buildTime, children }: Props) {
         <Banner>{banner}</Banner>
         {children}
       </div>
-      <footer>{buildTime.toString()}</footer>
+      <SiteFooter buildTime={buildTime} />
     </div>
   )
 }

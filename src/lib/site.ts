@@ -34,9 +34,8 @@ const siteConfig: SiteConfig = {
   },
   socials: {
     github: 'sabertazimi',
-    twitter: 'sabertazimi',
+    x: 'sabertazimi',
     facebook: 'sabertazimi',
-    linkedin: 'sabertazimi',
     weibo: 'sabertazimi',
   },
   githubData: {

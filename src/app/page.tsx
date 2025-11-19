@@ -10,7 +10,7 @@ import { routes } from '@/lib/routes'
 import { siteConfig } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
-const Icons = {
+const icons = {
   posts: HomeIcon,
   tags: Tag,
   about: Info,
@@ -26,25 +26,28 @@ export default function Home() {
       <MorphingText texts={siteConfig.landingPage.titles} className="pointer-none select-none" />
       <div className="flex items-center justify-center gap-6">
         <TooltipProvider>
-          {routes.map((item, index) => (
-            <React.Fragment key={item.id}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.path}
-                    aria-label={item.name}
-                    className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'z-10 size-12 rounded-full')}
-                  >
-                    {React.createElement(Icons[item.id as keyof typeof Icons], { className: 'size-8' })}
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.title}</p>
-                </TooltipContent>
-              </Tooltip>
-              {index < routes.length - 1 && <Separator orientation="vertical" className="h-8" />}
-            </React.Fragment>
-          ))}
+          {routes.map((item, index) => {
+            const Icon = icons[item.id as keyof typeof icons]
+            return (
+              <React.Fragment key={item.id}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={item.path}
+                      aria-label={item.name}
+                      className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'z-10 size-12 rounded-full')}
+                    >
+                      <Icon className="size-8" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{item.title}</p>
+                  </TooltipContent>
+                </Tooltip>
+                {index < routes.length - 1 && <Separator orientation="vertical" className="h-8" />}
+              </React.Fragment>
+            )
+          })}
         </TooltipProvider>
       </div>
     </div>
