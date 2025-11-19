@@ -6,13 +6,13 @@ export function getMetadata({
   description = siteConfig.description,
   author = siteConfig.author,
   siteUrl = siteConfig.siteUrl,
-  twitter = siteConfig.socials.twitter,
+  x = siteConfig.socials.x,
 }: {
   title?: string
   description?: string
   author?: string
   siteUrl?: string
-  twitter?: string
+  x?: string
 } = {}): Metadata {
   return {
     title,
@@ -45,8 +45,8 @@ export function getMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      site: `@${twitter}`,
-      siteId: `@${twitter}`,
+      site: `@${x}`,
+      siteId: `@${x}`,
     },
   }
 }

@@ -1,9 +1,8 @@
 const socialColors = {
   gray: '#767676',
   github: '#181717',
-  twitter: '#000000',
-  facebook: '#1877f2',
-  linkedin: '#0a66c2',
+  x: '#000000',
+  facebook: '#0866ff',
   weibo: '#e6162d',
 }
 
