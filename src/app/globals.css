@@ -290,25 +290,6 @@
     font-size: var(--font-size);
   }
 
-  a {
-    @apply outline-focus-visible text-primary hover:text-secondary;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  section,
-  div:not(.sp-error-message) {
-    @apply dark:text-light;
-  }
-
-  img {
-    @apply inline-block;
-  }
-
   ::-webkit-scrollbar {
     @apply h-2.5 w-2.5;
   }
@@ -316,4 +297,10 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-primary dark:bg-secondary rounded-lg;
   }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+  animation: none;
 }
