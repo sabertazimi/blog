@@ -14,6 +14,7 @@ export default eslintConfig
         'next.config.mjs',
         'postcss.config.mjs',
         'sitemap.config.js',
+        'next-env.d.ts',
       ],
     },
   )
