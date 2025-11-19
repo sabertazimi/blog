@@ -3,35 +3,19 @@
     "incremental": true,
     "target": "ES2017",
     "jsx": "react-jsx",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
-    "baseUrl": "./",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/images/*": [
-        "public/images/*"
-      ]
+      "@/*": ["./src/*"],
+      "@/images/*": ["./public/images/*"]
     },
     "resolveJsonModule": true,
-    "types": [
-      "@testing-library/jest-dom"
-    ],
+    "types": ["vitest/globals"],
     "allowJs": true,
     "strict": true,
-    "importHelpers": true,
     "noEmit": true,
-    "outDir": "./build",
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "skipLibCheck": true,
     "plugins": [
@@ -40,28 +24,6 @@
       }
     ]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "public",
-    "coverage",
-    "cypress",
-    "cypress.config.ts"
-  ],
-  "ts-node": {
-    "files": true,
-    "compilerOptions": {
-      "target": "es6",
-      "module": "commonjs"
-    }
-  }
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts", "**/*.mts"],
+  "exclude": ["node_modules"]
 }

@@ -2,13 +2,7 @@
   "ci": {
     "collect": {
       "settings": {
-        "preset": "desktop",
-        "skipAudits": [
-          "is-crawlable",
-          "color-contrast",
-          "aria-required-attr",
-          "aria-valid-attr-value"
-        ]
+        "preset": "desktop"
       }
     }
   }

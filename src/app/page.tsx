@@ -1,0 +1,52 @@
+import { Home as HomeIcon, Info, Notebook, Tag } from 'lucide-react'
+import Link from 'next/link'
+import * as React from 'react'
+import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars'
+import { buttonVariants } from '@/components/ui/button'
+import { MorphingText } from '@/components/ui/morphing-text'
+import { Separator } from '@/components/ui/separator'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { routes } from '@/config/routes'
+import { cn } from '@/lib/utils'
+
+const Icons = {
+  posts: HomeIcon,
+  tags: Tag,
+  books: Notebook,
+  about: Info,
+}
+
+export default function Home() {
+  return (
+    <div className="flex h-screen flex-col items-center justify-center gap-8">
+      <GravityStarsBackground
+        starsCount={1000}
+        className="absolute inset-0 flex items-center justify-center rounded-xl"
+      />
+      <MorphingText texts={['Coder', 'Developer', 'Learner']} className="pointer-none select-none" />
+      <div className="flex items-center justify-center gap-6">
+        <TooltipProvider>
+          {routes.map((item, index) => (
+            <React.Fragment key={item.id}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.path}
+                    aria-label={item.name}
+                    className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'z-10 size-12 rounded-full')}
+                  >
+                    {React.createElement(Icons[item.id as keyof typeof Icons], { className: 'size-8' })}
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{item.title}</p>
+                </TooltipContent>
+              </Tooltip>
+              {index < routes.length - 1 && <Separator orientation="vertical" className="h-8" />}
+            </React.Fragment>
+          ))}
+        </TooltipProvider>
+      </div>
+    </div>
+  )
+}
