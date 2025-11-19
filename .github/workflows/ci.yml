@@ -30,11 +30,6 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - name: Set up Cypress binary cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
@@ -65,11 +60,6 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - name: Set up Cypress binary cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
@@ -90,7 +80,6 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node-version: [lts/*]
-        browser: [chrome, firefox]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -107,20 +96,36 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - name: Set up Cypress binary cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
-      - name: List installed browsers
-        run: |
-          pnpm cypress info
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "::set-output name=version::$(yarn why --json @playwright/test | grep -h 'workspace:.' | jq --raw-output '.children[].locator' | sed -e 's/@playwright\/test@.*://')"
+      - uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: '${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}'
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+      - name: Install Playwright with dependencies
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm playwright install --with-deps
+
+      - name: Install Playwright's dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm playwright install-deps
       - name: Run e2e tests
         run: |
-          pnpm e2e:${{ matrix.browser }}
+          pnpm e2e
+      - name: Archive e2e report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
   build:
     name: Building
@@ -145,11 +150,6 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
-      - name: Set up Cypress binary cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install
