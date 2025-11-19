@@ -99,7 +99,7 @@ function CommandMenu({ posts }: Props) {
                   {post.createTime !== undefined && post.createTime !== ''
                     ? (
                         <span className="text-muted-foreground ml-auto text-xs">
-                          {post.createTime}
+                          {new Date(post.createTime).toLocaleDateString()}
                         </span>
                       )
                     : null}
