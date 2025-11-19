@@ -19,12 +19,6 @@ const routes: Route[] = [
     path: '/tags',
   },
   {
-    id: 'books',
-    name: 'Books',
-    title: 'View Books',
-    path: '/books',
-  },
-  {
     id: 'about',
     name: 'About',
     title: 'About Me',

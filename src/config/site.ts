@@ -21,7 +21,6 @@ interface SiteConfig {
   socials: {
     [key in SocialType]: string
   }
-  books: Book[]
   githubData: GitHub
 }
 
@@ -41,14 +40,6 @@ const siteConfig: SiteConfig = {
     linkedin: 'sabertazimi',
     weibo: 'sabertazimi',
   },
-  books: [
-    {
-      title: 'awesome-notes',
-      author: 'sabertazimi',
-      url: 'https://sabertazimi.github.io/awesome-notes',
-      description: 'Daily I Learned Notes',
-    },
-  ],
   githubData: {
     profile: {
       username: 'sabertazimi',
