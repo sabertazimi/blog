@@ -24,6 +24,7 @@ function MainNav() {
               asChild
               className={cn(
                 navigationMenuTriggerStyle(),
+                'font-extrabold',
                 pathname === route.path && 'bg-accent text-accent-foreground',
               )}
             >
