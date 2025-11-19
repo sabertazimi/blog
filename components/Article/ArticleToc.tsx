@@ -25,7 +25,7 @@ function ArticleToc({ slug, offset = 150 }: Props) {
       href: `#${item.id}`,
       title: item.textContent,
     })) as TocItem[]
-    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- set tocItems
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- set tocItems
     setTocItems(tocItems)
   }, [slug])
 
