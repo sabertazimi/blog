@@ -17,7 +17,10 @@ interface SiteConfig {
   themeColor: string
   siteUrl: string
   disqusUrl: string
-  landingTitles: string[]
+  landingPage: {
+    starsCount: number
+    titles: string[]
+  }
   socials: {
     [key in SocialType]: string
   }
@@ -32,7 +35,10 @@ const siteConfig: SiteConfig = {
   themeColor: colors.black,
   siteUrl: 'https://blog.tazimi.dev',
   disqusUrl: 'https://sabertaz-blog.disqus.com',
-  landingTitles: [`I'm a coder.`, `I'm a learner.`, `I'm a web developer.`],
+  landingPage: {
+    starsCount: 800,
+    titles: ['Coder', 'Developer', 'Learner'],
+  },
   socials: {
     github: 'sabertazimi',
     twitter: 'sabertazimi',

@@ -6,7 +6,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { MorphingText } from '@/components/ui/morphing-text'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { routes } from '@/config/routes'
+import { routes, siteConfig } from '@/config'
 import { cn } from '@/lib/utils'
 
 const Icons = {
@@ -19,10 +19,10 @@ export default function Home() {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8">
       <GravityStarsBackground
-        starsCount={1000}
+        starsCount={siteConfig.landingPage.starsCount}
         className="absolute inset-0 flex items-center justify-center rounded-xl"
       />
-      <MorphingText texts={['Coder', 'Developer', 'Learner']} className="pointer-none select-none" />
+      <MorphingText texts={siteConfig.landingPage.titles} className="pointer-none select-none" />
       <div className="flex items-center justify-center gap-6">
         <TooltipProvider>
           {routes.map((item, index) => (
