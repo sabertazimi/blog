@@ -48,7 +48,7 @@ function SiteFooter({ buildTime }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  'hover:text-foreground text-muted-foreground transition-colors',
+                  'dark:hover:text-foreground text-muted-foreground transition-colors hover:text-(--social-color)',
                   'inline-flex items-center justify-center',
                 )}
                 style={{
