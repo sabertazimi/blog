@@ -3,11 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { routes } from '@/lib/routes'
 import { cn } from '@/lib/utils'
 
@@ -28,19 +24,19 @@ function MobileNav() {
               <div className="relative size-5">
                 <span
                   className={cn(
-                    'bg-foreground absolute left-0 top-[0.56rem] block h-0.5 w-5 transition-all duration-200 ease-in-out',
+                    'bg-foreground absolute top-[0.56rem] left-0 block h-0.5 w-5 transition-all duration-200 ease-in-out',
                     isOpen ? '-rotate-45' : '-translate-y-1.5',
                   )}
                 />
                 <span
                   className={cn(
-                    'bg-foreground absolute left-0 top-[0.56rem] block h-0.5 w-5 transition-all duration-200 ease-in-out',
+                    'bg-foreground absolute top-[0.56rem] left-0 block h-0.5 w-5 transition-all duration-200 ease-in-out',
                     isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100',
                   )}
                 />
                 <span
                   className={cn(
-                    'bg-foreground absolute left-0 top-[0.56rem] block h-0.5 w-5 transition-all duration-200 ease-in-out',
+                    'bg-foreground absolute top-[0.56rem] left-0 block h-0.5 w-5 transition-all duration-200 ease-in-out',
                     isOpen ? 'rotate-45' : 'translate-y-1.5',
                   )}
                 />
@@ -61,9 +57,7 @@ function MobileNav() {
               <Link
                 key={route.id}
                 href={route.path}
-                className={cn(
-                  'flex items-center text-2xl font-medium transition-colors hover:text-accent-foreground',
-                )}
+                className={cn('hover:text-accent-foreground flex items-center text-2xl font-medium transition-colors')}
                 onClick={() => setIsOpen(false)}
               >
                 {route.name}

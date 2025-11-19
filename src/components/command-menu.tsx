@@ -24,9 +24,7 @@ function CommandMenu({ posts }: Props) {
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
 
-  const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(search.toLowerCase()),
-  )
+  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
 
   const runCommand = useCallback((command: () => void) => {
     setOpen(false)
@@ -59,29 +57,18 @@ function CommandMenu({ posts }: Props) {
     <>
       <Button
         variant="outline"
-        className={cn(
-          'relative h-8 w-full justify-start pl-3 pr-12 text-sm font-normal shadow-none md:w-48 lg:w-56',
-        )}
+        className={cn('relative h-8 w-full justify-start pr-12 pl-3 text-sm font-normal shadow-none md:w-48 lg:w-56')}
         onClick={() => setOpen(true)}
       >
         <span className="hidden lg:inline-flex">Search posts...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="bg-muted pointer-events-none absolute top-1.5 right-1.5 hidden h-5 select-none items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="bg-muted pointer-events-none absolute top-1.5 right-1.5 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
           <span className="text-xs">⌘</span>
           K
         </kbd>
       </Button>
-      <CommandDialog
-        open={open}
-        onOpenChange={setOpen}
-        title="Search posts"
-        description="Search for posts by title"
-      >
-        <CommandInput
-          placeholder="Search posts..."
-          value={search}
-          onValueChange={setSearch}
-        />
+      <CommandDialog open={open} onOpenChange={setOpen} title="Search posts" description="Search for posts by title">
+        <CommandInput placeholder="Search posts..." value={search} onValueChange={setSearch} />
         <CommandList>
           <CommandEmpty>No posts found.</CommandEmpty>
           {filteredPosts.length > 0 && (
