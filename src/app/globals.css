@@ -227,10 +227,6 @@
   --sidebar-ring: oklch(55.6% 0 0deg);
 }
 
-@utility bg-gradient-primary {
-  @apply bg-linear-to-r from-indigo-700 to-red-500;
-}
-
 @utility bg-gradient-secondary {
   background:
     linear-gradient(63deg, #262626 23%, transparent 0) 7px 0,
@@ -241,25 +237,6 @@
   border-color: var(--primary);
   border-style: solid;
   border-bottom-width: 5px;
-}
-
-@utility flex-container {
-  @apply flex flex-row flex-wrap content-center items-center justify-center;
-}
-
-@utility card {
-  @apply transform-gpu rounded-lg shadow-xl transition duration-300;
-  @apply focus-within:-translate-y-2 focus-within:shadow-2xl hover:-translate-y-2 hover:shadow-2xl;
-  @apply dark:border-light dark:border dark:border-solid;
-  @apply dark:shadow-dark dark:focus-within:shadow-primary dark:hover:shadow-primary dark:bg-black;
-}
-
-@utility outline-focus-visible {
-  @apply focus-visible:outline-secondary focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-dashed;
-}
-
-@utility dark-menu-link {
-  @apply dark:text-light dark:hover:text-primary dark:focus:text-primary;
 }
 
 @utility content-auto {
