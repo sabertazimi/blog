@@ -1,5 +1,6 @@
 import type { BuildTime, PostMeta } from '@/types'
 import * as React from 'react'
+import SiteHeader from '@/components/site-header'
 
 interface Props {
   banner: string
@@ -10,9 +11,10 @@ interface Props {
 
 function Layout({ banner, posts, buildTime, children }: Props) {
   return (
-    <div className="dark:bg-black">
-      <header>{banner}</header>
+    <div>
+      <SiteHeader posts={posts} />
       <main>{posts.toString()}</main>
+      <div className="divider">{banner}</div>
       <section>{children}</section>
       <footer>{buildTime.toString()}</footer>
     </div>
