@@ -33,8 +33,8 @@ function PostCard({
             href={`/post/${slug}`}
             className={cx(
               'flex-container float-right m-0 h-14 w-14 rounded-full border-primary',
-              'bg-primary text-2xl text-light!',
-              'transition hover:bg-secondary hover:text-light! focus:bg-secondary focus:text-light!',
+              'bg-primary text-2xl text-light',
+              'transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light',
             )}
           >
             <Read />
