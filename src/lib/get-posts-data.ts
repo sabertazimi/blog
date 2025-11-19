@@ -47,7 +47,7 @@ async function generatePostData(filePath: string): Promise<PostType> {
 
   const createTime = new Date(date ?? Date.now()).toISOString()
   const updateTime = execSync(
-    `git log -1 --pretty=format:%aI ${filePath}`,
+    `git log -1 --pretty=format:%aI "${filePath}"`,
   ).toString()
   const readingTime = getReadingTime(content)
 

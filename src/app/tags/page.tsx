@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { DefaultLayout } from '@/layouts'
-import { getBuildTime, getPostsData, getPostsMeta, getTagsData } from '@/lib'
+import DefaultLayout from '@/layouts/default-layout'
+import getBuildTime from '@/lib/get-build-time'
+import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
   title: 'Tags',
@@ -14,7 +15,6 @@ export default async function Tags() {
 
   return (
     <DefaultLayout banner="Tags" buildTime={buildTime} posts={postsMeta}>
-      <section>Tags</section>
       <section>
         {Object.entries(tagsData).map(([name, count]) => (
           <div key={name}>

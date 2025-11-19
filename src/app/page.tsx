@@ -6,7 +6,8 @@ import { buttonVariants } from '@/components/ui/button'
 import { MorphingText } from '@/components/ui/morphing-text'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { routes, siteConfig } from '@/config'
+import { routes } from '@/lib/routes'
+import { siteConfig } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const Icons = {

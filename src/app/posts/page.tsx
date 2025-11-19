@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { DefaultLayout } from '@/layouts'
-import { getBuildTime, getPostsMeta } from '@/lib'
+import DefaultLayout from '@/layouts/default-layout'
+import getBuildTime from '@/lib/get-build-time'
+import { getPostsMeta } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
   title: 'Posts',
@@ -12,7 +13,6 @@ export default async function Posts() {
 
   return (
     <DefaultLayout banner="Posts" buildTime={buildTime} posts={postsMeta}>
-      <section>Posts</section>
       <section>
         {postsMeta.map(post => (
           <div key={post.slug}>{post.title}</div>

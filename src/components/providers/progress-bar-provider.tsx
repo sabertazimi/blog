@@ -1,7 +1,7 @@
 'use client'
 
 import { ProgressProvider } from '@bprogress/next/app'
-import { siteConfig } from '@/config'
+import { siteConfig } from '@/lib/site'
 
 export default function ProgressBarProvider({ children }: { children: React.ReactNode }) {
   return (

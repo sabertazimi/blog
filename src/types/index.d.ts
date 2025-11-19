@@ -67,10 +67,17 @@ export interface GitHub {
 }
 
 export type {
-  Book,
   PaletteColor,
+} from '@/lib/colors'
+
+export type {
   Route,
+} from '@/lib/routes'
+
+export type {
   SiteConfig,
-  SocialColor,
+} from '@/lib/site'
+
+export type {
   SocialType,
-} from '@/config'
+} from '@/lib/social'

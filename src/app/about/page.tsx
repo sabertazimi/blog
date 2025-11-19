@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
-import { DefaultLayout } from '@/layouts'
-import { getBuildTime, getGitHubData, getPostsMeta } from '@/lib'
+import DefaultLayout from '@/layouts/default-layout'
+import getBuildTime from '@/lib/get-build-time'
+import getGitHubData from '@/lib/get-github-data'
+import { getPostsMeta } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
   title: 'About Me',
@@ -13,7 +15,6 @@ export default async function About() {
 
   return (
     <DefaultLayout banner="About Me" buildTime={buildTime} posts={postsMeta}>
-      <div>About Me</div>
       <div>
         GitHub:
         {profile.username}
