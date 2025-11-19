@@ -6,3 +6,9 @@ export default eslintConfig
       'react-refresh/only-export-components': 'off',
     },
   })
+  .append({
+    files: ['e2e/**/*.spec.ts'],
+    rules: {
+      'testing-library/prefer-screen-queries': 'off',
+    },
+  })
