@@ -20,12 +20,16 @@ const colorPalette = {
   lime: '#74b816',
   yellow: '#f59f00',
   orange: '#f76707',
+}
+
+const themeColors = {
   black: '#171717',
 }
 
 const colors = {
   ...socialColors,
   ...colorPalette,
+  ...themeColors,
 }
 
 type SocialColor = keyof typeof socialColors

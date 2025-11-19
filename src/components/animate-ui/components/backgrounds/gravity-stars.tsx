@@ -104,11 +104,13 @@ function GravityStarsBackground({
       return
     const rect = container.getBoundingClientRect()
     const nextDpr = Math.max(1, Math.min(window.devicePixelRatio ?? 1, 2))
+    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- dpr is used to scale the canvas
     setDpr(nextDpr)
     canvas.width = Math.max(1, Math.floor(rect.width * nextDpr))
     canvas.height = Math.max(1, Math.floor(rect.height * nextDpr))
     canvas.style.width = `${rect.width}px`
     canvas.style.height = `${rect.height}px`
+    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- canvasSize is used to store the canvas size
     setCanvasSize({ width: rect.width, height: rect.height })
     if (starsRef.current.length === 0) {
       initStars(rect.width, rect.height)
@@ -143,6 +145,7 @@ function GravityStarsBackground({
     const mouse = mouseRef.current
 
     for (let i = 0; i < starsRef.current.length; i++) {
+      // eslint-disable-next-line security/detect-object-injection -- i is safe
       const p = starsRef.current[i]
 
       const dx = mouse.x - p.x
@@ -198,6 +201,7 @@ function GravityStarsBackground({
 
       if (starsInteraction) {
         for (let j = i + 1; j < starsRef.current.length; j++) {
+          // eslint-disable-next-line security/detect-object-injection -- j is safe
           const o = starsRef.current[j]
           const dx2 = o.x - p.x
           const dy2 = o.y - p.y
