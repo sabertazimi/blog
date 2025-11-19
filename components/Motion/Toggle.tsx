@@ -48,7 +48,7 @@ function Toggle({
   shouldReduceMotion,
   tabIndex = 0,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       if (event.key === 'Enter' && onToggle)

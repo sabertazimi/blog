@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode
 }
 
-function Layout({ banner, posts, buildTime, children }: Props): JSX.Element {
+function Layout({ banner, posts, buildTime, children }: Props) {
   return (
     <div className="dark:bg-black">
       <Header posts={posts} />

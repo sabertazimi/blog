@@ -18,7 +18,7 @@ interface Props {
 function Article({
   post: { excerpt: _, source, ...postMeta },
   siteUrl = siteConfig.siteUrl,
-}: Props): JSX.Element {
+}: Props) {
   const { slug, subtitle, prevPost, nextPost } = postMeta
   const socialUrl = `${siteUrl}/post/${slug}`
 

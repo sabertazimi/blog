@@ -10,7 +10,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-function Header({ posts }: Props): JSX.Element {
+function Header({ posts }: Props) {
   const [navFixed, setNavFixed] = useState(false)
   const headerRef = useRef<HTMLDivElement>(null)
 

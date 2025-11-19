@@ -8,7 +8,7 @@ interface Props {
   books?: Book[]
 }
 
-function BooksGrid({ books = siteConfig.books }: Props): JSX.Element {
+function BooksGrid({ books = siteConfig.books }: Props) {
   return (
     <div role="grid">
       <Row>

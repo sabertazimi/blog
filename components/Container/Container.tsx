@@ -7,7 +7,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
   style?: CSSProperties
 }
 
-function Container({ children, className, ...props }: Props): JSX.Element {
+function Container({ children, className, ...props }: Props) {
   return (
     <div
       className={cx(

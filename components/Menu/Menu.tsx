@@ -3,6 +3,6 @@ import { Menu as AntMenu } from 'antd'
 
 interface Props extends MenuProps {}
 
-const Menu = (props: Props): JSX.Element => <AntMenu {...props} />
+const Menu = (props: Props) => <AntMenu {...props} />
 
 export default Menu

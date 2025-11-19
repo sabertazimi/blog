@@ -16,16 +16,18 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: QueryParams }): Promise<Metadata> {
-  return getMetadata({ title: decodeURI(params.tag) })
+export async function generateMetadata({ params }: { params: Promise<QueryParams> }): Promise<Metadata> {
+  const { tag } = await params
+  return getMetadata({ title: decodeURI(tag) })
 }
 
-export default async function Tags({ params }: { params: QueryParams }) {
+export default async function Tags({ params }: { params: Promise<QueryParams> }) {
+  const { tag } = await params
   const buildTime = getBuildTime()
   const postsData = await getPostsData()
   const postsMeta = await getPostsMeta(postsData)
   const tagsData = await getTagsData(postsData)
-  const activeTag = decodeURI(params.tag)
+  const activeTag = decodeURI(tag)
 
   const postsMetaByTag = postsMeta.filter(
     ({ tags }) => tags && tags.includes(activeTag),

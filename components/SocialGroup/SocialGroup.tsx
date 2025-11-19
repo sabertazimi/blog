@@ -7,7 +7,7 @@ interface Props {
   url: string
 }
 
-function SocialGroup({ url }: Props): JSX.Element {
+function SocialGroup({ url }: Props) {
   return (
     <Space
       direction="vertical"

@@ -42,7 +42,7 @@ function Bounce({
   className,
   delay = 0,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   return (
     <motion.div
       className={cx('inline-flex', className)}

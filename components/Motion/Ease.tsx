@@ -29,7 +29,7 @@ function Ease({
   delay = 0,
   duration = 1,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   return (
     <motion.div
       className={className}

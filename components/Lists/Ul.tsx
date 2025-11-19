@@ -8,7 +8,7 @@ interface Props
     HTMLUListElement
   > {}
 
-function Ul({ children, className, ...props }: Props): JSX.Element {
+function Ul({ children, className, ...props }: Props) {
   return (
     <ul {...props} className={cx(className, styles.ul)}>
       {children}

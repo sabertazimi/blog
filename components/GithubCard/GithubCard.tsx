@@ -14,7 +14,7 @@ interface Props {
   repos: Repo[]
 }
 
-function GithubCard({ profile, repos }: Props): JSX.Element {
+function GithubCard({ profile, repos }: Props) {
   const { username, avatar, createDate } = profile
 
   return (

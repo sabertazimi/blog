@@ -6,10 +6,10 @@ interface Props extends CardProps {}
 
 interface MetaProps extends CardMetaProps {}
 
-function Card({ className, ...props }: Props): JSX.Element {
+function Card({ className, ...props }: Props) {
   return <AntCard {...props} className={cx(className, 'card')} />
 }
 
-const Meta = (props: MetaProps): JSX.Element => <AntCard.Meta {...props} />
+const Meta = (props: MetaProps) => <AntCard.Meta {...props} />
 
 export { Card, Meta }

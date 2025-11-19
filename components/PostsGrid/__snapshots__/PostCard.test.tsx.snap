@@ -68,7 +68,7 @@ exports[`PostCard should render correctly (snapshot) 1`] = `
           </div>
         </div>
         <a
-          class="flex-container float-right m-0 h-14 w-14 rounded-full border-primary bg-primary text-2xl text-light transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light"
+          class="flex-container float-right m-0 h-14 w-14 rounded-full border-primary bg-primary text-2xl text-light! transition hover:bg-secondary hover:text-light! focus:bg-secondary focus:text-light!"
           href="/post/1BasicNotes"
         >
           <span
@@ -165,7 +165,7 @@ exports[`PostCard should render correctly with partial data (snapshot) 1`] = `
           </div>
         </div>
         <a
-          class="flex-container float-right m-0 h-14 w-14 rounded-full border-primary bg-primary text-2xl text-light transition hover:bg-secondary hover:text-light focus:bg-secondary focus:text-light"
+          class="flex-container float-right m-0 h-14 w-14 rounded-full border-primary bg-primary text-2xl text-light! transition hover:bg-secondary hover:text-light! focus:bg-secondary focus:text-light!"
           href="/post/1BasicNotes"
         >
           <span

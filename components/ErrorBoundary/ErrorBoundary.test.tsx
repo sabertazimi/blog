@@ -79,6 +79,6 @@ describe('ErrorBoundary', () => {
     rerender(<ComponentWithError shouldThrow />)
 
     expect(screen.getByRole('alert')).toBeInTheDocument()
-    expect(mockConsoleError).toHaveBeenCalledTimes(3)
+    expect(mockConsoleError).toHaveBeenCalledTimes(1)
   })
 })

@@ -9,7 +9,7 @@ interface Props {
   className?: string
 }
 
-function ImageCard({ src, title, alt, className }: Props): JSX.Element {
+function ImageCard({ src, title, alt, className }: Props) {
   if (src == null) {
     return (
       <Image

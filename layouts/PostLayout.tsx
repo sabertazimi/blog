@@ -12,7 +12,7 @@ function PostLayout({
   posts,
   buildTime,
   children,
-}: Props): JSX.Element {
+}: Props) {
   return (
     <div className="dark:bg-black">
       <Header posts={posts} />

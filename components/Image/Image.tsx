@@ -3,6 +3,6 @@ import { Image as AntImage } from 'antd'
 
 interface Props extends ImageProps {}
 
-const Image = (props: Props): JSX.Element => <AntImage {...props} />
+const Image = (props: Props) => <AntImage {...props} />
 
 export default Image

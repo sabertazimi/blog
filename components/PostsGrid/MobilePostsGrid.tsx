@@ -6,7 +6,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-function MobilePostsGrid({ posts }: Props): JSX.Element {
+function MobilePostsGrid({ posts }: Props) {
   return (
     <FlexContainer className="flex-col items-start xl:hidden">
       {posts.map((post) => {

@@ -18,7 +18,7 @@ function LinkTag({
   // eslint-disable-next-line react/no-unstable-default-props -- `getColorByName` returns primitive value
   color = getColorByName(tag),
   className,
-}: Props): JSX.Element {
+}: Props) {
   return (
     <Tag
       color={color}

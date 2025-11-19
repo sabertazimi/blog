@@ -7,7 +7,7 @@ interface Props {
   className?: string
 }
 
-function Footnote({ children, className, ...props }: Props): JSX.Element {
+function Footnote({ children, className, ...props }: Props) {
   return (
     <div {...props} className={cx(className, styles.footnote)}>
       {children}

@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode
 }
 
-function LandingNavLink({ title, href, children }: Props): JSX.Element {
+function LandingNavLink({ title, href, children }: Props) {
   return (
     <Tooltip className={styles.tooltip} placement="left" title={title}>
       <Bounce>

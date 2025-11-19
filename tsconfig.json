@@ -1,18 +1,28 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "ES5",
-    "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ES2017",
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "baseUrl": "./",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./*"],
-      "@/images/*": ["public/images/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/images/*": [
+        "public/images/*"
+      ]
     },
     "resolveJsonModule": true,
-    "types": ["@testing-library/jest-dom"],
+    "types": [
+      "@testing-library/jest-dom"
+    ],
     "allowJs": true,
     "strict": true,
     "importHelpers": true,
@@ -30,7 +40,14 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
   "exclude": [
     "node_modules",
     "build",

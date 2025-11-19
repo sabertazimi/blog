@@ -11,7 +11,7 @@ export default function useVisibility({
   onBottomPassed,
   onBottomPassedReverse,
 }: {
-  ref: RefObject<HTMLElement>
+  ref: RefObject<HTMLElement | null>
   onBottomPassed?: () => void
   onBottomPassedReverse?: () => void
 }): void {

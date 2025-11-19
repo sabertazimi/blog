@@ -8,7 +8,7 @@ interface Props {
   children?: ReactNode
 }
 
-function H4({ className, ...props }: Props): JSX.Element {
+function H4({ className, ...props }: Props) {
   return <Heading {...props} level={4} className={cx(className, styles.h4)} />
 }
 

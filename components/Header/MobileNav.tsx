@@ -9,7 +9,7 @@ import ThemeSwitch from '@/components/ThemeSwitch'
 import { routes } from '@/config'
 import logo from '@/images/logo-full.png'
 
-function MobileNav(): JSX.Element {
+function MobileNav() {
   return (
     <Row className="md:hidden" justify="center" align="middle">
       <Col className="flex-container" span={8}>

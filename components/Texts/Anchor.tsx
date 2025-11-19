@@ -8,7 +8,7 @@ interface Props {
   className?: string
 }
 
-function Anchor({ className, ...props }: Props): JSX.Element {
+function Anchor({ className, ...props }: Props) {
   return (
     <Typography.Link
       {...props}

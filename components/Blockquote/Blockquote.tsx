@@ -4,7 +4,7 @@ import styles from './Blockquote.module.css'
 
 interface Props extends BlockquoteHTMLAttributes<HTMLElement> {}
 
-function Blockquote({ children, className, ...props }: Props): JSX.Element {
+function Blockquote({ children, className, ...props }: Props) {
   return (
     <blockquote
       {...props}

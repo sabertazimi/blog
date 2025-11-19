@@ -3,6 +3,6 @@ import { Avatar as AntAvatar } from 'antd'
 
 interface Props extends AvatarProps {}
 
-const Avatar = (props: Props): JSX.Element => <AntAvatar {...props} />
+const Avatar = (props: Props) => <AntAvatar {...props} />
 
 export default Avatar

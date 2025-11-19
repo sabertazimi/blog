@@ -4,7 +4,7 @@ import styles from './Table.module.css'
 
 interface Props extends HTMLProps<HTMLTableElement> {}
 
-function Table({ children, className, ...props }: Props): JSX.Element {
+function Table({ children, className, ...props }: Props) {
   return (
     <table
       {...props}

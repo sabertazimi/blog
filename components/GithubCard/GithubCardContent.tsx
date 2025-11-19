@@ -7,7 +7,7 @@ interface Props {
   profile: Profile
 }
 
-function GithubCardContent({ profile }: Props): JSX.Element {
+function GithubCardContent({ profile }: Props) {
   return (
     <Space direction="vertical">
       <div>

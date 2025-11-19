@@ -5,7 +5,7 @@ import { FloatButton } from 'antd'
 
 interface Props extends BackTopProps {}
 
-function BackTop(props: Props): JSX.Element {
+function BackTop(props: Props) {
   return <FloatButton.BackTop {...props} />
 }
 

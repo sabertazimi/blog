@@ -8,7 +8,7 @@ interface Props {
   icon: ReactNode
 }
 
-function IconTag({ tag, icon }: Props): JSX.Element {
+function IconTag({ tag, icon }: Props) {
   return (
     <Tag
       className={cx(

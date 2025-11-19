@@ -9,7 +9,7 @@ interface Props {
   nextPost: PostMeta['nextPost']
 }
 
-function ArticleNav({ prevPost, nextPost }: Props): JSX.Element {
+function ArticleNav({ prevPost, nextPost }: Props) {
   return (
     <FlexContainer role="navigation" aria-label="footer-navigation">
       <Bounce className="mr-6 flex-1 md:mr-24">

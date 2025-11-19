@@ -11,7 +11,7 @@ function FlexContainer({
   children,
   className,
   ...props
-}: Props): JSX.Element {
+}: Props) {
   return (
     <div
       className={cx(

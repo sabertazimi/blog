@@ -6,7 +6,7 @@ describe('useVisibility', () => {
   const onBottomPassed = jest.fn()
   const onBottomPassedReverse = jest.fn()
 
-  const Header = (): JSX.Element => {
+  const Header = () => {
     const headerRef = useRef<HTMLDivElement>(null)
 
     useVisibility({
@@ -18,7 +18,7 @@ describe('useVisibility', () => {
     return <div>Header</div>
   }
 
-  const HeaderWithRef = (): JSX.Element => {
+  const HeaderWithRef = () => {
     const headerRef = useRef<HTMLDivElement>(null)
 
     useVisibility({

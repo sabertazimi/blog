@@ -3,6 +3,6 @@ import { Result as AntResult } from 'antd'
 
 interface Props extends ResultProps {}
 
-const Result = (props: Props): JSX.Element => <AntResult {...props} />
+const Result = (props: Props) => <AntResult {...props} />
 
 export default Result

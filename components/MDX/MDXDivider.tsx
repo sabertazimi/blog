@@ -1,6 +1,6 @@
 import Divider from '@/components/Divider'
 
-function MDXDivider(): JSX.Element {
+function MDXDivider() {
   return <Divider className="bg-gradient-primary h-1 rounded-full" />
 }
 
