@@ -43,6 +43,12 @@ function languageToFilepath(language?: string): string {
   }
 }
 
+/**
+ * Normalize filepath for code editor component
+ * @param filename - Optional filename, defaults to language-based filepath if not provided
+ * @param language - Programming language to determine default filepath
+ * @returns Normalized filepath with leading slash
+ */
 export function normalizeFilepath(filename?: string, language?: string): string {
   if (filename == null || filename === '')
     return languageToFilepath(language)
