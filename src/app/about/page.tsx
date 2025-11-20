@@ -15,7 +15,7 @@ export default async function About() {
 
   return (
     <DefaultLayout buildTime={buildTime} posts={postsMeta}>
-      <div className="container flex-1 mx-auto">
+      <div className="container mx-auto flex-1">
         <div>
           GitHub:
           {profile.username}

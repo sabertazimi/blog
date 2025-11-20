@@ -46,22 +46,13 @@ async function generatePostData(filePath: string): Promise<PostType> {
   const { title, date, ...fields } = data as MDXFrontMatter
 
   const createTime = new Date(date ?? Date.now()).toISOString()
-  const updateTime = execSync(
-    `git log -1 --pretty=format:%aI "${filePath}"`,
-  ).toString()
+  const updateTime = execSync(`git log -1 --pretty=format:%aI "${filePath}"`).toString()
   const readingTime = getReadingTime(content)
 
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
-      remarkPlugins: [
-        remarkGfm,
-        remarkGitHub,
-        remarkGemoji,
-        remarkMath,
-        remarkDirective,
-        remarkAdmonitions,
-      ],
+      remarkPlugins: [remarkGfm, remarkGitHub, remarkGemoji, remarkMath, remarkDirective, remarkAdmonitions],
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
@@ -132,7 +123,7 @@ async function getPostsData(): Promise<PostType[]> {
 }
 
 async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
-  const postsData = cachedData ?? await getPostsData()
+  const postsData = cachedData ?? (await getPostsData())
   const postsMeta = postsData.map((post) => {
     const { excerpt: _, source: __, ...postMeta } = post
     return postMeta

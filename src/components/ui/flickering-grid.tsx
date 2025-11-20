@@ -141,15 +141,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       lastTime = time
 
       updateSquares(gridParams.squares, deltaTime)
-      drawGrid(
-        ctx,
-        canvas.width,
-        canvas.height,
-        gridParams.cols,
-        gridParams.rows,
-        gridParams.squares,
-        gridParams.dpr,
-      )
+      drawGrid(ctx, canvas.width, canvas.height, gridParams.cols, gridParams.rows, gridParams.squares, gridParams.dpr)
       animationFrameId = requestAnimationFrame(animate)
     }
 
@@ -180,11 +172,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
 
   return (
-    <div
-      ref={containerRef}
-      className={cn(`h-full w-full ${className}`)}
-      {...props}
-    >
+    <div ref={containerRef} className={cn(`h-full w-full ${className}`)} {...props}>
       <canvas
         ref={canvasRef}
         className="pointer-events-none"
