@@ -19,25 +19,17 @@ const socialIcons: Record<SocialType, React.ComponentType<{ className?: string }
 
 function SiteFooter({ buildTime }: Props) {
   const buildDate = new Date(buildTime)
-  const formattedTime = buildDate.toLocaleString('zh-CN', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })
+  const formattedTime = formatDate(buildDate)
 
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-center gap-4">
           {(Object.keys(socialList) as SocialType[]).map((social) => {
-            // eslint-disable-next-line security/detect-object-injection -- social is safe
             const Icon = socialIcons[social]
-            // eslint-disable-next-line security/detect-object-injection -- social is safe
+
             const username = siteConfig.socials[social]
-            // eslint-disable-next-line security/detect-object-injection -- social is safe
+
             const hoverColor = socialColors[social]
             const url = `https://${social}.com/${username}`
 

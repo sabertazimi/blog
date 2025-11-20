@@ -145,7 +145,6 @@ function GravityStarsBackground({
     const mouse = mouseRef.current
 
     for (let i = 0; i < starsRef.current.length; i++) {
-      // eslint-disable-next-line security/detect-object-injection -- i is safe
       const p = starsRef.current[i]
 
       const dx = mouse.x - p.x
@@ -201,7 +200,6 @@ function GravityStarsBackground({
 
       if (starsInteraction) {
         for (let j = i + 1; j < starsRef.current.length; j++) {
-          // eslint-disable-next-line security/detect-object-injection -- j is safe
           const o = starsRef.current[j]
           const dx2 = o.x - p.x
           const dy2 = o.y - p.y

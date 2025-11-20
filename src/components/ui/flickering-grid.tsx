@@ -60,7 +60,6 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
       const squares = new Float32Array(cols * rows)
       for (let i = 0; i < squares.length; i++) {
-        // eslint-disable-next-line security/detect-object-injection -- i is safe
         squares[i] = Math.random() * maxOpacity
       }
 
@@ -73,7 +72,6 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     (squares: Float32Array, deltaTime: number) => {
       for (let i = 0; i < squares.length; i++) {
         if (Math.random() < flickerChance * deltaTime) {
-          // eslint-disable-next-line security/detect-object-injection -- i is safe
           squares[i] = Math.random() * maxOpacity
         }
       }

@@ -41,9 +41,9 @@ function hashString(name: string) {
 function getColorByName(name: string): string {
   const palette = Object.keys(colorPalette)
   const colorIdx = hashString(name) % palette.length
-  // eslint-disable-next-line security/detect-object-injection -- colorIdx is safe.
+
   const paletteColor = palette[colorIdx] as PaletteColor
-  // eslint-disable-next-line security/detect-object-injection -- paletteColor is safe.
+
   return colorPalette[paletteColor]
 }
 

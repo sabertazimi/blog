@@ -141,29 +141,23 @@ async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
 }
 
 async function getTagsData(cachedData?: PostType[]): Promise<TagsType> {
-  const postsData = cachedData ?? await getPostsData()
+  const postsData = cachedData ?? (await getPostsData())
   const tagsData = postsData
     .map(post => post.tags || [])
     .flat()
     .reduce((tags: TagsType, tag: Tag) => {
-      // eslint-disable-next-line security/detect-object-injection -- key is safe.
       if (!tags[tag]) {
-        // eslint-disable-next-line security/detect-object-injection -- key is safe.
         tags[tag] = 0
       }
 
-      // eslint-disable-next-line security/detect-object-injection -- key is safe.
       tags[tag] += 1
       return tags
     }, {})
   return tagsData
 }
 
-async function getPostData(
-  slug: string,
-  cachedData?: PostType[],
-): Promise<PostType | undefined> {
-  const postsData = cachedData ?? await getPostsData()
+async function getPostData(slug: string, cachedData?: PostType[]): Promise<PostType | undefined> {
+  const postsData = cachedData ?? (await getPostsData())
   const postData = postsData.find(post => post.slug === slug)
   return postData
 }

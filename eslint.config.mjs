@@ -4,6 +4,7 @@ export default eslintConfig
   .append({
     rules: {
       'react-refresh/only-export-components': 'off',
+      'security/detect-object-injection': 'off',
     },
   })
   .append({
