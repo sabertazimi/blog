@@ -22,7 +22,7 @@ it's an advanced `Markdown` format with `React` component support.
 
 ## Heading
 
-```md noline
+```md noline="true"
 # **Hello**, This Is a _Title_ Inside `h1`
 
 ## **Hello**, This Is a _Title_ Inside `h2`
@@ -54,7 +54,7 @@ Renders:
 
 ### Unordered List
 
-```md noline
+```md noline="true"
 - Create a list by starting a line with `+`, `-`, or `*`.
 - Sub-lists are made by indenting 2 spaces:
   + Marker character change forces new list start:
@@ -78,7 +78,7 @@ Renders:
 
 Sequential numbering:
 
-```md noline
+```md noline="true"
 1. Lorem ipsum dolor sit amet:
     1. Lorem ipsum dolor sit amet:
         1. Lorem ipsum dolor sit amet.
@@ -130,7 +130,7 @@ Renders:
 
 Same numbering:
 
-```md noline
+```md noline="true"
 1. You can keep all the numbers as `1.`:
     1. Lorem ipsum dolor sit amet:
         1. Lorem ipsum dolor sit amet.
@@ -166,7 +166,7 @@ Renders:
 
 Start numbering with offset:
 
-```md noline
+```md noline="true"
 108. 108 numbering list.
 1. 1 numbering list.
 1. 1 numbering list.
@@ -180,7 +180,7 @@ Renders:
 
 ### Task List
 
-```md noline
+```md noline="true"
 - [x] Write the press release.
 - [ ] Update the website.
 - [ ] Contact the media.
@@ -194,7 +194,7 @@ Renders:
 
 ## Horizontal Rule
 
-```md noline
+```md noline="true"
 ___
 ```
 
@@ -202,7 +202,7 @@ Renders:
 
 ___
 
-```md noline
+```md noline="true"
 ---
 ```
 
@@ -210,7 +210,7 @@ Renders:
 
 ---
 
-```md noline
+```md noline="true"
 ***
 ```
 
@@ -222,7 +222,7 @@ Renders:
 
 ### Bold
 
-```md noline
+```md noline="true"
 **This is bold text**.
 
 __This is bold text__.
@@ -236,7 +236,7 @@ __This is bold text__.
 
 ### Italic
 
-```md noline
+```md noline="true"
 *This is italic text*.
 
 _This is italic text_.
@@ -250,7 +250,7 @@ _This is italic text_.
 
 ### Strikethrough
 
-```md noline
+```md noline="true"
 ~This is strikethrough text~.
 
 ~~This is strikethrough text~~.
@@ -266,7 +266,7 @@ Renders:
 
 ### Nested Blockquote
 
-```md noline
+```md noline="true"
 > Blockquotes can also be nested...
 > > ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows.
@@ -280,7 +280,7 @@ Renders:
 
 ### Continued Blockquote
 
-```md noline
+```md noline="true"
 > Blockquotes can also be continued...
 > ...continued...
 > ...continued continued...
@@ -294,7 +294,7 @@ Renders:
 
 ### Long Blockquote
 
-```md noline
+```md noline="true"
 > Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
 ```
 
@@ -349,13 +349,13 @@ Inline `code`.
 
 Block code "fences":
 
-```md noline
+```md noline="true"
 Sample text here...
 ```
 
 Syntax highlighting:
 
-```ts noline
+```ts noline="true"
 const foo = function (bar) {
   return bar++;
 };
@@ -369,7 +369,7 @@ some.code();
 
 ### Basic Link
 
-```md noline
+```md noline="true"
 [Link text](https://github.com/sabertazimi).
 
 [Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
@@ -391,7 +391,7 @@ Auto-converted link (enable linkify to see):
 
 ### Footnote
 
-```md noline
+```md noline="true"
 A note[^1].
 
 [^1]: Big note.
@@ -421,7 +421,7 @@ Yet another note[^3].
 
 ### Local Image
 
-```md noline
+```md noline="true"
 ![Local image](/images/landing.jpg)
 ```
 
@@ -431,7 +431,7 @@ Renders:
 
 ### Remote Image
 
-```md noline
+```md noline="true"
 ![Minion](https://octodex.github.com/images/minion.png)
 ```
 
@@ -441,7 +441,7 @@ Renders:
 
 ### Image Title
 
-```md noline
+```md noline="true"
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
 ```
 
@@ -453,13 +453,13 @@ Renders:
 
 Like links, Images also have a footnote style syntax:
 
-```md noline
+```md noline="true"
 ![Alt text][id]
 ```
 
 With a reference later in the document defining the URL location:
 
-```md noline
+```md noline="true"
 [id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
 ```
 
@@ -473,7 +473,7 @@ Renders:
 
 ### JSX Element
 
-```md noline
+```md noline="true"
 <h2>JSX Heading 2</h2>
 
 <abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
@@ -503,7 +503,7 @@ I can write **Markdown** alongside my _JSX_!
 
 ### JavaScript Expression
 
-```md noline
+```md noline="true"
 Two 🍰 is: {Math.PI * 2}.
 ```
 
@@ -511,7 +511,7 @@ Renders:
 
 Two 🍰 is: {Math.PI * 2}.
 
-```md noline lines="9"
+```md noline="true" lines="9"
 {(function () {
   const guess = 0.44
 
@@ -545,7 +545,7 @@ Renders:
 
 ### MDX Comment
 
-```md noline
+```md noline="true"
 {/* A comment! */}
 ```
 
@@ -586,7 +586,7 @@ This is another math formula `$c = \pm\sqrt{a^2 + b^2}$` $c = \pm\sqrt{a^2 + b^2
 
 ### Block Math Formula
 
-```md noline title="Math Formula"
+```md noline="true" title="Math Formula"
 $$
 L = \frac{1}{2} \rho v^2 S C_L
 $$
@@ -666,7 +666,7 @@ $$
 
 ### Green Admonition
 
-```md noline
+```md noline="true"
 :::success
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -696,7 +696,7 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 ### Blue Admonition
 
-```md noline
+```md noline="true"
 :::info
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -726,7 +726,7 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 ### Yellow Admonition
 
-```md noline
+```md noline="true"
 :::warning
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -756,7 +756,7 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 ### Red Admonition
 
-```md noline
+```md noline="true"
 :::error
 
 Some **content** with _markdown_ `syntax`. Check [this `api`](#).
@@ -786,7 +786,7 @@ Some **content** with _markdown_ `syntax`. Check [this `api`](#).
 
 ### Title Admonition
 
-```md noline
+```md noline="true"
 :::tip{Your Title}
 
 Some **content** with _markdown_ `syntax`.
@@ -870,7 +870,7 @@ I can write **Markdown** alongside my _JSX_!
 
 :::
 
-```md noline
+```md noline="true"
 :::note{MDX in Admonition}
 
 Two 🍰 is: {Math.PI * 2}.
@@ -916,7 +916,7 @@ Two 🍰 is: {Math.PI * 2}.
 
 ## MDX Component
 
-```md noline
+```md noline="true"
 <Button>MDX Button</Button>
 <Button variant="default">MDX Default Button</Button>
 ```
@@ -928,7 +928,7 @@ Renders:
 
 ___
 
-```md noline
+```md noline="true"
 <Button variant="outline">MDX Outline Button</Button>
 <Button variant="secondary">MDX Secondary Button</Button>
 <Button variant="link">MDX Link Button</Button>
@@ -942,7 +942,7 @@ Renders:
 
 ___
 
-```md noline
+```md noline="true"
 <Button variant="destructive">MDX Destructive Button</Button>
 <Button variant="ghost">MDX Ghost Button</Button>
 ```
