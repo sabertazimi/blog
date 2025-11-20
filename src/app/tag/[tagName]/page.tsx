@@ -46,4 +46,3 @@ export default async function TagPage({ params }: TagPageProps) {
     />
   )
 }
-
