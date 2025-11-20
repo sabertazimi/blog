@@ -57,7 +57,14 @@ async function generatePostData(filePath: string): Promise<Post> {
   const source = await serialize(content, {
     parseFrontmatter: false,
     mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkGitHub, remarkGemoji, remarkMath, remarkDirective, remarkAdmonitions],
+      remarkPlugins: [
+        remarkGfm,
+        [remarkGitHub, { repository: 'sabertazimi/blog' }],
+        remarkGemoji,
+        remarkMath,
+        remarkDirective,
+        remarkAdmonitions,
+      ],
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
