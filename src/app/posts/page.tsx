@@ -17,24 +17,18 @@ export default async function Posts({ searchParams }: { searchParams: Promise<{ 
   const resolvedSearchParams = await searchParams
   const postsMeta = await getPostsMeta()
 
-  const sortedPosts = [...postsMeta].sort((a, b) => {
-    const dateA = a.createTime !== undefined && a.createTime !== '' ? new Date(a.createTime).getTime() : 0
-    const dateB = b.createTime !== undefined && b.createTime !== '' ? new Date(b.createTime).getTime() : 0
-    return dateB - dateA
-  })
-
-  const allTags = ['All', ...Array.from(new Set(sortedPosts.flatMap(post => post.tags || []))).sort()]
+  const allTags = ['All', ...Array.from(new Set(postsMeta.flatMap(post => post.tags || []))).sort()]
   const selectedTag
     = resolvedSearchParams.tag !== undefined && resolvedSearchParams.tag !== '' ? resolvedSearchParams.tag : 'All'
 
   const filteredPosts
-    = selectedTag === 'All' ? sortedPosts : sortedPosts.filter(post => post.tags?.includes(selectedTag))
+    = selectedTag === 'All' ? postsMeta : postsMeta.filter(post => post.tags?.includes(selectedTag))
   const tagCounts = allTags.reduce(
     (acc, tag) => {
       if (tag === 'All') {
-        acc[tag] = sortedPosts.length
+        acc[tag] = postsMeta.length
       } else {
-        acc[tag] = sortedPosts.filter(post => post.tags?.includes(tag)).length
+        acc[tag] = postsMeta.filter(post => post.tags?.includes(tag)).length
       }
       return acc
     },
