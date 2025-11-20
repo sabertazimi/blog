@@ -16,7 +16,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   const getTagUrl = (tag: string) => {
-    return tag === 'All' ? '/posts' : `/posts/tag/${encodeURIComponent(tag)}`
+    return tag === 'All' ? '/posts' : `/tag/${encodeURIComponent(tag)}`
   }
 
   return (
