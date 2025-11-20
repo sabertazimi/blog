@@ -131,20 +131,25 @@ async function getPostsMeta(cachedData?: Post[]): Promise<PostMeta[]> {
   return postsMeta
 }
 
-async function getTagsData(cachedData?: Post[]): Promise<Tags> {
+async function getTagsData(cachedData?: Post[]): Promise<{ allTags: Tag[], tagCounts: Tags }> {
   const postsData = cachedData ?? (await getPostsData())
-  const tagsData = postsData
-    .map(post => post.tags || [])
-    .flat()
-    .reduce((tags: Tags, tag: Tag) => {
-      if (!tags[tag]) {
-        tags[tag] = 0
-      }
-
-      tags[tag] += 1
-      return tags
-    }, {})
-  return tagsData
+  const tagCounts = postsData.reduce(
+    (acc, post) => {
+      post.tags?.forEach((tag) => {
+        acc[tag] = (acc[tag] || 0) + 1
+      })
+      return acc
+    },
+    { All: postsData.length } as Record<string, number>,
+  )
+  const allTags = Object.keys(tagCounts).sort((a, b) => {
+    if (a === 'All')
+      return -1
+    if (b === 'All')
+      return 1
+    return a.localeCompare(b)
+  })
+  return { allTags, tagCounts }
 }
 
 async function getPostData(slug: string, cachedData?: Post[]): Promise<Post | undefined> {

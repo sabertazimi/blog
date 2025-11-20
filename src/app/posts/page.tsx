@@ -5,7 +5,7 @@ import PostCard from '@/components/post-card'
 import TagFilter from '@/components/tag-filter'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
-import { getPostsMeta } from '@/lib/get-posts-data'
+import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 import { cn, formatDate } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -15,25 +15,11 @@ export const metadata: Metadata = {
 export default async function Posts({ searchParams }: { searchParams: Promise<{ tag?: string }> }) {
   const buildTime = getBuildTime()
   const resolvedSearchParams = await searchParams
-  const postsMeta = await getPostsMeta()
-
-  const allTags = ['All', ...Array.from(new Set(postsMeta.flatMap(post => post.tags || []))).sort()]
-  const selectedTag
-    = resolvedSearchParams.tag !== undefined && resolvedSearchParams.tag !== '' ? resolvedSearchParams.tag : 'All'
-
-  const filteredPosts
-    = selectedTag === 'All' ? postsMeta : postsMeta.filter(post => post.tags?.includes(selectedTag))
-  const tagCounts = allTags.reduce(
-    (acc, tag) => {
-      if (tag === 'All') {
-        acc[tag] = postsMeta.length
-      } else {
-        acc[tag] = postsMeta.filter(post => post.tags?.includes(tag)).length
-      }
-      return acc
-    },
-    {} as Record<string, number>,
-  )
+  const postsData = await getPostsData()
+  const postsMeta = await getPostsMeta(postsData)
+  const { allTags, tagCounts } = await getTagsData(postsData)
+  const selectedTag = resolvedSearchParams.tag !== undefined && resolvedSearchParams.tag !== '' ? resolvedSearchParams.tag : 'All'
+  const filteredPosts = selectedTag === 'All' ? postsMeta : postsMeta.filter(post => post.tags?.includes(selectedTag))
 
   return (
     <DefaultLayout buildTime={buildTime} posts={postsMeta}>
