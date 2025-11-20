@@ -38,7 +38,6 @@ function AboutMe({ profile, repos, totalStars }: AboutMeProps) {
         </div>
       </div>
     </div>
-
   )
 }
 

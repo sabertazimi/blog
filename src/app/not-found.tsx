@@ -6,7 +6,7 @@ import getBuildTime from '@/lib/get-build-time'
 import { getPostsMeta } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
-  title: 'Exploring',
+  title: 'Not Found',
 }
 
 export default async function NotFoundPage() {

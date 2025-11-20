@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-const NoFound: React.FC = () => (
+const NotFound: React.FC = () => (
   <svg width="252" height="294">
-    <title>No Found</title>
+    <title>Not Found</title>
     <g fill="none" fillRule="evenodd">
       <circle cx="126.75" cy="128.1" r="126" fill="#E4EBF7" />
       <circle cx="31.55" cy="130.8" r="8.3" fill="#FFF" />
@@ -235,7 +235,7 @@ const NoFound: React.FC = () => (
 function NotFoundResult() {
   return (
     <div className="container mx-auto px-6 flex-1 flex-col flex items-center justify-center lg:px-0">
-      <NoFound />
+      <NotFound />
     </div>
   )
 }
