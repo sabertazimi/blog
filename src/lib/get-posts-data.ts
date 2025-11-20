@@ -46,7 +46,12 @@ async function generatePostData(filePath: string): Promise<Post> {
   const { title, date, ...fields } = data as MDXFrontMatter
 
   const createTime = new Date(date ?? Date.now()).toISOString()
-  const updateTime = execSync(`git log -1 --pretty=format:%aI "${filePath}"`).toString()
+  let updateTime: string
+  try {
+    updateTime = execSync(`git log -1 --pretty=format:%aI "${filePath}"`).toString()
+  } catch {
+    updateTime = createTime
+  }
   const readingTime = getReadingTime(content)
 
   const source = await serialize(content, {

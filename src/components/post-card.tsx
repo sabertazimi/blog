@@ -32,7 +32,7 @@ function PostCard({ url, title, description, date, thumbnail, readingTime, showR
             cx={1}
             cy={1}
             cr={1}
-            className="fill-muted-foreground/20"
+            className="fill-muted-foreground/20 transition-transform duration-300 group-hover:scale-105"
           />
 
           {hasThumbnail && <PostCardImage src={thumbnail} alt={title} />}
