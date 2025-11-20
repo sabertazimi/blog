@@ -25,14 +25,10 @@ export default async function AboutPage() {
       <PageHeader title={routes[ROUTES_INDEX.about].title} description={routes[ROUTES_INDEX.about].description} />
       <div className="container mx-auto px-6 lg:px-0">
         <div className="border-border grid border-x lg:grid-cols-3">
-          {/* Profile Card - Left */}
           <div className="border-border lg:border-r">
             <ProfileCard profile={profile} />
           </div>
-
-          {/* Stats & Repos - Right */}
           <div className="lg:col-span-2">
-            {/* Stats Cards */}
             <div className="border-border grid gap-6 border-b p-6 sm:grid-cols-2">
               <StatCard
                 title="Total Repositories"
@@ -42,8 +38,6 @@ export default async function AboutPage() {
               />
               <StatCard title="Total Stars" value={totalStars} description="Across all projects" icon={Star} />
             </div>
-
-            {/* Repositories List */}
             <div className="p-6">
               <h3 className="mb-4 text-lg font-semibold">Featured Repositories</h3>
               <div className="space-y-3">

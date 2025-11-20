@@ -18,15 +18,12 @@ const routes: Route[] = [
     id: 'about',
     name: 'About',
     title: 'About Me',
-    description: 'Sharing technical articles and thoughts.',
+    description: 'Learn more about me and my work.',
     path: '/about',
   },
 ]
 
-const ROUTES_INDEX = {
-  posts: 0,
-  about: 1,
-}
+const ROUTES_INDEX = Object.fromEntries(routes.map((route, index) => [route.id, index]))
 
 export { routes, ROUTES_INDEX }
 export type { Route }
