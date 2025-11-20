@@ -22,13 +22,6 @@ test.describe('Home Page', () => {
     // 返回首页
     await page.goto('/')
 
-    // 测试导航到 Tags
-    await page.getByRole('link', { name: /tags/i }).click()
-    await expect(page).toHaveURL(/\/tags/)
-
-    // 返回首页
-    await page.goto('/')
-
     // 测试导航到 About
     await page.getByRole('link', { name: /about/i }).click()
     await expect(page).toHaveURL(/\/about/)

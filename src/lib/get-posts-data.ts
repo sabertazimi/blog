@@ -1,4 +1,4 @@
-import type { MDXFrontMatter, PostMeta, PostType, Tag, TagsType } from '@/types'
+import type { MDXFrontMatter, Post, PostMeta, Tag, Tags } from '@/types'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -37,7 +37,7 @@ function getReadingTime(content: string): number {
   return Math.ceil(readingTime(content).minutes)
 }
 
-async function generatePostData(filePath: string): Promise<PostType> {
+async function generatePostData(filePath: string): Promise<Post> {
   // eslint-disable-next-line security/detect-non-literal-fs-filename -- filePath is safe.
   const fileContent = await fs.readFile(filePath, 'utf8')
   const slug = path.basename(filePath, path.extname(filePath))
@@ -46,9 +46,12 @@ async function generatePostData(filePath: string): Promise<PostType> {
   const { title, date, ...fields } = data as MDXFrontMatter
 
   const createTime = new Date(date ?? Date.now()).toISOString()
-  const updateTime = execSync(
-    `git log -1 --pretty=format:%aI "${filePath}"`,
-  ).toString()
+  let updateTime: string
+  try {
+    updateTime = execSync(`git log -1 --pretty=format:%aI "${filePath}"`).toString()
+  } catch {
+    updateTime = createTime
+  }
   const readingTime = getReadingTime(content)
 
   const source = await serialize(content, {
@@ -56,7 +59,7 @@ async function generatePostData(filePath: string): Promise<PostType> {
     mdxOptions: {
       remarkPlugins: [
         remarkGfm,
-        remarkGitHub,
+        [remarkGitHub, { repository: 'sabertazimi/blog' }],
         remarkGemoji,
         remarkMath,
         remarkDirective,
@@ -86,8 +89,8 @@ async function generatePostData(filePath: string): Promise<PostType> {
   }
 }
 
-async function getPostsData(): Promise<PostType[]> {
-  const postsData: PostType[] = []
+async function getPostsData(): Promise<Post[]> {
+  const postsData: Post[] = []
 
   for await (const filePath of walk(contentsPath)) {
     const fileExt = path.extname(filePath)
@@ -131,8 +134,8 @@ async function getPostsData(): Promise<PostType[]> {
   return sortedLinkedPostsData
 }
 
-async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
-  const postsData = cachedData ?? await getPostsData()
+async function getPostsMeta(cachedData?: Post[]): Promise<PostMeta[]> {
+  const postsData = cachedData ?? (await getPostsData())
   const postsMeta = postsData.map((post) => {
     const { excerpt: _, source: __, ...postMeta } = post
     return postMeta
@@ -140,30 +143,29 @@ async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
   return postsMeta
 }
 
-async function getTagsData(cachedData?: PostType[]): Promise<TagsType> {
-  const postsData = cachedData ?? await getPostsData()
-  const tagsData = postsData
-    .map(post => post.tags || [])
-    .flat()
-    .reduce((tags: TagsType, tag: Tag) => {
-      // eslint-disable-next-line security/detect-object-injection -- key is safe.
-      if (!tags[tag]) {
-        // eslint-disable-next-line security/detect-object-injection -- key is safe.
-        tags[tag] = 0
-      }
-
-      // eslint-disable-next-line security/detect-object-injection -- key is safe.
-      tags[tag] += 1
-      return tags
-    }, {})
-  return tagsData
+async function getTagsData(cachedData?: Post[]): Promise<{ allTags: Tag[], tagCounts: Tags }> {
+  const postsData = cachedData ?? (await getPostsData())
+  const tagCounts = postsData.reduce(
+    (acc, post) => {
+      post.tags?.forEach((tag) => {
+        acc[tag] = (acc[tag] || 0) + 1
+      })
+      return acc
+    },
+    { All: postsData.length } as Record<string, number>,
+  )
+  const allTags = Object.keys(tagCounts).sort((a, b) => {
+    if (a === 'All')
+      return -1
+    if (b === 'All')
+      return 1
+    return a.localeCompare(b)
+  })
+  return { allTags, tagCounts }
 }
 
-async function getPostData(
-  slug: string,
-  cachedData?: PostType[],
-): Promise<PostType | undefined> {
-  const postsData = cachedData ?? await getPostsData()
+async function getPostData(slug: string, cachedData?: Post[]): Promise<Post | undefined> {
+  const postsData = cachedData ?? (await getPostsData())
   const postData = postsData.find(post => post.slug === slug)
   return postData
 }

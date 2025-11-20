@@ -3,23 +3,24 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 export declare type BuildTime = string | number | Date
 
 export declare type Tag = string
-export declare type TagsType = Record<Tag, number>
+export declare type Tags = Record<Tag, number>
 
 export interface MDXFrontMatter {
-  'layout': string
-  'title': string
-  'subtitle'?: string
-  'author'?: string
-  'date'?: string
-  'header-img'?: string
-  'tags'?: Tag[]
+  layout: string
+  title: string
+  description?: string
+  author?: string
+  date?: string
+  thumbnail?: string
+  tags?: Tag[]
 }
 
 export interface PostMeta {
   slug: string
   title: string
-  subtitle?: string
+  description?: string
   author?: string
+  thumbnail?: string
   createTime?: string
   updateTime?: string
   readingTime: number
@@ -39,7 +40,7 @@ export interface PostContent {
   source: MDXRemoteSerializeResult
 }
 
-export declare type PostType = PostMeta & PostContent
+export declare type Post = PostMeta & PostContent
 
 export interface Profile {
   username: string
@@ -79,5 +80,5 @@ export type {
 } from '@/lib/site'
 
 export type {
-  SocialType,
+  SocialSite,
 } from '@/lib/social'

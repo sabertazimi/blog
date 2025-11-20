@@ -13,12 +13,6 @@ const routes: Route[] = [
     path: '/posts',
   },
   {
-    id: 'tags',
-    name: 'Tags',
-    title: 'View Tags',
-    path: '/tags',
-  },
-  {
     id: 'about',
     name: 'About',
     title: 'About Me',

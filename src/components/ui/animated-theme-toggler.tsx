@@ -67,7 +67,7 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
       ref={buttonRef}
       // eslint-disable-next-line ts/no-misused-promises -- toggleTheme is a valid promise
       onClick={toggleTheme}
-      className={cn(className)}
+      className={cn('cursor-pointer', className)}
       {...props}
     >
       {isDark ? <Sun /> : <Moon />}

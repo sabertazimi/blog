@@ -14,14 +14,16 @@ export default async function About() {
   const { profile, repos } = await getGitHubData()
 
   return (
-    <DefaultLayout banner="About Me" buildTime={buildTime} posts={postsMeta}>
-      <div>
-        GitHub:
-        {profile.username}
-      </div>
-      <div>
-        Repos:
-        {repos.length}
+    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+      <div className="container mx-auto flex-1">
+        <div>
+          GitHub:
+          {profile.username}
+        </div>
+        <div>
+          Repos:
+          {repos.length}
+        </div>
       </div>
     </DefaultLayout>
   )

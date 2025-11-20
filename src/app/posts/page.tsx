@@ -1,23 +1,19 @@
 import type { Metadata } from 'next'
-import DefaultLayout from '@/layouts/default-layout'
+import PostsList from '@/components/posts-list'
 import getBuildTime from '@/lib/get-build-time'
-import { getPostsMeta } from '@/lib/get-posts-data'
+import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 
 export const metadata: Metadata = {
   title: 'Posts',
 }
 
-export default async function Posts() {
+export default async function PostsPage() {
   const buildTime = getBuildTime()
-  const postsMeta = await getPostsMeta()
+  const postsData = await getPostsData()
+  const postsMeta = await getPostsMeta(postsData)
+  const { allTags, tagCounts } = await getTagsData(postsData)
 
   return (
-    <DefaultLayout banner="Posts" buildTime={buildTime} posts={postsMeta}>
-      <section>
-        {postsMeta.map(post => (
-          <div key={post.slug}>{post.title}</div>
-        ))}
-      </section>
-    </DefaultLayout>
+    <PostsList buildTime={buildTime} postsMeta={postsMeta} allTags={allTags} tagCounts={tagCounts} selectedTag="All" />
   )
 }

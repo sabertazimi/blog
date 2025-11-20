@@ -1,4 +1,4 @@
-import type { SocialType } from './social'
+import type { SocialSite } from './social'
 import type { GitHub } from '@/types'
 import { colors } from './colors'
 
@@ -15,7 +15,7 @@ interface SiteConfig {
     titles: string[]
   }
   socials: {
-    [key in SocialType]: string
+    [key in SocialSite]: string
   }
   githubData: GitHub
 }
