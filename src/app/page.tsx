@@ -15,7 +15,7 @@ const icons = {
   about: Info,
 }
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8">
       <GravityStarsBackground

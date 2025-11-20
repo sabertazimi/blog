@@ -1,7 +1,7 @@
 'use client'
 
 import { ChevronDown } from 'lucide-react'
-import { usePathname, useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
 import { cn } from '@/lib/utils'
@@ -13,33 +13,25 @@ interface TagFilterProps {
 }
 
 function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
-  const router = useRouter()
-  const pathname = usePathname()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
-  const handleTagClick = (tag: string) => {
-    const params = new URLSearchParams()
-    if (tag !== 'All') {
-      params.set('tag', tag)
-    }
-    router.push(`${pathname}?${params.toString()}`)
-    setIsDrawerOpen(false)
+  const getTagUrl = (tag: string) => {
+    return tag === 'All' ? '/posts' : `/posts/tag/${encodeURIComponent(tag)}`
   }
 
   return (
     <>
       <div className="hidden flex-wrap gap-2 md:flex">
         {tags.map(tag => (
-          <button
+          <Link
             key={tag}
-            onClick={() => handleTagClick(tag)}
+            href={getTagUrl(tag)}
             className={cn(
               'flex h-8 cursor-pointer items-center rounded-lg border px-1 pl-3 text-sm transition-colors',
               selectedTag === tag
                 ? 'border-primary bg-primary text-primary-foreground'
                 : 'border-border hover:bg-muted',
             )}
-            type="button"
           >
             <span>{tag}</span>
             {tagCounts?.[tag] !== undefined && tagCounts?.[tag] !== 0 && (
@@ -54,7 +46,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
                 {tagCounts[tag]}
               </span>
             )}
-          </button>
+          </Link>
         ))}
       </div>
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
@@ -68,11 +60,11 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
           </DrawerHeader>
           <div className="space-y-2 px-4">
             {tags.map(tag => (
-              <button
+              <Link
                 key={tag}
-                onClick={() => handleTagClick(tag)}
+                href={getTagUrl(tag)}
+                onClick={() => setIsDrawerOpen(false)}
                 className="flex w-full cursor-pointer items-center justify-between text-sm font-medium transition-colors"
-                type="button"
               >
                 <span
                   className={cn(
@@ -86,7 +78,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
                     {tagCounts[tag]}
                   </span>
                 )}
-              </button>
+              </Link>
             ))}
           </div>
         </DrawerContent>
