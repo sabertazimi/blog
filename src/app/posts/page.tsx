@@ -50,7 +50,10 @@ export default async function Posts({ searchParams }: { searchParams: Promise<{ 
         <div className="container mx-auto px-6 lg:px-0">
           <Suspense fallback={<div>Loading articles...</div>}>
             <div
-              className={cn('border-border relative grid grid-cols-1 overflow-hidden border-x md:grid-cols-2 lg:grid-cols-3', filteredPosts.length < 4 && 'border-b')}
+              className={cn(
+                'border-border relative grid grid-cols-1 overflow-hidden border-x md:grid-cols-2 lg:grid-cols-3',
+                filteredPosts.length < 4 ? 'border-b' : 'border-b-0',
+              )}
             >
               {filteredPosts.map((post) => {
                 const formattedDate = formatDate(post.createTime)
