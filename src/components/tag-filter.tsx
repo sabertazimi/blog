@@ -2,7 +2,9 @@
 
 import { ChevronDown } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
+import { cn } from '@/lib/utils'
 
 interface TagFilterProps {
   tags: string[]
@@ -13,6 +15,7 @@ interface TagFilterProps {
 function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
   const router = useRouter()
   const pathname = usePathname()
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   const handleTagClick = (tag: string) => {
     const params = new URLSearchParams()
@@ -20,6 +23,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
       params.set('tag', tag)
     }
     router.push(`${pathname}?${params.toString()}`)
+    setIsDrawerOpen(false)
   }
 
   return (
@@ -29,19 +33,23 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
           <button
             key={tag}
             onClick={() => handleTagClick(tag)}
-            className={`flex h-8 cursor-pointer items-center rounded-lg border px-1 pl-3 text-sm transition-colors ${
-              selectedTag === tag ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted'
-            }`}
+            className={cn(
+              'flex h-8 cursor-pointer items-center rounded-lg border px-1 pl-3 text-sm transition-colors',
+              selectedTag === tag
+                ? 'border-primary bg-primary text-primary-foreground'
+                : 'border-border hover:bg-muted',
+            )}
             type="button"
           >
             <span>{tag}</span>
             {tagCounts?.[tag] !== undefined && tagCounts?.[tag] !== 0 && (
               <span
-                className={`ml-2 flex h-6 min-w-6 items-center justify-center rounded-md border text-xs font-medium ${
+                className={cn(
+                  'ml-2 flex h-6 min-w-6 items-center justify-center rounded-md border text-xs font-medium',
                   selectedTag === tag
                     ? 'border-border/40 dark:border-primary-foreground bg-background text-primary'
-                    : 'border-border dark:border-border'
-                }`}
+                    : 'border-border dark:border-border',
+                )}
               >
                 {tagCounts[tag]}
               </span>
@@ -49,7 +57,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
           </button>
         ))}
       </div>
-      <Drawer>
+      <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger className="border-border hover:bg-muted flex w-full items-center justify-between rounded-lg border px-4 py-2 transition-colors md:hidden">
           <span className="text-sm font-medium capitalize">{selectedTag}</span>
           <ChevronDown className="h-4 w-4" />
@@ -67,9 +75,9 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
                 type="button"
               >
                 <span
-                  className={`flex w-full cursor-pointer items-center justify-between text-sm font-medium transition-colors ${
-                    selectedTag === tag ? 'text-primary underline underline-offset-4' : 'text-muted-foreground'
-                  }`}
+                  className={cn(
+                    selectedTag === tag ? 'text-primary underline underline-offset-4' : 'text-muted-foreground',
+                  )}
                 >
                   {tag}
                 </span>
