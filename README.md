@@ -83,9 +83,10 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 ---
 layout: post
 title: 'React Redux Basic Notes'
-subtitle: 'Daily I learned'
+description: 'Daily I learned'
 author: 'sabertaz'
 date: 2022-02-03
+thumbnail: '/photos/pen-writing-on-notebook.jpg'
 tags:
   - Redux
   - React
