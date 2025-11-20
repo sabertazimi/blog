@@ -24,7 +24,7 @@ const siteConfig: SiteConfig = {
   title: 'Sabertaz Blog',
   author: 'Sabertaz',
   email: 'sabertazimi@gmail.com',
-  description: 'Sabertaz Blog',
+  description: 'A modern blog about web development, programming, and technology. Sharing insights on React, TypeScript, Next.js, and more.',
   themeColor: colors.black,
   siteUrl: 'https://blog.tazimi.dev',
   disqusUrl: 'https://sabertaz-blog.disqus.com',
