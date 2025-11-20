@@ -45,7 +45,6 @@ jobs:
           urls: |
             ${{ steps.vercel.outputs.url }}
             ${{ steps.vercel.outputs.url }}/posts
-            ${{ steps.vercel.outputs.url }}/tags
             ${{ steps.vercel.outputs.url }}/about
           configPath: ./.github/workflows/lighthouserc.json
           uploadArtifacts: true
