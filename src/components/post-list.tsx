@@ -26,7 +26,7 @@ function PostsList({ postsMeta, selectedTag }: PostsListProps) {
             return (
               <PostCard
                 key={post.slug}
-                url={`/posts/${post.slug}`}
+                url={`/post/${post.slug}`}
                 title={post.title}
                 description={post.description}
                 thumbnail={post.thumbnail}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import PageHeader from '@/components/page-header'
-import PostsList from '@/components/posts-list'
+import PostList from '@/components/post-list'
 import TagFilter from '@/components/tag-filter'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
@@ -45,7 +45,7 @@ export default async function TagPage({ params }: TagPageProps) {
       <PageHeader title={routes[ROUTES_INDEX.posts].title} description={routes[ROUTES_INDEX.posts].description}>
         {allTags.length > 0 && <TagFilter tags={allTags} selectedTag={decodedTagName} tagCounts={tagCounts} />}
       </PageHeader>
-      <PostsList postsMeta={postsMeta} selectedTag={decodedTagName} />
+      <PostList postsMeta={postsMeta} selectedTag={decodedTagName} />
     </DefaultLayout>
   )
 }
