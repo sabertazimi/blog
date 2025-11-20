@@ -1,16 +1,16 @@
-import type { BuildTime, SocialType } from '@/types'
+import type { BuildTime, SocialSite } from '@/types'
 import { SiFacebook, SiGithub, SiSinaweibo, SiX } from '@icons-pack/react-simple-icons'
 import { Separator } from '@/components/ui/separator'
 import { socialColors } from '@/lib/colors'
 import { siteConfig } from '@/lib/site'
 import { socialList } from '@/lib/social'
-import { cn } from '@/lib/utils'
+import { cn, formatDate } from '@/lib/utils'
 
 interface Props {
   buildTime: BuildTime
 }
 
-const socialIcons: Record<SocialType, React.ComponentType<{ className?: string }>> = {
+const socialIcons: Record<SocialSite, React.ComponentType<{ className?: string }>> = {
   github: SiGithub,
   x: SiX,
   facebook: SiFacebook,
@@ -25,11 +25,9 @@ function SiteFooter({ buildTime }: Props) {
     <footer className="bg-background border-t">
       <div className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-center gap-4">
-          {(Object.keys(socialList) as SocialType[]).map((social) => {
+          {(Object.keys(socialList) as SocialSite[]).map((social) => {
             const Icon = socialIcons[social]
-
             const username = siteConfig.socials[social]
-
             const hoverColor = socialColors[social]
             const url = `https://${social}.com/${username}`
 

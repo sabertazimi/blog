@@ -1,4 +1,4 @@
-import type { MDXFrontMatter, PostMeta, PostType, Tag, TagsType } from '@/types'
+import type { MDXFrontMatter, Post, PostMeta, Tag, Tags } from '@/types'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -37,7 +37,7 @@ function getReadingTime(content: string): number {
   return Math.ceil(readingTime(content).minutes)
 }
 
-async function generatePostData(filePath: string): Promise<PostType> {
+async function generatePostData(filePath: string): Promise<Post> {
   // eslint-disable-next-line security/detect-non-literal-fs-filename -- filePath is safe.
   const fileContent = await fs.readFile(filePath, 'utf8')
   const slug = path.basename(filePath, path.extname(filePath))
@@ -77,8 +77,8 @@ async function generatePostData(filePath: string): Promise<PostType> {
   }
 }
 
-async function getPostsData(): Promise<PostType[]> {
-  const postsData: PostType[] = []
+async function getPostsData(): Promise<Post[]> {
+  const postsData: Post[] = []
 
   for await (const filePath of walk(contentsPath)) {
     const fileExt = path.extname(filePath)
@@ -122,7 +122,7 @@ async function getPostsData(): Promise<PostType[]> {
   return sortedLinkedPostsData
 }
 
-async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
+async function getPostsMeta(cachedData?: Post[]): Promise<PostMeta[]> {
   const postsData = cachedData ?? (await getPostsData())
   const postsMeta = postsData.map((post) => {
     const { excerpt: _, source: __, ...postMeta } = post
@@ -131,12 +131,12 @@ async function getPostsMeta(cachedData?: PostType[]): Promise<PostMeta[]> {
   return postsMeta
 }
 
-async function getTagsData(cachedData?: PostType[]): Promise<TagsType> {
+async function getTagsData(cachedData?: Post[]): Promise<Tags> {
   const postsData = cachedData ?? (await getPostsData())
   const tagsData = postsData
     .map(post => post.tags || [])
     .flat()
-    .reduce((tags: TagsType, tag: Tag) => {
+    .reduce((tags: Tags, tag: Tag) => {
       if (!tags[tag]) {
         tags[tag] = 0
       }
@@ -147,7 +147,7 @@ async function getTagsData(cachedData?: PostType[]): Promise<TagsType> {
   return tagsData
 }
 
-async function getPostData(slug: string, cachedData?: PostType[]): Promise<PostType | undefined> {
+async function getPostData(slug: string, cachedData?: Post[]): Promise<Post | undefined> {
   const postsData = cachedData ?? (await getPostsData())
   const postData = postsData.find(post => post.slug === slug)
   return postData

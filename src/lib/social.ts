@@ -12,7 +12,7 @@ const socialList = {
   weibo: 'weibo',
 }
 
-type SocialType = keyof typeof socialList
+type SocialSite = keyof typeof socialList
 
 export { socialList, socialQuery }
-export type { SocialType }
+export type { SocialSite }
