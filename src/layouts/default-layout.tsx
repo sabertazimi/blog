@@ -13,7 +13,7 @@ function Layout({ posts, buildTime, children }: Props) {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader posts={posts} />
-      {children}
+      <main className="bg-background relative flex-1">{children}</main>
       <SiteFooter buildTime={buildTime} />
     </div>
   )

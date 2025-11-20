@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import PostsList from '@/components/posts-list'
+import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 
@@ -37,12 +38,8 @@ export default async function TagPage({ params }: TagPageProps) {
   const decodedTagName = decodeURIComponent(resolvedParams.tagName)
 
   return (
-    <PostsList
-      buildTime={buildTime}
-      postsMeta={postsMeta}
-      allTags={allTags}
-      tagCounts={tagCounts}
-      selectedTag={decodedTagName}
-    />
+    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+      <PostsList postsMeta={postsMeta} allTags={allTags} tagCounts={tagCounts} selectedTag={decodedTagName} />
+    </DefaultLayout>
   )
 }

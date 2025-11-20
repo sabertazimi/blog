@@ -1,11 +1,3 @@
-const socialColors = {
-  gray: '#767676',
-  github: '#181717',
-  x: '#000000',
-  facebook: '#0866ff',
-  weibo: '#e6162d',
-}
-
 const colorPalette = {
   red: '#f03e3e',
   pink: '#d7336c',
@@ -21,13 +13,30 @@ const colorPalette = {
   orange: '#f76707',
 }
 
+const languageColors = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f1e05a',
+  C: '#555555',
+  Shell: '#89e051',
+  JSON: '#ededed',
+}
+
+const socialColors = {
+  github: '#181717',
+  x: '#000000',
+  facebook: '#0866ff',
+  weibo: '#e6162d',
+}
+
 const themeColors = {
   black: '#171717',
+  gray: '#767676',
 }
 
 const colors = {
-  ...socialColors,
   ...colorPalette,
+  ...languageColors,
+  ...socialColors,
   ...themeColors,
 }
 

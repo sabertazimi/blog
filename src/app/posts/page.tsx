@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import PostsList from '@/components/posts-list'
+import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 
@@ -14,6 +15,8 @@ export default async function PostsPage() {
   const { allTags, tagCounts } = await getTagsData(postsData)
 
   return (
-    <PostsList buildTime={buildTime} postsMeta={postsMeta} allTags={allTags} tagCounts={tagCounts} selectedTag="All" />
+    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+      <PostsList postsMeta={postsMeta} allTags={allTags} tagCounts={tagCounts} selectedTag="All" />
+    </DefaultLayout>
   )
 }
