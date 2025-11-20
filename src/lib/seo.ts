@@ -35,13 +35,15 @@ export function getMetadata({
       siteName: title,
     },
     robots: {
-      'nosnippet': true,
-      'notranslate': true,
-      'noimageindex': true,
-      'noarchive': true,
-      'max-snippet': -1,
-      'max-image-preview': 'none',
-      'max-video-preview': -1,
+      index: true,
+      follow: true,
+      googleBot: {
+        'index': true,
+        'follow': true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
     twitter: {
       card: 'summary_large_image',
