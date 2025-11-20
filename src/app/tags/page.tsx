@@ -14,7 +14,7 @@ export default async function Tags() {
   const tagsData = await getTagsData(postsData)
 
   return (
-    <DefaultLayout banner="Tags" buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
       <section>
         {Object.entries(tagsData).map(([name, count]) => (
           <div key={name}>

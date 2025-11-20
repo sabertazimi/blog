@@ -1,4 +1,4 @@
-import { Home as HomeIcon, Info, Tag } from 'lucide-react'
+import { Home as HomeIcon, Info } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
 import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars'
@@ -12,7 +12,6 @@ import { cn } from '@/lib/utils'
 
 const icons = {
   posts: HomeIcon,
-  tags: Tag,
   about: Info,
 }
 
