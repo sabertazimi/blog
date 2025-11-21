@@ -1,6 +1,7 @@
 'use client'
 
 import type { ComponentProps, ReactNode, RefObject } from 'react'
+import { TextAlignStart } from 'lucide-react'
 import * as React from 'react'
 import { createContext, use, useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -303,7 +304,7 @@ function TOCScrollArea({ children }: { children?: React.ReactNode }) {
   return (
     <div
       ref={viewRef}
-      className={cn('scrollbar-hidden relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto text-sm', 'py-3 pr-2')}
+      className="scrollbar-hidden relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 pr-2 text-sm"
     >
       <ScrollProvider containerRef={viewRef}>{children}</ScrollProvider>
     </div>
@@ -426,7 +427,7 @@ function TOCItem({ item, upper, lower }: TOCItemProps) {
       {/* 层级转换的斜线 */}
       {offset !== upperOffset
         ? (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="absolute -top-1.5 left-0 h-4 w-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="absolute -top-1.5 left-0 size-4">
               <line x1={upperOffset} y1="0" x2={offset} y2="12" className="stroke-border" strokeWidth="1" />
             </svg>
           )
@@ -496,7 +497,10 @@ export function TableOfContents({ toc: manualToc, className, single = false, hea
   return (
     <AnchorProvider toc={toc} single={single}>
       <div className={cn('flex h-full flex-col', className)}>
-        <h3 className="text-muted-foreground mb-3 shrink-0 text-sm font-medium">On this page</h3>
+        <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
+          <TextAlignStart className="size-4" />
+          On this page
+        </h3>
         <TOCScrollArea>
           <TOCItemsList toc={toc} />
         </TOCScrollArea>
