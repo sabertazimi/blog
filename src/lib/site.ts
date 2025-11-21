@@ -44,7 +44,7 @@ const siteConfig: SiteConfig = {
       username: 'sabertazimi',
       avatar: 'https://avatars.githubusercontent.com/u/12670482?v=4',
       bio: 'Web Developer',
-      location: 'Wuhan',
+      location: 'Undefined',
       url: 'https://github.com/sabertazimi',
       followers: 72,
       followersUrl: 'https://github.com/sabertazimi?tab=followers',

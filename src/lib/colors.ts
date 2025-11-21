@@ -15,10 +15,15 @@ const colorPalette = {
 
 const languageColors = {
   TypeScript: '#3178c6',
-  JavaScript: '#f1e05a',
+  JavaScript: '#f7df1e',
+  Vue: '#4fc08d',
+  HTML: '#e34f26',
   C: '#555555',
-  Shell: '#89e051',
-  JSON: '#ededed',
+  Rust: '#dea584',
+  Shell: '#4eaa25',
+  JSON: '#292929',
+  Markdown: '#083fa1',
+  TeX: '#008080',
 }
 
 const socialColors = {
