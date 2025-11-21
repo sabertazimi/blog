@@ -23,7 +23,7 @@ function MDX({ source }: MDXProps) {
   return (
     <div
       className={cn(
-        'prose dark:prose-invert prose-lg max-w-none',
+        'prose dark:prose-invert max-w-none',
         'prose-headings:font-semibold',
         'prose-inline-code:before:content-none prose-inline-code:after:content-none',
         'prose-inline-code:rounded-md prose-inline-code:border prose-inline-code:border-border',
