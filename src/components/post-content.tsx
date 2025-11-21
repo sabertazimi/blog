@@ -17,7 +17,9 @@ function PostContent({ post: { excerpt: _, source, thumbnail, title } }: PostCon
           <MDX source={source} />
         </div>
       </article>
-      <aside className="bg-muted/60 dark:bg-muted/20 hidden w-96 shrink-0 p-6 lg:block lg:p-10"></aside>
+      <aside className="bg-muted/60 dark:bg-muted/20 hidden w-96 shrink-0 p-6 lg:block lg:p-10">
+        {/* TODO: Add table of contents, related posts, author info, or other sidebar content here in the future */}
+      </aside>
     </div>
   )
 }

@@ -109,8 +109,7 @@ const prompt = await template.format({
 })
 
 const result = await model.invoke(prompt)
-
-const listResult = await parser.parse(result)
+const listResult = await listParser.parse(result)
 ```
 
 Retrieval module
@@ -395,7 +394,7 @@ async def main():
 
   # 这应该触发防护措施
   try:
-    await Runner.run(agent, "我想取消订阅")
+    await Runner.run(customer_support_agent, "我想取消订阅")
     print("防护措施未触发 - 这是意料之外的")
   except GuardrailTripwireTriggered:
     print("流失检测防护措施已触发")
