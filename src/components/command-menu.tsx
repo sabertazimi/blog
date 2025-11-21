@@ -13,7 +13,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
-import { cn } from '@/lib/utils'
+import { cn, formatDate } from '@/lib/utils'
 
 interface Props {
   posts: PostMeta[]
@@ -85,9 +85,7 @@ function CommandMenu({ posts }: Props) {
                   <span className="line-clamp-1">{post.title}</span>
                   {post.createTime !== undefined && post.createTime !== ''
                     ? (
-                        <span className="text-muted-foreground ml-auto text-xs">
-                          {new Date(post.createTime).toLocaleDateString()}
-                        </span>
+                        <span className="text-muted-foreground ml-auto text-xs">{formatDate(post.createTime)}</span>
                       )
                     : null}
                 </CommandItem>
