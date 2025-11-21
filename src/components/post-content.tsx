@@ -11,13 +11,16 @@ interface PostContentProps {
 
 function PostContent({ post: { excerpt: _, source, thumbnail, title } }: PostContentProps) {
   return (
-    <div className="container mx-auto px-6 lg:px-0">
-      <div className="relative mb-8 h-64 w-full overflow-hidden md:h-96 lg:h-128">
-        <PostThumbnailImage src={thumbnail} alt={title} enableHoverScale={false} />
-      </div>
-      <article>
-        <MDXRemote {...source} components={mdxComponents} />
+    <div className="border-border container mx-auto flex border-x px-6 lg:px-0">
+      <article className="border-border border-r">
+        <div className="relative h-64 w-full overflow-hidden md:h-96">
+          <PostThumbnailImage src={thumbnail} alt={title} enableHoverScale={false} />
+        </div>
+        <div className="p-6 lg:p-10">
+          <MDXRemote {...source} components={mdxComponents} />
+        </div>
       </article>
+      <aside className="bg-muted/60 dark:bg-muted/20 hidden w-96 shrink-0 p-6 lg:block lg:p-10"></aside>
     </div>
   )
 }
