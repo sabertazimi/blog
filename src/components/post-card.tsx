@@ -44,7 +44,7 @@ function PostCard({ url, title, description, date, thumbnail, readingTime, showR
           {description !== undefined && description !== '' && (
             <p className="text-muted-foreground line-clamp-2 text-sm">{description}</p>
           )}
-          <div className="text-muted-foreground mt-auto flex items-center justify-between text-sm">
+          <div className="text-muted-foreground mt-auto flex items-center justify-between text-sm font-medium">
             <time dateTime={date}>{date}</time>
             {readingTime !== undefined && readingTime !== 0 && (
               <span>
