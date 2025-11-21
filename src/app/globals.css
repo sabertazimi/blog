@@ -1,9 +1,11 @@
-/* stylelint-disable-next-line import-notation */
 @import 'tailwindcss';
-/* stylelint-disable-next-line import-notation */
 @import 'tw-animate-css';
+@import 'katex/dist/katex.min.css';
+
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant prose-inline-code (&.prose :where(:not(pre)>code):not(:where([class~="not-prose"], [class~="not-prose"] *)));
 
 @font-face {
   font-family: Raleway;
@@ -256,11 +258,23 @@
   }
 
   ::-webkit-scrollbar {
-    @apply h-2.5 w-2.5;
+    @apply size-2.5;
   }
 
   ::-webkit-scrollbar-thumb {
     @apply bg-primary dark:bg-secondary rounded-lg;
+  }
+
+  pre::-webkit-scrollbar {
+    @apply size-2;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/40;
+  }
+
+  pre::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/60;
   }
 }
 
