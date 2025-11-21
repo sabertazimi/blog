@@ -1,5 +1,5 @@
-import { Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
+import PostMetadata from '@/components/post-metadata'
 import PostThumbnailImage from '@/components/post-thumbnail-image'
 import { cn } from '@/lib/utils'
 
@@ -31,21 +31,10 @@ function PostCard({ url, title, description, date, thumbnail, readingTime, showR
             {title}
           </h3>
           {description !== undefined && description !== '' && (
-            <p className="text-muted-foreground line-clamp-2 text-sm">{description}</p>
+            <p className="text-muted-foreground line-clamp-3 text-sm">{description}</p>
           )}
-          <div className="text-muted-foreground mt-auto flex items-center justify-between text-sm font-medium">
-            <time dateTime={date} className="flex items-center gap-1.5">
-              <Calendar className="size-4" />
-              {date}
-            </time>
-            {readingTime !== undefined && readingTime !== 0 && (
-              <span className="flex items-center gap-1.5">
-                <Clock className="size-4" />
-                {readingTime}
-                {' '}
-                min
-              </span>
-            )}
+          <div className="mt-auto flex items-center justify-between">
+            <PostMetadata date={date} readingTime={readingTime} />
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import NotFoundResult from '@/components/not-found-result'
 import PageHeader from '@/components/page-header'
 import PostContent from '@/components/post-content'
+import PostMetadata from '@/components/post-metadata'
 import { Button } from '@/components/ui/button'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
@@ -64,18 +65,7 @@ export default async function PostPage({ params }: PostPageProps) {
               ))}
             </div>
           )}
-          <time className="text-muted-foreground flex items-center gap-1.5 font-medium">
-            <Calendar className="size-4" />
-            {formatDate(postData?.createTime)}
-          </time>
-          {postData?.readingTime !== undefined && postData?.readingTime !== 0 && (
-            <span className="text-muted-foreground flex items-center gap-1.5 font-medium">
-              <Clock className="size-4" />
-              {postData?.readingTime}
-              {' '}
-              min
-            </span>
-          )}
+          <PostMetadata date={formatDate(postData?.createTime)} readingTime={postData?.readingTime} />
         </div>
       </PageHeader>
       {postData ? <PostContent post={postData} /> : <NotFoundResult />}
