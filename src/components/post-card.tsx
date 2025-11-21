@@ -1,3 +1,4 @@
+import { Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
 import PostCardImage from '@/components/post-card-image'
 import { DotPattern } from '@/components/ui/dot-pattern'
@@ -45,12 +46,16 @@ function PostCard({ url, title, description, date, thumbnail, readingTime, showR
             <p className="text-muted-foreground line-clamp-2 text-sm">{description}</p>
           )}
           <div className="text-muted-foreground mt-auto flex items-center justify-between text-sm font-medium">
-            <time dateTime={date}>{date}</time>
+            <time dateTime={date} className="flex items-center gap-1.5">
+              <Calendar className="size-4" />
+              {date}
+            </time>
             {readingTime !== undefined && readingTime !== 0 && (
-              <span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="size-4" />
                 {readingTime}
                 {' '}
-                min read
+                min
               </span>
             )}
           </div>
