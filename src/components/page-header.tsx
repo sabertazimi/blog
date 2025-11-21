@@ -27,7 +27,7 @@ export default function PageHeader({ title, description, showFlickeringGrid = tr
         <div className="container mx-auto">
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl font-extrabold tracking-tighter md:text-5xl">{title}</h1>
-            <p className="text-muted-foreground text-sm md:text-base lg:text-lg">{description}</p>
+            <p className="text-muted-foreground max-w-5xl text-sm md:text-base lg:text-lg">{description}</p>
           </div>
         </div>
         <div className="container mx-auto">{children}</div>
