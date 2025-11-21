@@ -12,7 +12,7 @@ interface PostContentProps {
 function PostContent({ post: { excerpt: _, source, thumbnail, title } }: PostContentProps) {
   return (
     <div className="border-border container mx-auto flex border-x px-6 lg:px-0">
-      <article className="border-border border-r">
+      <article className="border-border border-r flex-1">
         <div className="relative h-64 w-full overflow-hidden md:h-96">
           <PostThumbnailImage src={thumbnail} alt={title} enableHoverScale={false} />
         </div>
