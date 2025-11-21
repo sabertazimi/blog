@@ -47,7 +47,7 @@ export default async function PostPage({ params }: PostPageProps) {
       >
         <div className="text-muted-foreground flex flex-wrap items-center gap-3 gap-y-5 text-sm">
           <Button variant="outline" asChild className="h-6 w-6">
-            <Link href="/">
+            <Link href="/posts">
               <ArrowLeft className="h-4 w-4" />
               <span className="sr-only">Back to all articles</span>
             </Link>
