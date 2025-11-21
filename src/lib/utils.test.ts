@@ -17,27 +17,33 @@ describe('cn', () => {
 describe('formatDate', () => {
   it('should format Date object', () => {
     const date = new Date('2025-01-15T10:30:00')
-    expect(formatDate(date)).toMatch(/2025-01-15 \d{2}:\d{2}/)
+    expect(formatDate(date)).toMatch(/2025-01-15/)
+    expect(formatDate(date, true)).toMatch(/2025-01-15 \d{2}:\d{2}/)
   })
 
   it('should format date string', () => {
-    expect(formatDate('2025-01-15T10:30:00')).toMatch(/2025-01-15 \d{2}:\d{2}/)
+    expect(formatDate('2025-01-15T10:30:00')).toMatch(/2025-01-15/)
+    expect(formatDate('2025-01-15T10:30:00', true)).toMatch(/2025-01-15 \d{2}:\d{2}/)
   })
 
   it('should format timestamp number', () => {
-    expect(formatDate(1705315800000)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
+    expect(formatDate(1705315800000)).toMatch(/\d{4}-\d{2}-\d{2}/)
+    expect(formatDate(1705315800000, true)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
   })
 
   it('should handle undefined and return current date', () => {
-    expect(formatDate(undefined)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
+    expect(formatDate(undefined)).toMatch(/\d{4}-\d{2}-\d{2}/)
+    expect(formatDate(undefined, true)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
   })
 
   it('should handle null and return current date', () => {
-    expect(formatDate(null)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
+    expect(formatDate(null)).toMatch(/\d{4}-\d{2}-\d{2}/)
+    expect(formatDate(null, true)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
   })
 
   it('should handle empty string and return current date', () => {
-    expect(formatDate('')).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
+    expect(formatDate('')).toMatch(/\d{4}-\d{2}-\d{2}/)
+    expect(formatDate('', true)).toMatch(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/)
   })
 })
 

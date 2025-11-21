@@ -3,7 +3,7 @@
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
 import { cn } from '@/lib/utils'
 
 interface TagFilterProps {
@@ -56,7 +56,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
         </DrawerTrigger>
         <DrawerContent className="md:hidden">
           <DrawerHeader>
-            <h3 className="text-sm font-semibold">Select Category</h3>
+            <DrawerTitle className="text-sm font-semibold">Select Category</DrawerTitle>
           </DrawerHeader>
           <div className="space-y-2 px-4">
             {tags.map(tag => (

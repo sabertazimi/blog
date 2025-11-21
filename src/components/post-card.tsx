@@ -1,7 +1,6 @@
-import { Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
-import PostCardImage from '@/components/post-card-image'
-import { DotPattern } from '@/components/ui/dot-pattern'
+import PostMetadata from '@/components/post-metadata'
+import PostThumbnailImage from '@/components/post-thumbnail-image'
 import { cn } from '@/lib/utils'
 
 interface PostCardProps {
@@ -15,8 +14,6 @@ interface PostCardProps {
 }
 
 function PostCard({ url, title, description, date, thumbnail, readingTime, showRightBorder = true }: PostCardProps) {
-  const hasThumbnail = thumbnail !== undefined && thumbnail !== ''
-
   return (
     <Link
       href={url}
@@ -27,37 +24,17 @@ function PostCard({ url, title, description, date, thumbnail, readingTime, showR
     >
       <div className="flex flex-col">
         <div className="relative h-48 w-full overflow-hidden">
-          <DotPattern
-            width={20}
-            height={20}
-            cx={1}
-            cy={1}
-            cr={1}
-            className="fill-muted-foreground/20 transition-transform duration-300 group-hover:scale-105"
-          />
-
-          {hasThumbnail && <PostCardImage src={thumbnail} alt={title} />}
+          <PostThumbnailImage src={thumbnail} alt={title} />
         </div>
         <div className="flex min-h-[200px] flex-col gap-2 p-6">
           <h3 className="text-card-foreground text-xl font-semibold underline-offset-4 group-hover:underline">
             {title}
           </h3>
           {description !== undefined && description !== '' && (
-            <p className="text-muted-foreground line-clamp-2 text-sm">{description}</p>
+            <p className="text-muted-foreground line-clamp-3 text-sm">{description}</p>
           )}
-          <div className="text-muted-foreground mt-auto flex items-center justify-between text-sm font-medium">
-            <time dateTime={date} className="flex items-center gap-1.5">
-              <Calendar className="size-4" />
-              {date}
-            </time>
-            {readingTime !== undefined && readingTime !== 0 && (
-              <span className="flex items-center gap-1.5">
-                <Clock className="size-4" />
-                {readingTime}
-                {' '}
-                min
-              </span>
-            )}
+          <div className="mt-auto flex items-center justify-between">
+            <PostMetadata date={date} readingTime={readingTime} />
           </div>
         </div>
       </div>

@@ -20,22 +20,18 @@ function PostList({ postsMeta, selectedTag }: PostListProps) {
             filteredPosts.length < 4 ? 'border-b' : 'border-b-0',
           )}
         >
-          {filteredPosts.map((post) => {
-            const formattedDate = formatDate(post.createTime)
-
-            return (
-              <PostCard
-                key={post.slug}
-                url={`/post/${post.slug}`}
-                title={post.title}
-                description={post.description}
-                thumbnail={post.thumbnail}
-                date={formattedDate}
-                readingTime={post.readingTime}
-                showRightBorder={filteredPosts.length < 3}
-              />
-            )
-          })}
+          {filteredPosts.map(post => (
+            <PostCard
+              key={post.slug}
+              url={`/post/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              thumbnail={post.thumbnail}
+              date={formatDate(post.createTime)}
+              readingTime={post.readingTime}
+              showRightBorder={filteredPosts.length < 3}
+            />
+          ))}
         </div>
       </Suspense>
     </div>

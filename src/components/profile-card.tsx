@@ -41,7 +41,7 @@ function ProfileCard({ profile }: ProfileCardProps) {
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Calendar className="text-muted-foreground size-4" />
-          <span>{formatDate(profile.createDate).slice(0, 10)}</span>
+          <span>{formatDate(profile.createDate)}</span>
         </div>
         <Separator />
         <div className="flex justify-around text-center">
