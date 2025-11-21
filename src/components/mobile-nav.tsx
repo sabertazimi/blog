@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -9,6 +10,7 @@ import { cn } from '@/lib/utils'
 
 function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
     <div className="flex flex-1 items-center justify-between md:hidden">
@@ -57,7 +59,10 @@ function MobileNav() {
               <Link
                 key={route.id}
                 href={route.path}
-                className={cn('hover:text-accent-foreground flex items-center text-2xl font-medium transition-colors')}
+                className={cn(
+                  'hover:text-accent-foreground flex items-center text-2xl font-medium transition-colors px-2',
+                  pathname === route.path && 'text-accent-foreground bg-accent',
+                )}
                 onClick={() => setIsOpen(false)}
               >
                 {route.name}
