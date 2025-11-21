@@ -229,20 +229,15 @@
   --sidebar-ring: oklch(55.6% 0 0deg);
 }
 
-@utility content-auto {
-  content-visibility: auto;
-}
+@layer utility {
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
 
-@utility content-hidden {
-  content-visibility: hidden;
-}
-
-@utility content-visible {
-  content-visibility: visible;
-}
-
-@utility contain-size-* {
-  contain-intrinsic-size: --value(--height-*);
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @layer base {
@@ -255,26 +250,6 @@
 
     font-family: var(--font-stack);
     font-size: var(--font-size);
-  }
-
-  ::-webkit-scrollbar {
-    @apply size-2.5;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary dark:bg-secondary rounded-lg;
-  }
-
-  pre::-webkit-scrollbar {
-    @apply size-2;
-  }
-
-  pre::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/40;
-  }
-
-  pre::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/60;
   }
 }
 
