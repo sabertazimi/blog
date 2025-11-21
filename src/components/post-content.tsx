@@ -1,6 +1,7 @@
 import type { Post } from '@/types'
 import MDX from '@/components/mdx'
 import PostThumbnailImage from '@/components/post-thumbnail-image'
+import TableOfContents from '@/components/table-of-contents'
 
 interface PostContentProps {
   post: Post
@@ -17,8 +18,10 @@ function PostContent({ post: { excerpt: _, source, thumbnail, title } }: PostCon
           <MDX source={source} />
         </div>
       </article>
-      <aside className="bg-muted/60 dark:bg-muted/20 hidden w-96 shrink-0 p-6 lg:block lg:p-10">
-        {/* TODO: Add table of contents, related posts, author info, or other sidebar content here in the future */}
+      <aside className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
+        <div className="sticky top-24 flex h-[calc(100vh-8rem)] flex-col overflow-hidden">
+          <TableOfContents />
+        </div>
       </aside>
     </div>
   )

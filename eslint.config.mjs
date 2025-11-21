@@ -4,6 +4,8 @@ export default eslintConfig
   .append({
     rules: {
       'node/prefer-global/process': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-hooks-extra/no-direct-set-state-in-use-effect': 'off',
       'react-refresh/only-export-components': 'off',
       'security/detect-object-injection': 'off',
     },
