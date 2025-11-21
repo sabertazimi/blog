@@ -39,10 +39,7 @@ const NotFound: React.FC = () => (
         fill="#FFF"
         d="M206 38.4c.5.5.7 1.1.7 2s-.2 1.4-.7 1.9a3 3 0 0 1-2 .7c-.8 0-1.5-.3-2-.8s-.8-1.1-.8-1.9.3-1.4.8-2c.5-.4 1.2-.7 2-.7.7 0 1.4.3 2 .8m4.2-19.5c1.5 1.3 2.2 3 2.2 5.2a7.2 7.2 0 0 1-1.5 4.5l-3 2.7a5 5 0 0 0-1.3 1.7 5.2 5.2 0 0 0-.6 2.4v.5h-4v-.5c0-1.4.1-2.5.6-3.5s1.9-2.5 4.2-4.5l.4-.5a4 4 0 0 0 1-2.6c0-1.2-.4-2-1-2.8-.7-.6-1.6-1-2.9-1-1.5 0-2.6.5-3.3 1.5-.4.5-.6 1-.8 1.9a2 2 0 0 1-2 1.6 2 2 0 0 1-2-2.4c.4-1.6 1-2.8 2.1-3.8a8.5 8.5 0 0 1 6.3-2.3c2.3 0 4.2.6 5.6 2"
       />
-      <path
-        fill="#FFB594"
-        d="M52 76.1s21.8 5.4 27.3 16c5.6 10.7-6.3 9.2-15.7 5C52.8 92 39 85 52 76"
-      />
+      <path fill="#FFB594" d="M52 76.1s21.8 5.4 27.3 16c5.6 10.7-6.3 9.2-15.7 5C52.8 92 39 85 52 76" />
       <path
         fill="#FFC6A0"
         d="m90.5 67.5-.5 2.9c-.7.5-4.7-2.7-4.7-2.7l-1.7.8-1.3-5.7s6.8-4.6 9-5c2.4-.5 9.8 1 10.6 2.3 0 0 1.3.4-2.2.6-3.6.3-5 .5-6.8 3.2l-2.4 3.6"
@@ -83,12 +80,7 @@ const NotFound: React.FC = () => (
         strokeLinejoin="round"
         strokeWidth="1.1"
       />
-      <path
-        stroke="#648BD8"
-        d="M107.3 222.1s2.7-1.1 6-3.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path stroke="#648BD8" d="M107.3 222.1s2.7-1.1 6-3.9" strokeLinecap="round" strokeLinejoin="round" />
       <path
         stroke="#648BD8"
         d="M74.7 224.8s2.7-.6 6.5-3.4m4.8-69.8c-.2 3.1.3 8.6-4.3 9.2m22-11s0 14-1.4 15.1a15 15 0 0 1-3 2m.5-16.5s0 13-1.2 24.4m-5 1.1s7.3-1.7 9.5-1.7M74.3 206a212 212 0 0 1-1 4.5s-1.4 1.9-1 3.8c.5 2-1 2-5 15.4A353 353 0 0 0 61 257l-.2 1.2m14.9-60.5a321 321 0 0 1-.9 4.8m7.8-50.4-1.2 10.5s-1.1.1-.5 2.2c.1 1.4-2.7 15.8-5.2 30.5m-19.6 79h13.3"
@@ -96,10 +88,7 @@ const NotFound: React.FC = () => (
         strokeLinejoin="round"
         strokeWidth="1.1"
       />
-      <path
-        fill="#192064"
-        d="M116.2 148.2s-17-3-35.9.2c.2 2.5 0 4.2 0 4.2s14.7-2.8 35.7-.3c.3-2.4.2-4 .2-4"
-      />
+      <path fill="#192064" d="M116.2 148.2s-17-3-35.9.2c.2 2.5 0 4.2 0 4.2s14.7-2.8 35.7-.3c.3-2.4.2-4 .2-4" />
       <path
         fill="#FFF"
         d="M106.3 151.2v-5a.8.8 0 0 0-.8-.8h-7.8a.8.8 0 0 0-.8.8v5a.8.8 0 0 0 .8.8h7.8a.8.8 0 0 0 .8-.8"
@@ -152,13 +141,7 @@ const NotFound: React.FC = () => (
         strokeLinejoin="round"
         strokeWidth="1.1"
       />
-      <path
-        stroke="#5C2552"
-        d="M103.3 73s1.8 1 4.1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.1"
-      />
+      <path stroke="#5C2552" d="M103.3 73s1.8 1 4.1.9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.1" />
       <path
         stroke="#DB836E"
         d="M103.7 81.8s2.2 1.2 4.4 1.2m-3.5 1.3s1 .4 1.6.3m-11.5-3.4s2.3 7.4 10.4 7.6"
@@ -173,20 +156,11 @@ const NotFound: React.FC = () => (
         strokeLinejoin="round"
         strokeWidth="1.1"
       />
-      <path
-        fill="#F2D7AD"
-        d="M150 151.2h-49.8a1 1 0 0 1-1-1v-31.7c0-.5.4-1 1-1H150c.6 0 1 .5 1 1v31.7a1 1 0 0 1-1 1"
-      />
+      <path fill="#F2D7AD" d="M150 151.2h-49.8a1 1 0 0 1-1-1v-31.7c0-.5.4-1 1-1H150c.6 0 1 .5 1 1v31.7a1 1 0 0 1-1 1" />
       <path fill="#F4D19D" d="M150.3 151.2h-19.9v-33.7h20.8v32.8a1 1 0 0 1-1 1" />
-      <path
-        fill="#F2D7AD"
-        d="M123.6 127.9H92.9a.5.5 0 0 1-.4-.8l6.4-9.1c.2-.3.5-.5.8-.5h31.1l-7.2 10.4z"
-      />
+      <path fill="#F2D7AD" d="M123.6 127.9H92.9a.5.5 0 0 1-.4-.8l6.4-9.1c.2-.3.5-.5.8-.5h31.1l-7.2 10.4z" />
       <path fill="#CC9B6E" d="M123.7 128.4H99.2v-.5h24.2l7.2-10.2.4.3z" />
-      <path
-        fill="#F4D19D"
-        d="M158.3 127.9h-18.7a2 2 0 0 1-1.6-.8l-7.2-9.6h20c.5 0 1 .3 1.2.6l6.7 9a.5.5 0 0 1-.4.8"
-      />
+      <path fill="#F4D19D" d="M158.3 127.9h-18.7a2 2 0 0 1-1.6-.8l-7.2-9.6h20c.5 0 1 .3 1.2.6l6.7 9a.5.5 0 0 1-.4.8" />
       <path
         fill="#CC9B6E"
         d="M157.8 128.5h-19.3l-7.9-10.5.4-.3 7.7 10.3h19.1zm-27.2 22.2v-8.2h.4v8.2zm-.1-10.9v-21.4h.4l.1 21.4zm-18.6 1.1-.5-.1 1.5-5.2.5.2zm-3.5.2-2.6-3 2.6-3.4.4.3-2.4 3.1 2.4 2.6zm8.2 0-.4-.4 2.4-2.6-2.4-3 .4-.4 2.7 3.4z"
@@ -234,7 +208,7 @@ const NotFound: React.FC = () => (
 
 function NotFoundResult() {
   return (
-    <div className="container mx-auto px-6 flex-1 flex-col flex items-center justify-center lg:px-0">
+    <div className="container mx-auto flex flex-1 flex-col items-center justify-center px-6 lg:px-0">
       <NotFound />
     </div>
   )
