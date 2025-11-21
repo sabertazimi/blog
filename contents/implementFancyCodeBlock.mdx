@@ -23,7 +23,7 @@ tags:
 
 Disable line number `noline`:
 
-```ts noline
+```ts noline="true"
 console.log('No line number!');
 ```
 
@@ -31,7 +31,7 @@ console.log('No line number!');
 
 Disable copy button `nocopy`:
 
-```ts nocopy
+```ts nocopy="true"
 console.log('No copy button!');
 ```
 
@@ -75,7 +75,7 @@ export default function remarkAdmonitions() {
 
 Show code title `title="Awesome Code"`:
 
-```ts noline nocopy title="Awesome Code"
+```ts noline="true" nocopy="true" title="Awesome Code"
 console.log('Awesome!');
 ```
 
@@ -83,7 +83,7 @@ console.log('Awesome!');
 
 Live code editor `live`:
 
-```tsx live title="Live Code"
+```tsx live="true" title="Live Code"
 export default function App() {
   const [count, setCount] = useState(0);
 

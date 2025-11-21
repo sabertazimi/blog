@@ -78,7 +78,7 @@ function CommandMenu({ posts }: Props) {
                   key={post.slug}
                   value={post.title}
                   onSelect={() => {
-                    runCommand(() => router.push(`/posts/${post.slug}`))
+                    runCommand(() => router.push(`/post/${post.slug}`))
                   }}
                 >
                   <FileTextIcon />

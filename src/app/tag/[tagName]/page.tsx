@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import PostsList from '@/components/posts-list'
+import PageHeader from '@/components/page-header'
+import PostList from '@/components/post-list'
+import TagFilter from '@/components/tag-filter'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
+import { routes, ROUTES_INDEX } from '@/lib/routes'
 
 interface TagPageProps {
   params: Promise<{
@@ -39,7 +42,10 @@ export default async function TagPage({ params }: TagPageProps) {
 
   return (
     <DefaultLayout buildTime={buildTime} posts={postsMeta}>
-      <PostsList postsMeta={postsMeta} allTags={allTags} tagCounts={tagCounts} selectedTag={decodedTagName} />
+      <PageHeader title={routes[ROUTES_INDEX.posts].title} description={routes[ROUTES_INDEX.posts].description}>
+        {allTags.length > 0 && <TagFilter tags={allTags} selectedTag={decodedTagName} tagCounts={tagCounts} />}
+      </PageHeader>
+      <PostList postsMeta={postsMeta} selectedTag={decodedTagName} />
     </DefaultLayout>
   )
 }

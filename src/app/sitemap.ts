@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const lastModified = (timeValue !== undefined && timeValue !== '') ? new Date(timeValue) : new Date()
 
     return {
-      url: `${siteConfig.siteUrl}/posts/${post.slug}`,
+      url: `${siteConfig.siteUrl}/post/${post.slug}`,
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
