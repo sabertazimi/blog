@@ -32,6 +32,11 @@ function PostContent({ source }: PostContentProps) {
         'prose-inline-code:rounded-md prose-inline-code:border prose-inline-code:border-border',
         'prose-inline-code:bg-muted prose-inline-code:px-1.5 prose-inline-code:py-0.5',
         'prose-inline-code:font-semibold prose-inline-code:text-foreground prose-inline-code:font-mono',
+        '[&_.footnotes]:mt-12 [&_.footnotes]:border-t [&_.footnotes]:border-border [&_.footnotes]:pt-6',
+        '[&_.footnotes]:text-sm [&_.footnotes]:text-muted-foreground',
+        '[&_.footnotes_ol]:my-0 [&_.footnotes_li]:my-1 [&_.footnotes_p]:my-0',
+        '[&_.footnotes_a[data-footnote-backref]]:ml-1 [&_.footnotes_a[data-footnote-backref]]:text-xs',
+        '[&_.footnotes_a[data-footnote-backref]]:opacity-50 [&_.footnotes_a[data-footnote-backref]:hover]:opacity-100',
       )}
     >
       <MDXRemote {...source} components={mdxComponents} />
