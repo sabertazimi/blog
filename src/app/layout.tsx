@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
-import ProgressBarProvider from '@/components/providers/progress-bar-provider'
-import SandpackProvider from '@/components/providers/sandpack-provider'
+import ProgressBarProvider from '@/components/progress-bar-provider'
+import SandpackProvider from '@/components/sandpack-provider'
 import { getMetadata, getViewport } from '@/lib/seo'
 import './globals.css'
 
