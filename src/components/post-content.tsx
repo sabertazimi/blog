@@ -20,7 +20,7 @@ function PostContent({ post: { source, thumbnail, title, slug } }: PostContentPr
         <div className="p-6 lg:p-10">
           <MDX source={source} />
         </div>
-        <div className="p-6 lg:p-10">
+        <div className="px-6 lg:px-10">
           <PostComment slug={slug} url={`${siteConfig.url}/post/${slug}`} />
         </div>
       </article>
