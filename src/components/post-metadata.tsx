@@ -18,24 +18,20 @@ function PostMetadata({ date, readingTime, updateTime, className }: PostMetadata
         <Calendar className="size-4" />
         {date}
       </time>
-      {
-        updateTime !== undefined && updateTime !== '' && (
-          <span className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}>
-            <SquarePen className="size-4" />
-            {updateTime}
-          </span>
-        )
-      }
-      {
-        readingTime !== undefined && readingTime !== 0 && (
-          <span className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}>
-            <Clock className="size-4" />
-            {readingTime}
-            {' '}
-            min
-          </span>
-        )
-      }
+      {updateTime !== undefined && updateTime !== '' && (
+        <span className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}>
+          <SquarePen className="size-4" />
+          {updateTime}
+        </span>
+      )}
+      {readingTime !== undefined && readingTime !== 0 && (
+        <span className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}>
+          <Clock className="size-4" />
+          {readingTime}
+          {' '}
+          min
+        </span>
+      )}
     </>
   )
 }
