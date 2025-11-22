@@ -1,4 +1,5 @@
 import type { Post } from '@/types'
+import BackToTop from '@/components/back-to-top'
 import MDX from '@/components/mdx'
 import PostThumbnailImage from '@/components/post-thumbnail-image'
 import TableOfContents from '@/components/table-of-contents'
@@ -23,6 +24,7 @@ function PostContent({ post: { excerpt: _, source, thumbnail, title } }: PostCon
           <TableOfContents />
         </div>
       </aside>
+      <BackToTop />
     </div>
   )
 }
