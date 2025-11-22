@@ -1,39 +1,38 @@
-import type { Post } from '@/types'
-import BackToTop from '@/components/back-to-top'
-import MDX from '@/components/mdx'
-import { PostComment } from '@/components/post-comment'
-import PostFooter from '@/components/post-footer'
-import PostThumbnailImage from '@/components/post-thumbnail-image'
-import TableOfContents from '@/components/table-of-contents'
-import { siteConfig } from '@/lib/site'
+'use client'
+
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
+import dynamic from 'next/dynamic'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 interface PostContentProps {
-  post: Post
+  source: MDXRemoteSerializeResult
 }
 
-function PostContent({ post: { source, thumbnail, title, slug, prevPost, nextPost } }: PostContentProps) {
+const Editor = dynamic(async () => import('./mdx-editor'), {
+  ssr: false,
+})
+
+const mdxComponents = {
+  Button,
+  Editor,
+}
+
+function PostContent({ source }: PostContentProps) {
   return (
-    <div className="border-border container mx-auto flex px-4 lg:border-r lg:px-0">
-      <article className="border-border min-w-0 flex-1 border-x">
-        <div className="relative h-64 w-full overflow-hidden md:h-96">
-          <PostThumbnailImage src={thumbnail} alt={title} enableHoverScale={false} />
-        </div>
-        <div className="p-6 lg:p-10">
-          <MDX source={source} />
-        </div>
-        <div className="border-border border-t px-6 pt-3 lg:px-10 lg:pt-5">
-          <PostComment slug={slug} url={`${siteConfig.url}/post/${slug}`} />
-        </div>
-        <div className="border-border border-t p-6 lg:p-10">
-          <PostFooter prevPost={prevPost} nextPost={nextPost} />
-        </div>
-      </article>
-      <aside className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
-        <div className="sticky top-24 flex h-[calc(100vh-8rem)] flex-col overflow-hidden">
-          <TableOfContents />
-        </div>
-      </aside>
-      <BackToTop />
+    <div
+      className={cn(
+        'prose dark:prose-invert max-w-none',
+        'prose-headings:font-semibold prose-headings:text-balance',
+        'prose-p:has-[img]:text-center prose-img:inline-block',
+        'prose-inline-code:before:content-none prose-inline-code:after:content-none',
+        'prose-inline-code:rounded-md prose-inline-code:border prose-inline-code:border-border',
+        'prose-inline-code:bg-muted prose-inline-code:px-1.5 prose-inline-code:py-0.5',
+        'prose-inline-code:font-semibold prose-inline-code:text-foreground prose-inline-code:font-mono',
+      )}
+    >
+      <MDXRemote {...source} components={mdxComponents} />
     </div>
   )
 }

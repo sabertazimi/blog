@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import NotFoundResult from '@/components/not-found-result'
 import PageHeader from '@/components/page-header'
-import PostContent from '@/components/post-content'
 import PostHeader from '@/components/post-header'
+import PostLayout from '@/components/post-layout'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostData, getPostsData, getPostsMeta } from '@/lib/get-posts-data'
@@ -44,7 +44,7 @@ export default async function PostPage({ params }: PostPageProps) {
       >
         <PostHeader postData={postData} />
       </PageHeader>
-      {postData ? <PostContent post={postData} /> : <NotFoundResult />}
+      {postData ? <PostLayout post={postData} /> : <NotFoundResult />}
     </DefaultLayout>
   )
 }
