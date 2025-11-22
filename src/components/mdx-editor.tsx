@@ -7,7 +7,7 @@ import { monokaiPro } from '@codesandbox/sandpack-themes'
 import { Children, isValidElement } from 'react'
 import { normalizeFilepath } from '@/lib/utils'
 
-interface EditorProps {
+interface MDXEditorProps {
   template?: SandpackPredefinedTemplate
   children?: ReactNode
 }
@@ -22,7 +22,7 @@ interface PreProps {
   filename?: string
 }
 
-function Editor({ template = 'react-ts', children }: EditorProps) {
+function MDXEditor({ template = 'react-ts', children }: MDXEditorProps) {
   // eslint-disable-next-line react/no-children-to-array -- Transform children to array for processing
   const codeSnippets = Children.toArray(children)
   const files = codeSnippets.reduce((result: Record<string, { code: string }>, codeSnippet) => {
@@ -75,4 +75,4 @@ function Editor({ template = 'react-ts', children }: EditorProps) {
   )
 }
 
-export default Editor
+export default MDXEditor
