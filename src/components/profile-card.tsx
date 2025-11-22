@@ -1,6 +1,6 @@
 import type { Profile } from '@/types'
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { Calendar, MapPin } from 'lucide-react'
+import { CalendarIcon, MapPinIcon } from 'lucide-react'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -36,11 +36,11 @@ function ProfileCard({ profile }: ProfileCardProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center gap-2 text-sm">
-          <MapPin className="text-muted-foreground size-4" />
+          <MapPinIcon className="text-muted-foreground size-4" />
           <span>{profile.location ?? 'Earth'}</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <Calendar className="text-muted-foreground size-4" />
+          <CalendarIcon className="text-muted-foreground size-4" />
           <time dateTime={profile.createDate}>{formatDate(profile.createDate)}</time>
         </div>
         <Separator />

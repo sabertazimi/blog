@@ -1,4 +1,4 @@
-import { Calendar, Clock, SquarePen } from 'lucide-react'
+import { CalendarIcon, ClockIcon, SquarePenIcon } from 'lucide-react'
 import { cn, formatDate } from '@/lib/utils'
 
 interface PostMetadataProps {
@@ -16,7 +16,7 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
           dateTime={createTime}
           className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}
         >
-          <Calendar className="size-4" />
+          <CalendarIcon className="size-4" />
           {formatDate(createTime)}
         </time>
       )}
@@ -25,13 +25,13 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
           dateTime={updateTime}
           className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}
         >
-          <SquarePen className="size-4" />
+          <SquarePenIcon className="size-4" />
           {formatDate(updateTime)}
         </time>
       )}
       {readingTime !== undefined && readingTime !== 0 && (
         <span className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}>
-          <Clock className="size-4" />
+          <ClockIcon className="size-4" />
           {readingTime}
           {' '}
           min

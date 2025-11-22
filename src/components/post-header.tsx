@@ -1,5 +1,5 @@
 import type { Post } from '@/types'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 import PostMetadata from '@/components/post-metadata'
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,7 @@ function PostHeader({ postData }: PostHeaderProps) {
     <div className="text-muted-foreground flex flex-wrap items-center gap-3 gap-y-5 text-sm">
       <Button variant="outline" asChild className="size-6">
         <Link href="/posts">
-          <ArrowLeft className="size-4" />
+          <ArrowLeftIcon className="size-4" />
           <span className="sr-only">Back to all articles</span>
         </Link>
       </Button>

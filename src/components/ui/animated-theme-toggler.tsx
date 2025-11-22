@@ -1,6 +1,6 @@
 'use client'
 
-import { Moon, Sun } from 'lucide-react'
+import { MoonIcon, SunIcon } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { cn } from '@/lib/utils'
@@ -69,7 +69,7 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
       className={cn('cursor-pointer', className)}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? <MoonIcon /> : <SunIcon /> }
       <span className="sr-only">Toggle theme</span>
     </button>
   )
