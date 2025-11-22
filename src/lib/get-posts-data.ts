@@ -110,18 +110,20 @@ async function getPostsData(): Promise<Post[]> {
 
   const sortedLinkedPostsData = sortedPostsData.map((post, index, posts) => {
     const prevPost
-      = index === posts.length - 1
-        ? null
-        : {
-            slug: posts[index + 1].slug,
-            title: posts[index + 1].title,
-          }
-    const nextPost
       = index === 0
         ? null
         : {
             slug: posts[index - 1].slug,
             title: posts[index - 1].title,
+            description: posts[index - 1].description,
+          }
+    const nextPost
+      = index === posts.length - 1
+        ? null
+        : {
+            slug: posts[index + 1].slug,
+            title: posts[index + 1].title,
+            description: posts[index + 1].description,
           }
 
     return {

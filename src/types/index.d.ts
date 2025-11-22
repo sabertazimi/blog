@@ -28,10 +28,12 @@ export interface PostMeta {
   prevPost: {
     slug: string
     title: string
+    description?: string
   } | null
   nextPost: {
     slug: string
     title: string
+    description?: string
   } | null
 }
 
