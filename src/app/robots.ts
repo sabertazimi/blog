@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    host: siteConfig.siteUrl,
-    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
+    host: siteConfig.url,
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   }
 }

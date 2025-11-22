@@ -8,13 +8,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: siteConfig.siteUrl,
+      url: siteConfig.url,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
     },
     ...routes.map(route => ({
-      url: `${siteConfig.siteUrl}${route.path}`,
+      url: `${siteConfig.url}${route.path}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const lastModified = (timeValue !== undefined && timeValue !== '') ? new Date(timeValue) : new Date()
 
     return {
-      url: `${siteConfig.siteUrl}/post/${post.slug}`,
+      url: `${siteConfig.url}/post/${post.slug}`,
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
