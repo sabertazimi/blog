@@ -1,3 +1,4 @@
+import type { LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 import {
   BadgeInfoIcon,
@@ -19,79 +20,66 @@ interface MDXAdmonitionProps {
   className?: string
 }
 
-type AdmonitionType = 'success' | 'tip' | 'info' | 'note' | 'warning' | 'caution' | 'error' | 'danger'
+type ColorVariant = 'green' | 'blue' | 'yellow' | 'red'
+type AdmonitionVariant = 'success' | 'tip' | 'info' | 'note' | 'warning' | 'caution' | 'error' | 'danger'
 
-function normalizeType(type?: string): AdmonitionType {
-  switch (type) {
-    case 'success':
-      return 'success'
-    case 'tip':
-      return 'tip'
-    case 'info':
-      return 'info'
-    case 'note':
-      return 'note'
-    case 'warning':
-      return 'warning'
-    case 'caution':
-      return 'caution'
-    case 'error':
-      return 'error'
-    case 'danger':
-      return 'danger'
-    case undefined:
-    default:
-      return 'info'
+const colorStyles: Record<
+  ColorVariant,
+  {
+    className: string
+    descriptionClassName: string
   }
+> = {
+  green: {
+    className: 'bg-green-600/10 text-green-600 dark:bg-green-400/10 dark:text-green-400',
+    descriptionClassName: 'text-green-600/80 dark:text-green-400/80',
+  },
+  blue: {
+    className: 'bg-blue-600/10 text-blue-600 dark:bg-blue-400/10 dark:text-blue-400',
+    descriptionClassName: 'text-blue-600/80 dark:text-blue-400/80',
+  },
+  yellow: {
+    className: 'bg-yellow-600/10 text-yellow-600 dark:bg-yellow-400/10 dark:text-yellow-400',
+    descriptionClassName: 'text-yellow-600/80 dark:text-yellow-400/80',
+  },
+  red: {
+    className: 'bg-red-600/10 text-red-600 dark:bg-red-400/10 dark:text-red-400',
+    descriptionClassName: 'text-red-600/80 dark:text-red-400/80',
+  },
 }
 
-const admonitionConfig = {
-  success: {
-    icon: CheckCheckIcon,
-    className: 'bg-green-600/10 text-green-600 dark:bg-green-400/10 dark:text-green-400',
-    descriptionClassName: 'text-green-600/80 dark:text-green-400/80',
-  },
-  tip: {
-    icon: LightbulbIcon,
-    className: 'bg-green-600/10 text-green-600 dark:bg-green-400/10 dark:text-green-400',
-    descriptionClassName: 'text-green-600/80 dark:text-green-400/80',
-  },
-  info: {
-    icon: BadgeInfoIcon,
-    className: 'bg-blue-600/10 text-blue-600 dark:bg-blue-400/10 dark:text-blue-400',
-    descriptionClassName: 'text-blue-600/80 dark:text-blue-400/80',
-  },
-  note: {
-    icon: NotebookPenIcon,
-    className: 'bg-blue-600/10 text-blue-600 dark:bg-blue-400/10 dark:text-blue-400',
-    descriptionClassName: 'text-blue-600/80 dark:text-blue-400/80',
-  },
-  warning: {
-    icon: TriangleAlertIcon,
-    className: 'bg-yellow-600/10 text-yellow-600 dark:bg-yellow-400/10 dark:text-yellow-400',
-    descriptionClassName: 'text-yellow-600/80 dark:text-yellow-400/80',
-  },
-  caution: {
-    icon: ShieldAlertIcon,
-    className: 'bg-yellow-600/10 text-yellow-600 dark:bg-yellow-400/10 dark:text-yellow-400',
-    descriptionClassName: 'text-yellow-600/80 dark:text-yellow-400/80',
-  },
-  error: {
-    icon: CircleXIcon,
-    className: 'bg-red-600/10 text-red-600 dark:bg-red-400/10 dark:text-red-400',
-    descriptionClassName: 'text-red-600/80 dark:text-red-400/80',
-  },
-  danger: {
-    icon: FlameIcon,
-    className: 'bg-red-600/10 text-red-600 dark:bg-red-400/10 dark:text-red-400',
-    descriptionClassName: 'text-red-600/80 dark:text-red-400/80',
-  },
-} as const
+const admonitionConfig: Record<
+  AdmonitionVariant,
+  {
+    icon: LucideIcon
+    color: ColorVariant
+  }
+> = {
+  success: { icon: CheckCheckIcon, color: 'green' },
+  tip: { icon: LightbulbIcon, color: 'green' },
+  info: { icon: BadgeInfoIcon, color: 'blue' },
+  note: { icon: NotebookPenIcon, color: 'blue' },
+  warning: { icon: TriangleAlertIcon, color: 'yellow' },
+  caution: { icon: ShieldAlertIcon, color: 'yellow' },
+  error: { icon: CircleXIcon, color: 'red' },
+  danger: { icon: FlameIcon, color: 'red' },
+}
+
+const validTypes = new Set<string>(Object.keys(admonitionConfig))
+
+function normalizeType(type?: string): AdmonitionVariant {
+  if (type !== undefined && validTypes.has(type)) {
+    return type as AdmonitionVariant
+  }
+
+  return 'info'
+}
 
 function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmonitionProps) {
   const normalizedType = normalizeType(type)
-  const config = admonitionConfig[normalizedType]
-  const Icon = config.icon
+  const displayTitle = title ?? normalizedType.charAt(0).toUpperCase() + normalizedType.slice(1)
+  const { icon: Icon, color } = admonitionConfig[normalizedType]
+  const styles = colorStyles[color]
 
   return (
     <Alert
@@ -103,16 +91,14 @@ function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmoni
         '[&_li]:my-0.5',
         '[&_code]:text-xs',
         '[&_a]:text-sm',
-        config.className,
+        styles.className,
         className,
       )}
       {...props}
     >
       <Icon />
-      <AlertTitle>
-        {title !== undefined && title !== '' ? title : normalizedType.charAt(0).toUpperCase() + normalizedType.slice(1)}
-      </AlertTitle>
-      <AlertDescription className={cn(config.descriptionClassName)}>{children}</AlertDescription>
+      <AlertTitle>{displayTitle}</AlertTitle>
+      <AlertDescription className={styles.descriptionClassName}>{children}</AlertDescription>
     </Alert>
   )
 }
