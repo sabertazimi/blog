@@ -27,7 +27,7 @@ function PostHeader({ postData }: PostHeaderProps) {
           ))}
         </div>
       )}
-      <PostMetadata date={formatDate(postData?.createTime)} readingTime={postData?.readingTime} />
+      <PostMetadata date={formatDate(postData?.createTime)} readingTime={postData?.readingTime} updateTime={formatDate(postData?.updateTime)} />
     </div>
   )
 }
