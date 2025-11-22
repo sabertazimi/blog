@@ -18,9 +18,6 @@ const socialIcons: Record<SocialSite, React.ComponentType<{ className?: string }
 }
 
 function SiteFooter({ buildTime }: Props) {
-  const buildDate = new Date(buildTime)
-  const formattedTime = formatDate(buildDate)
-
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-6 py-8">
@@ -101,7 +98,7 @@ function SiteFooter({ buildTime }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <time dateTime={buildDate.toISOString()}>{formattedTime}</time>
+              <time dateTime={new Date(buildTime).toISOString()}>{formatDate(buildTime)}</time>
             </a>
           </span>
         </div>

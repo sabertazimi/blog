@@ -7,13 +7,21 @@ interface PostCardProps {
   url: string
   title: string
   description?: string
-  date: string
   thumbnail?: string
+  createTime?: string
   readingTime?: number
   showRightBorder?: boolean
 }
 
-function PostCard({ url, title, description, date, thumbnail, readingTime, showRightBorder = true }: PostCardProps) {
+function PostCard({
+  url,
+  title,
+  description,
+  thumbnail,
+  createTime,
+  readingTime,
+  showRightBorder = true,
+}: PostCardProps) {
   return (
     <Link
       href={url}
@@ -34,7 +42,7 @@ function PostCard({ url, title, description, date, thumbnail, readingTime, showR
             <p className="text-muted-foreground line-clamp-3 text-sm">{description}</p>
           )}
           <div className="mt-auto flex items-center justify-between">
-            <PostMetadata date={date} readingTime={readingTime} />
+            <PostMetadata createTime={createTime} readingTime={readingTime} />
           </div>
         </div>
       </div>

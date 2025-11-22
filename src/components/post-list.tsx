@@ -1,7 +1,7 @@
 import type { PostMeta } from '@/types'
 import { Suspense } from 'react'
 import PostCard from '@/components/post-card'
-import { cn, formatDate } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 interface PostListProps {
   postsMeta: PostMeta[]
@@ -27,7 +27,7 @@ function PostList({ postsMeta, selectedTag }: PostListProps) {
               title={post.title}
               description={post.description}
               thumbnail={post.thumbnail}
-              date={formatDate(post.createTime)}
+              createTime={post.createTime}
               readingTime={post.readingTime}
               showRightBorder={filteredPosts.length < 3}
             />

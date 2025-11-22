@@ -85,7 +85,7 @@ function CommandMenu({ posts }: Props) {
                   <span className="line-clamp-1">{post.title}</span>
                   {post.createTime !== undefined && post.createTime !== ''
                     ? (
-                        <span className="text-muted-foreground ml-auto text-xs">{formatDate(post.createTime)}</span>
+                        <time dateTime={post.createTime} className="text-muted-foreground ml-auto text-xs">{formatDate(post.createTime)}</time>
                       )
                     : null}
                 </CommandItem>
