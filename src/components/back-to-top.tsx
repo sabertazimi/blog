@@ -30,7 +30,6 @@ function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackT
 
   return (
     <Button
-      aria-label="Back to top"
       variant="outline"
       onClick={() =>
         window.scrollTo({
@@ -38,10 +37,13 @@ function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackT
           behavior: 'smooth',
         })}
       className={cn(
-        'fixed right-6 bottom-12 size-10 z-50 rounded-full transition-opacity duration-300',
+        'fixed right-6 bottom-12 z-50 size-10 rounded-full transition-opacity duration-300',
         visible ? 'opacity-100' : 'opacity-0',
         className,
       )}
+      aria-hidden={!visible}
+      aria-label="Back to top"
+      tabIndex={visible ? 0 : -1}
       {...props}
     >
       <ArrowUpToLine />
