@@ -1,5 +1,5 @@
 import type { PostMeta } from '@/types'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
@@ -42,7 +42,7 @@ function PostFooterItem({
   description?: string
   index: 0 | 1
 }) {
-  const Icon = index === 0 ? ChevronLeft : ChevronRight
+  const Icon = index === 0 ? ChevronLeftIcon : ChevronRightIcon
 
   return (
     <Link

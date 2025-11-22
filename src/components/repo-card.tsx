@@ -1,5 +1,5 @@
 import type { Repo } from '@/types'
-import { GitFork, Star } from 'lucide-react'
+import { GitForkIcon, StarIcon } from 'lucide-react'
 import Link from 'next/link'
 import { colors } from '@/lib/colors'
 
@@ -18,7 +18,7 @@ function RepoCard({ repo }: RepoCardProps) {
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <GitFork className="text-muted-foreground size-4" />
+            <GitForkIcon className="text-muted-foreground size-4" />
             <h4 className="font-semibold">{repo.name}</h4>
           </div>
           <div className="mt-2 flex items-center gap-4 text-sm">
@@ -32,7 +32,7 @@ function RepoCard({ repo }: RepoCardProps) {
               <span className="text-muted-foreground">{repo.language}</span>
             </span>
             <span className="text-muted-foreground flex items-center gap-1">
-              <Star className="size-3" />
+              <StarIcon className="size-3" />
               {repo.stars}
             </span>
           </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import type { ButtonProps } from '@/components/ui/button'
-import { ArrowUpToLine } from 'lucide-react'
+import { ArrowUpToLineIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -57,7 +57,7 @@ function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackT
       tabIndex={visible ? 0 : -1}
       {...props}
     >
-      <ArrowUpToLine />
+      <ArrowUpToLineIcon />
     </Button>
   )
 }

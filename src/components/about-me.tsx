@@ -1,5 +1,5 @@
 import type { Profile, Repo } from '@/types'
-import { GitFork, Star } from 'lucide-react'
+import { GitForkIcon, StarIcon } from 'lucide-react'
 import ProfileCard from '@/components/profile-card'
 import RepoCard from '@/components/repo-card'
 import StatCard from '@/components/stat-card'
@@ -23,9 +23,9 @@ function AboutMe({ profile, repos, totalStars }: AboutMeProps) {
               title="Total Repositories"
               value={repos.length}
               description="Public repositories"
-              icon={GitFork}
+              icon={GitForkIcon}
             />
-            <StatCard title="Total Stars" value={totalStars} description="Across all projects" icon={Star} />
+            <StatCard title="Total Stars" value={totalStars} description="Across all projects" icon={StarIcon} />
           </div>
           <div className="p-6">
             <h3 className="mb-4 text-lg font-semibold">Featured Repositories</h3>

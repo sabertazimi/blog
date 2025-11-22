@@ -1,7 +1,7 @@
 'use client'
 
 import type { ComponentProps, ReactNode, RefObject } from 'react'
-import { TextAlignStart } from 'lucide-react'
+import { TextAlignStartIcon } from 'lucide-react'
 import * as React from 'react'
 import { createContext, use, useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -498,7 +498,7 @@ export function TableOfContents({ toc: manualToc, className, single = false, hea
     <AnchorProvider toc={toc} single={single}>
       <div className={cn('flex h-full flex-col', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
-          <TextAlignStart className="size-4" />
+          <TextAlignStartIcon className="size-4" />
           On this page
         </h3>
         <TOCScrollArea>

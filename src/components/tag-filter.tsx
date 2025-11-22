@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown } from 'lucide-react'
+import { ChevronDownIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
@@ -48,7 +48,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger className="border-border hover:bg-muted flex w-full items-center justify-between rounded-lg border px-4 py-2 transition-colors md:hidden">
           <span className="text-sm font-medium capitalize">{selectedTag}</span>
-          <ChevronDown className="h-4 w-4" />
+          <ChevronDownIcon className="size-4" />
         </DrawerTrigger>
         <DrawerContent className="md:hidden">
           <DrawerHeader>
