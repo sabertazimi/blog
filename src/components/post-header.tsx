@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import PostMetadata from '@/components/post-metadata'
 import { Button } from '@/components/ui/button'
-import { formatDate, getTagUrl } from '@/lib/utils'
+import { getTagUrl } from '@/lib/utils'
 
 interface PostHeaderProps {
   postData?: Post
@@ -27,7 +27,7 @@ function PostHeader({ postData }: PostHeaderProps) {
           ))}
         </div>
       )}
-      <PostMetadata date={formatDate(postData?.createTime)} readingTime={postData?.readingTime} updateTime={formatDate(postData?.updateTime)} />
+      <PostMetadata createTime={postData?.createTime} updateTime={postData?.updateTime} readingTime={postData?.readingTime} />
     </div>
   )
 }
