@@ -47,6 +47,7 @@ function PostFooterItem({
   return (
     <Link
       href={url}
+      aria-label={`${index === 0 ? 'Previous' : 'Next'} post: ${title}`}
       className={cn(
         'hover:bg-accent/80 hover:text-accent-foreground flex flex-col gap-2 rounded-lg border p-4 text-sm transition-colors',
         index === 0 ? 'col-start-1' : 'col-start-2',
