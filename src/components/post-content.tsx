@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
-interface MDXProps {
+interface PostContentProps {
   source: MDXRemoteSerializeResult
 }
 
@@ -19,7 +19,7 @@ const mdxComponents = {
   Editor,
 }
 
-function MDX({ source }: MDXProps) {
+function PostContent({ source }: PostContentProps) {
   return (
     <div
       className={cn(
@@ -37,4 +37,4 @@ function MDX({ source }: MDXProps) {
   )
 }
 
-export default MDX
+export default PostContent
