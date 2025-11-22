@@ -77,7 +77,7 @@ function normalizeType(type?: string): AdmonitionVariant {
 
 function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmonitionProps) {
   const normalizedType = normalizeType(type)
-  const displayTitle = title ?? normalizedType.charAt(0).toUpperCase() + normalizedType.slice(1)
+  const displayTitle = title !== undefined && title !== '' ? title : normalizedType.charAt(0).toUpperCase() + normalizedType.slice(1)
   const { icon: Icon, color } = admonitionConfig[normalizedType]
   const styles = colorStyles[color]
 
