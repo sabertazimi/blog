@@ -7,11 +7,11 @@ import PostThumbnailImage from '@/components/post-thumbnail-image'
 import TableOfContents from '@/components/table-of-contents'
 import { siteConfig } from '@/lib/site'
 
-interface PostContentProps {
+interface PostLayoutProps {
   post: Post
 }
 
-function PostContent({ post: { source, thumbnail, title, slug, prevPost, nextPost } }: PostContentProps) {
+function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost } }: PostLayoutProps) {
   return (
     <div className="border-border container mx-auto flex px-4 lg:border-r lg:px-0">
       <article className="border-border min-w-0 flex-1 border-x">
@@ -38,4 +38,4 @@ function PostContent({ post: { source, thumbnail, title, slug, prevPost, nextPos
   )
 }
 
-export default PostContent
+export default PostLayout
