@@ -1,4 +1,4 @@
-import { cn, formatDate, normalizeFilepath } from './utils'
+import { cn, formatDate, getTagUrl, normalizeFilepath } from './utils'
 
 describe('cn', () => {
   it('should merge class names', () => {
@@ -85,5 +85,15 @@ describe('normalizeFilepath', () => {
 
   it('should return /src/App.vue if language is vue', () => {
     expect(normalizeFilepath('', 'vue')).toBe('/src/App.vue')
+  })
+})
+
+describe('getTagUrl', () => {
+  it('should return /posts if tag is All', () => {
+    expect(getTagUrl('All')).toBe('/posts')
+  })
+
+  it('should return /tag/foo if tag is foo', () => {
+    expect(getTagUrl('foo')).toBe('/tag/foo')
   })
 })
