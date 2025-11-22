@@ -104,13 +104,13 @@ function GravityStarsBackground({
       return
     const rect = container.getBoundingClientRect()
     const nextDpr = Math.max(1, Math.min(window.devicePixelRatio ?? 1, 2))
-    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- dpr is used to scale the canvas
+
     setDpr(nextDpr)
     canvas.width = Math.max(1, Math.floor(rect.width * nextDpr))
     canvas.height = Math.max(1, Math.floor(rect.height * nextDpr))
     canvas.style.width = `${rect.width}px`
     canvas.style.height = `${rect.height}px`
-    // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- canvasSize is used to store the canvas size
+
     setCanvasSize({ width: rect.width, height: rect.height })
     if (starsRef.current.length === 0) {
       initStars(rect.width, rect.height)

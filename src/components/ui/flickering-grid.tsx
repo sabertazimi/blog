@@ -125,7 +125,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     const updateCanvasSize = () => {
       const newWidth = width ?? container.clientWidth
       const newHeight = height ?? container.clientHeight
-      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- canvasSize is used to store the canvas size
+
       setCanvasSize({ width: newWidth, height: newHeight })
       gridParams = setupCanvas(canvas, newWidth, newHeight)
     }

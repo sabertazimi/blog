@@ -78,7 +78,7 @@ export function DotPattern({
     const updateDimensions = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect()
-        // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- dimensions is used to store the dimensions
+
         setDimensions({ width, height })
       }
     }
