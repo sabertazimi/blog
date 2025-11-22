@@ -211,12 +211,12 @@ function Disqus({ shortname, config, className, ...rest }: DisqusProps) {
 
   return (
     <div
+      {...rest}
       id={THREAD_ID}
       className={cn(
-        'after:bg-background relative after:absolute after:bottom-0 after:clear-both after:block after:h-14 after:content-[""]',
+        'after:bg-background relative after:absolute after:bottom-0 after:block after:h-10 after:w-full after:content-[""]',
         className,
       )}
-      {...rest}
     />
   )
 }
