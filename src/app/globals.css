@@ -251,10 +251,21 @@
     font-family: var(--font-stack);
     font-size: var(--font-size);
   }
-}
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  mix-blend-mode: normal;
-  animation: none;
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+    animation: none;
+  }
+
+  /* Fix for https://github.com/disqus/disqus-react/issues/153. */
+  .comments {
+    color: #0a0a0a !important; /* :root --foreground */
+    background-color: #fff !important; /* :root --background */
+  }
+
+  .dark .comments {
+    color: #fafafa !important; /* .dark --foreground */
+    background-color: #0a0a0a !important; /* .dark --background */
+  }
 }

@@ -5,13 +5,13 @@ export function getMetadata({
   title = siteConfig.title,
   description = siteConfig.description,
   author = siteConfig.author,
-  siteUrl = siteConfig.siteUrl,
+  url = siteConfig.url,
   x = siteConfig.socials.x,
 }: {
   title?: string
   description?: string
   author?: string
-  siteUrl?: string
+  url?: string
   x?: string
 } = {}): Metadata {
   return {
@@ -29,7 +29,7 @@ export function getMetadata({
     },
     manifest: '/manifest.json',
     openGraph: {
-      url: siteUrl,
+      url,
       title,
       description,
       siteName: title,

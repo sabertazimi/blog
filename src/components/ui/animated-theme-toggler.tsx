@@ -15,7 +15,6 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
 
   useEffect(() => {
     const updateTheme = () => {
-      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect -- theme state should be updated synchronously
       setIsDark(document.documentElement.classList.contains('dark'))
     }
 

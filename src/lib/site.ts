@@ -8,8 +8,8 @@ interface SiteConfig {
   email: string
   description: string
   themeColor: string
-  siteUrl: string
-  disqusUrl: string
+  url: string
+  disqusShortname: string
   landingPage: {
     starsCount: number
     titles: string[]
@@ -27,8 +27,8 @@ const siteConfig: SiteConfig = {
   description:
     'A modern blog about web development, programming, and technology. Sharing insights on React, TypeScript, Next.js, and more.',
   themeColor: colors.black,
-  siteUrl: 'https://blog.tazimi.dev',
-  disqusUrl: 'https://sabertaz-blog.disqus.com',
+  url: 'https://blog.tazimi.dev',
+  disqusShortname: 'sabertaz-blog',
   landingPage: {
     starsCount: 800,
     titles: ['Coder', 'Developer', 'Learner'],
