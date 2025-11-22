@@ -1,7 +1,7 @@
 import type { Post } from '@/types'
 import BackToTop from '@/components/back-to-top'
-import MDX from '@/components/mdx'
 import { PostComment } from '@/components/post-comment'
+import PostContent from '@/components/post-content'
 import PostFooter from '@/components/post-footer'
 import PostThumbnailImage from '@/components/post-thumbnail-image'
 import TableOfContents from '@/components/table-of-contents'
@@ -19,7 +19,7 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
           <PostThumbnailImage src={thumbnail} alt={title} enableHoverScale={false} />
         </div>
         <div className="p-6 lg:p-10">
-          <MDX source={source} />
+          <PostContent source={source} />
         </div>
         <div className="border-border border-t px-6 pt-3 lg:px-10 lg:pt-5">
           <PostComment slug={slug} url={`${siteConfig.url}/post/${slug}`} />
