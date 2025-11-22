@@ -17,27 +17,38 @@ function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackT
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(document.documentElement.scrollTop >= minHeight)
+    let ticking = false
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setVisible(document.documentElement.scrollTop >= minHeight)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    onScroll()
-    document.addEventListener('scroll', onScroll)
+    setVisible(document.documentElement.scrollTop >= minHeight)
+    document.addEventListener('scroll', handleScroll)
 
-    return () => document.removeEventListener('scroll', onScroll)
+    return () => {
+      document.removeEventListener('scroll', handleScroll)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only run on mount
   }, [])
 
   return (
     <Button
       variant="outline"
+      size="icon-lg"
       onClick={() =>
         window.scrollTo({
           top: scrollTo,
           behavior: 'smooth',
         })}
       className={cn(
-        'fixed right-6 bottom-12 z-50 size-10 rounded-full transition-opacity duration-300',
+        'fixed right-6 bottom-12 z-50 rounded-full transition-opacity duration-300',
         visible ? 'opacity-100' : 'opacity-0',
         className,
       )}
