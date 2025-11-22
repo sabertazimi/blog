@@ -58,3 +58,12 @@ export function normalizeFilepath(filename?: string, language?: string): string 
 
   return filename
 }
+
+/**
+ * Get tag URL
+ * @param tag - Tag name
+ * @returns Normalized tag URL
+ */
+export function getTagUrl(tag: string) {
+  return tag === 'All' ? '/posts' : `/tag/${encodeURIComponent(tag)}`
+}

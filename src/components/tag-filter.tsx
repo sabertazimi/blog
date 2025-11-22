@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
-import { cn } from '@/lib/utils'
+import { cn, getTagUrl } from '@/lib/utils'
 
 interface TagFilterProps {
   tags: string[]
@@ -14,10 +14,6 @@ interface TagFilterProps {
 
 function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-
-  const getTagUrl = (tag: string) => {
-    return tag === 'All' ? '/posts' : `/tag/${encodeURIComponent(tag)}`
-  }
 
   return (
     <>
