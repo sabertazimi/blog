@@ -84,17 +84,12 @@ export function trimTrailingNewlines(code: string = ''): string {
  * @returns Language identifier for syntax highlighting (defaults to 'typescript')
  */
 export function parseLanguageFromClassName(languageClass?: string): BundledLanguage {
-  if (languageClass === undefined || languageClass === null || languageClass === '') {
+  if (languageClass === undefined || languageClass === null || languageClass.trim() === '') {
     return 'typescript'
   }
 
   const language = languageClass.replace('language-', '')
-
-  if (Object.keys(bundledLanguages).includes(language)) {
-    return language as BundledLanguage
-  }
-
-  return 'typescript'
+  return language in bundledLanguages ? (language as BundledLanguage) : 'typescript'
 }
 
 /**
