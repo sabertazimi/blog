@@ -5,16 +5,6 @@ export declare type BuildTime = string | number | Date
 export declare type Tag = string
 export declare type Tags = Record<Tag, number>
 
-export interface MDXFrontMatter {
-  layout: string
-  title: string
-  description?: string
-  author?: string
-  date?: string
-  thumbnail?: string
-  tags?: Tag[]
-}
-
 export interface PostMeta {
   slug: string
   title: string
@@ -43,6 +33,28 @@ export interface PostContent {
 }
 
 export declare type Post = PostMeta & PostContent
+
+export declare type PostsMeta = PostMeta[]
+
+export interface TagsMeta {
+  allTags: Tag[]
+  tagCounts: Tags
+}
+
+export interface Metadata {
+  posts: PostsMeta
+  tags: TagsMeta
+}
+
+export interface MDXFrontMatter {
+  layout: string
+  title: string
+  description?: string
+  author?: string
+  date?: string
+  thumbnail?: string
+  tags?: Tag[]
+}
 
 export interface Profile {
   username: string

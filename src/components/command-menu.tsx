@@ -1,6 +1,6 @@
 'use client'
 
-import type { PostMeta, Tag } from '@/types'
+import type { Metadata } from '@/types'
 import { FileTextIcon, TagIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
@@ -15,19 +15,18 @@ import {
 } from '@/components/ui/command'
 import { cn, formatDate, getTagUrl } from '@/lib/utils'
 
-interface Props {
-  posts: PostMeta[]
-  tags: Tag[]
+interface CommandMenuProps {
+  metadata: Metadata
 }
 
-function CommandMenu({ posts, tags }: Props) {
+function CommandMenu({ metadata: { posts, tags } }: CommandMenuProps) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
 
-  const searchLower = search.toLowerCase()
-  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(searchLower))
-  const filteredTags = tags.filter(tag => tag.toLowerCase().includes(searchLower))
+  const normalizedSearchText = search.toLowerCase()
+  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(normalizedSearchText))
+  const filteredTags = tags.allTags.filter(tag => tag.toLowerCase().includes(normalizedSearchText))
 
   const runCommand = useCallback((command: () => void) => {
     setOpen(false)
@@ -107,6 +106,9 @@ function CommandMenu({ posts, tags }: Props) {
                 >
                   <TagIcon />
                   <span className="line-clamp-1">{tag}</span>
+                  <span className="border-border text-muted-foreground ml-auto flex h-5 min-w-5 items-center justify-center rounded border text-xs font-medium">
+                    {tags.tagCounts[tag]}
+                  </span>
                 </CommandItem>
               ))}
             </CommandGroup>

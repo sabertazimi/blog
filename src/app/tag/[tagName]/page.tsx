@@ -4,7 +4,7 @@ import PostList from '@/components/post-list'
 import TagFilter from '@/components/tag-filter'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
-import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
+import { getPostsMeta } from '@/lib/get-posts-data'
 import { routes, ROUTES_INDEX } from '@/lib/routes'
 
 interface TagPageProps {
@@ -14,10 +14,9 @@ interface TagPageProps {
 }
 
 export async function generateStaticParams() {
-  const postsData = await getPostsData()
-  const { allTags } = await getTagsData(postsData)
+  const { tags } = await getPostsMeta()
 
-  return allTags
+  return tags.allTags
     .filter(tag => tag !== 'All')
     .map(tag => ({
       tagName: tag,
@@ -34,18 +33,17 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 
 export default async function TagPage({ params }: TagPageProps) {
   const resolvedParams = await params
-  const buildTime = getBuildTime()
-  const postsData = await getPostsData()
-  const postsMeta = await getPostsMeta(postsData)
-  const { allTags, tagCounts } = await getTagsData(postsData)
   const decodedTagName = decodeURIComponent(resolvedParams.tagName)
+  const buildTime = getBuildTime()
+  const metadata = await getPostsMeta()
+  const { posts, tags } = metadata
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta} tags={allTags}>
+    <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader title={routes[ROUTES_INDEX.posts].title} description={routes[ROUTES_INDEX.posts].description}>
-        {allTags.length > 0 && <TagFilter tags={allTags} selectedTag={decodedTagName} tagCounts={tagCounts} />}
+        {tags.allTags.length > 0 && <TagFilter tagsMeta={tags} selectedTag={decodedTagName} />}
       </PageHeader>
-      <PostList postsMeta={postsMeta} selectedTag={decodedTagName} />
+      <PostList postsMeta={posts} selectedTag={decodedTagName} />
     </DefaultLayout>
   )
 }

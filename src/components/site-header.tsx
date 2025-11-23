@@ -1,6 +1,6 @@
 'use client'
 
-import type { PostMeta, Tag } from '@/types'
+import type { Metadata } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import CommandMenu from '@/components/command-menu'
@@ -12,11 +12,10 @@ import { siteConfig } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 interface Props {
-  posts: PostMeta[]
-  tags: Tag[]
+  metadata: Metadata
 }
 
-function Header({ posts, tags }: Props) {
+function Header({ metadata }: Props) {
   return (
     <header className="bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="container mx-auto flex h-16 items-center px-6">
@@ -31,7 +30,7 @@ function Header({ posts, tags }: Props) {
         <MobileNav />
         <div className="flex-1" />
         <div className="mr-2 hidden md:flex">
-          <CommandMenu posts={posts} tags={tags} />
+          <CommandMenu metadata={metadata} />
         </div>
 
         <div className="flex items-center">
