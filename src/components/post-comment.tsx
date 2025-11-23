@@ -1,8 +1,8 @@
 'use client'
 
+import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState } from 'react'
 import Disqus from '@/components/disqus'
-import { useTheme } from '@/hooks/use-theme'
 import { siteConfig } from '@/lib/site'
 
 interface PostCommentProps {
@@ -11,9 +11,14 @@ interface PostCommentProps {
 }
 
 export function PostComment({ url, slug }: PostCommentProps) {
-  const theme = useTheme()
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -47,7 +52,7 @@ export function PostComment({ url, slug }: PostCommentProps) {
 
   return (
     <div ref={containerRef} className="comments">
-      {isVisible && <Disqus key={theme} shortname={siteConfig.disqusShortname} config={disqusConfig} />}
+      {mounted && isVisible && <Disqus key={resolvedTheme} shortname={siteConfig.disqusShortname} config={disqusConfig} />}
     </div>
   )
 }

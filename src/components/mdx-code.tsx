@@ -3,13 +3,13 @@
 import type { JSX, ReactElement } from 'react'
 import type { BundledLanguage } from 'shiki/bundle/web'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
+import { useTheme } from 'next-themes'
 import { Fragment, useEffect, useState } from 'react'
 import { jsx, jsxs } from 'react/jsx-runtime'
 import { codeToHast } from 'shiki/bundle/web'
 import MDXEditor from '@/components/mdx-editor'
 import { CopyButton } from '@/components/ui/copy-button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useTheme } from '@/hooks/use-theme'
 import {
   cn,
   getLanguageDisplayName,
@@ -101,12 +101,17 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
   const showLineNumbers = line === 'true'
   const showCopyButton = nocopy !== 'true'
   const isLive = live === 'true'
-  const theme = useTheme()
-
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [highlightedCode, setHighlightedCode] = useState<JSX.Element | null>(null)
 
   useEffect(() => {
-    if (!isLive) {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isLive && mounted && resolvedTheme !== null && resolvedTheme !== undefined) {
+      const theme = resolvedTheme === 'dark' ? 'dark' : 'light'
       highlight(code, language, highlightLines, showLineNumbers, theme)
         .then(setHighlightedCode)
         .catch((error) => {
@@ -115,7 +120,7 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
           }
         })
     }
-  }, [code, language, highlightLines, showLineNumbers, isLive, theme])
+  }, [code, language, highlightLines, showLineNumbers, isLive, resolvedTheme, mounted])
 
   if (isLive) {
     return <MDXEditor live language={language} code={code} />
