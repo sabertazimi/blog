@@ -10,8 +10,11 @@ import { normalizeFilepath } from '@/lib/utils'
 
 interface MDXEditorProps {
   template?: SandpackPredefinedTemplate
+  // Single-file mode (from live="true"): provide language and code
+  live?: boolean
   language?: string
   code?: string
+  // Multi-file mode (from <Editor> component): provide children
   children?: ReactNode
 }
 
@@ -32,9 +35,7 @@ function getSingleFileConfig(language: string, code: string): Record<string, { c
   const hasImport = code.includes('import')
   const needsReactImport = isReactFile && !hasImport
 
-  const finalCode = needsReactImport
-    ? `import { useState } from 'react'\n\n${code}`
-    : code
+  const finalCode = needsReactImport ? `import { useState } from 'react'\n\n${code}` : code
 
   return {
     [filePath]: { code: finalCode },
@@ -75,13 +76,10 @@ function getMultiFileConfig(children: ReactNode): Record<string, { code: string 
   }, {})
 }
 
-function MDXEditor({ template = 'react-ts', language, code, children }: MDXEditorProps) {
+function MDXEditor({ template = 'react-ts', live = false, language, code, children }: MDXEditorProps) {
   const theme = useTheme()
-  const isSingleFile
-    = language !== undefined && language !== null && language !== '' && code !== undefined && code !== null && code !== ''
-
-  const files: Record<string, { code: string }> = isSingleFile
-    ? getSingleFileConfig(language, code)
+  const files: Record<string, { code: string }> = live
+    ? getSingleFileConfig(language!, code!)
     : getMultiFileConfig(children)
 
   return (
@@ -94,7 +92,7 @@ function MDXEditor({ template = 'react-ts', language, code, children }: MDXEdito
         options={{
           showLineNumbers: true,
           showInlineErrors: false,
-          showTabs: !isSingleFile,
+          showTabs: !live,
           externalResources: [],
         }}
         template={template}

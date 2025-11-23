@@ -112,7 +112,7 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
   }, [code, language, highlightLines, showLineNumbers, isLive, theme])
 
   if (isLive) {
-    return <MDXEditor template="react-ts" code={code} language={language} />
+    return <MDXEditor live language={language} code={code} />
   }
 
   if (!highlightedCode) {
