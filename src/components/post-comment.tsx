@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Disqus from '@/components/disqus'
+import { useTheme } from '@/hooks/use-theme'
 import { siteConfig } from '@/lib/site'
 
 interface PostCommentProps {
@@ -10,32 +11,14 @@ interface PostCommentProps {
 }
 
 export function PostComment({ url, slug }: PostCommentProps) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const theme = useTheme()
   const [isVisible, setIsVisible] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const updateTheme = () => {
-      const isDark = document.documentElement.classList.contains('dark')
-      const currentTheme = isDark ? 'dark' : 'light'
-      const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-      setTheme(storedTheme || currentTheme)
-    }
-
-    updateTheme()
-
-    const observer = new MutationObserver(updateTheme)
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    })
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!containerRef.current)
+    if (!containerRef.current) {
       return
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,13 +47,7 @@ export function PostComment({ url, slug }: PostCommentProps) {
 
   return (
     <div ref={containerRef} className="comments">
-      {isVisible && (
-        <Disqus
-          key={theme}
-          shortname={siteConfig.disqusShortname}
-          config={disqusConfig}
-        />
-      )}
+      {isVisible && <Disqus key={theme} shortname={siteConfig.disqusShortname} config={disqusConfig} />}
     </div>
   )
 }
