@@ -41,7 +41,7 @@ export default async function TagPage({ params }: TagPageProps) {
   const decodedTagName = decodeURIComponent(resolvedParams.tagName)
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout buildTime={buildTime} posts={postsMeta} tags={allTags}>
       <PageHeader title={routes[ROUTES_INDEX.posts].title} description={routes[ROUTES_INDEX.posts].description}>
         {allTags.length > 0 && <TagFilter tags={allTags} selectedTag={decodedTagName} tagCounts={tagCounts} />}
       </PageHeader>

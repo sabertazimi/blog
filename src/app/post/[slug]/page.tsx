@@ -5,7 +5,7 @@ import PostHeader from '@/components/post-header'
 import PostLayout from '@/components/post-layout'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
-import { getPostData, getPostsData, getPostsMeta } from '@/lib/get-posts-data'
+import { getPostData, getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
 interface PostPageProps {
@@ -33,11 +33,12 @@ export default async function PostPage({ params }: PostPageProps) {
   const buildTime = getBuildTime()
   const postsData = await getPostsData()
   const postsMeta = await getPostsMeta(postsData)
+  const { allTags } = await getTagsData(postsData)
   const decodedSlug = decodeURIComponent(resolvedParams.slug)
   const postData = await getPostData(decodedSlug, postsData)
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout buildTime={buildTime} posts={postsMeta} tags={allTags}>
       <PageHeader
         title={postData?.title ?? 'Post Not Found'}
         description={postData?.description ?? 'The post you are looking for does not exist.'}

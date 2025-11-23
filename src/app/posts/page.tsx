@@ -18,7 +18,7 @@ export default async function PostsPage() {
   const { allTags, tagCounts } = await getTagsData(postsData)
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout buildTime={buildTime} posts={postsMeta} tags={allTags}>
       <PageHeader title={routes[ROUTES_INDEX.posts].title} description={routes[ROUTES_INDEX.posts].description}>
         {allTags.length > 0 && <TagFilter tags={allTags} selectedTag="All" tagCounts={tagCounts} />}
       </PageHeader>

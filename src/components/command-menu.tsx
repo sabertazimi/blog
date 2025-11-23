@@ -1,7 +1,7 @@
 'use client'
 
-import type { PostMeta } from '@/types'
-import { FileTextIcon } from 'lucide-react'
+import type { PostMeta, Tag } from '@/types'
+import { FileTextIcon, TagIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -13,18 +13,21 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
-import { cn, formatDate } from '@/lib/utils'
+import { cn, formatDate, getTagUrl } from '@/lib/utils'
 
 interface Props {
   posts: PostMeta[]
+  tags: Tag[]
 }
 
-function CommandMenu({ posts }: Props) {
+function CommandMenu({ posts, tags }: Props) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
 
-  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()))
+  const searchLower = search.toLowerCase()
+  const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(searchLower))
+  const filteredTags = tags.filter(tag => tag.toLowerCase().includes(searchLower))
 
   const runCommand = useCallback((command: () => void) => {
     setOpen(false)
@@ -67,12 +70,12 @@ function CommandMenu({ posts }: Props) {
           K
         </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen} title="Search posts" description="Search for posts by title">
-        <CommandInput placeholder="Search posts..." value={search} onValueChange={setSearch} />
+      <CommandDialog open={open} onOpenChange={setOpen} title="Search posts and tags" description="Search for posts by title or tags">
+        <CommandInput placeholder="Search posts or tags..." value={search} onValueChange={setSearch} />
         <CommandList>
-          <CommandEmpty>No posts found.</CommandEmpty>
+          <CommandEmpty>No results found.</CommandEmpty>
           {filteredPosts.length > 0 && (
-            <CommandGroup heading={search ? 'Search Results' : 'All Posts'}>
+            <CommandGroup heading="Posts">
               {filteredPosts.map(post => (
                 <CommandItem
                   key={post.slug}
@@ -88,6 +91,22 @@ function CommandMenu({ posts }: Props) {
                         <time dateTime={post.createTime} className="text-muted-foreground ml-auto text-xs">{formatDate(post.createTime)}</time>
                       )
                     : null}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+          {filteredTags.length > 0 && (
+            <CommandGroup heading="Tags">
+              {filteredTags.map(tag => (
+                <CommandItem
+                  key={tag}
+                  value={tag}
+                  onSelect={() => {
+                    runCommand(() => router.push(getTagUrl(tag)))
+                  }}
+                >
+                  <TagIcon />
+                  <span className="line-clamp-1">{tag}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
