@@ -7,6 +7,10 @@ export function useTheme() {
 
   useEffect(() => {
     const updateTheme = () => {
+      if (typeof window === 'undefined') {
+        return
+      }
+
       const isDark = document.documentElement.classList.contains('dark')
       const currentTheme = isDark ? 'dark' : 'light'
       const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
