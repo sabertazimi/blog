@@ -73,7 +73,7 @@ async function highlight(
           }
 
           properties.className = cn(
-            'block border-l-2 border-transparent',
+            'block min-h-[1.5rem] border-l-2 border-transparent',
             showLineNumbers ? 'pl-4 pr-4' : 'px-4',
             isHighlighted ? 'border-l-primary/50 bg-primary/5' : 'hover:bg-muted/30',
           )
