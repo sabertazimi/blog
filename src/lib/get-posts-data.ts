@@ -1,4 +1,4 @@
-import type { MDXFrontMatter, Post, PostMeta, Tag, Tags } from '@/types'
+import type { MDXFrontMatter, Metadata, Post } from '@/types'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
@@ -136,17 +136,14 @@ async function getPostsData(): Promise<Post[]> {
   return sortedLinkedPostsData
 }
 
-async function getPostsMeta(cachedData?: Post[]): Promise<PostMeta[]> {
+async function getPostsMeta(cachedData?: Post[]): Promise<Metadata> {
   const postsData = cachedData ?? (await getPostsData())
-  const postsMeta = postsData.map((post) => {
+
+  const posts = postsData.map((post) => {
     const { excerpt: _, source: __, ...postMeta } = post
     return postMeta
   })
-  return postsMeta
-}
 
-async function getTagsData(cachedData?: Post[]): Promise<{ allTags: Tag[], tagCounts: Tags }> {
-  const postsData = cachedData ?? (await getPostsData())
   const tagCounts = postsData.reduce(
     (acc, post) => {
       post.tags?.forEach((tag) => {
@@ -156,6 +153,7 @@ async function getTagsData(cachedData?: Post[]): Promise<{ allTags: Tag[], tagCo
     },
     { All: postsData.length } as Record<string, number>,
   )
+
   const allTags = Object.keys(tagCounts).sort((a, b) => {
     if (a === 'All')
       return -1
@@ -163,7 +161,14 @@ async function getTagsData(cachedData?: Post[]): Promise<{ allTags: Tag[], tagCo
       return 1
     return a.localeCompare(b)
   })
-  return { allTags, tagCounts }
+
+  return {
+    posts,
+    tags: {
+      allTags,
+      tagCounts,
+    },
+  }
 }
 
 async function getPostData(slug: string, cachedData?: Post[]): Promise<Post | undefined> {
@@ -172,4 +177,4 @@ async function getPostData(slug: string, cachedData?: Post[]): Promise<Post | un
   return postData
 }
 
-export { getPostData, getPostsData, getPostsMeta, getTagsData }
+export { getPostData, getPostsData, getPostsMeta }

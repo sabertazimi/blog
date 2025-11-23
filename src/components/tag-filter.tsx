@@ -1,5 +1,6 @@
 'use client'
 
+import type { TagsMeta } from '@/types'
 import { ChevronDownIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -7,18 +8,17 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from 
 import { cn, getTagUrl } from '@/lib/utils'
 
 interface TagFilterProps {
-  tags: string[]
+  tagsMeta: TagsMeta
   selectedTag: string
-  tagCounts?: Record<string, number>
 }
 
-function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
+function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   return (
     <>
       <div className="hidden flex-wrap gap-2 md:flex">
-        {tags.map(tag => (
+        {allTags.map(tag => (
           <Link
             key={tag}
             href={getTagUrl(tag)}
@@ -55,7 +55,7 @@ function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
             <DrawerTitle className="text-sm font-semibold">Select Category</DrawerTitle>
           </DrawerHeader>
           <div className="space-y-2 px-4">
-            {tags.map(tag => (
+            {allTags.map(tag => (
               <Link
                 key={tag}
                 href={getTagUrl(tag)}

@@ -1,10 +1,10 @@
-import type { PostMeta } from '@/types'
+import type { PostsMeta } from '@/types'
 import { Suspense } from 'react'
 import PostCard from '@/components/post-card'
 import { cn } from '@/lib/utils'
 
 interface PostListProps {
-  postsMeta: PostMeta[]
+  postsMeta: PostsMeta
   selectedTag: string
 }
 

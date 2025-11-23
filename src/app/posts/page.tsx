@@ -4,7 +4,7 @@ import PostList from '@/components/post-list'
 import TagFilter from '@/components/tag-filter'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
-import { getPostsData, getPostsMeta, getTagsData } from '@/lib/get-posts-data'
+import { getPostsMeta } from '@/lib/get-posts-data'
 import { routes, ROUTES_INDEX } from '@/lib/routes'
 
 export const metadata: Metadata = {
@@ -13,16 +13,15 @@ export const metadata: Metadata = {
 
 export default async function PostsPage() {
   const buildTime = getBuildTime()
-  const postsData = await getPostsData()
-  const postsMeta = await getPostsMeta(postsData)
-  const { allTags, tagCounts } = await getTagsData(postsData)
+  const metadata = await getPostsMeta()
+  const { posts, tags } = metadata
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader title={routes[ROUTES_INDEX.posts].title} description={routes[ROUTES_INDEX.posts].description}>
-        {allTags.length > 0 && <TagFilter tags={allTags} selectedTag="All" tagCounts={tagCounts} />}
+        {tags.allTags.length > 0 && <TagFilter tagsMeta={tags} selectedTag="All" />}
       </PageHeader>
-      <PostList postsMeta={postsMeta} selectedTag="All" />
+      <PostList postsMeta={posts} selectedTag="All" />
     </DefaultLayout>
   )
 }

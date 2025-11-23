@@ -2,9 +2,13 @@ import type { MetadataRoute } from 'next'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { routes } from '@/lib/routes'
 import { siteConfig } from '@/lib/site'
+import { getTagUrl } from '@/lib/utils'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getPostsMeta()
+  const {
+    posts,
+    tags: { allTags },
+  } = await getPostsMeta()
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -23,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const postPages: MetadataRoute.Sitemap = posts.map((post) => {
     const timeValue = post.updateTime ?? post.createTime
-    const lastModified = (timeValue !== undefined && timeValue !== '') ? new Date(timeValue) : new Date()
+    const lastModified = timeValue !== undefined && timeValue !== '' ? new Date(timeValue) : new Date()
 
     return {
       url: `${siteConfig.url}/post/${post.slug}`,
@@ -33,5 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   })
 
-  return [...staticPages, ...postPages]
+  const tagPages: MetadataRoute.Sitemap = allTags
+    .filter(tag => tag !== 'All')
+    .map(tag => ({
+      url: `${siteConfig.url}${getTagUrl(tag)}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+
+  return [...staticPages, ...postPages, ...tagPages]
 }

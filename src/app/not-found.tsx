@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default async function NotFoundPage() {
   const buildTime = getBuildTime()
-  const postsMeta = await getPostsMeta()
+  const metadata = await getPostsMeta()
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader title="Not Found" description="The page you are looking for does not exist." />
       <NotFoundResult />
     </DefaultLayout>

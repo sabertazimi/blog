@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const buildTime = getBuildTime()
-  const postsMeta = await getPostsMeta()
+  const metadata = await getPostsMeta()
   const { profile, repos } = await getGitHubData()
   const totalStars = repos.reduce((sum, repo) => sum + repo.stars, 0)
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader title={routes[ROUTES_INDEX.about].title} description={routes[ROUTES_INDEX.about].description} />
       <AboutMe profile={profile} repos={repos} totalStars={totalStars} />
     </DefaultLayout>

@@ -15,8 +15,8 @@ interface PostPageProps {
 }
 
 export async function generateStaticParams() {
-  const postsMeta = await getPostsMeta()
-  return postsMeta.map(({ slug }) => ({
+  const { posts } = await getPostsMeta()
+  return posts.map(({ slug }) => ({
     slug,
   }))
 }
@@ -30,14 +30,14 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
 export default async function PostPage({ params }: PostPageProps) {
   const resolvedParams = await params
+  const decodedSlug = decodeURIComponent(resolvedParams.slug)
   const buildTime = getBuildTime()
   const postsData = await getPostsData()
-  const postsMeta = await getPostsMeta(postsData)
-  const decodedSlug = decodeURIComponent(resolvedParams.slug)
+  const metadata = await getPostsMeta(postsData)
   const postData = await getPostData(decodedSlug, postsData)
 
   return (
-    <DefaultLayout buildTime={buildTime} posts={postsMeta}>
+    <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader
         title={postData?.title ?? 'Post Not Found'}
         description={postData?.description ?? 'The post you are looking for does not exist.'}
