@@ -21,11 +21,11 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
         <div className="p-6 lg:p-10">
           <PostContent source={source} />
         </div>
-        <div className="border-border border-t px-6 pt-3 lg:px-10 lg:pt-5">
-          <PostComment slug={slug} url={`${siteConfig.url}/post/${slug}`} />
-        </div>
         <div className="border-border border-t p-6 lg:p-10">
           <PostFooter prevPost={prevPost} nextPost={nextPost} />
+        </div>
+        <div className="border-border border-t px-6 pt-3 lg:px-10 lg:pt-5">
+          <PostComment slug={slug} url={`${siteConfig.url}/post/${slug}`} />
         </div>
       </article>
       <aside className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
