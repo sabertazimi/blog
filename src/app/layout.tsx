@@ -24,7 +24,7 @@ export default function RootLayout({
         <SandpackProvider />
       </head>
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ProgressBarProvider>{children}</ProgressBarProvider>
         </ThemeProvider>
       </body>

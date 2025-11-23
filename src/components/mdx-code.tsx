@@ -103,7 +103,6 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
   const isLive = live === 'true'
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-
   const [highlightedCode, setHighlightedCode] = useState<JSX.Element | null>(null)
 
   useEffect(() => {
@@ -111,8 +110,8 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
   }, [])
 
   useEffect(() => {
-    if (!isLive && mounted && resolvedTheme !== null) {
-      const theme = (resolvedTheme as 'light' | 'dark') || 'light'
+    if (!isLive && mounted && resolvedTheme !== null && resolvedTheme !== undefined) {
+      const theme = resolvedTheme === 'dark' ? 'dark' : 'light'
       highlight(code, language, highlightLines, showLineNumbers, theme)
         .then(setHighlightedCode)
         .catch((error) => {

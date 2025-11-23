@@ -19,8 +19,6 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
     setMounted(true)
   }, [])
 
-  const isDark = resolvedTheme === 'dark'
-
   const toggleTheme = useCallback(async () => {
     if (!buttonRef.current) {
       return
@@ -29,7 +27,7 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
     await document.startViewTransition(() => {
       // eslint-disable-next-line react-dom/no-flush-sync -- theme switch should be synchronous
       flushSync(() => {
-        const newTheme = isDark ? 'light' : 'dark'
+        const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
       })
     }).ready
@@ -49,7 +47,7 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
         pseudoElement: '::view-transition-new(root)',
       },
     )
-  }, [isDark, setTheme, duration])
+  }, [duration, resolvedTheme, setTheme])
 
   if (!mounted) {
     return null
@@ -64,7 +62,7 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
       className={cn('cursor-pointer', className)}
       {...props}
     >
-      {isDark ? <MoonIcon /> : <SunIcon />}
+      {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
       <span className="sr-only">Toggle theme</span>
     </button>
   )
