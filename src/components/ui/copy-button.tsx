@@ -58,11 +58,20 @@ function CopyButton({
   ...props
 }: CopyButtonProps) {
   const [localIsCopied, setLocalIsCopied] = React.useState(isCopied ?? false)
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
   const Icon = localIsCopied ? CheckIcon : CopyIcon
 
   React.useEffect(() => {
     setLocalIsCopied(isCopied ?? false)
   }, [isCopied])
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const handleIsCopied = React.useCallback(
     (isCopied: boolean) => {
@@ -81,7 +90,13 @@ function CopyButton({
           .writeText(content)
           .then(() => {
             handleIsCopied(true)
-            setTimeout(() => handleIsCopied(false), delay)
+            if (timeoutRef.current) {
+              clearTimeout(timeoutRef.current)
+            }
+            timeoutRef.current = setTimeout(() => {
+              handleIsCopied(false)
+              timeoutRef.current = null
+            }, delay)
             onCopy?.(content)
           })
           .catch((error) => {
