@@ -14,9 +14,11 @@ interface TagPageProps {
 }
 
 export async function generateStaticParams() {
-  const { tags } = await getPostsMeta()
+  const {
+    tags: { allTags },
+  } = await getPostsMeta()
 
-  return tags.allTags
+  return allTags
     .filter(tag => tag !== 'All')
     .map(tag => ({
       tagName: tag,

@@ -5,7 +5,10 @@ import { siteConfig } from '@/lib/site'
 import { getTagUrl } from '@/lib/utils'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { posts, tags } = await getPostsMeta()
+  const {
+    posts,
+    tags: { allTags },
+  } = await getPostsMeta()
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -34,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   })
 
-  const tagPages: MetadataRoute.Sitemap = tags.allTags
+  const tagPages: MetadataRoute.Sitemap = allTags
     .filter(tag => tag !== 'All')
     .map(tag => ({
       url: `${siteConfig.url}${getTagUrl(tag)}`,

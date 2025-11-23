@@ -19,14 +19,19 @@ interface CommandMenuProps {
   metadata: Metadata
 }
 
-function CommandMenu({ metadata: { posts, tags } }: CommandMenuProps) {
+function CommandMenu({
+  metadata: {
+    posts,
+    tags: { allTags, tagCounts },
+  },
+}: CommandMenuProps) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
 
   const normalizedSearchText = search.toLowerCase()
   const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(normalizedSearchText))
-  const filteredTags = tags.allTags.filter(tag => tag.toLowerCase().includes(normalizedSearchText))
+  const filteredTags = allTags.filter(tag => tag.toLowerCase().includes(normalizedSearchText))
 
   const runCommand = useCallback((command: () => void) => {
     setOpen(false)
@@ -69,7 +74,12 @@ function CommandMenu({ metadata: { posts, tags } }: CommandMenuProps) {
           K
         </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen} title="Search posts and tags" description="Search for posts by title or tags">
+      <CommandDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="Search posts and tags"
+        description="Search for posts by title or tags"
+      >
         <CommandInput placeholder="Search posts or tags..." value={search} onValueChange={setSearch} />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -87,7 +97,9 @@ function CommandMenu({ metadata: { posts, tags } }: CommandMenuProps) {
                   <span className="line-clamp-1">{post.title}</span>
                   {post.createTime !== undefined && post.createTime !== ''
                     ? (
-                        <time dateTime={post.createTime} className="text-muted-foreground ml-auto text-xs">{formatDate(post.createTime)}</time>
+                        <time dateTime={post.createTime} className="text-muted-foreground ml-auto text-xs">
+                          {formatDate(post.createTime)}
+                        </time>
                       )
                     : null}
                 </CommandItem>
@@ -107,7 +119,7 @@ function CommandMenu({ metadata: { posts, tags } }: CommandMenuProps) {
                   <TagIcon />
                   <span className="line-clamp-1">{tag}</span>
                   <span className="border-border text-muted-foreground ml-auto flex h-5 min-w-5 items-center justify-center rounded border text-xs font-medium">
-                    {tags.tagCounts[tag]}
+                    {tagCounts[tag]}
                   </span>
                 </CommandItem>
               ))}
