@@ -107,7 +107,13 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
 
   useEffect(() => {
     if (!isLive) {
-      void highlight(code, language, highlightLines, showLineNumbers, theme).then(setHighlightedCode)
+      highlight(code, language, highlightLines, showLineNumbers, theme)
+        .then(setHighlightedCode)
+        .catch((error) => {
+          if (process.env.NODE_ENV === 'development') {
+            console.error(`[MDXCode] Failed to highlight code with language "${language}":`, error)
+          }
+        })
     }
   }, [code, language, highlightLines, showLineNumbers, isLive, theme])
 
