@@ -1,6 +1,7 @@
 'use client'
 
 import { MoonIcon, SunIcon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { cn } from '@/lib/utils'
@@ -10,36 +11,26 @@ interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'butt
 }
 
 export function AnimatedThemeToggler({ className, duration = 400, ...props }: AnimatedThemeTogglerProps) {
-  const [isDark, setIsDark] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const updateTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    }
-
-    updateTheme()
-
-    const observer = new MutationObserver(updateTheme)
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    })
-
-    return () => observer.disconnect()
+    setMounted(true)
   }, [])
 
+  const isDark = resolvedTheme === 'dark'
+
   const toggleTheme = useCallback(async () => {
-    if (!buttonRef.current)
+    if (!buttonRef.current) {
       return
+    }
 
     await document.startViewTransition(() => {
       // eslint-disable-next-line react-dom/no-flush-sync -- theme switch should be synchronous
       flushSync(() => {
-        const newTheme = !isDark
-        setIsDark(newTheme)
-        document.documentElement.classList.toggle('dark')
-        localStorage.setItem('theme', newTheme ? 'dark' : 'light')
+        const newTheme = isDark ? 'light' : 'dark'
+        setTheme(newTheme)
       })
     }).ready
 
@@ -58,7 +49,11 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
         pseudoElement: '::view-transition-new(root)',
       },
     )
-  }, [isDark, duration])
+  }, [isDark, setTheme, duration])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <button
@@ -69,7 +64,7 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
       className={cn('cursor-pointer', className)}
       {...props}
     >
-      {isDark ? <MoonIcon /> : <SunIcon /> }
+      {isDark ? <MoonIcon /> : <SunIcon />}
       <span className="sr-only">Toggle theme</span>
     </button>
   )

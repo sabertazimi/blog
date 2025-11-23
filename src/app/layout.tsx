@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import ProgressBarProvider from '@/components/progress-bar-provider'
 import SandpackProvider from '@/components/sandpack-provider'
+import { ThemeProvider } from '@/components/theme-provider'
 import { getMetadata, getViewport } from '@/lib/seo'
 import './globals.css'
 
@@ -18,12 +19,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <SandpackProvider />
       </head>
       <body className="antialiased">
-        <ProgressBarProvider>{children}</ProgressBarProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+          <ProgressBarProvider>{children}</ProgressBarProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
