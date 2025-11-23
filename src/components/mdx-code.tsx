@@ -8,6 +8,7 @@ import { jsx, jsxs } from 'react/jsx-runtime'
 import { codeToHast } from 'shiki/bundle/web'
 import MDXEditor from '@/components/mdx-editor'
 import { CopyButton } from '@/components/ui/copy-button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useTheme } from '@/hooks/use-theme'
 import {
   cn,
@@ -116,11 +117,15 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
 
   if (!highlightedCode) {
     return (
-      <div className="border-border bg-muted/30 my-6 animate-pulse rounded-lg border p-4">
-        <div className="bg-muted h-4 w-24 rounded" />
-        <div className="mt-2 space-y-2">
-          <div className="bg-muted h-3 rounded" />
-          <div className="bg-muted h-3 w-5/6 rounded" />
+      <div className="group relative my-6">
+        <div className="border-border bg-muted/30 flex items-center justify-between rounded-t-lg border border-b-0 px-4 py-2">
+          <Skeleton className="h-4 w-24" />
+        </div>
+        <div className="border-border space-y-2 overflow-x-auto rounded-b-lg border p-4">
+          <Skeleton className="h-3 w-full" />
+          <Skeleton className="h-3 w-5/6" />
+          <Skeleton className="h-3 w-full" />
+          <Skeleton className="h-3 w-4/5" />
         </div>
       </div>
     )
