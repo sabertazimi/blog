@@ -1,4 +1,13 @@
-import { cn, formatDate, getTagUrl, normalizeFilepath } from './utils'
+import {
+  cn,
+  formatDate,
+  getLanguageDisplayName,
+  getTagUrl,
+  normalizeFilepath,
+  parseHighlightLines,
+  parseLanguageFromClassName,
+  trimTrailingNewlines,
+} from './utils'
 
 describe('cn', () => {
   it('should merge class names', () => {
@@ -47,6 +56,20 @@ describe('formatDate', () => {
   })
 })
 
+describe('getTagUrl', () => {
+  it('should return /posts if tag is All', () => {
+    expect(getTagUrl('All')).toBe('/posts')
+  })
+
+  it('should return /tag/foo if tag is foo', () => {
+    expect(getTagUrl('foo')).toBe('/tag/foo')
+  })
+
+  it('should encode special characters in tag name', () => {
+    expect(getTagUrl('React & Next.js')).toBe('/tag/React%20%26%20Next.js')
+  })
+})
+
 describe('normalizeFilepath', () => {
   it('should return filename if it starts with /', () => {
     expect(normalizeFilepath('/foo.tsx')).toBe('/foo.tsx')
@@ -88,12 +111,166 @@ describe('normalizeFilepath', () => {
   })
 })
 
-describe('getTagUrl', () => {
-  it('should return /posts if tag is All', () => {
-    expect(getTagUrl('All')).toBe('/posts')
+describe('trimTrailingNewlines', () => {
+  it('should trim single trailing newline', () => {
+    expect(trimTrailingNewlines('code\n')).toBe('code')
   })
 
-  it('should return /tag/foo if tag is foo', () => {
-    expect(getTagUrl('foo')).toBe('/tag/foo')
+  it('should trim multiple trailing newlines', () => {
+    expect(trimTrailingNewlines('code\n\n\n')).toBe('code')
+  })
+
+  it('should not trim leading newlines', () => {
+    expect(trimTrailingNewlines('\n\ncode')).toBe('\n\ncode')
+  })
+
+  it('should not trim newlines in the middle', () => {
+    expect(trimTrailingNewlines('line1\nline2\nline3')).toBe('line1\nline2\nline3')
+  })
+
+  it('should handle empty string', () => {
+    expect(trimTrailingNewlines('')).toBe('')
+  })
+
+  it('should handle string without newlines', () => {
+    expect(trimTrailingNewlines('code')).toBe('code')
+  })
+
+  it('should handle undefined as default parameter', () => {
+    expect(trimTrailingNewlines()).toBe('')
+  })
+})
+
+describe('parseLanguageFromClassName', () => {
+  it('should parse language from className with language- prefix', () => {
+    expect(parseLanguageFromClassName('language-typescript')).toBe('typescript')
+    expect(parseLanguageFromClassName('language-javascript')).toBe('javascript')
+    expect(parseLanguageFromClassName('language-python')).toBe('python')
+  })
+
+  it('should return typescript as default for undefined', () => {
+    expect(parseLanguageFromClassName(undefined)).toBe('typescript')
+  })
+
+  it('should return typescript as default for null', () => {
+    expect(parseLanguageFromClassName(null as unknown as string)).toBe('typescript')
+  })
+
+  it('should return typescript as default for empty string', () => {
+    expect(parseLanguageFromClassName('')).toBe('typescript')
+  })
+
+  it('should handle className without language- prefix', () => {
+    expect(parseLanguageFromClassName('typescript')).toBe('typescript')
+  })
+
+  it('should return typescript as default for unknown language', () => {
+    expect(parseLanguageFromClassName('unknown')).toBe('typescript')
+  })
+})
+
+describe('getLanguageDisplayName', () => {
+  it('should return display name for common languages', () => {
+    expect(getLanguageDisplayName('html')).toBe('HTML')
+    expect(getLanguageDisplayName('css')).toBe('CSS')
+    expect(getLanguageDisplayName('json')).toBe('JSON')
+    expect(getLanguageDisplayName('xml')).toBe('XML')
+  })
+
+  it('should return display name for YAML variants', () => {
+    expect(getLanguageDisplayName('yml')).toBe('YAML')
+    expect(getLanguageDisplayName('yaml')).toBe('YAML')
+  })
+
+  it('should return display name for Markdown variants', () => {
+    expect(getLanguageDisplayName('md')).toBe('Markdown')
+    expect(getLanguageDisplayName('markdown')).toBe('Markdown')
+  })
+
+  it('should return display name for JavaScript variants', () => {
+    expect(getLanguageDisplayName('js')).toBe('JavaScript')
+    expect(getLanguageDisplayName('javascript')).toBe('JavaScript')
+  })
+
+  it('should return display name for TypeScript variants', () => {
+    expect(getLanguageDisplayName('ts')).toBe('TypeScript')
+    expect(getLanguageDisplayName('typescript')).toBe('TypeScript')
+  })
+
+  it('should return display name for React variants', () => {
+    expect(getLanguageDisplayName('jsx')).toBe('React')
+    expect(getLanguageDisplayName('tsx')).toBe('React')
+  })
+
+  it('should return display name for CoffeeScript variants', () => {
+    expect(getLanguageDisplayName('coffee')).toBe('CoffeeScript')
+    expect(getLanguageDisplayName('coffeescript')).toBe('CoffeeScript')
+  })
+
+  it('should return display name for Objective-C variants', () => {
+    expect(getLanguageDisplayName('objc')).toBe('Objective-C')
+    expect(getLanguageDisplayName('objectivec')).toBe('Objective-C')
+  })
+
+  it('should capitalize first letter for unknown languages', () => {
+    expect(getLanguageDisplayName('rust')).toBe('Rust')
+    expect(getLanguageDisplayName('go')).toBe('Go')
+    expect(getLanguageDisplayName('python')).toBe('Python')
+  })
+
+  it('should handle single character language names', () => {
+    expect(getLanguageDisplayName('c')).toBe('C')
+    expect(getLanguageDisplayName('r')).toBe('R')
+  })
+
+  it('should return empty string for undefined', () => {
+    expect(getLanguageDisplayName(undefined)).toBe('')
+  })
+
+  it('should return empty string for empty string', () => {
+    expect(getLanguageDisplayName('')).toBe('')
+  })
+
+  it('should return empty string for whitespace-only string', () => {
+    expect(getLanguageDisplayName('   ')).toBe('')
+  })
+})
+
+describe('parseHighlightLines', () => {
+  it('should parse single line number', () => {
+    expect(parseHighlightLines('5')).toEqual(new Set([5]))
+  })
+
+  it('should parse comma-separated line numbers', () => {
+    expect(parseHighlightLines('1,3,5')).toEqual(new Set([1, 3, 5]))
+  })
+
+  it('should parse line number ranges', () => {
+    expect(parseHighlightLines('1-3')).toEqual(new Set([1, 2, 3]))
+    expect(parseHighlightLines('5-8')).toEqual(new Set([5, 6, 7, 8]))
+  })
+
+  it('should parse mixed ranges and individual numbers', () => {
+    expect(parseHighlightLines('1-3,5,7-9')).toEqual(new Set([1, 2, 3, 5, 7, 8, 9]))
+  })
+
+  it('should handle empty string', () => {
+    expect(parseHighlightLines('')).toEqual(new Set([]))
+  })
+
+  it('should handle complex expressions', () => {
+    expect(parseHighlightLines('1,3-5,10,15-17')).toEqual(new Set([1, 3, 4, 5, 10, 15, 16, 17]))
+  })
+
+  it('should deduplicate overlapping ranges', () => {
+    expect(parseHighlightLines('1-5,3-7')).toEqual(new Set([1, 2, 3, 4, 5, 6, 7]))
+  })
+
+  it('should return empty set for undefined', () => {
+    expect(parseHighlightLines(undefined)).toEqual(new Set([]))
+  })
+
+  it('should return empty set for whitespace-only string', () => {
+    expect(parseHighlightLines('   ')).toEqual(new Set([]))
   })
 })

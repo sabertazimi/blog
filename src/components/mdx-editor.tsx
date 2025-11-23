@@ -1,14 +1,20 @@
 'use client'
 
-import type { SandpackPredefinedTemplate, SandpackTheme } from '@codesandbox/sandpack-react'
+import type { SandpackPredefinedTemplate } from '@codesandbox/sandpack-react'
 import type { ReactElement, ReactNode } from 'react'
 import { Sandpack } from '@codesandbox/sandpack-react'
-import { monokaiPro } from '@codesandbox/sandpack-themes'
+import { githubLight, sandpackDark } from '@codesandbox/sandpack-themes'
 import { Children, isValidElement } from 'react'
+import { useTheme } from '@/hooks/use-theme'
 import { normalizeFilepath } from '@/lib/utils'
 
 interface MDXEditorProps {
   template?: SandpackPredefinedTemplate
+  // Single-file mode (from live="true"): provide language and code
+  live?: boolean
+  language?: string
+  code?: string
+  // Multi-file mode (from <Editor> component): provide children
   children?: ReactNode
 }
 
@@ -22,10 +28,24 @@ interface PreProps {
   filename?: string
 }
 
-function MDXEditor({ template = 'react-ts', children }: MDXEditorProps) {
+function getSingleFileConfig(language: string, code: string): Record<string, { code: string }> {
+  const filePath = normalizeFilepath(undefined, language)
+
+  const isReactFile = language === 'jsx' || language === 'tsx'
+  const hasImport = code.includes('import')
+  const needsReactImport = isReactFile && !hasImport
+
+  const finalCode = needsReactImport ? `import { useState } from 'react'\n\n${code}` : code
+
+  return {
+    [filePath]: { code: finalCode },
+  }
+}
+
+function getMultiFileConfig(children: ReactNode): Record<string, { code: string }> {
   // eslint-disable-next-line react/no-children-to-array -- Transform children to array for processing
   const codeSnippets = Children.toArray(children)
-  const files = codeSnippets.reduce((result: Record<string, { code: string }>, codeSnippet) => {
+  return codeSnippets.reduce((result: Record<string, { code: string }>, codeSnippet) => {
     if (!isValidElement(codeSnippet)) {
       if (process.env.NODE_ENV === 'development') {
         console.warn('[Editor] Invalid child element detected, skipping:', codeSnippet)
@@ -44,16 +64,23 @@ function MDXEditor({ template = 'react-ts', children }: MDXEditorProps) {
     }
 
     const filename = preElement.props.filename
-    const language = codeElement.props.className?.replace('language-', '')
-    const filePath = normalizeFilepath(filename, language)
-    const code = codeElement.props.children
+    const lang = codeElement.props.className?.replace('language-', '')
+    const filePath = normalizeFilepath(filename, lang)
+    const fileCode = codeElement.props.children
 
     result[filePath] = {
-      code,
+      code: fileCode,
     }
 
     return result
   }, {})
+}
+
+function MDXEditor({ template = 'react-ts', live = false, language, code, children }: MDXEditorProps) {
+  const theme = useTheme()
+  const files: Record<string, { code: string }> = live
+    ? getSingleFileConfig(language!, code!)
+    : getMultiFileConfig(children)
 
   return (
     <div className="my-6 shadow-xl">
@@ -65,11 +92,11 @@ function MDXEditor({ template = 'react-ts', children }: MDXEditorProps) {
         options={{
           showLineNumbers: true,
           showInlineErrors: false,
-          showTabs: true,
+          showTabs: !live,
           externalResources: [],
         }}
         template={template}
-        theme={monokaiPro as SandpackTheme}
+        theme={theme === 'dark' ? sandpackDark : githubLight}
       />
     </div>
   )
