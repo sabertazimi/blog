@@ -51,9 +51,11 @@ async function highlight(
     const pre = hast.children[0]
     if (pre.children.length > 0 && pre.children[0]?.type === 'element') {
       const codeElement = pre.children[0]
-      codeElement.children.forEach((line, index) => {
+      let lineNumber = 0
+
+      codeElement.children.forEach((line) => {
         if (line.type === 'element') {
-          const lineNumber = index + 1
+          lineNumber++
           const properties = line.properties ?? {}
           const isHighlighted = highlightLines.has(lineNumber)
 
