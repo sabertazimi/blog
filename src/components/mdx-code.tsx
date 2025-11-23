@@ -74,7 +74,7 @@ async function highlight(
 
           properties.className = cn(
             'block min-h-[1.5rem] border-l-2 border-transparent',
-            showLineNumbers ? 'pl-4 pr-4' : 'px-4',
+            showLineNumbers ? 'px-0' : 'px-4',
             isHighlighted ? 'border-l-primary/50 bg-primary/5' : 'hover:bg-muted/30',
           )
           properties['data-line'] = lineNumber
@@ -141,8 +141,8 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
         className={cn(
           'border-border overflow-x-auto rounded-b-lg border',
           '[&_pre]:my-0 [&_pre]:rounded-none [&_pre]:border-0',
-          '[&_pre]:bg-transparent [&_pre]:p-0',
-          '[&_code]:grid [&_code]:text-sm',
+          '[&_pre]:bg-transparent [&_pre]:p-0!',
+          '[&_code]:grid [&_code]:py-4 [&_code]:text-sm',
         )}
       >
         {highlightedCode}
