@@ -25,50 +25,64 @@ interface PreProps {
   filename?: string
 }
 
+function getSingleFileConfig(language: string, code: string): Record<string, { code: string }> {
+  const filePath = normalizeFilepath(undefined, language)
+
+  const isReactFile = language === 'jsx' || language === 'tsx'
+  const hasImport = code.includes('import')
+  const needsReactImport = isReactFile && !hasImport
+
+  const finalCode = needsReactImport
+    ? `import { useState } from 'react'\n\n${code}`
+    : code
+
+  return {
+    [filePath]: { code: finalCode },
+  }
+}
+
+function getMultiFileConfig(children: ReactNode): Record<string, { code: string }> {
+  // eslint-disable-next-line react/no-children-to-array -- Transform children to array for processing
+  const codeSnippets = Children.toArray(children)
+  return codeSnippets.reduce((result: Record<string, { code: string }>, codeSnippet) => {
+    if (!isValidElement(codeSnippet)) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('[Editor] Invalid child element detected, skipping:', codeSnippet)
+      }
+      return result
+    }
+
+    const preElement = codeSnippet as ReactElement<PreProps>
+    const codeElement = preElement.props?.children
+
+    if (codeElement === null || codeElement === undefined || !isValidElement(codeElement)) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('[Editor] Invalid code element structure, skipping:', preElement)
+      }
+      return result
+    }
+
+    const filename = preElement.props.filename
+    const lang = codeElement.props.className?.replace('language-', '')
+    const filePath = normalizeFilepath(filename, lang)
+    const fileCode = codeElement.props.children
+
+    result[filePath] = {
+      code: fileCode,
+    }
+
+    return result
+  }, {})
+}
+
 function MDXEditor({ template = 'react-ts', language, code, children }: MDXEditorProps) {
   const theme = useTheme()
-  let files: Record<string, { code: string }>
   const isSingleFile
     = language !== undefined && language !== null && language !== '' && code !== undefined && code !== null && code !== ''
 
-  if (isSingleFile) {
-    const filePath = normalizeFilepath(undefined, language)
-    files = {
-      [filePath]: { code },
-    }
-  } else {
-    // eslint-disable-next-line react/no-children-to-array -- Transform children to array for processing
-    const codeSnippets = Children.toArray(children)
-    files = codeSnippets.reduce((result: Record<string, { code: string }>, codeSnippet) => {
-      if (!isValidElement(codeSnippet)) {
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('[Editor] Invalid child element detected, skipping:', codeSnippet)
-        }
-        return result
-      }
-
-      const preElement = codeSnippet as ReactElement<PreProps>
-      const codeElement = preElement.props?.children
-
-      if (codeElement === null || codeElement === undefined || !isValidElement(codeElement)) {
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('[Editor] Invalid code element structure, skipping:', preElement)
-        }
-        return result
-      }
-
-      const filename = preElement.props.filename
-      const lang = codeElement.props.className?.replace('language-', '')
-      const filePath = normalizeFilepath(filename, lang)
-      const fileCode = codeElement.props.children
-
-      result[filePath] = {
-        code: fileCode,
-      }
-
-      return result
-    }, {})
-  }
+  const files: Record<string, { code: string }> = isSingleFile
+    ? getSingleFileConfig(language, code)
+    : getMultiFileConfig(children)
 
   return (
     <div className="my-6 shadow-xl">
