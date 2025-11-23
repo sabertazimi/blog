@@ -1,6 +1,6 @@
 import Link from 'next/link'
+import PostImage from '@/components/post-image'
 import PostMetadata from '@/components/post-metadata'
-import PostThumbnailImage from '@/components/post-thumbnail-image'
 import { cn } from '@/lib/utils'
 
 interface PostCardProps {
@@ -32,7 +32,7 @@ function PostCard({
     >
       <div className="flex flex-col">
         <div className="relative h-48 w-full overflow-hidden">
-          <PostThumbnailImage src={thumbnail} alt={title} />
+          <PostImage src={thumbnail} alt={title} hoverScale />
         </div>
         <div className="flex min-h-[200px] flex-col gap-2 p-6">
           <h3 className="text-card-foreground text-xl font-semibold underline-offset-4 group-hover:underline">
