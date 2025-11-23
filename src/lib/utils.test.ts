@@ -163,6 +163,10 @@ describe('parseLanguageFromClassName', () => {
   it('should handle className without language- prefix', () => {
     expect(parseLanguageFromClassName('typescript')).toBe('typescript')
   })
+
+  it('should return typescript as default for unknown language', () => {
+    expect(parseLanguageFromClassName('unknown')).toBe('typescript')
+  })
 })
 
 describe('getLanguageDisplayName', () => {
@@ -218,6 +222,18 @@ describe('getLanguageDisplayName', () => {
     expect(getLanguageDisplayName('c')).toBe('C')
     expect(getLanguageDisplayName('r')).toBe('R')
   })
+
+  it('should return empty string for undefined', () => {
+    expect(getLanguageDisplayName(undefined)).toBe('')
+  })
+
+  it('should return empty string for empty string', () => {
+    expect(getLanguageDisplayName('')).toBe('')
+  })
+
+  it('should return empty string for whitespace-only string', () => {
+    expect(getLanguageDisplayName('   ')).toBe('')
+  })
 })
 
 describe('parseHighlightLines', () => {
@@ -248,5 +264,13 @@ describe('parseHighlightLines', () => {
 
   it('should deduplicate overlapping ranges', () => {
     expect(parseHighlightLines('1-5,3-7')).toEqual(new Set([1, 2, 3, 4, 5, 6, 7]))
+  })
+
+  it('should return empty set for undefined', () => {
+    expect(parseHighlightLines(undefined)).toEqual(new Set([]))
+  })
+
+  it('should return empty set for whitespace-only string', () => {
+    expect(parseHighlightLines('   ')).toEqual(new Set([]))
   })
 })

@@ -2,6 +2,7 @@ import type { ClassValue } from 'clsx'
 import type { BundledLanguage } from 'shiki/bundle/web'
 import { clsx } from 'clsx'
 import parseNumericRange from 'parse-numeric-range'
+import { bundledLanguages } from 'shiki/bundle/web'
 import { twMerge } from 'tailwind-merge'
 
 /**
@@ -83,10 +84,16 @@ export function trimTrailingNewlines(code: string = ''): string {
  * @returns Language identifier for syntax highlighting (defaults to 'typescript')
  */
 export function parseLanguageFromClassName(languageClass?: string): BundledLanguage {
-  if (languageClass !== undefined && languageClass !== null && languageClass !== '') {
-    const language = languageClass.replace('language-', '')
+  if (languageClass === undefined || languageClass === null || languageClass === '') {
+    return 'typescript'
+  }
+
+  const language = languageClass.replace('language-', '')
+
+  if (Object.keys(bundledLanguages).includes(language)) {
     return language as BundledLanguage
   }
+
   return 'typescript'
 }
 
@@ -117,17 +124,25 @@ const LANGUAGE_DISPLAY_NAMES: Record<string, string> = {
 /**
  * Get formatted display name for programming language
  * @param language - Language identifier (e.g., 'typescript', 'jsx')
- * @returns Formatted display name (e.g., 'TypeScript', 'React')
+ * @returns Formatted display name (e.g., 'TypeScript', 'React'), or empty string if language is not provided
  */
-export function getLanguageDisplayName(language: string): string {
+export function getLanguageDisplayName(language?: string): string {
+  if (language === undefined || language === null || language.trim() === '') {
+    return ''
+  }
+
   return LANGUAGE_DISPLAY_NAMES[language] || language.charAt(0).toUpperCase() + language.slice(1)
 }
 
 /**
  * Parse line number range expression into set of line numbers
  * @param expression - Range expression (e.g., '1-3,5,7-9')
- * @returns Set of line numbers to highlight
+ * @returns Set of line numbers to highlight, or empty set if expression is not provided
  */
-export function parseHighlightLines(expression: string): Set<number> {
+export function parseHighlightLines(expression?: string): Set<number> {
+  if (expression === undefined || expression === null || expression.trim() === '') {
+    return new Set()
+  }
+
   return new Set(parseNumericRange(expression))
 }
