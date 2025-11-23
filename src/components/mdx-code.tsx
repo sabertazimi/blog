@@ -75,7 +75,7 @@ async function highlight(
           properties.className = cn(
             'block min-h-[1.5rem] border-l-2 border-transparent',
             showLineNumbers ? 'px-0' : 'px-4',
-            isHighlighted ? 'border-l-primary/50 bg-primary/5' : 'hover:bg-muted/30',
+            isHighlighted ? 'border-l-primary/50 bg-primary/5' : 'hover:bg-muted/50',
           )
           properties['data-line'] = lineNumber
           line.properties = properties
