@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DotPattern } from '@/components/ui/dot-pattern'
 import { cn } from '@/lib/utils'
 
@@ -29,6 +29,11 @@ function PostImage({
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
   const hasImage = src !== undefined && src !== '' && !error
+
+  useEffect(() => {
+    setLoaded(false)
+    setError(false)
+  }, [src])
 
   return (
     <>
