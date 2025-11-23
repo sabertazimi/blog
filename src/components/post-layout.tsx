@@ -3,7 +3,7 @@ import BackToTop from '@/components/back-to-top'
 import { PostComment } from '@/components/post-comment'
 import PostContent from '@/components/post-content'
 import PostFooter from '@/components/post-footer'
-import PostThumbnailImage from '@/components/post-thumbnail-image'
+import PostImage from '@/components/post-image'
 import TableOfContents from '@/components/table-of-contents'
 import { siteConfig } from '@/lib/site'
 
@@ -16,7 +16,7 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
     <div className="border-border container mx-auto flex px-4 lg:border-r lg:px-0">
       <article className="border-border min-w-0 flex-1 border-x">
         <div className="relative h-64 w-full overflow-hidden md:h-96">
-          <PostThumbnailImage src={thumbnail} alt={title} enableHoverScale={false} />
+          <PostImage src={thumbnail} alt={title} />
         </div>
         <div className="p-6 lg:p-10">
           <PostContent source={source} />
