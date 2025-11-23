@@ -12,22 +12,25 @@ interface PostThumbnailImageProps {
 }
 
 function PostThumbnailImage({ src, alt, enableHoverScale = true }: PostThumbnailImageProps) {
+  const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)
   const hasThumbnail = src !== undefined && src !== '' && !error
 
   return (
     <>
-      <DotPattern
-        width={20}
-        height={20}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={cn(
-          'fill-muted-foreground/20 transition-transform duration-300',
-          enableHoverScale && 'group-hover:scale-105',
-        )}
-      />
+      {!loaded && (
+        <DotPattern
+          width={20}
+          height={20}
+          cx={1}
+          cy={1}
+          cr={1}
+          className={cn(
+            'fill-muted-foreground/20 transition-transform duration-300',
+            enableHoverScale && 'group-hover:scale-105',
+          )}
+        />
+      )}
       {hasThumbnail && (
         <Image
           src={src}
@@ -35,6 +38,7 @@ function PostThumbnailImage({ src, alt, enableHoverScale = true }: PostThumbnail
           fill
           className={cn('object-cover transition-transform duration-300', enableHoverScale && 'group-hover:scale-105')}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
         />
       )}
