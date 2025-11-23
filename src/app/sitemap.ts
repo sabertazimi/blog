@@ -4,7 +4,7 @@ import { routes } from '@/lib/routes'
 import { siteConfig } from '@/lib/site'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getPostsMeta()
+  const { posts, tags } = await getPostsMeta()
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -33,5 +33,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   })
 
-  return [...staticPages, ...postPages]
+  const tagPages: MetadataRoute.Sitemap = tags.allTags.map((tag) => {
+    return {
+      url: `${siteConfig.url}/tag/${encodeURIComponent(tag)}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }
+  })
+
+  return [...staticPages, ...postPages, ...tagPages]
 }
