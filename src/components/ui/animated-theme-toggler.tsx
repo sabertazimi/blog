@@ -59,7 +59,6 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
       ref={buttonRef}
       variant="ghost"
       size="icon"
-      aria-label="Toggle theme"
       className={cn('cursor-pointer', className)}
       // eslint-disable-next-line ts/no-misused-promises -- toggleTheme is a valid promise
       onClick={toggleTheme}
