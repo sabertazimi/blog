@@ -1,9 +1,11 @@
 'use client'
 
 import type { ComponentProps, ReactNode, RefObject } from 'react'
-import { TextAlignStartIcon } from 'lucide-react'
+import { ChevronDown, TextAlignStartIcon } from 'lucide-react'
 import * as React from 'react'
 import { createContext, use, useEffect, useRef, useState } from 'react'
+import ProgressCircle from '@/components/progress-circle'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { cn } from '@/lib/utils'
 
 export interface TOCItemType {
@@ -298,24 +300,48 @@ function calcThumbPosition(container: HTMLElement, active: string[]): [number, n
   return [upper, lower - upper]
 }
 
-function TOCScrollArea({ children }: { children?: React.ReactNode }) {
+function TOCScrollArea({ children, className }: { children?: React.ReactNode, className?: string }) {
   const viewRef = useRef<HTMLDivElement>(null)
 
   return (
     <div
       ref={viewRef}
-      className="scrollbar-hidden relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 pr-2 text-sm"
+      className={cn(
+        'scrollbar-hidden relative mt-3 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pr-2 pb-3 text-sm',
+        className,
+      )}
     >
       <ScrollProvider containerRef={viewRef}>{children}</ScrollProvider>
     </div>
   )
 }
 
-interface TOCItemsListProps {
-  toc: TOCItemType[]
+function getItemOffset(depth: number): number {
+  if (depth <= 1) {
+    return 14
+  }
+
+  if (depth === 2) {
+    return 26
+  }
+
+  return 36
 }
 
-function TOCItemsList({ toc }: TOCItemsListProps) {
+function getLineOffset(depth: number): number {
+  return depth >= 2 ? 10 : 0
+}
+
+interface TOCItemsListProps {
+  toc: TOCItemType[]
+  /**
+   * 滚动提示线不启用偏移计算
+   * @defaultValue false
+   */
+  disableLineOffset?: boolean
+}
+
+function TOCItemsList({ toc, disableLineOffset = false }: TOCItemsListProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [svg, setSvg] = useState<{
     path: string
@@ -323,9 +349,12 @@ function TOCItemsList({ toc }: TOCItemsListProps) {
     height: number
   }>()
 
+  // Paint scroll indicator `<TOCThumb>`
   useEffect(() => {
-    if (!containerRef.current)
+    if (!containerRef.current) {
       return
+    }
+
     const container = containerRef.current
 
     function onResize(): void {
@@ -341,7 +370,7 @@ function TOCItemsList({ toc }: TOCItemsListProps) {
           continue
 
         const styles = getComputedStyle(element)
-        const offset = getLineOffset(toc[i].depth) + 1
+        const offset = disableLineOffset ? 1 : getLineOffset(toc[i].depth) + 1
         const top = element.offsetTop + Number.parseFloat(styles.paddingTop)
         const bottom = element.offsetTop + element.clientHeight - Number.parseFloat(styles.paddingBottom)
 
@@ -366,32 +395,33 @@ function TOCItemsList({ toc }: TOCItemsListProps) {
     return () => {
       observer.disconnect()
     }
-  }, [toc])
+  }, [toc, disableLineOffset])
 
   return (
     <>
-      {/* SVG 曲线背景 */}
-      {svg
-        ? (
-            <div
-              className="absolute top-0 left-0"
-              style={{
-                width: svg.width,
-                height: svg.height,
-                maskImage: `url("data:image/svg+xml,${encodeURIComponent(
-                  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svg.width} ${svg.height}"><path d="${svg.path}" stroke="black" stroke-width="1" fill="none" /></svg>`,
-                )}")`,
-              }}
-            >
-              <TocThumb containerRef={containerRef} className="bg-primary mt-(--toc-top) h-(--toc-height) transition-all" />
-            </div>
-          )
-        : null}
-
-      {/* TOC 项列表 */}
+      {svg && (
+        <div
+          className="absolute top-0 left-0 z-10"
+          style={{
+            width: svg.width,
+            height: svg.height,
+            maskImage: `url("data:image/svg+xml,${encodeURIComponent(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svg.width} ${svg.height}"><path d="${svg.path}" stroke="black" stroke-width="1" fill="none" /></svg>`,
+            )}")`,
+          }}
+        >
+          <TocThumb containerRef={containerRef} className="bg-primary mt-(--toc-top) h-(--toc-height) transition-all" />
+        </div>
+      )}
       <div ref={containerRef} className="flex flex-col">
         {toc.map((item, i) => (
-          <TOCItem key={item.url} item={item} upper={toc[i - 1]?.depth} lower={toc[i + 1]?.depth} />
+          <TOCItem
+            key={item.url}
+            item={item}
+            upper={toc[i - 1]?.depth}
+            lower={toc[i + 1]?.depth}
+            disableLineOffset={disableLineOffset}
+          />
         ))}
       </div>
     </>
@@ -403,12 +433,13 @@ interface TOCItemProps {
   upper?: number
   lower?: number
   key?: string
+  disableLineOffset?: boolean
 }
 
-function TOCItem({ item, upper, lower }: TOCItemProps) {
-  const offset = getLineOffset(item.depth)
-  const upperOffset = getLineOffset(upper ?? item.depth)
-  const lowerOffset = getLineOffset(lower ?? item.depth)
+function TOCItem({ item, upper, lower, disableLineOffset = false }: TOCItemProps) {
+  const offset = disableLineOffset ? 0 : getLineOffset(item.depth)
+  const upperOffset = disableLineOffset ? 0 : getLineOffset(upper ?? item.depth)
+  const lowerOffset = disableLineOffset ? 0 : getLineOffset(lower ?? item.depth)
 
   return (
     <TOCLink
@@ -424,45 +455,29 @@ function TOCItem({ item, upper, lower }: TOCItemProps) {
         'data-[active=true]:text-primary data-[active=true]:font-medium',
       )}
     >
-      {/* 层级转换的斜线 */}
-      {offset !== upperOffset
-        ? (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="absolute -top-1.5 left-0 size-4">
-              <line x1={upperOffset} y1="0" x2={offset} y2="12" className="stroke-border" strokeWidth="1" />
-            </svg>
-          )
-        : null}
-
+      {/* 层级转换的斜线 ） */}
+      {!disableLineOffset && offset !== upperOffset && (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="absolute -top-1.5 left-0 size-4">
+          <line x1={upperOffset} y1="0" x2={offset} y2="12" className="stroke-border" strokeWidth="1" />
+        </svg>
+      )}
       {/* 垂直连接线 */}
       <div
         className={cn(
           'bg-border absolute inset-y-0 w-px',
-          offset !== upperOffset && 'top-1.5',
-          offset !== lowerOffset && 'bottom-1.5',
+          !disableLineOffset && offset !== upperOffset && 'top-1.5',
+          !disableLineOffset && offset !== lowerOffset && 'bottom-1.5',
         )}
         style={{
           insetInlineStart: offset,
         }}
       />
-
       {item.title}
     </TOCLink>
   )
 }
 
-function getItemOffset(depth: number): number {
-  if (depth <= 1)
-    return 14
-  if (depth === 2)
-    return 26
-  return 36
-}
-
-function getLineOffset(depth: number): number {
-  return depth >= 2 ? 10 : 0
-}
-
-export interface TableOfContentsProps {
+export interface TOCProps {
   /**
    * 可选：手动传入 TOC 数据
    * 如果不传入，则自动从页面 DOM 中提取 headings
@@ -484,13 +499,13 @@ export interface TableOfContentsProps {
   headingSelector?: string
 }
 
-export function TableOfContents({ toc: manualToc, className, single = false, headingSelector }: TableOfContentsProps) {
+export function PostMainTOC({ toc: manualToc, className, single = false, headingSelector }: TOCProps) {
   const extractedHeadings = useExtractHeadingsWithSelector(headingSelector)
   const toc = manualToc ?? extractedHeadings
 
   if (toc.length === 0) {
     return (
-      <div className={cn('flex h-full flex-col', className)}>
+      <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
           On this page
@@ -501,7 +516,7 @@ export function TableOfContents({ toc: manualToc, className, single = false, hea
 
   return (
     <AnchorProvider toc={toc} single={single}>
-      <div className={cn('flex h-full flex-col', className)}>
+      <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
           On this page
@@ -514,4 +529,94 @@ export function TableOfContents({ toc: manualToc, className, single = false, hea
   )
 }
 
-export default TableOfContents
+export function PostMobileTOC({
+  toc: manualToc,
+  single = false,
+  headingSelector,
+  title = 'On this page',
+}: TOCProps & { title?: string }) {
+  const extractedHeadings = useExtractHeadingsWithSelector(headingSelector)
+  const toc = manualToc ?? extractedHeadings
+
+  if (toc.length === 0) {
+    return null
+  }
+
+  return (
+    <AnchorProvider toc={toc} single={single}>
+      <PostMobileTOCContent toc={toc} title={title} />
+    </AnchorProvider>
+  )
+}
+
+function PostMobileTOCContent({ toc, title }: { toc: TOCItemType[], title: string }) {
+  const [open, setOpen] = useState(false)
+  const activeAnchors = useActiveAnchors()
+  const selected = toc.findIndex(item => activeAnchors.includes(item.url.slice(1)))
+  const showItem = selected !== -1 && !open
+
+  const navRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (!open)
+        return
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [open])
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <div
+        ref={navRef}
+        className={cn(
+          'border-border fixed top-16 right-0 left-0 z-40 border-b transition-colors lg:hidden',
+          !open && 'bg-background/80 backdrop-blur-sm',
+          open && 'bg-background shadow-lg',
+        )}
+      >
+        <CollapsibleTrigger
+          className={cn(
+            'flex h-12 w-full items-center gap-2.5 px-4 text-start text-sm',
+            'text-muted-foreground hover:text-foreground',
+            'focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none',
+          )}
+        >
+          <ProgressCircle
+            value={(selected + 1) / Math.max(1, toc.length)}
+            max={1}
+            className={cn('shrink-0', open && 'text-primary')}
+          />
+          <span className="grid flex-1 *:col-start-1 *:row-start-1 *:my-auto">
+            <span
+              className={cn(
+                'truncate transition-all',
+                open && 'text-foreground',
+                showItem && 'pointer-events-none -translate-y-full opacity-0',
+              )}
+            >
+              {title}
+            </span>
+            <span
+              className={cn('truncate transition-all', !showItem && 'pointer-events-none translate-y-full opacity-0')}
+            >
+              {toc[selected]?.title}
+            </span>
+          </span>
+          <ChevronDown className={cn('mx-0.5 size-4 shrink-0 transition-transform', open && 'rotate-180')} />
+        </CollapsibleTrigger>
+        <CollapsibleContent className="bg-background border-border max-h-[60vh] overflow-hidden border-t px-4 pb-2">
+          <TOCScrollArea className="max-h-[calc(60vh-1rem)] py-2">
+            <TOCItemsList toc={toc} disableLineOffset />
+          </TOCScrollArea>
+        </CollapsibleContent>
+      </div>
+    </Collapsible>
+  )
+}
