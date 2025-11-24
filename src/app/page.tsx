@@ -10,7 +10,7 @@ import { routes } from '@/lib/routes'
 import { siteConfig } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
-const icons = {
+const routeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   posts: HomeIcon,
   about: InfoIcon,
 }
@@ -26,7 +26,7 @@ export default function HomePage() {
       <div className="flex items-center justify-center gap-6">
         <TooltipProvider>
           {routes.map((item, index) => {
-            const Icon = icons[item.id as keyof typeof icons]
+            const Icon = routeIcons[item.id]
             return (
               <React.Fragment key={item.id}>
                 <Tooltip>

@@ -1,5 +1,6 @@
 'use client'
 
+import { HomeIcon, InfoIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -7,6 +8,11 @@ import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { routes } from '@/lib/routes'
 import { cn } from '@/lib/utils'
+
+const routeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  posts: HomeIcon,
+  about: InfoIcon,
+}
 
 function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -55,19 +61,23 @@ function MobileNav() {
           sideOffset={14}
         >
           <nav className="flex flex-col gap-3 px-6 py-6">
-            {routes.map(route => (
-              <Link
-                key={route.id}
-                href={route.path}
-                className={cn(
-                  'hover:text-accent-foreground flex items-center text-2xl font-medium transition-colors px-2',
-                  pathname === route.path && 'text-accent-foreground bg-accent',
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                {route.name}
-              </Link>
-            ))}
+            {routes.map((route) => {
+              const Icon = routeIcons[route.id]
+              return (
+                <Link
+                  key={route.id}
+                  href={route.path}
+                  className={cn(
+                    'hover:text-accent-foreground flex items-center gap-3 rounded-md px-3 py-2 text-2xl font-medium transition-colors',
+                    pathname === route.path && 'text-accent-foreground bg-accent',
+                  )}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Icon className="size-6 shrink-0" />
+                  <span>{route.name}</span>
+                </Link>
+              )
+            })}
           </nav>
         </PopoverContent>
       </Popover>
