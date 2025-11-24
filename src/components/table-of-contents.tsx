@@ -490,7 +490,12 @@ export function TableOfContents({ toc: manualToc, className, single = false, hea
 
   if (toc.length === 0) {
     return (
-      <div className="border-border bg-card text-muted-foreground rounded-lg border p-3 text-xs">No headings found</div>
+      <div className={cn('flex h-full flex-col', className)}>
+        <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
+          <TextAlignStartIcon className="size-4" />
+          On this page
+        </h3>
+      </div>
     )
   }
 
