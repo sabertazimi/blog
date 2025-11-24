@@ -18,7 +18,7 @@
 
 [![CI](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/codeql-analysis.yml?branch=main&label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
-[![Jest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
+[![Vitest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
 
 An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
@@ -26,58 +26,96 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
 ### Visual Features
 
-- Great landing page.
-- Typing effect for landing page title.
-- Great fluid of post card.
-- Great tags cloud page: separate page for posts under each tag.
-- Great GitHub information card.
-- Social share buttons.
-- Full-featured `MDX` support:
-  - Optimized vertical rhythm for headings and paragraphs.
-  - Custom almost all `Markdown` built-in components.
-  - `GFM` syntax support.
-  - `Katex` math support.
-  - Admonition container support.
-  - Emoji short code support.
-  - Image preview card support.
-  - Pretty code blocks support:
-    - Syntax highlight using `PrismJS`.
-    - macOS style code box.
-    - Line number support.
-    - Lines highlight support.
-    - Custom code title support.
-    - Quick code copy support.
-  - Out of box support for live code editor.
-  - Automatically generated sidebar navigation,
-    table of contents, previous and next post navigation links.
-- Nice animation for page transitions and dynamic routing.
-- Motion almost everything.
-- Disqus comments system.
-- Customized 404 not found page.
-- Dark mode support.
-- ...and more.
+- **Modern Landing Page**
+  - Animated typing effect for title with morphing text
+  - Gravity stars background animation
+  - Flickering grid effects
+  - Smooth page transitions with View Transitions API
+- **Beautiful Post Cards**
+  - Optimized image loading with Next.js Image
+  - Dot pattern placeholders for loading states
+  - Reading time estimation
+- **Advanced Tag System**
+  - Separate pages for posts under each tag
+  - Tag filtering with command menu (⌘K)
+- **Rich MDX Support**
+  - Optimized vertical rhythm for typography
+  - Custom styled components for Markdown elements
+  - **GitHub Flavored Markdown (GFM)** support
+  - **KaTeX** math rendering support
+  - **Admonition containers** (note, tip, warning, danger, etc.)
+  - **Emoji shortcodes** support (`:smile:` → 😄)
+  - **Image preview** with optimized loading
+  - **Beautiful code blocks** powered by Shiki:
+    - Dual theme support (light/dark mode)
+    - Syntax highlighting for 200+ languages
+    - Line numbers support
+    - Line highlighting support
+    - Custom code title support
+    - One-click code copy button
+  - **Live code editor** powered by Sandpack:
+    - Interactive React/TypeScript playground
+    - Real-time preview
+    - Multi-file support
+    - Hot module reloading
+  - **Automatic navigation generation**:
+    - Sidebar table of contents
+    - Previous/next post navigation
+    - Auto-linked headings with anchor links
+- **GitHub Integration**
+  - GitHub profile card with stats
+  - Repository information cards
+- **Social Features**
+  - Disqus comments system
+- **User Experience**
+  - Dark mode support with smooth transitions
+  - Customized 404 not found page
+  - Back to top button
+  - Progress bar for page navigation
+  - Mobile-first responsive design
+  - Command menu for quick navigation (⌘K)
+  - Smooth animations powered by Motion
 
 ### Development Features
 
-- Lightning fast `HMR`.
-- Dynamic route generation for `Markdown` posts.
-- Optimized build using `Rust` compiler.
-- `TypeScript` static type checking.
-- `ESLint`, `StyleLint` and `Prettier` style checking.
-- Out of box support for `tailwind.css`.
-- Fully customizable styles through `tailwind.css`.
-- Mobile-first approach in development.
-- Out of box support for `Vercel` deployment.
-- Separate components for everything.
-- Complete `React` components testing using `Jest` and `Testing Library`.
-- E2E visual testing using `Cypress` for `Chrome` and `Firefox`.
-- Optimization for `SEO`: meta heading, sitemap and `robots.txt` support.
-- Progressive web app (`PWA`): offline support and webapp manifest support.
-- ...and more.
+- **Modern Tech Stack**
+  - **Next.js 16** with App Router and Turbopack
+  - **React 19** with React Compiler enabled
+  - **TypeScript 5.9** with strict mode
+  - **Tailwind CSS 4** with custom CSS variables
+  - **Shadcn UI** component library
+  - **pnpm 10** for fast package management
+- **Code Quality**
+  - **ESLint 9** with Flat Config
+  - **Stylelint** for CSS linting
+  - **Prettier** with Tailwind CSS plugin
+  - **TypeScript** strict type checking
+- **Testing**
+  - **Vitest** for unit testing with coverage
+  - **Playwright** for E2E testing (Chrome, Firefox, Safari)
+  - **Testing Library** for React component testing
+- **Performance**
+  - Lightning fast HMR with Turbopack
+  - Optimized builds with Rust compiler
+  - Automatic code splitting
+  - Image optimization with Next.js Image
+- **SEO**
+  - Meta tags optimization
+  - Automatic sitemap generation
+  - robots.txt support
+  - Open Graph support
+  - Twitter Card support
+- **Developer Experience**
+  - Hot module reloading
+  - Dynamic route generation for Markdown posts
+  - Separate components for everything
+  - Fully customizable through Tailwind CSS
+  - Out of box support for Vercel deployment
+  - Git-based post update time tracking
 
 ## :bookmark_tabs: Post Template
 
-`Yaml` Front + `Markdown` Body:
+`.yaml` front matter + `.mdx` body:
 
 ```markdown
 ---
@@ -99,15 +137,44 @@ tags:
 
 ## Introduction
 
-<... more contents>
+Your content here...
+
+## Math Support
+
+Inline math: $E = mc^2$
+
+Block math:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+## Admonitions
+
+:::note
+This is a note admonition.
+:::
+
+:::tip
+This is a tip admonition.
+:::
+
+:::warning
+This is a warning admonition.
+:::
 ```
 
-## :rocket: Quick start
+## :rocket: Quick Start
+
+### Prerequisites
+
+- Node.js 18.17 or later
+- pnpm 10 or later
 
 ### Installation
 
 ```bash
-git clone --depth=1 https://github.com/sabertazimi/blog
+git clone https://github.com/sabertazimi/blog
 cd blog
 pnpm install
 ```
@@ -115,106 +182,237 @@ pnpm install
 ### Development
 
 ```bash
-# http://localhost:3000
-pnpm start
+pnpm dev
 ```
 
 **Open the source code and start editing!**
 
 Your site is now running at `http://localhost:3000`!
 
+### Build
+
+```bash
+# Build for production
+pnpm build
+
+# Start production server
+pnpm serve
+```
+
+### Testing
+
+```bash
+# Run unit tests in watch mode
+pnpm test
+
+# Run unit tests with coverage
+pnpm test:all
+
+# Run E2E tests
+pnpm e2e
+
+# View E2E test report
+pnpm e2e:report
+```
+
+### Linting
+
+```bash
+# Run all linters
+pnpm lint
+
+# Run ESLint and Stylelint
+pnpm lint:style
+
+# Run TypeScript type checking
+pnpm lint:type-check
+
+# Auto-fix linting issues
+pnpm lint:fix
+```
+
 ## :stars: Deployment
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsabertazimi%2Fblog&project-name=blog&repo-name=blog&demo-title=Sabertaz%20Blog&demo-url=https%3A%2F%2Fblog.tazimi.dev)
 
-Build for `/` path:
+Build for production:
 
 ```bash
-# Deploy to Vercel.
-pnpm run build
+pnpm build
 ```
 
-## :open_file_folder: Fold Structure
+The optimized production build will be in the `.next` folder.
 
-A quick look at the top-level files and directories you'll see in a Next.js project.
+## :open_file_folder: Project Structure
 
 ```bash
 .
-├── node_modules
-├── app
-├── components
-├── config
-├── contents
-├── cypress
-├── hooks
-├── layouts
-├── lib
-├── mocks
-├── public
-├── styles
-├── types
+├── node_modules/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── about/             # About page
+│   │   ├── post/[slug]/       # Dynamic post pages
+│   │   ├── posts/             # All posts page
+│   │   ├── tag/[tagName]/     # Tag filter pages
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Home page
+│   │   ├── globals.css        # Global styles
+│   │   ├── robots.ts          # robots.txt generation
+│   │   └── sitemap.ts         # Sitemap generation
+│   ├── components/            # React components
+│   │   ├── ui/               # Shadcn UI components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── skeleton.tsx
+│   │   │   └── ...
+│   │   ├── mdx-code.tsx      # Code block with Shiki
+│   │   ├── mdx-editor.tsx    # Live code editor with Sandpack
+│   │   ├── mdx-image.tsx     # Optimized image component
+│   │   ├── post-card.tsx     # Post card component
+│   │   ├── post-content.tsx  # MDX content renderer
+│   │   └── ...
+│   ├── layouts/              # Layout components
+│   │   └── default-layout.tsx
+│   ├── lib/                  # Utility functions
+│   │   ├── get-posts-data.ts # MDX processing
+│   │   ├── utils.ts          # Helper functions
+│   │   ├── routes.ts         # Route configuration
+│   │   ├── seo.ts            # SEO utilities
+│   │   └── ...
+│   └── types/                # TypeScript type definitions
+│       └── index.d.ts
+├── contents/                  # Blog posts (.mdx files)
+│   ├── post1.mdx
+│   ├── post2.mdx
+│   └── ...
+├── public/                    # Static assets
+│   ├── fonts/
+│   ├── photos/
+│   └── ...
+├── e2e/                       # Playwright E2E tests
+│   └── home.spec.ts
+│   └── ...
+├── .github/                   # GitHub workflows
+│   └── workflows/
+│       ├── ci.yml
+│       └── codeql-analysis.yml
 ├── .gitignore
-├── .tokeignore
 ├── .prettierrc.json
-├── .stylelintrc.json
-├── .versionrc.json
-├── codecov.yml
-├── cypress.config.ts
-├── eslint.config.mjs
-├── jest.config.js
-├── jest.setup.js
-├── next-env.d.ts
-├── next.config.mjs
+├── eslint.config.mjs          # ESLint Flat Config
+├── next.config.ts             # Next.js configuration
 ├── package.json
-├── postcss.config.mjs
-├── sitemap.config.js
-├── tailwind.config.ts
-├── tsconfig.json
+├── playwright.config.ts       # Playwright configuration
+├── postcss.config.mjs         # PostCSS configuration
+├── tsconfig.json              # TypeScript configuration
+├── vitest.config.ts           # Vitest configuration
 ├── LICENSE
 └── README.md
 ```
 
-1. **`/node_modules`**: This directory contains all of the modules of code.
-2. **`app`**: Pages components (SSG) based on Next.js [App Router](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration).
-3. **`components`**: React components building block.
-4. **`config`**: Blog site configuration (color/metadata/etc.).
-5. **`contents`**: Blog posts (`.md`/`.mdx`).
-6. **`cypress`**: Cypress E2E testing files.
-7. **`hooks`**: Hooks for shared logic.
-8. **`layouts`**: Layouts components.
-9. **`lib`**: Data fetching helper functions.
-10. **`mocks`**: Mock API for 3rd-party libraries for Jest testing.
-11. **`public`**: Static assets.
-12. **`styles`**: CSS stylesheets files.
-13. **`types`**: TypeScript shared type definition.
-14. **`.gitignore`**: This file tells git which files it should not track.
-15. **`.tokeignore`**: [Code Lines](https://github.com/XAMPPRocky/tokei) configuration file.
-16. **`.prettierrc.json`**: [Prettier](https://prettier.io) configuration file.
-17. **`.stylelintrc.json`**: [StyleLint](https://stylelint.io) configuration file.
-18. **`.versionrc.json`**: [Standard Version](https://github.com/conventional-changelog/standard-version) configuration file.
-19. **`codecov.yml`**: [Codecov](https://codecov.io) CI configuration file.
-20. **`cypress.config.ts`**: [Cypress](https://cypress.io) E2E testing configuration file.
-21. **`eslint.config.mjs`**: [ESLint](https://eslint.org) Flat configuration file.
-22. **`jest.config.js`**: [Jest](https://jestjs.io) configuration file.
-23. **`jest.setup.js`**: Jest basic setup script (after environment setup).
-24. **`next-env.d.ts`**: `Next.js` internal type definition.
-25. **`next.config.mjs`**: `Next.js` configuration file.
-26. **`package.json`**: A manifest file for Node.js projects.
-27. **`postcss.config.mjs`**: [PostCSS](https://postcss.org) configuration file.
-28. **`sitemap.config.js`**: `next-sitemap` configuration file.
-29. **`tailwind.config.ts`**: [Tailwind.css](https://tailwindcss.com) configuration file.
-30. **`tsconfig.json`**: [TypeScript](https://www.typescriptlang.org) configuration file.
-31. **`LICENSE`**: This Next.js starter is licensed under the `MIT` license.
-32. **`README.md`**: A text file containing useful reference information.
+### Key Directories
+
+1. **`src/app/`**: Next.js App Router pages with file-based routing
+2. **`src/components/`**: Reusable React components
+3. **`src/components/ui/`**: Shadcn UI base components
+4. **`src/lib/`**: Utility functions and data fetching logic
+5. **`src/types/`**: TypeScript type definitions
+6. **`contents/`**: Blog posts in MDX format
+7. **`public/`**: Static assets (images, fonts, etc.)
+8. **`e2e/`**: End-to-end tests with Playwright
+
+## :wrench: Configuration
+
+### Site Configuration
+
+Edit `src/lib/site.ts` to customize your blog:
+
+```typescript
+export const site = {
+  title: 'Your Blog Title',
+  description: 'Your blog description',
+  author: 'Your Name',
+  url: 'https://yourblog.com',
+  // ... more settings
+}
+```
+
+### Theme Customization
+
+The blog uses Tailwind CSS 4 with custom CSS variables. Edit `src/app/globals.css` to customize colors:
+
+```css
+:root {
+  --background: oklch(100% 0 0deg);
+  --foreground: oklch(14.5% 0 0deg);
+  --primary: oklch(20.5% 0 0deg);
+  /* ... more colors */
+}
+
+.dark {
+  --background: oklch(14.5% 0 0deg);
+  --foreground: oklch(98.5% 0 0deg);
+  /* ... more colors */
+}
+```
+
+### MDX Components
+
+Customize MDX components in `src/components/post-content.tsx`:
+
+```typescript
+const mdxComponents = {
+  aside: MDXAdmonition,
+  img: MDXImage,
+  pre: MDXCode,
+  Button,
+  Editor: MDXEditor,
+  // Add your custom components here
+}
+```
 
 ## :construction: Caveats
 
-`import` and `export` statements cannot be used **inside** an MDX file.
-If you need to use components in your MDX files,
-they should be provided to `/components/MDX/index.ts`.
+- `import` and `export` statements cannot be used **inside** MDX files due to `next-mdx-remote` limitations.
+- If you need custom components in MDX, add them to `src/components/post-content.tsx`.
+- See [explanation](https://github.com/hashicorp/next-mdx-remote/issues/143#issuecomment-1043067293) for details.
 
-See reason [here](https://github.com/hashicorp/next-mdx-remote#import--export)
-and explanation [here](https://github.com/hashicorp/next-mdx-remote/issues/143#issuecomment-1043067293).
+## :package: Tech Stack
+
+### Core Package
+
+- [Next.js 16](https://nextjs.org/) - React framework
+- [React 19](https://react.dev/) - UI library
+- [TypeScript 5.9](https://www.typescriptlang.org/) - Type safety
+
+### Styling Toolkit
+
+- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
+- [Shadcn UI](https://ui.shadcn.com/) - Component library
+- [Motion](https://motion.dev/) - Animation library
+- [Lucide React](https://lucide.dev/) - Icon library
+
+### Content Helper
+
+- [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) - MDX support
+- [Shiki](https://shiki.style/) - Syntax highlighting
+- [Sandpack](https://sandpack.codesandbox.io/) - Live code editor
+- [KaTeX](https://katex.org/) - Math rendering
+- [remark](https://github.com/remarkjs/remark) - Markdown processing
+- [rehype](https://github.com/rehypejs/rehype) - HTML processing
+
+### Testing Library
+
+- [Vitest](https://vitest.dev/) - Unit testing
+- [Playwright](https://playwright.dev/) - E2E testing
+- [Testing Library](https://testing-library.com/) - React testing
+
+### Development Tool
+
+- [ESLint 9](https://eslint.org/) - Linting
+- [Stylelint](https://stylelint.io/) - CSS linting
+- [Prettier](https://prettier.io/) - Code formatting
+- [pnpm](https://pnpm.io/) - Package manager
 
 ## :bookmark: Contact
 
