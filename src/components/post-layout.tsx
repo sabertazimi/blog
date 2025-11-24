@@ -35,9 +35,7 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
           </div>
         </article>
         <aside className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
-          <div className="sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden">
-            <PostMainTOC />
-          </div>
+          <PostMainTOC />
         </aside>
         <BackToTop />
       </div>

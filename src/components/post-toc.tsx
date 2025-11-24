@@ -307,7 +307,7 @@ function TOCScrollArea({ children, className }: { children?: React.ReactNode, cl
     <div
       ref={viewRef}
       className={cn(
-        'scrollbar-hidden relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto py-3 pr-2 text-sm',
+        'scrollbar-hidden relative mt-3 min-h-0 flex-1 overflow-x-hidden overflow-y-auto pr-2 pb-3 text-sm',
         className,
       )}
     >
@@ -335,13 +335,13 @@ function getLineOffset(depth: number): number {
 interface TOCItemsListProps {
   toc: TOCItemType[]
   /**
-   * 简化模式：用于移动端，使用统一直线代替曲线
+   * 滚动提示线不启用偏移计算
    * @defaultValue false
    */
-  simplified?: boolean
+  disableLineOffset?: boolean
 }
 
-function TOCItemsList({ toc, simplified = false }: TOCItemsListProps) {
+function TOCItemsList({ toc, disableLineOffset = false }: TOCItemsListProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [svg, setSvg] = useState<{
     path: string
@@ -349,9 +349,12 @@ function TOCItemsList({ toc, simplified = false }: TOCItemsListProps) {
     height: number
   }>()
 
+  // Paint scroll indicator `<TOCThumb>`
   useEffect(() => {
-    if (!containerRef.current || simplified)
+    if (!containerRef.current) {
       return
+    }
+
     const container = containerRef.current
 
     function onResize(): void {
@@ -367,7 +370,7 @@ function TOCItemsList({ toc, simplified = false }: TOCItemsListProps) {
           continue
 
         const styles = getComputedStyle(element)
-        const offset = getLineOffset(toc[i].depth) + 1
+        const offset = disableLineOffset ? 1 : getLineOffset(toc[i].depth) + 1
         const top = element.offsetTop + Number.parseFloat(styles.paddingTop)
         const bottom = element.offsetTop + element.clientHeight - Number.parseFloat(styles.paddingBottom)
 
@@ -392,26 +395,24 @@ function TOCItemsList({ toc, simplified = false }: TOCItemsListProps) {
     return () => {
       observer.disconnect()
     }
-  }, [toc, simplified])
+  }, [toc, disableLineOffset])
 
   return (
     <>
-      {svg && !simplified
-        ? (
-            <div
-              className="absolute top-0 left-0"
-              style={{
-                width: svg.width,
-                height: svg.height,
-                maskImage: `url("data:image/svg+xml,${encodeURIComponent(
-                  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svg.width} ${svg.height}"><path d="${svg.path}" stroke="black" stroke-width="1" fill="none" /></svg>`,
-                )}")`,
-              }}
-            >
-              <TocThumb containerRef={containerRef} className="bg-primary mt-(--toc-top) h-(--toc-height) transition-all" />
-            </div>
-          )
-        : null}
+      {svg && (
+        <div
+          className="absolute top-0 left-0"
+          style={{
+            width: svg.width,
+            height: svg.height,
+            maskImage: `url("data:image/svg+xml,${encodeURIComponent(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svg.width} ${svg.height}"><path d="${svg.path}" stroke="black" stroke-width="1" fill="none" /></svg>`,
+            )}")`,
+          }}
+        >
+          <TocThumb containerRef={containerRef} className="bg-primary mt-(--toc-top) h-(--toc-height) transition-all" />
+        </div>
+      )}
       <div ref={containerRef} className="flex flex-col">
         {toc.map((item, i) => (
           <TOCItem
@@ -419,7 +420,7 @@ function TOCItemsList({ toc, simplified = false }: TOCItemsListProps) {
             item={item}
             upper={toc[i - 1]?.depth}
             lower={toc[i + 1]?.depth}
-            simplified={simplified}
+            disableLineOffset={disableLineOffset}
           />
         ))}
       </div>
@@ -432,13 +433,13 @@ interface TOCItemProps {
   upper?: number
   lower?: number
   key?: string
-  simplified?: boolean
+  disableLineOffset?: boolean
 }
 
-function TOCItem({ item, upper, lower, simplified = false }: TOCItemProps) {
-  const offset = simplified ? 0 : getLineOffset(item.depth)
-  const upperOffset = simplified ? 0 : getLineOffset(upper ?? item.depth)
-  const lowerOffset = simplified ? 0 : getLineOffset(lower ?? item.depth)
+function TOCItem({ item, upper, lower, disableLineOffset = false }: TOCItemProps) {
+  const offset = disableLineOffset ? 0 : getLineOffset(item.depth)
+  const upperOffset = disableLineOffset ? 0 : getLineOffset(upper ?? item.depth)
+  const lowerOffset = disableLineOffset ? 0 : getLineOffset(lower ?? item.depth)
 
   return (
     <TOCLink
@@ -455,19 +456,17 @@ function TOCItem({ item, upper, lower, simplified = false }: TOCItemProps) {
       )}
     >
       {/* 层级转换的斜线 ） */}
-      {!simplified && offset !== upperOffset
-        ? (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="absolute -top-1.5 left-0 size-4">
-              <line x1={upperOffset} y1="0" x2={offset} y2="12" className="stroke-border" strokeWidth="1" />
-            </svg>
-          )
-        : null}
+      {!disableLineOffset && offset !== upperOffset && (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="absolute -top-1.5 left-0 size-4">
+          <line x1={upperOffset} y1="0" x2={offset} y2="12" className="stroke-border" strokeWidth="1" />
+        </svg>
+      )}
       {/* 垂直连接线 */}
       <div
         className={cn(
           'bg-border absolute inset-y-0 w-px',
-          !simplified && offset !== upperOffset && 'top-1.5',
-          !simplified && offset !== lowerOffset && 'bottom-1.5',
+          !disableLineOffset && offset !== upperOffset && 'top-1.5',
+          !disableLineOffset && offset !== lowerOffset && 'bottom-1.5',
         )}
         style={{
           insetInlineStart: offset,
@@ -506,7 +505,7 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
 
   if (toc.length === 0) {
     return (
-      <div className={cn('flex h-full flex-col', className)}>
+      <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
           On this page
@@ -517,7 +516,7 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
 
   return (
     <AnchorProvider toc={toc} single={single}>
-      <div className={cn('flex h-full flex-col', className)}>
+      <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
           On this page
@@ -612,9 +611,9 @@ function PostMobileTOCContent({ toc, title }: { toc: TOCItemType[], title: strin
           </span>
           <ChevronDown className={cn('mx-0.5 size-4 shrink-0 transition-transform', open && 'rotate-180')} />
         </CollapsibleTrigger>
-        <CollapsibleContent className="max-h-[50vh] px-4 pb-2">
-          <TOCScrollArea className="py-2">
-            <TOCItemsList toc={toc} simplified />
+        <CollapsibleContent className="bg-background border-border max-h-[60vh] overflow-hidden border-t px-4 pb-2">
+          <TOCScrollArea className="max-h-[calc(60vh-1rem)] py-2">
+            <TOCItemsList toc={toc} disableLineOffset />
           </TOCScrollArea>
         </CollapsibleContent>
       </div>
