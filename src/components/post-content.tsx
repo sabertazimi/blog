@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import dynamic from 'next/dynamic'
 import MDXAdmonition from '@/components/mdx-admonition'
 import MDXCode from '@/components/mdx-code'
+import MDXImage from '@/components/mdx-image'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -18,6 +19,7 @@ const MDXEditor = dynamic(async () => import('@/components/mdx-editor'), {
 
 const mdxComponents = {
   aside: MDXAdmonition,
+  img: MDXImage,
   pre: MDXCode,
   Button,
   Editor: MDXEditor,
@@ -29,7 +31,6 @@ function PostContent({ source }: PostContentProps) {
       className={cn(
         'prose dark:prose-invert max-w-none',
         'prose-headings:font-semibold prose-headings:text-balance',
-        'prose-p:has-[img]:text-center prose-img:inline-block',
         'prose-inline-code:before:content-none prose-inline-code:after:content-none',
         'prose-inline-code:rounded-md prose-inline-code:border prose-inline-code:border-border',
         'prose-inline-code:bg-muted prose-inline-code:px-1.5 prose-inline-code:py-0.5',
