@@ -29,10 +29,9 @@ function Header({ metadata }: Props) {
         <MainNav />
         <MobileNav />
         <div className="flex-1" />
-        <div className="mr-2 hidden md:flex">
+        <div className="mr-2 flex">
           <CommandMenu metadata={metadata} />
         </div>
-
         <div className="flex items-center">
           <AnimatedThemeToggler
             className={cn(

@@ -1,7 +1,7 @@
 'use client'
 
 import type { Metadata } from '@/types'
-import { FileTextIcon, TagIcon } from 'lucide-react'
+import { FileTextIcon, SearchIcon, TagIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -63,14 +63,16 @@ function CommandMenu({
 
   return (
     <>
+      <SearchIcon className="mr-2 shrink-0 md:hidden" onClick={() => setOpen(true)} />
       <Button
         variant="outline"
-        className={cn('relative h-8 w-full justify-start pr-12 pl-3 text-sm font-normal shadow-none md:w-48 lg:w-56')}
+        className={cn(
+          'relative hidden h-8 w-full justify-start pr-12 pl-3 text-sm font-normal shadow-none md:flex md:w-48 lg:w-56',
+        )}
         onClick={() => setOpen(true)}
       >
-        <span className="hidden lg:inline-flex">Search posts...</span>
-        <span className="inline-flex lg:hidden">Search...</span>
-        <KbdGroup className="absolute top-1.5 right-1.5 hidden text-[10px] sm:flex">
+        <span>Search posts...</span>
+        <KbdGroup className="absolute top-1.5 right-1.5 text-[10px]">
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>
