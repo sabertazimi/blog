@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [tsconfigPaths(), react()],
   test: {
     environment: 'jsdom',
-    globals: true,
     include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
   },
 })

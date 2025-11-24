@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { colors, getColorByName } from './colors'
 
 describe('colors', () => {
@@ -22,10 +23,7 @@ describe('colors', () => {
     ['Frontend Development', colors.green],
   ]
 
-  it.each(mockColors)(
-    'should set color of tag [%s] to [%s]',
-    (tag, color) => {
-      expect(getColorByName(tag)).toBe(color)
-    },
-  )
+  it.each(mockColors)('should set color of tag [%s] to [%s]', (tag, color) => {
+    expect(getColorByName(tag)).toBe(color)
+  })
 })
