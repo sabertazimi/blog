@@ -1,3 +1,5 @@
+import { HomeIcon, InfoIcon } from 'lucide-react'
+
 interface Route {
   id: string
   name: string
@@ -25,5 +27,10 @@ const routes: Route[] = [
 
 const ROUTES_INDEX = Object.fromEntries(routes.map((route, index) => [route.id, index]))
 
-export { routes, ROUTES_INDEX }
+const routeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  posts: HomeIcon,
+  about: InfoIcon,
+}
+
+export { routeIcons, routes, ROUTES_INDEX }
 export type { Route }

@@ -1,18 +1,12 @@
 'use client'
 
-import { HomeIcon, InfoIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { routes } from '@/lib/routes'
+import { routeIcons, routes } from '@/lib/routes'
 import { cn } from '@/lib/utils'
-
-const routeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  posts: HomeIcon,
-  about: InfoIcon,
-}
 
 function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
@@ -73,7 +67,7 @@ function MobileNav() {
                   )}
                   onClick={() => setIsOpen(false)}
                 >
-                  <Icon className="size-6 shrink-0" />
+                  {Icon !== undefined && <Icon className="size-6 shrink-0" />}
                   <span>{route.name}</span>
                 </Link>
               )
