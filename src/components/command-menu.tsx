@@ -63,9 +63,18 @@ function CommandMenu({
 
   return (
     <>
-      <SearchIcon className="mr-2 shrink-0 md:hidden" onClick={() => setOpen(true)} />
+      <Button
+        variant="ghost"
+        size="icon"
+        aria-label="Search posts and tags"
+        className="mr-2 shrink-0 md:hidden"
+        onClick={() => setOpen(true)}
+      >
+        <SearchIcon className="size-6" />
+      </Button>
       <Button
         variant="outline"
+        aria-label="Search posts and tags"
         className={cn(
           'relative hidden h-8 w-full justify-start pr-12 pl-3 text-sm font-normal shadow-none md:flex md:w-48 lg:w-56',
         )}
