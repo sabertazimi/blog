@@ -79,14 +79,14 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 ### Development Features
 
 - **Modern Tech Stack**
-  - **Next.js 16** with App Router and Turbopack
-  - **React 19** with React Compiler enabled
-  - **TypeScript 5.9** with strict mode
-  - **Tailwind CSS 4** with custom CSS variables
+  - **Next.js** with App Router and Turbopack
+  - **React** with React Compiler enabled
+  - **TypeScript** with strict mode
+  - **Tailwind CSS** with custom CSS variables
   - **Shadcn UI** component library
-  - **pnpm 10** for fast package management
+  - **pnpm** for fast package management
 - **Code Quality**
-  - **ESLint 9** with Flat Config
+  - **ESLint** with Flat Config
   - **Stylelint** for CSS linting
   - **Prettier** with Tailwind CSS plugin
   - **TypeScript** strict type checking
@@ -339,7 +339,7 @@ export const site = {
 
 ### Theme Customization
 
-The blog uses Tailwind CSS 4 with custom CSS variables. Edit `src/app/globals.css` to customize colors:
+The blog uses Tailwind CSS with custom CSS variables. Edit `src/app/globals.css` to customize colors:
 
 ```css
 :root {
@@ -381,13 +381,13 @@ const mdxComponents = {
 
 ### Core Package
 
-- [Next.js 16](https://nextjs.org/) - React framework
-- [React 19](https://react.dev/) - UI library
-- [TypeScript 5.9](https://www.typescriptlang.org/) - Type safety
+- [Next.js](https://nextjs.org/) - React framework
+- [React](https://react.dev/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
 
 ### Styling Toolkit
 
-- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
 - [Shadcn UI](https://ui.shadcn.com/) - Component library
 - [Motion](https://motion.dev/) - Animation library
 - [Lucide React](https://lucide.dev/) - Icon library
@@ -409,7 +409,7 @@ const mdxComponents = {
 
 ### Development Tool
 
-- [ESLint 9](https://eslint.org/) - Linting
+- [ESLint](https://eslint.org/) - Linting
 - [Stylelint](https://stylelint.io/) - CSS linting
 - [Prettier](https://prettier.io/) - Code formatting
 - [pnpm](https://pnpm.io/) - Package manager
