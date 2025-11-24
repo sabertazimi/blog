@@ -127,20 +127,20 @@ function CommandMenu({
             </CommandGroup>
           )}
         </CommandList>
-        <div className="border-border text-muted-foreground flex items-center justify-center gap-3 border-t px-3 py-2 text-xs">
-          <div className="flex items-center gap-1">
+        <div className="border-border text-muted-foreground flex items-center justify-center gap-3 border-t p-3 text-xs">
+          <KbdGroup>
             <Kbd>↑</Kbd>
             <Kbd>↓</Kbd>
             <span>Navigate</span>
-          </div>
-          <div className="flex items-center gap-1">
+          </KbdGroup>
+          <KbdGroup>
             <Kbd>⏎</Kbd>
             <span>Select</span>
-          </div>
-          <div className="flex items-center gap-1">
+          </KbdGroup>
+          <KbdGroup>
             <Kbd>Esc</Kbd>
             <span>Close</span>
-          </div>
+          </KbdGroup>
         </div>
       </CommandDialog>
     </>
