@@ -71,8 +71,9 @@ function CommandMenu({
         )}
         onClick={() => setOpen(true)}
       >
-        <span>Search posts...</span>
-        <KbdGroup className="absolute top-1.5 right-1.5 text-[10px]">
+        <span className="hidden lg:inline-flex">Search posts...</span>
+        <span className="inline-flex lg:hidden">Search...</span>
+        <KbdGroup className="absolute top-1.5 right-1.5 hidden text-[10px] sm:flex">
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>
