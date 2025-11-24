@@ -51,9 +51,9 @@ function PostImage({
             )}
           />
           {placeholder !== undefined && placeholder !== '' && (
-            <div className="text-muted-foreground absolute inset-0 flex items-center justify-center text-sm">
+            <span className="text-muted-foreground absolute inset-0 flex items-center justify-center text-sm">
               {placeholder}
-            </div>
+            </span>
           )}
         </>
       )}
