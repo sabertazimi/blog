@@ -4,6 +4,7 @@ import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
@@ -54,16 +55,18 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
   }
 
   return (
-    <button
-      type="button"
+    <Button
       ref={buttonRef}
+      variant="ghost"
+      size="icon"
+      aria-label="Toggle theme"
+      className={cn('cursor-pointer', className)}
       // eslint-disable-next-line ts/no-misused-promises -- toggleTheme is a valid promise
       onClick={toggleTheme}
-      className={cn('cursor-pointer', className)}
       {...props}
     >
-      {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
+      {resolvedTheme === 'dark' ? <MoonIcon className="size-6" /> : <SunIcon className="size-6" />}
       <span className="sr-only">Toggle theme</span>
-    </button>
+    </Button>
   )
 }
