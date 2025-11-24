@@ -1,4 +1,3 @@
-import { HomeIcon, InfoIcon } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
 import { buttonVariants } from '@/components/ui/button'
@@ -6,14 +5,9 @@ import { GravityStarsBackground } from '@/components/ui/gravity-stars'
 import { MorphingText } from '@/components/ui/morphing-text'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { routes } from '@/lib/routes'
+import { routeIcons, routes } from '@/lib/routes'
 import { siteConfig } from '@/lib/site'
 import { cn } from '@/lib/utils'
-
-const icons = {
-  posts: HomeIcon,
-  about: InfoIcon,
-}
 
 export default function HomePage() {
   return (
@@ -26,7 +20,7 @@ export default function HomePage() {
       <div className="flex items-center justify-center gap-6">
         <TooltipProvider>
           {routes.map((item, index) => {
-            const Icon = icons[item.id as keyof typeof icons]
+            const Icon = routeIcons[item.id]
             return (
               <React.Fragment key={item.id}>
                 <Tooltip>
@@ -36,7 +30,7 @@ export default function HomePage() {
                       aria-label={item.name}
                       className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'z-10 size-12 rounded-full')}
                     >
-                      <Icon className="size-8" />
+                      {Icon !== undefined ? <Icon className="size-8" /> : item.name}
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
