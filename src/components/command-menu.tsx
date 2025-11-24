@@ -1,8 +1,8 @@
 'use client'
 
 import type { Metadata } from '@/types'
+import { useRouter } from '@bprogress/next/app'
 import { FileTextIcon, SearchIcon, TagIcon } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
