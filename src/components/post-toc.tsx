@@ -401,7 +401,7 @@ function TOCItemsList({ toc, disableLineOffset = false }: TOCItemsListProps) {
     <>
       {svg && (
         <div
-          className="absolute top-0 left-0"
+          className="absolute top-0 left-0 z-10"
           style={{
             width: svg.width,
             height: svg.height,
