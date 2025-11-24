@@ -10,15 +10,7 @@ interface ProgressCircleProps extends Omit<ComponentProps<'svg'>, 'strokeWidth'>
 }
 
 function clamp(input: number, min: number, max: number): number {
-  if (input < min) {
-    return min
-  }
-
-  if (input > max) {
-    return max
-  }
-
-  return input
+  return Math.min(Math.max(input, min), max)
 }
 
 function ProgressCircle({
