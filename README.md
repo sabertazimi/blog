@@ -249,7 +249,7 @@ The optimized production build will be in the `.next` folder.
 .
 ├── node_modules/
 ├── src/
-│   ├── app/                    # Next.js App Router pages
+│   ├── app/                   # Next.js App Router pages
 │   │   ├── about/             # About page
 │   │   ├── post/[slug]/       # Dynamic post pages
 │   │   ├── posts/             # All posts page
@@ -260,27 +260,27 @@ The optimized production build will be in the `.next` folder.
 │   │   ├── robots.ts          # robots.txt generation
 │   │   └── sitemap.ts         # Sitemap generation
 │   ├── components/            # React components
-│   │   ├── ui/               # Shadcn UI components
+│   │   ├── ui/                # Shadcn UI components
 │   │   │   ├── button.tsx
 │   │   │   ├── card.tsx
 │   │   │   ├── dialog.tsx
 │   │   │   ├── skeleton.tsx
 │   │   │   └── ...
-│   │   ├── mdx-code.tsx      # Code block with Shiki
-│   │   ├── mdx-editor.tsx    # Live code editor with Sandpack
-│   │   ├── mdx-image.tsx     # Optimized image component
-│   │   ├── post-card.tsx     # Post card component
-│   │   ├── post-content.tsx  # MDX content renderer
+│   │   ├── mdx-code.tsx       # Code block with Shiki
+│   │   ├── mdx-editor.tsx     # Live code editor with Sandpack
+│   │   ├── mdx-image.tsx      # Optimized image component
+│   │   ├── post-card.tsx      # Post card component
+│   │   ├── post-content.tsx   # MDX content renderer
 │   │   └── ...
-│   ├── layouts/              # Layout components
+│   ├── layouts/               # Layout components
 │   │   └── default-layout.tsx
-│   ├── lib/                  # Utility functions
-│   │   ├── get-posts-data.ts # MDX processing
-│   │   ├── utils.ts          # Helper functions
-│   │   ├── routes.ts         # Route configuration
-│   │   ├── seo.ts            # SEO utilities
+│   ├── lib/                   # Utility functions
+│   │   ├── get-posts-data.ts  # MDX processing
+│   │   ├── utils.ts           # Helper functions
+│   │   ├── routes.ts          # Route configuration
+│   │   ├── seo.ts             # SEO utilities
 │   │   └── ...
-│   └── types/                # TypeScript type definitions
+│   └── types/                 # TypeScript type definitions
 │       └── index.d.ts
 ├── contents/                  # Blog posts (.mdx files)
 │   ├── post1.mdx
