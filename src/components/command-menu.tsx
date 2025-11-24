@@ -13,6 +13,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
+import { Kbd, KbdGroup } from '@/components/ui/kbd'
 import { cn, formatDate, getTagUrl } from '@/lib/utils'
 
 interface CommandMenuProps {
@@ -69,10 +70,10 @@ function CommandMenu({
       >
         <span className="hidden lg:inline-flex">Search posts...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="bg-muted pointer-events-none absolute top-1.5 right-1.5 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
-          <span className="text-xs">⌘</span>
-          K
-        </kbd>
+        <KbdGroup className="absolute top-1.5 right-1.5 hidden text-[10px] sm:flex">
+          <Kbd>⌘</Kbd>
+          <Kbd>K</Kbd>
+        </KbdGroup>
       </Button>
       <CommandDialog
         open={open}
@@ -126,6 +127,21 @@ function CommandMenu({
             </CommandGroup>
           )}
         </CommandList>
+        <div className="border-border text-muted-foreground flex items-center justify-center gap-3 border-t p-3 text-xs">
+          <KbdGroup>
+            <Kbd>↑</Kbd>
+            <Kbd>↓</Kbd>
+            <span>Navigate</span>
+          </KbdGroup>
+          <KbdGroup>
+            <Kbd>⏎</Kbd>
+            <span>Select</span>
+          </KbdGroup>
+          <KbdGroup>
+            <Kbd>Esc</Kbd>
+            <span>Close</span>
+          </KbdGroup>
+        </div>
       </CommandDialog>
     </>
   )
