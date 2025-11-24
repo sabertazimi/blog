@@ -9,7 +9,6 @@ import MobileNav from '@/components/mobile-nav'
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler'
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site'
-import { cn } from '@/lib/utils'
 
 interface Props {
   metadata: Metadata
@@ -33,13 +32,7 @@ function Header({ metadata }: Props) {
           <CommandMenu metadata={metadata} />
         </div>
         <div className="flex items-center">
-          <AnimatedThemeToggler
-            className={cn(
-              'hover:bg-accent hover:text-accent-foreground size-9 rounded-md transition-colors',
-              'inline-flex items-center justify-center',
-            )}
-            aria-label="Toggle theme"
-          />
+          <AnimatedThemeToggler />
         </div>
       </div>
     </header>
