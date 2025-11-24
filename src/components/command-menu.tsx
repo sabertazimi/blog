@@ -1,7 +1,7 @@
 'use client'
 
 import type { Metadata } from '@/types'
-import { FileTextIcon, TagIcon } from 'lucide-react'
+import { FileTextIcon, SearchIcon, TagIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -64,8 +64,20 @@ function CommandMenu({
   return (
     <>
       <Button
+        variant="ghost"
+        size="icon"
+        aria-label="Search posts and tags"
+        className="mr-2 shrink-0 md:hidden"
+        onClick={() => setOpen(true)}
+      >
+        <SearchIcon className="size-6" />
+      </Button>
+      <Button
         variant="outline"
-        className={cn('relative h-8 w-full justify-start pr-12 pl-3 text-sm font-normal shadow-none md:w-48 lg:w-56')}
+        aria-label="Search posts and tags"
+        className={cn(
+          'relative hidden h-8 w-full justify-start pr-12 pl-3 text-sm font-normal shadow-none md:flex md:w-48 lg:w-56',
+        )}
         onClick={() => setOpen(true)}
       >
         <span className="hidden lg:inline-flex">Search posts...</span>
