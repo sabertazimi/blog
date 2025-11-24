@@ -71,9 +71,7 @@ function CommandMenu({
         <span className="hidden lg:inline-flex">Search posts...</span>
         <span className="inline-flex lg:hidden">Search...</span>
         <KbdGroup className="absolute top-1.5 right-1.5 hidden text-[10px] sm:flex">
-          <Kbd>
-            <span className="text-xs">⌘</span>
-          </Kbd>
+          <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </KbdGroup>
       </Button>
