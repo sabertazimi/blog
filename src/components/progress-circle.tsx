@@ -25,7 +25,7 @@ function ProgressCircle({
   const normalizedValue = clamp(value, min, max)
   const radius = (size - strokeWidth) / 2
   const circumference = 2 * Math.PI * radius
-  const progress = (normalizedValue / max) * circumference
+  const progress = ((normalizedValue - min) / (max - min)) * circumference
   const circleProps = {
     cx: size / 2,
     cy: size / 2,
