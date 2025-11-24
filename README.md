@@ -35,6 +35,7 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
   - Optimized image loading with Next.js Image
   - Dot pattern placeholders for loading states
   - Reading time estimation
+  - Search posts with command menu (⌘K)
 - **Advanced Tag System**
   - Separate pages for posts under each tag
   - Tag filtering with command menu (⌘K)
@@ -67,6 +68,7 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
   - Repository information cards
 - **Social Features**
   - Disqus comments system
+  - Share buttons for X, Facebook, and Weibo
 - **User Experience**
   - Dark mode support with smooth transitions
   - Customized 404 not found page
