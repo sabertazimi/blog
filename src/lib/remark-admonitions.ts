@@ -23,10 +23,10 @@ function isContainerDirective(node: Node): node is ContainerDirective {
 function extractTextContent(node: Parent): string {
   let text = ''
   for (const child of node.children) {
-    if (child.type === 'text') {
+    if (child.type === 'text' && 'value' in child && typeof child.value === 'string') {
       text += child.value
     } else if ('children' in child) {
-      text += extractTextContent(child as Parent)
+      text += extractTextContent(child)
     }
   }
   return text
@@ -42,12 +42,12 @@ export default function remarkAdmonitions() {
       // Extract title from the attributes
       let title: string | undefined = Object.keys(node.attributes ?? {}).join(' ')
       let contentNodes = node.children
-      const firstChild = node.children[0]
+      const firstChild = node.children[0] as Parent
 
       // Check if the first child has directiveLabel
       if (firstChild !== undefined && (firstChild.data as { directiveLabel?: boolean })?.directiveLabel === true) {
         // Extract title from the directiveLabel node
-        title = extractTextContent(firstChild as Parent)
+        title = extractTextContent(firstChild)
         contentNodes = node.children.slice(1)
       }
 

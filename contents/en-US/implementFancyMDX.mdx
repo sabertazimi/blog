@@ -934,6 +934,48 @@ Two 🍰 is: {Math.PI * 2}.
 
 :::
 
+### Nested Admonition
+
+```md
+:::::info[Parent]
+
+Parent content
+
+::::danger[Child]
+
+Child content
+
+:::tip[Deep Child]
+
+Deep child content
+
+:::
+
+::::
+
+:::::
+```
+
+Renders:
+
+:::::info[Parent]
+
+Parent content
+
+::::danger[Child]
+
+Child content
+
+:::tip[Deep Child]
+
+Deep child content
+
+:::
+
+::::
+
+:::::
+
 ## MDX Component
 
 ```md
