@@ -59,8 +59,9 @@
   --color-light: var(--light);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Montserrat, sans-serif;
-  --font-mono: Source Code Pro, monospace;
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -191,6 +192,15 @@
   --sidebar-ring: oklch(70.8% 0 0deg);
   --light: #f8f9fa;
   --dark: #343a40;
+  --font-sans:
+    'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
+    oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-serif:
+    'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', serif;
+  --font-mono:
+    'Fira Code', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Cantarell Mono',
+    'Source Code Pro', monospace;
   --font-stack:
     'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
