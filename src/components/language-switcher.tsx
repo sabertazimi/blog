@@ -40,7 +40,7 @@ function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Select language" className="shrink-0">
+        <Button variant="ghost" size="icon" aria-label={t('selectLanguage')} className="shrink-0">
           <LanguagesIcon className="size-6" />
         </Button>
       </DropdownMenuTrigger>
