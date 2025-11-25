@@ -50,7 +50,7 @@ export default async function TagPage({ params }: TagPageProps) {
   const decodedTagName = decodeURIComponent(tagName)
   const t = await getTranslations({ locale: getLocale(locale), namespace: 'routes.posts' })
   const buildTime = getBuildTime()
-  const metadata = await getPostsMeta(locale)
+  const metadata = await getPostsMeta(getLocale(locale))
   const { posts, tags } = metadata
 
   return (

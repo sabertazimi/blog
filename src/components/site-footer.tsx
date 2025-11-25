@@ -56,9 +56,7 @@ function SiteFooter({ buildTime }: Props) {
         <div className="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-6">
           <div className="text-muted-foreground text-sm">
             {t('copyright')}
-            {' '}
-            ©
-            {' '}
+            {' © '}
             {new Date().getFullYear()}
             {' '}
             <a

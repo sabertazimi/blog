@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const resolvedParams = await params
   const { locale, slug } = resolvedParams
   const decodedSlug = decodeURIComponent(slug)
-  const postData = await getPostData(decodedSlug, locale)
+  const postData = await getPostData(decodedSlug, getLocale(locale))
 
   return postData
     ? getMetadata({
@@ -51,16 +51,13 @@ export default async function PostPage({ params }: PostPageProps) {
   const decodedSlug = decodeURIComponent(slug)
   const t = await getTranslations({ locale: getLocale(locale), namespace: 'post' })
   const buildTime = getBuildTime()
-  const postsData = await getPostsData(locale)
-  const metadata = await getPostsMeta(locale, postsData)
-  const postData = await getPostData(decodedSlug, locale, postsData)
+  const postsData = await getPostsData(getLocale(locale))
+  const metadata = await getPostsMeta(getLocale(locale), postsData)
+  const postData = await getPostData(decodedSlug, getLocale(locale), postsData)
 
   return (
     <DefaultLayout metadata={metadata} buildTime={buildTime}>
-      <PageHeader
-        title={postData?.title ?? t('notFound')}
-        description={postData?.description ?? t('notFound')}
-      >
+      <PageHeader title={postData?.title ?? t('notFound')} description={postData?.description ?? t('notFound')}>
         <PostHeader postData={postData} />
       </PageHeader>
       {postData ? <PostLayout post={postData} /> : <NotFoundResult />}

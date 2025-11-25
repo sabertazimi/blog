@@ -29,7 +29,7 @@ export default async function PostsPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale: getLocale(locale), namespace: 'routes.posts' })
   const buildTime = getBuildTime()
-  const metadata = await getPostsMeta(locale)
+  const metadata = await getPostsMeta(getLocale(locale))
   const { posts, tags } = metadata
 
   return (

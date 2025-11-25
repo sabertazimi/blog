@@ -29,7 +29,7 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale: getLocale(locale), namespace: 'routes.about' })
   const buildTime = getBuildTime()
-  const metadata = await getPostsMeta(locale)
+  const metadata = await getPostsMeta(getLocale(locale))
   const { profile, repos } = await getGitHubData()
   const totalStars = repos.reduce((sum, repo) => sum + repo.stars, 0)
 

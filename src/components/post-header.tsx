@@ -27,7 +27,11 @@ function PostHeader({ postData }: PostHeaderProps) {
           ))}
         </div>
       )}
-      <PostMetadata createTime={postData?.createTime} updateTime={postData?.updateTime} readingTime={postData?.readingTime} />
+      <PostMetadata
+        createTime={postData?.createTime}
+        updateTime={postData?.updateTime}
+        readingTime={postData?.readingTime}
+      />
     </div>
   )
 }
