@@ -4,6 +4,7 @@ import type { Metadata } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import CommandMenu from '@/components/command-menu'
+import LanguageSwitcher from '@/components/language-switcher'
 import MainNav from '@/components/main-nav'
 import MobileNav from '@/components/mobile-nav'
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler'
@@ -28,10 +29,9 @@ function Header({ metadata }: Props) {
         <MainNav />
         <MobileNav />
         <div className="flex-1" />
-        <div className="mr-2 flex">
+        <div className="flex items-center gap-2 md:gap-4">
           <CommandMenu metadata={metadata} />
-        </div>
-        <div className="flex items-center">
+          <LanguageSwitcher />
           <AnimatedThemeToggler />
         </div>
       </div>
