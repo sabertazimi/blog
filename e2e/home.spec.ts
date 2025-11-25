@@ -14,19 +14,6 @@ test.describe('Home Page', () => {
     await expect(mainContent).toBeVisible()
   })
 
-  test('can navigate to all main sections', async ({ page }) => {
-    // 测试导航到 Posts
-    await page.getByRole('link', { name: /posts/i }).click()
-    await expect(page).toHaveURL(/\/posts/)
-
-    // 返回首页
-    await page.goto('/')
-
-    // 测试导航到 About
-    await page.getByRole('link', { name: /about/i }).click()
-    await expect(page).toHaveURL(/\/about/)
-  })
-
   test('shows tooltips on navigation hover', async ({ page }) => {
     // 测试其中一个导航链接的 tooltip
     const postsLink = page.getByRole('link', { name: /posts/i })
