@@ -8,7 +8,7 @@ alwaysApply: true
 
 ## 技术栈
 
-**可使用 Shadcn MCP + Context 7 MCP 查询最新文档**
+**请使用 Context7 MCP 或者 Shadcn MCP 查询最新文档**，非必要时不直接从官网查询文档。
 
 ### 核心框架
 - **Next.js 16** (App Router)
@@ -346,7 +346,7 @@ pnpm release               # 创建版本标签
 
 ## 重要提醒
 
-- **可使用 Shadcn MCP + Context 7 MCP 查询最新文档**
+- **请使用 Context7 MCP 或者 Shadcn MCP 查询最新文档**，非必要时不直接从官网查询文档。
 - **React Compiler 已启用**：无需手动使用 useMemo/useCallback
 - **Tailwind CSS 4**：无配置文件，使用 @tailwindcss/postcss
 - **Next.js 16 + React 19**：使用最新特性，注意兼容性
