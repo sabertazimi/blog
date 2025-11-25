@@ -1,0 +1,205 @@
+---
+layout: post
+title: '实现精美的代码块'
+description: '在 Next.js 中实现精美的代码块'
+author: 'Sabertaz'
+date: 2022-05-01
+thumbnail: '/photos/laptop-computer-on-table.jpg'
+tags:
+  - MDX
+  - Markdown
+  - 代码编辑器
+  - React
+  - Next.js
+  - 前端开发
+  - Web 开发
+---
+
+# Fancy Code Block
+
+## Line Number
+
+Enable line number `line="true"`:
+
+```ts line="true"
+console.log('No line number!');
+```
+
+## Copy Button
+
+Disable copy button `nocopy="true"`:
+
+```ts nocopy="true"
+console.log('No copy button!');
+```
+
+## Lines Highlight
+
+Set highlight lines `lines="2,5,8-10,12,14..16,19,22...25,29"`:
+
+```ts line="true" lines="2,5,8-10,12,14..16,19,22...25,29"
+import type { Parent } from 'mdast';
+import { visit } from 'unist-util-visit';
+
+/**
+ * Markdown abstract syntax tree node definition.
+ * @see https://github.com/syntax-tree/mdast
+ */
+interface ContainerDirective extends Parent {
+  name: string;
+  attributes: Record<string, string>;
+  value?: string;
+}
+
+export default function remarkAdmonitions() {
+  return (tree: any) => {
+    visit(tree, (node: ContainerDirective) => {
+      if (node.type === 'containerDirective') {
+        node.data = {
+          hName: 'aside',
+          hProperties: {
+            type: node.name,
+            title: Object.keys(node.attributes).join(' '),
+            className: `admonition admonition-${node.name}`,
+          },
+        };
+      }
+    });
+  };
+}
+```
+
+## Code Title
+
+Show code title `title="Awesome Code"`:
+
+```ts nocopy="true" title="Awesome Code"
+console.log('Awesome!');
+```
+
+## Live Code
+
+Live code editor `live="true"`:
+
+```tsx live="true" title="Live Code"
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div
+      onClick={() => setCount(count => count + 1)}
+      style={{
+        padding: '3rem',
+        textAlign: 'center',
+        cursor: 'pointer',
+      }}
+    >
+      {count}
+    </div>
+  );
+};
+```
+
+Live code editor `<Editor> ```tsx Some code``` </Editor>`:
+
+<Editor>
+
+```tsx
+import Greet from './Greet';
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Greet />
+    </div>
+  );
+}
+```
+
+```tsx filename="Greet.tsx"
+function Greeting({ name }) {
+  return <h3>Hello, {name}!</h3>;
+}
+
+export default function Greet() {
+  return (
+    <div>
+      <Greeting name="Nintendo" />
+      <Greeting name="Sony" />
+      <Greeting name="Microsoft" />
+    </div>
+  );
+}
+```
+
+</Editor>
+
+## Language
+
+### Markup Code
+
+```html
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>And here is *markdown* in **JSX**!</section>
+```
+
+```xml
+<div># this is not a heading but *this* is emphasis</div>
+
+<div>This is a `p`.</div>
+```
+
+### CSS Code
+
+```css
+:root {
+  --primary: #1677ff;
+  --secondary: #40a9ff;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC',
+    'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
+  --font-size: 18px;
+}
+
+body {
+  width: 100%;
+  font-family: var(--font-stack);
+  font-size: var(--font-size);
+}
+```
+
+### TypeScript Code
+
+```ts
+const foo = function (bar) {
+  return bar++;
+};
+
+foo(5);
+
+some.code();
+```
+
+```tsx
+{
+  (function () {
+    const guess = 0.44;
+
+    if (guess > 0.66) {
+      return <span style={{ color: 'tomato' }}>Look at us.</span>;
+    }
+
+    if (guess > 0.33) {
+      return <span style={{ color: 'violet' }}>Who would have guessed?!</span>;
+    }
+
+    return <span style={{ color: 'goldenrod' }}>Not me.</span>;
+  })();
+}
+```

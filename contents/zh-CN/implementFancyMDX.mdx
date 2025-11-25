@@ -1,0 +1,971 @@
+---
+layout: post
+title: '实现精美的 MDX'
+description: '在 Next.js 中实现精美的 MDX 支持'
+author: 'Sabertaz'
+date: 2022-04-26
+thumbnail: '/photos/pen-writing-on-notebook.jpg'
+tags:
+  - MDX
+  - Markdown
+  - React
+  - Next.js
+  - 前端开发
+  - Web 开发
+---
+
+# Fancy MDX
+
+All your `.md` and `.mdx` files under the `contents` directory
+will be rendered with [MDX](https://mdxjs.com/about),
+it's an advanced `Markdown` format with `React` component support.
+
+## Heading
+
+```md
+# **Hello**, This Is a _Title_ Inside `h1`
+
+## **Hello**, This Is a _Title_ Inside `h2`
+
+## **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h2`
+
+### **Hello**, This Is a _Title_ Inside `h3`
+
+### **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h3`
+
+#### **Hello**, This Is a _Title_ Inside `h4`
+
+##### **Hello**, This Is a _Title_ Inside `h5`
+
+###### **Hello**, This Is a _Title_ Inside `h6`
+```
+
+Renders:
+
+# **Hello**, This Is a _Title_ Inside `h1`
+
+## **Hello**, This Is a _Title_ Inside `h2`
+
+## **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h2`
+
+### **Hello**, This Is a _Title_ Inside `h3`
+
+### **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h3`
+
+#### **Hello**, This Is a _Title_ Inside `h4`
+
+##### **Hello**, This Is a _Title_ Inside `h5`
+
+###### **Hello**, This Is a _Title_ Inside `h6`
+
+## List
+
+### Unordered List
+
+```md
+- Create a list by starting a line with `+`, `-`, or `*`.
+- Sub-lists are made by indenting 2 spaces:
+  + Marker character change forces new list start:
+    * Ac tristique libero volutpat at.
+    - Facilisis in pretium nisl aliquet.
+    + Nulla volutpat aliquam velit.
+- Very easy!
+```
+
+Renders:
+
+- Create a list by starting a line with `+`, `-`, or `*`.
+- Sub-lists are made by indenting 2 spaces:
+  + Marker character change forces new list start:
+    * Ac tristique libero volutpat at.
+    - Facilisis in pretium nisl aliquet.
+    + Nulla volutpat aliquam velit.
+- Very easy!
+
+### Ordered List
+
+Sequential numbering:
+
+```md
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+    3. Integer molestie lorem at massa:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+2. Consectetur adipiscing elit:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+3. Integer molestie lorem at massa:
+    1. Lorem ipsum dolor sit amet.
+    2. Consectetur adipiscing elit.
+    3. Integer molestie lorem at massa.
+```
+
+Renders:
+
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+    3. Integer molestie lorem at massa:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+2. Consectetur adipiscing elit:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+    2. Consectetur adipiscing elit:
+        1. Lorem ipsum dolor sit amet.
+        2. Consectetur adipiscing elit.
+        3. Integer molestie lorem at massa.
+3. Integer molestie lorem at massa:
+    1. Lorem ipsum dolor sit amet.
+    2. Consectetur adipiscing elit.
+    3. Integer molestie lorem at massa.
+
+Same numbering:
+
+```md
+1. You can keep all the numbers as `1.`:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+```
+
+Renders:
+
+1. You can keep all the numbers as `1.`:
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet:
+        1. Lorem ipsum dolor sit amet.
+        1. Lorem ipsum dolor sit amet.
+1. Lorem ipsum dolor sit amet:
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+    1. Lorem ipsum dolor sit amet.
+
+Start numbering with offset:
+
+```md
+108. 108 numbering list.
+1. 1 numbering list.
+1. 1 numbering list.
+```
+
+Renders:
+
+108. 108 numbering list.
+1. 1 numbering list.
+1. 1 numbering list.
+
+### Task List
+
+```md
+- [x] Write the press release.
+- [ ] Update the website.
+- [ ] Contact the media.
+```
+
+Renders:
+
+- [x] Write the press release.
+- [ ] Update the website.
+- [ ] Contact the media.
+
+## Horizontal Rule
+
+```md
+___
+```
+
+Renders:
+
+___
+
+```md
+---
+```
+
+Renders:
+
+---
+
+```md
+***
+```
+
+Renders:
+
+***
+
+## Emphasis
+
+### Bold
+
+```md
+**This is bold text**.
+
+__This is bold text__.
+```
+
+Renders:
+
+**This is bold text**.
+
+__This is bold text__.
+
+### Italic
+
+```md
+*This is italic text*.
+
+_This is italic text_.
+```
+
+Renders:
+
+*This is italic text*.
+
+_This is italic text_.
+
+### Strikethrough
+
+```md
+~This is strikethrough text~.
+
+~~This is strikethrough text~~.
+```
+
+Renders:
+
+~This is strikethrough text~.
+
+~~This is strikethrough text~~.
+
+## Blockquote
+
+### Nested Blockquote
+
+```md
+> Blockquotes can also be nested...
+> > ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+```
+
+Renders:
+
+> Blockquotes can also be nested...
+> > ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+### Continued Blockquote
+
+```md
+> Blockquotes can also be continued...
+> ...continued...
+> ...continued continued...
+```
+
+Renders:
+
+> Blockquotes can also be continued...
+> ...continued...
+> ...continued continued...
+
+### Long Blockquote
+
+```md
+> Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
+```
+
+Renders:
+
+> Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
+
+## Table
+
+### Basic Table
+
+| a     | b     |     c |   d   |
+| ----- | :---- | ----: | :---: |
+| 10    | 200   |  3600 | 48000 |
+| 200   | 10    | 48000 | 3600  |
+| 3600  | 48000 |    10 |  200  |
+| 48000 | 3600  |   200 |  10   |
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+### Left Aligned Table
+
+| Option | Description |
+| :----- | :---------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+### Center Aligned Table
+
+| Option  | Description  |
+| :-----: | :----------: |
+| data    | path to data files to supply the data that will be passed into templates. |
+| engine  | engine to be used for processing templates. Handlebars is the default. |
+| ext     | extension to be used for dest files. |
+
+### Right Aligned Table
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+## Code
+
+Inline `code`.
+
+Block code "fences":
+
+```md
+Sample text here...
+```
+
+Syntax highlighting:
+
+```ts
+const foo = function (bar) {
+  return bar++;
+};
+
+foo(5);
+
+some.code();
+```
+
+## Link
+
+### Basic Link
+
+```md
+[Link text](https://github.com/sabertazimi).
+
+[Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
+```
+
+Renders:
+
+[Link text](https://github.com/sabertazimi).
+
+[Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
+
+### Autolink Literal
+
+Auto-converted link (enable linkify to see):
+
+- `www.example.com`: www.example.com.
+- `https://example.com`: https://example.com.
+- `contact@example.com`: contact@example.com.
+
+### Footnote
+
+```md
+A note[^1].
+
+[^1]: Big note.
+
+Another note[^2].
+
+Yet another note[^3].
+
+[^2]: Small note.
+[^3]: Smallest note.
+```
+
+Renders (footnote renders at the end of the document):
+
+A note[^1].
+
+[^1]: Big note.
+
+Another note[^2].
+
+Yet another note[^3].
+
+[^2]: Small note.
+[^3]: Smallest note.
+
+## Image
+
+### Local Image
+
+```md
+![Local image](/photos/laptop-computer-on-table.jpg)
+```
+
+Renders:
+
+![Local image](/photos/laptop-computer-on-table.jpg)
+
+### Remote Image
+
+```md
+![Minion](https://octodex.github.com/images/minion.png)
+```
+
+Renders:
+
+![Minion](https://octodex.github.com/images/minion.png)
+
+### Error Image
+
+```md
+![Error image](error.jpg)
+```
+
+Renders:
+
+![Error image](error.jpg)
+
+### Image Title
+
+```md
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+```
+
+Renders:
+
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+
+### Image Footnote
+
+Like links, Images also have a footnote style syntax:
+
+```md
+![Alt text][id]
+```
+
+With a reference later in the document defining the URL location:
+
+```md
+[id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
+```
+
+Renders:
+
+![Alt text][id]
+
+[id]: https://octodex.github.com/images/dojocat.jpg  'The Dojocat'
+
+## JSX
+
+### JSX Element
+
+```md
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>And here is *markdown* in **JSX**!</section>
+
+<div># this is not a heading but *this* is emphasis</div>
+
+I can write **Markdown** alongside my _JSX_!
+
+<div>This is a `p`.</div>
+```
+
+Renders:
+
+<h2>JSX Heading 2</h2>
+
+<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+
+<section>And here is *markdown* in **JSX**!</section>
+
+<div># this is not a heading but *this* is emphasis</div>
+
+I can write **Markdown** alongside my _JSX_!
+
+<div>This is a `p`.</div>
+
+### JavaScript Expression
+
+```md
+Two 🍰 is: {Math.PI * 2}.
+```
+
+Renders:
+
+Two 🍰 is: {Math.PI * 2}.
+
+```md lines="9"
+{(function () {
+  const guess = 0.44
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+```
+
+Renders:
+
+{(function () {
+  const guess = 0.44
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+### MDX Comment
+
+```md
+{/* A comment! */}
+```
+
+Renders nothing.
+
+{/* A comment! */}
+
+## Git
+
+- Commit `4c5361e`: 4c5361e.
+- Commit (fork) `foo@4c5361e`: foo@4c5361e.
+- Commit (project) `remarkjs/remark@e1aa9f6`: remarkjs/remark@e1aa9f6.
+- Issue or PR (`#`) `#1`: #1.
+- Issue or PR (`GH-`) `GH-100`: GH-100.
+- Issue or PR (fork) `foo#1`: foo#1.
+- Issue or PR (project) `remarkjs/remark#1`: remarkjs/remark#1.
+- Mention `@sabertazimi`: @sabertazimi.
+
+## Emoji
+
+Thumbs up `:+1:` :+1:, thumbs down `:-1:` :-1:.
+
+Families `:family_man_man_boy_boy:` :family_man_man_boy_boy:.
+
+Some flags `:cn:, :us:, :ru:, :uk:, :fr:` :cn:, :us:, :ru:, :uk:, :fr:.
+
+Tada `:tada:` :tada:, sparkles `:sparkles:` :sparkles:, rocket `:rocket:` :rocket:.
+
+Bug `:bug:` :bug:, wrench `:wrench:` :wrench:, zap `:zap:` :zap:.
+
+## Math
+
+### Inline Math Formula
+
+This is a math formula `$\sqrt{a^2 + b^2}$` $\sqrt{a^2 + b^2}$.
+
+This is another math formula `$c = \pm\sqrt{a^2 + b^2}$` $c = \pm\sqrt{a^2 + b^2}$.
+
+### Block Math Formula
+
+```md title="Math Formula"
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+$$
+\def\arraystretch{1.5}
+  \begin{array}{c:c:c}
+    a & b & c \\ \hline
+    d & e & f \\
+    \hdashline
+    g & h & i
+  \end{array}
+$$
+
+$$
+\begin{equation}
+  \begin{split}
+    a &= b + c \\
+      &= e + f
+  \end{split}
+\end{equation}
+$$
+
+$$
+\begin{align}
+  a &= b + c \\
+  d + e &= f
+\end{align}
+$$
+
+$$
+\begin{alignat}{2}
+  10 &x + &3 &y = 2 \\
+  3 &x + &13 &y = 4
+\end{alignat}
+$$
+```
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+$$
+\def\arraystretch{1.5}
+  \begin{array}{c:c:c}
+    a & b & c \\ \hline
+    d & e & f \\
+    \hdashline
+    g & h & i
+  \end{array}
+$$
+
+$$
+\begin{equation}
+  \begin{split}
+    a &= b + c \\
+      &= e + f
+  \end{split}
+\end{equation}
+$$
+
+$$
+\begin{align}
+  a &= b + c \\
+  d + e &= f
+\end{align}
+$$
+
+$$
+\begin{alignat}{2}
+  10 &x + &3 &y = 2 \\
+  3 &x + &13 &y = 4
+\end{alignat}
+$$
+
+## Admonition
+
+### Green Admonition
+
+```md
+:::success
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
+:::success
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+### Blue Admonition
+
+```md
+:::info
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::note
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
+:::info
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::note
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+### Yellow Admonition
+
+```md
+:::warning
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
+:::warning
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+### Red Admonition
+
+```md
+:::error
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+```
+
+Renders:
+
+:::error
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+### Title Admonition
+
+```md
+:::tip{Your Title}
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+- List.
+  - List.
+    - List.
+    - List.
+    - List.
+  - List.
+    - List.
+  - List.
+    - List.
+    - List.
+- List.
+- List.
+
+1. List.
+    1. List.
+        1. List.
+        2. List.
+        3. List.
+    2. List.
+        1. List.
+    3. List.
+        1. List.
+        2. List.
+2. List.
+3. List.
+
+:::
+```
+
+Renders:
+
+:::tip{Your Title}
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+Some **content** with _markdown_ `syntax`.
+I can write **Markdown** alongside my _JSX_!
+
+- List.
+  - List.
+    - List.
+    - List.
+    - List.
+  - List.
+    - List.
+  - List.
+    - List.
+    - List.
+- List.
+- List.
+
+1. List.
+    1. List.
+        1. List.
+        2. List.
+        3. List.
+    2. List.
+        1. List.
+    3. List.
+        1. List.
+        2. List.
+2. List.
+3. List.
+
+:::
+
+```md
+:::note{MDX in Admonition}
+
+Two 🍰 is: {Math.PI * 2}.
+
+{(function () {
+  const guess = 0.88
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+:::
+```
+
+Renders:
+
+:::note{MDX in Admonition}
+
+Two 🍰 is: {Math.PI * 2}.
+
+{(function () {
+  const guess = 0.88
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>Look at us.</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>Not me.</span>
+})()}
+
+:::
+
+## MDX Component
+
+```md
+<Button>MDX Button</Button>
+<Button variant="default">MDX Default Button</Button>
+```
+
+Renders:
+
+<Button>MDX Button</Button>
+<Button variant="default">MDX Default Button</Button>
+
+___
+
+```md
+<Button variant="outline">MDX Outline Button</Button>
+<Button variant="secondary">MDX Secondary Button</Button>
+<Button variant="link">MDX Link Button</Button>
+```
+
+Renders:
+
+<Button variant="outline">MDX Outline Button</Button>
+<Button variant="secondary">MDX Secondary Button</Button>
+<Button variant="link">MDX Link Button</Button>
+
+___
+
+```md
+<Button variant="destructive">MDX Destructive Button</Button>
+<Button variant="ghost">MDX Ghost Button</Button>
+```
+
+Renders:
+
+<Button variant="destructive">MDX Destructive Button</Button>
+<Button variant="ghost">MDX Ghost Button</Button>
