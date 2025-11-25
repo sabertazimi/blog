@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import ProgressBarProvider from '@/components/progress-bar-provider'
-import SandpackProvider from '@/components/sandpack-provider'
-import { ThemeProvider } from '@/components/theme-provider'
+import { Providers, SandPackCSS } from '@/app/providers'
 import { getMetadata, getViewport } from '@/lib/seo'
 import './globals.css'
 
@@ -21,12 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <SandpackProvider />
+        <SandPackCSS />
       </head>
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ProgressBarProvider>{children}</ProgressBarProvider>
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
