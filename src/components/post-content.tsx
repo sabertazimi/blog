@@ -30,9 +30,10 @@ function PostContent({ source }: PostContentProps) {
     <div
       className={cn(
         'prose dark:prose-invert max-w-none',
-        'prose-headings:font-semibold prose-headings:text-balance prose-headings:scroll-mt-20 prose-headings:relative',
+        'prose-headings:text-primary prose-headings:font-semibold prose-headings:text-balance prose-headings:scroll-mt-20 prose-headings:relative',
         'prose-headings:before:absolute prose-headings:before:right-full prose-headings:before:text-primary/40',
         'prose-headings:before:content-["#"] prose-headings:before:opacity-0 prose-headings:hover:before:opacity-100 prose-headings:before:transition-opacity',
+        'prose-a:text-primary',
         'prose-inline-code:before:content-none prose-inline-code:after:content-none',
         'prose-inline-code:rounded-md prose-inline-code:border prose-inline-code:border-border',
         'prose-inline-code:bg-muted prose-inline-code:px-1.5 prose-inline-code:py-0.5',
