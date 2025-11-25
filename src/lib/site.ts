@@ -3,17 +3,12 @@ import type { GitHub } from '@/types'
 import { colors } from './colors'
 
 interface SiteConfig {
-  title: string
   author: string
   email: string
-  description: string
   themeColor: string
   url: string
   disqusShortname: string
-  landingPage: {
-    starsCount: number
-    titles: string[]
-  }
+  starsCount: number
   socials: {
     [key in SocialSite]: string
   }
@@ -21,18 +16,12 @@ interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  title: 'Sabertaz Blog',
   author: 'Sabertaz',
   email: 'sabertazimi@gmail.com',
-  description:
-    'A modern blog about web development, programming, and technology. Sharing insights on React, TypeScript, Next.js, and more.',
   themeColor: colors.black,
   url: 'https://blog.tazimi.dev',
   disqusShortname: 'sabertaz-blog',
-  landingPage: {
-    starsCount: 800,
-    titles: ['Coder', 'Developer', 'Learner'],
-  },
+  starsCount: 800,
   socials: {
     github: 'sabertazimi',
     x: 'sabertazimi',
