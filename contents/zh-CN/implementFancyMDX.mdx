@@ -1,0 +1,972 @@
+---
+layout: post
+title: '实现精美的 MDX'
+description: '在 Next.js 中实现精美的 MDX'
+author: 'Sabertaz'
+date: 2022-04-26
+thumbnail: '/photos/pen-writing-on-notebook.jpg'
+tags:
+  - MDX
+  - Markdown
+  - React
+  - Next.js
+  - 前端开发
+  - Web 开发
+---
+
+# 精美 MDX
+
+`contents` 目录下的所有 `.md` 和 `.mdx` 文件都将使用 [MDX](https://mdxjs.com/about) 渲染，
+这是一种支持 `React` 组件的高级 `Markdown` 格式。
+
+## 标题
+
+```md
+# **你好**，这是 `h1` 中的 _标题_
+
+## **你好**，这是 `h2` 中的 _标题_
+
+## **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h2` _标题_
+
+### **你好**，这是 `h3` 中的 _标题_
+
+### **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h3` _标题_
+
+#### **你好**，这是 `h4` 中的 _标题_
+
+##### **你好**，这是 `h5` 中的 _标题_
+
+###### **你好**，这是 `h6` 中的 _标题_
+```
+
+渲染效果：
+
+# **你好**，这是 `h1` 中的 _标题_
+
+## **你好**，这是 `h2` 中的 _标题_
+
+## **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h2` _标题_
+
+### **你好**，这是 `h3` 中的 _标题_
+
+### **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h3` _标题_
+
+#### **你好**，这是 `h4` 中的 _标题_
+
+##### **你好**，这是 `h5` 中的 _标题_
+
+###### **你好**，这是 `h6` 中的 _标题_
+
+## 列表
+
+### 无序列表
+
+```md
+- 使用 `+`、`-` 或 `*` 开始一行来创建列表。
+- 通过缩进 2 个空格来创建子列表：
+  + 更改标记字符会强制开始新列表：
+    * Ac tristique libero volutpat at.
+    - Facilisis in pretium nisl aliquet.
+    + Nulla volutpat aliquam velit.
+- 非常简单！
+```
+
+渲染效果：
+
+- 使用 `+`、`-` 或 `*` 开始一行来创建列表。
+- 通过缩进 2 个空格来创建子列表：
+  + 更改标记字符会强制开始新列表：
+    * Ac tristique libero volutpat at.
+    - Facilisis in pretium nisl aliquet.
+    + Nulla volutpat aliquam velit.
+- 非常简单！
+
+### 有序列表
+
+顺序编号：
+
+```md
+1. Lorem ipsum dolor sit amet:
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+      3. Integer molestie lorem at massa.
+   2. Consectetur adipiscing elit:
+      1. Lorem ipsum dolor sit amet.
+   3. Integer molestie lorem at massa:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+2. Consectetur adipiscing elit:
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+   2. Consectetur adipiscing elit:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+      3. Integer molestie lorem at massa.
+3. Integer molestie lorem at massa:
+   1. Lorem ipsum dolor sit amet.
+   2. Consectetur adipiscing elit.
+   3. Integer molestie lorem at massa.
+```
+
+渲染效果：
+
+1. Lorem ipsum dolor sit amet:
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+      3. Integer molestie lorem at massa.
+   2. Consectetur adipiscing elit:
+      1. Lorem ipsum dolor sit amet.
+   3. Integer molestie lorem at massa:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+2. Consectetur adipiscing elit:
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+   2. Consectetur adipiscing elit:
+      1. Lorem ipsum dolor sit amet.
+      2. Consectetur adipiscing elit.
+      3. Integer molestie lorem at massa.
+3. Integer molestie lorem at massa:
+   1. Lorem ipsum dolor sit amet.
+   2. Consectetur adipiscing elit.
+   3. Integer molestie lorem at massa.
+
+相同编号：
+
+```md
+1. 你可以将所有数字保持为 `1.`：
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      1. Lorem ipsum dolor sit amet.
+      1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      1. Lorem ipsum dolor sit amet.
+1. Lorem ipsum dolor sit amet:
+   1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet.
+```
+
+渲染效果：
+
+1. 你可以将所有数字保持为 `1.`：
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      1. Lorem ipsum dolor sit amet.
+      1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet:
+      1. Lorem ipsum dolor sit amet.
+      1. Lorem ipsum dolor sit amet.
+1. Lorem ipsum dolor sit amet:
+   1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet.
+   1. Lorem ipsum dolor sit amet.
+
+从偏移量开始编号：
+
+```md
+108. 108 编号列表。
+1. 1 编号列表。
+1. 1 编号列表。
+```
+
+渲染效果：
+
+108. 108 编号列表。
+1. 1 编号列表。
+1. 1 编号列表。
+
+### 任务列表
+
+```md
+- [x] 撰写新闻稿。
+- [ ] 更新网站。
+- [ ] 联系媒体。
+```
+
+渲染效果：
+
+- [x] 撰写新闻稿。
+- [ ] 更新网站。
+- [ ] 联系媒体。
+
+## 水平分割线
+
+```md
+___
+```
+
+渲染效果：
+
+___
+
+```md
+---
+```
+
+渲染效果：
+
+---
+
+```md
+***
+```
+
+渲染效果：
+
+***
+
+## 强调
+
+### 粗体
+
+```md
+**这是粗体文本**。
+
+__这是粗体文本__。
+```
+
+渲染效果：
+
+**这是粗体文本**。
+
+__这是粗体文本__。
+
+### 斜体
+
+```md
+*这是斜体文本*。
+
+_这是斜体文本_。
+```
+
+渲染效果：
+
+*这是斜体文本*。
+
+_这是斜体文本_。
+
+### 删除线
+
+```md
+~这是删除线文本~。
+
+~~这是删除线文本~~。
+```
+
+渲染效果：
+
+~这是删除线文本~。
+
+~~这是删除线文本~~。
+
+## 引用
+
+### 嵌套引用
+
+```md
+> 引用也可以嵌套...
+> > ...通过在彼此旁边使用额外的大于号...
+> > > ...或在箭头之间使用空格。
+```
+
+渲染效果：
+
+> 引用也可以嵌套...
+> > ...通过在彼此旁边使用额外的大于号...
+> > > ...或在箭头之间使用空格。
+
+### 连续引用
+
+```md
+> 引用也可以继续...
+> ...继续...
+> ...继续继续...
+```
+
+渲染效果：
+
+> 引用也可以继续...
+> ...继续...
+> ...继续继续...
+
+### 长引用
+
+```md
+> 引用可以非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...
+```
+
+渲染效果：
+
+> 引用可以非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...
+
+## 表格
+
+### 基础表格
+
+| a     | b     |     c |   d   |
+| ----- | :---- | ----: | :---: |
+| 10    | 200   |  3600 | 48000 |
+| 200   | 10    | 48000 | 3600  |
+| 3600  | 48000 |    10 |  200  |
+| 48000 | 3600  |   200 |  10   |
+
+| 选项   | 描述                                           |
+| ------ | ---------------------------------------------- |
+| data   | 提供将传递到模板中的数据文件的路径。           |
+| engine | 用于处理模板的引擎。Handlebars 是默认引擎。    |
+| ext    | 用于目标文件的扩展名。                         |
+
+### 左对齐表格
+
+| 选项   | 描述                                           |
+| :----- | :--------------------------------------------- |
+| data   | 提供将传递到模板中的数据文件的路径。           |
+| engine | 用于处理模板的引擎。Handlebars 是默认引擎。    |
+| ext    | 用于目标文件的扩展名。                         |
+
+### 居中对齐表格
+
+| 选项   |                    描述                        |
+| :----: | :--------------------------------------------: |
+|  data  | 提供将传递到模板中的数据文件的路径。           |
+| engine | 用于处理模板的引擎。Handlebars 是默认引擎。    |
+|  ext   | 用于目标文件的扩展名。                         |
+
+### 右对齐表格
+
+| 选项   |                                           描述 |
+| -----: | ---------------------------------------------: |
+|   data |           提供将传递到模板中的数据文件的路径。 |
+| engine |    用于处理模板的引擎。Handlebars 是默认引擎。 |
+|    ext |                         用于目标文件的扩展名。 |
+
+## 代码
+
+内联 `代码`。
+
+代码块"围栏"：
+
+```md
+这里是示例文本...
+```
+
+语法高亮：
+
+```ts
+const foo = function (bar) {
+  return bar++
+}
+
+foo(5)
+
+some.code()
+```
+
+## 链接
+
+### 基础链接
+
+```md
+[链接文本](https://github.com/sabertazimi)。
+
+[带标题的链接](https://sabertazimi.github.io/awesome-notes '标题文本！')。
+```
+
+渲染效果：
+
+[链接文本](https://github.com/sabertazimi)。
+
+[带标题的链接](https://sabertazimi.github.io/awesome-notes '标题文本！')。
+
+### 自动链接
+
+自动转换的链接：
+
+- `www.example.com`: www.example.com。
+- `https://example.com`: https://example.com。
+- `contact@example.com`: contact@example.com。
+
+### 脚注
+
+```md
+一个注释[^1]。
+
+[^1]: 大注释。
+
+另一个注释[^2]。
+
+还有一个注释[^3]。
+
+[^2]: 小注释。
+
+[^3]: 最小注释。
+```
+
+渲染效果（脚注在文档末尾渲染）：
+
+一个注释[^1]。
+
+[^1]: 大注释。
+
+另一个注释[^2]。
+
+还有一个注释[^3]。
+
+[^2]: 小注释。
+
+[^3]: 最小注释。
+
+## 图片
+
+### 本地图片
+
+```md
+![本地图片](/photos/laptop-computer-on-table.jpg)
+```
+
+渲染效果：
+
+![本地图片](/photos/laptop-computer-on-table.jpg)
+
+### 远程图片
+
+```md
+![Minion](https://octodex.github.com/images/minion.png)
+```
+
+渲染效果：
+
+![Minion](https://octodex.github.com/images/minion.png)
+
+### 错误图片
+
+```md
+![错误图片](error.jpg)
+```
+
+渲染效果：
+
+![错误图片](error.jpg)
+
+### 图片标题
+
+```md
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+```
+
+渲染效果：
+
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+
+### 图片脚注
+
+像链接一样，图片也有脚注样式语法：
+
+```md
+![替代文本][id]
+```
+
+在文档后面定义 URL 位置的引用：
+
+```md
+[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
+```
+
+渲染效果：
+
+![替代文本][id]
+
+[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
+
+## JSX
+
+### JSX 元素
+
+```md
+<h2>JSX 标题 2</h2>
+
+<abbr title="超文本标记语言">HTML</abbr> 是一种可爱的语言。
+
+<section>这里是 **JSX** 中的 *markdown*！</section>
+
+<div># 这不是标题，但 *这* 是强调</div>
+
+我可以在 _JSX_ 旁边编写 **Markdown**！
+
+<div>这是一个 `p`。</div>
+```
+
+渲染效果：
+
+<h2>JSX 标题 2</h2>
+
+<abbr title="超文本标记语言">HTML</abbr> 是一种可爱的语言。
+
+<section>这里是 **JSX** 中的 *markdown*！</section>
+
+<div># 这不是标题，但 *这* 是强调</div>
+
+我可以在 _JSX_ 旁边编写 **Markdown**！
+
+<div>这是一个 `p`。</div>
+
+### JavaScript 表达式
+
+```md
+两个 🍰 是：{Math.PI * 2}。
+```
+
+渲染效果：
+
+两个 🍰 是：{Math.PI * 2}。
+
+```md lines="9"
+{(function () {
+  const guess = 0.44
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>看看我们。</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
+})()}
+```
+
+渲染效果：
+
+{(function () {
+  const guess = 0.44
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>看看我们。</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
+})()}
+
+### MDX 注释
+
+```md
+{/* 一个注释！ */}
+```
+
+不渲染任何内容。
+
+{/* 一个注释！ */}
+
+## Git
+
+- 提交 `4c5361e`: 4c5361e。
+- 提交（fork）`foo@4c5361e`: foo@4c5361e。
+- 提交（项目）`remarkjs/remark@e1aa9f6`: remarkjs/remark@e1aa9f6。
+- Issue 或 PR（`#`）`#1`: #1。
+- Issue 或 PR（`GH-`）`GH-100`: GH-100。
+- Issue 或 PR（fork）`foo#1`: foo#1。
+- Issue 或 PR（项目）`remarkjs/remark#1`: remarkjs/remark#1。
+- 提及 `@sabertazimi`: @sabertazimi。
+
+## Emoji
+
+点赞 `:+1:` :+1:，点踩 `:-1:` :-1:。
+
+家庭 `:family_man_man_boy_boy:` :family_man_man_boy_boy:。
+
+一些国旗 `:cn:, :us:, :ru:, :uk:, :fr:` :cn:, :us:, :ru:, :uk:, :fr:。
+
+庆祝 `:tada:` :tada:，闪光 `:sparkles:` :sparkles:，火箭 `:rocket:` :rocket:。
+
+Bug `:bug:` :bug:，扳手 `:wrench:` :wrench:，闪电 `:zap:` :zap:。
+
+## 数学公式
+
+### 行内数学公式
+
+这是一个数学公式 `$\sqrt{a^2 + b^2}$` $\sqrt{a^2 + b^2}$。
+
+这是另一个数学公式 `$c = \pm\sqrt{a^2 + b^2}$` $c = \pm\sqrt{a^2 + b^2}$。
+
+### 块级数学公式
+
+```md title="数学公式"
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+$$
+\def\arraystretch{1.5}
+  \begin{array}{c:c:c}
+    a & b & c \\ \hline
+    d & e & f \\
+    \hdashline
+    g & h & i
+  \end{array}
+$$
+
+$$
+\begin{equation}
+  \begin{split}
+    a &= b + c \\
+      &= e + f
+  \end{split}
+\end{equation}
+$$
+
+$$
+\begin{align}
+  a &= b + c \\
+  d + e &= f
+\end{align}
+$$
+
+$$
+\begin{alignat}{2}
+  10 &x + &3 &y = 2 \\
+  3 &x + &13 &y = 4
+\end{alignat}
+$$
+```
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+$$
+\def\arraystretch{1.5}
+  \begin{array}{c:c:c}
+    a & b & c \\ \hline
+    d & e & f \\
+    \hdashline
+    g & h & i
+  \end{array}
+$$
+
+$$
+\begin{equation}
+  \begin{split}
+    a &= b + c \\
+      &= e + f
+  \end{split}
+\end{equation}
+$$
+
+$$
+\begin{align}
+  a &= b + c \\
+  d + e &= f
+\end{align}
+$$
+
+$$
+\begin{alignat}{2}
+  10 &x + &3 &y = 2 \\
+  3 &x + &13 &y = 4
+\end{alignat}
+$$
+
+## 提示框
+
+### 绿色提示框
+
+```md
+:::success
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::tip
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+```
+
+渲染效果：
+
+:::success
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::tip
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+### 蓝色提示框
+
+```md
+:::info
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::note
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+```
+
+渲染效果：
+
+:::info
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::note
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+### 黄色提示框
+
+```md
+:::warning
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::caution
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+```
+
+渲染效果：
+
+:::warning
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::caution
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+### 红色提示框
+
+```md
+:::error
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::danger
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+```
+
+渲染效果：
+
+:::error
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+:::danger
+
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
+
+:::
+
+### 带标题的提示框
+
+```md
+:::tip{你的标题}
+
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+
+- 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+- 列表。
+- 列表。
+
+1. 列表。
+   1. 列表。
+      1. 列表。
+      2. 列表。
+      3. 列表。
+   2. 列表。
+      1. 列表。
+   3. 列表。
+      1. 列表。
+      2. 列表。
+2. 列表。
+3. 列表。
+
+:::
+```
+
+渲染效果：
+
+:::tip{你的标题}
+
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+
+- 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+- 列表。
+- 列表。
+
+1. 列表。
+   1. 列表。
+      1. 列表。
+      2. 列表。
+      3. 列表。
+   2. 列表。
+      1. 列表。
+   3. 列表。
+      1. 列表。
+      2. 列表。
+2. 列表。
+3. 列表。
+
+:::
+
+```md
+:::note{提示框中的 MDX}
+
+两个 🍰 是：{Math.PI * 2}。
+
+{(function () {
+  const guess = 0.88
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>看看我们。</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
+})()}
+
+:::
+```
+
+渲染效果：
+
+:::note{提示框中的 MDX}
+
+两个 🍰 是：{Math.PI * 2}。
+
+{(function () {
+  const guess = 0.88
+
+  if (guess > 0.66) {
+    return <span style={{color: 'tomato'}}>看看我们。</span>
+  }
+
+  if (guess > 0.33) {
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
+  }
+
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
+})()}
+
+:::
+
+## MDX 组件
+
+```md
+<Button>MDX 按钮</Button>
+<Button variant="default">MDX 默认按钮</Button>
+```
+
+渲染效果：
+
+<Button>MDX 按钮</Button>
+<Button variant="default">MDX 默认按钮</Button>
+
+___
+
+```md
+<Button variant="outline">MDX 轮廓按钮</Button>
+<Button variant="secondary">MDX 次要按钮</Button>
+<Button variant="link">MDX 链接按钮</Button>
+```
+
+渲染效果：
+
+<Button variant="outline">MDX 轮廓按钮</Button>
+<Button variant="secondary">MDX 次要按钮</Button>
+<Button variant="link">MDX 链接按钮</Button>
+
+___
+
+```md
+<Button variant="destructive">MDX 危险按钮</Button>
+<Button variant="ghost">MDX 幽灵按钮</Button>
+```
+
+渲染效果：
+
+<Button variant="destructive">MDX 危险按钮</Button>
+<Button variant="ghost">MDX 幽灵按钮</Button>

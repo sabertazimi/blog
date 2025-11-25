@@ -1,17 +1,20 @@
 import type { Profile } from '@/types'
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { CalendarIcon, MapPinIcon } from 'lucide-react'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import FormattedDate from '@/components/formatted-date'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { formatDate } from '@/lib/utils'
+import { Link } from '@/i18n/navigation'
 
 interface ProfileCardProps {
   profile: Profile
 }
 
 function ProfileCard({ profile }: ProfileCardProps) {
+  const t = useTranslations('about')
+
   return (
     <Card className="h-full rounded-none border-0 shadow-none">
       <CardHeader className="items-center pb-4">
@@ -20,7 +23,7 @@ function ProfileCard({ profile }: ProfileCardProps) {
           <AvatarFallback>{profile.username.charAt(0)}</AvatarFallback>
         </Avatar>
         <CardTitle className="text-2xl">{profile.username}</CardTitle>
-        <CardDescription>{profile.bio ?? 'Web Developer'}</CardDescription>
+        <CardDescription>{profile.bio ?? t('bio')}</CardDescription>
         <Link
           href={profile.url}
           target="_blank"
@@ -37,11 +40,11 @@ function ProfileCard({ profile }: ProfileCardProps) {
       <CardContent className="space-y-4">
         <div className="flex items-center gap-2 text-sm">
           <MapPinIcon className="text-muted-foreground size-4" />
-          <span>{profile.location ?? 'Earth'}</span>
+          <span>{profile.location ?? t('location')}</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <CalendarIcon className="text-muted-foreground size-4" />
-          <time dateTime={profile.createDate}>{formatDate(profile.createDate)}</time>
+          <FormattedDate date={profile.createDate} />
         </div>
         <Separator />
         <div className="flex justify-around text-center">
@@ -52,7 +55,7 @@ function ProfileCard({ profile }: ProfileCardProps) {
             className="hover:text-primary transition-colors"
           >
             <div className="text-2xl font-bold">{profile.followers}</div>
-            <div className="text-muted-foreground text-xs">Followers</div>
+            <div className="text-muted-foreground text-xs">{t('followers')}</div>
           </Link>
           <Link
             href={profile.followingUrl}
@@ -61,7 +64,7 @@ function ProfileCard({ profile }: ProfileCardProps) {
             className="hover:text-primary transition-colors"
           >
             <div className="text-2xl font-bold">{profile.following}</div>
-            <div className="text-muted-foreground text-xs">Following</div>
+            <div className="text-muted-foreground text-xs">{t('following')}</div>
           </Link>
         </div>
       </CardContent>

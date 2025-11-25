@@ -1,16 +1,20 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { routeIcons, routes } from '@/lib/routes'
+import { Link, usePathname } from '@/i18n/navigation'
+import { getRouteIcons, getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
 function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const t = useTranslations('routes')
+  const tCommon = useTranslations('common')
+  const routes = getRoutes(t)
+  const routeIcons = getRouteIcons()
 
   return (
     <div className="flex flex-1 items-center justify-between md:hidden">
@@ -20,7 +24,7 @@ function MobileNav() {
             variant="ghost"
             size="icon"
             className="hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isOpen ? tCommon('closeMenu') : tCommon('openMenu')}
           >
             <div className="relative flex size-5 items-center justify-center">
               <div className="relative size-5">

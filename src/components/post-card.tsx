@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import PostImage from '@/components/post-image'
 import PostMetadata from '@/components/post-metadata'
+import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/utils'
 
 interface PostCardProps {

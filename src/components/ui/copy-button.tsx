@@ -5,6 +5,7 @@ import type { HTMLMotionProps } from 'motion/react'
 import { cva } from 'class-variance-authority'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 
@@ -60,6 +61,7 @@ function CopyButton({
   const [localIsCopied, setLocalIsCopied] = React.useState(isCopied ?? false)
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
   const Icon = localIsCopied ? CheckIcon : CopyIcon
+  const t = useTranslations('common')
 
   React.useEffect(() => {
     setLocalIsCopied(isCopied ?? false)
@@ -111,7 +113,7 @@ function CopyButton({
   return (
     <motion.button
       data-slot="copy-button"
-      aria-label={localIsCopied ? 'Copied to clipboard' : 'Copy to clipboard'}
+      aria-label={localIsCopied ? t('copiedToClipboard') : t('copyToClipboard')}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       className={cn(buttonVariants({ variant, size }), className)}

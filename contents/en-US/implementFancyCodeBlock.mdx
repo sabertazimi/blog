@@ -8,7 +8,6 @@ thumbnail: '/photos/laptop-computer-on-table.jpg'
 tags:
   - MDX
   - Markdown
-  - Code Playground
   - Code Editor
   - React
   - Next.js
@@ -23,7 +22,7 @@ tags:
 Enable line number `line="true"`:
 
 ```ts line="true"
-console.log('No line number!');
+console.log('There is line number!')
 ```
 
 ## Copy Button
@@ -31,7 +30,7 @@ console.log('No line number!');
 Disable copy button `nocopy="true"`:
 
 ```ts nocopy="true"
-console.log('No copy button!');
+console.log('No copy button!')
 ```
 
 ## Lines Highlight
@@ -39,17 +38,17 @@ console.log('No copy button!');
 Set highlight lines `lines="2,5,8-10,12,14..16,19,22...25,29"`:
 
 ```ts line="true" lines="2,5,8-10,12,14..16,19,22...25,29"
-import type { Parent } from 'mdast';
-import { visit } from 'unist-util-visit';
+import type { Parent } from 'mdast'
+import { visit } from 'unist-util-visit'
 
 /**
  * Markdown abstract syntax tree node definition.
  * @see https://github.com/syntax-tree/mdast
  */
 interface ContainerDirective extends Parent {
-  name: string;
-  attributes: Record<string, string>;
-  value?: string;
+  name: string
+  attributes: Record<string, string>
+  value?: string
 }
 
 export default function remarkAdmonitions() {
@@ -63,10 +62,10 @@ export default function remarkAdmonitions() {
             title: Object.keys(node.attributes).join(' '),
             className: `admonition admonition-${node.name}`,
           },
-        };
+        }
       }
-    });
-  };
+    })
+  }
 }
 ```
 
@@ -74,8 +73,8 @@ export default function remarkAdmonitions() {
 
 Show code title `title="Awesome Code"`:
 
-```ts nocopy="true" title="Awesome Code"
-console.log('Awesome!');
+```ts title="Awesome Code"
+console.log('Awesome!')
 ```
 
 ## Live Code
@@ -84,11 +83,11 @@ Live code editor `live="true"`:
 
 ```tsx live="true" title="Live Code"
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <div
-      onClick={() => setCount(count => count + 1)}
+      onClick={() => setCount((count) => count + 1)}
       style={{
         padding: '3rem',
         textAlign: 'center',
@@ -97,8 +96,8 @@ export default function App() {
     >
       {count}
     </div>
-  );
-};
+  )
+}
 ```
 
 Live code editor `<Editor> ```tsx Some code``` </Editor>`:
@@ -106,7 +105,7 @@ Live code editor `<Editor> ```tsx Some code``` </Editor>`:
 <Editor>
 
 ```tsx
-import Greet from './Greet';
+import Greet from './Greet'
 
 export default function MyApp() {
   return (
@@ -114,13 +113,13 @@ export default function MyApp() {
       <h1>My App</h1>
       <Greet />
     </div>
-  );
+  )
 }
 ```
 
 ```tsx filename="Greet.tsx"
 function Greeting({ name }) {
-  return <h3>Hello, {name}!</h3>;
+  return <h3>Hello, {name}!</h3>
 }
 
 export default function Greet() {
@@ -130,7 +129,7 @@ export default function Greet() {
       <Greeting name="Sony" />
       <Greeting name="Microsoft" />
     </div>
-  );
+  )
 }
 ```
 
@@ -162,9 +161,9 @@ export default function Greet() {
   --secondary: #40a9ff;
   --light: #f8f9fa;
   --dark: #343a40;
-  --font-stack: 'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC',
-    'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
+  --font-stack:
+    'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
   --font-size: 18px;
 }
 
@@ -179,28 +178,28 @@ body {
 
 ```ts
 const foo = function (bar) {
-  return bar++;
-};
+  return bar++
+}
 
-foo(5);
+foo(5)
 
-some.code();
+some.code()
 ```
 
 ```tsx
 {
   (function () {
-    const guess = 0.44;
+    const guess = 0.44
 
     if (guess > 0.66) {
-      return <span style={{ color: 'tomato' }}>Look at us.</span>;
+      return <span style={{ color: 'tomato' }}>Look at us.</span>
     }
 
     if (guess > 0.33) {
-      return <span style={{ color: 'violet' }}>Who would have guessed?!</span>;
+      return <span style={{ color: 'violet' }}>Who would have guessed?!</span>
     }
 
-    return <span style={{ color: 'goldenrod' }}>Not me.</span>;
-  })();
+    return <span style={{ color: 'goldenrod' }}>Not me.</span>
+  })()
 }
 ```

@@ -1,6 +1,7 @@
 import type { PostMeta } from '@/types'
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/utils'
 
 interface PostFooterProps {
@@ -9,6 +10,8 @@ interface PostFooterProps {
 }
 
 function PostFooter({ prevPost, nextPost }: PostFooterProps) {
+  const t = useTranslations('common')
+
   return (
     <div className={cn('@container grid grid-cols-2 gap-4')}>
       {prevPost && (
@@ -17,6 +20,7 @@ function PostFooter({ prevPost, nextPost }: PostFooterProps) {
           title={prevPost.title}
           description={prevPost.description}
           index={0}
+          t={t}
         />
       )}
       {nextPost && (
@@ -25,6 +29,7 @@ function PostFooter({ prevPost, nextPost }: PostFooterProps) {
           title={nextPost.title}
           description={nextPost.description}
           index={1}
+          t={t}
         />
       )}
     </div>
@@ -36,18 +41,21 @@ function PostFooterItem({
   title,
   description,
   index,
+  t,
 }: {
   url: string
   title: string
   description?: string
   index: 0 | 1
+  t: ReturnType<typeof useTranslations>
 }) {
   const Icon = index === 0 ? ChevronLeftIcon : ChevronRightIcon
+  const postType = index === 0 ? t('previousPost') : t('nextPost')
 
   return (
     <Link
       href={url}
-      aria-label={`${index === 0 ? 'Previous' : 'Next'} post: ${title}`}
+      aria-label={`${postType}: ${title}`}
       className={cn(
         'hover:bg-accent/80 hover:text-accent-foreground flex flex-col gap-2 rounded-lg border p-4 text-sm transition-colors',
         index === 0 ? 'col-start-1' : 'col-start-2',

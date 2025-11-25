@@ -1,6 +1,6 @@
 import type { Repo } from '@/types'
 import { GitForkIcon, StarIcon } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { colors } from '@/lib/colors'
 
 interface RepoCardProps {

@@ -1,0 +1,205 @@
+---
+layout: post
+title: '实现精美的代码块'
+description: '在 Next.js 中实现精美的代码块'
+author: 'Sabertaz'
+date: 2022-05-01
+thumbnail: '/photos/laptop-computer-on-table.jpg'
+tags:
+  - MDX
+  - Markdown
+  - 代码编辑器
+  - React
+  - Next.js
+  - 前端开发
+  - Web 开发
+---
+
+# 精美代码块
+
+## 行号
+
+启用行号 `line="true"`：
+
+```ts line="true"
+console.log('有行号！')
+```
+
+## 复制按钮
+
+禁用复制按钮 `nocopy="true"`：
+
+```ts nocopy="true"
+console.log('没有复制按钮!')
+```
+
+## 行高亮
+
+设置高亮行 `lines="2,5,8-10,12,14..16,19,22...25,29"`：
+
+```ts line="true" lines="2,5,8-10,12,14..16,19,22...25,29"
+import type { Parent } from 'mdast'
+import { visit } from 'unist-util-visit'
+
+/**
+ * Markdown 抽象语法树节点定义。
+ * @see https://github.com/syntax-tree/mdast
+ */
+interface ContainerDirective extends Parent {
+  name: string
+  attributes: Record<string, string>
+  value?: string
+}
+
+export default function remarkAdmonitions() {
+  return (tree: any) => {
+    visit(tree, (node: ContainerDirective) => {
+      if (node.type === 'containerDirective') {
+        node.data = {
+          hName: 'aside',
+          hProperties: {
+            type: node.name,
+            title: Object.keys(node.attributes).join(' '),
+            className: `admonition admonition-${node.name}`,
+          },
+        }
+      }
+    })
+  }
+}
+```
+
+## 代码标题
+
+显示代码标题 `title="精彩代码"`：
+
+```ts title="精彩代码"
+console.log('精彩!')
+```
+
+## 实时代码
+
+实时代码编辑器 `live="true"`：
+
+```tsx live="true" title="实时代码"
+export default function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div
+      onClick={() => setCount((count) => count + 1)}
+      style={{
+        padding: '3rem',
+        textAlign: 'center',
+        cursor: 'pointer',
+      }}
+    >
+      {count}
+    </div>
+  )
+}
+```
+
+实时代码编辑器 `<Editor> ```tsx 一些代码``` </Editor>`：
+
+<Editor>
+
+```tsx
+import Greet from './Greet'
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>我的应用</h1>
+      <Greet />
+    </div>
+  )
+}
+```
+
+```tsx filename="Greet.tsx"
+function Greeting({ name }) {
+  return <h3>你好，{name}！</h3>
+}
+
+export default function Greet() {
+  return (
+    <div>
+      <Greeting name="任天堂" />
+      <Greeting name="索尼" />
+      <Greeting name="微软" />
+    </div>
+  )
+}
+```
+
+</Editor>
+
+## 编程语言
+
+### 标记语言代码
+
+```html
+<h2>JSX 标题 2</h2>
+
+<abbr title="超文本标记语言">HTML</abbr> 是一种可爱的语言。
+
+<section>这里 *markdown* 在 **JSX** 中！</section>
+```
+
+```xml
+<div># 这不是标题，但 *这* 是强调</div>
+
+<div>这是一个 `p`。</div>
+```
+
+### CSS 代码
+
+```css
+:root {
+  --primary: #1677ff;
+  --secondary: #40a9ff;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --font-stack:
+    'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
+  --font-size: 18px;
+}
+
+body {
+  width: 100%;
+  font-family: var(--font-stack);
+  font-size: var(--font-size);
+}
+```
+
+### TypeScript 代码
+
+```ts
+const foo = function (bar) {
+  return bar++
+}
+
+foo(5)
+
+some.code()
+```
+
+```tsx
+{
+  (function () {
+    const guess = 0.44
+
+    if (guess > 0.66) {
+      return <span style={{ color: 'tomato' }}>看看我们。</span>
+    }
+
+    if (guess > 0.33) {
+      return <span style={{ color: 'violet' }}>谁会猜到？！</span>
+    }
+
+    return <span style={{ color: 'goldenrod' }}>不是我。</span>
+  })()
+}
+```

@@ -1,19 +1,35 @@
 import type { Metadata, Viewport } from 'next'
+import { hasLocale } from 'next-intl'
+import { routing } from '@/i18n/routing'
 import { siteConfig } from './site'
 
 export function getMetadata({
-  title = siteConfig.title,
-  description = siteConfig.description,
+  title,
+  description,
   author = siteConfig.author,
   url = siteConfig.url,
   x = siteConfig.socials.x,
+  locale,
+  pathname = '',
 }: {
   title?: string
   description?: string
   author?: string
   url?: string
   x?: string
+  locale?: string
+  pathname?: string
 } = {}): Metadata {
+  // Generate alternate language links
+  const languages: Record<string, string> = {}
+  const isLocale = hasLocale(routing.locales, locale)
+
+  if (isLocale) {
+    routing.locales.forEach((loc) => {
+      languages[loc] = `${url}/${loc}${pathname}`
+    })
+  }
+
   return {
     title,
     description,
@@ -28,11 +44,18 @@ export function getMetadata({
       },
     },
     manifest: '/manifest.json',
+    alternates: isLocale
+      ? {
+          canonical: url,
+          languages,
+        }
+      : undefined,
     openGraph: {
       url,
       title,
       description,
       siteName: title,
+      locale,
     },
     robots: {
       index: true,

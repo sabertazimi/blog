@@ -1,8 +1,8 @@
 import type { Post } from '@/types'
 import { ArrowLeftIcon } from 'lucide-react'
-import Link from 'next/link'
 import PostMetadata from '@/components/post-metadata'
 import { Button } from '@/components/ui/button'
+import { Link } from '@/i18n/navigation'
 import { getTagUrl } from '@/lib/utils'
 
 interface PostHeaderProps {
@@ -27,7 +27,11 @@ function PostHeader({ postData }: PostHeaderProps) {
           ))}
         </div>
       )}
-      <PostMetadata createTime={postData?.createTime} updateTime={postData?.updateTime} readingTime={postData?.readingTime} />
+      <PostMetadata
+        createTime={postData?.createTime}
+        updateTime={postData?.updateTime}
+        readingTime={postData?.readingTime}
+      />
     </div>
   )
 }

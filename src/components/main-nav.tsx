@@ -1,7 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -9,11 +8,14 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { routes } from '@/lib/routes'
+import { Link, usePathname } from '@/i18n/navigation'
+import { getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
 function MainNav() {
   const pathname = usePathname()
+  const t = useTranslations('routes')
+  const routes = getRoutes(t)
 
   return (
     <NavigationMenu className="hidden md:flex" viewport={false}>

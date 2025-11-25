@@ -1,10 +1,12 @@
 import type { BuildTime, SocialSite } from '@/types'
 import { SiFacebook, SiGithub, SiSinaweibo, SiX } from '@icons-pack/react-simple-icons'
+import { useTranslations } from 'next-intl'
+import FormattedDate from '@/components/formatted-date'
 import { Separator } from '@/components/ui/separator'
 import { socialColors } from '@/lib/colors'
 import { siteConfig } from '@/lib/site'
 import { socialList } from '@/lib/social'
-import { cn, formatDate } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 interface Props {
   buildTime: BuildTime
@@ -18,6 +20,8 @@ const socialIcons: Record<SocialSite, React.ComponentType<{ className?: string }
 }
 
 function SiteFooter({ buildTime }: Props) {
+  const t = useTranslations('footer')
+
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-6 py-8">
@@ -51,8 +55,8 @@ function SiteFooter({ buildTime }: Props) {
         <Separator className="my-6" />
         <div className="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-6">
           <div className="text-muted-foreground text-sm">
-            Copyright ©
-            {' '}
+            {t('copyright')}
+            {' © '}
             {new Date().getFullYear()}
             {' '}
             <a
@@ -66,7 +70,7 @@ function SiteFooter({ buildTime }: Props) {
           </div>
           <Separator orientation="vertical" className="hidden h-4 md:block" />
           <div className="text-muted-foreground text-sm">
-            Built with
+            {t('builtWith')}
             {' '}
             <a
               href="https://react.dev"
@@ -77,7 +81,7 @@ function SiteFooter({ buildTime }: Props) {
               React
             </a>
             {' '}
-            and
+            {t('and')}
             {' '}
             <a
               href="https://nextjs.org"
@@ -90,7 +94,7 @@ function SiteFooter({ buildTime }: Props) {
           </div>
           <Separator orientation="vertical" className="hidden h-4 md:block" />
           <span className="text-muted-foreground text-sm">
-            Last built on
+            {t('lastBuilt')}
             {' '}
             <a
               href="https://github.com/sabertazimi/blog/actions"
@@ -98,7 +102,7 @@ function SiteFooter({ buildTime }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <time dateTime={new Date(buildTime).toISOString()}>{formatDate(buildTime)}</time>
+              <FormattedDate date={buildTime} />
             </a>
           </span>
         </div>

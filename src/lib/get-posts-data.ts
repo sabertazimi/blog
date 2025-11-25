@@ -1,3 +1,4 @@
+import type { Locale } from 'next-intl'
 import type { MDXFrontMatter, Metadata, Post } from '@/types'
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
@@ -18,7 +19,11 @@ import remarkGitHub from 'remark-github'
 import remarkMath from 'remark-math'
 import remarkAdmonitions from './remark-admonitions'
 
-const contentsPath = path.join(process.cwd(), 'contents')
+const contentsBasePath = path.join(process.cwd(), 'contents')
+
+function getContentsPath(locale: string): string {
+  return path.join(contentsBasePath, locale)
+}
 
 async function* walk(directoryPath: string): AsyncGenerator<string> {
   const directory = await fs.opendir(directoryPath)
@@ -89,8 +94,25 @@ async function generatePostData(filePath: string): Promise<Post> {
   }
 }
 
-async function getPostsData(): Promise<Post[]> {
+async function getPostsData(locale: Locale = 'en-US'): Promise<Post[]> {
   const postsData: Post[] = []
+  const contentsPath = getContentsPath(locale)
+
+  // Check if locale directory exists, fallback to en-US if not
+  try {
+    await fs.access(contentsPath)
+  } catch {
+    const fallbackPath = getContentsPath('en-US')
+    for await (const filePath of walk(fallbackPath)) {
+      const fileExt = path.extname(filePath)
+
+      if (['.md', '.mdx'].includes(fileExt)) {
+        const postData = await generatePostData(filePath)
+        postsData.push(postData)
+      }
+    }
+    return postsData
+  }
 
   for await (const filePath of walk(contentsPath)) {
     const fileExt = path.extname(filePath)
@@ -136,8 +158,8 @@ async function getPostsData(): Promise<Post[]> {
   return sortedLinkedPostsData
 }
 
-async function getPostsMeta(cachedData?: Post[]): Promise<Metadata> {
-  const postsData = cachedData ?? (await getPostsData())
+async function getPostsMeta(locale: Locale = 'en-US', cachedData?: Post[]): Promise<Metadata> {
+  const postsData = cachedData ?? (await getPostsData(locale))
 
   const posts = postsData.map((post) => {
     const { excerpt: _, source: __, ...postMeta } = post
@@ -171,9 +193,16 @@ async function getPostsMeta(cachedData?: Post[]): Promise<Metadata> {
   }
 }
 
-async function getPostData(slug: string, cachedData?: Post[]): Promise<Post | undefined> {
-  const postsData = cachedData ?? (await getPostsData())
+async function getPostData(slug: string, locale: Locale = 'en-US', cachedData?: Post[]): Promise<Post | undefined> {
+  const postsData = cachedData ?? (await getPostsData(locale))
   const postData = postsData.find(post => post.slug === slug)
+
+  // If post not found in current locale, try fallback to en-US
+  if (!postData && locale !== 'en-US') {
+    const fallbackPostsData = await getPostsData('en-US')
+    return fallbackPostsData.find(post => post.slug === slug)
+  }
+
   return postData
 }
 
