@@ -109,9 +109,7 @@ function CommandMenu({
                   <span className="line-clamp-1">{post.title}</span>
                   {post.createTime !== undefined && post.createTime !== ''
                     ? (
-                        <time dateTime={post.createTime} className="text-muted-foreground ml-auto text-xs">
-                          <FormattedDate date={post.createTime} />
-                        </time>
+                        <FormattedDate date={post.createTime} className="text-muted-foreground ml-auto text-xs" />
                       )
                     : null}
                 </CommandItem>

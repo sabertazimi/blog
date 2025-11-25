@@ -104,9 +104,7 @@ function SiteFooter({ buildTime }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <time dateTime={new Date(buildTime).toISOString()}>
-                <FormattedDate date={buildTime} />
-              </time>
+              <FormattedDate date={buildTime} />
             </a>
           </span>
         </div>

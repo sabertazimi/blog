@@ -16,22 +16,18 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
   return (
     <>
       {createTime !== undefined && createTime !== '' && (
-        <time
-          dateTime={createTime}
-          className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}
-        >
-          <CalendarIcon className="size-4" />
-          <FormattedDate date={createTime} />
-        </time>
+        <FormattedDate
+          date={createTime}
+          icon={CalendarIcon}
+          className={cn('text-muted-foreground text-sm font-medium', className)}
+        />
       )}
       {updateTime !== undefined && updateTime !== '' && (
-        <time
-          dateTime={updateTime}
-          className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}
-        >
-          <SquarePenIcon className="size-4" />
-          <FormattedDate date={updateTime} />
-        </time>
+        <FormattedDate
+          date={updateTime}
+          icon={SquarePenIcon}
+          className={cn('text-muted-foreground text-sm font-medium', className)}
+        />
       )}
       {readingTime !== undefined && readingTime !== 0 && (
         <span className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}>
