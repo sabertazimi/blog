@@ -1,5 +1,6 @@
 import type { Profile, Repo } from '@/types'
 import { GitForkIcon, StarIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import ProfileCard from '@/components/profile-card'
 import RepoCard from '@/components/repo-card'
 import StatCard from '@/components/stat-card'
@@ -11,6 +12,8 @@ interface AboutMeProps {
 }
 
 function AboutMe({ profile, repos, totalStars }: AboutMeProps) {
+  const t = useTranslations('about')
+
   return (
     <div className="container mx-auto px-6 lg:px-0">
       <div className="border-border grid border-x lg:grid-cols-3">
@@ -20,15 +23,15 @@ function AboutMe({ profile, repos, totalStars }: AboutMeProps) {
         <div className="lg:col-span-2">
           <div className="border-border grid gap-6 border-b p-6 sm:grid-cols-2">
             <StatCard
-              title="Total Repositories"
+              title={t('totalRepositories')}
               value={repos.length}
-              description="Public repositories"
+              description={t('publicRepositories')}
               icon={GitForkIcon}
             />
-            <StatCard title="Total Stars" value={totalStars} description="Across all projects" icon={StarIcon} />
+            <StatCard title={t('totalStars')} value={totalStars} description={t('acrossAllProjects')} icon={StarIcon} />
           </div>
           <div className="p-6">
-            <h3 className="mb-4 text-lg font-semibold">Featured Repositories</h3>
+            <h3 className="mb-4 text-lg font-semibold">{t('featuredRepositories')}</h3>
             <div className="space-y-3">
               {repos.map(repo => (
                 <RepoCard key={repo.name} repo={repo} />

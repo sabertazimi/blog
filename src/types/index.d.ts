@@ -81,18 +81,7 @@ export interface GitHub {
   repos: Repo[]
 }
 
-export type {
-  PaletteColor,
-} from '@/lib/colors'
-
-export type {
-  Route,
-} from '@/lib/routes'
-
-export type {
-  SiteConfig,
-} from '@/lib/site'
-
-export type {
-  SocialSite,
-} from '@/lib/social'
+export type { PaletteColor } from '@/lib/colors'
+export type { Route } from '@/lib/get-routes'
+export type { SiteConfig } from '@/lib/site'
+export type { SocialSite } from '@/lib/social'

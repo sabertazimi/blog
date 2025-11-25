@@ -2,9 +2,10 @@
 
 import type { TagsMeta } from '@/types'
 import { ChevronDownIcon } from 'lucide-react'
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
+import { Link } from '@/i18n/navigation'
 import { cn, getTagUrl } from '@/lib/utils'
 
 interface TagFilterProps {
@@ -14,6 +15,9 @@ interface TagFilterProps {
 
 function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const t = useTranslations('post')
+  const tCommon = useTranslations('common')
+  const getDisplayTag = (tag: string) => (tag === 'All' ? tCommon('all') : tag)
 
   return (
     <>
@@ -29,7 +33,7 @@ function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterP
                 : 'border-border hover:bg-muted',
             )}
           >
-            <span>{tag}</span>
+            <span>{getDisplayTag(tag)}</span>
             {tagCounts?.[tag] !== undefined && tagCounts?.[tag] !== 0 && (
               <span
                 className={cn(
@@ -47,12 +51,12 @@ function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterP
       </div>
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerTrigger className="border-border hover:bg-muted flex w-full items-center justify-between rounded-lg border px-4 py-2 transition-colors md:hidden">
-          <span className="text-sm font-medium capitalize">{selectedTag}</span>
+          <span className="text-sm font-medium capitalize">{getDisplayTag(selectedTag)}</span>
           <ChevronDownIcon className="size-4" />
         </DrawerTrigger>
         <DrawerContent className="md:hidden">
           <DrawerHeader>
-            <DrawerTitle className="text-sm font-semibold">Select Category</DrawerTitle>
+            <DrawerTitle className="text-sm font-semibold">{t('selectCategory')}</DrawerTitle>
           </DrawerHeader>
           <div className="space-y-2 px-4">
             {allTags.map(tag => (
@@ -67,7 +71,7 @@ function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterP
                     selectedTag === tag ? 'text-primary underline underline-offset-4' : 'text-muted-foreground',
                   )}
                 >
-                  {tag}
+                  {getDisplayTag(tag)}
                 </span>
                 {tagCounts?.[tag] !== undefined && tagCounts?.[tag] !== 0 && (
                   <span className="border-border ml-2 flex h-6 min-w-6 shrink-0 items-center justify-center rounded-md border">

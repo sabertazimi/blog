@@ -1,16 +1,19 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { routeIcons, routes } from '@/lib/routes'
+import { Link, usePathname } from '@/i18n/navigation'
+import { getRouteIcons, getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
 function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const t = useTranslations('routes')
+  const routes = getRoutes(t)
+  const routeIcons = getRouteIcons()
 
   return (
     <div className="flex flex-1 items-center justify-between md:hidden">

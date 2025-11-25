@@ -1,5 +1,7 @@
 import { CalendarIcon, ClockIcon, SquarePenIcon } from 'lucide-react'
-import { cn, formatDate } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
+import FormattedDate from '@/components/formatted-date'
+import { cn } from '@/lib/utils'
 
 interface PostMetadataProps {
   createTime?: string
@@ -9,6 +11,8 @@ interface PostMetadataProps {
 }
 
 function PostMetadata({ createTime, updateTime, readingTime, className }: PostMetadataProps) {
+  const t = useTranslations('post')
+
   return (
     <>
       {createTime !== undefined && createTime !== '' && (
@@ -17,7 +21,7 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
           className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}
         >
           <CalendarIcon className="size-4" />
-          {formatDate(createTime)}
+          <FormattedDate date={createTime} />
         </time>
       )}
       {updateTime !== undefined && updateTime !== '' && (
@@ -26,7 +30,7 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
           className={cn('text-muted-foreground flex items-center gap-1.5 text-sm font-medium', className)}
         >
           <SquarePenIcon className="size-4" />
-          {formatDate(updateTime)}
+          <FormattedDate date={updateTime} />
         </time>
       )}
       {readingTime !== undefined && readingTime !== 0 && (
@@ -34,7 +38,7 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
           <ClockIcon className="size-4" />
           {readingTime}
           {' '}
-          min
+          {t('readingTime')}
         </span>
       )}
     </>
