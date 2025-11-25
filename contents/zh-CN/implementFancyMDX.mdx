@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '实现精美的 MDX'
-description: '在 Next.js 中实现精美的 MDX 支持'
+description: '在 Next.js 中实现精美的 MDX'
 author: 'Sabertaz'
 date: 2022-04-26
 thumbnail: '/photos/pen-writing-on-notebook.jpg'
@@ -14,77 +14,76 @@ tags:
   - Web 开发
 ---
 
-# Fancy MDX
+# 精美 MDX
 
-All your `.md` and `.mdx` files under the `contents` directory
-will be rendered with [MDX](https://mdxjs.com/about),
-it's an advanced `Markdown` format with `React` component support.
+`contents` 目录下的所有 `.md` 和 `.mdx` 文件都将使用 [MDX](https://mdxjs.com/about) 渲染，
+这是一种支持 `React` 组件的高级 `Markdown` 格式。
 
-## Heading
+## 标题
 
 ```md
-# **Hello**, This Is a _Title_ Inside `h1`
+# **你好**，这是 `h1` 中的 _标题_
 
-## **Hello**, This Is a _Title_ Inside `h2`
+## **你好**，这是 `h2` 中的 _标题_
 
-## **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h2`
+## **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h2` _标题_
 
-### **Hello**, This Is a _Title_ Inside `h3`
+### **你好**，这是 `h3` 中的 _标题_
 
-### **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h3`
+### **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h3` _标题_
 
-#### **Hello**, This Is a _Title_ Inside `h4`
+#### **你好**，这是 `h4` 中的 _标题_
 
-##### **Hello**, This Is a _Title_ Inside `h5`
+##### **你好**，这是 `h5` 中的 _标题_
 
-###### **Hello**, This Is a _Title_ Inside `h6`
+###### **你好**，这是 `h6` 中的 _标题_
 ```
 
-Renders:
+渲染效果：
 
-# **Hello**, This Is a _Title_ Inside `h1`
+# **你好**，这是 `h1` 中的 _标题_
 
-## **Hello**, This Is a _Title_ Inside `h2`
+## **你好**，这是 `h2` 中的 _标题_
 
-## **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h2`
+## **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h2` _标题_
 
-### **Hello**, This Is a _Title_ Inside `h3`
+### **你好**，这是 `h3` 中的 _标题_
 
-### **Hello**, This Is a very very very very very very very very very long _Title_ Inside `h3`
+### **你好**，这是一个非常非常非常非常非常非常非常非常长的 `h3` _标题_
 
-#### **Hello**, This Is a _Title_ Inside `h4`
+#### **你好**，这是 `h4` 中的 _标题_
 
-##### **Hello**, This Is a _Title_ Inside `h5`
+##### **你好**，这是 `h5` 中的 _标题_
 
-###### **Hello**, This Is a _Title_ Inside `h6`
+###### **你好**，这是 `h6` 中的 _标题_
 
-## List
+## 列表
 
-### Unordered List
+### 无序列表
 
 ```md
-- Create a list by starting a line with `+`, `-`, or `*`.
-- Sub-lists are made by indenting 2 spaces:
-  + Marker character change forces new list start:
+- 使用 `+`、`-` 或 `*` 开始一行来创建列表。
+- 通过缩进 2 个空格来创建子列表：
+  + 更改标记字符会强制开始新列表：
     * Ac tristique libero volutpat at.
     - Facilisis in pretium nisl aliquet.
     + Nulla volutpat aliquam velit.
-- Very easy!
+- 非常简单！
 ```
 
-Renders:
+渲染效果：
 
-- Create a list by starting a line with `+`, `-`, or `*`.
-- Sub-lists are made by indenting 2 spaces:
-  + Marker character change forces new list start:
+- 使用 `+`、`-` 或 `*` 开始一行来创建列表。
+- 通过缩进 2 个空格来创建子列表：
+  + 更改标记字符会强制开始新列表：
     * Ac tristique libero volutpat at.
     - Facilisis in pretium nisl aliquet.
     + Nulla volutpat aliquam velit.
-- Very easy!
+- 非常简单！
 
-### Ordered List
+### 有序列表
 
-Sequential numbering:
+顺序编号：
 
 ```md
 1. Lorem ipsum dolor sit amet:
@@ -111,7 +110,7 @@ Sequential numbering:
    3. Integer molestie lorem at massa.
 ```
 
-Renders:
+渲染效果：
 
 1. Lorem ipsum dolor sit amet:
    1. Lorem ipsum dolor sit amet:
@@ -136,10 +135,10 @@ Renders:
    2. Consectetur adipiscing elit.
    3. Integer molestie lorem at massa.
 
-Same numbering:
+相同编号：
 
 ```md
-1. You can keep all the numbers as `1.`:
+1. 你可以将所有数字保持为 `1.`：
    1. Lorem ipsum dolor sit amet:
       1. Lorem ipsum dolor sit amet.
       1. Lorem ipsum dolor sit amet.
@@ -155,9 +154,9 @@ Same numbering:
    1. Lorem ipsum dolor sit amet.
 ```
 
-Renders:
+渲染效果：
 
-1. You can keep all the numbers as `1.`:
+1. 你可以将所有数字保持为 `1.`：
    1. Lorem ipsum dolor sit amet:
       1. Lorem ipsum dolor sit amet.
       1. Lorem ipsum dolor sit amet.
@@ -172,41 +171,41 @@ Renders:
    1. Lorem ipsum dolor sit amet.
    1. Lorem ipsum dolor sit amet.
 
-Start numbering with offset:
+从偏移量开始编号：
 
 ```md
-108. 108 numbering list.
-1. 1 numbering list.
-1. 1 numbering list.
+108. 108 编号列表。
+1. 1 编号列表。
+1. 1 编号列表。
 ```
 
-Renders:
+渲染效果：
 
-108. 108 numbering list.
-1. 1 numbering list.
-1. 1 numbering list.
+108. 108 编号列表。
+1. 1 编号列表。
+1. 1 编号列表。
 
-### Task List
+### 任务列表
 
 ```md
-- [x] Write the press release.
-- [ ] Update the website.
-- [ ] Contact the media.
+- [x] 撰写新闻稿。
+- [ ] 更新网站。
+- [ ] 联系媒体。
 ```
 
-Renders:
+渲染效果：
 
-- [x] Write the press release.
-- [ ] Update the website.
-- [ ] Contact the media.
+- [x] 撰写新闻稿。
+- [ ] 更新网站。
+- [ ] 联系媒体。
 
-## Horizontal Rule
+## 水平分割线
 
 ```md
 ___
 ```
 
-Renders:
+渲染效果：
 
 ___
 
@@ -214,7 +213,7 @@ ___
 ---
 ```
 
-Renders:
+渲染效果：
 
 ---
 
@@ -222,97 +221,97 @@ Renders:
 ***
 ```
 
-Renders:
+渲染效果：
 
 ***
 
-## Emphasis
+## 强调
 
-### Bold
-
-```md
-**This is bold text**.
-
-__This is bold text__.
-```
-
-Renders:
-
-**This is bold text**.
-
-__This is bold text__.
-
-### Italic
+### 粗体
 
 ```md
-*This is italic text*.
+**这是粗体文本**。
 
-_This is italic text_.
+__这是粗体文本__。
 ```
 
-Renders:
+渲染效果：
 
-*This is italic text*.
+**这是粗体文本**。
 
-_This is italic text_.
+__这是粗体文本__。
 
-### Strikethrough
+### 斜体
 
 ```md
-~This is strikethrough text~.
+*这是斜体文本*。
 
-~~This is strikethrough text~~.
+_这是斜体文本_。
 ```
 
-Renders:
+渲染效果：
 
-~This is strikethrough text~.
+*这是斜体文本*。
 
-~~This is strikethrough text~~.
+_这是斜体文本_。
 
-## Blockquote
-
-### Nested Blockquote
+### 删除线
 
 ```md
-> Blockquotes can also be nested...
-> > ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+~这是删除线文本~。
+
+~~这是删除线文本~~。
 ```
 
-Renders:
+渲染效果：
 
-> Blockquotes can also be nested...
-> > ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+~这是删除线文本~。
 
-### Continued Blockquote
+~~这是删除线文本~~。
+
+## 引用
+
+### 嵌套引用
 
 ```md
-> Blockquotes can also be continued...
-> ...continued...
-> ...continued continued...
+> 引用也可以嵌套...
+> > ...通过在彼此旁边使用额外的大于号...
+> > > ...或在箭头之间使用空格。
 ```
 
-Renders:
+渲染效果：
 
-> Blockquotes can also be continued...
-> ...continued...
-> ...continued continued...
+> 引用也可以嵌套...
+> > ...通过在彼此旁边使用额外的大于号...
+> > > ...或在箭头之间使用空格。
 
-### Long Blockquote
+### 连续引用
 
 ```md
-> Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
+> 引用也可以继续...
+> ...继续...
+> ...继续继续...
 ```
 
-Renders:
+渲染效果：
 
-> Blockquotes can be very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...very very very very very very very very long...
+> 引用也可以继续...
+> ...继续...
+> ...继续继续...
 
-## Table
+### 长引用
 
-### Basic Table
+```md
+> 引用可以非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...
+```
+
+渲染效果：
+
+> 引用可以非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...非常非常非常非常非常非常非常非常长...
+
+## 表格
+
+### 基础表格
 
 | a     | b     |     c |   d   |
 | ----- | :---- | ----: | :---: |
@@ -321,47 +320,47 @@ Renders:
 | 3600  | 48000 |    10 |  200  |
 | 48000 | 3600  |   200 |  10   |
 
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
+| 选项   | 描述                                           |
+| ------ | ---------------------------------------------- |
+| data   | 提供将传递到模板中的数据文件的路径。           |
+| engine | 用于处理模板的引擎。Handlebars 是默认引擎。    |
+| ext    | 用于目标文件的扩展名。                         |
 
-### Left Aligned Table
+### 左对齐表格
 
-| Option | Description                                                               |
-| :----- | :------------------------------------------------------------------------ |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
+| 选项   | 描述                                           |
+| :----- | :--------------------------------------------- |
+| data   | 提供将传递到模板中的数据文件的路径。           |
+| engine | 用于处理模板的引擎。Handlebars 是默认引擎。    |
+| ext    | 用于目标文件的扩展名。                         |
 
-### Center Aligned Table
+### 居中对齐表格
 
-| Option |                                Description                                |
-| :----: | :-----------------------------------------------------------------------: |
-|  data  | path to data files to supply the data that will be passed into templates. |
-| engine |  engine to be used for processing templates. Handlebars is the default.   |
-|  ext   |                   extension to be used for dest files.                    |
+| 选项   |                    描述                        |
+| :----: | :--------------------------------------------: |
+|  data  | 提供将传递到模板中的数据文件的路径。           |
+| engine | 用于处理模板的引擎。Handlebars 是默认引擎。    |
+|  ext   | 用于目标文件的扩展名。                         |
 
-### Right Aligned Table
+### 右对齐表格
 
-| Option |                                                               Description |
-| -----: | ------------------------------------------------------------------------: |
-|   data | path to data files to supply the data that will be passed into templates. |
-| engine |    engine to be used for processing templates. Handlebars is the default. |
-|    ext |                                      extension to be used for dest files. |
+| 选项   |                                           描述 |
+| -----: | ---------------------------------------------: |
+|   data |           提供将传递到模板中的数据文件的路径。 |
+| engine |    用于处理模板的引擎。Handlebars 是默认引擎。 |
+|    ext |                         用于目标文件的扩展名。 |
 
-## Code
+## 代码
 
-Inline `code`.
+内联 `代码`。
 
-Block code "fences":
+代码块"围栏"：
 
 ```md
-Sample text here...
+这里是示例文本...
 ```
 
-Syntax highlighting:
+语法高亮：
 
 ```ts
 const foo = function (bar) {
@@ -373,240 +372,240 @@ foo(5)
 some.code()
 ```
 
-## Link
+## 链接
 
-### Basic Link
-
-```md
-[Link text](https://github.com/sabertazimi).
-
-[Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
-```
-
-Renders:
-
-[Link text](https://github.com/sabertazimi).
-
-[Link with title](https://sabertazimi.github.io/awesome-notes 'title text!').
-
-### Autolink Literal
-
-Auto-converted link (enable linkify to see):
-
-- `www.example.com`: www.example.com.
-- `https://example.com`: https://example.com.
-- `contact@example.com`: contact@example.com.
-
-### Footnote
+### 基础链接
 
 ```md
-A note[^1].
+[链接文本](https://github.com/sabertazimi)。
 
-[^1]: Big note.
-
-Another note[^2].
-
-Yet another note[^3].
-
-[^2]: Small note.
-
-[^3]: Smallest note.
+[带标题的链接](https://sabertazimi.github.io/awesome-notes '标题文本！')。
 ```
 
-Renders (footnote renders at the end of the document):
+渲染效果：
 
-A note[^1].
+[链接文本](https://github.com/sabertazimi)。
 
-[^1]: Big note.
+[带标题的链接](https://sabertazimi.github.io/awesome-notes '标题文本！')。
 
-Another note[^2].
+### 自动链接
 
-Yet another note[^3].
+自动转换的链接：
 
-[^2]: Small note.
+- `www.example.com`: www.example.com。
+- `https://example.com`: https://example.com。
+- `contact@example.com`: contact@example.com。
 
-[^3]: Smallest note.
-
-## Image
-
-### Local Image
+### 脚注
 
 ```md
-![Local image](/photos/laptop-computer-on-table.jpg)
+一个注释[^1]。
+
+[^1]: 大注释。
+
+另一个注释[^2]。
+
+还有一个注释[^3]。
+
+[^2]: 小注释。
+
+[^3]: 最小注释。
 ```
 
-Renders:
+渲染效果（脚注在文档末尾渲染）：
 
-![Local image](/photos/laptop-computer-on-table.jpg)
+一个注释[^1]。
 
-### Remote Image
+[^1]: 大注释。
+
+另一个注释[^2]。
+
+还有一个注释[^3]。
+
+[^2]: 小注释。
+
+[^3]: 最小注释。
+
+## 图片
+
+### 本地图片
+
+```md
+![本地图片](/photos/laptop-computer-on-table.jpg)
+```
+
+渲染效果：
+
+![本地图片](/photos/laptop-computer-on-table.jpg)
+
+### 远程图片
 
 ```md
 ![Minion](https://octodex.github.com/images/minion.png)
 ```
 
-Renders:
+渲染效果：
 
 ![Minion](https://octodex.github.com/images/minion.png)
 
-### Error Image
+### 错误图片
 
 ```md
-![Error image](error.jpg)
+![错误图片](error.jpg)
 ```
 
-Renders:
+渲染效果：
 
-![Error image](error.jpg)
+![错误图片](error.jpg)
 
-### Image Title
+### 图片标题
 
 ```md
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
 ```
 
-Renders:
+渲染效果：
 
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
 
-### Image Footnote
+### 图片脚注
 
-Like links, Images also have a footnote style syntax:
+像链接一样，图片也有脚注样式语法：
 
 ```md
-![Alt text][id]
+![替代文本][id]
 ```
 
-With a reference later in the document defining the URL location:
+在文档后面定义 URL 位置的引用：
 
 ```md
 [id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
 ```
 
-Renders:
+渲染效果：
 
-![Alt text][id]
+![替代文本][id]
 
 [id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
 
 ## JSX
 
-### JSX Element
+### JSX 元素
 
 ```md
-<h2>JSX Heading 2</h2>
+<h2>JSX 标题 2</h2>
 
-<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+<abbr title="超文本标记语言">HTML</abbr> 是一种可爱的语言。
 
-<section>And here is *markdown* in **JSX**!</section>
+<section>这里是 **JSX** 中的 *markdown*！</section>
 
-<div># this is not a heading but *this* is emphasis</div>
+<div># 这不是标题，但 *这* 是强调</div>
 
-I can write **Markdown** alongside my _JSX_!
+我可以在 _JSX_ 旁边编写 **Markdown**！
 
-<div>This is a `p`.</div>
+<div>这是一个 `p`。</div>
 ```
 
-Renders:
+渲染效果：
 
-<h2>JSX Heading 2</h2>
+<h2>JSX 标题 2</h2>
 
-<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+<abbr title="超文本标记语言">HTML</abbr> 是一种可爱的语言。
 
-<section>And here is *markdown* in **JSX**!</section>
+<section>这里是 **JSX** 中的 *markdown*！</section>
 
-<div># this is not a heading but *this* is emphasis</div>
+<div># 这不是标题，但 *这* 是强调</div>
 
-I can write **Markdown** alongside my _JSX_!
+我可以在 _JSX_ 旁边编写 **Markdown**！
 
-<div>This is a `p`.</div>
+<div>这是一个 `p`。</div>
 
-### JavaScript Expression
+### JavaScript 表达式
 
 ```md
-Two 🍰 is: {Math.PI * 2}.
+两个 🍰 是：{Math.PI * 2}。
 ```
 
-Renders:
+渲染效果：
 
-Two 🍰 is: {Math.PI * 2}.
+两个 🍰 是：{Math.PI * 2}。
 
 ```md lines="9"
 {(function () {
   const guess = 0.44
 
   if (guess > 0.66) {
-    return <span style={{color: 'tomato'}}>Look at us.</span>
+    return <span style={{color: 'tomato'}}>看看我们。</span>
   }
 
   if (guess > 0.33) {
-    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
   }
 
-  return <span style={{color: 'goldenrod'}}>Not me.</span>
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
 })()}
 ```
 
-Renders:
+渲染效果：
 
 {(function () {
   const guess = 0.44
 
   if (guess > 0.66) {
-    return <span style={{color: 'tomato'}}>Look at us.</span>
+    return <span style={{color: 'tomato'}}>看看我们。</span>
   }
 
   if (guess > 0.33) {
-    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
   }
 
-  return <span style={{color: 'goldenrod'}}>Not me.</span>
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
 })()}
 
-### MDX Comment
+### MDX 注释
 
 ```md
-{/* A comment! */}
+{/* 一个注释！ */}
 ```
 
-Renders nothing.
+不渲染任何内容。
 
-{/* A comment! */}
+{/* 一个注释！ */}
 
 ## Git
 
-- Commit `4c5361e`: 4c5361e.
-- Commit (fork) `foo@4c5361e`: foo@4c5361e.
-- Commit (project) `remarkjs/remark@e1aa9f6`: remarkjs/remark@e1aa9f6.
-- Issue or PR (`#`) `#1`: #1.
-- Issue or PR (`GH-`) `GH-100`: GH-100.
-- Issue or PR (fork) `foo#1`: foo#1.
-- Issue or PR (project) `remarkjs/remark#1`: remarkjs/remark#1.
-- Mention `@sabertazimi`: @sabertazimi.
+- 提交 `4c5361e`: 4c5361e。
+- 提交（fork）`foo@4c5361e`: foo@4c5361e。
+- 提交（项目）`remarkjs/remark@e1aa9f6`: remarkjs/remark@e1aa9f6。
+- Issue 或 PR（`#`）`#1`: #1。
+- Issue 或 PR（`GH-`）`GH-100`: GH-100。
+- Issue 或 PR（fork）`foo#1`: foo#1。
+- Issue 或 PR（项目）`remarkjs/remark#1`: remarkjs/remark#1。
+- 提及 `@sabertazimi`: @sabertazimi。
 
 ## Emoji
 
-Thumbs up `:+1:` :+1:, thumbs down `:-1:` :-1:.
+点赞 `:+1:` :+1:，点踩 `:-1:` :-1:。
 
-Families `:family_man_man_boy_boy:` :family_man_man_boy_boy:.
+家庭 `:family_man_man_boy_boy:` :family_man_man_boy_boy:。
 
-Some flags `:cn:, :us:, :ru:, :uk:, :fr:` :cn:, :us:, :ru:, :uk:, :fr:.
+一些国旗 `:cn:, :us:, :ru:, :uk:, :fr:` :cn:, :us:, :ru:, :uk:, :fr:。
 
-Tada `:tada:` :tada:, sparkles `:sparkles:` :sparkles:, rocket `:rocket:` :rocket:.
+庆祝 `:tada:` :tada:，闪光 `:sparkles:` :sparkles:，火箭 `:rocket:` :rocket:。
 
-Bug `:bug:` :bug:, wrench `:wrench:` :wrench:, zap `:zap:` :zap:.
+Bug `:bug:` :bug:，扳手 `:wrench:` :wrench:，闪电 `:zap:` :zap:。
 
-## Math
+## 数学公式
 
-### Inline Math Formula
+### 行内数学公式
 
-This is a math formula `$\sqrt{a^2 + b^2}$` $\sqrt{a^2 + b^2}$.
+这是一个数学公式 `$\sqrt{a^2 + b^2}$` $\sqrt{a^2 + b^2}$。
 
-This is another math formula `$c = \pm\sqrt{a^2 + b^2}$` $c = \pm\sqrt{a^2 + b^2}$.
+这是另一个数学公式 `$c = \pm\sqrt{a^2 + b^2}$` $c = \pm\sqrt{a^2 + b^2}$。
 
-### Block Math Formula
+### 块级数学公式
 
-```md title="Math Formula"
+```md title="数学公式"
 $$
 L = \frac{1}{2} \rho v^2 S C_L
 $$
@@ -682,292 +681,292 @@ $$
 \end{alignat}
 $$
 
-## Admonition
+## 提示框
 
-### Green Admonition
+### 绿色提示框
 
 ```md
 :::success
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::tip
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 ```
 
-Renders:
+渲染效果：
 
 :::success
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::tip
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
-### Blue Admonition
+### 蓝色提示框
 
 ```md
 :::info
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::note
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 ```
 
-Renders:
+渲染效果：
 
 :::info
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::note
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
-### Yellow Admonition
+### 黄色提示框
 
 ```md
 :::warning
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::caution
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 ```
 
-Renders:
+渲染效果：
 
 :::warning
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::caution
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
-### Red Admonition
+### 红色提示框
 
 ```md
 :::error
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::danger
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 ```
 
-Renders:
+渲染效果：
 
 :::error
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
 :::danger
 
-Some **content** with _markdown_ `syntax`. Check [this `api`](#).
+一些带有 _markdown_ `语法` 的 **内容**。查看[这个 `api`](#)。
 
 :::
 
-### Title Admonition
+### 带标题的提示框
 
 ```md
-:::tip{Your Title}
+:::tip{你的标题}
 
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
 
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
 
-- List.
-  - List.
-    - List.
-    - List.
-    - List.
-  - List.
-    - List.
-  - List.
-    - List.
-    - List.
-- List.
-- List.
+- 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+- 列表。
+- 列表。
 
-1. List.
-   1. List.
-      1. List.
-      2. List.
-      3. List.
-   2. List.
-      1. List.
-   3. List.
-      1. List.
-      2. List.
-2. List.
-3. List.
+1. 列表。
+   1. 列表。
+      1. 列表。
+      2. 列表。
+      3. 列表。
+   2. 列表。
+      1. 列表。
+   3. 列表。
+      1. 列表。
+      2. 列表。
+2. 列表。
+3. 列表。
 
 :::
 ```
 
-Renders:
+渲染效果：
 
-:::tip{Your Title}
+:::tip{你的标题}
 
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
 
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
-Some **content** with _markdown_ `syntax`.
-I can write **Markdown** alongside my _JSX_!
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
+一些带有 _markdown_ `语法` 的 **内容**。
+我可以在 _JSX_ 旁边编写 **Markdown**！
 
-- List.
-  - List.
-    - List.
-    - List.
-    - List.
-  - List.
-    - List.
-  - List.
-    - List.
-    - List.
-- List.
-- List.
+- 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+  - 列表。
+    - 列表。
+    - 列表。
+- 列表。
+- 列表。
 
-1. List.
-   1. List.
-      1. List.
-      2. List.
-      3. List.
-   2. List.
-      1. List.
-   3. List.
-      1. List.
-      2. List.
-2. List.
-3. List.
+1. 列表。
+   1. 列表。
+      1. 列表。
+      2. 列表。
+      3. 列表。
+   2. 列表。
+      1. 列表。
+   3. 列表。
+      1. 列表。
+      2. 列表。
+2. 列表。
+3. 列表。
 
 :::
 
 ```md
-:::note{MDX in Admonition}
+:::note{提示框中的 MDX}
 
-Two 🍰 is: {Math.PI * 2}.
+两个 🍰 是：{Math.PI * 2}。
 
 {(function () {
   const guess = 0.88
 
   if (guess > 0.66) {
-    return <span style={{color: 'tomato'}}>Look at us.</span>
+    return <span style={{color: 'tomato'}}>看看我们。</span>
   }
 
   if (guess > 0.33) {
-    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
   }
 
-  return <span style={{color: 'goldenrod'}}>Not me.</span>
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
 })()}
 
 :::
 ```
 
-Renders:
+渲染效果：
 
-:::note{MDX in Admonition}
+:::note{提示框中的 MDX}
 
-Two 🍰 is: {Math.PI * 2}.
+两个 🍰 是：{Math.PI * 2}。
 
 {(function () {
   const guess = 0.88
 
   if (guess > 0.66) {
-    return <span style={{color: 'tomato'}}>Look at us.</span>
+    return <span style={{color: 'tomato'}}>看看我们。</span>
   }
 
   if (guess > 0.33) {
-    return <span style={{color: 'violet'}}>Who would have guessed?!</span>
+    return <span style={{color: 'violet'}}>谁会猜到？！</span>
   }
 
-  return <span style={{color: 'goldenrod'}}>Not me.</span>
+  return <span style={{color: 'goldenrod'}}>不是我。</span>
 })()}
 
 :::
 
-## MDX Component
+## MDX 组件
 
 ```md
-<Button>MDX Button</Button>
-<Button variant="default">MDX Default Button</Button>
+<Button>MDX 按钮</Button>
+<Button variant="default">MDX 默认按钮</Button>
 ```
 
-Renders:
+渲染效果：
 
-<Button>MDX Button</Button>
-<Button variant="default">MDX Default Button</Button>
+<Button>MDX 按钮</Button>
+<Button variant="default">MDX 默认按钮</Button>
 
 ___
 
 ```md
-<Button variant="outline">MDX Outline Button</Button>
-<Button variant="secondary">MDX Secondary Button</Button>
-<Button variant="link">MDX Link Button</Button>
+<Button variant="outline">MDX 轮廓按钮</Button>
+<Button variant="secondary">MDX 次要按钮</Button>
+<Button variant="link">MDX 链接按钮</Button>
 ```
 
-Renders:
+渲染效果：
 
-<Button variant="outline">MDX Outline Button</Button>
-<Button variant="secondary">MDX Secondary Button</Button>
-<Button variant="link">MDX Link Button</Button>
+<Button variant="outline">MDX 轮廓按钮</Button>
+<Button variant="secondary">MDX 次要按钮</Button>
+<Button variant="link">MDX 链接按钮</Button>
 
 ___
 
 ```md
-<Button variant="destructive">MDX Destructive Button</Button>
-<Button variant="ghost">MDX Ghost Button</Button>
+<Button variant="destructive">MDX 危险按钮</Button>
+<Button variant="ghost">MDX 幽灵按钮</Button>
 ```
 
-Renders:
+渲染效果：
 
-<Button variant="destructive">MDX Destructive Button</Button>
-<Button variant="ghost">MDX Ghost Button</Button>
+<Button variant="destructive">MDX 危险按钮</Button>
+<Button variant="ghost">MDX 幽灵按钮</Button>

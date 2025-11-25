@@ -15,34 +15,34 @@ tags:
   - Web 开发
 ---
 
-# Fancy Code Block
+# 精美代码块
 
-## Line Number
+## 行号
 
-Enable line number `line="true"`:
+启用行号 `line="true"`：
 
 ```ts line="true"
-console.log('No line number!')
+console.log('有行号！')
 ```
 
-## Copy Button
+## 复制按钮
 
-Disable copy button `nocopy="true"`:
+禁用复制按钮 `nocopy="true"`：
 
 ```ts nocopy="true"
-console.log('No copy button!')
+console.log('没有复制按钮!')
 ```
 
-## Lines Highlight
+## 行高亮
 
-Set highlight lines `lines="2,5,8-10,12,14..16,19,22...25,29"`:
+设置高亮行 `lines="2,5,8-10,12,14..16,19,22...25,29"`：
 
 ```ts line="true" lines="2,5,8-10,12,14..16,19,22...25,29"
 import type { Parent } from 'mdast'
 import { visit } from 'unist-util-visit'
 
 /**
- * Markdown abstract syntax tree node definition.
+ * Markdown 抽象语法树节点定义。
  * @see https://github.com/syntax-tree/mdast
  */
 interface ContainerDirective extends Parent {
@@ -69,19 +69,19 @@ export default function remarkAdmonitions() {
 }
 ```
 
-## Code Title
+## 代码标题
 
-Show code title `title="Awesome Code"`:
+显示代码标题 `title="精彩代码"`：
 
-```ts nocopy="true" title="Awesome Code"
-console.log('Awesome!')
+```ts title="精彩代码"
+console.log('精彩!')
 ```
 
-## Live Code
+## 实时代码
 
-Live code editor `live="true"`:
+实时代码编辑器 `live="true"`：
 
-```tsx live="true" title="Live Code"
+```tsx live="true" title="实时代码"
 export default function App() {
   const [count, setCount] = useState(0)
 
@@ -100,7 +100,7 @@ export default function App() {
 }
 ```
 
-Live code editor `<Editor> ```tsx Some code``` </Editor>`:
+实时代码编辑器 `<Editor> ```tsx 一些代码``` </Editor>`：
 
 <Editor>
 
@@ -110,7 +110,7 @@ import Greet from './Greet'
 export default function MyApp() {
   return (
     <div>
-      <h1>My App</h1>
+      <h1>我的应用</h1>
       <Greet />
     </div>
   )
@@ -119,15 +119,15 @@ export default function MyApp() {
 
 ```tsx filename="Greet.tsx"
 function Greeting({ name }) {
-  return <h3>Hello, {name}!</h3>
+  return <h3>你好，{name}！</h3>
 }
 
 export default function Greet() {
   return (
     <div>
-      <Greeting name="Nintendo" />
-      <Greeting name="Sony" />
-      <Greeting name="Microsoft" />
+      <Greeting name="任天堂" />
+      <Greeting name="索尼" />
+      <Greeting name="微软" />
     </div>
   )
 }
@@ -135,25 +135,25 @@ export default function Greet() {
 
 </Editor>
 
-## Language
+## 编程语言
 
-### Markup Code
+### 标记语言代码
 
 ```html
-<h2>JSX Heading 2</h2>
+<h2>JSX 标题 2</h2>
 
-<abbr title="HyperText Markup Language">HTML</abbr> is a lovely language.
+<abbr title="超文本标记语言">HTML</abbr> 是一种可爱的语言。
 
-<section>And here is *markdown* in **JSX**!</section>
+<section>这里 *markdown* 在 **JSX** 中！</section>
 ```
 
 ```xml
-<div># this is not a heading but *this* is emphasis</div>
+<div># 这不是标题，但 *这* 是强调</div>
 
-<div>This is a `p`.</div>
+<div>这是一个 `p`。</div>
 ```
 
-### CSS Code
+### CSS 代码
 
 ```css
 :root {
@@ -174,7 +174,7 @@ body {
 }
 ```
 
-### TypeScript Code
+### TypeScript 代码
 
 ```ts
 const foo = function (bar) {
@@ -192,14 +192,14 @@ some.code()
     const guess = 0.44
 
     if (guess > 0.66) {
-      return <span style={{ color: 'tomato' }}>Look at us.</span>
+      return <span style={{ color: 'tomato' }}>看看我们。</span>
     }
 
     if (guess > 0.33) {
-      return <span style={{ color: 'violet' }}>Who would have guessed?!</span>
+      return <span style={{ color: 'violet' }}>谁会猜到？！</span>
     }
 
-    return <span style={{ color: 'goldenrod' }}>Not me.</span>
+    return <span style={{ color: 'goldenrod' }}>不是我。</span>
   })()
 }
 ```
