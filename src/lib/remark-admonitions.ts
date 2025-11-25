@@ -18,17 +18,27 @@ function isContainerDirective(node: Node): node is ContainerDirective {
 }
 
 /**
- * Extract text content from a node recursively
+ * Extract text content from a node recursively.
+ * Converts all formatted content (emphasis, strong, delete, inlineCode, etc.) to plain text.
  */
-function extractTextContent(node: Parent): string {
+function extractTextContent(node: Node): string {
   let text = ''
-  for (const child of node.children) {
-    if (child.type === 'text' && 'value' in child && typeof child.value === 'string') {
-      text += child.value
-    } else if ('children' in child) {
-      text += extractTextContent(child)
+
+  if (node.type === 'text' && 'value' in node && typeof node.value === 'string') {
+    return node.value
+  }
+
+  if (node.type === 'inlineCode' && 'value' in node && typeof node.value === 'string') {
+    return node.value
+  }
+
+  // Handle nodes with children (paragraph, emphasis, strong, delete, etc.)
+  if ('children' in node && Array.isArray(node.children)) {
+    for (const child of node.children) {
+      text += extractTextContent(child as Node)
     }
   }
+
   return text
 }
 
@@ -42,11 +52,17 @@ export default function remarkAdmonitions() {
       // Extract title from the attributes
       let title: string | undefined = Object.keys(node.attributes ?? {}).join(' ')
       let contentNodes = node.children
-      const firstChild = node.children[0] as Parent
+      const firstChild = node.children[0]
 
-      // Check if the first child has directiveLabel
-      if (firstChild !== undefined && (firstChild.data as { directiveLabel?: boolean })?.directiveLabel === true) {
-        // Extract title from the directiveLabel node
+      // Check if the first child has directiveLabel (e.g :::tip[title])
+      if (
+        firstChild !== undefined
+        && 'data' in firstChild
+        && typeof firstChild.data === 'object'
+        && firstChild.data !== null
+        && 'directiveLabel' in firstChild.data
+        && firstChild.data.directiveLabel === true
+      ) {
         title = extractTextContent(firstChild)
         contentNodes = node.children.slice(1)
       }
