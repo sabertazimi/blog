@@ -39,7 +39,7 @@ function SiteFooter({ buildTime }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  'dark:hover:text-foreground text-muted-foreground transition-colors hover:text-(--social-color)',
+                  'dark:hover:text-primary text-muted-foreground transition-colors hover:text-(--social-color)',
                   'inline-flex items-center justify-center',
                 )}
                 style={{
@@ -63,7 +63,7 @@ function SiteFooter({ buildTime }: Props) {
               href={`https://${socialList.github}.com/${siteConfig.socials.github}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-foreground decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
+              className="hover:text-primary decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
             >
               {siteConfig.author}
             </a>
@@ -76,7 +76,7 @@ function SiteFooter({ buildTime }: Props) {
               href="https://react.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-foreground decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
+              className="hover:text-primary decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
             >
               React
             </a>
@@ -87,7 +87,7 @@ function SiteFooter({ buildTime }: Props) {
               href="https://nextjs.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-foreground decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
+              className="hover:text-primary decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
             >
               Next.js
             </a>
@@ -98,7 +98,7 @@ function SiteFooter({ buildTime }: Props) {
             {' '}
             <a
               href="https://github.com/sabertazimi/blog/actions"
-              className="hover:text-foreground decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
+              className="hover:text-primary decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"
               target="_blank"
               rel="noopener noreferrer"
             >
