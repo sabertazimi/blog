@@ -10,6 +10,7 @@ import {
   ShieldAlertIcon,
   TriangleAlertIcon,
 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
 
@@ -76,9 +77,9 @@ function normalizeType(type?: string): AdmonitionVariant {
 }
 
 function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmonitionProps) {
+  const t = useTranslations('admonition')
   const normalizedType = normalizeType(type)
-  const displayTitle
-    = title !== undefined && title !== '' ? title : normalizedType.charAt(0).toUpperCase() + normalizedType.slice(1)
+  const displayTitle = title !== undefined && title !== '' ? title : t(normalizedType)
   const { icon: Icon, color } = admonitionConfig[normalizedType]
   const styles = colorStyles[color]
 
