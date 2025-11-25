@@ -45,7 +45,7 @@ function LanguageSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">
-        <DropdownMenuLabel>{t('selectLanguage')}</DropdownMenuLabel>
+        <DropdownMenuLabel inset>{t('selectLanguage')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup onValueChange={handleLocaleChange} value={currentLocale}>
           {routing.locales.map((locale) => {
