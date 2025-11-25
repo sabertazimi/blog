@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ReactNode, RefObject } from 'react'
 import { ChevronDown, TextAlignStartIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { createContext, use, useEffect, useRef, useState } from 'react'
 import ProgressCircle from '@/components/progress-circle'
@@ -500,6 +501,7 @@ export interface TOCProps {
 }
 
 export function PostMainTOC({ toc: manualToc, className, single = false, headingSelector }: TOCProps) {
+  const t = useTranslations('post')
   const extractedHeadings = useExtractHeadingsWithSelector(headingSelector)
   const toc = manualToc ?? extractedHeadings
 
@@ -508,7 +510,7 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
       <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
-          On this page
+          {t('onThisPage')}
         </h3>
       </div>
     )
@@ -519,7 +521,7 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
       <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
-          On this page
+          {t('onThisPage')}
         </h3>
         <TOCScrollArea>
           <TOCItemsList toc={toc} />
@@ -533,8 +535,9 @@ export function PostMobileTOC({
   toc: manualToc,
   single = false,
   headingSelector,
-  title = 'On this page',
+  title,
 }: TOCProps & { title?: string }) {
+  const t = useTranslations('post')
   const extractedHeadings = useExtractHeadingsWithSelector(headingSelector)
   const toc = manualToc ?? extractedHeadings
 
@@ -544,7 +547,7 @@ export function PostMobileTOC({
 
   return (
     <AnchorProvider toc={toc} single={single}>
-      <PostMobileTOCContent toc={toc} title={title} />
+      <PostMobileTOCContent toc={toc} title={title ?? t('onThisPage')} />
     </AnchorProvider>
   )
 }
