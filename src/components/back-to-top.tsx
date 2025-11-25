@@ -2,6 +2,7 @@
 
 import type { ButtonProps } from '@/components/ui/button'
 import { ArrowUpToLineIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -15,6 +16,7 @@ interface BackToTopProps extends ButtonProps {
 
 function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackToTopProps) {
   const [visible, setVisible] = useState(false)
+  const t = useTranslations('common')
 
   useEffect(() => {
     let ticking = false
@@ -53,7 +55,7 @@ function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackT
         className,
       )}
       aria-hidden={!visible}
-      aria-label="Back to top"
+      aria-label={t('backToTop')}
       tabIndex={visible ? 0 : -1}
       {...props}
     >

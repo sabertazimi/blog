@@ -12,6 +12,7 @@ function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const t = useTranslations('routes')
+  const tCommon = useTranslations('common')
   const routes = getRoutes(t)
   const routeIcons = getRouteIcons()
 
@@ -23,7 +24,7 @@ function MobileNav() {
             variant="ghost"
             size="icon"
             className="hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isOpen ? tCommon('closeMenu') : tCommon('openMenu')}
           >
             <div className="relative flex size-5 items-center justify-center">
               <div className="relative size-5">

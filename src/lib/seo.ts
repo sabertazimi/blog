@@ -26,13 +26,7 @@ export function getMetadata({
 
   if (isLocale) {
     routing.locales.forEach((loc) => {
-      if (loc === routing.defaultLocale) {
-        // Default locale has no prefix
-        languages[loc] = `${url}${pathname}`
-      } else {
-        // Other locales have prefix
-        languages[loc] = `${url}/${loc}${pathname}`
-      }
+      languages[loc] = `${url}/${loc}${pathname}`
     })
   }
 
