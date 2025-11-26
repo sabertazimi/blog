@@ -22,3 +22,10 @@ export default eslintConfig
       'testing-library/prefer-screen-queries': 'off',
     },
   })
+  .append({
+    files: ['__tests__/README.md/**/*.{ts,tsx}'],
+    rules: {
+      'testing-library/no-container': 'off',
+      'testing-library/no-debugging-utils': 'off',
+    },
+  })
