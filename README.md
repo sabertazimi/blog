@@ -6,6 +6,7 @@
     />
   </a>
 </p>
+
 <h1 align="center">
   Next.js Blog Starter
 </h1>
@@ -356,6 +357,12 @@ The blog uses Tailwind CSS with custom CSS variables. Edit `src/app/globals.css`
   --foreground: oklch(98.5% 0 0deg);
   /* ... more colors */
 }
+```
+
+[Nature](https://www.shadcn.io/theme/nature) theme example:
+
+```bash
+pnpm dlx shadcn@latest add https://www.shadcn.io/registry/nature.json
 ```
 
 ### MDX Components
