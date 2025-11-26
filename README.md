@@ -2,12 +2,6 @@
 
 An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
-|                  Default                  |                             Nature                             |
-| :---------------------------------------: | :------------------------------------------------------------: |
-| ![Home](./.github/images/home.gif 'Home') | ![Home Nature](./.github/images/home-nature.gif 'Home Nature') |
-|  ![MDX](./.github/images/mdx.png 'MDX')   |  ![MDX Nature](./.github/images/mdx-nature.png 'MDX Nature')   |
-| ![Code](./.github/images/code.png 'Code') | ![Code Nature](./.github/images/code-nature.png 'Code Nature') |
-
 [![Author](https://img.shields.io/badge/author-sabertaz-lightgrey?style=for-the-badge)](https://github.com/sabertazimi)
 [![LICENSE](https://img.shields.io/github/license/sabertazimi/blog?style=for-the-badge)](https://github.com/sabertazimi/blog/blob/main/LICENSE)
 [![Top Language](https://img.shields.io/github/languages/top/sabertazimi/blog?logo=typescript&style=for-the-badge)](https://github.com/sabertazimi/blog/search?l=typescript)
@@ -15,6 +9,12 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 [![CI](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/codeql-analysis.yml?branch=main&label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
 [![Vitest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
+
+|                  Default                  |                             Nature                             |
+| :---------------------------------------: | :------------------------------------------------------------: |
+| ![Home](./.github/images/home.gif 'Home') | ![Home Nature](./.github/images/home-nature.gif 'Home Nature') |
+|  ![MDX](./.github/images/mdx.png 'MDX')   |  ![MDX Nature](./.github/images/mdx-nature.png 'MDX Nature')   |
+| ![Code](./.github/images/code.png 'Code') | ![Code Nature](./.github/images/code-nature.png 'Code Nature') |
 
 ## :sparkles: Features
 
