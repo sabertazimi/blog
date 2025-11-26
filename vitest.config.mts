@@ -12,6 +12,21 @@ export default defineConfig({
       '__tests__/mocks/next-navigation.ts',
       '__tests__/mocks/navigation.tsx',
       '__tests__/mocks/next-image.tsx',
+      '__tests__/mocks/next-mdx-remote.tsx',
+      '__tests__/mocks/mdx-editor.tsx',
+      '__tests__/mocks/sandpack.tsx',
     ],
+    coverage: {
+      exclude: [
+        'node_modules/**',
+        '__tests__/**',
+        '**/*.spec.{ts,tsx}',
+        '**/*.test.{ts,tsx}',
+        '**/*.config.{ts,mts,js,mjs}',
+        '**/dist/**',
+        'src/components/ui/**',
+        'src/app/globals.css',
+      ],
+    },
   },
 })

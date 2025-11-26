@@ -8,8 +8,8 @@ describe('ProfileCard', () => {
     render(<ProfileCard profile={mockProfile} />)
 
     expect(screen.getByText(mockProfile.username)).toBeInTheDocument()
-    expect(screen.getByText(mockProfile.bio ?? '')).toBeInTheDocument()
-    expect(screen.getByText(mockProfile.location ?? '')).toBeInTheDocument()
+    expect(screen.getByText(mockProfile.bio!)).toBeInTheDocument()
+    expect(screen.getByText(mockProfile.location!)).toBeInTheDocument()
   })
 
   it('should render avatar with fallback', () => {

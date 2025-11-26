@@ -1,4 +1,4 @@
-import type { Profile, Repo } from '@/types'
+import type { Metadata, Post, PostsMeta, Profile, Repo, TagsMeta } from '@/types'
 
 export const mockProfile: Profile = {
   username: 'testuser',
@@ -28,6 +28,32 @@ export const mockRepos: Repo[] = [
   },
 ]
 
+export const mockPost: Post = {
+  slug: 'test-post',
+  title: 'Test Post',
+  description: 'Test description',
+  thumbnail: 'https://example.com/thumbnail.jpg',
+  createTime: '2025-01-01',
+  updateTime: '2025-01-15',
+  readingTime: 5,
+  tags: ['React', 'TypeScript', 'Testing'],
+  prevPost: {
+    slug: 'previous-post',
+    title: 'Previous Post',
+    description: 'Previous post description',
+  },
+  nextPost: {
+    slug: 'next-post',
+    title: 'Next Post',
+    description: 'Next post description',
+  },
+  source: {
+    compiledSource: '',
+    scope: {},
+    frontmatter: {},
+  },
+}
+
 export const mockPostMeta = {
   title: 'Test Post',
   description: 'Test description',
@@ -36,4 +62,58 @@ export const mockPostMeta = {
   tags: ['test', 'vitest'],
   thumbnail: 'https://example.com/thumbnail.jpg',
   readingTime: 5,
+}
+
+export const mockPostsMeta: PostsMeta = [
+  {
+    slug: 'test-post-1',
+    title: 'Test Post 1',
+    description: 'First test post',
+    createTime: '2025-01-01',
+    readingTime: 5,
+    tags: ['React', 'TypeScript'],
+    prevPost: {
+      slug: 'previous-post',
+      title: 'Previous Post',
+      description: 'Previous post description',
+    },
+    nextPost: {
+      slug: 'next-post',
+      title: 'Next Post',
+      description: 'Next post description',
+    },
+  },
+  {
+    slug: 'test-post-2',
+    title: 'Test Post 2',
+    description: 'Second test post',
+    createTime: '2025-01-02',
+    readingTime: 3,
+    tags: ['Testing'],
+    prevPost: {
+      slug: 'previous-post',
+      title: 'Previous Post',
+      description: 'Previous post description',
+    },
+    nextPost: {
+      slug: 'next-post',
+      title: 'Next Post',
+      description: 'Next post description',
+    },
+  },
+]
+
+export const mockTagsMeta: TagsMeta = {
+  allTags: ['All', 'React', 'TypeScript', 'Testing'],
+  tagCounts: {
+    All: 10,
+    React: 5,
+    TypeScript: 3,
+    Testing: 2,
+  },
+}
+
+export const mockMetadata: Metadata = {
+  posts: mockPostsMeta,
+  tags: mockTagsMeta,
 }

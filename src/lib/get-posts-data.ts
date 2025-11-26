@@ -31,10 +31,11 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
   for await (const entry of directory) {
     const filePath = path.join(directoryPath, entry.name)
 
-    if (entry.isDirectory())
+    if (entry.isDirectory()) {
       yield* walk(filePath)
-    else if (entry.isFile())
+    } else if (entry.isFile()) {
       yield filePath
+    }
   }
 }
 

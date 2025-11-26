@@ -1,4 +1,4 @@
-import type { SocialSite } from '@/lib//social'
+import type { SocialSite } from '@/lib/social'
 import type { GitHub } from '@/types'
 import { colors } from '@/lib/colors'
 

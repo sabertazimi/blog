@@ -12,7 +12,10 @@ export default function PageHeader({ title, description, showFlickeringGrid = tr
   return (
     <>
       {showFlickeringGrid && (
-        <div className="absolute top-0 left-0 z-0 h-[200px] w-full mask-[linear-gradient(to_top,transparent_25%,black_95%)]">
+        <div
+          data-testid="flickering-grid-wrapper"
+          className="absolute top-0 left-0 z-0 h-[200px] w-full mask-[linear-gradient(to_top,transparent_25%,black_95%)]"
+        >
           <FlickeringGrid
             className="absolute top-0 left-0 size-full"
             squareSize={4}

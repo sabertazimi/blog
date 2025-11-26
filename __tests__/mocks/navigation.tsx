@@ -26,18 +26,24 @@ export function Link({
   children,
   href,
   locale,
+  onClick,
   ...props
 }: {
   ref?: React.RefObject<HTMLAnchorElement | null>
   children: React.ReactNode
   href: string
-  locale: string
+  locale?: string
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   [key: string]: unknown
 }) {
   const hrefString = typeof href === 'string' ? href : ((href as { pathname: string })?.pathname ?? '/')
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault() // Prevent navigation in tests
+    onClick?.(e)
+  }
 
   return (
-    <a ref={ref} href={hrefString} {...props}>
+    <a ref={ref} href={hrefString} onClick={handleClick} {...props}>
       {children}
     </a>
   )

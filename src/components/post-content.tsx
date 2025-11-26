@@ -28,6 +28,7 @@ const mdxComponents = {
 function PostContent({ source }: PostContentProps) {
   return (
     <div
+      data-testid="post-content-container"
       className={cn(
         'prose dark:prose-invert max-w-none',
         'prose-headings:text-primary prose-headings:font-semibold prose-headings:text-balance prose-headings:scroll-mt-20 prose-headings:relative',

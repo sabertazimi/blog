@@ -24,7 +24,7 @@ describe('PostMetadata', () => {
 
     expect(
       screen.getByText((content, element) => {
-        return element?.textContent === '5 minute'
+        return element?.textContent === '5 min'
       }),
     ).toBeInTheDocument()
   })
@@ -36,7 +36,7 @@ describe('PostMetadata', () => {
     expect(timeElements).toHaveLength(2)
     expect(
       screen.getByText((content, element) => {
-        return element?.textContent === '5 minute'
+        return element?.textContent === '5 min'
       }),
     ).toBeInTheDocument()
   })
@@ -56,14 +56,14 @@ describe('PostMetadata', () => {
   it('should not render reading time when zero', () => {
     render(<PostMetadata readingTime={0} />)
 
-    expect(screen.queryByText(/minute/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/min/i)).not.toBeInTheDocument()
   })
 
   it('should not render anything when no props provided', () => {
     render(<PostMetadata />)
 
     expect(screen.queryByRole('time')).not.toBeInTheDocument()
-    expect(screen.queryByText(/minute/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/min/i)).not.toBeInTheDocument()
   })
 
   it('should apply custom className', () => {

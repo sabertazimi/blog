@@ -51,8 +51,10 @@ export function PostComment({ url, slug }: PostCommentProps) {
   }
 
   return (
-    <div ref={containerRef} className="comments">
-      {mounted && isVisible && <Disqus key={resolvedTheme} shortname={siteConfig.disqusShortname} config={disqusConfig} />}
+    <div ref={containerRef} data-testid="comments-container" className="comments">
+      {mounted && isVisible && (
+        <Disqus key={resolvedTheme} shortname={siteConfig.disqusShortname} config={disqusConfig} />
+      )}
     </div>
   )
 }

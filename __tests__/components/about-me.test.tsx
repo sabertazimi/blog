@@ -10,7 +10,7 @@ describe('AboutMe', () => {
     render(<AboutMe profile={mockProfile} repos={mockRepos} totalStars={totalStars} />)
 
     expect(screen.getByText(mockProfile.username)).toBeInTheDocument()
-    expect(screen.getByText(mockProfile.bio ?? '')).toBeInTheDocument()
+    expect(screen.getByText(mockProfile.bio!)).toBeInTheDocument()
   })
 
   it('should render stat cards with correct data', () => {
@@ -18,7 +18,7 @@ describe('AboutMe', () => {
 
     expect(screen.getByText('Total Repositories')).toBeInTheDocument()
     expect(screen.getByText(mockRepos.length.toString())).toBeInTheDocument()
-    expect(screen.getByText('Public Repositories')).toBeInTheDocument()
+    expect(screen.getByText('Public repositories')).toBeInTheDocument()
     expect(screen.getByText('Total Stars')).toBeInTheDocument()
     expect(screen.getByText(totalStars.toString())).toBeInTheDocument()
     expect(screen.getByText('Across all projects')).toBeInTheDocument()

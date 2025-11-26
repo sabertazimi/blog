@@ -1,7 +1,6 @@
-import { fireEvent } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import PostImage from '@/components/post-image'
-import { render, screen } from '@/tests/test-utils'
+import { fireEvent, render, screen } from '@/tests/test-utils'
 
 describe('PostImage', () => {
   it('should render image when src is provided', () => {

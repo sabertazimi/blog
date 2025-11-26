@@ -34,7 +34,7 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
             <PostComment slug={slug} url={`${siteConfig.url}/post/${slug}`} />
           </div>
         </article>
-        <aside className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
+        <aside data-testid="post-toc-aside" className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
           <PostMainTOC />
         </aside>
         <BackToTop />
