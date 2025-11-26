@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { colors, getColorByName } from './colors'
+import { colors, getColorByName } from '@/lib/colors'
 
 describe('colors', () => {
   const mockColors = [

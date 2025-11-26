@@ -7,7 +7,7 @@ import {
   parseHighlightLines,
   parseLanguageFromClassName,
   trimTrailingNewlines,
-} from './utils'
+} from '@/lib/utils'
 
 describe('cn', () => {
   it('should merge class names', () => {

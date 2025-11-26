@@ -17,7 +17,7 @@ import remarkGemoji from 'remark-gemoji'
 import remarkGfm from 'remark-gfm'
 import remarkGitHub from 'remark-github'
 import remarkMath from 'remark-math'
-import remarkAdmonitions from './remark-admonitions'
+import remarkAdmonitions from '@/lib/remark-admonitions'
 
 const contentsBasePath = path.join(process.cwd(), 'contents')
 
