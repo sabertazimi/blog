@@ -2,6 +2,94 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.0.0](https://github.com/sabertazimi/blog/compare/v4.1.0...v5.0.0) (2025-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* rewrite entire blog with shadcn ui.
+
+* fix: rectify linting and testing errors
+
+* test(e2e): setup playwright e2e tests
+
+* chore: remove redundant files
+
+* test: rectify testing failure
+
+* fix(routes): setup basic pages
+
+* chore: change markdown path
+
+* feat(progress-bar): migrate from nprogress to bprogress
+
+* fix: rectify broken color
+
+### :sparkles: Features
+
+* **command-tags:** add tags search feature ([#1486](https://github.com/sabertazimi/blog/issues/1486)) ([959017a](https://github.com/sabertazimi/blog/commit/959017adbbb56a0fb45d0e279eb80c34302ab3d5))
+* **footer:** implement site footer component ([#1457](https://github.com/sabertazimi/blog/issues/1457)) ([835381d](https://github.com/sabertazimi/blog/commit/835381d0a2797b10431a09286816c31b28261cda))
+* **header:** implement site header components ([#1456](https://github.com/sabertazimi/blog/issues/1456)) ([6f11e84](https://github.com/sabertazimi/blog/commit/6f11e8488b05793812da8530ec9eb2c2eb38373a))
+* **i18n:** setup i18n and locale-based routing ([#1503](https://github.com/sabertazimi/blog/issues/1503)) ([2964304](https://github.com/sabertazimi/blog/commit/2964304c08f66642b91cf288084f87171cd42b14))
+* implement about page ([#1461](https://github.com/sabertazimi/blog/issues/1461)) ([2c7d100](https://github.com/sabertazimi/blog/commit/2c7d10054df81c8f74b764e36aa6a936d21f2a27))
+* **mdx-admonition:** implement mdx admonition component ([#1478](https://github.com/sabertazimi/blog/issues/1478)) ([009c71e](https://github.com/sabertazimi/blog/commit/009c71e51c3a5474c5d4863b7e4b3a485cb2ba9d))
+* **mdx-code:** implement mdx code blocks ([#1487](https://github.com/sabertazimi/blog/issues/1487)) ([955390b](https://github.com/sabertazimi/blog/commit/955390bfc98f93c2e62e9ff89f60d9ae3614232a))
+* **mdx-image:** add custom image component to mdx ([#1490](https://github.com/sabertazimi/blog/issues/1490)) ([dbcc98c](https://github.com/sabertazimi/blog/commit/dbcc98cefca94d1f0749c64cb7b30c6bfb4f170c))
+* **mdx-thumbnail:** add metadata and thumbnail to mdx ([#1463](https://github.com/sabertazimi/blog/issues/1463)) ([5e15028](https://github.com/sabertazimi/blog/commit/5e150282131c43ae646955008eb29667d498ae84))
+* **mdx-toc:** implement clerk-style table of contents component ([#1467](https://github.com/sabertazimi/blog/issues/1467)) ([087eceb](https://github.com/sabertazimi/blog/commit/087ecebb83fc5e4a026981b2a44be5075aeee67c))
+* **mdx:** implement back to top button ([#1471](https://github.com/sabertazimi/blog/issues/1471)) ([d4f2da8](https://github.com/sabertazimi/blog/commit/d4f2da8e19ccf218e952a34f25a7d57279a2005f))
+* **mdx:** implement typography for mdx ([#1464](https://github.com/sabertazimi/blog/issues/1464)) ([ff3aae8](https://github.com/sabertazimi/blog/commit/ff3aae8e41ef3328c7ecf9758ada316e51debc08))
+* **post-comment:** add disqus comment component ([#1472](https://github.com/sabertazimi/blog/issues/1472)) ([39286c5](https://github.com/sabertazimi/blog/commit/39286c5cddd34abf50c698b1431a90bdab38d8e0))
+* **post-footer:** implement post navigation component ([#1475](https://github.com/sabertazimi/blog/issues/1475)) ([547741c](https://github.com/sabertazimi/blog/commit/547741c49a508b60105db4c47fe63ff028d72c57))
+* **post-header:** change post header tag to link ([#1473](https://github.com/sabertazimi/blog/issues/1473)) ([154b951](https://github.com/sabertazimi/blog/commit/154b9512792e90301612d15c13cc504dc124648d))
+* **post-image:** implement lazy-loading image component ([#1483](https://github.com/sabertazimi/blog/issues/1483)) ([1a9345f](https://github.com/sabertazimi/blog/commit/1a9345f914d7cc44092ee975cfa0efe3ba6977c6))
+* **post-share:** implement post share buttons ([#1495](https://github.com/sabertazimi/blog/issues/1495)) ([835293f](https://github.com/sabertazimi/blog/commit/835293f13a871e9d73dad5249238ba831e7b5047))
+* **post-toc:** implement mobile toc nav ([#1500](https://github.com/sabertazimi/blog/issues/1500)) ([e17a23c](https://github.com/sabertazimi/blog/commit/e17a23cd5fb3b1dd340c5ab74c8663194c51127d))
+* **post:** implement post page ([#1462](https://github.com/sabertazimi/blog/issues/1462)) ([d9a2e33](https://github.com/sabertazimi/blog/commit/d9a2e332e997776c8bf0481e3f927e363bd0503c))
+* **posts:** implement posts grid ([#1460](https://github.com/sabertazimi/blog/issues/1460)) ([255fa6f](https://github.com/sabertazimi/blog/commit/255fa6f9f57648224720c34d39f5c50f3799cc6b))
+* rewrite entire blog with shadcn ui ([#1455](https://github.com/sabertazimi/blog/issues/1455)) ([d505830](https://github.com/sabertazimi/blog/commit/d505830baf0ea17a9fca703b4f086d176be2b707))
+* **theme:** add theme persistent storage support ([#1488](https://github.com/sabertazimi/blog/issues/1488)) ([d3441ad](https://github.com/sabertazimi/blog/commit/d3441ad2f9c2152284a5b5e5a339948b08cf0f7a))
+
+
+### :bug: Bug Fixes
+
+* **command:** add bprogress animation for route push ([#1501](https://github.com/sabertazimi/blog/issues/1501)) ([cb7de31](https://github.com/sabertazimi/blog/commit/cb7de313f6d415e1153087ce526297bb4e498cec))
+* **command:** add shortcuts introduction ([#1493](https://github.com/sabertazimi/blog/issues/1493)) ([068ace9](https://github.com/sabertazimi/blog/commit/068ace99be02f9c7c0c45e02bd8791069e6d25a4))
+* **command:** migrate to newer tailwind syntax ([#1458](https://github.com/sabertazimi/blog/issues/1458)) ([51cabe4](https://github.com/sabertazimi/blog/commit/51cabe4b8e393c1e9a0b27d7265a294aedfa45ad))
+* **command:** show search icon for mobile ([#1498](https://github.com/sabertazimi/blog/issues/1498)) ([50a2559](https://github.com/sabertazimi/blog/commit/50a2559c0f1987eaf8a6b7b905c2ea1d6a0f0f03))
+* **components:** remove redundant banner ([#1476](https://github.com/sabertazimi/blog/issues/1476)) ([aca586b](https://github.com/sabertazimi/blog/commit/aca586b2a67aa978b9aed0bf1860686ca87c1f74))
+* format code ([04c9be5](https://github.com/sabertazimi/blog/commit/04c9be5c3c29c6f28ab2af9c7c44621fed560d99))
+* **home:** chnage landing page stars count ([7033712](https://github.com/sabertazimi/blog/commit/70337126b08ad62fcdaf2326dacb473a0b113cb4))
+* **icons:** rename all icon components ([#1479](https://github.com/sabertazimi/blog/issues/1479)) ([ad8f9ab](https://github.com/sabertazimi/blog/commit/ad8f9ab5b9fb5f6ae97f1cd9ae7306d722cffab6))
+* **mdx-admonition:** add `[title]` syntax support ([#1504](https://github.com/sabertazimi/blog/issues/1504)) ([4225258](https://github.com/sabertazimi/blog/commit/42252581365d985f2b0f302a4d1b60c2730c438a))
+* **mdx-footnotes:** add styles for footnotes ([#1480](https://github.com/sabertazimi/blog/issues/1480)) ([5993d3a](https://github.com/sabertazimi/blog/commit/5993d3a256cfe572e10b8d0c3d35c64d0dae9d2e))
+* **mdx-headings:** implement anchor hover effect ([#1497](https://github.com/sabertazimi/blog/issues/1497)) ([f476c86](https://github.com/sabertazimi/blog/commit/f476c860cbb26e02f4cf4e5d43cdf8ae13c11caa))
+* **mdx-toc:** add icon to toc title ([#1470](https://github.com/sabertazimi/blog/issues/1470)) ([19eec0e](https://github.com/sabertazimi/blog/commit/19eec0e5133753f69733d3982dfde83872e17a92))
+* **mdx-toc:** ensure toc title consistency ([#1496](https://github.com/sabertazimi/blog/issues/1496)) ([19a56fa](https://github.com/sabertazimi/blog/commit/19a56fafd6cc358f4f7bc2fe7312fe14fb8679c9))
+* **mdx:** rename mdx component and centering mdx image  ([#1477](https://github.com/sabertazimi/blog/issues/1477)) ([4376010](https://github.com/sabertazimi/blog/commit/43760104783e7cbe0bc7a46d8482619959326b82))
+* **nav:** add icons to mobile nav links ([#1494](https://github.com/sabertazimi/blog/issues/1494)) ([9fd21e6](https://github.com/sabertazimi/blog/commit/9fd21e69043de35b8d1e7929630db7616dcad990))
+* **post-comment:** move comment to bottom to avoid CLS ([#1489](https://github.com/sabertazimi/blog/issues/1489)) ([1bc2ba7](https://github.com/sabertazimi/blog/commit/1bc2ba7427b602b6bb0e05ec2201f82aaf3b8a53))
+* **post-header:** add last update time to header metadata ([#1474](https://github.com/sabertazimi/blog/issues/1474)) ([532b2f8](https://github.com/sabertazimi/blog/commit/532b2f89db85d525b1b135889325737642de84fd))
+* **post-image:** remove `<div>` inside `<p>` ([b199dbd](https://github.com/sabertazimi/blog/commit/b199dbd24065cde7cdd562bf37acefa4536f64f4))
+* **post-image:** remove fallback when image loaded ([#1482](https://github.com/sabertazimi/blog/issues/1482)) ([c89cc6f](https://github.com/sabertazimi/blog/commit/c89cc6f68fd3330440c98c88a80828299a7eb377))
+* **post-thumbnail:** add height on `lg` screen ([#1491](https://github.com/sabertazimi/blog/issues/1491)) ([620981d](https://github.com/sabertazimi/blog/commit/620981d4cad93c5c4e0f6ec5bc617942c1e0901f))
+* **post-toc:** shorten toc height ([#1485](https://github.com/sabertazimi/blog/issues/1485)) ([9349639](https://github.com/sabertazimi/blog/commit/934963902069c068b5b52be31d03c93d125a87ad))
+* **providers:** merge all providers into single file ([#1502](https://github.com/sabertazimi/blog/issues/1502)) ([39bbf74](https://github.com/sabertazimi/blog/commit/39bbf746568b4ba6b428bcb2e3499433b38b6e5f))
+* **seo:** allow crawling and indexing ([#1459](https://github.com/sabertazimi/blog/issues/1459)) ([fdefa4f](https://github.com/sabertazimi/blog/commit/fdefa4f5f3fa4049245c22bdad94a042e444a91e))
+* **seo:** change language metadata ([24ceeac](https://github.com/sabertazimi/blog/commit/24ceeac7442fe9441aaa1931eddcf70043ce9ad3))
+* **theme:** change text to primary color ([#1505](https://github.com/sabertazimi/blog/issues/1505)) ([ae0d8e5](https://github.com/sabertazimi/blog/commit/ae0d8e5c3ae8ad1dbbd6eb761fe9613e299ed27a))
+* **ui-theme:** use Button inside theme toggler ([#1499](https://github.com/sabertazimi/blog/issues/1499)) ([3a9890e](https://github.com/sabertazimi/blog/commit/3a9890e4361704fe3a5834ac6815553cf8baf7e9))
+
+
+### :zap: Performance
+
+* [ImgBot] optimize images ([#1492](https://github.com/sabertazimi/blog/issues/1492)) ([f801c3c](https://github.com/sabertazimi/blog/commit/f801c3c94225050ca49268228aa75edf8783e970))
+
+
+### :wrench: Testing
+
+* **unit:** setup components unit tests ([#1507](https://github.com/sabertazimi/blog/issues/1507)) ([3788ed6](https://github.com/sabertazimi/blog/commit/3788ed693a267ce50cf22bd71339675331f7b882))
+
 ## [4.1.0](https://github.com/sabertazimi/blog/compare/v4.0.0...v4.1.0) (2025-11-19)
 
 
