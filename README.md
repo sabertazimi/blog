@@ -1,26 +1,20 @@
-<p align="center">
-  <a href="https://www.nextjs.org">
-    <img
-      src="./.github/banner.png"
-      alt="Next.js"
-    />
-  </a>
-</p>
-<h1 align="center">
-  Next.js Blog Starter
-</h1>
+# Next.js Blog Starter
+
+An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
+
+|                  Default                  |                             Nature                             |
+| :---------------------------------------: | :------------------------------------------------------------: |
+| ![Home](./.github/images/home.gif 'Home') | ![Home Nature](./.github/images/home-nature.gif 'Home Nature') |
+|  ![MDX](./.github/images/mdx.png 'MDX')   |  ![MDX Nature](./.github/images/mdx-nature.png 'MDX Nature')   |
+| ![Code](./.github/images/code.png 'Code') | ![Code Nature](./.github/images/code-nature.png 'Code Nature') |
 
 [![Author](https://img.shields.io/badge/author-sabertaz-lightgrey?style=for-the-badge)](https://github.com/sabertazimi)
 [![LICENSE](https://img.shields.io/github/license/sabertazimi/blog?style=for-the-badge)](https://github.com/sabertazimi/blog/blob/main/LICENSE)
-
-[![Code Lines](https://tokei.rs/b1/github/sabertazimi/blog?style=for-the-badge&logo=visualstudiocode)](https://github.com/sabertazimi/blog)
-[![Top Language](https://img.shields.io/github/languages/top/sabertazimi/blog?logo=typescript&style=for-the-badge)](https://github.com/https://github.com/sabertazimi/blog/search?l=typescript)
+[![Top Language](https://img.shields.io/github/languages/top/sabertazimi/blog?logo=typescript&style=for-the-badge)](https://github.com/sabertazimi/blog/search?l=typescript)
 
 [![CI](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/sabertazimi/blog/actions/workflows/ci.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/sabertazimi/blog/codeql-analysis.yml?branch=main&label=CodeQL&logo=github&style=for-the-badge)](https://github.com/sabertazimi/blog/actions/workflows/codeql-analysis.yml)
 [![Vitest Coverage](https://img.shields.io/codecov/c/github/sabertazimi/blog?logo=codecov&style=for-the-badge)](https://codecov.io/gh/sabertazimi/blog)
-
-An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
 ## :sparkles: Features
 
@@ -59,8 +53,14 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
     - Real-time preview
     - Multi-file support
     - Hot module reloading
+  - **Advanced Table of Contents (TOC)**:
+    - Automatic heading extraction from MDX content
+    - Active section tracking with IntersectionObserver
+    - Smooth scroll with visual progress indicator
+    - Collapsible mobile TOC with progress circle
+    - Hierarchical structure with depth-based indentation
+    - Auto-scroll to active item in viewport
   - **Automatic navigation generation**:
-    - Sidebar table of contents
     - Previous/next post navigation
     - Auto-linked headings with anchor links
 - **GitHub Integration**
@@ -77,6 +77,12 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
   - Mobile-first responsive design
   - Command menu for quick navigation (⌘K)
   - Smooth animations powered by Motion
+- **Internationalization (i18n)**
+  - Full i18n support powered by next-intl
+  - Bilingual support: English (en-US) and Chinese (zh-CN)
+  - Language switcher with locale-specific routing
+  - Localized content for posts and UI elements
+  - SEO-friendly locale URLs
 
 ### Development Features
 
@@ -251,77 +257,99 @@ The optimized production build will be in the `.next` folder.
 .
 ├── node_modules/
 ├── src/
-│   ├── app/                   # Next.js App Router pages
-│   │   ├── about/             # About page
-│   │   ├── post/[slug]/       # Dynamic post pages
-│   │   ├── posts/             # All posts page
-│   │   ├── tag/[tagName]/     # Tag filter pages
-│   │   ├── layout.tsx         # Root layout
-│   │   ├── page.tsx           # Home page
-│   │   ├── globals.css        # Global styles
-│   │   ├── robots.ts          # robots.txt generation
-│   │   └── sitemap.ts         # Sitemap generation
-│   ├── components/            # React components
-│   │   ├── ui/                # Shadcn UI components
+│   ├── app/                       # Next.js App Router pages
+│   │   ├── [locale]/              # Locale-based routing
+│   │   │   ├── about/             # About page
+│   │   │   ├── post/[slug]/       # Dynamic post pages
+│   │   │   ├── posts/             # All posts page
+│   │   │   ├── tag/[tagName]/     # Tag filter pages
+│   │   │   ├── layout.tsx         # Locale layout
+│   │   │   ├── page.tsx           # Home page
+│   │   │   └── not-found.tsx      # 404 page
+│   │   ├── globals.css            # Global styles
+│   │   ├── providers.tsx          # Context providers
+│   │   ├── robots.ts              # robots.txt generation
+│   │   └── sitemap.ts             # Sitemap generation
+│   ├── components/                # React components
+│   │   ├── ui/                    # Shadcn UI components
 │   │   │   ├── button.tsx
 │   │   │   ├── card.tsx
 │   │   │   ├── dialog.tsx
 │   │   │   ├── skeleton.tsx
 │   │   │   └── ...
-│   │   ├── mdx-code.tsx       # Code block with Shiki
-│   │   ├── mdx-editor.tsx     # Live code editor with Sandpack
-│   │   ├── mdx-image.tsx      # Optimized image component
-│   │   ├── post-card.tsx      # Post card component
-│   │   ├── post-content.tsx   # MDX content renderer
+│   │   ├── language-switcher.tsx  # Language switcher
+│   │   ├── mdx-code.tsx           # Code block with Shiki
+│   │   ├── mdx-editor.tsx         # Live code editor with Sandpack
+│   │   ├── mdx-image.tsx          # Optimized image component
+│   │   ├── post-card.tsx          # Post card component
+│   │   ├── post-content.tsx       # MDX content renderer
 │   │   └── ...
-│   ├── layouts/               # Layout components
+│   ├── i18n/                      # Internationalization
+│   │   ├── routing.ts             # i18n routing config
+│   │   ├── request.ts             # Request config
+│   │   ├── navigation.ts          # Navigation helpers
+│   │   └── utils.ts               # i18n utilities
+│   ├── layouts/                   # Layout components
 │   │   └── default-layout.tsx
-│   ├── lib/                   # Utility functions
-│   │   ├── get-posts-data.ts  # MDX processing
-│   │   ├── utils.ts           # Helper functions
-│   │   ├── routes.ts          # Route configuration
-│   │   ├── seo.ts             # SEO utilities
+│   ├── lib/                       # Utility functions
+│   │   ├── get-posts-data.ts      # MDX processing
+│   │   ├── utils.ts               # Helper functions
+│   │   ├── get-routes.ts          # Route generation
+│   │   ├── seo.ts                 # SEO utilities
 │   │   └── ...
-│   └── types/                 # TypeScript type definitions
-│       └── index.d.ts
-├── contents/                  # Blog posts (.mdx files)
-│   ├── post1.mdx
-│   ├── post2.mdx
-│   └── ...
-├── public/                    # Static assets
+│   ├── types/                     # TypeScript type definitions
+│   │   ├── index.d.ts
+│   │   └── i18n.ts
+│   └── proxy.ts                   # next-intl middleware
+├── contents/                      # Blog posts (.mdx files)
+│   ├── en-US/                     # English posts
+│   │   ├── post1.mdx
+│   │   └── ...
+│   └── zh-CN/                     # Chinese posts
+│       ├── post1.mdx
+│       └── ...
+├── messages/                      # i18n translation files
+│   ├── en-US.json
+│   └── zh-CN.json
+├── public/                        # Static assets
 │   ├── fonts/
+│   ├── images/
 │   ├── photos/
 │   └── ...
-├── e2e/                       # Playwright E2E tests
-│   └── home.spec.ts
+├── e2e/                           # Playwright E2E tests
+│   ├── home.spec.ts
+│   ├── i18n.spec.ts
 │   └── ...
-├── .github/                   # GitHub workflows
+├── .github/                       # GitHub workflows
 │   └── workflows/
 │       ├── ci.yml
 │       └── codeql-analysis.yml
 ├── .gitignore
 ├── .prettierrc.json
-├── eslint.config.mjs          # ESLint Flat Config
-├── next.config.ts             # Next.js configuration
+├── components.json                # Shadcn UI config
+├── eslint.config.mjs              # ESLint Flat Config
+├── next.config.ts                 # Next.js configuration
 ├── package.json
-├── playwright.config.ts       # Playwright configuration
-├── postcss.config.mjs         # PostCSS configuration
-├── tsconfig.json              # TypeScript configuration
-├── vitest.config.ts           # Vitest configuration
+├── playwright.config.ts           # Playwright configuration
+├── postcss.config.mjs             # PostCSS configuration
+├── tsconfig.json                  # TypeScript configuration
+├── vitest.config.mts              # Vitest configuration
 ├── LICENSE
 └── README.md
 ```
 
 ### Key Directories
 
-1. **`src/app/`**: Next.js App Router pages with file-based routing
+1. **`src/app/[locale]/`**: Locale-based Next.js App Router pages with i18n support
 2. **`src/components/`**: Reusable React components
 3. **`src/components/ui/`**: Shadcn UI base components
-4. **`src/lib/`**: Utility functions and data fetching logic
-5. **`src/types/`**: TypeScript type definitions
-6. **`contents/`**: Blog posts in MDX format
-7. **`public/`**: Static assets (images, fonts, etc.)
-8. **`e2e/`**: End-to-end tests with Playwright
+4. **`src/i18n/`**: Internationalization configuration and utilities
+5. **`src/lib/`**: Utility functions and data fetching logic
+6. **`src/types/`**: TypeScript type definitions
+7. **`contents/`**: Blog posts in MDX format (organized by locale)
+8. **`messages/`**: i18n translation JSON files
+9. **`public/`**: Static assets (images, fonts, etc.)
+10. **`e2e/`**: End-to-end tests with Playwright
 
 ## :wrench: Configuration
 
@@ -331,12 +359,49 @@ Edit `src/lib/site.ts` to customize your blog:
 
 ```typescript
 export const site = {
-  title: 'Your Blog Title',
-  description: 'Your blog description',
   author: 'Your Name',
   url: 'https://yourblog.com',
   // ... more settings
 }
+```
+
+### i18n Configuration
+
+Configure supported locales in `src/i18n/routing.ts`:
+
+```typescript
+export const routing = defineRouting({
+  locales: ['en-US', 'zh-CN'],
+  defaultLocale: 'en-US',
+  localePrefix: 'always',
+})
+```
+
+Add translations in `messages/[locale].json`:
+
+```json
+{
+  "site": {
+    "title": "Your Blog Title",
+    "description": "Your blog description"
+  },
+  "common": {
+    "loading": "Loading...",
+    "backToTop": "Back to top"
+  }
+}
+```
+
+Organize MDX posts by locale in `contents/[locale]/`:
+
+```bash
+contents/
+├── en-US/
+│   ├── my-first-post.mdx
+│   └── ...
+└── zh-CN/
+    ├── my-first-post.mdx
+    └── ...
 ```
 
 ### Theme Customization
@@ -358,6 +423,27 @@ The blog uses Tailwind CSS with custom CSS variables. Edit `src/app/globals.css`
 }
 ```
 
+[Nature](https://www.shadcn.io/theme/nature) theme example:
+
+```bash
+pnpm dlx shadcn@latest add https://www.shadcn.io/registry/nature.json
+```
+
+### Shadcn UI Registries
+
+The project includes multiple component registries in `components.json`:
+
+- **@animate-ui**: <https://animate-ui.com> - Animated UI components
+- **@magicui**: <https://magicui.design> - Magic UI components
+- **@shadcn-studio**: <https://shadcnstudio.com> - Shadcn Studio components, blocks, and themes
+
+You can add components from these registries:
+
+```bash
+pnpm dlx shadcn@latest add @magicui/morphing-text
+pnpm dlx shadcn@latest add @animate-ui/gravity-stars
+```
+
 ### MDX Components
 
 Customize MDX components in `src/components/post-content.tsx`:
@@ -373,12 +459,6 @@ const mdxComponents = {
 }
 ```
 
-## :construction: Caveats
-
-- `import` and `export` statements cannot be used **inside** MDX files due to `next-mdx-remote` limitations.
-- If you need custom components in MDX, add them to `src/components/post-content.tsx`.
-- See [explanation](https://github.com/hashicorp/next-mdx-remote/issues/143#issuecomment-1043067293) for details.
-
 ## :package: Tech Stack
 
 ### Core Package
@@ -389,14 +469,16 @@ const mdxComponents = {
 
 ### Styling Toolkit
 
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Shadcn UI](https://ui.shadcn.com/) - Component library
 - [Motion](https://motion.dev/) - Animation library
 - [Lucide React](https://lucide.dev/) - Icon library
+- [Simple Icons](https://simpleicons.org/) - Brand icons
 
 ### Content Helper
 
 - [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) - MDX support
+- [next-intl](https://next-intl.dev/) - Internationalization
 - [Shiki](https://shiki.style/) - Syntax highlighting
 - [Sandpack](https://sandpack.codesandbox.io/) - Live code editor
 - [KaTeX](https://katex.org/) - Math rendering
@@ -415,6 +497,12 @@ const mdxComponents = {
 - [Stylelint](https://stylelint.io/) - CSS linting
 - [Prettier](https://prettier.io/) - Code formatting
 - [pnpm](https://pnpm.io/) - Package manager
+
+## :construction: Caveats
+
+- `import` and `export` statements cannot be used **inside** MDX files due to `next-mdx-remote` limitations.
+- If you need custom components in MDX, add them to `src/components/post-content.tsx`.
+- See [explanation](https://github.com/hashicorp/next-mdx-remote/issues/143#issuecomment-1043067293) for details.
 
 ## :bookmark: Contact
 
