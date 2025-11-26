@@ -7,5 +7,11 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     include: ['__tests__/**/*.test.ts', '__tests__/**/*.test.tsx'],
+    setupFiles: [
+      '__tests__/setup.ts',
+      '__tests__/mocks/next-navigation.ts',
+      '__tests__/mocks/navigation.tsx',
+      '__tests__/mocks/next-image.tsx',
+    ],
   },
 })

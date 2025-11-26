@@ -8,7 +8,8 @@
     "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./src/*"],
-      "@/images/*": ["./public/images/*"]
+      "@/images/*": ["./public/images/*"],
+      "@/tests/*": ["./__tests__/*"]
     },
     "resolveJsonModule": true,
     "types": ["vitest/globals"],

@@ -11,6 +11,12 @@ export default eslintConfig
     },
   })
   .append({
+    files: ['__tests__/**/*.test.tsx'],
+    rules: {
+      'security/detect-non-literal-regexp': 'off',
+    },
+  })
+  .append({
     files: ['e2e/**/*.spec.ts'],
     rules: {
       'testing-library/prefer-screen-queries': 'off',
