@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import {
   cn,
   getLanguageDisplayName,
@@ -6,7 +7,7 @@ import {
   parseHighlightLines,
   parseLanguageFromClassName,
   trimTrailingNewlines,
-} from './utils'
+} from '@/lib/utils'
 
 describe('cn', () => {
   it('should merge class names', () => {

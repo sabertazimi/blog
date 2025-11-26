@@ -4,7 +4,14 @@ import type { TagsMeta } from '@/types'
 import { ChevronDownIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer'
 import { Link } from '@/i18n/navigation'
 import { cn, getTagUrl } from '@/lib/utils'
 
@@ -57,6 +64,7 @@ function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterP
         <DrawerContent className="md:hidden">
           <DrawerHeader>
             <DrawerTitle className="text-sm font-semibold">{t('selectCategory')}</DrawerTitle>
+            <DrawerDescription className="sr-only">{t('selectCategory')}</DrawerDescription>
           </DrawerHeader>
           <div className="space-y-2 px-4">
             {allTags.map(tag => (

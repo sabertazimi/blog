@@ -208,7 +208,10 @@ const NotFound: React.FC = () => (
 
 function NotFoundResult() {
   return (
-    <div className="container mx-auto flex flex-1 flex-col items-center justify-center px-6 lg:px-0">
+    <div
+      data-testid="not-found-container"
+      className="container mx-auto flex flex-1 flex-col items-center justify-center px-6 lg:px-0"
+    >
       <NotFound />
     </div>
   )

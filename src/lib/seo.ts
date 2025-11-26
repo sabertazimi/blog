@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { hasLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
-import { siteConfig } from './site'
+import { siteConfig } from '@/lib/site'
 
 export function getMetadata({
   title,

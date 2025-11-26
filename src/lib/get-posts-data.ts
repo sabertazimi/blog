@@ -17,7 +17,7 @@ import remarkGemoji from 'remark-gemoji'
 import remarkGfm from 'remark-gfm'
 import remarkGitHub from 'remark-github'
 import remarkMath from 'remark-math'
-import remarkAdmonitions from './remark-admonitions'
+import remarkAdmonitions from '@/lib/remark-admonitions'
 
 const contentsBasePath = path.join(process.cwd(), 'contents')
 
@@ -31,10 +31,11 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
   for await (const entry of directory) {
     const filePath = path.join(directoryPath, entry.name)
 
-    if (entry.isDirectory())
+    if (entry.isDirectory()) {
       yield* walk(filePath)
-    else if (entry.isFile())
+    } else if (entry.isFile()) {
       yield filePath
+    }
   }
 }
 

@@ -19,7 +19,7 @@ function PostShare({ url, title }: PostShareProps) {
   }
 
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div data-testid="post-share-container" className="flex items-center justify-center gap-4">
       <Share2Icon className="text-muted-foreground size-5" />
       <TooltipProvider>
         <div className="flex items-center gap-2">

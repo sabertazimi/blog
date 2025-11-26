@@ -15,6 +15,7 @@ function PostList({ postsMeta, selectedTag }: PostListProps) {
     <div className="container mx-auto px-6 lg:px-0">
       <Suspense fallback={<div>Loading articles...</div>}>
         <div
+          data-testid="post-grid"
           className={cn(
             'border-border relative grid grid-cols-1 overflow-hidden border-x md:grid-cols-2 lg:grid-cols-3',
             filteredPosts.length < 4 ? 'border-b' : 'border-b-0',

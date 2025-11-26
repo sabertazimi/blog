@@ -23,7 +23,9 @@ function MDXImage({ src, alt = 'Image', title, className }: MDXImageProps) {
         />
       </span>
       {title !== undefined && title !== '' && (
-        <span className="text-muted-foreground line-clamp-3 text-sm">{title}</span>
+        <span data-testid="mdx-image-title" className="text-muted-foreground line-clamp-3 text-sm">
+          {title}
+        </span>
       )}
     </span>
   )

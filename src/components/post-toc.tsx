@@ -136,8 +136,9 @@ function useAnchorObserver(watch: string[], single: boolean): string[] {
 
         for (const id of watch) {
           const element = document.getElementById(id)
-          if (!element)
+          if (!element) {
             continue
+          }
 
           const d = Math.abs(viewTop - element.getBoundingClientRect().top)
           if (min === -1 || d < min) {
@@ -168,8 +169,9 @@ function useAnchorObserver(watch: string[], single: boolean): string[] {
 
   useEffect(() => {
     const observer = observerRef.current
-    if (!observer)
+    if (!observer) {
       return
+    }
 
     const elements = watch
       .map(heading => document.getElementById(heading))
@@ -518,7 +520,10 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
 
   return (
     <AnchorProvider toc={toc} single={single}>
-      <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
+      <div
+        data-testid="post-main-toc"
+        className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}
+      >
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
           {t('onThisPage')}

@@ -1,6 +1,6 @@
-import type { SocialSite } from './social'
+import type { SocialSite } from '@/lib/social'
 import type { GitHub } from '@/types'
-import { colors } from './colors'
+import { colors } from '@/lib/colors'
 
 interface SiteConfig {
   author: string
