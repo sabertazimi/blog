@@ -38,7 +38,7 @@ export default async function getGitHubData(): Promise<GitHub> {
         repos: reposJSON
           .filter(({ stargazers_count = 0 }) => stargazers_count >= siteConfig.minRepoStars)
           .sort(({ stargazers_count: stargazers_count1 = 0 }, { stargazers_count: stargazers_count2 = 0 }) =>
-            stargazers_count1 < stargazers_count2 ? 1 : -1,
+            stargazers_count2 - stargazers_count1,
           )
           .map(repo => ({
             name: repo.name,
