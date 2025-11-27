@@ -14,16 +14,14 @@ export default async function getGitHubData(): Promise<GitHub> {
       const { data: profileJSON } = await octokit.rest.users.getByUsername({
         username,
       })
-      const { data: reposJSON } = await octokit.request(
-        'GET /users/{username}/repos',
-        {
-          username,
-        },
-      )
+      const { data: reposJSON } = await octokit.request('GET /users/{username}/repos', {
+        username,
+      })
 
       githubData = {
         profile: {
           username: profileJSON.login,
+          name: profileJSON.name ?? profileJSON.login,
           avatar: profileJSON.avatar_url,
           bio: profileJSON.bio ?? '',
           location: profileJSON.location ?? '',
@@ -32,15 +30,15 @@ export default async function getGitHubData(): Promise<GitHub> {
           followersUrl: `${profileJSON.html_url}/followers`,
           following: profileJSON.following,
           followingUrl: `${profileJSON.html_url}/following`,
+          publicRepos: profileJSON.public_repos,
+          publicGists: profileJSON.public_gists,
+          totalStars: reposJSON.reduce((sum, repo) => sum + (repo.stargazers_count ?? 0), 0),
           createDate: new Date(profileJSON.created_at).toDateString(),
         },
         repos: reposJSON
-          .filter(({ stargazers_count = 0 }) => stargazers_count > 0)
-          .sort(
-            (
-              { stargazers_count: stargazers_count1 = 0 },
-              { stargazers_count: stargazers_count2 = 0 },
-            ) => (stargazers_count1 < stargazers_count2 ? 1 : -1),
+          .filter(({ stargazers_count = 0 }) => stargazers_count >= siteConfig.minRepoStars)
+          .sort(({ stargazers_count: stargazers_count1 = 0 }, { stargazers_count: stargazers_count2 = 0 }) =>
+            stargazers_count2 - stargazers_count1,
           )
           .map(repo => ({
             name: repo.name,
@@ -52,9 +50,7 @@ export default async function getGitHubData(): Promise<GitHub> {
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message)
-        console.error(
-          'GitHub API request error, fallback to local GitHub data.',
-        )
+        console.error('GitHub API request error, fallback to local GitHub data.')
       }
     }
   } else {

@@ -7,7 +7,8 @@ describe('ProfileCard', () => {
   it('should render user profile information', () => {
     render(<ProfileCard profile={mockProfile} />)
 
-    expect(screen.getByText(mockProfile.username)).toBeInTheDocument()
+    expect(screen.getByText(`@${mockProfile.username}`)).toBeInTheDocument()
+    expect(screen.getByText(mockProfile.name)).toBeInTheDocument()
     expect(screen.getByText(mockProfile.bio!)).toBeInTheDocument()
     expect(screen.getByText(mockProfile.location!)).toBeInTheDocument()
   })

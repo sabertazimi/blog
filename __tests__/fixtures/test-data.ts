@@ -2,6 +2,7 @@ import type { Metadata, Post, PostsMeta, Profile, Repo, TagsMeta } from '@/types
 
 export const mockProfile: Profile = {
   username: 'testuser',
+  name: 'Test User',
   bio: 'Test bio',
   avatar: 'https://example.com/avatar.jpg',
   url: 'https://github.com/testuser',
@@ -11,6 +12,9 @@ export const mockProfile: Profile = {
   following: 50,
   followersUrl: 'https://github.com/testuser/followers',
   followingUrl: 'https://github.com/testuser/following',
+  publicRepos: 10,
+  publicGists: 5,
+  totalStars: 150,
 }
 
 export const mockRepos: Repo[] = [

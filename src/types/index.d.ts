@@ -58,6 +58,7 @@ export interface MDXFrontMatter {
 
 export interface Profile {
   username: string
+  name: string
   avatar: string
   bio?: string
   location?: string
@@ -66,6 +67,9 @@ export interface Profile {
   followersUrl: string
   following: number
   followingUrl: string
+  publicRepos: number
+  publicGists: number
+  totalStars: number
   createDate: string
 }
 

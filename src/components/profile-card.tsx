@@ -22,7 +22,7 @@ function ProfileCard({ profile }: ProfileCardProps) {
           <AvatarImage src={profile.avatar} alt={profile.username} />
           <AvatarFallback>{profile.username.charAt(0)}</AvatarFallback>
         </Avatar>
-        <CardTitle className="text-2xl">{profile.username}</CardTitle>
+        <CardTitle className="text-2xl">{profile.name}</CardTitle>
         <CardDescription>{profile.bio ?? t('bio')}</CardDescription>
         <Link
           href={profile.url}
