@@ -102,7 +102,8 @@ jobs:
       - name: Get installed Playwright version
         id: playwright-version
         run: echo "::set-output name=version::$(yarn why --json @playwright/test | grep -h 'workspace:.' | jq --raw-output '.children[].locator' | sed -e 's/@playwright\/test@.*://')"
-      - uses: actions/cache@v4
+      - name: Setup Playwright binary cache
+        uses: actions/cache@v4
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
