@@ -31,12 +31,11 @@ export default async function AboutPage({ params }: Props) {
   const buildTime = getBuildTime()
   const metadata = await getPostsMeta(getLocale(locale))
   const { profile, repos } = await getGitHubData()
-  const totalStars = repos.reduce((sum, repo) => sum + repo.stars, 0)
 
   return (
     <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader title={t('title')} description={t('description')} />
-      <AboutMe profile={profile} repos={repos} totalStars={totalStars} />
+      <AboutMe profile={profile} repos={repos} />
     </DefaultLayout>
   )
 }

@@ -8,10 +8,9 @@ import StatCard from '@/components/stat-card'
 interface AboutMeProps {
   profile: Profile
   repos: Repo[]
-  totalStars: number
 }
 
-function AboutMe({ profile, repos, totalStars }: AboutMeProps) {
+function AboutMe({ profile, repos }: AboutMeProps) {
   const t = useTranslations('about')
 
   return (
@@ -24,11 +23,11 @@ function AboutMe({ profile, repos, totalStars }: AboutMeProps) {
           <div className="border-border grid gap-6 border-b p-6 sm:grid-cols-2">
             <StatCard
               title={t('totalRepositories')}
-              value={repos.length}
+              value={profile.publicRepos}
               description={t('publicRepositories')}
               icon={GitForkIcon}
             />
-            <StatCard title={t('totalStars')} value={totalStars} description={t('acrossAllProjects')} icon={StarIcon} />
+            <StatCard title={t('totalStars')} value={profile.totalStars} description={t('acrossAllProjects')} icon={StarIcon} />
           </div>
           <div className="p-6">
             <h3 className="mb-4 text-lg font-semibold">{t('featuredRepositories')}</h3>

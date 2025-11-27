@@ -21,6 +21,7 @@ export default async function getGitHubData(): Promise<GitHub> {
       githubData = {
         profile: {
           username: profileJSON.login,
+          name: profileJSON.name ?? profileJSON.login,
           avatar: profileJSON.avatar_url,
           bio: profileJSON.bio ?? '',
           location: profileJSON.location ?? '',
@@ -29,6 +30,9 @@ export default async function getGitHubData(): Promise<GitHub> {
           followersUrl: `${profileJSON.html_url}/followers`,
           following: profileJSON.following,
           followingUrl: `${profileJSON.html_url}/following`,
+          publicRepos: profileJSON.public_repos,
+          publicGists: profileJSON.public_gists,
+          totalStars: reposJSON.reduce((sum, repo) => sum + (repo.stargazers_count ?? 0), 0),
           createDate: new Date(profileJSON.created_at).toDateString(),
         },
         repos: reposJSON

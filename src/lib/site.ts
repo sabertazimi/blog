@@ -33,6 +33,7 @@ const siteConfig: SiteConfig = {
   githubData: {
     profile: {
       username: 'sabertazimi',
+      name: 'Sabertaz',
       avatar: 'https://avatars.githubusercontent.com/u/12670482?v=4',
       bio: 'Web Developer',
       location: 'Undefined',
@@ -41,6 +42,9 @@ const siteConfig: SiteConfig = {
       followersUrl: 'https://github.com/sabertazimi?tab=followers',
       following: 206,
       followingUrl: 'https://github.com/sabertazimi?tab=following',
+      publicRepos: 15,
+      publicGists: 0,
+      totalStars: 175,
       createDate: 'Sat May 30 2015',
     },
     repos: [
