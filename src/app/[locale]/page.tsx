@@ -26,7 +26,7 @@ export default async function HomePage({ params }: Props) {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8">
       <GravityStarsBackground
-        starsCount={siteConfig.starsCount}
+        starsCount={siteConfig.maxLandingStars}
         className="absolute inset-0 flex items-center justify-center rounded-xl"
       />
       <MorphingText texts={landingTitles} className="pointer-none select-none" />

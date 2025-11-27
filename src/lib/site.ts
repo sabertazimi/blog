@@ -8,10 +8,11 @@ interface SiteConfig {
   themeColor: string
   url: string
   disqusShortname: string
-  starsCount: number
   socials: {
     [key in SocialSite]: string
   }
+  maxLandingStars: number
+  minRepoStars: number
   githubData: GitHub
 }
 
@@ -21,13 +22,14 @@ const siteConfig: SiteConfig = {
   themeColor: colors.black,
   url: 'https://blog.tazimi.dev',
   disqusShortname: 'sabertaz-blog',
-  starsCount: 800,
   socials: {
     github: 'sabertazimi',
     x: 'sabertazimi',
     facebook: 'sabertazimi',
     weibo: 'sabertazimi',
   },
+  maxLandingStars: 800,
+  minRepoStars: 3,
   githubData: {
     profile: {
       username: 'sabertazimi',
