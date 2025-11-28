@@ -18,8 +18,10 @@ function useMorphingText(texts: string[]) {
   const setStyles = useCallback(
     (fraction: number) => {
       const [current1, current2] = [text1Ref.current, text2Ref.current]
-      if (!current1 || !current2)
+
+      if (!current1 || !current2) {
         return
+      }
 
       current2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`
       current2.style.opacity = `${fraction ** 0.4 * 100}%`
@@ -55,6 +57,7 @@ function useMorphingText(texts: string[]) {
   const doCooldown = useCallback(() => {
     morphRef.current = 0
     const [current1, current2] = [text1Ref.current, text2Ref.current]
+
     if (current1 && current2) {
       current2.style.filter = 'none'
       current2.style.opacity = '100%'
@@ -75,12 +78,15 @@ function useMorphingText(texts: string[]) {
 
       cooldownRef.current -= dt
 
-      if (cooldownRef.current <= 0)
+      if (cooldownRef.current <= 0) {
         doMorph()
-      else doCooldown()
+      } else {
+        doCooldown()
+      }
     }
 
     animate()
+
     return () => {
       cancelAnimationFrame(animationFrameId)
     }
@@ -96,6 +102,7 @@ interface MorphingTextProps {
 
 const Texts: React.FC<Pick<MorphingTextProps, 'texts'>> = ({ texts }) => {
   const { text1Ref, text2Ref } = useMorphingText(texts)
+
   return (
     <>
       <span className="absolute inset-x-0 top-0 m-auto inline-block w-full" ref={text1Ref} />
@@ -108,14 +115,7 @@ const SvgFilters: React.FC = () => (
   <svg id="filters" className="fixed h-0 w-0" preserveAspectRatio="xMidYMid slice">
     <defs>
       <filter id="threshold">
-        <feColorMatrix
-          in="SourceGraphic"
-          type="matrix"
-          values="1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  0 0 0 255 -140"
-        />
+        <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 255 -140" />
       </filter>
     </defs>
   </svg>
