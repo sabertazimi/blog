@@ -1,5 +1,4 @@
 import type { useTranslations } from 'next-intl'
-
 import { InfoIcon, StickerIcon } from 'lucide-react'
 
 export interface Route {
