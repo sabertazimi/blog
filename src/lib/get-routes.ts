@@ -1,6 +1,5 @@
 import type { useTranslations } from 'next-intl'
-
-import { HomeIcon, InfoIcon } from 'lucide-react'
+import { InfoIcon, StickerIcon } from 'lucide-react'
 
 export interface Route {
   id: string
@@ -12,7 +11,7 @@ export interface Route {
 
 export function getRouteIcons(): Record<string, React.ComponentType<{ className?: string }>> {
   return {
-    posts: HomeIcon,
+    posts: StickerIcon,
     about: InfoIcon,
   }
 }

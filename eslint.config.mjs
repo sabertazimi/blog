@@ -11,6 +11,13 @@ export default eslintConfig
     },
   })
   .append({
+    files: ['src/components/ui/*.tsx'],
+    rules: {
+      'react/no-children-map': 'off',
+      'react/no-clone-element': 'off',
+    },
+  })
+  .append({
     files: ['__tests__/**/*.test.tsx'],
     rules: {
       'security/detect-non-literal-regexp': 'off',

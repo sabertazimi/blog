@@ -1,22 +1,14 @@
-import type { BuildTime, SocialSite } from '@/types'
-import { SiFacebook, SiGithub, SiSinaweibo, SiX } from '@icons-pack/react-simple-icons'
+import type { CSSProperties } from 'react'
+import type { BuildTime } from '@/types'
 import { useTranslations } from 'next-intl'
 import FormattedDate from '@/components/formatted-date'
 import { Separator } from '@/components/ui/separator'
-import { socialColors } from '@/lib/colors'
 import { siteConfig } from '@/lib/site'
-import { socialList } from '@/lib/social'
+import { socialLinks } from '@/lib/social'
 import { cn } from '@/lib/utils'
 
 interface Props {
   buildTime: BuildTime
-}
-
-const socialIcons: Record<SocialSite, React.ComponentType<{ className?: string }>> = {
-  github: SiGithub,
-  x: SiX,
-  facebook: SiFacebook,
-  weibo: SiSinaweibo,
 }
 
 function SiteFooter({ buildTime }: Props) {
@@ -26,31 +18,24 @@ function SiteFooter({ buildTime }: Props) {
     <footer className="bg-background border-t">
       <div className="container mx-auto px-6 py-8">
         <div className="flex items-center justify-center gap-4">
-          {(Object.keys(socialList) as SocialSite[]).map((social) => {
-            const Icon = socialIcons[social]
-            const username = siteConfig.socials[social]
-            const hoverColor = socialColors[social]
-            const url = `https://${social}.com/${username}`
-
-            return (
-              <a
-                key={social}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  'dark:hover:text-primary text-muted-foreground transition-colors hover:text-(--social-color)',
-                  'inline-flex items-center justify-center',
-                )}
-                style={{
-                  ['--social-color' as string]: hoverColor,
-                }}
-                aria-label={social}
-              >
-                <Icon className="size-5" />
-              </a>
-            )
-          })}
+          {Object.entries(socialLinks).map(([name, social]) => (
+            <a
+              key={name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'dark:hover:text-primary text-muted-foreground transition-colors hover:text-(--social-color)',
+                'inline-flex items-center justify-center',
+              )}
+              style={{
+                ['--social-color' as keyof CSSProperties]: social.color,
+              }}
+              aria-label={social.name}
+            >
+              <social.icon className="size-5" />
+            </a>
+          ))}
         </div>
         <Separator className="my-6" />
         <div className="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-6">
@@ -60,7 +45,7 @@ function SiteFooter({ buildTime }: Props) {
             {new Date().getFullYear()}
             {' '}
             <a
-              href={`https://${socialList.github}.com/${siteConfig.socials.github}`}
+              href={socialLinks.github.url}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary decoration-muted-foreground/30 underline underline-offset-4 transition-colors hover:decoration-current"

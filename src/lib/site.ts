@@ -8,9 +8,7 @@ interface SiteConfig {
   themeColor: string
   url: string
   disqusShortname: string
-  socials: {
-    [key in SocialSite]: string
-  }
+  socials: Record<SocialSite, string>
   maxLandingStars: number
   minRepoStars: number
   githubData: GitHub

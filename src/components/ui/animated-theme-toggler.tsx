@@ -1,5 +1,6 @@
 'use client'
 
+import type { ButtonProps } from '@/components/ui/button'
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -8,10 +9,18 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
+  size?: ButtonProps['size']
+  iconClassName?: string
   duration?: number
 }
 
-export function AnimatedThemeToggler({ className, duration = 400, ...props }: AnimatedThemeTogglerProps) {
+export function AnimatedThemeToggler({
+  className,
+  size = 'icon',
+  iconClassName,
+  duration = 400,
+  ...props
+}: AnimatedThemeTogglerProps) {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -58,13 +67,19 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
     <Button
       ref={buttonRef}
       variant="ghost"
-      size="icon"
+      size={size}
       className={cn('cursor-pointer', className)}
       // eslint-disable-next-line ts/no-misused-promises -- toggleTheme is a valid promise
       onClick={toggleTheme}
       {...props}
     >
-      {resolvedTheme === 'dark' ? <MoonIcon className="size-6" /> : <SunIcon className="size-6" />}
+      {resolvedTheme === 'dark'
+        ? (
+            <MoonIcon className={cn('size-6', iconClassName)} />
+          )
+        : (
+            <SunIcon className={cn('size-6', iconClassName)} />
+          )}
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
