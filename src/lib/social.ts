@@ -1,13 +1,46 @@
-import { SiFacebook, SiSinaweibo, SiX } from '@icons-pack/react-simple-icons'
+import { SiFacebook, SiGithub, SiSinaweibo, SiX } from '@icons-pack/react-simple-icons'
+import { socialColors } from '@/lib/colors'
+import { siteConfig } from '@/lib/site'
 
-const socialList = {
-  github: 'github',
-  x: 'x',
-  facebook: 'facebook',
-  weibo: 'weibo',
+type SocialSite = 'github' | 'x' | 'facebook' | 'weibo'
+interface SocialLink {
+  name: string
+  username: string
+  url: string
+  color: string
+  icon: React.ComponentType<{ className?: string }>
 }
 
-type SocialSite = keyof typeof socialList
+const socialLinks: Record<SocialSite, SocialLink> = {
+  github: {
+    name: 'GitHub',
+    username: siteConfig.socials.github,
+    url: `https://github.com/${siteConfig.socials.github}`,
+    color: socialColors.github,
+    icon: SiGithub,
+  },
+  x: {
+    name: 'X',
+    username: siteConfig.socials.x,
+    url: `https://x.com/${siteConfig.socials.x}`,
+    color: socialColors.x,
+    icon: SiX,
+  },
+  facebook: {
+    name: 'Facebook',
+    username: siteConfig.socials.facebook,
+    url: `https://facebook.com/${siteConfig.socials.facebook}`,
+    color: socialColors.facebook,
+    icon: SiFacebook,
+  },
+  weibo: {
+    name: 'Weibo',
+    username: siteConfig.socials.weibo,
+    url: `https://weibo.com/${siteConfig.socials.weibo}`,
+    color: socialColors.weibo,
+    icon: SiSinaweibo,
+  },
+}
 
 interface ShareUrlParams {
   url: string
@@ -24,8 +57,7 @@ const shareLinks = [
   {
     name: 'Facebook',
     icon: SiFacebook,
-    getShareUrl: ({ url }: ShareUrlParams) =>
-      `https://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}`,
+    getShareUrl: ({ url }: ShareUrlParams) => `https://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}`,
   },
   {
     name: 'Weibo',
@@ -35,5 +67,5 @@ const shareLinks = [
   },
 ]
 
-export { shareLinks, socialList }
-export type { ShareUrlParams, SocialSite }
+export { shareLinks, socialLinks }
+export type { ShareUrlParams, SocialLink, SocialSite }
