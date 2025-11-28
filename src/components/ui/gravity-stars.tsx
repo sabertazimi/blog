@@ -62,10 +62,14 @@ function GravityStarsBackground({
 
   const readColor = React.useCallback(() => {
     const el = containerRef.current
-    if (!el)
+
+    if (!el) {
       return '#ffffff'
-    const cs = getComputedStyle(el)
-    return cs.color ?? '#ffffff'
+    }
+
+    const cs = window.getComputedStyle(el)
+    const primaryColor = cs.getPropertyValue('--color-primary')
+    return primaryColor !== '' ? primaryColor : (cs.color ?? '#ffffff')
   }, [])
 
   const initStars = React.useCallback(
