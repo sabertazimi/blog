@@ -15,8 +15,8 @@ describe('SiteFooter', () => {
   it('should render social media links', () => {
     render(<SiteFooter buildTime={mockBuildTime} />)
 
-    const githubLink = screen.getByLabelText('github')
-    const xLink = screen.getByLabelText('x')
+    const githubLink = screen.getByLabelText('GitHub')
+    const xLink = screen.getByLabelText('X')
 
     expect(githubLink).toBeInTheDocument()
     expect(xLink).toBeInTheDocument()
