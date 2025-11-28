@@ -100,8 +100,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`
       offCtx.textBaseline = 'alphabetic'
       const primaryColor = window.getComputedStyle(canvas).getPropertyValue('--color-primary')
-      offCtx.fillStyle
-        = primaryColor !== undefined && primaryColor !== '' ? primaryColor : resolvedTheme === 'dark' ? '#fff' : '#000'
+      offCtx.fillStyle = primaryColor !== '' ? primaryColor : resolvedTheme === 'dark' ? '#fff' : '#000'
       offCtx.fillText(text, xOffset - actualLeft, actualAscent)
 
       const horizontalMargin = 50
@@ -212,7 +211,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
     }
   }, [children, fontSize, fontWeight, fontFamily, enableHover, baseIntensity, hoverIntensity, resolvedTheme])
 
-  return <canvas ref={canvasRef} aria-label={children?.toString()} className={cn(className)} />
+  return <canvas ref={canvasRef} className={cn(className)} />
 }
 
 export { FuzzyText }

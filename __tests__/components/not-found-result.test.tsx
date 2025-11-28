@@ -13,14 +13,18 @@ describe('NotFoundResult', () => {
   it('should render 404 canvas', () => {
     render(<NotFoundResult />)
 
-    const canvas = screen.getByLabelText('404')
+    const container = screen.getByRole('heading', { level: 1, name: '404' })
+    const canvas = container.firstElementChild
     expect(canvas).toBeInTheDocument()
+    expect(canvas?.tagName).toBe('CANVAS')
   })
 
   it('should render not found canvas', () => {
     render(<NotFoundResult />)
 
-    const canvas = screen.getByLabelText('Not Found')
+    const container = screen.getByRole('heading', { level: 2, name: 'Not Found' })
+    const canvas = container.firstElementChild
     expect(canvas).toBeInTheDocument()
+    expect(canvas?.tagName).toBe('CANVAS')
   })
 })
