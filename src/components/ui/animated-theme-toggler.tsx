@@ -14,7 +14,13 @@ interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'butt
   duration?: number
 }
 
-export function AnimatedThemeToggler({ className, size = 'icon', iconClassName, duration = 400, ...props }: AnimatedThemeTogglerProps) {
+export function AnimatedThemeToggler({
+  className,
+  size = 'icon',
+  iconClassName,
+  duration = 400,
+  ...props
+}: AnimatedThemeTogglerProps) {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -67,7 +73,13 @@ export function AnimatedThemeToggler({ className, size = 'icon', iconClassName, 
       onClick={toggleTheme}
       {...props}
     >
-      {resolvedTheme === 'dark' ? <MoonIcon className={cn('size-6', iconClassName)} /> : <SunIcon className={cn('size-6', iconClassName)} />}
+      {resolvedTheme === 'dark'
+        ? (
+            <MoonIcon className={cn('size-6', iconClassName)} />
+          )
+        : (
+            <SunIcon className={cn('size-6', iconClassName)} />
+          )}
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
