@@ -102,7 +102,7 @@ function CopyButton({
             onCopy?.(content)
           })
           .catch((error) => {
-            console.error('Failed to copy to clipboard', error)
+            console.error('[CopyButton] Failed to copy to clipboard', error)
           })
       }
       onClick?.(e)

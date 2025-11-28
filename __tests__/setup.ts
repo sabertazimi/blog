@@ -44,6 +44,7 @@ globalThis.ResizeObserver = class ResizeObserver {
 HTMLCanvasElement.prototype.getContext = vi.fn(() => {
   return {
     fillStyle: '',
+    fillText: vi.fn(),
     fillRect: vi.fn(),
     clearRect: vi.fn(),
     getImageData: vi.fn(() => ({ data: [] })),

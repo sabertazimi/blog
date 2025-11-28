@@ -198,8 +198,8 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       canvas.cleanupFuzzyText = cleanup
     }
 
-    init().catch(() => {
-      console.error('Failed to initialize FuzzyText')
+    init().catch((error) => {
+      console.error('[FuzzyText] Failed to initialize', error)
     })
 
     return () => {
@@ -212,7 +212,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
     }
   }, [children, fontSize, fontWeight, fontFamily, enableHover, baseIntensity, hoverIntensity, resolvedTheme])
 
-  return <canvas ref={canvasRef} className={cn(className)} />
+  return <canvas ref={canvasRef} aria-label={children?.toString()} className={cn(className)} />
 }
 
 export { FuzzyText }

@@ -10,19 +10,17 @@ describe('NotFoundResult', () => {
     expect(container).toHaveClass('container', 'mx-auto', 'flex')
   })
 
-  it('should render not found text', () => {
+  it('should render 404 canvas', () => {
     render(<NotFoundResult />)
 
-    const title = screen.getByTitle('Not Found')
-    expect(title).toBeInTheDocument()
+    const canvas = screen.getByLabelText('404')
+    expect(canvas).toBeInTheDocument()
   })
 
-  it('should render not found SVG', () => {
+  it('should render not found canvas', () => {
     render(<NotFoundResult />)
 
-    const title = screen.getByTitle('Not Found')
-    const svg = title.closest('svg')
-    expect(svg).toBeInTheDocument()
-    expect(svg?.tagName).toBe('svg')
+    const canvas = screen.getByLabelText('Not Found')
+    expect(canvas).toBeInTheDocument()
   })
 })
