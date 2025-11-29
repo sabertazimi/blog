@@ -1,8 +1,9 @@
 'use client'
 
+import type { Locale } from 'next-intl'
 import { useRouter } from '@bprogress/next'
 import { LanguagesIcon } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { hasLocale, useLocale, useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -15,9 +16,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useNavigationRouter, usePathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
-import { getLocale } from '@/i18n/utils'
 
-const localeNames: Record<string, { flag: string, name: string }> = {
+const localeNames: Record<Locale, { flag: string, name: string }> = {
   'en-US': { flag: '🇺🇸', name: 'English' },
   'zh-CN': { flag: '🇨🇳', name: '中文' },
 }
@@ -29,12 +29,12 @@ function LanguageSwitcher() {
   const t = useTranslations('common')
 
   const handleLocaleChange = (newLocale: string) => {
-    if (newLocale === currentLocale) {
+    if (newLocale === currentLocale || !hasLocale(routing.locales, newLocale)) {
       return
     }
 
     const newPathname = pathname.replace(`/${currentLocale}`, `/${newLocale}`)
-    router.push(newPathname, { locale: getLocale(newLocale) })
+    router.push(newPathname, { locale: newLocale })
   }
 
   return (

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import type { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import NotFoundResult from '@/components/not-found-result'
 import PageHeader from '@/components/page-header'
 import PostHeader from '@/components/post-header'
 import PostLayout from '@/components/post-layout'
 import { routing } from '@/i18n/routing'
-import { getLocale } from '@/i18n/utils'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostData, getPostsData, getPostsMeta } from '@/lib/get-posts-data'
@@ -13,7 +13,7 @@ import { getMetadata } from '@/lib/seo'
 
 interface PostPageProps {
   params: Promise<{
-    locale: string
+    locale: Locale
     slug: string
   }>
 }
@@ -30,10 +30,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
-  const resolvedParams = await params
-  const { locale, slug } = resolvedParams
+  const { locale, slug } = await params
   const decodedSlug = decodeURIComponent(slug)
-  const postData = await getPostData(decodedSlug, getLocale(locale))
+  const postData = await getPostData(decodedSlug, locale)
 
   return postData
     ? getMetadata({
@@ -46,14 +45,14 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const resolvedParams = await params
-  const { locale, slug } = resolvedParams
+  const { locale, slug } = await params
+  setRequestLocale(locale)
   const decodedSlug = decodeURIComponent(slug)
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'post' })
+  const t = await getTranslations({ locale, namespace: 'post' })
   const buildTime = getBuildTime()
-  const postsData = await getPostsData(getLocale(locale))
-  const metadata = await getPostsMeta(getLocale(locale), postsData)
-  const postData = await getPostData(decodedSlug, getLocale(locale), postsData)
+  const postsData = await getPostsData(locale)
+  const metadata = await getPostsMeta(locale, postsData)
+  const postData = await getPostData(decodedSlug, locale, postsData)
 
   return (
     <DefaultLayout metadata={metadata} buildTime={buildTime}>

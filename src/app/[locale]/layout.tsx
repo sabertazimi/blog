@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from 'next'
+import type { Locale } from 'next-intl'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Providers, SandPackCSS } from '@/app/providers'
 import { routing } from '@/i18n/routing'
-import { getLocale } from '@/i18n/utils'
 import { getMetadata, getViewport } from '@/lib/seo'
 import '../globals.css'
 
 interface MetadataProps {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: Locale }>
 }
 
 export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'site' })
+  const t = await getTranslations({ locale, namespace: 'site' })
 
   return getMetadata({
     title: t('title'),
@@ -31,12 +31,12 @@ export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }))
 }
 
-interface Props {
+interface LocaleLayoutProps {
+  params: Promise<{ locale: Locale }>
   children: React.ReactNode
-  params: Promise<{ locale: string }>
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({ params, children }: LocaleLayoutProps) {
   const { locale } = await params
 
   if (!hasLocale(routing.locales, locale)) {

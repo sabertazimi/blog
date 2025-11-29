@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import type { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import PageHeader from '@/components/page-header'
 import PostList from '@/components/post-list'
 import TagFilter from '@/components/tag-filter'
-import { getLocale } from '@/i18n/utils'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-interface Props {
-  params: Promise<{ locale: string }>
+interface PostsPageProps {
+  params: Promise<{ locale: Locale }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PostsPageProps): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'metadata.posts' })
+  const t = await getTranslations({ locale, namespace: 'metadata.posts' })
 
   return getMetadata({
     title: t('title'),
@@ -25,11 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   })
 }
 
-export default async function PostsPage({ params }: Props) {
+export default async function PostsPage({ params }: PostsPageProps) {
   const { locale } = await params
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'routes.posts' })
+  setRequestLocale(locale)
+  const t = await getTranslations({ locale, namespace: 'routes.posts' })
   const buildTime = getBuildTime()
-  const metadata = await getPostsMeta(getLocale(locale))
+  const metadata = await getPostsMeta(locale)
   const { posts, tags } = metadata
 
   return (
