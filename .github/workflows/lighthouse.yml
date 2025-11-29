@@ -79,10 +79,10 @@ jobs:
               const url = result.url
 
               return `
-              ### ${device} /${input.split('.').slice(-1).join('').split('/').slice(1).join('/')}
+              ### ${device} /${url.split('.').slice(-1).join('').split('/').slice(1).join('/')}
 
               :link: [Vercel Preview Deployment](${url})
-              :zap: [Lighthouse Report](${links[url]})
+              :rocket: [Lighthouse Report](${links[url]})
 
               | Category | Score |
               | --- | --- |
@@ -106,5 +106,5 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           header: lighthouse
           message: |
-            # :rocket: Lighthouse Report
+            # Lighthouse Report
             ${{ steps.result.outputs.comment }}
