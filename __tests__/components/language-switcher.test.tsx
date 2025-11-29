@@ -35,8 +35,8 @@ describe('LanguageSwitcher', () => {
 
     const options = screen.getAllByRole('menuitemradio')
     expect(options).toHaveLength(routing.locales.length)
-    expect(options[0]).toHaveTextContent('English')
-    expect(options[1]).toHaveTextContent('中文')
+    expect(screen.getByRole('menuitemradio', { name: /english/i })).toBeInTheDocument()
+    expect(screen.getByRole('menuitemradio', { name: /中文/ })).toBeInTheDocument()
   })
 
   it('should change language when different language option is clicked', async () => {
