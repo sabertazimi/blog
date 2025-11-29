@@ -89,7 +89,7 @@ describe('shareLinks', () => {
       const title = '测试文章标题'
       const shareUrl = weiboShare.getShareUrl({ url, title })
 
-      expect(shareUrl).toContain('weibo.com/share/share.php')
+      expect(shareUrl).toContain('service.weibo.com/share/share.php')
       expect(shareUrl).toContain(encodeURIComponent(url))
       expect(shareUrl).toContain(encodeURIComponent(title))
     }
@@ -103,7 +103,7 @@ describe('shareLinks', () => {
       const url = 'https://example.com/post'
       const shareUrl = weiboShare.getShareUrl({ url })
 
-      expect(shareUrl).toContain('weibo.com/share/share.php')
+      expect(shareUrl).toContain('service.weibo.com/share/share.php')
       expect(shareUrl).toContain(encodeURIComponent(url))
     }
   })
