@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import BackToTop from '@/components/back-to-top'
-import { fireEvent, render, screen, waitFor } from '@/tests/test-utils'
+import { render, screen, waitFor } from '@/tests/test-utils'
 
 describe('BackToTop', () => {
   it('should not be visible initially when scrollTop is less than minHeight', () => {
@@ -42,8 +42,7 @@ describe('BackToTop', () => {
 
     const { user } = render(<BackToTop />)
 
-    const button = screen.getByRole('button', { name: /back to top/i })
-    await user.click(button)
+    await user.click(screen.getByRole('button', { name: /back to top/i }))
 
     expect(window.scrollTo).toHaveBeenCalledWith({
       top: 0,
@@ -51,17 +50,16 @@ describe('BackToTop', () => {
     })
   })
 
-  it('should scroll to custom scrollTo position', () => {
+  it('should scroll to custom scrollTo position', async () => {
     Object.defineProperty(document.documentElement, 'scrollTop', {
       writable: true,
       configurable: true,
       value: 400,
     })
 
-    render(<BackToTop scrollTo={100} />)
+    const { user } = render(<BackToTop scrollTo={100} />)
 
-    const button = screen.getByRole('button', { name: /back to top/i })
-    fireEvent.click(button)
+    await user.click(screen.getByRole('button', { name: /back to top/i }))
 
     expect(window.scrollTo).toHaveBeenCalledWith({
       top: 100,
@@ -87,7 +85,7 @@ describe('BackToTop', () => {
       value: 400,
     })
 
-    fireEvent.scroll(document)
+    document.dispatchEvent(new Event('scroll'))
 
     await waitFor(() => {
       expect(button).toHaveClass('opacity-100')
@@ -103,7 +101,6 @@ describe('BackToTop', () => {
 
     render(<BackToTop className="custom-class" />)
 
-    const button = screen.getByRole('button', { name: /back to top/i })
-    expect(button).toHaveClass('custom-class')
+    expect(screen.getByRole('button', { name: /back to top/i })).toHaveClass('custom-class')
   })
 })

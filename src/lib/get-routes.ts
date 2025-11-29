@@ -7,13 +7,7 @@ export interface Route {
   title: string
   description: string
   path: string
-}
-
-export function getRouteIcons(): Record<string, React.ComponentType<{ className?: string }>> {
-  return {
-    posts: StickerIcon,
-    about: InfoIcon,
-  }
+  icon: React.ComponentType<{ className?: string }>
 }
 
 export function getRoutes(t: ReturnType<typeof useTranslations>): Route[] {
@@ -24,6 +18,7 @@ export function getRoutes(t: ReturnType<typeof useTranslations>): Route[] {
       title: t('posts.title'),
       description: t('posts.description'),
       path: '/posts',
+      icon: StickerIcon,
     },
     {
       id: 'about',
@@ -31,6 +26,7 @@ export function getRoutes(t: ReturnType<typeof useTranslations>): Route[] {
       title: t('about.title'),
       description: t('about.description'),
       path: '/about',
+      icon: InfoIcon,
     },
   ]
 }

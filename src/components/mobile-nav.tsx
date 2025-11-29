@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Link, usePathname } from '@/i18n/navigation'
-import { getRouteIcons, getRoutes } from '@/lib/get-routes'
+import { getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
 function MobileNav() {
@@ -14,7 +14,6 @@ function MobileNav() {
   const t = useTranslations('routes')
   const tCommon = useTranslations('common')
   const routes = getRoutes(t)
-  const routeIcons = getRouteIcons()
 
   return (
     <div className="flex flex-1 items-center justify-between md:hidden">
@@ -59,23 +58,20 @@ function MobileNav() {
           sideOffset={14}
         >
           <nav className="flex flex-col gap-3 px-6 py-6">
-            {routes.map((route) => {
-              const Icon = routeIcons[route.id]
-              return (
-                <Link
-                  key={route.id}
-                  href={route.path}
-                  className={cn(
-                    'hover:text-accent-foreground flex items-center gap-3 rounded-md px-3 py-2 text-2xl font-medium transition-colors',
-                    pathname === route.path && 'text-accent-foreground bg-accent',
-                  )}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {Icon !== undefined && <Icon className="size-6 shrink-0" />}
-                  <span>{route.name}</span>
-                </Link>
-              )
-            })}
+            {routes.map(route => (
+              <Link
+                key={route.id}
+                href={route.path}
+                className={cn(
+                  'hover:text-accent-foreground flex items-center gap-3 rounded-md px-3 py-2 text-2xl font-medium transition-colors',
+                  pathname === route.path && 'text-accent-foreground bg-accent',
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                <route.icon className="size-6 shrink-0" />
+                <span>{route.name}</span>
+              </Link>
+            ))}
           </nav>
         </PopoverContent>
       </Popover>

@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import MobileNav from '@/components/mobile-nav'
-import { fireEvent, render, screen, waitFor } from '@/tests/test-utils'
+import { usePathname } from '@/tests/mocks/navigation'
+import { render, screen, waitFor } from '@/tests/test-utils'
 
 describe('MobileNav', () => {
   it('should render menu toggle button', () => {
@@ -11,10 +12,10 @@ describe('MobileNav', () => {
   })
 
   it('should toggle menu when button is clicked', async () => {
-    render(<MobileNav />)
+    const { user } = render(<MobileNav />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument()
@@ -22,10 +23,10 @@ describe('MobileNav', () => {
   })
 
   it('should render navigation links when menu is open', async () => {
-    render(<MobileNav />)
+    const { user } = render(<MobileNav />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     await waitFor(() => {
       expect(screen.getByRole('link', { name: /posts/i })).toBeInTheDocument()
@@ -34,17 +35,17 @@ describe('MobileNav', () => {
   })
 
   it('should close menu when a link is clicked', async () => {
-    render(<MobileNav />)
+    const { user } = render(<MobileNav />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     await waitFor(() => {
       expect(screen.getByRole('link', { name: /posts/i })).toBeInTheDocument()
     })
 
     const postsLink = screen.getByRole('link', { name: /posts/i })
-    fireEvent.click(postsLink)
+    await user.click(postsLink)
 
     await waitFor(() => {
       expect(screen.queryByRole('link', { name: /posts/i })).not.toBeInTheDocument()
@@ -52,10 +53,10 @@ describe('MobileNav', () => {
   })
 
   it('should have correct href attributes', async () => {
-    render(<MobileNav />)
+    const { user } = render(<MobileNav />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    fireEvent.click(button)
+    await user.click(button)
 
     await waitFor(() => {
       const postsLink = screen.getByRole('link', { name: /posts/i })
@@ -63,6 +64,23 @@ describe('MobileNav', () => {
 
       expect(postsLink).toHaveAttribute('href', '/posts')
       expect(aboutLink).toHaveAttribute('href', '/about')
+    })
+  })
+
+  it('should highlight active route', async () => {
+    vi.mocked(usePathname).mockReturnValue('/posts')
+
+    const { user } = render(<MobileNav />)
+
+    const button = screen.getByRole('button', { name: /open menu/i })
+    await user.click(button)
+
+    await waitFor(() => {
+      const postsLink = screen.getByRole('link', { name: /posts/i })
+      const aboutLink = screen.getByRole('link', { name: /about/i })
+
+      expect(postsLink).toHaveClass('text-accent-foreground bg-accent')
+      expect(aboutLink).not.toHaveClass('bg-accent')
     })
   })
 })
