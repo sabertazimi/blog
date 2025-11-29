@@ -1,17 +1,19 @@
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import LandingNav from '@/components/landing-nav'
 import { GravityStarsBackground } from '@/components/ui/gravity-stars'
 import { MorphingText } from '@/components/ui/morphing-text'
-import { getLocale } from '@/i18n/utils'
+import { resolveLocale } from '@/i18n/utils'
 import { siteConfig } from '@/lib/site'
 
-interface Props {
+interface HomePageProps {
   params: Promise<{ locale: string }>
 }
 
-export default async function HomePage({ params }: Props) {
+export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'site' })
+  const resolvedLocale = resolveLocale(locale)
+  setRequestLocale(resolvedLocale)
+  const t = await getTranslations({ locale: resolvedLocale, namespace: 'site' })
   const landingTitles = t.raw('landingTitles') as string[]
 
   return (

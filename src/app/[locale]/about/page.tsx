@@ -1,35 +1,38 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import AboutMe from '@/components/about-me'
 import PageHeader from '@/components/page-header'
-import { getLocale } from '@/i18n/utils'
+import { resolveLocale } from '@/i18n/utils'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import getGitHubData from '@/lib/get-github-data'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-interface Props {
+interface AboutPageProps {
   params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'metadata.about' })
+  const resolvedLocale = resolveLocale(locale)
+  const t = await getTranslations({ locale: resolvedLocale, namespace: 'metadata.about' })
 
   return getMetadata({
     title: t('title'),
     description: t('description'),
-    locale,
+    locale: resolvedLocale,
     pathname: '/about',
   })
 }
 
-export default async function AboutPage({ params }: Props) {
+export default async function AboutPage({ params }: AboutPageProps) {
   const { locale } = await params
-  const t = await getTranslations({ locale: getLocale(locale), namespace: 'routes.about' })
+  const resolvedLocale = resolveLocale(locale)
+  setRequestLocale(resolvedLocale)
+  const t = await getTranslations({ locale: resolvedLocale, namespace: 'routes.about' })
   const buildTime = getBuildTime()
-  const metadata = await getPostsMeta(getLocale(locale))
+  const metadata = await getPostsMeta(resolvedLocale)
   const { profile, repos } = await getGitHubData()
 
   return (

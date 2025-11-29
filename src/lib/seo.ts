@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import type { Locale } from 'next-intl'
 import { hasLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
 import { siteConfig } from '@/lib/site'
@@ -17,7 +18,7 @@ export function getMetadata({
   author?: string
   url?: string
   x?: string
-  locale?: string
+  locale?: Locale
   pathname?: string
 } = {}): Metadata {
   // Generate alternate language links
