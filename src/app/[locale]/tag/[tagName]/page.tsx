@@ -1,21 +1,16 @@
 import type { Metadata } from 'next'
-import type { Locale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import PageHeader from '@/components/page-header'
 import PostList from '@/components/post-list'
 import TagFilter from '@/components/tag-filter'
 import { routing } from '@/i18n/routing'
+import { resolveLocale } from '@/i18n/utils'
 import DefaultLayout from '@/layouts/default-layout'
 import getBuildTime from '@/lib/get-build-time'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-interface TagPageProps {
-  params: Promise<{
-    locale: Locale
-    tagName: string
-  }>
-}
+type TagPageProps = PageProps<'/[locale]/tag/[tagName]'>
 
 export async function generateStaticParams() {
   const params = []
@@ -33,23 +28,25 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
   const { locale, tagName } = await params
   const decodedTagName = decodeURIComponent(tagName)
-  const t = await getTranslations({ locale, namespace: 'metadata.posts' })
+  const resolvedLocale = resolveLocale(locale)
+  const t = await getTranslations({ locale: resolvedLocale, namespace: 'metadata.posts' })
 
   return getMetadata({
     title: `${t('title')} - ${decodedTagName}`,
     description: t('description'),
-    locale,
+    locale: resolvedLocale,
     pathname: `/tag/${tagName}`,
   })
 }
 
 export default async function TagPage({ params }: TagPageProps) {
   const { locale, tagName } = await params
-  setRequestLocale(locale)
   const decodedTagName = decodeURIComponent(tagName)
-  const t = await getTranslations({ locale, namespace: 'routes.posts' })
+  const resolvedLocale = resolveLocale(locale)
+  setRequestLocale(resolvedLocale)
+  const t = await getTranslations({ locale: resolvedLocale, namespace: 'routes.posts' })
   const buildTime = getBuildTime()
-  const metadata = await getPostsMeta(locale)
+  const metadata = await getPostsMeta(resolvedLocale)
   const { posts, tags } = metadata
 
   return (
