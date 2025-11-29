@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import PostShare from '@/components/post-share'
-import { fireEvent, render, screen } from '@/tests/test-utils'
+import { render, screen } from '@/tests/test-utils'
 
 describe('PostShare', () => {
   const defaultProps = {
@@ -19,15 +19,13 @@ describe('PostShare', () => {
   it('should render share buttons for all platforms', () => {
     render(<PostShare {...defaultProps} />)
 
-    const buttons = screen.getAllByRole('button')
-    expect(buttons.length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('button').length).toBeGreaterThan(0)
   })
 
-  it('should open share window when button is clicked', () => {
-    render(<PostShare {...defaultProps} />)
+  it('should open share window when button is clicked', async () => {
+    const { user } = render(<PostShare {...defaultProps} />)
 
-    const buttons = screen.getAllByRole('button')
-    fireEvent.click(buttons[0])
+    await user.click(screen.getAllByRole('button')[0])
 
     expect(window.open).toHaveBeenCalledWith(
       expect.stringContaining('https://'),
@@ -39,15 +37,13 @@ describe('PostShare', () => {
   it('should have correct aria-labels', () => {
     render(<PostShare {...defaultProps} />)
 
-    const twitterButton = screen.getByLabelText(/share on x/i)
-    expect(twitterButton).toBeInTheDocument()
+    expect(screen.getByLabelText(/share on x/i)).toBeInTheDocument()
   })
 
-  it('should generate correct share URLs', () => {
-    render(<PostShare {...defaultProps} />)
+  it('should generate correct share URLs', async () => {
+    const { user } = render(<PostShare {...defaultProps} />)
 
-    const buttons = screen.getAllByRole('button')
-    fireEvent.click(buttons[0])
+    await user.click(screen.getAllByRole('button')[0])
 
     expect(window.open).toHaveBeenCalledWith(
       expect.stringContaining(encodeURIComponent(defaultProps.url)),

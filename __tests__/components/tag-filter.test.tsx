@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import TagFilter from '@/components/tag-filter'
 import { mockTagsMeta } from '@/tests/fixtures/test-data'
-import { fireEvent, render, screen } from '@/tests/test-utils'
+import { render, screen } from '@/tests/test-utils'
 
 describe('TagFilter', () => {
   it('should render all tags on desktop', () => {
@@ -26,22 +26,19 @@ describe('TagFilter', () => {
     render(<TagFilter tagsMeta={mockTagsMeta} selectedTag="React" />)
 
     const reactLinks = screen.getAllByRole('link', { name: /react/i })
-    const desktopLink = reactLinks[0]
-    expect(desktopLink).toHaveClass('border-primary', 'bg-primary', 'text-primary-foreground')
+    expect(reactLinks[0]).toHaveClass('border-primary', 'bg-primary', 'text-primary-foreground')
   })
 
   it('should render drawer trigger on mobile', () => {
     render(<TagFilter tagsMeta={mockTagsMeta} selectedTag="React" />)
 
-    const drawerTrigger = screen.getByRole('button', { name: /react/i })
-    expect(drawerTrigger).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /react/i })).toBeInTheDocument()
   })
 
   it('should open drawer when trigger is clicked', async () => {
-    render(<TagFilter tagsMeta={mockTagsMeta} selectedTag="All" />)
+    const { user } = render(<TagFilter tagsMeta={mockTagsMeta} selectedTag="All" />)
 
-    const drawerTrigger = screen.getByRole('button', { name: /all/i })
-    fireEvent.click(drawerTrigger)
+    await user.click(screen.getByRole('button', { name: /all/i }))
 
     expect(await screen.findByRole('dialog')).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /select category/i })).toBeInTheDocument()
@@ -50,11 +47,7 @@ describe('TagFilter', () => {
   it('should not display zero or undefined tag counts', () => {
     const tagsMetaWithZero = {
       allTags: ['All', 'React', 'Empty'],
-      tagCounts: {
-        All: 10,
-        React: 5,
-        Empty: 0,
-      },
+      tagCounts: { All: 10, React: 5, Empty: 0 },
     }
 
     render(<TagFilter tagsMeta={tagsMetaWithZero} selectedTag="All" />)
@@ -67,7 +60,6 @@ describe('TagFilter', () => {
   it('should translate "All" tag', () => {
     render(<TagFilter tagsMeta={mockTagsMeta} selectedTag="All" />)
 
-    const allLinks = screen.getAllByText('All')
-    expect(allLinks.length).toBeGreaterThan(0)
+    expect(screen.getAllByText('All').length).toBeGreaterThan(0)
   })
 })

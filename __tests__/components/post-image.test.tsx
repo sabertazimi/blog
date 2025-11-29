@@ -42,14 +42,14 @@ describe('PostImage', () => {
 
     const image = screen.getByAltText('Test image')
     fireEvent.error(image)
+
     expect(screen.queryByAltText('Test image')).not.toBeInTheDocument()
   })
 
   it('should apply custom className to image', () => {
     render(<PostImage src="https://example.com/image.jpg" alt="Test image" className="custom-class" />)
 
-    const image = screen.getByAltText('Test image')
-    expect(image).toHaveClass('custom-class')
+    expect(screen.getByAltText('Test image')).toHaveClass('custom-class')
   })
 
   it('should conditionally apply hover scale classes', () => {
@@ -73,14 +73,12 @@ describe('PostImage', () => {
   it('should pass loading prop to Image component', () => {
     render(<PostImage src="https://example.com/image.jpg" alt="Test image" loading="eager" />)
 
-    const image = screen.getByAltText('Test image')
-    expect(image).toHaveAttribute('loading', 'eager')
+    expect(screen.getByAltText('Test image')).toHaveAttribute('loading', 'eager')
   })
 
   it('should use lazy loading by default', () => {
     render(<PostImage src="https://example.com/image.jpg" alt="Test image" />)
 
-    const image = screen.getByAltText('Test image')
-    expect(image).toHaveAttribute('loading', 'lazy')
+    expect(screen.getByAltText('Test image')).toHaveAttribute('loading', 'lazy')
   })
 })
