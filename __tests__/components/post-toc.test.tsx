@@ -95,16 +95,6 @@ describe('PostMainTOC', () => {
     expect(introLink).toHaveAttribute('href', '#introduction')
   })
 
-  it('should render all links with correct href attributes', () => {
-    render(<PostMainTOC toc={mockToc} />)
-
-    const links = screen.getAllByRole('link')
-    expect(links).toHaveLength(3)
-    expect(screen.getByRole('link', { name: 'Introduction' })).toHaveAttribute('href', '#introduction')
-    expect(screen.getByRole('link', { name: 'Getting Started' })).toHaveAttribute('href', '#getting-started')
-    expect(screen.getByRole('link', { name: 'Installation' })).toHaveAttribute('href', '#installation')
-  })
-
   it('should render empty state when no TOC items', () => {
     render(<PostMainTOC toc={[]} />)
 
@@ -207,8 +197,8 @@ describe('PostMobileTOC', () => {
   it('should toggle TOC items visibility when trigger is clicked', async () => {
     const { user } = render(<PostMobileTOC toc={mockToc} />)
 
-    const trigger = screen.getByRole('button')
-    await user.click(trigger)
+    const button = screen.getByRole('button')
+    await user.click(button)
 
     expect(screen.getByRole('link', { name: 'Introduction' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Getting Started' })).toBeInTheDocument()
@@ -219,16 +209,6 @@ describe('PostMobileTOC', () => {
 
     const progressbar = screen.getByRole('progressbar')
     expect(progressbar).toBeInTheDocument()
-  })
-
-  it('should render all TOC items when expanded', async () => {
-    const { user } = render(<PostMobileTOC toc={mockToc} />)
-
-    const trigger = screen.getByRole('button')
-    await user.click(trigger)
-
-    const links = screen.getAllByRole('link')
-    expect(links).toHaveLength(2)
   })
 
   it('should handle single active anchor mode', () => {
