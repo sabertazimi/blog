@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import PostShare from '@/components/post-share'
 import { fireEvent, render, screen } from '@/tests/test-utils'
 
@@ -7,14 +7,6 @@ describe('PostShare', () => {
     url: 'https://example.com/post/test',
     title: 'Test Post Title',
   }
-
-  beforeAll(() => {
-    globalThis.window.open = vi.fn()
-  })
-
-  afterEach(() => {
-    vi.clearAllMocks()
-  })
 
   it('should render share component', () => {
     render(<PostShare {...defaultProps} />)

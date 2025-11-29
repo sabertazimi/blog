@@ -50,6 +50,7 @@ function getMultiFileConfig(children: ReactNode): Record<string, { code: string 
       if (process.env.NODE_ENV === 'development') {
         console.warn('[Editor] Invalid child element detected, skipping:', codeSnippet)
       }
+
       return result
     }
 
@@ -60,6 +61,7 @@ function getMultiFileConfig(children: ReactNode): Record<string, { code: string 
       if (process.env.NODE_ENV === 'development') {
         console.warn('[Editor] Invalid code element structure, skipping:', preElement)
       }
+
       return result
     }
 
