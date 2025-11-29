@@ -35,9 +35,9 @@ function PostCard({
           <PostImage src={thumbnail} alt={title} hoverScale />
         </div>
         <div className="flex min-h-[200px] flex-col gap-2 p-6">
-          <h3 className="text-card-foreground text-xl font-semibold underline-offset-4 group-hover:underline">
+          <h2 className="text-card-foreground text-xl font-semibold underline-offset-4 group-hover:underline">
             {title}
-          </h3>
+          </h2>
           {description !== undefined && description !== '' && (
             <p className="text-muted-foreground line-clamp-3 text-sm">{description}</p>
           )}

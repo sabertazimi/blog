@@ -14,7 +14,7 @@ describe('PostCard', () => {
 
     const link = screen.getByRole('link')
     expect(link).toHaveAttribute('href', defaultProps.url)
-    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(defaultProps.title)
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(defaultProps.title)
   })
 
   it('should render description when provided', () => {
