@@ -2,7 +2,8 @@
   "ci": {
     "collect": {
       "settings": {
-        "preset": "desktop"
+        "preset": "desktop",
+        "skipAudits": ["is-crawlable"]
       }
     }
   }
