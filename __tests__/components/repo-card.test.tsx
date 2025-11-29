@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import RepoCard from '@/components/repo-card'
+import { colors } from '@/lib/colors'
 import { mockRepos } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 
@@ -31,5 +32,20 @@ describe('RepoCard', () => {
     rerender(<RepoCard repo={mockRepos[1]} />)
     expect(screen.getByText('test-repo-2')).toBeInTheDocument()
     expect(screen.getByText('JavaScript')).toBeInTheDocument()
+  })
+
+  it('should render language color correctly', () => {
+    const repo = mockRepos[0]
+    render(<RepoCard repo={repo} />)
+
+    const languageColor = screen.getByLabelText(repo.language)
+    expect(languageColor).toHaveStyle({ backgroundColor: colors[repo.language as keyof typeof colors] })
+  })
+
+  it('should render gray color for unknown language', () => {
+    render(<RepoCard repo={{ ...mockRepos[0], language: 'Unknown' }} />)
+
+    const languageColor = screen.getByLabelText('Unknown')
+    expect(languageColor).toHaveStyle({ backgroundColor: colors.gray })
   })
 })

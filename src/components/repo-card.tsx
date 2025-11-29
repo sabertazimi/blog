@@ -24,6 +24,7 @@ function RepoCard({ repo }: RepoCardProps) {
           <div className="mt-2 flex items-center gap-4 text-sm">
             <span className="flex items-center gap-1">
               <span
+                aria-label={repo.language}
                 className="size-3 rounded-full"
                 style={{
                   backgroundColor: colors[repo.language as keyof typeof colors] ?? colors.gray,
