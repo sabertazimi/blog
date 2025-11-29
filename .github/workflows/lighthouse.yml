@@ -48,6 +48,7 @@ jobs:
             ${{ steps.vercel.outputs.url }}/en-US/about
           configPath: ./.github/workflows/lighthouse.desktop.json
           uploadArtifacts: true
+          artifactName: lighthouse-results-desktop
           temporaryPublicStorage: true
       - name: Audit using Lighthouse (Mobile)
         id: lighthouse-mobile
@@ -59,6 +60,7 @@ jobs:
             ${{ steps.vercel.outputs.url }}/zh-CN/about
           configPath: ./.github/workflows/lighthouse.mobile.json
           uploadArtifacts: true
+          artifactName: lighthouse-results-mobile
           temporaryPublicStorage: true
       - name: Format audit result
         id: result
