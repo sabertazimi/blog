@@ -68,7 +68,7 @@ function MobileNav() {
                 )}
                 onClick={() => setIsOpen(false)}
               >
-                {route.icon !== undefined && <route.icon className="size-6 shrink-0" />}
+                <route.icon className="size-6 shrink-0" />
                 <span>{route.name}</span>
               </Link>
             ))}
