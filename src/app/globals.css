@@ -7,158 +7,55 @@
 @custom-variant dark (&:is(.dark *));
 @custom-variant prose-inline-code (&.prose :where(:not(pre)>code):not(:where([class~="not-prose"], [class~="not-prose"] *)));
 
-@font-face {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/Raleway.woff2') format('woff2');
-  font-display: swap;
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-
-@font-face {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/Raleway.woff2') format('woff2');
-  font-display: swap;
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-@font-face {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/Raleway.woff2') format('woff2');
-  font-display: swap;
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-
-@font-face {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/Raleway.woff2') format('woff2');
-  font-display: swap;
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/RalewayLatin.woff2') format('woff2');
-  font-display: swap;
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 @theme inline {
-  --color-dark: var(--dark);
-  --color-light: var(--light);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
-  --font-mono: var(--font-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --min-width-none: none;
-  --min-width-xs: 20rem;
-  --min-width-sm: 24rem;
-  --min-width-md: 28rem;
-  --min-width-lg: 32rem;
-  --min-width-xl: 36rem;
-  --min-width-2xl: 42rem;
-  --min-width-3xl: 48rem;
-  --min-width-4xl: 56rem;
-  --min-width-5xl: 64rem;
-  --min-width-6xl: 72rem;
-  --min-width-7xl: 80rem;
-  --min-width-prose: 65ch;
-  --min-width-screen-sm: 640px;
-  --min-width-screen-md: 768px;
-  --min-width-screen-lg: 1024px;
-  --min-width-screen-xl: 1280px;
-  --min-width-screen-2xl: 1536px;
-  /* stylelint-disable custom-property-pattern */
-  --max-width-1\/12: 8.3333%;
-  --max-width-1\/6: 16.6667%;
-  --max-width-2\/12: 16.6667%;
-  --max-width-1\/5: 20%;
-  --max-width-1\/4: 25%;
-  --max-width-3\/12: 25%;
-  --max-width-1\/3: 33.3333%;
-  --max-width-2\/6: 33.3333%;
-  --max-width-4\/12: 33.3333%;
-  --max-width-2\/5: 40%;
-  --max-width-5\/12: 41.6667%;
-  --max-width-1\/2: 50%;
-  --max-width-2\/4: 50%;
-  --max-width-3\/6: 50%;
-  --max-width-6\/12: 50%;
-  --max-width-7\/12: 58.3333%;
-  --max-width-3\/5: 60%;
-  --max-width-2\/3: 66.6667%;
-  --max-width-4\/6: 66.6667%;
-  --max-width-8\/12: 66.6667%;
-  --max-width-3\/4: 75%;
-  --max-width-9\/12: 75%;
-  --max-width-4\/5: 80%;
-  --max-width-5\/6: 83.3333%;
-  --max-width-10\/12: 83.3333%;
-  --max-width-11\/12: 91.6667%;
-  /* stylelint-enable custom-property-pattern */
-  --border-width-5: 5px;
-  --border-width-6: 6px;
-  --border-width-10: 10px;
-  --line-height-1: 0.25rem;
-  --line-height-2: 0.5rem;
-  --line-height-12: 3rem;
-  --line-height-extra-loose: 2.5;
-  --z-index-25: 25;
-  --z-index-75: 75;
-  --z-index-100: 100;
-  --z-index-1000: 1000;
-  --z-index-max: 9999;
+  --color-light: var(--light);
+  --color-dark: var(--dark);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--sans);
+  --font-serif: var(--serif);
+  --font-mono: var(--mono);
   --animate-collapsible-down: collapsible-down 150ms cubic-bezier(0.45, 0, 0.55, 1);
   --animate-collapsible-up: collapsible-up 150ms cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 :root {
   --radius: 0.625rem;
+  --light: oklch(98.2% 0.002 247.8deg);
+  --dark: oklch(34.5% 0.013 248.2deg);
   --background: oklch(100% 0 0deg);
   --foreground: oklch(14.5% 0 0deg);
   --card: oklch(100% 0 0deg);
@@ -190,19 +87,13 @@
   --sidebar-accent-foreground: oklch(20.5% 0 0deg);
   --sidebar-border: oklch(92.2% 0 0deg);
   --sidebar-ring: oklch(70.8% 0 0deg);
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --font-sans:
+  --sans:
     'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
     oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-serif: 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
-  --font-mono:
+  --serif: 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
+  --mono:
     'Fira Code', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Cantarell Mono',
     'Source Code Pro', monospace;
-  --font-stack:
-    'Raleway', 'Spectral', 'Noto Serif SC', 'Noto Sans SC', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', arial, sans-serif, serif;
-  --font-size: 18px;
 }
 
 .dark {
@@ -257,9 +148,6 @@
 
   body {
     @apply bg-background text-foreground;
-
-    font-family: var(--font-stack);
-    font-size: var(--font-size);
   }
 
   ::view-transition-old(root),
