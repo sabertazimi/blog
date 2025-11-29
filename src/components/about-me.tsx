@@ -30,7 +30,7 @@ function AboutMe({ profile, repos }: AboutMeProps) {
             <StatCard title={t('totalStars')} value={profile.totalStars} description={t('acrossAllProjects')} icon={StarIcon} />
           </div>
           <div className="p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t('featuredRepositories')}</h3>
+            <h2 className="mb-4 text-lg font-semibold">{t('featuredRepositories')}</h2>
             <div className="space-y-3">
               {repos.map(repo => (
                 <RepoCard key={repo.name} repo={repo} />
