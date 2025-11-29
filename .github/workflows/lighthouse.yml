@@ -74,24 +74,24 @@ jobs:
             const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:'
 
             const formatResults = (results, links, device) => {
-              return results.map((result) => {
-                const summary = result.summary
-                const url = result.url
+            return results.map((result) => {
+              const summary = result.summary
+              const url = result.url
 
-                return `
-                ### ${device} - ${url}
+              return `
+              ### ${device} - ${url}
 
-                :zap: [Lighthouse report](${links[url]})
+              :zap: [Lighthouse report](${links[url]})
 
-                | Category | Score |
-                | --- | --- |
-                ${Object.keys(summary).map((key) => {
-                  const percentage = Math.round(summary[key] * 100)
-                  return `| ${score(percentage)} ${key} | ${percentage} |`
-                }).join('\n')}
+              | Category | Score |
+              | --- | --- |
+              ${Object.keys(summary).map((key) => {
+                const percentage = Math.round(summary[key] * 100)
+                return `| ${score(percentage)} ${key} | ${percentage} |`
+              }).join('\n')}
 
-                `
-              }).join('')
+              `
+            }).join('')
             };
 
             const desktopComment = formatResults(desktopResults, desktopLinks, ':sparkles: Desktop');
