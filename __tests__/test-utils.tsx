@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { ProgressProvider } from '@bprogress/next/app'
 import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { NextIntlClientProvider } from 'next-intl'
 import { ThemeProvider } from 'next-themes'
 
@@ -41,11 +42,15 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
 
 function customRender(ui: ReactElement, options?: CustomRenderOptions) {
   const { locale = 'en-US', ...renderOptions } = options ?? {}
+  const user = userEvent.setup()
 
-  return render(ui, {
-    wrapper: ({ children }) => <AllTheProviders locale={locale}>{children}</AllTheProviders>,
-    ...renderOptions,
-  })
+  return {
+    user,
+    ...render(ui, {
+      wrapper: ({ children }) => <AllTheProviders locale={locale}>{children}</AllTheProviders>,
+      ...renderOptions,
+    }),
+  }
 }
 
 export * from '@testing-library/react'

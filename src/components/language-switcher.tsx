@@ -49,7 +49,8 @@ function LanguageSwitcher() {
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup onValueChange={handleLocaleChange} value={currentLocale}>
           {routing.locales.map((locale) => {
-            const { flag, name } = localeNames[locale] ?? { flag: '🌐', name: locale }
+            const { flag, name } = localeNames[locale]
+
             return (
               <DropdownMenuRadioItem key={locale} value={locale}>
                 <span className="flex items-center gap-2">

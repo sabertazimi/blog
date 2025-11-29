@@ -17,6 +17,7 @@ export default defineConfig({
       '__tests__/mocks/sandpack.tsx',
     ],
     coverage: {
+      enabled: true,
       exclude: [
         'node_modules/**',
         '__tests__/**',
