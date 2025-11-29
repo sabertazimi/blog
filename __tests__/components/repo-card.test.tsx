@@ -26,11 +26,11 @@ describe('RepoCard', () => {
 
   it('should render multiple repositories correctly', () => {
     const { rerender } = render(<RepoCard repo={mockRepos[0]} />)
-    expect(screen.getByText('test-repo-1')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('test-repo-1')
     expect(screen.getByText('TypeScript')).toBeInTheDocument()
 
     rerender(<RepoCard repo={mockRepos[1]} />)
-    expect(screen.getByText('test-repo-2')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('test-repo-2')
     expect(screen.getByText('JavaScript')).toBeInTheDocument()
   })
 
