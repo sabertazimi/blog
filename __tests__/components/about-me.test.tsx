@@ -26,7 +26,7 @@ describe('AboutMe', () => {
   it('should render featured repositories section', () => {
     render(<AboutMe profile={mockProfile} repos={mockRepos} />)
 
-    expect(screen.getByText('Featured Repositories')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Featured Repositories')
   })
 
   it('should render all repository cards', () => {
