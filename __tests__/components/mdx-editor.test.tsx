@@ -85,4 +85,28 @@ describe('MDXEditor', () => {
       expect(screen.getByText(/\/utils\.ts/)).toBeInTheDocument()
     })
   })
+
+  it('should log warnings for invalid child elements', () => {
+    vi.stubEnv('NODE_ENV', 'development')
+    const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    render(<MDXEditor>Invalid code</MDXEditor>)
+
+    expect(consoleWarn).toHaveBeenCalledTimes(2)
+    expect(consoleWarn).toHaveBeenCalledWith('[Editor] Invalid child element detected, skipping:', 'Invalid code')
+
+    consoleWarn.mockRestore()
+    vi.unstubAllEnvs()
+  })
+
+  it('should log warnings for invalid code element structure', () => {
+    vi.stubEnv('NODE_ENV', 'development')
+    const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    render(<MDXEditor>{[<div key="1">Invalid</div>]}</MDXEditor>)
+
+    expect(consoleWarn).toHaveBeenCalledTimes(2)
+    expect(consoleWarn).toHaveBeenCalledWith('[Editor] Invalid code element structure, skipping:', expect.any(Object))
+
+    consoleWarn.mockRestore()
+    vi.unstubAllEnvs()
+  })
 })

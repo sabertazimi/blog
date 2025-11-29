@@ -82,6 +82,15 @@ describe('MDXCode', () => {
     })
   })
 
+  it('should render line numbers when line is true', async () => {
+    const codeElement = createCodeElement('const x = 1')
+    render(<MDXCode line="true">{codeElement as any}</MDXCode>)
+
+    await waitFor(() => {
+      expect(screen.getByText('1')).toBeInTheDocument()
+    })
+  })
+
   it('should not render copy button when nocopy is true', async () => {
     const codeElement = createCodeElement('const x = 1')
     render(<MDXCode nocopy="true">{codeElement as any}</MDXCode>)
