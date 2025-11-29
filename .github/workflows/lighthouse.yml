@@ -79,9 +79,10 @@ jobs:
               const url = result.url
 
               return `
-              ### ${device} - ${url}
+              ### ${device} /${input.split('.').slice(-1).join('').split('/').slice(1).join('/')}
 
-              :zap: [Lighthouse report](${links[url]})
+              :link: [Vercel Preview Deployment](${url})
+              :zap: [Lighthouse Report](${links[url]})
 
               | Category | Score |
               | --- | --- |
