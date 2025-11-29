@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import MainNav from '@/components/main-nav'
+import { usePathname } from '@/tests/mocks/navigation'
 import { render, screen } from '@/tests/test-utils'
 
 describe('MainNav', () => {
@@ -17,10 +18,18 @@ describe('MainNav', () => {
   })
 
   it('should highlight active route', () => {
+    vi.mocked(usePathname).mockReturnValue('/posts')
+
     render(<MainNav />)
 
-    const links = screen.getAllByRole('link')
-    expect(links.length).toBeGreaterThan(0)
+    const postsLink = screen.getByRole('link', { name: /posts/i })
+    const aboutLink = screen.getByRole('link', { name: /about/i })
+
+    expect(postsLink).toHaveClass('bg-accent')
+    expect(postsLink).toHaveClass('text-accent-foreground')
+
+    expect(aboutLink).not.toHaveClass('bg-accent')
+    expect(aboutLink).not.toHaveClass('text-accent-foreground')
   })
 
   it('should have correct href attributes', () => {

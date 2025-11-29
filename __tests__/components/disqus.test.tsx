@@ -56,14 +56,10 @@ describe('Disqus', () => {
   it('should insert embed script with correct src', async () => {
     render(<Disqus {...defaultProps} />)
 
-    let embedScript: HTMLScriptElement | null = null
-
     await waitFor(() => {
-      embedScript = document.getElementById('dsq-embed-scr') as HTMLScriptElement | null
-      expect(embedScript).toBeInTheDocument()
+      const embedScript = document.getElementById('dsq-embed-scr') as HTMLScriptElement | null
+      expect(embedScript).toHaveAttribute('src', 'https://test-shortname.disqus.com/embed.js')
     })
-
-    expect(embedScript).toHaveAttribute('src', 'https://test-shortname.disqus.com/embed.js')
   })
 
   it('should set window.disqus_config and window.disqus_shortname', async () => {
@@ -347,13 +343,13 @@ describe('Disqus', () => {
           Object.defineProperty(window, 'DISQUS', originalDescriptor)
         } catch {
           // If the original was not configurable, just set to undefined
-          (window as { DISQUS?: unknown }).DISQUS = undefined
+          ;(window as { DISQUS?: unknown }).DISQUS = undefined
         }
       } else {
         try {
           delete (window as { DISQUS?: unknown }).DISQUS
         } catch {
-          (window as { DISQUS?: unknown }).DISQUS = undefined
+          ;(window as { DISQUS?: unknown }).DISQUS = undefined
         }
       }
     }
