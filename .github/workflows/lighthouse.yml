@@ -68,15 +68,15 @@ jobs:
         with:
           script: |
             const desktopLinks = ${{ steps.lighthouse-desktop.outputs.links }}
-            const desktopResults = (${{ steps.lighthouse-desktop.outputs.manifest }}).filter(result => result.isRepresentativeRun);
+            const desktopResults = (${{ steps.lighthouse-desktop.outputs.manifest }}).filter(result => result.isRepresentativeRun)
             const mobileLinks = ${{ steps.lighthouse-mobile.outputs.links }}
-            const mobileResults = (${{ steps.lighthouse-mobile.outputs.manifest }}).filter(result => result.isRepresentativeRun);
-            const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:';
+            const mobileResults = (${{ steps.lighthouse-mobile.outputs.manifest }}).filter(result => result.isRepresentativeRun)
+            const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:'
 
             const formatResults = (results, links, device) => {
               return results.map((result) => {
-                const summary = result.summary;
-                const url = result.url;
+                const summary = result.summary
+                const url = result.url
 
                 return `
                 ### ${device} - ${url}
@@ -86,16 +86,17 @@ jobs:
                 | Category | Score |
                 | --- | --- |
                 ${Object.keys(summary).map((key) => {
-                  const percentage = Math.round(summary[key] * 100);
-                  return `| ${score(percentage)} ${key} | ${percentage} |`;
+                  const percentage = Math.round(summary[key] * 100)
+                  return `| ${score(percentage)} ${key} | ${percentage} |`
                 }).join('\n')}
-                `;
-              }).join('\n');
+
+                `
+              }).join('')
             };
 
-            const desktopComment = formatResults(desktopResults, desktopLinks, ':desktop_computer: Desktop');
-            const mobileComment = formatResults(mobileResults, mobileLinks, ':iphone: Mobile');
-            const comment = `${desktopComment}\n\n${mobileComment}`;
+            const desktopComment = formatResults(desktopResults, desktopLinks, ':sparkles: Desktop');
+            const mobileComment = formatResults(mobileResults, mobileLinks, ':sparkles: Mobile');
+            const comment = `## :desktop_computer: Desktop Report\n${desktopComment}\n\n## :iphone: Mobile Report\n${mobileComment}`;
 
             core.setOutput("comment", comment);
       - name: Comment audit result
@@ -104,5 +105,5 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           header: lighthouse
           message: |
-            # Lighthouse Report
+            # :rocket: Lighthouse Report
             ${{ steps.result.outputs.comment }}
