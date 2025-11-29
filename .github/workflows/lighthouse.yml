@@ -124,20 +124,20 @@ jobs:
               return data.results.map((result) => {
                 const summary = result.summary
                 const url = result.url
-                
+
                 return `
               ### ${data.device} /${url.split('.').slice(-1).join('').split('/').slice(1).join('/')}
-              
+
               :rocket: [Vercel Preview Deployment](${url})
               :zap: [Lighthouse Report](${data.links[url]})
-              
+
               | Category | Score |
               | --- | --- |
               ${Object.keys(summary).map((key) => {
                 const percentage = Math.round(summary[key] * 100)
                 return `| ${score(percentage)} ${key} | ${percentage} |`
               }).join('\n')}
-              
+
               `
               }).join('')
             };
