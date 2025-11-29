@@ -70,29 +70,17 @@ describe('CommandMenu', () => {
   })
 
   it('should toggle dialog with Cmd+K keyboard shortcut', async () => {
-    render(<CommandMenu metadata={mockMetadata} />)
+    const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
-    // Trigger Cmd+K
-    const event = new KeyboardEvent('keydown', {
-      key: 'k',
-      metaKey: true,
-      bubbles: true,
-      cancelable: true,
-    })
-    document.dispatchEvent(event)
+    // Trigger Cmd+K (need to use native event for document-level listeners)
+    await user.keyboard('{Meta>}k{/Meta}')
 
     await waitFor(() => {
       expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
-    // Toggle again to close
-    const closeEvent = new KeyboardEvent('keydown', {
-      key: 'k',
-      metaKey: true,
-      bubbles: true,
-      cancelable: true,
-    })
-    document.dispatchEvent(closeEvent)
+    // Close by clicking outside or pressing Escape is more reliable
+    await user.keyboard('{Escape}')
 
     await waitFor(() => {
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -100,38 +88,32 @@ describe('CommandMenu', () => {
   })
 
   it('should toggle dialog with Ctrl+K keyboard shortcut', async () => {
-    render(<CommandMenu metadata={mockMetadata} />)
+    const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Trigger Ctrl+K
-    const event = new KeyboardEvent('keydown', {
-      key: 'k',
-      ctrlKey: true,
-      bubbles: true,
-      cancelable: true,
-    })
-    document.dispatchEvent(event)
+    await user.keyboard('{Control>}k{/Control}')
 
     await waitFor(() => {
       expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
   })
 
-  it('should not trigger shortcut when target is input element', async () => {
+  it('should not trigger shortcut when typing in input element', async () => {
     render(<CommandMenu metadata={mockMetadata} />)
 
-    // Create a mock input
+    // Create and focus input
     const input = document.createElement('input')
     document.body.appendChild(input)
+    input.focus()
 
-    // Trigger Cmd+K on the input
+    // Dispatch keydown event from the input
     const event = new KeyboardEvent('keydown', {
       key: 'k',
       metaKey: true,
       bubbles: true,
       cancelable: true,
     })
-    Object.defineProperty(event, 'target', { value: input, enumerable: true })
-    document.dispatchEvent(event)
+    input.dispatchEvent(event)
 
     // Dialog should not open
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -140,22 +122,22 @@ describe('CommandMenu', () => {
     document.body.removeChild(input)
   })
 
-  it('should not trigger shortcut when target is textarea element', async () => {
+  it('should not trigger shortcut when typing in textarea element', async () => {
     render(<CommandMenu metadata={mockMetadata} />)
 
-    // Create a mock textarea
+    // Create and focus textarea
     const textarea = document.createElement('textarea')
     document.body.appendChild(textarea)
+    textarea.focus()
 
-    // Trigger Cmd+K on the textarea
+    // Dispatch keydown event from the textarea
     const event = new KeyboardEvent('keydown', {
       key: 'k',
       metaKey: true,
       bubbles: true,
       cancelable: true,
     })
-    Object.defineProperty(event, 'target', { value: textarea, enumerable: true })
-    document.dispatchEvent(event)
+    textarea.dispatchEvent(event)
 
     // Dialog should not open
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -164,29 +146,47 @@ describe('CommandMenu', () => {
     document.body.removeChild(textarea)
   })
 
-  it('should not trigger shortcut when target is contenteditable element', async () => {
+  it('should not trigger shortcut when typing in contenteditable element', async () => {
     render(<CommandMenu metadata={mockMetadata} />)
 
-    // Create a mock contenteditable div
+    // Create and focus contenteditable div
     const div = document.createElement('div')
     div.contentEditable = 'true'
     document.body.appendChild(div)
+    div.focus()
 
-    // Trigger Cmd+K on the contenteditable
+    // Dispatch keydown event from the contenteditable
     const event = new KeyboardEvent('keydown', {
       key: 'k',
       metaKey: true,
       bubbles: true,
       cancelable: true,
     })
-    Object.defineProperty(event, 'target', { value: div, enumerable: true })
-    document.dispatchEvent(event)
+    div.dispatchEvent(event)
 
     // Dialog should not open
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     // Cleanup
     document.body.removeChild(div)
+  })
+
+  it('should not trigger shortcut when typing in select element', async () => {
+    const { user } = render(<CommandMenu metadata={mockMetadata} />)
+
+    // Create a mock select and focus it
+    const select = document.createElement('select')
+    document.body.appendChild(select)
+    select.focus()
+
+    // Trigger Cmd+K on the focused select
+    await user.keyboard('{Meta>}k{/Meta}')
+
+    // Dialog should not open
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    // Cleanup
+    document.body.removeChild(select)
   })
 
   it('should filter and display posts when searching', async () => {

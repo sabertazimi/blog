@@ -26,7 +26,7 @@ function LandingNav() {
                   aria-label={route.name}
                   className={cn(buttonVariants({ variant: 'ghost', size: 'icon-xl' }), 'rounded-full')}
                 >
-                  {route.icon !== undefined ? <route.icon className="size-6" /> : route.name}
+                  <route.icon className="size-6" />
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
