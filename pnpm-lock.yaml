@@ -101,10 +101,10 @@ importers:
     devDependencies:
       '@dg-scripts/eslint-config':
         specifier: ^5.21.7
-        version: 5.21.7(@next/eslint-plugin-next@16.0.5)(@vue/compiler-sfc@3.5.24)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(next@16.0.5(@babel/core@7.28.5)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(prettier@3.7.1)(typescript@5.9.3)(vitest@4.0.14(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(yaml@2.8.1))
+        version: 5.21.7(@next/eslint-plugin-next@16.0.5)(@vue/compiler-sfc@3.5.24)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(next@16.0.5(@babel/core@7.28.5)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(prettier@3.7.2)(typescript@5.9.3)(vitest@4.0.14(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(yaml@2.8.1))
       '@dg-scripts/stylelint-config':
         specifier: ^5.21.7
-        version: 5.21.7(postcss@8.5.6)(prettier@3.7.1)(stylelint-order@7.0.0(stylelint@16.26.1(typescript@5.9.3)))(stylelint@16.26.1(typescript@5.9.3))
+        version: 5.21.7(postcss@8.5.6)(prettier@3.7.2)(stylelint-order@7.0.0(stylelint@16.26.1(typescript@5.9.3)))(stylelint@16.26.1(typescript@5.9.3))
       '@next/eslint-plugin-next':
         specifier: ^16.0.5
         version: 16.0.5
@@ -166,11 +166,11 @@ importers:
         specifier: ^27.2.0
         version: 27.2.0
       prettier:
-        specifier: ^3.7.1
-        version: 3.7.1
+        specifier: ^3.7.2
+        version: 3.7.2
       prettier-plugin-tailwindcss:
         specifier: ^0.7.1
-        version: 0.7.1(prettier@3.7.1)
+        version: 0.7.1(prettier@3.7.2)
       reading-time:
         specifier: ^1.5.0
         version: 1.5.0
@@ -4917,8 +4917,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.7.1:
-    resolution: {integrity: sha512-RWKXE4qB3u5Z6yz7omJkjWwmTfLdcbv44jUVHC5NpfXwFGzvpQM798FGv/6WNK879tc+Cn0AAyherCl1KjbyZQ==}
+  prettier@3.7.2:
+    resolution: {integrity: sha512-n3HV2J6QhItCXndGa3oMWvWFAgN1ibnS7R9mt6iokScBOC0Ul9/iZORmU2IWUMcyAQaMPjTlY3uT34TqocUxMA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -6475,7 +6475,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
-  '@dg-scripts/eslint-config@5.21.7(@next/eslint-plugin-next@16.0.5)(@vue/compiler-sfc@3.5.24)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(next@16.0.5(@babel/core@7.28.5)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(prettier@3.7.1)(typescript@5.9.3)(vitest@4.0.14(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(yaml@2.8.1))':
+  '@dg-scripts/eslint-config@5.21.7(@next/eslint-plugin-next@16.0.5)(@vue/compiler-sfc@3.5.24)(eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(next@16.0.5(@babel/core@7.28.5)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(prettier@3.7.2)(typescript@5.9.3)(vitest@4.0.14(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(yaml@2.8.1))':
     dependencies:
       '@antfu/eslint-config': 6.2.0(@eslint-react/eslint-plugin@2.3.5(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(@next/eslint-plugin-next@16.0.5)(@vue/compiler-sfc@3.5.24)(eslint-plugin-format@1.0.2(eslint@9.39.1(jiti@2.6.1)))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.39.1(jiti@2.6.1)))(eslint-plugin-react-hooks@7.0.1(eslint@9.39.1(jiti@2.6.1)))(eslint-plugin-react-refresh@0.4.24(eslint@9.39.1(jiti@2.6.1)))(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.14(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)(lightningcss@1.30.2)(yaml@2.8.1))
       '@eslint-react/eslint-plugin': 2.3.5(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
@@ -6487,7 +6487,7 @@ snapshots:
       eslint-plugin-security: 3.0.1
       eslint-plugin-testing-library: 7.13.4(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
       local-pkg: 1.1.2
-      prettier: 3.7.1
+      prettier: 3.7.2
       typescript: 5.9.3
     optionalDependencies:
       '@next/eslint-plugin-next': 16.0.5
@@ -6509,12 +6509,12 @@ snapshots:
       - svelte-eslint-parser
       - vitest
 
-  '@dg-scripts/stylelint-config@5.21.7(postcss@8.5.6)(prettier@3.7.1)(stylelint-order@7.0.0(stylelint@16.26.1(typescript@5.9.3)))(stylelint@16.26.1(typescript@5.9.3))':
+  '@dg-scripts/stylelint-config@5.21.7(postcss@8.5.6)(prettier@3.7.2)(stylelint-order@7.0.0(stylelint@16.26.1(typescript@5.9.3)))(stylelint@16.26.1(typescript@5.9.3))':
     dependencies:
-      prettier: 3.7.1
+      prettier: 3.7.2
       stylelint: 16.26.1(typescript@5.9.3)
       stylelint-config-bod: 5.21.7(postcss@8.5.6)(stylelint-order@7.0.0(stylelint@16.26.1(typescript@5.9.3)))(stylelint@16.26.1(typescript@5.9.3))
-      stylelint-prettier: 5.0.3(prettier@3.7.1)(stylelint@16.26.1(typescript@5.9.3))
+      stylelint-prettier: 5.0.3(prettier@3.7.2)(stylelint@16.26.1(typescript@5.9.3))
     transitivePeerDependencies:
       - postcss
       - stylelint-order
@@ -9055,7 +9055,7 @@ snapshots:
       eslint: 9.39.1(jiti@2.6.1)
       eslint-formatting-reporter: 0.0.0(eslint@9.39.1(jiti@2.6.1))
       eslint-parser-plain: 0.1.1
-      prettier: 3.7.1
+      prettier: 3.7.2
       synckit: 0.9.3
 
   eslint-plugin-import-lite@0.3.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3):
@@ -11562,11 +11562,11 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-tailwindcss@0.7.1(prettier@3.7.1):
+  prettier-plugin-tailwindcss@0.7.1(prettier@3.7.2):
     dependencies:
-      prettier: 3.7.1
+      prettier: 3.7.2
 
-  prettier@3.7.1: {}
+  prettier@3.7.2: {}
 
   pretty-format@27.5.1:
     dependencies:
@@ -12350,9 +12350,9 @@ snapshots:
       postcss-sorting: 9.1.0(postcss@8.5.6)
       stylelint: 16.26.1(typescript@5.9.3)
 
-  stylelint-prettier@5.0.3(prettier@3.7.1)(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-prettier@5.0.3(prettier@3.7.2)(stylelint@16.26.1(typescript@5.9.3)):
     dependencies:
-      prettier: 3.7.1
+      prettier: 3.7.2
       prettier-linter-helpers: 1.0.0
       stylelint: 16.26.1(typescript@5.9.3)
 
