@@ -317,24 +317,45 @@ describe('Disqus', () => {
   })
 
   it('should handle delete DISQUS failure gracefully', () => {
-    const { unmount } = render(<Disqus {...defaultProps} />)
+    // Save the original property descriptor for cleanup
+    const originalDescriptor = Object.getOwnPropertyDescriptor(window, 'DISQUS')
 
-    // Create a non-configurable DISQUS property that cannot be deleted
-    Object.defineProperty(window, 'DISQUS', {
-      value: { reset: vi.fn() },
-      configurable: false,
-      writable: true,
-    })
+    try {
+      const { unmount } = render(<Disqus {...defaultProps} />)
 
-    // Mock script
-    const mockScript = document.createElement('script')
-    mockScript.id = 'dsq-embed-scr'
-    document.body.appendChild(mockScript)
+      // Create a non-configurable DISQUS property that cannot be deleted
+      Object.defineProperty(window, 'DISQUS', {
+        value: { reset: vi.fn() },
+        configurable: false,
+        writable: true,
+      })
 
-    // Unmount should attempt to delete DISQUS, fail, and set it to undefined
-    unmount()
+      // Mock script
+      const mockScript = document.createElement('script')
+      mockScript.id = 'dsq-embed-scr'
+      document.body.appendChild(mockScript)
 
-    // Since delete fails, it should fallback to setting undefined
-    expect(window.DISQUS).toBeUndefined()
+      // Unmount should attempt to delete DISQUS, fail, and set it to undefined
+      unmount()
+
+      // Since delete fails, it should fallback to setting undefined
+      expect(window.DISQUS).toBeUndefined()
+    } finally {
+      // Restore or clean up the DISQUS property
+      if (originalDescriptor) {
+        try {
+          Object.defineProperty(window, 'DISQUS', originalDescriptor)
+        } catch {
+          // If the original was not configurable, just set to undefined
+          (window as { DISQUS?: unknown }).DISQUS = undefined
+        }
+      } else {
+        try {
+          delete (window as { DISQUS?: unknown }).DISQUS
+        } catch {
+          (window as { DISQUS?: unknown }).DISQUS = undefined
+        }
+      }
+    }
   })
 })
