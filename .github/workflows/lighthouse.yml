@@ -38,44 +38,66 @@ jobs:
           message: |
             # Lighthouse Report
             :hammer_and_wrench: Running Lighthouse audit on ${{ steps.vercel.outputs.url }} ...
-      - name: Audit using Lighthouse
-        id: lighthouse
+      - name: Audit using Lighthouse (Desktop)
+        id: lighthouse-desktop
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             ${{ steps.vercel.outputs.url }}/en-US
             ${{ steps.vercel.outputs.url }}/en-US/posts
             ${{ steps.vercel.outputs.url }}/en-US/about
-          configPath: ./.github/workflows/lighthouserc.json
+          configPath: ./.github/workflows/lighthouse.desktop.json
           uploadArtifacts: true
+          artifactName: lighthouse-results-desktop
+          temporaryPublicStorage: true
+      - name: Audit using Lighthouse (Mobile)
+        id: lighthouse-mobile
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.vercel.outputs.url }}/zh-CN
+            ${{ steps.vercel.outputs.url }}/zh-CN/posts
+            ${{ steps.vercel.outputs.url }}/zh-CN/about
+          configPath: ./.github/workflows/lighthouse.mobile.json
+          uploadArtifacts: true
+          artifactName: lighthouse-results-mobile
           temporaryPublicStorage: true
       - name: Format audit result
         id: result
         uses: actions/github-script@v8
         with:
           script: |
-            const links = ${{ steps.lighthouse.outputs.links }}
-            const results = (${{ steps.lighthouse.outputs.manifest }}).filter(result => result.isRepresentativeRun);
-            const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:';
-            const comment = results.map((result) => {
-              const summary = result.summary;
-              const url = result.url;
+            const desktopLinks = ${{ steps.lighthouse-desktop.outputs.links }}
+            const desktopResults = (${{ steps.lighthouse-desktop.outputs.manifest }}).filter(result => result.isRepresentativeRun)
+            const mobileLinks = ${{ steps.lighthouse-mobile.outputs.links }}
+            const mobileResults = (${{ steps.lighthouse-mobile.outputs.manifest }}).filter(result => result.isRepresentativeRun)
+            const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:'
+
+            const formatResults = (results, links, device) => {
+            return results.map((result) => {
+              const summary = result.summary
+              const url = result.url
 
               return `
-              ## :sparkles: ${url}
+              ### ${device} /${url.split('.').slice(-1).join('').split('/').slice(1).join('/')}
 
-              :rocket: [Vercel preview deployment](${url})
-              :zap: [Lighthouse report](${links[url]})
+              :rocket: [Vercel Preview Deployment](${url})
+              :zap: [Lighthouse Report](${links[url]})
 
               | Category | Score |
               | --- | --- |
               ${Object.keys(summary).map((key) => {
-                const percentage = Math.round(summary[key] * 100);
-                return `| ${score(percentage)} ${key} | ${percentage} |`;
+                const percentage = Math.round(summary[key] * 100)
+                return `| ${score(percentage)} ${key} | ${percentage} |`
               }).join('\n')}
 
-              `;
-            }).join('');
+              `
+            }).join('')
+            };
+
+            const desktopComment = formatResults(desktopResults, desktopLinks, 'Desktop');
+            const mobileComment = formatResults(mobileResults, mobileLinks, 'Mobile');
+            const comment = `## :desktop_computer: Desktop Report\n${desktopComment}\n\n## :iphone: Mobile Report\n${mobileComment}`;
 
             core.setOutput("comment", comment);
       - name: Comment audit result
