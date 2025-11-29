@@ -177,7 +177,10 @@ function useAnchorObserver(watch: string[], single: boolean): string[] {
       .map(heading => document.getElementById(heading))
       .filter((el): el is HTMLElement => el !== null)
 
-    for (const element of elements) observer.observe(element)
+    for (const element of elements) {
+      observer.observe(element)
+    }
+
     return () => {
       for (const element of elements) observer.unobserve(element)
     }
@@ -259,8 +262,10 @@ function TocThumb({ containerRef, className }: TocThumbProps) {
   const active = useActiveAnchors()
 
   useEffect(() => {
-    if (!containerRef.current || !thumbRef.current)
+    if (!containerRef.current || !thumbRef.current) {
       return
+    }
+
     const container = containerRef.current
     const thumb = thumbRef.current
 
@@ -335,6 +340,8 @@ function getLineOffset(depth: number): number {
   return depth >= 2 ? 10 : 0
 }
 
+export { getItemOffset, getLineOffset }
+
 interface TOCItemsListProps {
   toc: TOCItemType[]
   /**
@@ -361,8 +368,10 @@ function TOCItemsList({ toc, disableLineOffset = false }: TOCItemsListProps) {
     const container = containerRef.current
 
     function onResize(): void {
-      if (container.clientHeight === 0)
+      if (container.clientHeight === 0) {
         return
+      }
+
       let w = 0
       let h = 0
       const d: string[] = []
@@ -566,8 +575,10 @@ function PostMobileTOCContent({ toc, title }: { toc: TOCItemType[], title: strin
   const navRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (!open)
+      if (!open) {
         return
+      }
+
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpen(false)
       }

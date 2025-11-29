@@ -20,6 +20,9 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
+globalThis.window.open = vi.fn()
+globalThis.window.scrollTo = vi.fn()
+
 globalThis.IntersectionObserver = class IntersectionObserver {
   root: null = null
   rootMargin: string = ''

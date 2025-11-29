@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import LanguageSwitcher from '@/components/language-switcher'
 import { routing } from '@/i18n/routing'
 import { mockPush } from '@/tests/mocks/navigation'
@@ -40,8 +40,6 @@ describe('LanguageSwitcher', () => {
   })
 
   it('should change language when different language option is clicked', async () => {
-    vi.mocked(mockPush).mockClear()
-
     const { user } = render(<LanguageSwitcher />)
 
     const button = screen.getByRole('button', { name: /select language/i })
@@ -54,8 +52,6 @@ describe('LanguageSwitcher', () => {
   })
 
   it('should not change language when same language option is clicked', async () => {
-    vi.mocked(mockPush).mockClear()
-
     const { user } = render(<LanguageSwitcher />)
 
     const button = screen.getByRole('button', { name: /select language/i })

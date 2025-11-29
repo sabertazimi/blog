@@ -77,10 +77,10 @@
 以下浏览器 API 已在 `__tests__/setup.ts` 中 mock：
 
 - `window.matchMedia`
+- `window.open`
+- `window.scrollTo`
 - `IntersectionObserver`
 - `ResizeObserver`
-- `window.scrollTo`
-- `HTMLElement.prototype.scrollIntoView`
 - `HTMLCanvasElement.prototype.getContext`
 
 ## 编写测试的最佳实践

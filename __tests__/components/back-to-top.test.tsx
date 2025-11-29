@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import BackToTop from '@/components/back-to-top'
 import { fireEvent, render, screen, waitFor } from '@/tests/test-utils'
 
@@ -33,31 +33,25 @@ describe('BackToTop', () => {
     expect(button).toHaveAttribute('tabIndex', '0')
   })
 
-  it('should scroll to top when clicked', () => {
-    const scrollToMock = vi.fn()
-    window.scrollTo = scrollToMock
-
+  it('should scroll to top when clicked', async () => {
     Object.defineProperty(document.documentElement, 'scrollTop', {
       writable: true,
       configurable: true,
       value: 400,
     })
 
-    render(<BackToTop />)
+    const { user } = render(<BackToTop />)
 
     const button = screen.getByRole('button', { name: /back to top/i })
-    fireEvent.click(button)
+    await user.click(button)
 
-    expect(scrollToMock).toHaveBeenCalledWith({
+    expect(window.scrollTo).toHaveBeenCalledWith({
       top: 0,
       behavior: 'smooth',
     })
   })
 
   it('should scroll to custom scrollTo position', () => {
-    const scrollToMock = vi.fn()
-    window.scrollTo = scrollToMock
-
     Object.defineProperty(document.documentElement, 'scrollTop', {
       writable: true,
       configurable: true,
@@ -69,7 +63,7 @@ describe('BackToTop', () => {
     const button = screen.getByRole('button', { name: /back to top/i })
     fireEvent.click(button)
 
-    expect(scrollToMock).toHaveBeenCalledWith({
+    expect(window.scrollTo).toHaveBeenCalledWith({
       top: 100,
       behavior: 'smooth',
     })
