@@ -9,7 +9,9 @@ import getBuildTime from '@/lib/get-build-time'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-type PostsPageProps = PageProps<'/[locale]/posts'>
+interface PostsPageProps {
+  params: Promise<{ locale: string }>
+}
 
 export async function generateMetadata({ params }: PostsPageProps): Promise<Metadata> {
   const { locale } = await params

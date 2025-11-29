@@ -8,7 +8,10 @@ import { resolveLocale } from '@/i18n/utils'
 import { getMetadata, getViewport } from '@/lib/seo'
 import '../globals.css'
 
-type LocaleLayoutProps = LayoutProps<'/[locale]'>
+interface LocaleLayoutProps {
+  params: Promise<{ locale: string }>
+  children: React.ReactNode
+}
 
 export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
   const { locale } = await params

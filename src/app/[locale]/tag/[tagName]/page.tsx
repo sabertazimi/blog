@@ -10,7 +10,9 @@ import getBuildTime from '@/lib/get-build-time'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-type TagPageProps = PageProps<'/[locale]/tag/[tagName]'>
+interface TagPageProps {
+  params: Promise<{ locale: string, tagName: string }>
+}
 
 export async function generateStaticParams() {
   const params = []

@@ -5,7 +5,9 @@ import { MorphingText } from '@/components/ui/morphing-text'
 import { resolveLocale } from '@/i18n/utils'
 import { siteConfig } from '@/lib/site'
 
-type HomePageProps = PageProps<'/[locale]'>
+interface HomePageProps {
+  params: Promise<{ locale: string }>
+}
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params

@@ -9,7 +9,9 @@ import getGitHubData from '@/lib/get-github-data'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-type AboutPageProps = PageProps<'/[locale]/about'>
+interface AboutPageProps {
+  params: Promise<{ locale: string }>
+}
 
 export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
   const { locale } = await params

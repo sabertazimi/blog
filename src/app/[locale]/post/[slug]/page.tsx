@@ -11,7 +11,9 @@ import getBuildTime from '@/lib/get-build-time'
 import { getPostData, getPostsData, getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 
-type PostPageProps = PageProps<'/[locale]/post/[slug]'>
+interface PostPageProps {
+  params: Promise<{ locale: string, slug: string }>
+}
 
 export async function generateStaticParams() {
   const params = []
