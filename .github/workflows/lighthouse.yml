@@ -81,8 +81,8 @@ jobs:
               return `
               ### ${device} /${url.split('.').slice(-1).join('').split('/').slice(1).join('/')}
 
-              :link: [Vercel Preview Deployment](${url})
-              :rocket: [Lighthouse Report](${links[url]})
+              :rocket: [Vercel Preview Deployment](${url})
+              :zap: [Lighthouse Report](${links[url]})
 
               | Category | Score |
               | --- | --- |
@@ -95,8 +95,8 @@ jobs:
             }).join('')
             };
 
-            const desktopComment = formatResults(desktopResults, desktopLinks, ':sparkles: Desktop');
-            const mobileComment = formatResults(mobileResults, mobileLinks, ':sparkles: Mobile');
+            const desktopComment = formatResults(desktopResults, desktopLinks, 'Desktop');
+            const mobileComment = formatResults(mobileResults, mobileLinks, 'Mobile');
             const comment = `## :desktop_computer: Desktop Report\n${desktopComment}\n\n## :iphone: Mobile Report\n${mobileComment}`;
 
             core.setOutput("comment", comment);
