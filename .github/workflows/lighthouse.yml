@@ -6,9 +6,11 @@ on:
       - main
 
 jobs:
-  audit:
-    name: Audit
+  wait-for-vercel:
+    name: Wait for Vercel Preview
     runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.vercel.outputs.url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -38,51 +40,96 @@ jobs:
           message: |
             # Lighthouse Report
             :hammer_and_wrench: Running Lighthouse audit on ${{ steps.vercel.outputs.url }} ...
-      - name: Audit using Lighthouse (Desktop)
-        id: lighthouse-desktop
+
+  audit:
+    name: Audit ${{ matrix.device }}
+    runs-on: ubuntu-latest
+    needs: wait-for-vercel
+    strategy:
+      matrix:
+        include:
+          - device: Desktop
+            locale: en-US
+            config: lighthouse.desktop.json
+            artifact: lighthouse-results-desktop
+          - device: Mobile
+            locale: zh-CN
+            config: lighthouse.mobile.json
+            artifact: lighthouse-results-mobile
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Audit using Lighthouse
+        id: lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
-            ${{ steps.vercel.outputs.url }}/en-US
-            ${{ steps.vercel.outputs.url }}/en-US/posts
-            ${{ steps.vercel.outputs.url }}/en-US/about
-          configPath: ./.github/workflows/lighthouse.desktop.json
+            ${{ needs.wait-for-vercel.outputs.preview_url }}/${{ matrix.locale }}
+            ${{ needs.wait-for-vercel.outputs.preview_url }}/${{ matrix.locale }}/posts
+            ${{ needs.wait-for-vercel.outputs.preview_url }}/${{ matrix.locale }}/about
+          configPath: ./.github/workflows/${{ matrix.config }}
           uploadArtifacts: true
-          artifactName: lighthouse-results-desktop
+          artifactName: ${{ matrix.artifact }}
           temporaryPublicStorage: true
-      - name: Audit using Lighthouse (Mobile)
-        id: lighthouse-mobile
-        uses: treosh/lighthouse-ci-action@v12
+      - name: Save results
+        id: save
+        uses: actions/github-script@v8
         with:
-          urls: |
-            ${{ steps.vercel.outputs.url }}/zh-CN
-            ${{ steps.vercel.outputs.url }}/zh-CN/posts
-            ${{ steps.vercel.outputs.url }}/zh-CN/about
-          configPath: ./.github/workflows/lighthouse.mobile.json
-          uploadArtifacts: true
-          artifactName: lighthouse-results-mobile
-          temporaryPublicStorage: true
+          script: |
+            const fs = require('fs');
+            const links = ${{ steps.lighthouse.outputs.links }};
+            const results = (${{ steps.lighthouse.outputs.manifest }}).filter(result => result.isRepresentativeRun);
+
+            const data = {
+              device: '${{ matrix.device }}',
+              links: links,
+              results: results
+            };
+
+            fs.writeFileSync('lighthouse-${{ matrix.device }}.json', JSON.stringify(data));
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-data-${{ matrix.device }}
+          path: lighthouse-${{ matrix.device }}.json
+
+  report:
+    name: Generate Report
+    runs-on: ubuntu-latest
+    needs: audit
+    steps:
+      - name: Download Desktop results
+        uses: actions/download-artifact@v4
+        with:
+          name: lighthouse-data-Desktop
+      - name: Download Mobile results
+        uses: actions/download-artifact@v4
+        with:
+          name: lighthouse-data-Mobile
       - name: Format audit result
         id: result
         uses: actions/github-script@v8
         with:
           script: |
-            const desktopLinks = ${{ steps.lighthouse-desktop.outputs.links }}
-            const desktopResults = (${{ steps.lighthouse-desktop.outputs.manifest }}).filter(result => result.isRepresentativeRun)
-            const mobileLinks = ${{ steps.lighthouse-mobile.outputs.links }}
-            const mobileResults = (${{ steps.lighthouse-mobile.outputs.manifest }}).filter(result => result.isRepresentativeRun)
+            const fs = require('fs');
+            const desktopData = JSON.parse(fs.readFileSync('lighthouse-Desktop.json', 'utf8'));
+            const mobileData = JSON.parse(fs.readFileSync('lighthouse-Mobile.json', 'utf8'));
+
             const score = res => res >= 90 ? ':green_circle:' : res >= 50 ? ':yellow_circle:' : ':red_circle:'
 
-            const formatResults = (results, links, device) => {
-            return results.map((result) => {
-              const summary = result.summary
-              const url = result.url
+            const formatResults = (data) => {
+              return data.results.map((result) => {
+                const summary = result.summary
+                const url = result.url
 
-              return `
-              ### ${device} /${url.split('.').slice(-1).join('').split('/').slice(1).join('/')}
+                return `
+              ### ${data.device} /${url.split('.').slice(-1).join('').split('/').slice(1).join('/')}
 
               :rocket: [Vercel Preview Deployment](${url})
-              :zap: [Lighthouse Report](${links[url]})
+              :zap: [Lighthouse Report](${data.links[url]})
 
               | Category | Score |
               | --- | --- |
@@ -92,11 +139,11 @@ jobs:
               }).join('\n')}
 
               `
-            }).join('')
+              }).join('')
             };
 
-            const desktopComment = formatResults(desktopResults, desktopLinks, 'Desktop');
-            const mobileComment = formatResults(mobileResults, mobileLinks, 'Mobile');
+            const desktopComment = formatResults(desktopData);
+            const mobileComment = formatResults(mobileData);
             const comment = `## :desktop_computer: Desktop Report\n${desktopComment}\n\n## :iphone: Mobile Report\n${mobileComment}`;
 
             core.setOutput("comment", comment);
