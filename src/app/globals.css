@@ -45,9 +45,6 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: var(--sans);
-  --font-serif: var(--serif);
-  --font-mono: var(--mono);
   --animate-collapsible-down: collapsible-down 150ms cubic-bezier(0.45, 0, 0.55, 1);
   --animate-collapsible-up: collapsible-up 150ms cubic-bezier(0.45, 0, 0.55, 1);
 }
@@ -87,11 +84,11 @@
   --sidebar-accent-foreground: oklch(20.5% 0 0deg);
   --sidebar-border: oklch(92.2% 0 0deg);
   --sidebar-ring: oklch(70.8% 0 0deg);
-  --sans:
+  --font-sans:
     'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
     oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --serif: 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
-  --mono:
+  --font-serif: 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
+  --font-mono:
     'Fira Code', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Cantarell Mono',
     'Source Code Pro', monospace;
 }
