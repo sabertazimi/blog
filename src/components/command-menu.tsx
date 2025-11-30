@@ -128,7 +128,7 @@ function CommandMenu({
                 >
                   <TagIcon />
                   <span className="line-clamp-1">{tag}</span>
-                  <span className="border-border text-muted-foreground ml-auto flex h-5 min-w-5 items-center justify-center rounded border text-xs font-medium">
+                  <span className="border-border text-muted-foreground ml-auto flex h-5 min-w-5 items-center justify-center rounded-sm border text-xs font-medium">
                     {tagCounts[tag]}
                   </span>
                 </CommandItem>
