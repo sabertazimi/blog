@@ -38,6 +38,7 @@
     "e2e": "start-server-and-test e2e:prepare http://127.0.0.1:3000 e2e:test",
     "e2e:prepare": "pnpm build && pnpm serve",
     "e2e:test": "playwright test",
+    "e2e:ui": "playwright test --ui",
     "e2e:report": "playwright show-report",
     "changeset": "commit-and-tag-version --dry-run -s",
     "release": "commit-and-tag-version -s"
