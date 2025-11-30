@@ -6,10 +6,14 @@ test.describe('Tag Filter Page', () => {
     await page.setViewportSize({ width: 1280, height: 720 })
   })
 
-  test('navigates to tag page when clicking tag link', async ({ page }) => {
+  test('navigates between all posts page and tag page when clicking tag link', async ({ page }) => {
     const tagLink = page.getByRole('link').filter({ hasText: /MDX|React|Next\.js|Web Development/i })
     await tagLink.first().click()
     await expect(page).toHaveURL(/\/tag\//)
+
+    const allTag = page.getByRole('link', { name: /all/i }).first()
+    await allTag.click()
+    await expect(page).toHaveURL(/\/posts/)
   })
 
   test('displays filtered posts for selected tag', async ({ page }) => {
@@ -26,15 +30,5 @@ test.describe('Tag Filter Page', () => {
     expect(filteredPostsCount).toBeGreaterThan(0)
     expect(filteredPostsCount).toBeLessThanOrEqual(allPostsCount)
     await expect(firstPostLink).toBeVisible()
-  })
-
-  test('navigates back to all posts when clicking all tags link', async ({ page }) => {
-    const tagLink = page.getByRole('link').filter({ hasText: /MDX|React|Next\.js|Web Development/i })
-    await tagLink.first().click()
-    await expect(page).toHaveURL(/\/tag\//)
-
-    const allTag = page.getByRole('link', { name: /all/i }).first()
-    await allTag.click()
-    await expect(page).toHaveURL(/\/posts/)
   })
 })

@@ -11,14 +11,12 @@ test.describe('Posts Page', () => {
     await expect(mainHeading.first()).toBeVisible()
   })
 
-  test('displays post cards with clickable links', async ({ page }) => {
+  test('displays tag filter and post cards with clickable links', async ({ page }) => {
+    const allTagLink = page.getByRole('link', { name: /all/i })
+    await expect(allTagLink.first()).toBeVisible()
+
     const postLinks = page.locator('a[href*="/post/"]')
     await expect(postLinks.first()).toBeVisible()
     await expect(postLinks.first()).toHaveAttribute('href', /\/post\//)
-  })
-
-  test('displays tag filter with all tags link', async ({ page }) => {
-    const allTagLink = page.getByRole('link', { name: /all/i })
-    await expect(allTagLink.first()).toBeVisible()
   })
 })

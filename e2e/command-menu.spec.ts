@@ -10,13 +10,7 @@ test.describe('Command Menu', () => {
     await page.goto('/posts')
   })
 
-  test('opens command menu with keyboard shortcut', async ({ page }) => {
-    await page.keyboard.press(getKeyboardShortcut())
-    const dialog = page.getByRole('dialog')
-    await expect(dialog).toBeVisible()
-  })
-
-  test('closes command menu with escape key', async ({ page }) => {
+  test('opens and closes command menu with keyboard shortcut', async ({ page }) => {
     await page.keyboard.press(getKeyboardShortcut())
     const dialog = page.getByRole('dialog')
     await expect(dialog).toBeVisible()
@@ -25,32 +19,22 @@ test.describe('Command Menu', () => {
     await expect(dialog).not.toBeVisible()
   })
 
-  test('searches for posts by keyword', async ({ page }) => {
-    await page.keyboard.press(getKeyboardShortcut())
-    const dialog = page.getByRole('dialog')
-    const searchInput = dialog.getByRole('combobox').or(dialog.getByPlaceholder(/search/i))
-
-    await searchInput.fill('React')
-
-    const options = dialog.getByRole('option')
-    await expect(options.first()).toBeVisible()
-    const optionCount = await options.count()
-    expect(optionCount).toBeGreaterThan(0)
-  })
-
   test('navigates to selected post from search results', async ({ page }) => {
     await page.keyboard.press(getKeyboardShortcut())
     const dialog = page.getByRole('dialog')
     const searchInput = dialog.getByRole('combobox').or(dialog.getByPlaceholder(/search/i))
 
     await searchInput.fill('MDX')
+    const options = dialog.getByRole('option')
 
-    const firstOption = dialog.getByRole('option').first()
+    const optionCount = await options.count()
+    expect(optionCount).toBeGreaterThan(0)
+
+    const firstOption = options.first()
     await expect(firstOption).toBeVisible()
 
     await firstOption.click()
     await page.waitForURL(/\/post\/|\/tag\//)
-
     await expect(page).toHaveURL(/\/post\/|\/tag\//)
   })
 })
