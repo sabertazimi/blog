@@ -5,22 +5,16 @@ test.describe('Home Page', () => {
     await page.goto('/')
   })
 
-  test('loads successfully with correct title and main content', async ({ page }) => {
-    // 验证页面标题
+  test('loads successfully with main content', async ({ page }) => {
     await expect(page).toHaveTitle(/Sabertaz Blog/)
-
-    // 验证主要内容已加载
-    const mainContent = page.locator('text=/Coder|Developer|Learner/').first()
+    const mainContent = page.getByTestId('hero-section')
     await expect(mainContent).toBeVisible()
+    await expect(mainContent).toHaveText(/Coder|Developer|Learner/)
   })
 
-  test('shows tooltips on navigation hover', async ({ page }) => {
-    // 测试其中一个导航链接的 tooltip
+  test('navigates to posts page', async ({ page }) => {
     const postsLink = page.getByRole('link', { name: /posts/i })
-    await postsLink.hover()
-
-    // 验证 tooltip 显示
-    const tooltip = page.getByRole('tooltip')
-    await expect(tooltip).toBeVisible()
+    await postsLink.click()
+    await expect(page).toHaveURL(/\/posts/)
   })
 })

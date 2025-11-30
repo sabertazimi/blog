@@ -24,15 +24,21 @@ export default eslintConfig
     },
   })
   .append({
+    files: ['__tests__/README.md/**/*.{ts,tsx}'],
+    rules: {
+      'testing-library/no-container': 'off',
+      'testing-library/no-debugging-utils': 'off',
+    },
+  })
+  .append({
     files: ['e2e/**/*.spec.ts'],
     rules: {
       'testing-library/prefer-screen-queries': 'off',
     },
   })
   .append({
-    files: ['__tests__/README.md/**/*.{ts,tsx}'],
+    files: ['playwright.config.ts'],
     rules: {
-      'testing-library/no-container': 'off',
-      'testing-library/no-debugging-utils': 'off',
+      'ts/strict-boolean-expressions': 'off',
     },
   })
