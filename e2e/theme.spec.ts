@@ -3,7 +3,6 @@ import { expect, test } from '@playwright/test'
 test.describe('Theme Switcher', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/posts')
-    await page.setViewportSize({ width: 1280, height: 720 })
   })
 
   test('displays theme toggle button', async ({ page }) => {

@@ -3,7 +3,6 @@ import { expect, test } from '@playwright/test'
 test.describe('Tag Filter Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/posts')
-    await page.setViewportSize({ width: 1280, height: 720 })
   })
 
   test('navigates between all posts page and tag page when clicking tag link', async ({ page }) => {
