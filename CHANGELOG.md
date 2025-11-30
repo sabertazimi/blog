@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0](https://github.com/sabertazimi/blog/compare/v5.0.0...v5.1.0) (2025-11-30)
+
+
+### :sparkles: Features
+
+* **home-dock:** add dock nav to home page ([#1514](https://github.com/sabertazimi/blog/issues/1514)) ([5e565f7](https://github.com/sabertazimi/blog/commit/5e565f756795687a50085d4a2b6023862488410f))
+
+
+### :bug: Bug Fixes
+
+* **404:** change not found from SVG to fuzzy text ([#1510](https://github.com/sabertazimi/blog/issues/1510)) ([14bc5f9](https://github.com/sabertazimi/blog/commit/14bc5f97984d2f632fef074c5370131c9253225f))
+* **about-repo:** setup min stars threshold for github repo ([#1508](https://github.com/sabertazimi/blog/issues/1508)) ([204e547](https://github.com/sabertazimi/blog/commit/204e5477d461e1df2e99b22088936333908e1d27))
+* **colors:** change rgb color to oklch color ([#1517](https://github.com/sabertazimi/blog/issues/1517)) ([212c8da](https://github.com/sabertazimi/blog/commit/212c8da3eafb7cef8362583fb6d0d248d8efa668))
+* **deps:** update dependencies (non-major) ([#1511](https://github.com/sabertazimi/blog/issues/1511)) ([68e6246](https://github.com/sabertazimi/blog/commit/68e62467e94e7fee0bb798a3e198619f8fb5a49a))
+* **deps:** update dependency next to ^16.0.5 ([#1512](https://github.com/sabertazimi/blog/issues/1512)) ([8a7cd0e](https://github.com/sabertazimi/blog/commit/8a7cd0e7ef87d80b0a4f7dd661450ca78959d053))
+* **home-stars:** change stars color to primary color ([#1513](https://github.com/sabertazimi/blog/issues/1513)) ([944c065](https://github.com/sabertazimi/blog/commit/944c06556c38d27a21f60c5521849a793130612f))
+* **i18n:** add `setRequestLocale` to all relevant layouts and pages ([#1518](https://github.com/sabertazimi/blog/issues/1518)) ([15df07d](https://github.com/sabertazimi/blog/commit/15df07d6b5093ec1947a19e0a61c6382ded34afa))
+* **post-a11y:** keep headings in sequentially-descending order ([#1524](https://github.com/sabertazimi/blog/issues/1524)) ([7cecd5c](https://github.com/sabertazimi/blog/commit/7cecd5c3627d940f093ade8a7777038786d2773c))
+* **ui-morphing text:** rectify SSR hydration mismatch ([#1509](https://github.com/sabertazimi/blog/issues/1509)) ([a06abca](https://github.com/sabertazimi/blog/commit/a06abca396e31619aa032a18871db864353b28a4))
+
+
+### :zap: Performance
+
+* [ImgBot] optimize images ([#1516](https://github.com/sabertazimi/blog/issues/1516)) ([d436471](https://github.com/sabertazimi/blog/commit/d4364714b1b74bc79917a20e187b1569864aad82))
+
+
+### :wrench: Testing
+
+* **compnents:** add more interaction unit tests ([#1520](https://github.com/sabertazimi/blog/issues/1520)) ([5c3032c](https://github.com/sabertazimi/blog/commit/5c3032ce46bd3269cf5345d0564e90d213dc17a8))
+* **components-language switcher:** add user interaction unit tests ([#1519](https://github.com/sabertazimi/blog/issues/1519)) ([1e9e034](https://github.com/sabertazimi/blog/commit/1e9e03473376edf8f03df52729c82fb62ebda5e5))
+* **components:** add more unit tests ([#1521](https://github.com/sabertazimi/blog/issues/1521)) ([b19077f](https://github.com/sabertazimi/blog/commit/b19077f1890d55c6cce11c193abdc0e7c5f7d782))
+
 ## [5.0.0](https://github.com/sabertazimi/blog/compare/v4.1.0...v5.0.0) (2025-11-26)
 
 
