@@ -87,14 +87,28 @@ export default function App() {
 
   return (
     <div
-      onClick={() => setCount((count) => count + 1)}
       style={{
-        padding: '3rem',
-        textAlign: 'center',
-        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '90vh',
       }}
     >
-      {count}
+      <button
+        style={{
+          paddingBlock: '4px',
+          paddingInline: '12px',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+          background: 'transparent',
+          borderRadius: '10px',
+        }}
+        onClick={() => setCount(count => count + 1)}
+      >
+        {count}
+      </button>
     </div>
   )
 }
