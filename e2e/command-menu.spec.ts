@@ -22,7 +22,7 @@ test.describe('Command Menu', () => {
   test('navigates to selected post from search results', async ({ page }) => {
     await page.keyboard.press(getKeyboardShortcut())
     const dialog = page.getByRole('dialog')
-    const searchInput = dialog.getByRole('combobox').or(dialog.getByPlaceholder(/search/i))
+    const searchInput = dialog.getByRole('combobox')
 
     await searchInput.fill('MDX')
     const options = dialog.getByRole('option')

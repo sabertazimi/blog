@@ -7,8 +7,9 @@ test.describe('Home Page', () => {
 
   test('loads successfully with main content', async ({ page }) => {
     await expect(page).toHaveTitle(/Sabertaz Blog/)
-    const mainContent = page.locator('text=/Coder|Developer|Learner/').first()
+    const mainContent = page.getByTestId('hero-section')
     await expect(mainContent).toBeVisible()
+    await expect(mainContent).toHaveText(/Coder|Developer|Learner/)
   })
 
   test('navigates to posts page', async ({ page }) => {
