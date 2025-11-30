@@ -13,9 +13,6 @@ test.describe('About Page', () => {
 
   test('displays profile information', async ({ page }) => {
     const profileContent = page.locator('text=/followers|following|repositories/i')
-    const count = await profileContent.count()
-    if (count > 0) {
-      await expect(profileContent.first()).toBeVisible()
-    }
+    await expect(profileContent.first()).toBeVisible()
   })
 })

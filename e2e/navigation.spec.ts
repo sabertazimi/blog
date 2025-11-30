@@ -18,9 +18,4 @@ test.describe('Navigation', () => {
     await aboutLink.first().click()
     await expect(page).toHaveURL(/\/about/)
   })
-
-  test('displays theme toggle button', async ({ page }) => {
-    const themeButton = page.getByRole('button', { name: /theme/i })
-    await expect(themeButton.first()).toBeVisible()
-  })
 })

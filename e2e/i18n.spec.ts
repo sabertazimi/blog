@@ -5,7 +5,6 @@ test.describe('i18n - Default Locale', () => {
     await page.goto('/')
     await expect(page).toHaveURL(/\/en-US/)
 
-    // 验证 HTML lang 属性
     const html = page.locator('html')
     await expect(html).toHaveAttribute('lang', 'en-US')
   })
@@ -14,7 +13,6 @@ test.describe('i18n - Default Locale', () => {
     await page.goto('/zh-CN')
     await expect(page).toHaveURL(/\/zh-CN/)
 
-    // 验证 HTML lang 属性
     const html = page.locator('html')
     await expect(html).toHaveAttribute('lang', 'zh-CN')
   })

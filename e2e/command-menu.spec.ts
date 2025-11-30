@@ -48,10 +48,9 @@ test.describe('Command Menu', () => {
     const firstOption = dialog.getByRole('option').first()
     await expect(firstOption).toBeVisible()
 
-    const currentUrl = page.url()
     await firstOption.click()
+    await page.waitForURL(/\/post\/|\/tag\//)
 
-    await page.waitForFunction(oldUrl => window.location.href !== oldUrl, currentUrl)
     await expect(page).toHaveURL(/\/post\/|\/tag\//)
   })
 })

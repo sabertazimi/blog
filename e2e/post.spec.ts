@@ -27,10 +27,7 @@ test.describe('Post Detail Page', () => {
 
   test('displays tag links', async ({ page }) => {
     const tagLink = page.getByRole('link').filter({ hasText: /MDX|React|Next\.js|Web Development/i })
-    const count = await tagLink.count()
-    if (count > 0) {
-      await expect(tagLink.first()).toBeVisible()
-    }
+    await expect(tagLink.first()).toBeVisible()
   })
 })
 

@@ -3,22 +3,18 @@ import { expect, test } from '@playwright/test'
 test.describe('Responsive Layout - Mobile', () => {
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
+    await page.goto('/posts')
   })
 
   test('displays posts page with mobile tag trigger', async ({ page }) => {
-    await page.goto('/posts')
     const mainHeading = page.getByRole('heading', { level: 1 })
     await expect(mainHeading.first()).toBeVisible()
 
     const tagTrigger = page.locator('button').filter({ hasText: /all|全部/i })
-    const count = await tagTrigger.count()
-    if (count > 0) {
-      await expect(tagTrigger.first()).toBeVisible()
-    }
+    await expect(tagTrigger.first()).toBeVisible()
   })
 
   test('displays post detail with back button', async ({ page }) => {
-    await page.goto('/posts')
     const postLink = page.locator('a[href*="/post/"]').first()
     await postLink.click()
     await page.waitForURL(/\/post\//)

@@ -18,7 +18,6 @@ test.describe('Posts Page', () => {
   })
 
   test('displays tag filter with all tags link', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 720 })
     const allTagLink = page.getByRole('link', { name: /all/i })
     await expect(allTagLink.first()).toBeVisible()
   })
