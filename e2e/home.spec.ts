@@ -23,4 +23,24 @@ test.describe('Home Page', () => {
     const tooltip = page.getByRole('tooltip')
     await expect(tooltip).toBeVisible()
   })
+
+  test('can navigate to posts page from landing nav', async ({ page }) => {
+    // 点击 Posts 链接
+    const postsLink = page.getByRole('link', { name: /posts/i })
+    await postsLink.click()
+
+    // 验证导航到 posts 页面
+    await expect(page).toHaveURL(/\/posts/)
+    await expect(page).toHaveTitle(/Posts/)
+  })
+
+  test('can navigate to about page from landing nav', async ({ page }) => {
+    // 点击 About 链接
+    const aboutLink = page.getByRole('link', { name: /about/i })
+    await aboutLink.click()
+
+    // 验证导航到 about 页面
+    await expect(page).toHaveURL(/\/about/)
+    await expect(page).toHaveTitle(/About/)
+  })
 })
