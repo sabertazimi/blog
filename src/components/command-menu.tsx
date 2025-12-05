@@ -36,7 +36,7 @@ function CommandMenu({
 
   const normalizedSearchText = search.toLowerCase()
   const filteredPosts = posts.filter(post => post.title.toLowerCase().includes(normalizedSearchText))
-  const filteredTags = allTags.filter(tag => tag.toLowerCase().includes(normalizedSearchText))
+  const filteredTags = allTags.filter(tag => tag.toLowerCase().includes(normalizedSearchText) && tag !== 'All')
 
   const runCommand = useCallback((command: () => void) => {
     setOpen(false)
