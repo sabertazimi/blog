@@ -107,13 +107,13 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 [optional footer(s)]
 ```
 
-**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`, `revert`
+**Types**: `feat`, `fix`, `update`, `build`, `chore`, `docs`, `perf`, `refactor`, `style`, `test`
 
 **Examples**:
 - `feat(mdx): add support for custom admonitions`
 - `fix(i18n): resolve missing translations in zh-CN locale`
+- `update(deps): upgrade Next.js and React to latest versions`
 - `docs: update README with deployment instructions`
-- `refactor(components): simplify post-card component logic`
 
 **Scope** is optional but recommended (e.g., `mdx`, `i18n`, `components`, `ci`, `deps`).
 
