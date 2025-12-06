@@ -26,6 +26,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 ```
 
 **Key Notes**:
+
 - Build message "Not for Vercel build, fallback to local GitHub data" is expected locally
 - E2E tests run on Chrome/Firefox/Safari, retry 2x on CI
 - Unit test mocks in `__tests__/mocks/` - don't remove
@@ -34,8 +35,9 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 ## Project Structure
 
 **Key Directories**:
+
 - `src/app/[locale]/` - App Router pages (home, about, post/[slug], posts, tag/[tagName], not-found)
-- `src/components/` - React components (ui/, mdx-*.tsx, post-*.tsx, navigation, etc.)
+- `src/components/` - React components (`ui/`, `mdx-*.tsx`, `post-*.tsx`, `navigation`, etc.)
 - `src/i18n/` - i18n config (routing.ts, navigation.ts, utils.ts)
 - `src/lib/` - Utilities (get-posts-data.ts, get-github-data.ts, site.ts, seo.ts, social.ts)
 - `contents/[locale]/` - MDX blog posts (en-US/, zh-CN/)
@@ -44,7 +46,8 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 - `e2e/` - Playwright E2E tests
 
 **Config Files**:
-- `tsconfig.json` - Strict mode, path aliases (@/*, @/images/*, @/tests/*)
+
+- `tsconfig.json` - Strict mode, path aliases (`@/*`, `@/images/*`, `@/tests/*`)
 - `next.config.ts` - React Compiler, next-intl plugin
 - `eslint.config.mjs` - Flat Config, custom rules per file type
 - `.prettierrc.json` - Tailwind plugin, printWidth 120, no semicolons
@@ -55,6 +58,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 ## CI/CD Pipeline (GitHub Actions)
 
 **.github/workflows/ci.yml** - 4 jobs must pass:
+
 1. **lint** (~10s): ESLint, Stylelint, TypeScript
 2. **unit** (~40s): Tests with coverage → Codecov
 3. **e2e** (~5-10min): Playwright (Chrome/Firefox/Safari) with browser caching
@@ -99,7 +103,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 
 **All commits and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) style:**
 
-```
+```md
 <type>(<scope>): <description>
 
 [optional body]
@@ -110,6 +114,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 **Types** (defined in `.versionrc.json`): `feat`, `fix`, `ci`, `chore`, `refactor`, `test` etc.
 
 **Examples**:
+
 - `feat(mdx): add support for custom admonitions`
 - `fix(i18n): resolve missing translations in zh-CN locale`
 - `docs: update README with deployment instructions`
@@ -124,7 +129,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 
 **Entry**: `src/app/[locale]/page.tsx` | **Content**: `src/lib/get-posts-data.ts` | **Site config**: `src/lib/site.ts` | **MDX components**: `src/components/post-content.tsx` | **i18n**: `src/i18n/routing.ts` | **Test setup**: `__tests__/setup.ts`, `__tests__/mocks/`
 
-**Root configs**: package.json, tsconfig.json (path aliases: @/*, @/images/*, @/tests/*), next.config.ts, eslint.config.mjs, vitest.config.mts, playwright.config.ts, .prettierrc.json, .stylelintrc.json, components.json, postcss.config.mjs
+**Root configs**: package.json, tsconfig.json (path aliases: `@/*`, `@/images/*`, `@/tests/*`), next.config.ts, eslint.config.mjs, vitest.config.mts, playwright.config.ts, .prettierrc.json, .stylelintrc.json, components.json, postcss.config.mjs
 
 ---
 
