@@ -117,7 +117,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 
 - `feat(mdx): add support for custom admonitions`
 - `fix(i18n): resolve missing translations in zh-CN locale`
-- `docs: update README with deployment instructions`
+- `chore(deps): update dependencies for security patch`
 
 **Scope** is optional but recommended (e.g., `mdx`, `i18n`, `components`, `ci`, `deps`).
 
