@@ -111,7 +111,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 [optional footer(s)]
 ```
 
-**Types** (defined in `.versionrc.json`)
+**Types**: defined in `.versionrc.json`.
 
 **Examples**:
 
