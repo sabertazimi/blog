@@ -6,11 +6,11 @@
 
 - **Type**: Blog/CMS | **Size**: ~40 MDX posts, ~50 components, ~10 libs
 - **Languages**: TypeScript (95%), CSS, JavaScript
-- **Stack**: Next.js 16 (App Router, Turbopack), React 19, TypeScript 5.9, Tailwind 4, Shadcn UI, next-mdx-remote, Shiki, Sandpack, KaTeX, next-intl (en-US/zh-CN)
+- **Stack**: Next.js (App Router, Turbopack), React, TypeScript, Tailwind CSS, Shadcn UI, next-mdx-remote, Shiki, Sandpack, KaTeX, next-intl (en-US/zh-CN)
 - **Testing**: Vitest (unit), Playwright (E2E: Chrome/Firefox/Safari)
-- **Package Manager**: **pnpm 10.24.0 only** (never npm/yarn) | **Node**: 20+ LTS
+- **Package Manager**: **pnpm only** (never npm/yarn) | **Node**: LTS
 
-## Essential Commands (Always use pnpm 10.24.0)
+## Essential Commands (Always use pnpm)
 
 ```bash
 pnpm install              # ~15-20s. Always run first or when deps change
@@ -49,7 +49,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 - `eslint.config.mjs` - Flat Config, custom rules per file type
 - `.prettierrc.json` - Tailwind plugin, printWidth 120, no semicolons
 - `vitest.config.mts` - jsdom, coverage, setup files
-- `playwright.config.ts` - 3 browsers, localhost:3000, 300s timeout
+- `playwright.config.ts` - 3 browsers, localhost:3000, timeout settings
 - `components.json` - Shadcn registries (@animate-ui, @magicui, @shadcn-studio)
 
 ## CI/CD Pipeline (GitHub Actions)
@@ -76,10 +76,10 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 
 ## Troubleshooting
 
-- **"pnpm not found"**: `npm install -g pnpm@10.24.0`
+- **"pnpm not found"**: `npm install -g pnpm`
 - **Git timestamp errors**: Need `fetch-depth: 0`
 - **TypeScript errors**: `pnpm lint:type-check`
-- **E2E timeout**: 300s limit, build included
+- **E2E timeout**: Check playwright.config.ts for timeout settings, build included
 - **Playwright issues**: `pnpm playwright install --with-deps`
 - **CSS warnings**: "Could not parse CSS" is non-fatal
 - **Hot reload**: Restart with `pnpm dev`
@@ -87,7 +87,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 
 ## Critical Constraints
 
-1. **Only pnpm 10.24.0** (never npm/yarn)
+1. **Only pnpm** (never npm/yarn)
 2. **Don't modify** `src/components/ui/` (Shadcn components)
 3. **Don't remove** `__tests__/mocks/` (required for tests)
 4. **Maintain** locale structure in `contents/` and `messages/`
@@ -95,9 +95,31 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 6. **TypeScript strict mode** - all code properly typed
 7. **File naming**: kebab-case (files), PascalCase (components)
 
+## Commit & PR Guidelines
+
+**All commits and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) style:**
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`, `revert`
+
+**Examples**:
+- `feat(mdx): add support for custom admonitions`
+- `fix(i18n): resolve missing translations in zh-CN locale`
+- `docs: update README with deployment instructions`
+- `refactor(components): simplify post-card component logic`
+
+**Scope** is optional but recommended (e.g., `mdx`, `i18n`, `components`, `ci`, `deps`).
+
 ## Pre-PR Validation
 
-✓ `pnpm install` ✓ `pnpm lint` ✓ `pnpm test:all` ✓ `pnpm build` ✓ Both locales work (if applicable) ✓ No security issues
+✓ `pnpm install` ✓ `pnpm lint` ✓ `pnpm test:all` ✓ `pnpm build` ✓ Both locales work (if applicable) ✓ No security issues ✓ Conventional Commits style
 
 ## Quick Reference
 
