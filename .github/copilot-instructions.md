@@ -107,7 +107,7 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 [optional footer(s)]
 ```
 
-**Types**: `feat`, `fix`, `update`, `build`, `chore`, `docs`, `perf`, `refactor`, `style`, `test`
+**Types** (defined in `.versionrc.json`): `feat`, `fix`, `update`, `build`, `chore`, `docs`, `perf`, `refactor`, `style`, `test`
 
 **Examples**:
 - `feat(mdx): add support for custom admonitions`
