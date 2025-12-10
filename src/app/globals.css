@@ -5,6 +5,14 @@
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
+
+/*
+ * Custom variant for styling inline code within `@tailwindcss/typography` prose blocks.
+ * This selector targets inline `<code>` elements that are direct children of `.prose` blocks,
+ * but excludes `<code>` elements inside `<pre>` tags (to avoid styling code blocks).
+ * It also excludes any elements with the `.not-prose` class or their descendants,
+ * which are intentionally not styled by the prose plugin.
+ */
 @custom-variant prose-inline-code (&.prose :where(:not(pre)>code):not(:where([class~="not-prose"], [class~="not-prose"] *)));
 
 @theme inline {
