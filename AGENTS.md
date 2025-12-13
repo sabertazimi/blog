@@ -1,4 +1,4 @@
-# Copilot Coding Agent Instructions
+# AGENTS.md
 
 ## Repository Overview
 
