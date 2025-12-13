@@ -119,8 +119,6 @@ pnpm e2e                  # ~5-10min. E2E tests (auto-builds first, 300s timeout
 - `fix(i18n): resolve missing translations in zh-CN locale`
 - `chore(deps): update dependencies for security patch`
 
-**Scope** is optional but recommended (e.g., `mdx`, `i18n`, `components`, `ci`, `deps`).
-
 ## Pre-PR Validation
 
 ✓ `pnpm install` ✓ `pnpm lint` ✓ `pnpm test:all` ✓ `pnpm build` ✓ Both locales work (if applicable) ✓ No security issues ✓ Conventional Commits style
