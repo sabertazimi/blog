@@ -15,6 +15,56 @@
  */
 @custom-variant prose-inline-code (&.prose :where(:not(pre)>code):not(:where([class~="not-prose"], [class~="not-prose"] *)));
 
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('/fonts/FiraCode-Light.woff2') format('woff2'),
+    url('/fonts/FiraCode-Light.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('/fonts/FiraCode-Regular.woff2') format('woff2'),
+    url('/fonts/FiraCode-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url('/fonts/FiraCode-Medium.woff2') format('woff2'),
+    url('/fonts/FiraCode-Medium.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url('/fonts/FiraCode-SemiBold.woff2') format('woff2'),
+    url('/fonts/FiraCode-SemiBold.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url('/fonts/FiraCode-Bold.woff2') format('woff2'),
+    url('/fonts/FiraCode-Bold.woff') format('woff');
+  font-display: swap;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -93,12 +143,13 @@
   --sidebar-border: oklch(92.2% 0 0deg);
   --sidebar-ring: oklch(70.8% 0 0deg);
   --font-sans:
-    'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
-    oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-serif: 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
+    'LXGW NeoXiHei', 'LXGW NeoXiHei Plus', 'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system,
+    blinkmacsystemfont, 'Segoe UI', roboto, oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-serif: 'LXGW WenKai', 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
   --font-mono:
-    'Fira Code', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Cantarell Mono',
-    'Source Code Pro', monospace;
+    'Fira Code', 'Fira Mono', 'LXGW WenKai Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono',
+    'Cantarell Mono', 'Source Code Pro', monospace;
 }
 
 .dark {
