@@ -15,6 +15,137 @@
  */
 @custom-variant prose-inline-code (&.prose :where(:not(pre)>code):not(:where([class~="not-prose"], [class~="not-prose"] *)));
 
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('/fonts/FiraCode-Light.woff2') format('woff2'),
+    url('/fonts/FiraCode-Light.woff') format('woff'),
+    url('/fonts/FiraCode-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('/fonts/FiraCode-Regular.woff2') format('woff2'),
+    url('/fonts/FiraCode-Regular.woff') format('woff'),
+    url('/fonts/FiraCode-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url('/fonts/FiraCode-Medium.woff2') format('woff2'),
+    url('/fonts/FiraCode-Medium.woff') format('woff'),
+    url('/fonts/FiraCode-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url('/fonts/FiraCode-SemiBold.woff2') format('woff2'),
+    url('/fonts/FiraCode-SemiBold.woff') format('woff'),
+    url('/fonts/FiraCode-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url('/fonts/FiraCode-Bold.woff2') format('woff2'),
+    url('/fonts/FiraCode-Bold.woff') format('woff'),
+    url('/fonts/FiraCode-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code VF';
+  font-style: normal;
+
+  /* font-weight requires a range: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#Using_a_variable_font_font_face_changes */
+  font-weight: 300 700;
+  src:
+    url('/fonts/FiraCode-VF.woff2') format('woff2-variations'),
+    url('/fonts/FiraCode-VF.woff') format('woff-variations');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW NeoXiHei';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/LXGWNeoXiHei.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW NeoXiHei Plus';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/LXGWNeoXiHeiPlus.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/LXGWWenKai-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/LXGWWenKai-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai Mono';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/LXGWWenKaiMono-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/LXGWWenKaiMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LXGW WenKai Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/LXGWWenKaiMono-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -93,12 +224,13 @@
   --sidebar-border: oklch(92.2% 0 0deg);
   --sidebar-ring: oklch(70.8% 0 0deg);
   --font-sans:
-    'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
-    oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-serif: 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
+    'LXGW NeoXiHei', 'LXGW NeoXiHei Plus', 'SF Pro', arial, 'Microsoft YaHei', '黑体', '宋体', inter, -apple-system,
+    blinkmacsystemfont, 'Segoe UI', roboto, oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-serif: 'LXGW WenKai', 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
   --font-mono:
-    'Fira Code', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Cantarell Mono',
-    'Source Code Pro', monospace;
+    'Fira Code', 'LXGW WenKai Mono', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono',
+    'Cantarell Mono', 'Source Code Pro', monospace;
 }
 
 .dark {
