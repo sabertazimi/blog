@@ -21,8 +21,7 @@
   font-weight: 300;
   src:
     url('/fonts/FiraCode-Light.woff2') format('woff2'),
-    url('/fonts/FiraCode-Light.woff') format('woff'),
-    url('/fonts/FiraCode-Light.ttf') format('truetype');
+    url('/fonts/FiraCode-Light.woff') format('woff');
   font-display: swap;
 }
 
@@ -32,8 +31,7 @@
   font-weight: 400;
   src:
     url('/fonts/FiraCode-Regular.woff2') format('woff2'),
-    url('/fonts/FiraCode-Regular.woff') format('woff'),
-    url('/fonts/FiraCode-Regular.ttf') format('truetype');
+    url('/fonts/FiraCode-Regular.woff') format('woff');
   font-display: swap;
 }
 
@@ -43,8 +41,7 @@
   font-weight: 500;
   src:
     url('/fonts/FiraCode-Medium.woff2') format('woff2'),
-    url('/fonts/FiraCode-Medium.woff') format('woff'),
-    url('/fonts/FiraCode-Medium.ttf') format('truetype');
+    url('/fonts/FiraCode-Medium.woff') format('woff');
   font-display: swap;
 }
 
@@ -54,8 +51,7 @@
   font-weight: 600;
   src:
     url('/fonts/FiraCode-SemiBold.woff2') format('woff2'),
-    url('/fonts/FiraCode-SemiBold.woff') format('woff'),
-    url('/fonts/FiraCode-SemiBold.ttf') format('truetype');
+    url('/fonts/FiraCode-SemiBold.woff') format('woff');
   font-display: swap;
 }
 
@@ -65,20 +61,7 @@
   font-weight: 700;
   src:
     url('/fonts/FiraCode-Bold.woff2') format('woff2'),
-    url('/fonts/FiraCode-Bold.woff') format('woff'),
-    url('/fonts/FiraCode-Bold.ttf') format('truetype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Fira Mono VF';
-  font-style: normal;
-
-  /* font-weight requires a range: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#Using_a_variable_font_font_face_changes */
-  font-weight: 300 700;
-  src:
-    url('/fonts/FiraCode-VF.woff2') format('woff2-variations'),
-    url('/fonts/FiraCode-VF.woff') format('woff-variations');
+    url('/fonts/FiraCode-Bold.woff') format('woff');
   font-display: swap;
 }
 
