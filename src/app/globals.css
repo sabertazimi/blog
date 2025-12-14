@@ -16,7 +16,7 @@
 @custom-variant prose-inline-code (&.prose :where(:not(pre)>code):not(:where([class~="not-prose"], [class~="not-prose"] *)));
 
 @font-face {
-  font-family: 'Fira Code';
+  font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 300;
   src:
@@ -27,7 +27,7 @@
 }
 
 @font-face {
-  font-family: 'Fira Code';
+  font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 400;
   src:
@@ -38,7 +38,7 @@
 }
 
 @font-face {
-  font-family: 'Fira Code';
+  font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 500;
   src:
@@ -49,7 +49,7 @@
 }
 
 @font-face {
-  font-family: 'Fira Code';
+  font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 600;
   src:
@@ -60,7 +60,7 @@
 }
 
 @font-face {
-  font-family: 'Fira Code';
+  font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 700;
   src:
@@ -71,7 +71,7 @@
 }
 
 @font-face {
-  font-family: 'Fira Code VF';
+  font-family: 'Fira Mono VF';
   font-style: normal;
 
   /* font-weight requires a range: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#Using_a_variable_font_font_face_changes */
@@ -229,8 +229,8 @@
     sans-serif;
   --font-serif: 'LXGW WenKai', 'Source Han', 'Times New Roman', 'Droid Serif', times, 'Source Serif Pro', serif;
   --font-mono:
-    'Fira Code', 'LXGW WenKai Mono', 'Fira Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono',
-    'Cantarell Mono', 'Source Code Pro', monospace;
+    'Fira Mono', 'LXGW WenKai Mono', 'Roboto Mono', 'Noto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Cantarell Mono',
+    'Source Code Pro', monospace;
 }
 
 .dark {
