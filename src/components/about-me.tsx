@@ -35,7 +35,7 @@ function AboutMe({ profile, repos }: AboutMeProps) {
             />
           </div>
           <div className="p-6">
-            <h2 className="mb-4 font-serif text-lg font-semibold">{t('featuredRepositories')}</h2>
+            <h2 className="mb-4 text-lg font-semibold">{t('featuredRepositories')}</h2>
             <div className="space-y-3">
               {repos.map(repo => (
                 <RepoCard key={repo.name} repo={repo} />
