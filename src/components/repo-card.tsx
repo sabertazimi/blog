@@ -19,7 +19,7 @@ function RepoCard({ repo }: RepoCardProps) {
         <div className="flex-1">
           <div className="flex items-center gap-2">
             <GitForkIcon className="text-muted-foreground size-4" />
-            <h3 className="font-serif font-semibold">{repo.name}</h3>
+            <h3 className="font-semibold">{repo.name}</h3>
           </div>
           <div className="mt-2 flex items-center gap-4 text-sm">
             <span className="flex items-center gap-1">
