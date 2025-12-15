@@ -188,3 +188,7 @@ Ensure all pass:
 - **i18n config**: `src/i18n/routing.ts`
 - **Test setup**: `__tests__/setup.ts`, `__tests__/mocks/`
 - **Utilities**: `src/lib/utils.ts` (cn function, etc.)
+
+## Constraints
+
+- DO NOT add Claude co-authorship footer to commits
