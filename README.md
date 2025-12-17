@@ -67,7 +67,7 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
   - GitHub profile card with stats
   - Repository information cards
 - **Social Features**
-  - Disqus comments system
+  - [Giscus](https://github.com/giscus/giscus) comments system
   - Share buttons for X, Facebook, and Weibo
 - **User Experience**
   - Dark mode support with smooth transitions
