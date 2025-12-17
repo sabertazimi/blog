@@ -211,17 +211,6 @@
     mix-blend-mode: normal;
     animation: none;
   }
-
-  /* Fix for https://github.com/disqus/disqus-react/issues/153. */
-  .comments {
-    color: #0a0a0a !important; /* :root --foreground */
-    background-color: #fff !important; /* :root --background */
-  }
-
-  .dark .comments {
-    color: #fafafa !important; /* .dark --foreground */
-    background-color: #0a0a0a !important; /* .dark --background */
-  }
 }
 
 @keyframes collapsible-down {

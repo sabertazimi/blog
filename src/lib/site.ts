@@ -1,3 +1,4 @@
+import type { GiscusProps } from '@giscus/react'
 import type { SocialSite } from '@/lib/social'
 import type { GitHub } from '@/types'
 import { colors } from '@/lib/colors'
@@ -7,11 +8,11 @@ interface SiteConfig {
   email: string
   themeColor: string
   url: string
-  disqusShortname: string
   socials: Record<SocialSite, string>
   maxLandingStars: number
   minRepoStars: number
   githubData: GitHub
+  giscus?: GiscusProps
 }
 
 const siteConfig: SiteConfig = {
@@ -19,7 +20,6 @@ const siteConfig: SiteConfig = {
   email: 'sabertazimi@gmail.com',
   themeColor: colors.black,
   url: 'https://blog.tazimi.dev',
-  disqusShortname: 'sabertaz-blog',
   socials: {
     github: 'sabertazimi',
     x: 'sabertazimi',

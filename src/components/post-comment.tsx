@@ -1,59 +1,42 @@
 'use client'
 
+import Giscus from '@giscus/react'
+import { useLocale } from 'next-intl'
 import { useTheme } from 'next-themes'
-import { useEffect, useRef, useState } from 'react'
-import Disqus from '@/components/disqus'
+import { useEffect, useState } from 'react'
 import { siteConfig } from '@/lib/site'
 
-interface PostCommentProps {
-  url: string
-  slug: string
+function adaptLocale(locale: string) {
+  return locale === 'en-US' ? 'en' : locale
 }
 
-export function PostComment({ url, slug }: PostCommentProps) {
+export function PostComment() {
   const { resolvedTheme } = useTheme()
+  const locale = useLocale()
   const [mounted, setMounted] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    if (!containerRef.current) {
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-            observer.disconnect()
-          }
-        })
-      },
-      {
-        threshold: 0,
-        rootMargin: '0px',
-      },
-    )
-
-    observer.observe(containerRef.current)
-
-    return () => observer.disconnect()
-  }, [])
-
-  const disqusConfig = {
-    identifier: slug,
-    url,
-  }
-
   return (
-    <div ref={containerRef} data-testid="comments-container" className="comments">
-      {mounted && isVisible && (
-        <Disqus key={resolvedTheme} shortname={siteConfig.disqusShortname} config={disqusConfig} />
+    <div data-testid="comments-container" className="comments">
+      {mounted && (
+        <Giscus
+          repo="sabertazimi/blog"
+          repoId="MDEwOlJlcG9zaXRvcnkxMjc0MDY4MTE="
+          category="Announcements"
+          categoryId="DIC_kwDOB5gS284B_CSm"
+          mapping="pathname"
+          strict="0"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme={resolvedTheme}
+          lang={adaptLocale(locale)}
+          loading="lazy"
+          {...siteConfig.giscus}
+        />
       )}
     </div>
   )
