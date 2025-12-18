@@ -2,7 +2,50 @@
 
 import type { JSX, ReactElement } from 'react'
 import type { BundledLanguage } from 'shiki/bundle/web'
+import {
+  SiAngular,
+  SiAstro,
+  SiC,
+  SiCoffeescript,
+  SiCplusplus,
+  SiCss,
+  SiGnometerminal,
+  SiGnubash,
+  SiGooglesheets,
+  SiGraphql,
+  SiHandlebarsdotjs,
+  SiHtml5,
+  SiJavascript,
+  SiJinja,
+  SiJson,
+  SiJulia,
+  SiLaravel,
+  SiLess,
+  SiLit,
+  SiMarkdown,
+  SiMarko,
+  SiMdx,
+  SiOpenjdk,
+  SiPhp,
+  SiPostcss,
+  SiPostgresql,
+  SiPug,
+  SiPython,
+  SiR,
+  SiReact,
+  SiRuby,
+  SiSass,
+  SiStylus,
+  SiSvelte,
+  SiTypescript,
+  SiVuedotjs,
+  SiWebassembly,
+  SiXml,
+  SiYaml,
+  SiZsh,
+} from '@icons-pack/react-simple-icons'
 import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
+import { CodeIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Fragment, useEffect, useState } from 'react'
 import { jsx, jsxs } from 'react/jsx-runtime'
@@ -30,6 +73,108 @@ interface MDXCodeProps {
   lines?: string
   title?: string
   live?: string
+}
+
+const LanguageIcons: Partial<Record<BundledLanguage, React.ElementType>> = {
+  // Markup Languages
+  'html': SiHtml5,
+  'html-derivative': SiHtml5,
+  'xml': SiXml,
+
+  // Styling Languages
+  'css': SiCss,
+  'less': SiLess,
+  'sass': SiSass,
+  'scss': SiSass,
+  'styl': SiStylus,
+  'stylus': SiStylus,
+  'postcss': SiPostcss,
+
+  // Scripting Languages
+  'js': SiJavascript,
+  'javascript': SiJavascript,
+  'cjs': SiJavascript,
+  'mjs': SiJavascript,
+  'jsx': SiReact,
+  'ts': SiTypescript,
+  'typescript': SiTypescript,
+  'cts': SiTypescript,
+  'mts': SiTypescript,
+  'tsx': SiReact,
+  'ts-tags': SiTypescript,
+  'coffee': SiCoffeescript,
+  'coffeescript': SiCoffeescript,
+
+  // Frontend Frameworks
+  'vue': SiVuedotjs,
+  'vue-html': SiVuedotjs,
+  'vue-vine': SiVuedotjs,
+  'svelte': SiSvelte,
+  'astro': SiAstro,
+  'angular-html': SiAngular,
+  'angular-ts': SiAngular,
+  'lit': SiLit,
+  'marko': SiMarko,
+
+  // Markdown
+  'md': SiMarkdown,
+  'markdown': SiMarkdown,
+  'mdc': SiMarkdown,
+  'mdx': SiMdx,
+
+  // Data formats
+  'json': SiJson,
+  'json5': SiJson,
+  'jsonc': SiJson,
+  'jsonl': SiJson,
+  'yaml': SiYaml,
+  'yml': SiYaml,
+  'csv': SiGooglesheets,
+
+  // Shell Scripts
+  'shell': SiGnometerminal,
+  'shellscript': SiGnometerminal,
+  'sh': SiGnometerminal,
+  'bash': SiGnubash,
+  'zsh': SiZsh,
+
+  // Backend languages
+  'c': SiC,
+  'cpp': SiCplusplus,
+  'c++': SiCplusplus,
+  'java': SiOpenjdk,
+  'php': SiPhp,
+  'python': SiPython,
+  'py': SiPython,
+  'r': SiR,
+  'julia': SiJulia,
+  'jl': SiJulia,
+
+  // Query languages
+  'sql': SiPostgresql,
+  'graphql': SiGraphql,
+  'gql': SiGraphql,
+
+  // Template engines
+  'handlebars': SiHandlebarsdotjs,
+  'hbs': SiHandlebarsdotjs,
+  'pug': SiPug,
+  'jade': SiPug,
+  'jinja': SiJinja,
+  'blade': SiLaravel,
+  'haml': SiRuby,
+
+  // Others
+  'http': SiGnometerminal,
+  'hurl': SiGnometerminal,
+  'wasm': SiWebassembly,
+  'wit': SiWebassembly,
+  'glsl': SiWebassembly,
+  'wgsl': SiWebassembly,
+  'regex': SiGnometerminal,
+  'regexp': SiGnometerminal,
+  'jison': SiGnometerminal,
+  'imba': SiJavascript,
 }
 
 async function highlight(
@@ -91,12 +236,20 @@ async function highlight(
   }) as JSX.Element
 }
 
-export function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title = '', live = 'false' }: MDXCodeProps) {
+export function MDXCode({
+  children,
+  line = 'false',
+  nocopy = 'false',
+  lines = '',
+  title = '',
+  live = 'false',
+}: MDXCodeProps) {
   const codeElement = children
   const code = trimTrailingNewlines(codeElement?.props?.children)
   const languageClass = codeElement?.props?.className
   const language = parseLanguageFromClassName(languageClass)
   const languageName = getLanguageDisplayName(language)
+  const LanguageIcon = LanguageIcons[language] ?? CodeIcon
   const highlightLines = parseHighlightLines(lines)
   const showLineNumbers = line === 'true'
   const showCopyButton = nocopy !== 'true'
@@ -145,7 +298,10 @@ export function MDXCode({ children, line = 'false', nocopy = 'false', lines = ''
   return (
     <div className="group relative my-6">
       <div className="border-border bg-muted/30 flex items-center justify-between rounded-t-lg border border-b-0 px-4 py-2">
-        <span className="text-muted-foreground text-xs font-medium">{title || languageName}</span>
+        <div className="inline-flex items-center gap-2">
+          <LanguageIcon className="size-4" />
+          <span className="text-muted-foreground text-xs font-medium">{title || languageName}</span>
+        </div>
         {showCopyButton && <CopyButton variant="outline" content={code} />}
       </div>
       <div

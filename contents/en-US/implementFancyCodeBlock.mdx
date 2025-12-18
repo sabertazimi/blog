@@ -149,9 +149,9 @@ export default function Greet() {
 
 </Editor>
 
-## Language
+## Code Examples
 
-### Markup Code
+### Markup Languages
 
 ```html
 <h2>JSX Heading 2</h2>
@@ -167,50 +167,498 @@ export default function Greet() {
 <div>This is a `p`.</div>
 ```
 
-### CSS Code
+### Styling Languages
 
 ```css
 :root {
   --primary: #1677ff;
   --secondary: #40a9ff;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --font-size: 18px;
 }
 
 body {
-  width: 100%;
   font-family: var(--font-stack);
-  font-size: var(--font-size);
 }
 ```
 
-### TypeScript Code
+```scss
+$primary: #1677ff;
 
-```ts
+.button {
+  background: $primary;
+
+  &:hover {
+    background: darken($primary, 10%);
+  }
+}
+```
+
+```sass
+$font-stack: Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+```
+
+```less
+@primary: #1677ff;
+
+.button {
+  background: @primary;
+  &:hover {
+    background: darken(@primary, 10%);
+  }
+}
+```
+
+```stylus
+primary = #1677ff
+
+.button
+  background primary
+  &:hover
+    background darken(primary, 10%)
+```
+
+```postcss
+@custom-media --small-viewport (max-width: 30em);
+
+@media (--small-viewport) {
+  body {
+    font-size: 14px;
+  }
+}
+```
+
+### Scripting Languages
+
+```js
 const foo = function (bar) {
   return bar++
 }
 
 foo(5)
+```
 
-some.code()
+```ts
+interface User {
+  name: string
+  age: number
+}
+
+const greet = (user: User): string => {
+  return `Hello, ${user.name}!`
+}
+```
+
+```jsx
+function Welcome({ name }) {
+  return <h1>Hello, {name}</h1>
+}
+
+export default function App() {
+  return <Welcome name="World" />
+}
 ```
 
 ```tsx
-{
-  (function () {
-    const guess = 0.44
-
-    if (guess > 0.66) {
-      return <span style={{ color: 'tomato' }}>Look at us.</span>
-    }
-
-    if (guess > 0.33) {
-      return <span style={{ color: 'violet' }}>Who would have guessed?!</span>
-    }
-
-    return <span style={{ color: 'goldenrod' }}>Not me.</span>
-  })()
+interface Props {
+  name: string
 }
+
+const Welcome: React.FC<Props> = ({ name }) => {
+  return <h1>Hello, {name}</h1>
+}
+```
+
+```coffee
+square = (x) -> x * x
+
+list = [1, 2, 3, 4, 5]
+squares = (square num for num in list)
+```
+
+### Frontend Frameworks
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">
+    Count: {{ count }}
+  </button>
+</template>
+```
+
+```svelte
+<script>
+  let count = 0
+
+  function increment() {
+    count += 1
+  }
+</script>
+
+<button on:click={increment}>
+  Clicks: {count}
+</button>
+```
+
+```astro
+---
+const greeting = 'Hello'
+const name = 'Astro'
+---
+
+<h1>{greeting}, {name}!</h1>
+```
+
+```angular-ts
+import { Component } from '@angular/core'
+
+@Component({
+  selector: 'app-root',
+  template: '<h1>{{ title }}</h1>',
+})
+export class AppComponent {
+  title = 'Hello Angular'
+}
+```
+
+```marko
+class {
+  onCreate() {
+    this.state = { count: 0 }
+  }
+  increment() {
+    this.state.count++
+  }
+}
+
+<button on-click('increment')>
+  Count: ${state.count}
+</button>
+```
+
+```lit
+import { html, LitElement } from 'lit'
+
+class MyElement extends LitElement {
+  render() {
+    return html`<p>Hello from LitElement!</p>`
+  }
+}
+```
+
+### Markdown
+
+```md
+# Heading
+
+This is an example of **bold** and *italic* text.
+
+- List item 1
+- List item 2
+
+[Link](https://example.com)
+```
+
+```mdx
+import { Button } from './Button'
+
+# MDX Example
+
+This is an MDX file that can import components.
+
+<Button>Click me</Button>
+```
+
+### Data Formats
+
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "^18.0.0"
+  }
+}
+```
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test
+```
+
+```csv
+name,age,email
+Alice,30,alice@example.com
+Bob,25,bob@example.com
+Charlie,35,charlie@example.com
+```
+
+### Shell Scripts
+
+```bash
+#!/bin/bash
+
+for file in *.txt; do
+  echo "Processing $file"
+  cat "$file" | wc -l
+done
+```
+
+```zsh
+# Zsh specific syntax
+typeset -A colors
+colors=(red '#ff0000' green '#00ff00' blue '#0000ff')
+
+for key value in ${(kv)colors}; do
+  echo "$key: $value"
+done
+```
+
+```shell
+# Generic shell script
+echo "Hello, World!"
+ls -la
+pwd
+```
+
+### Backend Languages
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+```python
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(10))
+```
+
+```php
+<?php
+class User {
+    public string $name;
+
+    public function __construct(string $name) {
+        $this->name = $name;
+    }
+
+    public function greet(): string {
+        return "Hello, {$this->name}!";
+    }
+}
+```
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+```cpp
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5};
+    for (const auto& n : numbers) {
+        std::cout << n << std::endl;
+    }
+    return 0;
+}
+```
+
+```r
+fibonacci <- function(n) {
+  if (n <= 1) return(n)
+  return(fibonacci(n - 1) + fibonacci(n - 2))
+}
+
+print(fibonacci(10))
+```
+
+```julia
+function fibonacci(n)
+    if n <= 1
+        return n
+    end
+    return fibonacci(n - 1) + fibonacci(n - 2)
+end
+
+println(fibonacci(10))
+```
+
+### Query Languages
+
+```sql
+SELECT users.name, orders.total
+FROM users
+INNER JOIN orders ON users.id = orders.user_id
+WHERE orders.created_at > '2024-01-01'
+ORDER BY orders.total DESC
+LIMIT 10;
+```
+
+```graphql
+query GetUser($id: ID!) {
+  user(id: $id) {
+    id
+    name
+    email
+    posts {
+      title
+      content
+    }
+  }
+}
+```
+
+### Template Engines
+
+```pug
+doctype html
+html
+  head
+    title My Site
+  body
+    h1 Welcome
+    p This is a paragraph
+```
+
+```handlebars
+<div class="entry">
+  <h1>{{title}}</h1>
+  {{#if author}}
+    <h2>By {{author.name}}</h2>
+  {{/if}}
+</div>
+```
+
+```jinja
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  {% for item in items %}
+    <li>{{ item.name }}</li>
+  {% endfor %}
+{% endblock %}
+```
+
+```blade
+@extends('layouts.app')
+
+@section('content')
+  <h1>{{ $title }}</h1>
+  @foreach ($users as $user)
+    <p>{{ $user->name }}</p>
+  @endforeach
+@endsection
+```
+
+```haml
+%html
+  %head
+    %title My Site
+  %body
+    %h1 Welcome
+    %p This is a paragraph
+```
+
+### HTTP Requests
+
+```http
+POST /api/users HTTP/1.1
+Host: api.example.com
+Content-Type: application/json
+Authorization: Bearer token123
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+```
+
+```hurl
+GET https://api.example.com/users
+HTTP 200
+[Asserts]
+header "Content-Type" contains "application/json"
+jsonpath "$.users" count == 10
+```
+
+### WebAssembly
+
+```wasm
+(module
+  (func $add (param $a i32) (param $b i32) (result i32)
+    local.get $a
+    local.get $b
+    i32.add)
+  (export "add" (func $add))
+)
+```
+
+### Shader Languages
+
+```glsl
+#version 330 core
+
+in vec3 FragPos;
+in vec3 Normal;
+out vec4 FragColor;
+
+uniform vec3 lightPos;
+uniform vec3 lightColor;
+
+void main() {
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightPos - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = diff * lightColor;
+    FragColor = vec4(diffuse, 1.0);
+}
+```
+
+```wgsl
+@vertex
+fn vs_main(@location(0) position: vec3<f32>) -> @builtin(position) vec4<f32> {
+    return vec4<f32>(position, 1.0);
+}
+
+@fragment
+fn fs_main() -> @location(0) vec4<f32> {
+    return vec4<f32>(1.0, 0.0, 0.0, 1.0);
+}
+```
+
+### Regular Expression
+
+```regex
+^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$
 ```
