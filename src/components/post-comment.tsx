@@ -32,7 +32,7 @@ export function PostComment({ slug }: PostCommentProps) {
           category="Announcements"
           categoryId="DIC_kwDOB5gS284B_CSm"
           mapping="specific"
-          term={slug}
+          term={`${slug.charAt(0).toUpperCase()}${slug.slice(1)}`}
           strict="0"
           reactionsEnabled="1"
           emitMetadata="0"
