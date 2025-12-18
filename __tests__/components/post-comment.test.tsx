@@ -4,7 +4,7 @@ import { render, screen } from '@/tests/test-utils'
 
 describe('PostComment', () => {
   it('should render comments container', () => {
-    render(<PostComment />)
+    render(<PostComment slug="test-post" />)
 
     const commentsContainer = screen.getByTestId('comments-container')
     expect(commentsContainer).toBeInTheDocument()
@@ -12,13 +12,13 @@ describe('PostComment', () => {
   })
 
   it('should not render Giscus initially before intersection', () => {
-    render(<PostComment />)
+    render(<PostComment slug="test-post" />)
 
     expect(screen.queryByTestId('giscus')).not.toBeInTheDocument()
   })
 
   it('should setup IntersectionObserver for lazy loading', () => {
-    render(<PostComment />)
+    render(<PostComment slug="test-post" />)
 
     const commentsContainer = screen.getByTestId('comments-container')
     expect(commentsContainer).toBeInTheDocument()
