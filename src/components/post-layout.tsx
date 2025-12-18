@@ -32,7 +32,7 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
             <PostShare url={`${siteConfig.url}/post/${slug}`} title={title} />
           </PostSection>
           <PostSection>
-            <PostComment />
+            <PostComment slug={slug} />
           </PostSection>
         </article>
         <aside data-testid="post-toc-aside" className="hidden w-96 shrink-0 p-6 lg:block lg:p-10">
