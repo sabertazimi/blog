@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostMetadata from '@/components/post-metadata'
+import { PostMetadata } from '@/components/post-metadata'
 import { render, screen } from '@/tests/test-utils'
 
 describe('PostMetadata', () => {

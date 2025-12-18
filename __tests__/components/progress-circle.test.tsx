@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import ProgressCircle from '@/components/progress-circle'
+import { ProgressCircle } from '@/components/progress-circle'
 import { render, screen } from '@/tests/test-utils'
 
 describe('ProgressCircle', () => {

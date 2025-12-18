@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostHeader from '@/components/post-header'
+import { PostHeader } from '@/components/post-header'
 import { mockPost } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

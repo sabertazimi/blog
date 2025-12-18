@@ -20,7 +20,7 @@ interface TagFilterProps {
   selectedTag: string
 }
 
-function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterProps) {
+export function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterProps) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const t = useTranslations('post')
   const tCommon = useTranslations('common')
@@ -94,5 +94,3 @@ function TagFilter({ tagsMeta: { allTags, tagCounts }, selectedTag }: TagFilterP
     </>
   )
 }
-
-export default TagFilter

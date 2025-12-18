@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import MainNav from '@/components/main-nav'
+import { MainNav } from '@/components/main-nav'
 import { usePathname } from '@/tests/mocks/navigation'
 import { render, screen } from '@/tests/test-utils'
 

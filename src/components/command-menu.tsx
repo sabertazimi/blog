@@ -5,7 +5,7 @@ import { useRouter } from '@bprogress/next/app'
 import { FileTextIcon, SearchIcon, TagIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
-import FormattedDate from '@/components/formatted-date'
+import { FormattedDate } from '@/components/formatted-date'
 import { Button } from '@/components/ui/button'
 import {
   CommandDialog,
@@ -23,7 +23,7 @@ interface CommandMenuProps {
   metadata: Metadata
 }
 
-function CommandMenu({
+export function CommandMenu({
   metadata: {
     posts,
     tags: { allTags, tagCounts },
@@ -155,5 +155,3 @@ function CommandMenu({
     </>
   )
 }
-
-export default CommandMenu

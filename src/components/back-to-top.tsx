@@ -14,7 +14,7 @@ interface BackToTopProps extends ButtonProps {
   scrollTo?: number
 }
 
-function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackToTopProps) {
+export function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackToTopProps) {
   const [visible, setVisible] = useState(false)
   const t = useTranslations('common')
 
@@ -63,5 +63,3 @@ function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }: BackT
     </Button>
   )
 }
-
-export default BackToTop

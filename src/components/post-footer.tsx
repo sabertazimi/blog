@@ -9,7 +9,7 @@ interface PostFooterProps {
   nextPost: PostMeta['nextPost']
 }
 
-function PostFooter({ prevPost, nextPost }: PostFooterProps) {
+export function PostFooter({ prevPost, nextPost }: PostFooterProps) {
   const t = useTranslations('common')
 
   return (
@@ -36,7 +36,7 @@ function PostFooter({ prevPost, nextPost }: PostFooterProps) {
   )
 }
 
-function PostFooterItem({
+export function PostFooterItem({
   url,
   title,
   description,
@@ -71,5 +71,3 @@ function PostFooterItem({
     </Link>
   )
 }
-
-export default PostFooter

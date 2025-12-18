@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostFooter from '@/components/post-footer'
+import { PostFooter } from '@/components/post-footer'
 import { mockPost } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

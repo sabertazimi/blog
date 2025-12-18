@@ -1,6 +1,6 @@
 import { CalendarIcon, ClockIcon, SquarePenIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import FormattedDate from '@/components/formatted-date'
+import { FormattedDate } from '@/components/formatted-date'
 import { cn } from '@/lib/utils'
 
 interface PostMetadataProps {
@@ -10,7 +10,7 @@ interface PostMetadataProps {
   className?: string
 }
 
-function PostMetadata({ createTime, updateTime, readingTime, className }: PostMetadataProps) {
+export function PostMetadata({ createTime, updateTime, readingTime, className }: PostMetadataProps) {
   const t = useTranslations('post')
 
   return (
@@ -40,5 +40,3 @@ function PostMetadata({ createTime, updateTime, readingTime, className }: PostMe
     </>
   )
 }
-
-export default PostMetadata

@@ -1,6 +1,6 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { describe, expect, it } from 'vitest'
-import PostContent from '@/components/post-content'
+import { PostContent } from '@/components/post-content'
 import { render, screen } from '@/tests/test-utils'
 
 describe('PostContent', () => {

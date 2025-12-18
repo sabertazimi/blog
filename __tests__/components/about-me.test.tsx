@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import AboutMe from '@/components/about-me'
+import { AboutMe } from '@/components/about-me'
 import { mockProfile, mockRepos } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import MobileNav from '@/components/mobile-nav'
+import { MobileNav } from '@/components/mobile-nav'
 import { usePathname } from '@/tests/mocks/navigation'
 import { render, screen, waitFor } from '@/tests/test-utils'
 

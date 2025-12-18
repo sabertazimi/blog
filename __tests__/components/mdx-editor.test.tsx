@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import MDXEditor from '@/components/mdx-editor'
+import { MDXEditor } from '@/components/mdx-editor'
 import { render, screen, waitFor } from '@/tests/test-utils'
 
 // Unmock MDXEditor for this test file since we're testing the component itself

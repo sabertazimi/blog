@@ -7,7 +7,7 @@ interface RepoCardProps {
   repo: Repo
 }
 
-function RepoCard({ repo }: RepoCardProps) {
+export function RepoCard({ repo }: RepoCardProps) {
   return (
     <Link
       href={repo.repoUrl}
@@ -42,5 +42,3 @@ function RepoCard({ repo }: RepoCardProps) {
     </Link>
   )
 }
-
-export default RepoCard

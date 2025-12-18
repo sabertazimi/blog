@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostCard from '@/components/post-card'
+import { PostCard } from '@/components/post-card'
 import { mockPost } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

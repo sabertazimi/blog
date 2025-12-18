@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { getLocale, getTranslations } from 'next-intl/server'
-import NotFoundResult from '@/components/not-found-result'
-import PageHeader from '@/components/page-header'
-import DefaultLayout from '@/layouts/default-layout'
-import getBuildTime from '@/lib/get-build-time'
+import { NotFoundResult } from '@/components/not-found-result'
+import { PageHeader } from '@/components/page-header'
+import { DefaultLayout } from '@/layouts/default-layout'
+import { getBuildTime } from '@/lib/get-build-time'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { getMetadata } from '@/lib/seo'
 

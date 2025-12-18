@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import SiteFooter from '@/components/site-footer'
+import { SiteFooter } from '@/components/site-footer'
 import { render, screen } from '@/tests/test-utils'
 
 describe('SiteFooter', () => {

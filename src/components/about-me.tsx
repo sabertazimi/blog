@@ -1,16 +1,16 @@
 import type { Profile, Repo } from '@/types'
 import { GitForkIcon, StarIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import ProfileCard from '@/components/profile-card'
-import RepoCard from '@/components/repo-card'
-import StatCard from '@/components/stat-card'
+import { ProfileCard } from '@/components/profile-card'
+import { RepoCard } from '@/components/repo-card'
+import { StatCard } from '@/components/stat-card'
 
 interface AboutMeProps {
   profile: Profile
   repos: Repo[]
 }
 
-function AboutMe({ profile, repos }: AboutMeProps) {
+export function AboutMe({ profile, repos }: AboutMeProps) {
   const t = useTranslations('about')
 
   return (
@@ -47,5 +47,3 @@ function AboutMe({ profile, repos }: AboutMeProps) {
     </div>
   )
 }
-
-export default AboutMe

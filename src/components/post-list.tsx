@@ -1,6 +1,6 @@
 import type { PostsMeta } from '@/types'
 import { Suspense } from 'react'
-import PostCard from '@/components/post-card'
+import { PostCard } from '@/components/post-card'
 import { cn } from '@/lib/utils'
 
 interface PostListProps {
@@ -8,7 +8,7 @@ interface PostListProps {
   selectedTag: string
 }
 
-function PostList({ postsMeta, selectedTag }: PostListProps) {
+export function PostList({ postsMeta, selectedTag }: PostListProps) {
   const filteredPosts = selectedTag === 'All' ? postsMeta : postsMeta.filter(post => post.tags?.includes(selectedTag))
 
   return (
@@ -38,5 +38,3 @@ function PostList({ postsMeta, selectedTag }: PostListProps) {
     </div>
   )
 }
-
-export default PostList

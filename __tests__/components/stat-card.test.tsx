@@ -1,6 +1,6 @@
 import { GitForkIcon } from 'lucide-react'
 import { describe, expect, it } from 'vitest'
-import StatCard from '@/components/stat-card'
+import { StatCard } from '@/components/stat-card'
 import { render, screen } from '@/tests/test-utils'
 
 describe('StatCard', () => {

@@ -8,7 +8,7 @@ interface PageHeaderProps {
   children?: ReactNode
 }
 
-export default function PageHeader({ title, description, showFlickeringGrid = true, children }: PageHeaderProps) {
+export function PageHeader({ title, description, showFlickeringGrid = true, children }: PageHeaderProps) {
   return (
     <>
       {showFlickeringGrid && (

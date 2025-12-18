@@ -11,7 +11,7 @@ interface PostShareProps {
   title: string
 }
 
-function PostShare({ url, title }: PostShareProps) {
+export function PostShare({ url, title }: PostShareProps) {
   const t = useTranslations('share')
 
   const handleShare = (shareUrl: string) => {
@@ -52,5 +52,3 @@ function PostShare({ url, title }: PostShareProps) {
     </div>
   )
 }
-
-export default PostShare

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import BackToTop from '@/components/back-to-top'
+import { BackToTop } from '@/components/back-to-top'
 import { render, screen, waitFor } from '@/tests/test-utils'
 
 describe('BackToTop', () => {

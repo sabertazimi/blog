@@ -1,10 +1,10 @@
 import type { Metadata } from '@/types'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import CommandMenu from '@/components/command-menu'
-import LanguageSwitcher from '@/components/language-switcher'
-import MainNav from '@/components/main-nav'
-import MobileNav from '@/components/mobile-nav'
+import { CommandMenu } from '@/components/command-menu'
+import { LanguageSwitcher } from '@/components/language-switcher'
+import { MainNav } from '@/components/main-nav'
+import { MobileNav } from '@/components/mobile-nav'
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/navigation'
@@ -13,7 +13,7 @@ interface Props {
   metadata: Metadata
 }
 
-function Header({ metadata }: Props) {
+export function SiteHeader({ metadata }: Props) {
   const t = useTranslations('site')
   const siteTitle = t('title')
 
@@ -39,5 +39,3 @@ function Header({ metadata }: Props) {
     </header>
   )
 }
-
-export default Header

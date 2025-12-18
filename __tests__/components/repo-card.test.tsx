@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import RepoCard from '@/components/repo-card'
+import { RepoCard } from '@/components/repo-card'
 import { colors } from '@/lib/colors'
 import { mockRepos } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'

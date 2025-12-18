@@ -78,7 +78,7 @@ function getMultiFileConfig(children: ReactNode): Record<string, { code: string 
   }, {})
 }
 
-function MDXEditor({ template = 'react-ts', live = false, language, code, children }: MDXEditorProps) {
+export function MDXEditor({ template = 'react-ts', live = false, language, code, children }: MDXEditorProps) {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -113,5 +113,3 @@ function MDXEditor({ template = 'react-ts', live = false, language, code, childr
     </div>
   )
 }
-
-export default MDXEditor

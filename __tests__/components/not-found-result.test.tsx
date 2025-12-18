@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import NotFoundResult from '@/components/not-found-result'
+import { NotFoundResult } from '@/components/not-found-result'
 import { render, screen } from '@/tests/test-utils'
 
 describe('NotFoundResult', () => {

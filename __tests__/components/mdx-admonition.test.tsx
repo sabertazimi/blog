@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import MDXAdmonition from '@/components/mdx-admonition'
+import { MDXAdmonition } from '@/components/mdx-admonition'
 import { render, screen } from '@/tests/test-utils'
 
 describe('MDXAdmonition', () => {

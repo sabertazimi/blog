@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import LanguageSwitcher from '@/components/language-switcher'
+import { LanguageSwitcher } from '@/components/language-switcher'
 import { routing } from '@/i18n/routing'
 import { mockPush } from '@/tests/mocks/navigation'
 import { render, screen } from '@/tests/test-utils'

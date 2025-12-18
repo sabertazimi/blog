@@ -2,7 +2,7 @@ import type { Profile } from '@/types'
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { CalendarIcon, MapPinIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import FormattedDate from '@/components/formatted-date'
+import { FormattedDate } from '@/components/formatted-date'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -12,7 +12,7 @@ interface ProfileCardProps {
   profile: Profile
 }
 
-function ProfileCard({ profile }: ProfileCardProps) {
+export function ProfileCard({ profile }: ProfileCardProps) {
   const t = useTranslations('about')
 
   return (
@@ -71,5 +71,3 @@ function ProfileCard({ profile }: ProfileCardProps) {
     </Card>
   )
 }
-
-export default ProfileCard

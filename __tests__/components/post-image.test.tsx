@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostImage from '@/components/post-image'
+import { PostImage } from '@/components/post-image'
 import { fireEvent, render, screen } from '@/tests/test-utils'
 
 describe('PostImage', () => {

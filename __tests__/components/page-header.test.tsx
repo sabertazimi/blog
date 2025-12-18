@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PageHeader from '@/components/page-header'
+import { PageHeader } from '@/components/page-header'
 import { render, screen } from '@/tests/test-utils'
 
 describe('PageHeader', () => {
