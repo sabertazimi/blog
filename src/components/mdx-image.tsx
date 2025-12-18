@@ -12,7 +12,7 @@ interface MDXImageProps {
 
 function MDXImage({ src, alt = 'Image', title, className }: MDXImageProps) {
   return (
-    <span className="block space-y-2 text-center">
+    <figure className="prose-img:m-0 text-center">
       <span className="relative block h-128 w-full overflow-hidden">
         <PostImage
           src={src}
@@ -23,11 +23,11 @@ function MDXImage({ src, alt = 'Image', title, className }: MDXImageProps) {
         />
       </span>
       {title !== undefined && title !== '' && (
-        <span data-testid="mdx-image-title" className="text-muted-foreground line-clamp-3 text-sm">
+        <figcaption data-testid="mdx-image-title" className="line-clamp-3">
           {title}
-        </span>
+        </figcaption>
       )}
-    </span>
+    </figure>
   )
 }
 
