@@ -1,11 +1,11 @@
 import type { Post } from '@/types'
-import BackToTop from '@/components/back-to-top'
+import { BackToTop } from '@/components/back-to-top'
 import { PostComment } from '@/components/post-comment'
-import PostContent from '@/components/post-content'
-import PostFooter from '@/components/post-footer'
-import PostImage from '@/components/post-image'
+import { PostContent } from '@/components/post-content'
+import { PostFooter } from '@/components/post-footer'
+import { PostImage } from '@/components/post-image'
 import { PostSection } from '@/components/post-section'
-import PostShare from '@/components/post-share'
+import { PostShare } from '@/components/post-share'
 import { PostMainTOC, PostMobileTOC } from '@/components/post-toc'
 import { siteConfig } from '@/lib/site'
 
@@ -13,7 +13,7 @@ interface PostLayoutProps {
   post: Post
 }
 
-function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost } }: PostLayoutProps) {
+export function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost } }: PostLayoutProps) {
   return (
     <>
       <PostMobileTOC title={title} />
@@ -43,5 +43,3 @@ function PostLayout({ post: { source, thumbnail, title, slug, prevPost, nextPost
     </>
   )
 }
-
-export default PostLayout

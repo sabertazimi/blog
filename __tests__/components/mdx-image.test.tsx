@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import MDXImage from '@/components/mdx-image'
+import { MDXImage } from '@/components/mdx-image'
 import { render, screen } from '@/tests/test-utils'
 
 describe('MDXImage', () => {

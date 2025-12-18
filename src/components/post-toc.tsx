@@ -5,7 +5,7 @@ import { ChevronDown, TextAlignStartIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { createContext, use, useEffect, useRef, useState } from 'react'
-import ProgressCircle from '@/components/progress-circle'
+import { ProgressCircle } from '@/components/progress-circle'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { cn } from '@/lib/utils'
 

@@ -3,9 +3,9 @@
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { MDXRemote } from 'next-mdx-remote'
 import dynamic from 'next/dynamic'
-import MDXAdmonition from '@/components/mdx-admonition'
-import MDXCode from '@/components/mdx-code'
-import MDXImage from '@/components/mdx-image'
+import { MDXAdmonition } from '@/components/mdx-admonition'
+import { MDXCode } from '@/components/mdx-code'
+import { MDXImage } from '@/components/mdx-image'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -13,7 +13,7 @@ interface PostContentProps {
   source: MDXRemoteSerializeResult
 }
 
-const MDXEditor = dynamic(async () => import('@/components/mdx-editor'), {
+const MDXEditor = dynamic(async () => (await import('@/components/mdx-editor')).MDXEditor, {
   ssr: false,
 })
 
@@ -25,7 +25,7 @@ const mdxComponents = {
   Editor: MDXEditor,
 }
 
-function PostContent({ source }: PostContentProps) {
+export function PostContent({ source }: PostContentProps) {
   return (
     <div
       data-testid="post-content-container"
@@ -50,5 +50,3 @@ function PostContent({ source }: PostContentProps) {
     </div>
   )
 }
-
-export default PostContent

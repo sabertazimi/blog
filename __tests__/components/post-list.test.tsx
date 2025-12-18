@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostList from '@/components/post-list'
+import { PostList } from '@/components/post-list'
 import { mockPostsMeta } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

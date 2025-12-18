@@ -1,6 +1,6 @@
 import type { Post } from '@/types'
 import { ArrowLeftIcon } from 'lucide-react'
-import PostMetadata from '@/components/post-metadata'
+import { PostMetadata } from '@/components/post-metadata'
 import { Button } from '@/components/ui/button'
 import { Link } from '@/i18n/navigation'
 import { getTagUrl } from '@/lib/utils'
@@ -9,7 +9,7 @@ interface PostHeaderProps {
   postData?: Post
 }
 
-function PostHeader({ postData }: PostHeaderProps) {
+export function PostHeader({ postData }: PostHeaderProps) {
   return (
     <div className="text-muted-foreground flex flex-wrap items-center gap-3 gap-y-5 text-sm">
       <Button variant="outline" asChild className="size-6">
@@ -35,5 +35,3 @@ function PostHeader({ postData }: PostHeaderProps) {
     </div>
   )
 }
-
-export default PostHeader

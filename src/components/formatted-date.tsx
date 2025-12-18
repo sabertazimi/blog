@@ -9,7 +9,7 @@ interface FormattedDateProps {
   icon?: LucideIcon
 }
 
-function FormattedDate({ date, showTime = false, className, icon: Icon }: FormattedDateProps) {
+export function FormattedDate({ date, showTime = false, className, icon: Icon }: FormattedDateProps) {
   const format = useFormatter()
 
   if (date === undefined || date === null) {
@@ -42,5 +42,3 @@ function FormattedDate({ date, showTime = false, className, icon: Icon }: Format
     </time>
   )
 }
-
-export default FormattedDate

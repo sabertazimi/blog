@@ -1,4 +1,4 @@
-import PostImage from '@/components/post-image'
+import { PostImage } from '@/components/post-image'
 import { cn } from '@/lib/utils'
 
 interface MDXImageProps {
@@ -10,7 +10,7 @@ interface MDXImageProps {
   height?: number
 }
 
-function MDXImage({ src, alt = 'Image', title, className }: MDXImageProps) {
+export function MDXImage({ src, alt = 'Image', title, className }: MDXImageProps) {
   return (
     <figure className="prose-img:m-0 text-center">
       <span className="relative block h-128 w-full overflow-hidden">
@@ -30,5 +30,3 @@ function MDXImage({ src, alt = 'Image', title, className }: MDXImageProps) {
     </figure>
   )
 }
-
-export default MDXImage

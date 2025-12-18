@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import CommandMenu from '@/components/command-menu'
+import { CommandMenu } from '@/components/command-menu'
 import { mockMetadata } from '@/tests/fixtures/test-data'
 import { mockPush } from '@/tests/mocks/navigation'
 import { render, screen, waitFor } from '@/tests/test-utils'

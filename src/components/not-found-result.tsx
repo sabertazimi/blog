@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { FuzzyText } from '@/components/ui/fuzzy-text'
 
-function NotFoundResult() {
+export function NotFoundResult() {
   const t = useTranslations('common')
 
   return (
@@ -18,5 +18,3 @@ function NotFoundResult() {
     </div>
   )
 }
-
-export default NotFoundResult

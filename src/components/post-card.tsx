@@ -1,5 +1,5 @@
-import PostImage from '@/components/post-image'
-import PostMetadata from '@/components/post-metadata'
+import { PostImage } from '@/components/post-image'
+import { PostMetadata } from '@/components/post-metadata'
 import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/utils'
 
@@ -13,7 +13,7 @@ interface PostCardProps {
   showRightBorder?: boolean
 }
 
-function PostCard({
+export function PostCard({
   url,
   title,
   description,
@@ -49,5 +49,3 @@ function PostCard({
     </Link>
   )
 }
-
-export default PostCard

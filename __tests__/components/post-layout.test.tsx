@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostLayout from '@/components/post-layout'
+import { PostLayout } from '@/components/post-layout'
 import { mockPost } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import LandingNav from '@/components/landing-nav'
+import { LandingNav } from '@/components/landing-nav'
 import { render, screen } from '@/tests/test-utils'
 
 describe('LandingNav', () => {

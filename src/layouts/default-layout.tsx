@@ -1,15 +1,15 @@
 import type { BuildTime, Metadata } from '@/types'
 import * as React from 'react'
-import SiteFooter from '@/components/site-footer'
-import SiteHeader from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+import { SiteHeader } from '@/components/site-header'
 
-interface Props {
+interface DefaultLayoutProps {
   metadata: Metadata
   buildTime: BuildTime
   children: React.ReactNode
 }
 
-function Layout({ metadata, buildTime, children }: Props) {
+export function DefaultLayout({ metadata, buildTime, children }: DefaultLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader metadata={metadata} />
@@ -18,5 +18,3 @@ function Layout({ metadata, buildTime, children }: Props) {
     </div>
   )
 }
-
-export default Layout

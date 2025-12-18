@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { BuildTime } from '@/types'
 import { useTranslations } from 'next-intl'
-import FormattedDate from '@/components/formatted-date'
+import { FormattedDate } from '@/components/formatted-date'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/lib/site'
 import { socialLinks } from '@/lib/social'
@@ -11,7 +11,7 @@ interface Props {
   buildTime: BuildTime
 }
 
-function SiteFooter({ buildTime }: Props) {
+export function SiteFooter({ buildTime }: Props) {
   const t = useTranslations('footer')
 
   return (
@@ -95,5 +95,3 @@ function SiteFooter({ buildTime }: Props) {
     </footer>
   )
 }
-
-export default SiteFooter

@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import LandingNav from '@/components/landing-nav'
+import { LandingNav } from '@/components/landing-nav'
 import { GravityStarsBackground } from '@/components/ui/gravity-stars'
 import { MorphingText } from '@/components/ui/morphing-text'
 import { resolveLocale } from '@/i18n/utils'

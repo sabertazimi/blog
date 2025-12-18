@@ -12,7 +12,7 @@ import { Link, usePathname } from '@/i18n/navigation'
 import { getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
-function MainNav() {
+export function MainNav() {
   const pathname = usePathname()
   const t = useTranslations('routes')
   const routes = getRoutes(t)
@@ -40,5 +40,3 @@ function MainNav() {
     </NavigationMenu>
   )
 }
-
-export default MainNav

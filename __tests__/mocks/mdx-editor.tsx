@@ -18,7 +18,5 @@ const MDXEditor = vi.fn(({ code, language }: { code?: string, language?: string 
 ))
 
 vi.mock('@/components/mdx-editor', () => ({
-  default: MDXEditor,
+  MDXEditor,
 }))
-
-export default MDXEditor

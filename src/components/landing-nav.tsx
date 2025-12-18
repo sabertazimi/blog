@@ -10,7 +10,7 @@ import { Link } from '@/i18n/navigation'
 import { getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
-function LandingNav() {
+export function LandingNav() {
   const t = useTranslations('routes')
   const routes = getRoutes(t)
 
@@ -43,5 +43,3 @@ function LandingNav() {
     </TooltipProvider>
   )
 }
-
-export default LandingNav

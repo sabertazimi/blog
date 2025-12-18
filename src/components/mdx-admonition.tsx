@@ -76,7 +76,7 @@ function normalizeType(type?: string): AdmonitionVariant {
   return 'info'
 }
 
-function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmonitionProps) {
+export function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmonitionProps) {
   const t = useTranslations('admonition')
   const normalizedType = normalizeType(type)
   const displayTitle = title !== undefined && title !== '' ? title : t(normalizedType)
@@ -104,5 +104,3 @@ function MDXAdmonition({ type, title, children, className, ...props }: MDXAdmoni
     </Alert>
   )
 }
-
-export default MDXAdmonition

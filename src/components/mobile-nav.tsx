@@ -8,7 +8,7 @@ import { Link, usePathname } from '@/i18n/navigation'
 import { getRoutes } from '@/lib/get-routes'
 import { cn } from '@/lib/utils'
 
-function MobileNav() {
+export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const t = useTranslations('routes')
@@ -78,5 +78,3 @@ function MobileNav() {
     </div>
   )
 }
-
-export default MobileNav

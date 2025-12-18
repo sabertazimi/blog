@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import FormattedDate from '@/components/formatted-date'
+import { FormattedDate } from '@/components/formatted-date'
 import { render, screen } from '@/tests/test-utils'
 
 describe('FormattedDate', () => {

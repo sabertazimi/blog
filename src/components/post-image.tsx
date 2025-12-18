@@ -16,7 +16,7 @@ interface PostImageProps {
   className?: string
 }
 
-function PostImage({
+export function PostImage({
   src,
   alt,
   placeholder,
@@ -77,5 +77,3 @@ function PostImage({
     </>
   )
 }
-
-export default PostImage

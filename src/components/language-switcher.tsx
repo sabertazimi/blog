@@ -22,7 +22,7 @@ const localeNames: Record<Locale, { flag: string, name: string }> = {
   'zh-CN': { flag: '🇨🇳', name: '中文' },
 }
 
-function LanguageSwitcher() {
+export function LanguageSwitcher() {
   const router = useRouter({ customRouter: useNavigationRouter })
   const pathname = usePathname()
   const currentLocale = useLocale()
@@ -65,5 +65,3 @@ function LanguageSwitcher() {
     </DropdownMenu>
   )
 }
-
-export default LanguageSwitcher

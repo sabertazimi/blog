@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import ProfileCard from '@/components/profile-card'
+import { ProfileCard } from '@/components/profile-card'
 import { mockProfile } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 

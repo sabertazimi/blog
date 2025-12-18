@@ -8,7 +8,7 @@ interface StatCardProps {
   icon: LucideIcon
 }
 
-function StatCard({ title, value, description, icon: Icon }: StatCardProps) {
+export function StatCard({ title, value, description, icon: Icon }: StatCardProps) {
   return (
     <Card className="border-border">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -22,5 +22,3 @@ function StatCard({ title, value, description, icon: Icon }: StatCardProps) {
     </Card>
   )
 }
-
-export default StatCard

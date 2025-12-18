@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import PostShare from '@/components/post-share'
+import { PostShare } from '@/components/post-share'
 import { render, screen } from '@/tests/test-utils'
 
 describe('PostShare', () => {

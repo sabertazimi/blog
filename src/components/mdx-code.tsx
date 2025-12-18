@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes'
 import { Fragment, useEffect, useState } from 'react'
 import { jsx, jsxs } from 'react/jsx-runtime'
 import { codeToHast } from 'shiki/bundle/web'
-import MDXEditor from '@/components/mdx-editor'
+import { MDXEditor } from '@/components/mdx-editor'
 import { CopyButton } from '@/components/ui/copy-button'
 import { Skeleton } from '@/components/ui/skeleton'
 import {
@@ -91,7 +91,7 @@ async function highlight(
   }) as JSX.Element
 }
 
-function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title = '', live = 'false' }: MDXCodeProps) {
+export function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title = '', live = 'false' }: MDXCodeProps) {
   const codeElement = children
   const code = trimTrailingNewlines(codeElement?.props?.children)
   const languageClass = codeElement?.props?.className
@@ -161,5 +161,3 @@ function MDXCode({ children, line = 'false', nocopy = 'false', lines = '', title
     </div>
   )
 }
-
-export default MDXCode

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import MDXCode from '@/components/mdx-code'
+import { MDXCode } from '@/components/mdx-code'
 import { render, screen, waitFor } from '@/tests/test-utils'
 
 vi.mock('shiki/bundle/web', () => ({

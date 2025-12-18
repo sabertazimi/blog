@@ -13,7 +13,7 @@ function clamp(input: number, min: number, max: number): number {
   return Math.min(Math.max(input, min), max)
 }
 
-function ProgressCircle({
+export function ProgressCircle({
   value,
   strokeWidth = 2,
   size = 24,
@@ -57,5 +57,3 @@ function ProgressCircle({
     </svg>
   )
 }
-
-export default ProgressCircle
