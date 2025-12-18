@@ -60,7 +60,10 @@ describe('MDXCode', () => {
     render(<MDXCode>{codeElement as any}</MDXCode>)
 
     await waitFor(() => {
-      expect(screen.getByText('TypeScript')).toBeInTheDocument()
+      const elements = screen.getAllByText('TypeScript')
+      expect(elements.length).toBeGreaterThanOrEqual(1)
+      const spanElement = elements.find(el => el.tagName === 'SPAN')
+      expect(spanElement).toBeInTheDocument()
     })
   })
 
