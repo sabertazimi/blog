@@ -78,7 +78,8 @@ export function parseLanguageFromClassName(languageClass?: string): BundledLangu
 }
 
 /**
- * Convert display names that are not capitalized
+ * Language identifier to human-readable display name mapping
+ * Normalizes short or variant identifiers to consistent display names
  * Example: 'angular-ts' -> 'Angular'
  */
 const LanguageDisplayNames: Record<string, string> = {
@@ -127,7 +128,6 @@ const LanguageDisplayNames: Record<string, string> = {
   'graphql': 'GraphQL',
   'gql': 'GraphQL',
   'http': 'HTTP',
-  'https': 'HTTPS',
   'wasm': 'WebAssembly',
   'wit': 'WebAssembly',
   'glsl': 'GLSL',

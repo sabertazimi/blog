@@ -165,16 +165,16 @@ const LanguageIcons: Partial<Record<BundledLanguage, React.ElementType>> = {
   'haml': SiRuby,
 
   // Others
-  'http': SiGnometerminal,
-  'hurl': SiGnometerminal,
+  'http': CodeIcon,
+  'hurl': CodeIcon,
   'wasm': SiWebassembly,
   'wit': SiWebassembly,
   'glsl': SiWebassembly,
   'wgsl': SiWebassembly,
-  'regex': SiGnometerminal,
-  'regexp': SiGnometerminal,
-  'jison': SiGnometerminal,
-  'imba': SiJavascript,
+  'regex': CodeIcon,
+  'regexp': CodeIcon,
+  'jison': CodeIcon,
+  'imba': CodeIcon,
 }
 
 async function highlight(
