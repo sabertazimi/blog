@@ -17,6 +17,7 @@ import remarkGemoji from 'remark-gemoji'
 import remarkGfm from 'remark-gfm'
 import remarkGitHub from 'remark-github'
 import remarkMath from 'remark-math'
+import rehypeUnwrapImages from '@/lib/rehype-unwrap-images'
 import remarkAdmonitions from '@/lib/remark-admonitions'
 
 const contentsBasePath = path.join(process.cwd(), 'contents')
@@ -77,6 +78,7 @@ async function generatePostData(filePath: string): Promise<Post> {
         rehypeExternalLinks,
         rehypeKatex,
         rehypeMdxCodeProps,
+        rehypeUnwrapImages,
       ],
     },
   })
