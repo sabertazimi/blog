@@ -518,7 +518,7 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
 
   if (toc.length === 0) {
     return (
-      <div className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}>
+      <div className={cn('sticky top-24 flex h-[calc(100vh-8rem)] flex-col overflow-hidden', className)}>
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
           {t('onThisPage')}
@@ -531,7 +531,7 @@ export function PostMainTOC({ toc: manualToc, className, single = false, heading
     <AnchorProvider toc={toc} single={single}>
       <div
         data-testid="post-main-toc"
-        className={cn('sticky top-24 flex h-[calc(80vh-6rem)] flex-col overflow-hidden', className)}
+        className={cn('sticky top-24 flex h-[calc(100vh-8rem)] flex-col overflow-hidden', className)}
       >
         <h3 className="text-muted-foreground inline-flex shrink-0 items-center gap-1.5 text-sm font-medium">
           <TextAlignStartIcon className="size-4" />
