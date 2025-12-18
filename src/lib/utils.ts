@@ -26,7 +26,7 @@ export function getTagUrl(tag: string) {
 /**
  * Language to default filepath mapping for code editor
  */
-const LANGUAGE_DEFAULT_FILEPATHS: Record<string, string> = {
+const LanguageDefaultFilepaths: Record<string, string> = {
   css: '/styles.css',
   js: '/App.js',
   javascript: '/App.js',
@@ -47,7 +47,7 @@ const LANGUAGE_DEFAULT_FILEPATHS: Record<string, string> = {
 export function normalizeFilepath(filename?: string, language?: string): string {
   // If no filename provided, generate default based on language
   if (filename == null || filename === '') {
-    return LANGUAGE_DEFAULT_FILEPATHS[language ?? ''] ?? '/App.tsx'
+    return LanguageDefaultFilepaths[language ?? ''] ?? '/App.tsx'
   }
 
   // Ensure leading slash
@@ -78,27 +78,60 @@ export function parseLanguageFromClassName(languageClass?: string): BundledLangu
 }
 
 /**
- * Language display name mapping
+ * Language identifier to human-readable display name mapping
+ * Normalizes short or variant identifiers to consistent display names
+ * Example: 'angular-ts' -> 'Angular'
  */
-const LANGUAGE_DISPLAY_NAMES: Record<string, string> = {
-  html: 'HTML',
-  xml: 'XML',
-  yml: 'YAML',
-  yaml: 'YAML',
-  css: 'CSS',
-  json: 'JSON',
-  md: 'Markdown',
-  markdown: 'Markdown',
-  js: 'JavaScript',
-  javascript: 'JavaScript',
-  ts: 'TypeScript',
-  typescript: 'TypeScript',
-  coffee: 'CoffeeScript',
-  coffeescript: 'CoffeeScript',
-  jsx: 'React',
-  tsx: 'React',
-  objc: 'Objective-C',
-  objectivec: 'Objective-C',
+const LanguageDisplayNames: Record<string, string> = {
+  'html': 'HTML',
+  'xml': 'XML',
+  'css': 'CSS',
+  'styl': 'Stylus',
+  'postcss': 'PostCSS',
+  'js': 'JavaScript',
+  'javascript': 'JavaScript',
+  'cjs': 'JavaScript',
+  'mjs': 'JavaScript',
+  'jsx': 'React',
+  'ts': 'TypeScript',
+  'typescript': 'TypeScript',
+  'cts': 'TypeScript',
+  'mts': 'TypeScript',
+  'tsx': 'React',
+  'coffee': 'CoffeeScript',
+  'coffeescript': 'CoffeeScript',
+  'vue-html': 'Vue',
+  'angular-html': 'Angular',
+  'angular-ts': 'Angular',
+  'md': 'Markdown',
+  'markdown': 'Markdown',
+  'mdc': 'Markdown',
+  'mdx': 'MDX',
+  'json': 'JSON',
+  'json5': 'JSON',
+  'jsonc': 'JSON',
+  'jsonl': 'JSON',
+  'yaml': 'YAML',
+  'yml': 'YAML',
+  'csv': 'CSV',
+  'shellscript': 'Shell',
+  'sh': 'Shell',
+  'cpp': 'C++',
+  'php': 'PHP',
+  'py': 'Python',
+  'jl': 'Julia',
+  'cs': 'C#',
+  'csharp': 'C#',
+  'objc': 'Objective-C',
+  'objectivec': 'Objective-C',
+  'sql': 'SQL',
+  'graphql': 'GraphQL',
+  'gql': 'GraphQL',
+  'http': 'HTTP',
+  'wasm': 'WebAssembly',
+  'wit': 'WebAssembly',
+  'glsl': 'GLSL',
+  'wgsl': 'WGSL',
 }
 
 /**
@@ -111,7 +144,7 @@ export function getLanguageDisplayName(language?: string): string {
     return ''
   }
 
-  return LANGUAGE_DISPLAY_NAMES[language] || language.charAt(0).toUpperCase() + language.slice(1)
+  return LanguageDisplayNames[language] || language.charAt(0).toUpperCase() + language.slice(1)
 }
 
 /**
