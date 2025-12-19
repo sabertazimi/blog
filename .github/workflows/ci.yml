@@ -121,7 +121,7 @@ jobs:
         run: |
           pnpm e2e
       - name: Archive e2e report
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
@@ -158,7 +158,7 @@ jobs:
         run: |
           pnpm build
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' }}
         with:
           name: app
