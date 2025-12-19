@@ -103,7 +103,7 @@ jobs:
         id: playwright-version
         run: echo "version=$(jq -r '.devDependencies["@playwright/test"]' package.json | sed 's/^[^0-9]*//')" >> $GITHUB_OUTPUT
       - name: Setup Playwright binary cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
