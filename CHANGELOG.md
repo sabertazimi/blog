@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0](https://github.com/sabertazimi/blog/compare/v5.1.0...v5.2.0) (2025-12-19)
+
+
+### :sparkles: Features
+
+* **comments:** replace Disqus with Giscus comment system ([#1548](https://github.com/sabertazimi/blog/issues/1548)) ([e1fb500](https://github.com/sabertazimi/blog/commit/e1fb500c60fefb8c5d0a469ae4dd5726d2a74968))
+* **mdx-code:** add language icons with comprehensive code examples ([#1559](https://github.com/sabertazimi/blog/issues/1559)) ([2755f51](https://github.com/sabertazimi/blog/commit/2755f510aef55e69140c661ffcc40a86f595a8ac))
+* **typography:** add LXGW fonts and apply serif styling to headings ([#1543](https://github.com/sabertazimi/blog/issues/1543)) ([6aab1b0](https://github.com/sabertazimi/blog/commit/6aab1b0b828fa1d8cd2ca6e830a5cd8fed65a7c1))
+
+
+### :bug: Bug Fixes
+
+* **comments:** change default comment order from newest to oldest ([#1554](https://github.com/sabertazimi/blog/issues/1554)) ([bb18a59](https://github.com/sabertazimi/blog/commit/bb18a59214056246c5e50ae246d96bf40a01f237))
+* **comments:** configure Giscus to use slug-based discussion mapping ([#1550](https://github.com/sabertazimi/blog/issues/1550)) ([00086fb](https://github.com/sabertazimi/blog/commit/00086fba95230b1c91da6cc4d334bddd5c439c0e))
+* **components-command:** exclude 'all' tag from filtered tags in command menu ([#1532](https://github.com/sabertazimi/blog/issues/1532)) ([5f45499](https://github.com/sabertazimi/blog/commit/5f45499173d1790946ef84f6fa4bf18e14f7ee86))
+* **components-command:** increase border radius of command menu count tag ([#1530](https://github.com/sabertazimi/blog/issues/1530)) ([75bfe09](https://github.com/sabertazimi/blog/commit/75bfe09b91571ced8836d60930f3a5d7513b6994))
+* **deps:** update dependencies (non-major) ([#1534](https://github.com/sabertazimi/blog/issues/1534)) ([04a5164](https://github.com/sabertazimi/blog/commit/04a5164d85395cc192593a8821c569330f7fc859))
+* **deps:** update Next.js to 16.0.7 to fix CVE-2025-66478 RCE vulnerability ([#1535](https://github.com/sabertazimi/blog/issues/1535)) ([b73748a](https://github.com/sabertazimi/blog/commit/b73748ac9a3e5b457c35362f043d9dce560a372b))
+* **mdx-image:** add rehype plugin to unwrap images from paragraphs ([#1557](https://github.com/sabertazimi/blog/issues/1557)) ([933f588](https://github.com/sabertazimi/blog/commit/933f5883add8d44e9f8b44b1c8b1dde9069613e1))
+* **mdx-image:** replace span elements with figure and figcaption for better accessibility ([#1553](https://github.com/sabertazimi/blog/issues/1553)) ([5b3f9d9](https://github.com/sabertazimi/blog/commit/5b3f9d989712a607d06b0288afc257978b9734fa))
+* **post-content:** enhance text styling by adding strong text color ([#1537](https://github.com/sabertazimi/blog/issues/1537)) ([447215e](https://github.com/sabertazimi/blog/commit/447215eb7c7a2c55d8f4a02a84c3843bccc3adee))
+* **post-toc:** adjust height calculation to use full viewport height ([#1558](https://github.com/sabertazimi/blog/issues/1558)) ([e371637](https://github.com/sabertazimi/blog/commit/e371637c9707eccbf2a84c6beab6fb30902d02d6))
+* **style-font:** change default font family ([#1529](https://github.com/sabertazimi/blog/issues/1529)) ([d899ea6](https://github.com/sabertazimi/blog/commit/d899ea62efbb45d122c1c1a6873357c7c90efbd5))
+* **typography:** remove serif font styling from components ([#1544](https://github.com/sabertazimi/blog/issues/1544)) ([fecfef2](https://github.com/sabertazimi/blog/commit/fecfef2948d39f120bcf17eca398ce73edbc6b86))
+
+
+### :hammer: Continuous Integration
+
+* **renovate:** update deps monthly ([c57b9bf](https://github.com/sabertazimi/blog/commit/c57b9bf1f6d5d1814186b7286f74170ddc9f0700))
+
 ## [5.1.0](https://github.com/sabertazimi/blog/compare/v5.0.0...v5.1.0) (2025-11-30)
 
 
