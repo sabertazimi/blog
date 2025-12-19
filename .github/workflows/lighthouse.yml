@@ -91,7 +91,7 @@ jobs:
 
             fs.writeFileSync('lighthouse-${{ matrix.device }}.json', JSON.stringify(data));
       - name: Upload results
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: lighthouse-data-${{ matrix.device }}
           path: lighthouse-${{ matrix.device }}.json
@@ -102,11 +102,11 @@ jobs:
     needs: audit
     steps:
       - name: Download Desktop results
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: lighthouse-data-Desktop
       - name: Download Mobile results
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: lighthouse-data-Mobile
       - name: Format audit result
