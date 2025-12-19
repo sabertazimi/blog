@@ -45,7 +45,6 @@ function getReadingTime(content: string): number {
 }
 
 async function generatePostData(filePath: string): Promise<Post> {
-  // eslint-disable-next-line security/detect-non-literal-fs-filename -- filePath is safe.
   const fileContent = await fs.readFile(filePath, 'utf8')
   const slug = path.basename(filePath, path.extname(filePath))
 
