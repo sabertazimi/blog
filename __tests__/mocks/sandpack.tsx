@@ -27,8 +27,3 @@ export const sandpackDark = {}
 vi.mock('@codesandbox/sandpack-react', () => ({
   Sandpack,
 }))
-
-vi.mock('@codesandbox/sandpack-themes', () => ({
-  githubLight,
-  sandpackDark,
-}))

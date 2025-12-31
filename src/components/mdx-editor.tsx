@@ -1,9 +1,8 @@
 'use client'
 
-import type { SandpackPredefinedTemplate } from '@codesandbox/sandpack-react'
+import type { SandpackPredefinedTemplate, SandpackTheme } from '@codesandbox/sandpack-react'
 import type { ReactElement, ReactNode } from 'react'
 import { Sandpack } from '@codesandbox/sandpack-react'
-import { githubLight, sandpackDark } from '@codesandbox/sandpack-themes'
 import { useTheme } from 'next-themes'
 import { Children, isValidElement, useEffect, useState } from 'react'
 import { normalizeFilepath } from '@/lib/utils'
@@ -78,6 +77,87 @@ function getMultiFileConfig(children: ReactNode): Record<string, { code: string 
   }, {})
 }
 
+/**
+ *
+ * @param {string} theme - 'light' or 'dark'
+ * @returns {SandpackTheme} The theme object
+ * @see https://github.com/antfu/vscode-theme-vitesse/blob/main/themes/vitesse-light.json
+ * @see https://github.com/antfu/vscode-theme-vitesse/blob/main/themes/vitesse-dark.json
+ */
+function buildThemeFromPalette(theme?: string): SandpackTheme {
+  const isDark = theme === 'dark'
+
+  if (isDark) {
+    return {
+      colors: {
+        surface1: '#121212',
+        surface2: '#181818',
+        surface3: '#191919',
+        base: '#808080',
+        clickable: '#999999',
+        disabled: '#4d4d4d',
+        hover: '#c5c5c5',
+        accent: '#80a665',
+        error: '#cb7676',
+        warning: '#d4976c',
+        errorSurface: '#cb767620',
+        warningSurface: '#d4976c20',
+      },
+      syntax: {
+        plain: '#dbd7caee',
+        comment: { color: '#758575dd', fontStyle: 'italic' },
+        keyword: '#4d9375',
+        definition: '#80a665',
+        punctuation: '#666666',
+        property: '#b8a965',
+        tag: '#4d9375',
+        static: '#cb7676',
+        string: '#c98a7d',
+      },
+      font: {
+        body: 'var(--font-sans)',
+        mono: 'var(--font-mono)',
+        size: '13px',
+        lineHeight: '20px',
+      },
+    }
+  }
+
+  return {
+    colors: {
+      surface1: '#ffffff',
+      surface2: '#f7f7f7',
+      surface3: '#f0f0f0',
+      base: '#24292e',
+      clickable: '#959da5',
+      disabled: '#d1d4d8',
+      hover: '#24292e',
+      accent: '#24292e',
+      error: '#ab5959',
+      warning: '#a65e2b',
+      errorSurface: '#ab595920',
+      warningSurface: '#a65e2b20',
+    },
+    syntax: {
+      plain: '#393a34',
+      comment: { color: '#a0ada0', fontStyle: 'italic' },
+      keyword: '#1e754f',
+      definition: '#59873a',
+      punctuation: '#999999',
+      property: '#998418',
+      tag: '#1e754f',
+      static: '#ab5959',
+      string: '#b56959',
+    },
+    font: {
+      body: 'var(--font-sans)',
+      mono: 'var(--font-mono)',
+      size: '13px',
+      lineHeight: '20px',
+    },
+  }
+}
+
 export function MDXEditor({ template = 'react-ts', live = false, language, code, children }: MDXEditorProps) {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
@@ -108,7 +188,7 @@ export function MDXEditor({ template = 'react-ts', live = false, language, code,
           externalResources: [],
         }}
         template={template}
-        theme={resolvedTheme === 'dark' ? sandpackDark : githubLight}
+        theme={buildThemeFromPalette(resolvedTheme)}
       />
     </div>
   )
