@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file provides guidance to code agents when working with code in this repository.
+This file provides guidance to coding agents when working with code in this repository.
 
 ## Quick Start
 
@@ -155,7 +155,7 @@ CI requirements:
 
 ## Commit Guidelines
 
-All commits and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) style:
+All commits and PRs titles must follow [Conventional Commits](https://www.conventionalcommits.org/) style:
 
 ```md
 <type>(<scope>): <description>

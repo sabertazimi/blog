@@ -155,7 +155,7 @@ CI requirements:
 
 ## Commit Guidelines
 
-All commits and PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/) style:
+All commits and PRs titles must follow [Conventional Commits](https://www.conventionalcommits.org/) style:
 
 ```md
 <type>(<scope>): <description>
