@@ -1,5 +1,6 @@
 import type { Post } from '@/types'
 import { BackToTop } from '@/components/back-to-top'
+import { PostAgentActions } from '@/components/post-agent-actions'
 import { PostComment } from '@/components/post-comment'
 import { PostContent } from '@/components/post-content'
 import { PostFooter } from '@/components/post-footer'
@@ -30,6 +31,9 @@ export function PostLayout({ post: { source, thumbnail, title, slug, prevPost, n
           </PostSection>
           <PostSection>
             <PostShare url={`${siteConfig.url}/post/${slug}`} title={title} />
+          </PostSection>
+          <PostSection>
+            <PostAgentActions url={`${siteConfig.url}/post/${slug}`} title={title} />
           </PostSection>
           <PostSection>
             <PostComment slug={slug} />
