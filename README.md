@@ -426,7 +426,7 @@ The blog uses Tailwind CSS with custom CSS variables. Edit `src/app/globals.css`
 [Nature](https://www.shadcn.io/theme/nature) theme example:
 
 ```bash
-pnpm dlx shadcn@latest add https://www.shadcn.io/registry/nature.json
+pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/nature.json
 ```
 
 ### Shadcn UI Registries
