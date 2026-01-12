@@ -262,7 +262,7 @@ This is a note admonition.
 
 // ✅ 使用 Next.js Image 优化
 import Image from 'next/image'
-<Image src="/logo.png" alt="Logo" width={100} height={100} />
+<Image src="/photos/creative-thumbnail.png" alt="Creative Thumbnail" width={100} height={100} />
 
 // ✅ 动态导入（按需加载）
 const HeavyComponent = dynamic(() => import('./HeavyComponent'), {

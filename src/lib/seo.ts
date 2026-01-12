@@ -38,11 +38,6 @@ export function getMetadata({
     creator: author,
     icons: {
       icon: '/favicon.ico',
-      apple: {
-        url: '/images/logo-full.png',
-        sizes: '200x200',
-        type: 'image/png',
-      },
     },
     manifest: '/manifest.json',
     alternates: isLocale
