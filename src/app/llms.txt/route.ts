@@ -21,7 +21,7 @@ async function generateLlmsTxt(): Promise<string> {
     lines.push(`## Posts (${localeName})`)
     posts.slice(0, 20).forEach((post) => {
       const postUrl = `${siteConfig.url}/${locale}/post/${post.slug}`
-      const description = post.description !== undefined && post.description !== '' ? `: ${post.description}` : ''
+      const description = post.description?.trim() !== undefined && post.description.trim() !== '' ? `: ${post.description}` : ''
       lines.push(`- [${post.title}](${postUrl})${description}`)
     })
     lines.push('')

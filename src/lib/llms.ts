@@ -9,7 +9,7 @@ interface ChatbotLink {
   name: string
   id: string
   icon: React.ComponentType<{ className?: string }>
-  getUrl: (params: { content: string, title?: string }) => string
+  getUrl: (params: { content: string }) => string
 }
 
 const chatbotLinks: ChatbotLink[] = [

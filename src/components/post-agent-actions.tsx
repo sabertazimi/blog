@@ -42,7 +42,7 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
 
     if (chatbot) {
       const prompt = getAgentPrompt({ title, url })
-      const chatbotUrl = chatbot.getUrl({ content: prompt, title })
+      const chatbotUrl = chatbot.getUrl({ content: prompt })
       window.open(chatbotUrl, '_blank', 'noopener,noreferrer')
     }
   }
