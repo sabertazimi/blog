@@ -41,69 +41,66 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install
-
       - name: Install Claude Code
         run: |
           npm install -g @anthropic-ai/claude-code
-      - name: Validate secrets
-        run: |
-          if [ -z "${{ secrets.ANTHROPIC_AUTH_TOKEN }}" ]; then
-            echo "::error::ANTHROPIC_AUTH_TOKEN secret is not set"
-            exit 1
-          fi
       - name: Configure Claude Code
         uses: actions/github-script@v8
         with:
           script: |
-            const fs = require('node:fs');
+            const fs = require('node:fs/promises');
             const path = require('node:path');
-            const home = process.env.HOME;
-            const claudeDir = path.join(home, '.claude');
+            core.startGroup('Configure Claude Code');
 
-            // Create .claude directory
-            fs.mkdirSync(claudeDir, { recursive: true });
+            // Validate secrets
+            if (!process.env.ANTHROPIC_AUTH_TOKEN) {
+              core.setFailed('ANTHROPIC_AUTH_TOKEN secret is not set');
+              return;
+            }
+
+            const claudeDir = path.join(process.env.HOME, '.claude');
+            core.debug(`Creating directory: ${claudeDir}`);
+            await io.mkdirP(claudeDir);
 
             // Write onboarding config
-            fs.writeFileSync(
+            await fs.writeFile(
               path.join(claudeDir, '.claude.json'),
               JSON.stringify({ hasCompletedOnboarding: true })
             );
 
             // Write settings with secrets from env
-            const settings = {
-              env: {
-                ANTHROPIC_AUTH_TOKEN: process.env.ANTHROPIC_AUTH_TOKEN,
-                ANTHROPIC_BASE_URL: process.env.ANTHROPIC_BASE_URL,
-                ANTHROPIC_MODEL: process.env.ANTHROPIC_MODEL,
-                ANTHROPIC_SMALL_FAST_MODEL: process.env.ANTHROPIC_MODEL,
-                ANTHROPIC_DEFAULT_OPUS_MODEL: process.env.ANTHROPIC_MODEL,
-                ANTHROPIC_DEFAULT_SONNET_MODEL: process.env.ANTHROPIC_MODEL,
-                ANTHROPIC_DEFAULT_HAIKU_MODEL: process.env.ANTHROPIC_MODEL,
-                API_TIMEOUT_MS: '3000000',
-                CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: '1',
-              },
-            };
-            fs.writeFileSync(
+            const model = process.env.ANTHROPIC_MODEL;
+            await fs.writeFile(
               path.join(claudeDir, 'settings.json'),
-              JSON.stringify(settings)
+              JSON.stringify({
+                env: {
+                  ANTHROPIC_AUTH_TOKEN: process.env.ANTHROPIC_AUTH_TOKEN,
+                  ANTHROPIC_BASE_URL: process.env.ANTHROPIC_BASE_URL,
+                  ANTHROPIC_MODEL: model,
+                  ANTHROPIC_SMALL_FAST_MODEL: model,
+                  ANTHROPIC_DEFAULT_OPUS_MODEL: model,
+                  ANTHROPIC_DEFAULT_SONNET_MODEL: model,
+                  ANTHROPIC_DEFAULT_HAIKU_MODEL: model,
+                  API_TIMEOUT_MS: '3000000',
+                  CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: '1',
+                },
+              })
             );
 
-            console.log('✓ Claude Code configured successfully');
+            core.info('✓ Claude Code configured successfully');
+            core.endGroup();
         env:
           ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
+
       - name: Run Claude Code review
         id: review
         uses: actions/github-script@v8
         with:
+          result-encoding: string
           script: |
-            const { exec } = require('node:child_process');
-            const fs = require('node:fs');
-            const util = require('node:util');
-            const execPromise = util.promisify(exec);
-
-            // Define review prompt
+            core.startGroup('Run Claude Code review');
             const reviewPrompt = `# Code Review Request
 
             You are performing a comprehensive code review on this pull request. Please analyze the changes and provide feedback in the following structure:
@@ -161,23 +158,20 @@ jobs:
 
             Please be thorough but concise. Focus on actionable feedback that will improve code quality and maintainability.`;
 
-            // Run claude command
-            console.log('Running Claude Code review...');
-            const { stdout, stderr } = await execPromise(
-              `claude -p "${reviewPrompt.replace(/"/g, '\\"')}"`,
-              { maxBuffer: 10 * 1024 * 1024 } // 10MB buffer
+            core.info('Running Claude Code review...');
+            const { stdout, stderr, exitCode } = await exec.getExecOutput(
+              'claude',
+              ['-p', reviewPrompt],
+              { ignoreReturnCode: true }
             );
-
-            // Combine stdout and stderr
             const result = stdout + stderr;
 
-            // Write result to file for debugging
-            fs.writeFileSync('review_result.md', result);
+            if (exitCode !== 0) {
+              core.warning(`Claude exited with code ${exitCode}`);
+            }
 
-            // Set output (multiline-safe)
-            core.setOutput('result', result);
-
-            console.log('✓ Review completed');
+            core.info('✓ Review completed');
+            core.endGroup();
             return result;
       - name: Comment review result
         uses: marocchino/sticky-pull-request-comment@v2
