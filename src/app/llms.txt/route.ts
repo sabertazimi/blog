@@ -2,6 +2,11 @@ import { routing } from '@/i18n/routing'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { siteConfig } from '@/lib/site'
 
+const localeNames: Record<string, string> = {
+  'en-US': 'English',
+  'zh-CN': '中文',
+}
+
 async function generateLlmsTxt(): Promise<string> {
   const lines: string[] = []
 
@@ -16,12 +21,13 @@ async function generateLlmsTxt(): Promise<string> {
 
   for (const locale of routing.locales) {
     const { posts, tags } = await getPostsMeta(locale)
-    const localeName = locale === 'en-US' ? 'English' : '中文'
+    const localeName = localeNames[locale] ?? locale
 
     lines.push(`## Posts (${localeName})`)
     posts.slice(0, 20).forEach((post) => {
       const postUrl = `${siteConfig.url}/${locale}/post/${post.slug}`
-      const description = post.description?.trim() !== undefined && post.description.trim() !== '' ? `: ${post.description}` : ''
+      const trimmedDescription = post.description?.trim()
+      const description = trimmedDescription !== undefined && trimmedDescription !== '' ? `: ${post.description}` : ''
       lines.push(`- [${post.title}](${postUrl})${description}`)
     })
     lines.push('')

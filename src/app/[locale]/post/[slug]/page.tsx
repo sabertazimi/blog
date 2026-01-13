@@ -56,7 +56,7 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <DefaultLayout metadata={metadata} buildTime={buildTime}>
       <PageHeader title={postData?.title ?? t('notFound')} description={postData?.description ?? t('notFound')}>
-        <PostHeader postData={postData} />
+        <PostHeader postData={postData} locale={resolvedLocale} />
       </PageHeader>
       {postData ? <PostLayout post={postData} /> : <NotFoundResult />}
     </DefaultLayout>

@@ -9,9 +9,10 @@ import { getTagUrl } from '@/lib/utils'
 
 interface PostHeaderProps {
   postData?: Post
+  locale: string
 }
 
-export function PostHeader({ postData }: PostHeaderProps) {
+export function PostHeader({ postData, locale }: PostHeaderProps) {
   return (
     <div className="flex flex-col gap-5">
       <div className="text-muted-foreground flex flex-wrap items-center gap-3 gap-y-5 text-sm">
@@ -37,7 +38,7 @@ export function PostHeader({ postData }: PostHeaderProps) {
         />
       </div>
       {postData && (
-        <PostAgentActions url={`${siteConfig.url}/post/${postData.slug}`} title={postData.title} />
+        <PostAgentActions url={`${siteConfig.url}/${locale}/post/${postData.slug}`} title={postData.title} />
       )}
     </div>
   )
