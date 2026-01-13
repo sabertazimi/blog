@@ -120,15 +120,11 @@ jobs:
              - Score your confidence 0-100
              - Only report issues with 80+ confidence
 
-          5. For each issue needing code fix:
-             - Create review comment with suggestion using \`gh api\`:
-               \`POST /repos/{owner}/{repo}/pulls/{pr}/comments\`
-             - Body must use \`\`\`suggestion\`\`\` fence with -/+ diff format
-             - Include: commit_id, path, line, side=RIGHT
-
-          6. After all line comments, call \`gh pr review\` ONCE:
-             - Flag: \`--approve\`, \`--request-changes\`, or \`--comment\`
-             - Body: summary of findings with issue count
+          5. Call \`gh api\` ONCE to create review with all comments:
+             \`POST /repos/{owner}/{repo}/pulls/{pr}/reviews\`
+             - event: APPROVE, REQUEST_CHANGES, or COMMENT
+             - body: summary of findings
+             - comments: array of {path, line, side, body} with \`\`\`suggestion\`\`\`
           " || true
 
           echo '✓ Review completed'
