@@ -93,15 +93,10 @@ jobs:
           ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
-
       - name: Run Claude Code review
-        id: review
-        uses: actions/github-script@v8
-        with:
-          result-encoding: string
-          script: |
-            core.startGroup('Run Claude Code review');
-            const reviewPrompt = `# Code Review Request
+        env:
+          REVIEW_PROMPT: |
+            # Code Review Request
 
             You are performing a comprehensive code review on this pull request. Please analyze the changes and provide feedback in the following structure:
 
@@ -137,10 +132,10 @@ jobs:
             Check against CLAUDE.md guidelines:
             - [ ] Follows conventional commits style
             - [ ] No Claude co-authorship footer
-            - [ ] TypeScript strict mode compliance (no \`any\` types)
+            - [ ] TypeScript strict mode compliance (no `any` types)
             - [ ] Server components first, client only when necessary
-            - [ ] No removal of \`__tests__/mocks/\`
-            - [ ] Uses \`pnpm\` (never npm/yarn) in docs
+            - [ ] No removal of `__tests__/mocks/`
+            - [ ] Uses `pnpm` (never npm/yarn) in docs
 
             ## Testing & Validation
             - Are tests included or updated?
@@ -156,23 +151,18 @@ jobs:
 
             ---
 
-            Please be thorough but concise. Focus on actionable feedback that will improve code quality and maintainability.`;
-
-            core.info('Running Claude Code review...');
-            const { stdout, stderr, exitCode } = await exec.getExecOutput(
-              'claude',
-              ['-p', reviewPrompt],
-              { ignoreReturnCode: true }
-            );
-            const result = stdout + stderr;
-
-            if (exitCode !== 0) {
-              core.warning(`Claude exited with code ${exitCode}`);
-            }
-
-            core.info('✓ Review completed');
-            core.endGroup();
-            return result;
+            Please be thorough but concise. Focus on actionable feedback that will improve code quality and maintainability.
+        run: |
+          echo 'Running Claude Code review...'
+          claude -p "$REVIEW_PROMPT" > review-result.md 2>&1 || true
+          echo '✓ Review completed'
+      - name: Read review result
+        id: review
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('node:fs/promises');
+            return await fs.readFile('review-result.md', 'utf-8');
       - name: Comment review result
         uses: marocchino/sticky-pull-request-comment@v2
         with:
