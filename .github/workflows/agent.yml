@@ -99,7 +99,7 @@ jobs:
           Please be thorough but concise. Focus on actionable feedback that will improve code quality and maintainability.
           EOF
 
-          claude -p "$(cat review_prompt.md)" --output review_result.md 2>&1 || true
+          claude -p "$(cat review_prompt.md)" > review_result.md 2>&1 || true
 
           # Read result and set as output (multiline handling)
           {
