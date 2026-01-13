@@ -1,16 +1,9 @@
 'use client'
 
-import { BotIcon, CopyIcon, ExternalLinkIcon } from 'lucide-react'
+import { CodeIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { chatbotLinks, getAgentPrompt } from '@/lib/llms'
 import { cn } from '@/lib/utils'
 
@@ -48,63 +41,29 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
   }
 
   return (
-    <div data-testid="post-agent-actions" className="flex items-center justify-center gap-4">
-      <BotIcon className="text-muted-foreground size-5" />
-      <TooltipProvider>
-        <div className="flex items-center gap-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:bg-accent hover:text-accent-foreground size-9"
-                onClick={handleCopyForAgent}
-                aria-label={t('copyForAgent')}
-              >
-                <CopyIcon className={cn('size-4', isCopied && 'text-green-500')} />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{isCopied ? t('copied') : t('copyForAgent')}</p>
-            </TooltipContent>
-          </Tooltip>
-
-          <DropdownMenu>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="hover:bg-accent hover:text-accent-foreground size-9"
-                    aria-label={t('readWithChatbot')}
-                  >
-                    <ExternalLinkIcon className="size-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{t('readWithChatbot')}</p>
-              </TooltipContent>
-            </Tooltip>
-            <DropdownMenuContent align="center">
-              {chatbotLinks.map((chatbot) => {
-                const Icon = chatbot.icon
-                return (
-                  <DropdownMenuItem
-                    key={chatbot.id}
-                    onClick={() => handleOpenChatbot(chatbot.id)}
-                    className="cursor-pointer"
-                  >
-                    <Icon className="mr-2 size-4" />
-                    <span>{t('readWith', { chatbot: chatbot.name })}</span>
-                  </DropdownMenuItem>
-                )
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </TooltipProvider>
+    <div data-testid="post-agent-actions" className="flex flex-wrap items-center gap-3">
+      {chatbotLinks.map((chatbot) => {
+        const Icon = chatbot.icon
+        return (
+          <Button
+            key={chatbot.id}
+            variant="outline"
+            className="h-9 gap-2 px-4"
+            onClick={() => handleOpenChatbot(chatbot.id)}
+          >
+            <Icon className="size-4" />
+            <span>{t('chatWith', { chatbot: chatbot.name })}</span>
+          </Button>
+        )
+      })}
+      <Button
+        variant="outline"
+        className={cn('h-9 gap-2 px-4', isCopied && 'text-green-500')}
+        onClick={handleCopyForAgent}
+      >
+        <CodeIcon className="size-4" />
+        <span>{isCopied ? t('copied') : t('copyForAgent')}</span>
+      </Button>
     </div>
   )
 }

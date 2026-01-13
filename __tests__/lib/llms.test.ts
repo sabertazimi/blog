@@ -3,21 +3,11 @@ import { chatbotLinks, getAgentPrompt } from '@/lib/llms'
 
 describe('chatbotLinks', () => {
   it('should have the expected chatbots', () => {
-    expect(chatbotLinks).toHaveLength(5)
+    expect(chatbotLinks).toHaveLength(2)
     expect(chatbotLinks.map(c => c.id)).toEqual([
-      'chatgpt',
       'claude',
-      'gemini',
-      'deepseek',
-      'kimi',
+      'chatgpt',
     ])
-  })
-
-  it('should generate correct ChatGPT URL', () => {
-    const chatgpt = chatbotLinks.find(c => c.id === 'chatgpt')
-    const url = chatgpt?.getUrl({ content: 'test content' })
-    expect(url).toContain('chatgpt.com')
-    expect(url).toContain(encodeURIComponent('test content'))
   })
 
   it('should generate correct Claude URL', () => {
@@ -27,24 +17,10 @@ describe('chatbotLinks', () => {
     expect(url).toContain(encodeURIComponent('test content'))
   })
 
-  it('should generate correct Gemini URL', () => {
-    const gemini = chatbotLinks.find(c => c.id === 'gemini')
-    const url = gemini?.getUrl({ content: 'test content' })
-    expect(url).toContain('gemini.google.com')
-    expect(url).toContain(encodeURIComponent('test content'))
-  })
-
-  it('should generate correct DeepSeek URL', () => {
-    const deepseek = chatbotLinks.find(c => c.id === 'deepseek')
-    const url = deepseek?.getUrl({ content: 'test content' })
-    expect(url).toContain('chat.deepseek.com')
-    expect(url).toContain(encodeURIComponent('test content'))
-  })
-
-  it('should generate correct Kimi URL', () => {
-    const kimi = chatbotLinks.find(c => c.id === 'kimi')
-    const url = kimi?.getUrl({ content: 'test content' })
-    expect(url).toContain('kimi.moonshot.cn')
+  it('should generate correct ChatGPT URL', () => {
+    const chatgpt = chatbotLinks.find(c => c.id === 'chatgpt')
+    const url = chatgpt?.getUrl({ content: 'test content' })
+    expect(url).toContain('chatgpt.com')
     expect(url).toContain(encodeURIComponent('test content'))
   })
 

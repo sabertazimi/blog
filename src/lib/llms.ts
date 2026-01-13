@@ -1,9 +1,7 @@
 import {
   SiClaude,
-  SiGooglegemini,
   SiOpenai,
 } from '@icons-pack/react-simple-icons'
-import { BrainCircuitIcon, MessageCircleIcon } from 'lucide-react'
 
 interface ChatbotLink {
   name: string
@@ -14,13 +12,6 @@ interface ChatbotLink {
 
 const chatbotLinks: ChatbotLink[] = [
   {
-    name: 'ChatGPT',
-    id: 'chatgpt',
-    icon: SiOpenai,
-    getUrl: ({ content }) =>
-      `https://chatgpt.com/?q=${encodeURIComponent(content)}`,
-  },
-  {
     name: 'Claude',
     id: 'claude',
     icon: SiClaude,
@@ -28,25 +19,11 @@ const chatbotLinks: ChatbotLink[] = [
       `https://claude.ai/new?q=${encodeURIComponent(content)}`,
   },
   {
-    name: 'Gemini',
-    id: 'gemini',
-    icon: SiGooglegemini,
+    name: 'ChatGPT',
+    id: 'chatgpt',
+    icon: SiOpenai,
     getUrl: ({ content }) =>
-      `https://gemini.google.com/app?q=${encodeURIComponent(content)}`,
-  },
-  {
-    name: 'DeepSeek',
-    id: 'deepseek',
-    icon: BrainCircuitIcon,
-    getUrl: ({ content }) =>
-      `https://chat.deepseek.com/?q=${encodeURIComponent(content)}`,
-  },
-  {
-    name: 'Kimi',
-    id: 'kimi',
-    icon: MessageCircleIcon,
-    getUrl: ({ content }) =>
-      `https://kimi.moonshot.cn/?q=${encodeURIComponent(content)}`,
+      `https://chatgpt.com/?q=${encodeURIComponent(content)}`,
   },
 ]
 
