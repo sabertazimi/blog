@@ -31,7 +31,7 @@ async function generateLlmsTxt(): Promise<string> {
       .filter(tag => tag !== 'All')
       .slice(0, 15)
       .forEach((tag) => {
-        const tagUrl = `${siteConfig.url}/${locale}/tag/${encodeURIComponent(tag.toLowerCase())}`
+        const tagUrl = `${siteConfig.url}/${locale}/tag/${encodeURIComponent(tag)}`
         const count = tags.tagCounts[tag]
         lines.push(`- [${tag}](${tagUrl}): ${count} posts`)
       })
