@@ -120,28 +120,18 @@ jobs:
              - Score your confidence 0-100
              - Only report issues with 80+ confidence
 
-          5. Post your review using \`gh pr review\` with the following format:
-             - Use \`--comment\`, \`--approve\`, or \`--request-changes\` based on findings
+          5. Call \`gh pr review\` ONCE at the end with:
+             - Flag: \`--comment\`, \`--approve\`, or \`--request-changes\` based on findings
+             - Body format:
+               \`\`\`markdown
+               ## Code review
+               Found <N> issues:
+               1. <Issue description> (confidence: <score>)
+                  <file-with-link>
+               ...
+               \`\`\`
              - For code suggestions, use the \`+/-\` suggestion format for easy apply
-
-          Suggestion format example:
-          \`\`\`suggestion
-          - old code line
-          + new fixed code line
-          \`\`\`
-
-          Format your review body as:
-          \`\`\`markdown
-          ## Code review
-          Found <N> issues:
-          1. <Issue description> (confidence: <score>)
-             <file-with-link>
-
-          ...
-          \`\`\`
-
-          For code links, use format:
-          https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
+             - For code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
           " || true
 
           echo '✓ Review completed'
