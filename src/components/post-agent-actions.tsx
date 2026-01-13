@@ -16,8 +16,18 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
   const t = useTranslations('agent')
   const [isCopied, setIsCopied] = useState(false)
 
+  const getPromptTranslations = () => ({
+    promptIntro: t('promptIntro'),
+    promptTitle: t('promptTitle'),
+    promptUrl: t('promptUrl'),
+    promptRequest: t('promptRequest'),
+    promptItem1: t('promptItem1'),
+    promptItem2: t('promptItem2'),
+    promptItem3: t('promptItem3'),
+  })
+
   const handleCopyForAgent = () => {
-    const prompt = getAgentPrompt({ title, url })
+    const prompt = getAgentPrompt({ title, url, translations: getPromptTranslations() })
 
     navigator.clipboard
       .writeText(prompt)
@@ -34,7 +44,7 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
     const chatbot = chatbotLinks.find(c => c.id === chatbotId)
 
     if (chatbot) {
-      const prompt = getAgentPrompt({ title, url })
+      const prompt = getAgentPrompt({ title, url, translations: getPromptTranslations() })
       const chatbotUrl = chatbot.getUrl({ content: prompt })
       window.open(chatbotUrl, '_blank', 'noopener,noreferrer')
     }
@@ -52,7 +62,7 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
             onClick={() => handleOpenChatbot(chatbot.id)}
           >
             <Icon className="size-4" />
-            <span>{t('chatWith', { chatbot: chatbot.name })}</span>
+            <span>{t('readWith', { chatbot: chatbot.name })}</span>
           </Button>
         )
       })}

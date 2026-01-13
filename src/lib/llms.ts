@@ -10,6 +10,16 @@ interface ChatbotLink {
   getUrl: (params: { content: string }) => string
 }
 
+interface AgentPromptTranslations {
+  promptIntro: string
+  promptTitle: string
+  promptUrl: string
+  promptRequest: string
+  promptItem1: string
+  promptItem2: string
+  promptItem3: string
+}
+
 const chatbotLinks: ChatbotLink[] = [
   {
     name: 'Claude',
@@ -27,17 +37,18 @@ const chatbotLinks: ChatbotLink[] = [
   },
 ]
 
-function getAgentPrompt(params: { title: string, url: string }): string {
-  return `Please read and analyze the following article:
+function getAgentPrompt(params: { title: string, url: string, translations: AgentPromptTranslations }): string {
+  const { title, url, translations: t } = params
+  return `${t.promptIntro}
 
-Title: ${params.title}
-URL: ${params.url}
+${t.promptTitle}: ${title}
+${t.promptUrl}: ${url}
 
-Please provide:
-1. A brief summary of the main points
-2. Key takeaways and insights
-3. Any questions or areas that need clarification`
+${t.promptRequest}
+1. ${t.promptItem1}
+2. ${t.promptItem2}
+3. ${t.promptItem3}`
 }
 
 export { chatbotLinks, getAgentPrompt }
-export type { ChatbotLink }
+export type { AgentPromptTranslations, ChatbotLink }

@@ -23,13 +23,13 @@ describe('PostAgentActions', () => {
   it('should render Claude button', () => {
     render(<PostAgentActions {...defaultProps} />)
 
-    expect(screen.getByText(/chat with claude/i)).toBeInTheDocument()
+    expect(screen.getByText(/read with claude/i)).toBeInTheDocument()
   })
 
   it('should render ChatGPT button', () => {
     render(<PostAgentActions {...defaultProps} />)
 
-    expect(screen.getByText(/chat with chatgpt/i)).toBeInTheDocument()
+    expect(screen.getByText(/read with chatgpt/i)).toBeInTheDocument()
   })
 
   it('should render copy for agent button', () => {
@@ -59,7 +59,7 @@ describe('PostAgentActions', () => {
 
     const { user } = render(<PostAgentActions {...defaultProps} />)
 
-    await user.click(screen.getByText(/chat with claude/i))
+    await user.click(screen.getByText(/read with claude/i))
 
     expect(openMock).toHaveBeenCalledWith(
       expect.stringContaining('claude.ai'),
@@ -74,7 +74,7 @@ describe('PostAgentActions', () => {
 
     const { user } = render(<PostAgentActions {...defaultProps} />)
 
-    await user.click(screen.getByText(/chat with chatgpt/i))
+    await user.click(screen.getByText(/read with chatgpt/i))
 
     expect(openMock).toHaveBeenCalledWith(
       expect.stringContaining('chatgpt.com'),

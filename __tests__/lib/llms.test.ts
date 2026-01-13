@@ -32,10 +32,21 @@ describe('chatbotLinks', () => {
 })
 
 describe('getAgentPrompt', () => {
+  const mockTranslations = {
+    promptIntro: 'Please read and analyze the following article:',
+    promptTitle: 'Title',
+    promptUrl: 'URL',
+    promptRequest: 'Please provide:',
+    promptItem1: 'A brief summary of the main points',
+    promptItem2: 'Key takeaways and insights',
+    promptItem3: 'Any questions or areas that need clarification',
+  }
+
   it('should generate prompt with title and url', () => {
     const prompt = getAgentPrompt({
       title: 'Test Article',
       url: 'https://example.com/post/test',
+      translations: mockTranslations,
     })
 
     expect(prompt).toContain('Test Article')
@@ -49,10 +60,33 @@ describe('getAgentPrompt', () => {
     const prompt = getAgentPrompt({
       title: 'Test',
       url: 'https://example.com',
+      translations: mockTranslations,
     })
 
     expect(prompt).toContain('1.')
     expect(prompt).toContain('2.')
     expect(prompt).toContain('3.')
+  })
+
+  it('should use translated strings', () => {
+    const chineseTranslations = {
+      promptIntro: '请阅读并分析以下文章：',
+      promptTitle: '标题',
+      promptUrl: '链接',
+      promptRequest: '请提供：',
+      promptItem1: '主要观点的简要总结',
+      promptItem2: '关键要点和见解',
+      promptItem3: '任何需要澄清的问题或领域',
+    }
+
+    const prompt = getAgentPrompt({
+      title: 'Test Article',
+      url: 'https://example.com/post/test',
+      translations: chineseTranslations,
+    })
+
+    expect(prompt).toContain('请阅读并分析以下文章')
+    expect(prompt).toContain('标题')
+    expect(prompt).toContain('链接')
   })
 })
