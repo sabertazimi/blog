@@ -52,10 +52,14 @@ jobs:
             exit 1
           fi
       - name: Configure Claude Code
+        env:
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
         run: |
           mkdir -p ~/.claude
           echo '{"hasCompletedOnboarding": true}' > ~/.claude.json
-          echo '{"env":{"ANTHROPIC_AUTH_TOKEN":"${{ secrets.ANTHROPIC_AUTH_TOKEN }}","ANTHROPIC_BASE_URL":"${{ secrets.ANTHROPIC_BASE_URL }}","ANTHROPIC_MODEL":"${{ secrets.ANTHROPIC_MODEL }}","ANTHROPIC_SMALL_FAST_MODEL":"${{ secrets.ANTHROPIC_MODEL }}","ANTHROPIC_DEFAULT_OPUS_MODEL":"${{ secrets.ANTHROPIC_MODEL }}","ANTHROPIC_DEFAULT_SONNET_MODEL":"${{ secrets.ANTHROPIC_MODEL }}","ANTHROPIC_DEFAULT_HAIKU_MODEL":"${{ secrets.ANTHROPIC_MODEL }}","API_TIMEOUT_MS":"3000000","CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC":"1"}}' > ~/.claude/settings.json
+          node -e 'const fs = require("fs"); const path = require("path"); const settings = { env: { ANTHROPIC_AUTH_TOKEN: process.env.ANTHROPIC_AUTH_TOKEN, ANTHROPIC_BASE_URL: process.env.ANTHROPIC_BASE_URL, ANTHROPIC_MODEL: process.env.ANTHROPIC_MODEL, ANTHROPIC_SMALL_FAST_MODEL: process.env.ANTHROPIC_MODEL, ANTHROPIC_DEFAULT_OPUS_MODEL: process.env.ANTHROPIC_MODEL, ANTHROPIC_DEFAULT_SONNET_MODEL: process.env.ANTHROPIC_MODEL, ANTHROPIC_DEFAULT_HAIKU_MODEL: process.env.ANTHROPIC_MODEL, API_TIMEOUT_MS: "3000000", CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1" } }; const settingsPath = path.join(process.env.HOME, ".claude", "settings.json"); fs.mkdirSync(path.dirname(settingsPath), { recursive: true }); fs.writeFileSync(settingsPath, JSON.stringify(settings));'
       - name: Run Claude Code review
         id: review
         run: |
