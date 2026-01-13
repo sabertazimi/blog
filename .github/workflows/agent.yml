@@ -120,22 +120,58 @@ jobs:
              - Score your confidence 0-100
              - Only report issues with 80+ confidence
 
-          5. Post your review as a PR comment using \`gh pr comment ${{ github.event.pull_request.number }} --body <markdown>\`
+          5. Post your review:
 
-          Format your review comment as:
+          **If issues found (80+ confidence):**
+          Use \`gh pr review ${{ github.event.pull_request.number }} --comment -b <markdown>\`
+
+          Review body format:
           \`\`\`markdown
           ## Code review
-          Found <N> issues:
-          1. <Issue description> (confidence: <score>)
-             <file-with-link>
 
-          ...
+          Found <N> issues:
+
+          <details>
+          <summary>1. <Issue description> (confidence: <score>)</summary>
+
+          **File:** \`path/to/file.ts\`
+
+          \`\`\`diff
+          - // Old code (problematic)
+          + // New code (fixed)
           \`\`\`
 
-          For code links, use format:
-          https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
+          https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<start>-L<end>
 
-          If no issues with 80+ confidence are found, post a positive review comment.
+          </details>
+
+          ---
+
+          <sub>Reviewed by Claude Code • <a href=\\"https://github.com/${{ github.repository }}/new/main/.github/instructions?filename=*.instructions.md\\" data-catlerlui-action=\\"fix\\" data-catlerlui-prompt=\\"Fix the issues mentioned in this review\\">🤖 Ask Copilot to fix</a></sub>
+          \`\`\`
+
+          **If no issues found:**
+          Use \`gh pr comment ${{ github.event.pull_request.number }} --body <markdown>\` with:
+
+          \`\`\`markdown
+          ## ✅ Code review passed
+
+          No issues found in this PR. The changes look good!
+
+          **Summary:**
+          - All code follows CLAUDE.md guidelines
+          - No bugs, security vulnerabilities, or performance concerns detected
+          - Code quality meets project standards
+
+          ---
+
+          <sub>Reviewed by Claude Code</sub>
+          \`\`\`
+
+          IMPORTANT:
+          - Use actual diff syntax with +/- prefix for code changes
+          - Include proper GitHub blob URLs with line numbers
+          - Wrap each issue in <details> with <summary>
           " || true
 
           echo '✓ Review completed'
