@@ -4,11 +4,18 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
 
 jobs:
   review:
     name: Review
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      pull-requests: write
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -32,6 +39,12 @@ jobs:
       - name: Install Claude Code
         run: |
           npm install -g @anthropic-ai/claude-code
+      - name: Validate secrets
+        run: |
+          if [ -z "${{ secrets.ANTHROPIC_AUTH_TOKEN }}" ]; then
+            echo "::error::ANTHROPIC_AUTH_TOKEN secret is not set"
+            exit 1
+          fi
       - name: Configure Claude Code
         run: |
           mkdir -p ~/.claude
@@ -53,17 +66,17 @@ jobs:
 
           ## :warning: Issues & Suggestions
 
-          ### Critical Issues (Must Fix)
+          ### 🔴 Critical Issues
           - Security vulnerabilities
           - Breaking changes
           - Bugs that will cause failures
 
-          ### Important Issues (Should Fix)
+          ### 🟡 Important Issues
           - Performance concerns
           - Code quality issues
           - Missing error handling
 
-          ### Minor Issues (Nice to Have)
+          ### 🟢 Minor Issues
           - Code style improvements
           - Documentation gaps
 
