@@ -96,13 +96,12 @@ jobs:
       - name: Run Claude Code review
         env:
           GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           echo 'Running Claude Code review...'
 
           claude -p "
           REPO: ${{ github.repository }}
-          PR NUMBER: \${PR_NUMBER}
+          PR NUMBER: ${{ github.event.pull_request.number }}
 
           You are performing an automated code review on this pull request.
 
@@ -121,7 +120,7 @@ jobs:
              - Score your confidence 0-100
              - Only report issues with 80+ confidence
 
-          5. Post your review as a PR comment using \`gh pr comment \${PR_NUMBER} --body <markdown>\`
+          5. Post your review as a PR comment using \`gh pr comment ${{ github.event.pull_request.number }} --body <markdown>\`
 
           Format your review comment as:
           \`\`\`markdown
