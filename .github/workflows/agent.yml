@@ -158,11 +158,12 @@ jobs:
           echo '✓ Review completed'
       - name: Read review result
         id: review
-        uses: actions/github-script@v8
-        with:
-          script: |
-            const fs = require('node:fs/promises');
-            return await fs.readFile('review-result.md', 'utf-8');
+        run: |
+          {
+            echo 'result<<EOF'
+            cat review-result.md
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
       - name: Comment review result
         uses: marocchino/sticky-pull-request-comment@v2
         with:
