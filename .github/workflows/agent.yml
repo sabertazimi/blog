@@ -16,6 +16,12 @@ jobs:
     permissions:
       pull-requests: write
       contents: read
+    if: |
+      !contains(github.event.pull_request.user.login, 'renovate') &&
+      !contains(github.event.pull_request.user.login, 'dependabot') &&
+      !contains(github.event.pull_request.user.login, 'imgbot') &&
+      !startsWith(github.head_ref, 'renovate/') &&
+      !startsWith(github.head_ref, 'dependabot/')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
