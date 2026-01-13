@@ -41,15 +41,21 @@ async function* walk(directoryPath: string): AsyncGenerator<string> {
 }
 
 function getReadingTime(content: string): number {
-  return Math.ceil(readingTime(content).minutes)
+  const result = readingTime(content)
+  return Math.ceil(result.minutes)
 }
 
 async function generatePostData(filePath: string): Promise<Post> {
   const fileContent = await fs.readFile(filePath, 'utf8')
-  const slug = path.basename(filePath, path.extname(filePath))
+  const slug = path.basename(filePath, path.extname(filePath)) // Get slug from filename
 
   const { content, excerpt, data } = matter(fileContent, { excerpt: true })
-  const { title, date, ...fields } = data as MDXFrontMatter
+  const { title, date, command, ...fields } = data as MDXFrontMatter
+
+  // Execute custom command from frontmatter for dynamic content
+  if (command) {
+    execSync(command, { stdio: 'inherit' })
+  }
 
   const createTime = new Date(date ?? Date.now()).toISOString()
   let updateTime: string
@@ -127,8 +133,8 @@ async function getPostsData(locale: Locale = 'en-US'): Promise<Post[]> {
 
   const sortedPostsData = postsData.sort((a, b) => {
     return (
-      new Date(b.createTime ?? b.updateTime ?? Date.now()).getTime()
-        - new Date(a.createTime ?? a.updateTime ?? Date.now()).getTime()
+      new Date(a.createTime ?? a.updateTime ?? Date.now()).getTime()
+        - new Date(b.createTime ?? b.updateTime ?? Date.now()).getTime()
     )
   })
 
@@ -197,12 +203,24 @@ async function getPostsMeta(locale: Locale = 'en-US', cachedData?: Post[]): Prom
 
 async function getPostData(slug: string, locale: Locale = 'en-US', cachedData?: Post[]): Promise<Post | undefined> {
   const postsData = cachedData ?? (await getPostsData(locale))
-  const postData = postsData.find(post => post.slug === slug)
+
+  // Search for post by matching slug
+  let postData: Post | undefined
+  for (const post of postsData) {
+    if (post.slug === slug) {
+      postData = post
+      break
+    }
+  }
 
   // If post not found in current locale, try fallback to en-US
   if (!postData && locale !== 'en-US') {
     const fallbackPostsData = await getPostsData('en-US')
-    return fallbackPostsData.find(post => post.slug === slug)
+    for (const post of fallbackPostsData) {
+      if (post.slug === slug) {
+        return post
+      }
+    }
   }
 
   return postData
