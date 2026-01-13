@@ -54,6 +54,8 @@ async function generateLlmsTxt(): Promise<string> {
   return lines.join('\n')
 }
 
+export const dynamic = 'force-static'
+
 export async function GET() {
   const content = await generateLlmsTxt()
 

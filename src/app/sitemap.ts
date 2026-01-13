@@ -66,5 +66,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
   }
 
+  // llms.txt
+  sitemapEntries.push({
+    url: `${siteConfig.url}/llms.txt`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
+
   return sitemapEntries
 }
