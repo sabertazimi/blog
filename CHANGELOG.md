@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.3.0](https://github.com/sabertazimi/blog/compare/v5.2.0...v5.3.0) (2026-01-13)
+
+
+### :sparkles: Features
+
+* **agent:** add llms.txt endpoint and AI agent actions for posts ([#1568](https://github.com/sabertazimi/blog/issues/1568)) ([de837d7](https://github.com/sabertazimi/blog/commit/de837d71c5d1ad1bc4a8093b297ba0ae39c64a44))
+* **llms:** make llms.txt static and add to sitemap/robots ([#1570](https://github.com/sabertazimi/blog/issues/1570)) ([3a5252d](https://github.com/sabertazimi/blog/commit/3a5252de1312d6753a855151efa4a9756dc70177))
+* **logo:** add new burnt orange logo ([#1569](https://github.com/sabertazimi/blog/issues/1569)) ([0f05f41](https://github.com/sabertazimi/blog/commit/0f05f41bd9f65c2ee21d6e8f6e50e4aba575df44))
+
+
+### :bug: Bug Fixes
+
+* **deps:** update dependencies (non-major) ([#1561](https://github.com/sabertazimi/blog/issues/1561)) ([982f9cc](https://github.com/sabertazimi/blog/commit/982f9ccea529d4dfbe4b840843e8d67e2f823dd2))
+* **deps:** update dependency next to ^16.1.0 ([#1562](https://github.com/sabertazimi/blog/issues/1562)) ([67298e8](https://github.com/sabertazimi/blog/commit/67298e8df3fa4513d52eea27b333f9f698fd7bd3))
+* **logo:** change new `favicon.ico` ([3365af8](https://github.com/sabertazimi/blog/commit/3365af8dea27961a152eecc2373b471efd3e9006))
+* **mdx-editor:** use custom Vitesse theme for Sandpack ([#1566](https://github.com/sabertazimi/blog/issues/1566)) ([5fab8dc](https://github.com/sabertazimi/blog/commit/5fab8dcb926f08b04a9cd20a26e8d5d9a9c464db))
+
+
+### :hammer: Continuous Integration
+
+* **agent:** add AI-powered code review workflow ([#1572](https://github.com/sabertazimi/blog/issues/1572)) ([f64db74](https://github.com/sabertazimi/blog/commit/f64db7437fe014a2b56f8a5d30bfc7afb601fad6))
+* **agent:** use official code-review approach in CI workflow ([#1573](https://github.com/sabertazimi/blog/issues/1573)) ([cc7b1d6](https://github.com/sabertazimi/blog/commit/cc7b1d69042b2dbfb642659b85d472145f89a3f4))
+* **renovate:** update package group name for `[@dg-scripts](https://github.com/dg-scripts)` ([2b44cc8](https://github.com/sabertazimi/blog/commit/2b44cc899f476184df32e668cf2b19dc6a5e3e88))
+
 ## [5.2.0](https://github.com/sabertazimi/blog/compare/v5.1.0...v5.2.0) (2025-12-19)
 
 
