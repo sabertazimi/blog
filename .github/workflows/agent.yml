@@ -120,18 +120,15 @@ jobs:
              - Score your confidence 0-100
              - Only report issues with 80+ confidence
 
-          5. Call \`gh pr review\` ONCE at the end with:
-             - Flag: \`--comment\`, \`--approve\`, or \`--request-changes\` based on findings
-             - Body format:
-               \`\`\`markdown
-               ## Code review
-               Found <N> issues:
-               1. <Issue description> (confidence: <score>)
-                  <file-with-link>
-               ...
-               \`\`\`
-             - For code suggestions, use the \`+/-\` suggestion format for easy apply
-             - For code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
+          5. For each issue needing code fix:
+             - Create review comment with suggestion using \`gh api\`:
+               \`POST /repos/{owner}/{repo}/pulls/{pr}/comments\`
+             - Body must use \`\`\`suggestion\`\`\` fence with -/+ diff format
+             - Include: commit_id, path, line, side=RIGHT
+
+          6. After all line comments, call \`gh pr review\` ONCE:
+             - Flag: \`--approve\`, \`--request-changes\`, or \`--comment\`
+             - Body: summary of findings with issue count
           " || true
 
           echo '✓ Review completed'
