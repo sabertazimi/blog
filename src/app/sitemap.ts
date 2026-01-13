@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     })
 
-    routes.forEach((route) => {
+    routes.forEach(route => {
       sitemapEntries.push({
         url: `${siteConfig.url}/${locale}${route.path}`,
         lastModified: new Date(),
@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
 
     // Post pages
-    posts.forEach((post) => {
+    posts.forEach(post => {
       const timeValue = post.updateTime ?? post.createTime
       const lastModified = timeValue !== undefined && timeValue !== '' ? new Date(timeValue) : new Date()
 
@@ -56,7 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Tag pages
     allTags
       .filter(tag => tag !== 'All')
-      .forEach((tag) => {
+      .forEach(tag => {
         sitemapEntries.push({
           url: `${siteConfig.url}/${locale}${getTagUrl(tag)}`,
           lastModified: new Date(),
@@ -65,6 +65,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         })
       })
   }
+
+  // llms.txt
+  sitemapEntries.push({
+    url: `${siteConfig.url}/llms.txt`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  })
 
   return sitemapEntries
 }

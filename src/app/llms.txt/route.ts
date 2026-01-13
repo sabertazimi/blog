@@ -24,7 +24,7 @@ async function generateLlmsTxt(): Promise<string> {
     const localeName = localeNames[locale] ?? locale
 
     lines.push(`## Posts (${localeName})`)
-    posts.slice(0, 20).forEach((post) => {
+    posts.slice(0, 20).forEach(post => {
       const postUrl = `${siteConfig.url}/${locale}/post/${post.slug}`
       const trimmedDescription = post.description?.trim()
       const description = trimmedDescription !== undefined && trimmedDescription !== '' ? `: ${post.description}` : ''
@@ -36,7 +36,7 @@ async function generateLlmsTxt(): Promise<string> {
     tags.allTags
       .filter(tag => tag !== 'All')
       .slice(0, 15)
-      .forEach((tag) => {
+      .forEach(tag => {
         const tagUrl = `${siteConfig.url}/${locale}/tag/${encodeURIComponent(tag)}`
         const count = tags.tagCounts[tag]
         lines.push(`- [${tag}](${tagUrl}): ${count} posts`)
@@ -53,6 +53,8 @@ async function generateLlmsTxt(): Promise<string> {
 
   return lines.join('\n')
 }
+
+export const dynamic = 'force-static'
 
 export async function GET() {
   const content = await generateLlmsTxt()
