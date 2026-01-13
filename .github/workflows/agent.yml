@@ -142,8 +142,6 @@ jobs:
 
           For code links, use format:
           https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
-
-          If no issues with 80+ confidence are found, post a positive review comment.
           " || true
 
           echo '✓ Review completed'
