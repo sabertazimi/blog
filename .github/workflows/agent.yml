@@ -130,9 +130,9 @@ jobs:
                   <file-with-link>
                ...
                \`\`\`
-               For code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
-             - comments: array of {path, commit_id, line, side, body}
-               - body must use \`\`\`suggestion\`\`\` with -/+ diff
+               - for code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
+             - comments: array of {commit_id, path, line, side=RIGHT, body}
+               - body MUST use \`\`\`suggestion\`\`\` fence with -/+ diff format
           " || true
 
           echo '✓ Review completed'
