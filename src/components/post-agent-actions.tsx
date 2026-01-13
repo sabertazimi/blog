@@ -55,12 +55,7 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
       {chatbotLinks.map((chatbot) => {
         const Icon = chatbot.icon
         return (
-          <Button
-            key={chatbot.id}
-            variant="outline"
-            className="h-9 gap-2 px-4"
-            onClick={() => handleOpenChatbot(chatbot.id)}
-          >
+          <Button key={chatbot.id} variant="outline" className="h-6 px-3" onClick={() => handleOpenChatbot(chatbot.id)}>
             <Icon className="size-4" />
             <span>{t('readWith', { chatbot: chatbot.name })}</span>
           </Button>
@@ -68,7 +63,11 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
       })}
       <Button
         variant="outline"
-        className={cn('h-9 gap-2 px-4', isCopied && 'text-green-500')}
+        className={cn(
+          'h-6 px-3',
+          isCopied && 'text-success hover:text-success',
+          isCopied && 'bg-success/10 hover:bg-success/20 dark:bg-success/10 dark:hover:bg-success/20',
+        )}
         onClick={handleCopyForAgent}
       >
         <CodeIcon className="size-4" />

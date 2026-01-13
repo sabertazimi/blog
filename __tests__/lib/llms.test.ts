@@ -4,10 +4,7 @@ import { chatbotLinks, getAgentPrompt } from '@/lib/llms'
 describe('chatbotLinks', () => {
   it('should have the expected chatbots', () => {
     expect(chatbotLinks).toHaveLength(2)
-    expect(chatbotLinks.map(c => c.id)).toEqual([
-      'claude',
-      'chatgpt',
-    ])
+    expect(chatbotLinks.map(c => c.id)).toEqual(['claude', 'chatgpt'])
   })
 
   it('should generate correct Claude URL', () => {

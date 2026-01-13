@@ -45,12 +45,8 @@ describe('PostAgentActions', () => {
 
     await user.click(screen.getByText(/copy for agent/i))
 
-    expect(writeTextSpy).toHaveBeenCalledWith(
-      expect.stringContaining(defaultProps.title),
-    )
-    expect(writeTextSpy).toHaveBeenCalledWith(
-      expect.stringContaining(defaultProps.url),
-    )
+    expect(writeTextSpy).toHaveBeenCalledWith(expect.stringContaining(defaultProps.title))
+    expect(writeTextSpy).toHaveBeenCalledWith(expect.stringContaining(defaultProps.url))
   })
 
   it('should open Claude URL when Claude button is clicked', async () => {
@@ -61,11 +57,7 @@ describe('PostAgentActions', () => {
 
     await user.click(screen.getByText(/read with claude/i))
 
-    expect(openMock).toHaveBeenCalledWith(
-      expect.stringContaining('claude.ai'),
-      '_blank',
-      'noopener,noreferrer',
-    )
+    expect(openMock).toHaveBeenCalledWith(expect.stringContaining('claude.ai'), '_blank', 'noopener,noreferrer')
   })
 
   it('should open ChatGPT URL when ChatGPT button is clicked', async () => {
@@ -76,10 +68,6 @@ describe('PostAgentActions', () => {
 
     await user.click(screen.getByText(/read with chatgpt/i))
 
-    expect(openMock).toHaveBeenCalledWith(
-      expect.stringContaining('chatgpt.com'),
-      '_blank',
-      'noopener,noreferrer',
-    )
+    expect(openMock).toHaveBeenCalledWith(expect.stringContaining('chatgpt.com'), '_blank', 'noopener,noreferrer')
   })
 })
