@@ -123,8 +123,14 @@ jobs:
           5. Call \`gh api\` ONCE to create review with all comments:
              \`POST /repos/{owner}/{repo}/pulls/{pr}/reviews\`
              - event: APPROVE, REQUEST_CHANGES, or COMMENT
-             - body: summary of findings
-             - comments: array of {path, line, side, body} with \`\`\`suggestion\`\`\`
+             - body: summary with \`\`\`markdown
+               ## Code review
+               Found <N> issues:
+               1. <Issue> (confidence: <score>)
+               \`\`\`
+             - comments: array of {path, commit_id, line, side, body}
+               - body must use \`\`\`suggestion\`\`\` with -/+ diff
+               - link format: https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<line>
           " || true
 
           echo '✓ Review completed'
