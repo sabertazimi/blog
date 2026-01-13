@@ -16,7 +16,7 @@ export function FormattedDate({ date, showTime = false, className, icon: Icon }:
     return null
   }
 
-  const dateObj = typeof date === 'string' || typeof date === 'number' ? new Date(date) : date
+  const dateObj = typeof date === 'string' || typeof date === 'number' ? new Date(date) : (date as Date)
 
   const formattedContent = showTime
     ? format.dateTime(dateObj, {
