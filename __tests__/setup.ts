@@ -20,6 +20,15 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
+Object.defineProperty(navigator, 'clipboard', {
+  value: {
+    writeText: vi.fn().mockResolvedValue(undefined),
+    readText: vi.fn().mockResolvedValue(''),
+  },
+  writable: true,
+  configurable: true,
+})
+
 globalThis.window.open = vi.fn()
 globalThis.window.scrollTo = vi.fn()
 
