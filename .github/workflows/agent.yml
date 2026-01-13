@@ -126,11 +126,13 @@ jobs:
              - body: summary with \`\`\`markdown
                ## Code review
                Found <N> issues:
-               1. <Issue> (confidence: <score>)
+               1. <Issue description> (confidence: <score>)
+                  <file-with-link>
+               ...
                \`\`\`
+               For code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
              - comments: array of {path, commit_id, line, side, body}
                - body must use \`\`\`suggestion\`\`\` with -/+ diff
-               - link format: https://github.com/<owner>/<repo>/blob/<sha>/<path>#L<line>
           " || true
 
           echo '✓ Review completed'
