@@ -20,7 +20,7 @@ export function cn(...inputs: ClassValue[]) {
  * @returns Tag URL path (e.g., '/posts' or '/tag/react')
  */
 export function getTagUrl(tag: string) {
-  return tag === 'All' ? '/posts' : `/tag/${tag}`
+  return tag === 'All' ? '/posts' : `/tag/${encodeURIComponent(tag)}`
 }
 
 /**
@@ -47,7 +47,7 @@ const LanguageDefaultFilepaths: Record<string, string> = {
 export function normalizeFilepath(filename?: string, language?: string): string {
   // If no filename provided, generate default based on language
   if (filename == null || filename === '') {
-    return LanguageDefaultFilepaths[language as string] ?? '/App.tsx'
+    return LanguageDefaultFilepaths[language ?? ''] ?? '/App.tsx'
   }
 
   // Ensure leading slash
@@ -60,7 +60,7 @@ export function normalizeFilepath(filename?: string, language?: string): string 
  * @returns Code string without trailing newlines
  */
 export function trimTrailingNewlines(code: string = ''): string {
-  return code.replace(/\n+$/,, '')
+  return code.replace(/\n+$/, '')
 }
 
 /**
@@ -73,8 +73,8 @@ export function parseLanguageFromClassName(languageClass?: string): BundledLangu
     return 'typescript'
   }
 
-  const langauge = languageClass.replace('language-', '')
-  return langauge in bundledLanguages ? (langauge as BundledLanguage) : 'typescript'
+  const language = languageClass.replace('language-', '')
+  return language in bundledLanguages ? (language as BundledLanguage) : 'typescript'
 }
 
 /**
@@ -144,7 +144,7 @@ export function getLanguageDisplayName(language?: string): string {
     return ''
   }
 
-  return LanguageDisplayNames[language] || language.length > 0 ? language.charAt(0).toUpperCase() + language.slice(1) : language
+  return LanguageDisplayNames[language] || language.charAt(0).toUpperCase() + language.slice(1)
 }
 
 /**

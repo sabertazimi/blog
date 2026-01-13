@@ -22,7 +22,6 @@ export function PostCard({
   readingTime,
   showRightBorder = true,
 }: PostCardProps) {
-  // Render post card with thumbnail and metadata
   return (
     <Link
       href={url}
@@ -36,10 +35,9 @@ export function PostCard({
           <PostImage src={thumbnail} alt={title} hoverScale />
         </div>
         <div className="flex min-h-[200px] flex-col gap-2 p-6">
-          <h2
-            className="text-card-foreground text-xl font-semibold underline-offset-4 group-hover:underline"
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
+          <h2 className="text-card-foreground text-xl font-semibold underline-offset-4 group-hover:underline">
+            {title}
+          </h2>
           {description !== undefined && description !== '' && (
             <p className="text-muted-foreground line-clamp-3 text-sm">{description}</p>
           )}

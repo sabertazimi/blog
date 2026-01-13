@@ -16,7 +16,7 @@ export function FormattedDate({ date, showTime = false, className, icon: Icon }:
     return null
   }
 
-  const dateObj = typeof date === 'string' || typeof date === 'number' ? new Date(date) : (date as Date)
+  const dateObj = typeof date === 'string' || typeof date === 'number' ? new Date(date) : date
 
   const formattedContent = showTime
     ? format.dateTime(dateObj, {
@@ -24,12 +24,12 @@ export function FormattedDate({ date, showTime = false, className, icon: Icon }:
         month: 'short',
         day: 'numeric',
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
       })
     : format.dateTime(dateObj, {
         year: 'numeric',
         month: 'short',
-        day: 'numeric'
+        day: 'numeric',
       })
 
   return (
