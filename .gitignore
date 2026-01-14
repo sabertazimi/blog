@@ -40,7 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Playwright
+# playwright
 node_modules/
 /test-results/
 /playwright-report/
@@ -49,8 +49,8 @@ node_modules/
 /playwright/.auth/
 
 # temporary MDX files
-/contents/*.temp.mdx
+/content/*.temp.mdx
 
-# Agent files
+# agent files
 **/.claude/*.local.json
 **/.claude/*.local.md

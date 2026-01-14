@@ -11,6 +11,7 @@ interface SiteConfig {
   socials: Record<SocialSite, string>
   maxLandingStars: number
   minRepoStars: number
+  contentPath: string
   githubData: GitHub
   giscus?: GiscusProps
 }
@@ -28,6 +29,7 @@ const siteConfig: SiteConfig = {
   },
   maxLandingStars: 800,
   minRepoStars: 3,
+  contentPath: 'content',
   githubData: {
     profile: {
       username: 'sabertazimi',

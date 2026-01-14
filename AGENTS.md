@@ -42,7 +42,7 @@ Modern bilingual blog built with Next.js App Router, featuring i18n, MDX content
 - Full i18n support with next-intl
 - Locale-based routing: `/[locale]/...` structure
 - Supported locales: `en-US` (default) and `zh-CN`
-- Content organized by locale in `contents/[locale]/`
+- Content organized by locale in `content/[locale]/`
 - Translation files in `messages/[locale].json`
 
 #### Content Management
@@ -83,7 +83,7 @@ src/
 ├── i18n/                 # Internationalization config
 └── types/                # TypeScript definitions
 
-contents/[locale]/        # Blog posts organized by language
+content/[locale]/         # Blog posts organized by language
 messages/[locale].json    # Translation files
 public/                   # Static assets (fonts, images)
 __tests__/                # Unit tests with mocks/ (don't remove)
