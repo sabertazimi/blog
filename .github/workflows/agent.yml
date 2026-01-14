@@ -280,7 +280,8 @@ jobs:
             " || true
 
           else
-            echo "Unknown command type: $COMMAND_TYPE"
+            echo "Unknown command type encountered: $COMMAND_TYPE"
+            gh pr comment "$ISSUE_NUMBER" --body "⚠️ An internal error occurred while processing your request: unknown command type \`$COMMAND_TYPE\`. Please contact a maintainer to check the workflow configuration."
             exit 1
           fi
 
