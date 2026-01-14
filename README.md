@@ -181,10 +181,10 @@ Add translations in `messages/[locale].json`:
 }
 ```
 
-Organize MDX posts by locale in `contents/[locale]/`:
+Organize MDX posts by locale in `content/[locale]/`:
 
 ```bash
-contents/
+content/
 ├── en-US/
 │   ├── my-first-post.mdx
 │   └── ...
@@ -305,7 +305,7 @@ const mdxComponents = {
 │   │   ├── index.d.ts
 │   │   └── i18n.ts
 │   └── proxy.ts                   # next-intl middleware
-├── contents/                      # Blog posts (.mdx files)
+├── content/                       # Blog posts (.mdx files)
 │   ├── en-US/                     # English posts
 │   │   ├── post1.mdx
 │   │   └── ...
@@ -350,7 +350,7 @@ const mdxComponents = {
 4. **`src/i18n/`**: Internationalization configuration and utilities
 5. **`src/lib/`**: Utility functions and data fetching logic
 6. **`src/types/`**: TypeScript type definitions
-7. **`contents/`**: Blog posts in MDX format (organized by locale)
+7. **`content/`**: Blog posts in MDX format (organized by locale)
 8. **`messages/`**: i18n translation JSON files
 9. **`public/`**: Static assets (images, fonts, etc.)
 10. **`e2e/`**: End-to-end tests with Playwright

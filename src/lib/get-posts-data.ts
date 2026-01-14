@@ -19,11 +19,12 @@ import remarkGitHub from 'remark-github'
 import remarkMath from 'remark-math'
 import rehypeUnwrapImages from '@/lib/rehype-unwrap-images'
 import remarkAdmonitions from '@/lib/remark-admonitions'
+import { siteConfig } from '@/lib/site'
 
-const contentsBasePath = path.join(process.cwd(), 'contents')
+const contentBasePath = path.join(process.cwd(), siteConfig.contentPath)
 
-function getContentsPath(locale: string): string {
-  return path.join(contentsBasePath, locale)
+function getContentPath(locale: string): string {
+  return path.join(contentBasePath, locale)
 }
 
 async function* walk(directoryPath: string): AsyncGenerator<string> {
@@ -98,13 +99,13 @@ async function generatePostData(filePath: string): Promise<Post> {
 
 async function getPostsData(locale: Locale = 'en-US'): Promise<Post[]> {
   const postsData: Post[] = []
-  const contentsPath = getContentsPath(locale)
+  const contentPath = getContentPath(locale)
 
   // Check if locale directory exists, fallback to en-US if not
   try {
-    await fs.access(contentsPath)
+    await fs.access(contentPath)
   } catch {
-    const fallbackPath = getContentsPath('en-US')
+    const fallbackPath = getContentPath('en-US')
     for await (const filePath of walk(fallbackPath)) {
       const fileExt = path.extname(filePath)
 
@@ -116,7 +117,7 @@ async function getPostsData(locale: Locale = 'en-US'): Promise<Post[]> {
     return postsData
   }
 
-  for await (const filePath of walk(contentsPath)) {
+  for await (const filePath of walk(contentPath)) {
     const fileExt = path.extname(filePath)
 
     if (['.md', '.mdx'].includes(fileExt)) {
