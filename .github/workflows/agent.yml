@@ -1,36 +1,138 @@
 name: Agent
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - LICENSE
+  issue_comment:
+    types: [created]
+
+env:
+  TRIGGER_KEYWORDS: '@claude,@agent'
 
 jobs:
-  review:
-    name: Review
+  agent:
+    name: Agent
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
       pull-requests: write
       contents: read
+      issues: read
     if: |
-      !contains(github.event.pull_request.user.login, 'renovate') &&
-      !contains(github.event.pull_request.user.login, 'dependabot') &&
-      !contains(github.event.pull_request.user.login, 'imgbot') &&
-      !startsWith(github.head_ref, 'renovate/') &&
-      !startsWith(github.head_ref, 'dependabot/')
+      !contains(github.event.comment.user.login, 'renovate') &&
+      !contains(github.event.comment.user.login, 'dependabot') &&
+      !contains(github.event.comment.user.login, 'imgbot')
     steps:
+      - name: Verify authorization
+        id: auth
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const commentUser = context.payload.comment.user.login;
+            const repoOwner = context.repo.owner;
+            const commenter = commentUser.toLowerCase();
+            const owner = repoOwner.toLowerCase();
+
+            // Check if commenter is the repo owner
+            if (commenter === owner) {
+              core.info('✓ Authorized: Repo owner');
+              core.setOutput('authorized', 'true');
+              return;
+            }
+
+            // Check if commenter is a collaborator
+            try {
+              const permissions = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                username: commentUser
+              });
+
+              const permission = permissions.data.permission;
+              const isAuthorized = ['admin', 'write', 'maintain'].includes(permission);
+
+              if (isAuthorized) {
+                core.info(`✓ Authorized: ${permission} permission`);
+                core.setOutput('authorized', 'true');
+              } else {
+                core.info(`✗ Unauthorized: ${permission} permission`);
+                core.setOutput('authorized', 'false');
+              }
+            } catch (error) {
+              core.warning(`Failed to check permissions: ${error.message}`);
+              core.setOutput('authorized', 'false');
+            }
+
+      - name: Parse command
+        id: parse
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const commentBody = context.payload.comment.body;
+            const triggerKeywords = process.env.TRIGGER_KEYWORDS.split(',');
+
+            core.info(`Comment body: ${commentBody}`);
+            core.info(`Trigger keywords: ${triggerKeywords.join(', ')}`);
+
+            let triggerKeyword = null;
+            let command = null;
+
+            // Find which trigger keyword was used
+            for (const keyword of triggerKeywords) {
+              const trimmedKeyword = keyword.trim();
+              if (commentBody.toLowerCase().startsWith(trimmedKeyword.toLowerCase())) {
+                triggerKeyword = trimmedKeyword;
+                // Extract everything after the trigger keyword
+                const afterKeyword = commentBody.slice(trimmedKeyword.length).trim();
+                command = afterKeyword;
+                break;
+              }
+            }
+
+            if (!triggerKeyword) {
+              core.info('No trigger keyword found');
+              core.setOutput('triggered', 'false');
+              return;
+            }
+
+            core.info(`✓ Triggered by: ${triggerKeyword}`);
+            core.info(`Command: ${command}`);
+            core.setOutput('triggered', 'true');
+            core.setOutput('trigger_keyword', triggerKeyword);
+            core.setOutput('command', command);
+
+            // Determine command type
+            if (command.toLowerCase().startsWith('/review')) {
+              core.setOutput('command_type', 'review');
+            } else if (command.trim() === '') {
+              core.warning('No command provided');
+              core.setOutput('command_type', 'empty');
+            } else {
+              core.setOutput('command_type', 'direct');
+            }
+        env:
+          TRIGGER_KEYWORDS: ${{ env.TRIGGER_KEYWORDS }}
+
       - name: Checkout repository
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         uses: actions/checkout@v6
         with:
           submodules: true
           fetch-depth: 0
+
       - name: Setup pnpm
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         uses: pnpm/action-setup@v3
+
       - name: Setup Node environment
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
@@ -38,13 +140,28 @@ jobs:
           architecture: x64
           registry-url: https://registry.npmjs.org/
           cache: pnpm
+
       - name: Install dependencies
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         run: |
           pnpm install
+
       - name: Install Claude Code
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         run: |
           npm install -g @anthropic-ai/claude-code
+
       - name: Configure Claude Code
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         uses: actions/github-script@v8
         with:
           script: |
@@ -93,45 +210,77 @@ jobs:
           ANTHROPIC_AUTH_TOKEN: ${{ secrets.ANTHROPIC_AUTH_TOKEN }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
-      - name: Run Claude Code review
+
+      - name: Run Claude Code
+        if: |
+          steps.auth.outputs.authorized == 'true' &&
+          steps.parse.outputs.triggered == 'true' &&
+          steps.parse.outputs.command_type != 'empty'
         env:
           GH_TOKEN: ${{ github.token }}
+          COMMAND_TYPE: ${{ steps.parse.outputs.command_type }}
+          COMMAND: ${{ steps.parse.outputs.command }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          echo 'Running Claude Code review...'
+          echo 'Running Claude Code...'
 
-          claude -p "
-          REPO: ${{ github.repository }}
-          PR NUMBER: ${{ github.event.pull_request.number }}
+          if [ "$COMMAND_TYPE" = "review" ]; then
+            echo "Executing /review command..."
 
-          You are performing an automated code review on this pull request.
+            claude -p "
+            REPO: ${{ github.repository }}
+            PR NUMBER: $ISSUE_NUMBER
 
-          Please:
-          1. Use \`gh pr diff\` to see the changes
-          2. Use \`gh pr view\` to get PR details
-          3. Analyze the code for:
-             - CLAUDE.md guidelines compliance (read CLAUDE.md if it exists)
-             - Bugs and issues introduced in this PR
-             - Security vulnerabilities
-             - Performance concerns
-             - Code quality issues
+            You are performing an automated code review on this pull request.
 
-          4. For each issue found:
-             - Verify it is actually introduced by this PR (not pre-existing)
-             - Score your confidence 0-100
-             - Only report issues with 80+ confidence
+            Please:
+            1. Use \`gh pr diff\` to see the changes
+            2. Use \`gh pr view\` to get PR details
+            3. Analyze the code for:
+               - CLAUDE.md guidelines compliance (read CLAUDE.md if it exists)
+               - Bugs and issues introduced in this PR
+               - Security vulnerabilities
+               - Performance concerns
+               - Code quality issues
 
-          5. Call \`gh pr review\` ONCE at the end with:
-             - Flag: \`--comment\`, \`--approve\`, or \`--request-changes\` based on findings
-             - Body format:
-               \`\`\`markdown
-               ## Code review
-               Found <N> issues:
-               1. <Issue description> (confidence: <score>)
-                  <file-with-link>
-               ...
-               \`\`\`
-             - For code suggestions, use the \`+/-\` suggestion format for easy apply
-             - For code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
-          " || true
+            4. For each issue found:
+               - Verify it is actually introduced by this PR (not pre-existing)
+               - Score your confidence 0-100
+               - Only report issues with 80+ confidence
 
-          echo '✓ Review completed'
+            5. Call \`gh pr review\` ONCE at the end with:
+               - Flag: \`--comment\`, \`--approve\`, or \`--request-changes\` based on findings
+               - Body format:
+                 \`\`\`markdown
+                 ## Code review
+                 Found <N> issues:
+                 1. <Issue description> (confidence: <score>)
+                    <file-with-link>
+                 ...
+                 \`\`\`
+               - For code suggestions, use the \`+/-\` suggestion format for easy apply
+               - For code links: https://github.com/<owner>/<repo>/blob/<full-sha>/<path>#L<start>-L<end>
+            " || true
+
+          elif [ "$COMMAND_TYPE" = "direct" ]; then
+            echo "Executing direct command: $COMMAND"
+
+            claude -p "
+            REPO: ${{ github.repository }}
+            PR/ISSUE NUMBER: $ISSUE_NUMBER
+
+            The user has requested you to execute the following command:
+            $COMMAND
+
+            Please execute this command and POST YOUR RESPONSE AS A PR COMMENT using:
+            gh pr comment $ISSUE_NUMBER --body '<your response>'
+
+            Do not just output to stdout - you must post it as a comment.
+            " || true
+
+          else
+            echo "Unknown command type: $COMMAND_TYPE"
+            exit 1
+          fi
+
+          echo '✓ Command completed'
