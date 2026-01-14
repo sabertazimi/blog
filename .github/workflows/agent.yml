@@ -17,6 +17,7 @@ jobs:
       contents: read
       issues: read
     if: |
+      github.event.issue.pull_request &&
       !contains(github.event.comment.user.login, 'renovate') &&
       !contains(github.event.comment.user.login, 'dependabot') &&
       !contains(github.event.comment.user.login, 'imgbot')
