@@ -55,7 +55,7 @@ title: 'Your Post Title'
 description: 'Your post description'
 author: 'Your Name'
 date: 2026-01-01
-thumbnail: '/photos/your-thumbnail.jpg'
+thumbnail: '/thumbnails/your-thumbnail.jpg'
 tags:
   - Your Tag 1
   - Your Tag 2
@@ -318,7 +318,7 @@ const mdxComponents = {
 ├── public/                        # Static assets
 │   ├── fonts/
 │   ├── images/
-│   ├── photos/
+│   ├── thumbnails/
 │   └── ...
 ├── e2e/                           # Playwright E2E tests
 │   ├── home.spec.ts
