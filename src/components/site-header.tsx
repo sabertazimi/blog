@@ -19,7 +19,7 @@ export function SiteHeader({ metadata }: Props) {
 
   return (
     <header className="bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
-      <div className="container mx-auto flex h-16 items-center px-6">
+      <div className="container mx-auto flex h-16 items-center px-6 lg:px-0">
         <div className="mr-4 flex">
           <Button variant="ghost" size="icon" asChild>
             <Link href="/" aria-label={siteTitle}>

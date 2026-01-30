@@ -198,6 +198,12 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  @media (width >= 96rem) {
+    .container {
+      @apply max-w-7xl;
+    }
+  }
 }
 
 @layer base {
