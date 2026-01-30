@@ -1,4 +1,5 @@
 import type { Locale } from 'next-intl'
+import { routing } from '@/i18n/routing'
 import { resolveLocale } from '@/i18n/utils'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { siteConfig } from '@/lib/site'
@@ -51,6 +52,10 @@ ${items.join('\n')}
 }
 
 export const dynamic = 'force-static'
+
+export function generateStaticParams() {
+  return routing.locales.map(locale => ({ locale }))
+}
 
 interface RouteParams {
   params: Promise<{ locale: string }>
