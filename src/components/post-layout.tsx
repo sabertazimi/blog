@@ -17,7 +17,7 @@ export function PostLayout({ post: { source, thumbnail, title, slug, prevPost, n
   return (
     <>
       <PostMobileTOC title={title} />
-      <div className="border-border container mx-auto flex px-4 lg:border-r lg:px-0">
+      <div className="border-border container mx-auto flex px-6 lg:border-r lg:px-0">
         <article className="border-border min-w-0 flex-1 border-x">
           <div className="relative h-64 w-full overflow-hidden md:h-96 lg:h-128">
             <PostImage src={thumbnail} alt={title} />

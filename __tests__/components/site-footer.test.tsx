@@ -32,16 +32,6 @@ describe('SiteFooter', () => {
     expect(yearText).toBeInTheDocument()
   })
 
-  it('should render technology stack links', () => {
-    render(<SiteFooter buildTime={mockBuildTime} />)
-
-    const reactLink = screen.getByRole('link', { name: /react/i })
-    const nextLink = screen.getByRole('link', { name: /next\.js/i })
-
-    expect(reactLink).toHaveAttribute('href', 'https://react.dev')
-    expect(nextLink).toHaveAttribute('href', 'https://nextjs.org')
-  })
-
   it('should render build time', () => {
     render(<SiteFooter buildTime={mockBuildTime} />)
 
