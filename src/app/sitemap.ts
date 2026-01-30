@@ -74,5 +74,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   })
 
+  // RSS feeds
+  for (const locale of routing.locales) {
+    sitemapEntries.push({
+      url: `${siteConfig.url}/${locale}/feed.xml`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.8,
+    })
+  }
+
   return sitemapEntries
 }

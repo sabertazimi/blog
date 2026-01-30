@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import type { BuildTime } from '@/types'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { FormattedDate } from '@/components/formatted-date'
 import { siteConfig } from '@/lib/site'
 import { socialLinks } from '@/lib/social'
@@ -12,6 +12,7 @@ interface Props {
 
 export function SiteFooter({ buildTime }: Props) {
   const t = useTranslations('footer')
+  const locale = useLocale()
 
   return (
     <footer className="bg-background border-t">
@@ -20,7 +21,7 @@ export function SiteFooter({ buildTime }: Props) {
           {Object.entries(socialLinks).map(([name, social]) => (
             <a
               key={name}
-              href={social.url}
+              href={social.url.replace('{locale}', locale)}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(

@@ -26,6 +26,7 @@ const siteConfig: SiteConfig = {
     x: 'sabertazimi',
     facebook: 'sabertazimi',
     weibo: 'sabertazimi',
+    rss: 'sabertazimi',
   },
   maxLandingStars: 800,
   minRepoStars: 3,

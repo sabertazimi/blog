@@ -26,13 +26,6 @@ const languageColors = {
   TeX: '#008080',
 }
 
-const socialColors = {
-  github: '#181717',
-  x: '#000000',
-  facebook: '#0866ff',
-  weibo: '#e6162d',
-}
-
 const themeColors = {
   black: '#171717',
   gray: '#767676',
@@ -41,11 +34,9 @@ const themeColors = {
 const colors = {
   ...colorPalette,
   ...languageColors,
-  ...socialColors,
   ...themeColors,
 }
 
-type SocialColor = keyof typeof socialColors
 type PaletteColor = keyof typeof colorPalette
 
 function hashString(name: string) {
@@ -61,5 +52,4 @@ function getColorByName(name: string): string {
   return colorPalette[paletteColor]
 }
 
-export { colors, getColorByName, socialColors }
-export type { SocialColor }
+export { colors, getColorByName }

@@ -27,6 +27,7 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 - **Advanced Navigation** - Auto-generated TOC with active tracking,
   previous/next posts, tag filtering, search
 - **Social & Interactive** - Giscus comments, share buttons, GitHub integration
+- **RSS Feed** - Auto-generated RSS feeds at `/{locale}/feed.xml` for content subscription
 - **Bilingual (i18n)** - Full English/Chinese support with locale-specific routing
 
 ### LLM-Ready
@@ -267,6 +268,7 @@ const mdxComponents = {
 │   │   │   ├── post/[slug]/       # Dynamic post pages
 │   │   │   ├── posts/             # All posts page
 │   │   │   ├── tag/[tagName]/     # Tag filter pages
+│   │   │   ├── feed.xml/          # RSS feed generation
 │   │   │   ├── layout.tsx         # Locale layout
 │   │   │   ├── page.tsx           # Home page
 │   │   │   └── not-found.tsx      # 404 page
