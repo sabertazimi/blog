@@ -1,8 +1,18 @@
-import { SiFacebook, SiGithub, SiSinaweibo, SiX } from '@icons-pack/react-simple-icons'
-import { socialColors } from '@/lib/colors'
+import {
+  SiFacebook,
+  SiFacebookHex,
+  SiGithub,
+  SiGithubHex,
+  SiRss,
+  SiRssHex,
+  SiSinaweibo,
+  SiSinaweiboHex,
+  SiX,
+  SiXHex,
+} from '@icons-pack/react-simple-icons'
 import { siteConfig } from '@/lib/site'
 
-type SocialSite = 'github' | 'x' | 'facebook' | 'weibo'
+type SocialSite = 'github' | 'x' | 'facebook' | 'weibo' | 'rss'
 interface SocialLink {
   name: string
   username: string
@@ -16,29 +26,36 @@ const socialLinks: Record<SocialSite, SocialLink> = {
     name: 'GitHub',
     username: siteConfig.socials.github,
     url: `https://github.com/${siteConfig.socials.github}`,
-    color: socialColors.github,
+    color: SiGithubHex,
     icon: SiGithub,
   },
   x: {
     name: 'X',
     username: siteConfig.socials.x,
     url: `https://x.com/${siteConfig.socials.x}`,
-    color: socialColors.x,
+    color: SiXHex,
     icon: SiX,
   },
   facebook: {
     name: 'Facebook',
     username: siteConfig.socials.facebook,
     url: `https://facebook.com/${siteConfig.socials.facebook}`,
-    color: socialColors.facebook,
+    color: SiFacebookHex,
     icon: SiFacebook,
   },
   weibo: {
     name: 'Weibo',
     username: siteConfig.socials.weibo,
     url: `https://weibo.com/${siteConfig.socials.weibo}`,
-    color: socialColors.weibo,
+    color: SiSinaweiboHex,
     icon: SiSinaweibo,
+  },
+  rss: {
+    name: 'RSS Feed',
+    username: siteConfig.socials.rss,
+    url: '/{locale}/feed.xml',
+    color: SiRssHex,
+    icon: SiRss,
   },
 }
 
