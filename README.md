@@ -18,7 +18,13 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
 ## :sparkles: Features
 
-### Content & UX
+### LLM-Ready
+
+- **AI Agent Actions** - One-click "Read with Claude" or "Read with ChatGPT"
+  to open articles in AI assistants with context
+- **llms.txt API** - Auto-generated structured feed for LLM consumption at `/llms.txt`
+
+### User Experience
 
 - **Rich MDX Support** - GFM, KaTeX math, admonitions, emoji shortcodes,
   Shiki-based syntax highlighting, live code editor with Sandpack
@@ -29,12 +35,6 @@ An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 - **Social & Interactive** - Giscus comments, share buttons, GitHub integration
 - **RSS Feed** - Auto-generated RSS feeds at `/{locale}/feed.xml` for content subscription
 - **Bilingual (i18n)** - Full English/Chinese support with locale-specific routing
-
-### LLM-Ready
-
-- **AI Agent Actions** - One-click "Read with Claude" or "Read with ChatGPT"
-  to open articles in AI assistants with context
-- **llms.txt API** - Auto-generated structured feed for LLM consumption at `/llms.txt`
 
 ### Developer Experience
 
