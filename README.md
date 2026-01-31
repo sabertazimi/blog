@@ -10,11 +10,11 @@
 
 An awesome [blog](https://blog.tazimi.dev) system based on Next.js.
 
-|                  Default                  |                             Nature                             |
+|                  Default                  |                             Custom                             |
 | :---------------------------------------: | :------------------------------------------------------------: |
-| ![Home](./.github/images/home.gif 'Home') | ![Home Nature](./.github/images/home-nature.gif 'Home Nature') |
-|  ![MDX](./.github/images/mdx.png 'MDX')   |  ![MDX Nature](./.github/images/mdx-nature.png 'MDX Nature')   |
-| ![Code](./.github/images/code.png 'Code') | ![Code Nature](./.github/images/code-nature.png 'Code Nature') |
+| ![Home](./.github/images/home.gif 'Home') | ![Home Custom](./.github/images/home-custom.gif 'Home Custom') |
+|  ![MDX](./.github/images/mdx.png 'MDX')   |  ![MDX Custom](./.github/images/mdx-custom.png 'MDX Custom')   |
+| ![Code](./.github/images/code.png 'Code') | ![Code Custom](./.github/images/code-custom.png 'Code Custom') |
 
 ## :sparkles: Features
 
