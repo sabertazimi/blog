@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.4.0](https://github.com/sabertazimi/blog/compare/v5.3.0...v5.4.0) (2026-02-06)
+
+
+### :sparkles: Features
+
+* **agent:** transform workflow to PR comment-responsive bot ([#1578](https://github.com/sabertazimi/blog/issues/1578)) ([91fe839](https://github.com/sabertazimi/blog/commit/91fe839b9159efbc6bb257e7e7ff7faf070c3c6c))
+* **rss:** add RSS feed support with locale-based feeds ([#1589](https://github.com/sabertazimi/blog/issues/1589)) ([44d6cf6](https://github.com/sabertazimi/blog/commit/44d6cf6c2b0bd40138cd8a2c5fd109f0d5a26b2a))
+
+
+### :bug: Bug Fixes
+
+* **deps:** update dependencies (non-major) ([#1581](https://github.com/sabertazimi/blog/issues/1581)) ([347d15a](https://github.com/sabertazimi/blog/commit/347d15a8a32bfdfc9da30e2bf136c99b8a7a2945))
+* **deps:** update dependencies (non-major) ([#1586](https://github.com/sabertazimi/blog/issues/1586)) ([728ea4a](https://github.com/sabertazimi/blog/commit/728ea4a15ab5f974e0921a9ba26eccc996783431))
+* **deps:** update dependency next to ^16.1.4 ([#1582](https://github.com/sabertazimi/blog/issues/1582)) ([ce66541](https://github.com/sabertazimi/blog/commit/ce665415b50e0bf36611c0f4e495ca7b8be8670c))
+* **footer:** restructure footer layout and simplify content ([#1588](https://github.com/sabertazimi/blog/issues/1588)) ([24d205f](https://github.com/sabertazimi/blog/commit/24d205f30eaceedd7db3e4bb832e40773fbf538f))
+* **i18n:** change landing title from `编程者` to `编码者` ([cc8f78d](https://github.com/sabertazimi/blog/commit/cc8f78dd0cf91606db284b7aa00109c030a437f5))
+* **nav:** add background transparency to navigation items ([#1587](https://github.com/sabertazimi/blog/issues/1587)) ([c2fa068](https://github.com/sabertazimi/blog/commit/c2fa0688cd91a748ed8c8f68cce3db98b3035253))
+
+
+### :hammer: Continuous Integration
+
+* **agent:** adopt agentic-native approach with gh pr review ([#1574](https://github.com/sabertazimi/blog/issues/1574)) ([34dc563](https://github.com/sabertazimi/blog/commit/34dc5634d0cd3cbe072551b501893bc50c8c1bf2))
+* **agent:** use gh pr review to consolidate email notifications ([3127f95](https://github.com/sabertazimi/blog/commit/3127f955a491228dec12044755c2caefcc9ddafd))
+* **vercel:** setup vercel build scripts ([2767860](https://github.com/sabertazimi/blog/commit/27678604ca5337c1a4b29eab4535bc8be8c4a67b))
+
+
+### :zap: Performance
+
+*  [ImgBot] optimize images ([#1590](https://github.com/sabertazimi/blog/issues/1590)) ([00b7404](https://github.com/sabertazimi/blog/commit/00b7404e23526e6e8e46bf066d780e52e443efa8))
+
 ## [5.3.0](https://github.com/sabertazimi/blog/compare/v5.2.0...v5.3.0) (2026-01-13)
 
 
