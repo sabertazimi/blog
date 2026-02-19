@@ -1,4 +1,5 @@
-import { SiClaude, SiOpenai } from '@icons-pack/react-simple-icons'
+import { SiClaude } from '@icons-pack/react-simple-icons'
+import { SiOpenai } from '@/components/si-openai'
 
 interface ChatbotLink {
   name: string
