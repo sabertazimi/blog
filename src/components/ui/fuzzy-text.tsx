@@ -1,7 +1,8 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import React, { useEffect, useRef } from 'react'
+import * as React from 'react'
+import { useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 interface FuzzyTextProps {

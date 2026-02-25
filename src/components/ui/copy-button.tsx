@@ -37,7 +37,7 @@ const buttonVariants = cva(
   },
 )
 
-type CopyButtonProps = Omit<HTMLMotionProps<'button'>, 'children' | 'onCopy'>
+type CopyButtonProps = Omit<HTMLMotionProps<'button'>, 'children' | 'onCopy' | 'key'>
   & VariantProps<typeof buttonVariants> & {
     content?: string
     delay?: number

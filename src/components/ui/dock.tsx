@@ -5,7 +5,8 @@ import type { MotionProps, MotionValue } from 'motion/react'
 import type { PropsWithChildren } from 'react'
 import { cva } from 'class-variance-authority'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
-import React, { useRef } from 'react'
+import * as React from 'react'
+import { useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
