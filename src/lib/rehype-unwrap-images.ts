@@ -2,12 +2,14 @@ import type { Element, ElementContent, Root, Text } from 'hast'
 import type { Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 
+const WHITESPACE_REGEX = /^\s*$/
+
 function isImgElement(child: ElementContent): child is Element {
   return child.type === 'element' && child.tagName === 'img'
 }
 
 function isWhitespaceText(child: ElementContent): child is Text {
-  return child.type === 'text' && /^\s*$/.test(child.value)
+  return child.type === 'text' && WHITESPACE_REGEX.test(child.value)
 }
 
 /**

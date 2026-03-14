@@ -33,7 +33,7 @@ export function PostAgentActions({ url, title }: PostAgentActionsProps) {
       .writeText(prompt)
       .then(() => {
         setIsCopied(true)
-        setTimeout(() => setIsCopied(false), 2000)
+        setTimeout(setIsCopied, 2000, false)
       })
       .catch((error: unknown) => {
         console.error('[PostAgentActions] Failed to copy to clipboard', error)
