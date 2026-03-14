@@ -4,13 +4,19 @@ import { resolveLocale } from '@/i18n/utils'
 import { getPostsMeta } from '@/lib/get-posts-data'
 import { siteConfig } from '@/lib/site'
 
+const AMPERSAND_REGEX = /&/g
+const LESS_THAN_REGEX = /</g
+const GREATER_THAN_REGEX = />/g
+const QUOTE_REGEX = /"/g
+const APOSTROPHE_REGEX = /'/g
+
 function escapeXml(text: string): string {
   return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
+    .replace(AMPERSAND_REGEX, '&amp;')
+    .replace(LESS_THAN_REGEX, '&lt;')
+    .replace(GREATER_THAN_REGEX, '&gt;')
+    .replace(QUOTE_REGEX, '&quot;')
+    .replace(APOSTROPHE_REGEX, '&apos;')
 }
 
 async function generateRssFeed(locale: Locale): Promise<string> {

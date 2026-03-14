@@ -5,6 +5,8 @@ import parseNumericRange from 'parse-numeric-range'
 import { bundledLanguages } from 'shiki/bundle/web'
 import { twMerge } from 'tailwind-merge'
 
+const TRAILING_NEWLINES_REGEX = /\n+$/
+
 /**
  * Merge Tailwind CSS classes with proper precedence
  * @param inputs - Class values to merge
@@ -60,7 +62,7 @@ export function normalizeFilepath(filename?: string, language?: string): string 
  * @returns Code string without trailing newlines
  */
 export function trimTrailingNewlines(code: string = ''): string {
-  return code.replace(/\n+$/, '')
+  return code.replace(TRAILING_NEWLINES_REGEX, '')
 }
 
 /**
