@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Verify authorization
         id: auth
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const commentUser = context.payload.comment.user.login;
@@ -64,7 +64,7 @@ jobs:
 
       - name: Parse command
         id: parse
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const commentBody = context.payload.comment.body;
@@ -163,7 +163,7 @@ jobs:
           steps.auth.outputs.authorized == 'true' &&
           steps.parse.outputs.triggered == 'true' &&
           steps.parse.outputs.command_type != 'empty'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('node:fs/promises');
