@@ -37,7 +37,6 @@ export function BackToTop({ minHeight = 300, scrollTo = 0, className, ...props }
     return () => {
       document.removeEventListener('scroll', handleScroll)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- only run on mount
   }, [])
 
   return (

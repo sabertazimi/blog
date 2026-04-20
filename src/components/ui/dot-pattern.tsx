@@ -101,9 +101,7 @@ export function DotPattern({
       return {
         x: col * width + cx,
         y: row * height + cy,
-        // eslint-disable-next-line react-hooks/purity -- Math.random is not a pure function
         delay: Math.random() * 5,
-        // eslint-disable-next-line react-hooks/purity -- Math.random is not a pure function
         duration: Math.random() * 3 + 2,
       }
     },
