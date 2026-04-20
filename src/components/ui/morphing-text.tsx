@@ -10,6 +10,7 @@ function useMorphingText(texts: string[]) {
   const textIndexRef = useRef(0)
   const morphRef = useRef(0)
   const cooldownRef = useRef(0)
+  // eslint-disable-next-line react/purity -- initial timestamp for animation, only used as a starting reference
   const timeRef = useRef(new Date())
 
   const text1Ref = useRef<HTMLSpanElement>(null)

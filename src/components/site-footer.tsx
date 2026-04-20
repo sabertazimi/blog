@@ -41,6 +41,7 @@ export function SiteFooter({ buildTime }: Props) {
           <div className="text-muted-foreground text-sm">
             {t('copyright')}
             {' © '}
+            {/* eslint-disable-next-line react/purity -- only the year is used, SSR/client mismatch is acceptable */}
             {new Date().getFullYear()}
             {' '}
             <a
