@@ -37,6 +37,7 @@ Element.prototype.scrollIntoView = vi.fn()
 globalThis.IntersectionObserver = class IntersectionObserver {
   root: null = null
   rootMargin: string = ''
+  scrollMargin: string = ''
   thresholds: number[] = []
 
   constructor() {}
