@@ -16,6 +16,7 @@ export function FormattedDate({ date, showTime = false, className, icon: Icon }:
     return null
   }
 
+  // eslint-disable-next-line react/purity -- date conversion is deterministic and derived from props
   const dateObj = typeof date === 'string' || typeof date === 'number' ? new Date(date) : date
 
   const formattedContent = showTime
