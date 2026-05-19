@@ -1,0 +1,14 @@
+minimumReleaseAge: 0
+
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+trustPolicyExclude:
+  - semver@5.7.2
+
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  es5-ext: false
+  sharp: false
