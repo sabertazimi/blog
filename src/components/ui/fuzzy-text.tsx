@@ -172,15 +172,15 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       }
 
       if (enableHover) {
-        // eslint-disable-next-line react-web-api/no-leaked-event-listener -- cleanup function is called in useEffect
+        // eslint-disable-next-line react/web-api-no-leaked-event-listener -- cleanup function is called in useEffect
         canvas.addEventListener('mousemove', handleMouseMove)
-        // eslint-disable-next-line react-web-api/no-leaked-event-listener -- cleanup function is called in useEffect
+        // eslint-disable-next-line react/web-api-no-leaked-event-listener -- cleanup function is called in useEffect
         canvas.addEventListener('mouseleave', handleMouseLeave)
-        // eslint-disable-next-line react-web-api/no-leaked-event-listener -- cleanup function is called in useEffect
+        // eslint-disable-next-line react/web-api-no-leaked-event-listener -- cleanup function is called in useEffect
         canvas.addEventListener('touchmove', handleTouchMove, {
           passive: false,
         })
-        // eslint-disable-next-line react-web-api/no-leaked-event-listener -- cleanup function is called in useEffect
+        // eslint-disable-next-line react/web-api-no-leaked-event-listener -- cleanup function is called in useEffect
         canvas.addEventListener('touchend', handleTouchEnd)
       }
 

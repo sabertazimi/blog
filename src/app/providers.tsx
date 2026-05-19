@@ -23,7 +23,7 @@ export function SandPackCSS() {
   useServerInsertedHTML(() => {
     return (
       <style
-        // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml -- render sandpack css
+        // eslint-disable-next-line react/dom-no-dangerously-set-innerhtml -- render sandpack css
         dangerouslySetInnerHTML={{ __html: getSandpackCssText() }}
         id="sandpack"
       />
