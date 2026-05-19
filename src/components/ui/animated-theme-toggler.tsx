@@ -35,7 +35,7 @@ export function AnimatedThemeToggler({
     }
 
     await document.startViewTransition(() => {
-      // eslint-disable-next-line react-dom/no-flush-sync -- theme switch should be synchronous
+      // eslint-disable-next-line react/dom-no-flush-sync -- theme switch should be synchronous
       flushSync(() => {
         const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
