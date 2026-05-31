@@ -95,7 +95,7 @@ e2e/                      # Playwright E2E tests
 ### Code Standards
 
 - Follow conventional commits: `type(scope): description`
-- Use Context7 MCP or Shadcn MCP for documentation queries
+- Use Context7 CLI for documentation queries
 - React Compiler eliminates need for manual useMemo/useCallback
 - Server components first, client components only when necessary
 - Use `data-slot` attribute for component styling hooks
