@@ -337,7 +337,7 @@ const mdxComponents = {
 ├── next.config.ts                 # Next.js configuration
 ├── package.json
 ├── playwright.config.ts           # Playwright configuration
-├── postcss.config.mjs             # PostCSS configuration
+├── postcss.config.ts              # PostCSS configuration
 ├── tsconfig.json                  # TypeScript configuration
 ├── vitest.config.mts              # Vitest configuration
 ├── LICENSE
