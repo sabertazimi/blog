@@ -124,7 +124,7 @@ Key config files at root:
 - `package.json` - Dependencies and scripts
 - `tsconfig.json` - Strict mode, path aliases (`@/*`, `@/images/*`, `@/tests/*`)
 - `next.config.ts` - React Compiler, next-intl plugin
-- `eslint.config.mjs` - Flat Config, custom rules per file type
+- `eslint.config.ts` - Flat Config, custom rules per file type
 - `vitest.config.mts` - jsdom, coverage, setup files
 - `playwright.config.ts` - 3 browsers, localhost:3000, timeout settings
 - `components.json` - Shadcn registries (@animate-ui, @magicui, @shadcn-studio)

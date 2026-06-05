@@ -333,7 +333,7 @@ const mdxComponents = {
 ├── .gitignore
 ├── .prettierrc.json
 ├── components.json                # Shadcn UI config
-├── eslint.config.mjs              # ESLint Flat Config
+├── eslint.config.ts               # ESLint Flat Config
 ├── next.config.ts                 # Next.js configuration
 ├── package.json
 ├── playwright.config.ts           # Playwright configuration
