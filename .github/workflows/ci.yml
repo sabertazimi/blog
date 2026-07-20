@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
           fetch-depth: 1
@@ -46,7 +46,7 @@ jobs:
         node-version: [lts/*]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
           fetch-depth: 1
@@ -82,7 +82,7 @@ jobs:
         node-version: [lts/*]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
           fetch-depth: 1
@@ -137,7 +137,7 @@ jobs:
         node-version: [lts/*]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
           fetch-depth: 0 # Keep `0` for git time
@@ -171,7 +171,7 @@ jobs:
     needs: [lint, unit, e2e, build]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
           fetch-depth: 0
