@@ -74,7 +74,7 @@ export default function remarkAdmonitions() {
         hProperties: {
           type: node.name,
           ...(title !== undefined && title.length > 0 ? { title } : {}),
-          className: `admonition admonition-${node.name}`,
+          className: [`admonition admonition-${node.name}`],
         },
       }
       node.children = contentNodes
