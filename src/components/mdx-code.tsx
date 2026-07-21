@@ -210,18 +210,20 @@ async function highlight(
               type: 'element',
               tagName: 'span',
               properties: {
-                'className': 'inline-block w-12 select-none pr-4 text-right text-muted-foreground/50',
+                'className': ['inline-block w-12 select-none pr-4 text-right text-muted-foreground/50'],
                 'data-line-number': lineNumber,
               },
               children: [{ type: 'text', value: String(lineNumber) }],
             })
           }
 
-          properties.className = cn(
-            'block min-h-[1.5rem] border-l-2 border-transparent',
-            showLineNumbers ? 'px-0' : 'px-4',
-            isHighlighted ? 'border-l-primary/50 bg-primary/5' : 'hover:bg-muted/50',
-          )
+          properties.className = [
+            cn(
+              'block min-h-[1.5rem] border-l-2 border-transparent',
+              showLineNumbers ? 'px-0' : 'px-4',
+              isHighlighted ? 'border-l-primary/50 bg-primary/5' : 'hover:bg-muted/50',
+            ),
+          ]
           properties['data-line'] = lineNumber
           line.properties = properties
         }
